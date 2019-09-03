@@ -71,7 +71,7 @@
   "rbac.role.modal.settings.header": "Función",
 
   "rbac.delete.modal.messages.delete.failed.information": "El rol {{ name }} no se puede eliminar.",
-  "rbac.delete.modal.messages.delete.failed.suggestion": "<strong>{{ usageCount }}</strong> En este momento hay administradores de la empresa asignados a este rol. Primero debe volverlos a asignar.",
+  "rbac.delete.modal.messages.delete.failed.suggestion": "<strong>{{ usageCount }}</strong> {{ accountType }} administrador(es) asignado(s) actualmente a este rol. Vuelva a asignar al administrador o administradores primero.",
   "rbac.delete.modal.messages.delete.role": "¿Eliminar rol {{ name }}?",
   "rbac.delete.modal.title.delete.confirmation": "Confirmar eliminación",
   "rbac.delete.modal.title.delete.failed": "Error al eliminar",
@@ -99,8 +99,11 @@
   "rbac.basetype.help.readonly": "Acceso de solo lectura",
 
   "rbac.basetype.help.text": "Según el rol base que seleccione, su rol parte de estos derechos de acceso",
-  "rbac.basetype.help.enterprise.header": "Acceso de Central Enterprise",
-  "rbac.basetype.help.enterprise.text": "Los mismos derechos en Central Enterprise que en Central Admin. Por ejemplo, si selecciona 'Soporte técnico', el rol también obtiene derechos de 'Soporte técnico de Enterprise'",
+  "rbac.basetype.help._dynamic_.enterprise.header": "Acceso de Central Enterprise",
+  "rbac.basetype.help._dynamic_.enterprise.text": "Los mismos derechos en Central Enterprise que en Central Admin. Por ejemplo, si selecciona 'Soporte técnico', el rol también obtiene derechos de 'Soporte técnico de Enterprise'",
+
+  "rbac.basetype.help._dynamic_.partner.header": "Acceso a Central Partner",
+  "rbac.basetype.help._dynamic_.partner.text": "Los mismos derechos en Central Partner que en Central Admin. Por ejemplo, si selecciona 'Soporte técnico', el rol también obtiene derechos de 'Soporte técnico de Partner'",
 
   "rbac.toast.role.delete.failure": "Error al eliminar",
   "rbac.toast.role.delete.success": "El rol se ha eliminado",
@@ -108,7 +111,7 @@
 
   "rbac.role.save.confirm.title": "Confirmar guardado",
   "rbac.role.save.endpoint.server.readonly.confirm.msg": "Está creando un rol con acceso a Endpoint Protection o Server Protection, pero no a ambos.",
-  "rbac.role.save.endpoint.server.readonly.confirm.warning": "A menos que un rol tenga acceso a ambos, esta configuración compartida será de solo lectura.",
+  "rbac.role.save.endpoint.server.readonly.confirm.warning": "A menos que un rol tenga acceso tanto a Endpoint como a Server Protection (y en algunos casos también a Encryption), esta configuración compartida será de solo lectura.",
 
   "rbac.endpoint.server.shared.feature.tamper_protection": "Protección contra manipulaciones",
   "rbac.endpoint.server.shared.feature.allowed_applications": "Aplicaciones autorizadas",
@@ -116,7 +119,7 @@
   "rbac.endpoint.server.shared.feature.proxy_configuration": "Configuración de proxy",
   "rbac.endpoint.server.shared.feature.global_exclusions": "Exclusión global",
   "rbac.endpoint.server.shared.feature.blocked_item": "Elemento bloqueado",
-  "rbac.endpoint.server.shared.feature.bandwidth_usage": "Uso de ancho de banda",
+  "rbac.endpoint.server.shared.feature.bandwidth_usage": "Uso de ancho de banda (se requiere acceso a Encryption)",
   "rbac.endpoint.server.shared.feature.https_updating": "Actualización mediante HTTPS",
   "rbac.endpoint.server.shared.feature.dlp_rules": "Reglas DLP",
   "rbac.endpoint.server.shared.feature.manage_content_control_list": "Administrar lista de control del contenido",

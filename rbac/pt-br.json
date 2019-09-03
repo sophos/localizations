@@ -71,7 +71,7 @@
   "rbac.role.modal.settings.header": "Recurso",
 
   "rbac.delete.modal.messages.delete.failed.information": "A função {{ name }} não pode ser deletada.",
-  "rbac.delete.modal.messages.delete.failed.suggestion": "<strong>{{ usageCount }}</strong> Enterprise Admins estão atribuídos a essa função no momento. Primeiro atribua-os novamente.",
+  "rbac.delete.modal.messages.delete.failed.suggestion": "<strong>{{ usageCount }}</strong> {{ accountType }} admin(s) atribuído(s) a esta função no momento. Primeiro atribua os admins novamente.",
   "rbac.delete.modal.messages.delete.role": "Deletar função {{ name }}?",
   "rbac.delete.modal.title.delete.confirmation": "Confirmação de deleção",
   "rbac.delete.modal.title.delete.failed": "Falha ao deletar",
@@ -99,8 +99,11 @@
   "rbac.basetype.help.readonly": "Acesso Somente Leitura",
 
   "rbac.basetype.help.text": "Dependendo da função de base que você selecionar, a sua função terá inicialmente esses direitos de acesso",
-  "rbac.basetype.help.enterprise.header": "Acesso ao Central Enterprise",
-  "rbac.basetype.help.enterprise.text": "Os mesmos direitos no Central Enterprise que no Central Admin. Por exemplo, se você selecionar 'Help Desk', a função também terá direitos ao 'Enterprise Help Desk'",
+  "rbac.basetype.help._dynamic_.enterprise.header": "Acesso ao Central Enterprise",
+  "rbac.basetype.help._dynamic_.enterprise.text": "Os mesmos direitos no Central Enterprise que no Central Admin. Por exemplo, se você selecionar 'Help Desk', a função também terá direitos ao 'Enterprise Help Desk'",
+
+  "rbac.basetype.help._dynamic_.partner.header": "Acesso ao Central Partner",
+  "rbac.basetype.help._dynamic_.partner.text": "Os mesmos direitos no Central Partner que no Central Admin. Por exemplo, se você selecionar 'Help Desk', a função também terá direitos ao 'Partner Help Desk'",
 
   "rbac.toast.role.delete.failure": "Falha ao deletar",
   "rbac.toast.role.delete.success": "Função deletada",
@@ -108,7 +111,7 @@
 
   "rbac.role.save.confirm.title": "Confirme a ação de salvar",
   "rbac.role.save.endpoint.server.readonly.confirm.msg": "Você está criando uma função com acesso ao Endpoint Protection ou Server Protection, porém não aos dois.",
-  "rbac.role.save.endpoint.server.readonly.confirm.warning": "A menos que uma função possua acesso aos dois, estes ajustes compartilhados serão somente para leitura.",
+  "rbac.role.save.endpoint.server.readonly.confirm.warning": "A menos que uma função tenha acesso ao Endpoint Protection e ao Server Protection (em alguns casos também ao Encryption Protection), essas configurações compartilhadas serão somente leitura.",
 
   "rbac.endpoint.server.shared.feature.tamper_protection": "Proteção contra adulterações",
   "rbac.endpoint.server.shared.feature.allowed_applications": "Aplicativos permitidos",
@@ -116,7 +119,7 @@
   "rbac.endpoint.server.shared.feature.proxy_configuration": "Configuração de proxy",
   "rbac.endpoint.server.shared.feature.global_exclusions": "Exclusão global",
   "rbac.endpoint.server.shared.feature.blocked_item": "Item bloqueado",
-  "rbac.endpoint.server.shared.feature.bandwidth_usage": "Uso da largura de banda",
+  "rbac.endpoint.server.shared.feature.bandwidth_usage": "Uso de largura de banda (exige acesso ao Encryption)",
   "rbac.endpoint.server.shared.feature.https_updating": "Atualização por HTTPS",
   "rbac.endpoint.server.shared.feature.dlp_rules": "Regras de DLP",
   "rbac.endpoint.server.shared.feature.manage_content_control_list": "Gerenciar lista de controle de conteúdo",
