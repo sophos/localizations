@@ -8,9 +8,11 @@
         "stop": "Arrêter"
       },
       "actions": "Actions",
+      "confirmation": "Confirmation",
       "add": "Ajouter",
       "apply": "Appliquer",
       "areYouSure": "Voulez-vous vraiment effectuer cette opération ?",
+      "saveChanges": "Enregistrer les modifications",
       "cancel": "Annuler",
       "chartComponentNotDefined": "Composant du graphique non défini !",
       "client": "Client",
@@ -34,6 +36,8 @@
       "confirm": "Confirmer",
       "to": "à",
       "na": "S/O",
+      "yes": "Oui",
+      "no": "Non",
       "tFooter": {
         "current": "Actuel",
         "offset": "Décaler",
@@ -60,12 +64,15 @@
       "problemLoadingData": "Problème lors du chargement des données",
       "static": "Statique",
       "dynamic": "Dynamique",
+      "deviceName": "Nom de l’appareil",
       "error": {
         "http": {
           "default": "Problème lors du chargement des données.",
           "500": "Une erreur est survenue, veuillez réessayer plus tard."
         }
-      }
+      },
+      "fileAnalysis": "Analyse du fichier",
+      "sandstorm": "Sandstorm"
     },
     "dashboard": {
       "allowedCategories": "Catégories d’applis autorisées",
@@ -94,24 +101,26 @@
       "dataWindow": "Les 24 dernières heures"
     },
     "licensing": {
+      "areYouSure": "Êtes-vous sûr de vouloir enregistrer ces modifications ?",
+      "transferDropdownDefaultText": "Sélectionner un appareil",
       "pageTitle": "Licences",
       "tabTitle": "Pare-feu",
       "licInfo": "Licences utilisées / disponibles",
       "licDetails": "1 licence = 100 Go",
       "licExpirationInfo": "Date d’expiration de la licence Rapports de pare-feu",
       "manageCentralLicensesBtn": "Gérer les licences produit",
-      "projectedTooltip": "D’après l’activité des 7 derniers jours, votre capacité actuelle de stockage de rapports sera dépassée dans 0,8 mois.",
+      "projectedTooltip": "Il s’agit d’une estimation de rétention des données basée sur le taux moyen de journaux entrants et sur le stockage alloué.",
       "transferText": "Transférer une licence de rapport",
       "reclaimText": "Récupérer une licence de rapport",
       "deleteLogText": "Supprimer les données du journal",
       "removeFirewallText": "Supprimer le pare-feu de Sophos Central",
-      "freeFeatures": "Fonctionnalités gratuites",
-      "fullFeatures": "Fonctionnalités complètes",
+      "freeFeatures": "Fonctions gratuites",
+      "fullFeatures": "Fonctions complètes",
       "transferDialogTitle": "Transférer une licence de rapport",
       "reclaimDialogTitle": "Récupérer une licence de rapport",
       "moveFullToFreeLabel": "Déplacer les appareils de Complète à Gratuite",
-      "transferLabel":"La licence sera transférée",
-      "removeFirewallDialogTitle": "Supprimer le pare-feu",
+      "transferLabel": "La licence sera transférée",
+      "removeFirewallDialogTitle": "Supprimer les pare-feu",
       "deleteLogLabel": "Voulez-vous vraiment supprimer les données du journal pour cet appareil ?",
       "deleteAllDataButton": "Supprimer toutes les données ?",
       "removeDeviceDataButton": "Retirer et supprimer toutes les données ?",
@@ -121,21 +130,29 @@
       "reclaimDialogWarning": "Attention ! Le passage à la licence Gratuite va retirer un appareil des fonctions de rapport intégral. Le niveau Gratuit offre une capacité de stockage réduite et des fonctions gratuites",
       "reclaimDialogNote": "Le passage à la licence Gratuite va supprimer les journaux et rapports déjà stockés pour cet appareil. Toute capacité achetée et utilisée sera mise à disposition.",
       "licenseIsNotActiveMsg": "La licence n’est pas activement utilisée",
+      "licenseTransferText": "Cette licence n’est pas active et a été transférée à {{serialId}}",
+      "freeToPremiumConversionMsg": "Attention ! Tentative de conversion en licence Premium. Le stockage sera effectué en fonction de la répartition définie et la période de rétention sera augmentée à une année",
+      "reduceLicenseMsg": "La réduction des licences attribuées va supprimer une partie de vos anciennes données enregistrées",
       "licenseSaveFailedMsg": "Impossible d’enregistrer les licences",
-      "licenseSaveSuccessMsg": "Les licences ont été mises à jour",
+      "licenseReclaimSuccessMsg": "Licence(s) récupérées",
+      "licenseRemoveSuccessMsg": "Appareils supprimés",
+      "deleteLogSuccessMsg": "Journaux supprimés",
+      "reducedStorageConfirmationMsg": "Attention ! La réduction de l’attribution des licences pour plus que le stockage consommé va entraîner la suppression définitive des anciennes données. Êtes-vous sûr de vouloir continuer ?",
+      "licenseSaveSuccessMsg": "Licence(s) mises à jour",
+      "licenseTransferSuccessMsg": "Licence(s) transférées",
       "features": {
         "freeFeatureItems": {
-          "feature1": "Rétention des données de 7 jours (avec seuil de capacité)",
+          "feature1": "7 jours de conservation des données (avec seuil de capacité)",
           "feature2": "Recherche et visualisation du syslog",
           "feature3": "Rapport à la demande dans Central",
-          "feature4": "Accès API aux rapports Central",
-          "feature5": "Télécharger les rapports (PDF, HTML, CSV)"
+          "feature4": "Télécharger les rapports aux formats PDF, HTML et CSV"
         },
         "fullFeatureItems": {
-          "feature1": "Générateur de rapports personnalisés",
-          "feature2": "Rapports planifiés",
-          "feature3": "Export en masse des données archivées du syslog",
-          "feature4": "Rapports enregistrés"
+          "feature1": "Accès API aux rapports Central",
+          "feature2": "Générateur de rapports personnalisés",
+          "feature3": "Rapports planifiés",
+          "feature4": "Exports groupés des données d’archives du syslog",
+          "feature5": "Rapports enregistrés"
         }
       },
       "table": {
@@ -146,6 +163,18 @@
         "centralStorageUsed": "Stockage Central utilisé",
         "actions": "Actions",
         "haStatus": "État de la haute disponibilité"
+      },
+      "messages": {
+        "invalidAssetId": "Appareil incorrect",
+        "assetIdDoesntExist": "Appareil inexistant",
+        "transferNoPremiumLicense": "Appareil sans licence Premium",
+        "transferNoActiveDevice": "Le nouvel appareil n’est pas actif",
+        "transferFromHAPairNotAllowed": "L’appareil fait partie d’un jumelage Haute disponibilité et ne peut pas être transféré",
+        "customerQuotaNotAvailable": "Quota de licences du client indisponible",
+        "transferDeviceModelNotFound": "Nom du modèle de l’appareil introuvable",
+        "transferNotEnoughUnitsAsPerDeviceModel": "Le nouvel appareil n’a pas d’unités minimales requises comme indiqué sur son modèle d’appareil",
+        "updateLicensesAllocationOutsideDeviceModelRange": "Les unités attribuées sont hors de portée de la limite min-max de ce modèle d’appareil",
+        "updateLicensesInsufficientUnits": "Unités insuffisante dans le quota"
       }
     },
     "report": {
@@ -180,8 +209,28 @@
           "sandstorm": "Événements Sandstorm",
           "syslog": "Visionneuse de journaux et recherche",
           "vpn": "Activités VPN",
-          "antivirus": "Antivirus"
+          "antivirus": "Antivirus",
+          "geoactivity": "Géoactivité",
+          "threats_events_blocked": "Menaces et événements bloqués",
+          "threats_web_usage": "Événements Web bloqués",
+          "threats_atp": "Menaces ATP",
+          "threats_firewall": "Événements de pare-feu bloqués",
+          "threats_ips": "Menaces IPS",
+          "threats_sandstorm": "Menaces Sandstorm",
+          "threats_antivirus": "Menaces antivirus"
         }
+      },
+      "geoactivity": {
+        "hits": "Accès",
+        "atp_hits": "Accès ATP",
+        "av_hits": "Accès antivirus",
+        "ips_hits": "Accès IPS",
+        "sandstorm_hits": "Accès Sandstorm",
+        "firewall_hits": "Accès pare-feu",
+        "idp_hits": "Accès IDP",
+        "sandbox_hits": "Accès Sandbox",
+        "cf_hits": "Accès CF",
+        "waf_hits": "Accès WAF"
       },
       "schedule": {
         "modal": {
@@ -493,7 +542,14 @@
       "log": "Journal",
       "geoActivity": "Géoactivité",
       "sandstorm_only": "Sandstorm",
-      "malware_threat": "Menaces/Malwares"
+      "malware_threat": "Menaces/Malwares",
+      "antivirus": "Antivirus",
+      "web": "web",
+      "web_application_firewall": "Pare-feu d’application Web",
+      "total": "Total",
+      "threat_intelligence": "Renseignements sur les menaces",
+      "totalThreats": "Total des menaces",
+      "totalHits": "Total d’accès"
     }
   }
 }

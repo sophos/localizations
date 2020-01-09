@@ -8,9 +8,11 @@
         "stop": "Arresta"
       },
       "actions": "Azioni",
+      "confirmation": "Conferma",
       "add": "Aggiungi",
       "apply": "Applica",
       "areYouSure": "Confermare l'azione?",
+      "saveChanges": "Salva modifiche",
       "cancel": "Annulla",
       "chartComponentNotDefined": "Componente del grafico non definito!",
       "client": "Client",
@@ -34,6 +36,8 @@
       "confirm": "Conferma",
       "to": "a",
       "na": "N.D.",
+      "yes": "Sì",
+      "no": "No",
       "tFooter": {
         "current": "Corrente",
         "offset": "Offset",
@@ -60,12 +64,15 @@
       "problemLoadingData": "Si è verificato un problema durante il caricamento dei dati",
       "static": "Statico",
       "dynamic": "Dinamico",
+      "deviceName": "Nome dispositivo",
       "error": {
         "http": {
           "default": "Si è verificato un problema durante il caricamento dei dati.",
           "500": "Si è verificato un errore, riprovare più tardi."
         }
-      }
+      },
+      "fileAnalysis": "Analisi file",
+      "sandstorm": "Sandstorm"
     },
     "dashboard": {
       "allowedCategories": "Categorie app consentite",
@@ -94,13 +101,15 @@
       "dataWindow": "Ultime 24 ore"
     },
     "licensing": {
+      "areYouSure": "Salvare le modifiche?",
+      "transferDropdownDefaultText": "Seleziona un dispositivo",
       "pageTitle": "Licenze",
       "tabTitle": "Firewall",
       "licInfo": "Licenze utilizzate/disponibili",
       "licDetails": "1 licenza = 100 GB",
       "licExpirationInfo": "Data di scadenza della reportistica del firewall",
       "manageCentralLicensesBtn": "Gestisci licenze dei prodotti",
-      "projectedTooltip": "In base agli ultimi 7 giorni, la reportistica raggiungerà il limite di capacità tra 0,8 mesi",
+      "projectedTooltip": "È il periodo di conservazione dei dati previsto, in base al tasso medio dei log in ingresso e allo spazio di archiviazione assegnato.",
       "transferText": "Trasferisci licenza della reportistica",
       "reclaimText": "Recupera licenza della reportistica",
       "deleteLogText": "Elimina dati di log",
@@ -110,7 +119,7 @@
       "transferDialogTitle": "Trasferisci licenza della reportistica",
       "reclaimDialogTitle": "Recupera licenza della reportistica",
       "moveFullToFreeLabel": "Trasferisci dispositivo/i dalla versione a funzionalità complete (Full) alla versione a funzionalità gratuite (Free)",
-      "transferLabel":"Questa operazione effettuerà il trasferimento della licenza",
+      "transferLabel": "Questa operazione effettuerà il trasferimento della licenza",
       "removeFirewallDialogTitle": "Rimuovi firewall",
       "deleteLogLabel": "Eliminare i dati di log di questo dispositivo?",
       "deleteAllDataButton": "Eliminare tutti i dati?",
@@ -121,21 +130,29 @@
       "reclaimDialogWarning": "Avviso: La modifica della licenza alla versione Free (a funzionalità gratuite) rimuoverà il dispositivo dalle funzionalità di Reportistica completa. Il livello Free offre capacità limitate di archiviazione e include le funzionalità del livello Free",
       "reclaimDialogNote": "La conversione a Free eliminerà i log e i report memorizzati che esistono per questo dispositivo. Le capacità acquistate e utilizzate saranno rese disponibili.",
       "licenseIsNotActiveMsg": "La licenza non è utilizzata attivamente",
+      "licenseTransferText": "La licenza non è utilizzata attivamente ed è stata trasferita a {{serialId}}",
+      "freeToPremiumConversionMsg": "Avviso: Se si effettua il tentativo di convertire la licenza a una licenza Premium, lo spazio di archiviazione sarà quello assegnato e il periodo di conservazione verrà incrementato e portato a un anno",
+      "reduceLicenseMsg": "La riduzione delle licenze assegnate eliminerà una porzione dei dati salvati meno recenti",
       "licenseSaveFailedMsg": "Non è stato possibile salvare le licenze",
-      "licenseSaveSuccessMsg": "Le licenze sono state aggiornate",
+      "licenseReclaimSuccessMsg": "Le licenze sono state recuperate",
+      "licenseRemoveSuccessMsg": "I dispositivi sono stati rimossi",
+      "deleteLogSuccessMsg": "I log sono stati eliminati",
+      "reducedStorageConfirmationMsg": "Avviso: La riduzione dell'assegnazione delle licenze a un utilizzo che supera l'attuale consumo dello spazio di archiviazione avrà come risultato l'eliminazione irreversibile dei dati meno recenti. Procedere?",
+      "licenseSaveSuccessMsg": "Licenza/e aggiornata/e",
+      "licenseTransferSuccessMsg": "Licenza/e trasferita/e",
       "features": {
         "freeFeatureItems": {
           "feature1": "Conservazione dei dati 7 giorni (con limite massimo per la capacità)",
           "feature2": "Ricerca Syslog e visualizzazione",
           "feature3": "Reportistica on-demand in Central",
-          "feature4": "Accesso API alla reportistica di Central",
-          "feature5": "Scarica report (PDF, HTML, CSV)"
+          "feature4": "Scarica report in PDF, HTML e CSV"
         },
         "fullFeatureItems": {
-          "feature1": "Generatore di report personalizzati",
-          "feature2": "Report pianificati",
-          "feature3": "Esportazione in blocco dei dati di archiviazione di Syslog",
-          "feature4": "Report salvati"
+          "feature1": "Accesso API alla reportistica di Central",
+          "feature2": "Generatore di report personalizzati",
+          "feature3": "Report pianificati",
+          "feature4": "Esportazioni in blocco dei dati di archiviazione di Syslog",
+          "feature5": "Report salvati"
         }
       },
       "table": {
@@ -146,6 +163,18 @@
         "centralStorageUsed": "Archiviazione di Central utilizzata",
         "actions": "Azioni",
         "haStatus": "Stato di disponibilità elevata (HA)"
+      },
+      "messages": {
+        "invalidAssetId": "Il dispositivo non è valido",
+        "assetIdDoesntExist": "Il dispositivo non esiste",
+        "transferNoPremiumLicense": "Il dispositivo non dispone di una licenza Premium",
+        "transferNoActiveDevice": "Il nuovo dispositivo non è un dispositivo attivo",
+        "transferFromHAPairNotAllowed": "Il dispositivo fa parte di una coppia di disponibilità elevata, non può essere trasferito",
+        "customerQuotaNotAvailable": "Dettagli della quota delle licenze del cliente non disponibili",
+        "transferDeviceModelNotFound": "Nome del modello del dispositivo non trovato",
+        "transferNotEnoughUnitsAsPerDeviceModel": "Il nuovo dispositivo non ha un numero minimo di unità secondo il relativo modello del dispositivo",
+        "updateLicensesAllocationOutsideDeviceModelRange": "Le unità assegnate non rientrano nel limite minimo/massimo del modello del dispositivo",
+        "updateLicensesInsufficientUnits": "Numero insufficiente di unità nella quota"
       }
     },
     "report": {
@@ -180,8 +209,28 @@
           "sandstorm": "Eventi di Sandstorm",
           "syslog": "Visualizzatore log e ricerca",
           "vpn": "Utilizzo VPN",
-          "antivirus": "Antivirus"
+          "antivirus": "Antivirus",
+          "geoactivity": "Attività relative alla posizione geografica",
+          "threats_events_blocked": "Minacce ed eventi bloccati",
+          "threats_web_usage": "Eventi di blocco del web",
+          "threats_atp": "Minacce di ATP",
+          "threats_firewall": "Eventi di blocco del firewall",
+          "threats_ips": "Minacce IPS",
+          "threats_sandstorm": "Minacce Sandstorm",
+          "threats_antivirus": "Minacce antivirus"
         }
+      },
+      "geoactivity": {
+        "hits": "Riscontri",
+        "atp_hits": "Riscontri di ATP",
+        "av_hits": "Riscontri dell'AV",
+        "ips_hits": "Riscontri di IPS",
+        "sandstorm_hits": "Riscontri di Sandstorm",
+        "firewall_hits": "Riscontri del Firewall",
+        "idp_hits": "Riscontri di IDP",
+        "sandbox_hits": "Riscontri di Sandbox",
+        "cf_hits": "Riscontri di CF",
+        "waf_hits": "Riscontri del WAF"
       },
       "schedule": {
         "modal": {
@@ -493,7 +542,14 @@
       "log": "Log",
       "geoActivity": "Attività relative alla posizione geografica",
       "sandstorm_only": "Sandstorm",
-      "malware_threat": "Minaccia/malware"
+      "malware_threat": "Minaccia/malware",
+      "antivirus": "Antivirus",
+      "web": "web",
+      "web_application_firewall": "Web Application Firewall",
+      "total": "Totale",
+      "threat_intelligence": "Dati di intelligence sulle minacce",
+      "totalThreats": "Totale minacce",
+      "totalHits": "Totale riscontri"
     }
   }
 }
