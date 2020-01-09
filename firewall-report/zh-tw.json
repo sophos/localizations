@@ -8,9 +8,11 @@
         "stop": "停止"
       },
       "actions": "動作",
+      "confirmation": "確認",
       "add": "新增",
       "apply": "套用",
       "areYouSure": "確定嗎?",
+      "saveChanges": "儲存變更",
       "cancel": "取消",
       "chartComponentNotDefined": "圖表元件未定義！",
       "client": "用戶端",
@@ -34,6 +36,8 @@
       "confirm": "確認",
       "to": "到",
       "na": "不適用",
+      "yes": "是",
+      "no": "否",
       "tFooter": {
         "current": "目前",
         "offset": "位移",
@@ -60,12 +64,15 @@
       "problemLoadingData": "載入資料時出現問題",
       "static": "靜態",
       "dynamic": "動態",
+      "deviceName": "裝置名稱",
       "error": {
         "http": {
           "default": "載入資料時出現問題。",
           "500": "出現錯誤，請稍後再試。"
         }
-      }
+      },
+      "fileAnalysis": "檔案分析",
+      "sandstorm": "Sandstorm"
     },
     "dashboard": {
       "allowedCategories": "允許的 App 類別",
@@ -94,13 +101,15 @@
       "dataWindow": "最近 24 小時"
     },
     "licensing": {
+      "areYouSure": "確定要儲存變更嗎？",
+      "transferDropdownDefaultText": "選取裝置",
       "pageTitle": "授權",
       "tabTitle": "防火牆",
       "licInfo": "已用/可用的授權",
       "licDetails": "1 授權 = 100 GB",
       "licExpirationInfo": "防火墻報告到期日",
       "manageCentralLicensesBtn": "管理產品授權",
-      "projectedTooltip": "根據過去 7 天，您當前能力的報告填寫日期將佔用您 0.8 個月",
+      "projectedTooltip": "這是基於平均傳入記錄檔速率和配置的儲存體的預計資料保留視窗。",
       "transferText": "傳輸報告授權",
       "reclaimText": "回收報告授權",
       "deleteLogText": "刪除記錄資料",
@@ -110,8 +119,8 @@
       "transferDialogTitle": "傳輸報告授權",
       "reclaimDialogTitle": "回收報告授權",
       "moveFullToFreeLabel": "將裝置從「完整」移動到「免費」",
-      "transferLabel":"這將會傳輸授權",
-      "removeFirewallDialogTitle": "移除防火牆",
+      "transferLabel": "這將會傳輸授權",
+      "removeFirewallDialogTitle": "移除防火墻",
       "deleteLogLabel": "確定要從此裝置刪除記錄資料嗎？",
       "deleteAllDataButton": "是否刪除所有資料？",
       "removeDeviceDataButton": "是否移除並刪除所有資料？",
@@ -121,21 +130,29 @@
       "reclaimDialogWarning": "警告：將授權變更為「免費」會將裝置從完整報告功能中移除。「免費層」提供有限的存儲容量以及「免費層」功能",
       "reclaimDialogNote": "轉換為「免費」將會刪除此裝置的現有存儲記錄和報告。任何已購買和已使用的功能將仍然可用。",
       "licenseIsNotActiveMsg": "授權未處於使用中",
+      "licenseTransferText": "授權未處於使用中，並且已傳輸給 {{serialId}}",
+      "freeToPremiumConversionMsg": "警告：嘗試將授權轉換為進階，將按照配置進行儲存，保留期將增加到一年",
+      "reduceLicenseMsg": "減少配置的授權將刪除您最早儲存的一部分資料",
       "licenseSaveFailedMsg": "無法存儲授權",
+      "licenseReclaimSuccessMsg": "授權已回收",
+      "licenseRemoveSuccessMsg": "裝置已移除",
+      "deleteLogSuccessMsg": "記錄已刪除",
+      "reducedStorageConfirmationMsg": "警告：若授權配置的減少量超過當前消耗的儲存空間，將導致最早的資料遭受無法復原的刪除。確定要進行？",
       "licenseSaveSuccessMsg": "授權已更新",
+      "licenseTransferSuccessMsg": "授權已移轉",
       "features": {
         "freeFeatureItems": {
-          "feature1": "資料保留 7 天（具有容量上限）",
+          "feature1": "7 天資料保留（具有容量上限）",
           "feature2": "Syslog 搜尋與檢視",
-          "feature3": "中心隨選報告",
-          "feature4": "中心報告的 API 存取",
-          "feature5": "下載報告（PDF，HTML，CSV）"
+          "feature3": "Central 隨選報告",
+          "feature4": "以 PDF、HTML 和 CSV 格式下載報告"
         },
         "fullFeatureItems": {
-          "feature1": "自訂報告產生器",
-          "feature2": "排程報告",
-          "feature3": "大量匯出 Syslog 封存資料",
-          "feature4": "儲存的報告"
+          "feature1": "中心報告的 API 存取",
+          "feature2": "自訂報告產生器",
+          "feature3": "排程報告",
+          "feature4": "大量匯出 Syslog 封存資料",
+          "feature5": "儲存的報告"
         }
       },
       "table": {
@@ -146,6 +163,18 @@
         "centralStorageUsed": "已用中央存儲",
         "actions": "動作",
         "haStatus": "HA 狀態"
+      },
+      "messages": {
+        "invalidAssetId": "裝置無效",
+        "assetIdDoesntExist": "裝置不存在",
+        "transferNoPremiumLicense": "裝置沒有進階授權",
+        "transferNoActiveDevice": "新裝置不是使用中的裝置",
+        "transferFromHAPairNotAllowed": "裝置不是 HA 配對的一部分，無法傳輸",
+        "customerQuotaNotAvailable": "客戶授權配額詳細資料不可用",
+        "transferDeviceModelNotFound": "找不到裝置的型號名稱",
+        "transferNotEnoughUnitsAsPerDeviceModel": "根據裝置型號，新裝置沒有最低要求單位",
+        "updateLicensesAllocationOutsideDeviceModelRange": "配置的單位超出了裝置型號的最小 - 最大限制範圍",
+        "updateLicensesInsufficientUnits": "配額單位不足"
       }
     },
     "report": {
@@ -180,8 +209,28 @@
           "sandstorm": "Sandstorm 事件",
           "syslog": "日誌檢視器及搜尋",
           "vpn": "VPN 使用情況",
-          "antivirus": "防病毒"
+          "antivirus": "防病毒",
+          "geoactivity": "地理位置活動",
+          "threats_events_blocked": "遭攔截威脅和事件",
+          "threats_web_usage": "網頁攔截的事件",
+          "threats_atp": "ATP 威脅",
+          "threats_firewall": "防火墻攔截的事件",
+          "threats_ips": "IPS 威脅",
+          "threats_sandstorm": "Sandstorm 威脅",
+          "threats_antivirus": "防病毒威脅"
         }
+      },
+      "geoactivity": {
+        "hits": "點擊率",
+        "atp_hits": "ATP 點擊率",
+        "av_hits": "AV 點擊率",
+        "ips_hits": "IPS 點擊率",
+        "sandstorm_hits": "Sandstorm 點擊率",
+        "firewall_hits": "防火墻點擊率",
+        "idp_hits": "IDP 點擊率",
+        "sandbox_hits": "Sandbox 點擊率",
+        "cf_hits": "CF 點擊率",
+        "waf_hits": "WAF 點擊率"
       },
       "schedule": {
         "modal": {
@@ -493,7 +542,14 @@
       "log": "日誌",
       "geoActivity": "地理位置活動",
       "sandstorm_only": "Sandstorm",
-      "malware_threat": "威脅/惡意程式"
+      "malware_threat": "威脅/惡意程式",
+      "antivirus": "防病毒",
+      "web": "網頁",
+      "web_application_firewall": "網頁應用程式防火牆",
+      "total": "總數",
+      "threat_intelligence": "威脅情報",
+      "totalThreats": "總威脅",
+      "totalHits": "總點擊"
     }
   }
 }

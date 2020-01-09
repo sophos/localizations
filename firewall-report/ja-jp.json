@@ -8,9 +8,11 @@
         "stop": "停止"
       },
       "actions": "アクション",
+      "confirmation": "確認",
       "add": "追加",
       "apply": "適用",
       "areYouSure": "実行してもよいですか？",
+      "saveChanges": "変更の保存",
       "cancel": "キャンセル",
       "chartComponentNotDefined": "グラフコンポーネントが定義されていません。",
       "client": "クライアント",
@@ -34,6 +36,8 @@
       "confirm": "確定",
       "to": "～",
       "na": "該当なし",
+      "yes": "はい",
+      "no": "いいえ",
       "tFooter": {
         "current": "カレント",
         "offset": "オフセット",
@@ -60,12 +64,15 @@
       "problemLoadingData": "データの読み込中に問題が発生しました",
       "static": "静的",
       "dynamic": "動的",
+      "deviceName": "デバイス名",
       "error": {
         "http": {
           "default": "データの読み込中に問題が発生しました。",
           "500": "エラーが発生しました。後でもう一度やり直してください。"
         }
-      }
+      },
+      "fileAnalysis": "ファイル解析",
+      "sandstorm": "Sandstorm"
     },
     "dashboard": {
       "allowedCategories": "許可されたアプリカテゴリ",
@@ -94,23 +101,25 @@
       "dataWindow": "過去 24時間"
     },
     "licensing": {
+      "areYouSure": "変更内容を保存してもよいですか？",
+      "transferDropdownDefaultText": "デバイスの選択",
       "pageTitle": "ライセンス",
       "tabTitle": "ファイアウォール",
       "licInfo": "使用中のライセンス数 / 使用可能なライセンス数",
       "licDetails": "1 ライセンス = 100GB",
       "licExpirationInfo": "ファイアウォールレポートの有効期限",
       "manageCentralLicensesBtn": "製品ライセンスの管理",
-      "projectedTooltip": "過去 7日間のデータに基づいて解析した結果、現在の容量は  0.8カ月後に上限に達します。",
+      "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
       "transferText": "レポートライセンスの転送",
       "reclaimText": "レポートライセンスの再確保",
       "deleteLogText": "ログデータの削除",
       "removeFirewallText": "Sophos Central からのファイアウォールの削除",
-      "freeFeatures": "無償の機能",
+      "freeFeatures": "無償版の機能",
       "fullFeatures": "フルバージョンの機能",
       "transferDialogTitle": "レポートライセンスの転送",
       "reclaimDialogTitle": "レポートライセンスの再確保",
       "moveFullToFreeLabel": "フルバージョンから無償版へのデバイスの移動",
-      "transferLabel":"これによって、ライセンスが転送されます",
+      "transferLabel": "これによって、ライセンスが転送されます",
       "removeFirewallDialogTitle": "ファイアウォールの削除",
       "deleteLogLabel": "このデバイスに対するログデータを削除してもよいですか？",
       "deleteAllDataButton": "すべてのデータを削除しますか？",
@@ -121,21 +130,29 @@
       "reclaimDialogWarning": "警告: ライセンスを無償版に変更すると、デバイスはフルレポート機能から削除されます。無償版ではストレージ容量に制限があり、無償版の機能を使用できます",
       "reclaimDialogNote": "無償版に切り替えると、このデバイスに対して保存されている既存のログとレポートが削除されます。購入済み容量、および使用済み容量はすべて利用可能になります。",
       "licenseIsNotActiveMsg": "ライセンスは使用されていません",
+      "licenseTransferText": "ライセンスは使用されておらず、{{serialId}} に転送されました",
+      "freeToPremiumConversionMsg": "警告: プレミアムライセンスに変換しようとしています。ストレージは割り当てごとに指定され、保持期間は 1年に増加されます",
+      "reduceLicenseMsg": "割り当て済みのライセンスを減らすと、最も古い保存済みデータの一部が削除されます",
       "licenseSaveFailedMsg": "ライセンスの保存に失敗しました",
+      "licenseReclaimSuccessMsg": "ライセンスが再確保されました",
+      "licenseRemoveSuccessMsg": "デバイスが削除されました",
+      "deleteLogSuccessMsg": "ログが削除されました",
+      "reducedStorageConfirmationMsg": "警告: ライセンスの割り当てを、現在使用しているストレージ以上減らすと、最も古いデータが削除され、それを元に戻すことはできません。続行しますか？",
       "licenseSaveSuccessMsg": "ライセンスが更新されました",
+      "licenseTransferSuccessMsg": "ライセンスが転送されました",
       "features": {
         "freeFeatureItems": {
-          "feature1": "データを 7日間保持 (容量の上限付き)",
+          "feature1": "7日間のデータ保持期間 (容量の上限付き)",
           "feature2": "Syslog の検索と表示",
           "feature3": "Central でのオンデマンドのレポート",
-          "feature4": "Central レポートへの API アクセス",
-          "feature5": "レポートのダウンロード (PDF、HTML、CSV)"
+          "feature4": "レポートのダウンロード (PDF、HTML、CSV)"
         },
         "fullFeatureItems": {
-          "feature1": "カスタム レポート ビルダー",
-          "feature2": "レポートのスケジュール設定",
-          "feature3": "syslog アーカイブデータの一括エクスポート",
-          "feature4": "保存済みレポート"
+          "feature1": "Central レポートへの API アクセス",
+          "feature2": "カスタム レポート ビルダー",
+          "feature3": "レポートのスケジュール設定",
+          "feature4": "Syslog アーカイブデータの一括エクスポート",
+          "feature5": "保存済みレポート"
         }
       },
       "table": {
@@ -145,7 +162,19 @@
         "ip": "IP",
         "centralStorageUsed": "Central ストレージの使用量",
         "actions": "アクション",
-        "haStatus": "HAステータス"
+        "haStatus": "HA ステータス"
+      },
+      "messages": {
+        "invalidAssetId": "デバイスが無効です",
+        "assetIdDoesntExist": "デバイスは存在しません",
+        "transferNoPremiumLicense": "デバイスにプレミアムライセンスがありません",
+        "transferNoActiveDevice": "新しいデバイスはアクティブなデバイスではありません",
+        "transferFromHAPairNotAllowed": "デバイスは HA ペアを構成しているため転送できません",
+        "customerQuotaNotAvailable": "顧客ライセンスのクォータの詳細は表示できません",
+        "transferDeviceModelNotFound": "デバイスの機種名が見つかりません",
+        "transferNotEnoughUnitsAsPerDeviceModel": "新しいデバイスには、デバイスの機種に応じた必要な最小単位がありません",
+        "updateLicensesAllocationOutsideDeviceModelRange": "割り当てられた単位は、デバイスの機種の最小限～最大限の範囲外です",
+        "updateLicensesInsufficientUnits": "クォータに十分な単位がありません"
       }
     },
     "report": {
@@ -180,8 +209,28 @@
           "sandstorm": "Sandstorm イベント",
           "syslog": "ログビューア＆検索",
           "vpn": "VPN 使用状況",
-          "antivirus": "マルウェア対策"
+          "antivirus": "マルウェア対策",
+          "geoactivity": "Geo アクティビティ",
+          "threats_events_blocked": "ブロックされた脅威とイベント",
+          "threats_web_usage": "ブロックされた Web のイベント",
+          "threats_atp": "ATP 脅威",
+          "threats_firewall": "ブロックされたファイアウォールのイベント",
+          "threats_ips": "IPS 脅威",
+          "threats_sandstorm": "Sandstorm 脅威",
+          "threats_antivirus": "ウイルス対策脅威"
         }
+      },
+      "geoactivity": {
+        "hits": "ヒット",
+        "atp_hits": "ATP のヒットの数",
+        "av_hits": "ウイルス対策のヒットの数",
+        "ips_hits": "IPS のヒットの数",
+        "sandstorm_hits": "Sandstorm のヒットの数",
+        "firewall_hits": "ファイアウォールのヒットの数",
+        "idp_hits": "IDP のヒットの数",
+        "sandbox_hits": "サンドボックスのヒットの数",
+        "cf_hits": "CF のヒットの数",
+        "waf_hits": "WAF のヒットの数"
       },
       "schedule": {
         "modal": {
@@ -493,7 +542,14 @@
       "log": "ログ",
       "geoActivity": "Geo アクティビティ",
       "sandstorm_only": "Sandstorm",
-      "malware_threat": "脅威/マルウェア"
+      "malware_threat": "脅威/マルウェア",
+      "antivirus": "マルウェア対策",
+      "web": "Web",
+      "web_application_firewall": "Web アプリケーションファイアウォール",
+      "total": "合計",
+      "threat_intelligence": "脅威解析情報",
+      "totalThreats": "合計脅威数",
+      "totalHits": "合計ヒット数"
     }
   }
 }

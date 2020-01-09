@@ -8,9 +8,11 @@
         "stop": "중지"
       },
       "actions": "조치",
+      "confirmation": "확인",
       "add": "추가",
       "apply": "적용",
       "areYouSure": "계속하시겠습니까?",
+      "saveChanges": "변경사항 저장",
       "cancel": "취소",
       "chartComponentNotDefined": "차트 구성 요소가 정의되어 있지 않습니다!",
       "client": "클라이언트",
@@ -34,6 +36,8 @@
       "confirm": "확인",
       "to": "대상:",
       "na": "해당 없음",
+      "yes": "예",
+      "no": "아니요",
       "tFooter": {
         "current": "현재",
         "offset": "오프셋",
@@ -60,12 +64,15 @@
       "problemLoadingData": "데이터 로드 중 문제 발생",
       "static": "정적",
       "dynamic": "동적",
+      "deviceName": "장치 이름",
       "error": {
         "http": {
           "default": "데이터 로드 중 문제 발생.",
           "500": "오류가 발생했습니다. 나중에 다시 시도하십시오."
         }
-      }
+      },
+      "fileAnalysis": "파일 분석",
+      "sandstorm": "Sandstorm"
     },
     "dashboard": {
       "allowedCategories": "허용된 앱 범주",
@@ -94,13 +101,15 @@
       "dataWindow": "지난 24시간"
     },
     "licensing": {
+      "areYouSure": "변경 사항을 저장하시겠습니까?",
+      "transferDropdownDefaultText": "장치 선택",
       "pageTitle": "라이선싱",
       "tabTitle": "방화벽",
       "licInfo": "사용된 라이선스/사용 가능",
       "licDetails": "라이선스 1개=100GB",
       "licExpirationInfo": "방화벽 보고 만료 날짜",
       "manageCentralLicensesBtn": "제품 라이선스 관리",
-      "projectedTooltip": "지난 7일을 기준으로, 보고서에 대해 허용되는 스토리지 용량은 0.8개월 내에 채워집니다.",
+      "projectedTooltip": "평균 수신 로그 속도와 할당된 스토리지를 기준으로 한 예상 데이터 보존 기간입니다.",
       "transferText": "보고 라이선스 전송",
       "reclaimText": "보고 라이선스 회수",
       "deleteLogText": "로그 데이터 삭제",
@@ -110,7 +119,7 @@
       "transferDialogTitle": "보고 라이선스 전송",
       "reclaimDialogTitle": "보고 라이선스 회수",
       "moveFullToFreeLabel": "장치를 전체 라이선스에서 무료 라이선스로 이동",
-      "transferLabel":"그러면 라이선스가 전송됩니다.",
+      "transferLabel": "그러면 라이선스가 전송됩니다.",
       "removeFirewallDialogTitle": "방화벽 제거",
       "deleteLogLabel": "이 장치에 대한 로그 데이터를 삭제하시겠습니까?",
       "deleteAllDataButton": "모든 데이터를 삭제하시겠습니까?",
@@ -121,21 +130,29 @@
       "reclaimDialogWarning": "경고: 라이선스를 무료로 변경하면 전체 보고 기능에서 장치가 제거됩니다. 무료 계층은 제한된 저장 용량과 무료 계층 기능을 제공합니다.",
       "reclaimDialogNote": "무료로 변환하면 이 장치에 대해 기존에 저장된 로그 및 보고서가 삭제됩니다. 구입 및 사용된 용량은 사용할 수 있게 됩니다.",
       "licenseIsNotActiveMsg": "라이선스가 활성 사용 중이 아닙니다.",
+      "licenseTransferText": "라이선스가 현재 사용되고 있지 않으며 {{serialId}}(으)로 전달되었습니다.",
+      "freeToPremiumConversionMsg": "경고: 라이선스를 프리미엄으로 전환하면 스토리지는 할당량 기준으로 변경되고 보존 기간이 1년으로 늘어납니다",
+      "reduceLicenseMsg": "할당된 라이선스를 줄이면 저장된 데이터 중 가장 오래된 항목 일부가 삭제됩니다.",
       "licenseSaveFailedMsg": "라이선스를 저장하지 못함",
-      "licenseSaveSuccessMsg": "라이선스가 업데이트되었음",
+      "licenseReclaimSuccessMsg": "라이선스가 회수되었습니다.",
+      "licenseRemoveSuccessMsg": "장치가 제거되었습니다.",
+      "deleteLogSuccessMsg": "로그가 삭제되었습니다",
+      "reducedStorageConfirmationMsg": "경고: 현재 사용 중인 스토리지를 초과한 경우에 라이선스 할당을 줄이면 가장 오래된 데이터가 삭제되고 이 작업은 취소할 수 없습니다. 계속하시겠습니까?",
+      "licenseSaveSuccessMsg": "라이선스가 업데이트되었습니다.",
+      "licenseTransferSuccessMsg": "라이선스가 전송됨",
       "features": {
         "freeFeatureItems": {
-          "feature1": "데이터 유지 기간 7일(최대 용량 적용)",
+          "feature1": "7일 데이터 보존(용량 최대값 포함)",
           "feature2": "Syslog 검색 및 보기",
           "feature3": "Central의 주문형 보고",
-          "feature4": "Central 보고에 APU 액세스",
-          "feature5": "보고서(PDF, HTML, CSV) 다운로드"
+          "feature4": "보고서(PDF, HTML, CSV) 다운로드"
         },
         "fullFeatureItems": {
-          "feature1": "사용자 지정 보고서 작성기",
-          "feature2": "예약된 보고서",
-          "feature3": "Syslog 아카이브 데이터 대량 내보내기",
-          "feature4": "저장된 보고서"
+          "feature1": "Central 보고에 API 액세스",
+          "feature2": "사용자 지정 보고서 작성기",
+          "feature3": "예약된 보고서",
+          "feature4": "Syslog 아카이브 데이터 대량 내보내기",
+          "feature5": "저장된 보고서"
         }
       },
       "table": {
@@ -146,6 +163,18 @@
         "centralStorageUsed": "Central 저장소 사용됨",
         "actions": "조치",
         "haStatus": "HA 상태"
+      },
+      "messages": {
+        "invalidAssetId": "장치가 잘못되었습니다.",
+        "assetIdDoesntExist": "장치가 없습니다.",
+        "transferNoPremiumLicense": "장치에 프리미엄 라이선스가 없습니다.",
+        "transferNoActiveDevice": "새 장치가 활성 장치가 아닙니다.",
+        "transferFromHAPairNotAllowed": "장치가 AH 쌍의 일부이므로 전달할 수 없습니다.",
+        "customerQuotaNotAvailable": "고객 라이선스 쿼터 세부 정보를 사용할 수 없습니다.",
+        "transferDeviceModelNotFound": "장치의 모델 이름을 찾을 수 없음",
+        "transferNotEnoughUnitsAsPerDeviceModel": "새 장치에 해당 장치 모델에 따른 최소 필요 장치 수가 없습니다.",
+        "updateLicensesAllocationOutsideDeviceModelRange": "할당된 장치가 장치 모델의 최소-최대 제한 범위를 벗어납니다.",
+        "updateLicensesInsufficientUnits": "쿼터가 부족한 장치"
       }
     },
     "report": {
@@ -180,8 +209,28 @@
           "sandstorm": "Sandstorm 이벤트",
           "syslog": "로그 뷰어 및 검색",
           "vpn": "VPN 사용",
-          "antivirus": "바이러스 백신"
+          "antivirus": "바이러스 백신",
+          "geoactivity": "지리적 활동",
+          "threats_events_blocked": "위협 및 이벤트가 차단됨",
+          "threats_web_usage": "웹이 이벤트를 차단함",
+          "threats_atp": "ATP 위협",
+          "threats_firewall": "방화벽이 이벤트를 차단함",
+          "threats_ips": "IPS 위협",
+          "threats_sandstorm": "Sandstorm 위협",
+          "threats_antivirus": "안티바이러스 위협"
         }
+      },
+      "geoactivity": {
+        "hits": "방문 횟수",
+        "atp_hits": "ATP 방문 횟수",
+        "av_hits": "AV 방문 횟수",
+        "ips_hits": "IPS 방문 횟수",
+        "sandstorm_hits": "Sandstorm 방문 횟수",
+        "firewall_hits": "방화벽 방문 횟수",
+        "idp_hits": "IDP 방문 횟수",
+        "sandbox_hits": "Sandbox 방문 횟수",
+        "cf_hits": "CF 방문 횟수",
+        "waf_hits": "WAF 방문 횟수"
       },
       "schedule": {
         "modal": {
@@ -493,7 +542,14 @@
       "log": "로그",
       "geoActivity": "지리적 활동",
       "sandstorm_only": "Sandstorm",
-      "malware_threat": "위협/맬웨어"
+      "malware_threat": "위협/맬웨어",
+      "antivirus": "바이러스 백신",
+      "web": "웹",
+      "web_application_firewall": "웹 응용 프로그램 방화벽",
+      "total": "합계",
+      "threat_intelligence": "위협 인텔리전스",
+      "totalThreats": "총 위협 수",
+      "totalHits": "총 적중 횟수"
     }
   }
 }
