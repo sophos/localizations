@@ -12,6 +12,7 @@
       "add": "追加",
       "apply": "適用",
       "areYouSure": "実行してもよいですか？",
+      "areYouSureDialogMsg": "このアクションを実行してもよいですか？",
       "saveChanges": "変更の保存",
       "cancel": "キャンセル",
       "chartComponentNotDefined": "グラフコンポーネントが定義されていません。",
@@ -19,6 +20,7 @@
       "custom": "カスタム",
       "default": "デフォルト",
       "delete": "削除",
+      "deleteRequest": "リクエストの削除",
       "description": "説明",
       "domain": "ドメイン",
       "download": "ダウンロード",
@@ -74,7 +76,9 @@
       "fileAnalysis": "ファイル解析",
       "sandstorm": "Sandstorm",
       "tabularView": "表ビュー",
-      "rawView": "生データビュー"
+      "rawView": "生データビュー",
+      "dataRetrieval": "データの取得",
+      "cancelDataRetrieval": "データ取得のキャンセル"
     },
     "dashboard": {
       "allowedCategories": "許可されたアプリカテゴリ",
@@ -192,6 +196,19 @@
       }
     },
     "report": {
+      "async": {
+        "gatheringData": "レポートデータを収集中...",
+        "gatheringChartData": "グラフデータを収集中...",
+        "waitWhileFetchingData": "この画面でデータの取得を待つか、準備ができたら「リクエスト」タブにデータが表示されます。",
+        "startAnotherReport": "別のレポートの開始",
+        "asyncTabNote": "リクエストは、24時間後に自動的に削除されます。",
+        "offlineInfoBarMessage": "<strong>{{sortColumnName}}</strong> で並べ替えた、最高 {{maxAsyncRecords}}件の結果を表示。生成日: <strong>{{creationDate}}</strong>",
+        "messages": {
+          "unableToSearchRequest": "レポートの取得中に問題が発生しました。なお、別のレポートを開始できます",
+          "tooManyAsyncRequest": "許可されている保留中のリクエストの上限 {{limit}}件を超えているため、新しいリクエストを作成できません",
+          "duplicateRequest": "リクエストは作成されませんでした: 似たようなフィルタ条件のあるリクエストを見つけました。既存のリクエストに移動します"
+        }
+      },
       "filterTable": {
         "deselectAll": "すべて選択解除",
         "resetToDefault": "出荷時設定にリセット",
@@ -217,7 +234,7 @@
       "reportConfigs": {
         "myReports": "マイ レポート",
         "reports": "レポート",
-        "requests": "要求",
+        "requests": "リクエスト",
         "deletesIn": "削除:",
         "reportsList": {
           "atp": "ATP",
@@ -229,7 +246,7 @@
           "syslog": "ログビューア＆検索",
           "vpn": "VPN 使用状況",
           "antivirus": "ウイルス対策",
-          "geoactivity": "脅威のジオアクティビティ",
+          "geoactivity": "脅威 Geo アクティビティ",
           "threats_events_blocked": "ブロックされた脅威とイベント",
           "threats_web_usage": "ブロックされた Web のイベント",
           "threats_atp": "ATP 脅威",
@@ -306,6 +323,9 @@
           "weeklyTime": "時刻",
           "yesterday": "昨日"
         }
+      },
+      "messages": {
+        "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「リクエスト」タブにデータが表示されます。<br /><br/>リクエストは最大 24時間使用できます。"
       }
     },
     "apiLabel": {
@@ -560,7 +580,7 @@
       "icon": "アイコン",
       "device_serial_id": "デバイスのシリアル ID",
       "log": "ログ",
-      "geoActivity": "脅威のジオアクティビティ",
+      "geoActivity": "脅威 Geo アクティビティ",
       "sandstorm_only": "Sandstorm",
       "malware_threat": "脅威/マルウェア",
       "antivirus": "ウイルス対策",
