@@ -7,6 +7,9 @@
         "start": "시작",
         "stop": "중지"
       },
+      "status": {
+        "failed": "실패"
+      },
       "actions": "조치",
       "confirmation": "확인",
       "add": "추가",
@@ -24,6 +27,7 @@
       "description": "설명",
       "domain": "도메인",
       "download": "다운로드",
+      "launch": "실행",
       "more": "자세히",
       "network": "네트워크",
       "noData": "표시할 데이터 없음",
@@ -61,12 +65,13 @@
       "type": "유형",
       "upload": "업로드",
       "update": "업데이트",
+      "generate": "생성",
       "username": "사용자 이름",
-      "waitingForData": "데이터 대기 중",
+      "waitingForData": "데이터 대기 중...",
+      "gatheringReportData": "보고서 데이터를 수집하는 중...",
       "problemLoadingData": "데이터 로드 중 문제 발생",
       "static": "정적",
       "dynamic": "동적",
-      "deviceName": "장치 이름",
       "error": {
         "http": {
           "default": "데이터 로드 중 문제 발생.",
@@ -78,7 +83,12 @@
       "tabularView": "표 형식 보기",
       "rawView": "원시 보기",
       "dataRetrieval": "데이터 검색",
-      "cancelDataRetrieval": "데이터 검색 취소"
+      "cancelDataRetrieval": "데이터 검색 취소",
+      "saveReport": "보고서 저장",
+      "saveTemplate": "템플릿 저장",
+      "schedule": "일정",
+      "saveAndContinue": "저장 및 계속",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "허용된 앱 범주",
@@ -124,11 +134,9 @@
       "reclaimText": "보고 라이선스 회수",
       "deleteLogText": "로그 데이터 삭제",
       "removeFirewallText": "Sophos Central에서 방화벽 제거",
-      "freeFeatures": "무료 기능",
-      "fullFeatures": "전체 기능",
       "transferDialogTitle": "보고 라이선스 전송",
       "reclaimDialogTitle": "보고 라이선스 회수",
-      "moveFullToFreeLabel": "장치를 전체 라이선스에서 무료 라이선스로 이동",
+      "moveFullToFreeLabel": "장치를 고급 라이선스에서 무료 라이선스로 이동",
       "transferLabel": "그러면 라이선스가 전송됩니다.",
       "removeFirewallDialogTitle": "방화벽 제거",
       "deleteLogLabel": "이 장치에 대한 로그 데이터를 삭제하시겠습니까?",
@@ -137,11 +145,12 @@
       "deleteLogReason": "이유 입력(선택사항)",
       "removeFirewallLabel": "이 프로세스는 이 장치와 연결된 모든 데이터를 삭제하고 Sophos Central에서 제거합니다. 계속하시겠습니까?",
       "deleteWarningLabel": "이 프로세스는 기록되고 되돌릴 수 없습니다.",
-      "reclaimDialogWarning": "경고: 라이선스를 무료로 변경하면 전체 보고 기능에서 장치가 제거됩니다. 무료 계층은 제한된 저장 용량과 무료 계층 기능을 제공합니다.",
+      "logDeleteInfoLabel": "로그 삭제를 완료하는 데 하루가 걸릴 수 있습니다.",
+      "reclaimDialogWarning": "경고: 라이선스를 무료로 변경하면 고급 보고 기능에서 장치가 제거됩니다. 무료 계층은 제한된 저장 용량과 무료 계층 기능을 제공합니다.",
       "reclaimDialogNote": "무료로 변환하면 이 장치에 대해 기존에 저장된 로그 및 보고서가 삭제됩니다. 구입 및 사용된 용량은 사용할 수 있게 됩니다.",
       "licenseIsNotActiveMsg": "라이선스가 활성 사용 중이 아닙니다.",
       "licenseTransferText": "라이선스가 현재 사용되고 있지 않으며 {{serialId}}(으)로 전달되었습니다.",
-      "freeToPremiumConversionMsg": "경고: 라이선스를 프리미엄으로 전환하면 스토리지는 할당량 기준으로 변경되고 보존 기간이 1년으로 늘어납니다",
+      "freeToPremiumConversionMsg": "이 라이선스는 고급 라이선스로 변환됩니다.",
       "reduceLicenseMsg": "할당된 라이선스를 줄이면 저장된 데이터 중 가장 오래된 항목 일부가 삭제됩니다.",
       "licenseSaveFailedMsg": "라이선스를 저장하지 못함",
       "licenseReclaimSuccessMsg": "라이선스가 회수되었습니다.",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "라이선스가 전송됨",
       "allocateTooltipText": "자세한 내용을 보려면 다음을 방문하십시오.",
       "thisPageText": "이 페이지",
-      "full": "프리미엄",
+      "full": "고급",
       "features": {
         "freeFeatureItems": {
+          "title": "무료 기능",
           "feature1": "7일 데이터 보존(용량 최대값 포함)",
           "feature2": "Syslog 검색 및 보기",
-          "feature3": "Sophos Central의 주문형 보고",
-          "feature4": "보고서(PDF, HTML, CSV) 다운로드"
+          "feature3": "Sophos Central의 주문형 보고"
         },
         "fullFeatureItems": {
-          "feature1": "Sophos Central 보고에 대한 API 액세스",
-          "feature2": "사용자 지정 보고서 작성기",
-          "feature3": "예약된 보고서",
-          "feature4": "Syslog 아카이브 데이터 대량 내보내기",
-          "feature5": "저장된 보고서"
+          "title": "고급 기능",
+          "feature1": "최대 1년까지 데이터 보존 기간 연장",
+          "feature2": "Syslog 검색 및 보기",
+          "feature3": "Sophos Central의 주문형 보고"
+        },
+        "plannedFeatureItems": {
+          "title": "계획된 기능",
+          "feature1": "보고서(PDF, HTML, CSV) 다운로드",
+          "feature2": "보고서 일정",
+          "feature3": "보고서 저장",
+          "feature4": "Sophos Central 보고에 대한 API 액세스"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "장치가 잘못되었습니다.",
         "assetIdDoesntExist": "장치가 없습니다.",
-        "transferNoPremiumLicense": "장치에 프리미엄 라이선스가 없습니다.",
+        "transferNoPremiumLicense": "장치에 고급 라이선스가 없습니다.",
         "transferNoActiveDevice": "새 장치가 활성 장치가 아닙니다.",
         "transferFromHAPairNotAllowed": "장치가 AH 쌍의 일부이므로 전달할 수 없습니다.",
         "customerQuotaNotAvailable": "고객 라이선스 쿼터 세부 정보를 사용할 수 없습니다.",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "보고서 데이터를 수집하는 중...",
-        "gatheringChartData": "차트 데이터를 수집하는 중...",
-        "waitWhileFetchingData": "데이터를 가져오는 동안 또는 데이터가 준비되어 요청 탭에 나타날 때까지 여기서 기다릴 수 있습니다.",
+        "waitWhileFetchingData": "데이터를 가져오는 동안 또는 데이터가 준비되어 대기열 탭에 나타날 때까지 여기서 기다릴 수 있습니다.",
         "startAnotherReport": "다른 보고서 시작",
-        "asyncTabNote": "요청은 24시간 후 자동으로 삭제됩니다.",
+        "asyncTabNote": "참고: 요청은 24시간 후 자동으로 삭제됩니다.",
         "offlineInfoBarMessage": "<strong>{{creationDate}}</strong>에 생성되어 <strong>{{sortColumnName}}</strong>별로 정렬된 최대 {{maxAsyncRecords}}개의 결과 표시",
         "messages": {
           "unableToSearchRequest": "보고서를 가져오는 중 문제가 발생했지만, 다른 보고서를 시작할 수 있습니다.",
           "tooManyAsyncRequest": "보류 중인 요청 한계, {{limit}}개를 초과했으므로, 새 요청을 만들 수 없습니다.",
-          "duplicateRequest": "요청이 생성되지 않음: 유사한 필터 기준으로 요청을 찾았습니다. 기존 요청으로 이동"
+          "duplicateRequest": "요청이 생성되지 않음: 유사한 필터 기준으로 요청을 찾았습니다. 기존 요청으로 이동",
+          "emptyTableHeader": "대기열에 항목이 없습니다.",
+          "emptyTableBody": "대기열은 생성하는 데 시간이 오래 걸리는 보고서의 받은 편지함과 같습니다."
+        },
+        "tableHeaders": {
+          "requestedOn": "요청한 날짜",
+          "reportName": "보고서 이름 [다음에 생성됨]",
+          "firewalls": "방화벽 또는 그룹",
+          "actions": "조치"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "열 선택"
       },
       "filters": {
-        "dateRangeTitle": "날짜 범위",
+        "title": "필터",
+        "dateRangeTitle": "시간 프레임",
         "queryCriteriaTitle": "필터 쿼리",
         "reportBy": "보고자",
         "dateFormat": "날짜 형식",
@@ -229,7 +251,17 @@
         "threeMonths": "지난 3개월",
         "prevHour": "이전 시간",
         "nextHour": "다음 시간",
-        "custom": "사용자 지정"
+        "custom": "사용자 지정",
+        "firewalls": "방화벽",
+        "reportTemplates": "보고서 템플릿"
+      },
+      "savedTemplates": {
+        "allFirewalls": "모든 방화벽",
+        "allCreatedBy": "모든 생성자",
+        "allTemplateTypes": "모든 템플릿 유형",
+        "savedTemplatesNote": "{{savedTemplatesCount}}/1,000개의 저장된 템플릿이 있습니다.",
+        "saveTemplatesSuccess": "템플릿이 저장되었습니다.",
+        "templateName": "템플릿 이름"
       },
       "reportConfigs": {
         "myReports": "내 보고서",
@@ -256,6 +288,20 @@
           "threats_antivirus": "안티바이러스 위협"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "보고서 생성기",
+        "savedTemplates": "저장된 템플릿",
+        "scheduledExports": "예악된 내보내기",
+        "queue": "대기열"
+      },
+      "ribbon": {
+        "download": "다운로드",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "일정",
+        "saveTemplate": "템플릿 저장"
+      },
       "geoactivity": {
         "hits": "총 적중 횟수",
         "atp_hits": "ATP 방문 횟수",
@@ -270,6 +316,7 @@
         "nodata": "데이터가 없음"
       },
       "schedule": {
+        "reportName": "보고서 이름",
         "modal": {
           "am": "오전",
           "april": "4월",
@@ -322,10 +369,14 @@
           "weeklyDays": "요일",
           "weeklyTime": "시간",
           "yesterday": "어제"
-        }
+        },
+        "allFirewalls": "모든 방화벽",
+        "allCreators": "모든 생성자",
+        "allExportTypes": "모든 내보내기 유형",
+        "scheduleExportNote": "참고: 내보내기는 90일 후에 자동 삭제됩니다."
       },
       "messages": {
-        "confirmWaitMessage": "데이터를 검색하는 동안 시간이 걸립니다.<br/><br/>데이터를 가져오는 동안 또는 다른 작업을 수행하려는 경우 데이터가 준비되어 요청 탭에 나타날 때까지 기다릴 수 있습니다.<br /><br/>요청은 최대 24시간 동안 사용할 수 있습니다."
+        "confirmWaitMessage": "데이터를 검색하는 동안 시간이 걸립니다.<br/><br/>데이터를 가져오는 동안 또는 다른 작업을 수행하려는 경우 데이터가 준비되어 대기열 탭에 나타날 때까지 기다릴 수 있습니다.<br /><br/>대기열 탭 내의 보고서는 24시간 동안 사용할 수 있습니다."
       }
     },
     "apiLabel": {
@@ -406,7 +457,7 @@
       "malware_count": "맬웨어 수",
       "allowed_app_categories": "허용된 앱 범주",
       "user_group": "사용자 그룹",
-      "bandwidth_usage": "대역폭 사용량",
+      "bandwidth_usage": "대역폭 사용",
       "new_cloud_apps": "새 클라우드 앱",
       "source_zone": "원본 영역",
       "cpu": "CPU",
@@ -421,7 +472,7 @@
       "device_model": "장치 모델",
       "destination_port": "대상 포트",
       "blocked_app_categories": "차단된 앱 범주",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Sandstorm 이벤트",
       "top_allowed_app_categories": "상위 허용된 앱 범주",
       "interface": "인터페이스",
       "sandstorm_category": "Sandstorm 범주",
@@ -455,7 +506,7 @@
       "bytes_sent": "바이트 보냄",
       "application": "응용 프로그램",
       "source_country": "원본 국가",
-      "vpn": "VPN",
+      "vpn": "VPN 사용",
       "bytes": "바이트",
       "malicious_hits": "악의적인 방문 횟수",
       "risk": "위험",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "임시 디스크 사용량",
       "dst_trans_port": "대상 트랜잭션 포트",
       "file": "파일",
-      "syslogview": "SYS 로그 보기",
+      "syslogview": "로그 뷰어 및 검색",
       "ssl_tls_policy": "SSL TLS 정책",
       "blank": "",
       "red_id": "RED ID",
@@ -593,7 +644,8 @@
       "recent_client_health": "최신 클라이언트 상태",
       "state": "상태",
       "count": "카운트",
-      "time": "시간"
+      "time": "시간",
+      "threats_events_blocked": "위협 및 이벤트가 차단됨"
     }
   }
 }

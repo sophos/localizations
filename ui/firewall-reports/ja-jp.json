@@ -7,6 +7,9 @@
         "start": "開始",
         "stop": "停止"
       },
+      "status": {
+        "failed": "失敗"
+      },
       "actions": "アクション",
       "confirmation": "確認",
       "add": "追加",
@@ -24,6 +27,7 @@
       "description": "説明",
       "domain": "ドメイン",
       "download": "ダウンロード",
+      "launch": "開く",
       "more": "詳細",
       "network": "ネットワーク",
       "noData": "表示するデータはありません",
@@ -61,12 +65,13 @@
       "type": "種類",
       "upload": "アップロード",
       "update": "更新情報",
+      "generate": "生成",
       "username": "ユーザー名",
-      "waitingForData": "データを待機中",
+      "waitingForData": "データを待機中...",
+      "gatheringReportData": "レポートデータを収集中...",
       "problemLoadingData": "データの読み込中に問題が発生しました",
       "static": "静的",
       "dynamic": "動的",
-      "deviceName": "デバイス名",
       "error": {
         "http": {
           "default": "データの読み込中に問題が発生しました。",
@@ -78,7 +83,12 @@
       "tabularView": "表ビュー",
       "rawView": "生データビュー",
       "dataRetrieval": "データの取得",
-      "cancelDataRetrieval": "データ取得のキャンセル"
+      "cancelDataRetrieval": "データ取得のキャンセル",
+      "saveReport": "レポートの保存",
+      "saveTemplate": "テンプレートの保存",
+      "schedule": "スケジュール",
+      "saveAndContinue": "保存して続行",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "許可されたアプリカテゴリ",
@@ -117,18 +127,16 @@
       "tabTitle": "ファイアウォール",
       "licInfo": "使用中のライセンス数 / 使用可能なライセンス数",
       "licDetails": "1 ライセンス = 100GB",
-      "licExpirationInfo": "ファイアウォールレポートの有効期限",
+      "licExpirationInfo": "Firewall Reporting の有効期限",
       "manageCentralLicensesBtn": "製品ライセンスの管理",
       "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
       "transferText": "レポートライセンスの転送",
       "reclaimText": "レポートライセンスの再確保",
       "deleteLogText": "ログデータの削除",
       "removeFirewallText": "Sophos Central からのファイアウォールの削除",
-      "freeFeatures": "無償版の機能",
-      "fullFeatures": "フルバージョンの機能",
       "transferDialogTitle": "レポートライセンスの転送",
       "reclaimDialogTitle": "レポートライセンスの再確保",
-      "moveFullToFreeLabel": "フルバージョンから無償版へのデバイスの移動",
+      "moveFullToFreeLabel": "Advanced 版から無償版へのデバイスの移動",
       "transferLabel": "これによって、ライセンスが転送されます",
       "removeFirewallDialogTitle": "ファイアウォールの削除",
       "deleteLogLabel": "このデバイスに対するログデータを削除してもよいですか？",
@@ -137,11 +145,12 @@
       "deleteLogReason": "理由を入力します (任意)。",
       "removeFirewallLabel": "このプロセスによって、このデバイスに関連付けされているすべてのデータが削除され、デバイスは Sophos Central から登録解除されます。続行しますか？",
       "deleteWarningLabel": "このプロセスはログに記録され、元に戻すことはできません。",
-      "reclaimDialogWarning": "警告: ライセンスを無償版に変更すると、デバイスはフルレポート機能から削除されます。無償版ではストレージ容量に制限があり、無償版の機能を使用できます",
+      "logDeleteInfoLabel": "ログの削除は、終了するまで 1日かかることがあります。",
+      "reclaimDialogWarning": "警告: ライセンスを無償版に変更すると、Advanced 版なるレポート機能をデバイスで使用できなくなります。無償版ではストレージ容量に制限があり、無償版の機能を使用できます",
       "reclaimDialogNote": "無償版に切り替えると、このデバイスに対して保存されている既存のログとレポートが削除されます。購入済み容量、および使用済み容量はすべて利用可能になります。",
       "licenseIsNotActiveMsg": "ライセンスは使用されていません",
       "licenseTransferText": "ライセンスは使用されておらず、{{serialId}} に転送されました",
-      "freeToPremiumConversionMsg": "警告: プレミアムライセンスに変換しようとしています。ストレージは割り当てごとに指定され、保持期間は 1年に増加されます",
+      "freeToPremiumConversionMsg": "このライセンスは、Advanced ライセンスに切り替えられます",
       "reduceLicenseMsg": "割り当て済みのライセンスを減らすと、最も古い保存済みデータの一部が削除されます",
       "licenseSaveFailedMsg": "ライセンスの保存に失敗しました",
       "licenseReclaimSuccessMsg": "ライセンスが再確保されました",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "ライセンスが転送されました",
       "allocateTooltipText": "詳細は次をご覧ください:",
       "thisPageText": "このページ",
-      "full": "プレミアム",
+      "full": "Advanced",
       "features": {
         "freeFeatureItems": {
+          "title": "無償版の機能",
           "feature1": "7日間のデータ保持期間 (容量の上限付き)",
           "feature2": "Syslog の検索と表示",
-          "feature3": "Sophos Central でのオンデマンドのレポート",
-          "feature4": "レポートのダウンロード (PDF、HTML、CSV)"
+          "feature3": "Sophos Central でのオンデマンドのレポート"
         },
         "fullFeatureItems": {
-          "feature1": "Sophos Central レポートへの API アクセス",
-          "feature2": "カスタム レポート ビルダー",
-          "feature3": "レポートのスケジュール設定",
-          "feature4": "Syslog アーカイブデータの一括エクスポート",
-          "feature5": "保存済みレポート"
+          "title": "Advanced 版の機能",
+          "feature1": "データの保時期間を 1年間に延長",
+          "feature2": "Syslog の検索と表示",
+          "feature3": "Sophos Central でのオンデマンドのレポート"
+        },
+        "plannedFeatureItems": {
+          "title": "予定されている機能",
+          "feature1": "レポートのダウンロード (PDF、HTML、CSV)",
+          "feature2": "レポートのスケジュール化",
+          "feature3": "レポートの保存",
+          "feature4": "Sophos Central レポートへの API アクセス"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "デバイスが無効です",
         "assetIdDoesntExist": "デバイスは存在しません",
-        "transferNoPremiumLicense": "デバイスにプレミアムライセンスがありません",
+        "transferNoPremiumLicense": "デバイスに Advanced ライセンスがありません",
         "transferNoActiveDevice": "新しいデバイスはアクティブなデバイスではありません",
         "transferFromHAPairNotAllowed": "デバイスは HA ペアを構成しているため転送できません",
         "customerQuotaNotAvailable": "顧客ライセンスのクォータの詳細は表示できません",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "レポートデータを収集中...",
-        "gatheringChartData": "グラフデータを収集中...",
-        "waitWhileFetchingData": "この画面でデータの取得を待つか、準備ができたら「リクエスト」タブにデータが表示されます。",
+        "waitWhileFetchingData": "この画面でデータの取得を待つか、準備ができたら「キュー」タブにデータが表示されます。",
         "startAnotherReport": "別のレポートの開始",
-        "asyncTabNote": "リクエストは、24時間後に自動的に削除されます。",
+        "asyncTabNote": "注: リクエストは、24時間後に自動的に削除されます",
         "offlineInfoBarMessage": "<strong>{{sortColumnName}}</strong> で並べ替えた、最高 {{maxAsyncRecords}}件の結果を表示。生成日: <strong>{{creationDate}}</strong>",
         "messages": {
           "unableToSearchRequest": "レポートの取得中に問題が発生しました。なお、別のレポートを開始できます",
           "tooManyAsyncRequest": "許可されている保留中のリクエストの上限 {{limit}}件を超えているため、新しいリクエストを作成できません",
-          "duplicateRequest": "リクエストは作成されませんでした: 似たようなフィルタ条件のあるリクエストを見つけました。既存のリクエストに移動します"
+          "duplicateRequest": "リクエストは作成されませんでした: 似たようなフィルタ条件のあるリクエストを見つけました。既存のリクエストに移動します",
+          "emptyTableHeader": "キューに項目はありません",
+          "emptyTableBody": "キューは、生成に時間がかかるレポートをまとめて表示するビューです。"
+        },
+        "tableHeaders": {
+          "requestedOn": "リクエスト日:",
+          "reportName": "レポート名 [生成日]",
+          "firewalls": "ファイアウォールまたはグループ",
+          "actions": "アクション"
         }
       },
       "filterTable": {
@@ -217,6 +238,7 @@
         "title": "列の選択"
       },
       "filters": {
+        "title": "フィルタ",
         "dateRangeTitle": "期間",
         "queryCriteriaTitle": "クエリの絞り込み",
         "reportBy": "報告者名",
@@ -229,7 +251,17 @@
         "threeMonths": "過去 3カ月",
         "prevHour": "前の 1時間",
         "nextHour": "次の 1時間",
-        "custom": "カスタム"
+        "custom": "カスタム",
+        "firewalls": "ファイアウォール",
+        "reportTemplates": "レポートテンプレート"
+      },
+      "savedTemplates": {
+        "allFirewalls": "すべてのファイアウォール",
+        "allCreatedBy": "作成者",
+        "allTemplateTypes": "すべて種類のテンプレート",
+        "savedTemplatesNote": "{{savedTemplatesCount}}/1,000個の保存済みテンプレートがあります",
+        "saveTemplatesSuccess": "テンプレートが保存されました",
+        "templateName": "テンプレート名"
       },
       "reportConfigs": {
         "myReports": "マイ レポート",
@@ -256,6 +288,20 @@
           "threats_antivirus": "ウイルス対策脅威"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "レポート生成",
+        "savedTemplates": "保存済みテンプレート",
+        "scheduledExports": "スケジュール済みエクスポート",
+        "queue": "キュー"
+      },
+      "ribbon": {
+        "download": "ダウンロード",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "スケジュール",
+        "saveTemplate": "テンプレートの保存"
+      },
       "geoactivity": {
         "hits": "合計ヒット数",
         "atp_hits": "ATP のヒット数",
@@ -270,6 +316,7 @@
         "nodata": "データなし"
       },
       "schedule": {
+        "reportName": "レポート名",
         "modal": {
           "am": "am",
           "april": "4月",
@@ -322,10 +369,14 @@
           "weeklyDays": "曜日",
           "weeklyTime": "時刻",
           "yesterday": "昨日"
-        }
+        },
+        "allFirewalls": "すべてのファイアウォール",
+        "allCreators": "すべての作成者",
+        "allExportTypes": "すべての種類のエクスポート",
+        "scheduleExportNote": "注: エクスポートは、90日後に自動的に削除されます"
       },
       "messages": {
-        "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「リクエスト」タブにデータが表示されます。<br /><br/>リクエストは最大 24時間使用できます。"
+        "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「キュー」タブにデータが表示されます。<br /><br/>「キュー」タブにあるレポートは 24時間使用できます。"
       }
     },
     "apiLabel": {
@@ -383,7 +434,7 @@
       "firewall": "ファイアウォール",
       "firewall_rule_id": "ファイアウォール ルール ID",
       "web_usage": "Web 使用状況",
-      "date": "発生日時",
+      "date": "日付",
       "file_path": "ファイルパス",
       "used_memory_usage": "使用メモリの使用量",
       "top_objectionable_categories": "上位の不適切なカテゴリ",
@@ -406,7 +457,7 @@
       "malware_count": "マルウェア数",
       "allowed_app_categories": "許可されたアプリカテゴリ",
       "user_group": "ユーザーグループ",
-      "bandwidth_usage": "帯域使用状況",
+      "bandwidth_usage": "帯域使用量",
       "new_cloud_apps": "新しいクラウドアプリ",
       "source_zone": "送信元ゾーン",
       "cpu": "CPU",
@@ -421,7 +472,7 @@
       "device_model": "デバイスの機種",
       "destination_port": "宛先ポート",
       "blocked_app_categories": "ブロックされたアプリカテゴリ",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Sandstorm イベント",
       "top_allowed_app_categories": "上位の許可されたアプリカテゴリ",
       "interface": "インターフェース",
       "sandstorm_category": "Sandstorm カテゴリ",
@@ -455,7 +506,7 @@
       "bytes_sent": "送信バイト数",
       "application": "アプリケーション",
       "source_country": "送信国",
-      "vpn": "VPN",
+      "vpn": "VPN 使用状況",
       "bytes": "バイト",
       "malicious_hits": "悪意のあるヒットの数",
       "risk": "リスク",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "Temp のディスク使用量",
       "dst_trans_port": "宛先トランザクションのポート",
       "file": "ファイル",
-      "syslogview": "SYS ログのビュー",
+      "syslogview": "ログビューア＆検索",
       "ssl_tls_policy": "SSL TLS ポリシー",
       "blank": "",
       "red_id": "RED ID",
@@ -593,7 +644,8 @@
       "recent_client_health": "最近のクライアントのセキュリティ状態",
       "state": "状態",
       "count": "発生数",
-      "time": "日時"
+      "time": "日時",
+      "threats_events_blocked": "ブロックされた脅威とイベント"
     }
   }
 }
