@@ -7,6 +7,9 @@
         "start": "Démarrer",
         "stop": "Arrêter"
       },
+      "status": {
+        "failed": "Échec"
+      },
       "actions": "Actions",
       "confirmation": "Confirmation",
       "add": "Ajouter",
@@ -24,6 +27,7 @@
       "description": "Description",
       "domain": "Domaine",
       "download": "Télécharger",
+      "launch": "Lancer",
       "more": "plus",
       "network": "Réseau",
       "noData": "Aucune donnée à afficher",
@@ -61,12 +65,13 @@
       "type": "Type",
       "upload": "Télécharger",
       "update": "Mettre à jour",
+      "generate": "Générer",
       "username": "Nom d’utilisateur",
-      "waitingForData": "En attente des données",
+      "waitingForData": "En attente des données...",
+      "gatheringReportData": "Collecte des données de rapport en cours...",
       "problemLoadingData": "Problème lors du chargement des données",
       "static": "Statique",
       "dynamic": "Dynamique",
-      "deviceName": "Nom de l’appareil",
       "error": {
         "http": {
           "default": "Problème lors du chargement des données.",
@@ -78,7 +83,12 @@
       "tabularView": "Vue tabulaire",
       "rawView": "Vue brute",
       "dataRetrieval": "Récupération des données",
-      "cancelDataRetrieval": "Annuler la récupération des données"
+      "cancelDataRetrieval": "Annuler la récupération des données",
+      "saveReport": "Enregistrer le rapport",
+      "saveTemplate": "Enregistrer le modèle",
+      "schedule": "Programmer",
+      "saveAndContinue": "Enregistrer et continuer",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "Catégories d’applis autorisées",
@@ -124,11 +134,9 @@
       "reclaimText": "Récupérer une licence de rapport",
       "deleteLogText": "Supprimer les données du journal",
       "removeFirewallText": "Supprimer le pare-feu de Sophos Central",
-      "freeFeatures": "Fonctions gratuites",
-      "fullFeatures": "Fonctions complètes",
       "transferDialogTitle": "Transférer une licence de rapport",
       "reclaimDialogTitle": "Récupérer une licence de rapport",
-      "moveFullToFreeLabel": "Déplacer les appareils de Complète à Gratuite",
+      "moveFullToFreeLabel": "Déplacer les appareils de la licence Avancée à la licence Gratuite",
       "transferLabel": "La licence sera transférée",
       "removeFirewallDialogTitle": "Supprimer les pare-feu",
       "deleteLogLabel": "Voulez-vous vraiment supprimer les données du journal pour cet appareil ?",
@@ -137,11 +145,12 @@
       "deleteLogReason": "Saisir la raison (facultatif)",
       "removeFirewallLabel": "Cette opération va supprimer toutes les données associées à cet appareil et les retirer de Sophos Central. Êtes-vous sûr de vouloir continuer ?",
       "deleteWarningLabel": "Cette opération est consignée dans le journal et elle est irréversible",
-      "reclaimDialogWarning": "Attention ! Le passage à la licence Gratuite va retirer un appareil des fonctions de rapport intégral. Le niveau Gratuit offre une capacité de stockage réduite et des fonctions gratuites",
+      "logDeleteInfoLabel": "La suppression du journal peut prendre un jour.",
+      "reclaimDialogWarning": "Avertissement ! Le passage à la licence Gratuite va retirer un appareil des fonctions de rapport avancées. Le niveau Gratuit offre une capacité de stockage réduite et des fonctions gratuites",
       "reclaimDialogNote": "Le passage à la licence Gratuite va supprimer les journaux et rapports déjà stockés pour cet appareil. Toute capacité achetée et utilisée sera mise à disposition.",
       "licenseIsNotActiveMsg": "La licence n’est pas activement utilisée",
       "licenseTransferText": "Cette licence n’est pas active et a été transférée à {{serialId}}",
-      "freeToPremiumConversionMsg": "Attention ! Tentative de conversion en licence Premium. Le stockage sera effectué en fonction de la répartition définie et la période de rétention sera augmentée à une année",
+      "freeToPremiumConversionMsg": "Cette licence sera convertie en licence Avancée",
       "reduceLicenseMsg": "La réduction des licences attribuées va supprimer une partie de vos anciennes données enregistrées",
       "licenseSaveFailedMsg": "Impossible d’enregistrer les licences",
       "licenseReclaimSuccessMsg": "Licence(s) récupérées",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "Licence(s) transférées",
       "allocateTooltipText": "Retrouvez plus de renseignements sur",
       "thisPageText": "cette page",
-      "full": "Premium",
+      "full": "Avancée",
       "features": {
         "freeFeatureItems": {
+          "title": "Fonctions gratuites",
           "feature1": "7 jours de conservation des données (avec seuil de capacité)",
           "feature2": "Recherche et visualisation du syslog",
-          "feature3": "Rapports à la demande dans Sophos Central",
-          "feature4": "Télécharger les rapports aux formats PDF, HTML et CSV"
+          "feature3": "Rapports à la demande dans Sophos Central"
         },
         "fullFeatureItems": {
-          "feature1": "Accès API aux rapports Sophos Central",
-          "feature2": "Générateur de rapports personnalisés",
-          "feature3": "Rapports programmés",
-          "feature4": "Exports groupés des données d’archives du syslog",
-          "feature5": "Rapports enregistrés"
+          "title": "Fonctions avancées",
+          "feature1": "Rétention des données étendue jusqu’à 1 an",
+          "feature2": "Recherche et visualisation du syslog",
+          "feature3": "Rapports à la demande dans Sophos Central"
+        },
+        "plannedFeatureItems": {
+          "title": "Fonctions planifiées",
+          "feature1": "Télécharger les rapports aux formats PDF, HTML et CSV",
+          "feature2": "Planification du rapport",
+          "feature3": "Enregistrement du rapport",
+          "feature4": "Accès API aux rapports Sophos Central"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "Appareil incorrect",
         "assetIdDoesntExist": "Appareil inexistant",
-        "transferNoPremiumLicense": "Appareil sans licence Premium",
+        "transferNoPremiumLicense": "Appareil sans licence Avancée",
         "transferNoActiveDevice": "Le nouvel appareil n’est pas actif",
         "transferFromHAPairNotAllowed": "L’appareil fait partie d’un jumelage Haute disponibilité et ne peut pas être transféré",
         "customerQuotaNotAvailable": "Quota de licences du client indisponible",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "Collecte des données de rapport en cours...",
-        "gatheringChartData": "Collecte des données du graphique en cours...",
-        "waitWhileFetchingData": "Vous pouvez attendre ici pendant que nous les récupérons. Les données seront affichées dans l’onglet Demandes lorsqu’elles seront prêtes.",
+        "waitWhileFetchingData": "Vous pouvez attendre ici pendant que nous les récupérons. Les données seront affichées dans l’onglet File d’attente lorsqu’elles seront prêtes.",
         "startAnotherReport": "Commencer un autre rapport",
-        "asyncTabNote": "Les demandes seront automatiquement supprimées après 24 heures",
+        "asyncTabNote": "Remarque : les demandes sont automatiquement supprimées après 24 heures",
         "offlineInfoBarMessage": "Affichage de {{maxAsyncRecords}} résultats maximum triés par <strong>{{sortColumnName}}</strong> et créés sur <strong>{{creationDate}}</strong>",
         "messages": {
           "unableToSearchRequest": "Un problème a eu lieu pendant la récupération du rapport. Vous pouvez commencer à en créer un autre",
           "tooManyAsyncRequest": "Vous ne pouvez pas créer de nouvelles demandes car vous avez dépassé la limite de {{limit}} pour les demandes en attente",
-          "duplicateRequest": "Demande non créée : Une demande avec les mêmes critères de filtrage existe déjà. Nous vous redirigeons vers la demande déjà existante"
+          "duplicateRequest": "Demande non créée : Une demande avec les mêmes critères de filtrage existe déjà. Nous vous redirigeons vers la demande déjà existante",
+          "emptyTableHeader": "Aucun élément dans votre file d’attente.",
+          "emptyTableBody": "La file d’attente est comme une boîte de réception pour les rapports qui prennent beaucoup de temps à générer."
+        },
+        "tableHeaders": {
+          "requestedOn": "Demande effectuée le",
+          "reportName": "Nom du rapport [généré à]",
+          "firewalls": "Pare-feu ou groupes",
+          "actions": "Actions"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "Sélection de colonne"
       },
       "filters": {
-        "dateRangeTitle": "Période",
+        "title": "Filtres",
+        "dateRangeTitle": "Période de temps",
         "queryCriteriaTitle": "Demande de filtrage",
         "reportBy": "Signaler par",
         "dateFormat": "Format de date",
@@ -229,7 +251,17 @@
         "threeMonths": "Les 3 derniers mois",
         "prevHour": "Heure précédente",
         "nextHour": "Heure suivante",
-        "custom": "Personnalisé(e)"
+        "custom": "Personnalisé(e)",
+        "firewalls": "Pare-feu",
+        "reportTemplates": "Modèles de rapport"
+      },
+      "savedTemplates": {
+        "allFirewalls": "Tous les pare-feu",
+        "allCreatedBy": "Tous créés par",
+        "allTemplateTypes": "Tous les types de modèles",
+        "savedTemplatesNote": "Vous avez {{savedTemplatesCount}}/1000 modèles enregistrés",
+        "saveTemplatesSuccess": "Modèle enregistré",
+        "templateName": "Nom du modèle"
       },
       "reportConfigs": {
         "myReports": "Mes rapports",
@@ -238,13 +270,13 @@
         "deletesIn": "Supprime dans",
         "reportsList": {
           "atp": "ATP",
-          "bandwidth": "Activités de la bande passante",
+          "bandwidth": "Utilisation de la bande passante",
           "firewall": "Pare-feu",
-          "web": "Activités sur Internet",
+          "web": "Utilisation du Web",
           "ips": "IPS",
           "sandstorm": "Événements Sandstorm",
           "syslog": "Visionneuse de journaux et recherche",
-          "vpn": "Activités VPN",
+          "vpn": "Utilisation de VPN",
           "antivirus": "Antivirus",
           "geoactivity": "Géoactivité de la menace",
           "threats_events_blocked": "Menaces et événements bloqués",
@@ -255,6 +287,20 @@
           "threats_sandstorm": "Menaces Sandstorm",
           "threats_antivirus": "Menaces antivirus"
         }
+      },
+      "reportTabs": {
+        "reportGenerator": "Générateur de rapports",
+        "savedTemplates": "Modèles enregistrés",
+        "scheduledExports": "Exportations planifiées",
+        "queue": "File d’attente"
+      },
+      "ribbon": {
+        "download": "Téléchargement",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "Programmer",
+        "saveTemplate": "Enregistrer le modèle"
       },
       "geoactivity": {
         "hits": "Total d’accès",
@@ -270,6 +316,7 @@
         "nodata": "Aucune donnée"
       },
       "schedule": {
+        "reportName": "Nom du rapport",
         "modal": {
           "am": "AM",
           "april": "Avr",
@@ -322,10 +369,14 @@
           "weeklyDays": "Jours",
           "weeklyTime": "Heure",
           "yesterday": "Hier"
-        }
+        },
+        "allFirewalls": "Tous les pare-feu",
+        "allCreators": "Tous les créateurs",
+        "allExportTypes": "Tous les types d’exportation",
+        "scheduleExportNote": "Remarque : les exportations sont automatiquement supprimées après 90 jours"
       },
       "messages": {
-        "confirmWaitMessage": "La récupération des données va durer quelques instants.<br/><br/>Vous pouvez patienter pendant que nous les récupérons ou pouvez effectuer d’autres opérations si vous le désirez. Les données seront affichées dans l’onglet Demandes lorsqu’elles seront prêtes.<br /><br/>Les demandes sont disponibles pendant 24 heures."
+        "confirmWaitMessage": "La récupération des données va durer quelques instants.<br/><br/>Vous pouvez patienter pendant que nous les récupérons ou pouvez effectuer d’autres opérations si vous le désirez. Les données seront affichées sous l’onglet File d’attente lorsqu’elles seront prêtes.<br /><br/>Les rapports sont disponibles sous l’onglet File d’attente pendant 24 heures."
       }
     },
     "apiLabel": {
@@ -345,12 +396,12 @@
       "device_id": "ID de l’appareil",
       "total_memory_usage": "Total d’utilisation de la mémoire",
       "reported_host": "Hôte signalé",
-      "vpn_usage": "Activités VPN",
+      "vpn_usage": "Utilisation de VPN",
       "top_risky_apps_seen": "Top des applis dangereuses détectées",
       "classification": "Classification",
       "ips": "IPS",
       "login_user": "Utilisateur de la connexion",
-      "cpu_health": "Activités du processeur",
+      "cpu_health": "Utilisation du processeur",
       "domain": "Domaine",
       "qualifier": "Qualificatif",
       "threats_and_security": "Menaces et sécurité",
@@ -362,14 +413,14 @@
       "application_classification": "Classement des applications",
       "risky_apps_seen": "Applis dangereuses détectées",
       "endpoint_id": "Identifiant du terminal",
-      "memory_usage": "Activités de la mémoire",
+      "memory_usage": "Utilisation de la mémoire",
       "process_user": "Utilisateur du processus",
       "log_type": "Type du journal",
       "signature_id": "ID de la signature",
       "attack": "Attaque",
       "atp_threats": "Menaces ATP",
       "extended_report": "Rapport étendu",
-      "malware": "Logiciel malveillant",
+      "malware": "Malware",
       "log_subtype": "Sous-type du journal",
       "message_count": "Décompte de messages",
       "executable": "Exécutable",
@@ -377,19 +428,19 @@
       "interface_usage": "Utilisation de l’interface",
       "reason_count": "Décompte de raison",
       "hits": "Accès",
-      "red_usage": "Activités RED",
+      "red_usage": "Utilisation de RED",
       "component": "Composant",
       "event_id": "Identifiant d’événement",
       "firewall": "Pare-feu",
       "firewall_rule_id": "Identifiant de la règle de pare-feu",
-      "web_usage": "Activités sur le Web",
+      "web_usage": "Utilisation du Web",
       "date": "Date",
       "file_path": "Chemin du fichier",
       "used_memory_usage": "Mémoire utilisée",
       "top_objectionable_categories": "Top des catégories répréhensibles",
       "subject": "Objet",
       "bytes_received": "Octets reçus",
-      "user_cpu_usage": "utilisation CPU de l’utilisateur",
+      "user_cpu_usage": "Utilisation du CPU par l’utilisateur",
       "top_atp_threats": "Top des menaces ATP",
       "source": "Source",
       "upload_file": "Télécharger le fichier",
@@ -406,14 +457,14 @@
       "malware_count": "Décompte de malwares",
       "allowed_app_categories": "Catégories d’applis autorisées",
       "user_group": "Groupe d’utilisateurs",
-      "bandwidth_usage": "Consommation de la bande passante",
+      "bandwidth_usage": "Utilisation de la bande passante",
       "new_cloud_apps": "Nouvelles applis Cloud",
       "source_zone": "Zone émettrice",
       "cpu": "Processeur",
       "category_count": "Nombre de catégories",
       "name": "Nom",
       "mapped_application_count": "Décompte des application mappées",
-      "cpu_usage": "Activités du processeur",
+      "cpu_usage": "Utilisation du processeur",
       "apps_new_mapped": "Applis (nouvelles/mappées)",
       "destination_country": "Pays de destination",
       "classification_count": "Décompte de classement",
@@ -421,7 +472,7 @@
       "device_model": "Modèle d’appareil",
       "destination_port": "Port de destination",
       "blocked_app_categories": "Catégories d’applis bloquées",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Événements Sandstorm",
       "top_allowed_app_categories": "Top des catégories d’applis autorisées",
       "interface": "Interface",
       "sandstorm_category": "Catégorie Sandstorm",
@@ -455,7 +506,7 @@
       "bytes_sent": "Octets envoyés",
       "application": "Application",
       "source_country": "Pays d’origine",
-      "vpn": "VPN",
+      "vpn": "Utilisation de VPN",
       "bytes": "Octets",
       "malicious_hits": "Accès malveillants",
       "risk": "Risque",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "Utilisation du disque temporaire",
       "dst_trans_port": "Port de la transaction de destination",
       "file": "Fichier",
-      "syslogview": "Voir le journal SYS",
+      "syslogview": "Visionneuse de journaux et recherche",
       "ssl_tls_policy": "Stratégie SSL TLS",
       "blank": "",
       "red_id": "Identifiant RED",
@@ -593,7 +644,8 @@
       "recent_client_health": "Récent état de sécurité du client",
       "state": "État",
       "count": "Compte",
-      "time": "Durée"
+      "time": "Durée",
+      "threats_events_blocked": "Menaces et événements bloqués"
     }
   }
 }

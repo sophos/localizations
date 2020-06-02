@@ -7,6 +7,9 @@
         "start": "Iniciar",
         "stop": "Detener"
       },
+      "status": {
+        "failed": "Ha fallado"
+      },
       "actions": "Acciones",
       "confirmation": "Confirmación",
       "add": "Añadir",
@@ -24,6 +27,7 @@
       "description": "Descripción",
       "domain": "Dominio",
       "download": "Descargar",
+      "launch": "Iniciar",
       "more": "más",
       "network": "Red",
       "noData": "No hay datos para mostrar",
@@ -61,12 +65,13 @@
       "type": "Tipo",
       "upload": "Cargar",
       "update": "Actualizar",
+      "generate": "Generar",
       "username": "Nombre de usuario",
-      "waitingForData": "Esperando datos",
+      "waitingForData": "Esperando datos...",
+      "gatheringReportData": "Recopilando datos del informe...",
       "problemLoadingData": "Problema al cargar los datos",
       "static": "Estática",
       "dynamic": "Dinámico",
-      "deviceName": "Nombre del dispositivo",
       "error": {
         "http": {
           "default": "Problema al cargar los datos.",
@@ -78,7 +83,12 @@
       "tabularView": "Vista tabular",
       "rawView": "Vista sin procesar",
       "dataRetrieval": "Recuperación de datos",
-      "cancelDataRetrieval": "Cancelar recuperación de datos"
+      "cancelDataRetrieval": "Cancelar recuperación de datos",
+      "saveReport": "Guardar informe",
+      "saveTemplate": "Guardar plantilla",
+      "schedule": "Programación",
+      "saveAndContinue": "Guardar y continuar",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "Categorías de aplicaciones permitidas",
@@ -124,11 +134,9 @@
       "reclaimText": "Reclamar licencia de informes",
       "deleteLogText": "Eliminar datos de registro",
       "removeFirewallText": "Eliminar firewall desde Sophos Central",
-      "freeFeatures": "Funciones gratuitas",
-      "fullFeatures": "Funciones completas",
       "transferDialogTitle": "Transferir licencia de informes",
       "reclaimDialogTitle": "Reclamar licencia de informes",
-      "moveFullToFreeLabel": "Mover dispositivo(s) de Full a Free",
+      "moveFullToFreeLabel": "Mover dispositivo(s) de Advanced a Free",
       "transferLabel": "Esto transferirá la licencia",
       "removeFirewallDialogTitle": "Eliminar firewall(s)",
       "deleteLogLabel": "¿Seguro que desea eliminar los datos de registro para este dispositivo?",
@@ -137,11 +145,12 @@
       "deleteLogReason": "Introduzca la razón (opcional)",
       "removeFirewallLabel": "Este proceso eliminará todos los datos asociados con este dispositivo y los quitará de Sophos Central. ¿Seguro que desea continuar?",
       "deleteWarningLabel": "Este proceso se incluye en el registro y es irreversible",
-      "reclaimDialogWarning": "Aviso: Al cambiar la licencia a Free, se quitará el dispositivo de las funciones de generación de informes de nivel Full. El nivel Free ofrece una capacidad de almacenamiento limitada y las funciones del nivel Free.",
+      "logDeleteInfoLabel": "La eliminación del registro puede tardar un día en completarse.",
+      "reclaimDialogWarning": "Aviso: Al cambiar la licencia a Free, se quitará el dispositivo de las funciones de generación de informes de nivel Advanced. El nivel Free ofrece una capacidad de almacenamiento limitada y las funciones del nivel Free.",
       "reclaimDialogNote": "La conversión a Free eliminará los registros e informes almacenados que existan para este dispositivo. Cualquier capacidad comprada y utilizada pasará a estar disponible.",
       "licenseIsNotActiveMsg": "La licencia no está en uso activo",
       "licenseTransferText": "La licencia no está en uso activo y se ha transferido a {{serialId}}",
-      "freeToPremiumConversionMsg": "Aviso: Al convertir la licencia a Premium, el almacenamiento se hará según la asignación y el periodo de retención se aumentará a un año",
+      "freeToPremiumConversionMsg": "Esta licencia se convertirá en una licencia Advanced",
       "reduceLicenseMsg": "Al reducir las licencias asignadas se eliminará una parte de los datos guardados más antiguos",
       "licenseSaveFailedMsg": "No se han podido guardar las licencias",
       "licenseReclaimSuccessMsg": "Se han reclamado licencias",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "Se han transferido licencias",
       "allocateTooltipText": "Para obtener más información, visite",
       "thisPageText": "esta página",
-      "full": "Premium",
+      "full": "Advanced",
       "features": {
         "freeFeatureItems": {
+          "title": "Funciones gratuitas",
           "feature1": "7 días de retención de datos (con límite de capacidad)",
           "feature2": "Búsqueda y visualización de syslog",
-          "feature3": "Informes bajo demanda en Sophos Central",
-          "feature4": "Descargar informes en PDF, HTML y CSV"
+          "feature3": "Informes bajo demanda en Sophos Central"
         },
         "fullFeatureItems": {
-          "feature1": "Acceso de la API a Sophos Central Reporting",
-          "feature2": "Generador de informes personalizados",
-          "feature3": "Informes programados",
-          "feature4": "Exportación masiva de datos de archivo de syslog",
-          "feature5": "Informes guardados"
+          "title": "Funciones de Advanced",
+          "feature1": "Retención de datos ampliada hasta 1 año",
+          "feature2": "Búsqueda y visualización de syslog",
+          "feature3": "Informes bajo demanda en Sophos Central"
+        },
+        "plannedFeatureItems": {
+          "title": "Funciones planificadas",
+          "feature1": "Descargar informes en PDF, HTML y CSV",
+          "feature2": "Programación de informes",
+          "feature3": "Guardar informes",
+          "feature4": "Acceso de la API a Sophos Central Reporting"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "El dispositivo no es válido",
         "assetIdDoesntExist": "El dispositivo no existe",
-        "transferNoPremiumLicense": "El dispositivo no tiene licencia Premium",
+        "transferNoPremiumLicense": "El dispositivo no tiene licencia Advanced",
         "transferNoActiveDevice": "El nuevo dispositivo no es un dispositivo activo",
         "transferFromHAPairNotAllowed": "El dispositivo forma parte de un par de alta disponibilidad; no puede transferirse",
         "customerQuotaNotAvailable": "Los detalles de la cuota de licencia del cliente no están disponibles",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "Recopilando datos del informe...",
-        "gatheringChartData": "Recopilando datos del gráfico...",
-        "waitWhileFetchingData": "Puede esperar aquí mientras los obtenemos o consultar los datos en la ficha Solicitudes cuando estén listos.",
+        "waitWhileFetchingData": "Puede esperar aquí mientras los obtenemos o consultar los datos en la ficha Cola cuando estén listos.",
         "startAnotherReport": "Iniciar otro informe",
-        "asyncTabNote": "Las solicitudes se eliminarán automáticamente después de 24 horas",
+        "asyncTabNote": "Notas: Las solicitudes se eliminan automáticamente después de 24 horas",
         "offlineInfoBarMessage": "Mostrando hasta {{maxAsyncRecords}} resultados ordenados por <strong>{{sortColumnName}}</strong>, generados el <strong>{{creationDate}}</strong>",
         "messages": {
           "unableToSearchRequest": "Se ha producido un problema al recuperar el informe; puede iniciar otro mientras tanto",
           "tooManyAsyncRequest": "No puede crear nuevas solicitudes porque ha superado el límite de {{limit}} solicitudes pendientes",
-          "duplicateRequest": "Solicitud no creada: se ha encontrado una con criterios de filtro similares. Dirigiéndole a la solicitud existente"
+          "duplicateRequest": "Solicitud no creada: se ha encontrado una con criterios de filtro similares. Dirigiéndole a la solicitud existente",
+          "emptyTableHeader": "No hay elementos en su cola",
+          "emptyTableBody": "La cola es como una bandeja de entrada para informes que tardan mucho tiempo en generarse."
+        },
+        "tableHeaders": {
+          "requestedOn": "Solicitado el",
+          "reportName": "Nombre del informe [Generado en]",
+          "firewalls": "Firewall o grupos",
+          "actions": "Acciones"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "Selección de columnas"
       },
       "filters": {
-        "dateRangeTitle": "Intervalo de fechas",
+        "title": "Filtros",
+        "dateRangeTitle": "Plazo",
         "queryCriteriaTitle": "Filtrar consulta",
         "reportBy": "Informado por",
         "dateFormat": "Formato de fecha",
@@ -229,7 +251,17 @@
         "threeMonths": "Últimos 3 meses",
         "prevHour": "Hora anterior",
         "nextHour": "Hora siguiente",
-        "custom": "Personalizado"
+        "custom": "Personalizado",
+        "firewalls": "Firewalls",
+        "reportTemplates": "Plantillas de informe"
+      },
+      "savedTemplates": {
+        "allFirewalls": "Todos los firewalls",
+        "allCreatedBy": "Todos los creados por",
+        "allTemplateTypes": "Todos los tipos de plantilla",
+        "savedTemplatesNote": "Tiene {{savedTemplatesCount}}/1000 plantillas guardadas",
+        "saveTemplatesSuccess": "La plantilla se ha guardado",
+        "templateName": "Nombre de plantilla"
       },
       "reportConfigs": {
         "myReports": "Mis informes",
@@ -256,6 +288,20 @@
           "threats_antivirus": "Amenazas antivirus"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "Generador de informes",
+        "savedTemplates": "Plantillas guardadas",
+        "scheduledExports": "Exportaciones programadas",
+        "queue": "Cola"
+      },
+      "ribbon": {
+        "download": "Descargar",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "Programación",
+        "saveTemplate": "Guardar plantilla"
+      },
       "geoactivity": {
         "hits": "Total de aciertos",
         "atp_hits": "Aciertos de ATP",
@@ -270,6 +316,7 @@
         "nodata": "Sin datos"
       },
       "schedule": {
+        "reportName": "Nombre del informe",
         "modal": {
           "am": "MAÑANA",
           "april": "Abr",
@@ -322,10 +369,14 @@
           "weeklyDays": "Días",
           "weeklyTime": "Hora",
           "yesterday": "Ayer"
-        }
+        },
+        "allFirewalls": "Todos los firewalls",
+        "allCreators": "Todos los creadores",
+        "allExportTypes": "Todos los tipos de exportación",
+        "scheduleExportNote": "Notas: Las exportaciones se eliminan automáticamente después de 90 días."
       },
       "messages": {
-        "confirmWaitMessage": "La recuperación de los datos está tardando un poco.<br/><br/>Puede esperar mientras los obtenemos o, si desea realizar otras acciones, los datos aparecerán en la ficha Solicitudes cuando estén listos.<br /><br/>Las solicitudes están disponibles durante un máximo de 24 horas."
+        "confirmWaitMessage": "La recuperación de los datos está tardando un poco.<br/><br/>Puede esperar mientras los obtenemos o, si desea realizar otras acciones, los datos aparecerán en la ficha Cola cuando estén listos.<br /><br/>Los informes de la ficha Cola están disponibles durante 24 horas."
       }
     },
     "apiLabel": {
@@ -421,7 +472,7 @@
       "device_model": "Modelo de dispositivo",
       "destination_port": "Puerto destino",
       "blocked_app_categories": "Categorías de aplicaciones bloqueadas",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Eventos de Sandstorm",
       "top_allowed_app_categories": "Principales categorías de apps permitidas",
       "interface": "Interfaz",
       "sandstorm_category": "Categoría de Sandstorm",
@@ -455,7 +506,7 @@
       "bytes_sent": "Bytes enviados",
       "application": "App",
       "source_country": "Países de origen",
-      "vpn": "VPN",
+      "vpn": "Uso de VPN",
       "bytes": "Bytes",
       "malicious_hits": "Aciertos maliciosos",
       "risk": "Riesgo",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "Uso de disco temporal",
       "dst_trans_port": "Puerto de transacción de destino",
       "file": "Archivo",
-      "syslogview": "Vista de registro SYS",
+      "syslogview": "Visor de registros y búsqueda",
       "ssl_tls_policy": "Política TLS SSL",
       "blank": "",
       "red_id": "ID RED",
@@ -593,7 +644,8 @@
       "recent_client_health": "Estado reciente del cliente",
       "state": "Estado",
       "count": "Contador",
-      "time": "Tiempo"
+      "time": "Tiempo",
+      "threats_events_blocked": "Amenazas y eventos bloqueados"
     }
   }
 }

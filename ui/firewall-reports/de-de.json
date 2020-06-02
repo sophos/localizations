@@ -7,6 +7,9 @@
         "start": "Start",
         "stop": "Stopp"
       },
+      "status": {
+        "failed": "Fehlgeschlagen"
+      },
       "actions": "Aktionen",
       "confirmation": "Bestätigung",
       "add": "Hinzufügen",
@@ -24,6 +27,7 @@
       "description": "Beschreibung",
       "domain": "Domain",
       "download": "Herunterladen",
+      "launch": "Starten",
       "more": "mehr",
       "network": "Netzwerk",
       "noData": "Keine Daten zum Anzeigen",
@@ -61,12 +65,13 @@
       "type": "Typ",
       "upload": "Hochladen",
       "update": "Aktualisieren",
+      "generate": "Erstellen",
       "username": "Benutzername",
-      "waitingForData": "Warte auf Daten",
+      "waitingForData": "Es wird auf Daten gewartet…",
+      "gatheringReportData": "Daten für den Bericht werden gesammelt...",
       "problemLoadingData": "Problem beim Laden der Daten",
       "static": "Static",
       "dynamic": "Dynamisch",
-      "deviceName": "Gerätename",
       "error": {
         "http": {
           "default": "Problem beim Laden der Daten.",
@@ -78,7 +83,12 @@
       "tabularView": "Tabellenansicht",
       "rawView": "RAW-Ansicht",
       "dataRetrieval": "Datenabruf",
-      "cancelDataRetrieval": "Datenabruf abbrechen"
+      "cancelDataRetrieval": "Datenabruf abbrechen",
+      "saveReport": "Bericht speichern",
+      "saveTemplate": "Vorlage speichern",
+      "schedule": "Planen",
+      "saveAndContinue": "Speichern und fortfahren",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "Zugelassene Anwendungskategorien",
@@ -124,11 +134,9 @@
       "reclaimText": "Reporting-Lizenz zurückfordern",
       "deleteLogText": "Protokolldaten löschen",
       "removeFirewallText": "Firewall aus Sophos Central entfernen",
-      "freeFeatures": "Kostenlose Funktionen",
-      "fullFeatures": "Alle Funktionen",
       "transferDialogTitle": "Reporting-Lizenz übertragen",
       "reclaimDialogTitle": "Reporting-Lizenz zurückfordern",
-      "moveFullToFreeLabel": "Gerät(e) von „Vollversion“ zu „Kostenlos“ verschieben.",
+      "moveFullToFreeLabel": "Geräte von „Advanced“ nach „Kostenlos“ verschieben",
       "transferLabel": "Dadurch wird die Lizenz übertragen",
       "removeFirewallDialogTitle": "Firewall(s) entfernen",
       "deleteLogLabel": "Wollen Sie die Protokolldaten für dieses Gerät wirklich löschen?",
@@ -137,11 +145,12 @@
       "deleteLogReason": "Geben Sie einen Grund ein (optional)",
       "removeFirewallLabel": "Dieser Vorgang löscht alle mit diesem Gerät verknüpften Daten und entfernt sie aus Sophos Central. Möchten Sie wirklich fortfahren?",
       "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig  gemacht werden",
-      "reclaimDialogWarning": "Warnung: Das Ändern der Lizenz in „Kostenlos“, wird ein Gerät aus den Full Reporting-Funktionen entfernen. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
+      "logDeleteInfoLabel": "Das Löschen des Protokolls kann einen Tag dauern.",
+      "reclaimDialogWarning": "Achtung: Das Ändern der Lizenz in „Kostenlos“, wird ein Gerät aus den Advanced Reporting-Funktionen entfernen. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
       "reclaimDialogNote": "Durch das Ändern in „Kostenlos“ werden vorhandene gespeicherte Protokolle und Berichte für dieses Gerät gelöscht. Alle gekauften und verwendeten Kapazitäten werden zur Verfügung gestellt.",
       "licenseIsNotActiveMsg": "Die Lizenz wird nicht aktiv genutzt",
       "licenseTransferText": "Die Lizenz wird nicht aktiv verwendet und wurde auf {{serialId}} übertragen",
-      "freeToPremiumConversionMsg": "Achtung: Bei dem Versuch, die Lizenz in eine Premium-Lizenz umzuwandeln, steht Speicherplatz gemäß Zuteilung zur Verfügung, und die Aufbewahrungsfrist wird auf ein Jahr erhöht",
+      "freeToPremiumConversionMsg": "Diese Lizenz wird in eine Advanced-Lizenz umgewandelt",
       "reduceLicenseMsg": "Durch das Reduzieren der zugewiesenen Lizenzen wird ein Teil Ihrer ältesten gespeicherten Daten gelöscht",
       "licenseSaveFailedMsg": "Die Lizenz konnte nicht gespeichert werden",
       "licenseReclaimSuccessMsg": "Lizenz(en) wurde(n) freigegeben",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "Lizenzen wurden übertragen",
       "allocateTooltipText": "Weitere Informationen finden Sie hier ",
       "thisPageText": "diese Seite",
-      "full": "Premium",
+      "full": "Advanced",
       "features": {
         "freeFeatureItems": {
+          "title": "Kostenlose Funktionen",
           "feature1": "Datenvorhaltung von 7 Tagen (mit maximaler Kapazität)",
           "feature2": "Syslog-Suche & -Ansicht",
-          "feature3": "On-Demand-Reporting in Sophos Central",
-          "feature4": "Berichte als PDF, HTML oder CSV herunterladen"
+          "feature3": "On-Demand-Reporting in Sophos Central"
         },
         "fullFeatureItems": {
-          "feature1": "API-Zugang zu Sophos Central Reporting",
-          "feature2": "Report Builder für benutzerdefinierte Berichte",
-          "feature3": "Regelmäßige Berichte",
-          "feature4": "Batch-Export von Syslog-Archivdaten",
-          "feature5": "Gespeicherte Berichte"
+          "title": "Erweiterte Funktionen",
+          "feature1": "Erweiterte Vorratsdatenspeicherung bis zu 1 Jahr",
+          "feature2": "Syslog-Suche & -Ansicht",
+          "feature3": "On-Demand-Reporting in Sophos Central"
+        },
+        "plannedFeatureItems": {
+          "title": "Geplante Funktionen",
+          "feature1": "Berichte als PDF, HTML oder CSV herunterladen",
+          "feature2": "Zeitgesteuerte Berichte",
+          "feature3": "Speichern von Berichten",
+          "feature4": "API-Zugang zu Sophos Central Reporting"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "Gerät ist ungültig",
         "assetIdDoesntExist": "Gerät existiert nicht",
-        "transferNoPremiumLicense": "Gerät hat keine Premium-Lizenz",
+        "transferNoPremiumLicense": "Gerät hat keine Advanced-Lizenz",
         "transferNoActiveDevice": "Neues Gerät ist kein aktives Gerät",
         "transferFromHAPairNotAllowed": "Das Gerät ist Teil eines HA-Paares, es kann nicht übertragen werden",
         "customerQuotaNotAvailable": "Modellname für Gerät nicht gefunden",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "Daten für den Bericht werden gesammelt...",
-        "gatheringChartData": "Daten für das Diagramm werden gesammelt...",
-        "waitWhileFetchingData": "Sie können hier warten, während wir die Daten zusammenstellen, oder die Daten werden auf dem Tab „Anfragen“ angezeigt, wenn sie fertig sind.",
+        "waitWhileFetchingData": "Sie können hier warten, während wir die Daten zusammenstellen, oder die Daten werden auf dem Tab „Warteschlange“ angezeigt, wenn sie fertig sind.",
         "startAnotherReport": "Einen anderen Bericht erstellen",
-        "asyncTabNote": "Anfragen werden nach 24 Stunden automatisch gelöscht",
+        "asyncTabNote": "Hinweis: Anfragen werden nach 24 Stunden automatisch gelöscht",
         "offlineInfoBarMessage": "Es werden bis zu {{maxAsyncRecords}} Ergebnisse angezeigt, sortiert nach <strong>{{sortColumnName}}</strong>, erstellt am <strong>{{creationDate}}</strong>",
         "messages": {
           "unableToSearchRequest": "Beim Abrufen des Berichts ist ein Problem aufgetreten; Sie können in de Zwischenzeit einen neuen starten",
           "tooManyAsyncRequest": "Sie können keine neuen Anfragen erstellen, da Sie das Limit von {{limit}} ausstehende Anforderungen überschritten haben",
-          "duplicateRequest": "Anfrage nicht erstellt: Es wurde eine mit ähnlichen Filterkriterien gefunden. Wir bringen Sie zur bestehenden Anfrage"
+          "duplicateRequest": "Anfrage nicht erstellt: Es wurde eine mit ähnlichen Filterkriterien gefunden. Wir bringen Sie zur bestehenden Anfrage",
+          "emptyTableHeader": "Ihre Warteschlange enthält keine Elemente",
+          "emptyTableBody": "Die Warteschlange ist wie ein Posteingang für Berichte, deren Erstellung lange dauert."
+        },
+        "tableHeaders": {
+          "requestedOn": "Angefordert am",
+          "reportName": "Name des Berichts",
+          "firewalls": "Firewall oder Gruppe",
+          "actions": "Aktionen"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "Spaltenauswahl"
       },
       "filters": {
-        "dateRangeTitle": "Datumsbereich",
+        "title": "Filter",
+        "dateRangeTitle": "Zeitrahmen",
         "queryCriteriaTitle": "Filter-Abfrage",
         "reportBy": "Gemeldet von",
         "dateFormat": "Datumsformat",
@@ -229,7 +251,17 @@
         "threeMonths": "Letzte 3 Monate",
         "prevHour": "Vorige Stunde",
         "nextHour": "Nächste Stunde",
-        "custom": "Benutzerdefiniert"
+        "custom": "Benutzerdefiniert",
+        "firewalls": "Firewalls",
+        "reportTemplates": "Vorlagen für Berichte"
+      },
+      "savedTemplates": {
+        "allFirewalls": "Alle Firewalls",
+        "allCreatedBy": "Alle erstellt von",
+        "allTemplateTypes": "Alle Vorlagenarten",
+        "savedTemplatesNote": "Sie haben {{savedTemplatesCount}}/1,000 gespeicherte Vorlagen",
+        "saveTemplatesSuccess": "Vorlage wurde gespeichert",
+        "templateName": "Name der Vorlage"
       },
       "reportConfigs": {
         "myReports": "Meine Berichte",
@@ -256,6 +288,20 @@
           "threats_antivirus": "Antivirus-Bedrohungen"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "Report Generator",
+        "savedTemplates": "Gespeicherte Vorlagen",
+        "scheduledExports": "Geplante Exporte",
+        "queue": "Warteschlange"
+      },
+      "ribbon": {
+        "download": "Herunterladen",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "Planen",
+        "saveTemplate": "Vorlage speichern"
+      },
       "geoactivity": {
         "hits": "Ereignisse insgesamt",
         "atp_hits": "ATP-Treffer",
@@ -270,6 +316,7 @@
         "nodata": "Keine Daten"
       },
       "schedule": {
+        "reportName": "Name des Berichts",
         "modal": {
           "am": "AM",
           "april": "Apr",
@@ -322,10 +369,14 @@
           "weeklyDays": "Tage",
           "weeklyTime": "Zeit",
           "yesterday": "Gestern"
-        }
+        },
+        "allFirewalls": "Alle Firewalls",
+        "allCreators": "Alle Ersteller",
+        "allExportTypes": "Alle Export-Typen",
+        "scheduleExportNote": "Hinweis: Exporte werden automatisch nach 90 Tagen gelöscht"
       },
       "messages": {
-        "confirmWaitMessage": "Das Abrufen der Daten dauert eine Weile.<br/><br/>Sie können warten, während wir die Daten zusammenstellen, oder wenn Sie andere Aktionen ausführen möchten, werden die Daten auf der Registerkarte „Anfragen“ angezeigt, wenn sie fertig sind.<br /><br/>Anfragen sind bis zu 24 Stunden verfügbar."
+        "confirmWaitMessage": "Das Abrufen der Daten dauert eine Weile.<br/><br/>Sie können warten, während wir die Daten zusammenstellen, oder wenn Sie andere Aktionen ausführen möchten, werden die Daten auf dem Tab „Warteschlange“ angezeigt, wenn sie fertig sind.<br /><br/>Berichte auf dem Tab „Warteschlange“ sind bis zu 24 Stunden verfügbar."
       }
     },
     "apiLabel": {
@@ -421,7 +472,7 @@
       "device_model": "Gerätemodell",
       "destination_port": "Zielport",
       "blocked_app_categories": "Blockierte Anwendungskategorien",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Sandstorm-Ereignisse",
       "top_allowed_app_categories": "Häufigste zugelassene Anwendungskategorien",
       "interface": "Schnittstelle",
       "sandstorm_category": "Sandstorm-Kategorie",
@@ -455,7 +506,7 @@
       "bytes_sent": "Gesendete Bytes",
       "application": "Anwendung",
       "source_country": "Quellland",
-      "vpn": "VPN",
+      "vpn": "VPN-Nutzung",
       "bytes": "Byte",
       "malicious_hits": "Schädliche Ereignisse",
       "risk": "Risiko",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "Temporäre Festplattennutzung",
       "dst_trans_port": "Datenübertragungs-Zielport",
       "file": "Datei",
-      "syslogview": "SYS-Protokollansicht",
+      "syslogview": "Log Viewer & Suche",
       "ssl_tls_policy": "SSL-TLS-Richtlinie",
       "blank": "",
       "red_id": "RED-ID",
@@ -593,7 +644,8 @@
       "recent_client_health": "Jüngste Client-Integrität",
       "state": "Status",
       "count": "Anzahl",
-      "time": "Uhrzeit"
+      "time": "Uhrzeit",
+      "threats_events_blocked": "Bedrohungen & Ereignisse blockiert"
     }
   }
 }

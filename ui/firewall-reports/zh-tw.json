@@ -7,6 +7,9 @@
         "start": "開始",
         "stop": "停止"
       },
+      "status": {
+        "failed": "失敗"
+      },
       "actions": "動作",
       "confirmation": "確認",
       "add": "新增",
@@ -24,6 +27,7 @@
       "description": "說明",
       "domain": "網域",
       "download": "下載",
+      "launch": "啟動",
       "more": "更多",
       "network": "網路",
       "noData": "無資料顯示",
@@ -61,12 +65,13 @@
       "type": "類型",
       "upload": "上傳",
       "update": "更新",
+      "generate": "產生",
       "username": "使用者名稱",
-      "waitingForData": "等待資料",
+      "waitingForData": "等待資料...",
+      "gatheringReportData": "正在收集報告資料...",
       "problemLoadingData": "載入資料時出現問題",
       "static": "靜態",
       "dynamic": "動態",
-      "deviceName": "裝置名稱",
       "error": {
         "http": {
           "default": "載入資料時出現問題。",
@@ -78,7 +83,12 @@
       "tabularView": "表格檢視",
       "rawView": "原始檢視",
       "dataRetrieval": "資料擷取",
-      "cancelDataRetrieval": "取消資料擷取"
+      "cancelDataRetrieval": "取消資料擷取",
+      "saveReport": "儲存報告",
+      "saveTemplate": "儲存範本",
+      "schedule": "排程",
+      "saveAndContinue": "儲存並繼續",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "允許的 App 類別",
@@ -124,11 +134,9 @@
       "reclaimText": "回收報告授權",
       "deleteLogText": "刪除記錄資料",
       "removeFirewallText": "從 Sophos Central 移除防火牆",
-      "freeFeatures": "免費功能",
-      "fullFeatures": "完整功能",
       "transferDialogTitle": "傳輸報告授權",
       "reclaimDialogTitle": "回收報告授權",
-      "moveFullToFreeLabel": "將裝置從「完整」移動到「免費」",
+      "moveFullToFreeLabel": "將裝置從「進階」移動到「免費」",
       "transferLabel": "這將會傳輸授權",
       "removeFirewallDialogTitle": "移除防火墻",
       "deleteLogLabel": "確定要從此裝置刪除記錄資料嗎？",
@@ -137,11 +145,12 @@
       "deleteLogReason": "輸入原因（選填）。",
       "removeFirewallLabel": "此流程將刪除與此裝置相關的所有資料並將其從 Sophos Central 移除。確定要進行？",
       "deleteWarningLabel": "此流程已記錄且無法復原",
-      "reclaimDialogWarning": "警告：將授權變更為「免費」會將裝置從完整報告功能中移除。「免費層」提供有限的存儲容量以及「免費層」功能",
+      "logDeleteInfoLabel": "記錄刪除可能需要一天時間才能完成。",
+      "reclaimDialogWarning": "警告：將授權變更為「免費」會將裝置從進階報告功能中移除。「免費層」提供有限的存儲容量以及「免費層」功能",
       "reclaimDialogNote": "轉換為「免費」將會刪除此裝置的現有存儲記錄和報告。任何已購買和已使用的功能將仍然可用。",
       "licenseIsNotActiveMsg": "授權未處於使用中",
       "licenseTransferText": "授權未處於使用中，並且已傳輸給 {{serialId}}",
-      "freeToPremiumConversionMsg": "警告：嘗試將授權轉換為進階，將按照配置進行儲存，保留期將增加到一年",
+      "freeToPremiumConversionMsg": "此授權將轉換為進階授權",
       "reduceLicenseMsg": "減少配置的授權將刪除您最早儲存的一部分資料",
       "licenseSaveFailedMsg": "無法存儲授權",
       "licenseReclaimSuccessMsg": "授權已回收",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "授權已移轉",
       "allocateTooltipText": "如需更多資訊，請造訪",
       "thisPageText": "此頁面",
-      "full": "Premium",
+      "full": "進階",
       "features": {
         "freeFeatureItems": {
+          "title": "免費功能",
           "feature1": "7 天資料保留（具有容量上限）",
           "feature2": "Syslog 搜尋與檢視",
-          "feature3": "Sophos Central 中的隨選報告",
-          "feature4": "以 PDF、HTML 和 CSV 格式下載報告"
+          "feature3": "Sophos Central 中的隨選報告"
         },
         "fullFeatureItems": {
-          "feature1": "Sophos Central 報告的 API 存取",
-          "feature2": "自訂報告產生器",
-          "feature3": "排程報告",
-          "feature4": "大量匯出 Syslog 封存資料",
-          "feature5": "儲存的報告"
+          "title": "進階功能",
+          "feature1": "資料保留延長為 1 年",
+          "feature2": "Syslog 搜尋與檢視",
+          "feature3": "Sophos Central 中的隨選報告"
+        },
+        "plannedFeatureItems": {
+          "title": "計劃功能",
+          "feature1": "以 PDF、HTML 和 CSV 格式下載報告",
+          "feature2": "報告排程",
+          "feature3": "報告儲存",
+          "feature4": "Sophos Central 報告的 API 存取"
         }
       },
       "table": {
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "正在收集報告資料...",
-        "gatheringChartData": "正在收集圖表資料...",
-        "waitWhileFetchingData": "我們擷取時您可以在此等候，或者等到準備就緒後，資料會在 [請求] 標籤頁顯示。",
+        "waitWhileFetchingData": "我們擷取時您可以在此等候，或者等到準備就緒後，資料會在 [佇列] 標籤頁顯示。",
         "startAnotherReport": "開始其他報告",
-        "asyncTabNote": "請求會在 24 小時後自動刪除。",
+        "asyncTabNote": "注意: 請求會在 24 小時後自動刪除。",
         "offlineInfoBarMessage": "最多顯示 {{maxAsyncRecords}} 項結果，依 <strong>{{sortColumnName}}</strong> 排序，於 <strong>{{creationDate}}</strong> 產生",
         "messages": {
           "unableToSearchRequest": "擷取報告發生問題，同時您可以開始另一份報告",
           "tooManyAsyncRequest": "您無法建立新請求，因為已超過 {{limit}} 項處理中請求的限制",
-          "duplicateRequest": "未建立請求：找到一個篩選條件類似的項目。現在引導您導覽現有請求"
+          "duplicateRequest": "未建立請求：找到一個篩選條件類似的項目。現在引導您導覽現有請求",
+          "emptyTableHeader": "您的佇列中沒有項目",
+          "emptyTableBody": "佇列就像報告的收件匣，需要很長時間才能生成。"
+        },
+        "tableHeaders": {
+          "requestedOn": "要求日期",
+          "reportName": "報告名稱 [生成位置]",
+          "firewalls": "防火牆或群組",
+          "actions": "動作"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "欄選擇"
       },
       "filters": {
-        "dateRangeTitle": "日期範圍",
+        "title": "筛选器",
+        "dateRangeTitle": "時間範圍",
         "queryCriteriaTitle": "篩選查詢",
         "reportBy": "報告人：",
         "dateFormat": "日期格式",
@@ -229,7 +251,17 @@
         "threeMonths": "最近 3 個月",
         "prevHour": "上個小時",
         "nextHour": "下個小時",
-        "custom": "自訂"
+        "custom": "自訂",
+        "firewalls": "防火牆",
+        "reportTemplates": "報告範本"
+      },
+      "savedTemplates": {
+        "allFirewalls": "所有防火墻",
+        "allCreatedBy": "所有建立者",
+        "allTemplateTypes": "所有範本類型",
+        "savedTemplatesNote": "您有 {{savedTemplatesCount}}/1000 個已儲存的範本",
+        "saveTemplatesSuccess": "範本已儲存",
+        "templateName": "範本名稱"
       },
       "reportConfigs": {
         "myReports": "我的報告",
@@ -256,6 +288,20 @@
           "threats_antivirus": "防病毒威脅"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "報告產生器",
+        "savedTemplates": "儲存的範本",
+        "scheduledExports": "排定的匯出",
+        "queue": "佇列"
+      },
+      "ribbon": {
+        "download": "下載",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "排程",
+        "saveTemplate": "儲存範本"
+      },
       "geoactivity": {
         "hits": "總點擊",
         "atp_hits": "ATP 點擊",
@@ -270,6 +316,7 @@
         "nodata": "無資料"
       },
       "schedule": {
+        "reportName": "報告名稱",
         "modal": {
           "am": "上午",
           "april": "4 月",
@@ -322,10 +369,14 @@
           "weeklyDays": "日",
           "weeklyTime": "時間",
           "yesterday": "昨天"
-        }
+        },
+        "allFirewalls": "所有防火墻",
+        "allCreators": "所有建立者",
+        "allExportTypes": "所有匯出類型",
+        "scheduleExportNote": "注意: 匯出會在 90 天後自動刪除"
       },
       "messages": {
-        "confirmWaitMessage": "擷取資料需要一點時間。<br/><br/>您可以等候我們擷取資料，如果希望的話，您也可以執行其他動作，等到資料準備就緒後，會在 [請求] 標籤頁中顯示。<br /><br/>請求可用時間最長為 24 小時。"
+        "confirmWaitMessage": "擷取資料需要一點時間。<br/><br/>您可以等候我們擷取資料，或者如果您想執行其他動作，等到資料準備就緒後，會在 [佇列] 標籤頁中顯示。<br /><br/>佇列標籤頁中的報告可用時間為 24 小時。"
       }
     },
     "apiLabel": {
@@ -406,7 +457,7 @@
       "malware_count": "惡意程式計數",
       "allowed_app_categories": "允許的 App 類別",
       "user_group": "使用者群組",
-      "bandwidth_usage": "頻寬使用",
+      "bandwidth_usage": "頻寬使用狀況",
       "new_cloud_apps": "新增雲應用程式",
       "source_zone": "來源區域",
       "cpu": "CPU",
@@ -421,7 +472,7 @@
       "device_model": "裝置型號",
       "destination_port": "目的地連接埠",
       "blocked_app_categories": "阻擋的 App 類別",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Sandstorm 事件",
       "top_allowed_app_categories": "受允許最多的應用程式類別",
       "interface": "介面",
       "sandstorm_category": "Sandstorm 類別",
@@ -455,7 +506,7 @@
       "bytes_sent": "傳送的位元組",
       "application": "應用程式",
       "source_country": "來源國家",
-      "vpn": "VPN",
+      "vpn": "VPN 使用情況",
       "bytes": "位元組",
       "malicious_hits": "惡意叫用",
       "risk": "風險",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "臨時磁碟使用情況",
       "dst_trans_port": "目的地交易連接埠",
       "file": "檔案",
-      "syslogview": "SYS 日誌檢視",
+      "syslogview": "日誌檢視器及搜尋",
       "ssl_tls_policy": "SSL TLS 策略",
       "blank": "",
       "red_id": "RED ID",
@@ -593,7 +644,8 @@
       "recent_client_health": "最近的客戶安全狀態",
       "state": "狀態",
       "count": "計數",
-      "time": "時間"
+      "time": "時間",
+      "threats_events_blocked": "遭攔截威脅和事件"
     }
   }
 }

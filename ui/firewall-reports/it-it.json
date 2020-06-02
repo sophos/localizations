@@ -7,6 +7,9 @@
         "start": "Avvia",
         "stop": "Arresta"
       },
+      "status": {
+        "failed": "Operazione non riuscita"
+      },
       "actions": "Azioni",
       "confirmation": "Conferma",
       "add": "Aggiungi",
@@ -24,6 +27,7 @@
       "description": "Descrizione",
       "domain": "Dominio",
       "download": "Download",
+      "launch": "Avviare",
       "more": "altro",
       "network": "Rete",
       "noData": "Nessun dato da visualizzare",
@@ -61,12 +65,13 @@
       "type": "Tipo",
       "upload": "Carica",
       "update": "Aggiorna",
+      "generate": "Genera",
       "username": "Nome utente",
-      "waitingForData": "In attesa di dati",
+      "waitingForData": "In attesa di dati...",
+      "gatheringReportData": "Raccolta dei dati del report in corso...",
       "problemLoadingData": "Si è verificato un problema durante il caricamento dei dati",
       "static": "Statico",
       "dynamic": "Dinamico",
-      "deviceName": "Nome dispositivo",
       "error": {
         "http": {
           "default": "Si è verificato un problema durante il caricamento dei dati.",
@@ -78,7 +83,12 @@
       "tabularView": "Visualizzazione tabulare",
       "rawView": "Visualizzazione non elaborata",
       "dataRetrieval": "Recupero dati",
-      "cancelDataRetrieval": "Annulla recupero dati"
+      "cancelDataRetrieval": "Annulla recupero dati",
+      "saveReport": "Salva report",
+      "saveTemplate": "Salva modello",
+      "schedule": "Pianificazione",
+      "saveAndContinue": "Salva e continua",
+      "blankTitle": ""
     },
     "dashboard": {
       "allowedCategories": "Categorie app consentite",
@@ -124,11 +134,9 @@
       "reclaimText": "Recupera licenza della reportistica",
       "deleteLogText": "Elimina dati di log",
       "removeFirewallText": "Rimuovi firewall da Sophos Central",
-      "freeFeatures": "Funzionalità gratuite",
-      "fullFeatures": "Funzionalità complete",
       "transferDialogTitle": "Trasferisci licenza della reportistica",
       "reclaimDialogTitle": "Recupera licenza della reportistica",
-      "moveFullToFreeLabel": "Trasferisci dispositivo/i dalla versione a funzionalità complete (Full) alla versione a funzionalità gratuite (Free)",
+      "moveFullToFreeLabel": "Trasferisci dispositivo/i da Advanced a Free (a funzionalità gratuite)",
       "transferLabel": "Questa operazione effettuerà il trasferimento della licenza",
       "removeFirewallDialogTitle": "Rimuovi firewall",
       "deleteLogLabel": "Eliminare i dati di log di questo dispositivo?",
@@ -137,11 +145,12 @@
       "deleteLogReason": "Specificare il motivo (opzionale)",
       "removeFirewallLabel": "Questo processo eliminerà tutti i dati associati a questo dispositivo e li rimuoverà da Sophos Central. Procedere?",
       "deleteWarningLabel": "Questo processo viene registrato nel log ed è irreversibile",
-      "reclaimDialogWarning": "Avviso: La modifica della licenza alla versione Free (a funzionalità gratuite) rimuoverà il dispositivo dalle funzionalità di Reportistica completa. Il livello Free offre capacità limitate di archiviazione e include le funzionalità del livello Free",
+      "logDeleteInfoLabel": "L'eliminazione del log potrebbe richiedere un giorno per essere completata.",
+      "reclaimDialogWarning": "Avviso: La modifica della licenza alla versione Free (a funzionalità gratuite) rimuoverà un dispositivo dalle funzionalità di Advanced Reporting. Il livello Free offre capacità limitate di archiviazione e include le funzionalità del livello Free",
       "reclaimDialogNote": "La conversione a Free eliminerà i log e i report memorizzati che esistono per questo dispositivo. Le capacità acquistate e utilizzate saranno rese disponibili.",
       "licenseIsNotActiveMsg": "La licenza non è utilizzata attivamente",
       "licenseTransferText": "La licenza non è utilizzata attivamente ed è stata trasferita a {{serialId}}",
-      "freeToPremiumConversionMsg": "Avviso: Se si effettua il tentativo di convertire la licenza a una licenza Premium, lo spazio di archiviazione sarà quello assegnato e il periodo di conservazione verrà incrementato e portato a un anno",
+      "freeToPremiumConversionMsg": "Questa licenza sarà convertita a una licenza Advanced",
       "reduceLicenseMsg": "La riduzione delle licenze assegnate eliminerà una porzione dei dati salvati meno recenti",
       "licenseSaveFailedMsg": "Non è stato possibile salvare le licenze",
       "licenseReclaimSuccessMsg": "Le licenze sono state recuperate",
@@ -152,20 +161,26 @@
       "licenseTransferSuccessMsg": "Licenza/e trasferita/e",
       "allocateTooltipText": "Per maggiori informazioni, visitare",
       "thisPageText": "questa pagina",
-      "full": "Premium",
+      "full": "Avanzate",
       "features": {
         "freeFeatureItems": {
+          "title": "Funzionalità gratuite",
           "feature1": "Conservazione dei dati 7 giorni (con limite massimo per la capacità)",
           "feature2": "Ricerca Syslog e visualizzazione",
-          "feature3": "Reportistica on-demand in Sophos Central",
-          "feature4": "Scarica report in PDF, HTML e CSV"
+          "feature3": "Reportistica on-demand in Sophos Central"
         },
         "fullFeatureItems": {
-          "feature1": "Accesso API alla reportistica di Sophos Central",
-          "feature2": "Generatore di report personalizzati",
-          "feature3": "Report pianificati",
-          "feature4": "Esportazioni in blocco dei dati di archiviazione di Syslog",
-          "feature5": "Report salvati"
+          "title": "Funzionalità Advanced",
+          "feature1": "Periodo di conservazione dei dati esteso fino a 1 anno",
+          "feature2": "Ricerca Syslog e visualizzazione",
+          "feature3": "Reportistica on-demand in Sophos Central"
+        },
+        "plannedFeatureItems": {
+          "title": "Funzionalità pianificate",
+          "feature1": "Scarica report in PDF, HTML e CSV",
+          "feature2": "Pianificazioni report",
+          "feature3": "Salvataggio report",
+          "feature4": "Accesso API alla reportistica di Sophos Central"
         }
       },
       "table": {
@@ -185,7 +200,7 @@
       "messages": {
         "invalidAssetId": "Il dispositivo non è valido",
         "assetIdDoesntExist": "Il dispositivo non esiste",
-        "transferNoPremiumLicense": "Il dispositivo non dispone di una licenza Premium",
+        "transferNoPremiumLicense": "Il dispositivo non dispone di una licenza Advanced",
         "transferNoActiveDevice": "Il nuovo dispositivo non è un dispositivo attivo",
         "transferFromHAPairNotAllowed": "Il dispositivo fa parte di una coppia di disponibilità elevata, non può essere trasferito",
         "customerQuotaNotAvailable": "Dettagli della quota delle licenze del cliente non disponibili",
@@ -197,16 +212,22 @@
     },
     "report": {
       "async": {
-        "gatheringData": "Raccolta dei dati del report in corso...",
-        "gatheringChartData": "Raccolta dei dati del grafico in corso...",
-        "waitWhileFetchingData": "È possibile attendere su questa pagina mentre viene effettuato il recupero. In alternativa, una volta pronti, i dati saranno disponibili nella scheda Richieste.",
+        "waitWhileFetchingData": "È possibile attendere su questa pagina mentre viene effettuato il recupero. In alternativa, una volta pronti, i dati saranno disponibili nella scheda Coda.",
         "startAnotherReport": "Avvia un altro report",
-        "asyncTabNote": "Le richieste verranno eliminate automaticamente dopo 24 ore",
+        "asyncTabNote": "Nota. Le richieste vengono eliminate automaticamente dopo 24 ore",
         "offlineInfoBarMessage": "Visualizzazione di un massimo di {{maxAsyncRecords}} risultati, ordinati per <strong>{{sortColumnName}}</strong>, generati in data <strong>{{creationDate}}</strong>",
         "messages": {
           "unableToSearchRequest": "Si è verificato un problema durante il recupero del report; nel frattempo è possibile avviarne un altro",
           "tooManyAsyncRequest": "Impossibile creare nuove richieste, in quanto è stato superato il limite di {{limit}} richieste in sospeso",
-          "duplicateRequest": "Richieste non create: Individuata una con criteri filtro simili. Esplorazione in corso verso la richiesta esistente"
+          "duplicateRequest": "Richieste non create: Individuata una con criteri filtro simili. Esplorazione in corso verso la richiesta esistente",
+          "emptyTableHeader": "La coda non contiene elementi",
+          "emptyTableBody": "La coda è come una casella di posta per i report che richiedono diverso tempo per essere generati."
+        },
+        "tableHeaders": {
+          "requestedOn": "Richiesto il",
+          "reportName": "Nome report [Generato alle]",
+          "firewalls": "Firewall o gruppi",
+          "actions": "Azioni"
         }
       },
       "filterTable": {
@@ -217,7 +238,8 @@
         "title": "Selezione colonna"
       },
       "filters": {
-        "dateRangeTitle": "Intervallo di date",
+        "title": "Filtri",
+        "dateRangeTitle": "Intervallo di tempo",
         "queryCriteriaTitle": "Query per il filtro",
         "reportBy": "Compila report in base a",
         "dateFormat": "Formato data",
@@ -229,7 +251,17 @@
         "threeMonths": "Ultimi 3 mesi",
         "prevHour": "Ora precedente",
         "nextHour": "Ora successiva",
-        "custom": "Personalizzato/a"
+        "custom": "Personalizzato/a",
+        "firewalls": "Firewall",
+        "reportTemplates": "Modelli per i report"
+      },
+      "savedTemplates": {
+        "allFirewalls": "Tutti i firewall",
+        "allCreatedBy": "Tutti creati da",
+        "allTemplateTypes": "Tutti i tipi di modello",
+        "savedTemplatesNote": "Sono presenti {{savedTemplatesCount}}/1.000 modelli salvati",
+        "saveTemplatesSuccess": "Il modello è stato salvato",
+        "templateName": "Nome del modello"
       },
       "reportConfigs": {
         "myReports": "I miei report",
@@ -256,6 +288,20 @@
           "threats_antivirus": "Minacce antivirus"
         }
       },
+      "reportTabs": {
+        "reportGenerator": "Generatore di report",
+        "savedTemplates": "Salva modelli",
+        "scheduledExports": "Esportazioni pianificate",
+        "queue": "Coda"
+      },
+      "ribbon": {
+        "download": "Download",
+        "pdf": "PDF",
+        "csv": "CSV",
+        "html": "HTML",
+        "schedule": "Pianificazione",
+        "saveTemplate": "Salva modello"
+      },
       "geoactivity": {
         "hits": "Totale riscontri",
         "atp_hits": "Riscontri di ATP",
@@ -270,6 +316,7 @@
         "nodata": "Non sono presenti dati"
       },
       "schedule": {
+        "reportName": "Nome report",
         "modal": {
           "am": "AM",
           "april": "Apr",
@@ -322,10 +369,14 @@
           "weeklyDays": "Giorni",
           "weeklyTime": "Ora",
           "yesterday": "Ieri"
-        }
+        },
+        "allFirewalls": "Tutti i firewall",
+        "allCreators": "Tutti gli autori",
+        "allExportTypes": "Tutti i tipi di esportazione",
+        "scheduleExportNote": "Nota. Le esportazioni vengono eliminate automaticamente dopo 90 giorni"
       },
       "messages": {
-        "confirmWaitMessage": "Il recupero dei dati sta richiedendo diverso tempo. <br/><br/>È possibile attendere mentre viene effettuato il recupero, oppure svolgere altre azioni. Una volta pronti, i dati saranno disponibili nella scheda Richieste.<br /><br/>Le richieste sono disponibili per un massimo di 24 ore."
+        "confirmWaitMessage": "Il recupero dei dati sta richiedendo diverso tempo.<br/><br/>È possibile attendere mentre viene effettuato il recupero, oppure svolgere altre azioni. Una volta pronti, i dati saranno disponibili nella scheda Coda.<br /><br/>I report nella scheda Coda sono disponibili per 24 ore."
       }
     },
     "apiLabel": {
@@ -421,7 +472,7 @@
       "device_model": "Modello dispositivo",
       "destination_port": "Porta di destinazione",
       "blocked_app_categories": "Categorie app bloccate",
-      "sandstorm": "Sandstorm",
+      "sandstorm": "Eventi di Sandstorm",
       "top_allowed_app_categories": "Principali categorie app consentite",
       "interface": "Interfaccia",
       "sandstorm_category": "Categoria Sandstorm",
@@ -455,7 +506,7 @@
       "bytes_sent": "Byte inviati",
       "application": "Applicazione",
       "source_country": "Paese di origine",
-      "vpn": "VPN",
+      "vpn": "Utilizzo VPN",
       "bytes": "Byte",
       "malicious_hits": "Riscontri malevoli",
       "risk": "Rischio",
@@ -570,7 +621,7 @@
       "temp_disk_usage": "Utilizzo temp. del disco",
       "dst_trans_port": "Porta di destinazione della transazione",
       "file": "File",
-      "syslogview": "Vista SYS Log",
+      "syslogview": "Visualizzatore log e ricerca",
       "ssl_tls_policy": "Criterio TLS SSL",
       "blank": "",
       "red_id": "ID RED",
@@ -593,7 +644,8 @@
       "recent_client_health": "Stato di integrità recente del client",
       "state": "Stato",
       "count": "Numero",
-      "time": "Ora"
+      "time": "Ora",
+      "threats_events_blocked": "Minacce ed eventi bloccati"
     }
   }
 }
