@@ -38,7 +38,7 @@
       "description": "說明",
       "domain": "網域",
       "download": "下載",
-      "launch": "啟動",
+      "open": "開啟",
       "more": "更多",
       "network": "網路",
       "noData": "無資料顯示",
@@ -117,7 +117,7 @@
       "objectionableWebsites": "不當內容類別",
       "policy": "原則",
       "red": "紅",
-      "riskyAppsSeen": "發現有風險的 App",
+      "riskyApps": "有風險的應用程式",
       "sandstormCleaned": "已清理的 Sandstorm",
       "security": "安全性",
       "vpn": "VPN",
@@ -135,7 +135,7 @@
     },
     "licensing": {
       "areYouSure": "確定要儲存變更嗎？",
-      "transferDropdownDefaultText": "選取裝置",
+      "transferDropdownDefaultText": "選取替換裝置",
       "pageTitle": "授權",
       "tabTitle": "防火牆",
       "licInfo": "已用/可用的授權",
@@ -143,20 +143,19 @@
       "licExpirationInfo": "防火墻報告到期日",
       "manageCentralLicensesBtn": "管理產品授權",
       "projectedTooltip": "這是基於平均傳入記錄檔速率和配置的儲存體的預計資料保留視窗。",
-      "transferText": "傳輸報告授權",
-      "reclaimText": "回收報告授權",
+      "transferText": "將授權和資料與替換裝置關聯",
+      "reclaimText": "回收所有授權（轉換為免費）",
       "deleteLogText": "刪除記錄資料",
-      "removeFirewallText": "從 Sophos Central 移除防火牆",
-      "transferDialogTitle": "傳輸報告授權",
+      "removeFirewallText": "刪除記錄資料並從 Sophos Central 取消註冊",
       "reclaimDialogTitle": "回收報告授權",
       "moveFullToFreeLabel": "將裝置從「進階」移動到「免費」",
-      "transferLabel": "這將會傳輸授權",
+      "transferLabel": "將授權和資料關聯",
       "removeFirewallDialogTitle": "移除防火墻",
       "deleteLogLabel": "確定要從此裝置刪除記錄資料嗎？",
-      "deleteAllDataButton": "是否刪除所有資料？",
-      "removeDeviceDataButton": "是否移除並刪除所有資料？",
+      "deleteAllDataButton": "刪除所有資料",
+      "removeDeviceDataButton": "移除並刪除所有資料",
       "deleteLogReason": "輸入原因（選填）。",
-      "removeFirewallLabel": "此流程將刪除與此裝置相關的所有資料並將其從 Sophos Central 移除。確定要進行？",
+      "removeFirewallLabel": "下列防火墻將從 Sophos Central 移除",
       "deleteWarningLabel": "此流程已記錄且無法復原",
       "logDeleteInfoLabel": "記錄刪除可能需要一天時間才能完成。",
       "reclaimDialogWarning": "警告：將授權變更為「免費」會將裝置從進階報告功能中移除。「免費層」提供有限的存儲容量以及「免費層」功能",
@@ -175,6 +174,9 @@
       "allocateTooltipText": "如需更多資訊，請造訪",
       "thisPageText": "此頁面",
       "full": "進階",
+      "tableNote": "使用下列 + / - 計數器管理防火墻報告授權分配。",
+      "transferNote": "注意: 舊裝置將被標記為非使用中，並將不再傳送資料至 Sophos Central。",
+      "deleteDataWarningLabel": "將刪除所有資料。",
       "features": {
         "freeFeatureItems": {
           "title": "免費功能",
@@ -198,14 +200,14 @@
       },
       "table": {
         "serial": "裝置序號",
-        "serialOrName": "裝置序號/名稱",
+        "device": "裝置",
         "model": "型號",
         "deviceName": "裝置名稱",
         "ip": "IP",
         "centralStorageUsed": "已用中央存儲",
         "allocateLicenses": "配置授權",
-        "projected": "預計",
-        "oldestAvailData": "最舊的可用資料",
+        "estimated": "估計存儲空間",
+        "oldestSavedData": "最早儲存的資料",
         "tier": "層",
         "actions": "動作",
         "haStatus": "HA 狀態"
@@ -253,7 +255,7 @@
       "filters": {
         "title": "筛选器",
         "dateRangeTitle": "時間範圍",
-        "queryCriteriaTitle": "篩選查詢",
+        "queryCriteriaTitle": "查询",
         "reportBy": "報告人：",
         "dateFormat": "日期格式",
         "oneHour": "最近 1 小時",
@@ -290,7 +292,11 @@
           "exportSchedule": "匯出排程",
           "createdBy": "建立者",
           "actions": "動作"
-        }
+        },
+        "deleteTemplatesSuccess": "範本已被刪除",
+        "deleteTemplatesWarning": "刪除新範本失敗",
+        "templateSelectionMessage": "您已選取 {{selectedTemplateCount}} 個範本",
+        "tooManyTemplateSelectionMessage": "您一次最多可以刪除 {{limit}} 個範本，但您已選取 {{selectedTemplateCount}} 個範本"
       },
       "reportConfigs": {
         "myReports": "我的報告",
@@ -314,7 +320,8 @@
           "threats_firewall": "防火墻攔截的事件",
           "threats_ips": "IPS 威脅",
           "threats_sandstorm": "Sandstorm 威脅",
-          "threats_antivirus": "防病毒威脅"
+          "threats_antivirus": "防病毒威脅",
+          "blank": ""
         }
       },
       "reportTabs": {

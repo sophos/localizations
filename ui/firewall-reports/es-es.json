@@ -38,7 +38,7 @@
       "description": "Descripción",
       "domain": "Dominio",
       "download": "Descargar",
-      "launch": "Iniciar",
+      "open": "Abrir",
       "more": "más",
       "network": "Red",
       "noData": "No hay datos para mostrar",
@@ -117,7 +117,7 @@
       "objectionableWebsites": "Categoría cuestionable",
       "policy": "Política",
       "red": "RED",
-      "riskyAppsSeen": "Detectadas aplicaciones de riesgo",
+      "riskyApps": "Aplicaciones de riesgo",
       "sandstormCleaned": "Sandstorm limpiado",
       "security": "Seguridad",
       "vpn": "VPN",
@@ -135,7 +135,7 @@
     },
     "licensing": {
       "areYouSure": "¿Seguro que desea guardar los cambios?",
-      "transferDropdownDefaultText": "Seleccionar un dispositivo",
+      "transferDropdownDefaultText": "Seleccionar un dispositivo sustituto",
       "pageTitle": "Licencias",
       "tabTitle": "Firewalls",
       "licInfo": "Licencias usadas / disponibles",
@@ -143,20 +143,19 @@
       "licExpirationInfo": "Fecha de caducidad de Informes del firewall",
       "manageCentralLicensesBtn": "Administrar licencias de producto",
       "projectedTooltip": "Este es el periodo de retención de datos previsto en función del índice medio de creación de registros y el almacenamiento asignado.",
-      "transferText": "Transferir licencia de informes",
-      "reclaimText": "Reclamar licencia de informes",
+      "transferText": "Asociar licencias y datos con el dispositivo sustituto",
+      "reclaimText": "Reclamar todas las licencias (convertir en gratuitas)",
       "deleteLogText": "Eliminar datos de registro",
-      "removeFirewallText": "Eliminar firewall desde Sophos Central",
-      "transferDialogTitle": "Transferir licencia de informes",
+      "removeFirewallText": "Eliminar datos de registro y anular registro de Sophos Central",
       "reclaimDialogTitle": "Reclamar licencia de informes",
       "moveFullToFreeLabel": "Mover dispositivo(s) de Advanced a Free",
-      "transferLabel": "Esto transferirá la licencia",
+      "transferLabel": "Asociar licencias y datos con",
       "removeFirewallDialogTitle": "Eliminar firewall(s)",
       "deleteLogLabel": "¿Seguro que desea eliminar los datos de registro para este dispositivo?",
-      "deleteAllDataButton": "¿Eliminar todos los datos?",
-      "removeDeviceDataButton": "¿Quitar y eliminar todos los datos?",
+      "deleteAllDataButton": "Eliminar todos los datos",
+      "removeDeviceDataButton": "Quitar y eliminar todos los datos",
       "deleteLogReason": "Introduzca la razón (opcional)",
-      "removeFirewallLabel": "Este proceso eliminará todos los datos asociados con este dispositivo y los quitará de Sophos Central. ¿Seguro que desea continuar?",
+      "removeFirewallLabel": "Los siguientes firewalls se eliminarán de Sophos Central",
       "deleteWarningLabel": "Este proceso se incluye en el registro y es irreversible",
       "logDeleteInfoLabel": "La eliminación del registro puede tardar un día en completarse.",
       "reclaimDialogWarning": "Aviso: Al cambiar la licencia a Free, se quitará el dispositivo de las funciones de generación de informes de nivel Advanced. El nivel Free ofrece una capacidad de almacenamiento limitada y las funciones del nivel Free.",
@@ -175,6 +174,9 @@
       "allocateTooltipText": "Para obtener más información, visite",
       "thisPageText": "esta página",
       "full": "Advanced",
+      "tableNote": "Utilice los contadores + / - de abajo para administrar las asignaciones de licencias de informes de firewall.",
+      "transferNote": "Notas: El dispositivo anterior se marcará como inactivo y ya no enviará datos a Sophos Central.",
+      "deleteDataWarningLabel": "Se eliminarán todos los datos.",
       "features": {
         "freeFeatureItems": {
           "title": "Funciones gratuitas",
@@ -198,14 +200,14 @@
       },
       "table": {
         "serial": "Número de serie del dispositivo",
-        "serialOrName": "Número de serie/nombre del dispositivo",
+        "device": "Dispositivo",
         "model": "Modelo",
         "deviceName": "Nombre del dispositivo",
         "ip": "IP",
         "centralStorageUsed": "Almacenamiento de Central usado",
         "allocateLicenses": "Asignar licencias",
-        "projected": "Previsto",
-        "oldestAvailData": "Más antiguo disp. Datos",
+        "estimated": "Almacenamiento estimado",
+        "oldestSavedData": "Datos guardados más antiguos",
         "tier": "Nivel",
         "actions": "Acciones",
         "haStatus": "Estado HA"
@@ -253,7 +255,7 @@
       "filters": {
         "title": "Filtros",
         "dateRangeTitle": "Plazo",
-        "queryCriteriaTitle": "Filtrar consulta",
+        "queryCriteriaTitle": "Consulta",
         "reportBy": "Informado por",
         "dateFormat": "Formato de fecha",
         "oneHour": "Durante las 1 últimas horas",
@@ -290,7 +292,11 @@
           "exportSchedule": "Programa de exportación",
           "createdBy": "Creado por",
           "actions": "Acciones"
-        }
+        },
+        "deleteTemplatesSuccess": "Se han eliminado las plantillas",
+        "deleteTemplatesWarning": "Algunas plantillas no se han podido eliminar",
+        "templateSelectionMessage": "Ha seleccionado {{selectedTemplateCount}} plantilla(s)",
+        "tooManyTemplateSelectionMessage": "Puede eliminar un máximo de {{limit}} plantillas a la vez y ha seleccionado {{selectedTemplateCount}} plantilla(s)"
       },
       "reportConfigs": {
         "myReports": "Mis informes",
@@ -314,7 +320,8 @@
           "threats_firewall": "Eventos de tráfico del firewall bloqueados",
           "threats_ips": "Amenazas IPS",
           "threats_sandstorm": "Amenazas de Sandstorm",
-          "threats_antivirus": "Amenazas antivirus"
+          "threats_antivirus": "Amenazas antivirus",
+          "blank": ""
         }
       },
       "reportTabs": {

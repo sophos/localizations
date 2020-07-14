@@ -38,7 +38,7 @@
       "description": "説明",
       "domain": "ドメイン",
       "download": "ダウンロード",
-      "launch": "開く",
+      "open": "開く",
       "more": "詳細",
       "network": "ネットワーク",
       "noData": "表示するデータはありません",
@@ -117,7 +117,7 @@
       "objectionableWebsites": "不適切なカテゴリ",
       "policy": "ポリシー",
       "red": "RED",
-      "riskyAppsSeen": "危険なアプリの検出",
+      "riskyApps": "危険なアプリ",
       "sandstormCleaned": "Sandstorm でクリーアップ済み",
       "security": "セキュリティ",
       "vpn": "VPN",
@@ -135,7 +135,7 @@
     },
     "licensing": {
       "areYouSure": "変更内容を保存してもよいですか？",
-      "transferDropdownDefaultText": "デバイスの選択",
+      "transferDropdownDefaultText": "交換デバイスの選択",
       "pageTitle": "ライセンス",
       "tabTitle": "ファイアウォール",
       "licInfo": "使用中のライセンス数 / 使用可能なライセンス数",
@@ -143,21 +143,20 @@
       "licExpirationInfo": "Firewall Reporting の有効期限",
       "manageCentralLicensesBtn": "製品ライセンスの管理",
       "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
-      "transferText": "レポートライセンスの転送",
-      "reclaimText": "レポートライセンスの再確保",
+      "transferText": "ライセンスとデータの交換デバイスへの関連付け",
+      "reclaimText": "すべてのライセンスの再確保（無償版への切り替え）",
       "deleteLogText": "ログデータの削除",
-      "removeFirewallText": "Sophos Central からのファイアウォールの削除",
-      "transferDialogTitle": "レポートライセンスの転送",
+      "removeFirewallText": "ログデータの削除と Sophos Central からの登録解除",
       "reclaimDialogTitle": "レポートライセンスの再確保",
       "moveFullToFreeLabel": "Advanced 版から無償版へのデバイスの移動",
-      "transferLabel": "これによって、ライセンスが転送されます",
+      "transferLabel": "ライセンスとデータの関連付け:",
       "removeFirewallDialogTitle": "ファイアウォールの削除",
       "deleteLogLabel": "このデバイスに対するログデータを削除してもよいですか？",
-      "deleteAllDataButton": "すべてのデータを削除しますか？",
-      "removeDeviceDataButton": "デバイスを登録解除してデータを削除しますか？",
-      "deleteLogReason": "理由を入力します (任意)。",
-      "removeFirewallLabel": "このプロセスによって、このデバイスに関連付けされているすべてのデータが削除され、デバイスは Sophos Central から登録解除されます。続行しますか？",
-      "deleteWarningLabel": "このプロセスはログに記録され、元に戻すことはできません。",
+      "deleteAllDataButton": "すべてのデータの削除",
+      "removeDeviceDataButton": "デバイスの登録解除とデータの削除",
+      "deleteLogReason": "理由を入力します (任意)",
+      "removeFirewallLabel": "Sophos Central から次のファイアウォールが削除されます",
+      "deleteWarningLabel": "このプロセスはログに記録され、元に戻すことはできません",
       "logDeleteInfoLabel": "ログの削除は、終了するまで 1日かかることがあります。",
       "reclaimDialogWarning": "警告: ライセンスを無償版に変更すると、Advanced 版なるレポート機能をデバイスで使用できなくなります。無償版ではストレージ容量に制限があり、無償版の機能を使用できます",
       "reclaimDialogNote": "無償版に切り替えると、このデバイスに対して保存されている既存のログとレポートが削除されます。購入済み容量、および使用済み容量はすべて利用可能になります。",
@@ -175,6 +174,9 @@
       "allocateTooltipText": "詳細は次をご覧ください:",
       "thisPageText": "このページ",
       "full": "Advanced",
+      "tableNote": "以下の + / - カウンタを使用して、Firewall Reporting ライセンスの割り当てを管理できます。",
+      "transferNote": "注: 古いデバイスは非アクティブとしてマークされ、Sophos Central にデータを送信しなくなります。",
+      "deleteDataWarningLabel": "すべてのデータが削除されます。",
       "features": {
         "freeFeatureItems": {
           "title": "無償版の機能",
@@ -198,14 +200,14 @@
       },
       "table": {
         "serial": "デバイスのシリアル番号",
-        "serialOrName": "デバイスのシリアル番号/名前",
+        "device": "デバイス",
         "model": "機種",
         "deviceName": "デバイス名",
         "ip": "IP",
         "centralStorageUsed": "Central ストレージの使用量",
         "allocateLicenses": "ライセンスの割り当て",
-        "projected": "予測",
-        "oldestAvailData": "使用可能な最も古いデータ",
+        "estimated": "ストレージの推定サイズ",
+        "oldestSavedData": "最も古い保存データ",
         "tier": "レベル",
         "actions": "アクション",
         "haStatus": "HA ステータス"
@@ -253,7 +255,7 @@
       "filters": {
         "title": "フィルタ",
         "dateRangeTitle": "期間",
-        "queryCriteriaTitle": "クエリの絞り込み",
+        "queryCriteriaTitle": "クエリ",
         "reportBy": "報告者名",
         "dateFormat": "日付の形式",
         "oneHour": "過去 1時間",
@@ -290,7 +292,11 @@
           "exportSchedule": "スケジュールのエクスポート",
           "createdBy": "作成者",
           "actions": "アクション"
-        }
+        },
+        "deleteTemplatesSuccess": "テンプレートが削除されました",
+        "deleteTemplatesWarning": "いくつかのテンプレートの削除に失敗しました",
+        "templateSelectionMessage": "{{selectedTemplateCount}}個のテンプレートが選択されました",
+        "tooManyTemplateSelectionMessage": "{{selectedTemplateCount}}個のテンプレートが選択されていますが、一度に削除できるテンプレートの数は最大 {{limit}}個です"
       },
       "reportConfigs": {
         "myReports": "マイ レポート",
@@ -314,7 +320,8 @@
           "threats_firewall": "ブロックされたファイアウォールのイベント",
           "threats_ips": "IPS 脅威",
           "threats_sandstorm": "Sandstorm 脅威",
-          "threats_antivirus": "ウイルス対策脅威"
+          "threats_antivirus": "ウイルス対策脅威",
+          "blank": ""
         }
       },
       "reportTabs": {
