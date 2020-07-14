@@ -38,7 +38,7 @@
       "description": "Beschreibung",
       "domain": "Domain",
       "download": "Herunterladen",
-      "launch": "Starten",
+      "open": "Offen",
       "more": "mehr",
       "network": "Netzwerk",
       "noData": "Keine Daten zum Anzeigen",
@@ -117,7 +117,7 @@
       "objectionableWebsites": "Unerwünschte Kategorie",
       "policy": "Richtlinie",
       "red": "RED",
-      "riskyAppsSeen": "Riskante Anwendungen gesehen",
+      "riskyApps": "Riskante Anwendungen",
       "sandstormCleaned": "Von Sandstorm bereinigt",
       "security": "Sicherheit",
       "vpn": "VPN",
@@ -135,7 +135,7 @@
     },
     "licensing": {
       "areYouSure": "Möchten Sie die Änderungen wirklich speichern?",
-      "transferDropdownDefaultText": "Gerät wählen",
+      "transferDropdownDefaultText": "Austauschgerät wählen",
       "pageTitle": "Lizenzen",
       "tabTitle": "Firewalls",
       "licInfo": "Lizenzen in Verwendung/verfügbar",
@@ -143,20 +143,19 @@
       "licExpirationInfo": "Ablaufdatum Firewall Reporting",
       "manageCentralLicensesBtn": "Produktlizenzen verwalten",
       "projectedTooltip": "Hierbei handelt es sich um den anhand von eingehender Protokollrate und zugewiesenem Speicher prognostizierten Datenvorhaltungszeitrum.",
-      "transferText": "Reporting-Lizenz übertragen",
-      "reclaimText": "Reporting-Lizenz zurückfordern",
+      "transferText": "Lizenzen und Daten mit dem Austauschgerät verknüpfen",
+      "reclaimText": "Alle Lizenzen zurückfordern (konvertieren zu „kostenlos“)",
       "deleteLogText": "Protokolldaten löschen",
-      "removeFirewallText": "Firewall aus Sophos Central entfernen",
-      "transferDialogTitle": "Reporting-Lizenz übertragen",
+      "removeFirewallText": "Protokolldaten löschen und Registrierung bei Sophos Central löschen",
       "reclaimDialogTitle": "Reporting-Lizenz zurückfordern",
       "moveFullToFreeLabel": "Geräte von „Advanced“ nach „Kostenlos“ verschieben",
-      "transferLabel": "Dadurch wird die Lizenz übertragen",
+      "transferLabel": "Lizenzen und Daten verknüpfen mit",
       "removeFirewallDialogTitle": "Firewall(s) entfernen",
       "deleteLogLabel": "Wollen Sie die Protokolldaten für dieses Gerät wirklich löschen?",
-      "deleteAllDataButton": "Alle Daten löschen?",
-      "removeDeviceDataButton": "Alle Daten entfernen und löschen?",
+      "deleteAllDataButton": "Alle Daten löschen",
+      "removeDeviceDataButton": "Alle Daten entfernen und löschen",
       "deleteLogReason": "Geben Sie einen Grund ein (optional)",
-      "removeFirewallLabel": "Dieser Vorgang löscht alle mit diesem Gerät verknüpften Daten und entfernt sie aus Sophos Central. Möchten Sie wirklich fortfahren?",
+      "removeFirewallLabel": "Die folgenden Firewalls werden aus Sophos Central entfernt",
       "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig  gemacht werden",
       "logDeleteInfoLabel": "Das Löschen des Protokolls kann einen Tag dauern.",
       "reclaimDialogWarning": "Achtung: Das Ändern der Lizenz in „Kostenlos“, wird ein Gerät aus den Advanced Reporting-Funktionen entfernen. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
@@ -175,6 +174,9 @@
       "allocateTooltipText": "Weitere Informationen finden Sie hier ",
       "thisPageText": "diese Seite",
       "full": "Erweitert:",
+      "tableNote": "Verwenden Sie die folgenden +/- Zähler, um die Firewall-Reporting Lizenzzuweisung zu verwalten.",
+      "transferNote": "Hinweis: Das alte Gerät wird als inaktiv markiert und sendet keine Daten mehr an Sophos Central.",
+      "deleteDataWarningLabel": "Alle Daten werden gelöscht.",
       "features": {
         "freeFeatureItems": {
           "title": "Kostenlose Funktionen",
@@ -198,14 +200,14 @@
       },
       "table": {
         "serial": "Seriennummer des Geräts",
-        "serialOrName": "Seriennummer/Name des Geräts",
+        "device": "Gerät",
         "model": "Modell",
         "deviceName": "Gerätename",
         "ip": "IP",
         "centralStorageUsed": "Verwendeter Central Storage",
         "allocateLicenses": "Lizenzen zuteilen",
-        "projected": "Projiziert",
-        "oldestAvailData": "Älteste verfügbare Daten",
+        "estimated": "Geschätzter Speicher",
+        "oldestSavedData": "Älteste gespeicherte Daten",
         "tier": "Programmstufe",
         "actions": "Aktionen",
         "haStatus": "HA-Status"
@@ -253,7 +255,7 @@
       "filters": {
         "title": "Filter",
         "dateRangeTitle": "Zeitrahmen",
-        "queryCriteriaTitle": "Filter-Abfrage",
+        "queryCriteriaTitle": "Anfrage",
         "reportBy": "Gemeldet von",
         "dateFormat": "Datumsformat",
         "oneHour": "Letzte 1 Stunde",
@@ -290,7 +292,11 @@
           "exportSchedule": "Zeitplan exportieren",
           "createdBy": "Erstellt von",
           "actions": "Aktionen"
-        }
+        },
+        "deleteTemplatesSuccess": "Vorlagen wurden gelöscht",
+        "deleteTemplatesWarning": "Fehler beim Löschen einiger Vorlagen",
+        "templateSelectionMessage": "Sie haben {{selectedTemplateCount}} Vorlagen ausgewählt",
+        "tooManyTemplateSelectionMessage": "Sie können maximal {{limit}} Vorlagen gleichzeitig löschen, aber Sie haben {{selectedTemplateCount}} Vorlagen ausgewählt"
       },
       "reportConfigs": {
         "myReports": "Meine Berichte",
@@ -314,7 +320,8 @@
           "threats_firewall": "Blockierte Firewall-Ereignisse",
           "threats_ips": "IPS-Bedrohungen",
           "threats_sandstorm": "Sandstorm-Bedrohungen",
-          "threats_antivirus": "Antivirus-Bedrohungen"
+          "threats_antivirus": "Antivirus-Bedrohungen",
+          "blank": ""
         }
       },
       "reportTabs": {

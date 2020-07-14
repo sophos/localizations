@@ -38,7 +38,7 @@
       "description": "설명",
       "domain": "도메인",
       "download": "다운로드",
-      "launch": "실행",
+      "open": "열기",
       "more": "자세히",
       "network": "네트워크",
       "noData": "표시할 데이터 없음",
@@ -117,7 +117,7 @@
       "objectionableWebsites": "유해한 범주",
       "policy": "정책",
       "red": "RED",
-      "riskyAppsSeen": "위험한 앱 표시",
+      "riskyApps": "위험 앱",
       "sandstormCleaned": "Sandstorm 정리됨",
       "security": "보안",
       "vpn": "VPN",
@@ -135,7 +135,7 @@
     },
     "licensing": {
       "areYouSure": "변경 사항을 저장하시겠습니까?",
-      "transferDropdownDefaultText": "장치 선택",
+      "transferDropdownDefaultText": "교체 장치 선택",
       "pageTitle": "라이선싱",
       "tabTitle": "방화벽",
       "licInfo": "사용된 라이선스/사용 가능",
@@ -143,20 +143,19 @@
       "licExpirationInfo": "방화벽 보고 만료 날짜",
       "manageCentralLicensesBtn": "제품 라이선스 관리",
       "projectedTooltip": "평균 수신 로그 속도와 할당된 스토리지를 기준으로 한 예상 데이터 보존 기간입니다.",
-      "transferText": "보고 라이선스 전송",
-      "reclaimText": "보고 라이선스 회수",
+      "transferText": "교체 장치에 라이선스 및 데이터 연결",
+      "reclaimText": "모든 라이선스 회수(무료로 전환)",
       "deleteLogText": "로그 데이터 삭제",
-      "removeFirewallText": "Sophos Central에서 방화벽 제거",
-      "transferDialogTitle": "보고 라이선스 전송",
+      "removeFirewallText": "Sophos Central에서 로그 데이터를 삭제하고 등록 해제",
       "reclaimDialogTitle": "보고 라이선스 회수",
       "moveFullToFreeLabel": "장치를 고급 라이선스에서 무료 라이선스로 이동",
-      "transferLabel": "그러면 라이선스가 전송됩니다.",
+      "transferLabel": "다음에 라이선스 및 데이터 연결:",
       "removeFirewallDialogTitle": "방화벽 제거",
       "deleteLogLabel": "이 장치에 대한 로그 데이터를 삭제하시겠습니까?",
-      "deleteAllDataButton": "모든 데이터를 삭제하시겠습니까?",
-      "removeDeviceDataButton": "모든 데이터를 제거 및 삭제하시겠습니까?",
+      "deleteAllDataButton": "모든 데이터 삭제",
+      "removeDeviceDataButton": "모든 데이터 제거 및 삭제",
       "deleteLogReason": "이유 입력(선택사항)",
-      "removeFirewallLabel": "이 프로세스는 이 장치와 연결된 모든 데이터를 삭제하고 Sophos Central에서 제거합니다. 계속하시겠습니까?",
+      "removeFirewallLabel": "다음 방화벽이 Sophos Central에서 제거됩니다.",
       "deleteWarningLabel": "이 프로세스는 기록되고 되돌릴 수 없습니다.",
       "logDeleteInfoLabel": "로그 삭제를 완료하는 데 하루가 걸릴 수 있습니다.",
       "reclaimDialogWarning": "경고: 라이선스를 무료로 변경하면 고급 보고 기능에서 장치가 제거됩니다. 무료 계층은 제한된 저장 용량과 무료 계층 기능을 제공합니다.",
@@ -175,6 +174,9 @@
       "allocateTooltipText": "자세한 내용을 보려면 다음을 방문하십시오.",
       "thisPageText": "이 페이지",
       "full": "고급",
+      "tableNote": "아래의 + / - 카운터를 사용하여 방화벽 보고 라이선스 할당을 관리합니다.",
+      "transferNote": "참고: 오래된 장치는 비활성으로 표시되며 더 이상 Sophos Central로 데이터를 보내지 않습니다.",
+      "deleteDataWarningLabel": "모든 데이터가 삭제됩니다.",
       "features": {
         "freeFeatureItems": {
           "title": "무료 기능",
@@ -198,14 +200,14 @@
       },
       "table": {
         "serial": "장치 시리얼",
-        "serialOrName": "장치 일련 번호/이름",
+        "device": "장치",
         "model": "모델",
         "deviceName": "장치 이름",
         "ip": "IP",
         "centralStorageUsed": "Central 저장소 사용됨",
         "allocateLicenses": "라이선스 할당",
-        "projected": "예상",
-        "oldestAvailData": "사용 가능한 가장 오래된 항목 데이터",
+        "estimated": "추정 스토리지",
+        "oldestSavedData": "가장 오래된 저장 데이터",
         "tier": "계층",
         "actions": "작업",
         "haStatus": "HA 상태"
@@ -253,7 +255,7 @@
       "filters": {
         "title": "필터",
         "dateRangeTitle": "시간 프레임",
-        "queryCriteriaTitle": "필터 쿼리",
+        "queryCriteriaTitle": "쿼리",
         "reportBy": "보고자",
         "dateFormat": "날짜 형식",
         "oneHour": "지난 1시간",
@@ -290,7 +292,11 @@
           "exportSchedule": "내보내기 일정",
           "createdBy": "만든 사람",
           "actions": "조치"
-        }
+        },
+        "deleteTemplatesSuccess": "템플릿이 삭제되었습니다.",
+        "deleteTemplatesWarning": "일부 템플릿을 삭제하지 못함",
+        "templateSelectionMessage": "{{selectedTemplateCount}}개의 템플릿을 선택했습니다.",
+        "tooManyTemplateSelectionMessage": "한 번에 최대 {{limit}}개의 템플릿을 삭제할 수 있지만 {{selectedTemplateCount}}개의 템플릿을 선택했습니다."
       },
       "reportConfigs": {
         "myReports": "내 보고서",
@@ -314,7 +320,8 @@
           "threats_firewall": "방화벽이 이벤트를 차단함",
           "threats_ips": "IPS 위협",
           "threats_sandstorm": "Sandstorm 위협",
-          "threats_antivirus": "안티바이러스 위협"
+          "threats_antivirus": "안티바이러스 위협",
+          "blank": ""
         }
       },
       "reportTabs": {
