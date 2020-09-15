@@ -76,7 +76,7 @@
       "total": "合計",
       "type": "種類",
       "upload": "アップロード",
-      "update": "更新情報",
+      "update": "更新",
       "generate": "生成",
       "username": "ユーザー名",
       "waitingForData": "データを待機中...",
@@ -152,7 +152,7 @@
       "manageCentralLicensesBtn": "製品ライセンスの管理",
       "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
       "transferText": "ライセンスとデータの交換デバイスへの関連付け",
-      "reclaimText": "すべてのライセンスの再確保（無償版への切り替え）",
+      "reclaimText": "すべてのライセンスの再確保 (無償版への切り替え)",
       "deleteLogText": "ログデータの削除",
       "removeFirewallText": "ログデータの削除と Sophos Central からの登録解除",
       "reclaimDialogTitle": "レポートライセンスの再確保",
@@ -196,14 +196,14 @@
           "title": "Advanced 版の機能",
           "feature1": "データの保時期間を 1年間に延長",
           "feature2": "Syslog の検索と表示",
-          "feature3": "Sophos Central でのオンデマンドのレポート"
+          "feature3": "Sophos Central でのオンデマンドのレポート",
+          "feature4": "レポートのダウンロード (PDF、HTML、CSV)",
+          "feature5": "レポートのスケジュール化",
+          "feature6": "レポートの保存"
         },
         "plannedFeatureItems": {
           "title": "予定されている機能",
-          "feature1": "レポートのダウンロード (PDF、HTML、CSV)",
-          "feature2": "レポートのスケジュール化",
-          "feature3": "レポートの保存",
-          "feature4": "Sophos Central レポートへの API アクセス"
+          "feature1": "Sophos Central レポートへの API アクセス"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "注: リクエストは、24時間後に自動的に削除されます",
         "offlineInfoBarMessage": "<strong>{{sortColumnName}}</strong> で並べ替えた、最高 {{maxAsyncRecords}}件の結果を表示。生成日: <strong>{{creationDate}}</strong>",
         "messages": {
+          "deleteSuccess": "リクエストが削除されました",
+          "deleteWarning": "リクエストの削除に失敗しました",
           "unableToSearchRequest": "レポートの取得中に問題が発生しました。なお、別のレポートを開始できます",
           "tooManyAsyncRequest": "許可されている保留中のリクエストの上限 {{limit}}件を超えているため、新しいリクエストを作成できません",
           "duplicateRequest": "リクエストは作成されませんでした: 似たようなフィルタ条件のあるリクエストを見つけました。既存のリクエストに移動します",
@@ -248,7 +250,7 @@
         },
         "tableHeaders": {
           "requestedOn": "リクエスト日:",
-          "reportName": "レポート名 [生成日]",
+          "reportName": "レポート名 [生成時刻]",
           "firewalls": "ファイアウォールまたはグループ",
           "actions": "アクション"
         }
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "{{selectedTemplateCount}}個のテンプレートが選択されていますが、一度に削除できるテンプレートの数は最大 {{limit}}個です",
         "templateMetaData": "テンプレートのメタデータ",
         "templateNameRequired": "テンプレート名を指定してください",
-        "templateNamePatternMismatch": " テンプレート名に使用できる特殊文字は「. , -」のみです ",
+        "templateNamePatternMismatch": "テンプレート名に使用できる特殊文字は「.」「,」「-」のみです",
         "templateNameMaxLength": "テンプレート名は、最大半角 64文字まで入力可能です。",
         "search": "検索"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "{{from}} ～ {{to}} の結果がフィルタリング表示されます",
         "generating": "生成中...",
+        "deleteExportSuccess": "エクスポートが削除されました",
+        "deleteExportWarning": "エクスポートの削除に失敗しました",
         "failed": "失敗"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "帯域使用量",
           "firewall": "ファイアウォール",
           "web": "Web 使用状況",
+          "web-usage": "Web 使用状況",
           "ips": "IPS",
           "sandstorm": "Sandstorm イベント",
           "syslog": "ログビューア＆検索",
+          "syslogview": "ログビューア＆検索",
           "vpn": "VPN 使用状況",
           "antivirus": "ウイルス対策",
           "geoactivity": "脅威 Geo アクティビティ",
+          "geo-activity": "脅威 Geo アクティビティ",
           "threats_events_blocked": "ブロックされた脅威とイベント",
           "threats_web_usage": "ブロックされた Web のイベント",
           "threats_atp": "ATP 脅威",
@@ -353,6 +360,13 @@
           "threats_ips": "IPS 脅威",
           "threats_sandstorm": "Sandstorm 脅威",
           "threats_antivirus": "ウイルス対策脅威",
+          "threats-events-blocked": "ブロックされた脅威とイベント",
+          "threats-web-usage": "ブロックされた Web のイベント",
+          "threats-atp": "ATP 脅威",
+          "threats-firewall": "ブロックされたファイアウォールのイベント",
+          "threats-ips": "IPS 脅威",
+          "threats-sandstorm": "Sandstorm 脅威",
+          "threats-antivirus": "ウイルス対策脅威",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "スケジュールが更新されました",
         "scheduleNotUpdated": "スケジュールは更新されませんでした",
         "scheduleNotCreated": "スケジュールは作成されませんでした",
+        "scheduleNowSuccess": "レポートを処理中です。完了したら、「スケジュール済みエクスポート」タブで取得できます。",
         "exportSchedulingOff": "エクスポートのスケジュールはオフになっています",
         "exportSchedulingOn": "エクスポートのスケジュールはオンになっています",
         "scheduleStats": "管理者が設定できるスケジュール済みエクスポートは、{{limit}}件です。現在、{{count}}件あります。",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "このエクスポートを他のソフォス管理者に送信しますか？",
         "noEmailNotification": "メール通知なし",
         "sendALinkInAnEmail": "メールでリンクを送信",
-        "sendEmailAsAttachmentWithEmail": "メールの添付ファイルとして送信 - 注: 添付ファイルが 9MB を超える場合、エクスポートはメール内のリンクとしてして送信されます",
+        "sendEmailAsAttachmentWithEmail": "メールの添付ファイルとして送信 - 注: 添付ファイルが 9.5MB を超える場合、エクスポートはメール内のリンクとしてして送信されます",
         "daily": "毎日",
         "weekly": "毎週",
         "monthly": "毎月",
@@ -690,7 +705,7 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "リクエストボディの作成が無効です",
-        "DefCreationErrorRSD": "MS のレポートスケジューラで定義作成エラーが発生しました",
+        "DefCreationErrorRSD": "レポートスケジューラで定義作成エラーが発生しました",
         "allDeviceSameLicenseType": "すべてのデバイスに同じ種類のライセンスが適用されている必要があります",
         "reportConfNotValid": "レポート設定が無効です",
         "parentNotFound": "フィールドの親レポート定義が見つかりません",

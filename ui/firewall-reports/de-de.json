@@ -196,14 +196,14 @@
           "title": "Erweiterte Funktionen",
           "feature1": "Erweiterte Vorratsdatenspeicherung bis zu 1 Jahr",
           "feature2": "Syslog-Suche & -Ansicht",
-          "feature3": "On-Demand-Reporting in Sophos Central"
+          "feature3": "On-Demand-Reporting in Sophos Central",
+          "feature4": "Berichte als PDF, HTML oder CSV herunterladen",
+          "feature5": "Zeitgesteuerte Berichte",
+          "feature6": "Speichern von Berichten"
         },
         "plannedFeatureItems": {
           "title": "Geplante Funktionen",
-          "feature1": "Berichte als PDF, HTML oder CSV herunterladen",
-          "feature2": "Zeitgesteuerte Berichte",
-          "feature3": "Speichern von Berichten",
-          "feature4": "API-Zugang zu Sophos Central Reporting"
+          "feature1": "API-Zugang zu Sophos Central Reporting"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "Hinweis: Anfragen werden nach 24 Stunden automatisch gelöscht",
         "offlineInfoBarMessage": "Es werden bis zu {{maxAsyncRecords}} Ergebnisse angezeigt, sortiert nach <strong>{{sortColumnName}}</strong>, erstellt am <strong>{{creationDate}}</strong>",
         "messages": {
+          "deleteSuccess": "Anfrage wurde gelöscht",
+          "deleteWarning": "Löschen der Anfrage fehlgeschlagen",
           "unableToSearchRequest": "Beim Abrufen des Berichts ist ein Problem aufgetreten; Sie können in de Zwischenzeit einen neuen starten",
           "tooManyAsyncRequest": "Sie können keine neuen Anfragen erstellen, da Sie das Limit von {{limit}} ausstehende Anforderungen überschritten haben",
           "duplicateRequest": "Anfrage nicht erstellt: Es wurde eine mit ähnlichen Filterkriterien gefunden. Wir bringen Sie zur bestehenden Anfrage",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "Sie können maximal {{limit}} Vorlagen gleichzeitig löschen, aber Sie haben {{selectedTemplateCount}} Vorlagen ausgewählt",
         "templateMetaData": "Metadaten der Vorlage",
         "templateNameRequired": "Name der Vorlage ist erforderlich",
-        "templateNamePatternMismatch": " Der Name der Vorlage darf nur . , - als Sonderzeichen enthalten",
+        "templateNamePatternMismatch": "Der Vorlagenname darf nur die Sonderzeichen '.', ',' und '-' enthalten",
         "templateNameMaxLength": "Der Name der Vorlage kann maximal 64 Zeichen lang sein",
         "search": "Suche"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "Das filtert die Ergebnisse {{from}} - {{to}}",
         "generating": "Erstellen…",
+        "deleteExportSuccess": "Export wurde gelöscht",
+        "deleteExportWarning": "Löschen des Exports fehlgeschlagen",
         "failed": "Fehlgeschlagen"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "Bandbreitennutzung",
           "firewall": "Firewall",
           "web": "Internetnutzung",
+          "web-usage": "Internetnutzung",
           "ips": "IPS",
           "sandstorm": "Sandstorm-Ereignisse",
           "syslog": "Log Viewer & Suche",
+          "syslogview": "Log Viewer & Suche",
           "vpn": "VPN-Nutzung",
           "antivirus": "Antivirus",
           "geoactivity": "Geo-Aktivität der Bedrohung",
+          "geo-activity": "Geo-Aktivität der Bedrohung",
           "threats_events_blocked": "Bedrohungen & Ereignisse blockiert",
           "threats_web_usage": "Blockierte Web-Ereignisse",
           "threats_atp": "ATP-Bedrohungen",
@@ -353,6 +360,13 @@
           "threats_ips": "IPS-Bedrohungen",
           "threats_sandstorm": "Sandstorm-Bedrohungen",
           "threats_antivirus": "Antivirus-Bedrohungen",
+          "threats-events-blocked": "Bedrohungen & Ereignisse blockiert",
+          "threats-web-usage": "Blockierte Web-Ereignisse",
+          "threats-atp": "ATP-Bedrohungen",
+          "threats-firewall": "Blockierte Firewall-Ereignisse",
+          "threats-ips": "IPS-Bedrohungen",
+          "threats-sandstorm": "Sandstorm-Bedrohungen",
+          "threats-antivirus": "Antivirus-Bedrohungen",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "Updates planen",
         "scheduleNotUpdated": "Zeitplan wurde nicht aktualisiert",
         "scheduleNotCreated": "Zeitplan wurde nicht erstellt",
+        "scheduleNowSuccess": "Ihr Bericht wird bearbeitet. Sie finden den fertigen Bericht im Tab „Geplante Exporte“.",
         "exportSchedulingOff": "Zeitplan exportieren deaktiviert",
         "exportSchedulingOn": "Zeitplan exportieren aktiviert",
         "scheduleStats": "Ihre Organisation kann bis zu {{limit}} geplante Exporte haben. Sie haben derzeit {{count}}.",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "Diesen Export an andere Sophos-Administratoren senden?",
         "noEmailNotification": "Keine E-Mail-Benachrichtigung",
         "sendALinkInAnEmail": "Link in einer E-Mail senden",
-        "sendEmailAsAttachmentWithEmail": "Als E-Mail-Anhang senden - Hinweis: Ist ein Anhang größer als 9 MB, wird der Export über einen Link einer E-Mail gesendet",
+        "sendEmailAsAttachmentWithEmail": "Als E-Mail-Anhang senden - Hinweis: Ist ein Anhang größer als 9,5 MB, wird der Export über einen Link einer E-Mail gesendet",
         "daily": "Täglich",
         "weekly": "Wöchentlich",
         "monthly": "Monatlich",
@@ -690,13 +705,13 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "Text der Anfrage zum Erstellen ist ungültig",
-        "DefCreationErrorRSD": "Fehler bei der Erstellung der Definition in Report-Scheduler MS",
+        "DefCreationErrorRSD": "Fehler bei der Definitions-Erstellung im Report Scheduler",
         "allDeviceSameLicenseType": "Alle Geräte sollten vom gleichen Lizenztyp sein",
         "reportConfNotValid": "Report-Konfiguration ist ungültig",
         "parentNotFound": "Übergeordnete Berichtsdefinition für Felder nicht gefunden",
         "reportDefIssue": "Berichtsdefinition nicht gefunden oder ein Problem mit dem Report-Scheduler Service",
         "reportTemplateNotFound": "Berichtsvorlage wurde nicht gefunden",
-        "max25ForDelete": "Die Gesamtzahl der zu löschenden Vorlagen sollte nicht mehr als 25 betragen",
+        "max25ForDelete": "Die Gesamtzahl der zu löschenden Vorlagen sollte nicht mehr als 25 sein",
         "invalidTemplates": "Vorlagen sind ungültig",
         "deleteTemplateFailed": "Löschen der Vorlagen fehlgeschlagen",
         "templateIdsBlank": "Berichtsvorlagen-IDs sollten nicht null oder leer sein",

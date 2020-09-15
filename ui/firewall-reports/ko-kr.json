@@ -196,14 +196,14 @@
           "title": "고급 기능",
           "feature1": "최대 1년까지 데이터 보존 기간 연장",
           "feature2": "Syslog 검색 및 보기",
-          "feature3": "Sophos Central의 주문형 보고"
+          "feature3": "Sophos Central의 주문형 보고",
+          "feature4": "보고서(PDF, HTML, CSV) 다운로드",
+          "feature5": "보고서 일정",
+          "feature6": "보고서 저장"
         },
         "plannedFeatureItems": {
           "title": "계획된 기능",
-          "feature1": "보고서(PDF, HTML, CSV) 다운로드",
-          "feature2": "보고서 일정",
-          "feature3": "보고서 저장",
-          "feature4": "Sophos Central 보고에 대한 API 액세스"
+          "feature1": "Sophos Central 보고에 대한 API 액세스"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "참고: 요청은 24시간 후 자동으로 삭제됩니다.",
         "offlineInfoBarMessage": "<strong>{{creationDate}}</strong>에 생성되어 <strong>{{sortColumnName}}</strong>별로 정렬된 최대 {{maxAsyncRecords}}개의 결과 표시",
         "messages": {
+          "deleteSuccess": "요청 삭제됨",
+          "deleteWarning": "요청을 삭제하지 못함",
           "unableToSearchRequest": "보고서를 가져오는 중 문제가 발생했지만, 다른 보고서를 시작할 수 있습니다.",
           "tooManyAsyncRequest": "보류 중인 요청 한계, {{limit}}개를 초과했으므로, 새 요청을 만들 수 없습니다.",
           "duplicateRequest": "요청이 생성되지 않음: 유사한 필터 기준으로 요청을 찾았습니다. 기존 요청으로 이동",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "한 번에 최대 {{limit}}개의 템플릿을 삭제할 수 있지만 {{selectedTemplateCount}}개의 템플릿을 선택했습니다.",
         "templateMetaData": "템플릿 메타데이터",
         "templateNameRequired": "템플릿 이름은 필수입니다.",
-        "templateNamePatternMismatch": " 템플릿 이름에는 특수 문자 . , -만 사용할 수 있습니다.",
+        "templateNamePatternMismatch": "템플릿 이름에는 특수 문자 '.' ',' '-' 만 사용할 수 있습니다.",
         "templateNameMaxLength": "템플릿 이름은 최대 64자까지 입력할 수 있습니다.",
         "search": "검색"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "결과 {{from}} - {{to}}을(를) 필터링합니다.",
         "generating": "생성하는 중...",
+        "deleteExportSuccess": "내보내기 삭제됨",
+        "deleteExportWarning": "내보내기를 삭제하지 못함",
         "failed": "실패"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "대역폭 사용",
           "firewall": "방화벽",
           "web": "웹 사용",
+          "web-usage": "웹 사용",
           "ips": "IPS",
           "sandstorm": "Sandstorm 이벤트",
           "syslog": "로그 뷰어 및 검색",
+          "syslogview": "로그 뷰어 및 검색",
           "vpn": "VPN 사용",
           "antivirus": "바이러스 백신",
           "geoactivity": "지오(GEO) 활동 위협",
+          "geo-activity": "지오(GEO) 활동 위협",
           "threats_events_blocked": "위협 및 이벤트가 차단됨",
           "threats_web_usage": "웹이 이벤트를 차단함",
           "threats_atp": "ATP 위협",
@@ -353,6 +360,13 @@
           "threats_ips": "IPS 위협",
           "threats_sandstorm": "Sandstorm 위협",
           "threats_antivirus": "안티바이러스 위협",
+          "threats-events-blocked": "위협 및 이벤트가 차단됨",
+          "threats-web-usage": "웹이 이벤트를 차단함",
+          "threats-atp": "ATP 위협",
+          "threats-firewall": "방화벽이 이벤트를 차단함",
+          "threats-ips": "IPS 위협",
+          "threats-sandstorm": "Sandstorm 위협",
+          "threats-antivirus": "안티바이러스 위협",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "일정이 업데이트됨",
         "scheduleNotUpdated": "일정이 업데이트되지 않음",
         "scheduleNotCreated": "일정이 생성되지 않음",
+        "scheduleNowSuccess": "보고서가 처리되고 있습니다. 완료되면 ‘예약된 내보내기’ 탭에서 검색합니다.",
         "exportSchedulingOff": "내보내기 일정 끄기",
         "exportSchedulingOn": "내보내기 일정 켜기",
         "scheduleStats": "귀 조직에서는 최대 {{limit}}개의 예약된 내보내기를 보유할 수 있습니다. 현재 {{count}}개를 보유하고 있습니다.",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "이 내보내기를 다른 Sophos 관리자에게 보내시겠습니까?",
         "noEmailNotification": "이메일 알림 없음",
         "sendALinkInAnEmail": "이메일로 링크 보내기",
-        "sendEmailAsAttachmentWithEmail": "이메일 첨부 파일로 보내기 - 참고: 첨부 파일이 9MB를 초과하면 이메일의 링크를 통해 내보내기가 전송됩니다.",
+        "sendEmailAsAttachmentWithEmail": "이메일 첨부 파일로 보내기 - 참고: 첨부 파일이 9.5MB를 초과하면 이메일의 링크를 통해 내보내기가 전송됩니다.",
         "daily": "매일",
         "weekly": "매주",
         "monthly": "매월",
@@ -690,7 +705,7 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "생성 요청 본문이 유효하지 않음",
-        "DefCreationErrorRSD": "보고서-스케줄러 MS에 정의 생성 오류 발생",
+        "DefCreationErrorRSD": "보고서 스케줄러에 정의 생성 오류 발생",
         "allDeviceSameLicenseType": "모든 장치의 라이선스 유형은 동일해야 함",
         "reportConfNotValid": "보고서 구성이 유효하지 않음",
         "parentNotFound": "필드에서 상위 보고서 정의를 찾을 수 없음",
@@ -699,7 +714,7 @@
         "max25ForDelete": "템플릿 삭제 총 횟수는 25회를 초과해서는 안 됨",
         "invalidTemplates": "템플릿이 유효하지 않음",
         "deleteTemplateFailed": "템플릿을 삭제하지 못함",
-        "templateIdsBlank": "보고서 템플릿 ID가 Null이어서는 안 되고 비어 있어서도 안 됨",
+        "templateIdsBlank": "보고서 템플릿 ID가 Null이거나 비어 있어서는 안 됨",
         "templateDoesNotExist": "템플릿이 존재하지 않음",
         "updateReqBodyNotValid": "업데이트 요청 본문이 유효하지 않음",
         "duplicateTemplateName": "템플릿 이름이 이미 사용 중임",

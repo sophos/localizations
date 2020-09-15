@@ -196,14 +196,14 @@
           "title": "Funciones de Advanced",
           "feature1": "Retención de datos ampliada hasta 1 año",
           "feature2": "Búsqueda y visualización de syslog",
-          "feature3": "Informes bajo demanda en Sophos Central"
+          "feature3": "Informes bajo demanda en Sophos Central",
+          "feature4": "Descargar informes en PDF, HTML y CSV",
+          "feature5": "Programación de informes",
+          "feature6": "Guardar informes"
         },
         "plannedFeatureItems": {
           "title": "Funciones planificadas",
-          "feature1": "Descargar informes en PDF, HTML y CSV",
-          "feature2": "Programación de informes",
-          "feature3": "Guardar informes",
-          "feature4": "Acceso de la API a Sophos Central Reporting"
+          "feature1": "Acceso de la API a Sophos Central Reporting"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "Notas: Las solicitudes se eliminan automáticamente después de 24 horas",
         "offlineInfoBarMessage": "Mostrando hasta {{maxAsyncRecords}} resultados ordenados por <strong>{{sortColumnName}}</strong>, generados el <strong>{{creationDate}}</strong>",
         "messages": {
+          "deleteSuccess": "Se ha eliminado la solicitud",
+          "deleteWarning": "No se ha podido eliminar la solicitud",
           "unableToSearchRequest": "Se ha producido un problema al recuperar el informe; puede iniciar otro mientras tanto",
           "tooManyAsyncRequest": "No puede crear nuevas solicitudes porque ha superado el límite de {{limit}} solicitudes pendientes",
           "duplicateRequest": "Solicitud no creada: se ha encontrado una con criterios de filtro similares. Dirigiéndole a la solicitud existente",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "Puede eliminar un máximo de {{limit}} plantillas a la vez y ha seleccionado {{selectedTemplateCount}} plantilla(s)",
         "templateMetaData": "Metadatos de plantilla",
         "templateNameRequired": "Se requiere un nombre para la plantilla",
-        "templateNamePatternMismatch": " El nombre de la plantilla solo puede tener . , - como caracteres especiales",
+        "templateNamePatternMismatch": "El nombre de la plantilla solo puede tener '.' ',' '-' como caracteres especiales",
         "templateNameMaxLength": "El nombre de la plantilla puede tener un máximo de 64 caracteres",
         "search": "Buscar"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "Esto filtrará los resultados {{from}} - {{to}}",
         "generating": "Generando...",
+        "deleteExportSuccess": "Se ha eliminado la exportación",
+        "deleteExportWarning": "No se ha podido eliminar la exportación",
         "failed": "Error"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "Uso de ancho de banda",
           "firewall": "Firewall",
           "web": "Uso de Internet",
+          "web-usage": "Uso de Internet",
           "ips": "Sistema de prevención de intrusiones",
           "sandstorm": "Eventos de Sandstorm",
           "syslog": "Visor de registros y búsqueda",
+          "syslogview": "Visor de registros y búsqueda",
           "vpn": "Uso de VPN",
           "antivirus": "Antivirus",
           "geoactivity": "Actividad geográfica de la amenaza",
+          "geo-activity": "Actividad geográfica de la amenaza",
           "threats_events_blocked": "Amenazas y eventos bloqueados",
           "threats_web_usage": "Eventos de contenido web bloqueados",
           "threats_atp": "Amenazas ATP",
@@ -353,6 +360,13 @@
           "threats_ips": "Amenazas IPS",
           "threats_sandstorm": "Amenazas de Sandstorm",
           "threats_antivirus": "Amenazas antivirus",
+          "threats-events-blocked": "Amenazas y eventos bloqueados",
+          "threats-web-usage": "Eventos de contenido web bloqueados",
+          "threats-atp": "Amenazas ATP",
+          "threats-firewall": "Eventos de tráfico del firewall bloqueados",
+          "threats-ips": "Amenazas IPS",
+          "threats-sandstorm": "Amenazas de Sandstorm",
+          "threats-antivirus": "Amenazas antivirus",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "Programación actualizada",
         "scheduleNotUpdated": "Programación no actualizada",
         "scheduleNotCreated": "Programación no creada",
+        "scheduleNowSuccess": "Su informe se está procesando. Una vez se haya completado, recupérelo de la ficha Exportaciones programadas.",
         "exportSchedulingOff": "Programación de exportación desactivada",
         "exportSchedulingOn": "Programación de exportación activada",
         "scheduleStats": "Su empresa puede tener hasta {{limit}} exportaciones programadas. Actualmente tiene {{count}}.",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "¿Enviar esta exportación a otros administradores de Sophos?",
         "noEmailNotification": "Sin notificación por correo electrónico",
         "sendALinkInAnEmail": "Enviar un enlace en un correo electrónico",
-        "sendEmailAsAttachmentWithEmail": "Enviar como archivo adjunto de correo electrónico - Nota: si el adjunto tiene más de 9 MB, la exportación se enviará por medio de un enlace en un correo electrónico",
+        "sendEmailAsAttachmentWithEmail": "Enviar como archivo adjunto de correo electrónico - Nota: si el adjunto tiene más de 9,5 MB, la exportación se enviará por medio de un enlace en un correo electrónico",
         "daily": "Diariamente",
         "weekly": "Semanal",
         "monthly": "Mensual",
@@ -690,13 +705,13 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "El cuerpo de la solicitud de creación no es válido",
-        "DefCreationErrorRSD": "Error de creación de la definición en el MS del programador de informes",
+        "DefCreationErrorRSD": "Error de creación de la definición en el programador de informes",
         "allDeviceSameLicenseType": "Todos los dispositivos deben tener el mismo tipo de licencia",
         "reportConfNotValid": "La configuración de informes no es válida",
         "parentNotFound": "No se ha encontrado la definición de informe principal para los campos",
         "reportDefIssue": "No se ha encontrado la definición de informe o se ha producido algún problema con el servicio del programador de informes",
         "reportTemplateNotFound": "No se encuentra la plantilla de informe",
-        "max25ForDelete": "El número total de plantillas eliminadas no puede ser superior a 25",
+        "max25ForDelete": "El número total de plantillas para eliminarse no puede ser superior a 25",
         "invalidTemplates": "Las plantillas no son válidas",
         "deleteTemplateFailed": "No se han podido eliminar las plantillas",
         "templateIdsBlank": "Los ID de las plantillas de informe no pueden ser nulos ni estar vacíos",
