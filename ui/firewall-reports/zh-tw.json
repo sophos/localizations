@@ -196,14 +196,14 @@
           "title": "進階功能",
           "feature1": "資料保留延長為 1 年",
           "feature2": "Syslog 搜尋與檢視",
-          "feature3": "Sophos Central 中的隨選報告"
+          "feature3": "Sophos Central 中的隨選報告",
+          "feature4": "以 PDF、HTML 和 CSV 格式下載報告",
+          "feature5": "報告排程",
+          "feature6": "報告儲存"
         },
         "plannedFeatureItems": {
           "title": "計劃功能",
-          "feature1": "以 PDF、HTML 和 CSV 格式下載報告",
-          "feature2": "報告排程",
-          "feature3": "報告儲存",
-          "feature4": "Sophos Central 報告的 API 存取"
+          "feature1": "Sophos Central 報告的 API 存取"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "注意: 請求會在 24 小時後自動刪除。",
         "offlineInfoBarMessage": "最多顯示 {{maxAsyncRecords}} 項結果，依 <strong>{{sortColumnName}}</strong> 排序，於 <strong>{{creationDate}}</strong> 產生",
         "messages": {
+          "deleteSuccess": "請求已刪除",
+          "deleteWarning": "無法刪除請求",
           "unableToSearchRequest": "擷取報告發生問題，同時您可以開始另一份報告",
           "tooManyAsyncRequest": "您無法建立新請求，因為已超過 {{limit}} 項處理中請求的限制",
           "duplicateRequest": "未建立請求：找到一個篩選條件類似的項目。現在引導您導覽現有請求",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "您一次最多可以刪除 {{limit}} 個範本，但您已選取 {{selectedTemplateCount}} 個範本",
         "templateMetaData": "範本中繼資料",
         "templateNameRequired": "範本名稱是必填項",
-        "templateNamePatternMismatch": " 範本名稱只可以 . , - 作為特殊字元",
+        "templateNamePatternMismatch": "範本名稱只可以 '.’',' '-' 作為特殊字元",
         "templateNameMaxLength": "範本名稱最多可包括 64 個字元",
         "search": "尋找"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "這將篩選結果 {{from}} - {{to}}",
         "generating": "正在產生...",
+        "deleteExportSuccess": "匯出已刪除",
+        "deleteExportWarning": "無法刪除匯出",
         "failed": "失敗"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "頻寬使用狀況",
           "firewall": "防火牆",
           "web": "網頁使用情況",
+          "web-usage": "網頁使用情況",
           "ips": "IPS",
           "sandstorm": "Sandstorm 事件",
           "syslog": "日誌檢視器及搜尋",
+          "syslogview": "日誌檢視器及搜尋",
           "vpn": "VPN 使用情況",
           "antivirus": "防病毒",
           "geoactivity": "威脅地緣活動",
+          "geo-activity": "威脅地緣活動",
           "threats_events_blocked": "遭攔截威脅和事件",
           "threats_web_usage": "網頁攔截的事件",
           "threats_atp": "ATP 威脅",
@@ -353,6 +360,13 @@
           "threats_ips": "IPS 威脅",
           "threats_sandstorm": "Sandstorm 威脅",
           "threats_antivirus": "防病毒威脅",
+          "threats-events-blocked": "遭攔截威脅和事件",
+          "threats-web-usage": "網頁攔截的事件",
+          "threats-atp": "ATP 威脅",
+          "threats-firewall": "防火墻攔截的事件",
+          "threats-ips": "IPS 威脅",
+          "threats-sandstorm": "Sandstorm 威脅",
+          "threats-antivirus": "防病毒威脅",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "排程已更新",
         "scheduleNotUpdated": "未更新排程",
         "scheduleNotCreated": "未建立排程",
+        "scheduleNowSuccess": "您的報告正在處理中。當完成時，從「排程匯出」索引標籤擷取它。",
         "exportSchedulingOff": "匯出排程關閉",
         "exportSchedulingOn": "匯出排程開啟",
         "scheduleStats": "貴組織可擁有至多 {{limit}} 個排程匯出。您目前有 {{count}}。",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "是否傳送此匯出至其他 Sophos Admin？",
         "noEmailNotification": "無電子郵件通知",
         "sendALinkInAnEmail": "透過電子郵件傳送連結",
-        "sendEmailAsAttachmentWithEmail": "以電子郵件附加檔傳送 - 注意：如果附加檔大於 9 MB，將會在電子郵件中以連結形式傳送匯出",
+        "sendEmailAsAttachmentWithEmail": "以電子郵件附加檔傳送 - 注意：如果附加檔大於 9.5 MB，將會在電子郵件中以連結形式傳送匯出",
         "daily": "每天",
         "weekly": "每週",
         "monthly": "每月",
@@ -690,7 +705,7 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "建立請求主體無效",
-        "DefCreationErrorRSD": "報告排程器 MS 中的定義建立錯誤",
+        "DefCreationErrorRSD": "報告排程器中的定義建立錯誤",
         "allDeviceSameLicenseType": "所有裝置應當為同一授權類型",
         "reportConfNotValid": "報告設定無效",
         "parentNotFound": "未找到欄位的上層報告定義",

@@ -196,14 +196,14 @@
           "title": "Recursos avançados",
           "feature1": "Retenção de dados estendida até 1 ano",
           "feature2": "Pesquisa e exibição de syslog",
-          "feature3": "Emissão de relatório por demanda no Sophos Central"
+          "feature3": "Emissão de relatório por demanda no Sophos Central",
+          "feature4": "Download de relatórios em PDF, HTML e CSV",
+          "feature5": "Agendamento de relatório",
+          "feature6": "Salvamento de relatório"
         },
         "plannedFeatureItems": {
           "title": "Recursos planejados",
-          "feature1": "Download de relatórios em PDF, HTML e CSV",
-          "feature2": "Agendamento de relatório",
-          "feature3": "Salvamento de relatório",
-          "feature4": "Acesso à API para emissão de relatórios do Sophos Central"
+          "feature1": "Acesso à API para emissão de relatórios do Sophos Central"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "Nota: As solicitações são deletadas automaticamente após 24 horas",
         "offlineInfoBarMessage": "Exibindo até {{maxAsyncRecords}} resultados, classificados por <strong>{{sortColumnName}}</strong>, gerados em <strong>{{creationDate}}</strong>",
         "messages": {
+          "deleteSuccess": "A solicitação foi deletada",
+          "deleteWarning": "Falha ao deletar a solicitação",
           "unableToSearchRequest": "Ocorreu um problema durante a busca no relatório; enquanto aguarda, você pode iniciar outro",
           "tooManyAsyncRequest": "Você não pode criar novas solicitações, pois ultrapassou o limite de {{limit}} solicitações pendentes",
           "duplicateRequest": "A solicitação não foi criada: Encontramos uma com critérios de filtro semelhantes. Navegando para a solicitação existente",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "Você pode deletar o máximo de {{limit}} modelos por vez, mas você selecionou {{selectedTemplateCount}} modelo(s)",
         "templateMetaData": "Metadados do modelo",
         "templateNameRequired": "É necessário um nome de modelo",
-        "templateNamePatternMismatch": " O nome do modelo só pode ter . , - como caracteres especiais",
+        "templateNamePatternMismatch": "O nome do modelo só pode ter '.' ',' '-' como caracteres especiais",
         "templateNameMaxLength": "O nome do modelo pode ter, no máximo, 64 caracteres",
         "search": "Pesquisar"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "Isso filtrará resultados {{from}} - {{to}}",
         "generating": "Gerando...",
+        "deleteExportSuccess": "A exportação foi deletada",
+        "deleteExportWarning": "Falha ao deletar a exportação",
         "failed": "Falhou"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "Uso da largura de banda",
           "firewall": "Firewall",
           "web": "Uso da Web",
+          "web-usage": "Uso da Web",
           "ips": "IPS",
           "sandstorm": "Eventos Sandstorm",
           "syslog": "Pesquisa e visualizador de log",
+          "syslogview": "Pesquisa e visualizador de log",
           "vpn": "Uso de VPN",
           "antivirus": "Antivírus",
           "geoactivity": "Atividade geográfica da ameaça",
+          "geo-activity": "Atividade geográfica da ameaça",
           "threats_events_blocked": "Ameaças e eventos bloqueados",
           "threats_web_usage": "Eventos da web bloqueados",
           "threats_atp": "Ameaças ATP",
@@ -353,6 +360,13 @@
           "threats_ips": "Ameaças a IPS",
           "threats_sandstorm": "Ameaças a Sandstorm",
           "threats_antivirus": "Ameaças a antivírus",
+          "threats-events-blocked": "Ameaças e eventos bloqueados",
+          "threats-web-usage": "Eventos da web bloqueados",
+          "threats-atp": "Ameaças ATP",
+          "threats-firewall": "Eventos de firewall bloqueados",
+          "threats-ips": "Ameaças a IPS",
+          "threats-sandstorm": "Ameaças a Sandstorm",
+          "threats-antivirus": "Ameaças a antivírus",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "Agenda atualizada",
         "scheduleNotUpdated": "A agenda não foi atualizada",
         "scheduleNotCreated": "A agenda não foi criada",
+        "scheduleNowSuccess": "Seu relatório está sendo processado. Quando concluído, acesse-o na guia Exportações agendadas.",
         "exportSchedulingOff": "Agenda de exportação desativada",
         "exportSchedulingOn": "Agenda de exportação ativada",
         "scheduleStats": "Sua organização pode ter até {{limit}} exportações agendadas. No momento você tem {{count}}.",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "Enviar esta exportação para outros administradores Sophos?",
         "noEmailNotification": "Sem e-mail de notificação",
         "sendALinkInAnEmail": "Enviar link por e-mail",
-        "sendEmailAsAttachmentWithEmail": "Enviar anexo por e-mail - Nota: se o anexo tiver mais de 9 MB, a exportação será enviada por um link no e-mail",
+        "sendEmailAsAttachmentWithEmail": "Enviar anexo por e-mail - Nota: se o anexo tiver mais de 9,5 MB, a exportação será enviada por um link no e-mail",
         "daily": "Diária",
         "weekly": "Semanal",
         "monthly": "Mensal",
@@ -690,13 +705,13 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "O corpo da solicitação Criar não é válido",
-        "DefCreationErrorRSD": "Erro de criação de definição no agendador de relatórios MS",
+        "DefCreationErrorRSD": "Erro de criação de definição no agendador de relatório",
         "allDeviceSameLicenseType": "Todos os dispositivos devem ter o mesmo tipo de licença",
         "reportConfNotValid": "A configuração do relatório não é válida",
         "parentNotFound": "Definição do relatório matriz não encontrada para os campos",
         "reportDefIssue": "Definição do relatório não encontrada ou algum problema com o serviço agendador de relatório",
         "reportTemplateNotFound": "Modelo de relatório não encontrado",
-        "max25ForDelete": "O número total de modelos deletados não pode ser mais do que 25",
+        "max25ForDelete": "O número total de modelos para deletar não pode ser mais do que 25",
         "invalidTemplates": "Os modelos não são válidos",
         "deleteTemplateFailed": "Não foi possível deletar os modelos",
         "templateIdsBlank": "O ID dos modelos de relatório não pode ser nulo nem vazio",

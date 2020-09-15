@@ -196,14 +196,14 @@
           "title": "Fonctions avancées",
           "feature1": "Rétention des données étendue jusqu’à 1 an",
           "feature2": "Recherche et visualisation du syslog",
-          "feature3": "Rapports à la demande dans Sophos Central"
+          "feature3": "Rapports à la demande dans Sophos Central",
+          "feature4": "Télécharger les rapports aux formats PDF, HTML et CSV",
+          "feature5": "Planification du rapport",
+          "feature6": "Enregistrement du rapport"
         },
         "plannedFeatureItems": {
           "title": "Fonctions planifiées",
-          "feature1": "Télécharger les rapports aux formats PDF, HTML et CSV",
-          "feature2": "Planification du rapport",
-          "feature3": "Enregistrement du rapport",
-          "feature4": "Accès API aux rapports Sophos Central"
+          "feature1": "Accès API aux rapports Sophos Central"
         }
       },
       "table": {
@@ -240,6 +240,8 @@
         "asyncTabNote": "Remarque : les demandes sont automatiquement supprimées après 24 heures",
         "offlineInfoBarMessage": "Affichage de {{maxAsyncRecords}} résultats maximum triés par <strong>{{sortColumnName}}</strong> et créés sur <strong>{{creationDate}}</strong>",
         "messages": {
+          "deleteSuccess": "Demande supprimée",
+          "deleteWarning": "Impossible de supprimer la demande",
           "unableToSearchRequest": "Un problème a eu lieu pendant la récupération du rapport. Vous pouvez commencer à en créer un autre",
           "tooManyAsyncRequest": "Vous ne pouvez pas créer de nouvelles demandes car vous avez dépassé la limite de {{limit}} pour les demandes en attente",
           "duplicateRequest": "Demande non créée : Une demande avec les mêmes critères de filtrage existe déjà. Nous vous redirigeons vers la demande déjà existante",
@@ -311,7 +313,7 @@
         "tooManyTemplateSelectionMessage": "Vous pouvez supprimer {{limit}} modèles en même temps mais vous avez sélectionné {{selectedTemplateCount}} modèle(s)",
         "templateMetaData": "Métadonnées du modèle",
         "templateNameRequired": "Nom du modèle obligatoire",
-        "templateNamePatternMismatch": " Le nom du modèle peut uniquement utiliser . , - comme caractères spéciaux",
+        "templateNamePatternMismatch": "Le nom du modèle peut uniquement utiliser « . » « , » « - » comme caractères spéciaux",
         "templateNameMaxLength": "Le nom du modèle ne doit pas dépasser plus de 64 caractères.",
         "search": "Recherche"
       },
@@ -328,6 +330,8 @@
         },
         "filterNote": "Cette opération filtrera les résultats {{from}} - {{to}}",
         "generating": "Génération en cours...",
+        "deleteExportSuccess": "Exportation supprimée",
+        "deleteExportWarning": "Impossible de supprimer l’exportation",
         "failed": "Échec"
       },
       "reportConfigs": {
@@ -340,12 +344,15 @@
           "bandwidth": "Utilisation de la bande passante",
           "firewall": "Pare-feu",
           "web": "Utilisation du Web",
+          "web-usage": "Utilisation du Web",
           "ips": "IPS",
           "sandstorm": "Événements Sandstorm",
           "syslog": "Visionneuse de journaux et recherche",
+          "syslogview": "Visionneuse de journaux et recherche",
           "vpn": "Utilisation de VPN",
           "antivirus": "Antivirus",
           "geoactivity": "Géoactivité de la menace",
+          "geo-activity": "Géoactivité de la menace",
           "threats_events_blocked": "Menaces et événements bloqués",
           "threats_web_usage": "Événements Web bloqués",
           "threats_atp": "Menaces ATP",
@@ -353,6 +360,13 @@
           "threats_ips": "Menaces IPS",
           "threats_sandstorm": "Menaces Sandstorm",
           "threats_antivirus": "Menaces antivirus",
+          "threats-events-blocked": "Menaces et événements bloqués",
+          "threats-web-usage": "Événements Web bloqués",
+          "threats-atp": "Menaces ATP",
+          "threats-firewall": "Événements de pare-feu bloqués",
+          "threats-ips": "Menaces IPS",
+          "threats-sandstorm": "Menaces Sandstorm",
+          "threats-antivirus": "Menaces antivirus",
           "blank": ""
         }
       },
@@ -393,6 +407,7 @@
         "scheduleUpdated": "Planification mise à jour",
         "scheduleNotUpdated": "Planification non mise à jour",
         "scheduleNotCreated": "Planification non créée",
+        "scheduleNowSuccess": "Votre rapport est en cours de traitement. Lorsque l’opération sera terminée, vous pourrez le récupérer dans l’onglet Exportations planifiées.",
         "exportSchedulingOff": "Exportation de la planification désactivée",
         "exportSchedulingOn": "Exportation de la planification activée",
         "scheduleStats": "Votre organisation peut avoir jusqu’à {{limit}} exportations planifiées. Vous en avez actuellement {{count}}.",
@@ -405,7 +420,7 @@
         "sendReportsToSophosAdmin": "Envoyer cette exportation à d’autres administrateurs Sophos ?",
         "noEmailNotification": "Aucune notification par email",
         "sendALinkInAnEmail": "Envoyer un lien dans un email",
-        "sendEmailAsAttachmentWithEmail": "Envoyer en tant que pièce jointe - Remarque : si la taille d’une pièce jointe est supérieure à 9 Mo, l’exportation sera envoyé sous forme de lien dans un email",
+        "sendEmailAsAttachmentWithEmail": "Envoyer en tant que pièce jointe - Remarque : si la taille d’une pièce jointe est supérieure à 9,5 Mo, l’exportation sera envoyé sous forme de lien dans un email",
         "daily": "Quotidienne",
         "weekly": "Toutes les semaines",
         "monthly": "Tous les mois",
@@ -690,13 +705,13 @@
     "template": {
       "messages": {
         "createRequestBodyNotValid": "Création de la demande de corps non valide",
-        "DefCreationErrorRSD": "Erreur de création de la définition dans le planificateur de rapport MS",
+        "DefCreationErrorRSD": "Erreur de création de la définition dans le planificateur de rapport",
         "allDeviceSameLicenseType": "Tous les appareils doivent avoir le même type de licence",
         "reportConfNotValid": "Configuration du rapport incorrecte",
         "parentNotFound": "Définition du rapport parent introuvable pour les champs",
         "reportDefIssue": "Définition du rapport introuvable ou problèmes avec le service planificateur de rapport",
         "reportTemplateNotFound": "Modèle de rapport introuvable",
-        "max25ForDelete": "Le nombre total de rapport supprimé ne doit pas dépasser plus de 25",
+        "max25ForDelete": "Le nombre total de modèles à supprimer ne doit pas dépasser 25",
         "invalidTemplates": "Modèles incorrects",
         "deleteTemplateFailed": "Impossible de supprimer les modèles",
         "templateIdsBlank": "Les ID du modèle de rapport ne doivent pas être nuls ou vides",
