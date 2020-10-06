@@ -11,8 +11,45 @@
       "approve": "Aprovar"
     },
     "application": {
-      "title": "Zero Trust - Aplicações",
-      "breadcrumb-text": "Aplicações"
+      "form": {
+        "name": "Nome",
+        "name-placeholder": "Inserir Nome do aplicativo",
+        "description": "Descrição",
+        "description-placeholder": "Inserir Descrição",
+        "description-length-validation": "A descrição não pode ter mais do que 200 caracteres",
+        "application-type": "Tipo do aplicativo",
+        "application-type-placeholder": "Selecionar tipo de aplicativo",
+        "gateway": "Gateway",
+        "gateway-placeholder": "Selecionar Gateway",
+        "application-fqdn": "FQDN/IP do recurso",
+        "port": "Porta",
+        "title-add": "Adicionar aplicativo",
+        "deploy": "Implantar",
+        "loading-error": "Erro ao carregar aplicativos",
+        "add-success": "Aplicativo criado",
+        "add-error": "Falha na criação do aplicativo"
+      },
+      "list": {
+        "add": "Adicionar aplicativo",
+        "title": "Zero Trust - Aplicações",
+        "breadcrumb-text": "Aplicações",
+        "columns": {
+          "name": "Nome",
+          "gateway": "Gateway",
+          "port": "Porta",
+          "ip": "Fqdn/IP do recurso",
+          "type": "Tipo do aplicativo"
+        },
+        "no-application-configured": "Você não tem nenhum aplicativo adicionado.",
+        "no-application-configured-help": "Clique no botão Adicionar Aplicativo para adicionar os aplicativos.",
+        "error": "Erro ao buscar a lista de aplicativos."
+      },
+      "delete": {
+        "header": "Deletar Aplicativo",
+        "message": "Deletar aplicativo",
+        "success": "Aplicativo deletado",
+        "error": "Falha na deleção do aplicativo"
+      }
     },
     "dashboard": {
       "title": "Zero Trust - Painel",
@@ -33,10 +70,11 @@
         },
         "title": "Zero Trust - Gateways",
         "breadcrumb-text": "Gateways",
-        "error": "Erro ao buscar a lista de gateways."
+        "error": "Erro ao buscar os gateways."
       },
       "form": {
         "title-add": "Adicionar Gateway",
+        "title-edit": "Editar Gateway",
         "name": "Nome",
         "location": "Localização",
         "name-placeholder": "Inserir Nome do Gateway",
@@ -64,7 +102,9 @@
         "add-error": "Falha na criação do gateway",
         "loading-error": "Erro ao carregar o gateway",
         "generating-otp": "Gerando OTP...",
-        "otp-error": "Erro ao gerar OTP"
+        "otp-error": "Erro ao gerar OTP",
+        "edit-success": "Gateway atualizado",
+        "edit-error": "Falha na atualização do gateway"
       },
       "delete": {
         "header": "Deletar Gateway",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "Aguardando implantação",
-          "header-1": "Aguardando implantação",
-          "content-1": "A imagem ainda não foi inicializada; baixe a imagem e inicialize a partir dela",
-          "header-2": "Download da imagem",
-          "content-2": "Baixe a imagem de semeadura para inicializar o gateway",
-          "generating-image": "Gerando imagem",
-          "generating-image-info": "A geração da imagem está em andamento; você será notificado assim que ela for gerada",
-          "image-download-error": "Erro ao baixar imagem."
+          "header-waiting": "Aguardando implantação",
+          "content-waiting": "A imagem do gateway ainda não foi inicializada; baixe a imagem e inicialize a partir dela",
+          "header-download": "Baixar imagem do gateway",
+          "content-download": "Baixe a imagem de semeadura para inicializar o gateway",
+          "generating-image": "Gerando imagem do gateway",
+          "generating-image-info": "A geração da imagem do gateway está em andamento; você será notificado assim que ela for gerada",
+          "image-download-error": "Erro ao baixar a imagem do gateway."
         },
         "image-generating": {
-          "label": "Gerando imagem",
-          "header-1": "Gerando imagem",
-          "content-1": "A geração da imagem está em andamento; você será notificado assim que gerada"
+          "label": "Gerando imagem do gateway",
+          "header-generating": "Gerando imagem do gateway",
+          "content-generating": "A geração da imagem do gateway está em andamento; você será notificado assim que gerada"
         },
         "awaiting-approval": {
           "label": "Aguardando aprovação",
-          "header-1": "Aguardando aprovação",
-          "content-1": "Aceitar solicitação de registro de gateway para concluir a integração do gateway",
+          "header-approval": "Aguardando aprovação",
+          "content-approval": "Aceitar solicitação de registro de gateway para concluir a integração do gateway",
           "gateway-approve": "Solicitação de registro de gateway aprovada.",
           "gateway-approve-error": "Erro na aceitação da solicitação do gateway."
         },
         "approved": {
           "label": "Aprovado",
-          "header-1": "Aprovado",
-          "content-1": "O gateway está aprovado e será 'Conectado' assim que estiver em execução"
+          "header-approved": "Aprovado",
+          "content-approved": "O gateway está aprovado e será 'Conectado' assim que estiver em execução"
+        },
+        "connected": {
+          "label": "Conectado",
+          "header-connected": "Conectado desde {{connectedSince}}"
+        },
+        "disconnected": {
+          "label": "Desconectado",
+          "header-disconnected": "Desconectado desde {{lastSeen}}"
         }
       }
     },

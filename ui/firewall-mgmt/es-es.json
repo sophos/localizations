@@ -1,4 +1,152 @@
 {
-  "firewall-mgmt.sample": "test string"
+  "firewall-management": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "main-dashboard-breadcrumb-text": "Introducción",
+    "dashboard": {
+      "name": "Administración del firewall - Panel de control",
+      "breadcrumb-text": "Administración del firewall"
+    },
+    "firmware" : {
+      "upgrade" : {
+        "modal": {
+          "title": "Actualizaciones del firmware - {{ groupName }}",
+          "apply": "Aplicar las actualizaciones para los firewalls seleccionados",
+          "option": {
+            "immediately": "Inmediatamente",
+            "at": "A las"
+          },
+          "schedule": "Programar actualizaciones",
+          "calender": "Las actualizaciones respetarán la zona horaria de los respectivos firewalls. Las actualizaciones se aplicarán a la siguiente hora del firewall: "
+        },
+        "info": {
+          "news": "Noticias",
+          "bugs": "Errores",
+          "release-notes": "Notas de la edición"
+        },
+        "table": {
+          "column": {
+            "firewall": "Firewalls",
+            "version": "Versión",
+            "upgrade-version": "Actualizar a",
+            "size": "",
+            "status": "",
+            "timezone": "Zona horaria"
+          },
+          "state": {
+            "scheduled": "Ya se ha programado una actualización del firmware a la versión {{ nextVersion }} {{ scheduledIn }} el {{ schedule }}.",
+            "schedule_timeout": "Se ha programado una actualización del firmware a la versión {{ nextVersion }} {{ scheduledIn }} el {{ schedule }}."
+          },
+          "heading": "Administre actualizaciones y programaciones del firewall para el grupo '{{ groupName }}'.",
+          "cancel-all": "Cancelar programaciones para los seleccionados",
+          "cancel-schedule": "Cancelar esta actualización",
+          "summary": {
+            "selected": "{{ count }}/{{ total }} firewall(s) seleccionado(s).",
+            "reschedule-hint": "La reprogramación cancelará la actualización programada anteriormente y el firewall seguirá la nueva programación."
+          }
+        },
+        "states": {
+          "no-data-text": "Todos los firewalls están actualizados.",
+          "no-data-info": "Las actualizaciones se comprueban cada 4 horas para todos los firewalls administrados por Central.",
+          "no-data-subtext": "Si hay actualizaciones disponibles, los firewalls aparecerán aquí.",
+          "cannot-load": "No se pueden cargar firewalls actualizables.",
+          "cannot-schedule": "La actualización del firmware no se puede programar. No se conoce la información de la zona horaria.",
+          "scheduled": "Se han programado correctamente las actualizaciones para los firewalls seleccionados.",
+          "cancelled": "Se han cancelado correctamente las actualizaciones programadas.",
+          "cannot-cancel": "Se ha producido un error al cancelar la programación.",
+          "unschedulable": "Es posible que algunos de los firewalls seleccionados no estén enviando información de la zona horaria. Actualícelos usando la opción 'Inmediatamente'.",
+          "timezone-missing": "Es posible que las versiones de firewalls más antiguos no estén enviando información de la zona horaria. Actualícelos usando la opción 'Inmediatamente'."
+        }
+      }
+    },
+    "group-template": {
+      "title": "Plantillas de firewall",
+      "breadcrumb-text": "Plantillas de firewall",
+      "cannot-load": "Error al cargar la lista de plantillas.",
+      "edit-customers": {
+        "modal": {
+          "title": "Editar clientes - {{ name }}",
+          "text": "Seleccione los clientes a los que quiera aplicar la plantilla de firewall '{{ name }}'.",
+          "info": "Solo se pueden aplicar plantillas globales a clientes que gestiona.",
+          "tip": "Pero solo puede aplicar una plantilla a cada cliente.",
+          "note": "Nota: Las políticas base y los ajustes globales establecidos por esta plantilla se bloquearán a nivel de cliente."
+        },
+        "picklist": {
+          "source": "Clientes disponibles",
+          "target": "Clientes asignados"
+        },
+        "states": {
+          "cannot-save": "No se pueden actualizar los clientes.",
+          "saved": "Los clientes se han actualizado correctamente."
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "Confirmar eliminación - {{ name }}",
+          "question": "¿Eliminar plantilla de firewall '{{ name }}'?",
+          "customers": "{{ customerCount }} clientes se verán afectados por este cambio.",
+          "note": "Nota: Los clientes conservarán los últimos cambios que se hayan guardado en ellos. Los puede seguir gestionando desde Sophos Central Partner asignándolos a otra plantilla o gestionarlos de forma individual desde Sophos Central Admin.",
+          "confirm": "Sí, quiero eliminar esta plantilla"
+        },
+        "states": {
+          "cannot-delete": "Se ha producido un error al eliminar la plantilla.",
+          "deleted": "La plantilla se ha eliminado correctamente."
+        }
+      },
+      "add": {
+        "add": "Añadir plantilla",
+        "modal": {
+          "title-add": "Añadir una plantilla",
+          "title-edit": "Editar plantillas - {{ name }}",
+          "name": {
+            "label": "Nombre de plantilla",
+            "placeholder": "Introduzca un nombre para la plantilla",
+            "required": "Nombre es obligatorio"
+          },
+          "description": {
+            "label": "Descripción",
+            "placeholder": "Introduzca la descripción de la plantilla (250 caracteres máx.)",
+            "length": "La descripción puede tener un máximo de 250 caracteres"
+          }
+        },
+        "states": {
+          "cannot-save": "Se ha producido un error al guardar la plantilla.",
+          "saved": "La plantilla se ha creado correctamente."
+        }
+      },
+      "template-list": {
+        "pagination": "{{ from }} a {{ to }} de {{ of }}",
+        "column": {
+          "name": "Nombre",
+          "no-of-customer": "# clientes",
+          "description": "Descripción"
+        },
+        "menu": {
+          "manage": "Administrar política",
+          "edit": "Editar plantillas",
+          "delete": "Eliminar",
+          "edit-customers": "Editar clientes"
+        },
+        "no-data": {
+          "info": "Cree conjuntos de plantillas de políticas base y opciones de configuración de firewall comunes para utilizarlos con distintos clientes.",
+          "header": "No tiene ninguna plantilla de firewall",
+          "learn-more": "Más información",
+          "what": "¿Qué es una plantilla de firewall?",
+          "what-answer": "Una plantilla de firewall es un conjunto de políticas base y opciones de configuración de firewall. Se aplica a los clientes que gestiona.",
+          "why": "¿Por qué utilizar una plantilla de firewall?",
+          "why-answer": {
+            "answer": "Las plantillas de firewall le permiten hacer esto:",
+            "apply": "Aplicar las mismas opciones de configuración para todos los clientes de un grupo.",
+            "stop": "Permitir a los clientes crear subgrupos dentro de un grupo de plantillas administrado por el partner.",
+            "push": "Actualizar plantillas y los cambios se imponen automáticamente a los clientes"
+          }
+        }
+      }
+    },
+    "global-settings": {
+      "breadcrumb-text": "Configuración y políticas"
+    
+    }
+  }
 }
-

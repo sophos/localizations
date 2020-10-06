@@ -11,8 +11,45 @@
       "approve": "Aprobar"
     },
     "application": {
-      "title": "Zero Trust - Aplicaciones",
-      "breadcrumb-text": "Aplicaciones"
+      "form": {
+        "name": "Nombre",
+        "name-placeholder": "Introducir nombre de aplicación",
+        "description": "Descripción",
+        "description-placeholder": "Introducir descripción",
+        "description-length-validation": "La descripción no debe tener más de 200 caracteres",
+        "application-type": "Tipo de aplicación",
+        "application-type-placeholder": "Seleccionar tipo de aplicación",
+        "gateway": "Puerta de enlace",
+        "gateway-placeholder": "Seleccionar puerta de enlace",
+        "application-fqdn": "FQDN/IP del recurso",
+        "port": "Puerto",
+        "title-add": "Añadir aplicación",
+        "deploy": "Desplegar",
+        "loading-error": "Error al cargar aplicaciones",
+        "add-success": "Aplicación creada",
+        "add-error": "No se ha podido crear la aplicación"
+      },
+      "list": {
+        "add": "Añadir aplicación",
+        "title": "Zero Trust - Aplicaciones",
+        "breadcrumb-text": "Aplicaciones",
+        "columns": {
+          "name": "Nombre",
+          "gateway": "Puerta de enlace",
+          "port": "Puerto",
+          "ip": "FQDN/IP de recurso",
+          "type": "Tipo de aplicación"
+        },
+        "no-application-configured": "No ha añadido ninguna aplicación.",
+        "no-application-configured-help": "Haga clic en el botón Añadir aplicación para añadir las aplicaciones.",
+        "error": "Error al recuperar la lista de aplicaciones."
+      },
+      "delete": {
+        "header": "Eliminar aplicación",
+        "message": "Eliminar aplicación",
+        "success": "Aplicación eliminada",
+        "error": "No se ha podido eliminar la aplicación"
+      }
     },
     "dashboard": {
       "title": "Zero Trust - Panel de control",
@@ -33,10 +70,11 @@
         },
         "title": "Zero Trust - Puertas de enlace",
         "breadcrumb-text": "Puertas de enlace",
-        "error": "Error al recuperar la lista de puertas de enlace."
+        "error": "Error al recuperar las puertas de enlace."
       },
       "form": {
         "title-add": "Añadir puerta de enlace",
+        "title-edit": "Editar puerta de enlace",
         "name": "Nombre",
         "location": "Localización",
         "name-placeholder": "Introduzca el nombre de la puerta de enlace",
@@ -64,7 +102,9 @@
         "add-error": "Error al crear la puerta de enlace",
         "loading-error": "Error al cargar la puerta de enlace",
         "generating-otp": "Generando OTP...",
-        "otp-error": "Error al generar la OTP"
+        "otp-error": "Error al generar la OTP",
+        "edit-success": "Puerta de enlace actualizada",
+        "edit-error": "No se ha podido actualizar la puerta de enlace"
       },
       "delete": {
         "header": "Eliminar puerta de enlace",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "Esperando despliegue",
-          "header-1": "Esperando despliegue",
-          "content-1": "La imagen aún no se ha arrancado; descargue la imagen y arránquela",
-          "header-2": "Descargar imagen",
-          "content-2": "Descargue la imagen inicial para arrancar el portal",
-          "generating-image": "Generando imagen",
-          "generating-image-info": "La generación de la imagen está en curso; se le notificará una vez que se genere",
-          "image-download-error": "Error al descargar la imagen."
+          "header-waiting": "Esperando despliegue",
+          "content-waiting": "La imagen de puerta de enlace aún no se ha arrancado; descargue la imagen y arránquela",
+          "header-download": "Descargar imagen de puerta de enlace",
+          "content-download": "Descargue la imagen inicial para arrancar el portal",
+          "generating-image": "Generar imagen de puerta de enlace",
+          "generating-image-info": "La generación de la imagen de puerta enlace está en curso; se le notificará una vez que se haya generado",
+          "image-download-error": "Error al descargar la imagen de puerta de enlace."
         },
         "image-generating": {
-          "label": "Generando imagen",
-          "header-1": "Generando imagen",
-          "content-1": "La generación de la imagen está en curso; se le notificará una vez que se genere"
+          "label": "Generar imagen de puerta de enlace",
+          "header-generating": "Generar imagen de puerta de enlace",
+          "content-generating": "La generación de la imagen de puerta de enlace está en curso; se le notificará una vez que se haya generado"
         },
         "awaiting-approval": {
           "label": "Esperando aprobación",
-          "header-1": "Esperando aprobación",
-          "content-1": "Acepte la solicitud de registro de la puerta de enlace para completar la incorporación de la puerta de enlace",
+          "header-approval": "Esperando aprobación",
+          "content-approval": "Acepte la solicitud de registro de la puerta de enlace para completar la incorporación de la puerta de enlace",
           "gateway-approve": "Se ha aprobado la solicitud de registro de la puerta de enlace.",
           "gateway-approve-error": "Error al aceptar la solicitud de la puerta de enlace."
         },
         "approved": {
           "label": "Aprobado",
-          "header-1": "Aprobado",
-          "content-1": "La puerta de enlace se ha aprobado; pasará al estado 'Conectado' una vez que esté funcionando"
+          "header-approved": "Aprobado",
+          "content-approved": "La puerta de enlace se ha aprobado; pasará al estado 'Conectado' una vez que esté funcionando"
+        },
+        "connected": {
+          "label": "Conectado",
+          "header-connected": "Conectado desde {{connectedSince}}"
+        },
+        "disconnected": {
+          "label": "Desconectado",
+          "header-disconnected": "Desconectado desde {{lastSeen}}"
         }
       }
     },

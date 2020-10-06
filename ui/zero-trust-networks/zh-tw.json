@@ -11,8 +11,45 @@
       "approve": "贊成"
     },
     "application": {
-      "title": "Zero Trust - 應用程式",
-      "breadcrumb-text": "應用程式"
+      "form": {
+        "name": "名稱",
+        "name-placeholder": "輸入應用程式名稱",
+        "description": "描述",
+        "description-placeholder": "輸入說明",
+        "description-length-validation": "說明不應超過 200 個字元",
+        "application-type": "應用程式類型",
+        "application-type-placeholder": "選取應用程式類型",
+        "gateway": "閘道",
+        "gateway-placeholder": "選取閘道",
+        "application-fqdn": "資源 FQDN/IP",
+        "port": "連接埠",
+        "title-add": "新增應用程式",
+        "deploy": "部署",
+        "loading-error": "載入應用程式時出錯",
+        "add-success": "應用程式已建立",
+        "add-error": "應用程式建立失敗"
+      },
+      "list": {
+        "add": "新增應用程式",
+        "title": "Zero Trust - 應用程式",
+        "breadcrumb-text": "應用程式",
+        "columns": {
+          "name": "名稱",
+          "gateway": "閘道",
+          "port": "連接埠",
+          "ip": "資源 FQDN/IP",
+          "type": "應用程式類型"
+        },
+        "no-application-configured": "您沒有新增任何應用程式。",
+        "no-application-configured-help": "按一下「新增應用程式」按鈕以新增應用程式。",
+        "error": "擷取應用程式清單時出錯。"
+      },
+      "delete": {
+        "header": "刪除應用程式",
+        "message": "刪除應用程式",
+        "success": "應用程式已刪除",
+        "error": "應用程式刪除失敗"
+      }
     },
     "dashboard": {
       "title": "Zero Trust - 儀表板",
@@ -33,10 +70,11 @@
         },
         "title": "Zero Trust - 閘道",
         "breadcrumb-text": "閘道",
-        "error": "擷取閘道清單時出現錯誤。"
+        "error": "擷取閘道時出錯。"
       },
       "form": {
         "title-add": "新增閘道",
+        "title-edit": "編輯閘道",
         "name": "名稱",
         "location": "位置",
         "name-placeholder": "輸入閘道名稱",
@@ -64,7 +102,9 @@
         "add-error": "閘道建立失敗",
         "loading-error": "載入閘道時出現錯誤",
         "generating-otp": "正在產生 OTP...",
-        "otp-error": "產生 OTP 時出現錯誤"
+        "otp-error": "產生 OTP 時出現錯誤",
+        "edit-success": "閘道已更新",
+        "edit-error": "閘道更新失敗"
       },
       "delete": {
         "header": "刪除閘道",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "正在等待部署",
-          "header-1": "正在等待部署",
-          "content-1": "影像尚未啟動，請下載影像並啟動。",
-          "header-2": "下載影像",
-          "content-2": "下載種子影像以啟動閘道",
-          "generating-image": "正在產生影像",
-          "generating-image-info": "正在產生影像，完成之後您將收到通知。",
-          "image-download-error": "下載影像時出現錯誤。"
+          "header-waiting": "正在等待部署",
+          "content-waiting": "閘道影像尚未啟動，下載影像並啟動。",
+          "header-download": "下載閘道影像",
+          "content-download": "下載種子影像以啟動閘道",
+          "generating-image": "產生閘道影像",
+          "generating-image-info": "正在產生閘道影像，產生之後您將會收到通知。",
+          "image-download-error": "下載閘道影像時出錯。"
         },
         "image-generating": {
-          "label": "正在產生影像",
-          "header-1": "正在產生影像",
-          "content-1": "正在產生影像，完成之後您將收到通知"
+          "label": "產生閘道影像",
+          "header-generating": "產生閘道影像",
+          "content-generating": "正在產生閘道影像，產生之後您將會收到通知。"
         },
         "awaiting-approval": {
           "label": "等待核准",
-          "header-1": "等待核准",
-          "content-1": "接受閘道註冊請求，以使閘道可用",
+          "header-approval": "等待核准",
+          "content-approval": "接受閘道註冊請求，以使閘道可用",
           "gateway-approve": "閘道註冊請求已核准。",
           "gateway-approve-error": "接受閘道請求時出現錯誤。"
         },
         "approved": {
           "label": "已核准",
-          "header-1": "已核准",
-          "content-1": "閘道已核准，一旦執行，閘道將會變為「已連線」狀態"
+          "header-approved": "已核准",
+          "content-approved": "閘道已核准，一旦執行，閘道將會變為「已連線」狀態"
+        },
+        "connected": {
+          "label": "已連線",
+          "header-connected": "{{connectedSince}} 後已連線"
+        },
+        "disconnected": {
+          "label": "已中斷連線",
+          "header-disconnected": "{{lastSeen}} 後已中斷"
         }
       }
     },

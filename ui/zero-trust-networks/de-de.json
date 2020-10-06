@@ -11,8 +11,45 @@
       "approve": "Genehmigen"
     },
     "application": {
-      "title": "Zero Trust - Anwendungen",
-      "breadcrumb-text": "Anwendungen"
+      "form": {
+        "name": "Name",
+        "name-placeholder": "Anwendungsname eingeben",
+        "description": "Beschreibung",
+        "description-placeholder": "Beschreibung eingeben",
+        "description-length-validation": "Beschreibung sollte nicht länger als 200 Zeichen sein",
+        "application-type": "Anwendungstyp",
+        "application-type-placeholder": "Anwendungstyp auswählen",
+        "gateway": "Gateway",
+        "gateway-placeholder": "Gateway auswählen",
+        "application-fqdn": "FQDN/IP der Ressource",
+        "port": "Port",
+        "title-add": "Anwendung hinzufügen",
+        "deploy": "Bereitstellen",
+        "loading-error": "Fehler beim Laden der Anwendungen",
+        "add-success": "Anwendung erstellt",
+        "add-error": "Erstellung der Anwendung fehlgeschlagen"
+      },
+      "list": {
+        "add": "Anwendung hinzufügen",
+        "title": "Zero Trust - Anwendungen",
+        "breadcrumb-text": "Anwendungen",
+        "columns": {
+          "name": "Name",
+          "gateway": "Gateway",
+          "port": "Port",
+          "ip": "Fqdn/IP der Ressource",
+          "type": "Anwendungstyp"
+        },
+        "no-application-configured": "Sie haben keine Anwendungen hinzugefügt.",
+        "no-application-configured-help": "Klicken Sie auf „Anwendung hinzufügen“, um Anwendungen hinzuzufügen.",
+        "error": "Fehler beim Abrufen der Anwendungen."
+      },
+      "delete": {
+        "header": "Anwendung löschen",
+        "message": "Anwendung löschen",
+        "success": "Anwendung gelöscht",
+        "error": "Löschen der Anwendung fehlgeschlagen"
+      }
     },
     "dashboard": {
       "title": "Zero Trust - Dashboard",
@@ -33,10 +70,11 @@
         },
         "title": "Zero Trust - Gateways",
         "breadcrumb-text": "Gateways",
-        "error": "Fehler beim Abrufen der Gateway-Liste."
+        "error": "Fehler beim Abrufen der Gateways."
       },
       "form": {
         "title-add": "Gateway hinzufügen",
+        "title-edit": "Gateway bearbeiten",
         "name": "Name",
         "location": "Verzeichnis",
         "name-placeholder": "Gateway-Namen eingeben",
@@ -64,7 +102,9 @@
         "add-error": "Gateway-Erstellung fehlgeschlagen",
         "loading-error": "Fehler beim Laden des Gateways",
         "generating-otp": "Erzeuge OTP...",
-        "otp-error": "Fehler beim Erzeugen des OTP"
+        "otp-error": "Fehler beim Erzeugen des OTP",
+        "edit-success": "Gateway aktualisiert",
+        "edit-error": "Aktualisierung des Gateways fehlgeschlagen"
       },
       "delete": {
         "header": "Gateway löschen",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "Warten auf Bereitstellung",
-          "header-1": "Warten auf Bereitstellung",
-          "content-1": "Image noch nicht gebootet. Laden Sie das Image herunter und booten Sie es.",
-          "header-2": "Image herunterladen",
-          "content-2": "Start-Image zum Booten des Gateways herunterladen",
-          "generating-image": "Erzeuge Image",
-          "generating-image-info": "Image-Erzeugung läuft. Sie werden nach Fertigstellung benachrichtigt.",
-          "image-download-error": "Fehler beim Herunterladen des Image."
+          "header-waiting": "Warten auf Bereitstellung",
+          "content-waiting": "Gateway-Image noch nicht gebootet. Laden Sie das Image herunter und booten Sie es.",
+          "header-download": "Gateway-Image herunterladen",
+          "content-download": "Start-Image zum Booten des Gateways herunterladen",
+          "generating-image": "Erzeuge Gateway-Image",
+          "generating-image-info": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt.",
+          "image-download-error": "Fehler beim Herunterladen des Gateway-Image."
         },
         "image-generating": {
-          "label": "Erzeuge Image",
-          "header-1": "Erzeuge Image",
-          "content-1": "Image-Erzeugung läuft. Sie werden nach Fertigstellung benachrichtigt."
+          "label": "Erzeuge Gateway-Image",
+          "header-generating": "Erzeuge Gateway-Image",
+          "content-generating": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt."
         },
         "awaiting-approval": {
           "label": "Warte auf Genehmigung",
-          "header-1": "Warte auf Genehmigung",
-          "content-1": "Genehmigen Sie die Anfrage zur Gateway-Registrierung, um die Gateway-Einrichtung abzuschließen",
+          "header-approval": "Warte auf Genehmigung",
+          "content-approval": "Genehmigen Sie die Anfrage zur Gateway-Registrierung, um die Gateway-Einrichtung abzuschließen",
           "gateway-approve": "Anfrage zur Gateway-Registrierung genehmigt.",
           "gateway-approve-error": "Fehler beim Genehmigen der Gateway-Registrierung."
         },
         "approved": {
           "label": "Genehmigt",
-          "header-1": "Genehmigt",
-          "content-1": "Gateway wurde genehmigt. Status wechselt zu „Verbunden“, sobald es läuft."
+          "header-approved": "Genehmigt",
+          "content-approved": "Gateway wurde genehmigt. Status wechselt zu „Verbunden“, sobald es läuft."
+        },
+        "connected": {
+          "label": "Verbunden",
+          "header-connected": "Verbunden seit {{connectedSince}}"
+        },
+        "disconnected": {
+          "label": "Verbindung getrennt",
+          "header-disconnected": "Verbindung getrennt seit {{lastSeen}}"
         }
       }
     },
