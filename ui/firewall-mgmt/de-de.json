@@ -1,4 +1,152 @@
 {
-  "firewall-mgmt.sample": "test string"
+  "firewall-management": {
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "main-dashboard-breadcrumb-text": "Übersicht",
+    "dashboard": {
+      "name": "Firewall Management - Dashboard",
+      "breadcrumb-text": "Firewall-Verwaltung"
+    },
+    "firmware" : {
+      "upgrade" : {
+        "modal": {
+          "title": "Firmware-Aktualisierungen - {{ groupName }}",
+          "apply": "Aktualisierungen für die ausgewählten Firewalls anwenden",
+          "option": {
+            "immediately": "Sofort",
+            "at": "Um"
+          },
+          "schedule": "Aktualisierungen planen",
+          "calender": "Die Aktualisierungen berücksichtigen die jeweilige Zeitzone der Firewall. Die Aktualisierungen werden zum folgenden Zeitpunkt (in der Firewall-Zeitzone) ausgeführt: "
+        },
+        "info": {
+          "news": "News",
+          "bugs": "Fehlern",
+          "release-notes": "Versionsinfo"
+        },
+        "table": {
+          "column": {
+            "firewall": "Firewalls",
+            "version": "Version",
+            "upgrade-version": "Aktualisierung auf",
+            "size": "",
+            "status": "",
+            "timezone": "Zeitzone"
+          },
+          "state": {
+            "scheduled": "Eine Firmware-Aktualisierung auf Version {{ nextVersion }} ist bereits geplant für {{ scheduledIn }} am {{ schedule }}.",
+            "schedule_timeout": "Eine Firmware-Aktualisierung auf Version {{ nextVersion }} ist geplant für {{ scheduledIn }} am {{ schedule }}."
+          },
+          "heading": "Verwalten Sie Firewall-Aktualisierungen und Zeitpläne für die Gruppe '{{ groupName }}'.",
+          "cancel-all": "Zeitpläne für ausgewählte widerrufen",
+          "cancel-schedule": "Die Aktualisierung widerrufen",
+          "summary": {
+            "selected": "{{ count }}/{{ total }} Firewalls ausgewählt.",
+            "reschedule-hint": "Durch eine Planungsänderung wird die zuvor geplante Aktualisierung widerrufen und die Firewall folgt dem neuen Zeitplan."
+          }
+        },
+        "states": {
+          "no-data-text": "Alle Firewalls sind auf dem neuesten Stand.",
+          "no-data-info": "Es wird alle vier Stunden auf Aktualisierungen für alle von Central verwalteten Firewalls geprüft.",
+          "no-data-subtext": "Wenn die Aktualisierungen verfügbar sind, werden die Firewalls hier angezeigt.",
+          "cannot-load": "Aktualisierbare Firewalls können nicht geladen werden.",
+          "cannot-schedule": "Firmware-Aktualisierung kann nicht geplant werden. Keine Zeitzonen-Information vorhanden.",
+          "scheduled": "Aktualisierung der ausgewählten Firewalls erfolgreich geplant.",
+          "cancelled": "Geplante Aktualisierungen erfolgreich widerrufen.",
+          "cannot-cancel": "Beim Widerrufen des Zeitplans ist ein Fehler aufgetreten.",
+          "unschedulable": "Einige der ausgewählten Firewalls übertragen möglicherweise keine Zeitzonen-Information. Bitte aktualisieren Sie diese mit der Option 'Sofort'.",
+          "timezone-missing": "Einige der älteren Firewalls übertragen möglicherweise keine Zeitzonen-Informationen. Bitte aktualisieren Sie diese mit der Option 'Sofort'."
+        }
+      }
+    },
+    "group-template": {
+      "title": "Firewall-Vorlagen",
+      "breadcrumb-text": "Firewall-Vorlagen",
+      "cannot-load": "Fehler beim Laden der Vorlagenliste.",
+      "edit-customers": {
+        "modal": {
+          "title": "Kunden bearbeiten - {{ name }}",
+          "text": "Wählen Sie die Kunden aus, auf die Sie die Firewall-Vorlage '{{ name }}' anwenden wollen.",
+          "info": "Sie können globale Vorlagen nur von Ihnen verwalteten Kunden zuweisen.",
+          "tip": "Jedem Kunden kann aber nur eine Vorlage zugewiesen werden.",
+          "note": "Hinweis: Die durch diese Vorlage festgelegten Basisrichtlinien und globalen Einstellungen können durch den Kunden nicht geändert werden."
+        },
+        "picklist": {
+          "source": "Verfügbare Kunden",
+          "target": "Zugewiesene Kunden"
+        },
+        "states": {
+          "cannot-save": "Kunden können nicht aktualisiert werden.",
+          "saved": "Kunden erfolgreich aktualisiert."
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "Löschbestätigung - {{ name }}",
+          "question": "Firewall-Vorlage '{{ name }}' löschen?",
+          "customers": "{{ customerCount }} Kunden sind von der Änderung betroffen.",
+          "note": "Hinweis: Kunden behalten trotzdem die für sie gespeicherten Änderungen. Sie können Kunden weiterhin mit Sophos Central Partner verwalten, indem Sie sie einer anderen Vorlage zuweisen. Sie können sie jedoch auch individuell über Sophos Central Admin verwalten.",
+          "confirm": "Ja, ich möchte die Vorlage löschen"
+        },
+        "states": {
+          "cannot-delete": "Beim Löschen der Vorlage ist ein Fehler aufgetreten.",
+          "deleted": "Vorlage erfolgreich gelöscht."
+        }
+      },
+      "add": {
+        "add": "Vorlage hinzufügen",
+        "modal": {
+          "title-add": "Eine Vorlage hinzufügen",
+          "title-edit": "Vorlage bearbeiten - {{ name }}",
+          "name": {
+            "label": "Vorlagenname",
+            "placeholder": "Geben Sie einen Namen für die Vorlage ein",
+            "required": "Name ist erforderlich"
+          },
+          "description": {
+            "label": "Beschreibung",
+            "placeholder": "Geben Sie die Beschreibung der Vorlage ein (max. 250 Zeichen)",
+            "length": "Beschreibung kann maximal 250 Zeichen enthalten."
+          }
+        },
+        "states": {
+          "cannot-save": "Beim Speichern der Vorlage ist ein Fehler aufgetreten.",
+          "saved": "Vorlage erfolgreich gespeichert."
+        }
+      },
+      "template-list": {
+        "pagination": "{{ from }} bis {{ to }} von {{ of }}",
+        "column": {
+          "name": "Name",
+          "no-of-customer": "# Kunden",
+          "description": "Beschreibung"
+        },
+        "menu": {
+          "manage": "Richtlinien verwalten",
+          "edit": "Vorlage bearbeiten",
+          "delete": "Löschen",
+          "edit-customers": "Kunden bearbeiten"
+        },
+        "no-data": {
+          "info": "Erstellen Sie allgemeine Vorlagen für Firewall-Einstellungen und Basisrichtlinien, die Sie für verschiedene Kunden nutzen können.",
+          "header": "Sie haben keine Firewall-Vorlagen",
+          "learn-more": "Mehr erfahren",
+          "what": "Was ist eine Firewall-Vorlage?",
+          "what-answer": "Eine Firewall-Vorlage ist eine Zusammenstellung von Basisrichtlinien und Firewall-Einstellungen. Dieses wird auf Kunden angewendet, die von Ihnen verwaltet werden.",
+          "why": "Warum Firewall-Vorlagen verwenden?",
+          "why-answer": {
+            "answer": "Firewall-Vorlagen erlauben Ihnen Folgendes:",
+            "apply": "Auf alle Kunden einer Gruppe dieselben Einstellungen anwenden.",
+            "stop": "Kunden können Untergruppen von Partner-verwalteten Vorlagengruppen erstellen.",
+            "push": "Vorlagenaktualisierungen und Änderungen stehen Kunden automatisch zur Verfügung."
+          }
+        }
+      }
+    },
+    "global-settings": {
+      "breadcrumb-text": "Einstellungen und Richtlinien"
+    
+    }
+  }
 }
-

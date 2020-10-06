@@ -1,4 +1,152 @@
 {
-  "firewall-mgmt.sample": "test string"
+  "firewall-management": {
+    "cancel": "Annulla",
+    "save": "Salva",
+    "delete": "Elimina",
+    "main-dashboard-breadcrumb-text": "Panoramica",
+    "dashboard": {
+      "name": "Gestione del Firewall - Dashboard",
+      "breadcrumb-text": "Gestione del Firewall"
+    },
+    "firmware" : {
+      "upgrade" : {
+        "modal": {
+          "title": "Upgrade del firmware - {{ groupName }}",
+          "apply": "Applica gli aggiornamenti per i firewall selezionati",
+          "option": {
+            "immediately": "Immediatamente",
+            "at": "Alle ore"
+          },
+          "schedule": "Pianifica upgrade",
+          "calender": "Gli upgrade rispetteranno il fuso orario dei rispettivi firewall. Gli upgrade saranno eseguiti quando l'orario del firewall è: "
+        },
+        "info": {
+          "news": "News",
+          "bugs": "Bug",
+          "release-notes": "Note di rilascio"
+        },
+        "table": {
+          "column": {
+            "firewall": "Firewall",
+            "version": "Versione",
+            "upgrade-version": "Aggiorna a",
+            "size": "",
+            "status": "",
+            "timezone": "Fuso orario"
+          },
+          "state": {
+            "scheduled": "Un upgrade del firmware alla versione {{ nextVersion }} è già pianificato per le ore {{ scheduledIn }} del giorno {{ schedule }}.",
+            "schedule_timeout": "Un upgrade del firmware alla versione {{ nextVersion }} era pianificato per le ore {{ scheduledIn }} del giorno {{ schedule }}."
+          },
+          "heading": "Gestisci upgrade e pianificazioni del firewall per il gruppo '{{ groupName }}'.",
+          "cancel-all": "Annulla pianificazioni per gli elementi selezionati",
+          "cancel-schedule": "Annulla questo upgrade",
+          "summary": {
+            "selected": "{{ count }}/{{ total }} firewall selezionato/i.",
+            "reschedule-hint": "La modifica della pianificazione annullerà l'upgrade pianificato in precedenza e il firewall seguirà la nuova pianificazione."
+          }
+        },
+        "states": {
+          "no-data-text": "Tutti i firewall sono aggiornati.",
+          "no-data-info": "Gli aggiornamenti vengono verificati ogni 4 ore per tutti i firewall gestiti da Central.",
+          "no-data-subtext": "Se sono disponibili aggiornamenti, i firewall verranno elencati qui.",
+          "cannot-load": "Impossibile caricare firewall aggiornabili.",
+          "cannot-schedule": "Impossibile pianificare l'upgrade del firmware. Attenzione: informazioni sul fuso orario sconosciute.",
+          "scheduled": "Pianificazione degli upgrade per il/i firewall selezionato/i completata.",
+          "cancelled": "Annullamento degli upgrade pianificati completato.",
+          "cannot-cancel": "Si è verificato un errore durante l'annullamento della pianificazione.",
+          "unschedulable": "Alcuni dei firewall selezionati potrebbero non inviare informazioni sul fuso orario. Esegui l'upgrade di questi firewall utilizzando l'opzione 'Immediatamente'.",
+          "timezone-missing": "Alcune delle versioni dei firewall meno recenti potrebbero non inviare informazioni sul fuso orario. Esegui l'upgrade di questi firewall utilizzando l'opzione 'Immediatamente'."
+        }
+      }
+    },
+    "group-template": {
+      "title": "Modelli Firewall",
+      "breadcrumb-text": "Modelli Firewall",
+      "cannot-load": "Errore durante il caricamento dell'elenco di modelli.",
+      "edit-customers": {
+        "modal": {
+          "title": "Modifica clienti - {{ name }}",
+          "text": "Seleziona i clienti ai quali desideri applicare il modello del firewall '{{ name }}'.",
+          "info": "Puoi applicare modelli globali solo ai clienti che gestisci.",
+          "tip": "Ma è possibile applicare solo un modello a ciascun cliente.",
+          "note": "Nota. I criteri di base e le impostazioni globali determinate con questo modello saranno bloccate a livello dei clienti."
+        },
+        "picklist": {
+          "source": "Clienti disponibili",
+          "target": "Clienti assegnati"
+        },
+        "states": {
+          "cannot-save": "Impossibile aggiornare i clienti.",
+          "saved": "Aggiornamento dei clienti completato."
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "Conferma eliminazione - {{ name }}",
+          "question": "Eliminare il modello del firewall '{{ name }}'?",
+          "customers": "Questa modifica riguarderà {{ customerCount }} clienti.",
+          "note": "Nota. I clienti manterranno le ultime modifiche salvate. Sarà possibile continuare a gestirli da Sophos Central Partner, assegnandoli a un altro modello; in alternativa, potranno essere gestiti individualmente da Sophos Central Admin.",
+          "confirm": "Sì, desidero eliminare questo modello"
+        },
+        "states": {
+          "cannot-delete": "Si è verificato un errore durante l'eliminazione del modello.",
+          "deleted": "Eliminazione del modello completata."
+        }
+      },
+      "add": {
+        "add": "Aggiungi modello",
+        "modal": {
+          "title-add": "Aggiungi un modello",
+          "title-edit": "Modifica modello - {{ name }}",
+          "name": {
+            "label": "Nome del modello",
+            "placeholder": "Immetti un nome per il modello",
+            "required": "Nome obbligatorio"
+          },
+          "description": {
+            "label": "Descrizione",
+            "placeholder": "Immetti la descrizione del modello (max 250 caratteri)",
+            "length": "La descrizione non può superare i 250 caratteri."
+          }
+        },
+        "states": {
+          "cannot-save": "Si è verificato un errore durante salvataggio del modello.",
+          "saved": "Creazione del modello completata."
+        }
+      },
+      "template-list": {
+        "pagination": "Da {{ from }} a {{ to }} su {{ of }}",
+        "column": {
+          "name": "Nome",
+          "no-of-customer": "Num. clienti",
+          "description": "Descrizione"
+        },
+        "menu": {
+          "manage": "Gestisci criterio",
+          "edit": "Modifica modello",
+          "delete": "Elimina",
+          "edit-customers": "Modifica clienti"
+        },
+        "no-data": {
+          "info": "Crea set di modelli comuni di impostazioni e criteri di base per il firewall da utilizzare per clienti diversi.",
+          "header": "Non ci sono modelli firewall",
+          "learn-more": "Ulteriori informazioni",
+          "what": "Che cos'è un modello firewall?",
+          "what-answer": "Un modello firewall è un set di criteri di base e impostazioni per il firewall. Viene applicato ai clienti da gestire.",
+          "why": "Perché utilizzare un modello firewall?",
+          "why-answer": {
+            "answer": "I modelli firewall consentono di:",
+            "apply": "Applicare le stesse impostazioni a tutti i clienti appartenenti a un gruppo.",
+            "stop": "Permettere ai clienti di creare sottogruppi all'interno di un gruppo di modelli gestito dal partner.",
+            "push": "Aggiornare i modelli con push automatico delle modifiche ai clienti"
+          }
+        }
+      }
+    },
+    "global-settings": {
+      "breadcrumb-text": "Impostazioni e criteri"
+    
+    }
+  }
 }
-

@@ -11,8 +11,45 @@
       "approve": "承認"
     },
     "application": {
-      "title": "ゼロトラスト - アプリケーション",
-      "breadcrumb-text": "アプリケーション"
+      "form": {
+        "name": "名前",
+        "name-placeholder": "アプリケーション名を入力",
+        "description": "説明",
+        "description-placeholder": "説明を入力",
+        "description-length-validation": "説明は 200文字以内で入力してください",
+        "application-type": "アプリケーションの種類",
+        "application-type-placeholder": "アプリケーションの種類の選択",
+        "gateway": "ゲートウェイ",
+        "gateway-placeholder": "ゲートウェイの選択",
+        "application-fqdn": "リソースの FQDN/IP",
+        "port": "ポート",
+        "title-add": "アプリケーションの追加",
+        "deploy": "導入",
+        "loading-error": "アプリケーションの読み込み中、エラーが発生しました",
+        "add-success": "アプリケーションが作成されました",
+        "add-error": "アプリケーションの作成に失敗しました"
+      },
+      "list": {
+        "add": "アプリケーションの追加",
+        "title": "ゼロトラスト - アプリケーション",
+        "breadcrumb-text": "アプリケーション",
+        "columns": {
+          "name": "名前",
+          "gateway": "ゲートウェイ",
+          "port": "ポート",
+          "ip": "リソースの FQDN/IP",
+          "type": "アプリケーションの種類"
+        },
+        "no-application-configured": "アプリケーションは追加されていません。",
+        "no-application-configured-help": "アプリケーションを追加するには、「アプリケーションの追加」ボタンをクリックします。",
+        "error": "アプリケーションリストの取得中、エラーが発生しました。"
+      },
+      "delete": {
+        "header": "アプリケーションの削除",
+        "message": "アプリケーションの削除",
+        "success": "アプリケーションが削除されました",
+        "error": "アプリケーションの削除に失敗しました"
+      }
     },
     "dashboard": {
       "title": "ゼロトラスト - ダッシュボード",
@@ -33,10 +70,11 @@
         },
         "title": "ゼロトラスト - ゲートウェイ",
         "breadcrumb-text": "ゲートウェイ",
-        "error": "ゲートウェイのリストを取得中、エラーが発生しました。"
+        "error": "ゲートウェイの取得中、エラーが発生しました。"
       },
       "form": {
         "title-add": "ゲートウェイの追加",
+        "title-edit": "ゲートウェイの編集",
         "name": "名前",
         "location": "位置情報",
         "name-placeholder": "ゲートウェイの名前を入力",
@@ -64,7 +102,9 @@
         "add-error": "ゲートウェイの作成に失敗しました",
         "loading-error": "ゲートウェイを読み込み中、エラーが発生しました",
         "generating-otp": "OTP を生成中...",
-        "otp-error": "OTP の生成中、エラーが発生しました"
+        "otp-error": "OTP の生成中、エラーが発生しました",
+        "edit-success": "ゲートウェイが更新されました",
+        "edit-error": "ゲートウェイの更新に失敗しました"
       },
       "delete": {
         "header": "ゲートウェイの削除",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "導入待機中",
-          "header-1": "導入待機中",
-          "content-1": "イメージはまだ起動していません。イメージをダウンロードして起動してください",
-          "header-2": "イメージのダウンロード",
-          "content-2": "シードとして使用するイメージをダウンロードして、ゲートウェイを起動します",
-          "generating-image": "イメージを生成中",
-          "generating-image-info": "イメージの生成が進行中です。生成が終了したら通知が送信されます",
-          "image-download-error": "イメージのダウンロード中、エラーが発生しました。"
+          "header-waiting": "導入待機中",
+          "content-waiting": "ゲートウェイイメージはまだ起動されていません。イメージをダウンロードして起動してください",
+          "header-download": "ゲートウェイイメージのダウンロード",
+          "content-download": "シードとして使用するイメージをダウンロードして、ゲートウェイを起動します",
+          "generating-image": "ゲートウェイイメージを生成中",
+          "generating-image-info": "ゲートウェイイメージの生成が進行中です。生成が終了したら通知が送信されます",
+          "image-download-error": "ゲートウェイイメージのダウンロード中、エラーが発生しました。"
         },
         "image-generating": {
-          "label": "イメージを生成中",
-          "header-1": "イメージを生成中",
-          "content-1": "イメージの生成が進行中です。生成が終了したら通知が送信されます"
+          "label": "ゲートウェイイメージを生成中",
+          "header-generating": "ゲートウェイイメージを生成中",
+          "content-generating": "ゲートウェイイメージの生成が進行中です。生成が終了したら通知が送信されます"
         },
         "awaiting-approval": {
           "label": "承認を待機中",
-          "header-1": "承認を待機中",
-          "content-1": "ゲートウェイの登録のリクエストを承認して、ゲートウェイのオンボーディングを終了してください",
+          "header-approval": "承認を待機中",
+          "content-approval": "ゲートウェイの登録のリクエストを承認して、ゲートウェイのオンボーディングを終了してください",
           "gateway-approve": "ゲートウェイの登録のリクエストが承認されました。",
           "gateway-approve-error": "ゲートウェイのリクエストを承認中、エラーが発生しました。"
         },
         "approved": {
           "label": "承認済み",
-          "header-1": "承認済み",
-          "content-1": "ゲートウェイは承認されました。実行が開始されたら、表示は「接続」に変わります"
+          "header-approved": "承認済み",
+          "content-approved": "ゲートウェイは承認されました。実行が開始されたら、表示は「接続」に変わります"
+        },
+        "connected": {
+          "label": "接続",
+          "header-connected": "接続日: {{connectedSince}}"
+        },
+        "disconnected": {
+          "label": "切断",
+          "header-disconnected": "切断日: {{lastSeen}}"
         }
       }
     },

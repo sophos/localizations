@@ -11,8 +11,45 @@
       "approve": "지지"
     },
     "application": {
-      "title": "Zero Trust - 응용 프로그램",
-      "breadcrumb-text": "응용 프로그램"
+      "form": {
+        "name": "이름",
+        "name-placeholder": "응용 프로그램 이름 입력",
+        "description": "설명",
+        "description-placeholder": "설명 입력",
+        "description-length-validation": "설명은 200자를 초과해서는 안 됨",
+        "application-type": "응용 프로그램 유형",
+        "application-type-placeholder": "응용 프로그램 유형 선택",
+        "gateway": "게이트웨이",
+        "gateway-placeholder": "게이트웨이 선택",
+        "application-fqdn": "리소스 FQDN/IP",
+        "port": "포트",
+        "title-add": "응용 프로그램 추가",
+        "deploy": "배포",
+        "loading-error": "응용 프로그램 로드 중 오류 발생",
+        "add-success": "응용 프로그램 생성됨",
+        "add-error": "응용 프로그램 생성 실패"
+      },
+      "list": {
+        "add": "응용 프로그램 추가",
+        "title": "Zero Trust - 응용 프로그램",
+        "breadcrumb-text": "응용 프로그램",
+        "columns": {
+          "name": "이름",
+          "gateway": "게이트웨이",
+          "port": "포트",
+          "ip": "리소스 Fqdn/IP",
+          "type": "응용 프로그램 유형"
+        },
+        "no-application-configured": "추가된 응용 프로그램이 없습니다.",
+        "no-application-configured-help": "응용 프로그램을 추가하려면 '응용 프로그램 추가' 버튼을 클릭합니다.",
+        "error": "응용 프로그램 목록을 가져오는 중 오류가 발생했습니다."
+      },
+      "delete": {
+        "header": "응용 프로그램 삭제",
+        "message": "응용 프로그램 삭제",
+        "success": "응용 프로그램 삭제됨",
+        "error": "응용 프로그램 삭제 실패"
+      }
     },
     "dashboard": {
       "title": "Zero Trust - 대시보드",
@@ -33,10 +70,11 @@
         },
         "title": "Zero Trust - 게이트웨이",
         "breadcrumb-text": "게이트웨이",
-        "error": "게이트웨이 목록을 가져오는 동안 오류 발생."
+        "error": "게이트웨이를 가져오는 중 오류가 발생했습니다."
       },
       "form": {
         "title-add": "게이트웨이 추가",
+        "title-edit": "게이트웨이 편집",
         "name": "이름",
         "location": "위치",
         "name-placeholder": "게이트웨이 이름 입력",
@@ -64,7 +102,9 @@
         "add-error": "게이트웨이 생성 실패",
         "loading-error": "게이트웨이 로드 중 오류 발생",
         "generating-otp": "OTP 생성 중...",
-        "otp-error": "OTP 생성 중 오류 발생"
+        "otp-error": "OTP 생성 중 오류 발생",
+        "edit-success": "게이트웨이 업데이트됨",
+        "edit-error": "게이트웨이 업데이트 실패"
       },
       "delete": {
         "header": "게이트웨이 삭제",
@@ -75,30 +115,38 @@
       "status": {
         "waiting-for-deployment": {
           "label": "배포 대기 중",
-          "header-1": "배포 대기 중",
-          "content-1": "이미지가 아직 부팅되지 않았습니다. 이미지를 다운로드하고 부팅하십시오.",
-          "header-2": "이미지 다운로드",
-          "content-2": "시드 이미지를 다운로드하여 게이트웨이 부팅",
-          "generating-image": "이미지 생성",
-          "generating-image-info": "이미지 생성 중. 생성이 완료되면 통보됨",
-          "image-download-error": "이미지 다운로드 중 오류 발생."
+          "header-waiting": "배포 대기 중",
+          "content-waiting": "게이트웨이 이미지가 아직 부팅되지 않았습니다. 이미지를 다운로드하고 부팅하십시오.",
+          "header-download": "게이트웨이 이미지 다운로드",
+          "content-download": "시드 이미지를 다운로드하여 게이트웨이 부팅",
+          "generating-image": "게이트웨이 이미지 생성 중",
+          "generating-image-info": "게이트웨이 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다.",
+          "image-download-error": "게이트웨이 이미지 다운로드 중 오류가 발생했습니다."
         },
         "image-generating": {
-          "label": "이미지 생성",
-          "header-1": "이미지 생성",
-          "content-1": "이미지 생성 중. 생성이 완료되면 통보됨"
+          "label": "게이트웨이 이미지 생성 중",
+          "header-generating": "게이트웨이 이미지 생성 중",
+          "content-generating": "게이트웨이 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다."
         },
         "awaiting-approval": {
           "label": "승인 대기 중",
-          "header-1": "승인 대기 중",
-          "content-1": "게이트웨이 등록 요청을 수락하여 게이트웨이 온보딩 완료",
+          "header-approval": "승인 대기 중",
+          "content-approval": "게이트웨이 등록 요청을 수락하여 게이트웨이 온보딩 완료",
           "gateway-approve": "게이트웨이 등록 요청이 승인됨.",
           "gateway-approve-error": "게이트웨이 요청 수락 중 오류 발생."
         },
         "approved": {
           "label": "승인됨",
-          "header-1": "승인됨",
-          "content-1": "게이트웨이가 승인됨. 실행이 끝나고 나면 ‘연결됨’으로 전환"
+          "header-approved": "승인됨",
+          "content-approved": "게이트웨이가 승인됨. 실행이 끝나고 나면 ‘연결됨’으로 전환"
+        },
+        "connected": {
+          "label": "연결됨",
+          "header-connected": "{{connectedSince}} 이후 연결됨"
+        },
+        "disconnected": {
+          "label": "연결 해제됨",
+          "header-disconnected": "{{lastSeen}} 이후 연결 해제됨"
         }
       }
     },

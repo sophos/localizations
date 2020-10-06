@@ -1,4 +1,152 @@
 {
-  "firewall-mgmt.sample": "test string"
+  "firewall-management": {
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "main-dashboard-breadcrumb-text": "Vue générale",
+    "dashboard": {
+      "name": "Firewall Management - Tableau de bord",
+      "breadcrumb-text": "Firewall Management"
+    },
+    "firmware" : {
+      "upgrade" : {
+        "modal": {
+          "title": "Mises à niveau du firmware - {{ groupName }}",
+          "apply": "Appliquer les mises à jour pour les pare-feu sélectionnés",
+          "option": {
+            "immediately": "Immédiatement",
+            "at": "À"
+          },
+          "schedule": "Planifier les mises à niveau",
+          "calender": "Les mises à niveau seront effectuées dans le fuseau horaire des pare-feu respectifs. Les mises à niveau seront effectuées à l’heure suivante du pare-feu : "
+        },
+        "info": {
+          "news": "Actualités",
+          "bugs": "Bugs",
+          "release-notes": "Notes de publication"
+        },
+        "table": {
+          "column": {
+            "firewall": "Pare-feu",
+            "version": "Version",
+            "upgrade-version": "Mettre à jour à",
+            "size": "",
+            "status": "",
+            "timezone": "Fuseau horaire"
+          },
+          "state": {
+            "scheduled": "Une mise à niveau du firmware à la version {{ nextVersion }} a déjà été planifiée {{ scheduledIn }} le {{ schedule }}.",
+            "schedule_timeout": "Une mise à niveau du firmware à la version {{ nextVersion }} était planifiée {{ scheduledIn }} le {{ schedule }}."
+          },
+          "heading": "Gérer les mise à niveau du pare-feu et les planifications pour le groupe '{{ groupName }}'.",
+          "cancel-all": "Annuler les planifications pour la sélection",
+          "cancel-schedule": "Annuler cette mise à niveau",
+          "summary": {
+            "selected": "{{ count }}/{{ total }} pare-feu sélectionné(s).",
+            "reschedule-hint": "La reprogrammation annulera la mise à niveau déjà planifiée et le pare-feu suivra la nouvelle planification."
+          }
+        },
+        "states": {
+          "no-data-text": "Tous les pare-feu sont à jour.",
+          "no-data-info": "La présence de mises à jour est vérifiée toutes les 4 heures pour tous les pare-feu administrés par Sophos Central.",
+          "no-data-subtext": "Si les mises à jour sont disponibles, les pare-feu seront affichés ici.",
+          "cannot-load": "Impossible de charger les pare-feu pouvant être mis à niveau.",
+          "cannot-schedule": "Impossible de planifier la mise à niveau du firmware. Information de fuseau horaire inconnue !",
+          "scheduled": "Planification réussie des mises à niveau pour les pare-feu sélectionnés.",
+          "cancelled": "Annulation réussi des mises à niveau planifiées.",
+          "cannot-cancel": "Une erreur s’est produite lors de l’annulation de la planification.",
+          "unschedulable": "Certains pare-feu sélectionnés n’envoient peut-être pas d’informations sur leur fuseau horaire. Veuillez procéder à la mise à niveau en utilisant l’option « Immédiatement ».",
+          "timezone-missing": "Certaines des plus anciennes versions du pare-feu n’envoient peut-être pas d’informations sur leur fuseau horaire. Veuillez procéder à la mise à niveau en utilisant l’option « Immédiatement »."
+        }
+      }
+    },
+    "group-template": {
+      "title": "Modèles de pare-feu",
+      "breadcrumb-text": "Modèles de pare-feu",
+      "cannot-load": "Erreur lors du chargement de la liste des modèles.",
+      "edit-customers": {
+        "modal": {
+          "title": "Modifier les clients - {{ name }}",
+          "text": "Sélectionner les clients auxquels ce modèle général '{{ name }}' doit être appliqué.",
+          "info": "Vous pouvez uniquement appliquer des modèles généraux aux clients que vous administrez.",
+          "tip": "Un seul modèle par client peut être appliqué.",
+          "note": "Remarque : les stratégies de base et les paramètres généraux définis par ce modèle seront verrouillés au niveau des clients."
+        },
+        "picklist": {
+          "source": "Clients disponibles",
+          "target": "Clients assignés"
+        },
+        "states": {
+          "cannot-save": "Impossible de mettre à jour les clients.",
+          "saved": "Clients mis à jour avec succès."
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "Confirmation de la suppression - {{ name }}",
+          "question": "Supprimer le modèle de pare-feu '{{ name }}' ?",
+          "customers": "Les clients de {{ customerCount }} seront affectés par ce changement.",
+          "note": "Remarque : les clients conserveront les derniers changements. Vous pouvez continuer à les gérer depuis Sophos Central Partner en les assignant à un autre modèle ou les gérer individuellement depuis Sophos Central Admin.",
+          "confirm": "Oui, je veux supprimer ce modèle"
+        },
+        "states": {
+          "cannot-delete": "Une erreur s’est produite lors de la suppression du modèle.",
+          "deleted": "Modèle supprimé."
+        }
+      },
+      "add": {
+        "add": "Ajouter un modèle",
+        "modal": {
+          "title-add": "Ajouter un modèle",
+          "title-edit": "Modifier un modèle - {{ name }}",
+          "name": {
+            "label": "Nom du modèle",
+            "placeholder": "Saisir le nom du modèle.",
+            "required": "Nom obligatoire"
+          },
+          "description": {
+            "label": "Description",
+            "placeholder": "Saisir la description du modèle (250 caractères max.)",
+            "length": "La description ne doit pas dépasser 250 caractères."
+          }
+        },
+        "states": {
+          "cannot-save": "Une erreur s’est produite lors de l’enregistrement du modèle.",
+          "saved": "Modèle créé avec succès."
+        }
+      },
+      "template-list": {
+        "pagination": "{{ from }} à {{ to }} sur {{ of }}",
+        "column": {
+          "name": "Nom",
+          "no-of-customer": "Nombre de clients",
+          "description": "Description"
+        },
+        "menu": {
+          "manage": "Administrer la stratégie",
+          "edit": "Modifier un modèle",
+          "delete": "Supprimer",
+          "edit-customers": "Modifier les clients"
+        },
+        "no-data": {
+          "info": "Créer des paramètres de pare-feu communs et des séries de modèles de stratégies de base à utiliser sur différents clients.",
+          "header": "Vous n’avez aucun modèle de pare-feu.",
+          "learn-more": "Plus d’info",
+          "what": "Qu’est-ce qu’un modèle de pare-feu ?",
+          "what-answer": "Un modèle de pare-feu est une série de stratégies de base et de paramètres de pare-feu. Vous l’appliquez aux clients que vous administrez.",
+          "why": "Pourquoi utiliser un modèle de pare-feu ?",
+          "why-answer": {
+            "answer": "Les modèles de pare-feu vous permettent de :",
+            "apply": "Appliquer les mêmes paramètres à tous les clients d’un groupe.",
+            "stop": "Autoriser les clients à créer des sous-groupes dans un groupe de modèles géré par le Partenaire.",
+            "push": "Déployer automatiquement aux clients les modèles mis à jour et les modifications."
+          }
+        }
+      }
+    },
+    "global-settings": {
+      "breadcrumb-text": "Paramètres et stratégies"
+    
+    }
+  }
 }
-
