@@ -11,18 +11,20 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Upgrades de firmware - {{ groupName }}",
+          "title": "Upgrades de firmware",
+          "title-with-name": "Upgrades de firmware - {{ groupName }}",
           "apply": "Aplicar as atualizações a firewalls selecionados",
           "option": {
             "immediately": "Imediatamente",
             "at": "Em"
           },
           "schedule": "Agendar upgrades",
-          "calender": "Os upgrades seguirão o fuso horário dos respectivos firewalls. Os upgrades serão realizados quando o horário do firewall for: "
+          "calender": "Os upgrades seguirão o fuso horário dos respectivos firewalls. Os upgrades serão realizados quando o horário no firewall for: "
         },
         "info": {
           "news": "Notícias",
           "bugs": "Erros",
+          "size": "Tamanho",
           "release-notes": "Notas de versão"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "Versão",
             "upgrade-version": "Atualizar para",
             "size": "",
-            "status": "",
+            "status": "Upgrades agendados no momento",
             "timezone": "Fuso horário"
           },
           "state": {
-            "scheduled": "Um upgrade de firmware para a versão {{ nextVersion }} já foi agendado para as {{ scheduledIn }} em {{ schedule }}.",
-            "schedule_timeout": "Um upgrade de firmware para a versão {{ nextVersion }} foi agendado para as {{ scheduledIn }} em {{ schedule }}."
+            "scheduled": "Versão: {{ nextVersion }}, {{ scheduledIn }}",
+            "schedule_timeout": "Versão: {{ nextVersion }}, {{ scheduledAgo }}"
           },
-          "heading": "Gerenciar agendamentos e upgrades de firewall para o grupo '{{ groupName }}'.",
-          "cancel-all": "Cancelar agendamentos para a seleção",
-          "cancel-schedule": "Cancelar este upgrade",
+          "heading": "Gerenciar agendamentos e upgrades de firewall.",
+          "heading-with-name": "Gerenciar agendamentos e upgrades de firewall para o grupo '{{ groupName }}'.",
+          "cancel-all": "Cancelar agendamentos",
           "summary": {
             "selected": "{{ count }}/{{ total }} firewall(s) selecionado(s).",
             "reschedule-hint": "O reagendamento cancelará o upgrade agendado anteriormente e o firewall seguirá a nova agenda."
@@ -48,9 +50,10 @@
         },
         "states": {
           "no-data-text": "Todos os firewalls estão atualizados.",
-          "no-data-info": "As atualizações são verificadas a cada 4 horas para todos os firewalls que são gerenciados pelo Central.",
+          "no-data-info": "As atualizações são verificadas a cada 4 horas para todos os firewalls que são gerenciados pelo Sophos Central.",
           "no-data-subtext": "Se houver atualizações disponíveis, os firewalls serão listados aqui.",
           "cannot-load": "Não é possível carregar firewalls atualizáveis.",
+          "cannot-load-groups": "Não é possível carregar informações do grupo.",
           "cannot-schedule": "O upgrade de firmware não pode ser agendado. As informações de fuso horário não são conhecidas.",
           "scheduled": "Agendamento de upgrades bem-sucedido para os firewalls selecionados.",
           "cancelled": "Upgrades agendados cancelados com sucesso.",
@@ -86,7 +89,7 @@
           "title": "Confirmação de deleção - {{ name }}",
           "question": "Deletar o modelo de firewall '{{ name }}'?",
           "customers": "{{ customerCount }} clientes serão afetados por esta alteração.",
-          "note": "Nota: Os clientes manterão as últimas alterações salvas para eles. Você pode continuar a gerenciá-los a partir do Sophos Central Partner, atribuindo-os a outro modelo, ou poderá gerenciá-los individualmente a partir do Sophos Central Admin.",
+          "note": "Nota: Os clientes manterão as últimas alterações salvas para seus firewalls. Você pode continuar a gerenciar os firewalls a partir do Sophos Central Partner, atribuindo-os a outro modelo, ou poderá gerenciá-los individualmente a partir do Sophos Central Admin.",
           "confirm": "Sim, desejo deletar este modelo"
         },
         "states": {
@@ -139,7 +142,7 @@
             "answer": "Com os modelos de firewall você pode:",
             "apply": "Aplicar as mesmas configurações a todos os clientes em um grupo.",
             "stop": "Permitir aos clientes criar subgrupos dentro do grupo do modelo gerenciado do parceiro.",
-            "push": "Atualizar modelos e enviar alterações aos clientes automaticamente por push"
+            "push": "Atualizações e alterações do modelo são automaticamente enviadas aos clientes por push."
           }
         }
       }

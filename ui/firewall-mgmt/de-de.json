@@ -11,18 +11,20 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Firmware-Aktualisierungen - {{ groupName }}",
+          "title": "Firmware-Aktualisierungen",
+          "title-with-name": "Firmware-Aktualisierungen - {{ groupName }}",
           "apply": "Aktualisierungen für die ausgewählten Firewalls anwenden",
           "option": {
             "immediately": "Sofort",
             "at": "Um"
           },
           "schedule": "Aktualisierungen planen",
-          "calender": "Die Aktualisierungen berücksichtigen die jeweilige Zeitzone der Firewall. Die Aktualisierungen werden zum folgenden Zeitpunkt (in der Firewall-Zeitzone) ausgeführt: "
+          "calender": "Die Aktualisierungen berücksichtigen die jeweilige Zeitzone der Firewall. Die Aktualisierungen werden zu folgender Firewall-Zeit ausgeführt: "
         },
         "info": {
           "news": "News",
           "bugs": "Fehlern",
+          "size": "Größe",
           "release-notes": "Versionsinfo"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "Version",
             "upgrade-version": "Aktualisierung auf",
             "size": "",
-            "status": "",
+            "status": "Aktuell geplante Aktualisierungen",
             "timezone": "Zeitzone"
           },
           "state": {
-            "scheduled": "Eine Firmware-Aktualisierung auf Version {{ nextVersion }} ist bereits geplant für {{ scheduledIn }} am {{ schedule }}.",
-            "schedule_timeout": "Eine Firmware-Aktualisierung auf Version {{ nextVersion }} ist geplant für {{ scheduledIn }} am {{ schedule }}."
+            "scheduled": "Version: {{ nextVersion }}, {{ scheduledIn }}",
+            "schedule_timeout": "Version: {{ nextVersion }}, {{ scheduledAgo }}"
           },
-          "heading": "Verwalten Sie Firewall-Aktualisierungen und Zeitpläne für die Gruppe '{{ groupName }}'.",
-          "cancel-all": "Zeitpläne für ausgewählte widerrufen",
-          "cancel-schedule": "Die Aktualisierung widerrufen",
+          "heading": "Verwalten Sie Firewall-Aktualisierungen und Zeitpläne.",
+          "heading-with-name": "Verwalten Sie Firewall-Aktualisierungen und Zeitpläne für die Gruppe '{{ groupName }}'.",
+          "cancel-all": "Zeitpläne widerrufen",
           "summary": {
             "selected": "{{ count }}/{{ total }} Firewalls ausgewählt.",
             "reschedule-hint": "Durch eine Planungsänderung wird die zuvor geplante Aktualisierung widerrufen und die Firewall folgt dem neuen Zeitplan."
@@ -48,9 +50,10 @@
         },
         "states": {
           "no-data-text": "Alle Firewalls sind auf dem neuesten Stand.",
-          "no-data-info": "Es wird alle vier Stunden auf Aktualisierungen für alle von Central verwalteten Firewalls geprüft.",
+          "no-data-info": "Es wird alle vier Stunden auf Aktualisierungen für alle von Sophos Central verwalteten Firewalls geprüft.",
           "no-data-subtext": "Wenn die Aktualisierungen verfügbar sind, werden die Firewalls hier angezeigt.",
           "cannot-load": "Aktualisierbare Firewalls können nicht geladen werden.",
+          "cannot-load-groups": "Gruppen-Informationen können nicht geladen werden.",
           "cannot-schedule": "Firmware-Aktualisierung kann nicht geplant werden. Keine Zeitzonen-Information vorhanden.",
           "scheduled": "Aktualisierung der ausgewählten Firewalls erfolgreich geplant.",
           "cancelled": "Geplante Aktualisierungen erfolgreich widerrufen.",
@@ -86,7 +89,7 @@
           "title": "Löschbestätigung - {{ name }}",
           "question": "Firewall-Vorlage '{{ name }}' löschen?",
           "customers": "{{ customerCount }} Kunden sind von der Änderung betroffen.",
-          "note": "Hinweis: Kunden behalten trotzdem die für sie gespeicherten Änderungen. Sie können Kunden weiterhin mit Sophos Central Partner verwalten, indem Sie sie einer anderen Vorlage zuweisen. Sie können sie jedoch auch individuell über Sophos Central Admin verwalten.",
+          "note": "Hinweis: Kunden behalten die letzten auf deren Firewalls gespeicherten Änderungen. Sie können die Firewalls weiterhin mit Sophos Central Partner verwalten, indem Sie sie einer anderen Vorlage zuweisen. Sie können sie jedoch auch einzeln über Sophos Central Admin verwalten.",
           "confirm": "Ja, ich möchte die Vorlage löschen"
         },
         "states": {
