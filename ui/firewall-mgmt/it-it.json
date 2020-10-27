@@ -11,7 +11,8 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Upgrade del firmware - {{ groupName }}",
+          "title": "Upgrade del firmware in corso",
+          "title-with-name": "Upgrade del firmware - {{ groupName }}",
           "apply": "Applica gli aggiornamenti per i firewall selezionati",
           "option": {
             "immediately": "Immediatamente",
@@ -23,6 +24,7 @@
         "info": {
           "news": "News",
           "bugs": "Bug",
+          "size": "Dimensioni",
           "release-notes": "Note di rilascio"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "Versione",
             "upgrade-version": "Aggiorna a",
             "size": "",
-            "status": "",
+            "status": "Upgrade attualmente pianificati",
             "timezone": "Fuso orario"
           },
           "state": {
-            "scheduled": "Un upgrade del firmware alla versione {{ nextVersion }} è già pianificato per le ore {{ scheduledIn }} del giorno {{ schedule }}.",
-            "schedule_timeout": "Un upgrade del firmware alla versione {{ nextVersion }} era pianificato per le ore {{ scheduledIn }} del giorno {{ schedule }}."
+            "scheduled": "Versione: {{ nextVersion }}, {{ scheduledIn }}",
+            "schedule_timeout": "Versione: {{ nextVersion }}, {{ scheduledAgo }}"
           },
-          "heading": "Gestisci upgrade e pianificazioni del firewall per il gruppo '{{ groupName }}'.",
-          "cancel-all": "Annulla pianificazioni per gli elementi selezionati",
-          "cancel-schedule": "Annulla questo upgrade",
+          "heading": "Gestisci upgrade e pianificazioni del firewall.",
+          "heading-with-name": "Gestisci upgrade e pianificazioni del firewall per il gruppo '{{ groupName }}'.",
+          "cancel-all": "Annulla pianificazioni",
           "summary": {
             "selected": "{{ count }}/{{ total }} firewall selezionato/i.",
             "reschedule-hint": "La modifica della pianificazione annullerà l'upgrade pianificato in precedenza e il firewall seguirà la nuova pianificazione."
@@ -48,9 +50,10 @@
         },
         "states": {
           "no-data-text": "Tutti i firewall sono aggiornati.",
-          "no-data-info": "Gli aggiornamenti vengono verificati ogni 4 ore per tutti i firewall gestiti da Central.",
+          "no-data-info": "Gli aggiornamenti vengono verificati ogni 4 ore per tutti i firewall gestiti da Sophos Central.",
           "no-data-subtext": "Se sono disponibili aggiornamenti, i firewall verranno elencati qui.",
           "cannot-load": "Impossibile caricare firewall aggiornabili.",
+          "cannot-load-groups": "Impossibile caricare informazioni del gruppo.",
           "cannot-schedule": "Impossibile pianificare l'upgrade del firmware. Attenzione: informazioni sul fuso orario sconosciute.",
           "scheduled": "Pianificazione degli upgrade per il/i firewall selezionato/i completata.",
           "cancelled": "Annullamento degli upgrade pianificati completato.",
@@ -86,7 +89,7 @@
           "title": "Conferma eliminazione - {{ name }}",
           "question": "Eliminare il modello del firewall '{{ name }}'?",
           "customers": "Questa modifica riguarderà {{ customerCount }} clienti.",
-          "note": "Nota. I clienti manterranno le ultime modifiche salvate. Sarà possibile continuare a gestirli da Sophos Central Partner, assegnandoli a un altro modello; in alternativa, potranno essere gestiti individualmente da Sophos Central Admin.",
+          "note": "Nota. I clienti mantengono le ultime modifiche salvate per i firewall. Potrai continuare a gestirli da Sophos Central Partner, assegnandoli a un altro modello; in alternativa, puoi gestirli individualmente da Sophos Central Admin.",
           "confirm": "Sì, desidero eliminare questo modello"
         },
         "states": {
@@ -139,7 +142,7 @@
             "answer": "I modelli firewall consentono di:",
             "apply": "Applicare le stesse impostazioni a tutti i clienti appartenenti a un gruppo.",
             "stop": "Permettere ai clienti di creare sottogruppi all'interno di un gruppo di modelli gestito dal partner.",
-            "push": "Aggiornare i modelli con push automatico delle modifiche ai clienti"
+            "push": "Gli aggiornamenti e le modifiche dei modelli vengono inviati automaticamente ai clienti tramite push."
           }
         }
       }

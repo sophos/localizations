@@ -11,18 +11,20 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "韌體更新 - {{ groupName }}",
+          "title": "韌體更新",
+          "title-with-name": "韌體更新 - {{ groupName }}",
           "apply": "為選定的防火牆套用更新",
           "option": {
             "immediately": "立即",
             "at": "位於"
           },
           "schedule": "排程更新",
-          "calender": "這些更新將會接受各自防火牆的時區。防火牆時間為下列時間時，將執行這些更新： "
+          "calender": "這些更新將會遵循相應防火牆的時區。防火牆上的時間為下列時間時，將執行這些更新： "
         },
         "info": {
           "news": "新聞時事",
           "bugs": "錯誤",
+          "size": "大小",
           "release-notes": "發佈說明"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "版本",
             "upgrade-version": "更新至",
             "size": "",
-            "status": "",
+            "status": "目前排定的更新",
             "timezone": "時區"
           },
           "state": {
-            "scheduled": "韌體更新至版本 {{ nextVersion }} 已被排程於 {{ schedule }} 的 {{ scheduledIn }}。",
-            "schedule_timeout": "韌體更新至版本 {{ nextVersion }} 已被排程於 {{ schedule }} 的 {{ scheduledIn }}。"
+            "scheduled": "版本：{{ nextVersion }}、{{ scheduledIn }}",
+            "schedule_timeout": "版本：{{ nextVersion }}、{{ scheduledAgo }}"
           },
-          "heading": "管理群組「{{ groupName }}」的防火牆更新和排程。",
-          "cancel-all": "取消選定的排程",
-          "cancel-schedule": "取消此更新",
+          "heading": "管理防火墻升級和排程。",
+          "heading-with-name": "管理群組「{{ groupName }}」的防火牆更新和排程。",
+          "cancel-all": "取消排程",
           "summary": {
             "selected": "{{ count }}/{{ total }} 個防火牆已選取。",
             "reschedule-hint": "重新排程將會取消之前排程的更新，防火牆將遵循新的排程。"
@@ -48,9 +50,10 @@
         },
         "states": {
           "no-data-text": "所有防火墻是最新版。",
-          "no-data-info": "每隔 4 小時將對所有由 Central 管理的防火牆檢查更新。",
+          "no-data-info": "每隔 4 小時將對所有由 Sophos Central 管理的防火牆檢查更新。",
           "no-data-subtext": "如果更新可用，防火牆將會在此列出。",
           "cannot-load": "無法載入可更新的防火牆。",
+          "cannot-load-groups": "無法載入群組資訊。",
           "cannot-schedule": "無法排程韌體更新。時區資訊未知！",
           "scheduled": "已成功排程選定防火牆的更新。",
           "cancelled": "已成功取消排程的更新。",
@@ -86,7 +89,7 @@
           "title": "刪除確認 - {{ name }}",
           "question": "是否刪除防火牆範本「{{ name }}」？",
           "customers": "{{ customerCount }} 名客戶將會受到該變更的影響。",
-          "note": "注意: 客戶將保持上次儲存的變更。您可以透過將他們指派到其他範本來繼續從 Sophos Central Partner 中管理他們或者您可以從 Sophos Central Admin 中單獨管理他們。",
+          "note": "注意: 客戶將最新變更儲存到其防火牆中。您可以透過將防火牆指派給另一個範本來繼續從 Sophos Central Partner 管理防火牆，也可以從 Sophos Central Admin 單獨管理它們。",
           "confirm": "是，我要刪除該範本"
         },
         "states": {
@@ -139,7 +142,7 @@
             "answer": "防火牆範本可讓您：",
             "apply": "將同樣的設定套用至群組裡的所有客戶。",
             "stop": "允許客戶在合作夥伴管理範本群組中建立子群組。",
-            "push": "更新範本，變更將會自動推送給客戶"
+            "push": "範本會更新，並且變更將會自動推送給客戶。"
           }
         }
       }

@@ -11,18 +11,20 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Actualizaciones del firmware - {{ groupName }}",
+          "title": "Actualizaciones de firmware",
+          "title-with-name": "Actualizaciones del firmware - {{ groupName }}",
           "apply": "Aplicar las actualizaciones para los firewalls seleccionados",
           "option": {
             "immediately": "Inmediatamente",
             "at": "A las"
           },
           "schedule": "Programar actualizaciones",
-          "calender": "Las actualizaciones respetarán la zona horaria de los respectivos firewalls. Las actualizaciones se aplicarán a la siguiente hora del firewall: "
+          "calender": "Las actualizaciones respetarán la zona horaria de los respectivos firewalls. Las actualizaciones se aplicarán cuando la hora del firewall sea: "
         },
         "info": {
           "news": "Noticias",
           "bugs": "Errores",
+          "size": "Tamaño",
           "release-notes": "Notas de la edición"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "Versión",
             "upgrade-version": "Actualizar a",
             "size": "",
-            "status": "",
+            "status": "Actualizaciones programadas actualmente",
             "timezone": "Zona horaria"
           },
           "state": {
-            "scheduled": "Ya se ha programado una actualización del firmware a la versión {{ nextVersion }} {{ scheduledIn }} el {{ schedule }}.",
-            "schedule_timeout": "Se ha programado una actualización del firmware a la versión {{ nextVersion }} {{ scheduledIn }} el {{ schedule }}."
+            "scheduled": "Versión: {{ nextVersion }}, {{ scheduledIn }}",
+            "schedule_timeout": "Versión: {{ nextVersion }}, {{ scheduledAgo }}"
           },
-          "heading": "Administre actualizaciones y programaciones del firewall para el grupo '{{ groupName }}'.",
-          "cancel-all": "Cancelar programaciones para los seleccionados",
-          "cancel-schedule": "Cancelar esta actualización",
+          "heading": "Administre actualizaciones y programaciones del firewall.",
+          "heading-with-name": "Administre actualizaciones y programaciones del firewall para el grupo '{{ groupName }}'.",
+          "cancel-all": "Cancelar programaciones",
           "summary": {
             "selected": "{{ count }}/{{ total }} firewall(s) seleccionado(s).",
             "reschedule-hint": "La reprogramación cancelará la actualización programada anteriormente y el firewall seguirá la nueva programación."
@@ -48,9 +50,10 @@
         },
         "states": {
           "no-data-text": "Todos los firewalls están actualizados.",
-          "no-data-info": "Las actualizaciones se comprueban cada 4 horas para todos los firewalls administrados por Central.",
+          "no-data-info": "Las actualizaciones se comprueban cada 4 horas para todos los firewalls administrados por Sophos Central.",
           "no-data-subtext": "Si hay actualizaciones disponibles, los firewalls aparecerán aquí.",
           "cannot-load": "No se pueden cargar firewalls actualizables.",
+          "cannot-load-groups": "No se puede cargar la información del grupo.",
           "cannot-schedule": "La actualización del firmware no se puede programar. No se conoce la información de la zona horaria.",
           "scheduled": "Se han programado correctamente las actualizaciones para los firewalls seleccionados.",
           "cancelled": "Se han cancelado correctamente las actualizaciones programadas.",
@@ -86,7 +89,7 @@
           "title": "Confirmar eliminación - {{ name }}",
           "question": "¿Eliminar plantilla de firewall '{{ name }}'?",
           "customers": "{{ customerCount }} clientes se verán afectados por este cambio.",
-          "note": "Nota: Los clientes conservarán los últimos cambios que se hayan guardado en ellos. Los puede seguir gestionando desde Sophos Central Partner asignándolos a otra plantilla o gestionarlos de forma individual desde Sophos Central Admin.",
+          "note": "Nota: Los clientes conservan los últimos cambios guardados en sus firewalls. Puede seguir gestionando los firewalls desde Sophos Central Partner asignándolos a otra plantilla o gestionarlos de forma individual desde Sophos Central Admin.",
           "confirm": "Sí, quiero eliminar esta plantilla"
         },
         "states": {
@@ -139,7 +142,7 @@
             "answer": "Las plantillas de firewall le permiten hacer esto:",
             "apply": "Aplicar las mismas opciones de configuración para todos los clientes de un grupo.",
             "stop": "Permitir a los clientes crear subgrupos dentro de un grupo de plantillas administrado por el partner.",
-            "push": "Actualizar plantillas y los cambios se imponen automáticamente a los clientes"
+            "push": "Las actualizaciones y los cambios en las plantillas se imponen automáticamente a los clientes"
           }
         }
       }

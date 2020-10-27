@@ -11,7 +11,8 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Mises à niveau du firmware - {{ groupName }}",
+          "title": "Mises à niveau du firmware",
+          "title-with-name": "Mises à niveau du firmware - {{ groupName }}",
           "apply": "Appliquer les mises à jour pour les pare-feu sélectionnés",
           "option": {
             "immediately": "Immédiatement",
@@ -23,6 +24,7 @@
         "info": {
           "news": "Actualités",
           "bugs": "Bugs",
+          "size": "Taille",
           "release-notes": "Notes de publication"
         },
         "table": {
@@ -31,16 +33,16 @@
             "version": "Version",
             "upgrade-version": "Mettre à jour à",
             "size": "",
-            "status": "",
+            "status": "Mises à niveau actuellement planifiées",
             "timezone": "Fuseau horaire"
           },
           "state": {
-            "scheduled": "Une mise à niveau du firmware à la version {{ nextVersion }} a déjà été planifiée {{ scheduledIn }} le {{ schedule }}.",
-            "schedule_timeout": "Une mise à niveau du firmware à la version {{ nextVersion }} était planifiée {{ scheduledIn }} le {{ schedule }}."
+            "scheduled": "Version : {{ nextVersion }}, {{ scheduledIn }}",
+            "schedule_timeout": "Version : {{ nextVersion }}, {{ scheduledAgo }}"
           },
-          "heading": "Gérer les mise à niveau du pare-feu et les planifications pour le groupe '{{ groupName }}'.",
-          "cancel-all": "Annuler les planifications pour la sélection",
-          "cancel-schedule": "Annuler cette mise à niveau",
+          "heading": "Gérer les mises à niveau du pare-feu et les planifications.",
+          "heading-with-name": "Gérer les mises à niveau du pare-feu et les planifications pour le groupe '{{ groupName }}'.",
+          "cancel-all": "Annuler les planifications",
           "summary": {
             "selected": "{{ count }}/{{ total }} pare-feu sélectionné(s).",
             "reschedule-hint": "La reprogrammation annulera la mise à niveau déjà planifiée et le pare-feu suivra la nouvelle planification."
@@ -51,6 +53,7 @@
           "no-data-info": "La présence de mises à jour est vérifiée toutes les 4 heures pour tous les pare-feu administrés par Sophos Central.",
           "no-data-subtext": "Si les mises à jour sont disponibles, les pare-feu seront affichés ici.",
           "cannot-load": "Impossible de charger les pare-feu pouvant être mis à niveau.",
+          "cannot-load-groups": "Impossible de charger les informations du groupe.",
           "cannot-schedule": "Impossible de planifier la mise à niveau du firmware. Information de fuseau horaire inconnue !",
           "scheduled": "Planification réussie des mises à niveau pour les pare-feu sélectionnés.",
           "cancelled": "Annulation réussi des mises à niveau planifiées.",
@@ -86,7 +89,7 @@
           "title": "Confirmation de la suppression - {{ name }}",
           "question": "Supprimer le modèle de pare-feu '{{ name }}' ?",
           "customers": "Les clients de {{ customerCount }} seront affectés par ce changement.",
-          "note": "Remarque : les clients conserveront les derniers changements. Vous pouvez continuer à les gérer depuis Sophos Central Partner en les assignant à un autre modèle ou les gérer individuellement depuis Sophos Central Admin.",
+          "note": "Remarque : Les clients gardent les dernières modifications enregistrées sur leurs pare-feu. Vous pouvez continuer à gérer les pare-feu depuis Sophos Central Partner en les assignant à un autre modèle ou les gérer individuellement depuis Sophos Central Admin.",
           "confirm": "Oui, je veux supprimer ce modèle"
         },
         "states": {
@@ -139,7 +142,7 @@
             "answer": "Les modèles de pare-feu vous permettent de :",
             "apply": "Appliquer les mêmes paramètres à tous les clients d’un groupe.",
             "stop": "Autoriser les clients à créer des sous-groupes dans un groupe de modèles géré par le Partenaire.",
-            "push": "Déployer automatiquement aux clients les modèles mis à jour et les modifications."
+            "push": "Les clients reçoivent automatiquement les mises à jour et modifications des modèles."
           }
         }
       }
