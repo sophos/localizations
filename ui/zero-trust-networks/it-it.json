@@ -9,65 +9,71 @@
       "delete": "Elimina",
       "download": "Download",
       "approve": "Approvo",
-      "search": "Cerca"
+      "search": "Cerca",
+      "fqdn-validation": "FQDN non valido",
+      "invalid-name": "Il nome può contenere solamente: A-Z, a-z , 0-9, -, _, spazi",
+      "name-length-validation": "Il nome non deve superare i 100 caratteri",
+      "whitespace-name-validation": "Nome obbligatorio",
+      "description-length-validation": "La descrizione non deve superare i 300 caratteri"
     },
     "application": {
       "form": {
         "name": "Nome",
-        "name-placeholder": "Immetti il nome dell'applicazione",
+        "name-placeholder": "Immetti il nome della risorsa",
         "description": "Descrizione",
         "description-placeholder": "Immetti descrizione",
-        "description-length-validation": "La descrizione non deve superare i 200 caratteri",
-        "application-type": "Tipo applicazione",
-        "application-type-placeholder": "Seleziona il tipo di applicazione",
+        "port-validation": "Porta non valida",
+        "application-type": "Tipo di risorsa",
+        "application-type-placeholder": "Seleziona il tipo di risorsa",
         "gateway": "Gateway",
         "gateway-placeholder": "Seleziona gateway",
-        "application-fqdn": "FQDN/IP della risorsa",
-        "application-icon": "Icona applicazione",
+        "application-fqdn": "FQDN della risorsa",
+        "application-icon": "Icona della risorsa",
         "port": "Porta",
-        "title-add": "Aggiungi applicazione",
+        "title-add": "Aggiungi risorsa",
         "deploy": "Distribuisci",
         "user-groups": "Assegna gruppi di utenti",
         "error-user-groups": "Errore durante il recupero dei gruppi di utenti",
         "empty-user-groups": "Nessun gruppo di utenti trovato.",
         "available-user-groups": "Gruppi di utenti disponibili",
         "assigned-user-groups": "Gruppi di utenti assegnati",
-        "loading-error": "Errore durante il caricamento delle applicazioni",
-        "add-success": "Applicazione creata",
-        "add-error": "Creazione dell'applicazione non riuscita",
-        "title-edit": "Modifica applicazione",
-        "edit-success": "Applicazione aggiornata",
-        "edit-error": "Aggiornamento dell'applicazione non riuscito"
+        "loading-error": "Errore durante il caricamento delle risorse",
+        "add-success": "Risorsa creata",
+        "add-error": "Creazione della risorsa non riuscita",
+        "title-edit": "Modifica risorsa",
+        "edit-success": "Risorsa aggiornata",
+        "edit-error": "Aggiornamento della risorsa non riuscito"
       },
       "list": {
-        "add": "Aggiungi applicazione",
-        "title": "Zero Trust - Applicazioni",
-        "breadcrumb-text": "Applicazioni",
+        "add": "Aggiungi risorsa",
+        "title": "Zero Trust Network Access - Risorse e accesso",
+        "breadcrumb-text": "Risorse e accesso",
         "columns": {
           "name": "Nome",
           "gateway": "Gateway",
           "port": "Porta",
-          "ip": "FQDN/IP della risorsa",
-          "type": "Tipo applicazione"
+          "ip": "FQDN della risorsa",
+          "type": "Tipo di risorsa"
         },
-        "no-application-configured": "Non sono presenti Applicazioni aggiunte.",
-        "no-application-configured-help": "Fai clic sul pulsante Aggiungi applicazione per aggiungere le applicazioni.",
-        "error": "Errore durante il recupero dell'elenco delle applicazioni."
+        "no-application-configured": "Non sono state aggiunte voci per Risorse e accesso.",
+        "no-application-configured-help": "Clicca sul pulsante Risorse e accesso per aggiungere voci a Risorse e accesso.",
+        "error": "Errore durante il recupero dell'elenco delle risorse.",
+        "no-userGroups-configured": "Nessun gruppo di utenti disponibile."
       },
       "delete": {
-        "header": "Elimina applicazione",
-        "message": "Elimina applicazione",
-        "success": "Applicazione eliminata",
-        "error": "Eliminazione dell'applicazione non riuscita"
+        "header": "Elimina risorsa",
+        "message": "Elimina risorsa",
+        "success": "Risorsa eliminata",
+        "error": "Eliminazione della risorsa non riuscita"
       }
     },
     "dashboard": {
-      "title": "Zero Trust - Dashboard",
-      "breadcrumb-text": "Dashboard Zero Trust"
+      "title": "Zero Trust Network Access - Dashboard",
+      "breadcrumb-text": "Dashboard di Zero Trust Network Access"
     },
     "report": {
-      "title": "Zero Trust - Report",
-      "breadcrumb-text": "Report Zero Trust"
+      "title": "Zero Trust Network Access - Report",
+      "breadcrumb-text": "Report di Zero Trust Network Access"
     },
     "alert": {
       "summary": {
@@ -91,22 +97,29 @@
           "identity-provider": "Provider di identità",
           "status": "Stato"
         },
-        "title": "Zero Trust - Gateway",
+        "title": "Zero Trust Network Access - Gateway",
         "breadcrumb-text": "Gateway",
-        "error": "Errore durante il recupero dei gateway."
+        "error": "Errore durante il recupero dell'elenco dei gateway"
       },
       "form": {
         "title-add": "Aggiungi gateway",
         "title-edit": "Modifica gateway",
         "name": "Nome",
         "location": "Posizione",
+        "location-length-validation": "La posizione non deve superare i 100 caratteri",
+        "whitespace-location-validation": "La posizione è obbligatoria",
         "name-placeholder": "Immetti il nome del gateway",
         "description": "Descrizione",
         "description-placeholder": "Immetti descrizione",
         "packageType": "Pacchetto",
         "identity-provider": "Provider di identità",
         "fqdn": "FQDN",
-        "appDomain": "Dominio delle applicazioni",
+        "appDomain": "Dominio della risorsa",
+        "app-domain-validation": "Dominio della risorsa non valido",
+        "password": "Password del gateway",
+        "password-placeholder": "Inserire password",
+        "confirm-password": "Conferma password",
+        "confirm-password-placeholder": "Conferma password",
         "dns": "DNS",
         "dnsFromDhcp": "DNS da DHCP",
         "dns1": "DNS primario",
@@ -123,6 +136,8 @@
         "subnetMask": "Subnet Mask",
         "subnetMask-validation": "Subnet mask non valida",
         "default-gateway": "Gateway predefinito",
+        "defaultGateway-validation": "Gateway predefinito non valido",
+        "dns-validation": "DNS non valido",
         "certificate": "Certificato",
         "certificate-validation": "Certificato non valido",
         "privatekey": "Chiave privata",
@@ -130,14 +145,21 @@
         "save-and-generate-image": "Salva e genera immagine",
         "packageType-placeholder": "Seleziona pacchetto",
         "identity-provider-placeholder": "Seleziona provider di identità",
-        "description-length-validation": "La descrizione non deve superare i 200 caratteri",
-        "dns-mandatory-help": "Occorre impostare la voce DNS statico quando entrambe le interfacce sono statiche",
+        "dns-dhcp-mandatory-help": "Occorre impostare la voce DNS da DHCP quando entrambe le interfacce sono DHCP",
+        "dns-static-mandatory-help": "Occorre impostare la voce DNS statico quando entrambe le interfacce sono statiche",
         "add-success": "Gateway creato",
         "add-error": "Creazione del gateway non riuscita",
         "loading-error": "Errore durante il caricamento del gateway",
         "otp-error": "Errore durante la generazione della OTP",
         "edit-success": "Gateway aggiornato",
-        "edit-error": "Aggiornamento del gateway non riuscito"
+        "edit-error": "Aggiornamento del gateway non riuscito",
+        "password-rules": {
+          "length" : "Almeno 12 caratteri",
+          "uppercase": "Almeno una lettera maiuscola",
+          "lowercase": "Almeno una lettera minuscola",
+          "number": "Almeno un numero",
+          "special-character": "Almeno un carattere speciale"
+        }
       },
       "delete": {
         "header": "Elimina gateway",
@@ -154,7 +176,7 @@
           "content-download": "Scarica immagine iniziale per avviare il gateway",
           "generating-image": "Generazione dell'immagine gateway in corso",
           "generating-image-info": "La generazione dell'immagine gateway è in corso, riceverai una notifica una volta che è stata generata",
-          "image-download-error": "Errore durante il download dell'immagine gateway."
+          "image-download-error": "Errore durante il download dell'immagine gateway"
         },
         "image-generating": {
           "label": "Generazione dell'immagine gateway in corso",
@@ -165,7 +187,7 @@
           "label": "In attesa di approvazione",
           "header-approval": "In attesa di approvazione",
           "content-approval": "Accetta la richiesta di registrazione del gateway per completare l'onboarding del gateway",
-          "gateway-approve": "Richiesta di registrazione del gateway approvata.",
+          "gateway-approve": "Richiesta di registrazione del gateway approvata",
           "gateway-approve-error": "Errore durante il processo di accettazione della richiesta del gateway."
         },
         "approved": {
@@ -184,19 +206,20 @@
       }
     },
     "idp": {
-      "fetch-error": "Errore durante il caricamento dell'elenco di provider di identità",
+      "fetch-error": "Errore durante il recupero dell'elenco di provider di identità",
       "list": {
         "add": "Aggiungi provider di identità",
         "breadcrumb-text": "Provider di identità",
-        "title": "Zero Trust - Provider di identità",
+        "title": "Zero Trust Network Access - Provider di identità",
         "configure-idp": "Configura provider di identità",
-        "no-idp-configured": "Non sono stati aggiunti provider di identità",
-        "no-idp-configured-help": "Fai clic sul pulsante Aggiungi per configurare il provider di identità",
+        "no-idp-configured": "Non sono stati aggiunti provider di identità.",
+        "no-idp-configured-help": "Clicca sul pulsante Aggiungi provider di identità per aggiungere i provider di identità.",
         "columns": {
           "name": "Nome",
           "provider": "Provider",
           "action": "Azione",
-          "description": "Descrizione"
+          "description": "Descrizione",
+          "type": "Tipo"
         }
       },
       "form": {
@@ -207,7 +230,6 @@
         "name-placeholder": "Immetti il nome del provider di identità",
         "description": "Descrizione",
         "description-placeholder": "Inserire descrizione",
-        "description-length-validation": "La descrizione non deve superare i 200 caratteri",
         "provider": "Provider",
         "tenantid": "ID tenant",
         "clientid": "ID client",
@@ -220,8 +242,12 @@
         "configure-azure-settings": "Configura impostazioni di sincronizzazione con Azure",
         "test-connection-label": "Convalida connessione per la sincronizzazione con Azure",
         "test-connection-button": "Prova connessione",
-        "test-connection-success": "Connessione riuscita. Convalida delle impostazioni della sincronizzazione con Azure completata.",
-        "test-connection-failure": "Connessione non riuscita. Il client non è autorizzato a effettuare questa richiesta."
+        "test-connection-success": "Connessione eseguita.",
+        "test-connection-failure": "Connessione non riuscita.",
+        "provider-error": "Esiste già un provider di identità di questo tipo",
+        "clientId-validation": "L'ID client è obbligatorio",
+        "tenantId-validation": "L'ID tenant è obbligatorio",
+        "clientSecret-validation": "Il segreto client è obbligatorio"
       },
       "delete": {
         "header": "Elimina provider di identità",
@@ -235,7 +261,7 @@
     "apiLabel": {
       "dashboard-data-duration": "Ultime 24 ore",
       "top5AppsByBytes": "Principali 5 app per dati trasferiti",
-      "applicationName": "Applicazione",
+      "applicationName": "Risorsa",
       "appTotalBytes": "Byte totali (MB)",
       "fetchError": "Errore durante il recupero dei dati della dashboard"
     }
@@ -734,7 +760,7 @@
       "top_blocked_app_categories": "Principali categorie app bloccate",
       "status": "Stato",
       "sum_of_receivedkbits": "Somma kbit ricevuti",
-      "application_classification": "Classificazione applicazione",
+      "application_classification": "Classificazione di Risorse e accesso",
       "risky_apps_seen": "Sono state rilevate app rischiose",
       "endpoint_id": "ID dell'Endpoint",
       "memory_usage": "Utilizzo della memoria",
@@ -788,7 +814,7 @@
       "cpu": "CPU",
       "category_count": "Conteggio categoria",
       "name": "Nome",
-      "mapped_application_count": "Conteggio applicazioni mappate",
+      "mapped_application_count": "Conteggio risorse mappate",
       "cpu_usage": "Utilizzo della CPU",
       "apps_new_mapped": "App nuove/mappate",
       "destination_country": "Paese di destinazione",
@@ -814,22 +840,22 @@
       "status_count": "Conteggio stato",
       "direction": "Direzione",
       "severity": "Livello di gravità",
-      "application_count": "Conteggio applicazioni",
+      "application_count": "Conteggio risorse",
       "interfaces": "Interfacce",
       "red_count": "Conteggio stato rosso",
       "search_key": "Chiave di ricerca",
       "os": "Sistema operativo",
-      "web_and_application": "Web e applicazioni",
+      "web_and_application": "Web e risorse",
       "file_name": "Nome file",
       "destination_zone": "Area di destinazione",
       "sync_apps": "Sincronizza app",
       "app_resolver": "Risolutore app",
       "category_type": "Tipo di categoria",
-      "new_application_count": "Nuovo conteggio applicazioni",
+      "new_application_count": "Nuovo conteggio risorse",
       "technology": "Tecnologia",
       "message": "Messaggio",
       "bytes_sent": "Byte inviati",
-      "application": "Applicazione",
+      "application": "Risorsa",
       "source_country": "Paese di origine",
       "vpn": "Utilizzo VPN",
       "bytes": "Byte",
@@ -857,7 +883,7 @@
       "auth_mechanism": "Meccanismo di autenticazione",
       "app_filter_policy_id": "ID criterio filtro app",
       "transaction_id": "ID transazione",
-      "parent_app_risk": "Rischio applicazione principale",
+      "parent_app_risk": "Rischio risorsa principale",
       "con_name": "Nome connessione",
       "upload_file_type": "Carica tipo di file",
       "receivederrors": "Errori ricevuti",
@@ -885,7 +911,7 @@
       "email_size": "Dimensioni e-mail",
       "out_interface": "Interfaccia Out",
       "log_id": "ID log",
-      "parent_app": "Applicazione principale",
+      "parent_app": "Risorsa principale",
       "collisions": "Collisioni",
       "yellow_endpoint_count": "Conteggio endpoint stato giallo",
       "master_con_id": "ID connessione master",
@@ -903,7 +929,7 @@
       "http_query": "Query HTTP",
       "http_status": "Stato HTTP",
       "dst_trans_ip": "IP di destinazione della transazione",
-      "parent_app_category": "Categoria applicazione principale",
+      "parent_app_category": "Categoria risorsa principale",
       "activity_name": "Nome attività",
       "reported_at": "Segnalata alle",
       "context_prefix": "Prefisso del contesto",
@@ -961,7 +987,7 @@
       "malware_threat": "Minaccia/malware",
       "antivirus": "Antivirus",
       "web": "web",
-      "web_application_firewall": "Gateway applicazione web",
+      "web_application_firewall": "Gateway risorse web",
       "total": "Totale",
       "threat_intelligence": "Dati di intelligence sulle minacce",
       "totalThreats": "Totale minacce",

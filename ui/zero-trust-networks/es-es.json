@@ -9,65 +9,71 @@
       "delete": "Eliminar",
       "download": "Descargar",
       "approve": "Aprobar",
-      "search": "Buscar"
+      "search": "Buscar",
+      "fqdn-validation": "FQDN no válida",
+      "invalid-name": "El nombre solo puede contener: A-Z, a-z , 0-9, -, _, espacio",
+      "name-length-validation": "El nombre no debe tener más de 100 caracteres",
+      "whitespace-name-validation": "Nombre es obligatorio",
+      "description-length-validation": "La descripción no debe tener más de 300 caracteres"
     },
     "application": {
       "form": {
         "name": "Nombre",
-        "name-placeholder": "Introducir nombre de aplicación",
+        "name-placeholder": "Introducir nombre del recurso",
         "description": "Descripción",
         "description-placeholder": "Introducir descripción",
-        "description-length-validation": "La descripción no debe tener más de 200 caracteres",
-        "application-type": "Tipo de aplicación",
-        "application-type-placeholder": "Seleccionar tipo de aplicación",
+        "port-validation": "Puerto no válido",
+        "application-type": "Tipo de recurso",
+        "application-type-placeholder": "Seleccionar tipo de recurso",
         "gateway": "Puerta de enlace",
         "gateway-placeholder": "Seleccionar puerta de enlace",
-        "application-fqdn": "FQDN/IP del recurso",
-        "application-icon": "Icono de la app",
+        "application-fqdn": "FQDN de recurso",
+        "application-icon": "Icono de recurso",
         "port": "Puerto",
-        "title-add": "Añadir aplicación",
+        "title-add": "Añadir recurso",
         "deploy": "Desplegar",
         "user-groups": "Asignar grupos de usuarios",
         "error-user-groups": "Error al recuperar los grupos de usuarios",
         "empty-user-groups": "No se han encontrado grupos de usuarios.",
         "available-user-groups": "Grupos de usuarios disponibles",
         "assigned-user-groups": "Grupos de usuarios asignados",
-        "loading-error": "Error al cargar aplicaciones",
-        "add-success": "Aplicación creada",
-        "add-error": "No se ha podido crear la aplicación",
-        "title-edit": "Editar aplicación",
-        "edit-success": "Aplicación actualizada",
-        "edit-error": "No se ha podido actualizar la aplicación"
+        "loading-error": "Error al cargar recursos",
+        "add-success": "Se ha creado el recurso",
+        "add-error": "No se ha podido crear el recurso",
+        "title-edit": "Editar recurso",
+        "edit-success": "Se ha actualizado el recurso",
+        "edit-error": "No se ha podido actualizar el recurso"
       },
       "list": {
-        "add": "Añadir aplicación",
-        "title": "Zero Trust - Aplicaciones",
-        "breadcrumb-text": "Aplicaciones",
+        "add": "Añadir recurso",
+        "title": "Zero Trust Network Access - Recursos y acceso",
+        "breadcrumb-text": "Recursos y acceso",
         "columns": {
           "name": "Nombre",
           "gateway": "Puerta de enlace",
           "port": "Puerto",
-          "ip": "FQDN/IP del recurso",
-          "type": "Tipo de aplicación"
+          "ip": "FQDN de recurso",
+          "type": "Tipo de recurso"
         },
-        "no-application-configured": "No ha añadido ninguna aplicación.",
-        "no-application-configured-help": "Haga clic en el botón Añadir aplicación para añadir las aplicaciones.",
-        "error": "Error al recuperar la lista de aplicaciones."
+        "no-application-configured": "No ha añadido ningún recurso ni acceso.",
+        "no-application-configured-help": "Haga clic en el botón Añadir recursos y acceso para añadir los recursos y el acceso.",
+        "error": "Error al recuperar la lista de recursos.",
+        "no-userGroups-configured": "No hay ningún grupo de usuarios disponible."
       },
       "delete": {
-        "header": "Eliminar aplicación",
-        "message": "Eliminar aplicación",
-        "success": "Aplicación eliminada",
-        "error": "No se ha podido eliminar la aplicación"
+        "header": "Eliminar recurso",
+        "message": "Eliminar recurso",
+        "success": "Se ha eliminado el recurso",
+        "error": "No se ha podido eliminar el recurso"
       }
     },
     "dashboard": {
-      "title": "Zero Trust - Panel de control",
-      "breadcrumb-text": "Panel de control de Zero Trust"
+      "title": "Zero Trust Network Access - Panel de control",
+      "breadcrumb-text": "Panel de control de Zero Trust Network Access"
     },
     "report": {
-      "title": "Zero Trust - Informes",
-      "breadcrumb-text": "Informes de Zero Trust"
+      "title": "Zero Trust Network Access - Informes",
+      "breadcrumb-text": "Informes de Zero Trust Network Access"
     },
     "alert": {
       "summary": {
@@ -91,22 +97,29 @@
           "identity-provider": "Proveedor de identidad",
           "status": "Estado"
         },
-        "title": "Zero Trust - Puertas de enlace",
+        "title": "Zero Trust Network Access - Puertas de enlace",
         "breadcrumb-text": "Puertas de enlace",
-        "error": "Error al recuperar las puertas de enlace."
+        "error": "Error al recuperar la lista de puertas de enlace"
       },
       "form": {
         "title-add": "Añadir puerta de enlace",
         "title-edit": "Editar puerta de enlace",
         "name": "Nombre",
-        "location": "Localización",
+        "location": "Ubicación",
+        "location-length-validation": "La ubicación no debe tener más de 100 caracteres",
+        "whitespace-location-validation": "Se requiere la ubicación",
         "name-placeholder": "Introduzca el nombre de la puerta de enlace",
         "description": "Descripción",
         "description-placeholder": "Introducir descripción",
         "packageType": "Paquete",
         "identity-provider": "Proveedor de identidad",
         "fqdn": "FQDN",
-        "appDomain": "Dominio de aplicaciones",
+        "appDomain": "Dominio de recursos",
+        "app-domain-validation": "Dominio de recursos no válido",
+        "password": "Contraseña de la puerta de enlace",
+        "password-placeholder": "Introducir contraseña",
+        "confirm-password": "Confirmar contraseña",
+        "confirm-password-placeholder": "Confirmar contraseña",
         "dns": "DNS",
         "dnsFromDhcp": "DNS de DHCP",
         "dns1": "DNS primario",
@@ -123,6 +136,8 @@
         "subnetMask": "Máscara de subred",
         "subnetMask-validation": "Máscara de subred no válida",
         "default-gateway": "Puerta de enlace predeterminada",
+        "defaultGateway-validation": "Puerta de enlace predeterminada no válida",
+        "dns-validation": "DNS no válido",
         "certificate": "Certificado",
         "certificate-validation": "Certificado no válido",
         "privatekey": "Clave privada",
@@ -130,14 +145,21 @@
         "save-and-generate-image": "Guardar y generar imagen",
         "packageType-placeholder": "Seleccione paquete",
         "identity-provider-placeholder": "Seleccionar proveedor de identidad",
-        "description-length-validation": "La descripción no debe tener más de 200 caracteres",
-        "dns-mandatory-help": "Se debe establecer una entrada DNS estática cuando ambas interfaces son estáticas",
+        "dns-dhcp-mandatory-help": "Se debe establecer un DNS de DHCP cuando ambas interfaces son DHCP",
+        "dns-static-mandatory-help": "Se debe establecer una entrada DNS estática cuando ambas interfaces son estáticas",
         "add-success": "Se ha creado la puerta de enlace",
         "add-error": "Error al crear la puerta de enlace",
         "loading-error": "Error al cargar la puerta de enlace",
         "otp-error": "Error al generar la OTP",
         "edit-success": "Puerta de enlace actualizada",
-        "edit-error": "No se ha podido actualizar la puerta de enlace"
+        "edit-error": "No se ha podido actualizar la puerta de enlace",
+        "password-rules": {
+          "length" : "Al menos 12 caracteres",
+          "uppercase": "Al menos una letra en mayúscula",
+          "lowercase": "Al menos una letra en minúscula",
+          "number": "Al menos un número",
+          "special-character": "Al menos un carácter especial"
+        }
       },
       "delete": {
         "header": "Eliminar puerta de enlace",
@@ -154,7 +176,7 @@
           "content-download": "Descargue la imagen inicial para arrancar el portal",
           "generating-image": "Generar imagen de puerta de enlace",
           "generating-image-info": "La generación de la imagen de puerta enlace está en curso; se le notificará una vez que se haya generado",
-          "image-download-error": "Error al descargar la imagen de puerta de enlace."
+          "image-download-error": "Error al descargar la imagen de puerta de enlace"
         },
         "image-generating": {
           "label": "Generar imagen de puerta de enlace",
@@ -165,7 +187,7 @@
           "label": "Esperando aprobación",
           "header-approval": "Esperando aprobación",
           "content-approval": "Acepte la solicitud de registro de la puerta de enlace para completar la incorporación de la puerta de enlace",
-          "gateway-approve": "Se ha aprobado la solicitud de registro de la puerta de enlace.",
+          "gateway-approve": "Se ha aprobado la solicitud de registro de la puerta de enlace",
           "gateway-approve-error": "Error al aceptar la solicitud de la puerta de enlace."
         },
         "approved": {
@@ -184,19 +206,20 @@
       }
     },
     "idp": {
-      "fetch-error": "Error al cargar la lista de proveedores de identidad",
+      "fetch-error": "Error al recuperar la lista de proveedores de identidad",
       "list": {
         "add": "Añadir proveedor de identidad",
         "breadcrumb-text": "Proveedores de identidad",
-        "title": "Zero Trust - Proveedores de identidad",
+        "title": "Zero Trust Network Access - Proveedores de identidad",
         "configure-idp": "Configurar proveedor de identidad",
-        "no-idp-configured": "No ha añadido a ningún proveedor de identidad",
-        "no-idp-configured-help": "Haga clic en el botón Añadir para configurar el proveedor de identidad",
+        "no-idp-configured": "No ha añadido ningún proveedor de identidad.",
+        "no-idp-configured-help": "Haga clic en el botón Añadir proveedor de identidad para añadir los proveedores de identidad.",
         "columns": {
           "name": "Nombre",
           "provider": "Proveedor",
           "action": "Acción",
-          "description": "Descripción"
+          "description": "Descripción",
+          "type": "Tipo"
         }
       },
       "form": {
@@ -207,7 +230,6 @@
         "name-placeholder": "Introduzca el nombre del proveedor de identidad",
         "description": "Descripción",
         "description-placeholder": "Introducir descripción",
-        "description-length-validation": "La descripción no debe tener más de 200 caracteres",
         "provider": "Proveedor",
         "tenantid": "ID de inquilino",
         "clientid": "ID del cliente",
@@ -220,8 +242,12 @@
         "configure-azure-settings": "Definir configuración de Sincronización de Azure",
         "test-connection-label": "Validar conexión de Sincronización de Azure",
         "test-connection-button": "Prueba de conexión",
-        "test-connection-success": "Conexión realizada correctamente. La configuración de sincronización de Azure se ha validado.",
-        "test-connection-failure": "Error de conexión. El cliente no tiene autorización para realizar esta operación."
+        "test-connection-success": "Conexión realizada correctamente.",
+        "test-connection-failure": "Error de conexión.",
+        "provider-error": "Ya existe un proveedor de identidad de este tipo",
+        "clientId-validation": "Se requiere el ID del cliente",
+        "tenantId-validation": "Se requiere el ID del inquilino",
+        "clientSecret-validation": "Se requiere el secreto del cliente"
       },
       "delete": {
         "header": "Eliminar proveedor de identidad",
@@ -235,7 +261,7 @@
     "apiLabel": {
       "dashboard-data-duration": "Últimas 24 horas",
       "top5AppsByBytes": "Las 5 principales apps por transferencia de datos",
-      "applicationName": "Aplicación",
+      "applicationName": "Recurso",
       "appTotalBytes": "Total de bytes (MB)",
       "fetchError": "Error al recuperar los datos del panel de control"
     }
@@ -734,7 +760,7 @@
       "top_blocked_app_categories": "Principales categorías de apps bloqueadas",
       "status": "Estado",
       "sum_of_receivedkbits": "Suma de kbits recibidos",
-      "application_classification": "Clasificación de aplicaciones",
+      "application_classification": "Clasificación Recursos y acceso",
       "risky_apps_seen": "Detectadas aplicaciones de riesgo",
       "endpoint_id": "ID de estación",
       "memory_usage": "Uso de memoria",
@@ -788,7 +814,7 @@
       "cpu": "CPU",
       "category_count": "Número de categorías",
       "name": "Nombre",
-      "mapped_application_count": "Recuento de aplicaciones asignadas",
+      "mapped_application_count": "Recuento de recursos asignados",
       "cpu_usage": "Uso de CPU",
       "apps_new_mapped": "Aplicaciones nuevas/asignadas",
       "destination_country": "País de destino",
@@ -814,22 +840,22 @@
       "status_count": "Recuento de estado",
       "direction": "Dirección",
       "severity": "Gravedad",
-      "application_count": "Número de aplicaciones",
+      "application_count": "Recuento de recursos",
       "interfaces": "Interfaces",
       "red_count": "Recuento en rojo",
       "search_key": "Clave de búsqueda",
       "os": "SO",
-      "web_and_application": "Web y aplicaciones",
+      "web_and_application": "Web y recursos",
       "file_name": "Nombre de archivo",
       "destination_zone": "Zona de destino",
       "sync_apps": "Sincronizar apps",
       "app_resolver": "Solucionador de apps",
       "category_type": "Tipo de categoría",
-      "new_application_count": "Recuento de nuevas aplicaciones",
+      "new_application_count": "Recuento de recursos nuevos",
       "technology": "Tecnología",
       "message": "Mensaje",
       "bytes_sent": "Bytes enviados",
-      "application": "Aplicación",
+      "application": "Recurso",
       "source_country": "Países de origen",
       "vpn": "Uso de VPN",
       "bytes": "Bytes",
@@ -857,7 +883,7 @@
       "auth_mechanism": "Mecanismo autenticación",
       "app_filter_policy_id": "ID de política de filtro de apps",
       "transaction_id": "ID de transacción",
-      "parent_app_risk": "Riesgo de aplicaciones principales",
+      "parent_app_risk": "Riesgo de recurso principal",
       "con_name": "Nombre de conexión",
       "upload_file_type": "Cargar tipo de archivo",
       "receivederrors": "Errores recibidos",
@@ -885,7 +911,7 @@
       "email_size": "Tamaño del correo electrónico",
       "out_interface": "Interfaz salida",
       "log_id": "ID de registro",
-      "parent_app": "Aplicación principal",
+      "parent_app": "Recurso principal",
       "collisions": "Colisiones",
       "yellow_endpoint_count": "Recuento de estaciones de trabajo en amarillo",
       "master_con_id": "ID conexión maestra",
@@ -903,7 +929,7 @@
       "http_query": "Consulta HTTP",
       "http_status": "Estado HTTP",
       "dst_trans_ip": "IP de transacción de destino",
-      "parent_app_category": "Categoría de aplicación principal",
+      "parent_app_category": "Categoría de recurso principal",
       "activity_name": "Nombre de actividad",
       "reported_at": "Notificado en",
       "context_prefix": "Prefijo de contexto",
@@ -961,7 +987,7 @@
       "malware_threat": "Amenaza/malware",
       "antivirus": "Antivirus",
       "web": "web",
-      "web_application_firewall": "Puerta de enlace de aplicaciones web",
+      "web_application_firewall": "Puerta de enlace de recurso web",
       "total": "Total",
       "threat_intelligence": "Información sobre amenazas",
       "totalThreats": "Total de amenazas",
