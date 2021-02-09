@@ -9,65 +9,71 @@
       "delete": "刪除",
       "download": "下載",
       "approve": "贊成",
-      "search": "搜尋"
+      "search": "搜尋",
+      "fqdn-validation": "無效的 FQDN",
+      "invalid-name": "名稱僅可含有：A-Z、a-z、0-9、-、_、空格",
+      "name-length-validation": "名稱不應超過 100 個字元",
+      "whitespace-name-validation": "需要名稱",
+      "description-length-validation": "說明不應超過 300 個字元"
     },
     "application": {
       "form": {
         "name": "名稱",
-        "name-placeholder": "輸入應用程式名稱",
+        "name-placeholder": "輸入資源名稱",
         "description": "描述",
         "description-placeholder": "輸入說明",
-        "description-length-validation": "說明不應超過 200 個字元",
-        "application-type": "應用程式類型",
-        "application-type-placeholder": "選取應用程式類型",
+        "port-validation": "無效連接埠",
+        "application-type": "資源類型",
+        "application-type-placeholder": "選擇資源類型",
         "gateway": "閘道",
         "gateway-placeholder": "選取閘道",
-        "application-fqdn": "資源 FQDN/IP",
-        "application-icon": "應用程式圖示",
+        "application-fqdn": "資源 FQDN",
+        "application-icon": "資源圖示",
         "port": "連接埠",
-        "title-add": "新增應用程式",
+        "title-add": "新增資源",
         "deploy": "部署",
         "user-groups": "指派使用者群組",
         "error-user-groups": "擷取使用者群組時出錯",
         "empty-user-groups": "未找到使用者群組！",
         "available-user-groups": "可用使用者群組",
         "assigned-user-groups": "已指派使用者群組",
-        "loading-error": "載入應用程式時出錯",
-        "add-success": "應用程式已建立",
-        "add-error": "應用程式建立失敗",
-        "title-edit": "編輯應用程式",
-        "edit-success": "應用程式已更新",
-        "edit-error": "應用程式更新失敗"
+        "loading-error": "載入資源時出錯",
+        "add-success": "已建立資源",
+        "add-error": "資源建立失敗",
+        "title-edit": "編輯資源",
+        "edit-success": "已更新資源",
+        "edit-error": "資源更新失敗"
       },
       "list": {
-        "add": "新增應用程式",
-        "title": "Zero Trust - 應用程式",
-        "breadcrumb-text": "應用程式",
+        "add": "新增資源",
+        "title": "Zero Trust Network Access - 資源與存取",
+        "breadcrumb-text": "資源與存取",
         "columns": {
           "name": "名稱",
           "gateway": "閘道",
           "port": "連接埠",
-          "ip": "資源 FQDN/IP",
-          "type": "應用程式類型"
+          "ip": "資源 FQDN",
+          "type": "資源類型"
         },
-        "no-application-configured": "您沒有新增任何應用程式。",
-        "no-application-configured-help": "按一下「新增應用程式」按鈕以新增應用程式。",
-        "error": "擷取應用程式清單時出錯。"
+        "no-application-configured": "您沒有新增任何資源與存取。",
+        "no-application-configured-help": "按一下「新增資源與存取」按鈕以新增資源與存取。",
+        "error": "擷取資源清單時出現錯誤。",
+        "no-userGroups-configured": "無可用的使用者群組。"
       },
       "delete": {
-        "header": "刪除應用程式",
-        "message": "刪除應用程式",
-        "success": "應用程式已刪除",
-        "error": "應用程式刪除失敗"
+        "header": "刪除資源",
+        "message": "刪除資源",
+        "success": "已刪除資源",
+        "error": "資源刪除失敗"
       }
     },
     "dashboard": {
-      "title": "Zero Trust - 儀表板",
-      "breadcrumb-text": "Zero Trust 儀表板"
+      "title": "Zero Trust Network Access - 儀錶板",
+      "breadcrumb-text": "Zero Trust Network Access 儀錶板"
     },
     "report": {
-      "title": "Zero Trust - 報告",
-      "breadcrumb-text": "Zero Trust 報告"
+      "title": "Zero Trust Network Access - 報告",
+      "breadcrumb-text": "Zero Trust Network Access 報告"
     },
     "alert": {
       "summary": {
@@ -91,22 +97,29 @@
           "identity-provider": "識別提供者",
           "status": "狀態"
         },
-        "title": "Zero Trust - 閘道",
+        "title": "Zero Trust Network Access - 閘道",
         "breadcrumb-text": "閘道",
-        "error": "擷取閘道時出錯。"
+        "error": "擷取閘道清單時出現錯誤"
       },
       "form": {
         "title-add": "新增閘道",
         "title-edit": "編輯閘道",
         "name": "名稱",
         "location": "位置",
+        "location-length-validation": "位置說明不應超過 100 個字元",
+        "whitespace-location-validation": "需要位置",
         "name-placeholder": "輸入閘道名稱",
         "description": "說明",
         "description-placeholder": "輸入說明",
         "packageType": "套件",
         "identity-provider": "識別提供者",
         "fqdn": "FQDN",
-        "appDomain": "應用程式網域",
+        "appDomain": "資源網域",
+        "app-domain-validation": "無效的資源網域",
+        "password": "閘道密碼",
+        "password-placeholder": "输入密码",
+        "confirm-password": "確認密碼",
+        "confirm-password-placeholder": "確認密碼",
         "dns": "DNS",
         "dnsFromDhcp": "來自 DHCP 的 DNS",
         "dns1": "主要 DNS",
@@ -123,6 +136,8 @@
         "subnetMask": "子網路遮罩",
         "subnetMask-validation": "無效的子網路遮罩",
         "default-gateway": "預設閘道",
+        "defaultGateway-validation": "無效的預設閘道",
+        "dns-validation": "無效的 DNS",
         "certificate": "憑證",
         "certificate-validation": "無效憑證",
         "privatekey": "私密金鑰",
@@ -130,14 +145,21 @@
         "save-and-generate-image": "儲存並產生影像",
         "packageType-placeholder": "選取套件",
         "identity-provider-placeholder": "選取識別提供者",
-        "description-length-validation": "說明不應超過 200 個字元",
-        "dns-mandatory-help": "兩個介面均為靜態時必須設定靜態 DNS 項目",
+        "dns-dhcp-mandatory-help": "兩個介面均為 DHCP 時必須從 DHCP 設定 DNS",
+        "dns-static-mandatory-help": "兩個介面均為靜態時必須設定靜態 DNS 項目",
         "add-success": "已建立的閘道",
         "add-error": "閘道建立失敗",
         "loading-error": "載入閘道時出現錯誤",
         "otp-error": "產生 OTP 時出現錯誤",
         "edit-success": "閘道已更新",
-        "edit-error": "閘道更新失敗"
+        "edit-error": "閘道更新失敗",
+        "password-rules": {
+          "length" : "至少 12 個字元",
+          "uppercase": "至少一個大寫字母",
+          "lowercase": "至少一個小寫字母",
+          "number": "至少一個數字",
+          "special-character": "至少一個特殊字元"
+        }
       },
       "delete": {
         "header": "刪除閘道",
@@ -154,7 +176,7 @@
           "content-download": "下載種子影像以啟動閘道",
           "generating-image": "產生閘道影像",
           "generating-image-info": "正在產生閘道影像，產生之後您將會收到通知。",
-          "image-download-error": "下載閘道影像時出錯。"
+          "image-download-error": "下載閘道影像時出現錯誤"
         },
         "image-generating": {
           "label": "產生閘道影像",
@@ -165,7 +187,7 @@
           "label": "等待核准",
           "header-approval": "等待核准",
           "content-approval": "接受閘道註冊請求，以使閘道可用",
-          "gateway-approve": "閘道註冊請求已核准。",
+          "gateway-approve": "閘道註冊請求已核准",
           "gateway-approve-error": "接受閘道請求時出現錯誤。"
         },
         "approved": {
@@ -184,19 +206,20 @@
       }
     },
     "idp": {
-      "fetch-error": "載入識別提供者清單時出現錯誤",
+      "fetch-error": "擷取識別提供者清單時出現錯誤",
       "list": {
         "add": "新增識別提供者",
         "breadcrumb-text": "識別提供者",
-        "title": "Zero Trust - 識別提供者",
+        "title": "Zero Trust Network Access - 識別提供者",
         "configure-idp": "設定識別提供者",
-        "no-idp-configured": "您沒有新增識別提供者",
-        "no-idp-configured-help": "按一下「新增」按鈕以設定識別提供者",
+        "no-idp-configured": "您沒有新增識別提供者。",
+        "no-idp-configured-help": "按一下「新增識別提供者」按鈕以設定識別提供者。",
         "columns": {
           "name": "名稱",
           "provider": "提供者",
           "action": "動作",
-          "description": "說明"
+          "description": "說明",
+          "type": "類型"
         }
       },
       "form": {
@@ -207,7 +230,6 @@
         "name-placeholder": "輸入識別提供者的名稱",
         "description": "說明",
         "description-placeholder": "輸入說明",
-        "description-length-validation": "說明不應超過 200 個字元",
         "provider": "提供者",
         "tenantid": "租用戶 ID",
         "clientid": "用戶端 ID",
@@ -220,8 +242,12 @@
         "configure-azure-settings": "配置 Azure 同步設定",
         "test-connection-label": "驗證 Azure 同步連接",
         "test-connection-button": "連接測試",
-        "test-connection-success": "連接成功。Azure Sync 設定已驗證！",
-        "test-connection-failure": "連線失敗未授權用戶端做出此請求。"
+        "test-connection-success": "連接成功！",
+        "test-connection-failure": "連接失敗！",
+        "provider-error": "此類型的識別提供者已存在",
+        "clientId-validation": "用戶端 ID 為必填項",
+        "tenantId-validation": "租用戶 ID 為必填項",
+        "clientSecret-validation": "用戶端密碼為必填項"
       },
       "delete": {
         "header": "刪除識別提供者",
@@ -235,7 +261,7 @@
     "apiLabel": {
       "dashboard-data-duration": "最近 24 小時",
       "top5AppsByBytes": "資料傳輸的前 5 大應用程式",
-      "applicationName": "應用程式",
+      "applicationName": "資源",
       "appTotalBytes": "總位元組 (MB)",
       "fetchError": "擷取儀錶板資料時出錯"
     }
@@ -734,7 +760,7 @@
       "top_blocked_app_categories": "受攔截最多的應用程式類別",
       "status": "狀態",
       "sum_of_receivedkbits": "已接收的 kbits 的總和",
-      "application_classification": "應用程式分類",
+      "application_classification": "資源與存取分類",
       "risky_apps_seen": "發現有風險的 App",
       "endpoint_id": "端點 ID",
       "memory_usage": "記憶體使用量",
@@ -788,7 +814,7 @@
       "cpu": "CPU",
       "category_count": "類別計數",
       "name": "名稱",
-      "mapped_application_count": "對應的應用程式計數",
+      "mapped_application_count": "對應的資源計數",
       "cpu_usage": "CPU 使用量",
       "apps_new_mapped": "新增/對應的應用程式",
       "destination_country": "目的地國家",
@@ -814,22 +840,22 @@
       "status_count": "狀態計數",
       "direction": "方向",
       "severity": "嚴重性",
-      "application_count": "應用程式計數",
+      "application_count": "資源計數",
       "interfaces": "介面",
       "red_count": "紅色計數",
       "search_key": "搜尋密鈅",
       "os": "作業系統",
-      "web_and_application": "網頁和應用程式",
+      "web_and_application": "網頁與資源",
       "file_name": "檔案名稱",
       "destination_zone": "目的地區域",
       "sync_apps": "同步應用程式",
       "app_resolver": "應用解析程式",
       "category_type": "類別類型",
-      "new_application_count": "新應用程式計數",
+      "new_application_count": "新資源計數",
       "technology": "技術",
       "message": "訊息",
       "bytes_sent": "傳送的位元組",
-      "application": "應用程式",
+      "application": "資源",
       "source_country": "來源國家",
       "vpn": "VPN 使用情況",
       "bytes": "位元組",
@@ -857,7 +883,7 @@
       "auth_mechanism": "驗證機制",
       "app_filter_policy_id": "應用篩選策略 ID",
       "transaction_id": "交易紀錄 ID",
-      "parent_app_risk": "父應用程式風險",
+      "parent_app_risk": "父資源風險",
       "con_name": "連線名稱",
       "upload_file_type": "上傳檔案類型",
       "receivederrors": "接收的錯誤",
@@ -885,7 +911,7 @@
       "email_size": "電子郵件大小",
       "out_interface": "傳出介面",
       "log_id": "日誌 ID",
-      "parent_app": "父應用程式",
+      "parent_app": "父資源",
       "collisions": "衝突",
       "yellow_endpoint_count": "黃色端點計數",
       "master_con_id": "主要連線 ID",
@@ -903,7 +929,7 @@
       "http_query": "Http 查詢",
       "http_status": "Http 狀態",
       "dst_trans_ip": "目的地交易 IP",
-      "parent_app_category": "父應用程式類別",
+      "parent_app_category": "父資源類別",
       "activity_name": "活動名稱",
       "reported_at": "報告於",
       "context_prefix": "內容首碼",
@@ -961,7 +987,7 @@
       "malware_threat": "威脅/惡意程式",
       "antivirus": "防病毒",
       "web": "網頁",
-      "web_application_firewall": "網頁應用程式閘道",
+      "web_application_firewall": "網頁資源閘道",
       "total": "總數",
       "threat_intelligence": "威脅情報",
       "totalThreats": "總威脅",

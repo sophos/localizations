@@ -9,65 +9,71 @@
       "delete": "삭제",
       "download": "다운로드",
       "approve": "지지",
-      "search": "검색"
+      "search": "검색",
+      "fqdn-validation": "잘못된 FQDN",
+      "invalid-name": "이름에는 다음만 포함될 수 있습니다. A-Z, a-z , 0-9, -, _, 공백",
+      "name-length-validation": "이름은 100자를 초과해서는 안 됨",
+      "whitespace-name-validation": "이름이 필요함",
+      "description-length-validation": "설명은 300자를 초과해서는 안 됨"
     },
     "application": {
       "form": {
         "name": "이름",
-        "name-placeholder": "응용 프로그램 이름 입력",
+        "name-placeholder": "리소스 이름 입력",
         "description": "설명",
         "description-placeholder": "설명 입력",
-        "description-length-validation": "설명은 200자를 초과해서는 안 됨",
-        "application-type": "응용 프로그램 유형",
-        "application-type-placeholder": "응용 프로그램 유형 선택",
+        "port-validation": "잘못된 포트",
+        "application-type": "리소스 유형",
+        "application-type-placeholder": "리소스 유형 선택",
         "gateway": "게이트웨이",
         "gateway-placeholder": "게이트웨이 선택",
-        "application-fqdn": "리소스 FQDN/IP",
-        "application-icon": "응용 프로그램 아이콘",
+        "application-fqdn": "리소스 FQDN",
+        "application-icon": "리소스 아이콘",
         "port": "포트",
-        "title-add": "응용 프로그램 추가",
+        "title-add": "리소스 추가",
         "deploy": "배포",
         "user-groups": "사용자 그룹 할당",
         "error-user-groups": "사용자 그룹을 가져오는 중 오류 발생",
         "empty-user-groups": "사용자 그룹을 찾을 수 없음!",
         "available-user-groups": "사용할 수 있는 사용자 그룹",
         "assigned-user-groups": "할당된 사용자 그룹",
-        "loading-error": "응용 프로그램 로드 중 오류 발생",
-        "add-success": "응용 프로그램 생성됨",
-        "add-error": "응용 프로그램 생성 실패",
-        "title-edit": "응용 프로그램 편집",
-        "edit-success": "응용 프로그램 업데이트됨",
-        "edit-error": "응용 프로그램 업데이트 실패"
+        "loading-error": "리소스 로드 중 오류 발생",
+        "add-success": "리소스 생성됨",
+        "add-error": "리소스 생성 실패",
+        "title-edit": "리소스 편집",
+        "edit-success": "리소스 업데이트됨",
+        "edit-error": "리소스 업데이트 실패"
       },
       "list": {
-        "add": "응용 프로그램 추가",
-        "title": "Zero Trust - 응용 프로그램",
-        "breadcrumb-text": "응용 프로그램",
+        "add": "리소스 추가",
+        "title": "Zero Trust Network Access - 리소스 및 액세스",
+        "breadcrumb-text": "리소스 및 액세스",
         "columns": {
           "name": "이름",
           "gateway": "게이트웨이",
           "port": "포트",
-          "ip": "리소스 FQDN/IP",
-          "type": "응용 프로그램 유형"
+          "ip": "리소스 FQDN",
+          "type": "리소스 유형"
         },
-        "no-application-configured": "추가된 응용 프로그램이 없습니다.",
-        "no-application-configured-help": "응용 프로그램을 추가하려면 '응용 프로그램 추가' 버튼을 클릭합니다.",
-        "error": "응용 프로그램 목록을 가져오는 중 오류가 발생했습니다."
+        "no-application-configured": "추가된 리소스 및 액세스가 없습니다.",
+        "no-application-configured-help": "리소스 추가 및 액세스 버튼을 클릭하여 리소스를 추가하고 액세스합니다.",
+        "error": "리소스 목록을 가져오는 중 오류 발생.",
+        "no-userGroups-configured": "사용할 수 있는 사용자 그룹 없음."
       },
       "delete": {
-        "header": "응용 프로그램 삭제",
-        "message": "응용 프로그램 삭제",
-        "success": "응용 프로그램 삭제됨",
-        "error": "응용 프로그램 삭제 실패"
+        "header": "리소스 삭제",
+        "message": "리소스 삭제",
+        "success": "리소스 삭제됨",
+        "error": "리소스 삭제 실패"
       }
     },
     "dashboard": {
-      "title": "Zero Trust - 대시보드",
-      "breadcrumb-text": "Zero Trust 대시보드"
+      "title": "Zero Trust Network Access - 대시보드",
+      "breadcrumb-text": "Zero Trust Network Access 대시보드"
     },
     "report": {
-      "title": "Zero Trust - 보고서",
-      "breadcrumb-text": "Zero Trust 보고서"
+      "title": "Zero Trust Network Access - 보고서",
+      "breadcrumb-text": "Zero Trust Network Access 보고서"
     },
     "alert": {
       "summary": {
@@ -91,22 +97,29 @@
           "identity-provider": "ID 제공자",
           "status": "상태"
         },
-        "title": "Zero Trust - 게이트웨이",
+        "title": "Zero Trust Network Access - 게이트웨이",
         "breadcrumb-text": "게이트웨이",
-        "error": "게이트웨이를 가져오는 중 오류가 발생했습니다."
+        "error": "게이트웨이 목록을 가져오는 중 오류 발생"
       },
       "form": {
         "title-add": "게이트웨이 추가",
         "title-edit": "게이트웨이 편집",
         "name": "이름",
         "location": "위치",
+        "location-length-validation": "위치는 100자를 초과해서는 안 됨",
+        "whitespace-location-validation": "위치가 필요함",
         "name-placeholder": "게이트웨이 이름 입력",
         "description": "설명",
         "description-placeholder": "설명 입력",
         "packageType": "패키지",
         "identity-provider": "ID 제공자",
         "fqdn": "FQDN",
-        "appDomain": "응용 프로그램 도메인",
+        "appDomain": "리소스 도메인",
+        "app-domain-validation": "잘못된 리소스 도메인",
+        "password": "게이트웨이 암호",
+        "password-placeholder": "암호 입력",
+        "confirm-password": "암호 확인",
+        "confirm-password-placeholder": "암호 확인",
         "dns": "DNS",
         "dnsFromDhcp": "DHCP의 DNS",
         "dns1": "주 DNS",
@@ -123,6 +136,8 @@
         "subnetMask": "서브넷 마스크",
         "subnetMask-validation": "잘못된 서브넷 마스크",
         "default-gateway": "기본 게이트웨이",
+        "defaultGateway-validation": "잘못된 기본 게이트웨이",
+        "dns-validation": "잘못된 DNS",
         "certificate": "인증서",
         "certificate-validation": "잘못된 인증서",
         "privatekey": "개인 키",
@@ -130,14 +145,21 @@
         "save-and-generate-image": "이미지 저장 및 생성",
         "packageType-placeholder": "패키지 선택",
         "identity-provider-placeholder": "ID 제공자 선택",
-        "description-length-validation": "설명은 200자를 초과해서는 안 됨",
-        "dns-mandatory-help": "두 인터페이스가 정적 상태일 때 정적 DNS 항목을 설정해야 함",
+        "dns-dhcp-mandatory-help": "두 인터페이스가 모두 DHCP일 때는 DHCP에서 DNS를 설정해야 함",
+        "dns-static-mandatory-help": "두 인터페이스가 정적 상태일 때 정적 DNS 항목을 설정해야 함",
         "add-success": "게이트웨이 생성됨",
         "add-error": "게이트웨이 생성 실패",
         "loading-error": "게이트웨이 로드 중 오류 발생",
         "otp-error": "OTP 생성 중 오류 발생",
         "edit-success": "게이트웨이 업데이트됨",
-        "edit-error": "게이트웨이 업데이트 실패"
+        "edit-error": "게이트웨이 업데이트 실패",
+        "password-rules": {
+          "length" : "12자 이상",
+          "uppercase": "하나 이상의 대문자",
+          "lowercase": "하나 이상의 소문자",
+          "number": "하나 이상의 숫자",
+          "special-character": "하나 이상의 특수 문자"
+        }
       },
       "delete": {
         "header": "게이트웨이 삭제",
@@ -154,7 +176,7 @@
           "content-download": "시드 이미지를 다운로드하여 게이트웨이 부팅",
           "generating-image": "게이트웨이 이미지 생성 중",
           "generating-image-info": "게이트웨이 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다.",
-          "image-download-error": "게이트웨이 이미지 다운로드 중 오류가 발생했습니다."
+          "image-download-error": "게이트웨이 이미지 다운로드 중 오류 발생"
         },
         "image-generating": {
           "label": "게이트웨이 이미지 생성 중",
@@ -165,7 +187,7 @@
           "label": "승인 대기 중",
           "header-approval": "승인 대기 중",
           "content-approval": "게이트웨이 등록 요청을 수락하여 게이트웨이 온보딩 완료",
-          "gateway-approve": "게이트웨이 등록 요청이 승인됨.",
+          "gateway-approve": "게이트웨이 등록 요청 승인됨",
           "gateway-approve-error": "게이트웨이 요청 수락 중 오류 발생."
         },
         "approved": {
@@ -184,19 +206,20 @@
       }
     },
     "idp": {
-      "fetch-error": "ID 제공자 목록 로드 중 오류 발생",
+      "fetch-error": "ID 제공자 목록을 가져오는 중 오류 발생",
       "list": {
         "add": "ID 제공자 추가",
         "breadcrumb-text": "ID 제공자",
-        "title": "Zero Trust - ID 제공자",
+        "title": "Zero Trust Network Access - ID 제공자",
         "configure-idp": "ID 제공자 구성",
-        "no-idp-configured": "추가된 ID 제공자가 없음",
-        "no-idp-configured-help": "추가 버튼을 클릭하여 ID 제공자 구성",
+        "no-idp-configured": "추가된 ID 제공자가 없습니다.",
+        "no-idp-configured-help": "ID 제공자 추가 버튼을 클릭하여 ID 제공자를 추가합니다.",
         "columns": {
           "name": "이름",
           "provider": "제공자",
           "action": "작업",
-          "description": "설명"
+          "description": "설명",
+          "type": "유형"
         }
       },
       "form": {
@@ -207,7 +230,6 @@
         "name-placeholder": "ID 제공자의 이름 입력",
         "description": "설명",
         "description-placeholder": "설명 입력",
-        "description-length-validation": "설명은 200자를 초과해서는 안 됨",
         "provider": "제공자",
         "tenantid": "테넌트 ID",
         "clientid": "클라이언트 ID",
@@ -220,8 +242,12 @@
         "configure-azure-settings": "Azure 동기화 설정 구성",
         "test-connection-label": "Azure 동기화 연결 유효성 검사",
         "test-connection-button": "연결 테스트",
-        "test-connection-success": "연결 성공. Azure Sync 설정이 확인되었습니다!",
-        "test-connection-failure": "연결이 실패했습니다. 클라이언트에 이 요청을 할 수 있는 권한이 없습니다."
+        "test-connection-success": "연결 성공!",
+        "test-connection-failure": "연결 실패!",
+        "provider-error": "이 유형의 ID 제공자가 이미 존재함",
+        "clientId-validation": "Client ID가 필요",
+        "tenantId-validation": "테넌트 ID가 필요함",
+        "clientSecret-validation": "클라이언트 암호가 필요함"
       },
       "delete": {
         "header": "ID 제공자 삭제",
@@ -235,7 +261,7 @@
     "apiLabel": {
       "dashboard-data-duration": "지난 24시간",
       "top5AppsByBytes": "데이터 전송별 최고 인기 앱 5",
-      "applicationName": "응용 프로그램",
+      "applicationName": "리소스",
       "appTotalBytes": "총 바이트 수(MB)",
       "fetchError": "대시보드 데이터를 가져오는 중 오류 발생"
     }
@@ -734,7 +760,7 @@
       "top_blocked_app_categories": "상위 차단된 앱 범주",
       "status": "상태",
       "sum_of_receivedkbits": "수신된 kbits 합계",
-      "application_classification": "응용 프로그램 분류",
+      "application_classification": "리소스 및 액세스 분류",
       "risky_apps_seen": "유해한 앱 표시",
       "endpoint_id": "엔드포인트 ID",
       "memory_usage": "메모리 사용",
@@ -788,7 +814,7 @@
       "cpu": "CPU",
       "category_count": "범주 수",
       "name": "이름",
-      "mapped_application_count": "매핑된 응용 프로그램 수",
+      "mapped_application_count": "매핑된 리소스 수",
       "cpu_usage": "CPU 사용",
       "apps_new_mapped": "신규/매핑된 앱",
       "destination_country": "대상 국가",
@@ -814,22 +840,22 @@
       "status_count": "상태 수",
       "direction": "방향",
       "severity": "심각도",
-      "application_count": "응용 프로그램 수",
+      "application_count": "리소스 수",
       "interfaces": "인터페이스",
       "red_count": "빨간색 수",
       "search_key": "검색 키",
       "os": "OS",
-      "web_and_application": "웹 및 응용 프로그램",
+      "web_and_application": "웹 및 리소스",
       "file_name": "파일 이름",
       "destination_zone": "대상 영역",
       "sync_apps": "동기화 앱",
       "app_resolver": "앱 확인자",
       "category_type": "범주 유형",
-      "new_application_count": "새 응용 프로그램 수",
+      "new_application_count": "새 리소스 수",
       "technology": "기술",
       "message": "메시지",
       "bytes_sent": "바이트 보냄",
-      "application": "응용 프로그램",
+      "application": "리소스",
       "source_country": "원본 국가",
       "vpn": "VPN 사용",
       "bytes": "바이트",
@@ -857,7 +883,7 @@
       "auth_mechanism": "인증 메커니즘",
       "app_filter_policy_id": "앱 필터 정책 ID",
       "transaction_id": "트랜잭션 ID",
-      "parent_app_risk": "상위 응용 프로그램 위험",
+      "parent_app_risk": "상위 리소스 위험",
       "con_name": "연결 이름",
       "upload_file_type": "파일 형식 업로드",
       "receivederrors": "수신 오류",
@@ -885,7 +911,7 @@
       "email_size": "이메일 크기",
       "out_interface": "출력 인터페이스",
       "log_id": "로그 ID",
-      "parent_app": "상위 응용 프로그램",
+      "parent_app": "상위 리소스",
       "collisions": "충돌",
       "yellow_endpoint_count": "노란색 엔드포인트 수",
       "master_con_id": "마스터 연결 ID",
@@ -903,7 +929,7 @@
       "http_query": "Http 쿼리",
       "http_status": "Http 상태",
       "dst_trans_ip": "대상 트랜잭션 IP",
-      "parent_app_category": "상위 응용 프로그램 범주",
+      "parent_app_category": "상위 리소스 범주",
       "activity_name": "활동 이름",
       "reported_at": "보고됨:",
       "context_prefix": "컨텍스트 접두사",
@@ -961,7 +987,7 @@
       "malware_threat": "위협/맬웨어",
       "antivirus": "바이러스 백신",
       "web": "웹",
-      "web_application_firewall": "웹 애플리케이션 게이트웨이",
+      "web_application_firewall": "웹 리소스 게이트웨이",
       "total": "합계",
       "threat_intelligence": "위협 인텔리전스",
       "totalThreats": "총 위협 수",
