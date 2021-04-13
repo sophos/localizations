@@ -1,16 +1,20 @@
 {
   "firewall-management": {
+    "name": "Firewall Management",
     "cancel": "Annuler",
     "save": "Enregistrer",
     "delete": "Supprimer",
     "success": "Succès !",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "finish": "Terminer",
     "success-default": "Opération réussie.",
     "error": "Erreur !",
     "error-default": "Nous avons rencontré un problème. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Vue générale",
     "dashboard": {
       "name": "Firewall Management - Tableau de bord",
-      "breadcrumb-text": "Tableau de bord de gestion du pare-feu"
+      "breadcrumb-text": "Tableau de bord de gestion des pare-feu"
     },
     "dynamic-objects": {
       "name": "Gestion du pare-feu - Objets dynamiques",
@@ -50,6 +54,78 @@
       "name": "Gestion de pare-feu - Groupes de connexion SD WAN",
       "breadcrumb-text": "Groupes de connexion SD WAN",
       "create": "Créer un groupe de connexion",
+      "add": {
+        "name": "Gestion de pare-feu - Nouveau groupe de connexion SD WAN",
+        "breadcrumb-text": "Ajouter un groupe de connexion SD WAN",
+        "select-firewalls": {
+          "label": "Sélectionner les pare-feu",
+          "name": {
+            "label": "Nom du groupe de connexion",
+            "required": "Nom obligatoire",
+            "heading": "Nommer ce groupe"
+          },
+          "description": {
+            "label": "Description",
+            "placeholder": "Saisir la description du groupe (250 caractères max.)",
+            "length": "La description ne doit pas dépasser 250 caractères."
+          },
+          "firewalls": {
+            "source":"Pare-feu disponibles",
+            "target":"Pare-feu assignés",
+            "label": "Les réseaux LAN connectés directement au pare-feu seront automatiquement ajoutés au groupe de partage. Vous pourrez personnaliser chaque réseau client du pare-feu à la prochaine étape."
+          },
+          "select": {
+            "heading": "Sélectionner les pare-feu à inclure"
+          }
+        },
+        "configure-networks": {
+          "label": "Configurer les réseaux",
+          "heading": "Configurer les réseaux et les routes",
+          "description": "Personnaliser le réseau auquel le pare-feu va autoriser l’accès aux groupes de partage, décider si le réseau doit apparaître sous une plage d’adresse différente pour éviter les conflits et configurer la redondance du tunnel en cas de présence de plusieurs connexions Internet.",
+          "no-conflict": {
+            "heading": "{{ count }} pare-feu analysés et aucun conflit réseau détecté"
+          },
+          "conflict": {
+            "heading": "{{ count }} pare-feu analysés avec un conflit réseau détecté"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Pare-feu",
+              "local-subnets": "Réseaux locaux",
+              "wan-ports": "Ports WAN",
+              "nat": "NAT",
+              "respond-only": "Répondre uniquement",
+              "details-edit": "Détails/Modifier",
+              "fix-conflicts": "Résoudre le conflit"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "Partager les ressources",
+          "heading": "Partager les ressources",
+          "description": "Sélectionner les ressources de l’entreprise accessibles aux utilisateurs sur chaque site",
+          "modal": {
+            "title": "Ajouter des ressources",
+            "firewall": "Pare-feu",
+            "shared-resource": "Ressource partagée",
+            "service": "Service",
+            "help": "Les réseaux partagés seront disponible à tous les pare-feu qui font partie de ce groupe de partage.",
+            "auto-rules": "Créer automatiquement des règles de pare-feu",
+            "limit-auth": "Limiter l’accès aux utilisateurs authentifiés",
+            "sync-sec": "Sécurité synchronisé pour les terminaux en bon état de fonctionnement"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Pare-feu",
+              "service": "Service",
+              "auto-rules": "Règles de pare-feu automatiques",
+              "auth": "Authentification",
+              "green-hb": "Heartbeat vert",
+              "action": "Éditer"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "Les groupes de connexion SD WAN vous aident à partager les ressources dans toutes les régions à l’aide de stratégies générées automatiquement.",
         "process": "Vous pouvez choisir les pare-feu à placer dans les groupes de connexion pendant la création d’un groupe.",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "Créer des paramètres de pare-feu communs et des séries de modèles de stratégies de base à utiliser sur différents clients.",
+          "customer": "Vous n’avez aucun client dans ce modèle.",
           "header": "Vous n’avez aucun modèle de pare-feu.",
           "learn-more": "Plus d’info",
           "what": "Qu’est-ce qu’un modèle de pare-feu ?",
@@ -197,6 +274,9 @@
             "stop": "Autoriser les clients à créer des sous-groupes dans un groupe de modèles géré par le Partenaire.",
             "push": "Les clients reçoivent automatiquement les mises à jour et modifications des modèles."
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} pare-feu"
         },
         "stats": {
           "disconnected": "{{ count }} déconnectés",

@@ -1,9 +1,13 @@
 {
   "firewall-management": {
+    "name": "Administración del firewall",
     "cancel": "Cancelar",
     "save": "Guardar",
     "delete": "Eliminar",
     "success": "Completado",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "finish": "Fin",
     "success-default": "La operación se ha realizado correctamente.",
     "error": "¡Error!",
     "error-default": "Algo ha ido mal. ({{ errorCode }}).",
@@ -50,6 +54,78 @@
       "name": "Administración del firewall - Grupos de conexiones SD-WAN",
       "breadcrumb-text": "Grupos de conexiones SD-WAN",
       "create": "Crear un grupo de conexiones",
+      "add": {
+        "name": "Administración del firewall - Nuevo grupos de conexiones SD-WAN",
+        "breadcrumb-text": "Añadir un grupos de conexiones SD-WAN",
+        "select-firewalls": {
+          "label": "Seleccionar firewalls",
+          "name": {
+            "label": "Nombre del grupo de conexiones",
+            "required": "Nombre es obligatorio",
+            "heading": "Asignar nombre al grupo"
+          },
+          "description": {
+            "label": "Descripción",
+            "placeholder": "Introduzca la descripción del grupo (250 caracteres máx.)",
+            "length": "La descripción puede tener un máximo de 250 caracteres"
+          },
+          "firewalls": {
+            "source":"Firewalls disponibles",
+            "target":"Firewalls asignados",
+            "label": "Las redes LAN conectadas directamente al firewall se añadirán automáticamente al grupo de uso compartido. En el siguiente paso podrá personalizar las redes de clientes de cada firewall."
+          },
+          "select": {
+            "heading": "Seleccionar los firewalls para incluir"
+          }
+        },
+        "configure-networks": {
+          "label": "Configurar redes",
+          "heading": "Configurar redes y rutas",
+          "description": "Personalice qué firewall de red permite el acceso a los grupos de uso compartido, si la red debe aparecer como un intervalo de direcciones diferente para evitar conflictos, y configure la redundancia de túnel si hay varias conexiones a Internet.",
+          "no-conflict": {
+            "heading": "{{ count }} firewalls analizados en los que no se ha detectado ningún conflicto de red"
+          },
+          "conflict": {
+            "heading": "{{ count }} firewalls analizados en los que se ha detectado un conflicto de red"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "local-subnets": "Redes locales",
+              "wan-ports": "Puertos WAN",
+              "nat": "NAT",
+              "respond-only": "Solo responder",
+              "details-edit": "Detalles/Editar",
+              "fix-conflicts": "Corregir conflicto"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "Compartir recursos",
+          "heading": "Compartir recursos",
+          "description": "Seleccionar los recursos de la empresa que deben ser accesibles a los usuarios en cada sitio",
+          "modal": {
+            "title": "Añadir recursos",
+            "firewall": "Firewall",
+            "shared-resource": "Recurso compartido",
+            "service": "Servicio",
+            "help": "Las redes compartidas estarán disponibles para todos los firewalls que formen parte de este grupo de uso compartido.",
+            "auto-rules": "Crear automáticamente reglas de firewall",
+            "limit-auth": "Limitar el acceso a los usuarios autentificados",
+            "sync-sec": "Seguridad Sincronizada para estaciones en buen estado"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "service": "Servicio",
+              "auto-rules": "Crear automáticamente reglas de firewall",
+              "auth": "Autenticación",
+              "green-hb": "HB verde",
+              "action": "Editar"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "Los grupos de conexiones SD-WAN ayudan a compartir recursos entre regiones con la ayuda de políticas generadas automáticamente.",
         "process": "Puede seleccionar los firewalls que quiere que haya en un grupo de conexiones mientras crea un grupo.",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "Cree conjuntos de plantillas de políticas base y opciones de configuración de firewall comunes para utilizarlos con distintos clientes.",
+          "customer": "No tiene ningún cliente en esta plantilla.",
           "header": "No tiene ninguna plantilla de firewall",
           "learn-more": "Más información",
           "what": "¿Qué es una plantilla de firewall?",
@@ -197,6 +274,9 @@
             "stop": "Permitir a los clientes crear subgrupos dentro de un grupo de plantillas administrado por el partner.",
             "push": "Las actualizaciones y los cambios en las plantillas se imponen automáticamente a los clientes"
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} firewall(s)"
         },
         "stats": {
           "disconnected": "{{ count }} desconectado(s)",

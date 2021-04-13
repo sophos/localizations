@@ -16,12 +16,14 @@
       "success": "성공",
       "retry": "다시 시도",
       "accessPoints": "액세스 지점",
+      "ssids":"SSID",
       "settings" : "설정",
       "statistic" : "통계",
       "devices" : "장치",
       "reset": "재설정",
       "select-all": "모두 선택",
-      "deselect-all": "모두 선택 취소"
+      "deselect-all": "모두 선택 취소",
+      "channel": "채널"
     },
     "global": {
       "onBoard": {
@@ -46,6 +48,7 @@
     },
     "networks": {
       "fetch-error": "SSID 목록을 로드하는 중에 오류가 발생했습니다.",
+      "ssid-create":"새 SSID",
       "list": {
         "breadcrumb-text": "SSID",
         "title": "무선 - SSID",
@@ -66,6 +69,17 @@
           "captive-portal": "종속 포털",
           "errorMessage": "SSID를 삭제할 수 없습니다."
         }
+      },
+      "create":{
+        "help":"도움말",
+        "general-setting-encryption-mode":"새 SSID에 대한 일반 설정을 지정하십시오. 필요한 암호화 모드와 제공할 SSID 유형을 선택하십시오.",
+        "band-encryption-mode":" 암호화 모드로 WPA2와 AES를 사용하고 2.4 및 5GHz 주파수 대역을 사용하는 것이 좋습니다.",
+        "settings":"사용자 설정",
+        "basic-setting":"기본 설정",
+        "encryption-algorithm":"암호화 알고리즘",
+        "frequency-band":"주파수 대역",
+        "enable-ssid":"SSID 사용",
+        "advanced-settings":"고급 설정"
       },
       "access-point-editor": {
         "captive-portal-enabled": "종속 포털이 활성화됨"
@@ -114,6 +128,7 @@
         "offlineApDeleteMessage": "오프라인 상태에서는 AP를 삭제하지 않는 것이 좋습니다. 온라인 상태가 될 때까지 기다리거나 삭제를 적용하십시오.",
         "statusDelete": "삭제",
         "deleteDialogText": "선택한 액세스 지점을 삭제하시겠습니까?",
+        "deleteAp":"이 액세스 지점을 삭제하시겠습니까?",
         "forceDelete": "강제 삭제",
         "automaticOnce": "한 번 자동",
         "manual": "수동",
@@ -177,7 +192,21 @@
           "apNameRequired": "AP 이름이 필요합니다.",
           "apNameMaxLength": "AP 이름은 128자 이하여야 합니다.",
           "meshModeLabel": "메시 허용",
+          "channelWidth": "채널 폭",
+          "channelWidthWarning": "40MHz는 권장되지 않습니다.",
+          "antenna": "안테나",
+          "autoChannel": "자동 채널",
+          "dfssuffix": "{{ channel }}(DFS)",
+          "dfswarning": "다른 채널에서 브로드캐스팅될 수도 있습니다.",
           "dualRadioMeshWarning": "두 라디오에서 메시가 허용되지 않습니다.",
+          "channelwarning": "활성 채널이 잘못되었습니다.",
+          "dcs": "동적 배경 채널 선택",
+          "commentLabel": "설명",
+          "commentInvalidLength": "설명은 길이가 {{length}}자 이상이어야 합니다.",
+          "mimo-support": "MU-MIMO 지원",
+          "airtimeFairnessTitle": "Airtime Fairness",
+          "airtimeFairnessEnable": "Airtime Fairness 사용",
+          "airtimeFairnessEnableWarning": "레거시 클라이언트가 없는 경우 Airtime Fairness를 활성화해서는 안 됩니다. 활성화하게 되면 네트워크 성능 및 안정성에 영향을 미칩니다.",
           "channelWidthSuffix": "{{bandwidth}} MHz",
           "rebootStartSuccess": "액세스 지점 재부팅이 시작되었습니다.",
           "rebootStartFail": "액세스 지점 재부팅을 시작하지 못했습니다.",
@@ -193,6 +222,9 @@
         }
       },
       "apEditor": {
+        "delete":{
+          "fail": "액세스 지점을 삭제할 수 없습니다."
+        },
         "save": {
           "success": "액세스 지점이 저장되었습니다.",
           "fail": "액세스 지점을 저장할 수 없습니다."

@@ -16,12 +16,14 @@
       "success": "Bem-sucedido",
       "retry": "Tentar novamente",
       "accessPoints": "Pontos de Acesso",
+      "ssids":"SSIDs",
       "settings" : "Configurações",
       "statistic" : "Estatística",
       "devices" : "Dispositivos",
       "reset": "Redefinir",
       "select-all": "Selecionar todos",
-      "deselect-all": "Desmarcar todos"
+      "deselect-all": "Desmarcar todos",
+      "channel": "Canal"
     },
     "global": {
       "onBoard": {
@@ -46,6 +48,7 @@
     },
     "networks": {
       "fetch-error": "Erro ao carregar a lista de SSIDs",
+      "ssid-create":"Novo SSID",
       "list": {
         "breadcrumb-text": "SSIDs",
         "title": "Sem Fio - SSIDs",
@@ -66,6 +69,17 @@
           "captive-portal": "Portal Cativo",
           "errorMessage": "Não é possível deletar o SSID"
         }
+      },
+      "create":{
+        "help":"Ajuda",
+        "general-setting-encryption-mode":"Especifique as configurações gerais do seu novo SSID. Escolha o modo de encriptação necessária e o tipo de SSID que deseja oferecer.",
+        "band-encryption-mode":" Recomendamos usar WPA2 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz.",
+        "settings":"Suas configurações",
+        "basic-setting":"Configurações básicas",
+        "encryption-algorithm":"Algoritmo de encriptação",
+        "frequency-band":"Banda de frequência",
+        "enable-ssid":"Habilitar SSID",
+        "advanced-settings":"Configurações avançadas"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Portal cativo habilitado"
@@ -113,7 +127,8 @@
         "stateOffline": "Offline",
         "offlineApDeleteMessage": "Não é recomendado deletar APs quando estão offline. Aguarde até que estejam online ou force a deleção.",
         "statusDelete": "DELETANDO",
-        "deleteDialogText": "Deseja deletar os pontos de acesso selecionados?",
+        "deleteDialogText": "Deseja deletar o ponto de acesso selecionado?",
+        "deleteAp":"Deseja deletar este ponto de acesso?",
         "forceDelete": "forçar deleção",
         "automaticOnce": "Automático uma vez",
         "manual": "Manual",
@@ -177,7 +192,21 @@
           "apNameRequired": "É necessário um nome de AP.",
           "apNameMaxLength": "O nome do AP deve ter um máximo de 128 caracteres.",
           "meshModeLabel": "Permitir malha",
+          "channelWidth": "Largura do canal",
+          "channelWidthWarning": "40 MHz não é recomendado",
+          "antenna": "Antena",
+          "autoChannel": "Autocanal",
+          "dfssuffix": "{{ channel }} (DFS)",
+          "dfswarning": "Pode ser transmitido em um canal diferente",
           "dualRadioMeshWarning": "Não é permitido malha nos dois rádios",
+          "channelwarning": "O canal ativo é inválido",
+          "dcs": "Seleção de canal dinâmico em segundo plano",
+          "commentLabel": "Comentário",
+          "commentInvalidLength": "O comentário deve ter no máximo {{length}} caracteres.",
+          "mimo-support": "Suporte MU-MIMO",
+          "airtimeFairnessTitle": "Airtime Fairness",
+          "airtimeFairnessEnable": "Habilitar Airtime Fairness",
+          "airtimeFairnessEnableWarning": "O recurso Airtime Fairness não deve ser habilitado caso você não possua clientes antigos – isto afetará o desempenho e a estabilidade da sua rede.",
           "channelWidthSuffix": "{{bandwidth}} MHz",
           "rebootStartSuccess": "A reinicialização do ponto de acesso foi iniciada.",
           "rebootStartFail": "A reinicialização do ponto de acesso apresentou falha ao iniciar.",
@@ -193,6 +222,9 @@
         }
       },
       "apEditor": {
+        "delete":{
+          "fail": "Não foi possível deletar ponto de acesso"
+        },
         "save": {
           "success": "O ponto de acesso foi salvo",
           "fail": "Não foi possível salvar ponto de acesso"

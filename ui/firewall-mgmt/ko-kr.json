@@ -1,9 +1,13 @@
 {
   "firewall-management": {
+    "name": "방화벽 관리",
     "cancel": "취소",
     "save": "저장",
     "delete": "삭제",
     "success": "성공!",
+    "next": "다음",
+    "previous": "이전",
+    "finish": "마침",
     "success-default": "작업이 성공했습니다.",
     "error": "오류!",
     "error-default": "문제가 발생했습니다. ({{ errorCode }}).",
@@ -50,6 +54,78 @@
       "name": "Firewall Management - SD WAN 연결 그룹",
       "breadcrumb-text": "SD WAN 연결 그룹",
       "create": "새 연결 그룹 만들기",
+      "add": {
+        "name": "Firewall Management - 새로운 SD WAN 연결 그룹",
+        "breadcrumb-text": "SD WAN 연결 그룹 추가",
+        "select-firewalls": {
+          "label": "방화벽 선택",
+          "name": {
+            "label": "연결 그룹 이름",
+            "required": "이름이 필요함",
+            "heading": "이 그룹 이름 지정"
+          },
+          "description": {
+            "label": "설명",
+            "placeholder": "그룹에 대한 설명 입력(최대 250자)",
+            "length": "설명은 최대 250자까지 가능합니다."
+          },
+          "firewalls": {
+            "source":"사용 가능한 방화벽",
+            "target":"할당된 방화벽",
+            "label": "방화벽에 직접 연결된 LAN 네트워크는 공유 그룹에 자동으로 추가됩니다. 다음 단계에서 각 방화벽의 클라이언트 네트워크를 사용자 지정할 수 있습니다."
+          },
+          "select": {
+            "heading": "포함할 방화벽 선택"
+          }
+        },
+        "configure-networks": {
+          "label": "네트워크 구성",
+          "heading": "네트워크 및 경로 구성",
+          "description": "공유 그룹에 대한 액세스를 허용하는 네트워크 방화벽(충돌을 피하기 위해 네트워크가 다른 주소 범위로 표시되어야 하는지 여부)을 사용자 지정하고 여러 인터넷 연결이 있는 경우 터널 중복성을 설정합니다.",
+          "no-conflict": {
+            "heading": "{{ count }} 방화벽 분석됨(감지된 네트워크 충돌 없음)"
+          },
+          "conflict": {
+            "heading": "{{ count }} 방화벽 분석됨(감지된 네트워크 충돌 있음)"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "방화벽",
+              "local-subnets": "로컬 네트워크",
+              "wan-ports": "WAN 포트",
+              "nat": "NAT",
+              "respond-only": "응답 전용",
+              "details-edit": "세부 정보/편집",
+              "fix-conflicts": "충돌 수정"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "리소스 공유",
+          "heading": "리소스 공유",
+          "description": "각 사이트의 사용자가 액세스할 수 있어야 하는 회사 리소스를 선택합니다.",
+          "modal": {
+            "title": "리소스 추가",
+            "firewall": "방화벽",
+            "shared-resource": "공유된 리소스",
+            "service": "서비스",
+            "help": "공유된 네트워크는 이 공유 그룹의 일부인 모든 방화벽에서 사용할 수 있습니다.",
+            "auto-rules": "방화벽 규칙 자동 생성",
+            "limit-auth": "인증된 사용자에 대한 액세스 제한",
+            "sync-sec": "양호한 상태의 엔드포인트를 위한 동기화된 보안"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "방화벽",
+              "service": "서비스",
+              "auto-rules": "자동 방화벽 규칙",
+              "auth": "인증",
+              "green-hb": "녹색 HB",
+              "action": "편집"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "SD WAN 연결 그룹은 자동으로 생성된 정책을 통해 지역에 걸쳐 리소스를 공유할 수 있게 합니다.",
         "process": "그룹을 만드는 동안 연결 그룹에 배치할 방화벽을 선택할 수 있습니다.",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "다양한 고객에 대하여 사용할 수 있는 공통된 방화벽 설정 및 기본 정책 템플릿 집합을 만듭니다.",
+          "customer": "이 템플릿에 고객이 없습니다.",
           "header": "방화벽 템플릿이 없습니다.",
           "learn-more": "자세히 알아보기",
           "what": "방화벽 템플릿이란?",
@@ -197,6 +274,9 @@
             "stop": "고객이 파트너 관리형 템플릿 그룹 내에 하위 그룹을 만들 수 있습니다.",
             "push": "템플릿 업데이트 및 변경 사항이 고객에게 자동으로 푸시됩니다."
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} 방화벽"
         },
         "stats": {
           "disconnected": "{{ count }} 연결 해제됨",

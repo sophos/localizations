@@ -15,7 +15,8 @@
       "invalid-name": "이름에는 다음만 포함될 수 있습니다. A-Z, a-z , 0-9, -, _, 공백",
       "name-length-validation": "이름은 100자를 초과해서는 안 됨",
       "whitespace-name-validation": "이름이 필요함",
-      "description-length-validation": "설명은 300자를 초과해서는 안 됨"
+      "description-length-validation": "설명은 300자를 초과해서는 안 됨",
+      "required": "* 필수"
     },
     "application": {
       "form": {
@@ -56,10 +57,11 @@
           "ip": "리소스 FQDN",
           "type": "리소스 유형"
         },
-        "no-application-configured": "추가된 리소스 및 액세스가 없습니다.",
-        "no-application-configured-help": "리소스 추가 및 액세스 버튼을 클릭하여 리소스를 추가하고 액세스합니다.",
+        "no-application-configured": "리소스를 추가하지 않았습니다.",
+        "no-application-configured-help": "리소스를 추가하려면 ‘리소스 추가’ 버튼을 클릭하십시오.",
         "error": "리소스 목록을 가져오는 중 오류 발생.",
-        "no-userGroups-configured": "사용할 수 있는 사용자 그룹 없음."
+        "no-userGroups-configured": "사용할 수 있는 사용자 그룹 없음.",
+        "no-userGroups-assigned": "할당된 사용자 그룹 없음."
       },
       "delete": {
         "header": "리소스 삭제",
@@ -87,8 +89,8 @@
     },
     "gateway": {
       "list": {
-        "no-gateway-configured": "추가된 게이트웨이가 없습니다.",
-        "no-gateway-configured-help": "게이트웨이를 추가하려면 '게이트웨이 추가' 버튼을 클릭하십시오.",
+        "no-gateway-configured": "게이트웨이를 추가하지 않았습니다.",
+        "no-gateway-configured-help": "게이트웨이를 추가하려면 ‘게이트웨이 추가’ 버튼을 클릭하십시오.",
         "download-gateway-VM": "게이트웨이 VM 다운로드",
         "add": "게이트웨이 추가",
         "columns": {
@@ -96,6 +98,8 @@
           "description": "설명",
           "fqdn": "FQDN",
           "package": "패키지 유형",
+          "type": "유형",
+          "version": "버전",
           "identity-provider": "ID 제공자",
           "status": "상태"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "위치는 100자를 초과해서는 안 됨",
         "whitespace-location-validation": "위치가 필요함",
         "name-placeholder": "게이트웨이 이름 입력",
-        "description": "설명",
+        "description": "설명(최대 250자)",
         "description-placeholder": "설명 입력",
-        "packageType": "패키지",
+        "packageType": "플랫폼 유형",
         "identity-provider": "ID 제공자",
         "fqdn": "FQDN",
-        "appDomain": "리소스 도메인",
+        "appDomain": "도메인",
         "app-domain-validation": "잘못된 리소스 도메인",
         "password": "게이트웨이 암호",
         "password-placeholder": "암호 입력",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DHCP의 DNS",
         "dns1": "주 DNS",
         "dns2": "보조 DNS",
-        "hostname": "호스트 이름",
+        "hostname": "인스턴스 호스트 이름",
         "dhcp": "DHCP",
         "staticIp": "정적 IP",
         "staticDns": "정적 DNS",
         "gateway-instances": "게이트웨이 인스턴스",
+        "gateway-instances-note": "참고: 나중에 부하 분산을 위해 더 많은 인스턴스를 추가할 수 있습니다.",
+        "deployment-mode": "배포 모드",
+        "dual-arm": "원 암",
+        "single-arm": "투 암",
+        "dns-external-server-1": "DNS server1",
+        "dns-external-server-2": "DNS server2",
+        "static_routes": "정적 경로",
         "ipAddress": "IP 주소",
         "wan": "외부 인터페이스 IP 주소",
         "lan": "내부 인터페이스 IP 주소",
+        "external-interface": "외부 인터페이스",
+        "internal-interface": "내부 인터페이스",
+        "interface-settings": "인터페이스 설정",
         "ipAddress-validation": "잘못된 IP",
-        "subnetMask": "서브넷 마스크",
-        "subnetMask-validation": "잘못된 서브넷 마스크",
-        "default-gateway": "기본 게이트웨이",
-        "defaultGateway-validation": "잘못된 기본 게이트웨이",
+        "subnetMask": "서브넷",
+        "subnetMask-validation": "잘못된 서브넷",
+        "default-gateway": "게이트웨이",
+        "defaultGateway-validation": "잘못된 게이트웨이",
         "dns-validation": "잘못된 DNS",
+        "dns-server-1-validation": "잘못된 DNS 서버1",
+        "dns-server-2-validation": "잘못된 DNS 서버2",
+        "static-routes-validation": "쉼표로 구분된 목록",
+        "static-routes-rules1": "CIDR 형식의 경로 추가",
+        "static-routes-rules2": "쉼표로 구분된 목록 사용",
+        "static-routes-example": "예:",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "인증서",
+        "upload-certificate": "인증서 업로드",
         "certificate-validation": "잘못된 인증서",
+        "certificate-wildcard-message": "와일드카드 인증서여야 함",
         "privatekey": "개인 키",
+        "upload-privatekey": "개인 키 업로드",
         "private-key-validation": "잘못된 개인 키",
-        "save-and-generate-image": "이미지 저장 및 생성",
-        "packageType-placeholder": "패키지 선택",
-        "identity-provider-placeholder": "ID 제공자 선택",
+        "save-and-generate-image": "파일 저장 및 생성",
+        "packageType-placeholder": "선택",
+        "identity-provider-placeholder": "선택",
         "dns-dhcp-mandatory-help": "두 인터페이스가 모두 DHCP일 때는 DHCP에서 DNS를 설정해야 함",
         "dns-static-mandatory-help": "두 인터페이스가 정적 상태일 때 정적 DNS 항목을 설정해야 함",
         "add-success": "게이트웨이 생성됨",
@@ -186,9 +210,8 @@
           "content-generating": "게이트웨이 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다."
         },
         "awaiting-approval": {
-          "label": "승인 대기 중",
-          "header-approval": "승인 대기 중",
-          "content-approval": "게이트웨이 등록 요청을 수락하여 게이트웨이 온보딩 완료",
+          "label": "지지",
+          "description": "(연결 준비 완료)",
           "gateway-approve": "게이트웨이 등록 요청 승인됨",
           "gateway-approve-error": "게이트웨이 요청 수락 중 오류 발생."
         },
@@ -198,12 +221,55 @@
           "content-approved": "게이트웨이가 승인됨. 실행이 끝나고 나면 ‘연결됨’으로 전환"
         },
         "connected": {
-          "label": "연결됨",
+          "label": "게이트웨이 연결됨",
           "header-connected": "{{connectedSince}} 이후 연결됨"
         },
         "disconnected": {
-          "label": "연결 해제됨",
+          "label": "게이트웨이를 연결할 수 없음",
           "header-disconnected": "{{lastSeen}} 이후 연결 해제됨"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "이미지 생성",
+            "description": "(배포 준비 완료)",
+            "content-generating": "인스턴스 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다."
+          },
+          "cft-generating": {
+            "label": "CFT 생성 중",
+            "description": "(배포 준비 완료)",
+            "content-generating": "인스턴스 CFT 생성 중입니다. 생성이 완료되면 알림이 제공됩니다."
+          },
+          "waiting-for-approval": {
+            "label": "게이트웨이 승인 대기 중"
+          },
+          "download-image": {
+            "label": "이미지 다운로드",
+            "content": "(배포 준비 완료)",
+            "content-waiting": "이미지가 아직 부팅되지 않았습니다. 이미지를 다운로드하고 부팅하십시오.",
+            "header-download": "이미지 다운로드",
+            "content-download": "이미지를 다운로드하여 게이트웨이 부팅",
+            "generating-image": "이미지 생성",
+            "generating-image-info": "이미지 생성 중. 생성이 완료되면 통보됨",
+            "image-download-error": "이미지 다운로드 중 오류 발생"
+          },
+          "download-cft": {
+            "label": "CFT 다운로드",
+            "header-waiting": "배포 대기 중",
+            "content-waiting": "CFT가 아직 부팅되지 않았습니다. CFT를 다운로드하고 부팅하십시오.",
+            "header-download": "CFT 다운로드",
+            "content-download": "CFT를 다운로드하여 게이트웨이 부팅",
+            "generating-image": "CFT 생성 중",
+            "generating-image-info": "CFT 생성 중입니다. 생성이 완료되면 알림이 제공됩니다.",
+            "image-download-error": "CFT 다운로드 중 오류 발생"
+          },
+          "connected": {
+            "label": "다음 이후 작동 시간:"
+          },
+          "disconnected": {
+            "label": "다음 이후 연결 불가:"
+          }
         }
       }
     },
@@ -214,8 +280,8 @@
         "breadcrumb-text": "ID 제공자",
         "title": "Zero Trust Network Access - ID 제공자",
         "configure-idp": "ID 제공자 구성",
-        "no-idp-configured": "추가된 ID 제공자가 없습니다.",
-        "no-idp-configured-help": "ID 제공자 추가 버튼을 클릭하여 ID 제공자를 추가합니다.",
+        "no-idp-configured": "ID 제공자를 추가하지 않았습니다.",
+        "no-idp-configured-help": "ID 제공자를 추가하려면 ‘ID 제공자 추가’ 버튼을 클릭하십시오.",
         "columns": {
           "name": "이름",
           "provider": "제공자",
@@ -249,7 +315,8 @@
         "provider-error": "이 유형의 ID 제공자가 이미 존재함",
         "clientId-validation": "Client ID가 필요",
         "tenantId-validation": "테넌트 ID가 필요함",
-        "clientSecret-validation": "클라이언트 암호가 필요함"
+        "clientSecret-validation": "클라이언트 암호가 필요함",
+        "loading-error": "ID 제공자 로드 중 오류 발생"
       },
       "delete": {
         "header": "ID 제공자 삭제",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "이름",
+          "status": "상태",
+          "resources": "리소스",
+          "lastModified": "최근 수정된 날짜"
+        },
         "title": "Zero Trust Network Access - 정책",
         "new-policy": "Zero Trust Network Access - 새 정책",
         "breadcrumb-text": "정책",
         "breadcrumb-sub-text": "새 정책",
-        "add": "정책 추가"
+        "add": "정책 추가",
+        "fetch-error": "정책 목록을 가져오는 중 오류 발생",
+        "enforced": "적용됨",
+        "note": "참고: ",
+        "note-info1": " 리소스에 정책이 할당됩니다. 사용자를 ",
+        "note-info2": "리소스 ",
+        "resource": "수준에서 할당할 수 있습니다.",
+        "resource-and-access": "Zero Trust - 리소스 액세스",
+        "endpoint-agent": "Sophos Endpoint 에이전트를 ",
+        "downloads": "다운로드 ",
+        "downloads-page": "페이지에서 다운로드하십시오.",
+        "learn-more": "자세히 알아보기",
+        "no-policy-configured": "정책이 없습니다.",
+        "no-policy-configured-help": "정책 추가 버튼을 클릭하여 리소스에 대한 액세스 권한을 부여하기 위한 정책을 추가하십시오."
       },
       "add-modal": {
         "resource-access": "리소스 액세스",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "<a href=\"manage/downloads\" target=\"_blank\"> 다운로드 </a>페이지에서 Sophos Endpoint Agent를 다운로드하십시오. <a href=\"https://docs.sophos.com/central/Customer/help/ko-kr/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> 자세히 알아보기 </a>",
         "agent": "에이전트",
         "agentless": "에이전트리스"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "정책 이름",
+          "policy-type": "정책 유형",
+          "resource-access": "리소스 액세스",
+          "assigned-resources": "할당된 리소스(0)",
+          "access-rules": "액세스 규칙",
+          "policy-enforced": "정책이 적용됨",
+          "policy-enforced-label1": "정책이",
+          "policy-enforced-label2": "적용됨",
+          "policy-enforced-info": "정책이 적용되지 않으면 이 정책에 할당된 리소스에 액세스할 수 없습니다.",
+          "policy-enforced-disable": "특정 시간 이후 자동으로 비활성화",
+          "access-rules-info": "사용자 그룹 할당 및 정책 예외는 ",
+          "resources-link": "리소스에서 관리됩니다.",
+          "learn-more": "자세히 알아보기",
+          "resource-access-agent": "리소스 액세스: 에이전트",
+          "manage-access": "조건을 사용하여 액세스 관리",
+          "allow-access": "액세스 허용",
+          "applies-to": "적용 대상",
+          "tooltip-access-rules-info1": "적용할 수 없는 규칙은 무시되고 계속 진행됩니다.",
+          "tooltip-access-rules-info2": "지원되는 항목을 보여주는 아이콘이 표시됩니다.",
+          "deny-access": "액세스 거부:",
+          "deny-access-info": " 위의 사항이 충족되지 않으면 액세스가 거부됩니다.",
+          "expires-at": "다음 시간에 만료됨",
+          "assign-resources-info": "리소스는 하나의 정책에만 속할 수 있습니다. 이미 할당된 리소스를 다른 데 할당하면 여기에 다시 할당됩니다. 사용자는 ",
+          "resource-link": "리소스에서 할당됩니다.",
+          "no-resources-configured": "리소스가 없습니다.",
+          "no-resources-configured-help": "아직 정책에 추가할 수 있는 리소스가 없습니다. 나중에 추가할 수 있습니다.",
+          "add-success": "정책 생성됨",
+          "add-error": "정책 생성 실패"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "리소스 액세스: 에이전트리스"
+        }
       }
     }
   },

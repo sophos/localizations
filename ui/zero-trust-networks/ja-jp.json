@@ -15,7 +15,8 @@
       "invalid-name": "名前には、次のみ使用できます: A-Z、a-z、0-9、-、_、スペース文字",
       "name-length-validation": "名前は 100文字以内で入力してください",
       "whitespace-name-validation": "名前を指定してください",
-      "description-length-validation": "説明は 300文字以内で入力してください"
+      "description-length-validation": "説明は 300文字以内で入力してください",
+      "required": "* 必須項目"
     },
     "application": {
       "form": {
@@ -29,7 +30,7 @@
         "gateway": "ゲートウェイ",
         "gateway-placeholder": "ゲートウェイの選択",
         "application-fqdn": "リソースの FQDN",
-        "application-icon": "リソースアイコン （最大サイズ：100K)",
+        "application-icon": "リソースアイコン (最大サイズ: 100K)",
         "port": "ポート",
         "title-add": "リソースの追加",
         "deploy": "導入",
@@ -56,10 +57,11 @@
           "ip": "リソースの FQDN",
           "type": "リソースの種類"
         },
-        "no-application-configured": "リソースとアクセスは追加されていません。",
-        "no-application-configured-help": "リソースとアクセスを追加するには、「リソース＆アクセス」ボタンをクリックします。",
+        "no-application-configured": "リソースが追加されていません。",
+        "no-application-configured-help": "リソースを追加するには、「リソースの追加」ボタンをクリックします。",
         "error": "リソースリストの取得中、エラーが発生しました。",
-        "no-userGroups-configured": "ユーザーグループはありません。"
+        "no-userGroups-configured": "ユーザーグループはありません。",
+        "no-userGroups-assigned": "ユーザーグループは割り当てられていません。"
       },
       "delete": {
         "header": "リソースの削除",
@@ -87,7 +89,7 @@
     },
     "gateway": {
       "list": {
-        "no-gateway-configured": "ゲートウェイは追加されていません。",
+        "no-gateway-configured": "ゲートウェイが追加されていません。",
         "no-gateway-configured-help": "ゲートウェイを追加するには、「ゲートウェイの追加」ボタンをクリックします。",
         "download-gateway-VM": "ゲートウェイ VM のダウンロード",
         "add": "ゲートウェイの追加",
@@ -96,6 +98,8 @@
           "description": "説明",
           "fqdn": "FQDN",
           "package": "パッケージの種類",
+          "type": "種類",
+          "version": "バージョン",
           "identity-provider": "IdP (Identity Provider)",
           "status": "状態"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "位置情報は 100文字以内で入力してください",
         "whitespace-location-validation": "位置情報を指定してください",
         "name-placeholder": "ゲートウェイの名前を入力",
-        "description": "説明",
+        "description": "説明 (最大文字数: 250文字)",
         "description-placeholder": "説明を入力",
-        "packageType": "パッケージ",
+        "packageType": "プラットフォームの種類",
         "identity-provider": "IdP (Identity Provider)",
         "fqdn": "FQDN",
-        "appDomain": "リソースドメイン",
+        "appDomain": "ドメイン",
         "app-domain-validation": "リソースドメインが無効です",
         "password": "ゲートウェイパスワード",
         "password-placeholder": "パスワードの入力",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DHCP からの DNS",
         "dns1": "プライマリ DNS",
         "dns2": "セカンダリ DNS",
-        "hostname": "ホスト名",
+        "hostname": "インスタンスのホスト名",
         "dhcp": "DHCP",
         "staticIp": "スタティック IP",
         "staticDns": "スタティック DNS",
         "gateway-instances": "ゲートウェイインスタンス",
+        "gateway-instances-note": "注: 後で負荷分散を行うために、インスタンスを追加できます。",
+        "deployment-mode": "導入モード",
+        "dual-arm": "ツーアーム",
+        "single-arm": "ワンアーム",
+        "dns-external-server-1": "DNS サーバー 1",
+        "dns-external-server-2": "DNS サーバー 2",
+        "static_routes": "スタティックルート",
         "ipAddress": "IP アドレス",
         "wan": "外部インターフェースの IP アドレス",
         "lan": "内部インターフェースの IP アドレス",
+        "external-interface": "外部インタフェース",
+        "internal-interface": "内部インタフェース",
+        "interface-settings": "インターフェースの設定",
         "ipAddress-validation": "IP が無効です",
-        "subnetMask": "サブネットマスク",
-        "subnetMask-validation": "サブネットマスクが無効です",
-        "default-gateway": "デフォルトゲートウェイ",
-        "defaultGateway-validation": "デフォルトゲートウェイが無効です",
+        "subnetMask": "サブネット",
+        "subnetMask-validation": "サブネットが無効です",
+        "default-gateway": "ゲートウェイ",
+        "defaultGateway-validation": "ゲートウェイが無効です",
         "dns-validation": "DNS が無効です",
+        "dns-server-1-validation": "DNS サーバー 1 が無効です。",
+        "dns-server-2-validation": "DNS サーバー 2 が無効です。",
+        "static-routes-validation": "カンマ区切りリスト",
+        "static-routes-rules1": "CIDR 形式のルートの追加",
+        "static-routes-rules2": "- カンマ区切りリストを使用",
+        "static-routes-example": "例:",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "証明書",
+        "upload-certificate": "証明書のアップロード",
         "certificate-validation": "証明書が無効です",
+        "certificate-wildcard-message": "ワイルドカード証明書である必要があります",
         "privatekey": "秘密鍵",
+        "upload-privatekey": "秘密鍵のアップロード",
         "private-key-validation": "秘密鍵が無効です",
-        "save-and-generate-image": "保存して、イメージを生成",
-        "packageType-placeholder": "パッケージの選択",
-        "identity-provider-placeholder": "IdP の選択",
+        "save-and-generate-image": "保存して、ファイルを生成",
+        "packageType-placeholder": "選択",
+        "identity-provider-placeholder": "選択",
         "dns-dhcp-mandatory-help": "両方のインターフェースが DHCP の場合は、DHCP から DNS を設定する必要があります",
         "dns-static-mandatory-help": "両方のインターフェースがスタティックの場合は、スタティック DNS エントリを設定する必要があります",
         "add-success": "ゲートウェイが作成されました",
@@ -186,9 +210,8 @@
           "content-generating": "ゲートウェイイメージの生成が進行中です。生成が終了したら通知が送信されます"
         },
         "awaiting-approval": {
-          "label": "承認を待機中",
-          "header-approval": "承認を待機中",
-          "content-approval": "ゲートウェイの登録のリクエストを承認して、ゲートウェイのオンボーディングを終了してください",
+          "label": "承認",
+          "description": "(接続の準備完了)",
           "gateway-approve": "ゲートウェイの登録のリクエストが承認されました",
           "gateway-approve-error": "ゲートウェイのリクエストを承認中、エラーが発生しました。"
         },
@@ -198,12 +221,55 @@
           "content-approved": "ゲートウェイは承認されました。実行が開始されたら、表示は「接続」に変わります"
         },
         "connected": {
-          "label": "接続",
+          "label": "ゲートウェイ接続済み",
           "header-connected": "接続日: {{connectedSince}}"
         },
         "disconnected": {
-          "label": "切断",
+          "label": "ゲートウェイに到達不能です",
           "header-disconnected": "切断日: {{lastSeen}}"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "イメージを生成中",
+            "description": "(導入の準備完了)",
+            "content-generating": "インスタンスイメージの生成が進行中です。生成が終了したら通知が送信されます"
+          },
+          "cft-generating": {
+            "label": "CFT を生成中",
+            "description": "(導入の準備完了)",
+            "content-generating": "インスタンスの CFT の生成が進行中です。生成が終了したら通知が送信されます"
+          },
+          "waiting-for-approval": {
+            "label": "ゲートウェイの承認を待機中"
+          },
+          "download-image": {
+            "label": "イメージのダウンロード",
+            "content": "(導入の準備完了)",
+            "content-waiting": "イメージはまだ起動していません。イメージをダウンロードして起動してください",
+            "header-download": "イメージのダウンロード",
+            "content-download": "イメージをダウンロードして、ゲートウェイを起動します",
+            "generating-image": "イメージを生成中",
+            "generating-image-info": "イメージの生成が進行中です。生成が終了したら通知が送信されます",
+            "image-download-error": "イメージのダウンロード中、エラーが発生しました"
+          },
+          "download-cft": {
+            "label": "CFT のダウンロード",
+            "header-waiting": "導入待機中",
+            "content-waiting": "CFT はまだ起動していません。CFT をダウンロードして起動してください",
+            "header-download": "CFT のダウンロード",
+            "content-download": "CFT をダウンロードして、ゲートウェイを起動します",
+            "generating-image": "CFT を生成中",
+            "generating-image-info": "CFT の生成が進行中です。生成が終了したら通知が送信されます",
+            "image-download-error": "CFT のダウンロード中、エラーが発生しました"
+          },
+          "connected": {
+            "label": "稼働開始日:"
+          },
+          "disconnected": {
+            "label": "到達不能日:"
+          }
         }
       }
     },
@@ -214,7 +280,7 @@
         "breadcrumb-text": "IdP (Identity Provider)",
         "title": "Zero Trust Network Access - IdP (Identity Provider)",
         "configure-idp": "IdP の設定",
-        "no-idp-configured": "IdP は追加されていません。",
+        "no-idp-configured": "IdP が追加されていません。",
         "no-idp-configured-help": "IdP を追加するには、「IdP の追加」ボタンをクリックします。",
         "columns": {
           "name": "名前",
@@ -249,7 +315,8 @@
         "provider-error": "この種類の IｄP は既に存在します",
         "clientId-validation": "クライアント ID を指定してください",
         "tenantId-validation": "テナント ID を指定してください",
-        "clientSecret-validation": "クライアントシークレットを指定してください"
+        "clientSecret-validation": "クライアントシークレットを指定してください",
+        "loading-error": "IdP の読み込み中、エラーが発生しました"
       },
       "delete": {
         "header": "IdP の削除",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "名前",
+          "status": "状態",
+          "resources": "リソース",
+          "lastModified": "前回更新日時"
+        },
         "title": "Zero Trust Network Access - ポリシー",
         "new-policy": "Zero Trust Network Access - 新規ポリシー",
         "breadcrumb-text": "ポリシー",
         "breadcrumb-sub-text": "新規ポリシー",
-        "add": "ポリシーの追加"
+        "add": "ポリシーの追加",
+        "fetch-error": "ポリシーリストの取得中、エラーが発生しました",
+        "enforced": "適用済み",
+        "note": "注: ",
+        "note-info1": " ポリシーはリソースに割り当てられます。次でユーザーを割り当てることができます; ",
+        "note-info2": "レベル",
+        "resource": "リソース",
+        "resource-and-access": "Zero Trust - リソースアクセス",
+        "endpoint-agent": "Sophos Endpoint エージェントのダウンロード: ",
+        "downloads": "ダウンロード ",
+        "downloads-page": "ページ。",
+        "learn-more": "詳細情報",
+        "no-policy-configured": "ポリシーはありません。",
+        "no-policy-configured-help": "「ポリシーの追加」ボタンをクリックしてポリシーを追加し、リソースへのアクセスの許可を開始します。"
       },
       "add-modal": {
         "resource-access": "リソースアクセス",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "Sophos Endpoint Agent を <a href=\"manage/downloads\" target=\"_blank\"> ダウンロード</a>ページからダウンロードしてください。<a href=\"https://docs.sophos.com/central/Customer/help/ja-jp/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\">詳細情報</a>",
         "agent": "エージェント",
         "agentless": "エージェントレス"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "ポリシー名",
+          "policy-type": "ポリシーの種類",
+          "resource-access": "リソースアクセス",
+          "assigned-resources": "割り当て済みリソース (0)",
+          "access-rules": "アクセスのルール",
+          "policy-enforced": "適用済みポリシー",
+          "policy-enforced-label1": "ポリシーの状態:",
+          "policy-enforced-label2": "適用済み",
+          "policy-enforced-info": "ポリシーが適用されていない場合、このポリシーに割り当てられたリソースにはアクセスできません。",
+          "policy-enforced-disable": "一定期間後に自動的に無効化する",
+          "access-rules-info": "ユーザーグループの割り当てとポリシーの例外の管理; ",
+          "resources-link": "リソース。",
+          "learn-more": "詳細情報",
+          "resource-access-agent": "リソースアクセス: エージェント",
+          "manage-access": "条件を使用してアクセスを管理",
+          "allow-access": "アクセスの許可",
+          "applies-to": "対象",
+          "tooltip-access-rules-info1": "適用できないルールは無視され、続行されます。",
+          "tooltip-access-rules-info2": "サポートされている内容を示すアイコンが表示されます。",
+          "deny-access": "アクセス拒否:",
+          "deny-access-info": " 上記のいずれの条件も満たされない場合、アクセスは拒否されます",
+          "expires-at": "失効時刻",
+          "assign-resources-info": "リソースは 1つのポリシーのみに属することができます。既に割り当て済みのリソースを割り当てようとすると、そのリソースはこの新しいポリシーに再割り当てされます。ユーザーの割り当て: ",
+          "resource-link": "リソース。",
+          "no-resources-configured": "リソースはありません。",
+          "no-resources-configured-help": "ポリシーに追加できるリソースはまだありません。後で追加できます。",
+          "add-success": "ポリシーが作成されました",
+          "add-error": "ポリシーの作成に失敗しました"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "リソースアクセス: エージェントレス"
+        }
       }
     }
   },

@@ -16,12 +16,14 @@
       "success": "Erfolgreich",
       "retry": "Erneut versuchen",
       "accessPoints": "Access Points",
+      "ssids":"SSIDs",
       "settings" : "Einstellungen",
       "statistic" : "Statistik",
       "devices" : "Geräte",
       "reset": "Reset",
       "select-all": "Alle ausw.",
-      "deselect-all": "Alle abw."
+      "deselect-all": "Alle abw.",
+      "channel": "Kanal"
     },
     "global": {
       "onBoard": {
@@ -46,6 +48,7 @@
     },
     "networks": {
       "fetch-error": "Fehler beim Laden der SSID-Liste",
+      "ssid-create":"Neue SSID",
       "list": {
         "breadcrumb-text": "SSIDs",
         "title": "Wireless - SSIDs",
@@ -66,6 +69,17 @@
           "captive-portal": "Captive Portal",
           "errorMessage": "SSID kann nicht gelöscht werden"
         }
+      },
+      "create":{
+        "help":"Hilfe",
+        "general-setting-encryption-mode":"Legen Sie die allgemeinen Einstellungen für Ihre neue SSID fest. Wählen Sie aus, welche Verschlüsselungsmethode und welche Art von SSID Sie bereitstellen wollen.",
+        "band-encryption-mode":" Wir empfehlen die Verschlüsselungsmethode WPA2 mit AES und die Frequenzbänder 2.4 und 5 GHz.",
+        "settings":"Ihre Einstellungen",
+        "basic-setting":"Grundeinstellungen",
+        "encryption-algorithm":"Verschlüsselungsalgorithmus",
+        "frequency-band":"Frequenzband",
+        "enable-ssid":"SSID aktivieren",
+        "advanced-settings":"Erweiterte Einstellungen"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive-Portal aktiviert"
@@ -113,7 +127,8 @@
         "stateOffline": "Offline",
         "offlineApDeleteMessage": "Access Points sollten nicht gelöscht werden, wenn sie offline sind. Warten Sie, bis sie online sind, oder erzwingen Sie das Löschen.",
         "statusDelete": "WIRD GELÖSCHT",
-        "deleteDialogText": "Möchten Sie die ausgewählten Access Points löschen?",
+        "deleteDialogText": "Wollen Sie den ausgewählten Access Point löschen?",
+        "deleteAp":"Wollen Sie diesen Access Point löschen?",
         "forceDelete": "Löschen erzwingen",
         "automaticOnce": "Einmalig automatisch",
         "manual": "Manuell",
@@ -177,7 +192,21 @@
           "apNameRequired": "AP-Name ist erforderlich.",
           "apNameMaxLength": "AP-Name darf höchstens 128 Zeichen haben.",
           "meshModeLabel": "Mesh erlauben",
+          "channelWidth": "Kanalbreite",
+          "channelWidthWarning": "40 MHz wird nicht empfohlen",
+          "antenna": "Antennen",
+          "autoChannel": "Auto-Kanal",
+          "dfssuffix": "{{ channel }} (DFS)",
+          "dfswarning": "Wird unter Umständen auf anderem Kanal übertragen",
           "dualRadioMeshWarning": "Mesh auf beiden Sendern nicht erlaubt",
+          "channelwarning": "Aktiver Kanal ist ungültig",
+          "dcs": "Dynamische Kanalauswahl im Hintergrund",
+          "commentLabel": "Kommentar",
+          "commentInvalidLength": "Kommentar darf maximal {{length}} Zeichen lang sein.",
+          "mimo-support": "MU-MIMO-Unterstützung",
+          "airtimeFairnessTitle": "Airtime Fairness",
+          "airtimeFairnessEnable": "Airtime Fairness aktivieren",
+          "airtimeFairnessEnableWarning": "Airtime Fairness sollte nur aktiviert werden, wenn Sie alte Clients nutzen, da es die Leistung und Stabilität Ihres Netzwerks beeinträchtigt",
           "channelWidthSuffix": "{{bandwidth}} MHz",
           "rebootStartSuccess": "Neustart des Access Point begonnen.",
           "rebootStartFail": "Neustart des Access Point nicht möglich.",
@@ -193,6 +222,9 @@
         }
       },
       "apEditor": {
+        "delete":{
+          "fail": "Access Point konnte nicht gelöscht werden"
+        },
         "save": {
           "success": "Access Point wurde gespeichert",
           "fail": "Access Point konnte nicht gespeichert werden"

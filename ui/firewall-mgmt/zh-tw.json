@@ -1,9 +1,13 @@
 {
   "firewall-management": {
+    "name": "防火牆管理",
     "cancel": "取消",
     "save": "儲存",
     "delete": "刪除",
     "success": "成功！",
+    "next": "下一步 ",
+    "previous": "先前版本",
+    "finish": "完成",
     "success-default": "此操作很成功。",
     "error": "錯誤！",
     "error-default": "發生錯誤。({{ errorCode }})。",
@@ -50,6 +54,78 @@
       "name": "防火墻管理 - SD WAN 連線群組",
       "breadcrumb-text": "SD WAN 連線群組",
       "create": "建立連線群組",
+      "add": {
+        "name": "防火墻管理 - 新的 SD WAN 連線群組",
+        "breadcrumb-text": "新增 SD WAN 連線群組",
+        "select-firewalls": {
+          "label": "選取防火牆",
+          "name": {
+            "label": "連線群組名稱",
+            "required": "需要名稱",
+            "heading": "為此群組命名"
+          },
+          "description": {
+            "label": "說明",
+            "placeholder": "輸入群組的說明（最多 250 個字元）",
+            "length": "說明可最多使用 250 個字元。"
+          },
+          "firewalls": {
+            "source":"可用防火墻",
+            "target":"已指派的防火牆",
+            "label": "直接連線到防火墻的 LAN 網路將自動新增到共用群組。您可以在下一步中自訂每個防火墻的用戶端網路。"
+          },
+          "select": {
+            "heading": "選取要包含的防火墻"
+          }
+        },
+        "configure-networks": {
+          "label": "設定網路",
+          "heading": "設定網路和路由",
+          "description": "自訂哪個網路防火牆允許存取共用群組，是否需要將網路顯示為其他地址範圍以避免衝突，並在存在多個網際網路連線時設定通道備援。",
+          "no-conflict": {
+            "heading": "{{ count }} 已分析防火墻，沒有偵測到網路衝突"
+          },
+          "conflict": {
+            "heading": "{{ count }} 已分析防火墻，偵測到網路衝突"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "防火牆",
+              "local-subnets": "本機網路",
+              "wan-ports": "WAN 連接埠",
+              "nat": "NAT",
+              "respond-only": "僅回應",
+              "details-edit": "詳細資料/編輯",
+              "fix-conflicts": "修復衝突"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "共用資源",
+          "heading": "共用資源",
+          "description": "選取每個站點的使用者都能存取的公司資源",
+          "modal": {
+            "title": "新增資源",
+            "firewall": "防火牆",
+            "shared-resource": "已共用的資源",
+            "service": "服務",
+            "help": "已共用的網路將可供此共用群組中的所有防火墻使用。",
+            "auto-rules": "自動建立防火牆規則",
+            "limit-auth": "限制存取已驗證的使用者",
+            "sync-sec": "安全運行的端點的同步安全性"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "防火牆",
+              "service": "服務",
+              "auto-rules": "自動防火牆規則",
+              "auth": "驗證",
+              "green-hb": "綠色 HB",
+              "action": "編輯"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "SD WAN 連線群組有助於利用自動產生的策略進行跨區域分享資源。",
         "process": "在建立群組時，您可選擇要加入連線群組的防火牆。",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "建立通用的防火牆設定及基本原則範本組合，應用於不同客戶。",
+          "customer": "您在此範本中沒有客戶。",
           "header": "您沒有任何防火牆範本",
           "learn-more": "瞭解更多",
           "what": "何謂防火牆範本？",
@@ -197,6 +274,9 @@
             "stop": "允許客戶在合作夥伴管理範本群組中建立子群組。",
             "push": "範本會更新，並且變更將會自動推送給客戶。"
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} 防火牆"
         },
         "stats": {
           "disconnected": "{{ count }} 個已中斷連線",

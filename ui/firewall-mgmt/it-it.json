@@ -1,9 +1,13 @@
 {
   "firewall-management": {
+    "name": "Gestione del firewall",
     "cancel": "Annulla",
     "save": "Salva",
     "delete": "Elimina",
     "success": "Operazione completata.",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "finish": "Fine",
     "success-default": "L'operazione è stata completata.",
     "error": "Errore!",
     "error-default": "Si è verificato un errore. ({{ errorCode }}).",
@@ -50,6 +54,78 @@
       "name": "Gestione del firewall - Gruppi di connessione SD WAN",
       "breadcrumb-text": "Gruppi di connessione SD WAN",
       "create": "Crea un gruppo di connessione",
+      "add": {
+        "name": "Gestione del firewall - Nuovo gruppo di connessione SD WAN",
+        "breadcrumb-text": "Aggiungi un gruppo di connessione SD WAN",
+        "select-firewalls": {
+          "label": "Seleziona firewall",
+          "name": {
+            "label": "Nome del gruppo di connessione",
+            "required": "Nome obbligatorio",
+            "heading": "Assegna un nome a questo gruppo"
+          },
+          "description": {
+            "label": "Descrizione",
+            "placeholder": "Immetti la descrizione del gruppo (max 250 caratteri)",
+            "length": "La descrizione non può superare i 250 caratteri."
+          },
+          "firewalls": {
+            "source":"Firewall disponibili",
+            "target":"Firewall assegnati",
+            "label": "Le reti LAN connesse direttamente al firewall verranno aggiunte automaticamente al gruppo di condivisione. Puoi personalizzare le reti client di ciascun firewall nel prossimo passaggio."
+          },
+          "select": {
+            "heading": "Seleziona i firewall da includere"
+          }
+        },
+        "configure-networks": {
+          "label": "Configura reti",
+          "heading": "Configura reti e route",
+          "description": "Personalizza a quale rete il firewall permette l'accesso ai gruppi di condivisione, quale rete deve essere visualizzata con un intervallo di indirizzi diverso per evitare conflitti e configura la ridondanza del tunnel se sono presenti connessioni Internet multiple.",
+          "no-conflict": {
+            "heading": "{{ count }} firewall analizzati senza che sia stato rilevato alcun conflitto di rete"
+          },
+          "conflict": {
+            "heading": "{{ count }} firewall analizzati per i quali è stato rilevato un conflitto di rete"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "local-subnets": "Rete/i locale/i",
+              "wan-ports": "Porte WAN",
+              "nat": "NAT",
+              "respond-only": "Rispondi solo",
+              "details-edit": "Dettagli/modifica",
+              "fix-conflicts": "Risolvi conflitto"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "Condividi risorse",
+          "heading": "Condividi risorse",
+          "description": "Seleziona le risorse aziendali da rendere accessibili agli utenti in ciascun sito",
+          "modal": {
+            "title": "Aggiungi risorse",
+            "firewall": "Firewall",
+            "shared-resource": "Risorsa condivisa",
+            "service": "Servizio",
+            "help": "Le reti condivise saranno disponibili per tutti i firewall che appartengono a questo gruppo di condivisione.",
+            "auto-rules": "Crea automaticamente regole firewall",
+            "limit-auth": "Limita l'accesso agli utenti autenticati",
+            "sync-sec": "Synchronized Security per endpoint con stato di integrità buono"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "service": "Servizio",
+              "auto-rules": "Regole Firewall automatico",
+              "auth": "Autenticazione",
+              "green-hb": "HB verde",
+              "action": "Modifica"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "I Gruppi di connessione SD WAN aiutano a condividere le risorse in aree diverse con l'aiuto di criteri generati automaticamente.",
         "process": "Puoi selezionare i firewall da includere nei gruppi di connessione durante la creazione di un gruppo.",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "Crea set di modelli comuni di impostazioni e criteri di base per il firewall da utilizzare per clienti diversi.",
+          "customer": "Non ci sono clienti in questo modello.",
           "header": "Non ci sono modelli firewall",
           "learn-more": "Ulteriori informazioni",
           "what": "Che cos'è un modello firewall?",
@@ -197,6 +274,9 @@
             "stop": "Permettere ai clienti di creare sottogruppi all'interno di un gruppo di modelli gestito dal partner.",
             "push": "Gli aggiornamenti e le modifiche dei modelli vengono inviati automaticamente ai clienti tramite push."
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} firewall"
         },
         "stats": {
           "disconnected": "{{ count }} disconnesso/i",

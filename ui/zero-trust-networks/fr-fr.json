@@ -15,7 +15,8 @@
       "invalid-name": "Le nom doit uniquement contenir : A-Z, a-z , 0-9, -, _, espace",
       "name-length-validation": "Le nom ne doit pas contenir plus de 100 caractères",
       "whitespace-name-validation": "Nom obligatoire",
-      "description-length-validation": "La description ne doit pas contenir plus de 300 caractères"
+      "description-length-validation": "La description ne doit pas contenir plus de 300 caractères",
+      "required": "* Obligatoire"
     },
     "application": {
       "form": {
@@ -38,7 +39,7 @@
         "empty-user-groups": "Aucun groupe d’utilisateurs trouvé !",
         "available-user-groups": "Groupes d’utilisateurs disponibles",
         "assigned-user-groups": "Groupes d’utilisateurs assignés",
-        "loading-error": "Erreur de chargement des ressources",
+        "loading-error": "Erreur de chargement de la ressource",
         "add-success": "Ressource créée",
         "add-error": "Impossible de créer la ressource",
         "title-edit": "Modifier la ressource",
@@ -56,10 +57,11 @@
           "ip": "FQDN des ressources",
           "type": "Type de ressources"
         },
-        "no-application-configured": "Aucune Ressource et accès n’a été ajoutée.",
-        "no-application-configured-help": "Cliquez sur le bouton Ajouter des ressources et accès pour ajouter les ressources et accès.",
+        "no-application-configured": "Vous n’avez pas ajouté d’autres ressources.",
+        "no-application-configured-help": "Cliquez sur le bouton « Ajouter une ressource » pour ajouter une ressource.",
         "error": "Erreur lors de la récupération de la liste des ressources.",
-        "no-userGroups-configured": "Aucun groupe d’utilisateurs disponible."
+        "no-userGroups-configured": "Aucun groupe d’utilisateurs disponible.",
+        "no-userGroups-assigned": "Aucun groupe d’utilisateurs assigné."
       },
       "delete": {
         "header": "Supprimer la ressource",
@@ -87,8 +89,8 @@
     },
     "gateway": {
       "list": {
-        "no-gateway-configured": "Aucune passerelle n’a été ajoutée.",
-        "no-gateway-configured-help": "Cliquez sur le bouton Ajouter une passerelle pour ajouter des passerelles.",
+        "no-gateway-configured": "Vous n’avez pas ajouté d’autres passerelles.",
+        "no-gateway-configured-help": "Cliquez sur le bouton « Ajouter une passerelle » pour ajouter une passerelle.",
         "download-gateway-VM": "Télécharger la VM passerelle",
         "add": "Ajouter une passerelle",
         "columns": {
@@ -96,6 +98,8 @@
           "description": "Description",
           "fqdn": "Nom de domaine complet (FQDN)",
           "package": "Type de package",
+          "type": "Type",
+          "version": "Version",
           "identity-provider": "Fournisseur d’identité",
           "status": "État"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "L’emplacement ne doit pas contenir plus de 100 caractères",
         "whitespace-location-validation": "Emplacement obligatoire",
         "name-placeholder": "Saisir le nom de la passerelle",
-        "description": "Description",
+        "description": "Description (250 caractères max.)",
         "description-placeholder": "Saisir une description",
-        "packageType": "Package",
+        "packageType": "Type de plate-forme",
         "identity-provider": "Fournisseur d’identité",
         "fqdn": "Nom de domaine complet (FQDN)",
-        "appDomain": "Domaine de la ressource",
+        "appDomain": "Domaine",
         "app-domain-validation": "Domaine de la ressource incorrect",
         "password": "Mot de passe de la passerelle",
         "password-placeholder": "Saisir le mot de passe",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DNS depuis DHCP",
         "dns1": "DNS principal",
         "dns2": "DNS secondaire",
-        "hostname": "Nom d’hôte",
+        "hostname": "Nom d’hôte de l’instance",
         "dhcp": "DHCP",
         "staticIp": "IP statique",
         "staticDns": "DNS statique",
-        "gateway-instances": "Instances de la passerelle",
+        "gateway-instances": "Instance de la passerelle",
+        "gateway-instances-note": "Remarque : Vous pourrez ajouter d’autres instances pour l’équilibre de charge ultérieurement.",
+        "deployment-mode": "Mode de déploiement",
+        "dual-arm": "Deux bras",
+        "single-arm": "Un bras",
+        "dns-external-server-1": "Serveur1 DNS",
+        "dns-external-server-2": "Serveur2 DNS",
+        "static_routes": "Routes statiques",
         "ipAddress": "Adresse IP",
         "wan": "Adresse IP de l’interface externe",
         "lan": "Adresse IP de l’interfacer interne",
+        "external-interface": "Interface externe",
+        "internal-interface": "Interface interne",
+        "interface-settings": "Paramètres de l’interface",
         "ipAddress-validation": "Adresse IP non valide",
-        "subnetMask": "Masque de sous-réseau",
-        "subnetMask-validation": "Masque de sous-réseau non valide",
-        "default-gateway": "Passerelle par défaut",
-        "defaultGateway-validation": "Passerelle par défaut non valide",
+        "subnetMask": "Sous-réseau",
+        "subnetMask-validation": "Sous-réseau non valide",
+        "default-gateway": "Passerelle",
+        "defaultGateway-validation": "Passerelle non valide",
         "dns-validation": "Adresse DNS non valide",
+        "dns-server-1-validation": "Serveur1 DNS non valide",
+        "dns-server-2-validation": "Serveur2 DNS non valide",
+        "static-routes-validation": "Liste séparée par virgules",
+        "static-routes-rules1": "Ajouter les routes au format CIDR",
+        "static-routes-rules2": "en utilisant une liste séparée par virgules",
+        "static-routes-example": "Exemple :",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "Certificat",
+        "upload-certificate": "Télécharger le certificat",
         "certificate-validation": "Certificat incorrect",
+        "certificate-wildcard-message": "Doit être un certificat avec caractères génériques",
         "privatekey": "Clé privée",
+        "upload-privatekey": "Télécharger la clé privée",
         "private-key-validation": "Clé privée non valide",
-        "save-and-generate-image": "Enregistrer et générer l’image",
-        "packageType-placeholder": "Sélectionner un package",
-        "identity-provider-placeholder": "Sélectionner un fournisseur d’identité",
+        "save-and-generate-image": "Enregistrer et générer le fichier",
+        "packageType-placeholder": "Sélectionner",
+        "identity-provider-placeholder": "Sélectionner",
         "dns-dhcp-mandatory-help": "Doit créer une entrée DNS à partir de DHCP lorsque les deux interfaces sont DHCP",
         "dns-static-mandatory-help": "Doit créer une entrée DNS statique lorsque les deux interfaces sont statiques",
         "add-success": "Passerelle créée",
@@ -186,9 +210,8 @@
           "content-generating": "La création de l’image de la passerelle est en cours. Vous serez informé une fois qu’elle aura été créée"
         },
         "awaiting-approval": {
-          "label": "En attente d’approbation",
-          "header-approval": "En attente d’approbation",
-          "content-approval": "Accepter la requête d’enregistrement de la passerelle pour terminer l’intégration de la passerelle",
+          "label": "Approuver",
+          "description": "(Prêt pour la connexion)",
           "gateway-approve": "Requête d’enregistrement de la passerelle approuvée",
           "gateway-approve-error": "Erreur lors de l’approbation de la requête d’enregistrement."
         },
@@ -198,12 +221,55 @@
           "content-approved": "Passerelle approuvée. Elle s’affichera sous l’état « Connecté » dès qu’elle sera opérationnelle"
         },
         "connected": {
-          "label": "Connectée",
+          "label": "Passerelle connectée",
           "header-connected": "Connectée depuis {{connectedSince}}"
         },
         "disconnected": {
-          "label": "Déconnectée",
+          "label": "Passerelle injoignable",
           "header-disconnected": "Déconnectée depuis {{lastSeen}}"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "Création de l’image",
+            "description": "(Prêt pour le déploiement)",
+            "content-generating": "La création de l’image de l’instance est en cours. Vous serez informé une fois qu’elle aura été créée."
+          },
+          "cft-generating": {
+            "label": "Création du CFT",
+            "description": "(Prêt pour le déploiement)",
+            "content-generating": "La création du CFT de l’instance est en cours. Vous serez informé une fois qu’elle aura été créée."
+          },
+          "waiting-for-approval": {
+            "label": "En attende de validation de la passerelle"
+          },
+          "download-image": {
+            "label": "Télécharger l’image",
+            "content": "(Prêt pour le déploiement)",
+            "content-waiting": "L’image n’a pas encore été initialisée. Veuillez télécharger l’image et l’initialiser.",
+            "header-download": "Télécharger l’image",
+            "content-download": "Télécharger l’image pour démarrer la passerelle",
+            "generating-image": "Création de l’image",
+            "generating-image-info": "La création de l’image est en cours. Vous serez informé une fois qu’elle aura été créée.",
+            "image-download-error": "Erreur de téléchargement de l’image"
+          },
+          "download-cft": {
+            "label": "Télécharger le CFT",
+            "header-waiting": "Déploiement en attente",
+            "content-waiting": "Le CFT n’a pas encore été initialisé. Veuillez télécharger le CFT et l’initialiser.",
+            "header-download": "Télécharger le CFT",
+            "content-download": "Télécharger le CFT pour démarrer la passerelle",
+            "generating-image": "Création du CFT",
+            "generating-image-info": "La création du CFT est en cours. Vous serez informé une fois qu’il aura été créé.",
+            "image-download-error": "Erreur de téléchargement du CFT"
+          },
+          "connected": {
+            "label": "Temps d’activité depuis :"
+          },
+          "disconnected": {
+            "label": "Injoignable depuis :"
+          }
         }
       }
     },
@@ -214,8 +280,8 @@
         "breadcrumb-text": "Fournisseurs d’identité",
         "title": "Zero Trust Network Access - Fournisseurs d’identité",
         "configure-idp": "Configurer le fournisseur d’identité",
-        "no-idp-configured": "Aucun fournisseur d’identité n’a été ajouté.",
-        "no-idp-configured-help": "Cliquez sur le bouton « Ajouter un fournisseur d’identité » pour ajouter les fournisseurs d’identité.",
+        "no-idp-configured": "Vous n’avez pas ajouté d’autres fournisseurs d’identité.",
+        "no-idp-configured-help": "Cliquez sur le bouton « Ajouter un fournisseur d’identité » pour ajouter un fournisseur d’identité.",
         "columns": {
           "name": "Nom",
           "provider": "Fournisseur",
@@ -249,7 +315,8 @@
         "provider-error": "Un fournisseur d’identité de ce type existe déjà",
         "clientId-validation": "ID Client obligatoire",
         "tenantId-validation": "ID locataire obligatoire",
-        "clientSecret-validation": "Secret client obligatoire"
+        "clientSecret-validation": "Secret client obligatoire",
+        "loading-error": "Erreur de chargement du fournisseur d’identité"
       },
       "delete": {
         "header": "Supprimer le fournisseur d’identité",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "Nom",
+          "status": "État",
+          "resources": "Ressources",
+          "lastModified": "Dernière modification"
+        },
         "title": "Zero Trust Network Access - Stratégies",
         "new-policy": "Zero Trust Network Access - Nouvelle stratégie",
         "breadcrumb-text": "Stratégies",
         "breadcrumb-sub-text": "Nouvelle stratégie",
-        "add": "Ajouter une stratégie"
+        "add": "Ajouter une stratégie",
+        "fetch-error": "Erreur lors de la récupération de la liste des stratégies",
+        "enforced": "Appliquée",
+        "note": "Remarque : ",
+        "note-info1": " Les stratégies sont assignées aux ressources. Vous pouvez assigner les utilisateurs au ",
+        "note-info2": "niveau",
+        "resource": "ressource",
+        "resource-and-access": "Zero Trust - Accès aux ressources",
+        "endpoint-agent": "Télécharger l’agent Sophos Endpoint depuis ",
+        "downloads": "Téléchargements ",
+        "downloads-page": "page.",
+        "learn-more": "Plus d’info",
+        "no-policy-configured": "Vous n’avez pas de stratégies.",
+        "no-policy-configured-help": "Cliquez sur le bouton « Ajouter une stratégie » pour ajouter une stratégie et commencer à accorder l’accès à vos ressources."
       },
       "add-modal": {
         "resource-access": "Accès aux ressources",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "Téléchargez Sophos Endpoint Agent depuis la page <a href=\"manage/downloads\" target=\"_blank\">Téléchargements</a>. <a href=\"https://docs.sophos.com/central/Customer/help/fr-fr/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Plus d’info </a>",
         "agent": "Agent",
         "agentless": "Sans agent"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "Nom de la stratégie",
+          "policy-type": "Type de stratégie",
+          "resource-access": "Accès aux ressources",
+          "assigned-resources": "Ressources assignées (0)",
+          "access-rules": "Règles d’accès",
+          "policy-enforced": "Stratégie appliquée",
+          "policy-enforced-label1": "La stratégie est",
+          "policy-enforced-label2": "appliquée",
+          "policy-enforced-info": "Lorsqu’une stratégie n’est pas appliquée, les ressources assignées à cette stratégie ne sont pas accessible.",
+          "policy-enforced-disable": "Désactiver automatiquement après une certaine période",
+          "access-rules-info": "Les assignations du groupe d’utilisateurs et les exceptions de stratégies sont gérées dans ",
+          "resources-link": "Ressources.",
+          "learn-more": "Plus d’info",
+          "resource-access-agent": "Accès aux ressources : Agent",
+          "manage-access": "Utiliser les conditions pour gérer l’accès",
+          "allow-access": "Autoriser l’accès",
+          "applies-to": "Applicable à",
+          "tooltip-access-rules-info1": "Une règle qui n’est pas applicable sera ignorée.",
+          "tooltip-access-rules-info2": "Une icône sera affichée pour indiquer ce qui est pris en charge.",
+          "deny-access": "Refuser l’accès :",
+          "deny-access-info": " Si aucune des conditions ci-dessus n’est satisfaite, l’accès sera refusé.",
+          "expires-at": "Expire à",
+          "assign-resources-info": "Une ressource appartient uniquement à 1 stratégie. L’assignation d’une ressource déjà assignée à une autre ressource la réassignera à celle-ci. Les utilisateurs sont assignés à la ",
+          "resource-link": "ressource.",
+          "no-resources-configured": "Vous n’avez aucune ressource.",
+          "no-resources-configured-help": "Vous n’avez aucune ressource à ajouter à une stratégie. Vous pouvez les ajouter plus tard.",
+          "add-success": "Stratégie créée",
+          "add-error": "Impossible de créer la stratégie"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "Accès aux ressources : Sans agent"
+        }
       }
     }
   },
@@ -902,7 +1023,7 @@
       "app_filter_policy_id": "ID de la stratégie de filtrage d’applis",
       "transaction_id": "Identifiant de la transaction",
       "parent_app_risk": "Risque de la ressource parent",
-      "con_name": "Nom de la connexion",
+      "con_name": "Nom de connexion",
       "upload_file_type": "Type de fichier de téléchargement",
       "receivederrors": "Erreurs reçues",
       "dst_zone_type": "Type de zone de destination",
@@ -911,7 +1032,7 @@
       "red_endpoint_count": "Nombre de terminaux - état rouge",
       "override_name": "Nom de remplacement",
       "http_referer": "Référent HTTP",
-      "profile_id": "Identifiant du profil",
+      "profile_id": "ID du profil",
       "cmd": "Commande",
       "configuration_disk_usage": "Utilisation du disque de configuration",
       "icmp_type": "Type ICMP",
@@ -993,7 +1114,7 @@
       "syslogview": "Visionneuse de journaux et recherche",
       "ssl_tls_policy": "Stratégie SSL TLS",
       "blank": "",
-      "red_id": "ID du RED",
+      "red_id": "Identifiant RED",
       "reported_id": "ID signalé",
       "http_category": "Catégorie HTTP",
       "app_category": "Catégorie d’appli",

@@ -15,7 +15,8 @@
       "invalid-name": "名稱僅可含有：A-Z、a-z、0-9、-、_、空格",
       "name-length-validation": "名稱不應超過 100 個字元",
       "whitespace-name-validation": "需要名稱",
-      "description-length-validation": "說明不應超過 300 個字元"
+      "description-length-validation": "說明不應超過 300 個字元",
+      "required": "* 必要"
     },
     "application": {
       "form": {
@@ -56,10 +57,11 @@
           "ip": "資源 FQDN",
           "type": "資源類型"
         },
-        "no-application-configured": "您沒有新增任何資源與存取。",
-        "no-application-configured-help": "按一下「新增資源與存取」按鈕以新增資源與存取。",
+        "no-application-configured": "您尚未新增任何資源。",
+        "no-application-configured-help": "按一下「新增資源」按鈕以新增資源。",
         "error": "擷取資源清單時出現錯誤。",
-        "no-userGroups-configured": "沒有可用的使用者群組。"
+        "no-userGroups-configured": "沒有可用的使用者群組。",
+        "no-userGroups-assigned": "未指派使用者群組。"
       },
       "delete": {
         "header": "刪除資源",
@@ -87,7 +89,7 @@
     },
     "gateway": {
       "list": {
-        "no-gateway-configured": "您沒有新增任何閘道。",
+        "no-gateway-configured": "您尚未新增任何閘道。",
         "no-gateway-configured-help": "按一下「新增閘道」按鈕以新增閘道。",
         "download-gateway-VM": "下載閘道 VM",
         "add": "新增閘道",
@@ -96,6 +98,8 @@
           "description": "說明",
           "fqdn": "FQDN",
           "package": "套件類型",
+          "type": "類型",
+          "version": "版本",
           "identity-provider": "識別提供者",
           "status": "狀態"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "位置說明不應超過 100 個字元",
         "whitespace-location-validation": "需要位置",
         "name-placeholder": "輸入閘道名稱",
-        "description": "描述",
+        "description": "說明（最多 250 個字元）",
         "description-placeholder": "輸入說明",
-        "packageType": "套件",
+        "packageType": "平台類型",
         "identity-provider": "識別提供者",
         "fqdn": "FQDN",
-        "appDomain": "資源網域",
+        "appDomain": "網域",
         "app-domain-validation": "無效的資源網域",
         "password": "閘道密碼",
         "password-placeholder": "输入密码",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "來自 DHCP 的 DNS",
         "dns1": "主要 DNS",
         "dns2": "次要 DNS",
-        "hostname": "主機名稱",
+        "hostname": "執行個體主機名稱",
         "dhcp": "DHCP",
         "staticIp": "靜態 IP",
         "staticDns": "靜態 DNS",
         "gateway-instances": "閘道執行個體",
+        "gateway-instances-note": "注意：您稍後可以新增更多執行個體以達到負載平衡。",
+        "deployment-mode": "部署模式",
+        "dual-arm": "雙臂",
+        "single-arm": "單臂",
+        "dns-external-server-1": "DNS 伺服器 1",
+        "dns-external-server-2": "DNS 伺服器 2",
+        "static_routes": "靜態路由",
         "ipAddress": "IP 位址",
         "wan": "外部介面 IP 位址",
         "lan": "內部介面 IP 位址",
+        "external-interface": "外部介面",
+        "internal-interface": "內部介面",
+        "interface-settings": "介面設定",
         "ipAddress-validation": "無效的 IP",
-        "subnetMask": "子網路遮罩",
-        "subnetMask-validation": "無效的子網路遮罩",
-        "default-gateway": "預設閘道",
-        "defaultGateway-validation": "無效的預設閘道",
+        "subnetMask": "子網路",
+        "subnetMask-validation": "無效的子網路",
+        "default-gateway": "閘道",
+        "defaultGateway-validation": "無效的閘道",
         "dns-validation": "無效的 DNS",
+        "dns-server-1-validation": "無效的 DNS 伺服器 1",
+        "dns-server-2-validation": "無效的 DNS 伺服器 2",
+        "static-routes-validation": "逗號分隔清單",
+        "static-routes-rules1": "新增 CIDR 格式的路由",
+        "static-routes-rules2": "使用逗號分隔清單",
+        "static-routes-example": "範例：",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "憑證",
+        "upload-certificate": "上傳憑證",
         "certificate-validation": "無效憑證",
+        "certificate-wildcard-message": "必須是萬用字元憑證",
         "privatekey": "私密金鑰",
+        "upload-privatekey": "上傳私密金鑰",
         "private-key-validation": "無效的私密金鑰",
-        "save-and-generate-image": "儲存並產生影像",
-        "packageType-placeholder": "选择软件包",
-        "identity-provider-placeholder": "選取識別提供者",
+        "save-and-generate-image": "儲存並生成檔案",
+        "packageType-placeholder": "選取",
+        "identity-provider-placeholder": "選取",
         "dns-dhcp-mandatory-help": "兩個介面均為 DHCP 時必須從 DHCP 設定 DNS",
         "dns-static-mandatory-help": "兩個介面均為靜態時必須設定靜態 DNS 項目",
         "add-success": "已建立的閘道",
@@ -186,9 +210,8 @@
           "content-generating": "正在產生閘道影像，產生之後您將會收到通知。"
         },
         "awaiting-approval": {
-          "label": "等待核准",
-          "header-approval": "等待核准",
-          "content-approval": "接受閘道註冊請求，以使閘道可用",
+          "label": "贊成",
+          "description": "（可連線）",
           "gateway-approve": "閘道註冊請求已核准",
           "gateway-approve-error": "接受閘道請求時出現錯誤。"
         },
@@ -198,12 +221,55 @@
           "content-approved": "閘道已核准，一旦執行，閘道將會變為「已連線」狀態"
         },
         "connected": {
-          "label": "已連線",
+          "label": "閘道已連線",
           "header-connected": "{{connectedSince}} 後已連線"
         },
         "disconnected": {
-          "label": "已中斷連線",
+          "label": "閘道無法存取",
           "header-disconnected": "{{lastSeen}} 後已中斷"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "正在生成影像",
+            "description": "（可部署）",
+            "content-generating": "正在生成執行個體影像，生成之後您將會收到通知"
+          },
+          "cft-generating": {
+            "label": "生成 CFT",
+            "description": "（可部署）",
+            "content-generating": "正在生成執行個體 CFT，生成之後您將會收到通知"
+          },
+          "waiting-for-approval": {
+            "label": "等候閘道批准"
+          },
+          "download-image": {
+            "label": "下載影像",
+            "content": "（可部署）",
+            "content-waiting": "影像尚未啟動，請下載影像並啟動",
+            "header-download": "下載影像",
+            "content-download": "下載影像以啟動閘道",
+            "generating-image": "正在生成影像",
+            "generating-image-info": "正在產生影像，完成之後您將收到通知。",
+            "image-download-error": "下載影像時出現錯誤"
+          },
+          "download-cft": {
+            "label": "下載 CFT",
+            "header-waiting": "正在等待部署",
+            "content-waiting": "CFT 尚未啟動，請下載 CFT 並啟動",
+            "header-download": "下載 CFT",
+            "content-download": "下載 CFT 以啟動閘道",
+            "generating-image": "生成 CFT",
+            "generating-image-info": "正在生成 CFT，生成之後您將會收到通知",
+            "image-download-error": "下載 CFT 時出現錯誤"
+          },
+          "connected": {
+            "label": "運作開始時間："
+          },
+          "disconnected": {
+            "label": "無法存取原因："
+          }
         }
       }
     },
@@ -214,8 +280,8 @@
         "breadcrumb-text": "識別提供者",
         "title": "Zero Trust Network Access - 識別提供者",
         "configure-idp": "設定識別提供者",
-        "no-idp-configured": "您沒有新增識別提供者。",
-        "no-idp-configured-help": "按一下「新增識別提供者」按鈕以設定識別提供者。",
+        "no-idp-configured": "您尚未新增任何識別提供者",
+        "no-idp-configured-help": "按一下「新增識別提供者」按鈕以新增識別提供者。",
         "columns": {
           "name": "名稱",
           "provider": "提供者",
@@ -249,7 +315,8 @@
         "provider-error": "此類型的識別提供者已存在",
         "clientId-validation": "用戶端 ID 為必填項",
         "tenantId-validation": "租用戶 ID 為必填項",
-        "clientSecret-validation": "用戶端密碼為必填項"
+        "clientSecret-validation": "用戶端密碼為必填項",
+        "loading-error": "載入識別提供者時出現錯誤"
       },
       "delete": {
         "header": "刪除識別提供者",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "名稱",
+          "status": "狀態",
+          "resources": "資源",
+          "lastModified": "上次修改"
+        },
         "title": "Zero Trust Network Access - 策略",
         "new-policy": "Zero Trust Network Access - 新策略",
         "breadcrumb-text": "策略",
         "breadcrumb-sub-text": "新策略",
-        "add": "新增策略"
+        "add": "新增策略",
+        "fetch-error": "擷取原則清單時出現錯誤",
+        "enforced": "強制執行",
+        "note": "注意： ",
+        "note-info1": " 原則已指派給資源。您可以指派使用者 ",
+        "note-info2": "層級",
+        "resource": "资源",
+        "resource-and-access": "Zero Trust - 資源存取",
+        "endpoint-agent": "從以下位置下載 Sophos Endpoint 代理程式： ",
+        "downloads": "下載 ",
+        "downloads-page": "頁面。",
+        "learn-more": "瞭解更多",
+        "no-policy-configured": "您尚無任何原則。",
+        "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
       },
       "add-modal": {
         "resource-access": "資源存取",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "從<a href=\"manage/downloads\" target=\"_blank\">下載</a>頁面下載 Sophos Endpoint Agent。<a href=\"https://docs.sophos.com/central/Customer/help/zh-tw/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\">瞭解更多</a>",
         "agent": "代理",
         "agentless": "無代理"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "政策名稱",
+          "policy-type": "原則類型",
+          "resource-access": "資源存取",
+          "assigned-resources": "已指派的資源 (0)",
+          "access-rules": "存取規則",
+          "policy-enforced": "原則已強制執行",
+          "policy-enforced-label1": "原則已",
+          "policy-enforced-label2": "強制執行",
+          "policy-enforced-info": "原則未強制執行時，指派到此原則的資源將無法存取。",
+          "policy-enforced-disable": "一段時間後自動停用",
+          "access-rules-info": "使用者群組指派和原則異常在 ",
+          "resources-link": "資源中進行管理。",
+          "learn-more": "瞭解更多",
+          "resource-access-agent": "資源存取：代理程式",
+          "manage-access": "使用條件管理存取",
+          "allow-access": "允許存取",
+          "applies-to": "套用至",
+          "tooltip-access-rules-info1": "不適用的規則將被忽略並繼續進行。",
+          "tooltip-access-rules-info2": "將顯示一個圖示，表明受支援的內容。",
+          "deny-access": "拒絕存取：",
+          "deny-access-info": " 如果以上內容都不符合，存取將遭拒絕",
+          "expires-at": "過期時間：",
+          "assign-resources-info": "一個資源只能屬於 1 個原則。指派已指派到某個原則的資源會將此資源重新指派到新原則。使用者在 ",
+          "resource-link": "資源中進行指派。",
+          "no-resources-configured": "您沒有任何資源。",
+          "no-resources-configured-help": "您尚無可以新增到原則的任何資源。您可以稍後新增資源。",
+          "add-success": "原則已建立",
+          "add-error": "原則建立失敗"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "資源存取：無代理"
+        }
       }
     }
   },
