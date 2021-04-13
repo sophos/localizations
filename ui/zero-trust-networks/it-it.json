@@ -15,7 +15,8 @@
       "invalid-name": "Il nome può contenere solamente: A-Z, a-z , 0-9, -, _, spazi",
       "name-length-validation": "Il nome non deve superare i 100 caratteri",
       "whitespace-name-validation": "Nome obbligatorio",
-      "description-length-validation": "La descrizione non deve superare i 300 caratteri"
+      "description-length-validation": "La descrizione non deve superare i 300 caratteri",
+      "required": "* Obbligatorio"
     },
     "application": {
       "form": {
@@ -38,7 +39,7 @@
         "empty-user-groups": "Nessun gruppo di utenti trovato.",
         "available-user-groups": "Gruppi di utenti disponibili",
         "assigned-user-groups": "Gruppi di utenti assegnati",
-        "loading-error": "Errore durante il caricamento delle risorse",
+        "loading-error": "Errore durante il caricamento della risorsa",
         "add-success": "Risorsa creata",
         "add-error": "Creazione della risorsa non riuscita",
         "title-edit": "Modifica risorsa",
@@ -56,10 +57,11 @@
           "ip": "FQDN della risorsa",
           "type": "Tipo di risorsa"
         },
-        "no-application-configured": "Non sono state aggiunte voci per Risorse e accesso.",
-        "no-application-configured-help": "Clicca sul pulsante Aggiungi risorse e accesso per aggiungere voci a Risorse e accesso.",
+        "no-application-configured": "Nessuna risorsa aggiunta.",
+        "no-application-configured-help": "Clicca sul pulsante 'Aggiungi risorsa' per aggiungere una risorsa.",
         "error": "Errore durante il recupero dell'elenco delle risorse.",
-        "no-userGroups-configured": "Nessun gruppo di utenti disponibile."
+        "no-userGroups-configured": "Nessun gruppo di utenti disponibile.",
+        "no-userGroups-assigned": "Nessun gruppo di utenti assegnato."
       },
       "delete": {
         "header": "Elimina risorsa",
@@ -87,8 +89,8 @@
     },
     "gateway": {
       "list": {
-        "no-gateway-configured": "Non sono stati aggiunti gateway.",
-        "no-gateway-configured-help": "Fai clic sul pulsante Aggiungi gateway per aggiungere i gateway.",
+        "no-gateway-configured": "Nessun gateway aggiunto.",
+        "no-gateway-configured-help": "Clicca sul pulsante 'Aggiungi gateway' per aggiungere un gateway.",
         "download-gateway-VM": "Scarica VM gateway",
         "add": "Aggiungi gateway",
         "columns": {
@@ -96,6 +98,8 @@
           "description": "Descrizione",
           "fqdn": "FQDN",
           "package": "Tipo di pacchetto",
+          "type": "Tipo",
+          "version": "Versione",
           "identity-provider": "Provider di identità",
           "status": "Stato"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "La posizione non deve superare i 100 caratteri",
         "whitespace-location-validation": "La posizione è obbligatoria",
         "name-placeholder": "Immetti il nome del gateway",
-        "description": "Descrizione",
-        "description-placeholder": "Immetti descrizione",
-        "packageType": "Pacchetto",
+        "description": "Descrizione (max 250 caratteri)",
+        "description-placeholder": "Inserire descrizione",
+        "packageType": "Tipo di piattaforma",
         "identity-provider": "Provider di identità",
         "fqdn": "FQDN",
-        "appDomain": "Dominio della risorsa",
+        "appDomain": "Dominio",
         "app-domain-validation": "Dominio della risorsa non valido",
         "password": "Password del gateway",
         "password-placeholder": "Inserire password",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DNS da DHCP",
         "dns1": "DNS primario",
         "dns2": "DNS secondario",
-        "hostname": "Nome host",
+        "hostname": "Nome host dell'istanza",
         "dhcp": "DHCP",
         "staticIp": "IP statico",
         "staticDns": "DNS statico",
-        "gateway-instances": "Istanze di gateway",
+        "gateway-instances": "Istanza del gateway",
+        "gateway-instances-note": "Nota. Puoi aggiungere altre istanze per il bilanciamento del carico più tardi.",
+        "deployment-mode": "Modalità di distribuzione",
+        "dual-arm": "A due bracci",
+        "single-arm": "A braccio singolo",
+        "dns-external-server-1": "DNS server1",
+        "dns-external-server-2": "DNS server2",
+        "static_routes": "Route statiche",
         "ipAddress": "Indirizzo IP",
         "wan": "Indirizzo IP dell'interfaccia esterna",
         "lan": "Indirizzo IP dell'interfaccia interna",
+        "external-interface": "Interfaccia esterna",
+        "internal-interface": "Interfaccia interna",
+        "interface-settings": "Impostazioni dell'interfaccia",
         "ipAddress-validation": "IP non valido",
-        "subnetMask": "Subnet Mask",
-        "subnetMask-validation": "Subnet mask non valida",
-        "default-gateway": "Gateway predefinito",
-        "defaultGateway-validation": "Gateway predefinito non valido",
+        "subnetMask": "Subnet",
+        "subnetMask-validation": "Subnet non valida",
+        "default-gateway": "Gateway",
+        "defaultGateway-validation": "Gateway non valido",
         "dns-validation": "DNS non valido",
+        "dns-server-1-validation": "DNS server1 non valido",
+        "dns-server-2-validation": "DNS server2 non valido",
+        "static-routes-validation": "Elenco con valori delimitati da virgole",
+        "static-routes-rules1": "Aggiungi route in formato CIDR",
+        "static-routes-rules2": "utilizzando un elenco con valori delimitati da virgole",
+        "static-routes-example": "Esempio:",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "Certificato",
+        "upload-certificate": "Carica certificato",
         "certificate-validation": "Certificato non valido",
+        "certificate-wildcard-message": "Deve essere un certificato con caratteri jolly",
         "privatekey": "Chiave privata",
+        "upload-privatekey": "Carica chiave privata",
         "private-key-validation": "Chiave privata non valida",
-        "save-and-generate-image": "Salva e genera immagine",
-        "packageType-placeholder": "Seleziona pacchetto",
-        "identity-provider-placeholder": "Seleziona provider di identità",
+        "save-and-generate-image": "Salva e genera file",
+        "packageType-placeholder": "Seleziona",
+        "identity-provider-placeholder": "Seleziona",
         "dns-dhcp-mandatory-help": "Occorre impostare la voce DNS da DHCP quando entrambe le interfacce sono DHCP",
         "dns-static-mandatory-help": "Occorre impostare la voce DNS statico quando entrambe le interfacce sono statiche",
         "add-success": "Gateway creato",
@@ -186,9 +210,8 @@
           "content-generating": "Generazione dell'immagine gateway in corso, riceverai una notifica una volta generata"
         },
         "awaiting-approval": {
-          "label": "In attesa di approvazione",
-          "header-approval": "In attesa di approvazione",
-          "content-approval": "Accetta la richiesta di registrazione del gateway per completare l'onboarding del gateway",
+          "label": "Approva",
+          "description": "(Pronto/a per la connessione)",
           "gateway-approve": "Richiesta di registrazione del gateway approvata",
           "gateway-approve-error": "Errore durante il processo di accettazione della richiesta del gateway."
         },
@@ -198,12 +221,55 @@
           "content-approved": "Il gateway e approvato, diventerà 'Connesso' quando viene eseguito"
         },
         "connected": {
-          "label": "Connesso",
+          "label": "Gateway connesso",
           "header-connected": "Connesso da {{connectedSince}}"
         },
         "disconnected": {
-          "label": "Disconnesso",
+          "label": "Gateway non raggiungibile",
           "header-disconnected": "Disconnesso da {{lastSeen}}"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "Generazione dell'immagine in corso",
+            "description": "(Pronto/a per la distribuzione)",
+            "content-generating": "Generazione dell'immagine dell'istanza in corso, riceverai una notifica una volta generata"
+          },
+          "cft-generating": {
+            "label": "Generazione di CFT",
+            "description": "(Pronto/a per la distribuzione)",
+            "content-generating": "Generazione dell'immagine CFT in corso, riceverai una notifica una volta generata"
+          },
+          "waiting-for-approval": {
+            "label": "In attesa di approvazione del gateway"
+          },
+          "download-image": {
+            "label": "Scarica immagine",
+            "content": "(Pronto/a per la distribuzione)",
+            "content-waiting": "L'immagine non è ancora stata avviata, avvia e implementa l'immagine",
+            "header-download": "Scarica immagine",
+            "content-download": "Scarica immagine per avviare il gateway",
+            "generating-image": "Generazione dell'immagine in corso",
+            "generating-image-info": "La generazione dell'immagine in corso, riceverai una notifica una volta che è stata generata",
+            "image-download-error": "Errore durante il download dell'immagine"
+          },
+          "download-cft": {
+            "label": "Scarica il CFT",
+            "header-waiting": "In attesa di distribuzione",
+            "content-waiting": "CFT non ancora avviato, scarica e avvia il CFT",
+            "header-download": "Scarica il CFT",
+            "content-download": "Scarica il CFT per avviare il gateway",
+            "generating-image": "Generazione di CFT",
+            "generating-image-info": "La generazione del CFT è in corso, riceverai una notifica una volta che è stato generato",
+            "image-download-error": "Errore durante il download del CFT"
+          },
+          "connected": {
+            "label": "Tempo di attività da:"
+          },
+          "disconnected": {
+            "label": "Non raggiungibile da:"
+          }
         }
       }
     },
@@ -214,8 +280,8 @@
         "breadcrumb-text": "Provider di identità",
         "title": "Zero Trust Network Access - Provider di identità",
         "configure-idp": "Configura provider di identità",
-        "no-idp-configured": "Non sono stati aggiunti provider di identità.",
-        "no-idp-configured-help": "Clicca sul pulsante Aggiungi provider di identità per aggiungere i provider di identità.",
+        "no-idp-configured": "Nessun provider di identità aggiunto.",
+        "no-idp-configured-help": "Clicca sul pulsante 'Aggiungi provider di identità' per aggiungere il provider di identità.",
         "columns": {
           "name": "Nome",
           "provider": "Provider",
@@ -249,7 +315,8 @@
         "provider-error": "Esiste già un provider di identità di questo tipo",
         "clientId-validation": "L'ID client è obbligatorio",
         "tenantId-validation": "L'ID tenant è obbligatorio",
-        "clientSecret-validation": "Il segreto client è obbligatorio"
+        "clientSecret-validation": "Il segreto client è obbligatorio",
+        "loading-error": "Errore durante il caricamento del provider di identità"
       },
       "delete": {
         "header": "Elimina provider di identità",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "Nome",
+          "status": "Stato",
+          "resources": "Risorse",
+          "lastModified": "Ultima modifica"
+        },
         "title": "Zero Trust Network Access - Criteri",
         "new-policy": "Zero Trust Network Access - Nuovo criterio",
         "breadcrumb-text": "Criteri",
         "breadcrumb-sub-text": "Nuovo criterio",
-        "add": "Aggiungi criterio"
+        "add": "Aggiungi criterio",
+        "fetch-error": "Errore durante il recupero dell'elenco di criteri",
+        "enforced": "Implementato/i",
+        "note": "Nota. ",
+        "note-info1": " I criteri sono assegnati alle risorse. Puoi assegnare utenti al ",
+        "note-info2": "livello",
+        "resource": "risorsa",
+        "resource-and-access": "Zero Trust - Accesso alle risorse",
+        "endpoint-agent": "Scarica l'agente di Sophos Endpoint dalla pagina dei Download. ",
+        "downloads": " ",
+        "downloads-page": "",
+        "learn-more": "Maggiori info",
+        "no-policy-configured": "Non è presente alcun criterio.",
+        "no-policy-configured-help": "Clicca sul pulsante Aggiungi criterio per aggiungere un criterio che ti permetta di cominciare a concedere l'accesso alle tue risorse."
       },
       "add-modal": {
         "resource-access": "Accesso alle risorse",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "Scarica Sophos Endpoint Agent dalla pagina dei <a href=\"manage/downloads\" target=\"_blank\">Download</a>. <a href=\"https://docs.sophos.com/central/Customer/help/en-us/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Scopri di più </a>",
         "agent": "Agente",
         "agentless": "Senza agente"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "Nome criterio",
+          "policy-type": "Tipo di criterio",
+          "resource-access": "Accesso alle risorse",
+          "assigned-resources": "Risorse assegnate (0)",
+          "access-rules": "Regole di accesso",
+          "policy-enforced": "Criterio implementato",
+          "policy-enforced-label1": "Il criterio è",
+          "policy-enforced-label2": "implementato",
+          "policy-enforced-info": "Quando un criterio non è implementato, non sarà possibile accedere alle risorse assegnate a questo criterio.",
+          "policy-enforced-disable": "Disattiva automaticamente dopo un periodo di tempo specifico",
+          "access-rules-info": "Le assegnazioni dei gruppi di utenti e le eccezioni per i criteri sono gestite nelle ",
+          "resources-link": "Risorse.",
+          "learn-more": "Maggiori info",
+          "resource-access-agent": "Accesso alle risorse: Agente",
+          "manage-access": "Utilizza le condizioni per gestire l'accesso",
+          "allow-access": "Autorizza l'accesso",
+          "applies-to": "Applicabile a",
+          "tooltip-access-rules-info1": "Una regola che non è applicabile sarà ignorata e si procederà.",
+          "tooltip-access-rules-info2": "Verrà visualizzata un'icona per indicare gli elementi supportati.",
+          "deny-access": "Nega l'accesso:",
+          "deny-access-info": " Se non viene soddisfatta alcuna delle condizioni di cui sopra, l'accesso verrà negato",
+          "expires-at": "Scade alle",
+          "assign-resources-info": "Una risorsa può appartenere solamente a 1 criterio. Se assegni una risorsa già assegnata a un altro criterio, la risorsa verrà riassegnata a questo criterio. Gli utenti vengono assegnati nella ",
+          "resource-link": "risorsa.",
+          "no-resources-configured": "Non è presente alcuna risorsa.",
+          "no-resources-configured-help": "Non è ancora presente alcuna risorsa che puoi aggiungere a un criterio. Puoi aggiungerne dopo.",
+          "add-success": "Criterio creato",
+          "add-error": "Creazione del criterio non riuscita"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "Accesso alle risorse: Senza agente"
+        }
       }
     }
   },

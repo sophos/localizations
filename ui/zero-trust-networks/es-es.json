@@ -15,7 +15,8 @@
       "invalid-name": "El nombre solo puede contener: A-Z, a-z , 0-9, -, _, espacio",
       "name-length-validation": "El nombre no debe tener más de 100 caracteres",
       "whitespace-name-validation": "Nombre es obligatorio",
-      "description-length-validation": "La descripción no debe tener más de 300 caracteres"
+      "description-length-validation": "La descripción no debe tener más de 300 caracteres",
+      "required": "* Necesario"
     },
     "application": {
       "form": {
@@ -38,7 +39,7 @@
         "empty-user-groups": "No se han encontrado grupos de usuarios.",
         "available-user-groups": "Grupos de usuarios disponibles",
         "assigned-user-groups": "Grupos de usuarios asignados",
-        "loading-error": "Error al cargar recursos",
+        "loading-error": "Error al cargar el recurso",
         "add-success": "Se ha creado el recurso",
         "add-error": "No se ha podido crear el recurso",
         "title-edit": "Editar recurso",
@@ -56,10 +57,11 @@
           "ip": "FQDN de recurso",
           "type": "Tipo de recurso"
         },
-        "no-application-configured": "No ha añadido ningún recurso ni acceso.",
-        "no-application-configured-help": "Haga clic en el botón Añadir recursos y acceso para añadir los recursos y el acceso.",
+        "no-application-configured": "No ha añadido ningún recurso.",
+        "no-application-configured-help": "Haga clic en el botón 'Añadir recurso' para añadir un recurso.",
         "error": "Error al recuperar la lista de recursos.",
-        "no-userGroups-configured": "No hay grupos de usuarios disponibles."
+        "no-userGroups-configured": "No hay grupos de usuarios disponibles.",
+        "no-userGroups-assigned": "No hay grupos de usuarios asignados."
       },
       "delete": {
         "header": "Eliminar recurso",
@@ -88,7 +90,7 @@
     "gateway": {
       "list": {
         "no-gateway-configured": "No ha añadido ninguna puerta de enlace.",
-        "no-gateway-configured-help": "Haga clic en el botón Añadir puerta de enlace para añadir las puertas de enlace.",
+        "no-gateway-configured-help": "Haga clic en el botón 'Añadir puerta de enlace' para añadir una puerta de enlace.",
         "download-gateway-VM": "Descargar equipo virtual de puerta de enlace",
         "add": "Añadir puerta de enlace",
         "columns": {
@@ -96,6 +98,8 @@
           "description": "Descripción",
           "fqdn": "FQDN",
           "package": "Tipo de embalaje",
+          "type": "Tipo",
+          "version": "Versión",
           "identity-provider": "Proveedor de identidad",
           "status": "Estado"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "La ubicación no debe tener más de 100 caracteres",
         "whitespace-location-validation": "Se requiere la ubicación",
         "name-placeholder": "Introduzca el nombre de la puerta de enlace",
-        "description": "Descripción",
+        "description": "Descripción (250 caracteres como máximo)",
         "description-placeholder": "Introducir descripción",
-        "packageType": "Paquete",
+        "packageType": "Tipo de plataforma",
         "identity-provider": "Proveedor de identidad",
         "fqdn": "FQDN",
-        "appDomain": "Dominio de recursos",
+        "appDomain": "Dominio",
         "app-domain-validation": "Dominio de recursos no válido",
         "password": "Contraseña de la puerta de enlace",
         "password-placeholder": "Introducir contraseña",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DNS de DHCP",
         "dns1": "DNS primario",
         "dns2": "DNS secundario",
-        "hostname": "Nombre de host",
+        "hostname": "Nombre de host de la instancia",
         "dhcp": "DHCP",
         "staticIp": "IP estático",
         "staticDns": "DNS estático",
-        "gateway-instances": "Instancias de puerta de enlace",
+        "gateway-instances": "Instancia de puerta de enlace",
+        "gateway-instances-note": "Nota: Más adelante puede añadir más instancias para equilibrar la carga.",
+        "deployment-mode": "Modo de despliegue",
+        "dual-arm": "Dos brazos",
+        "single-arm": "Un brazo",
+        "dns-external-server-1": "Servidor1 DNS",
+        "dns-external-server-2": "Servidor2 DNS",
+        "static_routes": "Rutas estáticas",
         "ipAddress": "Dirección IP",
         "wan": "Dirección IP de la interfaz externa",
         "lan": "Dirección IP de la interfaz interna",
+        "external-interface": "Interfaz externa",
+        "internal-interface": "Interfaz interna",
+        "interface-settings": "Configuración de la interfaz",
         "ipAddress-validation": "IP no válida",
-        "subnetMask": "Máscara de subred",
-        "subnetMask-validation": "Máscara de subred no válida",
-        "default-gateway": "Puerta de enlace predeterminada",
-        "defaultGateway-validation": "Puerta de enlace predeterminada no válida",
+        "subnetMask": "Subred",
+        "subnetMask-validation": "Subred no válida",
+        "default-gateway": "Puerta de enlace",
+        "defaultGateway-validation": "Puerta de enlace no válida",
         "dns-validation": "DNS no válido",
+        "dns-server-1-validation": "Servidor1 DNS no válido",
+        "dns-server-2-validation": "Servidor2 DNS no válido",
+        "static-routes-validation": "Lista separada por comas",
+        "static-routes-rules1": "Añadir rutas con formato CIDR",
+        "static-routes-rules2": "mediante una lista separada por comas",
+        "static-routes-example": "Ejemplo:",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "Certificado",
+        "upload-certificate": "Cargar certificado",
         "certificate-validation": "Certificado no válido",
+        "certificate-wildcard-message": "Debe ser un certificado comodín",
         "privatekey": "Clave privada",
+        "upload-privatekey": "Cargar clave privada",
         "private-key-validation": "Clave privada no válida",
-        "save-and-generate-image": "Guardar y generar imagen",
-        "packageType-placeholder": "Seleccione paquete",
-        "identity-provider-placeholder": "Seleccionar proveedor de identidad",
+        "save-and-generate-image": "Guardar y generar archivo",
+        "packageType-placeholder": "Seleccionar",
+        "identity-provider-placeholder": "Seleccionar",
         "dns-dhcp-mandatory-help": "Se debe establecer un DNS de DHCP cuando ambas interfaces son DHCP",
         "dns-static-mandatory-help": "Se debe establecer una entrada DNS estática cuando ambas interfaces son estáticas",
         "add-success": "Se ha creado la puerta de enlace",
@@ -186,9 +210,8 @@
           "content-generating": "La generación de la imagen de puerta de enlace está en curso; se le notificará una vez que se haya generado"
         },
         "awaiting-approval": {
-          "label": "Esperando aprobación",
-          "header-approval": "Esperando aprobación",
-          "content-approval": "Acepte la solicitud de registro de la puerta de enlace para completar la incorporación de la puerta de enlace",
+          "label": "Aprobar",
+          "description": "(Lista para conectarse)",
           "gateway-approve": "Se ha aprobado la solicitud de registro de la puerta de enlace",
           "gateway-approve-error": "Error al aceptar la solicitud de la puerta de enlace."
         },
@@ -198,12 +221,55 @@
           "content-approved": "La puerta de enlace se ha aprobado; pasará al estado 'Conectado' una vez que esté funcionando"
         },
         "connected": {
-          "label": "Conectado",
-          "header-connected": "Conectado desde {{connectedSince}}"
+          "label": "Puerta de enlace conectada",
+          "header-connected": "Conectada desde {{connectedSince}}"
         },
         "disconnected": {
-          "label": "Desconectado",
-          "header-disconnected": "Desconectado desde {{lastSeen}}"
+          "label": "Puerta de enlace no accesible",
+          "header-disconnected": "Desconectada desde {{lastSeen}}"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "Generando imagen",
+            "description": "(Lista para desplegarse)",
+            "content-generating": "La generación de la imagen de instancia está en curso; se le notificará una vez que se haya generado"
+          },
+          "cft-generating": {
+            "label": "Generando CFT",
+            "description": "(Lista para desplegarse)",
+            "content-generating": "La generación de la CFT de instancia está en curso; se le notificará una vez que se haya generado"
+          },
+          "waiting-for-approval": {
+            "label": "En espera de aprobación de la puerta de enlace"
+          },
+          "download-image": {
+            "label": "Descargar imagen",
+            "content": "(Lista para desplegarse)",
+            "content-waiting": "La imagen aún no se ha arrancado; descargue la imagen y arránquela",
+            "header-download": "Descargar imagen",
+            "content-download": "Descargue la imagen para arrancar la puerta de enlace",
+            "generating-image": "Generando imagen",
+            "generating-image-info": "La generación de la imagen está en curso; se le notificará una vez que se genere",
+            "image-download-error": "Error al descargar la imagen"
+          },
+          "download-cft": {
+            "label": "Descargar CFT",
+            "header-waiting": "Esperando despliegue",
+            "content-waiting": "La CFT aún no se ha arrancado; descárguela y arránquela",
+            "header-download": "Descargar CFT",
+            "content-download": "Descargue la CFT para arrancar la puerta de enlace",
+            "generating-image": "Generando CFT",
+            "generating-image-info": "La generación de la CFT está en curso; se le notificará una vez que se haya generado",
+            "image-download-error": "Error al descargar la CFT"
+          },
+          "connected": {
+            "label": "Tiempo activo desde:"
+          },
+          "disconnected": {
+            "label": "No accesible desde:"
+          }
         }
       }
     },
@@ -215,7 +281,7 @@
         "title": "Zero Trust Network Access - Proveedores de identidad",
         "configure-idp": "Configurar proveedor de identidad",
         "no-idp-configured": "No ha añadido ningún proveedor de identidad.",
-        "no-idp-configured-help": "Haga clic en el botón Añadir proveedor de identidad para añadir los proveedores de identidad.",
+        "no-idp-configured-help": "Haga clic en el botón 'Añadir proveedor de identidad' para añadir un proveedor de identidad.",
         "columns": {
           "name": "Nombre",
           "provider": "Proveedor",
@@ -249,7 +315,8 @@
         "provider-error": "Ya existe un proveedor de identidad de este tipo",
         "clientId-validation": "Se requiere el ID del cliente",
         "tenantId-validation": "Se requiere el ID del inquilino",
-        "clientSecret-validation": "Se requiere el secreto del cliente"
+        "clientSecret-validation": "Se requiere el secreto del cliente",
+        "loading-error": "Error al cargar el proveedor de identidad"
       },
       "delete": {
         "header": "Eliminar proveedor de identidad",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "Nombre",
+          "status": "Estado",
+          "resources": "Recursos",
+          "lastModified": "Última modificación"
+        },
         "title": "Zero Trust Network Access - Políticas",
         "new-policy": "Zero Trust Network Access - Nueva política",
         "breadcrumb-text": "Políticas",
         "breadcrumb-sub-text": "Nueva política",
-        "add": "Añadir política"
+        "add": "Añadir política",
+        "fetch-error": "Error al recuperar la lista de políticas",
+        "enforced": "Impuestas",
+        "note": "Nota: ",
+        "note-info1": " Las políticas se asignan a los recursos. Puede asignar usuarios a ",
+        "note-info2": "nivel",
+        "resource": "recurso",
+        "resource-and-access": "Zero Trust - Acceso a recursos",
+        "endpoint-agent": "Descargue Sophos Endpoint Agent desde la ",
+        "downloads": "Descargas ",
+        "downloads-page": "página.",
+        "learn-more": "Más información",
+        "no-policy-configured": "No tiene ninguna política.",
+        "no-policy-configured-help": "Haga clic en el botón Añadir política para añadir una política y empezar a dar acceso a sus recursos."
       },
       "add-modal": {
         "resource-access": "Acceso a recursos",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "Descargue Sophos Endpoint Agent desde la página <a href=\"manage/downloads\" target=\"_blank\"> Descargas </a>. <a href=\"https://docs.sophos.com/central/Customer/help/en-us/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Más información </a>",
         "agent": "Agente",
         "agentless": "Sin agente"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "Nombre de la política",
+          "policy-type": "Tipo de política",
+          "resource-access": "Acceso a recursos",
+          "assigned-resources": "Recursos asignados (0)",
+          "access-rules": "Reglas de acceso",
+          "policy-enforced": "Política impuesta",
+          "policy-enforced-label1": "La política se ha",
+          "policy-enforced-label2": "aplicado",
+          "policy-enforced-info": "Cuando una política no se aplica, los recursos asignados a esa política no serán accesibles.",
+          "policy-enforced-disable": "Desactivar automáticamente después de un tiempo determinado",
+          "access-rules-info": "Las asignaciones de grupos de usuarios y las excepciones de políticas se gestionan en ",
+          "resources-link": "Recursos.",
+          "learn-more": "Más información",
+          "resource-access-agent": "Acceso a recursos: Agente",
+          "manage-access": "Utilizar condiciones para gestionar el acceso",
+          "allow-access": "Permitir acceso",
+          "applies-to": "Se aplica a",
+          "tooltip-access-rules-info1": "Una regla que no sea aplicable se ignorará.",
+          "tooltip-access-rules-info2": "Se mostrará un icono para mostrar lo que se admite.",
+          "deny-access": "Denegar acceso:",
+          "deny-access-info": " Si no se cumple ninguna de las condiciones anteriores, se denegará el acceso",
+          "expires-at": "Caduca a las",
+          "assign-resources-info": "Un recurso solo puede pertenecer a una política. Al asignar un recurso que ya está asignado a otro, se reasignará a este. Los usuarios se asignan en el ",
+          "resource-link": "recurso.",
+          "no-resources-configured": "No tiene ningún recurso.",
+          "no-resources-configured-help": "Todavía no tiene recursos que poder añadir a una política. Puede añadirlos más adelante.",
+          "add-success": "Política creada",
+          "add-error": "Error al crear la política"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "Acceso a recursos: Sin agente"
+        }
       }
     }
   },

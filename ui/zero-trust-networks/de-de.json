@@ -15,7 +15,8 @@
       "invalid-name": "Der Name darf nur enthalten: A-Z, a-z , 0-9, -, _, Leerzeichen",
       "name-length-validation": "Name darf nicht länger als 100 Zeichen sein",
       "whitespace-name-validation": "Name ist erforderlich",
-      "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein"
+      "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein",
+      "required": "* Pflichtfeld"
     },
     "application": {
       "form": {
@@ -56,10 +57,11 @@
           "ip": "FQDN der Ressource",
           "type": "Ressourcentyp"
         },
-        "no-application-configured": "Sie haben keine Ressourcen und Zugriffe hinzugefügt.",
-        "no-application-configured-help": "Klicken Sie auf Ressourcen und Zugriffe hinzufügen, um Ressourcen und Zugriffe hinzuzufügen.",
+        "no-application-configured": "Sie haben keine Ressourcen hinzugefügt.",
+        "no-application-configured-help": "Klicken Sie auf 'Ressource hinzufügen', um eine Ressource hinzuzufügen.",
         "error": "Fehler beim Abruf der Ressourcenliste.",
-        "no-userGroups-configured": "Keine Benutzergruppen verfügbar."
+        "no-userGroups-configured": "Keine Benutzergruppen verfügbar.",
+        "no-userGroups-assigned": "Keine Benutzergruppen zugewiesen."
       },
       "delete": {
         "header": "Ressource löschen",
@@ -88,7 +90,7 @@
     "gateway": {
       "list": {
         "no-gateway-configured": "Sie haben keine Gateways hinzugefügt.",
-        "no-gateway-configured-help": "Klicken Sie auf Gateway hinzufügen, um Gateways hinzuzufügen.",
+        "no-gateway-configured-help": "Klicken Sie auf 'Gateway hinzufügen', um ein Gateway hinzuzufügen.",
         "download-gateway-VM": "Gateway-VM herunterladen",
         "add": "Gateway hinzufügen",
         "columns": {
@@ -96,6 +98,8 @@
           "description": "Beschreibung",
           "fqdn": "FQDN",
           "package": "Pakettyp",
+          "type": "Typ",
+          "version": "Version",
           "identity-provider": "Identitätsanbieter",
           "status": "Status"
         },
@@ -111,12 +115,12 @@
         "location-length-validation": "Verzeichnis darf nicht länger als 100 Zeichen sein",
         "whitespace-location-validation": "Verzeichnis ist erforderlich",
         "name-placeholder": "Gateway-Namen eingeben",
-        "description": "Beschreibung",
+        "description": "Beschreibung (max. 250 Zeichen)",
         "description-placeholder": "Beschreibung eingeben",
-        "packageType": "Paket",
+        "packageType": "Plattformtyp",
         "identity-provider": "Identitätsanbieter",
         "fqdn": "FQDN",
-        "appDomain": "Ressourcen-Domäne",
+        "appDomain": "Domäne",
         "app-domain-validation": "Ungültige Ressourcen-Domäne",
         "password": "Gateway-Kennwort",
         "password-placeholder": "Kennwort eingeben",
@@ -126,27 +130,47 @@
         "dnsFromDhcp": "DNS von DHCP",
         "dns1": "Primärer DNS-Server",
         "dns2": "Sekundärer DNS-Server",
-        "hostname": "Hostname",
+        "hostname": "Instanz-Hostname",
         "dhcp": "DHCP",
         "staticIp": "Statische IP",
         "staticDns": "Statische DNS",
-        "gateway-instances": "Gateway-Instanzen",
+        "gateway-instances": "Gateway-Instanz",
+        "gateway-instances-note": "Hinweis: Für eine Lastverteilung können Sie später weitere Instanzen hinzufügen.",
+        "deployment-mode": "Bereitstellungsmodus",
+        "dual-arm": "Zweiarmig",
+        "single-arm": "Einarmig",
+        "dns-external-server-1": "DNS-Server 1",
+        "dns-external-server-2": "DNS-Server 2",
+        "static_routes": "Statische Routen",
         "ipAddress": "IP-Adresse",
         "wan": "IP-Adresse der externen Schnittstelle",
         "lan": "IP-Adresse der internen Schnittstelle",
+        "external-interface": "Externe Schnittstelle",
+        "internal-interface": "Interne Schnittstelle",
+        "interface-settings": "Schnittstellen-Einstellungen",
         "ipAddress-validation": "Ungültige IP",
-        "subnetMask": "Subnetzmaske",
-        "subnetMask-validation": "Ungültige Subnetz-Maske",
-        "default-gateway": "Standardgateway",
-        "defaultGateway-validation": "Ungültiges Standard-Gateway",
+        "subnetMask": "Subnetz",
+        "subnetMask-validation": "Ungültiges Subnetz",
+        "default-gateway": "Gateway",
+        "defaultGateway-validation": "Ungültiges Gateway",
         "dns-validation": "Ungültige DNS",
+        "dns-server-1-validation": "Ungültiger DNS-Server 1",
+        "dns-server-2-validation": "Ungültiger DNS-Server 2",
+        "static-routes-validation": "Durch Komma getrennte Liste",
+        "static-routes-rules1": "Fügen Sie Routen in CIDR-Notation hinzu.",
+        "static-routes-rules2": "Trennen Sie Einträge durch Komma.",
+        "static-routes-example": "Beispiel:",
+        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
         "certificate": "Zertifikat",
+        "upload-certificate": "Zertifikat hochladen",
         "certificate-validation": "Ungültiges Zertifikat",
+        "certificate-wildcard-message": "Muss ein Platzhalterzertifikat sein",
         "privatekey": "Privater Schlüssel",
+        "upload-privatekey": "Privaten Schlüssel hochladen",
         "private-key-validation": "Ungültiger privater Schlüssel",
-        "save-and-generate-image": "Speichern und Image erstellen",
-        "packageType-placeholder": "Paket auswählen",
-        "identity-provider-placeholder": "Identitätsanbieter auswählen",
+        "save-and-generate-image": "Speichern und Datei erstellen",
+        "packageType-placeholder": "Auswählen",
+        "identity-provider-placeholder": "Auswählen",
         "dns-dhcp-mandatory-help": "DNS muss über DHCP festgelegt werden, wenn beide Schnittstellen über DHCP festgelegt werden",
         "dns-static-mandatory-help": "DNS-Eintrag muss statisch sein, wenn beide Schnittstellen statisch sind",
         "add-success": "Gateway erstellt",
@@ -176,19 +200,18 @@
           "content-waiting": "Gateway-Image noch nicht gebootet. Laden Sie das Image herunter und booten Sie es.",
           "header-download": "Gateway-Image herunterladen",
           "content-download": "Start-Image zum Booten des Gateways herunterladen",
-          "generating-image": "Erzeuge Gateway-Image",
+          "generating-image": "Gateway-Image wird erzeugt",
           "generating-image-info": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt.",
           "image-download-error": "Fehler beim Herunterladen des Gateway-Image"
         },
         "image-generating": {
-          "label": "Erzeuge Gateway-Image",
-          "header-generating": "Erzeuge Gateway-Image",
+          "label": "Gateway-Image wird erzeugt",
+          "header-generating": "Gateway-Image wird erzeugt",
           "content-generating": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt."
         },
         "awaiting-approval": {
-          "label": "Warte auf Genehmigung",
-          "header-approval": "Warte auf Genehmigung",
-          "content-approval": "Genehmigen Sie die Anfrage zur Gateway-Registrierung, um die Gateway-Einrichtung abzuschließen",
+          "label": "Genehmigen",
+          "description": "(Bereit zur Verbindung)",
           "gateway-approve": "Anfrage zur Gateway-Registrierung genehmigt",
           "gateway-approve-error": "Fehler beim Genehmigen der Gateway-Registrierung."
         },
@@ -198,12 +221,55 @@
           "content-approved": "Gateway ist genehmigt. Sobald es läuft, bekommt es den Status 'Verbunden'."
         },
         "connected": {
-          "label": "Verbunden",
+          "label": "Gateway verbunden",
           "header-connected": "Verbunden seit {{connectedSince}}"
         },
         "disconnected": {
-          "label": "Verbindung getrennt",
+          "label": "Gateway nicht erreichbar",
           "header-disconnected": "Verbindung getrennt seit {{lastSeen}}"
+        }
+      },
+      "instance": {
+        "status": {
+          "image-generating": {
+            "label": "Image wird erzeugt",
+            "description": "(Bereit zur Bereitstellungen)",
+            "content-generating": "Erzeugung des Instanz-Image läuft. Sie werden nach Fertigstellung benachrichtigt."
+          },
+          "cft-generating": {
+            "label": "CFT wird erzeugt",
+            "description": "(Bereit zur Bereitstellungen)",
+            "content-generating": "Erzeugung des Gateway-CFT läuft. Sie werden nach Fertigstellung benachrichtigt."
+          },
+          "waiting-for-approval": {
+            "label": "Warten auf Gateway-Genehmigung"
+          },
+          "download-image": {
+            "label": "Image herunterladen",
+            "content": "(Bereit zur Bereitstellungen)",
+            "content-waiting": "Image noch nicht gestartet. Laden Sie das Image herunter und starten Sie es.",
+            "header-download": "Image herunterladen",
+            "content-download": "Image zum Starten des Gateways herunterladen",
+            "generating-image": "Image wird erzeugt",
+            "generating-image-info": "Image-Erzeugung läuft. Sie werden nach Fertigstellung benachrichtigt.",
+            "image-download-error": "Fehler beim Herunterladen des Image"
+          },
+          "download-cft": {
+            "label": "CFT herunterladen",
+            "header-waiting": "Warten auf Bereitstellung",
+            "content-waiting": "CFT noch nicht gestartet. Laden Sie das CFT herunter und starten Sie es.",
+            "header-download": "CFT herunterladen",
+            "content-download": "CFT zum Starten des Gateways herunterladen",
+            "generating-image": "CFT wird erzeugt",
+            "generating-image-info": "CFT-Erzeugung läuft. Sie werden nach Fertigstellung benachrichtigt.",
+            "image-download-error": "Fehler beim Herunterladen des CFT"
+          },
+          "connected": {
+            "label": "Betriebszeit seit:"
+          },
+          "disconnected": {
+            "label": "Nicht erreichbar seit:"
+          }
         }
       }
     },
@@ -215,7 +281,7 @@
         "title": "Zero Trust Network Access - Identitätsanbieter",
         "configure-idp": "Identitätsanbieter konfigurieren",
         "no-idp-configured": "Sie haben keine Identitätsanbieter hinzugefügt.",
-        "no-idp-configured-help": "Klicken Sie auf Identitätsanbieter hinzufügen, um die Identitätsanbieter hinzuzufügen.",
+        "no-idp-configured-help": "Klicken Sie auf 'Identitätsanbieter hinzufügen', um einen Identitätsanbieter hinzuzufügen.",
         "columns": {
           "name": "Name",
           "provider": "Anbieter",
@@ -249,7 +315,8 @@
         "provider-error": "Identitätsanbieter dieses Typs ist bereits vorhanden",
         "clientId-validation": "Client-ID ist erforderlich",
         "tenantId-validation": "Mandanten-ID ist erforderlich",
-        "clientSecret-validation": "Client-Secret ist erforderlich"
+        "clientSecret-validation": "Client-Secret ist erforderlich",
+        "loading-error": "Fehler beim Laden des Identitätsanbieters"
       },
       "delete": {
         "header": "Identitätsanbieter löschen",
@@ -260,11 +327,30 @@
     },
     "policies": {
       "list": {
+        "columns": {
+          "name": "Name",
+          "status": "Status",
+          "resources": "Quellen",
+          "lastModified": "Zuletzt geändert"
+        },
         "title": "Zero Trust Network Access - Richtlinien",
         "new-policy": "Zero Trust Network Access - Neue Richtlinie",
         "breadcrumb-text": "Richtlinien",
         "breadcrumb-sub-text": "Neue Richtlinie",
-        "add": "Richtlinie hinzufügen"
+        "add": "Richtlinie hinzufügen",
+        "fetch-error": "Fehler beim Abrufen der Richtlinien",
+        "enforced": "Durchgesetzt",
+        "note": "Hinweis: ",
+        "note-info1": " Richtlinien werden Ressourcen zugewiesen. Sie können Benutzer zuweisen auf der ",
+        "note-info2": "Ebene",
+        "resource": "Ressource",
+        "resource-and-access": "Zero Trust - Ressourcenzugriff",
+        "endpoint-agent": "Sophos-Endpoint-Agent herunterladen von der ",
+        "downloads": "Downloads ",
+        "downloads-page": "Seite.",
+        "learn-more": "Mehr erfahren",
+        "no-policy-configured": "Sie haben keine Richtlinien.",
+        "no-policy-configured-help": "Klicken Sie auf 'Richtlinie hinzufügen', um eine Richtlinie hinzuzufügen und damit den Zugriff auf Ihre Ressourcen zu gewähren."
       },
       "add-modal": {
         "resource-access": "Ressourcenzugriff",
@@ -272,6 +358,41 @@
         "tooltip-resource-access-info2": "Laden Sie Sophos Endpoint Agent von der Seite <a href=\"manage/downloads\" target=\"_blank\"> Downloads </a> herunter. <a href=\"https://docs.sophos.com/central/Customer/help/de-de/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Mehr erfahren </a>",
         "agent": "Agent",
         "agentless": "Ohne Agent"
+      },
+      "form": {
+        "agent-based-policy": {
+          "policy-name": "Name der Richtlinie",
+          "policy-type": "Richtlinientyp",
+          "resource-access": "Ressourcenzugriff",
+          "assigned-resources": "Zugewiesene Ressourcen (0)",
+          "access-rules": "Zugriffsregeln",
+          "policy-enforced": "Richtlinie durchgesetzt",
+          "policy-enforced-label1": "Richtlinie ist",
+          "policy-enforced-label2": "durchgesetzt",
+          "policy-enforced-info": "Wenn eine Richtlinie nicht durchgesetzt ist, kann nicht auf die Ressourcen zugegriffen werden, welche dieser Richtlinie zugewiesenen sind.",
+          "policy-enforced-disable": "Automatisch nach einer bestimmten Zeit deaktivieren",
+          "access-rules-info": "Benutzergruppen-Zuweisungen und Richtlinienausnahmen werden verwaltet in ",
+          "resources-link": "Ressourcen.",
+          "learn-more": "Mehr erfahren",
+          "resource-access-agent": "Ressourcenzugriff: Agent",
+          "manage-access": "Verwenden Sie Bedingungen für die Zugriffsverwaltung",
+          "allow-access": "Zugriff zulassen",
+          "applies-to": "Gilt für",
+          "tooltip-access-rules-info1": "Eine Regel, die nicht anwendbar ist, wird übersprungen.",
+          "tooltip-access-rules-info2": "Ein Symbol zeigt Ihnen an, was unterstützt wird.",
+          "deny-access": "Zugriff verweigern:",
+          "deny-access-info": " Falls nichts des oben aufgeführten zutrifft, wird der Zugriff verweigert",
+          "expires-at": "Gültig bis",
+          "assign-resources-info": "Sie können eine Ressource nur einer einzigen Richtlinie zuweisen. Wenn Sie eine Ressource zuweisen, die bereits einer anderen Richtlinie zugewiesen ist, wird diese Zuweisung beendet und die Ressource wird der neuen Richtlinie zugewiesen. Benutzer weisen Sie zu in der ",
+          "resource-link": "Ressource.",
+          "no-resources-configured": "Sie haben keine Ressourcen.",
+          "no-resources-configured-help": "Sie haben noch keine Ressourcen, die Sie zu einer Richtlinie hinzufügen können. Sie können diese später hinzufügen.",
+          "add-success": "Richtlinie erstellt",
+          "add-error": "Richtlinienerstellung fehlgeschlagen"
+        },
+        "agentless-policy": {
+          "resource-access-agent": "Ressourcenzugriff: Ohne Agent"
+        }
       }
     }
   },
@@ -366,7 +487,7 @@
       "update": "Aktualisieren",
       "generate": "Erstellen",
       "username": "Benutzername",
-      "waitingForData": "Es wird auf Daten gewartet…",
+      "waitingForData": "Warte auf Daten …",
       "gatheringReportData": "Daten für den Bericht werden gesammelt...",
       "problemLoadingData": "Problem beim Laden der Daten",
       "static": "Static",
@@ -457,7 +578,7 @@
       "removeFirewallLabel": "Folgende Gateways werden aus Sophos Central entfernt",
       "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig  gemacht werden",
       "logDeleteInfoLabel": "Das Löschen des Protokolls kann einen Tag dauern.",
-      "reclaimDialogWarning": "Warnung: Das Ändern der Lizenz in „Kostenlos“, wird ein Gerät aus den Advanced Reporting-Funktionen entfernen. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
+      "reclaimDialogWarning": "Warnung: Wenn Sie zur kostenlosen Lizenz wechseln, stehen für ein Gerät nicht mehr die Advanced-Reporting-Funktionen zur Verfügung. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
       "reclaimDialogNote": "Durch das Ändern in „Kostenlos“ werden vorhandene gespeicherte Protokolle und Berichte für dieses Gerät gelöscht. Alle gekauften und verwendeten Kapazitäten werden zur Verfügung gestellt.",
       "licenseIsNotActiveMsg": "Die Lizenz wird nicht aktiv genutzt",
       "licenseTransferText": "Die Lizenz wird nicht aktiv verwendet und wurde auf {{deviceName}} übertragen",
@@ -559,7 +680,7 @@
       "filters": {
         "title": "Filter",
         "dateRangeTitle": "Zeitrahmen",
-        "queryCriteriaTitle": "Anfrage",
+        "queryCriteriaTitle": "Abfrage",
         "reportBy": "Gemeldet von",
         "dateFormat": "Datumsformat",
         "last": "Letzter",
@@ -1027,7 +1148,7 @@
         "createRequestBodyNotValid": "Text der Anfrage zum Erstellen ist ungültig",
         "DefCreationErrorRSD": "Fehler bei der Definitions-Erstellung im Report Scheduler",
         "allDeviceSameLicenseType": "Alle Geräte müssen vom gleichen Lizenztyp sein",
-        "reportConfNotValid": "Report-Konfiguration ist ungültig",
+        "reportConfNotValid": "Berichtskonfiguration ist ungültig",
         "parentNotFound": "Übergeordnete Berichtsdefinition für Felder nicht gefunden",
         "reportDefIssue": "Berichtsdefinition nicht gefunden oder ein Problem mit dem Report-Scheduler Service",
         "reportTemplateNotFound": "Berichtsvorlage wurde nicht gefunden",

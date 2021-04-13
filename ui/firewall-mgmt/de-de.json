@@ -1,9 +1,13 @@
 {
   "firewall-management": {
+    "name": "Firewall-Verwaltung",
     "cancel": "Abbrechen",
     "save": "Speichern",
     "delete": "Löschen",
     "success": "Erfolg!",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "finish": "Beenden",
     "success-default": "Der Vorgang war erfolgreich.",
     "error": "Fehler!",
     "error-default": "Ein Fehler ist aufgetreten. ({{ errorCode }}).",
@@ -50,6 +54,78 @@
       "name": "Firewall Management - SD-WAN-Verbindungsgruppen",
       "breadcrumb-text": "SD-WAN-Verbindungsgruppen",
       "create": "Eine Verbindungsgruppe erstellen",
+      "add": {
+        "name": "Firewall Management - Neue SD-WAN-Verbindungsgruppe",
+        "breadcrumb-text": "Eine SD-WAN-Verbindungsgruppe hinzufügen",
+        "select-firewalls": {
+          "label": "Firewalls auswählen",
+          "name": {
+            "label": "Name der Verbindungsgruppe",
+            "required": "Name ist erforderlich",
+            "heading": "Geben Sie dieser Gruppe einen Namen"
+          },
+          "description": {
+            "label": "Beschreibung",
+            "placeholder": "Geben Sie die Beschreibung der Gruppe ein (max. 250 Zeichen)",
+            "length": "Die Beschreibung darf maximal 250 Zeichen enthalten."
+          },
+          "firewalls": {
+            "source":"Verfügbare Firewalls",
+            "target":"Zugewiesene Firewalls",
+            "label": "Mit der Firewall direkt verbundene LAN-Netzwerke werden automatisch zu der Gruppe hinzugefügt. Im nächsten Schritt können Sie die Client-Netzwerke für jede Firewall anpassen."
+          },
+          "select": {
+            "heading": "Wählen Sie Firewalls aus, die hinzugefügt werden"
+          }
+        },
+        "configure-networks": {
+          "label": "Netzwerke konfigurieren",
+          "heading": "Konfigurieren Sie Netzwerke und Routen",
+          "description": "Legen Sie fest, welchen Netzwerken eine Firewall Zugriff auf die Gruppen gewährt, ob Netzwerke zur Konfliktvermeidung als unterschiedliche Adressbereiche erscheinen müssen, und richten Sie Tunnelredundanz für den Fall ein, dass mehrere Internetverbindungen vorhanden sind.",
+          "no-conflict": {
+            "heading": "{{ count }} Firewalls analysiert und keine Netzwerkkonflikte festgestellt"
+          },
+          "conflict": {
+            "heading": "{{ count }} Firewalls analysiert und Netzwerkkonflikte festgestellt"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "local-subnets": "Lokale Netzwerke",
+              "wan-ports": "WAN-Ports",
+              "nat": "NAT",
+              "respond-only": "Nur antworten",
+              "details-edit": "Details/Bearbeiten",
+              "fix-conflicts": "Konflikt beheben"
+            }
+          }
+        },
+        "share-resources": {
+          "label": "Ressourcen teilen",
+          "heading": "Ressourcen teilen",
+          "description": "Wählen Sie Unternehmensressourcen aus, auf die Benutzer an allen Standorten zugreifen können",
+          "modal": {
+            "title": "Ressourcen hinzufügen",
+            "firewall": "Firewall",
+            "shared-resource": "Geteilte Ressource",
+            "service": "Dienst",
+            "help": "Geteilte Netzwerke stehen allen Firewalls zur Verfügung, die in dieser Gruppe enthalten sind.",
+            "auto-rules": "Firewall-Regeln automatisch erstellen",
+            "limit-auth": "Zugriff nur für authentifizierte Benutzer",
+            "sync-sec": "Synchronized Security für Endpoints mit gutem Integritätsstatus"
+          },
+          "table": {
+            "column": {
+              "firewall-name": "Firewall",
+              "service": "Dienst",
+              "auto-rules": "Autom. Firewall-Regeln",
+              "auth": "Authentifizierung",
+              "green-hb": "Grüner Heartbeat",
+              "action": "Bearbeiten"
+            }
+          }
+        }
+      },
       "no-data": {
         "info": "Mit SD-WAN-Verbindungsgruppen können Sie mit Hilfe automatisch erzeugter Richtlinien Ressourcen zwischen Regionen teilen.",
         "process": "Wenn Sie eine Verbindungsgruppe erstellen, können Sie festlegen, welche Firewalls in der Gruppe enthalten sind.",
@@ -186,6 +262,7 @@
         },
         "no-data": {
           "info": "Erstellen Sie allgemeine Vorlagen für Firewall-Einstellungen und Basisrichtlinien, die Sie für verschiedene Kunden nutzen können.",
+          "customer": "Sie haben keine Kunden in dieser Vorlage.",
           "header": "Sie haben keine Firewall-Vorlagen",
           "learn-more": "Mehr erfahren",
           "what": "Was ist eine Firewall-Vorlage?",
@@ -197,6 +274,9 @@
             "stop": "Kunden können Untergruppen von Partner-verwalteten Vorlagengruppen erstellen.",
             "push": "Vorlagenaktualisierungen und Änderungen stehen Kunden automatisch zur Verfügung."
           }
+        },
+        "data": {
+          "firewalls" : "{{ count }} Firewall(s)"
         },
         "stats": {
           "disconnected": "{{ count }} Getrennt",

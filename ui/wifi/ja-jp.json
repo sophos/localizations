@@ -16,12 +16,14 @@
       "success": "成功",
       "retry": "再試行",
       "accessPoints": "アクセスポイント",
+      "ssids":"SSID",
       "settings" : "設定",
       "statistic" : "統計",
       "devices" : "デバイス",
       "reset": "リセット",
       "select-all": "すべて選択",
-      "deselect-all": "すべて選択解除"
+      "deselect-all": "すべて選択解除",
+      "channel": "チャネル"
     },
     "global": {
       "onBoard": {
@@ -46,6 +48,7 @@
     },
     "networks": {
       "fetch-error": "SSID リストの読み込み中、エラーが発生しました",
+      "ssid-create":"新しい SSID",
       "list": {
         "breadcrumb-text": "SSID",
         "title": "ワイヤレス - SSID",
@@ -66,6 +69,17 @@
           "captive-portal": "キャプティブポータル",
           "errorMessage": "SSID を削除できません"
         }
+      },
+      "create":{
+        "help":"ヘルプ",
+        "general-setting-encryption-mode":"新しい SSID の全般的な設定を行います。必要な暗号化モードと、提供する SSID の種類を選択します。",
+        "band-encryption-mode":" 暗号化モードは「WPA2」、暗号化アルゴリズムは「AES」、周波数帯は「2.4GHz および 5GHz」を使用することを推奨します。",
+        "settings":"設定内容",
+        "basic-setting":"基本設定",
+        "encryption-algorithm":"暗号化アルゴリズム",
+        "frequency-band":"周波数帯",
+        "enable-ssid":"SSID を有効にする",
+        "advanced-settings":"詳細設定"
       },
       "access-point-editor": {
         "captive-portal-enabled": "キャプティブポータルが有効になっています"
@@ -114,6 +128,7 @@
         "offlineApDeleteMessage": "オフライン中のアクセスポイントを削除することはお勧めしません。アクセスポイントがオンラインになるまで待つか、強制的に削除してください。",
         "statusDelete": "削除中",
         "deleteDialogText": "選択したアクセスポイントを削除しますか？",
+        "deleteAp":"このアクセスポイントを削除しますか？",
         "forceDelete": "強制的に削除",
         "automaticOnce": "自動 (1回のみ)",
         "manual": "手動",
@@ -177,7 +192,21 @@
           "apNameRequired": "AP 名を指定してください。",
           "apNameMaxLength": "AP 名は最大 128文字まで入力できます。",
           "meshModeLabel": "メッシュを許可",
+          "channelWidth": "チャネルの帯域",
+          "channelWidthWarning": "40MHz は推奨されません",
+          "antenna": "アンテナ",
+          "autoChannel": "自動チャネル",
+          "dfssuffix": "{{ channel }} (DFS)",
+          "dfswarning": "別のチャネルでブロードキャストされる場合があります",
           "dualRadioMeshWarning": "両方の無線方式でメッシュモードを有効にすることはできません",
+          "channelwarning": "アクティブなチャネルが正しくありません",
+          "dcs": "バックグラウンドチャネルの動的選択",
+          "commentLabel": "コメント",
+          "commentInvalidLength": "コメントは最大 {{length}}文字まで入力できます。",
+          "mimo-support": "MU-MIMO 対応",
+          "airtimeFairnessTitle": "エアタイムフェアネス",
+          "airtimeFairnessEnable": "エアタイムフェアネスを有効にする",
+          "airtimeFairnessEnableWarning": "古いワイヤレス技術が使用されているクライアントがない限り、エアタイムフェアネスを有効にしないでください。この機能は、ネットワークのパフォーマンスと安定性に影響を及ぼします。",
           "channelWidthSuffix": "{{bandwidth}}MHz",
           "rebootStartSuccess": "アクセスポイントの再起動を開始しました。",
           "rebootStartFail": "アクセスポイントの再起動を開始できませんでした。",
@@ -193,6 +222,9 @@
         }
       },
       "apEditor": {
+        "delete":{
+          "fail": "アクセスポイントを削除できませんでした"
+        },
         "save": {
           "success": "アクセスは保存されました",
           "fail": "アクセスポイントを保存できませんでした"
