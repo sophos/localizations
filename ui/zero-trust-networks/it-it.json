@@ -7,11 +7,13 @@
       "cancel": "Annulla",
       "edit": "Modifica",
       "delete": "Elimina",
-      "download": "Download",
+      "ok": "OK",
+      "download": "Scarica",
       "approve": "Approva",
       "search": "Cerca",
       "continue": "Continua",
       "fqdn-validation": "FQDN non valido",
+      "fqdn-ip-validation": "FQDN/IP non valido",
       "invalid-name": "Il nome può contenere solamente: A-Z, a-z , 0-9, -, _, spazi",
       "name-length-validation": "Il nome non deve superare i 100 caratteri",
       "whitespace-name-validation": "Nome obbligatorio",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "Nome",
-        "name-placeholder": "Immetti il nome della risorsa",
-        "description": "Descrizione",
-        "description-placeholder": "Immetti descrizione",
+        "name-placeholder": "Nome della risorsa",
+        "description": "Descrizione (max 250 caratteri)",
+        "description-placeholder": "Descrizione",
         "port-validation": "Porta non valida",
         "application-type": "Tipo di risorsa",
-        "application-type-placeholder": "Seleziona il tipo di risorsa",
+        "application-type-placeholder": "Seleziona",
+        "access-port-type": "Tipo di porta di accesso",
         "gateway": "Gateway",
-        "gateway-placeholder": "Seleziona gateway",
+        "gateway-placeholder": "Seleziona",
+        "resource-access": "Metodo di accesso",
+        "policy": "Criterio",
+        "no-agent-policy-info": "Non hai un criterio che supporta le risorse che richiedono un agente. Puoi crearne uno in",
+        "no-agentless-policy-info": "Non hai un criterio che supporta le risorse senza agente. Puoi crearne uno in",
+        "policies": "Criteri",
+        "policy-placeholder": "Seleziona",
+        "external-fqdn": "FQDN esterno",
+        "internal-fqdn" : "Indirizzo FQDN/IP interno",
+        "add-port-link": "Aggiungi un altro",
         "application-fqdn": "FQDN della risorsa",
-        "application-icon": "Icona risorsa (dimensioni max: 100K)",
+        "application-icon": "Icona di visualizzazione (dimensioni max file: 100K)",
+        "acceptable-formats": "(L: 256 px, A: 256 px; formati: .jpg, .jpeg, .png, .gif)",
         "port": "Porta",
         "title-add": "Aggiungi risorsa",
         "deploy": "Distribuisci",
@@ -38,6 +51,7 @@
         "error-user-groups": "Errore durante il recupero dei gruppi di utenti",
         "empty-user-groups": "Nessun gruppo di utenti trovato.",
         "available-user-groups": "Gruppi di utenti disponibili",
+        "available-users-groups": "Gruppi di utenti disponibili ({{count}})",
         "assigned-user-groups": "Gruppi di utenti assegnati",
         "loading-error": "Errore durante il caricamento della risorsa",
         "add-success": "Risorsa creata",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "Risorse e accesso",
         "columns": {
           "name": "Nome",
+          "policy": "Assegna criterio",
           "gateway": "Gateway",
           "port": "Porta",
           "ip": "FQDN della risorsa",
-          "type": "Tipo di risorsa"
+          "type": "Tipo di risorsa",
+          "internal-fqdn": "FQDN/IP interno",
+          "external-fqdn": "FQDN esterno"
         },
         "no-application-configured": "Nessuna risorsa aggiunta.",
         "no-application-configured-help": "Clicca sul pulsante 'Aggiungi risorsa' per aggiungere una risorsa.",
@@ -107,23 +124,91 @@
         "breadcrumb-text": "Gateway",
         "error": "Errore durante il recupero dell'elenco dei gateway"
       },
+      "details": {
+        "title": "Zero Trust Network Access - Dettagli gateway",
+        "breadcrumb-text": "Dettagli gateway",
+        "error": "Errore durante il recupero dell'elenco dei gateway",
+        "fetch-error": "Errore durante il recupero dei dettagli dei gateway",
+        "breadcrumb-sub-text": "Gateway",
+        "tabs": {
+          "summary": {
+            "label": "Riepilogo",
+            "gateway-summary": {
+              "label": "Riepilogo dei gateway"
+            },
+            "instance": {
+              "label": "Istanze di gateway",
+              "columns": {
+                "name": "Nome",
+                "status": "Stato",
+                "version": "Versione",
+                "support": "Supporto tecnico"
+              }
+            },
+            "note": "Per il bilanciamento del carico deve esserci un numero dispari di istanze.",
+            "add": "Aggiungi/modifica istanze",
+            "header": {
+              "name": "Nome: ",
+              "location": "Percorso: ",
+              "description": "Descrizione: ",
+              "status": "Stato: ",
+              "fqdn": "FQDN: ",
+              "type": "Tipo: ",
+              "idp": "Provider di identità: ",
+              "edit": "Modifica",
+              "delete": "Elimina"
+            }
+          },
+          "certificate": {
+            "label": "Certificato",
+            "certificate": "Certificato",
+            "upload-certificate": "Carica certificato",
+            "certificate-validation": "Certificato non valido",
+            "certificate-wildcard-message-example": "Utilizza un certificato con caratteri jolly. Per esempio *.test.com",
+            "privatekey": "Chiave privata",
+            "upload-privatekey": "Carica chiave privata",
+            "private-key-validation": "Chiave privata non valida",
+            "edit-success": "Certificato aggiornato",
+            "edit-error": "Aggiornamento del certificato non riuscito"
+          },
+          "resource": {
+            "label": "Risorsa ({{count}})",
+            "list": {
+              "columns": {
+                "name": "Nome",
+                "external-fqdn": "FQDN esterno",
+                "internal-fqdn": "FQDN/IP interno",
+                "type": "Tipo di risorsa",
+                "port": "Porta"
+              },
+              "resources-access": "Risorse e accesso",
+              "no-application-configured": "Nessuna risorsa aggiunta.",
+              "no-application-configured-help": "Aggiungi risorse a un gateway dalla pagina <i18n slot=\"resource\">Risorse e accesso</i18n>."
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "Aggiungi gateway",
         "title-edit": "Modifica gateway",
+        "title-delete": "Elimina gateway",
+        "software-update": "Aggiornamento software",
+        "edit-software-update": "Modifica pianificazione degli aggiornamenti del software",
+        "try-software-update-again": "Riprova",
         "name": "Nome",
         "location": "Posizione",
         "location-length-validation": "La posizione non deve superare i 100 caratteri",
         "whitespace-location-validation": "La posizione è obbligatoria",
-        "name-placeholder": "Immetti il nome del gateway",
+        "name-placeholder": "Nome del gateway",
         "description": "Descrizione (max 250 caratteri)",
-        "description-placeholder": "Inserire descrizione",
+        "description-placeholder": "Descrizione",
         "packageType": "Tipo di piattaforma",
         "identity-provider": "Provider di identità",
         "fqdn": "FQDN",
         "appDomain": "Dominio",
         "app-domain-validation": "Dominio della risorsa non valido",
         "password": "Password del gateway",
-        "password-placeholder": "Inserire password",
+        "password-placeholder": "Password",
         "confirm-password": "Conferma password",
         "confirm-password-placeholder": "Conferma password",
         "dns": "DNS",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "DNS server1 non valido",
         "dns-server-2-validation": "DNS server2 non valido",
         "static-routes-validation": "Elenco con valori delimitati da virgole",
-        "static-routes-rules1": "Aggiungi route in formato CIDR",
-        "static-routes-rules2": "utilizzando un elenco con valori delimitati da virgole",
+        "static-routes-rules1": "Aggiungi route in formato CIDR utilizzando un elenco con valori delimitati da virgole",
         "static-routes-example": "Esempio:",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "La route statica specificata non è valida",
         "certificate": "Certificato",
         "upload-certificate": "Carica certificato",
         "certificate-validation": "Certificato non valido",
         "certificate-wildcard-message": "Deve essere un certificato con caratteri jolly",
+        "certificate-acceptable-formats": "(Dimensioni max: 10 KB; formati: .pem, .crt, .cer)",
         "privatekey": "Chiave privata",
         "upload-privatekey": "Carica chiave privata",
         "private-key-validation": "Chiave privata non valida",
+        "private-key-acceptable-formats": "(Dimensioni max: 10 KB; formati: .key)",
         "save-and-generate-image": "Salva e genera file",
         "packageType-placeholder": "Seleziona",
         "identity-provider-placeholder": "Seleziona",
@@ -191,11 +278,18 @@
         "header": "Elimina gateway",
         "message": "Elimina gateway",
         "success": "Gateway eliminato",
-        "error": "Eliminazione del gateway non riuscita"
+        "error": "Eliminazione del gateway non riuscita",
+        "ack": "Capisco che non posso annullare queste modifiche",
+        "info": "Il gateway {{gatewayName}} ha:",
+        "gateway-instances": " istanze del gateway",
+        "resources": " risorse",
+        "warn-message-1": "Eliminare il gateway e tutte le ",
+        "warn-message-2": " risorse?"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "In attesa di distribuzione",
+          "description": "(In attesa di distribuzione)",
           "header-waiting": "In attesa di distribuzione",
           "content-waiting": "L'immagine gateway non è ancora stata avviata, scarica l'immagine e avviala",
           "header-download": "Scarica immagine gateway",
@@ -210,10 +304,15 @@
           "content-generating": "Generazione dell'immagine gateway in corso, riceverai una notifica una volta generata"
         },
         "awaiting-approval": {
-          "label": "Approva",
-          "description": "(Pronto/a per la connessione)",
+          "label": "In attesa di approvazione",
           "gateway-approve": "Richiesta di registrazione del gateway approvata",
-          "gateway-approve-error": "Errore durante il processo di accettazione della richiesta del gateway."
+          "gateway-approve-error": "Errore durante il processo di accettazione della richiesta del gateway.",
+          "header-approval": "In attesa di approvazione",
+          "content-approval": "Accetta la richiesta di registrazione del gateway per completare l'onboarding del gateway",
+          "eap2": {
+            "label": "Approva",
+            "description": "(Pronto/a per la connessione)"
+          }
         },
         "approved": {
           "label": "Approvato",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "Non raggiungibile da:"
           }
+        },
+        "vm-name": "Nome VM",
+        "vm-placeholder": "Nome VM",
+        "external-ip-placeholder": "IP esterno",
+        "internal-ip-placeholder": "IP interno",
+        "external-interface-ip": "IP interfaccia esterna",
+        "internal-interface-ip": "IP interfaccia interna",
+        "interface-ip": "IP interfaccia",
+        "warning-box": "Il numero totale di istanze deve essere dispari. Numero attuale: {{instanceCount}}",
+        "form": {
+          "add-another-instance": "Aggiungi un'altra istanza",
+          "deployment-mode": "Modalità di distribuzione:",
+          "add-success": "Istanze aggiornate",
+          "add-error": "Aggiornamento delle istanze non riuscito",
+          "save-confirm": "Salva conferma",
+          "warn-info": "Stai passando da 1 istanza a {{instanceNumber}} istanze.",
+          "warn-description": "Se passi da 1 a 3 o più istanze per il bilanciamento del carico, non potrai tornare a 1 per questo gateway."
         }
+      },
+      "schedule": {
+        "description": "Pianifica un aggiornamento per il gateway",
+        "header": "Aggiorna da {{currentVersion}} a",
+        "version": "Versione",
+        "warning": "Avviso",
+        "warning-info": "L'aggiornamento a {{selectedVersion}} causerà un riavvio.",
+        "on": "su",
+        "tooltip-msg": "Se hai più di un'istanza, le istanze vengono aggiornate una dopo l'altra.",
+        "clear-schedule": "Cancella pianificazione",
+        "cancel-schedule": "Annulla pianificazione",
+        "cancelling-update": "Annullamento dell'aggiornamento in corso",
+        "update-failed": "Aggiornamento non riuscito ",
+        "updating": " Aggiornamento",
+        "edit-schedule": " Modifica Pianificazione",
+        "cancel-first": "Non è possibile effettuare alcuna modifica senza prima annullare la pianificazione impostata.",
+        "no-change-allowed": "Non è possibile effettuare alcuna modifica in questo momento. L'aggiornamento del software si avvierà tra poco.",
+        "error-no-list": "Errore durante il recupero delle versioni disponibili",
+        "add-success": "Aggiornamento della pianificazione completato",
+        "add-error": "Aggiornamento della pianificazione non riuscito"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "Provider",
           "action": "Azione",
           "description": "Descrizione",
-          "type": "Tipo"
+          "type": "Tipo",
+          "gateways": "Num. Gateway"
         }
       },
       "form": {
         "title-add": "Aggiungi provider di identità",
         "title-edit": "Modifica provider di identità",
-        "selectprovider": "Seleziona provider",
+        "selectprovider": "Seleziona",
         "name": "Nome",
-        "name-placeholder": "Immetti il nome del provider di identità",
-        "description": "Descrizione",
-        "description-placeholder": "Immetti descrizione",
+        "name-placeholder": "Provider di identità",
+        "description": "Descrizione (max 250 caratteri)",
+        "description-placeholder": "Descrizione",
         "provider": "Provider",
         "tenantid": "ID tenant",
         "clientid": "ID client",
@@ -333,29 +470,38 @@
           "resources": "Risorse",
           "lastModified": "Ultima modifica"
         },
+        "assign": "Assegna",
         "title": "Zero Trust Network Access - Criteri",
         "new-policy": "Zero Trust Network Access - Nuovo criterio",
+        "edit-policy": "Zero Trust Network Access - Modifica criterio",
         "breadcrumb-text": "Criteri",
         "breadcrumb-sub-text": "Nuovo criterio",
+        "edit-breadcrumb-sub-text": "Modifica criterio",
         "add": "Aggiungi criterio",
         "fetch-error": "Errore durante il recupero dell'elenco di criteri",
         "enforced": "Implementato/i",
-        "note": "Nota. ",
-        "note-info1": " I criteri sono assegnati alle risorse. Puoi assegnare utenti al ",
-        "note-info2": "livello",
+        "bypassed": "Bypassato/i",
+        "note": "Nota. I criteri sono assegnati alle risorse. Puoi assegnare utenti a livello di <i18n slot=\"policy-resource\">risorsa</i18n>.",
         "resource": "risorsa",
         "resource-and-access": "Zero Trust - Accesso alle risorse",
-        "endpoint-agent": "Scarica l'agente di Sophos Endpoint dalla pagina dei Download. ",
-        "downloads": " ",
-        "downloads-page": "",
-        "learn-more": "Maggiori info",
+        "endpoint-agent": "Scarica l'agente di Sophos Endpoint dalla pagina <i18n slot=\"policy-download\">Download</i18n>. <i18n slot=\"policy-learn-more\">Maggiori informazioni</i18n>",
         "no-policy-configured": "Non è presente alcun criterio.",
         "no-policy-configured-help": "Clicca sul pulsante Aggiungi criterio per aggiungere un criterio che ti permetta di cominciare a concedere l'accesso alle tue risorse."
+      },
+      "delete": {
+        "header":"Elimina criterio",
+        "message-delete": "Elimina criterio",
+        "message-warning": "risorsa/e deve/devono essere spostata/e su un altro criterio prima di poter eliminare questo criterio",
+        "success": "Criterio eliminato",
+        "error": "Eliminazione del criterio non riuscita"
       },
       "add-modal": {
         "resource-access": "Accesso alle risorse",
         "tooltip-resource-access-info1": "I criteri possono supportare l'accesso alle risorse con o senza agente. Un agente può verificare lo stato di integrità per determinare l'accesso.",
-        "tooltip-resource-access-info2": "Scarica Sophos Endpoint Agent dalla pagina dei <a href=\"manage/downloads\" target=\"_blank\">Download</a>. <a href=\"https://docs.sophos.com/central/Customer/help/en-us/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Scopri di più </a>",
+        "tooltip-resource-access-info2": "Scarica l'agente di Sophos Endpoint da",
+        "tooltip-resource-access-info3": "pagina.",
+        "tooltip-resource-access-download": "Download",
+        "tooltip-resource-access-learnmore": "Maggiori info",
         "agent": "Agente",
         "agentless": "Senza agente"
       },
@@ -364,16 +510,16 @@
           "policy-name": "Nome criterio",
           "policy-type": "Tipo di criterio",
           "resource-access": "Accesso alle risorse",
-          "assigned-resources": "Risorse assegnate (0)",
+          "assigned-resources": "Risorse assegnate ({{count}})",
           "access-rules": "Regole di accesso",
           "policy-enforced": "Criterio implementato",
-          "policy-enforced-label1": "Il criterio è",
-          "policy-enforced-label2": "implementato",
+          "policy-bypassed": "Criterio bypassato",
+          "policy-expires": "Il criterio scade",
+          "policy-enforced-label2": "Criterio <b>implementato</b>",
+          "policy-bypassed-label2": "Criterio <b>bypassato</b>",
           "policy-enforced-info": "Quando un criterio non è implementato, non sarà possibile accedere alle risorse assegnate a questo criterio.",
           "policy-enforced-disable": "Disattiva automaticamente dopo un periodo di tempo specifico",
-          "access-rules-info": "Le assegnazioni dei gruppi di utenti e le eccezioni per i criteri sono gestite nelle ",
-          "resources-link": "Risorse.",
-          "learn-more": "Maggiori info",
+          "access-rules-info": "Le assegnazioni dei gruppi di utenti e le eccezioni per i criteri sono gestite nelle <i18n slot=\"policy-resource\">risorse</i18n>. <i18n slot=\"policy-learn-more\">Maggiori informazioni</i18n>",
           "resource-access-agent": "Accesso alle risorse: Agente",
           "manage-access": "Utilizza le condizioni per gestire l'accesso",
           "allow-access": "Autorizza l'accesso",
@@ -383,12 +529,13 @@
           "deny-access": "Nega l'accesso:",
           "deny-access-info": " Se non viene soddisfatta alcuna delle condizioni di cui sopra, l'accesso verrà negato",
           "expires-at": "Scade alle",
-          "assign-resources-info": "Una risorsa può appartenere solamente a 1 criterio. Se assegni una risorsa già assegnata a un altro criterio, la risorsa verrà riassegnata a questo criterio. Gli utenti vengono assegnati nella ",
-          "resource-link": "risorsa.",
+          "assign-resources-info": "Una risorsa può appartenere solamente a 1 criterio. Se assegni una risorsa già assegnata a un altro criterio, la risorsa verrà riassegnata a questo criterio. Gli utenti vengono assegnati nella <i18n slot=\"policy-resource\">risorsa</i18n>.",
           "no-resources-configured": "Non è presente alcuna risorsa.",
           "no-resources-configured-help": "Non è ancora presente alcuna risorsa che puoi aggiungere a un criterio. Puoi aggiungerne dopo.",
           "add-success": "Criterio creato",
-          "add-error": "Creazione del criterio non riuscita"
+          "add-error": "Creazione del criterio non riuscita",
+          "update-success": "Criterio aggiornato",
+          "update-error": "Aggiornamento del criterio non riuscito"
         },
         "agentless-policy": {
           "resource-access-agent": "Accesso alle risorse: Senza agente"
@@ -801,6 +948,8 @@
           "threats-ips": "Minacce IPS",
           "threats-sandstorm": "Minacce Sandstorm",
           "threats-antivirus": "Minacce antivirus",
+          "authentication": "Autenticazione",
+          "resource-access": "Accesso alle risorse",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "Conteggio SSID",
       "maxConnections": "Num max connessioni",
       "firewall_device": "Dispositivo gateway",
-      "avgConnections": "Media connessioni"
+      "avgConnections": "Media connessioni",
+      "authentication_status": "Stato",
+      "operating_system_version": "Versione OS",
+      "operating_system": "Sistema operativo",
+      "browser": "Browser",
+      "browser_version": "Versione del browser",
+      "authentication-success-count": "Numero di autenticazioni completate",
+      "resource_access": "Accesso alle risorse",
+      "authentication_events": "Autenticazione"
     },
     "template": {
       "messages": {

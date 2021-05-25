@@ -5,25 +5,31 @@
       "button": {
         "register": "Registrieren",
         "cancel": "Abbrechen",
+        "yes": "Ja",
+        "no": "Nein",
         "save": "Speichern",
         "bugs": "Fehler",
-        "success": "Erfolg",
-        "warn": "Warnen",
         "apply": "Anwenden"
       },
       "status": {
-        "registering": "Wird registriert",
+        "registering": "Warte auf Verbindung",
         "connected": "Verbunden",
         "registered": "Registriert",
-        "unregistered": "Zeitüberschreitung",
+        "unregistered": "Zeitüberschreitung für Registrierung",
         "disconnected": "Verbindung getrennt",
         "suspended": "Vorübergehend außer Kraft gesetzt"
       },
-      "error": "Fehler!",
-      "success": "Erfolg!",
+      "form": {
+        "name": "Name",
+        "description": "Beschreibung"
+      },
+      "error": "Fehler",
+      "success": "Erfolgreich",
+      "warn": "Warnung",
       "used": "Verwendet",
       "waitingForData": "Warte auf Daten …",
-      "problemLoadingData": "Problem beim Laden der Daten"
+      "problemLoadingData": "Problem beim Laden der Daten",
+      "areYouSure": "Möchten Sie wirklich fortfahren?"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -43,8 +49,14 @@
         "breadcrumb-text": "Switches",
         "title": "Cloud - Switches",
         "toggleColumnsTitle": "Spalten umschalten",
+        "removeDialogTitle": "Switch {{switchSerial}} entfernen",
+        "retryDialogTitle": "Registrierung erneut versuchen",
         "txtbox": {
-          "search-placeholder": "Nach Switch oder Vorlage suchen"
+          "search-placeholder": "Switch suchen"
+        },
+        "action-menu": {
+          "retry": "Registrierung erneut versuchen",
+          "removeFromCentral": "Aus Sophos Central entfernen"
         },
         "button": {
           "auto-refresh": "Automatisch aktualisieren",
@@ -60,14 +72,14 @@
           "connections": "Verbindungen",
           "vlans": "VLANs",
           "untagged-vlans": "Ungetaggte VLANs",
-          "ip-address": "IP-Adresse",
+          "ip-address": "Host-Name / IP-Adresse",
           "tags": "Tags",
           "model": "Modell",
           "serial-number": "Seriennummer",
-          "template-overriden": "Vorlage überschrieben?"
+          "template-overridden": "Vorlage überschrieben?"
         },
         "upgrade": {
-          "update-available": "Neue Firmware-Aktualisierungen sind verfügbar.",
+          "update-available": "Es gibt neue Firmware-Aktualisierungen.",
           "upgrade-message": "Sie können diese Aktualisierungen planen oder sofort anwenden.",
           "schedule-upgrade": "Aktualisierung planen",
           "schedule": "Planen",
@@ -89,6 +101,28 @@
             "edit": "Bearbeiten",
             "selected": "Ausgewählt"
           }
+        },
+        "add-template": {
+          "dialog-title": "Eine Vorlage hinzufügen",
+          "name-max-length": "Name darf höchstens 30 Zeichen haben",
+          "description": "Beschreibung",
+          "input-name-required-message": "Name der Vorlage ist erforderlich",
+          "template-description": "Beschreibung darf höchstens 128 Zeichen haben.",
+          "available-switches": "Verfügbare Switches",
+          "assigned-switches": "Zugewiesene Switches",
+          "sync-switches-checkbox-text": "Die Switches mit der initialen Vorlagenkonfiguration synchronisieren"
+        },
+        "message": {
+          "remove-success": "Switch {{switchSerial}} wurde aus Sophos Central entfernt.",
+          "remove-failed": "Der Switch konnte nicht aus Sophos Central entfernt werden.",
+          "retry-success": "Registrierung des Switch {{switchSerial}} wurde erneut gestartet.",
+          "retry-failed": "Registrierung kann nicht gestartet werden.",
+          "add-template-success": "Vorlage wurde hinzugefügt"
+        },
+        "groupInfoText": {
+          "what": "Was ist eine Vorlage?",
+          "information": "Eine Switch-Vorlage ist eine virtuelle Switch-Musterkonfiguration, die auf einen oder mehrere Switches angewendet werden kann. Wir können einen Switch nach Bedarf in eine Vorlage oder aus einer Vorlage heraus verschieben. Solange sich ein Switch unterhalb einer Vorlage befindet, werden Konfigurationen der Vorlage automatisch an die Switches übertragen.",
+          "note": "Beachten Sie, dass bei Widersprüchen zwischen den Konfigurationen der Vorlage und direkten Konfigurationen des Switch die Konfigurationen des Switch Vorrang haben."
         }
       }
     },
@@ -97,7 +131,7 @@
         "title": "Switches hinzufügen",
         "step-1": {
           "title": "Schritt 1",
-          "description": "Binden Sie Ihre Switches in Ihr Netzwerk ein, damit sie mit dem Internet verbunden ist."
+          "description": "Verbinden Sie Ihre Switches mit Ihrem Netzwerk, damit sie auf das Internet zugreifen können."
         },
         "step-2": {
           "title": "Schritt 2",
@@ -119,10 +153,11 @@
         }
       },
       "message": {
-        "already_reported": "Die Switches mit den Seriennummern {{ switches }} sind bereits bei Sophos Central registriert.",
+        "already-reported": "Die Switches mit den Seriennummern {{ switches }} sind bereits bei Sophos Central registriert.",
         "registration-error": "Switches können nicht registriert werden.",
-        "SERIAL_NUMBERS_LIST_IS_EMPTY": "Keine gültige Seriennummer vorhanden.",
-        "switches_registered": "Switches wurden registriert."
+        "switches-registered": "Switches werden registriert. Verbinden Sie Ihre Switches mit dem Netzwerk.",
+        "switch-serial-max-length": "Seriennummer kann nicht länger als 15 Zeichen sein.",
+        "empty-switch-list-error": "Keine gültige Seriennummer vorhanden."
       }
     }
   }

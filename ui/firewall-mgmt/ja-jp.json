@@ -6,6 +6,7 @@
     "delete": "削除",
     "success": "成功！",
     "next": "次へ",
+    "add": "追加",
     "previous": "戻る",
     "finish": "完了",
     "success-default": "操作に成功しました。",
@@ -106,22 +107,69 @@
           "description": "各サイトのユーザーがアクセスできる社内リソースを選択します",
           "modal": {
             "title": "リソースの追加",
-            "firewall": "ファイアウォール",
-            "shared-resource": "共有済みリソース",
-            "service": "サービス",
+            "firewall": {
+              "title": "ファイアウォール",
+              "placeholder": "選択してください"
+            },
+            "shared-resource": {
+              "title": "共有済みリソース",
+              "placeholder": "ターゲットリソースの IP アドレスを入力します。",
+              "help": {
+                "heading": "アドレスは、次のいずれかの形式で指定できます。",
+                "type-ip": "IP アドレス: 例: 10.12.22.34",
+                "type-iplist": "IP リスト: 例: 10.12.22.34,10.12.22.35",
+                "type-iprange": "IP の範囲: 例: 10.12.22.34-10.12.22.35",
+                "type-crdi": "CIDR 形式: 例: 10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "IP アドレス",
+                "Network": "CIDR",
+                "IPList": "IP のリスト",
+                "IPRange": "IP の範囲"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "共有リソースの形式が無効です"
+            },
+            "service": {
+              "title": "サービス",
+              "help": {
+                "heading": "複数の TCP/UDP 送信元ポートと宛先ポートは、カンマで区切られたリストとして入力できます。例: TCP|1:300|5000,UDP|300|4:5000。このようなシーケンスは、以下のユーティリティを使用して生成できます。",
+                "port-format": "開始ポート:終了ポート",
+                "source-ports": "送信元ポート",
+                "destination-ports": "宛先ポート"
+              },
+              "placeholder": {
+                "tcp-udp" : "サービスのパラメータ...",
+                "ip": "プロトコル番号...",
+                "icmp": "ICMP の種類およびコード..."
+              },
+              "invalid": "サービスの形式が無効です"
+            },
             "help": "共有済みネットワークは、この共有グループに属するすべてのファイアウォールで使用できます。",
             "auto-rules": "ファイアウォールルールを自動的に作成する",
-            "limit-auth": "認証済みユーザーのみにアクセスを制限する",
+            "limit-access": "認証済みユーザーのみにアクセスを制限する",
             "sync-sec": "セキュリティ状態が正常のエンドポイントに Synchronized Security を提供する"
           },
           "table": {
+            "empty-message": "共有可能なリソースはまだ追加されていません。",
+            "service-count": "サービス",
             "column": {
               "firewall-name": "ファイアウォール",
-              "service": "サービス",
+              "service": "リソース",
               "auto-rules": "ファイアウォールルールを自動的に作成する",
               "auth": "認証",
               "green-hb": "緑色のハートビート",
-              "action": "編集"
+              "action": {
+                "edit": "編集",
+                "delete": "削除"
+              }
             }
           }
         }
@@ -284,7 +332,19 @@
           "suspended": "中断: {{ count }}",
           "connection-error": "接続統計の読み込み中、エラーが発生しました。",
           "sync-error": "同期統計の読み込み中、エラーが発生しました。"
-        }
+        },
+        "overlay-stats": {
+            "connected": " すべてのファイアウォールは、Sophos Central に接続され、同期されています。",
+            "disconnected": "残り {{ count }}台のファイアウォールは、セキュリティハートビートを送信しています。",
+            "out-of-sync": "残り {{ count }}台のファイアウォールは同期されています。新たなポリシーの変更を適用するには、エラーに対処する必要があります。",
+            "suspended": "これらのファイアウォールのグループポリシーは同期されません。グループから新しいポリシーを取得するには、これらのファイアウォールをグループから削除して再度追加してください。 "
+         },
+        "header": {
+            "connected": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central に接続されています。",
+            "disconnected": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central から切断されています。",
+            "out-of-sync": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central と同期していません。",
+            "suspended": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、中断状態にあります。"
+         }
       }
     },
     "global-settings": {

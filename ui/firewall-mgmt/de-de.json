@@ -6,6 +6,7 @@
     "delete": "Löschen",
     "success": "Erfolg!",
     "next": "Weiter",
+    "add": "Hinzufügen",
     "previous": "Zurück",
     "finish": "Beenden",
     "success-default": "Der Vorgang war erfolgreich.",
@@ -106,22 +107,69 @@
           "description": "Wählen Sie Unternehmensressourcen aus, auf die Benutzer an allen Standorten zugreifen können",
           "modal": {
             "title": "Ressourcen hinzufügen",
-            "firewall": "Firewall",
-            "shared-resource": "Geteilte Ressource",
-            "service": "Dienst",
+            "firewall": {
+              "title": "Firewall",
+              "placeholder": "Eine Ressource auswählen"
+            },
+            "shared-resource": {
+              "title": "Geteilte Ressource",
+              "placeholder": "IP-Adresse der Ziel-Ressource eingeben",
+              "help": {
+                "heading": "Sie können die Adresse in einem der folgenden Formate angeben:",
+                "type-ip": "IP-Adresse: z.B. 10.12.22.34",
+                "type-iplist": "IP-Liste: z.B. 10.12.22.34,10.12.22.35",
+                "type-iprange": "IP-Bereich: z.B. 10.12.22.34-10.12.22.35",
+                "type-crdi": "CIDR-Format: z.B. 10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "IP-Adresse",
+                "Network": "CIDR",
+                "IPList": "IP-Liste",
+                "IPRange": "IP-Bereich"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP-Adresse",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "Geteilte Ressource hat ungültiges Format"
+            },
+            "service": {
+              "title": "Dienst",
+              "help": {
+                "heading": "Sie können mehrere Quell- und Ziel-TCP/UDP-Ports als durch Komma getrennte Liste eingeben. Zum Beispiel TCP|1:300|5000,UDP|300|4:5000. Mit dem nachfolgenden Werkzeug können Sie diese Eingabe erzeugen.",
+                "port-format": "Start-Port:End-Port",
+                "source-ports": "Quell-Port(s)",
+                "destination-ports": "Ziel-Port(s)"
+              },
+              "placeholder": {
+                "tcp-udp" : "Dienstparameter...",
+                "ip": "Protokollnummern...",
+                "icmp": "ICMP-Typ und Codes..."
+              },
+              "invalid": "Ungültiges Dienstformat"
+            },
             "help": "Geteilte Netzwerke stehen allen Firewalls zur Verfügung, die in dieser Gruppe enthalten sind.",
             "auto-rules": "Firewall-Regeln automatisch erstellen",
-            "limit-auth": "Zugriff nur für authentifizierte Benutzer",
+            "limit-access": "Zugriff nur für authentifizierte Benutzer",
             "sync-sec": "Synchronized Security für Endpoints mit gutem Integritätsstatus"
           },
           "table": {
+            "empty-message": "Noch keine teilbaren Ressourcen hinzugefügt.",
+            "service-count": "Dienste",
             "column": {
               "firewall-name": "Firewall",
-              "service": "Dienst",
+              "service": "Ressource",
               "auto-rules": "Firewall-Regeln automatisch erstellen",
               "auth": "Authentifizierung",
               "green-hb": "Grüner Heartbeat",
-              "action": "Bearbeiten"
+              "action": {
+                "edit": "Bearbeiten",
+                "delete": "Löschen"
+              }
             }
           }
         }
@@ -284,7 +332,19 @@
           "suspended": "{{ count }} Vorübergehend außer Kraft gesetzt",
           "connection-error": "Fehler beim Laden der Verbindungsstatistiken.",
           "sync-error": "Fehler beim Laden der Synchronisierungsstatistiken."
-        }
+        },
+        "overlay-stats": {
+            "connected": " Alle Firewalls sind mit Sophos Central verbunden und synchronisiert.",
+            "disconnected": "Verbleibende {{ count }} Firewalls senden einen Security Heartbeat.",
+            "out-of-sync": "Verbleibende {{ count }} Firewalls sind synchronisiert. Der Fehler muss behoben werden, damit weitere Richtlinienänderungen wirksam werden.",
+            "suspended": "Die Gruppenrichtlinien für diese Firewalls werden nicht synchronisiert. Entfernen Sie diese Firewalls aus den Gruppen und fügen Sie sie erneut hinzu, um neue Gruppenrichtlinien zu erhalten. "
+         },
+        "header": {
+            "connected": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind mit Sophos Central verbunden.",
+            "disconnected": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind von Sophos Central getrennt.",
+            "out-of-sync": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind nicht mit Sophos Central synchronisiert.",
+            "suspended": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind angehalten (suspended)."
+         }
       }
     },
     "global-settings": {

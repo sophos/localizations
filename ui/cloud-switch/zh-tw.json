@@ -5,25 +5,31 @@
       "button": {
         "register": "註冊",
         "cancel": "取消",
+        "yes": "是",
+        "no": "無",
         "save": "儲存",
         "bugs": "錯誤",
-        "success": "成功！",
-        "warn": "警告",
         "apply": "套用"
       },
       "status": {
-        "registering": "正在註冊",
+        "registering": "正在等待連線",
         "connected": "已連線",
         "registered": "已註冊",
-        "unregistered": "已逾時",
+        "unregistered": "註冊超時",
         "disconnected": "已中斷連線",
         "suspended": "暫停"
       },
-      "error": "錯誤！",
-      "success": "成功！",
+      "form": {
+        "name": "名稱",
+        "description": "說明"
+      },
+      "error": "錯誤",
+      "success": "成功",
+      "warn": "警告",
       "used": "已使用",
       "waitingForData": "等待資料...",
-      "problemLoadingData": "載入資料時出現問題"
+      "problemLoadingData": "載入資料時出現問題",
+      "areYouSure": "確定要繼續嗎？"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -43,8 +49,14 @@
         "breadcrumb-text": "切換器",
         "title": "雲端 - 切換器",
         "toggleColumnsTitle": "切換欄",
+        "removeDialogTitle": "移除交換機 {{switchSerial}}",
+        "retryDialogTitle": "再試一次註冊",
         "txtbox": {
-          "search-placeholder": "搜尋切換器或範本"
+          "search-placeholder": "搜尋交換機"
+        },
+        "action-menu": {
+          "retry": "再試一次註冊",
+          "removeFromCentral": "從 Sophos Central 移除"
         },
         "button": {
           "auto-refresh": "自動重新整理",
@@ -60,14 +72,14 @@
           "connections": "連接",
           "vlans": "VLAN",
           "untagged-vlans": "取消標記的 VLAN",
-          "ip-address": "IP 位址 (IP 位址)",
+          "ip-address": "主機名稱/ IP 位址",
           "tags": "標籤",
-          "model": "Model",
+          "model": "型號",
           "serial-number": "序號",
-          "template-overriden": "範本已覆寫？"
+          "template-overridden": "範本已覆寫？"
         },
         "upgrade": {
-          "update-available": "新韌體更新現已可用！",
+          "update-available": "新韌體更新現已可用。",
           "upgrade-message": "可對這些更新進行排程或立即套用。",
           "schedule-upgrade": "排程升級",
           "schedule": "排程",
@@ -89,6 +101,28 @@
             "edit": "編輯",
             "selected": "已選"
           }
+        },
+        "add-template": {
+          "dialog-title": "新增範本",
+          "name-max-length": "名稱應最多包含 30 個字元。",
+          "description": "描述",
+          "input-name-required-message": "範本名稱是必填項",
+          "template-description": "描述應最多包含 128 個字元。",
+          "available-switches": "可用交換機",
+          "assigned-switches": "已指派的交換機",
+          "sync-switches-checkbox-text": "同步交換機與初始範本設定"
+        },
+        "message": {
+          "remove-success": "交換機 {{switchSerial}} 已從 Sophos Central 移除。",
+          "remove-failed": "無法從 Sophos Central 移除交換機。",
+          "retry-success": "交換機 {{switchSerial}} 的註冊已再次觸發。",
+          "retry-failed": "無法觸發註冊。",
+          "add-template-success": "範本已新增"
+        },
+        "groupInfoText": {
+          "what": "何謂範本？",
+          "information": "交換機範本是一種虛擬交換機設定模型，可套用於一個或多個交換機。我們可以根據需要將交換機移入或移出範本。只要交換機處於範本之下，在範本層級完成的設定將會自動同步至交換機。",
+          "note": "請注意，在評估模板下的交換機衝突設定時，將優先使用交換機級別的設定覆寫。"
         }
       }
     },
@@ -119,10 +153,11 @@
         }
       },
       "message": {
-        "already_reported": "帶有序號 {{ switches }} 的切換器已註冊到 Sophos Central。",
+        "already-reported": "帶有序號 {{ switches }} 的切換器已註冊到 Sophos Central。",
         "registration-error": "切換器無法註冊。",
-        "SERIAL_NUMBERS_LIST_IS_EMPTY": "沒有有效的序號。",
-        "switches_registered": "交換機已註冊。"
+        "switches-registered": "正在註冊交換機，請將您的交換機插入網路。",
+        "switch-serial-max-length": "序號不得超過 15 個字元。",
+        "empty-switch-list-error": "沒有有效的序號。"
       }
     }
   }

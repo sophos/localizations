@@ -6,6 +6,7 @@
     "delete": "刪除",
     "success": "成功！",
     "next": "下一步 ",
+    "add": "新增",
     "previous": "先前版本",
     "finish": "完成",
     "success-default": "此操作很成功。",
@@ -106,22 +107,69 @@
           "description": "選取每個站點的使用者都能存取的公司資源",
           "modal": {
             "title": "新增資源",
-            "firewall": "防火牆",
-            "shared-resource": "已共用的資源",
-            "service": "服務",
+            "firewall": {
+              "title": "防火牆",
+              "placeholder": "選取一個"
+            },
+            "shared-resource": {
+              "title": "已共用的資源",
+              "placeholder": "輸入目標資源的 IP 位址",
+              "help": {
+                "heading": "您可以按照下列任一格式指定位址：",
+                "type-ip": "IP 位址：例如10.12.22.34",
+                "type-iplist": "IP 清單：例如10.12.22.34,10.12.22.35",
+                "type-iprange": "IP 範圍：例如10.12.22.34-10.12.22.35",
+                "type-crdi": "CIDR 格式：例如10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "IP 位址 (IP 位址)",
+                "Network": "CIDR",
+                "IPList": "IP 清單",
+                "IPRange": "IP 範圍"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "共用資源的格式無效"
+            },
+            "service": {
+              "title": "服務",
+              "help": {
+                "heading": "您可以將多個 TCP/UDP 源和目的地連接埠輸入為逗號分隔清單。例如 TCP|1:300|5000,UDP|300|4:5000. 您可以使用下列公用程式生成這樣的序列。",
+                "port-format": "起始連接埠:終端連接埠",
+                "source-ports": "源連接埠",
+                "destination-ports": "目的地連接埠"
+              },
+              "placeholder": {
+                "tcp-udp" : "服務參數...",
+                "ip": "通訊協定號碼...",
+                "icmp": "ICMP 類型和代碼..."
+              },
+              "invalid": "無效的服務格式"
+            },
             "help": "已共用的網路將可供此共用群組中的所有防火墻使用。",
             "auto-rules": "自動建立防火牆規則",
-            "limit-auth": "限制存取已驗證的使用者",
+            "limit-access": "限制存取已驗證的使用者",
             "sync-sec": "安全運行的端點的同步安全性"
           },
           "table": {
+            "empty-message": "尚未新增可共用的資源。",
+            "service-count": "服務",
             "column": {
               "firewall-name": "防火墻",
-              "service": "服務",
+              "service": "資源",
               "auto-rules": "自動建立防火牆規則",
               "auth": "驗證",
               "green-hb": "綠色活動訊號",
-              "action": "編輯"
+              "action": {
+                "edit": "編輯",
+                "delete": "刪除"
+              }
             }
           }
         }
@@ -257,7 +305,7 @@
         "menu": {
           "manage": "管理策略",
           "edit": "編輯範本",
-          "delete": "?除",
+          "delete": "删除",
           "edit-customers": "編輯客戶"
         },
         "no-data": {
@@ -284,7 +332,19 @@
           "suspended": "{{ count }} 個已暫停",
           "connection-error": "載入連線統計資料時出錯。",
           "sync-error": "載入同步統計資料時出錯。"
-        }
+        },
+        "overlay-stats": {
+            "connected": " 所有防火墻均已連線至 Sophos Central 並與其同步。",
+            "disconnected": "剩餘的 {{ count }} 個防火墻正在傳送安全活動訊號。",
+            "out-of-sync": "剩餘的 {{ count }} 個防火墻已同步。需要解決此故障，才能套用進一步的策略變更。",
+            "suspended": "這些防火墻的群組原則將不會同步。請將這些防火墻移出各自的群組，然後再次新增以從群組獲取新原則。 "
+         },
+        "header": {
+            "connected": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻已連線至 Sophos Central。",
+            "disconnected": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻已斷開與 Sophos Central 的連線。",
+            "out-of-sync": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻與 Sophos Central 不同步。",
+            "suspended": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻處於擱置狀態。"
+         }
       }
     },
     "global-settings": {

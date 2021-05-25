@@ -7,11 +7,13 @@
       "cancel": "Abbrechen",
       "edit": "Bearbeiten",
       "delete": "Löschen",
+      "ok": "OK",
       "download": "Herunterladen",
       "approve": "Genehmigen",
       "search": "SUCHE",
       "continue": "Fortfahren",
       "fqdn-validation": "Ungültige FQDN",
+      "fqdn-ip-validation": "Ungültige FQDN/IP",
       "invalid-name": "Der Name darf nur enthalten: A-Z, a-z , 0-9, -, _, Leerzeichen",
       "name-length-validation": "Name darf nicht länger als 100 Zeichen sein",
       "whitespace-name-validation": "Name ist erforderlich",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "Name",
-        "name-placeholder": "Ressourcenname eingeben",
-        "description": "Beschreibung",
-        "description-placeholder": "Beschreibung eingeben",
+        "name-placeholder": "Ressourcenname",
+        "description": "Beschreibung (max. 250 Zeichen)",
+        "description-placeholder": "Beschreibung",
         "port-validation": "Ungültiger Port",
         "application-type": "Ressourcentyp",
-        "application-type-placeholder": "Ressourcentyp auswählen",
+        "application-type-placeholder": "Auswählen",
+        "access-port-type": "Access-Port-Typ",
         "gateway": "Gateway",
-        "gateway-placeholder": "Gateway auswählen",
+        "gateway-placeholder": "Auswählen",
+        "resource-access": "Zugriffsmethode",
+        "policy": "Richtlinie",
+        "no-agent-policy-info": "Sie haben keine Richtlinie, die Ressourcen unterstützt, die einen Agenten erfordern. Sie können eine solche Richtlinie erstellen in",
+        "no-agentless-policy-info": "Sie haben keine Richtlinie, die Ressourcen ohne Agenten unterstützt. Sie können eine solche Richtlinie erstellen in",
+        "policies": "Richtlinien",
+        "policy-placeholder": "Auswählen",
+        "external-fqdn": "Externe FQDN",
+        "internal-fqdn" : "Interne FQDN/IP-Adresse",
+        "add-port-link": "Weitere hinzufügen",
         "application-fqdn": "FQDN der Ressource",
-        "application-icon": "Ressourcensymbol (max. Größe: 100K)",
+        "application-icon": "Anzeigesymbol (max. Dateigröße: 100K)",
+        "acceptable-formats": "(B: 256 px, H: 256 px; Formate: .jpg, .jpeg, .png, .gif)",
         "port": "Port",
         "title-add": "Ressource hinzufügen",
         "deploy": "Bereitstellen",
@@ -38,6 +51,7 @@
         "error-user-groups": "Fehler beim Abruf der Benutzergruppen",
         "empty-user-groups": "Keine Benutzergruppen gefunden.",
         "available-user-groups": "Verfügbare Benutzergruppen",
+        "available-users-groups": "Verfügbare Benutzergruppen ({{count}})",
         "assigned-user-groups": "Zugewiesene Benutzergruppen",
         "loading-error": "Fehler beim Laden der Ressource",
         "add-success": "Ressource erstellt",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "Ressourcen und Zugriff",
         "columns": {
           "name": "Name",
+          "policy": "Zugewiesene Richtlinie",
           "gateway": "Gateway",
           "port": "Port",
           "ip": "FQDN der Ressource",
-          "type": "Ressourcentyp"
+          "type": "Ressourcentyp",
+          "internal-fqdn": "Interne FQDN/IP",
+          "external-fqdn": "Externe FQDN"
         },
         "no-application-configured": "Sie haben keine Ressourcen hinzugefügt.",
         "no-application-configured-help": "Klicken Sie auf 'Ressource hinzufügen', um eine Ressource hinzuzufügen.",
@@ -107,23 +124,91 @@
         "breadcrumb-text": "Gateways",
         "error": "Fehler beim Abrufen der Gateway-Liste"
       },
+      "details": {
+        "title": "Zero Trust Network Access - Gateway-Details",
+        "breadcrumb-text": "Gateway-Details",
+        "error": "Fehler beim Abrufen der Gateway-Liste",
+        "fetch-error": "Fehler beim Abrufen der Gateway-Details",
+        "breadcrumb-sub-text": "Gateways",
+        "tabs": {
+          "summary": {
+            "label": "Zusammenfassung",
+            "gateway-summary": {
+              "label": "Gateway-Übersicht"
+            },
+            "instance": {
+              "label": "Gateway-Instanzen",
+              "columns": {
+                "name": "Name",
+                "status": "Status",
+                "version": "Version",
+                "support": "Sophos Support"
+              }
+            },
+            "note": "Für eine Lastverteilung benötigen Sie eine ungerade Instanzen-Anzahl.",
+            "add": "Instanzen hinzufügen/bearbeiten",
+            "header": {
+              "name": "Name: ",
+              "location": "Verzeichnis: ",
+              "description": "Beschreibung: ",
+              "status": "Status: ",
+              "fqdn": "FQDN: ",
+              "type": "Typ: ",
+              "idp": "Identitätsanbieter: ",
+              "edit": "Bearbeiten",
+              "delete": "Löschen"
+            }
+          },
+          "certificate": {
+            "label": "Zertifikat",
+            "certificate": "Zertifikat",
+            "upload-certificate": "Zertifikat hochladen",
+            "certificate-validation": "Ungültiges Zertifikat",
+            "certificate-wildcard-message-example": "Verwenden Sie ein Platzhalterzertifikat. Zum Beispiel *.test.com",
+            "privatekey": "Privater Schlüssel",
+            "upload-privatekey": "Privaten Schlüssel hochladen",
+            "private-key-validation": "Ungültiger privater Schlüssel",
+            "edit-success": "Zertifikat aktualisiert",
+            "edit-error": "Aktualisierung des Zertifikats fehlgeschlagen"
+          },
+          "resource": {
+            "label": "Ressource ({{count}})",
+            "list": {
+              "columns": {
+                "name": "Name",
+                "external-fqdn": "Externe FQDN",
+                "internal-fqdn": "Interne FQDN/IP",
+                "type": "Ressourcentyp",
+                "port": "Port"
+              },
+              "resources-access": "Ressourcen und Zugriff",
+              "no-application-configured": "Sie haben keine Ressourcen hinzugefügt.",
+              "no-application-configured-help": "Fügen Sie auf der Seite <i18n slot=\"resource\">Ressourcen und Zugriff</i18n> Ressourcen zu einem Gateway hinzu."
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "Gateway hinzufügen",
         "title-edit": "Gateway bearbeiten",
+        "title-delete": "Gateway löschen",
+        "software-update": "Software-Aktualisierung",
+        "edit-software-update": "Software-Aktualisierungszeitplan bearbeiten",
+        "try-software-update-again": "Erneut versuchen",
         "name": "Name",
         "location": "Verzeichnis",
         "location-length-validation": "Verzeichnis darf nicht länger als 100 Zeichen sein",
         "whitespace-location-validation": "Verzeichnis ist erforderlich",
-        "name-placeholder": "Gateway-Namen eingeben",
+        "name-placeholder": "Gateway-Name",
         "description": "Beschreibung (max. 250 Zeichen)",
-        "description-placeholder": "Beschreibung eingeben",
+        "description-placeholder": "Beschreibung",
         "packageType": "Plattformtyp",
         "identity-provider": "Identitätsanbieter",
         "fqdn": "FQDN",
         "appDomain": "Domäne",
         "app-domain-validation": "Ungültige Ressourcen-Domäne",
         "password": "Gateway-Kennwort",
-        "password-placeholder": "Kennwort eingeben",
+        "password-placeholder": "Kennwort",
         "confirm-password": "Kennwort bestätigen",
         "confirm-password-placeholder": "Kennwort bestätigen",
         "dns": "DNS",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "Ungültiger DNS-Server 1",
         "dns-server-2-validation": "Ungültiger DNS-Server 2",
         "static-routes-validation": "Durch Komma getrennte Liste",
-        "static-routes-rules1": "Fügen Sie Routen in CIDR-Notation hinzu.",
-        "static-routes-rules2": "Trennen Sie Einträge durch Komma.",
+        "static-routes-rules1": "Fügen Sie Routen in CIDR-Notation und mit durch Komma getrennten Einträgen hinzu",
         "static-routes-example": "Beispiel:",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "Die angegebene statische Route ist ungültig",
         "certificate": "Zertifikat",
         "upload-certificate": "Zertifikat hochladen",
         "certificate-validation": "Ungültiges Zertifikat",
         "certificate-wildcard-message": "Muss ein Platzhalterzertifikat sein",
+        "certificate-acceptable-formats": "(max. Größe: 10 Kb; Formate: .pem, .crt, .cer)",
         "privatekey": "Privater Schlüssel",
         "upload-privatekey": "Privaten Schlüssel hochladen",
         "private-key-validation": "Ungültiger privater Schlüssel",
+        "private-key-acceptable-formats": "(max. Größe: 10 Kb; Formate: .key)",
         "save-and-generate-image": "Speichern und Datei erstellen",
         "packageType-placeholder": "Auswählen",
         "identity-provider-placeholder": "Auswählen",
@@ -191,11 +278,18 @@
         "header": "Gateway löschen",
         "message": "Gateway löschen",
         "success": "Gateway gelöscht",
-        "error": "Löschen des Gateways fehlgeschlagen"
+        "error": "Löschen des Gateways fehlgeschlagen",
+        "ack": "Ich verstehe, dass ich diese Änderungen nicht rückgängig machen kann",
+        "info": "Gateway {{gatewayName}} hat:",
+        "gateway-instances": " Gateway-Instanzen",
+        "resources": " Ressourcen",
+        "warn-message-1": "Gateway löschen inkl. aller ",
+        "warn-message-2": " Ressourcen?"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "Warten auf Bereitstellung",
+          "description": "(Warten auf Bereitstellung)",
           "header-waiting": "Warten auf Bereitstellung",
           "content-waiting": "Gateway-Image noch nicht gebootet. Laden Sie das Image herunter und booten Sie es.",
           "header-download": "Gateway-Image herunterladen",
@@ -210,10 +304,15 @@
           "content-generating": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt."
         },
         "awaiting-approval": {
-          "label": "Genehmigen",
-          "description": "(Bereit zur Verbindung)",
+          "label": "Warte auf Genehmigung",
           "gateway-approve": "Anfrage zur Gateway-Registrierung genehmigt",
-          "gateway-approve-error": "Fehler beim Genehmigen der Gateway-Registrierung."
+          "gateway-approve-error": "Fehler beim Genehmigen der Gateway-Registrierung.",
+          "header-approval": "Warte auf Genehmigung",
+          "content-approval": "Genehmigen Sie die Anfrage zur Gateway-Registrierung, um die Gateway-Einrichtung abzuschließen",
+          "eap2": {
+            "label": "Genehmigen",
+            "description": "(Bereit zur Verbindung)"
+          }
         },
         "approved": {
           "label": "Genehmigt",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "Nicht erreichbar seit:"
           }
+        },
+        "vm-name": "VM-Name",
+        "vm-placeholder": "VM-Name",
+        "external-ip-placeholder": "Externe IP",
+        "internal-ip-placeholder": "Interne IP",
+        "external-interface-ip": "IP der externen Schnittstelle",
+        "internal-interface-ip": "IP der internen Schnittstelle",
+        "interface-ip": "Schnittstellen-IP",
+        "warning-box": "Gesamtzahl der Instanzen muss ungerade sein. Sie haben {{instanceCount}}",
+        "form": {
+          "add-another-instance": "Eine weitere Instanz hinzufügen",
+          "deployment-mode": "Bereitstellungsmodus:",
+          "add-success": "Instanzen aktualisiert",
+          "add-error": "Aktualisierung der Instanzen fehlgeschlagen",
+          "save-confirm": "Speichern bestätigen",
+          "warn-info": "Sie wechseln von einer Instanz zu {{instanceNumber}} Instanzen.",
+          "warn-description": "Sobald Sie von einer zu drei oder mehr Instanzen für die Lastverteilung wechseln, können Sie für dieses Gateway nicht mehr zurück zu einer Instanz wechseln."
         }
+      },
+      "schedule": {
+        "description": "Gateway-Aktualisierung planen",
+        "header": "Aktualisierung von {{currentVersion}} auf",
+        "version": "Version",
+        "warning": "Warnung",
+        "warning-info": "Aktualisierung auf {{selectedVersion}} löst einen Neustart aus.",
+        "on": "auf",
+        "tooltip-msg": "Wenn Sie mehr als eine Instanz haben, werden die Instanzen nacheinander aktualisiert.",
+        "clear-schedule": "Zeitplan löschen",
+        "cancel-schedule": "Zeitplan widerrufen",
+        "cancelling-update": "Aktualisierung wird abgebrochen",
+        "update-failed": "Aktualisierung fehlgeschlagen ",
+        "updating": " Wird aktualisiert",
+        "edit-schedule": " Zeitplan bearbeiten",
+        "cancel-first": "Sie können keine Änderungen vornehmen, ohne vorher den festgelegten Zeitplan zu widerrufen.",
+        "no-change-allowed": "Im Moment können Sie keine Änderungen vornehmen. Die Software-Aktualisierung beginnt in Kürze.",
+        "error-no-list": "Fehler beim Abrufen der verfügbaren Versionen",
+        "add-success": "Zeitplanaktualisierung erfolgreich",
+        "add-error": "Zeitplanaktualisierung fehlgeschlagen"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "Anbieter",
           "action": "Aktion",
           "description": "Beschreibung",
-          "type": "Typ"
+          "type": "Typ",
+          "gateways": "#Gateways"
         }
       },
       "form": {
         "title-add": "Identitätsanbieter hinzufügen",
         "title-edit": "Identitätsanbieter bearbeiten",
-        "selectprovider": "Anbieter auswählen",
+        "selectprovider": "Auswählen",
         "name": "Name",
-        "name-placeholder": "Namen des Identitätsanbieters eingeben",
-        "description": "Beschreibung",
-        "description-placeholder": "Beschreibung eingeben",
+        "name-placeholder": "Identitätsanbieter",
+        "description": "Beschreibung (max. 250 Zeichen)",
+        "description-placeholder": "Beschreibung",
         "provider": "Anbieter",
         "tenantid": "Mandanten-ID",
         "clientid": "Client-ID",
@@ -333,29 +470,38 @@
           "resources": "Quellen",
           "lastModified": "Zuletzt geändert"
         },
+        "assign": "Zuweisen",
         "title": "Zero Trust Network Access - Richtlinien",
         "new-policy": "Zero Trust Network Access - Neue Richtlinie",
+        "edit-policy": "Zero Trust Network Access - Richtlinie bearbeiten",
         "breadcrumb-text": "Richtlinien",
         "breadcrumb-sub-text": "Neue Richtlinie",
+        "edit-breadcrumb-sub-text": "Richtlinie bearbeiten",
         "add": "Richtlinie hinzufügen",
         "fetch-error": "Fehler beim Abrufen der Richtlinien",
         "enforced": "Durchgesetzt",
-        "note": "Hinweis: ",
-        "note-info1": " Richtlinien werden Ressourcen zugewiesen. Sie können Benutzer zuweisen auf der ",
-        "note-info2": "Ebene",
+        "bypassed": "Umgangen",
+        "note": "Hinweis: Richtlinien werden Ressourcen zugewiesen. Sie können Benutzer auf Ebene der <i18n slot=\"policy-resource\">Ressourcen</i18n> zuweisen.",
         "resource": "Ressource",
         "resource-and-access": "Zero Trust - Ressourcenzugriff",
-        "endpoint-agent": "Sophos-Endpoint-Agent herunterladen von der ",
-        "downloads": "Downloads ",
-        "downloads-page": "Seite.",
-        "learn-more": "Mehr erfahren",
+        "endpoint-agent": "Laden Sie den Agent für Sophos Endpoint von der Seite <i18n slot=\"policy-download\">Downloads</i18n> herunter. <i18n slot=\"policy-learn-more\">Mehr erfahren</i18n>",
         "no-policy-configured": "Sie haben keine Richtlinien.",
         "no-policy-configured-help": "Klicken Sie auf 'Richtlinie hinzufügen', um eine Richtlinie hinzuzufügen und damit den Zugriff auf Ihre Ressourcen zu gewähren."
+      },
+      "delete": {
+        "header":"Richtlinie löschen",
+        "message-delete": "Richtlinie löschen",
+        "message-warning": "Sie müssen die Ressourcen zu einer anderen Richtlinie verschieben, bevor Sie diese Richtlinie löschen können",
+        "success": "Richtlinie gelöscht",
+        "error": "Löschen der Richtlinie fehlgeschlagen"
       },
       "add-modal": {
         "resource-access": "Ressourcenzugriff",
         "tooltip-resource-access-info1": "Richtlinien können den Ressourcenzugriff mit oder ohne Agent unterstützen. Ein Agent kann den Zugriff auf Basis des Integritätsstatus steuern.",
-        "tooltip-resource-access-info2": "Laden Sie Sophos Endpoint Agent von der Seite <a href=\"manage/downloads\" target=\"_blank\"> Downloads </a> herunter. <a href=\"https://docs.sophos.com/central/Customer/help/de-de/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Mehr erfahren </a>",
+        "tooltip-resource-access-info2": "Sophos-Endpoint-Agent herunterladen von",
+        "tooltip-resource-access-info3": "Seite.",
+        "tooltip-resource-access-download": "Downloads",
+        "tooltip-resource-access-learnmore": "Mehr erfahren",
         "agent": "Agent",
         "agentless": "Ohne Agent"
       },
@@ -364,16 +510,16 @@
           "policy-name": "Name der Richtlinie",
           "policy-type": "Richtlinientyp",
           "resource-access": "Ressourcenzugriff",
-          "assigned-resources": "Zugewiesene Ressourcen (0)",
+          "assigned-resources": "Zugewiesene Ressourcen ({{count}})",
           "access-rules": "Zugriffsregeln",
           "policy-enforced": "Richtlinie durchgesetzt",
-          "policy-enforced-label1": "Richtlinie ist",
-          "policy-enforced-label2": "durchgesetzt",
+          "policy-bypassed": "Richtlinie umgangen",
+          "policy-expires": "Richtlinie läuft ab",
+          "policy-enforced-label2": "Richtlinie wird <b>durchgesetzt</b>",
+          "policy-bypassed-label2": "Richtlinie wird <b>umgangen</b>",
           "policy-enforced-info": "Wenn eine Richtlinie nicht durchgesetzt ist, kann nicht auf die Ressourcen zugegriffen werden, welche dieser Richtlinie zugewiesenen sind.",
           "policy-enforced-disable": "Automatisch nach einer bestimmten Zeit deaktivieren",
-          "access-rules-info": "Benutzergruppen-Zuweisungen und Richtlinienausnahmen werden verwaltet in ",
-          "resources-link": "Ressourcen.",
-          "learn-more": "Mehr erfahren",
+          "access-rules-info": "Benutzergruppen-Zuweisungen und Richtlinienausnahmen verwalten Sie in <i18n slot=\"policy-resource\">Ressourcen</i18n>. <i18n slot=\"policy-learn-more\">Mehr erfahren</i18n>",
           "resource-access-agent": "Ressourcenzugriff: Agent",
           "manage-access": "Verwenden Sie Bedingungen für die Zugriffsverwaltung",
           "allow-access": "Zugriff zulassen",
@@ -383,12 +529,13 @@
           "deny-access": "Zugriff verweigern:",
           "deny-access-info": " Falls nichts des oben aufgeführten zutrifft, wird der Zugriff verweigert",
           "expires-at": "Gültig bis",
-          "assign-resources-info": "Sie können eine Ressource nur einer einzigen Richtlinie zuweisen. Wenn Sie eine Ressource zuweisen, die bereits einer anderen Richtlinie zugewiesen ist, wird diese Zuweisung beendet und die Ressource wird der neuen Richtlinie zugewiesen. Benutzer weisen Sie zu in der ",
-          "resource-link": "Ressource.",
+          "assign-resources-info": "Sie können eine Ressource nur einer einzigen Richtlinie zuweisen. Wenn Sie eine Ressource zuweisen, die bereits einer anderen Richtlinie zugewiesen ist, wird diese Zuweisung beendet und die Ressource wird der neuen Richtlinie zugewiesen. Benutzer werden in der <i18n slot=\"policy-resource\">Ressource</i18n> zugewiesen.",
           "no-resources-configured": "Sie haben keine Ressourcen.",
           "no-resources-configured-help": "Sie haben noch keine Ressourcen, die Sie zu einer Richtlinie hinzufügen können. Sie können diese später hinzufügen.",
           "add-success": "Richtlinie erstellt",
-          "add-error": "Richtlinienerstellung fehlgeschlagen"
+          "add-error": "Richtlinienerstellung fehlgeschlagen",
+          "update-success": "Richtlinie aktualisiert",
+          "update-error": "Aktualisierung der Richtlinie fehlgeschlagen"
         },
         "agentless-policy": {
           "resource-access-agent": "Ressourcenzugriff: Ohne Agent"
@@ -670,7 +817,7 @@
         }
       },
       "filterTable": {
-        "deselectAll": "Alle abw.",
+        "deselectAll": "Alles abwählen",
         "resetToDefault": "Alles auf Standardeinstellungen zurücksetzen",
         "selected": "Ausgewählt",
         "setDefault": "Als Standard einstellen (für alle Berichte)",
@@ -699,7 +846,7 @@
         "createdBy": "Erstellt von",
         "exportType": "Export-Typ",
         "filterQuery": "Filter-Abfrage",
-        "deselectAll": "Alle abw.",
+        "deselectAll": "Alles abwählen",
         "single": {
           "noItemSelected": "Ein Gateway auswählen",
           "selectedItemMessage": "{{count}} Gateway ausgewählt"
@@ -801,6 +948,8 @@
           "threats-ips": "IPS-Bedrohungen",
           "threats-sandstorm": "Sandstorm-Bedrohungen",
           "threats-antivirus": "Antivirus-Bedrohungen",
+          "authentication": "Authentifizierung",
+          "resource-access": "Ressourcenzugriff",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "Anzahl der SSIDs",
       "maxConnections": "Max. Anzahl an Verbindungen",
       "firewall_device": "Gateway-Gerät",
-      "avgConnections": "Verbindungen (Durchschnitt)"
+      "avgConnections": "Verbindungen (Durchschnitt)",
+      "authentication_status": "Status",
+      "operating_system_version": "Betriebssystemversion",
+      "operating_system": "Betriebssystem",
+      "browser": "Browser",
+      "browser_version": "Browser-Version",
+      "authentication-success-count": "Anzahl erfolgreicher Authentifizierungen",
+      "resource_access": "Ressourcenzugriff",
+      "authentication_events": "Authentifizierung"
     },
     "template": {
       "messages": {

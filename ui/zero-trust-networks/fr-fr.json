@@ -7,11 +7,13 @@
       "cancel": "Annuler",
       "edit": "Éditer",
       "delete": "Supprimer",
+      "ok": "OK",
       "download": "Télécharger",
       "approve": "Approuver",
       "search": "Rechercher",
       "continue": "Continuer",
-      "fqdn-validation": "Adresse FQDN non valide",
+      "fqdn-validation": "Nom de domaine complet non valide",
+      "fqdn-ip-validation": "Nom de domaine complet/IP non valide",
       "invalid-name": "Le nom doit uniquement contenir : A-Z, a-z , 0-9, -, _, espace",
       "name-length-validation": "Le nom ne doit pas contenir plus de 100 caractères",
       "whitespace-name-validation": "Nom obligatoire",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "Nom",
-        "name-placeholder": "Saisir le nom de la ressource",
-        "description": "Description",
-        "description-placeholder": "Saisir une description",
+        "name-placeholder": "Nom de la ressource",
+        "description": "Description (250 caractères max.)",
+        "description-placeholder": "Description",
         "port-validation": "Port incorrect",
         "application-type": "Type de ressources",
-        "application-type-placeholder": "Sélectionner le type de ressources",
+        "application-type-placeholder": "Sélectionner",
+        "access-port-type": "Type de port d’accès",
         "gateway": "Passerelle",
-        "gateway-placeholder": "Sélectionner la passerelle",
-        "application-fqdn": "FQDN des ressources",
-        "application-icon": "Icône de ressources (taille max : 100K)",
+        "gateway-placeholder": "Sélectionner",
+        "resource-access": "Méthode d’accès",
+        "policy": "Stratégie",
+        "no-agent-policy-info": "Vous n’avez pas de stratégie qui prend en charge les ressources nécessitant un agent. Vous pouvez en créer une dans",
+        "no-agentless-policy-info": "Vous n’avez pas de stratégie qui prend en charge les ressources sans agent. Vous pouvez en créer une dans",
+        "policies": "Stratégies",
+        "policy-placeholder": "Sélectionner",
+        "external-fqdn": "Nom de domaine complet externe",
+        "internal-fqdn" : "Nom de domaine complet/Adresse IP interne",
+        "add-port-link": "Ajouter une autre",
+        "application-fqdn": "Nom de domaine complet de la ressource",
+        "application-icon": "Icône d’affichage (taille de fichier max. : 100K)",
+        "acceptable-formats": "L : 256 px, H : 256px; Formats : .jpg, .jpeg, .png, .gif)",
         "port": "Port",
         "title-add": "Ajouter une ressource",
         "deploy": "Déployer",
@@ -38,6 +51,7 @@
         "error-user-groups": "Erreur de récupération des groupes d’utilisateurs",
         "empty-user-groups": "Aucun groupe d’utilisateurs trouvé !",
         "available-user-groups": "Groupes d’utilisateurs disponibles",
+        "available-users-groups": "Groupes d’utilisateurs disponibles ({{count}})",
         "assigned-user-groups": "Groupes d’utilisateurs assignés",
         "loading-error": "Erreur de chargement de la ressource",
         "add-success": "Ressource créée",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "Ressources et accès",
         "columns": {
           "name": "Nom",
+          "policy": "Stratégie assignée",
           "gateway": "Passerelle",
           "port": "Port",
-          "ip": "FQDN des ressources",
-          "type": "Type de ressources"
+          "ip": "Nom de domaine complet de la ressource",
+          "type": "Type de ressources",
+          "internal-fqdn": "Nom de domaine complet/IP interne",
+          "external-fqdn": "Nom de domaine complet externe"
         },
         "no-application-configured": "Vous n’avez pas ajouté d’autres ressources.",
         "no-application-configured-help": "Cliquez sur le bouton « Ajouter une ressource » pour ajouter une ressource.",
@@ -96,7 +113,7 @@
         "columns": {
           "name": "Nom",
           "description": "Description",
-          "fqdn": "Nom de domaine complet (FQDN)",
+          "fqdn": "Nom de domaine complet",
           "package": "Type de package",
           "type": "Type",
           "version": "Version",
@@ -107,23 +124,91 @@
         "breadcrumb-text": "Passerelles",
         "error": "Erreur lors de la récupération de la liste des passerelles"
       },
+      "details": {
+        "title": "Zero Trust Network Access - Détails de la passerelle",
+        "breadcrumb-text": "Détails de la passerelle",
+        "error": "Erreur lors de la récupération de la liste des passerelles",
+        "fetch-error": "Erreur lors de la récupération des détails de la passerelle",
+        "breadcrumb-sub-text": "Passerelles",
+        "tabs": {
+          "summary": {
+            "label": "Résumé",
+            "gateway-summary": {
+              "label": "Résumé de la passerelle"
+            },
+            "instance": {
+              "label": "Instances de la passerelle",
+              "columns": {
+                "name": "Nom",
+                "status": "État",
+                "version": "Version",
+                "support": "Support Sophos"
+              }
+            },
+            "note": "Pour l’équilibrage de charge, vous devez avoir un nombre impair d’instances.",
+            "add": "Ajouter/Modifier des instances",
+            "header": {
+              "name": "Nom : ",
+              "location": "Emplacement : ",
+              "description": "Description : ",
+              "status": "État : ",
+              "fqdn": "Nom de domaine complet : ",
+              "type": "Type : ",
+              "idp": "Fournisseur d’identité : ",
+              "edit": "Éditer",
+              "delete": "Supprimer"
+            }
+          },
+          "certificate": {
+            "label": "Certificat",
+            "certificate": "Certificat",
+            "upload-certificate": "Télécharger le certificat",
+            "certificate-validation": "Certificat incorrect",
+            "certificate-wildcard-message-example": "Utilisez un certificat générique. Par exemple. *.test.com",
+            "privatekey": "Clé privée",
+            "upload-privatekey": "Télécharger la clé privée",
+            "private-key-validation": "Clé privée non valide",
+            "edit-success": "Certificat mis à jour",
+            "edit-error": "Impossible de mettre à jour le certificat"
+          },
+          "resource": {
+            "label": "Ressource ({{count}})",
+            "list": {
+              "columns": {
+                "name": "Nom",
+                "external-fqdn": "Nom de domaine complet externe",
+                "internal-fqdn": "Nom de domaine complet/IP interne",
+                "type": "Type de ressources",
+                "port": "Port"
+              },
+              "resources-access": "Ressources et accès",
+              "no-application-configured": "Vous n’avez pas ajouté d’autres ressources.",
+              "no-application-configured-help": "Ajoutez des ressources à une passerelle à partir de la page <i18n slot=\"resource\">Ressources et accès</i18n>."
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "Ajouter une passerelle",
         "title-edit": "Modifier la passerelle",
+        "title-delete": "Supprimer une passerelle",
+        "software-update": "Mise à jour du logiciel",
+        "edit-software-update": "Modifier la planification de la mise à jour du logiciel",
+        "try-software-update-again": "Veuillez réessayer",
         "name": "Nom",
         "location": "Emplacement géographique",
         "location-length-validation": "L’emplacement ne doit pas contenir plus de 100 caractères",
         "whitespace-location-validation": "Emplacement obligatoire",
-        "name-placeholder": "Saisir le nom de la passerelle",
+        "name-placeholder": "Nom de la passerelle",
         "description": "Description (250 caractères max.)",
-        "description-placeholder": "Saisir une description",
+        "description-placeholder": "Description",
         "packageType": "Type de plate-forme",
         "identity-provider": "Fournisseur d’identité",
-        "fqdn": "Nom de domaine complet (FQDN)",
+        "fqdn": "Nom de domaine complet",
         "appDomain": "Domaine",
         "app-domain-validation": "Domaine de la ressource incorrect",
         "password": "Mot de passe de la passerelle",
-        "password-placeholder": "Saisir le mot de passe",
+        "password-placeholder": "Mot de passe",
         "confirm-password": "Confirmer le mot de passe",
         "confirm-password-placeholder": "Confirmer le mot de passe",
         "dns": "DNS",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "Serveur1 DNS non valide",
         "dns-server-2-validation": "Serveur2 DNS non valide",
         "static-routes-validation": "Liste séparée par virgules",
-        "static-routes-rules1": "Ajouter les routes au format CIDR",
-        "static-routes-rules2": "en utilisant une liste séparée par virgules",
+        "static-routes-rules1": "Ajoutez des routes au format CIDR à l’aide d’une liste séparée par virgules",
         "static-routes-example": "Exemple :",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "La route statique spécifiée n’est pas valide",
         "certificate": "Certificat",
         "upload-certificate": "Télécharger le certificat",
         "certificate-validation": "Certificat incorrect",
         "certificate-wildcard-message": "Doit être un certificat avec caractères génériques",
+        "certificate-acceptable-formats": "(Taille max. : 10 Ko ; Formats : .pem, .crt, .cer)",
         "privatekey": "Clé privée",
         "upload-privatekey": "Télécharger la clé privée",
         "private-key-validation": "Clé privée non valide",
+        "private-key-acceptable-formats": "(Taille max. : 10 Ko ; Formats : .key)",
         "save-and-generate-image": "Enregistrer et générer le fichier",
         "packageType-placeholder": "Sélectionner",
         "identity-provider-placeholder": "Sélectionner",
@@ -191,11 +278,18 @@
         "header": "Supprimer une passerelle",
         "message": "Supprimer une passerelle",
         "success": "Passerelle supprimée",
-        "error": "Impossible de supprimer la passerelle"
+        "error": "Impossible de supprimer la passerelle",
+        "ack": "Je comprends que je ne peux pas annuler ces modifications",
+        "info": "La passerelle {{gatewayName}} a :",
+        "gateway-instances": " instances de la passerelle",
+        "resources": " ressources",
+        "warn-message-1": "Supprimer la passerelle et toutes les ",
+        "warn-message-2": " ressources ?"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "Déploiement en attente",
+          "description": "(Déploiement en attente)",
           "header-waiting": "Déploiement en attente",
           "content-waiting": "L’image de la passerelle n’a pas encore été initialisée. Veuillez télécharger l’image et l’initialiser",
           "header-download": "Télécharger l’image de la passerelle",
@@ -210,10 +304,15 @@
           "content-generating": "La création de l’image de la passerelle est en cours. Vous serez informé une fois qu’elle aura été créée"
         },
         "awaiting-approval": {
-          "label": "Approuver",
-          "description": "(Prêt pour la connexion)",
+          "label": "En attente d’approbation",
           "gateway-approve": "Requête d’enregistrement de la passerelle approuvée",
-          "gateway-approve-error": "Erreur lors de l’approbation de la requête d’enregistrement."
+          "gateway-approve-error": "Erreur lors de l’approbation de la requête d’enregistrement.",
+          "header-approval": "En attente d’approbation",
+          "content-approval": "Accepter la requête d’enregistrement de la passerelle pour terminer l’intégration de la passerelle",
+          "eap2": {
+            "label": "Approuver",
+            "description": "(Prêt pour la connexion)"
+          }
         },
         "approved": {
           "label": "Approuvé",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "Injoignable depuis :"
           }
+        },
+        "vm-name": "Nom de la VM",
+        "vm-placeholder": "Nom de la VM",
+        "external-ip-placeholder": "IP externe",
+        "internal-ip-placeholder": "IP interne",
+        "external-interface-ip": "Adresse IP de l’interface externe",
+        "internal-interface-ip": "Adresse IP de l’interface interne",
+        "interface-ip": "Adresse IP de l’interface",
+        "warning-box": "Le nombre total d’instances doit être un nombre impair. Vous avez {{instanceCount}}",
+        "form": {
+          "add-another-instance": "Ajouter une autre instance",
+          "deployment-mode": "Mode de déploiement :",
+          "add-success": "Instances mises à jour",
+          "add-error": "Impossible de mettre à jour l’instance",
+          "save-confirm": "Enregistrer la confirmation",
+          "warn-info": "Vous allez passer de 1 à {{instanceNumber}} instances.",
+          "warn-description": "Une fois que vous passez de 1 à 3 instances ou plus pour l’équilibrage de charge, vous ne pouvez pas revenir à 1 pour cette passerelle."
         }
+      },
+      "schedule": {
+        "description": "Planifier une mise à jour pour la passerelle",
+        "header": "Mettre à jour de {{currentVersion}} à",
+        "version": "Version",
+        "warning": "Attention",
+        "warning-info": "La mise à jour à {{selectedVersion}} nécessitera un redémarrage.",
+        "on": "sur",
+        "tooltip-msg": "Si vous avez plusieurs instances, elles sont mises à jour l’une après l’autre.",
+        "clear-schedule": "Effacer la planification",
+        "cancel-schedule": "Annuler la planification",
+        "cancelling-update": "Annulation de la mise à jour",
+        "update-failed": "Mise à jour impossible ",
+        "updating": " Mise à jour en cours",
+        "edit-schedule": " Modifier la planification",
+        "cancel-first": "Aucune modification ne peut être effectuée sans annuler au préalable la planification définie.",
+        "no-change-allowed": "Aucune modification ne peut être effectuée pour le moment. La mise à jour du logiciel va bientôt démarrer.",
+        "error-no-list": "Erreur lors de la récupération des versions disponibles",
+        "add-success": "Mise à jour planifiée réussie",
+        "add-error": "Échec de la mise à jour planifiée"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "Fournisseur",
           "action": "Action",
           "description": "Description",
-          "type": "Type"
+          "type": "Type",
+          "gateways": "Nombre de passerelles"
         }
       },
       "form": {
         "title-add": "Ajouter un fournisseur d’identité",
         "title-edit": "Modifier le fournisseur d’identité",
-        "selectprovider": "Sélectionner un fournisseur",
+        "selectprovider": "Sélectionner",
         "name": "Nom",
-        "name-placeholder": "Saisir le nom du fournisseur d’identité",
-        "description": "Description",
-        "description-placeholder": "Saisir une description",
+        "name-placeholder": "Fournisseur d’identité",
+        "description": "Description (250 caractères max.)",
+        "description-placeholder": "Description",
         "provider": "Fournisseur",
         "tenantid": "ID du locataire",
         "clientid": "ID du client",
@@ -333,29 +470,38 @@
           "resources": "Ressources",
           "lastModified": "Dernière modification"
         },
+        "assign": "Assigner",
         "title": "Zero Trust Network Access - Stratégies",
         "new-policy": "Zero Trust Network Access - Nouvelle stratégie",
+        "edit-policy": "Zero Trust Network Access - Modifier la stratégie",
         "breadcrumb-text": "Stratégies",
         "breadcrumb-sub-text": "Nouvelle stratégie",
+        "edit-breadcrumb-sub-text": "Modifier la stratégie",
         "add": "Ajouter une stratégie",
         "fetch-error": "Erreur lors de la récupération de la liste des stratégies",
         "enforced": "Appliquée",
-        "note": "Remarque : ",
-        "note-info1": " Les stratégies sont assignées aux ressources. Vous pouvez assigner les utilisateurs au ",
-        "note-info2": "niveau",
+        "bypassed": "stratégie ignorés",
+        "note": "Remarque : Les stratégies sont assignées aux ressources. Vous pouvez assigner des utilisateurs au niveau de la <i18n slot=\"policy-resource\">ressource</i18n>.",
         "resource": "ressource",
         "resource-and-access": "Zero Trust - Accès aux ressources",
-        "endpoint-agent": "Télécharger l’agent Sophos Endpoint depuis ",
-        "downloads": "Téléchargements ",
-        "downloads-page": "page.",
-        "learn-more": "Plus d’info",
+        "endpoint-agent": "Téléchargez l’agent Sophos Endpoint sur la page des <i18n slot=\"policy-download\">Téléchargements</i18n>. <i18n slot=\"policy-learn-more\">Plus d’info</i18n>",
         "no-policy-configured": "Vous n’avez pas de stratégies.",
         "no-policy-configured-help": "Cliquez sur le bouton « Ajouter une stratégie » pour ajouter une stratégie et commencer à accorder l’accès à vos ressources."
+      },
+      "delete": {
+        "header":"Supprimer la stratégie",
+        "message-delete": "Supprimer la stratégie",
+        "message-warning": "les ressources doivent être déplacées vers une autre stratégie avant de pouvoir supprimer cette stratégie",
+        "success": "Stratégie supprimée",
+        "error": "Impossible de supprimer la stratégie"
       },
       "add-modal": {
         "resource-access": "Accès aux ressources",
         "tooltip-resource-access-info1": "Les stratégies prennent en charge l’accès aux ressources avec ou sans agent. Un agent peut vérifier l’état de sécurité pour déterminer l’accès.",
-        "tooltip-resource-access-info2": "Téléchargez Sophos Endpoint Agent depuis la page <a href=\"manage/downloads\" target=\"_blank\">Téléchargements</a>. <a href=\"https://docs.sophos.com/central/Customer/help/fr-fr/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Plus d’info </a>",
+        "tooltip-resource-access-info2": "Télécharger l’agent Sophos Endpoint depuis",
+        "tooltip-resource-access-info3": "page.",
+        "tooltip-resource-access-download": "Téléchargements",
+        "tooltip-resource-access-learnmore": "Plus d’info",
         "agent": "Agent",
         "agentless": "Sans agent"
       },
@@ -364,16 +510,16 @@
           "policy-name": "Nom de la stratégie",
           "policy-type": "Type de stratégie",
           "resource-access": "Accès aux ressources",
-          "assigned-resources": "Ressources assignées (0)",
+          "assigned-resources": "Ressources assignées ({{count}})",
           "access-rules": "Règles d’accès",
           "policy-enforced": "Stratégie appliquée",
-          "policy-enforced-label1": "La stratégie est",
-          "policy-enforced-label2": "appliquée",
+          "policy-bypassed": "Stratégie ignorée",
+          "policy-expires": "Stratégie expire le",
+          "policy-enforced-label2": "Stratégie <b>appliquée</b>",
+          "policy-bypassed-label2": "Stratégie <b>contournée</b>",
           "policy-enforced-info": "Lorsqu’une stratégie n’est pas appliquée, les ressources assignées à cette stratégie ne sont pas accessible.",
           "policy-enforced-disable": "Désactiver automatiquement après une certaine période",
-          "access-rules-info": "Les assignations du groupe d’utilisateurs et les exceptions de stratégies sont gérées dans ",
-          "resources-link": "Ressources.",
-          "learn-more": "Plus d’info",
+          "access-rules-info": "Les assignations de groupes d’utilisateurs et les exceptions de stratégie sont gérées dans les <i18n slot=\"policy-resource\">ressources</i18n>. <i18n slot=\"policy-learn-more\">Plus d’info</i18n>",
           "resource-access-agent": "Accès aux ressources : Agent",
           "manage-access": "Utiliser les conditions pour gérer l’accès",
           "allow-access": "Autoriser l’accès",
@@ -383,12 +529,13 @@
           "deny-access": "Refuser l’accès :",
           "deny-access-info": " Si aucune des conditions ci-dessus n’est satisfaite, l’accès sera refusé.",
           "expires-at": "Expire à",
-          "assign-resources-info": "Une ressource appartient uniquement à 1 stratégie. L’assignation d’une ressource déjà assignée à une autre ressource la réassignera à celle-ci. Les utilisateurs sont assignés à la ",
-          "resource-link": "ressource.",
+          "assign-resources-info": "Une ressource appartient uniquement à 1 stratégie. L’assignation d’une ressource déjà assignée à une autre ressource la réassignera à celle-ci. Les utilisateurs sont assignés dans la <i18n slot=\"policy-resource\">ressource</i18n>.",
           "no-resources-configured": "Vous n’avez aucune ressource.",
           "no-resources-configured-help": "Vous n’avez aucune ressource à ajouter à une stratégie. Vous pouvez les ajouter plus tard.",
           "add-success": "Stratégie créée",
-          "add-error": "Impossible de créer la stratégie"
+          "add-error": "Impossible de créer la stratégie",
+          "update-success": "Stratégie mise à jour",
+          "update-error": "Échec de la mise à jour de la stratégie"
         },
         "agentless-policy": {
           "resource-access-agent": "Accès aux ressources : Sans agent"
@@ -801,6 +948,8 @@
           "threats-ips": "Menaces IPS",
           "threats-sandstorm": "Menaces Sandstorm",
           "threats-antivirus": "Menaces antivirus",
+          "authentication": "Authentification",
+          "resource-access": "Accès aux ressources",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "Nombre de SSID",
       "maxConnections": "Nb max. de connexions",
       "firewall_device": "Appareil de la passerelle",
-      "avgConnections": "Moyenne de connexions"
+      "avgConnections": "Moyenne de connexions",
+      "authentication_status": "État",
+      "operating_system_version": "Version OS",
+      "operating_system": "Syst. d’exploitation",
+      "browser": "Navigateur",
+      "browser_version": "Version du navigateur",
+      "authentication-success-count": "Nombre de succès d’authentification",
+      "resource_access": "Accès aux ressources",
+      "authentication_events": "Authentification"
     },
     "template": {
       "messages": {

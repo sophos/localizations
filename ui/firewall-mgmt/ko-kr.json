@@ -6,6 +6,7 @@
     "delete": "삭제",
     "success": "성공!",
     "next": "다음",
+    "add": "추가",
     "previous": "이전",
     "finish": "마침",
     "success-default": "작업이 성공했습니다.",
@@ -106,22 +107,69 @@
           "description": "각 사이트의 사용자가 액세스할 수 있어야 하는 회사 리소스를 선택합니다.",
           "modal": {
             "title": "리소스 추가",
-            "firewall": "방화벽",
-            "shared-resource": "공유된 리소스",
-            "service": "서비스",
+            "firewall": {
+              "title": "방화벽",
+              "placeholder": "하나 선택"
+            },
+            "shared-resource": {
+              "title": "공유된 리소스",
+              "placeholder": "대상 리소스의 IP 주소를 입력하십시오.",
+              "help": {
+                "heading": "아래 형식 중 하나로 주소를 지정할 수 있습니다.",
+                "type-ip": "IP 주소: 예: 10.12.22.34",
+                "type-iplist": "IP 목록: 예: 10.12.22.34,10.12.22.35",
+                "type-iprange": "IP 범위: 예: 10.12.22.34-10.12.22.35",
+                "type-crdi": "CIDR 형식: 예: 10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "IP 주소",
+                "Network": "CIDR",
+                "IPList": "IP 목록",
+                "IPRange": "IP 범위"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "공유 리소스에 대한 잘못된 형식"
+            },
+            "service": {
+              "title": "서비스",
+              "help": {
+                "heading": "여러 TCP/UDP 원본 및 대상 포트를 쉼표로 구분된 목록으로 입력할 수 있습니다. 예: TCP|1:300|5000,UDP|300|4:5000. 아래 유틸리티를 사용하여 이러한 시퀀스를 생성할 수 있습니다.",
+                "port-format": "시작 포트:끝 포트",
+                "source-ports": "원본 포트",
+                "destination-ports": "대상 포트"
+              },
+              "placeholder": {
+                "tcp-udp" : "서비스 매개변수...",
+                "ip": "프로토콜 번호...",
+                "icmp": "ICMP 유형 및 코드..."
+              },
+              "invalid": "서비스에 대한 잘못된 형식"
+            },
             "help": "공유된 네트워크는 이 공유 그룹의 일부인 모든 방화벽에서 사용할 수 있습니다.",
             "auto-rules": "방화벽 규칙 자동 생성",
-            "limit-auth": "인증된 사용자에 대한 액세스 제한",
+            "limit-access": "인증된 사용자에 대한 액세스 제한",
             "sync-sec": "양호한 상태의 엔드포인트를 위한 동기화된 보안"
           },
           "table": {
+            "empty-message": "공유 가능한 리소스가 아직 추가되지 않았습니다.",
+            "service-count": "서비스",
             "column": {
               "firewall-name": "방화벽",
-              "service": "서비스",
+              "service": "리소스",
               "auto-rules": "방화벽 규칙 자동 생성",
               "auth": "인증",
               "green-hb": "녹색 하트비트",
-              "action": "편집"
+              "action": {
+                "edit": "편집",
+                "delete": "삭제"
+              }
             }
           }
         }
@@ -284,7 +332,19 @@
           "suspended": "{{ count }} 일시 중단됨",
           "connection-error": "연결 통계를 로드하는 중에 오류가 발생했습니다.",
           "sync-error": "동기화 통계를 로드하는 중에 오류가 발생했습니다."
-        }
+        },
+        "overlay-stats": {
+            "connected": " 모든 방화벽이 Sophos Central에 연결되고 동기화되었습니다.",
+            "disconnected": "나머지 {{ count }}개의 방화벽은 Security Heartbeat를 전송하고 있습니다.",
+            "out-of-sync": "나머지 {{ count }}개의 방화벽은 동기화되었습니다. 추가 정책 변경 사항을 적용하려면 오류를 해결해야 합니다.",
+            "suspended": "이러한 방화벽에 대한 그룹 정책은 동기화되지 않습니다. 이러한 방화벽을 해당 그룹 외부로 이동했다가 다시 추가하여 그룹의 새 정책을 가져오십시오. "
+         },
+        "header": {
+            "connected": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에 연결되어 있습니다.",
+            "disconnected": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에서 연결 해제되었습니다.",
+            "out-of-sync": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에서 동기화되지 않았습니다.",
+            "suspended": "{{ totalCount }} {{ type }} 중 {{ count }}개의 방화벽이 일시 중지된 상태입니다."
+         }
       }
     },
     "global-settings": {
