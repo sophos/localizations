@@ -7,11 +7,13 @@
       "cancel": "취소",
       "edit": "편집",
       "delete": "삭제",
+      "ok": "확인",
       "download": "다운로드",
       "approve": "지지",
       "search": "검색",
       "continue": "계속",
       "fqdn-validation": "잘못된 FQDN",
+      "fqdn-ip-validation": "잘못된 FQDN/IP",
       "invalid-name": "이름에는 다음만 포함될 수 있습니다. A-Z, a-z , 0-9, -, _, 공백",
       "name-length-validation": "이름은 100자를 초과해서는 안 됨",
       "whitespace-name-validation": "이름이 필요함",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "이름",
-        "name-placeholder": "리소스 이름 입력",
-        "description": "설명",
-        "description-placeholder": "설명 입력",
+        "name-placeholder": "리소스 이름",
+        "description": "설명(최대 250자)",
+        "description-placeholder": "설명",
         "port-validation": "잘못된 포트",
         "application-type": "리소스 유형",
-        "application-type-placeholder": "리소스 유형 선택",
+        "application-type-placeholder": "선택",
+        "access-port-type": "액세스 포트 유형",
         "gateway": "게이트웨이",
-        "gateway-placeholder": "게이트웨이 선택",
+        "gateway-placeholder": "선택",
+        "resource-access": "액세스 방법",
+        "policy": "정책",
+        "no-agent-policy-info": "에이전트를 필요로 하는 리소스를 지원하는 정책이 없습니다. 다음에서 만들 수 있습니다.",
+        "no-agentless-policy-info": "에이전트가 필요 없는 리소스를 지원하는 정책이 없습니다. 다음에서 만들 수 있습니다.",
+        "policies": "정책",
+        "policy-placeholder": "선택",
+        "external-fqdn": "외부 FQDN",
+        "internal-fqdn" : "내부 FQDN/IP 주소",
+        "add-port-link": "다른 항목 추가",
         "application-fqdn": "리소스 FQDN",
-        "application-icon": "리소스 아이콘(최대 크기: 100K)",
+        "application-icon": "표시 아이콘(최대 파일 크기: 100K)",
+        "acceptable-formats": "(W: 256px, H: 256px; 형식: .jpg, .jpeg, .png, .gif)",
         "port": "포트",
         "title-add": "리소스 추가",
         "deploy": "배포",
@@ -38,6 +51,7 @@
         "error-user-groups": "사용자 그룹을 가져오는 중 오류 발생",
         "empty-user-groups": "사용자 그룹을 찾을 수 없음!",
         "available-user-groups": "사용할 수 있는 사용자 그룹",
+        "available-users-groups": "사용할 수 있는 사용자 그룹({{count}})",
         "assigned-user-groups": "할당된 사용자 그룹",
         "loading-error": "리소스 로드 중 오류 발생",
         "add-success": "리소스 생성됨",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "리소스 및 액세스",
         "columns": {
           "name": "이름",
+          "policy": "할당된 정책",
           "gateway": "게이트웨이",
           "port": "포트",
           "ip": "리소스 FQDN",
-          "type": "리소스 유형"
+          "type": "리소스 유형",
+          "internal-fqdn": "내부 FQDN/IP",
+          "external-fqdn": "외부 FQDN"
         },
         "no-application-configured": "리소스를 추가하지 않았습니다.",
         "no-application-configured-help": "리소스를 추가하려면 ‘리소스 추가’ 버튼을 클릭하십시오.",
@@ -107,23 +124,91 @@
         "breadcrumb-text": "게이트웨이",
         "error": "게이트웨이 목록을 가져오는 중 오류 발생"
       },
+      "details": {
+        "title": "Zero Trust Network Access - 게이트웨이 세부 정보",
+        "breadcrumb-text": "게이트웨이 세부 정보",
+        "error": "게이트웨이 목록을 가져오는 중 오류 발생",
+        "fetch-error": "게이트웨이 세부 정보를 가져오는 중 오류 발생",
+        "breadcrumb-sub-text": "게이트웨이",
+        "tabs": {
+          "summary": {
+            "label": "요약",
+            "gateway-summary": {
+              "label": "게이트웨이 요약"
+            },
+            "instance": {
+              "label": "게이트웨이 인스턴스",
+              "columns": {
+                "name": "이름",
+                "status": "상태",
+                "version": "버전",
+                "support": "Sophos 지원"
+              }
+            },
+            "note": "부하 분산을 위해서는 홀수의 인스턴스가 있어야 합니다.",
+            "add": "인스턴스 추가/편집",
+            "header": {
+              "name": "이름: ",
+              "location": "위치: ",
+              "description": "설명: ",
+              "status": "상태: ",
+              "fqdn": "FQDN: ",
+              "type": "유형: ",
+              "idp": "ID 제공자: ",
+              "edit": "편집",
+              "delete": "삭제"
+            }
+          },
+          "certificate": {
+            "label": "인증서",
+            "certificate": "인증서",
+            "upload-certificate": "인증서 업로드",
+            "certificate-validation": "잘못된 인증서",
+            "certificate-wildcard-message-example": "와일드카드 인증서를 사용하십시오. 예: *.test.com",
+            "privatekey": "개인 키",
+            "upload-privatekey": "개인 키 업로드",
+            "private-key-validation": "잘못된 개인 키",
+            "edit-success": "인증서 업데이트됨",
+            "edit-error": "인증서 업데이트 실패"
+          },
+          "resource": {
+            "label": "리소스({{count}})",
+            "list": {
+              "columns": {
+                "name": "이름",
+                "external-fqdn": "외부 FQDN",
+                "internal-fqdn": "내부 FQDN/IP",
+                "type": "리소스 유형",
+                "port": "포트"
+              },
+              "resources-access": "리소스 및 액세스",
+              "no-application-configured": "리소스를 추가하지 않았습니다.",
+              "no-application-configured-help": "<i18n slot=\"resource\">Resources & access</i18n> 페이지에서 게이트웨이에 리소스를 추가하십시오."
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "게이트웨이 추가",
         "title-edit": "게이트웨이 편집",
+        "title-delete": "게이트웨이 삭제",
+        "software-update": "소프트웨어 업데이트",
+        "edit-software-update": "소프트웨어 업데이트 일정 편집",
+        "try-software-update-again": "다시 시도하십시오.",
         "name": "이름",
         "location": "위치",
         "location-length-validation": "위치는 100자를 초과해서는 안 됨",
         "whitespace-location-validation": "위치가 필요함",
-        "name-placeholder": "게이트웨이 이름 입력",
+        "name-placeholder": "게이트웨이 이름",
         "description": "설명(최대 250자)",
-        "description-placeholder": "설명 입력",
+        "description-placeholder": "설명",
         "packageType": "플랫폼 유형",
         "identity-provider": "ID 제공자",
         "fqdn": "FQDN",
         "appDomain": "도메인",
         "app-domain-validation": "잘못된 리소스 도메인",
         "password": "게이트웨이 암호",
-        "password-placeholder": "암호 입력",
+        "password-placeholder": "암호",
         "confirm-password": "암호 확인",
         "confirm-password-placeholder": "암호 확인",
         "dns": "DNS",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "잘못된 DNS 서버1",
         "dns-server-2-validation": "잘못된 DNS 서버2",
         "static-routes-validation": "쉼표로 구분된 목록",
-        "static-routes-rules1": "CIDR 형식의 경로 추가",
-        "static-routes-rules2": "쉼표로 구분된 목록 사용",
+        "static-routes-rules1": "쉼표로 구분된 목록을 사용하여 CIDR 형식의 경로 추가",
         "static-routes-example": "예:",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "지정된 정적 경로가 잘못되었습니다.",
         "certificate": "인증서",
         "upload-certificate": "인증서 업로드",
         "certificate-validation": "잘못된 인증서",
         "certificate-wildcard-message": "와일드카드 인증서여야 함",
+        "certificate-acceptable-formats": "(최대 크기: 10Kb; 형식: .pem, .crt, .cer)",
         "privatekey": "개인 키",
         "upload-privatekey": "개인 키 업로드",
         "private-key-validation": "잘못된 개인 키",
+        "private-key-acceptable-formats": "(최대 크기: 10Kb; 형식: .key)",
         "save-and-generate-image": "파일 저장 및 생성",
         "packageType-placeholder": "선택",
         "identity-provider-placeholder": "선택",
@@ -191,11 +278,18 @@
         "header": "게이트웨이 삭제",
         "message": "게이트웨이 삭제",
         "success": "삭제된 게이트웨이",
-        "error": "게이트웨이 삭제 실패"
+        "error": "게이트웨이 삭제 실패",
+        "ack": "본인은 이 변경 사항을 취소할 수 없음을 이해합니다.",
+        "info": "게이트웨이 {{gatewayName}}에 다음 항목이 있습니다.",
+        "gateway-instances": " 게이트웨이 인스턴스",
+        "resources": " 리소스",
+        "warn-message-1": "게이트웨이와 모든 ",
+        "warn-message-2": " 리소스를 삭제하시겠습니까?"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "배포 대기 중",
+          "description": "(배포 대기 중)",
           "header-waiting": "배포 대기 중",
           "content-waiting": "게이트웨이 이미지가 아직 부팅되지 않았습니다. 이미지를 다운로드하고 부팅하십시오.",
           "header-download": "게이트웨이 이미지 다운로드",
@@ -210,10 +304,15 @@
           "content-generating": "게이트웨이 이미지 생성 중입니다. 생성이 완료되면 알림이 제공됩니다."
         },
         "awaiting-approval": {
-          "label": "지지",
-          "description": "(연결 준비 완료)",
+          "label": "승인 대기 중",
           "gateway-approve": "게이트웨이 등록 요청 승인됨",
-          "gateway-approve-error": "게이트웨이 요청 수락 중 오류 발생."
+          "gateway-approve-error": "게이트웨이 요청 수락 중 오류 발생.",
+          "header-approval": "승인 대기 중",
+          "content-approval": "게이트웨이 등록 요청을 수락하여 게이트웨이 온보딩 완료",
+          "eap2": {
+            "label": "지지",
+            "description": "(연결 준비 완료)"
+          }
         },
         "approved": {
           "label": "승인됨",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "다음 이후 연결 불가:"
           }
+        },
+        "vm-name": "VM 이름",
+        "vm-placeholder": "VM 이름",
+        "external-ip-placeholder": "외부 IP",
+        "internal-ip-placeholder": "내부 IP",
+        "external-interface-ip": "외부 인터페이스 IP",
+        "internal-interface-ip": "내부 인터페이스 IP",
+        "interface-ip": "인터페이스 IP",
+        "warning-box": "총 인스턴스 수는 홀수여야 합니다. 귀하에게는 {{instanceCount}}개 있습니다.",
+        "form": {
+          "add-another-instance": "다른 인스턴스 추가",
+          "deployment-mode": "배포 모드:",
+          "add-success": "인스턴스 업데이트됨",
+          "add-error": "인스턴스 업데이트 실패",
+          "save-confirm": "저장 확인",
+          "warn-info": "1개의 인스턴스에서 {{instanceNumber}}개의 인스턴스로 이동합니다.",
+          "warn-description": "부하 분산을 위해 1개에서 3개 이상의 인스턴스로 이동하면, 이 게이트웨이에 대해 1개로 되돌릴 수 없습니다."
         }
+      },
+      "schedule": {
+        "description": "게이트웨이 업데이트 예약",
+        "header": "{{currentVersion}}에서 다음으로 업데이트:",
+        "version": "버전",
+        "warning": "경고",
+        "warning-info": "{{selectedVersion}}(으)로 업데이트하면 다시 시작됩니다.",
+        "on": "다음에서:",
+        "tooltip-msg": "둘 이상의 인스턴스가 있으면 인스턴스가 차례로 업데이트됩니다.",
+        "clear-schedule": "일정 지우기",
+        "cancel-schedule": "일정 취소",
+        "cancelling-update": "업데이트 취소",
+        "update-failed": "업데이트 실패 ",
+        "updating": " 업데이트 중",
+        "edit-schedule": " 일정 편집",
+        "cancel-first": "먼저 설정된 일정을 취소하지 않으면 내용을 변경할 수 없습니다.",
+        "no-change-allowed": "지금은 변경할 수 있는 내용이 없습니다. 소프트웨어 업데이트가 곧 시작됩니다.",
+        "error-no-list": "사용 가능한 버전을 가져오는 중 오류 발생",
+        "add-success": "일정 업데이트 성공",
+        "add-error": "일정 업데이트 실패"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "제공자",
           "action": "작업",
           "description": "설명",
-          "type": "유형"
+          "type": "유형",
+          "gateways": "#게이트웨이"
         }
       },
       "form": {
         "title-add": "ID 제공자 추가",
         "title-edit": "ID 제공자 편집",
-        "selectprovider": "제공자 선택",
+        "selectprovider": "선택",
         "name": "이름",
-        "name-placeholder": "ID 제공자의 이름 입력",
-        "description": "설명",
-        "description-placeholder": "설명 입력",
+        "name-placeholder": "ID 제공자",
+        "description": "설명(최대 250자)",
+        "description-placeholder": "설명",
         "provider": "제공자",
         "tenantid": "테넌트 ID",
         "clientid": "클라이언트 ID",
@@ -333,29 +470,38 @@
           "resources": "리소스",
           "lastModified": "최근 수정된 날짜"
         },
+        "assign": "할당",
         "title": "Zero Trust Network Access - 정책",
         "new-policy": "Zero Trust Network Access - 새 정책",
+        "edit-policy": "Zero Trust Network Access - 정책 편집",
         "breadcrumb-text": "정책",
         "breadcrumb-sub-text": "새 정책",
+        "edit-breadcrumb-sub-text": "정책 편집",
         "add": "정책 추가",
         "fetch-error": "정책 목록을 가져오는 중 오류 발생",
         "enforced": "적용됨",
-        "note": "참고: ",
-        "note-info1": " 리소스에 정책이 할당됩니다. 사용자를 ",
-        "note-info2": "리소스 ",
-        "resource": "수준에서 할당할 수 있습니다.",
+        "bypassed": "바이패스됨",
+        "note": "참고: 리소스에 정책이 할당됩니다. <i18n slot=\"policy-resource\">resource</i18n> 수준에서 사용자를 할당할 수 있습니다.",
+        "resource": "리소스",
         "resource-and-access": "Zero Trust - 리소스 액세스",
-        "endpoint-agent": "Sophos Endpoint 에이전트를 ",
-        "downloads": "다운로드 ",
-        "downloads-page": "페이지에서 다운로드하십시오.",
-        "learn-more": "자세히 알아보기",
+        "endpoint-agent": "<i18n slot=\"policy-download\">Downloads</i18n> 페이지에서 Sophos Endpoint 에이전트를 다운로드하십시오. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
         "no-policy-configured": "정책이 없습니다.",
         "no-policy-configured-help": "정책 추가 버튼을 클릭하여 리소스에 대한 액세스 권한을 부여하기 위한 정책을 추가하십시오."
+      },
+      "delete": {
+        "header":"정책 삭제",
+        "message-delete": "정책 삭제",
+        "message-warning": "이 정책을 삭제하기 전에 리소스를 다른 정책으로 옮겨야 합니다.",
+        "success": "정책이 삭제됨",
+        "error": "정책 삭제 실패"
       },
       "add-modal": {
         "resource-access": "리소스 액세스",
         "tooltip-resource-access-info1": "정책은 에이전트/에이전트리스 리소스 액세스를 지원할 수 있습니다. 에이전트는 상태를 확인하여 액세스를 결정할 수 있습니다.",
-        "tooltip-resource-access-info2": "<a href=\"manage/downloads\" target=\"_blank\"> 다운로드 </a>페이지에서 Sophos Endpoint Agent를 다운로드하십시오. <a href=\"https://docs.sophos.com/central/Customer/help/ko-kr/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> 자세히 알아보기 </a>",
+        "tooltip-resource-access-info2": "Sophos Endpoint 에이전트를",
+        "tooltip-resource-access-info3": "페이지에서 다운로드하십시오.",
+        "tooltip-resource-access-download": "다운로드",
+        "tooltip-resource-access-learnmore": "자세히 알아보기",
         "agent": "에이전트",
         "agentless": "에이전트리스"
       },
@@ -364,16 +510,16 @@
           "policy-name": "정책 이름",
           "policy-type": "정책 유형",
           "resource-access": "리소스 액세스",
-          "assigned-resources": "할당된 리소스(0)",
+          "assigned-resources": "할당된 리소스({{count}})",
           "access-rules": "액세스 규칙",
           "policy-enforced": "정책이 적용됨",
-          "policy-enforced-label1": "정책이",
-          "policy-enforced-label2": "적용됨",
+          "policy-bypassed": "정책이 바이패스됨",
+          "policy-expires": "정책이 만료됨",
+          "policy-enforced-label2": "정책이 <b>적용됨</b>",
+          "policy-bypassed-label2": "정책이 <b>바이패스됨</b>",
           "policy-enforced-info": "정책이 적용되지 않으면 이 정책에 할당된 리소스에 액세스할 수 없습니다.",
           "policy-enforced-disable": "특정 시간 이후 자동으로 비활성화",
-          "access-rules-info": "사용자 그룹 할당 및 정책 예외는 ",
-          "resources-link": "리소스에서 관리됩니다.",
-          "learn-more": "자세히 알아보기",
+          "access-rules-info": "사용자 그룹 할당 및 정책 예외는 <i18n slot=\"policy-resource\">resources</i18n>에서 관리됩니다. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
           "resource-access-agent": "리소스 액세스: 에이전트",
           "manage-access": "조건을 사용하여 액세스 관리",
           "allow-access": "액세스 허용",
@@ -383,12 +529,13 @@
           "deny-access": "액세스 거부:",
           "deny-access-info": " 위의 사항이 충족되지 않으면 액세스가 거부됩니다.",
           "expires-at": "다음 시간에 만료됨",
-          "assign-resources-info": "리소스는 하나의 정책에만 속할 수 있습니다. 이미 할당된 리소스를 다른 데 할당하면 여기에 다시 할당됩니다. 사용자는 ",
-          "resource-link": "리소스에서 할당됩니다.",
+          "assign-resources-info": "리소스는 하나의 정책에만 속할 수 있습니다. 이미 할당된 리소스를 다른 데 할당하면 여기에 다시 할당됩니다. 사용자는 <i18n slot=\"policy-resource\">resource</i18n>에 할당됩니다.",
           "no-resources-configured": "리소스가 없습니다.",
           "no-resources-configured-help": "아직 정책에 추가할 수 있는 리소스가 없습니다. 나중에 추가할 수 있습니다.",
           "add-success": "정책 생성됨",
-          "add-error": "정책 생성 실패"
+          "add-error": "정책 생성 실패",
+          "update-success": "정책이 업데이트됨",
+          "update-error": "정책 업데이트가 실패했음"
         },
         "agentless-policy": {
           "resource-access-agent": "리소스 액세스: 에이전트리스"
@@ -801,6 +948,8 @@
           "threats-ips": "IPS 위협",
           "threats-sandstorm": "Sandstorm 위협",
           "threats-antivirus": "안티바이러스 위협",
+          "authentication": "인증",
+          "resource-access": "리소스 액세스",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "SSID 수",
       "maxConnections": "최대 연결",
       "firewall_device": "게이트웨이 장치",
-      "avgConnections": "평균 연결 수"
+      "avgConnections": "평균 연결 수",
+      "authentication_status": "상태",
+      "operating_system_version": "OS 버전",
+      "operating_system": "OS",
+      "browser": "브라우저",
+      "browser_version": "브라우저 버전",
+      "authentication-success-count": "인증 성공 횟수",
+      "resource_access": "리소스 액세스",
+      "authentication_events": "인증"
     },
     "template": {
       "messages": {

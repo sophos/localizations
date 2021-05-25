@@ -7,11 +7,13 @@
       "cancel": "取消",
       "edit": "編輯",
       "delete": "刪除",
+      "ok": "確定",
       "download": "下載",
       "approve": "贊成",
       "search": "搜尋",
       "continue": "繼續",
       "fqdn-validation": "無效的 FQDN",
+      "fqdn-ip-validation": "無效 FQDN/IP",
       "invalid-name": "名稱僅可含有：A-Z、a-z、0-9、-、_、空格",
       "name-length-validation": "名稱不應超過 100 個字元",
       "whitespace-name-validation": "需要名稱",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "名稱",
-        "name-placeholder": "輸入資源名稱",
-        "description": "描述",
-        "description-placeholder": "輸入說明",
+        "name-placeholder": "資源名稱",
+        "description": "說明（最多 250 個字元）",
+        "description-placeholder": "描述",
         "port-validation": "無效連接埠",
         "application-type": "資源類型",
-        "application-type-placeholder": "選擇資源類型",
+        "application-type-placeholder": "選擇",
+        "access-port-type": "存取埠類型",
         "gateway": "閘道",
-        "gateway-placeholder": "選取閘道",
+        "gateway-placeholder": "選擇",
+        "resource-access": "存取方法",
+        "policy": "策略",
+        "no-agent-policy-info": "您沒有原則支援需要代理程式的資源。您可以建立一個",
+        "no-agentless-policy-info": "您沒有原則支援無代理程式的資源。您可以建立一個",
+        "policies": "策略",
+        "policy-placeholder": "選擇",
+        "external-fqdn": "外部 FQDN",
+        "internal-fqdn" : "內部 FQDN/IP 位址",
+        "add-port-link": "新增另一項",
         "application-fqdn": "資源 FQDN",
-        "application-icon": "資源圖示（大小上限：100K)",
+        "application-icon": "顯示圖示（檔案大小上限：100K)",
+        "acceptable-formats": "（寬：256px，高：256px；格式：.jpg、.jpeg、.png、.gif）",
         "port": "連接埠",
         "title-add": "新增資源",
         "deploy": "部署",
@@ -38,6 +51,7 @@
         "error-user-groups": "擷取使用者群組時出錯",
         "empty-user-groups": "未找到使用者群組！",
         "available-user-groups": "可用使用者群組",
+        "available-users-groups": "可用的使用者群組 ({{count}})",
         "assigned-user-groups": "指派使用者群組",
         "loading-error": "載入資源時出錯",
         "add-success": "已建立資源",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "資源與存取",
         "columns": {
           "name": "名稱",
+          "policy": "指派策略",
           "gateway": "閘道",
           "port": "連接埠",
           "ip": "資源 FQDN",
-          "type": "資源類型"
+          "type": "資源類型",
+          "internal-fqdn": "內部 FQDN/IP",
+          "external-fqdn": "外部 FQDN"
         },
         "no-application-configured": "您尚未新增任何資源。",
         "no-application-configured-help": "按一下「新增資源」按鈕以新增資源。",
@@ -107,23 +124,91 @@
         "breadcrumb-text": "閘道",
         "error": "擷取閘道清單時出現錯誤"
       },
+      "details": {
+        "title": "Zero Trust Network Access - 閘道詳細資料",
+        "breadcrumb-text": "閘道詳細資訊",
+        "error": "擷取閘道清單時出現錯誤",
+        "fetch-error": "擷取閘道詳細資料時出現錯誤",
+        "breadcrumb-sub-text": "閘道",
+        "tabs": {
+          "summary": {
+            "label": "摘要",
+            "gateway-summary": {
+              "label": "閘道摘要"
+            },
+            "instance": {
+              "label": "閘道執行個體",
+              "columns": {
+                "name": "名稱",
+                "status": "狀態",
+                "version": "版本",
+                "support": "Sophos 支援"
+              }
+            },
+            "note": "為實現負載平衡，您必須具有奇數個執行個體。",
+            "add": "新增/編輯執行個體",
+            "header": {
+              "name": "名稱： ",
+              "location": "位置： ",
+              "description": "描述： ",
+              "status": "狀態： ",
+              "fqdn": "FQDN： ",
+              "type": "類型： ",
+              "idp": "識別提供者： ",
+              "edit": "編輯",
+              "delete": "刪除"
+            }
+          },
+          "certificate": {
+            "label": "憑證",
+            "certificate": "憑證",
+            "upload-certificate": "上傳憑證",
+            "certificate-validation": "無效憑證",
+            "certificate-wildcard-message-example": "使用萬用資源憑證。例如： *.test.com",
+            "privatekey": "私密金鑰",
+            "upload-privatekey": "上傳私密金鑰",
+            "private-key-validation": "無效的私密金鑰",
+            "edit-success": "憑證已更新",
+            "edit-error": "憑證更新失敗"
+          },
+          "resource": {
+            "label": "資源 ({{count}})",
+            "list": {
+              "columns": {
+                "name": "名稱",
+                "external-fqdn": "外部 FQDN",
+                "internal-fqdn": "內部 FQDN/IP",
+                "type": "資源類型",
+                "port": "連接埠"
+              },
+              "resources-access": "資源與存取",
+              "no-application-configured": "您尚未新增任何資源。",
+              "no-application-configured-help": "從 <i18n slot=\"resource\">Resources & access</i18n> 頁面向閘道新增資源。"
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "新增閘道",
         "title-edit": "編輯閘道",
+        "title-delete": "刪除閘道",
+        "software-update": "軟體更新",
+        "edit-software-update": "編輯軟體更新排程",
+        "try-software-update-again": "請重試",
         "name": "名稱",
         "location": "位置",
         "location-length-validation": "位置說明不應超過 100 個字元",
         "whitespace-location-validation": "需要位置",
-        "name-placeholder": "輸入閘道名稱",
+        "name-placeholder": "閘道名稱",
         "description": "說明（最多 250 個字元）",
-        "description-placeholder": "輸入說明",
+        "description-placeholder": "描述",
         "packageType": "平台類型",
         "identity-provider": "識別提供者",
         "fqdn": "FQDN",
         "appDomain": "網域",
         "app-domain-validation": "無效的資源網域",
         "password": "閘道密碼",
-        "password-placeholder": "输入密码",
+        "password-placeholder": "密碼",
         "confirm-password": "確認密碼",
         "confirm-password-placeholder": "確認密碼",
         "dns": "DNS",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "無效的 DNS 伺服器 1",
         "dns-server-2-validation": "無效的 DNS 伺服器 2",
         "static-routes-validation": "逗號分隔清單",
-        "static-routes-rules1": "新增 CIDR 格式的路由",
-        "static-routes-rules2": "使用逗號分隔清單",
+        "static-routes-rules1": "使用逗號分隔清單新增 CIDR 格式的路由",
         "static-routes-example": "範例：",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "指定的靜態路由無效",
         "certificate": "憑證",
         "upload-certificate": "上傳憑證",
         "certificate-validation": "無效憑證",
         "certificate-wildcard-message": "必須是萬用字元憑證",
+        "certificate-acceptable-formats": "（最大大小：10Kb；格式：.pem、.crt、.cer）",
         "privatekey": "私密金鑰",
         "upload-privatekey": "上傳私密金鑰",
         "private-key-validation": "無效的私密金鑰",
+        "private-key-acceptable-formats": "（最大大小：10Kb；格式：.key）",
         "save-and-generate-image": "儲存並生成檔案",
         "packageType-placeholder": "選取",
         "identity-provider-placeholder": "選取",
@@ -191,11 +278,18 @@
         "header": "刪除閘道",
         "message": "刪除閘道",
         "success": "已刪除的閘道",
-        "error": "閘道刪除失敗"
+        "error": "閘道刪除失敗",
+        "ack": "我瞭解我無法復原這些變更",
+        "info": "閘道 {{gatewayName}} 具有：",
+        "gateway-instances": " 閘道執行個體",
+        "resources": " 資源",
+        "warn-message-1": "是否刪除閘道和所有 ",
+        "warn-message-2": " 資源？"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "正在等待部署",
+          "description": "（正在等待部署）",
           "header-waiting": "正在等待部署",
           "content-waiting": "閘道影像尚未啟動，下載影像並啟動。",
           "header-download": "下載閘道影像",
@@ -210,10 +304,15 @@
           "content-generating": "正在產生閘道影像，產生之後您將會收到通知。"
         },
         "awaiting-approval": {
-          "label": "贊成",
-          "description": "（可連線）",
+          "label": "等待核准",
           "gateway-approve": "閘道註冊請求已核准",
-          "gateway-approve-error": "接受閘道請求時出現錯誤。"
+          "gateway-approve-error": "接受閘道請求時出現錯誤。",
+          "header-approval": "等待核准",
+          "content-approval": "接受閘道註冊請求，以使閘道可用",
+          "eap2": {
+            "label": "贊成",
+            "description": "（可連線）"
+          }
         },
         "approved": {
           "label": "已核准",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "無法存取原因："
           }
+        },
+        "vm-name": "VM 名稱",
+        "vm-placeholder": "VM 名稱",
+        "external-ip-placeholder": "外部 IP",
+        "internal-ip-placeholder": "內部 IP",
+        "external-interface-ip": "外部介面 IP 位址",
+        "internal-interface-ip": "內部介面 IP",
+        "interface-ip": "介面 IP",
+        "warning-box": "執行個體的總數必須為奇數。您擁有 {{instanceCount}}",
+        "form": {
+          "add-another-instance": "新增其他執行個體",
+          "deployment-mode": "部署模式：",
+          "add-success": "執行個體已更新",
+          "add-error": "執行個體更新失敗",
+          "save-confirm": "儲存確認",
+          "warn-info": "您正在從 1 個執行個體轉變為 {{instanceNumber}} 個執行個體。",
+          "warn-description": "從 1 個執行個體轉變為 3 個或更多個執行個體以實現負載平衡之後，對於這個閘道您將不能再減少到 1 個執行個體。"
         }
+      },
+      "schedule": {
+        "description": "為閘道排程更新",
+        "header": "從 {{currentVersion}} 更新為",
+        "version": "版本",
+        "warning": "警告",
+        "warning-info": "更新為 {{selectedVersion}} 將導致重新啟動。",
+        "on": "在",
+        "tooltip-msg": "如果您有多個執行個體，則這些執行個體將逐個更新。",
+        "clear-schedule": "清除排程",
+        "cancel-schedule": "取消排程",
+        "cancelling-update": "正在取消更新",
+        "update-failed": "更新失敗 ",
+        "updating": " 更新",
+        "edit-schedule": " 編輯排程",
+        "cancel-first": "在進行任何變更之前，必須先取消設定的排程。",
+        "no-change-allowed": "此時無法進行任何變更。軟體更新即將啟動。",
+        "error-no-list": "擷取可用版本時出現錯誤",
+        "add-success": "排程更新成功",
+        "add-error": "排程更新失敗"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "提供者",
           "action": "動作",
           "description": "說明",
-          "type": "類型"
+          "type": "類型",
+          "gateways": "#閘道"
         }
       },
       "form": {
         "title-add": "新增識別提供者",
         "title-edit": "編輯識別提供者",
-        "selectprovider": "選取提供者",
+        "selectprovider": "選擇",
         "name": "名稱",
-        "name-placeholder": "輸入識別提供者的名稱",
-        "description": "描述",
-        "description-placeholder": "輸入說明",
+        "name-placeholder": "識別提供者",
+        "description": "說明（最多 250 個字元）",
+        "description-placeholder": "描述",
         "provider": "提供者",
         "tenantid": "租用戶 ID",
         "clientid": "用戶端 ID",
@@ -333,29 +470,38 @@
           "resources": "資源",
           "lastModified": "上次修改"
         },
+        "assign": "指派",
         "title": "Zero Trust Network Access - 策略",
         "new-policy": "Zero Trust Network Access - 新策略",
+        "edit-policy": "Zero Trust Network Access - 編輯原則",
         "breadcrumb-text": "策略",
         "breadcrumb-sub-text": "新策略",
+        "edit-breadcrumb-sub-text": "編輯原則",
         "add": "新增策略",
         "fetch-error": "擷取原則清單時出現錯誤",
         "enforced": "強制執行",
-        "note": "注意： ",
-        "note-info1": " 原則已指派給資源。您可以指派使用者 ",
-        "note-info2": "層級",
+        "bypassed": "略過",
+        "note": "注意：原則已指派給資源。您可以在 <i18n slot=\"policy-resource\">resource</i18n> 層級指派使用者。",
         "resource": "资源",
         "resource-and-access": "Zero Trust - 資源存取",
-        "endpoint-agent": "從以下位置下載 Sophos Endpoint 代理程式： ",
-        "downloads": "下載 ",
-        "downloads-page": "頁面。",
-        "learn-more": "瞭解更多",
+        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。 <i18n slot=\"policy-learn-more\">Learn more</i18n>",
         "no-policy-configured": "您尚無任何原則。",
         "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
+      },
+      "delete": {
+        "header":"刪除政策",
+        "message-delete": "刪除政策",
+        "message-warning": "資源需要移至另一個原則，然後您才能刪除此原則。",
+        "success": "原則已刪除",
+        "error": "原則刪除失敗"
       },
       "add-modal": {
         "resource-access": "資源存取",
         "tooltip-resource-access-info1": "策略可支援以代理或無代理狀態存取資源。代理可檢查安全狀態，進而確認存取權限。",
-        "tooltip-resource-access-info2": "從<a href=\"manage/downloads\" target=\"_blank\">下載</a>頁面下載 Sophos Endpoint Agent。<a href=\"https://docs.sophos.com/central/Customer/help/zh-tw/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\">瞭解更多</a>",
+        "tooltip-resource-access-info2": "從以下位置下載 Sophos Endpoint 代理程式：",
+        "tooltip-resource-access-info3": "頁面。",
+        "tooltip-resource-access-download": "下載",
+        "tooltip-resource-access-learnmore": "瞭解更多",
         "agent": "代理",
         "agentless": "無代理"
       },
@@ -364,16 +510,16 @@
           "policy-name": "政策名稱",
           "policy-type": "原則類型",
           "resource-access": "資源存取",
-          "assigned-resources": "已指派的資源 (0)",
+          "assigned-resources": "已指派的資源 ({{count}})",
           "access-rules": "存取規則",
           "policy-enforced": "原則已強制執行",
-          "policy-enforced-label1": "原則已",
-          "policy-enforced-label2": "強制執行",
+          "policy-bypassed": "原則已略過",
+          "policy-expires": "原則過期",
+          "policy-enforced-label2": "原則已<b>強制執行</b>",
+          "policy-bypassed-label2": "原則已<b>略過</b>",
           "policy-enforced-info": "原則未強制執行時，指派到此原則的資源將無法存取。",
           "policy-enforced-disable": "一段時間後自動停用",
-          "access-rules-info": "使用者群組指派和原則異常在 ",
-          "resources-link": "資源中進行管理。",
-          "learn-more": "瞭解更多",
+          "access-rules-info": "在 <i18n slot=\"policy-resource\">resources</i18n> 中管理使用者群組指派和原則例外狀況。<i18n slot=\"policy-learn-more\">Learn more</i18n>",
           "resource-access-agent": "資源存取：代理程式",
           "manage-access": "使用條件管理存取",
           "allow-access": "允許存取",
@@ -383,12 +529,13 @@
           "deny-access": "拒絕存取：",
           "deny-access-info": " 如果以上內容都不符合，存取將遭拒絕",
           "expires-at": "過期時間：",
-          "assign-resources-info": "一個資源只能屬於 1 個原則。指派已指派到某個原則的資源會將此資源重新指派到新原則。使用者在 ",
-          "resource-link": "資源中進行指派。",
+          "assign-resources-info": "一個資源只能屬於 1 個原則。指派已指派到某個原則的資源會將此資源重新指派到新原則。在 <i18n slot=\"policy-resource\">resource</i18n> 中指派使用者。",
           "no-resources-configured": "您沒有任何資源。",
           "no-resources-configured-help": "您尚無可以新增到原則的任何資源。您可以稍後新增資源。",
           "add-success": "原則已建立",
-          "add-error": "原則建立失敗"
+          "add-error": "原則建立失敗",
+          "update-success": "原則已更新",
+          "update-error": "原則更新失敗"
         },
         "agentless-policy": {
           "resource-access-agent": "資源存取：無代理"
@@ -801,6 +948,8 @@
           "threats-ips": "IPS 威脅",
           "threats-sandstorm": "Sandstorm 威脅",
           "threats-antivirus": "防病毒威脅",
+          "authentication": "驗證",
+          "resource-access": "資源存取",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "SSID 計數",
       "maxConnections": "連線數上限",
       "firewall_device": "閘道裝置",
-      "avgConnections": "平均連接數"
+      "avgConnections": "平均連接數",
+      "authentication_status": "狀態",
+      "operating_system_version": "OS 版本",
+      "operating_system": "作業系統",
+      "browser": "瀏覽器",
+      "browser_version": "瀏覽器版本",
+      "authentication-success-count": "驗證成功數",
+      "resource_access": "資源存取",
+      "authentication_events": "驗證"
     },
     "template": {
       "messages": {

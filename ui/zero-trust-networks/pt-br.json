@@ -7,11 +7,13 @@
       "cancel": "Cancelar",
       "edit": "Editar",
       "delete": "Deletar",
-      "download": "Download",
+      "ok": "Ok",
+      "download": "Fazer o Download",
       "approve": "Aprovar",
       "search": "Pesquisar",
       "continue": "Continuar",
       "fqdn-validation": "FQDN inválido",
+      "fqdn-ip-validation": "FQDN/IP inválido",
       "invalid-name": "O nome pode conter apenas: A-Z, a-z , 0-9, -, _, espaço",
       "name-length-validation": "O nome não pode ter mais do que 100 caracteres",
       "whitespace-name-validation": "É necessário um nome",
@@ -21,16 +23,27 @@
     "application": {
       "form": {
         "name": "Nome",
-        "name-placeholder": "Inserir nome do recurso",
-        "description": "Descrição",
-        "description-placeholder": "Inserir Descrição",
+        "name-placeholder": "Nome do recurso",
+        "description": "Descrição (máx. de 250 caracteres)",
+        "description-placeholder": "Descrição",
         "port-validation": "Porta inválida",
         "application-type": "Tipo de recurso",
-        "application-type-placeholder": "Selecionar tipo de recurso",
+        "application-type-placeholder": "Selecionar",
+        "access-port-type": "Tipo de porta de acesso",
         "gateway": "Gateway",
-        "gateway-placeholder": "Selecionar Gateway",
+        "gateway-placeholder": "Selecionar",
+        "resource-access": "Método de acesso",
+        "policy": "Política",
+        "no-agent-policy-info": "Você não tem uma política que suporta recursos que exigem um agente. Você pode criar uma em",
+        "no-agentless-policy-info": "Você não tem uma política que suporta recursos que são sem agente. Você pode criar uma em",
+        "policies": "Políticas",
+        "policy-placeholder": "Selecionar",
+        "external-fqdn": "FQDN externo",
+        "internal-fqdn" : "Endereço FQDN/IP interno",
+        "add-port-link": "Adicionar outro",
         "application-fqdn": "FQDN do recurso",
-        "application-icon": "Ícone do recurso (tamanho máximo: 100K)",
+        "application-icon": "Ícone de exibição (tamanho máx. do arquivo: 100K)",
+        "acceptable-formats": "(L: 256px, A: 256px; Formatos: .jpg, .jpeg, .png, .gif)",
         "port": "Porta",
         "title-add": "Adicionar recurso",
         "deploy": "Implantar",
@@ -38,6 +51,7 @@
         "error-user-groups": "Erro ao buscar grupos de usuários",
         "empty-user-groups": "Nenhum grupo de usuário encontrado.",
         "available-user-groups": "Grupos de usuários disponíveis",
+        "available-users-groups": "Grupos de usuários disponíveis ({{count}})",
         "assigned-user-groups": "Grupos de usuários atribuídos",
         "loading-error": "Erro ao carregar recurso",
         "add-success": "Recurso criado",
@@ -52,10 +66,13 @@
         "breadcrumb-text": "Recursos e acesso",
         "columns": {
           "name": "Nome",
+          "policy": "Política atribuída",
           "gateway": "Gateway",
           "port": "Porta",
           "ip": "FQDN do recurso",
-          "type": "Tipo de recurso"
+          "type": "Tipo de recurso",
+          "internal-fqdn": "FQDN/IP interno",
+          "external-fqdn": "FQDN externo"
         },
         "no-application-configured": "Você ainda não adicionou nenhum recurso.",
         "no-application-configured-help": "Clique no botão 'Adicionar recurso' para adicionar um recurso.",
@@ -107,24 +124,92 @@
         "breadcrumb-text": "Gateways",
         "error": "Erro ao buscar a lista de gateways"
       },
+      "details": {
+        "title": "Zero Trust Network Access - Detalhes de Gateway",
+        "breadcrumb-text": "Detalhes de Gateway",
+        "error": "Erro ao buscar a lista de gateways",
+        "fetch-error": "Erro ao buscar detalhes do gateway",
+        "breadcrumb-sub-text": "Gateways",
+        "tabs": {
+          "summary": {
+            "label": "Resumo",
+            "gateway-summary": {
+              "label": "Resumo do gateway"
+            },
+            "instance": {
+              "label": "Instâncias de Gateway",
+              "columns": {
+                "name": "Nome",
+                "status": "Status",
+                "version": "Versão",
+                "support": "Suporte da Sophos"
+              }
+            },
+            "note": "Para balanceamento de carga, você deve ter um número ímpar de instâncias.",
+            "add": "Adicionar/Editar instâncias",
+            "header": {
+              "name": "Nome: ",
+              "location": "Local: ",
+              "description": "Descrição: ",
+              "status": "Status: ",
+              "fqdn": "FQDN: ",
+              "type": "Tipo: ",
+              "idp": "Provedor de identidade: ",
+              "edit": "Editar",
+              "delete": "Deletar"
+            }
+          },
+          "certificate": {
+            "label": "Certificado",
+            "certificate": "Certificado",
+            "upload-certificate": "Fazer upload de certificado",
+            "certificate-validation": "Certificado inválido",
+            "certificate-wildcard-message-example": "Use um certificado curinga. Por exemplo. *.test.com",
+            "privatekey": "Chave Privada",
+            "upload-privatekey": "Carregar chave privada",
+            "private-key-validation": "Chave privada inválida",
+            "edit-success": "Certificado atualizado",
+            "edit-error": "Falha na atualização do certificado"
+          },
+          "resource": {
+            "label": "Recurso ({{count}})",
+            "list": {
+              "columns": {
+                "name": "Nome",
+                "external-fqdn": "FQDN externo",
+                "internal-fqdn": "FQDN/IP interno",
+                "type": "Tipo de recurso",
+                "port": "Porta"
+              },
+              "resources-access": "Recursos e acesso",
+              "no-application-configured": "Você ainda não adicionou nenhum recurso.",
+              "no-application-configured-help": "Adicione recursos a um gateway a partir da página <i18n slot=\"resource\">Recursos e acesso</i18n>."
+            }
+          }
+        }
+      },
       "form": {
         "title-add": "Adicionar gateway",
         "title-edit": "Editar gateway",
+        "title-delete": "Deletar gateway",
+        "software-update": "Atualização de software",
+        "edit-software-update": "Editar cronograma de atualização de software",
+        "try-software-update-again": "Tente outra vez",
         "name": "Nome",
         "location": "Localização",
         "location-length-validation": "A localização não pode ter mais do que 100 caracteres",
         "whitespace-location-validation": "É necessária uma localização",
-        "name-placeholder": "Inserir nome do gateway",
+        "name-placeholder": "Nome de Gateway",
         "description": "Descrição (máx. de 250 caracteres)",
-        "description-placeholder": "Inserir a Descrição",
+        "description-placeholder": "Descrição",
         "packageType": "Tipo de plataforma",
         "identity-provider": "Provedor de identidade",
         "fqdn": "FQDN",
         "appDomain": "Domínio",
         "app-domain-validation": "Domínio do recurso inválido",
         "password": "Senha do Gateway",
-        "password-placeholder": "Inserir senha",
-        "confirm-password": "Confirmar a Senha",
+        "password-placeholder": "Senha",
+        "confirm-password": "Confirmar a senha",
         "confirm-password-placeholder": "Confirmar a Senha",
         "dns": "DNS",
         "dnsFromDhcp": "DNS de DHCP",
@@ -157,17 +242,19 @@
         "dns-server-1-validation": "DNS server1 inválido",
         "dns-server-2-validation": "DNS server2 inválido",
         "static-routes-validation": "Lista separada por vírgula",
-        "static-routes-rules1": "Adicionar rotas formatadas de CIDR",
-        "static-routes-rules2": "usando uma lista separada por vírgula",
+        "static-routes-rules1": "Adicionar rotas formatadas de CIDR usando uma lista separada por vírgula",
         "static-routes-example": "Exemplo:",
-        "static-routes-example-rule": "1.1.1.1/11.2.2.2.2/22",
+        "static-routes-example-rule": "192.168.10.0/24,172.16.16.100/32",
+        "static-route-error": "A rota estática especificada é inválida",
         "certificate": "Certificado",
         "upload-certificate": "Fazer upload de certificado",
         "certificate-validation": "Certificado inválido",
         "certificate-wildcard-message": "Deve ser um certificado curinga",
+        "certificate-acceptable-formats": "(Tamanho máx.: 10Kb; Formatos: .pem, .crt, .cer)",
         "privatekey": "Chave Privada",
         "upload-privatekey": "Carregar chave privada",
         "private-key-validation": "Chave privada inválida",
+        "private-key-acceptable-formats": "(Tamanho máx.: 10Kb; Formatos: .key)",
         "save-and-generate-image": "Salvar e gerar arquivo",
         "packageType-placeholder": "Selecionar",
         "identity-provider-placeholder": "Selecionar",
@@ -191,11 +278,18 @@
         "header": "Deletar Gateway",
         "message": "Deletar Gateway",
         "success": "Gateway deletado",
-        "error": "Falha na deleção do gateway"
+        "error": "Falha na deleção do gateway",
+        "ack": "Eu compreendo que não posso desfazer estas alterações",
+        "info": "O gateway {{gatewayName}} tem:",
+        "gateway-instances": " instâncias de Gateway",
+        "resources": " recursos",
+        "warn-message-1": "Deletar o gateway e todos os ",
+        "warn-message-2": " recursos?"
       },
       "status": {
         "waiting-for-deployment": {
           "label": "Aguardando implantação",
+          "description": "(Aguardando implantação)",
           "header-waiting": "Aguardando implantação",
           "content-waiting": "A imagem do gateway ainda não foi inicializada; baixe a imagem e inicialize a partir dela",
           "header-download": "Baixar imagem do gateway",
@@ -210,10 +304,15 @@
           "content-generating": "A geração da imagem do gateway está em andamento; você será notificado assim que gerada"
         },
         "awaiting-approval": {
-          "label": "Aprovar",
-          "description": "(Pronto para conexão)",
+          "label": "Aguardando aprovação",
           "gateway-approve": "Solicitação de registro de gateway aprovada",
-          "gateway-approve-error": "Erro na aceitação da solicitação do gateway."
+          "gateway-approve-error": "Erro na aceitação da solicitação do gateway.",
+          "header-approval": "Aguardando aprovação",
+          "content-approval": "Aceitar solicitação de registro de gateway para concluir a integração do gateway",
+          "eap2": {
+            "label": "Aprovar",
+            "description": "(Pronto para conexão)"
+          }
         },
         "approved": {
           "label": "Aprovado",
@@ -270,7 +369,44 @@
           "disconnected": {
             "label": "Inacessível desde:"
           }
+        },
+        "vm-name": "Nome da VM",
+        "vm-placeholder": "Nome da VM",
+        "external-ip-placeholder": "IP externo",
+        "internal-ip-placeholder": "IP interno",
+        "external-interface-ip": "IP da interface externa",
+        "internal-interface-ip": "IP da interface interna",
+        "interface-ip": "IP da Interface",
+        "warning-box": "O número total de instâncias deve ser ímpar. Você tem {{instanceCount}}",
+        "form": {
+          "add-another-instance": "Adicionar outra instância",
+          "deployment-mode": "Modo de implantação:",
+          "add-success": "Instâncias atualizadas",
+          "add-error": "Falha na atualização da instância",
+          "save-confirm": "Salvar confirmação",
+          "warn-info": "Você está indo de 1 instância para {{instanceNumber}} instâncias.",
+          "warn-description": "Assim que você for de 1 para 3 ou mais instâncias no balanceamento de carga, não poderá voltar este gateway para 1."
         }
+      },
+      "schedule": {
+        "description": "Agendar uma atualização para gateway",
+        "header": "Atualizar de {{currentVersion}} para",
+        "version": "Versão",
+        "warning": "Aviso",
+        "warning-info": "Atualizar para {{selectedVersion}} causará uma reinicialização.",
+        "on": "em",
+        "tooltip-msg": "Se você tiver mais de uma instância, as instâncias são atualizadas uma após a outra.",
+        "clear-schedule": "Limpar agendamento",
+        "cancel-schedule": "Cancelar agendamento",
+        "cancelling-update": "Cancelando atualização",
+        "update-failed": "Falha na atualização ",
+        "updating": " Atualizando",
+        "edit-schedule": " Editar Agenda",
+        "cancel-first": "Não é possível fazer alterações sem cancelar o cronograma definido primeiro.",
+        "no-change-allowed": "Não é possível fazer alterações no momento. A atualização de software começará em breve.",
+        "error-no-list": "Erro ao buscar versões disponíveis",
+        "add-success": "Atualização do cronograma bem-sucedida",
+        "add-error": "Atualização do cronograma malsucedida"
       }
     },
     "idp": {
@@ -287,17 +423,18 @@
           "provider": "Provedor",
           "action": "Ação",
           "description": "Descrição",
-          "type": "Tipo"
+          "type": "Tipo",
+          "gateways": "#Gateways"
         }
       },
       "form": {
         "title-add": "Adicionar provedor de identidade",
         "title-edit": "Editar provedor de identidade",
-        "selectprovider": "Selecionar provedor",
+        "selectprovider": "Selecionar",
         "name": "Nome",
-        "name-placeholder": "Inserir o Nome do provedor de identidade",
-        "description": "Descrição",
-        "description-placeholder": "Inserir Descrição",
+        "name-placeholder": "Provedor de identidade",
+        "description": "Descrição (máx. de 250 caracteres)",
+        "description-placeholder": "Descrição",
         "provider": "Provedor",
         "tenantid": "ID do locatário",
         "clientid": "ID do cliente",
@@ -333,29 +470,38 @@
           "resources": "Recursos",
           "lastModified": "Última modificação"
         },
+        "assign": "Atribuir",
         "title": "Zero Trust Network Access - Políticas",
         "new-policy": "Zero Trust Network Access - Nova política",
+        "edit-policy": "Zero Trust Network Access - Editar política",
         "breadcrumb-text": "Políticas",
         "breadcrumb-sub-text": "Nova política",
+        "edit-breadcrumb-sub-text": "Editar política",
         "add": "Adicionar política",
         "fetch-error": "Erro ao buscar a lista de políticas",
         "enforced": "Forçada",
-        "note": "Observação: ",
-        "note-info1": " As políticas são atribuídas a recursos. Você pode atribuir usuários no ",
-        "note-info2": "nível de",
+        "bypassed": "Ignorada",
+        "note": "Observação: As políticas são atribuídas a recursos. Você pode atribuir usuários no nível de <i18n slot=\"policy-resource\">recurso</i18n>.",
         "resource": "recurso",
         "resource-and-access": "Zero Trust - Acesso a recursos",
-        "endpoint-agent": "Baixe o agente Sophos Endpoint na ",
-        "downloads": "Downloads ",
-        "downloads-page": "página.",
-        "learn-more": "Saiba mais",
+        "endpoint-agent": "Baixe o agente Sophos Endpoint a partir da página <i18n slot=\"policy-download\">Downloads</i18n>. <i18n slot=\"policy-learn-more\">Saiba mais</i18n>",
         "no-policy-configured": "Você não tem nenhuma política.",
         "no-policy-configured-help": "Clique no botão Adicionar Política para adicionar uma política para começar a dar acesso a seus recursos."
+      },
+      "delete": {
+        "header":"Deletar política",
+        "message-delete": "Deletar política",
+        "message-warning": "recurso(s) precisam ser movidos para outra política para poder deletar esta política",
+        "success": "Política deletada",
+        "error": "Falha na deleção da política"
       },
       "add-modal": {
         "resource-access": "Acesso a recurso",
         "tooltip-resource-access-info1": "As políticas dão suporte a acesso a recurso com agente e sem agente. Um agente pode verificar o status de integridade para determinar o acesso.",
-        "tooltip-resource-access-info2": "Baixe o Sophos Endpoint Agent na página <a href=\"manage/downloads\" target=\"_blank\"> Downloads </a>. <a href=\"https://docs.sophos.com/central/Customer/help/pt-br/index.html?contextId=ctx/130fe3cf-162b-4803-8c6c-47adb8ec518e\" target=\"_blank\"> Saiba mais </a>",
+        "tooltip-resource-access-info2": "Baixe o agente Sophos Endpoint na",
+        "tooltip-resource-access-info3": "página.",
+        "tooltip-resource-access-download": "Downloads",
+        "tooltip-resource-access-learnmore": "Saiba mais",
         "agent": "Agente",
         "agentless": "Sem agente"
       },
@@ -364,16 +510,16 @@
           "policy-name": "Nome da política",
           "policy-type": "Tipo de política",
           "resource-access": "Acesso a recurso",
-          "assigned-resources": "Recursos atribuídos (0)",
+          "assigned-resources": "Recursos atribuídos ({{count}})",
           "access-rules": "Regras de acesso",
           "policy-enforced": "Política forçada",
-          "policy-enforced-label1": "A política é",
-          "policy-enforced-label2": "forçada",
+          "policy-bypassed": "Política ignorada",
+          "policy-expires": "Política expira",
+          "policy-enforced-label2": "A política é <b>forçada</b>",
+          "policy-bypassed-label2": "A política é <b>ignorada</b>",
           "policy-enforced-info": "Quando uma política não é forçada, os recursos atribuídos a essa política não ficam acessíveis.",
           "policy-enforced-disable": "Desabilitar automaticamente depois de um determinado tempo",
-          "access-rules-info": "Atribuições de grupos de usuários e exceções de políticas são gerenciadas em ",
-          "resources-link": "Recursos.",
-          "learn-more": "Saiba mais",
+          "access-rules-info": "Atribuições de grupos de usuários e exceções de políticas são gerenciadas nos <i18n slot=\"policy-resource\">recursos</i18n>. <i18n slot=\"policy-learn-more\">Saiba mais</i18n>",
           "resource-access-agent": "Acesso a recurso: Agente",
           "manage-access": "Usar condições para gerenciar o acesso",
           "allow-access": "Permitir acesso",
@@ -383,12 +529,13 @@
           "deny-access": "Negar acesso:",
           "deny-access-info": " Se nenhuma das acima forem atendidas, o acesso será negado",
           "expires-at": "Expira em",
-          "assign-resources-info": "Um recurso só pode pertencer a 1 política. Atribuir um recurso já atribuído a outra política o reatribuirá a essa política. Os usuários são atribuídos no ",
-          "resource-link": "recurso.",
+          "assign-resources-info": "Um recurso só pode pertencer a 1 política. Atribuir um recurso já atribuído a outra política o reatribuirá a essa política. Os usuários são atribuídos no <i18n slot=\"policy-resource\">recurso</i18n>.",
           "no-resources-configured": "Você não tem nenhum recurso.",
           "no-resources-configured-help": "Você ainda não tem recursos para adicionar a uma política. Você pode adicioná-los mais tarde.",
           "add-success": "Política criada",
-          "add-error": "Falha na criação da política"
+          "add-error": "Falha na criação da política",
+          "update-success": "Política atualizada",
+          "update-error": "Falha na atualização da política"
         },
         "agentless-policy": {
           "resource-access-agent": "Acesso a recurso: Sem agente"
@@ -801,6 +948,8 @@
           "threats-ips": "Ameaças a IPS",
           "threats-sandstorm": "Ameaças a Sandstorm",
           "threats-antivirus": "Ameaças a antivírus",
+          "authentication": "Autenticação",
+          "resource-access": "Acesso a recurso",
           "blank": ""
         }
       },
@@ -1141,7 +1290,15 @@
       "ssid_count": "Contagem de SSID",
       "maxConnections": "Máx. de conexões",
       "firewall_device": "Dispositivo de gateway",
-      "avgConnections": "Média de conexões"
+      "avgConnections": "Média de conexões",
+      "authentication_status": "Status",
+      "operating_system_version": "Versão de SO",
+      "operating_system": "SO",
+      "browser": "Navegador",
+      "browser_version": "Versão do navegador",
+      "authentication-success-count": "Contagem de autenticação de sucesso",
+      "resource_access": "Acesso a recurso",
+      "authentication_events": "Autenticação"
     },
     "template": {
       "messages": {

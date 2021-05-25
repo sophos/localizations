@@ -5,25 +5,31 @@
       "button": {
         "register": "Registrar",
         "cancel": "Cancelar",
+        "yes": "Sim",
+        "no": "Não",
         "save": "Salvar",
         "bugs": "Erros",
-        "success": "Sucesso!",
-        "warn": "Alertar",
         "apply": "Aplicar"
       },
       "status": {
-        "registering": "Registrando",
+        "registering": "Aguardando conexão",
         "connected": "Conectado",
         "registered": "Registrado",
-        "unregistered": "Tempo limite expirado",
+        "unregistered": "Limite de tempo de registro expirou",
         "disconnected": "Desconectado",
         "suspended": "Suspenso"
       },
-      "error": "Erro!",
-      "success": "Sucesso!",
+      "form": {
+        "name": "Nome",
+        "description": "Descrição"
+      },
+      "error": "Erro",
+      "success": "Bem-sucedido",
+      "warn": "Aviso",
       "used": "Usado",
       "waitingForData": "Aguardando dados...",
-      "problemLoadingData": "Problema no carregamento de dados"
+      "problemLoadingData": "Problema no carregamento de dados",
+      "areYouSure": "Tem certeza de que deseja continuar?"
     },
     "dashboard": {
       "menu-title": "Painel",
@@ -43,8 +49,14 @@
         "breadcrumb-text": "Switches",
         "title": "Nuvem - Switches",
         "toggleColumnsTitle": "Alternar colunas",
+        "removeDialogTitle": "Remover switch {{switchSerial}}",
+        "retryDialogTitle": "Tentar registro novamente",
         "txtbox": {
-          "search-placeholder": "Pesquisar switch ou modelo"
+          "search-placeholder": "Pesquisar switch"
+        },
+        "action-menu": {
+          "retry": "Tentar registro novamente",
+          "removeFromCentral": "Remover do Sophos Central"
         },
         "button": {
           "auto-refresh": "Autoatualizar",
@@ -60,11 +72,11 @@
           "connections": "Conexões",
           "vlans": "VLANs",
           "untagged-vlans": "VLANs sem tags",
-          "ip-address": "Endereço de IP",
+          "ip-address": "Nome de host / Endereço IP",
           "tags": "Tags",
           "model": "Modelo",
           "serial-number": "Número de série",
-          "template-overriden": "Modelo substituído?"
+          "template-overridden": "Modelo substituído?"
         },
         "upgrade": {
           "update-available": "Há novas atualizações de firmware disponíveis.",
@@ -89,6 +101,28 @@
             "edit": "Editar",
             "selected": "Selecionado(s)"
           }
+        },
+        "add-template": {
+          "dialog-title": "Adicionar um modelo",
+          "name-max-length": "O nome deve ter um máximo de 30 caracteres.",
+          "description": "Descrição",
+          "input-name-required-message": "É necessário um nome de modelo",
+          "template-description": "A descrição deve ter um máximo de 128 caracteres.",
+          "available-switches": "Switches disponíveis",
+          "assigned-switches": "Switches atribuídos",
+          "sync-switches-checkbox-text": "Sincronizar os switches com a configuração de modelo inicial"
+        },
+        "message": {
+          "remove-success": "O switch {{switchSerial}} foi removido do Sophos Central.",
+          "remove-failed": "Não foi possível remover o switch do Sophos Central.",
+          "retry-success": "O registro do switch {{switchSerial}} foi disparado novamente.",
+          "retry-failed": "Não foi possível disparar registro.",
+          "add-template-success": "O modelo foi adicionado"
+        },
+        "groupInfoText": {
+          "what": "O que é um modelo?",
+          "information": "Um modelo de switch é um modelo de configuração de switch virtual que pode ser aplicado a um ou mais switches. É possível mover um switch para dentro de um modelo ou para fora dele, conforme necessário. Contanto que o switch esteja sob um modelo, as configurações feitas no nível do modelo serão sincronizadas automaticamente com os switches.",
+          "note": "Observe que a substituição da configuração no nível do switch terá precedência durante a avaliação de configurações conflitantes de um switch sob o modelo."
         }
       }
     },
@@ -119,10 +153,11 @@
         }
       },
       "message": {
-        "already_reported": "Os switches com números de série {{ switches }} já estão registrados no Sophos Central.",
+        "already-reported": "Os switches com números de série {{ switches }} já estão registrados no Sophos Central.",
         "registration-error": "Não foi possível registrar os switches.",
-        "SERIAL_NUMBERS_LIST_IS_EMPTY": "Não há nenhum número de série válido.",
-        "switches_registered": "Os switches foram registrados."
+        "switches-registered": "Os switches estão sendo registrados: conecte seus switches à rede.",
+        "switch-serial-max-length": "O número de série não pode conter mais do que 15 caracteres.",
+        "empty-switch-list-error": "Não há nenhum número de série válido."
       }
     }
   }

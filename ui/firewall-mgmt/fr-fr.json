@@ -6,6 +6,7 @@
     "delete": "Supprimer",
     "success": "Succès !",
     "next": "Suivant",
+    "add": "Ajouter",
     "previous": "Précédent",
     "finish": "Terminer",
     "success-default": "Opération réussie.",
@@ -106,22 +107,69 @@
           "description": "Sélectionner les ressources de l’entreprise accessibles aux utilisateurs sur chaque site",
           "modal": {
             "title": "Ajouter des ressources",
-            "firewall": "Pare-feu",
-            "shared-resource": "Ressource partagée",
-            "service": "Service",
+            "firewall": {
+              "title": "Pare-feu",
+              "placeholder": "Sélectionner"
+            },
+            "shared-resource": {
+              "title": "Ressource partagée",
+              "placeholder": "Saisissez l’adresse IP de la ressource cible",
+              "help": {
+                "heading": "Vous pouvez indiquer l’adresse sous l’un des formats suivants :",
+                "type-ip": "Adresse IP : Par ex. 10.12.22.34",
+                "type-iplist": "Liste d’adresses IP : Par ex. 10.12.22.34,10.12.22.35",
+                "type-iprange": "Plage d’adresses IP : Par ex. 10.12.22.34-10.12.22.35",
+                "type-crdi": "Format CIDR : Par ex. 10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "Adresse IP",
+                "Network": "CIDR",
+                "IPList": "Liste d’adresses IP",
+                "IPRange": "Plage d’adresses IP"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "Format non valide pour la ressource partagée"
+            },
+            "service": {
+              "title": "Service",
+              "help": {
+                "heading": "Vous pouvez saisir plusieurs ports TCP/UDP source et de destination sous forme de liste séparée par des virgules. Par ex. TCP|1:300|5000,UDP|300|4:5000. Vous pouvez utiliser l’utilitaire ci-dessous pour générer une telle séquence.",
+                "port-format": "Port de début:Port de fin",
+                "source-ports": "Port(s) source",
+                "destination-ports": "Port(s) de destination"
+              },
+              "placeholder": {
+                "tcp-udp" : "Paramètres de service...",
+                "ip": "Numéros de protocole...",
+                "icmp": "Type et codes ICMP..."
+              },
+              "invalid": "Format non valide pour les services"
+            },
             "help": "Les réseaux partagés seront disponible à tous les pare-feu qui font partie de ce groupe de partage.",
             "auto-rules": "Créer automatiquement des règles de pare-feu",
-            "limit-auth": "Limiter l’accès aux utilisateurs authentifiés",
+            "limit-access": "Limiter l’accès aux utilisateurs authentifiés",
             "sync-sec": "Sécurité synchronisé pour les terminaux en bon état de fonctionnement"
           },
           "table": {
+            "empty-message": "Aucune ressource à partager n’a encore été ajoutée.",
+            "service-count": "Services",
             "column": {
               "firewall-name": "Pare-feu",
-              "service": "Service",
+              "service": "Ressource",
               "auto-rules": "Créer automatiquement des règles de pare-feu",
               "auth": "Authentification",
               "green-hb": "Signal Heartbeat Vert",
-              "action": "Éditer"
+              "action": {
+                "edit": "Éditer",
+                "delete": "Supprimer"
+              }
             }
           }
         }
@@ -284,7 +332,19 @@
           "suspended": "{{ count }} suspendus",
           "connection-error": "Erreur lors du chargement des statistiques de connexion.",
           "sync-error": "Erreur lors du chargement des statistiques de synchronisation."
-        }
+        },
+        "overlay-stats": {
+            "connected": " Tous les pare-feu sont connectés et synchronisés avec Sophos Central.",
+            "disconnected": "Les {{ count }} pare-feu restants envoient des signaux Security Heartbeat.",
+            "out-of-sync": "Les {{ count }} pare-feu restants sont synchronisés. Le problème doit être résolu pour appliquer d’autres modifications de la stratégie.",
+            "suspended": "Les stratégies de groupe de ces pare-feu ne seront pas synchronisées. Veuillez déplacer ces pare-feu hors de leurs groupes et les ajouter de nouveau pour récupérer les nouvelles stratégies du groupe. "
+         },
+        "header": {
+            "connected": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont connectés à Sophos Central.",
+            "disconnected": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont déconnectés de Sophos Central.",
+            "out-of-sync": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} ne sont pas synchronisés avec Sophos Central.",
+            "suspended": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont à l’état suspendu."
+         }
       }
     },
     "global-settings": {

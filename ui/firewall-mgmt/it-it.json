@@ -6,6 +6,7 @@
     "delete": "Elimina",
     "success": "Operazione completata.",
     "next": "Avanti",
+    "add": "Aggiungi",
     "previous": "Precedente",
     "finish": "Fine",
     "success-default": "L'operazione è stata completata.",
@@ -106,22 +107,69 @@
           "description": "Seleziona le risorse aziendali da rendere accessibili agli utenti in ciascun sito",
           "modal": {
             "title": "Aggiungi risorse",
-            "firewall": "Firewall",
-            "shared-resource": "Risorsa condivisa",
-            "service": "Servizio",
+            "firewall": {
+              "title": "Firewall",
+              "placeholder": "Seleziona uno"
+            },
+            "shared-resource": {
+              "title": "Risorsa condivisa",
+              "placeholder": "Immetti l'indirizzo IP della risorsa di destinazione",
+              "help": {
+                "heading": "Puoi specificare l'indirizzo in uno dei seguenti formati:",
+                "type-ip": "Indirizzo IP: Es. 10.12.22.34",
+                "type-iplist": "Elenco di IP: Es. 10.12.22.34,10.12.22.35",
+                "type-iprange": "Intervallo di IP: Es. 10.12.22.34-10.12.22.35",
+                "type-crdi": "Formato CIDR: Es. 10.12.22.34/2"
+              },
+              "_dynamic_": {
+                "host": {
+                "IP": "Indirizzo IP",
+                "Network": "CIDR",
+                "IPList": "Elenco di IP",
+                "IPRange": "Intervallo di IP"
+                },
+                "service": {
+                  "TCPorUDP": "TCP/UDP",
+                  "IP": "IP",
+                  "ICMP": "ICMP",
+                  "ICMPv6": "ICMPv6"
+                }
+              },
+              "invalid": "Formato non valido per la risorsa condivisa"
+            },
+            "service": {
+              "title": "Servizio",
+              "help": {
+                "heading": "Puoi immettere porte TCP/UDP di origine e di destinazione multiple come elenco con valori separati da virgole. Es. TCP|1:300|5000,UDP|300|4:5000. Puoi utilizzare l'utilità qui di seguito per generare questo tipo di sequenza.",
+                "port-format": "Porta iniziale:Porta finale",
+                "source-ports": "Porta/e di origine",
+                "destination-ports": "Porta/e di destinazione"
+              },
+              "placeholder": {
+                "tcp-udp" : "Parametri servizio...",
+                "ip": "Numeri protocollo...",
+                "icmp": "Tipo e codice ICMP..."
+              },
+              "invalid": "Formato non valido per i servizi"
+            },
             "help": "Le reti condivise saranno disponibili per tutti i firewall che appartengono a questo gruppo di condivisione.",
             "auto-rules": "Crea automaticamente regole firewall",
-            "limit-auth": "Limita l'accesso agli utenti autenticati",
+            "limit-access": "Limita l'accesso agli utenti autenticati",
             "sync-sec": "Synchronized Security per endpoint con stato di integrità buono"
           },
           "table": {
+            "empty-message": "Non è ancora stata aggiunta alcuna risorsa condivisibile.",
+            "service-count": "Servizi",
             "column": {
               "firewall-name": "Firewall",
-              "service": "Servizio",
+              "service": "Risorsa",
               "auto-rules": "Crea automaticamente regole firewall",
               "auth": "Autenticazione",
               "green-hb": "Heartbeat verde",
-              "action": "Modifica"
+              "action": {
+                "edit": "Modifica",
+                "delete": "Elimina"
+              }
             }
           }
         }
@@ -284,7 +332,19 @@
           "suspended": "{{ count }} sospeso/i",
           "connection-error": "Errore durante il caricamento delle statistiche di connessione.",
           "sync-error": "Errore durante il caricamento delle statistiche di sincronizzazione."
-        }
+        },
+        "overlay-stats": {
+            "connected": " Tutti i firewall sono connessi e sincronizzati con Sophos Central.",
+            "disconnected": "Il/i rimanente/i {{ count }} firewall invia/inviano Security Heartbeat.",
+            "out-of-sync": "Il/i rimanente/i {{ count }} firewall è/sono sincronizzato/i. Occorre risolvere l'operazione non riuscita per applicare ulteriori modifiche ai criteri.",
+            "suspended": "I criteri di gruppo di questi firewall non verranno sincronizzati. Rimuovi questi firewall dai loro gruppi e aggiungili nuovamente per ottenere nuovi criteri dal gruppo. "
+         },
+        "header": {
+            "connected": "{{ count }} firewall di {{ totalCount }} {{ type }} sono connessi a Sophos Central.",
+            "disconnected": "{{ count }} firewall di {{ totalCount }} {{ type }} sono disconnessi da Sophos Central.",
+            "out-of-sync": "{{ count }} firewall di {{ totalCount }} {{ type }} non sono sincronizzati con Sophos Central.",
+            "suspended": "{{ count }} firewall di {{ totalCount }} {{ type }} sono in stato sospeso."
+         }
       }
     },
     "global-settings": {
