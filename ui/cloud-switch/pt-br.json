@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "Visão Geral",
+      "alerts": "Alertas",
+      "connections": "Conexões",
+      "poe": "PoE",
+      "uplink": "Uplink",
+      "free": "grátis",
+      "inuse": "Em uso",
+      "total": "Total",
+      "details": "Detalhes",
+      "template": "Modelo",
+      "firmware": "Firmware",
+      "minutes-ago": "minutos atrás",
+      "hours-ago": "horas atrás",
+      "days-ago": "dias atrás",
+      "months-ago": "meses atrás",
       "button": {
         "register": "Registrar",
         "cancel": "Cancelar",
-        "yes": "Sim",
-        "no": "Não",
         "save": "Salvar",
         "bugs": "Erros",
-        "apply": "Aplicar"
+        "apply": "Aplicar",
+        "confirm": "Confirmar"
       },
       "status": {
         "registering": "Aguardando conexão",
@@ -17,7 +30,8 @@
         "registered": "Registrado",
         "unregistered": "Limite de tempo de registro expirou",
         "disconnected": "Desconectado",
-        "suspended": "Suspenso"
+        "suspended": "Suspenso",
+        "disabled": "Desabilitado"
       },
       "form": {
         "name": "Nome",
@@ -26,6 +40,7 @@
       "error": "Erro",
       "success": "Bem-sucedido",
       "warn": "Aviso",
+      "info": "Info",
       "used": "Usado",
       "waitingForData": "Aguardando dados...",
       "problemLoadingData": "Problema no carregamento de dados",
@@ -48,19 +63,23 @@
         "page-title": "Switches",
         "breadcrumb-text": "Switches",
         "title": "Nuvem - Switches",
-        "toggleColumnsTitle": "Alternar colunas",
-        "removeDialogTitle": "Remover switch {{switchSerial}}",
-        "retryDialogTitle": "Tentar registro novamente",
+        "toggle-columns-title": "Alternar colunas",
+        "remove-dialog-title": "Deletar switch",
+        "remove-dialog-message": "Deletar switch <strong>{{switchSerial}}</strong>.",
+        "retry-dialog-title": "Tentar registro novamente",
+        "delete-note": "Nota: Se você deletar este switch, ele será removido do Sophos Central.",
         "txtbox": {
           "search-placeholder": "Pesquisar switch"
         },
         "action-menu": {
           "retry": "Tentar registro novamente",
-          "removeFromCentral": "Remover do Sophos Central"
+          "remove-from-central": "Remover do Sophos Central"
         },
         "button": {
           "auto-refresh": "Autoatualizar",
-          "add-template": "Adicionar modelo"
+          "add-template": "Adicionar modelo",
+          "switch-delete-confirm": "Deletar switch",
+          "template-delete-confirm": "Deletar modelo"
         },
         "table-headers": {
           "name": "Nome",
@@ -112,17 +131,53 @@
           "assigned-switches": "Switches atribuídos",
           "sync-switches-checkbox-text": "Sincronizar os switches com a configuração de modelo inicial"
         },
+        "delete-template": {
+          "dialog-title": "Deletar modelo",
+          "delete-template-confirm-text": "Deletar modelo <strong>{{templateName}}</strong>."
+        },
+        "edit-template" : {
+          "dialog-title": "Editar Modelo"
+        },
         "message": {
           "remove-success": "O switch {{switchSerial}} foi removido do Sophos Central.",
           "remove-failed": "Não foi possível remover o switch do Sophos Central.",
           "retry-success": "O registro do switch {{switchSerial}} foi disparado novamente.",
           "retry-failed": "Não foi possível disparar registro.",
-          "add-template-success": "O modelo foi adicionado"
+          "add-template-success": "O modelo foi adicionado",
+          "add-template-error": "O modelo não foi adicionado",
+          "delete-template-success": "O modelo foi deletado",
+          "delete-template-error": "O modelo não pode ser deletado",
+          "update-template-success": "O modelo foi atualizado",
+          "update-template-error": "O modelo não pode ser atualizado"
         },
         "groupInfoText": {
           "what": "O que é um modelo?",
-          "information": "Um modelo de switch é um modelo de configuração de switch virtual que pode ser aplicado a um ou mais switches. É possível mover um switch para dentro de um modelo ou para fora dele, conforme necessário. Contanto que o switch esteja sob um modelo, as configurações feitas no nível do modelo serão sincronizadas automaticamente com os switches.",
-          "note": "Observe que a substituição da configuração no nível do switch terá precedência durante a avaliação de configurações conflitantes de um switch sob o modelo."
+          "information": "Um modelo de switch é uma configuração virtual que pode ser aplicada a um ou mais switches. É possível mover um switch para dentro de um modelo ou para fora dele, conforme necessário. Contanto que o switch esteja sob um modelo, as configurações feitas no nível do modelo serão sincronizadas automaticamente com os switches.",
+          "note": "Se houver configurações conflitantes entre o nível do switch e o nível do modelo, as configurações no nível do switch terão precedência."
+        }
+      },
+      "manage": {
+        "page-title": "Switches - Gerenciamento de switch",
+        "breadcrumb-text": "Gerenciar switch",
+        "summary-legend-title": "Resumo",
+        "system-detail-tab-title": "Detalhes do sistema",
+        "port-settings-tab-title": "Configurações de porta",
+        "network-settings-tab-title": "Configurações de rede",
+        "task-queue-tab-title": "Fila de tarefas",
+        "template-dd-default-title": "Selecionar um modelo",
+        "gbps": "{{unit}} Gbps",
+        "mbps": "{{unit}} Mbps",
+        "button": {
+          "reboot": "Reinicializar",
+          "open-local-mgmt-console": "Abrir painel de gerenciamento local",
+          "remove": "Remover do Sophos Central"
+        },
+        "tab-fields": {
+          "serial-no": "Nº de série",
+          "model": "Modelo",
+          "powered-on": "Ligado",
+          "switch-firmware": "Firmware do switch",
+          "central-agent": "Agente do Central"
         }
       }
     },
@@ -155,8 +210,10 @@
       "message": {
         "already-reported": "Os switches com números de série {{ switches }} já estão registrados no Sophos Central.",
         "registration-error": "Não foi possível registrar os switches.",
-        "switches-registered": "Os switches estão sendo registrados: conecte seus switches à rede.",
-        "switch-serial-max-length": "O número de série não pode conter mais do que 15 caracteres.",
+        "switches-registered": "Os switches estão sendo registrados no Sophos Central.",
+        "switches-multiple-registration-with-exception": "Os números de série {{ switches }} são inválidos; estamos registrando os seus outros switches no Sophos Central.",
+        "switches-single-serial-registration-with-exception": "O número de série {{ switches }} é inválido",
+        "invalid-serial": "Um ou mais números de série são inválidos.",
         "empty-switch-list-error": "Não há nenhum número de série válido."
       }
     }

@@ -3,6 +3,7 @@
     "name": "Firewall Management",
     "cancel": "Annuler",
     "save": "Enregistrer",
+    "confirm": "Confirmer",
     "delete": "Supprimer",
     "success": "Succès !",
     "next": "Suivant",
@@ -55,9 +56,77 @@
       "name": "Gestion de pare-feu - Groupes de connexion SD WAN",
       "breadcrumb-text": "Groupes de connexion SD WAN",
       "create": "Créer un groupe de connexion",
+      "delete": {
+        "confirm": "Confirmation de la suppression",
+        "content": "Le groupe de connexion « {{ name }} » va être marqué pour suppression et les paramètres des pare-feu assignés à ce groupe vont être rétablis. Remarque : tant que les paramètres de tous les pare-feu de ce groupe n’ont pas été rétablis, ils ne peuvent pas faire partie d’un autre groupe.",
+        "success": "Groupe de connexions supprimé.",
+        "error": "Erreur lors de la suppression du groupe.",
+        "marked": "Ce groupe a été marqué pour suppression. L’opération sera terminée une fois que tous les pare-feu auront appliqué les paramètres rétablis. Vérifiez la progression de cette tâche dans la file d’attente."
+      },
+      "status": {
+        "good": "Bon",
+        "bad": {
+          "one": "Panne de liaison",
+          "more": "{{ bad }} Pannes de liaison"
+        },
+        "lost-connection": {
+          "one": "Panne de liaison",
+          "more": "Panne de liaison avec {{ bad }} pare-feu"
+        },
+        "resource-sharing": {
+          "one": "{{ total }} pare-feu avec partage de ressources",
+          "more": "{{ total }} pare-feu avec partage de ressources"
+        },
+        "remote-firewalls": {
+          "one": "{{ total }} pare-feu distant",
+          "more": "{{ total }} pare-feu distants"
+        },
+        "local-network": {
+          "one": "{{ total }} réseau local",
+          "more": "{{ total }} réseaux locaux"
+        },
+        "nat-ed": "{{ total }} NAT",
+        "wan-ip": "Adresses IP WAN",
+        "sharing": "Partage",
+        "responder": "Répondant",
+        "initiator": "Initiateur",
+        "firewall-rules": {
+          "one": "{{ total }} règle de pare-feu",
+          "more":  "{{ total }} règles de pare-feu"
+        },
+        "policy-route": {
+          "one": "{{ total }} stratégie de routage",
+          "more": "{{ total }} stratégies de routage"
+        },
+        "nat-rules": {
+          "one" : "{{ total }} règle NAT",
+          "more": "{{ total }} règles NAT"
+        },
+        "hosts": {
+          "one" : "{{ total }} hôte",
+          "more": "{{ total }} hôtes"
+        },
+        "services": {
+          "one": "{{ total }} service",
+          "more": "{{ total }} services"
+        }
+      },
       "add": {
         "name": "Gestion de pare-feu - Nouveau groupe de connexion SD WAN",
         "breadcrumb-text": "Ajouter un groupe de connexion SD WAN",
+        "error" : {
+          "title": "Erreur !",
+          "string": "Erreur",
+          "status": "État",
+          "firewall": "Pare-feu"
+        },
+        "states": {
+          "cannot-save": "Erreur inconnue lors de l’enregistrement du groupe de connexions.",
+          "created": "Nouveau groupe de connexions créé avec succès.",
+          "updated": "Groupe de connexions mis à jour avec succès.",
+          "service-object-create-failed": "Impossible de créer l’objet de service.",
+          "cannot-load": "Erreur lors du chargement des pare-feu disponibles."
+        },
         "select-firewalls": {
           "label": "Sélectionner les pare-feu",
           "name": {
@@ -82,22 +151,58 @@
         "configure-networks": {
           "label": "Configurer les réseaux",
           "heading": "Configurer les réseaux et les routes",
+          "error": "Une erreur s’est produite lors de la détection des conflits.",
+          "subnet-error": "Un ou plusieurs sous-réseaux ne sont pas valides",
           "description": "Personnaliser les réseaux auquel chaque pare-feu va autoriser l’accès aux groupes de partage, décider si les réseaux doivent apparaître sous une plage d’adresse différente pour éviter les conflits et configurer la redondance du tunnel en cas de présence de plusieurs connexions Internet.",
           "no-conflict": {
-            "heading": "{{ count }} pare-feu analysés et aucun conflit réseau détecté"
+            "heading": "{{ count }} pare-feu analysés et aucun conflit réseau détecté."
           },
           "conflict": {
-            "heading": "{{ count }} pare-feu analysés avec un conflit réseau détecté"
+            "heading": "{{ count }} pare-feu analysés avec un conflit réseau détecté."
+          },
+          "network-missing": {
+            "heading": "{{ count }} pare-feu sans partage de ressources sans réseaux locaux."
           },
           "table": {
             "column": {
               "firewall-name": "Pare-feu",
-              "local-subnets": "Réseaux locaux",
-              "wan-ports": "Ports WAN",
+              "local-subnets":"Réseaux locaux",
+              "wan-ports": "Port du réseau étendu (WAN)",
+              "gateway": "Passerelle de secours",
               "nat": "NAT",
-              "respond-only": "Répondre uniquement",
+              "respond-only": "Répondant",
+              "initiator": "Initiateur",
               "details-edit": "Détails/Modifier",
               "fix-conflicts": "Résoudre le conflit"
+            },
+            "non-resolvable-conflict": "Un pare-feu avec partage de ressources ne peut pas avoir de conflit réseau. Ceci peut être impossible à résoudre.",
+            "not-participating": "Aucune interface n’est activée pour participer au réseau local. Vous pouvez modifier les paramètres pour les activer."
+          },
+          "modal": {
+            "table": {
+              "interface": "Nom de l’interface",
+              "network": "Adresse réseau",
+              "subnet": "Masque de sous-réseau",
+              "participate": "Activer",
+              "nat": "Activer le NAT",
+              "nat-address": "Adresse NAT",
+              "nat-subnet": "L’adresse NAT doit appartenir au même sous-réseau que celui de l’interface.",
+              "conflicts": "Conflits",
+              "wan": "Lien WAN",
+              "selected": "Sélectionné",
+              "gateway": "Passerelle de secours",
+              "xfrm-ip": "Adresses IP Xfrm",
+              "add": "Ajouter un réseau"
+            },
+            "conflicts": {
+              "subnet-conflict": "Réseau en conflit avec : {{ subnet }}.",
+              "missing-mandatory": "Champs obligatoires manquants.",
+              "invalid-nat": "Adresse NAT incorrecte.",
+              "invalid-ip": "Adresse IP incorrecte.",
+              "invalid-netmask": "Masque réseau non valide.",
+              "name-conflicts": "Conflits de nom.",
+              "xfrm-ip-needed": "Adresses IP {{ need }} minimales requises.",
+              "in-use": "Une ou plusieurs adresses IP sont déjà utilisées pour d’autres pare-feu"
             }
           }
         },
@@ -119,20 +224,26 @@
                 "type-ip": "Adresse IP : Par ex. 10.12.22.34",
                 "type-iplist": "Liste d’adresses IP : Par ex. 10.12.22.34,10.12.22.35",
                 "type-iprange": "Plage d’adresses IP : Par ex. 10.12.22.34-10.12.22.35",
-                "type-crdi": "Format CIDR : Par ex. 10.12.22.34/2"
+                "type-crdi": "Format réseau : Par ex. 10.12.22.34/2"
               },
+             
               "_dynamic_": {
                 "host": {
-                "IP": "Adresse IP",
-                "Network": "CIDR",
-                "IPList": "Liste d’adresses IP",
-                "IPRange": "Plage d’adresses IP"
+                "2": "Adresse IP",
+                "9": "Réseau",
+                "4": "Liste d’adresses IP",
+                "3": "Plage d’adresses IP"
                 },
                 "service": {
-                  "TCPorUDP": "TCP/UDP",
-                  "IP": "IP",
-                  "ICMP": "ICMP",
-                  "ICMPv6": "ICMPv6"
+                  "1": "TCP/UDP",
+                  "2": "IP",
+                  "3": "ICMP",
+                  "7": "ICMPv6"
+                },
+                "heartbeat": {
+                  "1": "VERTE",
+                  "2": "JAUNE",
+                  "3": "Aucune restriction"
                 }
               },
               "invalid": "Format non valide pour la ressource partagée"
@@ -155,7 +266,14 @@
             "help": "Les réseaux partagés seront disponible à tous les pare-feu qui font partie de ce groupe de partage.",
             "auto-rules": "Créer automatiquement des règles de pare-feu",
             "limit-access": "Limiter l’accès aux utilisateurs authentifiés",
-            "sync-sec": "Sécurité synchronisé pour les terminaux en bon état de fonctionnement"
+            
+            "sync-sec": {
+              "enable": "Configurer Synchronized Security HeartBeat",
+              "src": "Source HD minimale autorisée",
+              "dst": "Destination HD minimale autorisée",
+              "block-clients": "Bloquer les clients sans Heartbeat",
+              "block-requests": "Bloquer la requête de destination sans Heartbeat"
+            }
           },
           "table": {
             "empty-message": "Aucune ressource à partager n’a encore été ajoutée.",
@@ -174,10 +292,25 @@
           }
         }
       },
+      "list": {
+        "auto-refresh": "Actualiser automatiquement",
+        "search-placeholder": "Rechercher un groupe, des pare-feu...",
+        "auto-refresh-hint": "Actualisation des données de la page toutes les 10 secondes",
+        "loading-error": "Impossible de charger les groupes de connexions",
+        "firewall-view": "Affichage des pare-feu",
+        "vpn-view": "Affichage des liens VPN",
+        "table": {
+          "connection-group": "Groupe de connexion",
+          "description": "Description",
+          "status": "État",
+          "no-of-firewalls": "Nombre de pare-feu",
+          "no-of-shared-resource": "Nombre de ressources partagées"
+        }
+      },
       "no-data": {
         "info": "Les groupes de connexion SD WAN vous aident à partager les ressources dans toutes les régions à l’aide de stratégies générées automatiquement.",
         "process": "Vous pouvez choisir les pare-feu à placer dans les groupes de connexion pendant la création d’un groupe.",
-        "how": "Cliquez sur le bouton « Ajouter des groupes de connexion SD WAN » pour démarrer l’assistant.",
+        "how": "Cliquez sur le bouton « Créer un groupe de connexion » pour démarrer l’assistant.",
         "header": "Simplifiez votre configuration SD WAN avec les groupes de connexion",
         "learn-more": "Plus d’info"
       }
@@ -337,7 +470,7 @@
             "connected": " Tous les pare-feu sont connectés et synchronisés avec Sophos Central.",
             "disconnected": "Les {{ count }} pare-feu restants envoient des signaux Security Heartbeat.",
             "out-of-sync": "Les {{ count }} pare-feu restants sont synchronisés. Le problème doit être résolu pour appliquer d’autres modifications de la stratégie.",
-            "suspended": "Les stratégies de groupe de ces pare-feu ne seront pas synchronisées. Veuillez déplacer ces pare-feu hors de leurs groupes et les ajouter de nouveau pour récupérer les nouvelles stratégies du groupe. "
+            "suspended": "Les stratégies de groupe de ces pare-feu ne seront pas synchronisées. Déplacez ces pare-feu hors de leurs groupes et ajoutez-les de nouveau pour récupérer les nouvelles stratégies du groupe. "
          },
         "header": {
             "connected": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont connectés à Sophos Central.",

@@ -39,7 +39,7 @@
         "policies": "ポリシー",
         "policy-placeholder": "選択",
         "external-fqdn": "外部 FQDN",
-        "internal-fqdn" : "内部 FQDN/IP アドレス",
+        "internal-fqdn": "内部 FQDN/IP アドレス",
         "add-port-link": "次を追加",
         "application-fqdn": "リソースの FQDN",
         "application-icon": "表示アイコン (最大サイズ: 100K)",
@@ -79,6 +79,51 @@
         "error": "リソースリストの取得中、エラーが発生しました。",
         "no-userGroups-configured": "ユーザーグループはありません。",
         "no-userGroups-assigned": "ユーザーグループは割り当てられていません。"
+      },
+      "details": {
+        "title": "Zero Trust Network Access - リソースの詳細",
+        "breadcrumb-text": "リソースの詳細",
+        "error": "リソースリストの取得中、エラーが発生しました",
+        "fetch-error": "リソースの詳細の取得中、エラーが発生しました",
+        "breadcrumb-sub-text": "リソース",
+        "tabs": {
+          "summary": {
+            "label": "サマリー",
+            "access-method": "アクセス方法:",
+            "resource-type": "リソースの種類:",
+            "gateway": "ゲートウェイ:",
+            "local-address": "ローカルアドレス:",
+            "domain": "ドメイン:",
+            "agent": "エージェント",
+            "agentless": "エージェントレス",
+            "display-in-user-portal": "ユーザーポータルに表示:",
+            "access-ports": {
+              "label": "アクセスポート",
+              "columns": {
+                "port": "ポート",
+                "status": "状態",
+                "type": "適用タイプ",
+                "last-connection-test": "前回の接続テスト"
+              }
+            },
+            "note": "負荷分散を行うためには、インスタンス数は奇数である必要があります。",
+            "add": "インスタンスの追加/編集",
+            "header": {
+              "name": "名前: ",
+              "description": "説明: ",
+              "status": "状態: ",
+              "edit": "編集",
+              "delete": "削除"
+            }
+          },
+          "user-groups-policies": {
+            "label": "ユーザーグループ ({{count}})、ポリシー",
+            "policy-label": "ポリシー: ",
+            "switch-policy": "ポリシーの切り替え",
+            "edit-groups": "グループの編集",
+            "groups-label": "グループ"
+          }
+        }
       },
       "delete": {
         "header": "リソースの削除",
@@ -156,7 +201,12 @@
               "type": "次のように入力します。 ",
               "idp": "IdP (Identity Provider): ",
               "edit": "編集",
-              "delete": "削除"
+              "delete": "削除",
+              "connection-status-connected": "接続の状態: 接続: {{connectedSince}}",
+              "connection-status-disconnected": "接続の状態: 切断: {{disconnectedSince}}",
+              "cluster-status-active": "ゲートウェイクラスタ - アクティブ: {{clusterActiveSince}}",
+              "cluster-status-inactive": "ゲートウェイクラスタ - 非アクティブ: {{clusterInactiveSince}}",
+              "degraded": "ゲートウェイの機能低下"
             }
           },
           "certificate": {
@@ -182,7 +232,7 @@
                 "port": "ポート"
               },
               "resources-access": "リソース＆アクセス",
-              "no-application-configured": "リソースが追加されていません。",
+              "no-application-configured": "このゲートウェイに関連付けられているリソースがありません。",
               "no-application-configured-help": "<i18n slot=\"resource\">リソース＆アクセス</i18n>ページから、ゲートウェイにリソースを追加します。"
             }
           }
@@ -272,6 +322,15 @@
           "lowercase": "小文字を 1文字以上含む",
           "number": "数字を 1つ以上含む",
           "special-character": "記号を含む"
+        },
+        "cluster": {
+          "cluster-enabled": "ゲートウェイクラスタリング - オン",
+          "cluster-disabled": "ゲートウェイクラスタリング - オフ",
+          "cluster-vip": "クラスタ仮想 IP",
+          "cluster-vip-validation": "無効なクラスタ仮想 IP です",
+          "external-tooltip": "これは負荷分散に使用されます。外部の負荷分散を使用している場合は、空白のままにしてください。",
+          "internal-tooltip": "これはクラスタ管理に使用されます。",
+          "single-arm-tooltip": "これは、クラスタ管理および負荷分散に使用されます。"
         }
       },
       "delete": {
@@ -283,8 +342,8 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか",
-        "warn-message-2": "？"
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
+        "warn-message-2": " ？"
       },
       "status": {
         "waiting-for-deployment": {
@@ -326,6 +385,12 @@
         "disconnected": {
           "label": "ゲートウェイに到達不能です",
           "header-disconnected": "切断日: {{lastSeen}}"
+        },
+        "cluster-status-active": {
+          "label": "ゲートウェイクラスタ - アクティブ: {{clusterActiveSince}}"
+        },
+        "cluster-status-inactive": {
+          "label": "ゲートウェイクラスタ - 非アクティブ: {{clusterInactiveSince}}"
         }
       },
       "instance": {
@@ -354,6 +419,7 @@
             "image-download-error": "イメージのダウンロード中、エラーが発生しました"
           },
           "download-cft": {
+            "launch-stack": "スタックの起動",
             "label": "CFT のダウンロード",
             "header-waiting": "導入待機中",
             "content-waiting": "CFT はまだ起動していません。CFT をダウンロードして起動してください",
@@ -368,6 +434,15 @@
           },
           "disconnected": {
             "label": "到達不能日:"
+          },
+          "active": {
+            "label": "アクティブ: {{activeSince}}"
+          },
+          "inactive": {
+            "label": "非アクティブ: {{inactiveSince}}"
+          },
+          "unknown": {
+            "label": "不明"
           }
         },
         "vm-name": "VM 名",
@@ -386,6 +461,24 @@
           "save-confirm": "保存の確認",
           "warn-info": "インスタンス数が 1 から {{instanceNumber}} に変更されます。",
           "warn-description": "負荷分散を行うために、インスタンス数を 1 から 3以上に変更すると、このゲートウェイではインスタンス数を 1 に戻すことができなくなります。"
+        },
+        "support": {
+          "token": "トークン",
+          "sophos-support-header": "ソフォスサポートをオンにする",
+          "sophos-token-header": "ソフォス サポート トークン",
+          "enable-sophos-support": "サポートをオンにする",
+          "enable-confirm": "{{gatewayInstanceName}} に対して、ソフォスサポートをオンにしますか？",
+          "enable-details": "ソフォスサポートをオンにして、ゲートウェイインスタンスへのリモート トラブルシューティング アクセスを、サポートチームに 1日間提供します。",
+          "token-header": "このトークンをソフォスサポートに渡して、ゲートウェイインスタンスへのアクセスを許可します。",
+          "instance-name": "ゲートウェイインスタンス: {{gatewayInstanceName}}",
+          "token-expiry": "トークンの失効日: {{tokenExpiryDate}}",
+          "tooltip-msg": "トークンは、トークンがオンになってから 1日後に失効します。セッションの有効期限は、設定/ソフォスサポートで設定できます。",
+          "add-success": "ソフォスサポートが有効です",
+          "add-error": "ソフォスサポートを有効にする際、エラーが発生しました",
+          "disable-success": "ソフォスサポートが無効です",
+          "disable-error": "ソフォスサポートを無効にする際、エラーが発生しました",
+          "copy": "コピー",
+          "fetch-error": "リモートデバッグの詳細を取得できません"
         }
       },
       "schedule": {
@@ -439,12 +532,17 @@
         "tenantid": "テナント ID",
         "clientid": "クライアント ID",
         "clientsecret": "クライアントシークレット",
+        "issuer-uri": "発行者 URI",
+        "scope": "スコープ",
         "add-success": "IdP が作成されました",
         "add-error": "IdP の作成に失敗しました",
         "edit-success": "IdP が更新されました",
         "edit-error": "IdP の更新に失敗しました",
         "provider-type-error": "プロバイダの種類を取得中、エラーが発生しました",
+        "configure-okta-settings": "Okta の設定",
         "configure-azure-settings": "Azure AD Sync の設定",
+        "test-connection-azure-label": "Azure Sync の接続の確認",
+        "test-connection-okta-label": "Okta 接続の確認",
         "test-connection-label": "Azure Sync の接続の確認",
         "test-connection-button": "接続のテスト",
         "test-connection-success": "接続に成功しました",
@@ -453,7 +551,10 @@
         "clientId-validation": "クライアント ID を指定してください",
         "tenantId-validation": "テナント ID を指定してください",
         "clientSecret-validation": "クライアントシークレットを指定してください",
-        "loading-error": "IdP の読み込み中、エラーが発生しました"
+        "loading-error": "IdP の読み込み中、エラーが発生しました",
+        "issuer-uri-validation": "発行者 URI が必要です",
+        "invalid-issuer-uri": "URI が無効です",
+        "scope-validation": "スコープが必要です"
       },
       "delete": {
         "header": "IdP の削除",
@@ -489,7 +590,7 @@
         "no-policy-configured-help": "「ポリシーの追加」ボタンをクリックしてポリシーを追加し、リソースへのアクセスの許可を開始します。"
       },
       "delete": {
-        "header":"ポリシーの削除",
+        "header": "ポリシーの削除",
         "message-delete": "ポリシーの削除",
         "message-warning": "このポリシーを削除するには、まず、リソースを別のポリシーに移動する必要があります",
         "success": "ポリシーが削除されました",
@@ -498,10 +599,6 @@
       "add-modal": {
         "resource-access": "リソースアクセス",
         "tooltip-resource-access-info1": "ポリシーは、エージェントまたはエージェントレスで、リソースアクセスに対応できます。エージェントは、セキュリティ状態をチェックしてアクセスを判断できます。",
-        "tooltip-resource-access-info2": "Sophos Endpoint エージェントのダウンロード:",
-        "tooltip-resource-access-info3": "ページ。",
-        "tooltip-resource-access-download": "ダウンロード",
-        "tooltip-resource-access-learnmore": "詳細情報",
         "agent": "エージェント",
         "agentless": "エージェントレス"
       },
@@ -550,6 +647,142 @@
       "applicationName": "リソース",
       "appTotalBytes": "合計バイト数 (MB)",
       "fetchError": "ダッシュボードデータの取得中、エラーが発生しました"
+    },
+    "api": {
+      "exception.unexpected": "リクエストの処理中に、予期しないエラーが発生しました。",
+      "exception.AccessDeniedException": "アクセスが拒否されました",
+      "fqdn.format.invalid": "FQDN は有効な形式である必要があります",
+      "fqdn_ip.format.invalid": "内部 FQDN/IPv4 アドレスは有効な形式である必要があります",
+      "field.value.invalid": "無効な入力値 {{0}} が、{{1}} フィールドに指定されました",
+      "request.json.malformed": "不正な JSON のリクエストを受信しました",
+      "http.request.header.missing": "必要な HTTP ヘッダ {{0}} がリクエストにありません",
+      "request.data.format.invalid": "リクエストで無効なデータ形式を受信しました",
+      "request.data.uri.invalid": "リクエストで無効な URI を受信しました",
+      "name.invalid": "名前は空白にできず、100文字を超えることはできません。また、アルファベット、数字、アンダースコアを含めることはできますが、特殊文字を含めることはできません",
+      "encoding.invalid": "無効なエンコーディングが検出されました",
+      "exception.resource.creation": "リソースを作成中、エラーが発生しました",
+      "exception.io": "サーバーで I/O 例外が発生しました",
+      "exception.json.parse": "リクエストで不正な JSON を受信しました",
+      "exception.illegal.argument": "リクエストで不正な引数を受信しました",
+      "entity.not.found": "{{0}} が見つかりません",
+      "exception.invalid.enum": "{{0}} は、{{1}} の無効な値です",
+      "exception.resource.not.found": "リソースが見つかりません",
+      "ipv4.valid": "IP アドレスのフィールドには、有効な IPv4 形式のアドレスを入力する必要があります",
+      "name.notBlank": "名前を空白にすることはできません",
+      "record.invalid": "指定された {{0}} は、このアカウントで無効です",
+      "field.validation.errors.message": "フィールドの検証エラー",
+      "gateway.already-deployed": "イメージ URL を生成できません。ゲートウェイは既にインストールされています",
+      "password.valid": "パスワードは 12～250文字で、数字、小文字、大文字、および特殊文字を少なくとも 1文字ずつ含める必要があります",
+      "file-size.upload.limit.exceeded": "ファイル {{0}} は、ファイルのアップロードサイズの上限を超えました ",
+      "description.invalid": "説明は空白にできず、300文字を超えることはできません",
+      "application.field.validation.error": "アプリケーションフィールドの検証エラー",
+      "application.name.notnull": "アプリケーション名は Null にできません",
+      "application.icon.upload.failed": "アプリケーションアイコンのアップロード中、失敗しました",
+      "application.icon.unsupported.type": "アプリケーションアイコンに、未対応のファイルの種類が指定されました。許可されている種類は次のとおりです: {{0}}",
+      "application.icon.name.blank": "アプリケーションアイコンを処理中、エラーが発生しました。ファイル名を確認してください",
+      "application.resource-type.notnull": "アプリケーションのリソースの種類は Null にできません",
+      "application.gateway-ids.notnull": "ゲートウェイをアプリケーションに割り当てる必要があります",
+      "application.port.notnull": "アプリケーションのポートは Null にできません",
+      "application.ports.not-empty": "リソースにポートを指定する必要があります",
+      "application.port-number.notblank": "ポート番号を指定する必要があります",
+      "application.port-type.notnull": "ポートの種類は Null にできません",
+      "application.policy.notnull": "ポリシーをアプリケーションに割り当てる必要があります",
+      "application.port.range": "アプリケーションのポートには 0～65535 の値を指定してください",
+      "application.fqdn.notnull": "アプリケーションの FQDN は Null にできません",
+      "application.logo.upload.error": "アプリケーションロゴのアップロード中、エラーが発生しました",
+      "application.user-groups.not-empty": "少なくとも 1つのユーザーグループをアプリケーションに割り当てる必要があります",
+      "application.fqdn.already.configured": "アプリケーションの FQDN は既に設定されています",
+      "application.name.already.configured": "指定された名前のアプリケーションは、このアカウントに既に存在します",
+      "application.name.userportal.reserved": "アプリケーション名 userportal は、ゲートウェイ用に予約されています",
+      "application.policy.port.mismatch": "指定されたポートの種類は、選択されたポリシーの種類に対して無効です",
+      "application.policy.resourcetype.mismatch": "指定されたリソースの種類は、選択されたポリシーの種類に対して無効です",
+      "application.gateway.not.assigned": "ゲートウェイをアプリケーションに割り当てる必要があります",
+      "idp.field.validation.error": "IdP フィールドの検証エラー",
+      "azure.tenantId.notBlank": "Azure IdP のテナント ID は空白にできません",
+      "idp.clientId.notBlank": "IdP のクライアント ID は空白にできません",
+      "idp.clientSecret.notBlank": "IdP のクライアントシークレットは空白にできません",
+      "idp.provider.notnull": "プロバイダは、Null または空白にできません",
+      "idp.name.notblank": "IdP の名前は空白にできません",
+      "idp.provider.unknown": "リクエストに不明なプロバイダの種類があります",
+      "gateway.idpId.notNull": "ゲートウェイに割り当てる IdP の ID は Null にできません",
+      "gateway.clientId.notBlank": "ゲートウェイのクライアント ID を指定する必要があります",
+      "gateway.appDomain.notBlank": "ゲートウェイのアプリドメインを指定する必要があります",
+      "gateway.dualArm.not.specified": "ゲートウェイのシングル/デュアルアームを指定する必要があります",
+      "gateway.packageType.notnull": "ゲートウェイのパッケージの種類を指定する必要があります",
+      "gateway.package.unknown": "リクエストに不明なパッケージの種類が指定されています",
+      "gateway.name.notBlank": "ゲートウェイ名は空白にできません",
+      "gateway.fqdn.notnull": "ゲートウェイの FQDN は、Null または空白にできません",
+      "gateway.password.notBlank": "ゲートウェイのパスワードは空白にできません",
+      "gateway.network.invalidParams": "ゲートウェイのネットワークパラメータが無効です",
+      "gateway.mandatory-fields.notBlank": "ゲートウェイの必須フィールドは空白にできません",
+      "gateway.otp.notBlank": "ゲートウェイの OTP は空白にできません",
+      "gateway.cert.notBlank": "ゲートウェイの証明書は空白にできません",
+      "gateway.private-key.notBlank": "ゲートウェイの秘密鍵は空白にできません",
+      "gateway.schedule.notFound": "ゲートウェイのアップグレードのスケジュール設定が見つかりません",
+      "gateway.schedule.alreadyExists": "ゲートウェイのアップグレードのスケジュール設定は既に存在します",
+      "gateway.version.isLower": "ゲートウェイのアップグレードバージョンは、現在のバージョン {{0}} よりも古いバージョンです ",
+      "gateway.upgrade.inPast": "ゲートウェイのアップグレードは、既にスケジュール設定されています; {{0}}",
+      "gateway.upgrade.cancelNotAllowed": "ゲートウェイのアップグレードは、開始する 5分前以内にキャンセルすることはできません",
+      "gateway.armChange.notAllowed": "ゲートウェイのシングル/デュアルアームのインストールを変更することはできません",
+      "gateway.instance.notFound": "ゲートウェイインスタンスがゲートウェイにありません",
+      "gateway.instances.empty": "ゲートウェイにインスタンスが定義されていません",
+      "gateway.version.isNull": "ゲートウェイのアップグレードバージョンが Null です",
+      "gateway.upgrade.status.inValid": "受信したゲートウェイのアップグレード状態 {{0}} は無効です",
+      "gateway.schedule.version.notMatching": "アップグレードされたゲートウェイのバージョン {{0}} が、スケジュール設定されたバージョンと一致しません",
+      "gateway.staticRoute.invalid": "ゲートウェイで指定されたスタティックルートが無効です",
+      "gateway.instanceHostname.invalid": "ゲートウェイのインスタンスのホスト名が無効です",
+      "gateway.instanceIpAddress.invalid": "ゲートウェイに無効な IP アドレス {{0}}が指定されています",
+      "gateway.interface.notFound": "ゲートウェイインスタンスのネットワーク情報が見つかりません",
+      "gateway.virtualIp.invalid": "ゲートウェイの仮想 IP {{0}} が無効です",
+      "gateway.instanceIpAddress.duplicate": "ゲートウェイに重複するインスタンス IP {{0}} が指定されています",
+      "gateway.ip.notInSubnet": "ゲートウェイのインスタンス IP {{0}} は、ゲートウェイのサブネット範囲にありません",
+      "gateway.remote.config.notEnabled": "選択したインスタンスに対して、リモートデバッグが有効になっていません",
+      "gateway.presignedURL.generation.error":"署名済み URL の生成中、エラーが発生しました。イメージの状態: {{0}} (指定されたゲートウェイ)",
+      "gateway.presignedURL.malformed": "イメージ URL が不正です",
+      "gateway.cluster.notEnabled": "ゲートウェイクラスタリングが有効になっていませんが、複数のインスタンスが見つかりました",
+      "gateway.cluster.change.notAllowed": "ゲートウェイクラスタを無効にすることはできません",
+      "gateway.cluster.notEmpty": "ゲートウェイクラスタのフィールドが見つかりません",
+      "policy.invalid": "指定されたポリシーオブジェクトが無効です",
+      "policy.isEnforced.notNull": "ポリシーオブジェクトの isEnforced フィールドは Null にできません",
+      "policy.valid-until.not.allowed": "ポリシーが適用されていない場合、validUntil は設定できません",
+      "policy.access-rules.invalid": "accessRules オブジェクトに指定された値が無効です",
+      "policy.application.association":"ポリシーは、次のアプリケーションに関連付けられています: {{0}}",
+      "policy-type.notNull": "ポリシーの種類を指定する必要があります",
+      "policy.access-rules.not.allowed.with.agentless": "エージェントレスポリシーで、アクセスのルールは許可されていません",
+      "policy.rule-value.invalid": "ポリシールールの値に無効な値が指定されています",
+      "policy.rule-type.not.null": "ポリシールールの種類は Null にできません",
+      "policy.rule.condition.not.blank": "ポリシールールの条件は、空白または Null にできません",
+      "policy.rule.condition.invalid": "ポリシールールの条件に無効な値が指定されています",
+      "policy.type.change.not-allowed": "ポリシーの種類の変更は許可されていません",
+      "azure.connection.test.failed": "指定された設定で、Azure テスト接続に失敗しました",
+      "test-connection.invalid-config": "無効な接続設定を受信しました",
+      "azure.test-connection.tenant-id.notblank": "接続をテストするには、Azure テナント ID を指定する必要があります",
+      "test-connection.azure.idpid.notempty": "クライアントシークレットが空の場合は、IdP の ID を指定する必要があります",
+      "test-connection.azure.emptyfields": "Azure 接続をテストするには、クライアント ID とテナント ID を指定する必要があります",
+      "okta.connection.test.failed": "指定された設定で、Okta テスト接続に失敗しました",
+      "test-connection.clientid.notblank": "接続をテストする際、クライアント ID は空白にできません",
+      "okta.test-connection.issuer-uri.notnull": "Okta 発行者 URI を指定する必要があります",
+      "okta.test-connection.scope.notblank": "Okta との接続をテストするには、承認サーバーのカスタムスコープを指定する必要があります",
+      "okta.test-connection.emptyfields": "Okta 接続をテストするには、クライアント ID と発行者 URI を指定する必要があります",
+      "okta.invalid.issuerUri": "issuerURI が無効です。authServerId が URI にありません",
+      "connection-test.config.field.validation.error": "接続テストの設定で、フィールドの検証エラーが発生しました",
+      "property.invalid": "プロパティ {{0}} に指定された値の処理に失敗しました",
+      "idp.already.exists": "指定された名前の IdP は、このアカウントに既に存在します",
+      "idp.provider.already.exists": "指定されたプロバイダの種類の IdP は、このアカウントに既に存在します",
+      "gateway.already.exists": "指定された名前のゲートウェイは、このアカウントに既に存在します",
+      "fqdn.not.unique": "指定された FQDN は、既に別のゲートウェイに存在します",
+      "gateway.idp.association": "IdP は、1つ以上のゲートウェイに関連付けられています",
+      "application.already.exists": "指定された名前のアプリケーションは、このアカウントに既に存在します",
+      "gateway.application.association": "ゲートウェイは、1つ以上のアプリケーションに関連付けられています",
+      "fqdn-port.not.unique": "提供された FQDN ポートペアは、既に別のアプリケーションに割り当てられています",
+      "policy.already.exists": "指定された名前のポリシーは既に存在します",
+      "remote.debug.isEnabled.empty": "リモートデバッグ設定の isEnabled は空白にできません",
+      "remote.debug.validity.empty": "リモートデバッグ設定の正当性は空白にできません",
+      "remote.status.apuStatus.empty": "リモートデバッグ状態 apuStatus は空白にできません",
+      "remote.status.updatedOn.empty": "リモートデバッグ状態 updatedOn は空白にできません",
+      "remote.status.createdOn.empty": "リモートデバッグ状態 createdOn は空白にできません",
+      "remote.status.expiryOn.empty": "リモートデバッグ状態 expiryOn は空白にできません",
+      "remote.status.accessId.empty": "リモートデバッグ状態 accessId は空白にできません"
     }
   },
   "ztna-report": {
@@ -665,7 +898,7 @@
       "yAxis": "Y軸",
       "groupBy": "グループ化",
       "deleteExport": "エクスポートの削除",
-      "firewalls": "ゲートウェイ",
+      "firewalls": "インスタンス",
       "tooManyDevices": "デバイス数の上限に達しました。この操作は実行できません",
       "deviceNotFound": "デバイスが見つかりません",
       "groupNotFound": "グループが空か、見つかりません"

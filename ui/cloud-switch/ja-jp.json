@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "概要",
+      "alerts": "警告",
+      "connections": "接続",
+      "poe": "PoE",
+      "uplink": "アップリンク",
+      "free": "空き",
+      "inuse": "使用中",
+      "total": "合計",
+      "details": "詳細",
+      "template": "テンプレート",
+      "firmware": "ファームウェア",
+      "minutes-ago": "分前",
+      "hours-ago": "時間前",
+      "days-ago": "日前",
+      "months-ago": "カ月前",
       "button": {
         "register": "登録",
         "cancel": "キャンセル",
-        "yes": "はい",
-        "no": "いいえ",
         "save": "保存",
         "bugs": "バグ",
-        "apply": "適用"
+        "apply": "適用",
+        "confirm": "確認"
       },
       "status": {
         "registering": "接続を待機中",
@@ -17,7 +30,8 @@
         "registered": "登録済み",
         "unregistered": "登録がタイムアウトしました",
         "disconnected": "切断",
-        "suspended": "中断"
+        "suspended": "中断",
+        "disabled": "無効"
       },
       "form": {
         "name": "名前",
@@ -26,6 +40,7 @@
       "error": "エラー",
       "success": "成功",
       "warn": "警告",
+      "info": "情報",
       "used": "使用中",
       "waitingForData": "データを待機中...",
       "problemLoadingData": "データの読み込中に問題が発生しました",
@@ -48,19 +63,23 @@
         "page-title": "スイッチ",
         "breadcrumb-text": "スイッチ",
         "title": "クラウド - スイッチ",
-        "toggleColumnsTitle": "列の切り替え",
-        "removeDialogTitle": "スイッチの削除: {{switchSerial}}",
-        "retryDialogTitle": "登録の再試行",
+        "toggle-columns-title": "列の切り替え",
+        "remove-dialog-title": "スイッチの削除",
+        "remove-dialog-message": "スイッチ <strong>{{switchSerial}}</strong> の削除。",
+        "retry-dialog-title": "登録の再試行",
+        "delete-note": "注: このスイッチを削除すると、Sophos Central から削除されます。",
         "txtbox": {
           "search-placeholder": "スイッチの検索"
         },
         "action-menu": {
           "retry": "登録の再試行",
-          "removeFromCentral": "Sophos Central から削除"
+          "remove-from-central": "Sophos Central から削除"
         },
         "button": {
           "auto-refresh": "自動更新",
-          "add-template": "テンプレートの追加"
+          "add-template": "テンプレートの追加",
+          "switch-delete-confirm": "スイッチの削除",
+          "template-delete-confirm": "テンプレートの削除"
         },
         "table-headers": {
           "name": "名前",
@@ -112,17 +131,53 @@
           "assigned-switches": "割り当て済みスイッチ",
           "sync-switches-checkbox-text": "スイッチを初期テンプレート設定と同期します"
         },
+        "delete-template": {
+          "dialog-title": "テンプレートの削除",
+          "delete-template-confirm-text": "テンプレート <strong>{{templateName}}</strong> の削除。"
+        },
+        "edit-template" : {
+          "dialog-title": "テンプレートの編集"
+        },
         "message": {
           "remove-success": "スイッチ {{switchSerial}} が Sophos Central から削除されました。",
           "remove-failed": "Sophos Central からスイッチを削除できません。",
           "retry-success": "スイッチ {{switchSerial}} の登録が再度開始されました。",
           "retry-failed": "登録を開始できません。",
-          "add-template-success": "テンプレートが追加されました"
+          "add-template-success": "テンプレートが追加されました",
+          "add-template-error": "テンプレートが追加されていません",
+          "delete-template-success": "テンプレートが削除されました",
+          "delete-template-error": "テンプレートを削除できません",
+          "update-template-success": "テンプレートが更新されました",
+          "update-template-error": "テンプレートを更新できません"
         },
         "groupInfoText": {
           "what": "テンプレートとは？",
-          "information": "スイッチテンプレートは、1つまたは複数のスイッチに適用できる仮想スイッチの設定モデルです。必要に応じて、スイッチをテンプレート内に移動したり、テンプレート外に移動したりできます。スイッチがテンプレート内にある限り、テンプレートレベルで実行した設定は、自動的にスイッチに適用されます。",
-          "note": "テンプレート内のスイッチで発生した設定の競合を評価する際、スイッチレベルでの設定の上書きが優先されることに注意してください。"
+          "information": "スイッチテンプレートは、1つまたは複数のスイッチに適用できる仮想設定です。必要に応じて、スイッチをテンプレート内に移動したり、テンプレート外に移動したりできます。スイッチがテンプレート内にある限り、テンプレートレベルで実行した設定は、自動的にスイッチに適用されます。",
+          "note": "スイッチレベルとテンプレートレベルの設定が競合している場合、スイッチレベルの設定が優先されます。"
+        }
+      },
+      "manage": {
+        "page-title": "スイッチ - スイッチ管理",
+        "breadcrumb-text": "スイッチの管理",
+        "summary-legend-title": "サマリー",
+        "system-detail-tab-title": "システムの詳細",
+        "port-settings-tab-title": "ポートの設定",
+        "network-settings-tab-title": "ネットワークの設定",
+        "task-queue-tab-title": "タスクのキュー",
+        "template-dd-default-title": "テンプレートを選択します",
+        "gbps": "{{unit}}Gbps",
+        "mbps": "{{unit}}Mbps",
+        "button": {
+          "reboot": "再起動",
+          "open-local-mgmt-console": "ローカル管理コンソールを開く",
+          "remove": "Sophos Central から削除"
+        },
+        "tab-fields": {
+          "serial-no": "シリアル番号",
+          "model": "機種",
+          "powered-on": "電源オン",
+          "switch-firmware": "スイッチファームウェア",
+          "central-agent": "Central エージェント"
         }
       }
     },
@@ -155,8 +210,10 @@
       "message": {
         "already-reported": "シリアル番号が {{ switches }} のスイッチは、既に Sophos Central に登録されています。",
         "registration-error": "スイッチを登録できません。",
-        "switches-registered": "スイッチを登録しています。スイッチをネットワークに接続してください。",
-        "switch-serial-max-length": "シリアル番号は 15文字以内で入力してください。",
+        "switches-registered": "スイッチを Sophos Central に登録しています。",
+        "switches-multiple-registration-with-exception": "シリアル番号 {{ switches }} が無効です。他のスイッチを Sophos Central に登録しています。",
+        "switches-single-serial-registration-with-exception": "シリアル番号 {{ switches }} が無効です",
+        "invalid-serial": "1つまたは複数のシリアル番号が無効です。",
         "empty-switch-list-error": "有効なシリアル番号がありません。"
       }
     }

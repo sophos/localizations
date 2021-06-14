@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "Panoramica",
+      "alerts": "Avvisi",
+      "connections": "Connessioni",
+      "poe": "PoE",
+      "uplink": "Uplink",
+      "free": "gratis",
+      "inuse": "In uso",
+      "total": "Totale",
+      "details": "Dettagli",
+      "template": "Modello",
+      "firmware": "Firmware",
+      "minutes-ago": "minuti fa",
+      "hours-ago": "ore fa",
+      "days-ago": "giorni fa",
+      "months-ago": "mesi fa",
       "button": {
         "register": "Registrazione",
         "cancel": "Annulla",
-        "yes": "Sì",
-        "no": "No",
         "save": "Salva",
         "bugs": "Bug",
-        "apply": "Applica"
+        "apply": "Applica",
+        "confirm": "Conferma"
       },
       "status": {
         "registering": "In attesa di connessione",
@@ -17,7 +30,8 @@
         "registered": "Registrato",
         "unregistered": "Timeout della registrazione",
         "disconnected": "Disconnesso",
-        "suspended": "Sospeso"
+        "suspended": "Sospeso",
+        "disabled": "Disattivato"
       },
       "form": {
         "name": "Nome",
@@ -26,6 +40,7 @@
       "error": "Errore",
       "success": "Operazione completata",
       "warn": "Attenzione",
+      "info": "Info",
       "used": "Utilizzato",
       "waitingForData": "In attesa di dati...",
       "problemLoadingData": "Si è verificato un problema durante il caricamento dei dati",
@@ -48,19 +63,23 @@
         "page-title": "Switch",
         "breadcrumb-text": "Switch",
         "title": "Cloud - Switch",
-        "toggleColumnsTitle": "Attiva/disattiva colonne",
-        "removeDialogTitle": "Rimuovi switch {{switchSerial}}",
-        "retryDialogTitle": "Riprova a registrati",
+        "toggle-columns-title": "Attiva/disattiva colonne",
+        "remove-dialog-title": "Elimina switch",
+        "remove-dialog-message": "Elimina switch <strong>{{switchSerial}}</strong>.",
+        "retry-dialog-title": "Riprova a registrati",
+        "delete-note": "Nota. Se elimini questo switch, verrà rimosso da Sophos Central.",
         "txtbox": {
           "search-placeholder": "Cerca switch"
         },
         "action-menu": {
           "retry": "Riprova a registrati",
-          "removeFromCentral": "Rimuovere da Sophos Central"
+          "remove-from-central": "Rimuovi da Sophos Central"
         },
         "button": {
           "auto-refresh": "Aggiornamento automatico",
-          "add-template": "Aggiungi modello"
+          "add-template": "Aggiungi modello",
+          "switch-delete-confirm": "Elimina switch",
+          "template-delete-confirm": "Elimina modello"
         },
         "table-headers": {
           "name": "Nome",
@@ -112,17 +131,53 @@
           "assigned-switches": "Switch assegnati",
           "sync-switches-checkbox-text": "Sincronizza gli switch con la configurazione del modello iniziale"
         },
+        "delete-template": {
+          "dialog-title": "Elimina modello",
+          "delete-template-confirm-text": "Elimina modello <strong>{{templateName}}</strong>."
+        },
+        "edit-template" : {
+          "dialog-title": "Modifica modello"
+        },
         "message": {
           "remove-success": "Lo switch {{switchSerial}} è stato rimosso da Sophos Central.",
           "remove-failed": "Impossibile rimuovere lo switch da Sophos Central.",
           "retry-success": "La registrazione dello switch {{switchSerial}} è stata nuovamente attivata.",
           "retry-failed": "Impossibile attivare la registrazione.",
-          "add-template-success": "Il modello è stato aggiunto"
+          "add-template-success": "Il modello è stato aggiunto",
+          "add-template-error": "Il modello non è stato aggiunto",
+          "delete-template-success": "Il modello è stato eliminato",
+          "delete-template-error": "Impossibile eliminare il modello",
+          "update-template-success": "Il modello è stato aggiornato",
+          "update-template-error": "Impossibile aggiornare il modello"
         },
         "groupInfoText": {
           "what": "Che cos'è un modello?",
-          "information": "Un modello per gli switch è un modello virtuale per la configurazione degli switch che può essere applicato a uno o più switch Possiamo trasferire uno switch all'interno o all'esterno di un modello, a seconda delle esigenze. Basta che uno switch si trovi in un modello e le configurazioni effettuate a livello del modello verranno automaticamente sincronizzate con gli switch.",
-          "note": "Nota: l'override della configurazione a livello di switch avrà la precedenza durante la valutazione delle configurazioni in conflitto di uno switch in un modello."
+          "information": "Un modello per gli switch è una configurazione virtuale che può essere applicata a uno o più switch. Possiamo trasferire uno switch all'interno o all'esterno di un modello, a seconda delle esigenze. Basta che uno switch si trovi in un modello e le configurazioni effettuate a livello del modello verranno automaticamente sincronizzate con gli switch.",
+          "note": "Se sono presenti configurazioni in conflitto a livello di switch e di modello, le configurazioni a livello di switch avranno la precedenza."
+        }
+      },
+      "manage": {
+        "page-title": "Switch - Gestione degli switch",
+        "breadcrumb-text": "Gestisci switch",
+        "summary-legend-title": "Riepilogo",
+        "system-detail-tab-title": "Dettagli di sistema",
+        "port-settings-tab-title": "Impostazioni delle porte",
+        "network-settings-tab-title": "Impostazioni di rete",
+        "task-queue-tab-title": "Coda delle attività",
+        "template-dd-default-title": "Seleziona un modello",
+        "gbps": "{{unit}} Gbps",
+        "mbps": "{{unit}} Mbps",
+        "button": {
+          "reboot": "Riavvia",
+          "open-local-mgmt-console": "Apri console di gestione locale",
+          "remove": "Rimuovi da Sophos Central"
+        },
+        "tab-fields": {
+          "serial-no": "Numero di serie",
+          "model": "Modello",
+          "powered-on": "Accensione:",
+          "switch-firmware": "Firmware dello switch",
+          "central-agent": "Agente di Central"
         }
       }
     },
@@ -155,8 +210,10 @@
       "message": {
         "already-reported": "Gli switch con numeri di serie {{ switches }} sono già registrati a Sophos Central.",
         "registration-error": "Impossibile registrare gli switch.",
-        "switches-registered": "È in corso la registrazione degli switch. Connetti i tuoi switch alla rete.",
-        "switch-serial-max-length": "Il numero di serie non può superare i 15 caratteri.",
+        "switches-registered": "È in corso la registrazione degli switch a Sophos Central.",
+        "switches-multiple-registration-with-exception": "Numero/i di serie {{ switches }} non valido/i, stiamo effettuando la registrazione degli altri switch a Sophos Central.",
+        "switches-single-serial-registration-with-exception": "Numero di serie {{ switches }} non valido",
+        "invalid-serial": "Uno o più numeri di serie non sono validi.",
         "empty-switch-list-error": "Non è presente un numero di serie valido."
       }
     }

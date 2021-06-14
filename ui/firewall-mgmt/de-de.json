@@ -3,6 +3,7 @@
     "name": "Firewall-Verwaltung",
     "cancel": "Abbrechen",
     "save": "Speichern",
+    "confirm": "Bestätigen",
     "delete": "Löschen",
     "success": "Erfolg!",
     "next": "Weiter",
@@ -54,10 +55,78 @@
     "sdwan-groups": {
       "name": "Firewall Management - SD-WAN-Verbindungsgruppen",
       "breadcrumb-text": "SD-WAN-Verbindungsgruppen",
-      "create": "Eine Verbindungsgruppe erstellen",
+      "create": "Verbindungsgruppe erstellen",
+      "delete": {
+        "confirm": "Löschbestätigung",
+        "content": "Dadurch wird die Verbindungsgruppe '{{ name }}' zum Löschen markiert und die Einstellungen der der Gruppe zugewiesenen Firewalls werden zurückgesetzt. Bitte beachten Sie: Erst wenn die Einstellungen aller Firewalls in der Gruppe zurückgesetzt wurden, können die Firewalls anderen Gruppen zugewiesen werden.",
+        "success": "Verbindungsgruppe erfolgreich gelöscht.",
+        "error": "Fehler beim Löschen der Gruppe.",
+        "marked": "Diese Gruppe wurde zum Löschen markiert. Der Vorgang wird abgeschlossen, wenn alle Firewalls die zurückgesetzten Einstellungen übernehmen. Überprüfen Sie den Fortschritt bitte in der Auftrags-Warteschlange."
+      },
+      "status": {
+        "good": "Gut",
+        "bad": {
+          "one": "Verbindung deaktiviert",
+          "more": "{{ bad }} Verbindungen deaktiviert"
+        },
+        "lost-connection": {
+          "one": "Verbindung deaktiviert",
+          "more": "Verbindungen deaktiviert mit {{ bad }} Firewall(s)"
+        },
+        "resource-sharing": {
+          "one": "{{ total }} Ressourcen-Sharing-Firewall",
+          "more": "{{ total }} Ressourcen-Sharing-Firewalls"
+        },
+        "remote-firewalls": {
+          "one": "{{ total }} Remote-Firewall",
+          "more": "{{ total }} Remote-Firewalls"
+        },
+        "local-network": {
+          "one": "{{ total }} Lokales Netzwerk",
+          "more": "{{ total }} Lokale Netzwerke"
+        },
+        "nat-ed": "{{ total }} NAT",
+        "wan-ip": "WAN-IPs",
+        "sharing": "Freigabe",
+        "responder": "Responder",
+        "initiator": "Initiator",
+        "firewall-rules": {
+          "one": "{{ total }} Firewall-Regel",
+          "more":  "{{ total }} Firewall-Regeln"
+        },
+        "policy-route": {
+          "one": "{{ total }} Richtlinienroute",
+          "more": "{{ total }} Richtlinienrouten"
+        },
+        "nat-rules": {
+          "one" : "{{ total }} NAT-Regel",
+          "more": "{{ total }} NAT-Regeln"
+        },
+        "hosts": {
+          "one" : "{{ total }} Host",
+          "more": "{{ total }} Hosts"
+        },
+        "services": {
+          "one": "{{ total }} Dienst",
+          "more": "{{ total }} Dienste"
+        }
+      },
       "add": {
         "name": "Firewall Management - Neue SD-WAN-Verbindungsgruppe",
         "breadcrumb-text": "Eine SD-WAN-Verbindungsgruppe hinzufügen",
+        "error" : {
+          "title": "Fehler!",
+          "string": "Fehler",
+          "status": "Status",
+          "firewall": "Firewall"
+        },
+        "states": {
+          "cannot-save": "Unbekannter Fehler beim Speichern der Verbindungsgruppe.",
+          "created": "Neue Verbindungsgruppe erfolgreich erstellt.",
+          "updated": "Verbindungsgruppe erfolgreich aktualisiert.",
+          "service-object-create-failed": "Serviceobjekt kann nicht erstellt werden.",
+          "cannot-load": "Fehler beim Laden verfügbarer Firewalls."
+        },
         "select-firewalls": {
           "label": "Firewalls auswählen",
           "name": {
@@ -82,22 +151,58 @@
         "configure-networks": {
           "label": "Netzwerke konfigurieren",
           "heading": "Konfigurieren Sie Netzwerke und Routen",
+          "error": "Fehler beim Erkennen der Konflikte.",
+          "subnet-error": "Ein oder mehrere ungültige Subnetze",
           "description": "Legen Sie fest, welchen Netzwerken eine Firewall Zugriff auf die Gruppen gewährt, ob Netzwerke zur Konfliktvermeidung als unterschiedliche Adressbereiche erscheinen müssen, und richten Sie Tunnelredundanz für den Fall ein, dass mehrere Internetverbindungen vorhanden sind.",
           "no-conflict": {
-            "heading": "{{ count }} Firewalls analysiert und keine Netzwerkkonflikte festgestellt"
+            "heading": "{{ count }} Firewalls analysiert und keine Netzwerkkonflikte festgestellt."
           },
           "conflict": {
-            "heading": "{{ count }} Firewalls analysiert und Netzwerkkonflikte festgestellt"
+            "heading": "{{ count }} Firewalls analysiert und Netzwerkkonflikte festgestellt."
+          },
+          "network-missing": {
+            "heading": "{{ count }} Firewalls ohne Ressourcen-Sharing und ohne lokale Netzwerke."
           },
           "table": {
             "column": {
               "firewall-name": "Firewall",
-              "local-subnets": "Lokale Netzwerke",
-              "wan-ports": "WAN-Ports",
+              "local-subnets":"Lokale Netzwerke",
+              "wan-ports": "WAN-Port",
+              "gateway": "Backup-Gateway",
               "nat": "NAT",
-              "respond-only": "Nur antworten",
+              "respond-only": "Responder",
+              "initiator": "Initiator",
               "details-edit": "Details/Bearbeiten",
               "fix-conflicts": "Konflikt beheben"
+            },
+            "non-resolvable-conflict": "Bei Ressourcen-Sharing-Firewalls können keine Netzwerkkonflikte auftreten. Dieses Problem lässt sich möglicherweise nicht beheben.",
+            "not-participating": "Keine Schnittstellen zur Teilnahme am lokalen Netzwerk aktiviert. Sie können die Einstellungen bearbeiten, um sie zu aktivieren."
+          },
+          "modal": {
+            "table": {
+              "interface": "Schnittstellenname",
+              "network": "Netzwerkadresse",
+              "subnet": "Subnetzmaske",
+              "participate": "Aktivieren",
+              "nat": "NAT aktivieren",
+              "nat-address": "NAT-Adresse",
+              "nat-subnet": "NAT-Adresse gehört dem gleichen Subnetz wie die Schnittstelle an.",
+              "conflicts": "Konflikte",
+              "wan": "WAN-Link",
+              "selected": "Ausgewählt",
+              "gateway": "Backup-Gateway",
+              "xfrm-ip": "Xfrm-IP-Adressen",
+              "add": "Netzwerk hinzufügen"
+            },
+            "conflicts": {
+              "subnet-conflict": "Netzwerkkonflikt mit: {{ subnet }}.",
+              "missing-mandatory": "Pflichtfelder fehlen.",
+              "invalid-nat": "Ungültige NAT-Adresse.",
+              "invalid-ip": "Ungültige IP-Adresse.",
+              "invalid-netmask": "Ungültige Netzmaske.",
+              "name-conflicts": "Namenskonflikte.",
+              "xfrm-ip-needed": "Mindestens {{ need }} IP-Adressen erforderlich.",
+              "in-use": "Eine oder mehrere IP-Adressen werden bereits für andere Firewalls verwendet"
             }
           }
         },
@@ -119,20 +224,26 @@
                 "type-ip": "IP-Adresse: z.B. 10.12.22.34",
                 "type-iplist": "IP-Liste: z.B. 10.12.22.34,10.12.22.35",
                 "type-iprange": "IP-Bereich: z.B. 10.12.22.34-10.12.22.35",
-                "type-crdi": "CIDR-Format: z.B. 10.12.22.34/2"
+                "type-crdi": "Netzwerkformat: z.B. 10.12.22.34/2"
               },
+             
               "_dynamic_": {
                 "host": {
-                "IP": "IP-Adresse",
-                "Network": "CIDR",
-                "IPList": "IP-Liste",
-                "IPRange": "IP-Bereich"
+                "2": "IP-Adresse",
+                "9": "Netzwerk",
+                "4": "IP-Liste",
+                "3": "IP-Bereich"
                 },
                 "service": {
-                  "TCPorUDP": "TCP/UDP",
-                  "IP": "IP-Adresse",
-                  "ICMP": "ICMP",
-                  "ICMPv6": "ICMPv6"
+                  "1": "TCP/UDP",
+                  "2": "IP-Adresse",
+                  "3": "ICMP",
+                  "7": "ICMPv6"
+                },
+                "heartbeat": {
+                  "1": "Grün",
+                  "2": "Gelb",
+                  "3": "Keine Beschränkung"
                 }
               },
               "invalid": "Geteilte Ressource hat ungültiges Format"
@@ -155,7 +266,14 @@
             "help": "Geteilte Netzwerke stehen allen Firewalls zur Verfügung, die in dieser Gruppe enthalten sind.",
             "auto-rules": "Firewall-Regeln automatisch erstellen",
             "limit-access": "Zugriff nur für authentifizierte Benutzer",
-            "sync-sec": "Synchronized Security für Endpoints mit gutem Integritätsstatus"
+            
+            "sync-sec": {
+              "enable": "Synchronized Security Heartbeat konfigurieren",
+              "src": "Minimal zulässige Quell-HBs",
+              "dst": "Minimal zulässiger Ziel-HB",
+              "block-clients": "Clients ohne Heartbeat blockieren",
+              "block-requests": "Anfrage zu einem Ziel ohne Heartbeat blockieren"
+            }
           },
           "table": {
             "empty-message": "Noch keine teilbaren Ressourcen hinzugefügt.",
@@ -174,10 +292,25 @@
           }
         }
       },
+      "list": {
+        "auto-refresh": "Automatisch aktualisieren",
+        "search-placeholder": "Suchen nach Gruppen, Firewalls...",
+        "auto-refresh-hint": "Seitendaten werden alle 10 Sekunden aktualisiert",
+        "loading-error": "Verbindungsgruppen können nicht geladen werden",
+        "firewall-view": "Firewalls-Ansicht",
+        "vpn-view": "VPN-Verbindungsansicht",
+        "table": {
+          "connection-group": "Verbindungsgruppe",
+          "description": "Beschreibung",
+          "status": "Status",
+          "no-of-firewalls": "# Firewalls",
+          "no-of-shared-resource": "# freigegebener Ressourcen"
+        }
+      },
       "no-data": {
         "info": "Mit SD-WAN-Verbindungsgruppen können Sie mit Hilfe automatisch erzeugter Richtlinien Ressourcen zwischen Regionen teilen.",
         "process": "Wenn Sie eine Verbindungsgruppe erstellen, können Sie festlegen, welche Firewalls in der Gruppe enthalten sind.",
-        "how": "Klicken Sie auf 'SD-WAN-Verbindungsgruppen', um den Assistenten zu starten.",
+        "how": "Klicken Sie auf die Schaltfläche 'Verbindungsgruppe erstellen', um den Assistenten zu starten.",
         "header": "Vereinfachen Sie Ihre SD-WAN-Konfiguration mit Hilfe von Verbindungsgruppen",
         "learn-more": "Mehr erfahren"
       }
@@ -277,7 +410,7 @@
           "title-add": "Eine Vorlage hinzufügen",
           "title-edit": "Vorlage bearbeiten - {{ name }}",
           "name": {
-            "label": "Vorlagenname",
+            "label": "Name der Vorlage",
             "placeholder": "Geben Sie einen Namen für die Vorlage ein",
             "required": "Name ist erforderlich"
           },
@@ -337,7 +470,7 @@
             "connected": " Alle Firewalls sind mit Sophos Central verbunden und synchronisiert.",
             "disconnected": "Verbleibende {{ count }} Firewalls senden einen Security Heartbeat.",
             "out-of-sync": "Verbleibende {{ count }} Firewalls sind synchronisiert. Der Fehler muss behoben werden, damit weitere Richtlinienänderungen wirksam werden.",
-            "suspended": "Die Gruppenrichtlinien für diese Firewalls werden nicht synchronisiert. Entfernen Sie diese Firewalls aus den Gruppen und fügen Sie sie erneut hinzu, um neue Gruppenrichtlinien zu erhalten. "
+            "suspended": "Die Gruppenrichtlinien für diese Firewalls werden nicht synchronisiert. Verschieben Sie diese Firewalls aus den Gruppen und fügen Sie sie erneut hinzu, um neue Gruppenrichtlinien zu erhalten. "
          },
         "header": {
             "connected": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind mit Sophos Central verbunden.",

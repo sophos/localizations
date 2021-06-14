@@ -3,7 +3,8 @@
     "name": "防火牆管理",
     "cancel": "取消",
     "save": "儲存",
-    "delete": "刪除",
+    "confirm": "確認",
+    "delete": "删除",
     "success": "成功！",
     "next": "下一步 ",
     "add": "新增",
@@ -55,9 +56,77 @@
       "name": "防火墻管理 - SD WAN 連線群組",
       "breadcrumb-text": "SD WAN 連線群組",
       "create": "建立連線群組",
+      "delete": {
+        "confirm": "刪除確認",
+        "content": "這會將此項標記為連線群組 '{{ name }}' 等待刪除，並還原指派到此群組的防火墻中的設定。請注意，在此群組下的所有防火墻還原設定之前，它們不能歸屬到任何其他群組。",
+        "success": "已成功刪除連線群組。",
+        "error": "刪除群組時出錯。",
+        "marked": "已標記此群組等待刪除。所有防火墻套用還原的設定之後，將完成此步驟。請在工作佇列中查看這些工作的進度。"
+      },
+      "status": {
+        "good": "良好",
+        "bad": {
+          "one": "向下連結",
+          "more": "{{ bad }} 向下連結"
+        },
+        "lost-connection": {
+          "one": "向下連結",
+          "more": "使用 {{ bad }} 防火墻向下連結"
+        },
+        "resource-sharing": {
+          "one": "{{ total }} 資源共用防火墻",
+          "more": "{{ total }} 資源共用防火墻"
+        },
+        "remote-firewalls": {
+          "one": "{{ total }} 遠端防火墻",
+          "more": "{{ total }} 遠端防火墻"
+        },
+        "local-network": {
+          "one": "{{ total }} 本機網路",
+          "more": "{{ total }} 本機網路"
+        },
+        "nat-ed": "{{ total }} NAT",
+        "wan-ip": "WAN IP",
+        "sharing": "共用",
+        "responder": "回應程式",
+        "initiator": "啟動器",
+        "firewall-rules": {
+          "one": "{{ total }} 防火牆規則",
+          "more":  "{{ total }} 防火牆規則"
+        },
+        "policy-route": {
+          "one": "{{ total }} 原則路由",
+          "more": "{{ total }} 原則路由"
+        },
+        "nat-rules": {
+          "one" : "{{ total }} NAT 規則",
+          "more": "{{ total }} NAT 規則"
+        },
+        "hosts": {
+          "one" : "{{ total }} 主機",
+          "more": "{{ total }} 主機"
+        },
+        "services": {
+          "one": "{{ total }} 服務",
+          "more": "{{ total }} 服務"
+        }
+      },
       "add": {
         "name": "防火墻管理 - 新的 SD WAN 連線群組",
         "breadcrumb-text": "新增 SD WAN 連線群組",
+        "error" : {
+          "title": "錯誤！",
+          "string": "錯誤",
+          "status": "狀態",
+          "firewall": "防火墻"
+        },
+        "states": {
+          "cannot-save": "儲存連線群組時出現未知錯誤。",
+          "created": "已成功建立新的連線群組。",
+          "updated": "已成功更新連線群組。",
+          "service-object-create-failed": "無法建立服務物件。",
+          "cannot-load": "載入可用防火墻時出錯。"
+        },
         "select-firewalls": {
           "label": "選取防火牆",
           "name": {
@@ -82,22 +151,58 @@
         "configure-networks": {
           "label": "設定網路",
           "heading": "設定網路和路由",
+          "error": "偵測衝突時出現錯誤。",
+          "subnet-error": "一個或多個子網路無效",
           "description": "自訂每個防火牆允許哪些網路存取共用群組，是否需要將網路顯示為其他地址範圍以避免衝突，並在存在多個網際網路連線時設定通道備援。",
           "no-conflict": {
-            "heading": "{{ count }} 已分析防火墻，沒有偵測到網路衝突"
+            "heading": "{{ count }} 已分析防火墻，沒有偵測到網路衝突。"
           },
           "conflict": {
-            "heading": "{{ count }} 已分析防火墻，偵測到網路衝突"
+            "heading": "{{ count }} 已分析防火墻，偵測到網路衝突。"
+          },
+          "network-missing": {
+            "heading": "{{ count }} 沒有本機網路的非資源共用防火牆。"
           },
           "table": {
             "column": {
-              "firewall-name": "防火牆",
-              "local-subnets": "本機網路",
+              "firewall-name": "防火墻",
+              "local-subnets":"本機網路",
               "wan-ports": "WAN 連接埠",
+              "gateway": "備用閘道",
               "nat": "NAT",
-              "respond-only": "僅回應",
+              "respond-only": "回應程式",
+              "initiator": "啟動器",
               "details-edit": "詳細資料/編輯",
               "fix-conflicts": "修復衝突"
+            },
+            "non-resolvable-conflict": "資源共用防火牆不能有網路衝突。這種情況可能無法解決。",
+            "not-participating": "任何介面都不能參與本機網路。您可以編輯設定以啟用它們。"
+          },
+          "modal": {
+            "table": {
+              "interface": "介面名稱",
+              "network": "網路位址",
+              "subnet": "子網路遮罩",
+              "participate": "啟用",
+              "nat": "啟用 NAT",
+              "nat-address": "NAT 位址",
+              "nat-subnet": "NATed 位址應與介面的位址屬於同一子網路。",
+              "conflicts": "衝突",
+              "wan": "WAN 連結",
+              "selected": "已選",
+              "gateway": "備用閘道",
+              "xfrm-ip": "Xfrm IP 位址",
+              "add": "新增網段"
+            },
+            "conflicts": {
+              "subnet-conflict": "衝突網路：{{ subnet }}。",
+              "missing-mandatory": "缺少必填欄位。",
+              "invalid-nat": "無效的 NAT 位址。",
+              "invalid-ip": "無效的 IP 位址。",
+              "invalid-netmask": "無效的網路遮罩。",
+              "name-conflicts": "命名衝突。",
+              "xfrm-ip-needed": "最少需要 {{ need }} 個 IP 位址。",
+              "in-use": "一個或多個 IP 已用於其他防火牆"
             }
           }
         },
@@ -119,20 +224,26 @@
                 "type-ip": "IP 位址：例如10.12.22.34",
                 "type-iplist": "IP 清單：例如10.12.22.34,10.12.22.35",
                 "type-iprange": "IP 範圍：例如10.12.22.34-10.12.22.35",
-                "type-crdi": "CIDR 格式：例如10.12.22.34/2"
+                "type-crdi": "網路格式：例如10.12.22.34/2"
               },
+             
               "_dynamic_": {
                 "host": {
-                "IP": "IP 位址 (IP 位址)",
-                "Network": "CIDR",
-                "IPList": "IP 清單",
-                "IPRange": "IP 範圍"
+                "2": "IP 位址 (IP 位址)",
+                "9": "網路",
+                "4": "IP 清單",
+                "3": "IP 範圍"
                 },
                 "service": {
-                  "TCPorUDP": "TCP/UDP",
-                  "IP": "IP",
-                  "ICMP": "ICMP",
-                  "ICMPv6": "ICMPv6"
+                  "1": "TCP/UDP",
+                  "2": "IP",
+                  "3": "ICMP",
+                  "7": "ICMPv6"
+                },
+                "heartbeat": {
+                  "1": "綠",
+                  "2": "黃",
+                  "3": "無限制"
                 }
               },
               "invalid": "共用資源的格式無效"
@@ -140,7 +251,7 @@
             "service": {
               "title": "服務",
               "help": {
-                "heading": "您可以將多個 TCP/UDP 源和目的地連接埠輸入為逗號分隔清單。例如 TCP|1:300|5000,UDP|300|4:5000. 您可以使用下列公用程式生成這樣的序列。",
+                "heading": "您可以將多個 TCP/UDP 源和目的地連接埠輸入為逗號分隔清單。例如TCP|1:300|5000,UDP|300|4:5000.您可以使用下列公用程式生成這樣的序列。",
                 "port-format": "起始連接埠:終端連接埠",
                 "source-ports": "源連接埠",
                 "destination-ports": "目的地連接埠"
@@ -155,7 +266,14 @@
             "help": "已共用的網路將可供此共用群組中的所有防火墻使用。",
             "auto-rules": "自動建立防火牆規則",
             "limit-access": "限制存取已驗證的使用者",
-            "sync-sec": "安全運行的端點的同步安全性"
+            
+            "sync-sec": {
+              "enable": "配置同步的安全性活動訊號",
+              "src": "已允許最小的來源 HB",
+              "dst": "已允許最小的目的地 HB",
+              "block-clients": "阻擋沒有活動訊號的用戶端",
+              "block-requests": "阻擋對不含活動訊號的目的地的要求"
+            }
           },
           "table": {
             "empty-message": "尚未新增可共用的資源。",
@@ -174,10 +292,25 @@
           }
         }
       },
+      "list": {
+        "auto-refresh": "自動重新整理",
+        "search-placeholder": "搜尋群組、防火墻...",
+        "auto-refresh-hint": "每 10 秒重新整理一次頁面資料",
+        "loading-error": "無法載入連線群組",
+        "firewall-view": "防火墻檢視",
+        "vpn-view": "VPN 連結檢視",
+        "table": {
+          "connection-group": "連線群組",
+          "description": "說明",
+          "status": "狀態",
+          "no-of-firewalls": "# 個防火墻",
+          "no-of-shared-resource": "# 個共用資源"
+        }
+      },
       "no-data": {
         "info": "SD WAN 連線群組有助於利用自動產生的策略進行跨區域分享資源。",
         "process": "在建立群組時，您可選擇要加入連線群組的防火牆。",
-        "how": "按一下「新增 SD WAN 連線群組」按鈕即可啟動助手。",
+        "how": "按一下「建立連線群組」按鈕即可啟動助手。",
         "header": "透過連線群組簡化您的 SD WAN 設定",
         "learn-more": "瞭解更多"
       }
@@ -337,7 +470,7 @@
             "connected": " 所有防火墻均已連線至 Sophos Central 並與其同步。",
             "disconnected": "剩餘的 {{ count }} 個防火墻正在傳送安全活動訊號。",
             "out-of-sync": "剩餘的 {{ count }} 個防火墻已同步。需要解決此故障，才能套用進一步的策略變更。",
-            "suspended": "這些防火墻的群組原則將不會同步。請將這些防火墻移出各自的群組，然後再次新增以從群組獲取新原則。 "
+            "suspended": "這些防火墻的群組原則將不會同步。將這些防火墻移出各自的群組，然後再次新增以獲取新的群組原則。 "
          },
         "header": {
             "connected": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻已連線至 Sophos Central。",

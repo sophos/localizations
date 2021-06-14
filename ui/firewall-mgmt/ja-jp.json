@@ -3,6 +3,7 @@
     "name": "ファイアウォール管理",
     "cancel": "キャンセル",
     "save": "保存",
+    "confirm": "確認",
     "delete": "削除",
     "success": "成功！",
     "next": "次へ",
@@ -55,9 +56,77 @@
       "name": "ファイアウォール管理 - SD WAN 接続グループ",
       "breadcrumb-text": "SD WAN 接続グループ",
       "create": "接続グループの作成",
+      "delete": {
+        "confirm": "削除の確認",
+        "content": "この接続グループ '{{ name }}' が削除対象として指定され、このグループに割り当てられているファイアウォールの設定が元に戻ります。このグループ内のすべてのファイアウォールの設定が元に戻るまで、他のグループに含めることはできません。",
+        "success": "接続グループの削除に成功しました。",
+        "error": "グループの削除中、エラーが発生しました。",
+        "marked": "このグループは削除対象に指定されました。すべてのファイアウォールに元の設定が適用されると、この操作は完了します。これらのタスクの進行状況については、タスクのキューを確認してください。"
+      },
+      "status": {
+        "good": "良",
+        "bad": {
+          "one": "リンクダウン",
+          "more": "リンクダウン: {{ bad }}"
+        },
+        "lost-connection": {
+          "one": "リンクダウン",
+          "more": "{{ bad }}台のファイアウォールとのリンクダウン"
+        },
+        "resource-sharing": {
+          "one": "リソース共有ファイアウォール: {{ total }}",
+          "more": "リソース共有ファイアウォール: {{ total }}"
+        },
+        "remote-firewalls": {
+          "one": "リモートファイアウォール: {{ total }}",
+          "more": "リモートファイアウォール: {{ total }}"
+        },
+        "local-network": {
+          "one": "ローカルネットワーク: {{ total }}",
+          "more": "ローカルネットワーク: {{ total }}"
+        },
+        "nat-ed": "NAT: {{ total }}",
+        "wan-ip": "WAN IP",
+        "sharing": "共有",
+        "responder": "レスポンダ",
+        "initiator": "イニシエータ",
+        "firewall-rules": {
+          "one": "ファイアウォールのルール: {{ total }}",
+          "more":  "ファイアウォールのルール: {{ total }}"
+        },
+        "policy-route": {
+          "one": "ポリシールート: {{ total }}",
+          "more": "ポリシールート: {{ total }}"
+        },
+        "nat-rules": {
+          "one" : "NAT ルール: {{ total }}",
+          "more": "NAT ルール: {{ total }}"
+        },
+        "hosts": {
+          "one" : "ホスト: {{ total }}",
+          "more": "ホスト: {{ total }}"
+        },
+        "services": {
+          "one": "サービス: {{ total }}",
+          "more": "サービス: {{ total }}"
+        }
+      },
       "add": {
         "name": "ファイアウォール管理 - 新しい SD WAN 接続グループ",
         "breadcrumb-text": "SD WAN 接続グループの追加",
+        "error" : {
+          "title": "エラー！",
+          "string": "エラー",
+          "status": "状態",
+          "firewall": "ファイアウォール"
+        },
+        "states": {
+          "cannot-save": "接続グループの保存中、不明なエラーが発生しました。",
+          "created": "新しい接続グループの作成に成功しました。",
+          "updated": "接続グループの更新に成功しました。",
+          "service-object-create-failed": "サービスオブジェクトを作成できません。",
+          "cannot-load": "使用可能なファイアウォールの読み込み中、エラーが発生しました。"
+        },
         "select-firewalls": {
           "label": "ファイアウォールの選択",
           "name": {
@@ -82,22 +151,58 @@
         "configure-networks": {
           "label": "ネットワークの設定",
           "heading": "ネットワークとルートの設定",
+          "error": "競合を検出中、エラーが発生しました。",
+          "subnet-error": "1つまたは複数のサブネットが無効です",
           "description": "共有グループにアクセスを許可するネットワークを各ファイアウォールでカスタマイズし、競合を回避するためにネットワークを異なるアドレス範囲として表示する必要があるかどうかを考慮し、複数のインターネット接続が存在する場合にトンネルの冗長化を設定します。",
           "no-conflict": {
-            "heading": "解析後、ネットワーク競合が検出されなかったファイアウォールの数: {{ count }}"
+            "heading": "解析後、ネットワーク競合が検出されなかったファイアウォールの数: {{ count }}。"
           },
           "conflict": {
-            "heading": "解析後、ネットワーク競合が検出されたファイアウォールの数: {{ count }}"
+            "heading": "解析後、ネットワーク競合が検出されたファイアウォールの数: {{ count }}。"
+          },
+          "network-missing": {
+            "heading": "ローカルネットワークのない、リソースを共有しないファイアウォールの数: {{ count }}。"
           },
           "table": {
             "column": {
               "firewall-name": "ファイアウォール",
-              "local-subnets": "ローカルネットワーク",
+              "local-subnets":"ローカルネットワーク",
               "wan-ports": "WAN ポート",
+              "gateway": "バックアップゲートウェイ",
               "nat": "NAT",
-              "respond-only": "応答のみ",
+              "respond-only": "レスポンダ",
+              "initiator": "イニシエータ",
               "details-edit": "詳細/編集",
               "fix-conflicts": "競合の修正"
+            },
+            "non-resolvable-conflict": "リソース共有ファイアウォールで、ネットワークの競合は許可されません。これは解決できない場合があります。",
+            "not-participating": "ローカルネットワークに参加するために有効化されているインターフェースはありません。設定を編集して有効にすることができます。"
+          },
+          "modal": {
+            "table": {
+              "interface": "インターフェース名",
+              "network": "ネットワークアドレス",
+              "subnet": "サブネットマスク",
+              "participate": "有効",
+              "nat": "NAT を有効にする",
+              "nat-address": "NAT アドレス",
+              "nat-subnet": "NAT で変換されたアドレスは、インターフェースと同じサブネットに属する必要があります。",
+              "conflicts": "競合",
+              "wan": "WAN リンク",
+              "selected": "選択済み",
+              "gateway": "バックアップゲートウェイ",
+              "xfrm-ip": "Xfrm の IP アドレス",
+              "add": "ネットワークの追加"
+            },
+            "conflicts": {
+              "subnet-conflict": "競合するネットワーク: {{ subnet }}。",
+              "missing-mandatory": "必須フィールドがありません。",
+              "invalid-nat": "無効な NAT アドレスです。",
+              "invalid-ip": "無効な IP アドレスです。",
+              "invalid-netmask": "無効なネットマスクです。",
+              "name-conflicts": "名前が競合しています。",
+              "xfrm-ip-needed": "最低 2つの {{ need }} IP アドレスが必要です。",
+              "in-use": "1つまたは複数の IP が、既に他のファイアウォールに使用されています"
             }
           }
         },
@@ -119,20 +224,26 @@
                 "type-ip": "IP アドレス: 例: 10.12.22.34",
                 "type-iplist": "IP リスト: 例: 10.12.22.34,10.12.22.35",
                 "type-iprange": "IP の範囲: 例: 10.12.22.34-10.12.22.35",
-                "type-crdi": "CIDR 形式: 例: 10.12.22.34/2"
+                "type-crdi": "ネットワーク形式: 例: 10.12.22.34/2"
               },
+             
               "_dynamic_": {
                 "host": {
-                "IP": "IP アドレス",
-                "Network": "CIDR",
-                "IPList": "IP のリスト",
-                "IPRange": "IP の範囲"
+                "2": "IP アドレス",
+                "9": "ネットワークデバイス",
+                "4": "IP のリスト",
+                "3": "IP の範囲"
                 },
                 "service": {
-                  "TCPorUDP": "TCP/UDP",
-                  "IP": "IP",
-                  "ICMP": "ICMP",
-                  "ICMPv6": "ICMPv6"
+                  "1": "TCP/UDP",
+                  "2": "IP",
+                  "3": "ICMP",
+                  "7": "ICMPv6"
+                },
+                "heartbeat": {
+                  "1": "緑",
+                  "2": "黄色",
+                  "3": "制限なし"
                 }
               },
               "invalid": "共有リソースの形式が無効です"
@@ -155,7 +266,14 @@
             "help": "共有済みネットワークは、この共有グループに属するすべてのファイアウォールで使用できます。",
             "auto-rules": "ファイアウォールルールを自動的に作成する",
             "limit-access": "認証済みユーザーのみにアクセスを制限する",
-            "sync-sec": "セキュリティ状態が正常のエンドポイントに Synchronized Security を提供する"
+            
+            "sync-sec": {
+              "enable": "Synchronized Security ハートビートの設定",
+              "src": "送信元ハートビートの最小値",
+              "dst": "宛先ハートビートの最小値",
+              "block-clients": "ハートビートがないクライアントをブロック",
+              "block-requests": "ハートビートがない宛先へのリクエストをブロック"
+            }
           },
           "table": {
             "empty-message": "共有可能なリソースはまだ追加されていません。",
@@ -174,10 +292,25 @@
           }
         }
       },
+      "list": {
+        "auto-refresh": "自動更新",
+        "search-placeholder": "グループ、ファイアウォールの検索...",
+        "auto-refresh-hint": "10秒ごとにページデータを更新します",
+        "loading-error": "接続グループを読み込むことができません",
+        "firewall-view": "ファイアウォールビュー",
+        "vpn-view": "VPN リンクビュー",
+        "table": {
+          "connection-group": "接続グループ",
+          "description": "説明",
+          "status": "状態",
+          "no-of-firewalls": "ファイアウォール数",
+          "no-of-shared-resource": "共有リソース数"
+        }
+      },
       "no-data": {
         "info": "「SD WAN 接続グループ」は、自動生成されたポリシーを利用して、リージョン間でリソースを共有するのに役立ちます。",
         "process": "グループ作成時に、接続グループに含めるファイアウォールを選択できます。",
-        "how": "アシスタントを開始するには、「SD WAN 接続グループ」ボタンをクリックします。",
+        "how": "アシスタントを開始するには、「接続グループの作成」ボタンをクリックします。",
         "header": "接続グループを使用して、SD WAN 設定を簡素化する",
         "learn-more": "詳細情報"
       }
@@ -337,7 +470,7 @@
             "connected": " すべてのファイアウォールは、Sophos Central に接続され、同期されています。",
             "disconnected": "残り {{ count }}台のファイアウォールは、セキュリティハートビートを送信しています。",
             "out-of-sync": "残り {{ count }}台のファイアウォールは同期されています。新たなポリシーの変更を適用するには、エラーに対処する必要があります。",
-            "suspended": "これらのファイアウォールのグループポリシーは同期されません。グループから新しいポリシーを取得するには、これらのファイアウォールをグループから削除して再度追加してください。 "
+            "suspended": "これらのファイアウォールのグループポリシーは同期されません。新しいグループポリシーを取得するには、これらのファイアウォールをグループから削除して再度追加してください。 "
          },
         "header": {
             "connected": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central に接続されています。",

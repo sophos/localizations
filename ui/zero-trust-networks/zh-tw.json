@@ -39,7 +39,7 @@
         "policies": "策略",
         "policy-placeholder": "選擇",
         "external-fqdn": "外部 FQDN",
-        "internal-fqdn" : "內部 FQDN/IP 位址",
+        "internal-fqdn": "內部 FQDN/IP 位址",
         "add-port-link": "新增另一項",
         "application-fqdn": "資源 FQDN",
         "application-icon": "顯示圖示（檔案大小上限：100K)",
@@ -79,6 +79,51 @@
         "error": "擷取資源清單時出現錯誤。",
         "no-userGroups-configured": "沒有可用的使用者群組。",
         "no-userGroups-assigned": "未指派使用者群組。"
+      },
+      "details": {
+        "title": "Zero Trust Network Access - 資源詳細資料",
+        "breadcrumb-text": "資源詳細資料",
+        "error": "擷取資源清單時出現錯誤",
+        "fetch-error": "擷取資源詳細資料時出現錯誤",
+        "breadcrumb-sub-text": "資源",
+        "tabs": {
+          "summary": {
+            "label": "摘要",
+            "access-method": "存取方法：",
+            "resource-type": "資源類型：",
+            "gateway": "閘道：",
+            "local-address": "本機位址：",
+            "domain": "網域：",
+            "agent": "代理程式",
+            "agentless": "無代理",
+            "display-in-user-portal": "在使用者入口網站中顯示：",
+            "access-ports": {
+              "label": "存取連接埠",
+              "columns": {
+                "port": "連接埠",
+                "status": "狀態",
+                "type": "類型",
+                "last-connection-test": "上次連線測試"
+              }
+            },
+            "note": "為實現負載平衡，您必須具有奇數個執行個體。",
+            "add": "新增/編輯執行個體",
+            "header": {
+              "name": "名稱： ",
+              "description": "描述： ",
+              "status": "狀態： ",
+              "edit": "編輯",
+              "delete": "刪除"
+            }
+          },
+          "user-groups-policies": {
+            "label": "使用者群組 ({{count}})，原則",
+            "policy-label": "政策： ",
+            "switch-policy": "交換器原則",
+            "edit-groups": "編輯群組",
+            "groups-label": "群組"
+          }
+        }
       },
       "delete": {
         "header": "刪除資源",
@@ -156,7 +201,12 @@
               "type": "類型： ",
               "idp": "識別提供者： ",
               "edit": "編輯",
-              "delete": "刪除"
+              "delete": "刪除",
+              "connection-status-connected": "連線狀態：已連線：{{connectedSince}}",
+              "connection-status-disconnected": "連線狀態：已中斷連線：{{disconnectedSince}}",
+              "cluster-status-active": "使用中的閘道叢集：{{clusterActiveSince}}",
+              "cluster-status-inactive": "非使用中的閘道叢集：{{clusterInactiveSince}}",
+              "degraded": "降低的閘道"
             }
           },
           "certificate": {
@@ -164,7 +214,7 @@
             "certificate": "憑證",
             "upload-certificate": "上傳憑證",
             "certificate-validation": "無效憑證",
-            "certificate-wildcard-message-example": "使用萬用資源憑證。例如： *.test.com",
+            "certificate-wildcard-message-example": "使用萬用資源憑證。例如：*.test.com",
             "privatekey": "私密金鑰",
             "upload-privatekey": "上傳私密金鑰",
             "private-key-validation": "無效的私密金鑰",
@@ -182,7 +232,7 @@
                 "port": "連接埠"
               },
               "resources-access": "資源與存取",
-              "no-application-configured": "您尚未新增任何資源。",
+              "no-application-configured": "您沒有資源與此閘道相關聯。",
               "no-application-configured-help": "從 <i18n slot=\"resource\">Resources & access</i18n> 頁面向閘道新增資源。"
             }
           }
@@ -272,6 +322,15 @@
           "lowercase": "至少一個小寫字母",
           "number": "至少一個數字",
           "special-character": "至少一個特殊字元"
+        },
+        "cluster": {
+          "cluster-enabled": "閘道叢集 - 開",
+          "cluster-disabled": "閘道叢集 - 關",
+          "cluster-vip": "叢集虛擬 IP",
+          "cluster-vip-validation": "無效的叢集虛擬 IP",
+          "external-tooltip": "這用於負載平衡。如果您使用的是外部負載平衡器，請留空。",
+          "internal-tooltip": "這用於叢集管理。",
+          "single-arm-tooltip": "這用於叢集管理和負載平衡。"
         }
       },
       "delete": {
@@ -326,6 +385,12 @@
         "disconnected": {
           "label": "閘道無法存取",
           "header-disconnected": "{{lastSeen}} 後已中斷"
+        },
+        "cluster-status-active": {
+          "label": "使用中的閘道叢集：{{clusterActiveSince}}"
+        },
+        "cluster-status-inactive": {
+          "label": "非使用中的閘道叢集：{{clusterInactiveSince}}"
         }
       },
       "instance": {
@@ -354,6 +419,7 @@
             "image-download-error": "下載影像時出現錯誤"
           },
           "download-cft": {
+            "launch-stack": "啟動堆疊",
             "label": "下載 CFT",
             "header-waiting": "正在等待部署",
             "content-waiting": "CFT 尚未啟動，請下載 CFT 並啟動",
@@ -368,6 +434,15 @@
           },
           "disconnected": {
             "label": "無法存取原因："
+          },
+          "active": {
+            "label": "使用中：{{activeSince}}"
+          },
+          "inactive": {
+            "label": "非使用中：{{inactiveSince}}"
+          },
+          "unknown": {
+            "label": "未知的"
           }
         },
         "vm-name": "VM 名稱",
@@ -386,6 +461,24 @@
           "save-confirm": "儲存確認",
           "warn-info": "您正在從 1 個執行個體轉變為 {{instanceNumber}} 個執行個體。",
           "warn-description": "從 1 個執行個體轉變為 3 個或更多個執行個體以實現負載平衡之後，對於這個閘道您將不能再減少到 1 個執行個體。"
+        },
+        "support": {
+          "token": "權杖",
+          "sophos-support-header": "開啟 Sophos 支援",
+          "sophos-token-header": "Sophos 支援權杖",
+          "enable-sophos-support": "開啟支援",
+          "enable-confirm": "是否為 {{gatewayInstanceName}} 開啟 Sophos 支援？",
+          "enable-details": "開啟 Sophos 支援，為您的閘道執行個體提供 1 天的支援遠端疑難排解存取。",
+          "token-header": "將此權杖提供給 Sophos 支援，以便它們可以存取您的閘道執行個體。",
+          "instance-name": "閘道執行個體：{{gatewayInstanceName}}",
+          "token-expiry": "權杖到期日：{{tokenExpiryDate}}",
+          "tooltip-msg": "權杖在其開啟後 1 天到期。工作階段到期可以在設定/ Sophos 支援中設定。",
+          "add-success": "已啟用 Sophos 支援",
+          "add-error": "啟用 Sophos 支援時出現錯誤",
+          "disable-success": "已停用 Sophos 支援",
+          "disable-error": "停用 Sophos 支援時出現錯誤",
+          "copy": "複製",
+          "fetch-error": "無法擷取遠端偵錯詳情"
         }
       },
       "schedule": {
@@ -439,12 +532,17 @@
         "tenantid": "租用戶 ID",
         "clientid": "用戶端 ID",
         "clientsecret": "Client secret",
+        "issuer-uri": "簽發者 URI",
+        "scope": "範圍",
         "add-success": "識別提供者已建立",
         "add-error": "識別提供者建立失敗",
         "edit-success": "識別提供者已更新",
         "edit-error": "識別提供者更新失敗",
         "provider-type-error": "擷取提供者類型時出現錯誤",
+        "configure-okta-settings": "設定 Okta 設定",
         "configure-azure-settings": "配置 Azure 同步設定",
+        "test-connection-azure-label": "驗證 Azure 同步連接",
+        "test-connection-okta-label": "驗證 Okta 連線",
         "test-connection-label": "驗證 Azure 同步連接",
         "test-connection-button": "測試連線",
         "test-connection-success": "連接成功",
@@ -453,7 +551,10 @@
         "clientId-validation": "用戶端 ID 為必填項",
         "tenantId-validation": "租用戶 ID 為必填項",
         "clientSecret-validation": "用戶端密碼為必填項",
-        "loading-error": "載入識別提供者時出現錯誤"
+        "loading-error": "載入識別提供者時出現錯誤",
+        "issuer-uri-validation": "簽發者 URI 為必填項",
+        "invalid-issuer-uri": "無效的 URI",
+        "scope-validation": "範圍為必填項"
       },
       "delete": {
         "header": "刪除識別提供者",
@@ -484,12 +585,12 @@
         "note": "注意：原則已指派給資源。您可以在 <i18n slot=\"policy-resource\">resource</i18n> 層級指派使用者。",
         "resource": "资源",
         "resource-and-access": "Zero Trust - 資源存取",
-        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。 <i18n slot=\"policy-learn-more\">Learn more</i18n>",
+        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">Learn more</i18n>",
         "no-policy-configured": "您尚無任何原則。",
         "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
       },
       "delete": {
-        "header":"刪除政策",
+        "header": "刪除政策",
         "message-delete": "刪除政策",
         "message-warning": "資源需要移至另一個原則，然後您才能刪除此原則。",
         "success": "原則已刪除",
@@ -498,10 +599,6 @@
       "add-modal": {
         "resource-access": "資源存取",
         "tooltip-resource-access-info1": "策略可支援以代理或無代理狀態存取資源。代理可檢查安全狀態，進而確認存取權限。",
-        "tooltip-resource-access-info2": "從以下位置下載 Sophos Endpoint 代理程式：",
-        "tooltip-resource-access-info3": "頁面。",
-        "tooltip-resource-access-download": "下載",
-        "tooltip-resource-access-learnmore": "瞭解更多",
         "agent": "代理",
         "agentless": "無代理"
       },
@@ -550,6 +647,142 @@
       "applicationName": "資源",
       "appTotalBytes": "總位元組 (MB)",
       "fetchError": "擷取儀錶板資料時出現錯誤"
+    },
+    "api": {
+      "exception.unexpected": "處理請求時出現意外錯誤。",
+      "exception.AccessDeniedException": "拒絕存取",
+      "fqdn.format.invalid": "FQDN 必須為有效格式",
+      "fqdn_ip.format.invalid": "內部 FQDN/IPv4 位址必須為有效格式",
+      "field.value.invalid": "為欄位 {{1}} 提供的輸入值 {{0}} 無效",
+      "request.json.malformed": "接收到格式錯誤請求 JSON",
+      "http.request.header.missing": "請求中缺少必填項 HTTP 標頭 {{0}}",
+      "request.data.format.invalid": "請求中收到的資料格式無效",
+      "request.data.uri.invalid": "請求中收到的 URI 無效",
+      "name.invalid": "名稱不能為空，不得超過 100 個字元，可以包含字母、數字或底線，不能包含特殊字元",
+      "encoding.invalid": "偵測到無效的編碼",
+      "exception.resource.creation": "建立資源時發生錯誤",
+      "exception.io": "伺服器出現 I/O 異常",
+      "exception.json.parse": "請求中收到的 JSON 格式錯誤",
+      "exception.illegal.argument": "請求中收到非法引數",
+      "entity.not.found": "未找到 {{0}}",
+      "exception.invalid.enum": "{{0}} 對於 {{1}} 是無效值",
+      "exception.resource.not.found": "未找到資源",
+      "ipv4.valid": "IP 位址欄位必須為有效的 IPv4 格式",
+      "name.notBlank": "名稱不得空白",
+      "record.invalid": "提供的 {{0}} 對於此帳戶無效",
+      "field.validation.errors.message": "欄位驗證錯誤",
+      "gateway.already-deployed": "無法生成影像 URL，閘道已部署",
+      "password.valid": "密碼長度必須介於 12 到 250 個字元之間，至少包含一個數字、一個小寫字元、一個大寫字元和一個特殊字元",
+      "file-size.upload.limit.exceeded": "檔案 {{0}} 已超出檔案上傳大小限制",
+      "description.invalid": "說明不得為空並且不能超出 300 個字元",
+      "application.field.validation.error": "應用程式欄位驗證錯誤",
+      "application.name.notnull": "應用程式名稱不得為 Null",
+      "application.icon.upload.failed": "上傳應用程式圖示時失敗",
+      "application.icon.unsupported.type": "為應用程式圖示提供的檔案類型不受支援。允許的類型為 {{0}}",
+      "application.icon.name.blank": "處理應用程式圖示時出錯，請檢查檔案名稱",
+      "application.resource-type.notnull": "應用程式資源類型不得為 Null",
+      "application.gateway-ids.notnull": "必須向應用程式指派閘道",
+      "application.port.notnull": "應用程式連接埠不得為 Null",
+      "application.ports.not-empty": "必須為資源提供連接埠",
+      "application.port-number.notblank": "必須提供連接埠號碼",
+      "application.port-type.notnull": "連接埠類型不得為 Null",
+      "application.policy.notnull": "必須向應用程式指派原則",
+      "application.port.range": "應用程式連接埠值必須介於 0 到 65535 之間",
+      "application.fqdn.notnull": "應用程式 FQDN 不得為 Null",
+      "application.logo.upload.error": "上傳應用程式標誌時發生錯誤。",
+      "application.user-groups.not-empty": "必須向應用程式指派至少一個使用者群組",
+      "application.fqdn.already.configured": "已設定應用程式 FQDN",
+      "application.name.already.configured": "此帳戶已存在具有提供的名稱的應用程式",
+      "application.name.userportal.reserved": "應用程式名稱 userportal 是為閘道保留的",
+      "application.policy.port.mismatch": "為所選原則類型提供的連接埠類型無效",
+      "application.policy.resourcetype.mismatch": "為所選原則類型提供的資源類型無效",
+      "application.gateway.not.assigned": "必須向應用程式指派閘道",
+      "idp.field.validation.error": "識別提供者欄位驗證錯誤",
+      "azure.tenantId.notBlank": "Azure 識別提供者的租用戶 ID 不得為空",
+      "idp.clientId.notBlank": "識別提供者用戶端 ID 不得為空",
+      "idp.clientSecret.notBlank": "識別提供者用戶端密碼不得為空",
+      "idp.provider.notnull": "提供者不得為 Null 或空白",
+      "idp.name.notblank": "識別提供者名稱不得為空",
+      "idp.provider.unknown": "請求中出現未知提供者類型",
+      "gateway.idpId.notNull": "指派給閘道的 IdP ID 不得為 Null",
+      "gateway.clientId.notBlank": "必須提供閘道用戶端 ID",
+      "gateway.appDomain.notBlank": "必須提供閘道應用程式網域",
+      "gateway.dualArm.not.specified": "需要指定閘道單/雙臂",
+      "gateway.packageType.notnull": "必須提供閘道封裝類型",
+      "gateway.package.unknown": "請求中提供的封裝類型未知",
+      "gateway.name.notBlank": "閘道名稱不得為空",
+      "gateway.fqdn.notnull": "閘道 FQDN 不得為 Null 或空白",
+      "gateway.password.notBlank": "閘道密碼不得為空",
+      "gateway.network.invalidParams": "閘道的網路參數無效",
+      "gateway.mandatory-fields.notBlank": "閘道必填欄位不得為空",
+      "gateway.otp.notBlank": "閘道 OTP 不得為空",
+      "gateway.cert.notBlank": "閘道憑證不得為空",
+      "gateway.private-key.notBlank": "閘道私密金鑰不得為空",
+      "gateway.schedule.notFound": "未找到閘道的閘道排程升級",
+      "gateway.schedule.alreadyExists": "閘道的閘道排程升級已存在",
+      "gateway.version.isLower": "閘道的閘道升級版本低於目前版本 {{0}}",
+      "gateway.upgrade.inPast": "閘道的閘道升級已於過去排定在 {{0}}",
+      "gateway.upgrade.cancelNotAllowed": "閘道開始五分鐘前不允許取消升級",
+      "gateway.armChange.notAllowed": "不允許變更閘道的單/雙臂部署",
+      "gateway.instance.notFound": "閘道中未找到閘道執行個體",
+      "gateway.instances.empty": "沒有為閘道定義執行個體",
+      "gateway.version.isNull": "閘道的閘道升級版本為 Null",
+      "gateway.upgrade.status.inValid": "閘道收到的升級狀態 {{0}} 無效",
+      "gateway.schedule.version.notMatching": "閘道的升級版本 {{0}} 與排定版本不匹配",
+      "gateway.staticRoute.invalid": "閘道指定的靜態路由無效",
+      "gateway.instanceHostname.invalid": "閘道的執行個體主機名無效",
+      "gateway.instanceIpAddress.invalid": "為閘道提供的 IP 位址 {{0}} 無效",
+      "gateway.interface.notFound": "未找到閘道執行個體網路資訊",
+      "gateway.virtualIp.invalid": "閘道的閘道虛擬 IP {{0}} 無效",
+      "gateway.instanceIpAddress.duplicate": "為閘道指定的執行個體 IP {{0}} 重複",
+      "gateway.ip.notInSubnet": "閘道執行個體 IP {{0}} 不在閘道的子網路範圍內",
+      "gateway.remote.config.notEnabled": "所選執行個體未啟用遠端偵錯",
+      "gateway.presignedURL.generation.error":"生成預先簽署的 URL 時出現錯誤。影像狀態為：給定閘道的 {{0}}",
+      "gateway.presignedURL.malformed": "影像 URL 格式錯誤",
+      "gateway.cluster.notEnabled": "閘道叢集未啟用，但找到不止一個執行個體",
+      "gateway.cluster.change.notAllowed": "無法停用閘道叢集",
+      "gateway.cluster.notEmpty": "未找到閘道叢集欄位",
+      "policy.invalid": "提供的原則物件無效",
+      "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
+      "policy.valid-until.not.allowed": "如果未強制執行原則，則無法設定 validUntil",
+      "policy.access-rules.invalid": "為 accessRules 物件提供的值無效",
+      "policy.application.association":"原則與以下應用程式相關聯：{{0}}",
+      "policy-type.notNull": "必須設定原則類型",
+      "policy.access-rules.not.allowed.with.agentless": "使用無代理程式原則不允許存取規則",
+      "policy.rule-value.invalid": "為原則規則值提供的值無效",
+      "policy.rule-type.not.null": "原則規則類型不得為 Null",
+      "policy.rule.condition.not.blank": "原則規則條件不得為空白或 Null",
+      "policy.rule.condition.invalid": "為原則規則條件提供的值無效",
+      "policy.type.change.not-allowed": "不允許修改原則類型",
+      "azure.connection.test.failed": "使用提供的設定進行 Azure 測試連線失敗",
+      "test-connection.invalid-config": "接收到無效的連線設定",
+      "azure.test-connection.tenant-id.notblank": "必須提供 Azure 租用戶 ID 才能測試連線",
+      "test-connection.azure.idpid.notempty": "用戶端密碼為空白時必須提供 Idp ID",
+      "test-connection.azure.emptyfields": "必須提供用戶端 ID 和租用戶 ID 才能測試 Azure 連線",
+      "okta.connection.test.failed": "使用提供的設定進行 Okta 測試連線失敗",
+      "test-connection.clientid.notblank": "測試連線時用戶端 ID 不得為空",
+      "okta.test-connection.issuer-uri.notnull": "必須提供 Okta 簽發者 URI",
+      "okta.test-connection.scope.notblank": "必須提供授權伺服器自訂範圍才能測試與 Okta 的連線",
+      "okta.test-connection.emptyfields": "必須提供用戶端 ID 和簽發者 URI 才能測試 Okta 連線",
+      "okta.invalid.issuerUri": "簽發者 URI 無效，URI 中缺少 authServerId",
+      "connection-test.config.field.validation.error": "連線測試設定中出現欄位驗證錯誤",
+      "property.invalid": "為屬性 {{0}} 提供的處理值失敗",
+      "idp.already.exists": "此帳戶已存在具有提供的名稱的識別提供者",
+      "idp.provider.already.exists": "此帳戶已存在具有提供者類型的識別提供者",
+      "gateway.already.exists": "此帳戶已存在具有提供的名稱的閘道",
+      "fqdn.not.unique": "其他閘道已存在提供的 FQDN",
+      "gateway.idp.association": "識別提供者與一個或多個閘道相關聯",
+      "application.already.exists": "此帳戶已存在具有提供的名稱的應用程式",
+      "gateway.application.association": "閘道與一個或多個應用程式相關聯",
+      "fqdn-port.not.unique": "提供的 FQDN 連接埠配對已指派到其他應用程式",
+      "policy.already.exists": "具有提供的名稱的原則已存在",
+      "remote.debug.isEnabled.empty": "遠端偵錯設定 isEnabled 不能為空白",
+      "remote.debug.validity.empty": "遠端偵錯設定 validity 不能為空白",
+      "remote.status.apuStatus.empty": "遠端偵錯状态 apuStatus 不能為空白",
+      "remote.status.updatedOn.empty": "遠端偵錯状态 updatedOn 不能為空白",
+      "remote.status.createdOn.empty": "遠端偵錯状态 createdOn 不能為空白",
+      "remote.status.expiryOn.empty": "遠端偵錯状态 expiryOn 不能為空白",
+      "remote.status.accessId.empty": "遠端偵錯状态 accessId 不能為空白"
     }
   },
   "ztna-report": {
@@ -665,7 +898,7 @@
       "yAxis": "Y 軸",
       "groupBy": "分組依據",
       "deleteExport": "刪除匯出",
-      "firewalls": "閘道",
+      "firewalls": "執行個體",
       "tooManyDevices": "已達到裝置限制。您無法執行此操作",
       "deviceNotFound": "未找到設備。",
       "groupNotFound": "群組已滿或未找到群組"

@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "개요",
+      "alerts": "경고",
+      "connections": "연결",
+      "poe": "PoE",
+      "uplink": "업링크",
+      "free": "무료",
+      "inuse": "사용 중",
+      "total": "합계",
+      "details": "세부 정보",
+      "template": "템플릿",
+      "firmware": "펌웨어",
+      "minutes-ago": "분 전",
+      "hours-ago": "시간 전",
+      "days-ago": "일 전",
+      "months-ago": "개월 전",
       "button": {
         "register": "등록",
         "cancel": "취소",
-        "yes": "예",
-        "no": "아니요",
         "save": "저장",
         "bugs": "버그",
-        "apply": "적용"
+        "apply": "적용",
+        "confirm": "확인"
       },
       "status": {
         "registering": "연결 대기 중",
@@ -17,7 +30,8 @@
         "registered": "등록됨",
         "unregistered": "등록 시간 초과됨",
         "disconnected": "연결 해제됨",
-        "suspended": "일시 중단됨"
+        "suspended": "일시 중단됨",
+        "disabled": "사용 안 함"
       },
       "form": {
         "name": "이름",
@@ -26,6 +40,7 @@
       "error": "오류",
       "success": "성공",
       "warn": "경고",
+      "info": "정보",
       "used": "사용됨",
       "waitingForData": "데이터 대기 중...",
       "problemLoadingData": "데이터 로드 중 문제 발생",
@@ -48,19 +63,23 @@
         "page-title": "스위치",
         "breadcrumb-text": "스위치",
         "title": "클라우드 - 스위치",
-        "toggleColumnsTitle": "열 전환",
-        "removeDialogTitle": "스위치 {{switchSerial}} 제거",
-        "retryDialogTitle": "등록 다시 시도",
+        "toggle-columns-title": "열 전환",
+        "remove-dialog-title": "스위치 삭제",
+        "remove-dialog-message": "<strong>{{switchSerial}}</strong> 스위치를 삭제합니다.",
+        "retry-dialog-title": "등록 다시 시도",
+        "delete-note": "참고: 이 스위치를 삭제하면 Sophos Central에서 제거됩니다.",
         "txtbox": {
           "search-placeholder": "스위치 검색"
         },
         "action-menu": {
           "retry": "등록 다시 시도",
-          "removeFromCentral": "Sophos Central에서 제거"
+          "remove-from-central": "Sophos Central에서 제거"
         },
         "button": {
           "auto-refresh": "자동 새로 고침",
-          "add-template": "템플릿 추가"
+          "add-template": "템플릿 추가",
+          "switch-delete-confirm": "스위치 삭제",
+          "template-delete-confirm": "템플릿 삭제"
         },
         "table-headers": {
           "name": "이름",
@@ -112,17 +131,53 @@
           "assigned-switches": "할당된 스위치",
           "sync-switches-checkbox-text": "초기 템플릿 구성과 스위치 동기화"
         },
+        "delete-template": {
+          "dialog-title": "템플릿 삭제",
+          "delete-template-confirm-text": "<strong>{{templateName}}</strong> 템플릿을 삭제합니다."
+        },
+        "edit-template" : {
+          "dialog-title": "템플릿 편집"
+        },
         "message": {
           "remove-success": "스위치 {{switchSerial}}이(가) Sophos Central에서 제거되었습니다.",
           "remove-failed": "Sophos Central에서 스위치를 제거할 수 없습니다.",
           "retry-success": "스위치 {{switchSerial}} 등록이 다시 시작되었습니다.",
           "retry-failed": "등록을 트리거할 수 없습니다.",
-          "add-template-success": "템플릿이 추가되었습니다."
+          "add-template-success": "템플릿이 추가되었습니다.",
+          "add-template-error": "템플릿이 추가되지 않음",
+          "delete-template-success": "템플릿이 삭제됨",
+          "delete-template-error": "템플릿을 삭제할 수 없음",
+          "update-template-success": "템플릿이 업데이트되었음",
+          "update-template-error": "템플릿을 업데이트할 수 없음"
         },
         "groupInfoText": {
           "what": "템플릿이란?",
-          "information": "스위치 템플릿은 하나 이상의 스위치에 적용할 수 있는 가상 스위치 구성 모델입니다. 스위치를 템플릿으로 이동하거나 필요에 따라 템플릿 밖으로 이동할 수 있습니다. 스위치가 템플릿 아래에 있으면 템플릿 수준에서 이루어진 구성이 자동으로 스위치에 동기화됩니다.",
-          "note": "템플릿 아래에서 스위치의 충돌 구성을 평가하는 동안 스위치 수준의 구성 재정의가 우선됩니다."
+          "information": "스위치 템플릿은 하나 이상의 스위치에 적용할 수 있는 가상 구성입니다. 스위치를 템플릿으로 이동하거나 필요에 따라 템플릿 밖으로 이동할 수 있습니다. 스위치가 템플릿 아래에 있으면 템플릿 수준에서 이루어진 구성이 자동으로 스위치에 동기화됩니다.",
+          "note": "스위치 수준과 템플릿 수준에서 충돌하는 구성이 있는 경우 스위치 수준 구성이 우선합니다."
+        }
+      },
+      "manage": {
+        "page-title": "스위치 - 스위치 관리",
+        "breadcrumb-text": "스위치 관리",
+        "summary-legend-title": "요약",
+        "system-detail-tab-title": "스위치 세부 정보",
+        "port-settings-tab-title": "포트 설정",
+        "network-settings-tab-title": "네트워크 설정",
+        "task-queue-tab-title": "작업 대기열",
+        "template-dd-default-title": "템플릿 선택",
+        "gbps": "{{unit}} Gbps",
+        "mbps": "{{unit}}Mbps",
+        "button": {
+          "reboot": "재부팅",
+          "open-local-mgmt-console": "로컬 관리 콘솔 열기",
+          "remove": "Sophos Central에서 제거"
+        },
+        "tab-fields": {
+          "serial-no": "일련 번호",
+          "model": "모델",
+          "powered-on": "전원 켜짐",
+          "switch-firmware": "스위치 펌웨어",
+          "central-agent": "Central 에이전트"
         }
       }
     },
@@ -155,8 +210,10 @@
       "message": {
         "already-reported": "일련 번호가 {{ switches }}인 스위치는 이미 Sophos Central에 등록되어 있는 것입니다.",
         "registration-error": "스위치를 등록할 수 없습니다.",
-        "switches-registered": "스위치를 등록하고 있습니다. 스위치를 네트워크에 연결하십시오.",
-        "switch-serial-max-length": "일련 번호는 15자 이하여야 합니다.",
+        "switches-registered": "스위치가 Sophos Central에 등록되지 않았습니다.",
+        "switches-multiple-registration-with-exception": "{{ switches }} 일련 번호가 유효하지 않아 다른 스위치를 Sophos Central에 등록하는 중입니다.",
+        "switches-single-serial-registration-with-exception": "{{ switches }} 일련 번호가 잘못되었습니다.",
+        "invalid-serial": "일련 번호가 하나 이상 잘못되었습니다.",
         "empty-switch-list-error": "유효한 일련 번호가 없습니다."
       }
     }

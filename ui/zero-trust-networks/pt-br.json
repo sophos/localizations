@@ -39,7 +39,7 @@
         "policies": "Políticas",
         "policy-placeholder": "Selecionar",
         "external-fqdn": "FQDN externo",
-        "internal-fqdn" : "Endereço FQDN/IP interno",
+        "internal-fqdn": "Endereço FQDN/IP interno",
         "add-port-link": "Adicionar outro",
         "application-fqdn": "FQDN do recurso",
         "application-icon": "Ícone de exibição (tamanho máx. do arquivo: 100K)",
@@ -79,6 +79,51 @@
         "error": "Erro ao buscar a lista de Recursos.",
         "no-userGroups-configured": "Nenhum grupo de usuário disponível.",
         "no-userGroups-assigned": "Nenhum grupo de usuário atribuído."
+      },
+      "details": {
+        "title": "Zero Trust Network Access – Detalhes do recurso",
+        "breadcrumb-text": "Detalhes do recurso",
+        "error": "Erro ao buscar a lista de recursos",
+        "fetch-error": "Erro ao buscar detalhes do recurso",
+        "breadcrumb-sub-text": "Recursos",
+        "tabs": {
+          "summary": {
+            "label": "Resumo",
+            "access-method": "Método de acesso:",
+            "resource-type": "Tipo de recurso:",
+            "gateway": "Gateway:",
+            "local-address": "Endereço de IP Local:",
+            "domain": "Domínio:",
+            "agent": "Agente",
+            "agentless": "Sem agente",
+            "display-in-user-portal": "Exibir no portal do usuário:",
+            "access-ports": {
+              "label": "Portas de acesso",
+              "columns": {
+                "port": "Porta",
+                "status": "Status",
+                "type": "Tipo",
+                "last-connection-test": "Último teste de conexão"
+              }
+            },
+            "note": "Para balanceamento de carga, você deve ter um número ímpar de instâncias.",
+            "add": "Adicionar/Editar instâncias",
+            "header": {
+              "name": "Nome: ",
+              "description": "Descrição: ",
+              "status": "Status: ",
+              "edit": "Editar",
+              "delete": "Deletar"
+            }
+          },
+          "user-groups-policies": {
+            "label": "Grupos de usuários ({{count}}), política ",
+            "policy-label": "Política: ",
+            "switch-policy": "Alterar política",
+            "edit-groups": "Editar grupos",
+            "groups-label": "Grupos"
+          }
+        }
       },
       "delete": {
         "header": "Deletar recurso",
@@ -156,7 +201,12 @@
               "type": "Tipo: ",
               "idp": "Provedor de identidade: ",
               "edit": "Editar",
-              "delete": "Deletar"
+              "delete": "Deletar",
+              "connection-status-connected": "Status da conexão: Conectado: {{connectedSince}}",
+              "connection-status-disconnected": "Status da conexão: Desconectado: {{disconnectedSince}}",
+              "cluster-status-active": "Cluster de gateway ativo: {{clusterActiveSince}}",
+              "cluster-status-inactive": "Cluster de gateway inativo: {{clusterInactiveSince}}",
+              "degraded": "Gateway degradado"
             }
           },
           "certificate": {
@@ -182,7 +232,7 @@
                 "port": "Porta"
               },
               "resources-access": "Recursos e acesso",
-              "no-application-configured": "Você ainda não adicionou nenhum recurso.",
+              "no-application-configured": "Você não possui nenhum recurso associado a este gateway.",
               "no-application-configured-help": "Adicione recursos a um gateway a partir da página <i18n slot=\"resource\">Recursos e acesso</i18n>."
             }
           }
@@ -272,11 +322,20 @@
           "lowercase": "Pelo menos uma letra minúscula",
           "number": "Pelo menos um número",
           "special-character": "Pelo menos um caractere especial"
+        },
+        "cluster": {
+          "cluster-enabled": "Clustering de gateway – Ligado",
+          "cluster-disabled": "Clustering de gateway – Desligado",
+          "cluster-vip": "IP virtual de cluster",
+          "cluster-vip-validation": "IP virtual de cluster inválido",
+          "external-tooltip": "Usado para balanceamento de carga. Se estiver usando um balanceador externo de carga, deixe em branco.",
+          "internal-tooltip": "Usado para gerenciamento de cluster.",
+          "single-arm-tooltip": "Usado para gerenciamento de cluster e balanceamento de carga."
         }
       },
       "delete": {
-        "header": "Deletar Gateway",
-        "message": "Deletar Gateway",
+        "header": "Deletar gateway",
+        "message": "Deletar gateway",
         "success": "Gateway deletado",
         "error": "Falha na deleção do gateway",
         "ack": "Eu compreendo que não posso desfazer estas alterações",
@@ -326,6 +385,12 @@
         "disconnected": {
           "label": "Gateway inacessível",
           "header-disconnected": "Desconectado desde {{lastSeen}}"
+        },
+        "cluster-status-active": {
+          "label": "Cluster de gateway ativo: {{clusterActiveSince}}"
+        },
+        "cluster-status-inactive": {
+          "label": "Cluster de gateway inativo: {{clusterInactiveSince}}"
         }
       },
       "instance": {
@@ -354,6 +419,7 @@
             "image-download-error": "Erro ao baixar a imagem"
           },
           "download-cft": {
+            "launch-stack": "Iniciar pilha",
             "label": "Faça download do CFT",
             "header-waiting": "Aguardando implantação",
             "content-waiting": "O CFT ainda não foi inicializado; baixe o CFT e inicialize a partir dele",
@@ -368,6 +434,15 @@
           },
           "disconnected": {
             "label": "Inacessível desde:"
+          },
+          "active": {
+            "label": "Ativo: {{activeSince}}"
+          },
+          "inactive": {
+            "label": "Inativo: {{inactiveSince}}"
+          },
+          "unknown": {
+            "label": "Desconhecido"
           }
         },
         "vm-name": "Nome da VM",
@@ -386,6 +461,24 @@
           "save-confirm": "Salvar confirmação",
           "warn-info": "Você está indo de 1 instância para {{instanceNumber}} instâncias.",
           "warn-description": "Assim que você for de 1 para 3 ou mais instâncias no balanceamento de carga, não poderá voltar este gateway para 1."
+        },
+        "support": {
+          "token": "Token",
+          "sophos-support-header": "Ativar o suporte da Sophos",
+          "sophos-token-header": "Token de suporte da Sophos",
+          "enable-sophos-support": "Ativar suporte",
+          "enable-confirm": "Ativar o suporte da Sophos para {{gatewayInstanceName}}?",
+          "enable-details": "Ative o suporte da Sophos para dar ao suporte o acesso remoto à sua instância de gateway por 1 dia para a solução de problemas.",
+          "token-header": "Dê este token para o suporte da Sophos para que possam acessar a sua instância de gateway.",
+          "instance-name": "Instância de gateway: {{gatewayInstanceName}}",
+          "token-expiry": "Token expira em: {{tokenExpiryDate}}",
+          "tooltip-msg": "O token expira em 1 dia a contar do momento da ativação. A expiração da sessão pode ser definida em Configurações/Suporte Sophos.",
+          "add-success": "Suporte da Sophos habilitado",
+          "add-error": "Erro ao habilitar o suporte da Sophos",
+          "disable-success": "Suporte da Sophos desabilitado",
+          "disable-error": "Erro ao desabilitar o suporte da Sophos",
+          "copy": "Copiar",
+          "fetch-error": "Não foi possível buscar detalhes de depuração remota"
         }
       },
       "schedule": {
@@ -439,12 +532,17 @@
         "tenantid": "ID do locatário",
         "clientid": "ID do cliente",
         "clientsecret": "Client secret",
+        "issuer-uri": "URI emissor",
+        "scope": "Escopo",
         "add-success": "Provedor de identidade criado",
         "add-error": "Falha ao criar provedor de identidade",
         "edit-success": "Provedor de identidade atualizado",
         "edit-error": "Falha ao atualizar provedor de identidade",
         "provider-type-error": "Erro ao buscar tipo de provedor",
+        "configure-okta-settings": "Configurar os parâmetros do Okta",
         "configure-azure-settings": "Configurar os parâmetros do Azure Sync",
+        "test-connection-azure-label": "Validar a conexão do Azure Sync",
+        "test-connection-okta-label": "Validar a conexão do Okta",
         "test-connection-label": "Validar a conexão do Azure Sync",
         "test-connection-button": "Testar conexão",
         "test-connection-success": "Conexão bem-sucedida!",
@@ -453,7 +551,10 @@
         "clientId-validation": "ID de cliente é obrigatório",
         "tenantId-validation": "Locatário é obrigatório",
         "clientSecret-validation": "Client Secret é obrigatório",
-        "loading-error": "Erro ao carregar o provedor de identidade"
+        "loading-error": "Erro ao carregar o provedor de identidade",
+        "issuer-uri-validation": "URI de emissor é obrigatório",
+        "invalid-issuer-uri": "URI inválido",
+        "scope-validation": "Escopo é obrigatório"
       },
       "delete": {
         "header": "Deletar provedor de identidade",
@@ -489,7 +590,7 @@
         "no-policy-configured-help": "Clique no botão Adicionar Política para adicionar uma política para começar a dar acesso a seus recursos."
       },
       "delete": {
-        "header":"Deletar política",
+        "header": "Deletar política",
         "message-delete": "Deletar política",
         "message-warning": "recurso(s) precisam ser movidos para outra política para poder deletar esta política",
         "success": "Política deletada",
@@ -498,10 +599,6 @@
       "add-modal": {
         "resource-access": "Acesso a recurso",
         "tooltip-resource-access-info1": "As políticas dão suporte a acesso a recurso com agente e sem agente. Um agente pode verificar o status de integridade para determinar o acesso.",
-        "tooltip-resource-access-info2": "Baixe o agente Sophos Endpoint na",
-        "tooltip-resource-access-info3": "página.",
-        "tooltip-resource-access-download": "Downloads",
-        "tooltip-resource-access-learnmore": "Saiba mais",
         "agent": "Agente",
         "agentless": "Sem agente"
       },
@@ -550,6 +647,142 @@
       "applicationName": "Recurso",
       "appTotalBytes": "Total de bytes (MB)",
       "fetchError": "Erro ao buscar dados no painel"
+    },
+    "api": {
+      "exception.unexpected": "Ocorreu um erro inesperado durante o processamento da sua solicitação.",
+      "exception.AccessDeniedException": "Acesso Negado",
+      "fqdn.format.invalid": "FQDN deve estar em um formato válido",
+      "fqdn_ip.format.invalid": "Endereço FQDN/IPv4 interno deve estar em um formato válido",
+      "field.value.invalid": "Valor de entrada inválido {{0}} fornecido para o campo {{1}}",
+      "request.json.malformed": "JSON de solicitação malformada recebido",
+      "http.request.header.missing": "Cabeçalho HTTP necessário {{0}} ausente na solicitação",
+      "request.data.format.invalid": "Formato de dados inválido recebido na solicitação",
+      "request.data.uri.invalid": "URI inválido recebido na solicitação",
+      "name.invalid": "O nome não pode ficar em branco, não deve exceder 100 caracteres, pode conter letras, números e sublinhado, e não pode conter caracteres especiais",
+      "encoding.invalid": "Codificação inválida detectada",
+      "exception.resource.creation": "Ocorreu um erro durante a criação do recurso",
+      "exception.io": "Ocorreu uma exceção E/S no servidor",
+      "exception.json.parse": "JSON malformado recebido na solicitação",
+      "exception.illegal.argument": "Um argumento ilegal foi recebido na solicitação",
+      "entity.not.found": "Nenhum {{0}} encontrado",
+      "exception.invalid.enum": "{{0}} é um valor inválido para {{1}}",
+      "exception.resource.not.found": "Recurso não encontrado",
+      "ipv4.valid": "O campo de endereço IP deve ter um formato IPv4 válido",
+      "name.notBlank": "O nome não pode ficar em branco",
+      "record.invalid": "{{0}} fornecido é inválido para esta conta",
+      "field.validation.errors.message": "Erros de validação do campo",
+      "gateway.already-deployed": "Não é possível gerar URL da imagem; gateway já implementado",
+      "password.valid": "A senha deve ter entre 12 e 250 caracteres e conter pelo menos um dígito, pelo menos um caractere minúsculo, pelo menos um caractere maiúsculo e pelo menos um caractere especial",
+      "file-size.upload.limit.exceeded": "Limite de tamanho de carregamento de arquivo excedido pelo arquivo {{0}}",
+      "description.invalid": "A descrição não pode ficar em branco e não pode exceder 300 caracteres",
+      "application.field.validation.error": "Erro de validação do campo do aplicativo",
+      "application.name.notnull": "O nome do aplicativo não pode ser nulo",
+      "application.icon.upload.failed": "Falha ao carregar o ícone do aplicativo",
+      "application.icon.unsupported.type": "Tipo de arquivo sem suporte fornecido para o ícone do aplicativo. Os tipos permitidos são {{0}}",
+      "application.icon.name.blank": "Erro ao processar ícone do aplicativo; verifique o nome do arquivo",
+      "application.resource-type.notnull": "O tipo de recurso do aplicativo não pode ser nulo",
+      "application.gateway-ids.notnull": "O gateway deve ser atribuído ao aplicativo",
+      "application.port.notnull": "A porta do aplicativo não pode ser nula",
+      "application.ports.not-empty": "A porta deve ser fornecida para o recurso",
+      "application.port-number.notblank": "O número da porta deve ser fornecido",
+      "application.port-type.notnull": "O tipo de porta não pode ser nulo",
+      "application.policy.notnull": "Uma política deve ser atribuída a um aplicativo",
+      "application.port.range": "O valor de porta do aplicativo deve estar entre 0 e 65535",
+      "application.fqdn.notnull": "O FQDN do aplicativo não pode ser nulo",
+      "application.logo.upload.error": "Ocorreu um erro durante o carregamento do logotipo do aplicativo",
+      "application.user-groups.not-empty": "Pelo menos um grupo de usuário deve ser atribuído ao aplicativo",
+      "application.fqdn.already.configured": "O FQDN do aplicativo já está configurado",
+      "application.name.already.configured": "Um aplicativo com o nome fornecido já existe para esta conta",
+      "application.name.userportal.reserved": "O nome de aplicativo userportal é reservado para o gateway",
+      "application.policy.port.mismatch": "O tipo de porta fornecido é inválido para o tipo de política selecionado",
+      "application.policy.resourcetype.mismatch": "O tipo de recurso fornecido é inválido para o tipo de política selecionado",
+      "application.gateway.not.assigned": "Um gateway deve ser atribuído a um aplicativo",
+      "idp.field.validation.error": "Erro de validação do campo do provedor de identidade",
+      "azure.tenantId.notBlank": "O ID do locatário não deve ficar em branco para o provedor de identidade Azure",
+      "idp.clientId.notBlank": "O ID do cliente provedor de identidade não pode ficar em branco",
+      "idp.clientSecret.notBlank": "O client secret do provedor de identidade não pode ficar em branco",
+      "idp.provider.notnull": "O provedor não pode ser nulo nem em branco",
+      "idp.name.notblank": "O nome do provedor de identidade não pode ficar branco",
+      "idp.provider.unknown": "Tipo de provedor desconhecido na solicitação",
+      "gateway.idpId.notNull": "O ID de IdP atribuído ao gateway não pode ser nulo",
+      "gateway.clientId.notBlank": "O ID do cliente de gateway deve ser fornecido",
+      "gateway.appDomain.notBlank": "O domínio do aplicativo de gateway deve ser fornecido",
+      "gateway.dualArm.not.specified": "O braço simples/duplo do gateway precisa ser especificado",
+      "gateway.packageType.notnull": "O tipo de pacote do gateway deve ser fornecido",
+      "gateway.package.unknown": "Tipo de pacote desconhecido fornecido na solicitação",
+      "gateway.name.notBlank": "O nome de gateway não pode ficar em branco",
+      "gateway.fqdn.notnull": "O FQDN do gateway não pode ser nulo nem branco",
+      "gateway.password.notBlank": "A senha de gateway não pode ficar em branco",
+      "gateway.network.invalidParams": "Parâmetros de rede inválidos para o gateway",
+      "gateway.mandatory-fields.notBlank": "Os campos obrigatórios de gateway não podem ficar em branco",
+      "gateway.otp.notBlank": "O OTP do gateway não pode ficar em branco",
+      "gateway.cert.notBlank": "O certificado do gateway não pode ficar em branco",
+      "gateway.private-key.notBlank": "A chave privada de gateway não podem ficar em branco",
+      "gateway.schedule.notFound": "Nenhum agendamento de upgrade de gateway encontrado para o gateway",
+      "gateway.schedule.alreadyExists": "Já existe um agendamento de upgrade de gateway para o gateway",
+      "gateway.version.isLower": "Versão de upgrade de gateway para o gateway é inferior à versão atual {{0}}",
+      "gateway.upgrade.inPast": "Upgrade de gateway para o gateway está agendado no passado às {{0}}",
+      "gateway.upgrade.cancelNotAllowed": "Cancelar o upgrade do gateway só é permitido até cinco minutos antes",
+      "gateway.armChange.notAllowed": "Alterar a implantação de braço simples/duplo não é permitido para o gateway",
+      "gateway.instance.notFound": "Nenhuma instância de gateway encontrada no gateway",
+      "gateway.instances.empty": "Nenhuma instância definida para o gateway",
+      "gateway.version.isNull": "A versão de upgrade do gateway é nula para o gateway",
+      "gateway.upgrade.status.inValid": "O status de upgrade {{0}} recebido para o gateway é inválido",
+      "gateway.schedule.version.notMatching": "A versão de upgrade {{0}} não corresponde à versão agendada para o gateway",
+      "gateway.staticRoute.invalid": "A rota estática especificada é inválida para o gateway",
+      "gateway.instanceHostname.invalid": "O nome de host da instância é inválido para o gateway",
+      "gateway.instanceIpAddress.invalid": "O endereço IP inválido {{0}} foi fornecido para o gateway",
+      "gateway.interface.notFound": "Informação de rede da instância de gateway não encontrada",
+      "gateway.virtualIp.invalid": "O IP virtual de gateway {{0}} é inválido para o gateway",
+      "gateway.instanceIpAddress.duplicate": "IP de instância duplicado {{0}} especificado para o gateway",
+      "gateway.ip.notInSubnet": "IP de instância de gateway {{0}} não está no intervalo de sub-rede para o gateway",
+      "gateway.remote.config.notEnabled": "Depuração remota não habilitada para a instância selecionada",
+      "gateway.presignedURL.generation.error":"Erro ao gerar URL pré-assinada. O status da imagem é: {{0}} para o gateway especificado",
+      "gateway.presignedURL.malformed": "A URL da imagem está malformada",
+      "gateway.cluster.notEnabled": "Clustering de gateway não habilitado, mas foi encontrada mais de uma instância",
+      "gateway.cluster.change.notAllowed": "O cluster de gateway não pode ser desabilitado",
+      "gateway.cluster.notEmpty": "Campo de cluster de gateway não encontrado",
+      "policy.invalid": "O objeto de política fornecido é inválido",
+      "policy.isEnforced.notNull": "O campo isEnforced no objeto da política não pode ser nulo",
+      "policy.valid-until.not.allowed": "validUntil não pode ser definido se a política não for forçada",
+      "policy.access-rules.invalid": "O valor fornecido para o objeto accessRules é inválido",
+      "policy.application.association":"A política está associada a estes aplicativos: {{0}}",
+      "policy-type.notNull": "O tipo de política deve ser definido",
+      "policy.access-rules.not.allowed.with.agentless": "As regras de acesso não são permitidas com a política sem agente",
+      "policy.rule-value.invalid": "Valor inválido fornecido para o valor da regra da política",
+      "policy.rule-type.not.null": "O tipo de regra da política não pode ser nulo",
+      "policy.rule.condition.not.blank": "A condição da regra da política não pode ser nula nem branco",
+      "policy.rule.condition.invalid": "Valor inválido fornecido para a condição da regra da política",
+      "policy.type.change.not-allowed": "A modificação do tipo de política não é permitida",
+      "azure.connection.test.failed": "A conexão de teste do Azure falhou com a configuração fornecida",
+      "test-connection.invalid-config": "Config de conexão inválido recebido",
+      "azure.test-connection.tenant-id.notblank": "O ID do locatário do Azure deve ser fornecido para testar a conexão",
+      "test-connection.azure.idpid.notempty": "O ID do Idp deve ser fornecido quando o client secret está vazio",
+      "test-connection.azure.emptyfields": "O ID do cliente e o ID do locatário devem ser fornecidos para testar a conexão do Azure",
+      "okta.connection.test.failed": "A conexão de teste do Okta falhou com a configuração fornecida",
+      "test-connection.clientid.notblank": "O ID do cliente não pode estar em branco para testar a conexão",
+      "okta.test-connection.issuer-uri.notnull": "O IRU do emissor do Okta deve ser fornecido",
+      "okta.test-connection.scope.notblank": "O escopo personalizado do servidor de autorização deve ser fornecido para testar uma conexão com o Okta",
+      "okta.test-connection.emptyfields": "O ID do cliente e o URI do emissor devem ser fornecidos para testar a conexão do Okta",
+      "okta.invalid.issuerUri": "issuerURI inválido, authServerId ausente no URI",
+      "connection-test.config.field.validation.error": "Erro de validação de campo na configuração de teste de conexão",
+      "property.invalid": "Falha ao processar o valor fornecido para a propriedade {{0}}",
+      "idp.already.exists": "O provedor de identidade com o nome fornecido já existe para esta conta",
+      "idp.provider.already.exists": "O provedor de identidade já existe com o tipo de provedor para esta conta",
+      "gateway.already.exists": "Gateway com o nome fornecido já existe para esta conta",
+      "fqdn.not.unique": "O FQDN fornecido já existe para outro gateway",
+      "gateway.idp.association": "O provedor de identidade está associado a um ou mais gateways",
+      "application.already.exists": "Um aplicativo com o nome fornecido já existe para esta conta",
+      "gateway.application.association": "O gateway está associado a um ou mais aplicativos",
+      "fqdn-port.not.unique": "Par de portas FQDN fornecido já atribuído a outro aplicativo",
+      "policy.already.exists": "Uma política com o nome fornecido já existe",
+      "remote.debug.isEnabled.empty": "Config de depuração remota isEnabled não pode ficar vazio",
+      "remote.debug.validity.empty": "Config de depuração remota validity não pode ficar vazio",
+      "remote.status.apuStatus.empty": "Status de depuração remota apuStatus não pode ficar vazio",
+      "remote.status.updatedOn.empty": "Status de depuração remota updatedOn não pode ficar vazio",
+      "remote.status.createdOn.empty": "Status de depuração remota createdOn não pode ficar vazio",
+      "remote.status.expiryOn.empty": "Status de depuração remota expiryOn não pode ficar vazio",
+      "remote.status.accessId.empty": "Status de depuração remota accessId não pode ficar vazio"
     }
   },
   "ztna-report": {
@@ -665,7 +898,7 @@
       "yAxis": "Eixo Y",
       "groupBy": "agrupar por",
       "deleteExport": "Deletar exportação",
-      "firewalls": "Gateways",
+      "firewalls": "Instâncias",
       "tooManyDevices": "Limite de dispositivos atingido. Você não pode realizar esta operação",
       "deviceNotFound": "Dispositivo não encontrado.",
       "groupNotFound": "O grupo está vazio ou o grupo não foi encontrado"

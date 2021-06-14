@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "概觀",
+      "alerts": "警示",
+      "connections": "連接",
+      "poe": "PoE",
+      "uplink": "上行",
+      "free": "免費",
+      "inuse": "使用中",
+      "total": "總數",
+      "details": "詳細資訊",
+      "template": "範本",
+      "firmware": "韌體",
+      "minutes-ago": "分鐘前",
+      "hours-ago": "小時前",
+      "days-ago": "天前",
+      "months-ago": "月前",
       "button": {
         "register": "註冊",
         "cancel": "取消",
-        "yes": "是",
-        "no": "無",
         "save": "儲存",
         "bugs": "錯誤",
-        "apply": "套用"
+        "apply": "套用",
+        "confirm": "確認"
       },
       "status": {
         "registering": "正在等待連線",
@@ -17,7 +30,8 @@
         "registered": "已註冊",
         "unregistered": "註冊超時",
         "disconnected": "已中斷連線",
-        "suspended": "暫停"
+        "suspended": "暫停",
+        "disabled": "已停用"
       },
       "form": {
         "name": "名稱",
@@ -26,6 +40,7 @@
       "error": "錯誤",
       "success": "成功",
       "warn": "警告",
+      "info": "資訊",
       "used": "已使用",
       "waitingForData": "等待資料...",
       "problemLoadingData": "載入資料時出現問題",
@@ -48,19 +63,23 @@
         "page-title": "切換器",
         "breadcrumb-text": "切換器",
         "title": "雲端 - 切換器",
-        "toggleColumnsTitle": "切換欄",
-        "removeDialogTitle": "移除交換機 {{switchSerial}}",
-        "retryDialogTitle": "再試一次註冊",
+        "toggle-columns-title": "切換欄",
+        "remove-dialog-title": "刪除交換器",
+        "remove-dialog-message": "删除交換器 <strong>{{switchSerial}}</strong>。",
+        "retry-dialog-title": "再試一次註冊",
+        "delete-note": "注意：如果您刪除此交換器，則也會從 Sophos Central 中將其移除。",
         "txtbox": {
           "search-placeholder": "搜尋交換機"
         },
         "action-menu": {
           "retry": "再試一次註冊",
-          "removeFromCentral": "從 Sophos Central 移除"
+          "remove-from-central": "從 Sophos Central 移除"
         },
         "button": {
           "auto-refresh": "自動重新整理",
-          "add-template": "新增範本"
+          "add-template": "新增範本",
+          "switch-delete-confirm": "删除交換器",
+          "template-delete-confirm": "刪除範本"
         },
         "table-headers": {
           "name": "名稱",
@@ -112,17 +131,53 @@
           "assigned-switches": "已指派的交換機",
           "sync-switches-checkbox-text": "同步交換機與初始範本設定"
         },
+        "delete-template": {
+          "dialog-title": "刪除範本",
+          "delete-template-confirm-text": "刪除範本 <strong>{{templateName}}</strong>。"
+        },
+        "edit-template" : {
+          "dialog-title": "編輯範本"
+        },
         "message": {
           "remove-success": "交換機 {{switchSerial}} 已從 Sophos Central 移除。",
           "remove-failed": "無法從 Sophos Central 移除交換機。",
           "retry-success": "交換機 {{switchSerial}} 的註冊已再次觸發。",
           "retry-failed": "無法觸發註冊。",
-          "add-template-success": "範本已新增"
+          "add-template-success": "範本已新增",
+          "add-template-error": "未新增範本",
+          "delete-template-success": "已删除範本",
+          "delete-template-error": "無法刪除範本",
+          "update-template-success": "範本已更新",
+          "update-template-error": "無法更新範本"
         },
         "groupInfoText": {
           "what": "何謂範本？",
-          "information": "交換機範本是一種虛擬交換機設定模型，可套用於一個或多個交換機。我們可以根據需要將交換機移入或移出範本。只要交換機處於範本之下，在範本層級完成的設定將會自動同步至交換機。",
-          "note": "請注意，在評估模板下的交換機衝突設定時，將優先使用交換機級別的設定覆寫。"
+          "information": "交換器範本是一種虛擬設定，可套用於一個或多個交換器。我們可以根據需要將交換機移入或移出範本。只要交換機處於範本之下，在範本層級完成的設定將會自動同步至交換機。",
+          "note": "如果交換器級別和範本級別的設定存在衝突，則以交換器級別的設定為準。"
+        }
+      },
+      "manage": {
+        "page-title": "交換器 - 交換器管理",
+        "breadcrumb-text": "管理交換器",
+        "summary-legend-title": "摘要",
+        "system-detail-tab-title": "系統詳細資料",
+        "port-settings-tab-title": "連接埠設定",
+        "network-settings-tab-title": "網路設定",
+        "task-queue-tab-title": "工作佇列",
+        "template-dd-default-title": "選取範本",
+        "gbps": "{{unit}} Gbps",
+        "mbps": "{{unit}} Mbps",
+        "button": {
+          "reboot": "重新開機",
+          "open-local-mgmt-console": "打開本機管理主控台",
+          "remove": "從 Sophos Central 移除"
+        },
+        "tab-fields": {
+          "serial-no": "序號",
+          "model": "型號",
+          "powered-on": "打開電源",
+          "switch-firmware": "交換器韌體",
+          "central-agent": "Central 代理程式"
         }
       }
     },
@@ -155,8 +210,10 @@
       "message": {
         "already-reported": "帶有序號 {{ switches }} 的切換器已註冊到 Sophos Central。",
         "registration-error": "切換器無法註冊。",
-        "switches-registered": "正在註冊交換機，請將您的交換機插入網路。",
-        "switch-serial-max-length": "序號不得超過 15 個字元。",
+        "switches-registered": "正在將交換器註冊到 Sophos Central。",
+        "switches-multiple-registration-with-exception": "序號 {{ switches }} 無效，我們正在將您的其他交換器註冊到 Sophos Central。",
+        "switches-single-serial-registration-with-exception": "序號 {{ switches }} 無效",
+        "invalid-serial": "一個或多個序號無效。",
         "empty-switch-list-error": "沒有有效的序號。"
       }
     }
