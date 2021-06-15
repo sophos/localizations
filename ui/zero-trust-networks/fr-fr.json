@@ -39,7 +39,7 @@
         "policies": "Stratégies",
         "policy-placeholder": "Sélectionner",
         "external-fqdn": "Nom de domaine complet externe",
-        "internal-fqdn" : "Nom de domaine complet/Adresse IP interne",
+        "internal-fqdn": "Nom de domaine complet/Adresse IP interne",
         "add-port-link": "Ajouter une autre",
         "application-fqdn": "Nom de domaine complet de la ressource",
         "application-icon": "Icône d’affichage (taille de fichier max. : 100K)",
@@ -79,6 +79,51 @@
         "error": "Erreur lors de la récupération de la liste des ressources.",
         "no-userGroups-configured": "Aucun groupe d’utilisateurs disponible.",
         "no-userGroups-assigned": "Aucun groupe d’utilisateurs assigné."
+      },
+      "details": {
+        "title": "Zero Trust Network Access - Détails de la ressource",
+        "breadcrumb-text": "Détails de la ressource",
+        "error": "Erreur lors de la récupération de la liste de la ressource",
+        "fetch-error": "Erreur lors de la récupération des détails de la ressource",
+        "breadcrumb-sub-text": "Ressources",
+        "tabs": {
+          "summary": {
+            "label": "Résumé",
+            "access-method": "Méthode d’accès :",
+            "resource-type": "Type de ressources :",
+            "gateway": "Passerelle :",
+            "local-address": "Adresse IP locale :",
+            "domain": "Domaine :",
+            "agent": "Agent",
+            "agentless": "Sans agent",
+            "display-in-user-portal": "Afficher dans le portail utilisateur :",
+            "access-ports": {
+              "label": "Ports d’accès",
+              "columns": {
+                "port": "Port",
+                "status": "État",
+                "type": "Type",
+                "last-connection-test": "Dernier test de connexion"
+              }
+            },
+            "note": "Pour l’équilibrage de charge, vous devez avoir un nombre impair d’instances.",
+            "add": "Ajouter/Modifier des instances",
+            "header": {
+              "name": "Nom : ",
+              "description": "Description : ",
+              "status": "État : ",
+              "edit": "Éditer",
+              "delete": "Supprimer"
+            }
+          },
+          "user-groups-policies": {
+            "label": "Groupes d’utilisateurs ({{count}}), Stratégie",
+            "policy-label": "Stratégie : ",
+            "switch-policy": "Changer de stratégie",
+            "edit-groups": "Modifier les groupes",
+            "groups-label": "Groupes"
+          }
+        }
       },
       "delete": {
         "header": "Supprimer la ressource",
@@ -156,7 +201,12 @@
               "type": "Type : ",
               "idp": "Fournisseur d’identité : ",
               "edit": "Éditer",
-              "delete": "Supprimer"
+              "delete": "Supprimer",
+              "connection-status-connected": "État de la connexion : Connecté : {{connectedSince}}",
+              "connection-status-disconnected": "État de la connexion : Déconnecté : {{disconnectedSince}}",
+              "cluster-status-active": "Cluster de passerelles actif : {{clusterActiveSince}}",
+              "cluster-status-inactive": "Cluster passerelle inactif : {{clusterInactiveSince}}",
+              "degraded": "Passerelle dégradée"
             }
           },
           "certificate": {
@@ -182,7 +232,7 @@
                 "port": "Port"
               },
               "resources-access": "Ressources et accès",
-              "no-application-configured": "Vous n’avez pas ajouté d’autres ressources.",
+              "no-application-configured": "Vous n’avez pas de ressources associées à cette passerelle.",
               "no-application-configured-help": "Ajoutez des ressources à une passerelle à partir de la page <i18n slot=\"resource\">Ressources et accès</i18n>."
             }
           }
@@ -272,6 +322,15 @@
           "lowercase": "Au moins une lettre minuscule",
           "number": "Au moins un chiffre",
           "special-character": "Au moins un caractère spécial"
+        },
+        "cluster": {
+          "cluster-enabled": "Mise en cluster de la passerelle - Activée",
+          "cluster-disabled": "Mise en cluster de la passerelle - Désactivée",
+          "cluster-vip": "Adresse IP virtuelle du cluster",
+          "cluster-vip-validation": "Adresse IP virtuelle du cluster non valide",
+          "external-tooltip": "Utilisé pour l’équilibrage de charge. Si vous utilisez un équilibreur de charge externe, laissez ce champ vide.",
+          "internal-tooltip": "Utilisé pour la gestion de cluster.",
+          "single-arm-tooltip": "Utilisé pour la gestion de cluster et l’équilibrage de charge."
         }
       },
       "delete": {
@@ -326,6 +385,12 @@
         "disconnected": {
           "label": "Passerelle injoignable",
           "header-disconnected": "Déconnectée depuis {{lastSeen}}"
+        },
+        "cluster-status-active": {
+          "label": "Cluster de passerelles actif : {{clusterActiveSince}}"
+        },
+        "cluster-status-inactive": {
+          "label": "Cluster passerelle inactif : {{clusterInactiveSince}}"
         }
       },
       "instance": {
@@ -354,6 +419,7 @@
             "image-download-error": "Erreur de téléchargement de l’image"
           },
           "download-cft": {
+            "launch-stack": "Lancer la pile",
             "label": "Télécharger le CFT",
             "header-waiting": "Déploiement en attente",
             "content-waiting": "Le CFT n’a pas encore été initialisé. Veuillez télécharger le CFT et l’initialiser.",
@@ -368,6 +434,15 @@
           },
           "disconnected": {
             "label": "Injoignable depuis :"
+          },
+          "active": {
+            "label": "Actif : {{activeSince}}"
+          },
+          "inactive": {
+            "label": "Inactif : {{inactiveSince}}"
+          },
+          "unknown": {
+            "label": "Inconnu(e)"
           }
         },
         "vm-name": "Nom de la VM",
@@ -386,6 +461,24 @@
           "save-confirm": "Enregistrer la confirmation",
           "warn-info": "Vous allez passer de 1 à {{instanceNumber}} instances.",
           "warn-description": "Une fois que vous passez de 1 à 3 instances ou plus pour l’équilibrage de charge, vous ne pouvez pas revenir à 1 pour cette passerelle."
+        },
+        "support": {
+          "token": "Token",
+          "sophos-support-header": "Activer le support Sophos",
+          "sophos-token-header": "Token du support Sophos",
+          "enable-sophos-support": "Activer le support",
+          "enable-confirm": "Activer le support Sophos pour {{gatewayInstanceName}} ?",
+          "enable-details": "Activez le support Sophos pour donner au support l’accès de dépannage à distance à votre instance de passerelle pendant 1 jour.",
+          "token-header": "Donnez ce token au support Sophos pour qu’il puisse accéder à votre instance de passerelle.",
+          "instance-name": "Instance de la passerelle : {{gatewayInstanceName}}",
+          "token-expiry": "Le token expire le : {{tokenExpiryDate}}",
+          "tooltip-msg": "Le token expire 1 jour après son activation. L’expiration de la session peut être définie dans Paramètres/Support Sophos.",
+          "add-success": "Support Sophos activé",
+          "add-error": "Erreur lors de l’activation du support Sophos",
+          "disable-success": "Support Sophos désactivé",
+          "disable-error": "Erreur lors de la désactivation du support Sophos",
+          "copy": "Copier",
+          "fetch-error": "Impossible de récupérer les détails de débogage à distance"
         }
       },
       "schedule": {
@@ -439,12 +532,17 @@
         "tenantid": "ID du locataire",
         "clientid": "ID du client",
         "clientsecret": "Clé secrète client",
+        "issuer-uri": "Émetteur URI",
+        "scope": "Portée",
         "add-success": "Fournisseur d’identité créé",
         "add-error": "Impossible de créer le fournisseur d’identité",
         "edit-success": "Fournisseur d’identité mis à jour",
         "edit-error": "Impossible de mettre à jour le fournisseur d’identité",
         "provider-type-error": "Erreur de récupération du type de fournisseur",
+        "configure-okta-settings": "Configurer les paramètres Okta",
         "configure-azure-settings": "Configurer les paramètres Azure Sync",
+        "test-connection-azure-label": "Valider la connexion Azure Sync",
+        "test-connection-okta-label": "Valider la connexion Okta",
         "test-connection-label": "Valider la connexion Azure Sync",
         "test-connection-button": "Tester la connexion",
         "test-connection-success": "Connexion réussie",
@@ -453,7 +551,10 @@
         "clientId-validation": "ID Client obligatoire",
         "tenantId-validation": "ID locataire obligatoire",
         "clientSecret-validation": "Secret client obligatoire",
-        "loading-error": "Erreur de chargement du fournisseur d’identité"
+        "loading-error": "Erreur de chargement du fournisseur d’identité",
+        "issuer-uri-validation": "URI de l’émetteur obligatoire",
+        "invalid-issuer-uri": "Adresse URI non valide",
+        "scope-validation": "Champ d’application obligatoire"
       },
       "delete": {
         "header": "Supprimer le fournisseur d’identité",
@@ -489,7 +590,7 @@
         "no-policy-configured-help": "Cliquez sur le bouton « Ajouter une stratégie » pour ajouter une stratégie et commencer à accorder l’accès à vos ressources."
       },
       "delete": {
-        "header":"Supprimer la stratégie",
+        "header": "Supprimer la stratégie",
         "message-delete": "Supprimer la stratégie",
         "message-warning": "les ressources doivent être déplacées vers une autre stratégie avant de pouvoir supprimer cette stratégie",
         "success": "Stratégie supprimée",
@@ -498,10 +599,6 @@
       "add-modal": {
         "resource-access": "Accès aux ressources",
         "tooltip-resource-access-info1": "Les stratégies prennent en charge l’accès aux ressources avec ou sans agent. Un agent peut vérifier l’état de sécurité pour déterminer l’accès.",
-        "tooltip-resource-access-info2": "Télécharger l’agent Sophos Endpoint depuis",
-        "tooltip-resource-access-info3": "page.",
-        "tooltip-resource-access-download": "Téléchargements",
-        "tooltip-resource-access-learnmore": "Plus d’info",
         "agent": "Agent",
         "agentless": "Sans agent"
       },
@@ -545,11 +642,147 @@
   },
   "ztna": {
     "apiLabel": {
-      "dashboard-data-duration": "Les 24 dernières heures",
+      "dashboard-data-duration": "Dernières 24 heures",
       "top5AppsByBytes": "Top 5 des applis par transfert de données",
       "applicationName": "Ressource",
       "appTotalBytes": "Total d’octets (Mo)",
       "fetchError": "Erreur de récupération des données du tableau de bord"
+    },
+    "api": {
+      "exception.unexpected": "Une erreur inattendue s’est produite pendant le traitement de la demande.",
+      "exception.AccessDeniedException": "Accès refusé",
+      "fqdn.format.invalid": "Le nom de domaine complet doit avoir un format valide",
+      "fqdn_ip.format.invalid": "L’adresse du nom de domaine complet ou IPv4 interne doit avoir un format valide",
+      "field.value.invalid": "Valeur d’entrée {{0}} non valide fournie pour le champ {{1}}",
+      "request.json.malformed": "Demande JSON mal formée reçue",
+      "http.request.header.missing": "En-tête HTTP requis {{0}} manquant dans la demande",
+      "request.data.format.invalid": "Format de données non valide reçu dans la demande",
+      "request.data.uri.invalid": "URI non valide reçu dans la demande",
+      "name.invalid": "Le nom doit être renseigné, ne doit pas dépasser 100 caractères, peut contenir des lettres, des chiffres ou des traits de soulignement mais ne doit pas contenir de caractères spéciaux",
+      "encoding.invalid": "Codage non valide détecté",
+      "exception.resource.creation": "Une erreur s’est produite lors de la création de la ressource",
+      "exception.io": "Une exception d’E/S s’est produite sur le serveur",
+      "exception.json.parse": "JSON mal formé reçu dans la demande",
+      "exception.illegal.argument": "Un argument illégal a été reçu dans la demande",
+      "entity.not.found": "{{0}} introuvable",
+      "exception.invalid.enum": "{{0}} est une valeur non valide pour {{1}}",
+      "exception.resource.not.found": "Ressource introuvable",
+      "ipv4.valid": "Le champ d’adresse IP doit être un format IPv4 valide",
+      "name.notBlank": "Le nom doit être renseigné",
+      "record.invalid": "{{0}} n’est pas valide pour ce compte",
+      "field.validation.errors.message": "Erreurs de validation de champ",
+      "gateway.already-deployed": "Impossible de générer l’URL de l’image. La passerelle est déjà déployée.",
+      "password.valid": "Le mot de passe doit comporter entre 12 et 250 caractères, contenir au moins un chiffre, au moins un caractère en minuscule, au moins un caractère en majuscule et au moins un caractère spécial.",
+      "file-size.upload.limit.exceeded": "La limite de taille de téléchargement de fichier a été dépassée pour le fichier {{0}}",
+      "description.invalid": "La description doit être renseignée et ne doit pas dépasser 300 caractères",
+      "application.field.validation.error": "Erreur de validation du champ d’application",
+      "application.name.notnull": "Le nom de l’application ne doit pas avoir la valeur null",
+      "application.icon.upload.failed": "Échec lors du téléchargement de l’icône de l’application",
+      "application.icon.unsupported.type": "Type de fichier non pris en charge pour l’icône de l’application. Les types autorisés sont {{0}}",
+      "application.icon.name.blank": "Erreur lors du traitement de l’icône de l’application. Vérifiez le nom du fichier.",
+      "application.resource-type.notnull": "Le type de ressource de l’application ne doit pas avoir la valeur null",
+      "application.gateway-ids.notnull": "La passerelle doit être assignée à l’application",
+      "application.port.notnull": "Le port de l’application ne doit pas avoir la valeur null",
+      "application.ports.not-empty": "Un port doit être fourni pour une ressource",
+      "application.port-number.notblank": "Le numéro de port doit être fourni",
+      "application.port-type.notnull": "Le type de port ne doit pas avoir la valeur null",
+      "application.policy.notnull": "Une stratégie doit être assignée à une application",
+      "application.port.range": "La valeur du port de l’application doit être comprise entre 0 et 65535",
+      "application.fqdn.notnull": "Le nom de domaine complet de l’application ne doit pas avoir la valeur null",
+      "application.logo.upload.error": "Une erreur s’est produite lors du téléchargement du logo de l’application",
+      "application.user-groups.not-empty": "Au moins un groupe d’utilisateurs doit être assigné à l’application",
+      "application.fqdn.already.configured": "Le nom de domaine complet de l’application est déjà configuré",
+      "application.name.already.configured": "Une application du même nom existe déjà pour ce compte",
+      "application.name.userportal.reserved": "Le nom d’application « Portail utilisateur » est réservé à la passerelle",
+      "application.policy.port.mismatch": "Le type de port fourni n’est pas valide pour le type de stratégie sélectionné",
+      "application.policy.resourcetype.mismatch": "Le type de ressource fourni n’est pas valide pour le type de stratégie sélectionné",
+      "application.gateway.not.assigned": "Une passerelle doit être assignée à une application",
+      "idp.field.validation.error": "Erreur de validation du champ du fournisseur d’identité",
+      "azure.tenantId.notBlank": "L’ID de locataire doit être renseigné pour le fournisseur d’identité Azure",
+      "idp.clientId.notBlank": "L’ID client du fournisseur d’identité doit être renseigné",
+      "idp.clientSecret.notBlank": "Le secret client du fournisseur d’identité doit être renseigné",
+      "idp.provider.notnull": "Le fournisseur ne doit pas avoir la valeur null et doit être renseigné",
+      "idp.name.notblank": "Le nom du fournisseur d’identité doit être renseigné",
+      "idp.provider.unknown": "Type de fournisseur inconnu dans la demande",
+      "gateway.idpId.notNull": "L’ID du fournisseur d’identité assigné à la passerelle ne doit pas avoir la valeur null",
+      "gateway.clientId.notBlank": "L’ID client de la passerelle doit être fourni",
+      "gateway.appDomain.notBlank": "Le domaine de l’appli de la passerelle doit être fourni",
+      "gateway.dualArm.not.specified": "La passerelle à un ou deux bras doit être spécifiée",
+      "gateway.packageType.notnull": "Le type de package de passerelle doit être fourni",
+      "gateway.package.unknown": "Type de package inconnu fourni dans la demande",
+      "gateway.name.notBlank": "Le nom de la passerelle doit être renseigné.",
+      "gateway.fqdn.notnull": "Le nom de domaine complet de la passerelle ne doit pas avoir la valeur null et doit être renseigné",
+      "gateway.password.notBlank": "Le mot de passe de la passerelle doit être renseigné",
+      "gateway.network.invalidParams": "Paramètres réseau non valides pour la passerelle",
+      "gateway.mandatory-fields.notBlank": "Les champs obligatoires de la passerelle doivent être renseignés.",
+      "gateway.otp.notBlank": "Le mot de passe à usage unique de la passerelle doit être renseigné",
+      "gateway.cert.notBlank": "Le certificat de la passerelle doit être renseigné",
+      "gateway.private-key.notBlank": "La clé privée de la passerelle doit être renseigné.",
+      "gateway.schedule.notFound": "Aucune mise à niveau planifiée de la passerelle n’a été trouvée pour la passerelle",
+      "gateway.schedule.alreadyExists": "La mise à niveau planifiée de la passerelle existe déjà pour cette passerelle",
+      "gateway.version.isLower": "La version de mise à niveau de la passerelle pour la passerelle est antérieure à la version actuelle {{0}}",
+      "gateway.upgrade.inPast": "La mise à niveau de la passerelle est planifiée dans le passé à {{0}}",
+      "gateway.upgrade.cancelNotAllowed": "L’annulation de la mise à niveau n’est pas autorisée avant cinq minutes pour la passerelle",
+      "gateway.armChange.notAllowed": "La modification du déploiement du bras simple/double n’est pas autorisée pour la passerelle",
+      "gateway.instance.notFound": "Instance de passerelle introuvable dans la passerelle",
+      "gateway.instances.empty": "Aucune instance définie pour la passerelle",
+      "gateway.version.isNull": "La version de mise à niveau de la passerelle est vide pour la passerelle",
+      "gateway.upgrade.status.inValid": "L’état de mise à niveau {{0}} reçu pour la passerelle n’est pas valide",
+      "gateway.schedule.version.notMatching": "La version mise à niveau {{0}} ne correspond pas à la version planifiée pour la passerelle",
+      "gateway.staticRoute.invalid": "La route statique spécifiée n’est pas valide pour la passerelle",
+      "gateway.instanceHostname.invalid": "Le nom d’hôte de l’instance n’est pas valide pour la passerelle",
+      "gateway.instanceIpAddress.invalid": "L’adresse IP fournie {{0}} pour la passerelle n’est pas valide",
+      "gateway.interface.notFound": "Informations réseau de l’instance de passerelle introuvables",
+      "gateway.virtualIp.invalid": "L’adresse IP virtuelle de la passerelle {{0}} n’est pas valide pour la passerelle",
+      "gateway.instanceIpAddress.duplicate": "L’adresse IP {{0}} spécifiée pour la passerelle existe déjà",
+      "gateway.ip.notInSubnet": "L’adresse IP de l’instance de passerelle {{0}} ne se trouve pas dans la plage de sous-réseau de la passerelle",
+      "gateway.remote.config.notEnabled": "Débogage à distance non activé pour l’instance sélectionnée",
+      "gateway.presignedURL.generation.error":"Erreur lors de la génération de l’URL pré-signée. L’état de l’image est : {{0}} pour une passerelle donnée",
+      "gateway.presignedURL.malformed": "L’URL de l’image est malformée",
+      "gateway.cluster.notEnabled": "Le clustering de la passerelle n’est pas activé mais plusieurs instances ont été trouvées",
+      "gateway.cluster.change.notAllowed": "Le cluster de passerelle ne peut pas être désactivé",
+      "gateway.cluster.notEmpty": "Champ de cluster de la passerelle introuvable",
+      "policy.invalid": "L’objet de stratégie fourni n’est pas valide",
+      "policy.isEnforced.notNull": "Le champ « isEnforced » de l’objet de stratégie ne doit pas être vide",
+      "policy.valid-until.not.allowed": "Le champ « ValidUntil » ne peut pas être défini si la stratégie n’est pas appliquée",
+      "policy.access-rules.invalid": "La valeur fournie pour l’objet « accessRules » n’est pas valide",
+      "policy.application.association":"La stratégie est associée à ces applications : {{0}}",
+      "policy-type.notNull": "Le type de stratégie doit être défini",
+      "policy.access-rules.not.allowed.with.agentless": "Les règles d’accès ne sont pas autorisées avec la stratégie sans agent",
+      "policy.rule-value.invalid": "Valeur non valide fournie pour la valeur de la règle de stratégie",
+      "policy.rule-type.not.null": "Le type de règle de stratégie ne doit pas être nul",
+      "policy.rule.condition.not.blank": "La condition de règle de stratégie ne doit pas être vide ou nulle",
+      "policy.rule.condition.invalid": "Valeur non valide fournie pour la conditions de la règle de stratégie",
+      "policy.type.change.not-allowed": "La modification du type de stratégie n’est pas autorisée",
+      "azure.connection.test.failed": "Échec de la connexion de test Azure avec la configuration fournie",
+      "test-connection.invalid-config": "Configuration de connexion non valide reçue",
+      "azure.test-connection.tenant-id.notblank": "L’ID de locataire Azure doit être fourni pour tester une connexion",
+      "test-connection.azure.idpid.notempty": "L’ID du fournisseur d’identité doit être fourni lorsque le secret client est vide",
+      "test-connection.azure.emptyfields": "L’ID client et l’ID de locataire doivent être fournis pour tester la connexion Azure",
+      "okta.connection.test.failed": "Échec de la connexion de test Okta avec la configuration fournie",
+      "test-connection.clientid.notblank": "L’ID client ne doit pas être vide pour tester une connexion",
+      "okta.test-connection.issuer-uri.notnull": "L’URI de l’émetteur Okta doit être fourni",
+      "okta.test-connection.scope.notblank": "Le champ d’application personnalisé du serveur d’autorisation doit être fourni pour tester une connexion avec Okta",
+      "okta.test-connection.emptyfields": "L’ID client et l’URI de l’émetteur doivent être fournis pour tester la connexion Okta",
+      "okta.invalid.issuerUri": "URI de l’émetteur non valide, « authServerId » manquant dans l’URI",
+      "connection-test.config.field.validation.error": "Erreur de validation de champ dans la configuration du test de connexion",
+      "property.invalid": "Échec du traitement de la valeur fournie pour la propriété {{0}}",
+      "idp.already.exists": "Un fournisseur d’identité du même nom existe déjà pour ce compte",
+      "idp.provider.already.exists": "Un fournisseur d’identité existe déjà avec le type de fournisseur pour ce compte",
+      "gateway.already.exists": "Une passerelle du même nom existe déjà pour ce compte",
+      "fqdn.not.unique": "Le nom de domaine complet fourni existe déjà pour une autre passerelle",
+      "gateway.idp.association": "Le fournisseur d’identité est associé à une ou plusieurs passerelles",
+      "application.already.exists": "Une application du même nom existe déjà pour ce compte",
+      "gateway.application.association": "La passerelle est associée à une ou plusieurs applications",
+      "fqdn-port.not.unique": "La paire « Nom de domaine complet/port » fournie est déjà assignée à une autre application",
+      "policy.already.exists": "Une stratégie du même nom existe déjà",
+      "remote.debug.isEnabled.empty": "La configuration de débogage à distance « isEnabled » ne peut pas être vide",
+      "remote.debug.validity.empty": "La validité de la configuration de débogage à distance ne peut pas être vide",
+      "remote.status.apuStatus.empty": "L’état du débogage à distance « apuStatus » ne peut pas être vide",
+      "remote.status.updatedOn.empty": "L’état du débogage à distance « updatedOn » ne peut pas être vide",
+      "remote.status.createdOn.empty": "L’état du débogage à distance « createdOn » ne peut pas être vide",
+      "remote.status.expiryOn.empty": "L’état du débogage à distance « expiryOn » ne peut pas être vide",
+      "remote.status.accessId.empty": "L’état du débogage à distance « accessId » ne peut pas être vide"
     }
   },
   "ztna-report": {
@@ -592,7 +825,7 @@
       "deleteRequest": "Supprimer la demande",
       "description": "Description",
       "domain": "Domaine",
-      "download": "Téléchargement",
+      "download": "Télécharger",
       "open": "Ouvrir",
       "more": "plus",
       "network": "Réseau",
@@ -665,7 +898,7 @@
       "yAxis": "Axe Y",
       "groupBy": "regrouper par",
       "deleteExport": "Supprimer l’exportation",
-      "firewalls": "Passerelles",
+      "firewalls": "Instances",
       "tooManyDevices": "Nombre maximum d’appareils atteint. Vous ne pouvez pas effectuer cette opération",
       "deviceNotFound": "Appareil introuvable",
       "groupNotFound": "Soit le groupe est vide, soit il est introuvable"
@@ -960,7 +1193,7 @@
         "queue": "File d’attente"
       },
       "ribbon": {
-        "download": "Téléchargement",
+        "download": "Télécharger",
         "pdf": "PDF",
         "csv": "CSV",
         "html": "HTML",
@@ -1132,7 +1365,7 @@
       "interfaces": "Interfaces",
       "red_count": "Décompte RED",
       "search_key": "Clé de recherche",
-      "os": "Système d’exploitation",
+      "os": "Syst. d’exploitation",
       "web_and_application": "Web et ressource",
       "file_name": "Nom du fichier",
       "destination_zone": "Zone de destination",
@@ -1151,7 +1384,7 @@
       "risk": "Risque",
       "threat": "Menace",
       "category": "Catégorie",
-      "user": "user (utilisateur)",
+      "user": "Utilisateur",
       "count_of_log_component": "Nombre de composants du journal",
       "interface_count": "Nombre d’interfaces",
       "recipient": "Destinataire",

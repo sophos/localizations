@@ -11,6 +11,9 @@
       "download": "ダウンロード",
       "approve": "承認",
       "confirm": "確認",
+      "update": "更新",
+      "from": "開始日",
+      "to": "終了日",
       "confirmDeleteHeader": "削除の確認",
       "error": "エラー",
       "success": "成功",
@@ -47,6 +50,38 @@
     },
     "dashboard": {
       "title": "製品ダッシュボード"
+    },
+    "diagnostics": {
+      "events": "イベント",
+      "packet-capture-tab": "パケットキャプチャ",
+      "audit-logs": "監査ログ",
+      "packet-capture": {
+        "status": "状態",
+        "name": "アクセスポイント名",
+        "serial-no": "シリアル番号"
+      },
+      "syslog": "Syslog",
+      "list": {
+        "breadcrumb-text": "診断",
+        "title": "ワイヤレス - 診断"
+      },
+      "date": "日付",
+      "no-data": "データはありません",
+      "modified-by": "更新者",
+      "description": "説明",
+      "configuration-changed": "設定が変更されました",
+      "date-range-separator": "過去 90日間内で期間を選択してください",
+      "search-by-modified-date": "更新者で検索",
+      "csv-of-view": "CSV - 現在のビュー",
+      "pdf-of-view": "PDF - 現在のビュー",
+      "csv-of-past-90-days": "CSV - 過去 90日",
+      "pdf-of-past-90-days": "PDF - 過去 90日",
+      "question-mark-icon-onhover-msg": "使用しているすべての検索フィルタは、エクスポート時にも適用されます。なお、過去 90日間のレポートをエクスポートする場合、ここで指定した日付の範囲は適用されません。",
+      "access-point-severity": "危険度",
+      "event-name": "イベント",
+      "search-by-accesspoint": "アクセスポイント名で検索",
+      "export": "エクスポート",
+      "low-severity": "情報レベル"
     },
     "networks": {
       "fetch-error": "SSID リストの読み込み中、エラーが発生しました",
@@ -130,7 +165,7 @@
         "radius-server": "RADIUS サーバー IP",
         "port": "ポート",
         "password-shedule": "パスワードの更新間隔",
-        "time-of-day": "時間",
+        "time-of-day": "時間帯",
         "notify-all-admin": "すべての管理者に通知する",
         "mesh": "メッシュ",
         "finilize-configuration": "設定を確定してください。",
@@ -155,17 +190,17 @@
         "guest-enable-inline-help-text": "社内ネットワークから切り離された制限付きのネットワークがクライアントに提供されます。",
         "vlantag-validate-required": "タグ番号を指定してください",
         "vlantag-validate-range": "タグ番号は 1～4094 で指定してください。",
-        "primary-dns-server":"プライマリ DNS サーバー",
-        "secondary-dns-server":"セカンダリ DNS サーバー",
-        "valid-ip":"有効な IP アドレスを入力してください",
-        "ip-required":"IP アドレスが必要です",
-        "client-addressing-bridge":"  アクセスポイントと同一サブネット上の DHCP サーバーを使用します。すべてのクライアントのトラフィックをフィルタリングし、アクセスをインターネットのみに限定します。",
-        "client-addressing-nat":" アクセスポイント上でオンボードの DHCP サーバーを起動し、ローカルの分離された IP アドレスをゲスト用ネットワークのクライアントに提供します。すべてのクライアントのトラフィックをルーティングし、アクセスをインターネットのみに限定します。",
-        "client-addressing":"クライアントアドレス指定",
+        "primary-dns-server": "プライマリ DNS サーバー",
+        "secondary-dns-server": "セカンダリ DNS サーバー",
+        "valid-ip": "有効な IP アドレスを入力してください",
+        "ip-required": "IP アドレスが必要です",
+        "client-addressing-bridge": "  アクセスポイントと同一サブネット上の DHCP サーバーを使用します。すべてのクライアントのトラフィックをフィルタリングし、アクセスをインターネットのみに限定します。",
+        "client-addressing-nat": " アクセスポイント上でオンボードの DHCP サーバーを起動し、ローカルの分離された IP アドレスをゲスト用ネットワークのクライアントに提供します。すべてのクライアントのトラフィックをルーティングし、アクセスをインターネットのみに限定します。",
+        "client-addressing": "クライアントアドレス指定",
         "aps-no-band-supported": "このアクセスポイントは選択した帯域に対応していません。",
         "aps-band-not-supported": "このアクセスポイントはこの帯域に対応していません。",
-        "primary-dns-server-short-description":"このゲストネットワークに接続するクライアントが使用するサーバーです。",
-        "primary-dns-server-description":" プライマリサーバーの応答がない場合にクライアントが使用できるバックアップの DNS サーバーです。使用はクライアントに依存します。"
+        "primary-dns-server-short-description": "このゲストネットワークに接続するクライアントが使用するサーバーです。",
+        "primary-dns-server-description": " プライマリサーバーの応答がない場合にクライアントが使用できるバックアップの DNS サーバーです。使用はクライアントに依存します。"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
@@ -261,6 +296,7 @@
           "dataLoadErrorMessage": "アクセスポイントを読み込めません",
           "editHostNameErrorMessage": "アクセスポイントを登録できません",
           "all-sites": "すべてのサイト",
+          "select-site": "サイトの選択",
           "unassigned-sites": "割り当てられていないサイト",
           "emptyListMessage": "アクセスポイントは追加されていません。",
           "listRegisterInfo": "「登録」ボタンをクリックして、アクセスポイントを追加してください。"

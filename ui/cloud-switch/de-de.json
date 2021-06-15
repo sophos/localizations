@@ -2,14 +2,27 @@
   "cloud-switch": {
     "common": {
       "main-dashboard-breadcrumb-text": "Übersicht",
+      "alerts": "Alarme",
+      "connections": "Verbindungen",
+      "poe": "PoE",
+      "uplink": "Uplink",
+      "free": "frei",
+      "inuse": "In Verwendung",
+      "total": "Insgesamt",
+      "details": "Details",
+      "template": "Vorlage",
+      "firmware": "Firmware",
+      "minutes-ago": "vor x Minuten",
+      "hours-ago": "vor x Stunden",
+      "days-ago": "vor x Tagen",
+      "months-ago": "vor x Monaten",
       "button": {
         "register": "Registrieren",
         "cancel": "Abbrechen",
-        "yes": "Ja",
-        "no": "Nein",
         "save": "Speichern",
         "bugs": "Fehler",
-        "apply": "Anwenden"
+        "apply": "Anwenden",
+        "confirm": "Bestätigen"
       },
       "status": {
         "registering": "Warte auf Verbindung",
@@ -17,7 +30,8 @@
         "registered": "Registriert",
         "unregistered": "Zeitüberschreitung für Registrierung",
         "disconnected": "Verbindung getrennt",
-        "suspended": "Vorübergehend außer Kraft gesetzt"
+        "suspended": "Vorübergehend außer Kraft gesetzt",
+        "disabled": "Deaktiviert"
       },
       "form": {
         "name": "Name",
@@ -26,6 +40,7 @@
       "error": "Fehler",
       "success": "Erfolgreich",
       "warn": "Warnung",
+      "info": "Info",
       "used": "Verwendet",
       "waitingForData": "Warte auf Daten …",
       "problemLoadingData": "Problem beim Laden der Daten",
@@ -48,19 +63,23 @@
         "page-title": "Switches",
         "breadcrumb-text": "Switches",
         "title": "Cloud - Switches",
-        "toggleColumnsTitle": "Spalten umschalten",
-        "removeDialogTitle": "Switch {{switchSerial}} entfernen",
-        "retryDialogTitle": "Registrierung erneut versuchen",
+        "toggle-columns-title": "Spalten umschalten",
+        "remove-dialog-title": "Switch löschen",
+        "remove-dialog-message": "Switch <strong>{{switchSerial}}</strong> löschen.",
+        "retry-dialog-title": "Registrierung erneut versuchen",
+        "delete-note": "Hinweis: Wenn Sie diesen Switch löschen, wird er aus Sophos Central entfernt.",
         "txtbox": {
           "search-placeholder": "Switch suchen"
         },
         "action-menu": {
           "retry": "Registrierung erneut versuchen",
-          "removeFromCentral": "Aus Sophos Central entfernen"
+          "remove-from-central": "Aus Sophos Central entfernen"
         },
         "button": {
           "auto-refresh": "Automatisch aktualisieren",
-          "add-template": "Vorlage hinzufügen"
+          "add-template": "Vorlage hinzufügen",
+          "switch-delete-confirm": "Switch löschen",
+          "template-delete-confirm": "Vorlage löschen"
         },
         "table-headers": {
           "name": "Name",
@@ -112,17 +131,53 @@
           "assigned-switches": "Zugewiesene Switches",
           "sync-switches-checkbox-text": "Die Switches mit der initialen Vorlagenkonfiguration synchronisieren"
         },
+        "delete-template": {
+          "dialog-title": "Vorlage löschen",
+          "delete-template-confirm-text": "Vorlage <strong>{{templateName}}</strong> löschen."
+        },
+        "edit-template" : {
+          "dialog-title": "Vorlage bearbeiten"
+        },
         "message": {
           "remove-success": "Switch {{switchSerial}} wurde aus Sophos Central entfernt.",
           "remove-failed": "Der Switch konnte nicht aus Sophos Central entfernt werden.",
           "retry-success": "Registrierung des Switch {{switchSerial}} wurde erneut gestartet.",
           "retry-failed": "Registrierung kann nicht gestartet werden.",
-          "add-template-success": "Vorlage wurde hinzugefügt"
+          "add-template-success": "Vorlage wurde hinzugefügt",
+          "add-template-error": "Vorlage wurde nicht hinzugefügt",
+          "delete-template-success": "Vorlage wurde gelöscht",
+          "delete-template-error": "Vorlage kann nicht gelöscht werden",
+          "update-template-success": "Vorlage wurde aktualisiert",
+          "update-template-error": "Vorlage kann nicht aktualisiert werden"
         },
         "groupInfoText": {
           "what": "Was ist eine Vorlage?",
-          "information": "Eine Switch-Vorlage ist eine virtuelle Switch-Musterkonfiguration, die auf einen oder mehrere Switches angewendet werden kann. Wir können einen Switch nach Bedarf in eine Vorlage oder aus einer Vorlage heraus verschieben. Solange sich ein Switch unterhalb einer Vorlage befindet, werden Konfigurationen der Vorlage automatisch an die Switches übertragen.",
-          "note": "Beachten Sie, dass bei Widersprüchen zwischen den Konfigurationen der Vorlage und direkten Konfigurationen des Switch die Konfigurationen des Switch Vorrang haben."
+          "information": "Eine Switch-Vorlage ist eine virtuelle Konfiguration, die auf einen oder mehrere Switches angewendet werden kann. Wir können einen Switch nach Bedarf in eine Vorlage oder aus einer Vorlage heraus verschieben. Solange sich ein Switch unterhalb einer Vorlage befindet, werden Konfigurationen der Vorlage automatisch an die Switches übertragen.",
+          "note": "Bei Widersprüchen zwischen den Konfigurationen der Vorlage und direkten Konfigurationen des Switch haben die Konfigurationen des Switch Vorrang."
+        }
+      },
+      "manage": {
+        "page-title": "Switches - Switch-Verwaltung",
+        "breadcrumb-text": "Switch verwalten",
+        "summary-legend-title": "Zusammenfassung",
+        "system-detail-tab-title": "Systemdetails",
+        "port-settings-tab-title": "Port-Einstellungen",
+        "network-settings-tab-title": "Netzwerkeinstellungen",
+        "task-queue-tab-title": "Auftrags-Warteschlange",
+        "template-dd-default-title": "Vorlage auswählen",
+        "gbps": "{{unit}} Gbps",
+        "mbps": "{{unit}} Mbps",
+        "button": {
+          "reboot": "Neu starten",
+          "open-local-mgmt-console": "Lokale Verwaltungskonsole öffnen",
+          "remove": "Aus Sophos Central entfernen"
+        },
+        "tab-fields": {
+          "serial-no": "Serien-Nr.",
+          "model": "Modell",
+          "powered-on": "Eingeschaltet",
+          "switch-firmware": "Switch-Firmware",
+          "central-agent": "Central Agent"
         }
       }
     },
@@ -153,10 +208,12 @@
         }
       },
       "message": {
-        "already-reported": "Die Switches mit den Seriennummern {{ switches }} sind bereits bei Sophos Central registriert.",
+        "already-reported": "Die Switches mit der/den Seriennummer(n) {{ switches }} sind bereits bei Sophos Central registriert.",
         "registration-error": "Switches können nicht registriert werden.",
-        "switches-registered": "Switches werden registriert. Verbinden Sie Ihre Switches mit dem Netzwerk.",
-        "switch-serial-max-length": "Seriennummer kann nicht länger als 15 Zeichen sein.",
+        "switches-registered": "Switches werden bei Sophos Central registriert.",
+        "switches-multiple-registration-with-exception": "Ungültige Seriennummer(n) {{ switches }}; Switches werden bei Sophos Central registriert.",
+        "switches-single-serial-registration-with-exception": "Seriennummer {{ switches }} ist ungültig",
+        "invalid-serial": "Eine oder mehrere ungültige Seriennummer(n).",
         "empty-switch-list-error": "Keine gültige Seriennummer vorhanden."
       }
     }
