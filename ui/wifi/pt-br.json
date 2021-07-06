@@ -12,8 +12,8 @@
       "approve": "Aprovar",
       "confirm": "Confirmar",
       "update": "Atualizar",
-      "from": "De",
-      "to": "A",
+      "start-date": "Data de Início",
+      "end-date": "Data de término",
       "confirmDeleteHeader": "Confirmar deleção",
       "error": "Erro",
       "success": "Bem-sucedido",
@@ -21,13 +21,19 @@
       "accessPoints": "Pontos de Acesso",
       "ssids": "SSIDs",
       "settings": "Configurações",
+      "sites": "Sites",
       "statistic": "Estatística",
       "devices": "Dispositivos",
       "reset": "Redefinir",
       "select-all": "Selecionar todos",
       "deselect-all": "Desmarcar todos",
       "channel": "Canal",
-      "access-point": "Ponto de acesso"
+      "access-point": "Ponto de acesso",
+      "show": "Mostrar",
+      "hide": "Ocultar",
+      "details": "Detalhes",
+      "no-data": "Nenhum dado",
+      "beta": "beta"
     },
     "global": {
       "onBoard": {
@@ -49,18 +55,39 @@
       }
     },
     "dashboard": {
-      "title": "Painel de controle do produto"
+      "breadcrumb-title": "Painel de controle do produto",
+      "page-title": "Sem Fio - Painel",
+      "breadcrumb-text": "Painel de Controle de Rede Sem Fio"
     },
     "diagnostics": {
       "events": "Eventos",
       "packet-capture-tab": "Captura de Pacotes",
       "audit-logs": "Logs de Auditoria",
+      "server-ip": "IP do Servidor",
+      "serial-no": "Nº de série",
+      "action": "Ação",
+      "status": "Status",
+      "name": "Nome do ponto de acesso",
+      "ip_address": "Endereço de IP",
+      "start-title": "Iniciar",
+      "stop-title": "Parar",
       "packet-capture": {
-        "status": "Status",
-        "name": "Nome do ponto de acesso",
-        "serial-no": "Nº de série"
+        "client-mac": "Cliente Mac",
+        "duration": "Duração",
+        "mac-optional": "Endereço de MAC",
+        "start-message": "Comando PACKET CAPTURE iniciado.",
+        "start-fail-message": "Comando PACKET CAPTURE apresentou falha ao iniciar.",
+        "stop-message": "Comando PACKET CAPTURE interrompido.",
+        "stop-fail-message": "Comando PACKET CAPTURE apresentou falha na interrupção."
       },
-      "syslog": "Syslog",
+      "syslog": {
+        "title": "Syslog",
+        "server-port": "Porta do Servidor",
+        "start-message": "Comando SYSLOG iniciado.",
+        "start-fail-message": "Comando SYSLOG apresentou falha ao iniciar.",
+        "stop-message": "Comando SYSLOG interrompido.",
+        "stop-fail-message": "Comando SYSLOG apresentou falha na interrupção."
+      },
       "list": {
         "breadcrumb-text": "Diagnóstico",
         "title": "Rede sem fio - Diagnóstico"
@@ -80,8 +107,74 @@
       "access-point-severity": "Severidade",
       "event-name": "Evento",
       "search-by-accesspoint": "Pesquisar pelo nome do ponto de acesso",
+      "search-by-name-or-serial-number": "Pesquisar por nome ou número de série",
       "export": "Exportar",
       "low-severity": "Informativo"
+    },
+    "settings": {
+      "setting-configuration-save-success-msg": "Configuração salva com sucesso!",
+      "setting-configuration-save-error-msg": "Falha ao salvar configuração",
+      "sections": {
+        "login-title": "Configurações básicas",
+        "analysis-title": "Análise",
+        "access-point-detection-title": "Detecção de ponto de acesso ilegítimo",
+        "advancedRF-title": "Gerenciamento AdvancedRF",
+        "discovery-protocol-title": "Protocolo de Descoberta"
+      },
+      "advanced-rf-management": {
+        "roaming-assist": "Assistência com roaming",
+        "advanced-notification": "Notificação de AdvanceRF",
+        "co-channel": "Notificação de Evento CoChannel"
+      },
+      "discovery-protocol": {
+        "lldp-label": "Protocolo LLDP (Link Layer Discovery Protocol)",
+        "network-message": "Se você habilitá-lo, o protocolo LLDP de descoberta de camada de link detectará facilmente outros dispositivos na vizinhança."
+      },
+      "analysis-settings": {
+        "report-traffic-usage": "Detalhamento de uso",
+        "analysis-message": "Se a categorização de tráfego estiver habilitada, o tráfego gerado pelo usuário será categorizado e listado em Detalhamento de Uso. O padrão desta opção é estar desabilitada",
+        "statistics-report": "Dados estatísticos do ponto de acesso",
+        "device-discovery-label": "Classificação e visibilidade do dispositivo",
+        "device-discovery-message": "Visibilidade de dispositivos sem fio melhorada ao categorizá-los por Tipo de dispositivo, Perfil e Categoria. Esse recurso está disponível apenas na série APX de pontos de acesso."
+      },
+      "rogue-ap-detection-settings": {
+        "rogue-ap-detection": "Detectar e informar pontos de acesso ilegítimos",
+        "display-info-prefix": "Será exibida uma lista de APs ilegítimos em "
+      },
+      "diagnostics-setting": {
+        "forward-ap-logs": "Encaminhar logs de pontos de acesso",
+        "forward-ap-message": "Encaminhar mensagem AccessPoint",
+        "remote-login-title": "Login remoto a pontos de acesso para o Sophos Support",
+        "expiration-message": "Se habilitada, o suporte técnico da Sophos terá acesso remoto pelo tempo determinado. O tempo restante é exibido. Desative para desabilitar o acesso remoto imediatamente"
+      },
+      "list": {
+        "breadcrumb-text": "Configurações Globais",
+        "title": "Sem fio – Configurações globais"
+      },
+      "config": {
+        "customer-unique-id-title": "ID exclusivo de cliente Sophos",
+        "firmware-update": {
+          "title": "Atualização de firmware",
+          "current-version": "Versão atual",
+          "release-date": "Data de lançamento",
+          "installed-at": "Instalado em",
+          "update-now": "Atualizar versão {{ version }}",
+          "schedule-firmware-update": "Agendar atualização de firmware",
+          "frequency": "Frequência",
+          "DAILY": "diária",
+          "MONTHLY": "mensal",
+          "WEEKLY": "semanal",
+          "week": "Semana",
+          "weekday": "Dia útil",
+          "time": "Hora (UTC)"
+        }
+      }
+    },
+    "sites": {
+      "list": {
+        "breadcrumb-text": "Sites",
+        "title": "Sem Fio - Sites"
+      }
     },
     "networks": {
       "fetch-error": "Erro ao carregar a lista de SSIDs",
@@ -221,7 +314,7 @@
         "ssid-uem-enabled-info": "**Sophos Mobile é habilitado por padrão.",
         "ednpoint-protection-label": "Sophos Central Endpoint Protection",
         "endpoint-protection": "Habilite o Security Heartbeat for Endpoint Protection em dispositivos com Windows, macOS ou Linux.",
-        "endpoint-protection.enabled.info": "Selecione esta opção apenas se não estiver usando a Segurança Sincronizada com XG Firewall.",
+        "endpoint-protection-enabled-info": "Selecione esta opção apenas se não estiver usando a Segurança Sincronizada com XG Firewall.",
         "restrict-ssid": "Restrinja este SSID a dispositivos gerenciados através desta conta do Sophos Central. Opção disponível quando dispositivos executando UEM e Endpoint são gerenciados através desta conta do Sophos Central.",
         "landing-page-title": "Página inicial",
         "restric-ssid-checkbox-label": "Restrinja o SSID a Dispositivos Gerenciados Sophos",

@@ -12,8 +12,8 @@
       "approve": "贊成",
       "confirm": "確認",
       "update": "更新",
-      "from": "寄件者",
-      "to": "到",
+      "start-date": "開始日期",
+      "end-date": "結束日期",
       "confirmDeleteHeader": "確認刪除",
       "error": "錯誤",
       "success": "成功",
@@ -21,13 +21,19 @@
       "accessPoints": "存取點",
       "ssids": "SSID",
       "settings": "設定",
+      "sites": "地點",
       "statistic": "統計資料",
       "devices": "設備",
       "reset": "重設",
       "select-all": "全選",
       "deselect-all": "取消全選",
       "channel": "頻道",
-      "access-point": "存取點"
+      "access-point": "存取點",
+      "show": "顯示",
+      "hide": "隱藏",
+      "details": "詳細資訊",
+      "no-data": "無資料",
+      "beta": "Beta 版"
     },
     "global": {
       "onBoard": {
@@ -49,18 +55,39 @@
       }
     },
     "dashboard": {
-      "title": "產品儀錶板"
+      "breadcrumb-title": "產品儀錶板",
+      "page-title": "無線 - 儀錶板",
+      "breadcrumb-text": "無線儀錶板"
     },
     "diagnostics": {
       "events": "事件",
       "packet-capture-tab": "封包擷取",
       "audit-logs": "稽核日誌紀錄",
+      "server-ip": "伺服器 IP",
+      "serial-no": "序號",
+      "action": "操作",
+      "status": "狀態",
+      "name": "存取點名稱",
+      "ip_address": "IP 位址 (IP 位址)",
+      "start-title": "開始",
+      "stop-title": "停止",
       "packet-capture": {
-        "status": "狀態",
-        "name": "存取點名稱",
-        "serial-no": "序號"
+        "client-mac": "用戶端 Mac",
+        "duration": "持續時間",
+        "mac-optional": "MAC 位址",
+        "start-message": "PACKET CAPTURE 命令已啟動。",
+        "start-fail-message": "PACKET CAPTURE 命令無法啟動。",
+        "stop-message": "PACKET CAPTURE 命令已停止。",
+        "stop-fail-message": "PACKET CAPTURE 命令無法停止。"
       },
-      "syslog": "Syslog",
+      "syslog": {
+        "title": "Syslog",
+        "server-port": "伺服器連接埠",
+        "start-message": "SYSLOG 命令已啟動。",
+        "start-fail-message": "SYSLOG 命令無法啟動。",
+        "stop-message": "SYSLOG 命令已停止。",
+        "stop-fail-message": "SYSLOG 命令無法停止。"
+      },
       "list": {
         "breadcrumb-text": "診斷",
         "title": "無線 - 診斷"
@@ -80,8 +107,74 @@
       "access-point-severity": "嚴重性",
       "event-name": "事件",
       "search-by-accesspoint": "按存取點名稱搜尋",
+      "search-by-name-or-serial-number": "按名稱或序號搜尋",
       "export": "匯出",
       "low-severity": "資訊"
+    },
+    "settings": {
+      "setting-configuration-save-success-msg": "成功儲存設定！",
+      "setting-configuration-save-error-msg": "無法儲存設定",
+      "sections": {
+        "login-title": "基礎設定",
+        "analysis-title": "分析",
+        "access-point-detection-title": "紅色存取點偵測",
+        "advancedRF-title": "AdvancedRF 管理",
+        "discovery-protocol-title": "發現協議"
+      },
+      "advanced-rf-management": {
+        "roaming-assist": "漫遊輔助",
+        "advanced-notification": "AdvanceRF 通知",
+        "co-channel": "CoChannel 事件通知"
+      },
+      "discovery-protocol": {
+        "lldp-label": "鏈路層發現協議 (LLDP)",
+        "network-message": "如果啟用此功能，鏈路層發現協議 (LLDP) 將輕鬆偵測其他相鄰裝置。"
+      },
+      "analysis-settings": {
+        "report-traffic-usage": "使用狀況探究",
+        "analysis-message": "如果啟用了資料流分類，使用者產生的資料流將被分類，並在使用狀況探究中列出。此選項預設為停用",
+        "statistics-report": "存取點統計資料",
+        "device-discovery-label": "裝置分類和可見性",
+        "device-discovery-message": "依裝置類型、設定檔和類別將無線裝置分門別類，強化可見性。此功能僅於 APX 系列存取點提供。"
+      },
+      "rogue-ap-detection-settings": {
+        "rogue-ap-detection": "偵測和報告惡意存取點",
+        "display-info-prefix": "惡意 AP 清單顯示位置 "
+      },
+      "diagnostics-setting": {
+        "forward-ap-logs": "轉發存取點日誌紀錄",
+        "forward-ap-message": "轉寄存取點訊息",
+        "remote-login-title": "遠端登入 Sophos 支援的存取點",
+        "expiration-message": "如果啟用，Sophos 技術支持中心將在給定時間內進行遠程訪問。顯示剩餘時間。停用以立即禁用遠程訪問"
+      },
+      "list": {
+        "breadcrumb-text": "整體設定",
+        "title": "無線 - 全域設定"
+      },
+      "config": {
+        "customer-unique-id-title": "Sophos 唯一客戶 ID",
+        "firmware-update": {
+          "title": "韌體更新",
+          "current-version": "目前版本",
+          "release-date": "發佈日期",
+          "installed-at": "安裝時間為",
+          "update-now": "更新版本 {{ version }}",
+          "schedule-firmware-update": "安排韌體更新",
+          "frequency": "頻率",
+          "DAILY": "每日",
+          "MONTHLY": "每月",
+          "WEEKLY": "每週",
+          "week": "週",
+          "weekday": "平日",
+          "time": "時間 (全球標準時間 UTC)"
+        }
+      }
+    },
+    "sites": {
+      "list": {
+        "breadcrumb-text": "地點",
+        "title": "無線 - 網站"
+      }
     },
     "networks": {
       "fetch-error": "載入 SSID 清單時出現錯誤",
@@ -221,7 +314,7 @@
         "ssid-uem-enabled-info": "**Sophos Mobile 預設為開啟。",
         "ednpoint-protection-label": "Sophos Central Endpoint Protection",
         "endpoint-protection": "為執行 Windows、macOS 或 Linux 的裝置上的端點保護啟用安全活動訊號。",
-        "endpoint-protection.enabled.info": "僅在您未將同步安全性與 XG Firewall 一起使用時，選取此選項。",
+        "endpoint-protection-enabled-info": "僅在您未將同步安全性與 XG Firewall 一起使用時，選取此選項。",
         "restrict-ssid": "將此 SSID 限制為透過此 Sophos Central 帳戶管理的裝置。裝置同時執行 UEM 和端點時可用的選項透過此 Sophos Central 賬戶進行管理。",
         "landing-page-title": "登錄頁面",
         "restric-ssid-checkbox-label": "將 SSID 限制為 Sophos 託管裝置",

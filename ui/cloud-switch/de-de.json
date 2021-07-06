@@ -10,7 +10,7 @@
       "inuse": "In Verwendung",
       "total": "Insgesamt",
       "details": "Details",
-      "template": "Vorlage",
+      "template": "Standort",
       "firmware": "Firmware",
       "minutes-ago": "vor x Minuten",
       "hours-ago": "vor x Stunden",
@@ -22,7 +22,8 @@
         "save": "Speichern",
         "bugs": "Fehler",
         "apply": "Anwenden",
-        "confirm": "Bestätigen"
+        "confirm": "Bestätigen",
+        "delete": "Löschen"
       },
       "status": {
         "registering": "Warte auf Verbindung",
@@ -37,14 +38,22 @@
         "name": "Name",
         "description": "Beschreibung"
       },
+      "tab-title": {
+        "system-detail-title": "Systemdetails",
+        "port-settings-title": "Port-Einstellungen",
+        "vlans-title": "VLANs",
+        "network-settings-title": "Netzwerkeinstellungen",
+        "task-queue-title": "Auftrags-Warteschlange"
+      },
       "error": "Fehler",
       "success": "Erfolgreich",
       "warn": "Warnung",
       "info": "Info",
       "used": "Verwendet",
-      "waitingForData": "Warte auf Daten …",
-      "problemLoadingData": "Problem beim Laden der Daten",
-      "areYouSure": "Möchten Sie wirklich fortfahren?"
+      "waiting-for-data": "Warte auf Daten …",
+      "problem-loading-data": "Problem beim Laden der Daten",
+      "no-data": "Keine Daten vorhanden",
+      "are-you-sure": "Möchten Sie wirklich fortfahren?"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -77,9 +86,9 @@
         },
         "button": {
           "auto-refresh": "Automatisch aktualisieren",
-          "add-template": "Vorlage hinzufügen",
+          "add-template": "Standort hinzufügen",
           "switch-delete-confirm": "Switch löschen",
-          "template-delete-confirm": "Vorlage löschen"
+          "template-delete-confirm": "Standort löschen"
         },
         "table-headers": {
           "name": "Name",
@@ -95,12 +104,12 @@
           "tags": "Tags",
           "model": "Modell",
           "serial-number": "Seriennummer",
-          "template-overridden": "Vorlage überschrieben?"
+          "template-overridden": "Standort überschrieben?"
         },
         "upgrade": {
           "update-available": "Es gibt neue Firmware-Aktualisierungen.",
           "upgrade-message": "Sie können diese Aktualisierungen planen oder sofort anwenden.",
-          "schedule-upgrade": "Aktualisierung planen",
+          "schedule-upgrade": "Aktualisierung verwalten oder planen",
           "schedule": "Planen",
           "manage-schedule-dialog-title": "Firmware-Aktualisierungen verwalten",
           "upgrade-schedule-dialog-title": "Firmware-Aktualisierungen planen",
@@ -109,10 +118,11 @@
           "update-now": "Jetzt aktualisieren",
           "custom": "Benutzerdefiniert",
           "scheduled-success-message": "Firmware-Aktualisierung wurde geplant",
-          "update-cancel-message": "Firmware-Aktualisierung wurde abgebrochen",
-          "cancel-upgrade": "Aktualisierung abbrechen",
+          "scheduled-success-failure": "Firmware-Aktualisierung ist fehlgeschlagen",
+          "update-cancel-message": "Firmware-Aktualisierung wurde widerrufen",
+          "cancel-upgrade": "Aktualisierung widerrufen",
           "table": {
-            "name": "Name",
+            "serial-number": "Seriennummer",
             "version": "Version",
             "update-to": "Aktualisierung auf",
             "currently-scheduled-upgrades": "Aktuell geplante Aktualisierungen",
@@ -122,51 +132,45 @@
           }
         },
         "add-template": {
-          "dialog-title": "Eine Vorlage hinzufügen",
+          "dialog-title": "Standort hinzufügen",
           "name-max-length": "Name darf höchstens 30 Zeichen haben",
           "description": "Beschreibung",
-          "input-name-required-message": "Name der Vorlage ist erforderlich",
+          "input-name-required-message": "Standortname ist erforderlich",
           "template-description": "Beschreibung darf höchstens 128 Zeichen haben.",
           "available-switches": "Verfügbare Switches",
           "assigned-switches": "Zugewiesene Switches",
-          "sync-switches-checkbox-text": "Die Switches mit der initialen Vorlagenkonfiguration synchronisieren"
+          "sync-switches-checkbox-text": "Die Switches mit der initialen Standortkonfiguration synchronisieren"
         },
         "delete-template": {
-          "dialog-title": "Vorlage löschen",
-          "delete-template-confirm-text": "Vorlage <strong>{{templateName}}</strong> löschen."
+          "dialog-title": "Standort löschen",
+          "delete-template-confirm-text": "Standort <strong>{{templateName}}</strong> löschen."
         },
-        "edit-template" : {
-          "dialog-title": "Vorlage bearbeiten"
+        "edit-template": {
+          "dialog-title": "Standort bearbeiten"
         },
         "message": {
           "remove-success": "Switch {{switchSerial}} wurde aus Sophos Central entfernt.",
           "remove-failed": "Der Switch konnte nicht aus Sophos Central entfernt werden.",
           "retry-success": "Registrierung des Switch {{switchSerial}} wurde erneut gestartet.",
           "retry-failed": "Registrierung kann nicht gestartet werden.",
-          "add-template-success": "Vorlage wurde hinzugefügt",
-          "add-template-error": "Vorlage wurde nicht hinzugefügt",
-          "delete-template-success": "Vorlage wurde gelöscht",
-          "delete-template-error": "Vorlage kann nicht gelöscht werden",
-          "update-template-success": "Vorlage wurde aktualisiert",
-          "update-template-error": "Vorlage kann nicht aktualisiert werden"
+          "add-template-success": "Standort wurde hinzugefügt",
+          "add-template-error": "Standort wurde nicht hinzugefügt",
+          "delete-template-success": "Standort wurde gelöscht",
+          "delete-template-error": "Standort kann nicht gelöscht werden",
+          "update-template-success": "Standort wurde aktualisiert",
+          "update-template-error": "Standort kann nicht aktualisiert werden"
         },
         "groupInfoText": {
-          "what": "Was ist eine Vorlage?",
-          "information": "Eine Switch-Vorlage ist eine virtuelle Konfiguration, die auf einen oder mehrere Switches angewendet werden kann. Wir können einen Switch nach Bedarf in eine Vorlage oder aus einer Vorlage heraus verschieben. Solange sich ein Switch unterhalb einer Vorlage befindet, werden Konfigurationen der Vorlage automatisch an die Switches übertragen.",
-          "note": "Bei Widersprüchen zwischen den Konfigurationen der Vorlage und direkten Konfigurationen des Switch haben die Konfigurationen des Switch Vorrang."
+          "what": "Was ist ein Standort?",
+          "information": "Eine Switch-Standort ist eine virtuelle Konfiguration, die auf einen oder mehrere Switches angewendet werden kann. Wir können einen Switch nach Bedarf in einen Standort oder aus einem Standort heraus verschieben. Solange sich ein Switch in einem Standort befindet, werden Konfigurationen auf Ebene des Standorts automatisch an die Switches übertragen.",
+          "note": "Bei Widersprüchen zwischen den Konfigurationen des Standorts und direkten Konfigurationen des Switch haben die Konfigurationen des Switch Vorrang."
         }
       },
       "manage": {
         "page-title": "Switches - Switch-Verwaltung",
         "breadcrumb-text": "Switch verwalten",
-        "summary-legend-title": "Zusammenfassung",
-        "system-detail-tab-title": "Systemdetails",
-        "port-settings-tab-title": "Port-Einstellungen",
-        "network-settings-tab-title": "Netzwerkeinstellungen",
-        "task-queue-tab-title": "Auftrags-Warteschlange",
-        "template-dd-default-title": "Vorlage auswählen",
-        "gbps": "{{unit}} Gbps",
-        "mbps": "{{unit}} Mbps",
+        "template-dd-default-title": "Einen Standort auswählen",
+        "upgrade-checkbox-label": "Central-Agents automatisch aktualisieren",
         "button": {
           "reboot": "Neu starten",
           "open-local-mgmt-console": "Lokale Verwaltungskonsole öffnen",
@@ -203,18 +207,68 @@
         },
         "body": {
           "line-1": "Bitte stellen Sie sicher, dass die Switches während der Registrierung eingeschaltet sind. Der Zero-Touch-Registrierungsprozess ist nur 5 Minuten lang aktiv.",
-          "line-2": "Die registrierten Switches werden zunächst zu einer Standardvorlage verschoben.",
+          "line-2": "Die registrierten Switches werden zunächst in einen Standard-Standort verschoben.",
           "line-3": "Kurz nach der Registrierung wird die Switch-Software automatisch auf die neueste verfügbare Version aktualisiert. Hierbei wird das Gerät eventuell neu gestartet."
         }
       },
       "message": {
-        "already-reported": "Die Switches mit der/den Seriennummer(n) {{ switches }} sind bereits bei Sophos Central registriert.",
+        "already-reported": "Die Switches mit den Seriennummern {{ switches }} sind bereits bei Sophos Central registriert.",
         "registration-error": "Switches können nicht registriert werden.",
         "switches-registered": "Switches werden bei Sophos Central registriert.",
-        "switches-multiple-registration-with-exception": "Ungültige Seriennummer(n) {{ switches }}; Switches werden bei Sophos Central registriert.",
-        "switches-single-serial-registration-with-exception": "Seriennummer {{ switches }} ist ungültig",
-        "invalid-serial": "Eine oder mehrere ungültige Seriennummer(n).",
+        "switch-registration-state-invalid": "Seriennummern {{ switches }} sind ungültig",
+        "switch-registration-exception": "Wir registrieren die anderen Switches bei Sophos Central.",
+        "invalid-serial": "Eine oder mehrere Seriennummern sind ungültig.",
         "empty-switch-list-error": "Keine gültige Seriennummer vorhanden."
+      }
+    },
+    "template": {
+      "page-title": "Switches - Standortverwaltung",
+      "breadcrumb-text": "Standort"
+    },
+    "switch-view": {
+      "summary-legend-title": "Zusammenfassung",
+      "gbps": "{{unit}} Gbps",
+      "mbps": "{{unit}} Mbps"
+    },
+    "vlan": {
+      "search-placeholder-text": "Suchen nach ID oder Name",
+      "color-dd-default-title": "Farbe auswählen",
+      "untagged-dd-default-title": "Port auswählen",
+      "ports-dd-default-title": "Ports auswählen",
+      "add-vlan-dialog-title": "VLAN hinzufügen",
+      "edit-vlan-dialog-title": "VLAN bearbeiten",
+      "button": {
+        "add": "VLAN hinzufügen"
+      },
+      "table-headers": {
+        "vlan-id": "VLAN-ID",
+        "name": "VLAN-Name",
+        "tagged-ports": "Getaggte Ports",
+        "untagged-ports": "Ungetaggte Ports",
+        "forbidden-ports": "Verbotene Ports"
+      },
+      "form": {
+        "vlan-id": "VLAN-ID",
+        "vlan-type": "VLAN-Typ",
+        "tagged-ports": "Getaggte Ports",
+        "untagged-port": "Ungetaggte Ports",
+        "forbidden-ports": "Verbotene Ports",
+        "vlan-type-standard": "Standard",
+        "vlan-type-voice": "Sprache",
+        "vlan-id-required-message": "VLAN-ID ist erforderlich.",
+        "vlan-id-invalid-message": "VLAN-ID ist ungültig.",
+        "vlan-name-required-message": "Name ist erforderlich.",
+        "vlan-name-invalid-message": "Der Name ist ungültig."
+      },
+      "message": {
+        "create-error": "VLAN kann nicht erstellt werden",
+        "create-success": "VLAN wurde erstellt",
+        "update-error": "VLAN kann nicht aktualisiert werden",
+        "update-success": "VLAN' wurde aktualisiert",
+        "delete-error": "Ein oder mehrere VLANs können nicht gelöscht werden",
+        "delete-success": "VLANs wurden gelöscht",
+        "delete-confirm-title": "VLANs löschen",
+        "delete-info-message": "VLANs <strong>{{vlans}}</strong> löschen"
       }
     }
   }

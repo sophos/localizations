@@ -12,8 +12,8 @@
       "approve": "Genehmigen",
       "confirm": "Bestätigen",
       "update": "Aktualisieren",
-      "from": "Von",
-      "to": "Bis",
+      "start-date": "Startdatum",
+      "end-date": "Enddatum",
       "confirmDeleteHeader": "Löschen bestätigen",
       "error": "Fehler",
       "success": "Erfolgreich",
@@ -21,13 +21,19 @@
       "accessPoints": "Access Points",
       "ssids": "SSIDs",
       "settings": "Einstellungen",
+      "sites": "Standorte",
       "statistic": "Statistik",
       "devices": "Geräte",
       "reset": "Reset",
       "select-all": "Alle ausw.",
       "deselect-all": "Alles abwählen",
       "channel": "Kanal",
-      "access-point": "Access Point"
+      "access-point": "Access Point",
+      "show": "Anzeigen",
+      "hide": "Ausblenden",
+      "details": "Details",
+      "no-data": "Keine Daten",
+      "beta": "Beta"
     },
     "global": {
       "onBoard": {
@@ -42,25 +48,46 @@
         "placeholder": "Suche",
         "name": "Name",
         "serial-number": "Seriennummer",
-        "popover1": "Suche nach {{ field0 }}",
-        "popover2": "Suche nach {{ field0 }} oder {{ field1 }}",
-        "popover3": "Suche nach {{ field0 }}, {{ field1 }} oder {{ field2 }}",
-        "popover4": "Suche nach {{ field0 }}, {{ field1 }}, {{ field2 }} oder {{ field3 }}"
+        "popover1": "Suchen nach {{ field0 }}",
+        "popover2": "Suchen nach {{ field0 }} oder {{ field1 }}",
+        "popover3": "Suchen nach {{ field0 }}, {{ field1 }} oder {{ field2 }}",
+        "popover4": "Suchen nach {{ field0 }}, {{ field1 }}, {{ field2 }} oder {{ field3 }}"
       }
     },
     "dashboard": {
-      "title": "Produkt-Dashboard"
+      "breadcrumb-title": "Produkt-Dashboard",
+      "page-title": "Wireless - Dashboard",
+      "breadcrumb-text": "Wireless-Dashboard"
     },
     "diagnostics": {
       "events": "Ereignisse",
       "packet-capture-tab": "Paketerfassung",
       "audit-logs": "Audit-Protokolle",
+      "server-ip": "Server-IP",
+      "serial-no": "Seriennummer",
+      "action": "Maßnahme",
+      "status": "Status",
+      "name": "Name des Access Point",
+      "ip_address": "IP-Adresse",
+      "start-title": "Start",
+      "stop-title": "Stopp",
       "packet-capture": {
-        "status": "Status",
-        "name": "Name des Access Point",
-        "serial-no": "Seriennummer"
+        "client-mac": "Client Mac",
+        "duration": "Dauer",
+        "mac-optional": "MAC-Adresse",
+        "start-message": "Kommando PACKET CAPTURE gestartet.",
+        "start-fail-message": "Start des Kommandos PACKET CAPTURE fehlgeschlagen.",
+        "stop-message": "Kommando PACKET CAPTURE angehalten.",
+        "stop-fail-message": "Anhalten des Kommandos PACKET CAPTURE fehlgeschlagen."
       },
-      "syslog": "Syslog",
+      "syslog": {
+        "title": "Syslog",
+        "server-port": "Server-Port",
+        "start-message": "Kommando SYSLOG gestartet.",
+        "start-fail-message": "Start des Kommandos SYSLOG fehlgeschlagen.",
+        "stop-message": "Kommando SYSLOG angehalten.",
+        "stop-fail-message": "Anhalten des Kommandos SYSLOG fehlgeschlagen."
+      },
       "list": {
         "breadcrumb-text": "Diagnose",
         "title": "Wireless - Diagnose"
@@ -71,7 +98,7 @@
       "description": "Beschreibung",
       "configuration-changed": "Konfiguration geändert",
       "date-range-separator": "Angabe eines Zeitraumes in den vergangenen 90 Tagen",
-      "search-by-modified-date": "Suche nach „Geändert von“",
+      "search-by-modified-date": "Suchen nach Geändert von",
       "csv-of-view": "CSV der aktuellen Ansicht",
       "pdf-of-view": "PDF der aktuellen Ansicht",
       "csv-of-past-90-days": "CSV der letzten 90 Tage",
@@ -79,9 +106,75 @@
       "question-mark-icon-onhover-msg": "Alle angewendeten Suchfilter werden auch beim Export angewendet. Der Datumsbereich ist für die letzten 90 Tage ausgeschlossen.",
       "access-point-severity": "Schweregrad",
       "event-name": "Ereignis",
-      "search-by-accesspoint": "Such nach Access-Point-Name",
+      "search-by-accesspoint": "Suchen nach Access-Point-Name",
+      "search-by-name-or-serial-number": "Suchen nach Name oder Versionsnummer",
       "export": "Export",
       "low-severity": "Zur Information"
+    },
+    "settings": {
+      "setting-configuration-save-success-msg": "Konfiguration wurde erfolgreich gespeichert!",
+      "setting-configuration-save-error-msg": "Die Konfiguration konnte nicht gespeichert werden",
+      "sections": {
+        "login-title": "Grundeinstellungen",
+        "analysis-title": "Analyse",
+        "access-point-detection-title": "Erkennung von nicht berechtigten Access Points",
+        "advancedRF-title": "AdvancedRF-Management",
+        "discovery-protocol-title": "Discovery-Protokoll"
+      },
+      "advanced-rf-management": {
+        "roaming-assist": "Roaming-Assistent",
+        "advanced-notification": "AdvancedRF-Benachrichtigung",
+        "co-channel": "CoChannel-Ereignis-Benachrichtigung"
+      },
+      "discovery-protocol": {
+        "lldp-label": "Link Layer Discovery Protocol (LLDP)",
+        "network-message": "Wenn Sie diese Option aktivieren, werden andere in der Nähe befindliche Geräte auf einfache Weise mittels Link Layer Discovery Protocol (LLDP) erkannt."
+      },
+      "analysis-settings": {
+        "report-traffic-usage": "Nutzungsdaten",
+        "analysis-message": "Wenn die Datenverkehr-Kategorisierung aktiviert ist, wird der vom Benutzer generierte Datenverkehr kategorisiert und unter Nutzungsdaten aufgeführt. Diese Option ist standardmäßig deaktiviert.",
+        "statistics-report": "Access Point-Statistiken",
+        "device-discovery-label": "Geräteklassifizierung und Sichtbarkeit",
+        "device-discovery-message": "Mehr Transparenz über WLAN-Geräte durch Kategorisierung nach Gerätetyp, Profil und Kategorie. Die Funktion steht nur für Access Points der APX-Serie zur Verfügung."
+      },
+      "rogue-ap-detection-settings": {
+        "rogue-ap-detection": "Nicht berechtigte Access Points erkennen und melden",
+        "display-info-prefix": "Eine Liste von unautorisierten APs wird hier angezeigt: "
+      },
+      "diagnostics-setting": {
+        "forward-ap-logs": "Access-Point-Protokolle weiterleiten",
+        "forward-ap-message": "Access-Point-Nachricht weiterleiten",
+        "remote-login-title": "Remote-Login für Access Points für Sophos Support",
+        "expiration-message": "Ist diese Option aktiviert, erhält der technische Support von Sophos für die festgelegte Zeit Remote-Zugriff. Die verbleibende Zeit wird angezeigt. Deaktivieren Sie die Option, um den Remote-Zugriff sofort zu beenden."
+      },
+      "list": {
+        "breadcrumb-text": "Globale Einstellungen",
+        "title": "Wireless - Globale Einstellungen"
+      },
+      "config": {
+        "customer-unique-id-title": "Eindeutige Sophos Kunden-ID",
+        "firmware-update": {
+          "title": "Firmware-Update",
+          "current-version": "Aktuelle Version",
+          "release-date": "Veröffentlichungsdatum",
+          "installed-at": "Installiert am",
+          "update-now": "Update-Version {{ version }}",
+          "schedule-firmware-update": "Firmware-Updates planen",
+          "frequency": "Häufigkeit",
+          "DAILY": "Täglich",
+          "MONTHLY": "Monatlich",
+          "WEEKLY": "Wöchentlich",
+          "week": "Woche",
+          "weekday": "Wochentag",
+          "time": "Uhrzeit (UTC)"
+        }
+      }
+    },
+    "sites": {
+      "list": {
+        "breadcrumb-text": "Standorte",
+        "title": "Wireless - Standorte"
+      }
     },
     "networks": {
       "fetch-error": "Fehler beim Laden der SSID-Liste",
@@ -221,7 +314,7 @@
         "ssid-uem-enabled-info": "**Sophos Mobile ist standardmäßig aktiviert.",
         "ednpoint-protection-label": "Sophos Central Endpoint Protection",
         "endpoint-protection": "Security Heartbeat für Endpoint Protection auf Windows-, macOS- oder Linux-Geräten aktivieren.",
-        "endpoint-protection.enabled.info": "Wählen Sie diese Option nur aus, wenn Sie Synchronized Security mit XG Firewall nicht verwenden.",
+        "endpoint-protection-enabled-info": "Wählen Sie diese Option nur aus, wenn Sie Synchronized Security mit XG Firewall nicht verwenden.",
         "restrict-ssid": "Diese SSID auf Geräte, die über dieses Sophos Central-Konto verwaltet werden, beschränken. Die Option ist verfügbar, wenn Geräte, auf denen sowohl UEM als auch Endpoint ausgeführt werden, über dieses Sophos Central-Konto verwaltet werden.",
         "landing-page-title": "Zielseite",
         "restric-ssid-checkbox-label": "SSID auf mit Sophos verwaltete Geräte beschränken",

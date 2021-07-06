@@ -18,12 +18,103 @@
       "name": "Firewall Management - Tableau de bord",
       "breadcrumb-text": "Tableau de bord de gestion des pare-feu"
     },
+    "serial-number": {
+      "peer": "Numéro de série de l’homologue"
+    },
     "dynamic-objects": {
       "name": "Gestion du pare-feu - Objets dynamiques",
       "breadcrumb-text": "Objets dynamiques",
       "tabs": {
         "interfaces": "Interfaces",
         "zones": "Zones"
+      },
+      "custom-label": "Il s’agit d’un nom de mappage personnalisé qui n’est peut être pas disponible dans le pare-feu.",
+      "subtext-label": "Le nom du matériel de l’interface sera utilisé comme nom de mappage.",
+      "same-as-subtext": "Utilise le nom d’objet dynamique comme nom de mappage.",
+      "add": {
+        "modal": {
+          "title-add-interface": "Créer une nouvelle interface dynamique",
+          "title-edit-interface": "Modifier une interface dynamique",
+          "title-add-zone": "Créer une nouvelle zone dynamique",
+          "title-edit-zone": "Modifier une zone dynamique",
+          "name": {
+            "label": "Nom",
+            "placeholder-interface": "Nom ou étiquette pour l’interface du pare-feu.",
+            "placeholder-zone": "Nom ou étiquette pour la zone du pare-feu.",
+            "required": "Nom obligatoire",
+            "max-length": "Le nom est trop long."
+          },
+          "description": {
+            "label": "Description",
+            "placeholder": "< 200 caractères",
+            "max-length": "Description trop longue."
+          },
+          "ip-address-family": {
+            "label": "Famille d’adresses IP"
+          },
+          "interface-type": {
+            "label": "Type d’interface"
+          },
+          "zone-type": {
+            "label": "Type de zone"
+          },
+          "mappings": {
+            "label": "Mappages",
+            "default-option":"Défaut (tous les pare-feu)",
+            "same-as-object": "Dynamique",
+            "add": "Ajouter",
+            "replace": "Remplacer",
+            "default-cannot-delete": "Les mappages par défaut ne peuvent pas être supprimés. Il peuvent uniquement être remplacés.",
+            "zones": {
+              "mappedName" : "Zones mappées",
+              "firewall": "Pare-feu"
+            },
+            "interface": {
+              "mappedName" : "Interfaces mappées",
+              "firewall": "Pare-feu"
+            }
+          },
+          "save-success": {
+            "interface": "L’interface dynamique a bien été enregistrée.",
+            "zone": "Zone dynamique enregistrée."
+          },
+          "save-error": {
+            "interface": "Impossible d’enregistrer l’interface dynamique",
+            "zone": "Impossible d’enregistrer la zone dynamique."
+          },
+          "exist-error": {
+            "interface": "Le nom de l’interface que vous avez choisi existe déjà. Veuillez choisir un autre nom.",
+            "zone": "Le nom de la zone que vous avez choisi existe déjà. Veuillez choisir un autre nom."
+          }
+        }
+      },
+      "usage-references": {
+        "heading": "Références d’utilisation",
+        "title": {
+          "zone": "Nom de la zone dynamique",
+          "interface": "Nom de l’interface dynamique"
+        },
+        "no-references": "Aucune stratégie ne fait référence à cet objet dynamique.",
+        "column": {
+          "group": "Groupe",
+          "sub-entity": "Sous-entité de référence",
+          "entity-name": "Nom de la stratégie"
+        }
+      },
+      "delete": {
+        "modal": {
+          "delete-confirm-text": "Supprimer {{tabType}}",
+          "title-delete-interface": "Supprimer une interface",
+          "title-delete-zone": "Supprimer une zone",
+          "delete-success": {
+            "interface": "L’interface dynamique a bien été supprimée.",
+            "zone": "Zone dynamique supprimée."
+          },
+          "delete-error": {
+            "interface": "Impossible de supprimer l’interface dynamique",
+            "zone": "Impossible de supprimer la zone dynamique."
+          }
+        }
       },
       "interface": {
         "add-title": "Créer une nouvelle interface dynamique",
@@ -53,12 +144,12 @@
       }
     },
     "sdwan-groups": {
-      "name": "Gestion de pare-feu - Groupes de connexion SD WAN",
-      "breadcrumb-text": "Groupes de connexion SD WAN",
+      "name": "Gestion de pare-feu - Groupes de connexion SD-WAN",
+      "breadcrumb-text": "Groupes de connexion SD-WAN",
       "create": "Créer un groupe de connexion",
       "delete": {
         "confirm": "Confirmation de la suppression",
-        "content": "Le groupe de connexion « {{ name }} » va être marqué pour suppression et les paramètres des pare-feu assignés à ce groupe vont être rétablis. Remarque : tant que les paramètres de tous les pare-feu de ce groupe n’ont pas été rétablis, ils ne peuvent pas faire partie d’un autre groupe.",
+        "content": "Le groupe de connexion '{{ name }}' va être marqué pour suppression et les paramètres des pare-feu assignés à ce groupe vont être rétablis. Remarque : tant que les paramètres de tous les pare-feu de ce groupe n’ont pas été rétablis, ils ne peuvent pas faire partie d’un autre groupe.",
         "success": "Groupe de connexions supprimé.",
         "error": "Erreur lors de la suppression du groupe.",
         "marked": "Ce groupe a été marqué pour suppression. L’opération sera terminée une fois que tous les pare-feu auront appliqué les paramètres rétablis. Vérifiez la progression de cette tâche dans la file d’attente."
@@ -69,9 +160,17 @@
           "one": "Panne de liaison",
           "more": "{{ bad }} Pannes de liaison"
         },
+        "unknown": {
+          "one": "Inconnue",
+          "more": "{{ unknown }} inconnue"
+        },
         "lost-connection": {
           "one": "Panne de liaison",
           "more": "Panne de liaison avec {{ bad }} pare-feu"
+        },
+        "unknown-connection": {
+          "one":  "Inconnue",
+          "more": "{{ unknown }} inconnue"
         },
         "resource-sharing": {
           "one": "{{ total }} pare-feu avec partage de ressources",
@@ -112,13 +211,68 @@
         }
       },
       "add": {
-        "name": "Gestion de pare-feu - Nouveau groupe de connexion SD WAN",
-        "breadcrumb-text": "Ajouter un groupe de connexion SD WAN",
+        "name": "Gestion de pare-feu - Nouveau groupe de connexion SD-WAN",
+        "breadcrumb-text": "Ajouter un groupe de connexion SD-WAN",
         "error" : {
-          "title": "Erreur !",
           "string": "Erreur",
-          "status": "État",
-          "firewall": "Pare-feu"
+          "INVALID_XFRM_IP" : "Les adresses IP XFRM non valides sont choisies pour l’un des pare-feu dans le groupe.",
+          "XFRM_IP_ALLOCATION_FAILED" : "Impossible d’allouer les adresses IP XFRM à l’un des pare-feu dans le groupe.",
+          "IPSEC_POLICY_CREATE_FAILED" : "Impossible de créer des stratégies IPSEC pour l’un des pare-feu dans le groupe.",
+          "VPN_CREATE_FAILED" : "Impossible de créer le VPN pour l’un des pare-feu dans le groupe.",
+          "XFRM_IP_ASSIGNMENT_FAILED" : "Impossible d’allouer les adresses IP XFRM à l’un des pare-feu dans le groupe.",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "Impossible de créer l’hôte ou l’objet de service pour l’un des pare-feu dans le groupe.",
+          "FIREWALL_RULE_CREATE_FAILED" : "Impossible de créer la règle de pare-feu pour l’un des pare-feu dans le groupe.",
+          "NAT_RULE_CREATE_FAILED" : "Impossible de créer la règle NAT pour l’un des pare-feu dans le groupe.",
+          "CREATE_XFRM_GATEWAY_FAILED" : "Impossible de créer la passerelle XFRM pour l’un des pare-feu dans le groupe.",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "Impossible de créer le routage de la stratégie pour l’un des pare-feu dans le groupe.",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "Impossible de créer les routages de stratégies pour l’un des pare-feu dans le groupe.",
+          "VPN_PING_ENABLE_FAILED" : "Impossible d’activer le signal ping pour le VPN pour l’un des pare-feu dans le groupe.",
+          "VPN_DELETE_FAILED" : "Impossible de supprimer le VPN pour l’un des pare-feu dans le groupe.",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "Impossible de supprimer l’hôte ou l’objet de service pour l’un des pare-feu dans le groupe.",
+          "FIREWALL_RULE_DELETE_FAILED" : "Impossible de supprimer la règle de pare-feu pour l’un des pare-feu dans le groupe.",
+          "NAT_RULE_DELETE_FAILED" : "Impossible de supprimer la règle NAT pour l’un des pare-feu dans le groupe.",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "Impossible de créer le routage de la stratégie pour l’un des pare-feu dans le groupe.",
+          "VPN_DEACTIVATION_FAILED" : "Impossible de désactiver le VPN pour l’un des pare-feu dans le groupe.",
+          "VPN_ACTIVATION_FAILED" : "Impossible d’activer le VPN pour l’un des pare-feu dans le groupe.",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "Le groupe de connexion SD-WAN est déjà marqué pour suppression. Veuillez patienter.",
+          "GROUP_NOT_EXISTS" : "Groupe inexistant.",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "Adresse NAT non autorisée sur le pare-feu avec partage de ressources",
+          "FIREWALL_PART_OF_ANOTHER_GROUP" : "Ce pare-feu fait déjà partie d’un autre groupe.",
+          "FIREWALL_NOT_FOUND" : "Le pare-feu sélectionné est introuvable.",
+          "MIN_ONE_SUBNET_NEEDED" : "Au moins un sous-réseau est nécessaire pour chaque pare-feu dans le groupe.",
+          "MIN_ONE_WAN_PORT_NEEDED" : "Au moins un port WAN est nécessaire pour chaque pare-feu dans le groupe.",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "Au moins deux pare-feu sont nécessaire dans le groupe.",
+          "SDWAN_FEATURE_NOT_SUPPORTED" : "La fonction du groupes de connexion SD-WAN n’est pas encore prise en charge.",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "Transaction sur un pare-feu auxiliaire non prise en charge.",
+          "NOT_VALID_SUBNET" : "Sous-réseaux non valides pour l’un des pare-feu dans le groupe.",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "Valeur de l’attribut '{{name}}' hors limite : {{value}}",
+          "INVALID_ATTRIBUTE" : "Attribut '{{ attribute }}' non valide pour la classe {{ className }}.",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "Attribut unique non présent pour la classe '{{ className }}'",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "Attribut obligatoire '{{ name }}' manquant pour la classe '{{ className }}'",
+          "UNSUPPORTED_CLASS" : "Classe '{{ name }}' non prise en charge",
+          "INVALID_ATTRIBUTE_DATATYPE" : "Données non prises en charge pour l’attribut '{{ name }}' dans la classe '{{ className }}'",
+          "MISSING_ATTRIBUTE" : "Attribut '{{ name }}' manquant pour la classe '{{ className }}'",
+          "INVALID_IP_ADDRESS" : "Adresse IP non valide : {{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS" : "Adresse IP '{{ ip }}' non valide avec masque de réseau/préfixe '{{ netmask }}'",
+          "INVALID_IP_RANGE" : "Plage IP non valide : plage inférieure {{ low }} et plage supérieure {{ high }}",
+          "INVALID_CIDR_FORMAT" : "Format CIDR non valide : {{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "Dépasse le nombre de valeurs pour l’attribut '{{ name }}', la limite autorisée est {{ maxSize }}",
+          "ICMP_PARAM_SIZE_MISMATCH" : "Les types ICMP et la taille des codes ICMP doivent être identiques. Ta taille des types ICMP {{ typeSize }}. Taille des codes ICMP {{ codeSize }}.",
+          "PROTOCOL_SIZE_MISMATCH" : "La taille des protocoles, des ports source et des ports de destination doit être identique. Taille du protocole {{ protocolSize }}. Taille du port source {{ sourceSize }}. Taille du port de destination {{ destinationSize }}.",
+          "INVALID_PROTOCOL" : "Protocole '{{ name }}' non valide",
+          "TRANSACTION_NOT_ALLOWED" : "Transaction non autorisée pour ce pare-feu",
+          "IP_ALLOCATION_FAILED" : "Impossible d’allouer une adresse IP pour ce pare-feu",
+          "DEVICE_NOT_FOUND" : "Pare-feu introuvable",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "Fonction Central Orchestration non prise en charge pour ce pare-feu",
+          "LICENSE_NOT_FOUND" : "Licence non présente pour ce pare-feu",
+          "NAT_NOT_ALLOWED" : "Adresse NAT non autorisée sur le pare-feu avec partage de ressources",
+          "DEVICE_PART_OF_OTHER_GROUP" : "Ce pare-feu fait déjà partie d’un autre groupe.",
+          "OPERATION_IN_PROGRESS" : "L’opération {{ operation }}est en cours pour {{ groupName }}",
+          "INVALID_SUBNET" : "Sous-réseau, adresse IP {{ ip }}, masque réseau {{ netmask }} non valides",
+          "GROUP_DOES_NOT_EXISTS" : "ID de groupe {{ groupId }} inexistant",
+          "INTERNAL_REQUEST_ERROR" : "Nous avons rencontré un problème. Erreur interne du serveur.",
+          "INTERNAL_SERVER_ERROR": "Nous avons rencontré un problème. Erreur interne du serveur.",
+          "GROUP_NAME_EXISTS": "Ce nom de groupe existe déjà. Veuillez-en choisir un autre."
         },
         "states": {
           "cannot-save": "Erreur inconnue lors de l’enregistrement du groupe de connexions.",
@@ -132,17 +286,20 @@
           "name": {
             "label": "Nom du groupe de connexion",
             "required": "Nom obligatoire",
-            "heading": "Nommer ce groupe"
+            "heading": "Nommer ce groupe",
+            "length": "Le nom ne doit pas dépasser plus de 40 caractères."
           },
           "description": {
             "label": "Description",
             "placeholder": "Saisir la description du groupe (250 caractères max.)",
-            "length": "La description ne doit pas dépasser 250 caractères."
+            "length": "La description ne doit pas dépasser plus de 250 caractères."
           },
           "firewalls": {
             "source":"Pare-feu disponibles",
             "target":"Pare-feu assignés",
-            "label": "Les réseaux LAN connectés directement au pare-feu seront automatiquement ajoutés au groupe de partage. Vous pourrez personnaliser chaque réseau client du pare-feu à la prochaine étape."
+            "label": "Les réseaux LAN connectés directement au pare-feu seront ajoutés au groupe de partage aux étapes suivantes. Vous pourrez personnaliser chaque réseau client du pare-feu à la prochaine étape.",
+            "filter-notes": "Remarque : Les pare-feu autorisés à participer aux groupes de connexion SD-WAN sont uniquement visibles pour la sélection. En outre, les pare-feu doivent être mis à niveau au firmware qui prend en charge cette fonction.",
+            "learn-more": "Plus d’info"
           },
           "select": {
             "heading": "Sélectionner les pare-feu à inclure"
@@ -153,7 +310,7 @@
           "heading": "Configurer les réseaux et les routes",
           "error": "Une erreur s’est produite lors de la détection des conflits.",
           "subnet-error": "Un ou plusieurs sous-réseaux ne sont pas valides",
-          "description": "Personnaliser les réseaux auquel chaque pare-feu va autoriser l’accès aux groupes de partage, décider si les réseaux doivent apparaître sous une plage d’adresse différente pour éviter les conflits et configurer la redondance du tunnel en cas de présence de plusieurs connexions Internet.",
+          "description": "Personnaliser les réseaux auxquels chaque pare-feu va autoriser l’accès aux groupes de partage, décider si les réseaux doivent apparaître sous une plage d’adresse différente pour éviter les conflits.",
           "no-conflict": {
             "heading": "{{ count }} pare-feu analysés et aucun conflit réseau détecté."
           },
@@ -186,7 +343,7 @@
               "participate": "Activer",
               "nat": "Activer le NAT",
               "nat-address": "Adresse NAT",
-              "nat-subnet": "L’adresse NAT doit appartenir au même sous-réseau que celui de l’interface.",
+              "nat-subnet": "L’adresse NAT traduite doit appartenir au même sous-réseau que l’interface.",
               "conflicts": "Conflits",
               "wan": "Lien WAN",
               "selected": "Sélectionné",
@@ -209,12 +366,12 @@
         "share-resources": {
           "label": "Partager les ressources",
           "heading": "Partager les ressources",
-          "description": "Sélectionner les ressources de l’entreprise accessibles aux utilisateurs sur chaque site",
+          "description": "Ajouter les ressources de l’entreprise accessibles aux utilisateurs sur chaque site",
           "modal": {
             "title": "Ajouter des ressources",
             "firewall": {
               "title": "Pare-feu",
-              "placeholder": "Sélectionner"
+              "placeholder": "Sélectionner un pare-feu"
             },
             "shared-resource": {
               "title": "Ressource partagée",
@@ -238,7 +395,8 @@
                   "1": "TCP/UDP",
                   "2": "IP",
                   "3": "ICMP",
-                  "7": "ICMPv6"
+                  "7": "ICMPv6",
+                  "0": "Tous"
                 },
                 "heartbeat": {
                   "1": "VERTE",
@@ -308,10 +466,10 @@
         }
       },
       "no-data": {
-        "info": "Les groupes de connexion SD WAN vous aident à partager les ressources dans toutes les régions à l’aide de stratégies générées automatiquement.",
+        "info": "Les groupes de connexion SD-WAN vous aident à partager les ressources dans toutes les régions à l’aide de stratégies générées automatiquement.",
         "process": "Vous pouvez choisir les pare-feu à placer dans les groupes de connexion pendant la création d’un groupe.",
         "how": "Cliquez sur le bouton « Créer un groupe de connexion » pour démarrer l’assistant.",
-        "header": "Simplifiez votre configuration SD WAN avec les groupes de connexion",
+        "header": "Simplifiez votre configuration SD-WAN avec les groupes de connexion",
         "learn-more": "Plus d’info"
       }
     },

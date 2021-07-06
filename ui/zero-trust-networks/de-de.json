@@ -18,7 +18,9 @@
       "name-length-validation": "Name darf nicht länger als 100 Zeichen sein",
       "whitespace-name-validation": "Name ist erforderlich",
       "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein",
-      "required": "* Pflichtfeld"
+      "required": "* Pflichtfeld",
+      "yes": "Ja",
+      "no": "Keine"
     },
     "application": {
       "form": {
@@ -26,6 +28,7 @@
         "name-placeholder": "Ressourcenname",
         "description": "Beschreibung (max. 250 Zeichen)",
         "description-placeholder": "Beschreibung",
+        "show-resource": "Ressource im Benutzerportal anzeigen",
         "port-validation": "Ungültiger Port",
         "application-type": "Ressourcentyp",
         "application-type-placeholder": "Auswählen",
@@ -74,6 +77,7 @@
           "internal-fqdn": "Interne FQDN/IP",
           "external-fqdn": "Externe FQDN"
         },
+        "no-application-found": "Keine Ressourcen gefunden.",
         "no-application-configured": "Sie haben keine Ressourcen hinzugefügt.",
         "no-application-configured-help": "Klicken Sie auf 'Ressource hinzufügen', um eine Ressource hinzuzufügen.",
         "error": "Fehler beim Abruf der Ressourcenliste.",
@@ -96,7 +100,9 @@
             "domain": "Domäne:",
             "agent": "Agent",
             "agentless": "Ohne Agent",
-            "display-in-user-portal": "Anzeige im Benutzerportal:",
+            "display-in-user-portal": {
+              "label": "Anzeige im Benutzerportal:"
+            },
             "access-ports": {
               "label": "Zugriffsport",
               "columns": {
@@ -119,7 +125,7 @@
           "user-groups-policies": {
             "label": "Benutzergruppen ({{count}}), Richtlinie",
             "policy-label": "Richtlinie: ",
-            "switch-policy": "Richtlinie wechseln",
+            "switch-policy": "Richtlinie ändern",
             "edit-groups": "Gruppen bearbeiten",
             "groups-label": "Gruppen"
           }
@@ -134,7 +140,8 @@
     },
     "dashboard": {
       "title": "Zero Trust Network Access - Dashboard",
-      "breadcrumb-text": "Zero-Trust-Network-Access-Dashboard"
+      "breadcrumb-text": "Zero-Trust-Network-Access-Dashboard",
+      "nodata": "Keine Daten vorhanden"
     },
     "report": {
       "title": "Zero Trust Network Access - Berichte",
@@ -151,6 +158,7 @@
     },
     "gateway": {
       "list": {
+        "no-gateway-found": "Keine Gateways gefunden.",
         "no-gateway-configured": "Sie haben keine Gateways hinzugefügt.",
         "no-gateway-configured-help": "Klicken Sie auf 'Gateway hinzufügen', um ein Gateway hinzuzufügen.",
         "download-gateway-VM": "Gateway-VM herunterladen",
@@ -187,7 +195,13 @@
                 "name": "Name",
                 "status": "Status",
                 "version": "Version",
-                "support": "Sophos Support"
+                "support": "Sophos Support",
+                "support-status": "Sophos-Supportstatus"
+              },
+              "support-status": {
+                "connected": "Verbunden",
+                "disconnected": "Verbindung getrennt",
+                "disabled": "Deaktiviert"
               }
             },
             "note": "Für eine Lastverteilung benötigen Sie eine ungerade Instanzen-Anzahl.",
@@ -214,7 +228,7 @@
             "certificate": "Zertifikat",
             "upload-certificate": "Zertifikat hochladen",
             "certificate-validation": "Ungültiges Zertifikat",
-            "certificate-wildcard-message-example": "Verwenden Sie ein Platzhalterzertifikat. Zum Beispiel *.test.com",
+            "certificate-wildcard-message-example": "Verwenden Sie ein Platzhalterzertifikat, zum Beispiel *.test.com",
             "privatekey": "Privater Schlüssel",
             "upload-privatekey": "Privaten Schlüssel hochladen",
             "private-key-validation": "Ungültiger privater Schlüssel",
@@ -243,6 +257,7 @@
         "title-edit": "Gateway bearbeiten",
         "title-delete": "Gateway löschen",
         "software-update": "Software-Aktualisierung",
+        "try-again": "Erneut versuchen",
         "edit-software-update": "Software-Aktualisierungszeitplan bearbeiten",
         "try-software-update-again": "Erneut versuchen",
         "name": "Name",
@@ -328,9 +343,9 @@
           "cluster-disabled": "Gateway-Clustering - Deaktiviert",
           "cluster-vip": "Virtuelle Cluster-IP-Adresse",
           "cluster-vip-validation": "Ungültige virtuelle Cluster-IP-Adresse",
-          "external-tooltip": "Dient der Lastverteilung. Wenn Sie einen externen Load Balancer nutzen, lassen Sie das Feld frei.",
-          "internal-tooltip": "Dient der Cluster-Verwaltung.",
-          "single-arm-tooltip": "Dient der Cluster-Verwaltung und Lastverteilung."
+          "external-tooltip": "Dies wird zur Lastverteilung verwendet. Wenn Sie einen externen Load Balancer verwenden, lassen Sie das Feld frei.",
+          "internal-tooltip": "Dies wird zur Cluster-Verwaltung verwendet.",
+          "single-arm-tooltip": "Dies wird für Cluster-Verwaltung und Lastverteilung verwendet."
         }
       },
       "delete": {
@@ -447,10 +462,12 @@
         },
         "vm-name": "VM-Name",
         "vm-placeholder": "VM-Name",
+        "vm-duplicate-error": "Name duplizieren",
         "external-ip-placeholder": "Externe IP",
         "internal-ip-placeholder": "Interne IP",
         "external-interface-ip": "IP der externen Schnittstelle",
         "internal-interface-ip": "IP der internen Schnittstelle",
+        "interface-ip-duplicate-error": "Doppelte IP",
         "interface-ip": "Schnittstellen-IP",
         "warning-box": "Gesamtzahl der Instanzen muss ungerade sein. Sie haben {{instanceCount}}",
         "form": {
@@ -468,17 +485,19 @@
           "sophos-token-header": "Sophos-Support-Token",
           "enable-sophos-support": "Support aktivieren",
           "enable-confirm": "Support für {{gatewayInstanceName}} aktivieren?",
-          "enable-details": "Aktivieren Sie den Sophos Support, um der Support-Abteilung 1 Tag lang Remote-Zugriff auf Ihre Gateway-Instanz zur Problembehebung zu gewähren.",
+          "enable-details": "Aktivieren Sie den Sophos Support, um der Support-Abteilung einen Tag lang Remote-Zugriff auf Ihre Gateway-Instanz zur Problembehebung zu gewähren.",
           "token-header": "Übermitteln Sie dieses Token an den Sophos Support, damit unser Team auf Ihre Gateway-Instanz zugreifen kann.",
           "instance-name": "Gateway-Instanz: {{gatewayInstanceName}}",
           "token-expiry": "Token läuft am: {{tokenExpiryDate}}",
-          "tooltip-msg": "Token läuft 1 Tag nach der Aktivierung ab. Sie können den Sitzungsablauf unter 'Einstellungen'/'Sophos Support' festlegen.",
+          "tooltip-msg": "Token läuft 1 Tag nach der Aktivierung ab. Sie können den Sitzungsablauf unter 'Einstellungen/Sophos Support' festlegen.",
           "add-success": "Sophos Support aktiviert",
           "add-error": "Fehler beim Aktivieren des Sophos Supports",
           "disable-success": "Sophos Support deaktiviert",
           "disable-error": "Fehler beim Deaktivieren des Sophos Supports",
           "copy": "Kopieren",
-          "fetch-error": "Fehler beim Abrufen der Remote-Debug-Details"
+          "fetch-error": "Fehler beim Abrufen der Remote-Debug-Details",
+          "unreachable": "Das Gateway konnte den Server nicht erreichen.",
+          "try-again": "Bitte versuchen Sie es später erneut."
         }
       },
       "schedule": {
@@ -493,6 +512,7 @@
         "cancel-schedule": "Zeitplan widerrufen",
         "cancelling-update": "Aktualisierung wird abgebrochen",
         "update-failed": "Aktualisierung fehlgeschlagen ",
+        "try-again": "Aktualisierung erneut versuchen",
         "updating": " Wird aktualisiert",
         "edit-schedule": " Zeitplan bearbeiten",
         "cancel-first": "Sie können keine Änderungen vornehmen, ohne vorher den festgelegten Zeitplan zu widerrufen.",
@@ -511,6 +531,7 @@
         "configure-idp": "Identitätsanbieter konfigurieren",
         "no-idp-configured": "Sie haben keine Identitätsanbieter hinzugefügt.",
         "no-idp-configured-help": "Klicken Sie auf 'Identitätsanbieter hinzufügen', um einen Identitätsanbieter hinzuzufügen.",
+        "no-gateway-assigned-idp-configured": "Sie haben keine Gateways zugewiesen.",
         "columns": {
           "name": "Name",
           "provider": "Anbieter",
@@ -559,12 +580,14 @@
       "delete": {
         "header": "Identitätsanbieter löschen",
         "message": "Identitätsanbieter löschen",
+        "message-linked": "Vor dem Löschen müssen Sie die folgenden Gateways zu einem anderen Identitätsanbieter verschieben",
         "success": "Identitätsanbieter gelöscht",
         "error": "Löschen des Identitätsanbieters fehlgeschlagen"
       }
     },
     "policies": {
       "list": {
+        "expires": "Läuft ab",
         "columns": {
           "name": "Name",
           "status": "Status",
@@ -586,7 +609,7 @@
         "resource": "Ressource",
         "resource-and-access": "Zero Trust - Ressourcenzugriff",
         "endpoint-agent": "Laden Sie den Agent für Sophos Endpoint von der Seite <i18n slot=\"policy-download\">Downloads</i18n> herunter. <i18n slot=\"policy-learn-more\">Mehr erfahren</i18n>",
-        "no-policy-configured": "Sie haben keine Richtlinien.",
+        "no-policy-configured": "Sie haben keine Richtlinien hinzugefügt.",
         "no-policy-configured-help": "Klicken Sie auf 'Richtlinie hinzufügen', um eine Richtlinie hinzuzufügen und damit den Zugriff auf Ihre Ressourcen zu gewähren."
       },
       "delete": {
@@ -651,18 +674,18 @@
     "api": {
       "exception.unexpected": "Bei der Verarbeitung der Anfrage ist ein unerwarteter Fehler aufgetreten.",
       "exception.AccessDeniedException": "Zugriff verweigert",
-      "fqdn.format.invalid": "FQDN muss in gültigem Format vorliegen",
-      "fqdn_ip.format.invalid": "Interner FQDN/IPv4-Adresse muss in gültigem Format vorliegen",
+      "fqdn.format.invalid": "FQDN muss gültiges Format haben",
+      "fqdn_ip.format.invalid": "Interne FQDN/IPv4-Adresse muss gültiges Format haben",
       "field.value.invalid": "Ungültiger Eingabewert {{0}} für Feld {{1}}",
-      "request.json.malformed": "Ungültige JSON-Anfrage erhalten",
+      "request.json.malformed": "Falsch formatiertes Anfrage-JSON in Anfrage erhalten",
       "http.request.header.missing": "Erforderlicher HTTP-Header {{0}} fehlt in Anfrage",
       "request.data.format.invalid": "Ungültiges Datenformat in Anfrage erhalten",
       "request.data.uri.invalid": "Ungültige URL in Anfrage erhalten",
-      "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, darf nur alphanumerische Zeichen und Unterstriche beinhalten und darf keine Sonderzeichen umfassen",
+      "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, darf nur alphanumerische Zeichen und Unterstriche enthalten und darf keine Sonderzeichen enthalten",
       "encoding.invalid": "Ungültige Codierung erkannt",
       "exception.resource.creation": "Beim Erstellen der Ressource ist ein Fehler aufgetreten",
       "exception.io": "I/O-Ausnahme am Server aufgetreten",
-      "exception.json.parse": "Ungültige JSON in Anfrage erhalten",
+      "exception.json.parse": "Falsch formatiertes JSON in Anfrage erhalten",
       "exception.illegal.argument": "Ungültiges Argument in Anfrage erhalten",
       "entity.not.found": "Keine {{0}} gefunden",
       "exception.invalid.enum": "{{0}} ist ein ungültiger Wert für {{1}}",
@@ -672,28 +695,28 @@
       "record.invalid": "{{0}} ist für dieses Konto ungültig",
       "field.validation.errors.message": "Fehler bei der Feldprüfung",
       "gateway.already-deployed": "Image-URL kann nicht erstellt werden, Gateway bereits bereitgestellt",
-      "password.valid": "Das Kennwort muss aus 12 bis 250 Ziffern bestehen und mindestens eine Ziffer, mindestens einen Kleinbuchstaben, mindestens einen Großbuchstaben und mindestens ein Sonderzeichen umfassen",
+      "password.valid": "Das Kennwort muss zwischen 12 und 250 Zeichen haben und mindestens eine Ziffer, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten",
       "file-size.upload.limit.exceeded": "Maximal erlaubte Größe hochgeladener Dateien für Datei {{0}} überschritten",
-      "description.invalid": "Die Beschreibung darf nicht leer sein und maximal 300 Zeichen umfassen",
+      "description.invalid": "Die Beschreibung darf nicht leer sein oder mehr als 300 Zeichen enthalten",
       "application.field.validation.error": "Fehler bei der Anwendungsfeld-Prüfung",
-      "application.name.notnull": "Der Anwendungsname darf nicht Null lauten",
+      "application.name.notnull": "Der Anwendungsname muss vorhanden sein",
       "application.icon.upload.failed": "Fehler beim Hochladen des Anwendungssymbols",
       "application.icon.unsupported.type": "Dateityp des Anwendungssymbols wird nicht unterstützt. Zulässige Typen sind {{0}}",
       "application.icon.name.blank": "Fehler beim Verarbeiten des Anwendungssymbols, prüfen Sie bitte den Dateinamen",
-      "application.resource-type.notnull": "Anwendungs-Ressourcentyp darf nicht Null lauten",
+      "application.resource-type.notnull": "Anwendungs-Ressourcentyp muss vorhanden sein",
       "application.gateway-ids.notnull": "Gateway muss einer Anwendung zugewiesen werden",
-      "application.port.notnull": "Anwendungs-Port darf nicht Null lauten",
+      "application.port.notnull": "Anwendungs-Port muss vorhanden sein",
       "application.ports.not-empty": "Port muss für eine Ressource angegeben werden",
       "application.port-number.notblank": "Portnummer muss angegeben werden",
-      "application.port-type.notnull": "Port-Typ darf nicht Null lauten",
+      "application.port-type.notnull": "Port-Typ muss vorhanden sein",
       "application.policy.notnull": "Eine Richtlinie muss einer Anwendung zugewiesen werden",
       "application.port.range": "Der Anwendungs-Portwert muss zwischen 0 und 65535 liegen",
-      "application.fqdn.notnull": "Anwendungs-FQDN darf nicht Null lauten",
+      "application.fqdn.notnull": "Anwendungs-FQDN muss vorhanden sein",
       "application.logo.upload.error": "Fehler beim Hochladen des Anwendungslogos",
       "application.user-groups.not-empty": "Der Anwendung muss mindestens eine Benutzergruppe zugewiesen werden",
       "application.fqdn.already.configured": "Anwendungs-FQDN ist bereits konfiguriert",
       "application.name.already.configured": "Eine Anwendung mit dem angegebenen Namen ist für das Konto bereits vorhanden",
-      "application.name.userportal.reserved": "Anwendungsname 'Benutzerportal' ist dem Gateway vorbehalten",
+      "application.name.userportal.reserved": "Anwendungsname userportal ist für das Gateway reserviert",
       "application.policy.port.mismatch": "Der angegebene Port-Typ ist für die ausgewählte Richtlinie ungültig",
       "application.policy.resourcetype.mismatch": "Der angegebene Ressourcentyp ist für die ausgewählte Richtlinie ungültig",
       "application.gateway.not.assigned": "Ein Gateway muss einer Anwendung zugewiesen werden",
@@ -701,17 +724,17 @@
       "azure.tenantId.notBlank": "Es muss eine Mandanten-ID für den Azure-Identitätsanbieter angegeben werden",
       "idp.clientId.notBlank": "Identitätsanbieter-Client-ID darf nicht leer sein",
       "idp.clientSecret.notBlank": "Geheimer Clientschlüssel des Identitätsanbieters darf nicht leer sein",
-      "idp.provider.notnull": "Anbieter darf nicht Null lauten und nicht leer sein",
+      "idp.provider.notnull": "Anbieter muss vorhanden und darf nicht leer sein",
       "idp.name.notblank": "Identitätsanbieter darf nicht leer sein",
       "idp.provider.unknown": "Unbekannter Anbietertyp in der Anfrage",
-      "gateway.idpId.notNull": "Dem Gateway zugewiesene ID des Identitätsanbieters darf nicht Null lauten",
+      "gateway.idpId.notNull": "Dem Gateway zugewiesene ID des Identitätsanbieters muss vorhanden sein",
       "gateway.clientId.notBlank": "Eine Gateway-Client-ID muss angegeben werden",
       "gateway.appDomain.notBlank": "Eine Gateway-App-Domäne muss angegeben werden",
       "gateway.dualArm.not.specified": "Einarmige/zweiarmige Gateway-Nutzung muss angegeben werden",
       "gateway.packageType.notnull": "Gateway-Pakettyp muss angegeben werden",
       "gateway.package.unknown": "Unbekannter Pakettyp in der Anfrage",
       "gateway.name.notBlank": "Gateway-Name darf nicht leer sein",
-      "gateway.fqdn.notnull": "Gateway-FQDN darf nicht Null lauten oder leer sein",
+      "gateway.fqdn.notnull": "Gateway-FQDN muss vorhanden sein und darf nicht leer sein",
       "gateway.password.notBlank": "Gateway-Kennwort darf nicht leer sein",
       "gateway.network.invalidParams": "Ungültige Netzwerkparameter für Gateway",
       "gateway.mandatory-fields.notBlank": "Gateway-Pflichtfelder dürfen nicht leer sein",
@@ -726,7 +749,7 @@
       "gateway.armChange.notAllowed": "Änderung der einarmigen/zweiarmigen Bereitstellung ist für Gateway nicht zulässig",
       "gateway.instance.notFound": "Gateway-Instanz nicht in Gateway gefunden",
       "gateway.instances.empty": "Keine Instanzen für Gateway definiert",
-      "gateway.version.isNull": "Gateway-Upgrade-Version für Gateway lautet Null",
+      "gateway.version.isNull": "Gateway-Upgrade-Version für Gateway fehlt",
       "gateway.upgrade.status.inValid": "Für Gateway erhaltener Upgrade-Status {{0}} ist ungültig",
       "gateway.schedule.version.notMatching": "Upgrade-Version {{0}} stimmt nicht mit der geplanten Version für Gateway überein",
       "gateway.staticRoute.invalid": "Die angegebene statische Route ist für das Gateway ungültig",
@@ -737,21 +760,21 @@
       "gateway.instanceIpAddress.duplicate": "Duplizierte Instanz-IP-Adresse {{0}} für Gateway angegeben",
       "gateway.ip.notInSubnet": "Gateway-Instanz-IP-Adresse {{0}} nicht im Subnetzbereich des Gateways",
       "gateway.remote.config.notEnabled": "Remote-Debugging für ausgewählte Instanz nicht verfügbar",
-      "gateway.presignedURL.generation.error":"Fehler beim Erstellen der vorsignierten URL. Image-Status lautet: {{0}} für angegebenes Gateway",
+      "gateway.presignedURL.generation.error": "Fehler beim Erstellen der vorsignierten URL. Image-Status lautet: {{0}} für angegebenes Gateway",
       "gateway.presignedURL.malformed": "Fehlerhafte Image-URL",
       "gateway.cluster.notEnabled": "Gateway-Clustering nicht aktiviert, obwohl mehr als eine Instanz gefunden wurde",
       "gateway.cluster.change.notAllowed": "Gateway-Cluster lässt sich nicht deaktivieren",
       "gateway.cluster.notEmpty": "Gateway-Cluster-Feld nicht gefunden",
       "policy.invalid": "Angegebenes Richtlinienobjekt ist ungültig",
-      "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt darf nicht Null lauten",
+      "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt muss vorhanden sein",
       "policy.valid-until.not.allowed": "'validUntil' kann nicht festgelegt werden, wenn Richtlinie nicht durchgesetzt ist",
       "policy.access-rules.invalid": "Für das Objekt 'accessRules' angegebener Wert ist ungültig",
-      "policy.application.association":"Richtlinie ist diesen Anwendungen zugewiesen: {{0}}",
+      "policy.application.association": "Richtlinie ist diesen Anwendungen zugewiesen: {{0}}",
       "policy-type.notNull": "Richtlinientyp muss festgelegt werden",
       "policy.access-rules.not.allowed.with.agentless": "Zugriffsregeln sind bei Richtlinie ohne Agenten unzulässig",
       "policy.rule-value.invalid": "Ungültiger Wert für Richtlinienregel-Wert",
-      "policy.rule-type.not.null": "Richtlinientyp darf nicht Null lauten",
-      "policy.rule.condition.not.blank": "Richtlinienregel-Bedingung darf nicht leer sein oder Null lauten",
+      "policy.rule-type.not.null": "Richtlinientyp muss vorhanden sein",
+      "policy.rule.condition.not.blank": "Richtlinienregel-Bedingung muss vorhanden und darf nicht leer sein",
       "policy.rule.condition.invalid": "Ungültiger Wert für Richtlinienregel-Bedingung",
       "policy.type.change.not-allowed": "Richtlinientyp darf nicht geändert werden",
       "azure.connection.test.failed": "Azure-Verbindungstest ist bei angegebener Konfiguration fehlgeschlagen",
@@ -898,7 +921,7 @@
       "yAxis": "Y-Achse",
       "groupBy": "gruppieren nach",
       "deleteExport": "Export Löschen",
-      "firewalls": "Instanzen",
+      "firewalls": "Gateways",
       "tooManyDevices": "Maximale Geräteanzahl erreicht. Sie können diesen Vorgang nicht ausführen",
       "deviceNotFound": "Gerät nicht gefunden",
       "groupNotFound": "Gruppe ist leer oder wurde nicht gefunden"
@@ -1082,10 +1105,10 @@
         "deselectAll": "Alles abwählen",
         "single": {
           "noItemSelected": "Ein Gateway auswählen",
-          "selectedItemMessage": "{{count}} Gateway ausgewählt"
+          "selectedItemMessage": "{{count}} Instanz ausgewählt"
         },
         "checkbox": {
-          "selectedItemMessage": "{{count}} Gateways ausgewählt",
+          "selectedItemMessage": "{{count}} Instanzen ausgewählt",
           "noItemSelected": "Gateway(s) auswählen"
         },
         "search": "SUCHE",
@@ -1098,7 +1121,7 @@
         "allFirewalls": "Alle Gateways",
         "allCreatedBy": "Alle Ersteller",
         "allTemplateTypes": "Alle Vorlagenarten",
-        "savedTemplatesNote": "Sie haben {{savedTemplatesCount}}/1,000 gespeicherte Vorlagen",
+        "savedTemplatesNote": "Sie haben {{savedTemplatesCount}}/1000 gespeicherte Vorlagen",
         "savedTemplateNoteInfo": "Dies ist eine kombinierte Anzahl, die auch Vorlagen außerhalb von Gateway Reporting enthält",
         "saveTemplatesSuccess": "Vorlage wurde gespeichert",
         "updateTemplateSuccess": "Vorlage wurde aktualisiert",
@@ -1181,8 +1204,9 @@
           "threats-ips": "IPS-Bedrohungen",
           "threats-sandstorm": "Sandstorm-Bedrohungen",
           "threats-antivirus": "Antivirus-Bedrohungen",
-          "authentication": "Authentifizierung",
-          "resource-access": "Ressourcenzugriff",
+          "authentication": "Authentifizierte Benutzer",
+          "resource-access": "Ressourcen-Bandbreite",
+          "denied-resource-access": "Verweigerter Ressourcenzugriff",
           "blank": ""
         }
       },
@@ -1531,7 +1555,16 @@
       "browser_version": "Browser-Version",
       "authentication-success-count": "Anzahl erfolgreicher Authentifizierungen",
       "resource_access": "Ressourcenzugriff",
-      "authentication_events": "Authentifizierung"
+      "authentication_events": "Authentifizierung",
+      "gateway_name": "Gateway",
+      "instance_name": "Instanz",
+      "denied_resource_access": "Verweigerter Ressourcenzugriff",
+      "deny_reason": "Verweigerungsgrund",
+      "agent_version": "Agent",
+      "sync_sec_status": "Status",
+      "application_type": "App-Typ",
+      "policy": "Richtlinie",
+      "deny_reason_count": "Anzahl Verweigerungsgründe"
     },
     "template": {
       "messages": {

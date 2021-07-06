@@ -10,7 +10,7 @@
       "inuse": "使用中",
       "total": "合計",
       "details": "詳細",
-      "template": "テンプレート",
+      "template": "サイト",
       "firmware": "ファームウェア",
       "minutes-ago": "分前",
       "hours-ago": "時間前",
@@ -22,7 +22,8 @@
         "save": "保存",
         "bugs": "バグ",
         "apply": "適用",
-        "confirm": "確認"
+        "confirm": "確認",
+        "delete": "削除"
       },
       "status": {
         "registering": "接続を待機中",
@@ -37,14 +38,22 @@
         "name": "名前",
         "description": "説明"
       },
+      "tab-title": {
+        "system-detail-title": "システムの詳細",
+        "port-settings-title": "ポートの設定",
+        "vlans-title": "VLAN",
+        "network-settings-title": "ネットワークの設定",
+        "task-queue-title": "タスクのキュー"
+      },
       "error": "エラー",
       "success": "成功",
       "warn": "警告",
       "info": "情報",
       "used": "使用中",
-      "waitingForData": "データを待機中...",
-      "problemLoadingData": "データの読み込中に問題が発生しました",
-      "areYouSure": "続行しますか？"
+      "waiting-for-data": "データを待機中...",
+      "problem-loading-data": "データの読み込中に問題が発生しました",
+      "no-data": "表示可能なデータはありません",
+      "are-you-sure": "続行しますか？"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -77,9 +86,9 @@
         },
         "button": {
           "auto-refresh": "自動更新",
-          "add-template": "テンプレートの追加",
+          "add-template": "サイトの追加",
           "switch-delete-confirm": "スイッチの削除",
-          "template-delete-confirm": "テンプレートの削除"
+          "template-delete-confirm": "サイトの削除"
         },
         "table-headers": {
           "name": "名前",
@@ -95,12 +104,12 @@
           "tags": "タグ",
           "model": "機種",
           "serial-number": "シリアル番号",
-          "template-overridden": "テンプレートを上書きしますか？"
+          "template-overridden": "サイトの上書き済み？"
         },
         "upgrade": {
           "update-available": "ファームウェアの新しいアップデートがあります。",
           "upgrade-message": "これらのアップグレードは、スケジュール設定することも、すぐに適用することもできます。",
-          "schedule-upgrade": "アップグレードのスケジュール設定",
+          "schedule-upgrade": "アップグレードの管理またはスケジュール設定",
           "schedule": "スケジュール",
           "manage-schedule-dialog-title": "ファームウェアのアップグレードの管理",
           "upgrade-schedule-dialog-title": "ファームウェアのアップグレードのスケジュール設定",
@@ -108,11 +117,12 @@
           "schedule-info-message": "選択したスイッチを更新するタイミングを選択します",
           "update-now": "今すぐアップデート",
           "custom": "カスタム",
-          "scheduled-success-message": "ファームウェアの更新がスケジュール設定されました",
-          "update-cancel-message": "ファームウェアの更新がキャンセルされました",
+          "scheduled-success-message": "ファームウェアのアップグレードがスケジュール設定されました",
+          "scheduled-success-failure": "ファームウェアのアップグレードに失敗しました",
+          "update-cancel-message": "ファームウェアのアップグレードがキャンセルされました",
           "cancel-upgrade": "アップグレードのキャンセル",
           "table": {
-            "name": "名前",
+            "serial-number": "シリアル番号",
             "version": "バージョン",
             "update-to": "アップデート版:",
             "currently-scheduled-upgrades": "現在スケジュール設定されているアップグレード",
@@ -122,51 +132,45 @@
           }
         },
         "add-template": {
-          "dialog-title": "テンプレートを追加",
+          "dialog-title": "サイトの追加",
           "name-max-length": "名前は最大 30文字まで入力できます。",
           "description": "説明",
-          "input-name-required-message": "テンプレート名を指定してください",
+          "input-name-required-message": "サイト名を指定してください",
           "template-description": "説明は最大 128文字まで入力できます。",
           "available-switches": "割り当て可能なスイッチ",
           "assigned-switches": "割り当て済みスイッチ",
-          "sync-switches-checkbox-text": "スイッチを初期テンプレート設定と同期します"
+          "sync-switches-checkbox-text": "スイッチを初期サイト設定と同期します"
         },
         "delete-template": {
-          "dialog-title": "テンプレートの削除",
-          "delete-template-confirm-text": "テンプレート <strong>{{templateName}}</strong> の削除。"
+          "dialog-title": "サイトの削除",
+          "delete-template-confirm-text": "サイト <strong>{{templateName}}</strong> の削除"
         },
-        "edit-template" : {
-          "dialog-title": "テンプレートの編集"
+        "edit-template": {
+          "dialog-title": "サイトの編集"
         },
         "message": {
           "remove-success": "スイッチ {{switchSerial}} が Sophos Central から削除されました。",
           "remove-failed": "Sophos Central からスイッチを削除できません。",
           "retry-success": "スイッチ {{switchSerial}} の登録が再度開始されました。",
           "retry-failed": "登録を開始できません。",
-          "add-template-success": "テンプレートが追加されました",
-          "add-template-error": "テンプレートが追加されていません",
-          "delete-template-success": "テンプレートが削除されました",
-          "delete-template-error": "テンプレートを削除できません",
-          "update-template-success": "テンプレートが更新されました",
-          "update-template-error": "テンプレートを更新できません"
+          "add-template-success": "サイトが追加されました",
+          "add-template-error": "サイトが追加されていません",
+          "delete-template-success": "サイトが削除されました",
+          "delete-template-error": "サイトを削除できません",
+          "update-template-success": "サイトが更新されました",
+          "update-template-error": "サイトを更新できません"
         },
         "groupInfoText": {
-          "what": "テンプレートとは？",
-          "information": "スイッチテンプレートは、1つまたは複数のスイッチに適用できる仮想設定です。必要に応じて、スイッチをテンプレート内に移動したり、テンプレート外に移動したりできます。スイッチがテンプレート内にある限り、テンプレートレベルで実行した設定は、自動的にスイッチに適用されます。",
-          "note": "スイッチレベルとテンプレートレベルの設定が競合している場合、スイッチレベルの設定が優先されます。"
+          "what": "サイトとは？",
+          "information": "スイッチサイトは、1つまたは複数のスイッチに適用できる仮想設定です。必要に応じて、スイッチをサイト内に移動したり、サイト外に移動したりできます。スイッチがサイト内にある限り、サイトレベルで実行した設定は、自動的にスイッチに適用されます。",
+          "note": "スイッチレベルとサイトレベルの設定が競合している場合、スイッチレベルの設定が優先されます。"
         }
       },
       "manage": {
         "page-title": "スイッチ - スイッチ管理",
         "breadcrumb-text": "スイッチの管理",
-        "summary-legend-title": "サマリー",
-        "system-detail-tab-title": "システムの詳細",
-        "port-settings-tab-title": "ポートの設定",
-        "network-settings-tab-title": "ネットワークの設定",
-        "task-queue-tab-title": "タスクのキュー",
-        "template-dd-default-title": "テンプレートを選択します",
-        "gbps": "{{unit}}Gbps",
-        "mbps": "{{unit}}Mbps",
+        "template-dd-default-title": "サイトを選択します",
+        "upgrade-checkbox-label": "Central エージェントを自動的にアップグレードする",
         "button": {
           "reboot": "再起動",
           "open-local-mgmt-console": "ローカル管理コンソールを開く",
@@ -203,7 +207,7 @@
         },
         "body": {
           "line-1": "登録時にスイッチがオンになっていることを確認してください。ゼロタッチ登録プロセスは、5分間だけアクティブになります。",
-          "line-2": "登録済みスイッチは、まずデフォルトのテンプレートに移動されます。",
+          "line-2": "登録済みスイッチは、まずデフォルトのサイトに移動されます。",
           "line-3": "スイッチは、登録後すぐに、使用可能な最新バージョンのソフトウェアに自動アップグレードされます。これには、デバイスの再起動が必要になる場合があります。"
         }
       },
@@ -211,10 +215,60 @@
         "already-reported": "シリアル番号が {{ switches }} のスイッチは、既に Sophos Central に登録されています。",
         "registration-error": "スイッチを登録できません。",
         "switches-registered": "スイッチを Sophos Central に登録しています。",
-        "switches-multiple-registration-with-exception": "シリアル番号 {{ switches }} が無効です。他のスイッチを Sophos Central に登録しています。",
-        "switches-single-serial-registration-with-exception": "シリアル番号 {{ switches }} が無効です",
+        "switch-registration-state-invalid": "シリアル番号 {{ switches }} が無効です",
+        "switch-registration-exception": "他のスイッチを Sophos Central に登録しています。",
         "invalid-serial": "1つまたは複数のシリアル番号が無効です。",
         "empty-switch-list-error": "有効なシリアル番号がありません。"
+      }
+    },
+    "template": {
+      "page-title": "スイッチ - サイト管理",
+      "breadcrumb-text": "サイト"
+    },
+    "switch-view": {
+      "summary-legend-title": "サマリー",
+      "gbps": "{{unit}}Gbps",
+      "mbps": "{{unit}}Mbps"
+    },
+    "vlan": {
+      "search-placeholder-text": "ID または名前で検索",
+      "color-dd-default-title": "色を選択します",
+      "untagged-dd-default-title": "ポートを選択します",
+      "ports-dd-default-title": "ポートを選択します",
+      "add-vlan-dialog-title": "VLAN の追加",
+      "edit-vlan-dialog-title": "VLAN の編集",
+      "button": {
+        "add": "VLAN の追加"
+      },
+      "table-headers": {
+        "vlan-id": "VLAN ID",
+        "name": "VLAN 名",
+        "tagged-ports": "タグ付きポート",
+        "untagged-ports": "タグなしポート",
+        "forbidden-ports": "禁止ポート"
+      },
+      "form": {
+        "vlan-id": "VLAN ID",
+        "vlan-type": "VLAN の種類",
+        "tagged-ports": "タグ付きポート",
+        "untagged-port": "タグなしポート",
+        "forbidden-ports": "禁止ポート",
+        "vlan-type-standard": "標準",
+        "vlan-type-voice": "ボイス",
+        "vlan-id-required-message": "VLAN ID を指定してください。",
+        "vlan-id-invalid-message": "VLAN ID は無効です。",
+        "vlan-name-required-message": "名前を指定してください。",
+        "vlan-name-invalid-message": "名前が無効です。"
+      },
+      "message": {
+        "create-error": "VLAN を作成できません",
+        "create-success": "VLAN が作成されました",
+        "update-error": "VLAN を更新できません",
+        "update-success": "VLAN が更新されました",
+        "delete-error": "1つまたは複数の VLAN を削除できません",
+        "delete-success": "VLAN が削除されました",
+        "delete-confirm-title": "VLAN の削除",
+        "delete-info-message": "VLAN <strong>{{vlans}}</strong> の削除"
       }
     }
   }

@@ -18,12 +18,103 @@
       "name": "Gerenciamento de Firewall - Painel",
       "breadcrumb-text": "Painel de Gerenciamento do Firewall"
     },
+    "serial-number": {
+      "peer": "Número de Série do Par"
+    },
     "dynamic-objects": {
       "name": "Firewall Management - Objetos Dinâmicos",
       "breadcrumb-text": "Objetos Dinâmicos",
       "tabs": {
         "interfaces": "Interfaces",
         "zones": "Zonas"
+      },
+      "custom-label": "Esse é um nome de mapeamento personalizado, o qual pode não estar disponível no firewall.",
+      "subtext-label": "O nome de hardware da interface será usado como o nome de mapeamento.",
+      "same-as-subtext": "Usa o nome do objeto dinâmico como o nome de mapeamento.",
+      "add": {
+        "modal": {
+          "title-add-interface": "Criar Nova Interface Dinâmica",
+          "title-edit-interface": "Editar Interface Dinâmica",
+          "title-add-zone": "Criar Nova Zona Dinâmica",
+          "title-edit-zone": "Editar Zona Dinâmica",
+          "name": {
+            "label": "Nome",
+            "placeholder-interface": "Nome ou rótulo comum para a interface do firewall.",
+            "placeholder-zone": "Nome ou rótulo comum para a zona do firewall.",
+            "required": "É necessário um nome",
+            "max-length": "O nome é longo demais."
+          },
+          "description": {
+            "label": "Descrição",
+            "placeholder": "< 200 caracteres",
+            "max-length": "A descrição é longa demais."
+          },
+          "ip-address-family": {
+            "label": "Família do Endereço de IP"
+          },
+          "interface-type": {
+            "label": "Tipo de Interface"
+          },
+          "zone-type": {
+            "label": "Tipo de zona"
+          },
+          "mappings": {
+            "label": "Mapeamentos",
+            "default-option":"Default (qualquer firewall)",
+            "same-as-object": "Dinâmico",
+            "add": "Adicionar",
+            "replace": "Substituir",
+            "default-cannot-delete": "Os mapeamentos padrão não podem ser deletados, apenas podem ser substituídos.",
+            "zones": {
+              "mappedName" : "Zonas mapeadas",
+              "firewall": "Firewalls"
+            },
+            "interface": {
+              "mappedName" : "Interfaces mapeadas",
+              "firewall": "Firewalls"
+            }
+          },
+          "save-success": {
+            "interface": "A interface dinâmica foi salva com sucesso.",
+            "zone": "A zona dinâmica foi salva com sucesso."
+          },
+          "save-error": {
+            "interface": "Não foi possível salvar a interface dinâmica",
+            "zone": "Não foi possível salvar a zona dinâmica."
+          },
+          "exist-error": {
+            "interface": "O nome escolhido para a interface já existe. Escolha um outro nome.",
+            "zone": "O nome escolhido para a zona já existe. Escolha um outro nome."
+          }
+        }
+      },
+      "usage-references": {
+        "heading": "Referência de Uso",
+        "title": {
+          "zone": "Nome da zona dinâmica",
+          "interface": "Nome da interface dinâmica"
+        },
+        "no-references": "Este objeto dinâmico não é mencionado em nenhuma das políticas.",
+        "column": {
+          "group": "Grupo",
+          "sub-entity": "Subentidade de referência",
+          "entity-name": "Nome da Política"
+        }
+      },
+      "delete": {
+        "modal": {
+          "delete-confirm-text": "Deletar {{tabType}}",
+          "title-delete-interface": "Deletar Interface",
+          "title-delete-zone": "Deletar Zona",
+          "delete-success": {
+            "interface": "A interface dinâmica foi deletada com sucesso.",
+            "zone": "A zona dinâmica foi deletada com sucesso."
+          },
+          "delete-error": {
+            "interface": "Não foi possível deletar a interface dinâmica",
+            "zone": "Não foi possível deletar a zona dinâmica."
+          }
+        }
       },
       "interface": {
         "add-title": "Criar Nova Interface Dinâmica",
@@ -53,8 +144,8 @@
       }
     },
     "sdwan-groups": {
-      "name": "Firewall Management - Grupos de conexão SD WAN",
-      "breadcrumb-text": "Grupos de conexão SD WAN",
+      "name": "Firewall Management - Grupos de conexão SD-WAN",
+      "breadcrumb-text": "Grupos de conexão SD-WAN",
       "create": "Criar grupo de conexão",
       "delete": {
         "confirm": "Confirmação de deleção",
@@ -69,9 +160,17 @@
           "one": "Link desativado",
           "more": "{{ bad }} links desativados"
         },
+        "unknown": {
+          "one": "Desconhecida",
+          "more": "{{ unknown }} desconhecido"
+        },
         "lost-connection": {
           "one": "Link desativado",
           "more": "Link desativado com {{ bad }} firewall(s)"
+        },
+        "unknown-connection": {
+          "one":  "Desconhecida",
+          "more": "{{ unknown }} desconhecida"
         },
         "resource-sharing": {
           "one": "{{ total }} firewall de compartilhamento de recurso",
@@ -112,13 +211,68 @@
         }
       },
       "add": {
-        "name": "Firewall Management - Novo grupo de conexão SD WAN",
-        "breadcrumb-text": "Adicionar um grupo de conexão SD WAN",
+        "name": "Firewall Management - Novo grupo de conexão SD-WAN",
+        "breadcrumb-text": "Adicionar um grupo de conexão SD-WAN",
         "error" : {
-          "title": "Erro!",
           "string": "Erro",
-          "status": "Status",
-          "firewall": "Firewall"
+          "INVALID_XFRM_IP" : "IPs XFRM inválidos foram escolhidos para um dos firewalls no grupo.",
+          "XFRM_IP_ALLOCATION_FAILED" : "Falha ao alocar endereços de IP XFRM para um dos firewalls no grupo.",
+          "IPSEC_POLICY_CREATE_FAILED" : "Falha ao criar políticas IPSEC para um dos firewalls no grupo.",
+          "VPN_CREATE_FAILED" : "Falha ao criar VPN para um dos firewalls no grupo.",
+          "XFRM_IP_ASSIGNMENT_FAILED" : "Falha ao alocar endereços de IP XFRM para um dos firewalls no grupo.",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "Objeto de serviço ou host não pode ser criado para um dos firewalls no grupo.",
+          "FIREWALL_RULE_CREATE_FAILED" : "Falha ao criar regra de firewall para um dos firewalls no grupo.",
+          "NAT_RULE_CREATE_FAILED" : "Falha ao criar regra de NAT para um dos firewalls no grupo.",
+          "CREATE_XFRM_GATEWAY_FAILED" : "Falha ao criar gateway de XFRM para um dos firewalls no grupo.",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "Falha ao criar rota de política para um dos firewalls no grupo.",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "Falha ao habilitar as rotas de política para um dos firewalls no grupo.",
+          "VPN_PING_ENABLE_FAILED" : "Falha ao habilitar o ping de VPN para um dos firewalls no grupo.",
+          "VPN_DELETE_FAILED" : "Falha ao deletar VPN para um dos firewalls no grupo.",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "Falha ao deletar o objeto de serviço/host para um dos firewalls no grupo.",
+          "FIREWALL_RULE_DELETE_FAILED" : "Falha ao deletar a regra de firewall para um dos firewalls no grupo.",
+          "NAT_RULE_DELETE_FAILED" : "Falha ao deletar a regra de NAT para um dos firewalls no grupo.",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "Falha ao deletar a rota da política para um dos firewalls no grupo.",
+          "VPN_DEACTIVATION_FAILED" : "Falha ao desativar a VPN para um dos firewalls no grupo.",
+          "VPN_ACTIVATION_FAILED" : "Falha ao ativar a VPN para um dos firewalls no grupo.",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "O grupo de Conexão SD-WAN já está marcado para deleção. Aguarde.",
+          "GROUP_NOT_EXISTS" : "O grupo não existe.",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "Endereço NAT não permitido no firewall de compartilhamento de recurso",
+          "FIREWALL_PART_OF_ANOTHER_GROUP" : "O firewall já é parte de outro grupo.",
+          "FIREWALL_NOT_FOUND" : "O firewall selecionado não foi encontrado.",
+          "MIN_ONE_SUBNET_NEEDED" : "Pelo menos uma sub-rede é necessária para cada firewall no grupo.",
+          "MIN_ONE_WAN_PORT_NEEDED" : "Pelo menos uma porta WAN é necessária para cada firewall no grupo.",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "Pelo menos dois firewalls são necessários no grupo.",
+          "SDWAN_FEATURE_NOT_SUPPORTED" : "O recurso de grupo de conexão SD-WAN não é suportado ainda.",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "A transação no firewall auxiliar não é suportada.",
+          "NOT_VALID_SUBNET" : "Sub-redes inválidas encontradas para um dos firewalls no grupo.",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "O valor de atributo '{{name}}' está fora do intervalo: {{value}}",
+          "INVALID_ATTRIBUTE" : "Atributo inválido '{{ attribute }}' para a classe {{ className }}.",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "Atributo exclusivo não está presente para a classe '{{ className }}'",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "Atributo obrigatório {{ name }} não está presente para a classe '{{ className }}'",
+          "UNSUPPORTED_CLASS" : "Classe não suportada '{{ name }}'",
+          "INVALID_ATTRIBUTE_DATATYPE" : "Dados não suportados para o atributo '{{ name }}' na classe '{{ className }}'",
+          "MISSING_ATTRIBUTE" : "Atributo '{{ name }}' ausente para a classe '{{ className }}'",
+          "INVALID_IP_ADDRESS" : "Endereço de IP inválido: {{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS" : "Endereço de IP inválido '{{ ip }}' máscara de rede/prefixo '{{ netmask }}'",
+          "INVALID_IP_RANGE" : "Intervalo de IP inválido: intervalo baixo {{ low }} e intervalo alto {{ high }}",
+          "INVALID_CIDR_FORMAT" : "Formato de CIDR inválido: {{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "Excede o número de valores para o atributo '{{ name }}', o limite permitido é {{ maxSize }}",
+          "ICMP_PARAM_SIZE_MISMATCH" : "Tamanho de tipos de ICMP e códigos de ICMP devem ser iguais, tamanho de tipos de ICMP {{ typeSize }} e tamanho de códigos de ICMP {{ codeSize }}.",
+          "PROTOCOL_SIZE_MISMATCH" : "tamanho de protocolos, portas de origem e portas de destino devem ser iguais, tamanho de protocolo {{ protocolSize }}, tamanho de porta de origem {{ sourceSize }}, tamanho de porta de destino {{ destinationSize }}",
+          "INVALID_PROTOCOL" : "Protocolo inválido '{{ name }}'",
+          "TRANSACTION_NOT_ALLOWED" : "Transação não permitida para este firewall",
+          "IP_ALLOCATION_FAILED" : "Falha de alocação de IP para este firewall",
+          "DEVICE_NOT_FOUND" : "Firewall não encontrado",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "O recurso Central Orchestration não é suportado para este firewall",
+          "LICENSE_NOT_FOUND" : "Não há licença presente para este firewall",
+          "NAT_NOT_ALLOWED" : "Endereço NAT não permitido no firewall de compartilhamento de recurso",
+          "DEVICE_PART_OF_OTHER_GROUP" : "O firewall já é parte de outro grupo.",
+          "OPERATION_IN_PROGRESS" : "Operação {{ operation }} em andamento para {{ groupName }}",
+          "INVALID_SUBNET" : "Sub-rede inválida, endereço de IP {{ ip }}, máscara de rede {{ netmask }}",
+          "GROUP_DOES_NOT_EXISTS" : "GroupId {{ groupId }} não existe",
+          "INTERNAL_REQUEST_ERROR" : "Algo deu errado. Erro interno de servidor!",
+          "INTERNAL_SERVER_ERROR": "Algo deu errado. Erro interno de servidor!",
+          "GROUP_NAME_EXISTS": "O nome do grupo já existe. Escolha um diferente."
         },
         "states": {
           "cannot-save": "Erro desconhecido ao salvar o grupo de conexão.",
@@ -132,17 +286,20 @@
           "name": {
             "label": "Nome do grupo de conexão",
             "required": "É necessário um nome",
-            "heading": "Nome deste grupo"
+            "heading": "Nome deste grupo",
+            "length": "O nome pode ter, no máximo, 40 caracteres."
           },
           "description": {
             "label": "Descrição",
             "placeholder": "Insira a descrição do grupo (máx. 250 caracteres)",
-            "length": "A descrição pode ter no máximo 250 caracteres."
+            "length": "A descrição pode ter, no máximo, 250 caracteres."
           },
           "firewalls": {
             "source":"Firewalls disponíveis",
             "target":"Firewalls atribuídos",
-            "label": "Redes LAN conectadas diretamente ao firewall serão adicionadas automaticamente ao grupo de compartilhamento. Você pode personalizar as redes cliente de cada firewall no próximo passo."
+            "label": "Redes LAN conectadas diretamente ao firewall podem ser adicionadas ao grupo de compartilhamento nas próximas etapas. Você pode personalizar as redes cliente de cada firewall no próximo passo.",
+            "filter-notes": "Nota: Os firewalls que estão licenciados para participar dos grupos de conexão SD-WAN só estão visíveis para seleção. Além disso, os firewalls deve ser atualizados com o firmware que suporta esse recurso.",
+            "learn-more": "Saiba mais"
           },
           "select": {
             "heading": "Selecionar firewalls para inclusão"
@@ -153,7 +310,7 @@
           "heading": "Configurar redes e rotas",
           "error": "Houve um erro durante a detecção de conflitos.",
           "subnet-error": "Uma ou mais sub-redes são inválidas",
-          "description": "Personalize a quais redes cada firewall permite o acesso aos grupos de compartilhamento, quais redes precisam aparecer como uma faixa de endereço diferente para evitar conflitos, e configure a redundância de túnel caso haja várias conexões à internet presentes.",
+          "description": "Personalize qual firewall de rede permite o acesso a grupos de compartilhamento, se é necessário que a rede apareça como uma faixa de endereço diferente para evitar conflitos.",
           "no-conflict": {
             "heading": "{{ count }} firewalls analisados sem conflito de rede detectado."
           },
@@ -186,7 +343,7 @@
               "participate": "Habilitar",
               "nat": "Habilitar NAT",
               "nat-address": "Endereço de NAT",
-              "nat-subnet": "O endereço com NAT deve pertencer à mesma sub-rede que a da interface.",
+              "nat-subnet": "Endereço de (NAT) traduzido deve pertencer à mesma sub-rede que a interface.",
               "conflicts": "Conflitos",
               "wan": "Link WAN",
               "selected": "Selecionado",
@@ -209,12 +366,12 @@
         "share-resources": {
           "label": "Compartilhar recursos",
           "heading": "Compartilhar recursos",
-          "description": "Selecione recursos da empresa que devem ser acessíveis aos usuários em cada localidade",
+          "description": "Adicione recursos da empresa que devem estar acessíveis aos usuários em cada site",
           "modal": {
             "title": "Adicionar recursos",
             "firewall": {
               "title": "Firewall",
-              "placeholder": "Selecione um"
+              "placeholder": "Selecionar um firewall"
             },
             "shared-resource": {
               "title": "Recurso compartilhado",
@@ -238,7 +395,8 @@
                   "1": "TCP/UDP",
                   "2": "IP",
                   "3": "ICMP",
-                  "7": "ICMPv6"
+                  "7": "ICMPv6",
+                  "0": "Qualquer"
                 },
                 "heartbeat": {
                   "1": "VERDE",
@@ -308,10 +466,10 @@
         }
       },
       "no-data": {
-        "info": "Os grupos de conexão SD WAN ajudam a compartilhar recursos entre regiões com o auxílio de políticas geradas automaticamente.",
+        "info": "Os grupos de conexão SD-WAN ajudam a compartilhar recursos entre regiões com o auxílio de políticas geradas automaticamente.",
         "process": "Você pode escolher os firewalls a incluir em um grupo de conexão enquanto cria o grupo.",
         "how": "Clique no botão 'Criar grupo de conexão' para iniciar o assistente.",
-        "header": "Simplifique a configuração de SD WAN com grupos de conexão",
+        "header": "Simplifique a configuração de SD-WAN com grupos de conexão",
         "learn-more": "Saiba mais"
       }
     },

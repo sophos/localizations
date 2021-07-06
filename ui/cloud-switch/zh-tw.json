@@ -10,7 +10,7 @@
       "inuse": "使用中",
       "total": "總數",
       "details": "詳細資訊",
-      "template": "範本",
+      "template": "網站",
       "firmware": "韌體",
       "minutes-ago": "分鐘前",
       "hours-ago": "小時前",
@@ -22,7 +22,8 @@
         "save": "儲存",
         "bugs": "錯誤",
         "apply": "套用",
-        "confirm": "確認"
+        "confirm": "確認",
+        "delete": "刪除"
       },
       "status": {
         "registering": "正在等待連線",
@@ -37,14 +38,22 @@
         "name": "名稱",
         "description": "說明"
       },
+      "tab-title": {
+        "system-detail-title": "系統詳細資料",
+        "port-settings-title": "連接埠設定",
+        "vlans-title": "VLAN",
+        "network-settings-title": "網路設定",
+        "task-queue-title": "工作佇列"
+      },
       "error": "錯誤",
       "success": "成功",
       "warn": "警告",
       "info": "資訊",
       "used": "已使用",
-      "waitingForData": "等待資料...",
-      "problemLoadingData": "載入資料時出現問題",
-      "areYouSure": "確定要繼續嗎？"
+      "waiting-for-data": "等待資料...",
+      "problem-loading-data": "載入資料時出現問題",
+      "no-data": "无可用数据",
+      "are-you-sure": "確定要繼續嗎？"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -77,9 +86,9 @@
         },
         "button": {
           "auto-refresh": "自動重新整理",
-          "add-template": "新增範本",
-          "switch-delete-confirm": "删除交換器",
-          "template-delete-confirm": "刪除範本"
+          "add-template": "新增網站",
+          "switch-delete-confirm": "刪除交換器",
+          "template-delete-confirm": "刪除網站"
         },
         "table-headers": {
           "name": "名稱",
@@ -95,12 +104,12 @@
           "tags": "標籤",
           "model": "型號",
           "serial-number": "序號",
-          "template-overridden": "範本已覆寫？"
+          "template-overridden": "覆蓋網站？"
         },
         "upgrade": {
           "update-available": "新韌體更新現已可用。",
           "upgrade-message": "可對這些更新進行排程或立即套用。",
-          "schedule-upgrade": "排程升級",
+          "schedule-upgrade": "管理或排程升級",
           "schedule": "排程",
           "manage-schedule-dialog-title": "管理韌體升級",
           "upgrade-schedule-dialog-title": "排程韌體升級",
@@ -108,11 +117,12 @@
           "schedule-info-message": "選擇更新所選交換機的時間",
           "update-now": "立即更新",
           "custom": "自訂",
-          "scheduled-success-message": "韌體更新已排定",
-          "update-cancel-message": "韌體更新已取消",
+          "scheduled-success-message": "韌體升級已排定",
+          "scheduled-success-failure": "韌體升級已失敗",
+          "update-cancel-message": "韌體升級已取消",
           "cancel-upgrade": "取消升級",
           "table": {
-            "name": "名稱",
+            "serial-number": "序號",
             "version": "版本",
             "update-to": "更新至",
             "currently-scheduled-upgrades": "目前排定的更新",
@@ -122,51 +132,45 @@
           }
         },
         "add-template": {
-          "dialog-title": "新增範本",
+          "dialog-title": "新增網站",
           "name-max-length": "名稱應最多包含 30 個字元。",
           "description": "描述",
-          "input-name-required-message": "範本名稱是必填項",
+          "input-name-required-message": "網站名稱為必填項",
           "template-description": "描述應最多包含 128 個字元。",
           "available-switches": "可用交換機",
           "assigned-switches": "已指派的交換機",
-          "sync-switches-checkbox-text": "同步交換機與初始範本設定"
+          "sync-switches-checkbox-text": "將交換器與初始網站設定同步"
         },
         "delete-template": {
-          "dialog-title": "刪除範本",
-          "delete-template-confirm-text": "刪除範本 <strong>{{templateName}}</strong>。"
+          "dialog-title": "刪除網站",
+          "delete-template-confirm-text": "刪除網站 <strong>{{templateName}}</strong>。"
         },
-        "edit-template" : {
-          "dialog-title": "編輯範本"
+        "edit-template": {
+          "dialog-title": "編輯網站"
         },
         "message": {
           "remove-success": "交換機 {{switchSerial}} 已從 Sophos Central 移除。",
           "remove-failed": "無法從 Sophos Central 移除交換機。",
           "retry-success": "交換機 {{switchSerial}} 的註冊已再次觸發。",
           "retry-failed": "無法觸發註冊。",
-          "add-template-success": "範本已新增",
-          "add-template-error": "未新增範本",
-          "delete-template-success": "已删除範本",
-          "delete-template-error": "無法刪除範本",
-          "update-template-success": "範本已更新",
-          "update-template-error": "無法更新範本"
+          "add-template-success": "已新增網站",
+          "add-template-error": "未新增網站",
+          "delete-template-success": "已删除網站",
+          "delete-template-error": "無法刪除網站",
+          "update-template-success": "已更新網站",
+          "update-template-error": "無法更新網站"
         },
         "groupInfoText": {
-          "what": "何謂範本？",
-          "information": "交換器範本是一種虛擬設定，可套用於一個或多個交換器。我們可以根據需要將交換機移入或移出範本。只要交換機處於範本之下，在範本層級完成的設定將會自動同步至交換機。",
-          "note": "如果交換器級別和範本級別的設定存在衝突，則以交換器級別的設定為準。"
+          "what": "什麼是網站？",
+          "information": "交換器網站是一種虛擬設定，可套用於一個或多個交換器。我們可以根據需要將交換器移入或移出網站。只要交換器處於網站之下，在網站層級完成的設定將會自動同步至交換器。",
+          "note": "如果交換器層級和網站層級的設定存在衝突，則以交換器層級的設定為準。"
         }
       },
       "manage": {
         "page-title": "交換器 - 交換器管理",
         "breadcrumb-text": "管理交換器",
-        "summary-legend-title": "摘要",
-        "system-detail-tab-title": "系統詳細資料",
-        "port-settings-tab-title": "連接埠設定",
-        "network-settings-tab-title": "網路設定",
-        "task-queue-tab-title": "工作佇列",
-        "template-dd-default-title": "選取範本",
-        "gbps": "{{unit}} Gbps",
-        "mbps": "{{unit}} Mbps",
+        "template-dd-default-title": "選取一個網站",
+        "upgrade-checkbox-label": "自動升級中央代理程式",
         "button": {
           "reboot": "重新開機",
           "open-local-mgmt-console": "打開本機管理主控台",
@@ -203,7 +207,7 @@
         },
         "body": {
           "line-1": "請確保切換器在註冊期間為開啟狀態。零點觸控註冊程序僅啟用 5 分鐘。",
-          "line-2": "註冊後的切換器一開始將被移至預設模板。",
+          "line-2": "註冊後的交換器一開始將被移至預設網站。",
           "line-3": "註冊後，切換器將被自動升級至可用軟體的最新版本。可能需要裝置重新開機。"
         }
       },
@@ -211,10 +215,60 @@
         "already-reported": "帶有序號 {{ switches }} 的切換器已註冊到 Sophos Central。",
         "registration-error": "切換器無法註冊。",
         "switches-registered": "正在將交換器註冊到 Sophos Central。",
-        "switches-multiple-registration-with-exception": "序號 {{ switches }} 無效，我們正在將您的其他交換器註冊到 Sophos Central。",
-        "switches-single-serial-registration-with-exception": "序號 {{ switches }} 無效",
+        "switch-registration-state-invalid": "序號 {{ switches }} 無效",
+        "switch-registration-exception": "我們正在將您的其他交換器註冊到 Sophos Central。",
         "invalid-serial": "一個或多個序號無效。",
         "empty-switch-list-error": "沒有有效的序號。"
+      }
+    },
+    "template": {
+      "page-title": "交換器 - 網站管理",
+      "breadcrumb-text": "網站"
+    },
+    "switch-view": {
+      "summary-legend-title": "摘要",
+      "gbps": "{{unit}} Gbps",
+      "mbps": "{{unit}} Mbps"
+    },
+    "vlan": {
+      "search-placeholder-text": "透過 ID 或名稱搜尋",
+      "color-dd-default-title": "選取色彩",
+      "untagged-dd-default-title": "選取連接埠",
+      "ports-dd-default-title": "選取多個連接埠",
+      "add-vlan-dialog-title": "新增 VLAN",
+      "edit-vlan-dialog-title": "編輯 VLAN",
+      "button": {
+        "add": "新增 VLAN"
+      },
+      "table-headers": {
+        "vlan-id": "VLAN ID",
+        "name": "VLAN 名稱",
+        "tagged-ports": "已標記的連接埠",
+        "untagged-ports": "未標記的連接埠",
+        "forbidden-ports": "已禁止的連接埠"
+      },
+      "form": {
+        "vlan-id": "VLAN ID",
+        "vlan-type": "VLAN 類型",
+        "tagged-ports": "已標記的連接埠",
+        "untagged-port": "未標記的連接埠",
+        "forbidden-ports": "已禁止的連接埠",
+        "vlan-type-standard": "標準",
+        "vlan-type-voice": "語音",
+        "vlan-id-required-message": "VLAN ID 為必填項。",
+        "vlan-id-invalid-message": "VLAN ID 無效。",
+        "vlan-name-required-message": "名稱為必填項。",
+        "vlan-name-invalid-message": "無效的名稱。"
+      },
+      "message": {
+        "create-error": "無法建立 VLAN",
+        "create-success": "VLAN 已建立",
+        "update-error": "無法更新 VLAN",
+        "update-success": "VLAN 已更新",
+        "delete-error": "無法刪除一個或多個 VLAN",
+        "delete-success": "VLAN 已刪除",
+        "delete-confirm-title": "刪除 VLAN",
+        "delete-info-message": "刪除 VLAN <strong>{{vlans}}</strong>"
       }
     }
   }

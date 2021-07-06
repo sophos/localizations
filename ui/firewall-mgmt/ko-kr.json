@@ -18,12 +18,103 @@
       "name": "방화벽 관리 - 대시보드",
       "breadcrumb-text": "방화벽 관리 대시보드"
     },
+    "serial-number": {
+      "peer": "피어 일련 번호"
+    },
     "dynamic-objects": {
       "name": "방화벽 관리 - 동적 객체",
       "breadcrumb-text": "동적 개체",
       "tabs": {
         "interfaces": "인터페이스",
         "zones": "영역"
+      },
+      "custom-label": "이 이름은 사용자 지정 매핑 이름이며 방화벽에서 사용할 수 없습니다.",
+      "subtext-label": "인터페이스의 하드웨어 이름이 매핑 이름으로 사용됩니다.",
+      "same-as-subtext": "동적 개체의 이름을 매핑 이름으로 사용합니다.",
+      "add": {
+        "modal": {
+          "title-add-interface": "새 동적 인터페이스 만들기",
+          "title-edit-interface": "동적 인터페이스 편집",
+          "title-add-zone": "새 동적 영역 만들기",
+          "title-edit-zone": "동적 영역 편집",
+          "name": {
+            "label": "이름",
+            "placeholder-interface": "방화벽 인터페이스의 이름 또는 일반 레이블",
+            "placeholder-zone": "방화벽 영역의 이름 또는 일반 레이블",
+            "required": "이름이 필요함",
+            "max-length": "이름이 너무 깁니다."
+          },
+          "description": {
+            "label": "설명",
+            "placeholder": "200자 미만",
+            "max-length": "설명이 너무 깁니다."
+          },
+          "ip-address-family": {
+            "label": "IP 주소 제품군"
+          },
+          "interface-type": {
+            "label": "인터페이스 유형"
+          },
+          "zone-type": {
+            "label": "영역 유형"
+          },
+          "mappings": {
+            "label": "매핑",
+            "default-option":"기본값(모든 방화벽)",
+            "same-as-object": "동적",
+            "add": "추가",
+            "replace": "바꾸기",
+            "default-cannot-delete": "기본 매핑은 삭제할 수 없고 바꾸기만 가능합니다.",
+            "zones": {
+              "mappedName" : "매핑된 영역",
+              "firewall": "방화벽"
+            },
+            "interface": {
+              "mappedName" : "매핑된 인터페이스",
+              "firewall": "방화벽"
+            }
+          },
+          "save-success": {
+            "interface": "동적 인터페이스를 저장했습니다.",
+            "zone": "동적 영역을 저장했습니다."
+          },
+          "save-error": {
+            "interface": "동적 인터페이스를 저장할 수 없음",
+            "zone": "동적 영역을 저장할 수 없습니다."
+          },
+          "exist-error": {
+            "interface": "선택한 인터페이스 이름이 이미 있습니다. 다른 이름을 선택하십시오.",
+            "zone": "선택한 영역 이름이 이미 있습니다. 다른 이름을 선택하십시오."
+          }
+        }
+      },
+      "usage-references": {
+        "heading": "사용 참조",
+        "title": {
+          "zone": "동적 영역 이름",
+          "interface": "동적 인터페이스 이름"
+        },
+        "no-references": "이 동적 개체는 어떤 정책에서도 참조되지 않습니다.",
+        "column": {
+          "group": "그룹",
+          "sub-entity": "참조 하위 엔터티",
+          "entity-name": "정책 이름"
+        }
+      },
+      "delete": {
+        "modal": {
+          "delete-confirm-text": "{{tabType}} 삭제",
+          "title-delete-interface": "인터페이스 삭제",
+          "title-delete-zone": "영역 삭제",
+          "delete-success": {
+            "interface": "동적 인터페이스를 삭제했습니다.",
+            "zone": "동적 영역을 삭제했습니다."
+          },
+          "delete-error": {
+            "interface": "동적 인터페이스를 삭제할 수 없음",
+            "zone": "동적 영역을 삭제할 수 없습니다."
+          }
+        }
       },
       "interface": {
         "add-title": "새 동적 인터페이스 만들기",
@@ -53,8 +144,8 @@
       }
     },
     "sdwan-groups": {
-      "name": "Firewall Management - SD WAN 연결 그룹",
-      "breadcrumb-text": "SD WAN 연결 그룹",
+      "name": "Firewall Management - SD-WAN 연결 그룹",
+      "breadcrumb-text": "SD-WAN 연결 그룹",
       "create": "연결 그룹 만들기",
       "delete": {
         "confirm": "삭제 확인",
@@ -69,9 +160,17 @@
           "one": "연결 해제",
           "more": "{{ bad }} 연결 해제"
         },
+        "unknown": {
+          "one": "알 수 없음",
+          "more": "{{ unknown }} 알 수 없음"
+        },
         "lost-connection": {
           "one": "연결 해제",
           "more": "{{ bad }} 방화벽과의 연결 해제"
+        },
+        "unknown-connection": {
+          "one":  "알 수 없음",
+          "more": "{{ unknown }} 알 수 없음"
         },
         "resource-sharing": {
           "one": "{{ total }} 리소스 공유 방화벽",
@@ -112,13 +211,68 @@
         }
       },
       "add": {
-        "name": "Firewall Management - 새로운 SD WAN 연결 그룹",
-        "breadcrumb-text": "SD WAN 연결 그룹 추가",
+        "name": "Firewall Management - 새로운 SD-WAN 연결 그룹",
+        "breadcrumb-text": "SD-WAN 연결 그룹 추가",
         "error" : {
-          "title": "오류!",
           "string": "오류",
-          "status": "상태",
-          "firewall": "방화벽"
+          "INVALID_XFRM_IP" : "그룹의 방화벽 중 하나에 대해 잘못된 XFRM IP가 선택되었습니다.",
+          "XFRM_IP_ALLOCATION_FAILED" : "그룹의 방화벽 중 하나에 XFRM IP 주소를 할당하지 못했습니다.",
+          "IPSEC_POLICY_CREATE_FAILED" : "그룹의 방화벽 중 하나에 대한 IPSEC 정책을 생성하지 못했습니다.",
+          "VPN_CREATE_FAILED" : "그룹의 방화벽 중 하나에 대해 VPN 생성에 실패했습니다.",
+          "XFRM_IP_ASSIGNMENT_FAILED" : "그룹의 방화벽 중 하나에 XFRM IP 주소를 할당하지 못했습니다.",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "그룹의 방화벽 중 하나에 대해 호스트 또는 서비스 개체를 만들 수 없습니다.",
+          "FIREWALL_RULE_CREATE_FAILED" : "그룹의 방화벽 중 하나에 대해 방화벽 규칙 생성에 실패했습니다.",
+          "NAT_RULE_CREATE_FAILED" : "그룹의 방화벽 중 하나에 대해 NAT 규칙 생성에 실패했습니다.",
+          "CREATE_XFRM_GATEWAY_FAILED" : "그룹의 방화벽 중 하나에 대해 XFRM 게이트웨이 생성에 실패했습니다.",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "그룹의 방화벽 중 하나에 대해 정책 경로 생성에 실패했습니다.",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "그룹의 방화벽 중 하나에 대한 정책 경로를 활성화하지 못했습니다.",
+          "VPN_PING_ENABLE_FAILED" : "그룹의 방화벽 중 하나에 대해 실패한 VPN의 Ping을 활성화하지 못했습니다.",
+          "VPN_DELETE_FAILED" : "그룹의 방화벽 중 하나에 대해 VPN 삭제에 실패했습니다.",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "그룹의 방화벽 중 하나에 대한 호스트/서비스 개체를 삭제하지 못했습니다.",
+          "FIREWALL_RULE_DELETE_FAILED" : "그룹의 방화벽 중 하나에 대한 방화벽 규칙을 삭제하지 못했습니다.",
+          "NAT_RULE_DELETE_FAILED" : "그룹의 방화벽 중 하나에 대한 NAT 규칙을 삭제하지 못했습니다.",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "그룹의 방화벽 중 하나에 대한 정책 경로를 삭제하지 못했습니다.",
+          "VPN_DEACTIVATION_FAILED" : "그룹의 방화벽 중 하나에 대한 VPN을 비활성화하지 못했습니다.",
+          "VPN_ACTIVATION_FAILED" : "그룹의 방화벽 중 하나에 대한 VPN을 활성화하지 못했습니다.",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "SD-WAN 연결 그룹이 이미 삭제 표시되어 있습니다. 잠시 기다려 주십시오.",
+          "GROUP_NOT_EXISTS" : "그룹이 존재하지 않습니다.",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "리소스 공유 방화벽에서 NAT 주소가 허용되지 않음",
+          "FIREWALL_PART_OF_ANOTHER_GROUP" : "방화벽은 이미 다른 그룹의 일부입니다.",
+          "FIREWALL_NOT_FOUND" : "선택한 방화벽을 찾을 수 없습니다.",
+          "MIN_ONE_SUBNET_NEEDED" : "그룹의 각 방화벽에 최소 하나의 서브넷이 필요합니다.",
+          "MIN_ONE_WAN_PORT_NEEDED" : "그룹의 각 방화벽에 최소 하나의 WAN 포트가 필요합니다.",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "그룹에 최소 2개의 방화벽이 필요합니다.",
+          "SDWAN_FEATURE_NOT_SUPPORTED" : "SD-WAN 연결 그룹 기능은 아직 지원되지 않습니다.",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "보조 방화벽의 트랜잭션은 지원되지 않습니다.",
+          "NOT_VALID_SUBNET" : "그룹의 방화벽 중 하나에 대해 잘못된 서브넷이 발견되었습니다.",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "속성 '{{name}}' 값이 범위를 벗어남: {{value}}",
+          "INVALID_ATTRIBUTE" : "클래스 {{ className }}에 대한 ‘{{ attribute }}’ 속성이 잘못되었습니다.",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "클래스 ‘{{ className }}’에 대한 고유 속성이 없음",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "클래스 ‘{{ className }}’에 대한 필수 속성 ‘{{ name }}’ 없음",
+          "UNSUPPORTED_CLASS" : "지원되지 않는 클래스 ‘{{ name }}’",
+          "INVALID_ATTRIBUTE_DATATYPE" : "클래스 ‘{{ className }}’의 속성 ‘{{ name }}’에 대해 지원되지 않는 데이터",
+          "MISSING_ATTRIBUTE" : "클래스 ‘{{ className }}’의 속성 ‘{{ name }}’ 누락됨",
+          "INVALID_IP_ADDRESS" : "잘못된 IP 주소: {{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS" : "잘못된 IP 주소 '{{ ip }}' 넷마스크/접두사 '{{ netmask }}'",
+          "INVALID_IP_RANGE" : "잘못된 IP 범위: 낮은 범위 {{ low }} 및 높은 범위 {{ high }}",
+          "INVALID_CIDR_FORMAT" : "잘못된 CIDR 형식: {{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "속성 ‘{{ name }}’에 대한 값 수를 초과함, 허용된 한도: {{ maxSize }}",
+          "ICMP_PARAM_SIZE_MISMATCH" : "ICMP 유형과 ICMP 코드 크기는 ICMP 유형 크기({{ typeSize }})와 ICMP 코드 크기({{ codeSize }})가 동일해야 합니다.",
+          "PROTOCOL_SIZE_MISMATCH" : "프로토콜, 소스 포트 및 대상 포트 크기는 프로토콜 크기({{ protocolSize }}), 소스 포트 크기({{ sourceSize }}), 대상 포트 크기({{ destinationSize }})가 동일해야 합니다.",
+          "INVALID_PROTOCOL" : "잘못된 프로토콜 '{{ name }}’",
+          "TRANSACTION_NOT_ALLOWED" : "이 방화벽에 대해 허용되지 않는 트랜잭션",
+          "IP_ALLOCATION_FAILED" : "이 방화벽에 대한 IP 할당이 실패함",
+          "DEVICE_NOT_FOUND" : "방화벽을 찾을 수 없음",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "이 방화벽에 대한 중앙 오케스트레이션 기능이 지원되지 않음",
+          "LICENSE_NOT_FOUND" : "이 방화벽에 대한 라이선스가 없음",
+          "NAT_NOT_ALLOWED" : "리소스 공유 방화벽에서 NAT 주소가 허용되지 않음",
+          "DEVICE_PART_OF_OTHER_GROUP" : "방화벽은 이미 다른 그룹의 일부입니다.",
+          "OPERATION_IN_PROGRESS" : "{{ operation }} 작업이 {{ groupName }}에 대해 진행 중임",
+          "INVALID_SUBNET" : "서브넷, IP 주소({{ ip }}), 넷마스크({{ netmask }})가 잘못됨",
+          "GROUP_DOES_NOT_EXISTS" : "그룹 ID({{ groupId }})가 존재하지 않음",
+          "INTERNAL_REQUEST_ERROR" : "문제가 발생했습니다. 내부 서버 오류!",
+          "INTERNAL_SERVER_ERROR": "문제가 발생했습니다. 내부 서버 오류!",
+          "GROUP_NAME_EXISTS": "그룹 이름이 이미 있습니다. 다른 것을 선택하십시오."
         },
         "states": {
           "cannot-save": "연결 그룹을 저장하는 동안 알 수없는 오류가 발생했습니다.",
@@ -132,17 +286,20 @@
           "name": {
             "label": "연결 그룹 이름",
             "required": "이름이 필요함",
-            "heading": "이 그룹 이름 지정"
+            "heading": "이 그룹 이름 지정",
+            "length": "이름은 최대 40자까지 입력할 수 있습니다."
           },
           "description": {
             "label": "설명",
             "placeholder": "그룹에 대한 설명 입력(최대 250자)",
-            "length": "설명은 최대 250자까지 가능합니다."
+            "length": "설명은 최대 250자까지 입력할 수 있습니다."
           },
           "firewalls": {
             "source":"사용 가능한 방화벽",
             "target":"할당된 방화벽",
-            "label": "방화벽에 직접 연결된 LAN 네트워크는 공유 그룹에 자동으로 추가됩니다. 다음 단계에서 각 방화벽의 클라이언트 네트워크를 사용자 지정할 수 있습니다."
+            "label": "방화벽에 직접 연결된 LAN 네트워크는 다음 단계에서 공유 그룹에 추가될 수 있습니다. 다음 단계에서 각 방화벽의 클라이언트 네트워크를 사용자 지정할 수 있습니다.",
+            "filter-notes": "참고: SD-WAN 연결 그룹에 참여하도록 라이선스가 부여된 방화벽은 선택 시에만 표시됩니다. 또한 방화벽을 이 기능을 지원하는 펌웨어로 업그레이드해야 합니다.",
+            "learn-more": "자세히 알아보기"
           },
           "select": {
             "heading": "포함할 방화벽 선택"
@@ -153,7 +310,7 @@
           "heading": "네트워크 및 경로 구성",
           "error": "충돌을 감지하는 동안 오류가 발생했습니다.",
           "subnet-error": "하나 이상의 서브넷이 잘못되었습니다.",
-          "description": "각 방화벽에서 공유 그룹에 대한 액세스를 허용하는 네트워크(충돌을 피하기 위해 네트워크가 다른 주소 범위로 표시되어야 하는지 여부)를 사용자 지정하고 여러 인터넷 연결이 있는 경우 터널 중복성을 설정합니다.",
+          "description": "각 방화벽에서 공유 그룹에 대한 액세스를 허용하는 네트워크(충돌을 피하기 위해 네트워크가 다른 주소 범위로 표시되어야 하는지 여부)를 사용자 지정합니다.",
           "no-conflict": {
             "heading": "{{ count }} 방화벽 분석됨(감지된 네트워크 충돌 없음)."
           },
@@ -186,7 +343,7 @@
               "participate": "사용",
               "nat": "NAT 사용",
               "nat-address": "NAT 주소",
-              "nat-subnet": "NAT 주소는 인터페이스와 동일한 서브넷에 속해야 합니다. ",
+              "nat-subnet": "변환된(NAT) 주소는 인터페이스와 동일한 서브넷에 속해야 합니다.",
               "conflicts": "충돌",
               "wan": "WAN 링크",
               "selected": "선택됨",
@@ -209,12 +366,12 @@
         "share-resources": {
           "label": "리소스 공유",
           "heading": "리소스 공유",
-          "description": "각 사이트의 사용자가 액세스할 수 있어야 하는 회사 리소스를 선택합니다.",
+          "description": "각 사이트의 사용자가 액세스할 수 있어야 하는 회사 리소스 추가",
           "modal": {
             "title": "리소스 추가",
             "firewall": {
               "title": "방화벽",
-              "placeholder": "하나 선택"
+              "placeholder": "방화벽 선택"
             },
             "shared-resource": {
               "title": "공유된 리소스",
@@ -238,7 +395,8 @@
                   "1": "TCP/UDP",
                   "2": "IP",
                   "3": "ICMP",
-                  "7": "ICMPv6"
+                  "7": "ICMPv6",
+                  "0": "모두"
                 },
                 "heartbeat": {
                   "1": "녹색",
@@ -308,10 +466,10 @@
         }
       },
       "no-data": {
-        "info": "SD WAN 연결 그룹은 자동으로 생성된 정책을 통해 지역에 걸쳐 리소스를 공유할 수 있게 합니다.",
+        "info": "SD-WAN 연결 그룹은 자동으로 생성된 정책을 통해 지역에 걸쳐 리소스를 공유할 수 있게 합니다.",
         "process": "그룹을 만드는 동안 연결 그룹에 배치할 방화벽을 선택할 수 있습니다.",
         "how": "어시스턴트를 시작하려면 ‘연결 그룹 만들기’ 버튼을 클릭합니다.",
-        "header": "연결 그룹을 사용해 SD WAN 구성 간소화하기",
+        "header": "연결 그룹을 사용해 SD-WAN 구성 간소화하기",
         "learn-more": "자세히 알아보기"
       }
     },

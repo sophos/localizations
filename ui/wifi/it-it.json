@@ -12,8 +12,8 @@
       "approve": "Approva",
       "confirm": "Conferma",
       "update": "Aggiorna",
-      "from": "Da",
-      "to": "A",
+      "start-date": "Data di inizio",
+      "end-date": "Data di fine",
       "confirmDeleteHeader": "Conferma eliminazione",
       "error": "Errore",
       "success": "Operazione completata",
@@ -21,13 +21,19 @@
       "accessPoints": "Access point",
       "ssids": "SSID",
       "settings": "impostazioni",
+      "sites": "Siti",
       "statistic": "Statistica",
       "devices": "Dispositivi",
       "reset": "Reimposta",
       "select-all": "Seleziona tutto",
       "deselect-all": "Deseleziona tutto",
       "channel": "Canale",
-      "access-point": "Access point"
+      "access-point": "Access point",
+      "show": "Mostra",
+      "hide": "Nascondi",
+      "details": "Dettagli",
+      "no-data": "Nessun dato",
+      "beta": "beta"
     },
     "global": {
       "onBoard": {
@@ -49,18 +55,39 @@
       }
     },
     "dashboard": {
-      "title": "Dashboard del prodotto"
+      "breadcrumb-title": "Dashboard del prodotto",
+      "page-title": "Wireless - Dashboard",
+      "breadcrumb-text": "Dashboard di Wireless"
     },
     "diagnostics": {
       "events": "Eventi",
       "packet-capture-tab": "Acquisizione pacchetto",
       "audit-logs": "Log di audit",
+      "server-ip": "IP di Server",
+      "serial-no": "Numero di serie",
+      "action": "Azione",
+      "status": "Stato",
+      "name": "Access Point Name",
+      "ip_address": "Indirizzo IP",
+      "start-title": "Avvia",
+      "stop-title": "Arresta",
       "packet-capture": {
-        "status": "Stato",
-        "name": "Access Point Name",
-        "serial-no": "Numero di serie"
+        "client-mac": "Mac del client",
+        "duration": "Durata",
+        "mac-optional": "Indirizzo MAC",
+        "start-message": "Comando ACQUISIZIONE PACCHETTI avviato.",
+        "start-fail-message": "Non è stato possibile avviare il comando ACQUISIZIONE PACCHETTI.",
+        "stop-message": "Comando ACQUISIZIONE PACCHETTI arrestato.",
+        "stop-fail-message": "Non è stato possibile arrestare il comando ACQUISIZIONE PACCHETTI."
       },
-      "syslog": "Syslog",
+      "syslog": {
+        "title": "Syslog",
+        "server-port": "Porta server",
+        "start-message": "Comando SYSLOG avviato.",
+        "start-fail-message": "Non è stato possibile avviare il comando SYSLOG.",
+        "stop-message": "Comando SYSLOG arrestato.",
+        "stop-fail-message": "Non è stato possibile arrestare il comando SYSLOG."
+      },
       "list": {
         "breadcrumb-text": "Diagnostica",
         "title": "Wireless - Diagnostica"
@@ -79,9 +106,75 @@
       "question-mark-icon-onhover-msg": "Tutti i filtri di ricerca applicati vengono applicati anche durante l'esportazione. L'intervallo di date è escluso per gli ultimi 90 giorni.",
       "access-point-severity": "Gravità",
       "event-name": "Evento",
-      "search-by-accesspoint": "Cerca in base al nome dell'access point",
+      "search-by-accesspoint": "Cerca per nome dell'access point",
+      "search-by-name-or-serial-number": "Cerca per nome o numero di serie",
       "export": "Esporta",
       "low-severity": "Info"
+    },
+    "settings": {
+      "setting-configuration-save-success-msg": "Configurazione correttamente salvata.",
+      "setting-configuration-save-error-msg": "Impossibile salvare la configurazione",
+      "sections": {
+        "login-title": "Impostazioni di base",
+        "analysis-title": "Analisi",
+        "access-point-detection-title": "Rilevamento di access point non autorizzati",
+        "advancedRF-title": "Gestione AdvancedRF",
+        "discovery-protocol-title": "Protocollo Discovery"
+      },
+      "advanced-rf-management": {
+        "roaming-assist": "Roaming guidato",
+        "advanced-notification": "Notifica AdvancedRF",
+        "co-channel": "Notifica evento CoChannel"
+      },
+      "discovery-protocol": {
+        "lldp-label": "Link-Layer Discovery Protocol (LLDP)",
+        "network-message": "Se si abilita questa opzione, il Link Layer Discovery Protocol (LLDP) sarà in grado di rilevare altri dispositivi vicini."
+      },
+      "analysis-settings": {
+        "report-traffic-usage": "Informazioni approfondite sull'utilizzo",
+        "analysis-message": "Se è abilitata la classificazione del traffico, il traffico generato dall'utente verrà classificato in categorie distinte ed elencato in Informazioni approfondite sull'utilizzo. Questa opzione è disattivata per impostazione predefinita",
+        "statistics-report": "Statistiche degli access point",
+        "device-discovery-label": "Classificazione e visibilità dei dispositivi",
+        "device-discovery-message": "Maggiore visibilità sul wireless, grazie alla classificazione in base a Tipo di dispositivo, Profilo e Categoria. Questa funzionalità è disponibile solamente per gli access point APX Series."
+      },
+      "rogue-ap-detection-settings": {
+        "rogue-ap-detection": "Rileva e segnala access point non autorizzati",
+        "display-info-prefix": "Un elenco di AP non autorizzati verrà visualizzato in "
+      },
+      "diagnostics-setting": {
+        "forward-ap-logs": "Invia registri degli access point",
+        "forward-ap-message": "Messaggio di inoltro access point",
+        "remote-login-title": "Accesso remoto agli Access Point per il supporto tecnico Sophos",
+        "expiration-message": "Se è abilitata questa opzione, il Supporto tecnico Sophos disporrà dell'accesso remoto per la durata di tempo specificata. Sarà visualizzato il tempo rimanente. Disattivare l'opzione per interrompere immediatamente l'accesso remoto"
+      },
+      "list": {
+        "breadcrumb-text": "Impostazioni globali",
+        "title": "Wireless - Impostazioni globali"
+      },
+      "config": {
+        "customer-unique-id-title": "ID cliente Sophos univoco",
+        "firmware-update": {
+          "title": "Aggiornamento firmware",
+          "current-version": "Versione corrente",
+          "release-date": "Data di rilascio",
+          "installed-at": "Installato alle",
+          "update-now": "Aggiorna la versione {{ version }}",
+          "schedule-firmware-update": "Pianifica aggiornamento firmware",
+          "frequency": "Frequenza",
+          "DAILY": "ogni giorno",
+          "MONTHLY": "ogni mese",
+          "WEEKLY": "ogni settimana",
+          "week": "Settimana",
+          "weekday": "Giorno feriale",
+          "time": "Ora (UTC)"
+        }
+      }
+    },
+    "sites": {
+      "list": {
+        "breadcrumb-text": "Siti",
+        "title": "Wireless - Siti"
+      }
     },
     "networks": {
       "fetch-error": "Errore durante il caricamento dell'elenco di SSID",
@@ -221,7 +314,7 @@
         "ssid-uem-enabled-info": "** Sophos Mobile è abilitato per impostazione predefinita.",
         "ednpoint-protection-label": "Sophos Central Endpoint Protection",
         "endpoint-protection": "Abilita Security Heartbeat per la protezione endpoint sui dispositivi che eseguono Windows, macOS o Linux.",
-        "endpoint-protection.enabled.info": "Selezionare questa opzione solamente se non si utilizza Synchronized Security con XG Firewall.",
+        "endpoint-protection-enabled-info": "Selezionare questa opzione solamente se non si utilizza Synchronized Security con XG Firewall.",
         "restrict-ssid": "Limita questo SSID ai dispositivi gestiti con questo account Sophos Central. Opzione disponibile quando i dispositivi che eseguono sia UEM che Endpoint sono gestiti con questo account Sophos Central.",
         "landing-page-title": "Landing page",
         "restric-ssid-checkbox-label": "Limita SSID ai dispositivi gestiti da Sophos",

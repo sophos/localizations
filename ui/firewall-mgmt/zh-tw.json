@@ -18,12 +18,103 @@
       "name": "防火牆管理 - 儀表板",
       "breadcrumb-text": "防火牆管理儀表板"
     },
+    "serial-number": {
+      "peer": "對等序號"
+    },
     "dynamic-objects": {
       "name": "防火牆管理 - 動態物件",
       "breadcrumb-text": "動態物件",
       "tabs": {
         "interfaces": "介面",
         "zones": "區域"
+      },
+      "custom-label": "這是自訂對應名稱，在防火牆中可能不可用。",
+      "subtext-label": "介面的硬體名稱會用作對應名稱。",
+      "same-as-subtext": "使用動態物件的名稱作為對應名稱。",
+      "add": {
+        "modal": {
+          "title-add-interface": "建立新動態介面",
+          "title-edit-interface": "編輯動態介面",
+          "title-add-zone": "建立新動態區域",
+          "title-edit-zone": "編輯動態區域",
+          "name": {
+            "label": "名稱",
+            "placeholder-interface": "防火牆介面的名稱或一般標籤。",
+            "placeholder-zone": "防火牆區域的名稱或一般標籤。",
+            "required": "需要名稱",
+            "max-length": "名稱過長。"
+          },
+          "description": {
+            "label": "說明",
+            "placeholder": "< 200 個字元",
+            "max-length": "說明過長。"
+          },
+          "ip-address-family": {
+            "label": "IP 位址系列"
+          },
+          "interface-type": {
+            "label": "介面類型"
+          },
+          "zone-type": {
+            "label": "區域類型"
+          },
+          "mappings": {
+            "label": "對應",
+            "default-option":"預設（任何防火墻）",
+            "same-as-object": "動態",
+            "add": "新增",
+            "replace": "取代",
+            "default-cannot-delete": "預設對應不能刪除，只能替換。",
+            "zones": {
+              "mappedName" : "對應區域",
+              "firewall": "防火牆"
+            },
+            "interface": {
+              "mappedName" : "對應介面",
+              "firewall": "防火牆"
+            }
+          },
+          "save-success": {
+            "interface": "動態介面成功儲存。",
+            "zone": "動態區域成功儲存。"
+          },
+          "save-error": {
+            "interface": "無法儲存動態介面",
+            "zone": "無法儲存動態區域。"
+          },
+          "exist-error": {
+            "interface": "所選介面名稱已存在。請選擇其他名稱。",
+            "zone": "所選區域名稱已存在。請選擇其他名稱。"
+          }
+        }
+      },
+      "usage-references": {
+        "heading": "使用參考",
+        "title": {
+          "zone": "動態區域名稱",
+          "interface": "動態介面名稱"
+        },
+        "no-references": "任何策略均未參考此動態物件。",
+        "column": {
+          "group": "群組",
+          "sub-entity": "參考子實體",
+          "entity-name": "原則名稱"
+        }
+      },
+      "delete": {
+        "modal": {
+          "delete-confirm-text": "刪除 {{tabType}}",
+          "title-delete-interface": "刪除介面",
+          "title-delete-zone": "刪除區域",
+          "delete-success": {
+            "interface": "動態介面成功刪除。",
+            "zone": "動態區域成功刪除。"
+          },
+          "delete-error": {
+            "interface": "無法刪除動態介面",
+            "zone": "無法刪除動態區域。"
+          }
+        }
       },
       "interface": {
         "add-title": "建立新動態介面",
@@ -53,8 +144,8 @@
       }
     },
     "sdwan-groups": {
-      "name": "防火墻管理 - SD WAN 連線群組",
-      "breadcrumb-text": "SD WAN 連線群組",
+      "name": "防火墻管理 - SD-WAN 連線群組",
+      "breadcrumb-text": "SD-WAN 連線群組",
       "create": "建立連線群組",
       "delete": {
         "confirm": "刪除確認",
@@ -69,9 +160,17 @@
           "one": "向下連結",
           "more": "{{ bad }} 向下連結"
         },
+        "unknown": {
+          "one": "未知",
+          "more": "{{ unknown }} 未知"
+        },
         "lost-connection": {
           "one": "向下連結",
           "more": "使用 {{ bad }} 防火墻向下連結"
+        },
+        "unknown-connection": {
+          "one":  "未知",
+          "more": "{{ unknown }} 未知"
         },
         "resource-sharing": {
           "one": "{{ total }} 資源共用防火墻",
@@ -112,13 +211,68 @@
         }
       },
       "add": {
-        "name": "防火墻管理 - 新的 SD WAN 連線群組",
-        "breadcrumb-text": "新增 SD WAN 連線群組",
+        "name": "防火墻管理 - 新的 SD-WAN 連線群組",
+        "breadcrumb-text": "新增 SD-WAN 連線群組",
         "error" : {
-          "title": "錯誤！",
           "string": "錯誤",
-          "status": "狀態",
-          "firewall": "防火墻"
+          "INVALID_XFRM_IP" : "為群組中的某個防火墻選擇了無效的 XFRM IP。",
+          "XFRM_IP_ALLOCATION_FAILED" : "無法為群組中的某個防火墻配置 XFRM IP 位址。",
+          "IPSEC_POLICY_CREATE_FAILED" : "無法為群組中的某個防火墻建立 IPSEC 原則。",
+          "VPN_CREATE_FAILED" : "為群組中的某個防火墻建立 VPN 失敗了。",
+          "XFRM_IP_ASSIGNMENT_FAILED" : "無法為群組中的某個防火墻配置 XFRM IP 位址。",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "無法為群組中的某個防火墻建立主機或服務物件。",
+          "FIREWALL_RULE_CREATE_FAILED" : "為群組中的某個防火墻建立防火墻規則失敗了。",
+          "NAT_RULE_CREATE_FAILED" : "為群組中的某個防火墻建立 NAT 規則失敗了。",
+          "CREATE_XFRM_GATEWAY_FAILED" : "為群組中的某個防火墻建立 XFRM 閘道失敗了。",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "為群組中的某個防火墻建立原則路由失敗了。",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "無法為群組中的某個防火墻啟用原則路由。",
+          "VPN_PING_ENABLE_FAILED" : "無法為群組中的某個防火墻啟用 VPN Ping。",
+          "VPN_DELETE_FAILED" : "為群組中的某個防火墻刪除 VPN 失敗了。",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "無法為群組中的某個防火墻刪除主機/服務物件。",
+          "FIREWALL_RULE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除防火墻規則。",
+          "NAT_RULE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除 NAT 規則。",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除原則路由。",
+          "VPN_DEACTIVATION_FAILED" : "無法為群組中的某個防火墻停用 VPN。",
+          "VPN_ACTIVATION_FAILED" : "無法為群組中的某個防火墻啟用 VPN。",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "SD-WAN 連線群組已標記為待刪除。請稍候。",
+          "GROUP_NOT_EXISTS" : "群組不存在。",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "資源共用防火墻上不允許 NAT 位址",
+          "FIREWALL_PART_OF_ANOTHER_GROUP" : "防火墻已屬於其他群組。",
+          "FIREWALL_NOT_FOUND" : "未找到所選防火墻。",
+          "MIN_ONE_SUBNET_NEEDED" : "群組中的每個防火墻至少需要一個子網路。",
+          "MIN_ONE_WAN_PORT_NEEDED" : "群組中的每個防火墻至少需要一個 WAN 連接埠。",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "群組中至少需要兩個防火墻。",
+          "SDWAN_FEATURE_NOT_SUPPORTED" : "SD-WAN 連線群組功能尚不受支援。",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "在輔助防火墻上交易不受支援。",
+          "NOT_VALID_SUBNET" : "為群組中的某個防火墻找到的子網路無效。",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "屬性 '{{name}}' 值不在範圍內：{{value}}",
+          "INVALID_ATTRIBUTE" : "類別 {{ className }} 的無效屬性 '{{ attribute }}'。",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "類別 '{{ className }}' 不存在唯一屬性",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "類別 '{{ className }}' 不存在強制屬性 '{{ name }}'",
+          "UNSUPPORTED_CLASS" : "不受支援的類別 '{{ name }}'",
+          "INVALID_ATTRIBUTE_DATATYPE" : "類別 '{{ className }}' 中屬性 '{{ name }}' 的資料不受支援",
+          "MISSING_ATTRIBUTE" : "類別 '{{ className }}' 缺失屬性 '{{ name }}'",
+          "INVALID_IP_ADDRESS" : "無效的 IP 位址：{{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS" : "無效的 IP 位址 '{{ ip }}' 網路遮罩/前置詞 '{{ netmask }}'",
+          "INVALID_IP_RANGE" : "無效的 IP 範圍：低範圍 {{ low }} 和高範圍 {{ high }}",
+          "INVALID_CIDR_FORMAT" : "無效的 CIDR 格式：{{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "超過屬性 '{{ name }}' 的值數量，允許的限制為 {{ maxSize }}",
+          "ICMP_PARAM_SIZE_MISMATCH" : "ICMP 類型和 ICMP 代碼大小必須相等，ICMP 類型大小 {{ typeSize }} 和 ICMP 代碼大小 {{ codeSize }}。",
+          "PROTOCOL_SIZE_MISMATCH" : "通訊協定，源連接埠和目的地連接埠大小必須相等，通訊協定大小 {{ protocolSize }}，源連接埠大小 {{ sourceSize }}，目的地連接埠大小 {{ destinationSize }}",
+          "INVALID_PROTOCOL" : "無效的通訊協定 '{{ name }}'",
+          "TRANSACTION_NOT_ALLOWED" : "此防火墻不允許進行交易",
+          "IP_ALLOCATION_FAILED" : "此防火墻的 IP 配置失敗",
+          "DEVICE_NOT_FOUND" : "找不到防火墻",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "此防火墻不支援 Central Orchestration 功能",
+          "LICENSE_NOT_FOUND" : "此防火墻不存在授權",
+          "NAT_NOT_ALLOWED" : "資源共用防火墻上不允許 NAT 位址",
+          "DEVICE_PART_OF_OTHER_GROUP" : "防火墻已屬於其他群組。",
+          "OPERATION_IN_PROGRESS" : "{{ groupName }} 的 {{ operation }} 操作正在進行中",
+          "INVALID_SUBNET" : "無效的子網路、IP 位址 {{ ip }}、網路遮罩 {{ netmask }}",
+          "GROUP_DOES_NOT_EXISTS" : "群組 ID {{ groupId }} 不存在",
+          "INTERNAL_REQUEST_ERROR" : "發生錯誤。內部伺服器錯誤！",
+          "INTERNAL_SERVER_ERROR": "發生錯誤。內部伺服器錯誤！",
+          "GROUP_NAME_EXISTS": "群組名稱已存在。請選擇其他名稱。"
         },
         "states": {
           "cannot-save": "儲存連線群組時出現未知錯誤。",
@@ -132,17 +286,20 @@
           "name": {
             "label": "連線群組名稱",
             "required": "需要名稱",
-            "heading": "為此群組命名"
+            "heading": "為此群組命名",
+            "length": "名稱最多可包含 40 個字元。"
           },
           "description": {
             "label": "說明",
             "placeholder": "輸入群組的說明（最多 250 個字元）",
-            "length": "說明可最多使用 250 個字元。"
+            "length": "描述最多可包含 250 個字元。"
           },
           "firewalls": {
             "source":"可用防火墻",
             "target":"已指派的防火牆",
-            "label": "直接連線到防火墻的 LAN 網路將自動新增到共用群組。您可以在下一步中自訂每個防火墻的用戶端網路。"
+            "label": "後續步驟中可將直接連線到防火墻的 LAN 網路新增到共用群組。您可以在下一步中自訂每個防火墻的用戶端網路。",
+            "filter-notes": "注意：獲授權參與 SD-WAN 連線群組的防火墻僅對選擇可見。此外，應將防火墻升級至支援此功能的韌體。",
+            "learn-more": "瞭解更多"
           },
           "select": {
             "heading": "選取要包含的防火墻"
@@ -153,7 +310,7 @@
           "heading": "設定網路和路由",
           "error": "偵測衝突時出現錯誤。",
           "subnet-error": "一個或多個子網路無效",
-          "description": "自訂每個防火牆允許哪些網路存取共用群組，是否需要將網路顯示為其他地址範圍以避免衝突，並在存在多個網際網路連線時設定通道備援。",
+          "description": "自訂每個防火牆允許哪些網路存取共用群組，是否需要將網路顯示為其他地址範圍以避免衝突。",
           "no-conflict": {
             "heading": "{{ count }} 已分析防火墻，沒有偵測到網路衝突。"
           },
@@ -186,7 +343,7 @@
               "participate": "啟用",
               "nat": "啟用 NAT",
               "nat-address": "NAT 位址",
-              "nat-subnet": "NATed 位址應與介面的位址屬於同一子網路。",
+              "nat-subnet": "轉換 (NAT) 地址必須與介面屬於同一子網路。",
               "conflicts": "衝突",
               "wan": "WAN 連結",
               "selected": "已選",
@@ -209,12 +366,12 @@
         "share-resources": {
           "label": "共用資源",
           "heading": "共用資源",
-          "description": "選取每個站點的使用者都能存取的公司資源",
+          "description": "新增每個站點的使用者都能存取的公司資源",
           "modal": {
             "title": "新增資源",
             "firewall": {
               "title": "防火牆",
-              "placeholder": "選取一個"
+              "placeholder": "選取防火牆"
             },
             "shared-resource": {
               "title": "已共用的資源",
@@ -238,7 +395,8 @@
                   "1": "TCP/UDP",
                   "2": "IP",
                   "3": "ICMP",
-                  "7": "ICMPv6"
+                  "7": "ICMPv6",
+                  "0": "任何"
                 },
                 "heartbeat": {
                   "1": "綠",
@@ -308,10 +466,10 @@
         }
       },
       "no-data": {
-        "info": "SD WAN 連線群組有助於利用自動產生的策略進行跨區域分享資源。",
+        "info": "SD-WAN 連線群組有助於利用自動產生的原則跨區域共用資源。",
         "process": "在建立群組時，您可選擇要加入連線群組的防火牆。",
         "how": "按一下「建立連線群組」按鈕即可啟動助手。",
-        "header": "透過連線群組簡化您的 SD WAN 設定",
+        "header": "使用連線群組簡化您的 SD-WAN 設定",
         "learn-more": "瞭解更多"
       }
     },

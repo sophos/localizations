@@ -18,7 +18,9 @@
       "name-length-validation": "名前は 100文字以内で入力してください",
       "whitespace-name-validation": "名前を指定してください",
       "description-length-validation": "説明は 300文字以内で入力してください",
-      "required": "* 必須項目"
+      "required": "* 必須項目",
+      "yes": "はい",
+      "no": "いいえ"
     },
     "application": {
       "form": {
@@ -26,6 +28,7 @@
         "name-placeholder": "リソース名",
         "description": "説明 (最大文字数: 250文字)",
         "description-placeholder": "説明",
+        "show-resource": "ユーザーポータルにリソースを表示する",
         "port-validation": "ポートが無効です",
         "application-type": "リソースの種類",
         "application-type-placeholder": "選択",
@@ -74,6 +77,7 @@
           "internal-fqdn": "内部 FQDN/IP",
           "external-fqdn": "外部 FQDN"
         },
+        "no-application-found": "リソースが見つかりません！",
         "no-application-configured": "リソースが追加されていません。",
         "no-application-configured-help": "リソースを追加するには、「リソースの追加」ボタンをクリックします。",
         "error": "リソースリストの取得中、エラーが発生しました。",
@@ -96,7 +100,9 @@
             "domain": "ドメイン:",
             "agent": "エージェント",
             "agentless": "エージェントレス",
-            "display-in-user-portal": "ユーザーポータルに表示:",
+            "display-in-user-portal": {
+              "label": "ユーザーポータルに表示:"
+            },
             "access-ports": {
               "label": "アクセスポート",
               "columns": {
@@ -119,7 +125,7 @@
           "user-groups-policies": {
             "label": "ユーザーグループ ({{count}})、ポリシー",
             "policy-label": "ポリシー: ",
-            "switch-policy": "ポリシーの切り替え",
+            "switch-policy": "ポリシーの変更",
             "edit-groups": "グループの編集",
             "groups-label": "グループ"
           }
@@ -134,7 +140,8 @@
     },
     "dashboard": {
       "title": "Zero Trust Network Access - ダッシュボード",
-      "breadcrumb-text": "Zero Trust Network Access ダッシュボード"
+      "breadcrumb-text": "Zero Trust Network Access ダッシュボード",
+      "nodata": "表示対象のデータはありません"
     },
     "report": {
       "title": "Zero Trust Network Access - レポート",
@@ -151,6 +158,7 @@
     },
     "gateway": {
       "list": {
+        "no-gateway-found": "ゲートウェイが見つかりません！",
         "no-gateway-configured": "ゲートウェイが追加されていません。",
         "no-gateway-configured-help": "ゲートウェイを追加するには、「ゲートウェイの追加」ボタンをクリックします。",
         "download-gateway-VM": "ゲートウェイ VM のダウンロード",
@@ -187,7 +195,13 @@
                 "name": "名前",
                 "status": "状態",
                 "version": "バージョン",
-                "support": "ソフォスサポート"
+                "support": "ソフォスサポート",
+                "support-status": "ソフォスサポートの状態"
+              },
+              "support-status": {
+                "connected": "接続",
+                "disconnected": "切断",
+                "disabled": "無効"
               }
             },
             "note": "負荷分散を行うためには、インスタンス数は奇数である必要があります。",
@@ -243,6 +257,7 @@
         "title-edit": "ゲートウェイの編集",
         "title-delete": "ゲートウェイの削除",
         "software-update": "ソフトウェアのアップデート",
+        "try-again": "再試行",
         "edit-software-update": "ソフトウェアのアップデートスケジュールの編集",
         "try-software-update-again": "再試行",
         "name": "名前",
@@ -447,10 +462,12 @@
         },
         "vm-name": "VM 名",
         "vm-placeholder": "VM 名",
+        "vm-duplicate-error": "重複した名前です",
         "external-ip-placeholder": "外部 IP",
         "internal-ip-placeholder": "内部 IP アドレス",
         "external-interface-ip": "外部インターフェース IP",
         "internal-interface-ip": "内部インターフェース IP",
+        "interface-ip-duplicate-error": "重複 IP",
         "interface-ip": "インターフェース IP",
         "warning-box": "インスタンスの総数は奇数である必要があります。現在の値: {{instanceCount}}",
         "form": {
@@ -478,7 +495,9 @@
           "disable-success": "ソフォスサポートが無効です",
           "disable-error": "ソフォスサポートを無効にする際、エラーが発生しました",
           "copy": "コピー",
-          "fetch-error": "リモートデバッグの詳細を取得できません"
+          "fetch-error": "リモートデバッグの詳細を取得できません",
+          "unreachable": "ゲートウェイはサーバーに到達できませんでした。",
+          "try-again": "しばらくしてからもう一度やり直してください。"
         }
       },
       "schedule": {
@@ -493,6 +512,7 @@
         "cancel-schedule": "スケジュールのキャンセル",
         "cancelling-update": "アップデートをキャンセル中",
         "update-failed": "アップデートに失敗しました ",
+        "try-again": "もう一度更新し直してください",
         "updating": " アップデート中",
         "edit-schedule": " スケジュールの編集",
         "cancel-first": "設定済みのスケジュールをキャンセルするまで、変更することはできません。",
@@ -511,6 +531,7 @@
         "configure-idp": "IdP の設定",
         "no-idp-configured": "IdP が追加されていません。",
         "no-idp-configured-help": "IdP を追加するには、「IdP の追加」ボタンをクリックします。",
+        "no-gateway-assigned-idp-configured": "ゲートウェイが割り当てられていません。",
         "columns": {
           "name": "名前",
           "provider": "プロバイダ",
@@ -559,12 +580,14 @@
       "delete": {
         "header": "IdP の削除",
         "message": "IdP の削除",
+        "message-linked": "削除する前に、次のゲートウェイを別の IdP に移動する必要があります",
         "success": "IdP が削除されました",
         "error": "IdP の削除に失敗しました"
       }
     },
     "policies": {
       "list": {
+        "expires": "有効期限",
         "columns": {
           "name": "名前",
           "status": "状態",
@@ -586,7 +609,7 @@
         "resource": "リソース",
         "resource-and-access": "Zero Trust - リソースアクセス",
         "endpoint-agent": "Sophos Endpoint エージェントを <i18n slot=\"policy-download\">ダウンロード</i18n>ページからダウンロードします。<i18n slot=\"policy-learn-more\">詳細情報</i18n>",
-        "no-policy-configured": "ポリシーはありません。",
+        "no-policy-configured": "ポリシーが追加されていません。",
         "no-policy-configured-help": "「ポリシーの追加」ボタンをクリックしてポリシーを追加し、リソースへのアクセスの許可を開始します。"
       },
       "delete": {
@@ -654,7 +677,7 @@
       "fqdn.format.invalid": "FQDN は有効な形式である必要があります",
       "fqdn_ip.format.invalid": "内部 FQDN/IPv4 アドレスは有効な形式である必要があります",
       "field.value.invalid": "無効な入力値 {{0}} が、{{1}} フィールドに指定されました",
-      "request.json.malformed": "不正な JSON のリクエストを受信しました",
+      "request.json.malformed": "リクエストで不正な JSON を受信しました",
       "http.request.header.missing": "必要な HTTP ヘッダ {{0}} がリクエストにありません",
       "request.data.format.invalid": "リクエストで無効なデータ形式を受信しました",
       "request.data.uri.invalid": "リクエストで無効な URI を受信しました",
@@ -737,7 +760,7 @@
       "gateway.instanceIpAddress.duplicate": "ゲートウェイに重複するインスタンス IP {{0}} が指定されています",
       "gateway.ip.notInSubnet": "ゲートウェイのインスタンス IP {{0}} は、ゲートウェイのサブネット範囲にありません",
       "gateway.remote.config.notEnabled": "選択したインスタンスに対して、リモートデバッグが有効になっていません",
-      "gateway.presignedURL.generation.error":"署名済み URL の生成中、エラーが発生しました。イメージの状態: {{0}} (指定されたゲートウェイ)",
+      "gateway.presignedURL.generation.error": "署名済み URL の生成中、エラーが発生しました。イメージの状態: {{0}} (指定されたゲートウェイ)",
       "gateway.presignedURL.malformed": "イメージ URL が不正です",
       "gateway.cluster.notEnabled": "ゲートウェイクラスタリングが有効になっていませんが、複数のインスタンスが見つかりました",
       "gateway.cluster.change.notAllowed": "ゲートウェイクラスタを無効にすることはできません",
@@ -746,7 +769,7 @@
       "policy.isEnforced.notNull": "ポリシーオブジェクトの isEnforced フィールドは Null にできません",
       "policy.valid-until.not.allowed": "ポリシーが適用されていない場合、validUntil は設定できません",
       "policy.access-rules.invalid": "accessRules オブジェクトに指定された値が無効です",
-      "policy.application.association":"ポリシーは、次のアプリケーションに関連付けられています: {{0}}",
+      "policy.application.association": "ポリシーは、次のアプリケーションに関連付けられています: {{0}}",
       "policy-type.notNull": "ポリシーの種類を指定する必要があります",
       "policy.access-rules.not.allowed.with.agentless": "エージェントレスポリシーで、アクセスのルールは許可されていません",
       "policy.rule-value.invalid": "ポリシールールの値に無効な値が指定されています",
@@ -898,7 +921,7 @@
       "yAxis": "Y軸",
       "groupBy": "グループ化",
       "deleteExport": "エクスポートの削除",
-      "firewalls": "インスタンス",
+      "firewalls": "ゲートウェイ",
       "tooManyDevices": "デバイス数の上限に達しました。この操作は実行できません",
       "deviceNotFound": "デバイスが見つかりません",
       "groupNotFound": "グループが空か、見つかりません"
@@ -1082,10 +1105,10 @@
         "deselectAll": "すべて選択解除",
         "single": {
           "noItemSelected": "ゲートウェイの選択",
-          "selectedItemMessage": "{{count}} 個のゲートウェイが選択されました"
+          "selectedItemMessage": "{{count}} 件のインスタンスが選択されています"
         },
         "checkbox": {
-          "selectedItemMessage": "{{count}} 個のゲートウェイが選択されました",
+          "selectedItemMessage": "{{count}} 件のインスタンスが選択されています",
           "noItemSelected": "ゲートウェイの選択"
         },
         "search": "検索",
@@ -1181,8 +1204,9 @@
           "threats-ips": "IPS 脅威",
           "threats-sandstorm": "Sandstorm 脅威",
           "threats-antivirus": "ウイルス対策脅威",
-          "authentication": "認証",
-          "resource-access": "リソースアクセス",
+          "authentication": "認証済みユーザー",
+          "resource-access": "リソースの帯域幅",
+          "denied-resource-access": "拒否されたリソースアクセス",
           "blank": ""
         }
       },
@@ -1531,7 +1555,16 @@
       "browser_version": "ブラウザのバージョン",
       "authentication-success-count": "認証の成功数",
       "resource_access": "リソースアクセス",
-      "authentication_events": "認証"
+      "authentication_events": "認証",
+      "gateway_name": "ゲートウェイ",
+      "instance_name": "インスタンス",
+      "denied_resource_access": "拒否されたリソースアクセス",
+      "deny_reason": "拒否された理由",
+      "agent_version": "エージェント",
+      "sync_sec_status": "セキュリティ状態",
+      "application_type": "アプリの種類",
+      "policy": "ポリシー",
+      "deny_reason_count": "拒否された理由の数"
     },
     "template": {
       "messages": {
