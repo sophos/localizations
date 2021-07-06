@@ -12,8 +12,8 @@
       "approve": "承認",
       "confirm": "確認",
       "update": "更新",
-      "from": "開始日",
-      "to": "終了日",
+      "start-date": "開始日",
+      "end-date": "終了日",
       "confirmDeleteHeader": "削除の確認",
       "error": "エラー",
       "success": "成功",
@@ -21,13 +21,19 @@
       "accessPoints": "アクセスポイント",
       "ssids": "SSID",
       "settings": "設定",
+      "sites": "サイト",
       "statistic": "統計",
       "devices": "デバイス",
       "reset": "リセット",
       "select-all": "すべて選択",
       "deselect-all": "すべて選択解除",
       "channel": "チャネル",
-      "access-point": "アクセスポイント"
+      "access-point": "アクセスポイント",
+      "show": "表示",
+      "hide": "非表示",
+      "details": "詳細",
+      "no-data": "データはありません",
+      "beta": "ベータ版"
     },
     "global": {
       "onBoard": {
@@ -49,18 +55,39 @@
       }
     },
     "dashboard": {
-      "title": "製品ダッシュボード"
+      "breadcrumb-title": "製品ダッシュボード",
+      "page-title": "ワイヤレス - ダッシュボード",
+      "breadcrumb-text": "ワイヤレスダッシュボード"
     },
     "diagnostics": {
       "events": "イベント",
       "packet-capture-tab": "パケットキャプチャ",
       "audit-logs": "監査ログ",
+      "server-ip": "サーバー IP",
+      "serial-no": "シリアル番号",
+      "action": "アクション",
+      "status": "状態",
+      "name": "アクセスポイント名",
+      "ip_address": "IP アドレス",
+      "start-title": "開始",
+      "stop-title": "停止",
       "packet-capture": {
-        "status": "状態",
-        "name": "アクセスポイント名",
-        "serial-no": "シリアル番号"
+        "client-mac": "クライアント Mac",
+        "duration": "期間",
+        "mac-optional": "MAC アドレス",
+        "start-message": "PACKET CAPTURE コマンドを開始しました。",
+        "start-fail-message": "PACKET CAPTURE コマンドを開始できませんでした。",
+        "stop-message": "PACKET CAPTURE コマンドが停止しました。",
+        "stop-fail-message": "PACKET CAPTURE コマンドを停止できませんでした。"
       },
-      "syslog": "Syslog",
+      "syslog": {
+        "title": "Syslog",
+        "server-port": "サーバーポート",
+        "start-message": "SYSLOG コマンドを開始しました。",
+        "start-fail-message": "SYSLOG コマンドを開始できませんでした。",
+        "stop-message": "SYSLOG コマンドが停止しました。",
+        "stop-fail-message": "SYSLOG コマンドを停止できませんでした。"
+      },
       "list": {
         "breadcrumb-text": "診断",
         "title": "ワイヤレス - 診断"
@@ -80,8 +107,74 @@
       "access-point-severity": "危険度",
       "event-name": "イベント",
       "search-by-accesspoint": "アクセスポイント名で検索",
+      "search-by-name-or-serial-number": "名前やシリアル番号で検索",
       "export": "エクスポート",
       "low-severity": "情報レベル"
+    },
+    "settings": {
+      "setting-configuration-save-success-msg": "設定内容を保存しました。",
+      "setting-configuration-save-error-msg": "設定を保存できませんでした",
+      "sections": {
+        "login-title": "基本設定",
+        "analysis-title": "解析",
+        "access-point-detection-title": "不正アクセスポイントの検出",
+        "advancedRF-title": "AdvancedRF の管理",
+        "discovery-protocol-title": "ディスカバリプロトコル"
+      },
+      "advanced-rf-management": {
+        "roaming-assist": "ローミングアシスト",
+        "advanced-notification": "AdvanceｄRF の通知",
+        "co-channel": "CoChannel イベントの通知"
+      },
+      "discovery-protocol": {
+        "lldp-label": "LLDP (Link Layer Discovery Protocol)",
+        "network-message": "有効にすると、LLDP (Link Layer Discovery Protocol) で近くにある他のデバイスが検出しやすくなります。"
+      },
+      "analysis-settings": {
+        "report-traffic-usage": "使用状況",
+        "analysis-message": "トラフィックをカテゴリ化するオプションを有効にすると、ユーザーが生成するトラフィックがカテゴリ別に分類され、「使用状況」に表示されます。このオプションはデフォルトで無効になっています",
+        "statistics-report": "アクセスポイントの使用状況",
+        "device-discovery-label": "デバイスの分類と表示",
+        "device-discovery-message": "デバイスタイプ、プロファイル、カテゴリにカテゴリ化することで、ワイヤレスデバイスの可視性を強化します。この機能は、APX シリーズのアクセスポイントのみで使用できます。"
+      },
+      "rogue-ap-detection-settings": {
+        "rogue-ap-detection": "不正アクセスポイントを検出・レポートする",
+        "display-info-prefix": "不正アクセスポイントの一覧は次に表示されます: "
+      },
+      "diagnostics-setting": {
+        "forward-ap-logs": "アクセスポイントのログを転送する",
+        "forward-ap-message": "アクセスポイントメッセージを転送する",
+        "remote-login-title": "ソフォスのサポートにアクセスポイントへのリモートログインを許可する",
+        "expiration-message": "有効にすると、ソフォスのテクニカルサポートに一時的なリモートアクセスが許可されます。画面に残り時間が表示されます。すぐにリモートアクセスを無効にするには、設定を無効にしてください"
+      },
+      "list": {
+        "breadcrumb-text": "グローバル設定",
+        "title": "ワイヤレス - グローバル設定"
+      },
+      "config": {
+        "customer-unique-id-title": "一意のソフォス顧客 ID",
+        "firmware-update": {
+          "title": "ファームウェア更新",
+          "current-version": "現在のバージョン",
+          "release-date": "リリース日",
+          "installed-at": "インストール日",
+          "update-now": "更新バージョン: {{ version }}",
+          "schedule-firmware-update": "ファームウェア更新のスケジュール設定",
+          "frequency": "頻度",
+          "DAILY": "毎日",
+          "MONTHLY": "毎月",
+          "WEEKLY": "毎週",
+          "week": "1週間",
+          "weekday": "曜日",
+          "time": "時間 (UTC)"
+        }
+      }
+    },
+    "sites": {
+      "list": {
+        "breadcrumb-text": "サイト",
+        "title": "ワイヤレス - サイト"
+      }
     },
     "networks": {
       "fetch-error": "SSID リストの読み込み中、エラーが発生しました",
@@ -221,7 +314,7 @@
         "ssid-uem-enabled-info": "**Sophos Mobile はデフォルトで有効になっています。",
         "ednpoint-protection-label": "Sophos Central Endpoint Protection",
         "endpoint-protection": "Windows、macOS、または Linux を実行しているデバイスのエンドポイント保護に対して、セキュリティハートビートを有効にします。",
-        "endpoint-protection.enabled.info": "このオプションは、XG Firewall で Synchronized Security を使用していない場合のみに選択してください。",
+        "endpoint-protection-enabled-info": "このオプションは、XG Firewall で Synchronized Security を使用していない場合のみに選択してください。",
         "restrict-ssid": "この SSID を、この Sophos Central アカウントで管理されるデバイスに制限します。このオプションは、UEM とエンドポイントの両方を実行しているデバイスが、この Sophos Central アカウントで管理されている場合に使用できます。",
         "landing-page-title": "ランディングページ",
         "restric-ssid-checkbox-label": "SSID を管理対象デバイスに制限する",

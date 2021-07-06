@@ -18,7 +18,9 @@
       "name-length-validation": "El nombre no debe tener más de 100 caracteres",
       "whitespace-name-validation": "Nombre es obligatorio",
       "description-length-validation": "La descripción no debe tener más de 300 caracteres",
-      "required": "* Necesario"
+      "required": "* Necesario",
+      "yes": "Sí",
+      "no": "No"
     },
     "application": {
       "form": {
@@ -26,6 +28,7 @@
         "name-placeholder": "Nombre del recurso",
         "description": "Descripción (250 caracteres como máximo)",
         "description-placeholder": "Descripción",
+        "show-resource": "Mostrar el recurso en el portal del usuario",
         "port-validation": "Puerto no válido",
         "application-type": "Tipo de recurso",
         "application-type-placeholder": "Seleccionar",
@@ -74,6 +77,7 @@
           "internal-fqdn": "FQDN/IP interno/a",
           "external-fqdn": "FQDN externo"
         },
+        "no-application-found": "No se han encontrado recursos.",
         "no-application-configured": "No ha añadido ningún recurso.",
         "no-application-configured-help": "Haga clic en el botón 'Añadir recurso' para añadir un recurso.",
         "error": "Error al recuperar la lista de recursos.",
@@ -96,7 +100,9 @@
             "domain": "Dominio:",
             "agent": "Agente",
             "agentless": "Sin agente",
-            "display-in-user-portal": "Mostrar en el portal del usuario:",
+            "display-in-user-portal": {
+              "label": "Mostrar en el portal del usuario:"
+            },
             "access-ports": {
               "label": "Puertos de acceso",
               "columns": {
@@ -134,7 +140,8 @@
     },
     "dashboard": {
       "title": "Zero Trust Network Access - Panel de control",
-      "breadcrumb-text": "Panel de control de Zero Trust Network Access"
+      "breadcrumb-text": "Panel de control de Zero Trust Network Access",
+      "nodata": "No hay datos disponibles"
     },
     "report": {
       "title": "Zero Trust Network Access - Informes",
@@ -151,6 +158,7 @@
     },
     "gateway": {
       "list": {
+        "no-gateway-found": "Ninguna puerta de enlace encontrada",
         "no-gateway-configured": "No ha añadido ninguna puerta de enlace.",
         "no-gateway-configured-help": "Haga clic en el botón 'Añadir puerta de enlace' para añadir una puerta de enlace.",
         "download-gateway-VM": "Descargar equipo virtual de puerta de enlace",
@@ -187,7 +195,13 @@
                 "name": "Nombre",
                 "status": "Estado",
                 "version": "Versión",
-                "support": "Soporte de Sophos"
+                "support": "Soporte de Sophos",
+                "support-status": "Estado del soporte de Sophos"
+              },
+              "support-status": {
+                "connected": "Conectado",
+                "disconnected": "Desconectado",
+                "disabled": "Desactivado"
               }
             },
             "note": "Para el equilibrio de carga, debe tener un número impar de instancias.",
@@ -214,7 +228,7 @@
             "certificate": "Certificado",
             "upload-certificate": "Cargar certificado",
             "certificate-validation": "Certificado no válido",
-            "certificate-wildcard-message-example": "Utilice un certificado comodín. Por ejemplo, *.prueba.com",
+            "certificate-wildcard-message-example": "Utilice un certificado comodín, por ejemplo: *.prueba.com",
             "privatekey": "Clave privada",
             "upload-privatekey": "Cargar clave privada",
             "private-key-validation": "Clave privada no válida",
@@ -243,6 +257,7 @@
         "title-edit": "Editar puerta de enlace",
         "title-delete": "Eliminar puerta de enlace",
         "software-update": "Actualización de software",
+        "try-again": "Volver a intentar",
         "edit-software-update": "Editar programación de actualización de software",
         "try-software-update-again": "Volver a intentar",
         "name": "Nombre",
@@ -447,10 +462,12 @@
         },
         "vm-name": "Nombre de VM",
         "vm-placeholder": "Nombre de VM",
+        "vm-duplicate-error": "Nombre duplicado",
         "external-ip-placeholder": "IP externa",
         "internal-ip-placeholder": "IP interna",
         "external-interface-ip": "IP de la interfaz externa",
         "internal-interface-ip": "IP de la interfaz interna",
+        "interface-ip-duplicate-error": "IP duplicada",
         "interface-ip": "Interfaz IP",
         "warning-box": "El número total de instancias debe ser un número impar. Tiene {{instanceCount}}",
         "form": {
@@ -478,7 +495,9 @@
           "disable-success": "Soporte de Sophos desactivado",
           "disable-error": "Error al desactivar el soporte de Sophos",
           "copy": "Copiar",
-          "fetch-error": "No se pueden obtener los detalles de la depuración remota"
+          "fetch-error": "No se pueden obtener los detalles de la depuración remota",
+          "unreachable": "La puerta de enlace no ha podido contactar con el servidor.",
+          "try-again": "Inténtelo de nuevo dentro de un rato."
         }
       },
       "schedule": {
@@ -493,6 +512,7 @@
         "cancel-schedule": "Cancelar programación",
         "cancelling-update": "Cancelando actualización",
         "update-failed": "Falló la actualización ",
+        "try-again": "Intente actualizar de nuevo",
         "updating": " Actualizando",
         "edit-schedule": " Editar horario",
         "cancel-first": "No se puede hacer ningún cambio sin cancelar primero la programación establecida.",
@@ -511,6 +531,7 @@
         "configure-idp": "Configurar proveedor de identidad",
         "no-idp-configured": "No ha añadido ningún proveedor de identidad.",
         "no-idp-configured-help": "Haga clic en el botón 'Añadir proveedor de identidad' para añadir un proveedor de identidad.",
+        "no-gateway-assigned-idp-configured": "No ha asignado ninguna puerta de enlace.",
         "columns": {
           "name": "Nombre",
           "provider": "Proveedor",
@@ -559,12 +580,14 @@
       "delete": {
         "header": "Eliminar proveedor de identidad",
         "message": "Eliminar proveedor de identidad",
+        "message-linked": "Las siguientes puertas de enlace deben moverse a otro proveedor de identidad antes de poder eliminarlas",
         "success": "Se ha eliminado el proveedor de identidad",
         "error": "Error al eliminar el proveedor de identidad"
       }
     },
     "policies": {
       "list": {
+        "expires": "Vence",
         "columns": {
           "name": "Nombre",
           "status": "Estado",
@@ -586,8 +609,8 @@
         "resource": "recurso",
         "resource-and-access": "Zero Trust - Acceso a recursos",
         "endpoint-agent": "Descargue Sophos Endpoint Agent desde la página <i18n slot=\"policy-download\">Descargas</i18n>. <i18n slot=\"policy-learn-more\">Más información</i18n>",
-        "no-policy-configured": "No tiene ninguna política.",
-        "no-policy-configured-help": "Haga clic en el botón Añadir política para añadir una política y empezar a dar acceso a sus recursos."
+        "no-policy-configured": "No ha añadido ninguna política.",
+        "no-policy-configured-help": "Haga clic en el botón 'Añadir política' para añadir una política y empezar a dar acceso a sus recursos."
       },
       "delete": {
         "header": "Eliminar política",
@@ -654,7 +677,7 @@
       "fqdn.format.invalid": "El FQDN debe tener un formato válido",
       "fqdn_ip.format.invalid": "El FQDN/dirección IP interno/a debe tener un formato válido",
       "field.value.invalid": "Se ha proporcionado un valor de entrada {{0}} no válido para el campo {{1}}",
-      "request.json.malformed": "Se ha recibido una solicitud JSON con formato incorrecto",
+      "request.json.malformed": "Solicitud JSON de formato incorrecto recibida en la solicitud",
       "http.request.header.missing": "Falta el encabezado HTTP {{0}} requerido en la solicitud",
       "request.data.format.invalid": "Se ha recibido un formato de datos no válido en la solicitud",
       "request.data.uri.invalid": "Se ha recibido un URI no válido en la solicitud",
@@ -737,7 +760,7 @@
       "gateway.instanceIpAddress.duplicate": "Se ha especificado una IP de instancia {{0}} duplicada para la puerta de enlace",
       "gateway.ip.notInSubnet": "La IP de instancia {{0}} de la puerta de enlace no se encuentra dentro del rango de subred de la puerta de enlace",
       "gateway.remote.config.notEnabled": "La depuración remota no está habilitada para la instancia seleccionada",
-      "gateway.presignedURL.generation.error":"Error al generar la URL prefirmada. El estado de la imagen es: {{0}} para la puerta de enlace dada",
+      "gateway.presignedURL.generation.error": "Error al generar la URL prefirmada. El estado de la imagen es: {{0}} para la puerta de enlace dada",
       "gateway.presignedURL.malformed": "La URL de la imagen tiene un formato incorrecto",
       "gateway.cluster.notEnabled": "El uso de clústeres de puerta de enlace no está activado pero se ha encontrado más de una instancia",
       "gateway.cluster.change.notAllowed": "No puede desactivarse el clúster de puerta de enlace",
@@ -746,7 +769,7 @@
       "policy.isEnforced.notNull": "El campo isEnforced del objeto de política no puede ser nulo",
       "policy.valid-until.not.allowed": "validUntil no puede establecerse si la política no se aplica",
       "policy.access-rules.invalid": "El valor facilitado para el objeto accessRules no es válido",
-      "policy.application.association":"La política está asociada a estas aplicaciones: {{0}}",
+      "policy.application.association": "La política está asociada a estas aplicaciones: {{0}}",
       "policy-type.notNull": "Se debe establecer el tipo de política",
       "policy.access-rules.not.allowed.with.agentless": "Las reglas de acceso no están permitidas con una política sin agente",
       "policy.rule-value.invalid": "Se ha proporcionado un valor no válido para el valor de la regla de política",
@@ -898,7 +921,7 @@
       "yAxis": "Eje Y",
       "groupBy": "agrupar por",
       "deleteExport": "Eliminar exportación",
-      "firewalls": "Instancias",
+      "firewalls": "Puertas de enlace",
       "tooManyDevices": "Límite de dispositivos alcanzado. No puede realizar esta operación",
       "deviceNotFound": "Dispositivo no encontrado",
       "groupNotFound": "El grupo está vacío o bien el grupo no se encuentra"
@@ -1082,10 +1105,10 @@
         "deselectAll": "Desmarcar todo",
         "single": {
           "noItemSelected": "Seleccionar una puerta de enlace",
-          "selectedItemMessage": "{{count}} puerta de enlace seleccionada"
+          "selectedItemMessage": "{{count}} instancia seleccionada"
         },
         "checkbox": {
-          "selectedItemMessage": "{{count}} puertas de enlace seleccionadas",
+          "selectedItemMessage": "{{count}} instancias seleccionadas",
           "noItemSelected": "Seleccionar puertas de enlace"
         },
         "search": "Buscar",
@@ -1181,8 +1204,9 @@
           "threats-ips": "Amenazas IPS",
           "threats-sandstorm": "Amenazas de Sandstorm",
           "threats-antivirus": "Amenazas antivirus",
-          "authentication": "Autenticación",
-          "resource-access": "Acceso a recursos",
+          "authentication": "Usuarios autenticados",
+          "resource-access": "Ancho de banda de los recursos",
+          "denied-resource-access": "Acceso a los recursos denegado",
           "blank": ""
         }
       },
@@ -1531,7 +1555,16 @@
       "browser_version": "Versión del navegador",
       "authentication-success-count": "Recuento de autenticaciones correctas",
       "resource_access": "Acceso a recursos",
-      "authentication_events": "Autenticación"
+      "authentication_events": "Autenticación",
+      "gateway_name": "Puerta de enlace",
+      "instance_name": "Instancia",
+      "denied_resource_access": "Acceso a los recursos denegado",
+      "deny_reason": "Motivo de denegación",
+      "agent_version": "Agente",
+      "sync_sec_status": "Estado de seguridad",
+      "application_type": "Tipo de app",
+      "policy": "Política",
+      "deny_reason_count": "Recuento de motivos de denegación"
     },
     "template": {
       "messages": {

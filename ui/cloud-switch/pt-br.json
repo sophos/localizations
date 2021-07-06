@@ -10,7 +10,7 @@
       "inuse": "Em uso",
       "total": "Total",
       "details": "Detalhes",
-      "template": "Modelo",
+      "template": "Site",
       "firmware": "Firmware",
       "minutes-ago": "minutos atrás",
       "hours-ago": "horas atrás",
@@ -22,7 +22,8 @@
         "save": "Salvar",
         "bugs": "Erros",
         "apply": "Aplicar",
-        "confirm": "Confirmar"
+        "confirm": "Confirmar",
+        "delete": "Deletar"
       },
       "status": {
         "registering": "Aguardando conexão",
@@ -37,14 +38,22 @@
         "name": "Nome",
         "description": "Descrição"
       },
+      "tab-title": {
+        "system-detail-title": "Detalhes do sistema",
+        "port-settings-title": "Configurações de porta",
+        "vlans-title": "VLANs",
+        "network-settings-title": "Configurações de rede",
+        "task-queue-title": "Fila de tarefas"
+      },
       "error": "Erro",
       "success": "Bem-sucedido",
       "warn": "Aviso",
       "info": "Info",
       "used": "Usado",
-      "waitingForData": "Aguardando dados...",
-      "problemLoadingData": "Problema no carregamento de dados",
-      "areYouSure": "Tem certeza de que deseja continuar?"
+      "waiting-for-data": "Aguardando dados...",
+      "problem-loading-data": "Problema no carregamento de dados",
+      "no-data": "Nenhum dado disponível",
+      "are-you-sure": "Tem certeza de que deseja continuar?"
     },
     "dashboard": {
       "menu-title": "Painel",
@@ -77,9 +86,9 @@
         },
         "button": {
           "auto-refresh": "Autoatualizar",
-          "add-template": "Adicionar modelo",
+          "add-template": "Adicionar site",
           "switch-delete-confirm": "Deletar switch",
-          "template-delete-confirm": "Deletar modelo"
+          "template-delete-confirm": "Deletar site"
         },
         "table-headers": {
           "name": "Nome",
@@ -95,12 +104,12 @@
           "tags": "Tags",
           "model": "Modelo",
           "serial-number": "Número de série",
-          "template-overridden": "Modelo substituído?"
+          "template-overridden": "Site substituído?"
         },
         "upgrade": {
           "update-available": "Há novas atualizações de firmware disponíveis.",
           "upgrade-message": "Esses upgrades podem ser agendados ou aplicados imediatamente.",
-          "schedule-upgrade": "Agendar upgrade",
+          "schedule-upgrade": "Gerenciar ou agendar upgrade",
           "schedule": "Cronograma",
           "manage-schedule-dialog-title": "Gerenciar upgrades de firmware",
           "upgrade-schedule-dialog-title": "Agendar upgrades de firmware",
@@ -108,11 +117,12 @@
           "schedule-info-message": "Escolha quando atualizar os switches selecionados",
           "update-now": "Atualizar agora",
           "custom": "Personalizado",
-          "scheduled-success-message": "A atualização de firmware foi agendada",
-          "update-cancel-message": "A atualização de firmware foi cancelada",
+          "scheduled-success-message": "O upgrade de firmware foi agendado",
+          "scheduled-success-failure": "O upgrade de firmware falhou",
+          "update-cancel-message": "O upgrade de firmware foi cancelado",
           "cancel-upgrade": "Cancelar upgrade",
           "table": {
-            "name": "Nome",
+            "serial-number": "Número de série",
             "version": "Versão",
             "update-to": "Atualizar para",
             "currently-scheduled-upgrades": "Upgrades agendados no momento",
@@ -122,51 +132,45 @@
           }
         },
         "add-template": {
-          "dialog-title": "Adicionar um modelo",
+          "dialog-title": "Adicionar um site",
           "name-max-length": "O nome deve ter um máximo de 30 caracteres.",
           "description": "Descrição",
-          "input-name-required-message": "É necessário um nome de modelo",
+          "input-name-required-message": "É necessário um nome de site",
           "template-description": "A descrição deve ter um máximo de 128 caracteres.",
           "available-switches": "Switches disponíveis",
           "assigned-switches": "Switches atribuídos",
-          "sync-switches-checkbox-text": "Sincronizar os switches com a configuração de modelo inicial"
+          "sync-switches-checkbox-text": "Sincronizar os switches com a configuração do site inicial"
         },
         "delete-template": {
-          "dialog-title": "Deletar modelo",
-          "delete-template-confirm-text": "Deletar modelo <strong>{{templateName}}</strong>."
+          "dialog-title": "Deletar site",
+          "delete-template-confirm-text": "Deletar site <strong>{{templateName}}</strong>."
         },
-        "edit-template" : {
-          "dialog-title": "Editar Modelo"
+        "edit-template": {
+          "dialog-title": "Editar site"
         },
         "message": {
           "remove-success": "O switch {{switchSerial}} foi removido do Sophos Central.",
           "remove-failed": "Não foi possível remover o switch do Sophos Central.",
           "retry-success": "O registro do switch {{switchSerial}} foi disparado novamente.",
           "retry-failed": "Não foi possível disparar registro.",
-          "add-template-success": "O modelo foi adicionado",
-          "add-template-error": "O modelo não foi adicionado",
-          "delete-template-success": "O modelo foi deletado",
-          "delete-template-error": "O modelo não pode ser deletado",
-          "update-template-success": "O modelo foi atualizado",
-          "update-template-error": "O modelo não pode ser atualizado"
+          "add-template-success": "O site foi adicionado",
+          "add-template-error": "O site não foi adicionado",
+          "delete-template-success": "O site foi deletado",
+          "delete-template-error": "O site não pode ser deletado",
+          "update-template-success": "O site foi atualizado",
+          "update-template-error": "O site não pode ser atualizado"
         },
         "groupInfoText": {
-          "what": "O que é um modelo?",
-          "information": "Um modelo de switch é uma configuração virtual que pode ser aplicada a um ou mais switches. É possível mover um switch para dentro de um modelo ou para fora dele, conforme necessário. Contanto que o switch esteja sob um modelo, as configurações feitas no nível do modelo serão sincronizadas automaticamente com os switches.",
-          "note": "Se houver configurações conflitantes entre o nível do switch e o nível do modelo, as configurações no nível do switch terão precedência."
+          "what": "O que é um site?",
+          "information": "Um site de switch é uma configuração virtual que pode ser aplicada a um ou mais switches. É possível mover um switch para dentro de um site ou para fora dele, conforme necessário. Contanto que o switch esteja sob um site, as configurações feitas no nível do site serão sincronizadas automaticamente com os switches.",
+          "note": "Se houver configurações conflitantes entre o nível do switch e o nível do site, as configurações no nível do switch terão precedência."
         }
       },
       "manage": {
         "page-title": "Switches - Gerenciamento de switch",
         "breadcrumb-text": "Gerenciar switch",
-        "summary-legend-title": "Resumo",
-        "system-detail-tab-title": "Detalhes do sistema",
-        "port-settings-tab-title": "Configurações de porta",
-        "network-settings-tab-title": "Configurações de rede",
-        "task-queue-tab-title": "Fila de tarefas",
-        "template-dd-default-title": "Selecionar um modelo",
-        "gbps": "{{unit}} Gbps",
-        "mbps": "{{unit}} Mbps",
+        "template-dd-default-title": "Selecione um site.",
+        "upgrade-checkbox-label": "Upgrade automático dos agentes do Central",
         "button": {
           "reboot": "Reinicializar",
           "open-local-mgmt-console": "Abrir painel de gerenciamento local",
@@ -203,7 +207,7 @@
         },
         "body": {
           "line-1": "Certifique-se de que os switches estejam ativados durante o registro. O processo de registro sem toque ficará ativo por apenas 5 minutos.",
-          "line-2": "Os switches registrados serão movidos para um modelo padrão, inicialmente.",
+          "line-2": "Os switches registrados serão movidos para um site padrão, inicialmente.",
           "line-3": "Os switches serão atualizados automaticamente com a versão mais recente do software disponível, logo após o registro. Isso pode exigir a reinicialização do dispositivo."
         }
       },
@@ -211,10 +215,60 @@
         "already-reported": "Os switches com números de série {{ switches }} já estão registrados no Sophos Central.",
         "registration-error": "Não foi possível registrar os switches.",
         "switches-registered": "Os switches estão sendo registrados no Sophos Central.",
-        "switches-multiple-registration-with-exception": "Os números de série {{ switches }} são inválidos; estamos registrando os seus outros switches no Sophos Central.",
-        "switches-single-serial-registration-with-exception": "O número de série {{ switches }} é inválido",
+        "switch-registration-state-invalid": "Os números de série {{ switches }} são inválidos",
+        "switch-registration-exception": "Estamos registrando os seus outros switches no Sophos Central.",
         "invalid-serial": "Um ou mais números de série são inválidos.",
         "empty-switch-list-error": "Não há nenhum número de série válido."
+      }
+    },
+    "template": {
+      "page-title": "Switches - Gerenciamento de site",
+      "breadcrumb-text": "Site"
+    },
+    "switch-view": {
+      "summary-legend-title": "Resumo",
+      "gbps": "{{unit}} Gbps",
+      "mbps": "{{unit}} Mbps"
+    },
+    "vlan": {
+      "search-placeholder-text": "Pesquisar por ID ou nome",
+      "color-dd-default-title": "Selecionar uma cor",
+      "untagged-dd-default-title": "Selecionar uma porta",
+      "ports-dd-default-title": "Selecionar portas",
+      "add-vlan-dialog-title": "Adicionar VLAN",
+      "edit-vlan-dialog-title": "Editar VLAN",
+      "button": {
+        "add": "Adicionar VLAN"
+      },
+      "table-headers": {
+        "vlan-id": "ID de VLAN",
+        "name": "Nome de VLAN",
+        "tagged-ports": "Portas com tag",
+        "untagged-ports": "Portas sem tag",
+        "forbidden-ports": "Portas proibidas"
+      },
+      "form": {
+        "vlan-id": "ID de VLAN",
+        "vlan-type": "Tipo de VLAN",
+        "tagged-ports": "Portas com tag",
+        "untagged-port": "Portas sem tag",
+        "forbidden-ports": "Portas proibidas",
+        "vlan-type-standard": "Padrão",
+        "vlan-type-voice": "Voz",
+        "vlan-id-required-message": "É necessária uma ID de VLAN.",
+        "vlan-id-invalid-message": "A ID de VLAN é inválida.",
+        "vlan-name-required-message": "É necessário um nome.",
+        "vlan-name-invalid-message": "O nome é inválido."
+      },
+      "message": {
+        "create-error": "Não foi possível criar VLAN",
+        "create-success": "A VLAN foi criada",
+        "update-error": "Não foi possível atualizar a VLAN",
+        "update-success": "A VLAN foi atualizada",
+        "delete-error": "Não foi possível deletar uma ou mais VLANs",
+        "delete-success": "As VLANs foram deletadas",
+        "delete-confirm-title": "Deletar VLANs",
+        "delete-info-message": "Deletar VLANs <strong>{{vlans}}</strong>"
       }
     }
   }

@@ -18,7 +18,9 @@
       "name-length-validation": "O nome não pode ter mais do que 100 caracteres",
       "whitespace-name-validation": "É necessário um nome",
       "description-length-validation": "A descrição não pode ter mais do que 300 caracteres",
-      "required": "* Obrigatório"
+      "required": "* Obrigatório",
+      "yes": "Sim",
+      "no": "Não"
     },
     "application": {
       "form": {
@@ -26,6 +28,7 @@
         "name-placeholder": "Nome do recurso",
         "description": "Descrição (máx. de 250 caracteres)",
         "description-placeholder": "Descrição",
+        "show-resource": "Exibir recurso no portal do usuário",
         "port-validation": "Porta inválida",
         "application-type": "Tipo de recurso",
         "application-type-placeholder": "Selecionar",
@@ -74,6 +77,7 @@
           "internal-fqdn": "FQDN/IP interno",
           "external-fqdn": "FQDN externo"
         },
+        "no-application-found": "Nenhum recurso encontrado!",
         "no-application-configured": "Você ainda não adicionou nenhum recurso.",
         "no-application-configured-help": "Clique no botão 'Adicionar recurso' para adicionar um recurso.",
         "error": "Erro ao buscar a lista de Recursos.",
@@ -96,7 +100,9 @@
             "domain": "Domínio:",
             "agent": "Agente",
             "agentless": "Sem agente",
-            "display-in-user-portal": "Exibir no portal do usuário:",
+            "display-in-user-portal": {
+              "label": "Exibir no portal do usuário:"
+            },
             "access-ports": {
               "label": "Portas de acesso",
               "columns": {
@@ -134,7 +140,8 @@
     },
     "dashboard": {
       "title": "Zero Trust Network Access - Painel",
-      "breadcrumb-text": "Painel do Zero Trust Network Access"
+      "breadcrumb-text": "Painel do Zero Trust Network Access",
+      "nodata": "Nenhum dado disponível"
     },
     "report": {
       "title": "Zero Trust Network Access - Relatórios",
@@ -151,6 +158,7 @@
     },
     "gateway": {
       "list": {
+        "no-gateway-found": "Não foi encontrado nenhum Gateway",
         "no-gateway-configured": "Você ainda não adicionou nenhum gateway.",
         "no-gateway-configured-help": "Clique no botão 'Adicionar Gateway' para adicionar um gateway.",
         "download-gateway-VM": "Baixar VM do gateway",
@@ -187,7 +195,13 @@
                 "name": "Nome",
                 "status": "Status",
                 "version": "Versão",
-                "support": "Suporte da Sophos"
+                "support": "Suporte da Sophos",
+                "support-status": "Status de suporte da Sophos"
+              },
+              "support-status": {
+                "connected": "Conectado",
+                "disconnected": "Desconectado",
+                "disabled": "Desabilitado"
               }
             },
             "note": "Para balanceamento de carga, você deve ter um número ímpar de instâncias.",
@@ -214,7 +228,7 @@
             "certificate": "Certificado",
             "upload-certificate": "Fazer upload de certificado",
             "certificate-validation": "Certificado inválido",
-            "certificate-wildcard-message-example": "Use um certificado curinga. Por exemplo. *.test.com",
+            "certificate-wildcard-message-example": "Use um certificado curinga, por exemplo. *.test.com",
             "privatekey": "Chave Privada",
             "upload-privatekey": "Carregar chave privada",
             "private-key-validation": "Chave privada inválida",
@@ -243,6 +257,7 @@
         "title-edit": "Editar gateway",
         "title-delete": "Deletar gateway",
         "software-update": "Atualização de software",
+        "try-again": "Tente outra vez",
         "edit-software-update": "Editar cronograma de atualização de software",
         "try-software-update-again": "Tente outra vez",
         "name": "Nome",
@@ -447,10 +462,12 @@
         },
         "vm-name": "Nome da VM",
         "vm-placeholder": "Nome da VM",
+        "vm-duplicate-error": "Nome duplicado",
         "external-ip-placeholder": "IP externo",
         "internal-ip-placeholder": "IP interno",
         "external-interface-ip": "IP da interface externa",
         "internal-interface-ip": "IP da interface interna",
+        "interface-ip-duplicate-error": "IP em duplicata",
         "interface-ip": "IP da Interface",
         "warning-box": "O número total de instâncias deve ser ímpar. Você tem {{instanceCount}}",
         "form": {
@@ -478,7 +495,9 @@
           "disable-success": "Suporte da Sophos desabilitado",
           "disable-error": "Erro ao desabilitar o suporte da Sophos",
           "copy": "Copiar",
-          "fetch-error": "Não foi possível buscar detalhes de depuração remota"
+          "fetch-error": "Não foi possível buscar detalhes de depuração remota",
+          "unreachable": "O gateway não conseguiu acessar o servidor.",
+          "try-again": "Tente novamente mais tarde."
         }
       },
       "schedule": {
@@ -493,6 +512,7 @@
         "cancel-schedule": "Cancelar agendamento",
         "cancelling-update": "Cancelando atualização",
         "update-failed": "Falha na atualização ",
+        "try-again": "Tente atualizar outra vez",
         "updating": " Atualizando",
         "edit-schedule": " Editar Agenda",
         "cancel-first": "Não é possível fazer alterações sem cancelar o cronograma definido primeiro.",
@@ -511,6 +531,7 @@
         "configure-idp": "Configurar provedor de identidade",
         "no-idp-configured": "Você não adicionou nenhum provedor de identidade.",
         "no-idp-configured-help": "Clique no botão 'Adicionar provedor de identidade' para adicionar um provedor de identidade.",
+        "no-gateway-assigned-idp-configured": "Você ainda não atribuiu nenhum gateway.",
         "columns": {
           "name": "Nome",
           "provider": "Provedor",
@@ -559,12 +580,14 @@
       "delete": {
         "header": "Deletar provedor de identidade",
         "message": "Deletar provedor de identidade",
+        "message-linked": "Os seguintes gateways precisam ser movidos para outro provedor de identidade para você poder deletar",
         "success": "Provedor de identidade deletado",
         "error": "Falha ao deletar provedor de identidade"
       }
     },
     "policies": {
       "list": {
+        "expires": "Expira",
         "columns": {
           "name": "Nome",
           "status": "Status",
@@ -586,8 +609,8 @@
         "resource": "recurso",
         "resource-and-access": "Zero Trust - Acesso a recursos",
         "endpoint-agent": "Baixe o agente Sophos Endpoint a partir da página <i18n slot=\"policy-download\">Downloads</i18n>. <i18n slot=\"policy-learn-more\">Saiba mais</i18n>",
-        "no-policy-configured": "Você não tem nenhuma política.",
-        "no-policy-configured-help": "Clique no botão Adicionar Política para adicionar uma política para começar a dar acesso a seus recursos."
+        "no-policy-configured": "Você não adicionou nenhuma política.",
+        "no-policy-configured-help": "Clique no botão 'Adicionar Política' para adicionar uma política para começar a dar acesso a seus recursos."
       },
       "delete": {
         "header": "Deletar política",
@@ -654,7 +677,7 @@
       "fqdn.format.invalid": "FQDN deve estar em um formato válido",
       "fqdn_ip.format.invalid": "Endereço FQDN/IPv4 interno deve estar em um formato válido",
       "field.value.invalid": "Valor de entrada inválido {{0}} fornecido para o campo {{1}}",
-      "request.json.malformed": "JSON de solicitação malformada recebido",
+      "request.json.malformed": "JSON de solicitação malformado recebido na solicitação",
       "http.request.header.missing": "Cabeçalho HTTP necessário {{0}} ausente na solicitação",
       "request.data.format.invalid": "Formato de dados inválido recebido na solicitação",
       "request.data.uri.invalid": "URI inválido recebido na solicitação",
@@ -737,7 +760,7 @@
       "gateway.instanceIpAddress.duplicate": "IP de instância duplicado {{0}} especificado para o gateway",
       "gateway.ip.notInSubnet": "IP de instância de gateway {{0}} não está no intervalo de sub-rede para o gateway",
       "gateway.remote.config.notEnabled": "Depuração remota não habilitada para a instância selecionada",
-      "gateway.presignedURL.generation.error":"Erro ao gerar URL pré-assinada. O status da imagem é: {{0}} para o gateway especificado",
+      "gateway.presignedURL.generation.error": "Erro ao gerar URL pré-assinada. O status da imagem é: {{0}} para o gateway especificado",
       "gateway.presignedURL.malformed": "A URL da imagem está malformada",
       "gateway.cluster.notEnabled": "Clustering de gateway não habilitado, mas foi encontrada mais de uma instância",
       "gateway.cluster.change.notAllowed": "O cluster de gateway não pode ser desabilitado",
@@ -746,7 +769,7 @@
       "policy.isEnforced.notNull": "O campo isEnforced no objeto da política não pode ser nulo",
       "policy.valid-until.not.allowed": "validUntil não pode ser definido se a política não for forçada",
       "policy.access-rules.invalid": "O valor fornecido para o objeto accessRules é inválido",
-      "policy.application.association":"A política está associada a estes aplicativos: {{0}}",
+      "policy.application.association": "A política está associada a estes aplicativos: {{0}}",
       "policy-type.notNull": "O tipo de política deve ser definido",
       "policy.access-rules.not.allowed.with.agentless": "As regras de acesso não são permitidas com a política sem agente",
       "policy.rule-value.invalid": "Valor inválido fornecido para o valor da regra da política",
@@ -898,7 +921,7 @@
       "yAxis": "Eixo Y",
       "groupBy": "agrupar por",
       "deleteExport": "Deletar exportação",
-      "firewalls": "Instâncias",
+      "firewalls": "Gateways",
       "tooManyDevices": "Limite de dispositivos atingido. Você não pode realizar esta operação",
       "deviceNotFound": "Dispositivo não encontrado.",
       "groupNotFound": "O grupo está vazio ou o grupo não foi encontrado"
@@ -1082,10 +1105,10 @@
         "deselectAll": "Desmarcar todos",
         "single": {
           "noItemSelected": "Selecionar um gateway",
-          "selectedItemMessage": "{{count}} gateway selecionado"
+          "selectedItemMessage": "{{count}} instância selecionada"
         },
         "checkbox": {
-          "selectedItemMessage": "{{count}} gateways selecionados",
+          "selectedItemMessage": "{{count}} instâncias selecionadas",
           "noItemSelected": "Selecionar gateway(s)"
         },
         "search": "Pesquisar",
@@ -1181,8 +1204,9 @@
           "threats-ips": "Ameaças a IPS",
           "threats-sandstorm": "Ameaças a Sandstorm",
           "threats-antivirus": "Ameaças a antivírus",
-          "authentication": "Autenticação",
-          "resource-access": "Acesso a recurso",
+          "authentication": "Usuários autenticados",
+          "resource-access": "Largura de banda do recurso",
+          "denied-resource-access": "Acesso ao recurso negado",
           "blank": ""
         }
       },
@@ -1531,7 +1555,16 @@
       "browser_version": "Versão do navegador",
       "authentication-success-count": "Contagem de autenticação de sucesso",
       "resource_access": "Acesso a recurso",
-      "authentication_events": "Autenticação"
+      "authentication_events": "Autenticação",
+      "gateway_name": "Gateway",
+      "instance_name": "Instância",
+      "denied_resource_access": "Acesso ao recurso negado",
+      "deny_reason": "Motivo de negação",
+      "agent_version": "Agente",
+      "sync_sec_status": "Integridade",
+      "application_type": "Tipo de aplicativo",
+      "policy": "Política",
+      "deny_reason_count": "Contagem de motivo de negação"
     },
     "template": {
       "messages": {

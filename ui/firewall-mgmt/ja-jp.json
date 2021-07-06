@@ -18,12 +18,103 @@
       "name": "ファイアウォール管理 - ダッシュボード",
       "breadcrumb-text": "ファイアウォール管理のダッシュボード"
     },
+    "serial-number": {
+      "peer": "ピアのシリアル番号"
+    },
     "dynamic-objects": {
       "name": "ファイアウォール管理 - 動的オブジェクト",
       "breadcrumb-text": "動的オブジェクト",
       "tabs": {
         "interfaces": "インターフェース",
         "zones": "ゾーン"
+      },
+      "custom-label": "これは、カスタムマッピング名で、ファイアウォールで使用できない場合もあります。",
+      "subtext-label": "インターフェースのハードウェア名が、マッピング名として使用されます。",
+      "same-as-subtext": "動的オブジェクト名をマッピング名として使用します。",
+      "add": {
+        "modal": {
+          "title-add-interface": "新しい動的インターフェースの作成",
+          "title-edit-interface": "動的インターフェースの編集",
+          "title-add-zone": "新しい動的ゾーンの作成",
+          "title-edit-zone": "動的ゾーンの編集",
+          "name": {
+            "label": "名前",
+            "placeholder-interface": "ファイアウォールインターフェースの名前または共通のラベルです。",
+            "placeholder-zone": "ファイアウォールゾーンの名前または共通のラベルです。",
+            "required": "名前を指定してください",
+            "max-length": "名前が長すぎます。"
+          },
+          "description": {
+            "label": "説明",
+            "placeholder": "200文字未満",
+            "max-length": "説明が長すぎます。"
+          },
+          "ip-address-family": {
+            "label": "IP アドレスファミリー"
+          },
+          "interface-type": {
+            "label": "インターフェースの種類"
+          },
+          "zone-type": {
+            "label": "ゾーンの種類"
+          },
+          "mappings": {
+            "label": "マッピング",
+            "default-option":"デフォルト (任意のファイアウォール)",
+            "same-as-object": "動的",
+            "add": "追加",
+            "replace": "置き換え",
+            "default-cannot-delete": "デフォルトのマッピングは削除できません。置き換えのみ可能です。",
+            "zones": {
+              "mappedName" : "マッピングされたゾーン",
+              "firewall": "ファイアウォール"
+            },
+            "interface": {
+              "mappedName" : "マッピングされたインターフェース",
+              "firewall": "ファイアウォール"
+            }
+          },
+          "save-success": {
+            "interface": "動的インターフェースの保存に成功しました。",
+            "zone": "動的ゾーンの保存に成功しました。"
+          },
+          "save-error": {
+            "interface": "動的インターフェースを保存できません",
+            "zone": "動的ゾーンを保存できません。"
+          },
+          "exist-error": {
+            "interface": "指定されたインターフェース名は既に存在します。別の名前を指定してください。",
+            "zone": "指定されたゾーン名は既に存在します。別の名前を指定してください。"
+          }
+        }
+      },
+      "usage-references": {
+        "heading": "使用状況の設定",
+        "title": {
+          "zone": "動的ゾーン名",
+          "interface": "動的インターフェース名"
+        },
+        "no-references": "この動的オブジェクトは、どのポリシーでも参照されていません。",
+        "column": {
+          "group": "グループ",
+          "sub-entity": "参照サブエンティティ",
+          "entity-name": "ポリシー名"
+        }
+      },
+      "delete": {
+        "modal": {
+          "delete-confirm-text": "{{tabType}}を削除します",
+          "title-delete-interface": "インターフェースの削除",
+          "title-delete-zone": "ゾーンの削除",
+          "delete-success": {
+            "interface": "動的インターフェースの削除に成功しました。",
+            "zone": "動的ゾーンの削除に成功しました。"
+          },
+          "delete-error": {
+            "interface": "動的インターフェースを削除できません",
+            "zone": "動的ゾーンを削除できません。"
+          }
+        }
       },
       "interface": {
         "add-title": "新しい動的インターフェースの作成",
@@ -53,8 +144,8 @@
       }
     },
     "sdwan-groups": {
-      "name": "ファイアウォール管理 - SD WAN 接続グループ",
-      "breadcrumb-text": "SD WAN 接続グループ",
+      "name": "ファイアウォール管理 - SD-WAN 接続グループ",
+      "breadcrumb-text": "SD-WAN 接続グループ",
       "create": "接続グループの作成",
       "delete": {
         "confirm": "削除の確認",
@@ -69,9 +160,17 @@
           "one": "リンクダウン",
           "more": "リンクダウン: {{ bad }}"
         },
+        "unknown": {
+          "one": "不明",
+          "more": "不明: {{ unknown }}"
+        },
         "lost-connection": {
           "one": "リンクダウン",
           "more": "{{ bad }}台のファイアウォールとのリンクダウン"
+        },
+        "unknown-connection": {
+          "one":  "不明",
+          "more": "不明: {{ unknown }}"
         },
         "resource-sharing": {
           "one": "リソース共有ファイアウォール: {{ total }}",
@@ -112,13 +211,68 @@
         }
       },
       "add": {
-        "name": "ファイアウォール管理 - 新しい SD WAN 接続グループ",
-        "breadcrumb-text": "SD WAN 接続グループの追加",
+        "name": "ファイアウォール管理 - 新しい SD-WAN 接続グループ",
+        "breadcrumb-text": "SD-WAN 接続グループの追加",
         "error" : {
-          "title": "エラー！",
           "string": "エラー",
-          "status": "状態",
-          "firewall": "ファイアウォール"
+          "INVALID_XFRM_IP" : "グループ内のファイアウォールの 1つに対して、無効な XFRM IP が選択されています。",
+          "XFRM_IP_ALLOCATION_FAILED" : "グループ内のファイアウォールの 1つに対して、XFRM IP アドレスを割り当てることができませんでした。",
+          "IPSEC_POLICY_CREATE_FAILED" : "グループ内のファイアウォールの 1つに対して、IPsec ポリシーを作成できませんでした。",
+          "VPN_CREATE_FAILED" : "グループ内のファイアウォールの 1つに対して、VPN を作成できませんでした。",
+          "XFRM_IP_ASSIGNMENT_FAILED" : "グループ内のファイアウォールの 1つに対して、XFRM IP アドレスを割り当てることができませんでした。",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "グループ内のファイアウォールの 1つに対して、ホストまたはサービスオブジェクトを作成できません。",
+          "FIREWALL_RULE_CREATE_FAILED" : "グループ内のファイアウォールの 1つに対して、ファイアウォールルールを作成できませんでした。",
+          "NAT_RULE_CREATE_FAILED" : "グループ内のファイアウォールの 1つに対して、NAT ルールを作成できませんでした。",
+          "CREATE_XFRM_GATEWAY_FAILED" : "グループ内のファイアウォールの 1つに対して、XFRM ゲートウェイを作成できませんでした。",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "グループ内のファイアウォールの 1つに対して、ポリシールートを作成できませんでした。",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "グループ内のファイアウォールの 1つに対して、ポリシールートを有効化できませんでした。",
+          "VPN_PING_ENABLE_FAILED" : "グループ内のファイアウォールの 1つに対して、VPN の ping を有効にできませんでした。",
+          "VPN_DELETE_FAILED" : "グループ内のファイアウォールの 1つに対して、VPN を削除できませんでした。",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "グループ内のファイアウォールの 1つに対して、ホスト/サービスオブジェクトを削除できませんでした。",
+          "FIREWALL_RULE_DELETE_FAILED" : "グループ内のファイアウォールの 1つに対して、ファイアウォールルールを削除できませんでした。",
+          "NAT_RULE_DELETE_FAILED" : "グループ内のファイアウォールの 1つに対して、NAT ルールを削除できませんでした。",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "グループ内のファイアウォールの 1つに対して、ポリシールートを削除できませんでした。",
+          "VPN_DEACTIVATION_FAILED" : "グループ内のファイアウォールの 1つに対して、VPN を無効にできませんでした。",
+          "VPN_ACTIVATION_FAILED" : "グループ内のファイアウォールの 1つに対して、VPN を有効にできませんでした。",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "SD-WAN 接続グループは、既に削除対象に指定されています。お待ちください。",
+          "GROUP_NOT_EXISTS" : "グループが存在しません。",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "NAT アドレスは、リソース共有ファイアウォールでは許可されていません",
+          "FIREWALL_PART_OF_ANOTHER_GROUP" : "ファイアウォールは、既に別のグループに属しています。",
+          "FIREWALL_NOT_FOUND" : "選択されたファイアウォールが見つかりません。",
+          "MIN_ONE_SUBNET_NEEDED" : "グループ内のファイアウォールごとに、少なくとも 1つのサブネットが必要です。",
+          "MIN_ONE_WAN_PORT_NEEDED" : "グループ内のファイアウォールごとに、少なくとも 1つの WAN ポートが必要です。",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "グループには、少なくとも 2つのファイアウォールが必要です。",
+          "SDWAN_FEATURE_NOT_SUPPORTED" : "SD-WAN 接続グループ機能はまだサポートされていません。",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "補助ファイアウォールでのトランザクションはサポートされていません。",
+          "NOT_VALID_SUBNET" : "グループ内のファイアウォールの 1つに対して、無効なサブネットが見つかりました。",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "属性 '{{name}}' の値が範囲外です: {{value}}",
+          "INVALID_ATTRIBUTE" : "クラス {{ className }} に対する属性 '{{ attribute }}' が無効です。",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "クラス '{{ className }}' に固有の属性がありません",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "クラス '{{ className }}' に必須の属性 '{{ name }}' がありません",
+          "UNSUPPORTED_CLASS" : "サポートされていないクラス '{{ name }}' です",
+          "INVALID_ATTRIBUTE_DATATYPE" : "クラス '{{ className }}' の属性 '{{ name }}' のデータがサポートされていません ",
+          "MISSING_ATTRIBUTE" : "クラス '{{ className }}' に属性 '{{ name }}' がありません",
+          "INVALID_IP_ADDRESS" : "無効な IP アドレスです: {{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS" : "無効な IP アドレス '{{ ip }}' ネットマスク/プレフィックス '{{ netmask }}' です",
+          "INVALID_IP_RANGE" : "無効な IP 範囲です：下部範囲 {{ low }}、上部範囲 {{ high }}",
+          "INVALID_CIDR_FORMAT" : "無効な CIDR 形式です: {{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "属性 '{{ name }}' の値の上限数を超えています。許可されている数は {{ maxSize }} です",
+          "ICMP_PARAM_SIZE_MISMATCH" : "ICMP の種類と ICMP コードのサイズは同じである必要があります。ICMP の種類のサイズ: {{ typeSize }}、ICMP コードのサイズ: {{ codeSize }}。",
+          "PROTOCOL_SIZE_MISMATCH" : "プロトコル、送信元ポート、および宛先ポートのサイズは同じである必要があります。プロトコルのサイズ: {{ protocolSize }}、送信元ポートのサイズ: {{ sourceSize }}、宛先ポートのサイズ: {{ destinationSize }}",
+          "INVALID_PROTOCOL" : "無効なプロトコル '{{ name }}' です",
+          "TRANSACTION_NOT_ALLOWED" : "トランザクションはこのファイアウォールでは許可されていません",
+          "IP_ALLOCATION_FAILED" : "このファイアウォールで IP 割り当てに失敗しました",
+          "DEVICE_NOT_FOUND" : "ファイアウォールが見つかりません",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "Central Orchestration 機能は、このファイアウォールでサポートされていません",
+          "LICENSE_NOT_FOUND" : "このファイアウォールにはライセンスがありません",
+          "NAT_NOT_ALLOWED" : "NAT アドレスは、リソース共有ファイアウォールでは許可されていません",
+          "DEVICE_PART_OF_OTHER_GROUP" : "ファイアウォールは、既に別のグループに属しています。",
+          "OPERATION_IN_PROGRESS" : "{{ groupName }} に対して {{ operation }} の操作が進行中です ",
+          "INVALID_SUBNET" : "無効なサブネット、IP アドレス {{ ip }}、ネットマスク {{ netmask }} です",
+          "GROUP_DOES_NOT_EXISTS" : "グループ ID {{ groupId }} が存在しません",
+          "INTERNAL_REQUEST_ERROR" : "エラーが発生しました。内部サーバーエラー！",
+          "INTERNAL_SERVER_ERROR": "エラーが発生しました。内部サーバーエラー！",
+          "GROUP_NAME_EXISTS": "グループ名は既に存在します。別のものを選択してください。"
         },
         "states": {
           "cannot-save": "接続グループの保存中、不明なエラーが発生しました。",
@@ -132,17 +286,20 @@
           "name": {
             "label": "接続グループ名",
             "required": "名前を指定してください",
-            "heading": "グループ名の指定"
+            "heading": "グループ名の指定",
+            "length": "名前は、最大半角 30文字まで入力可能です。"
           },
           "description": {
             "label": "説明",
             "placeholder": "グループの説明を入力 (最大 250文字)",
-            "length": "説明は 250文字以内で入力してください。"
+            "length": "説明は、最大半角 250文字まで入力可能です。"
           },
           "firewalls": {
             "source":"割り当て可能なファイアウォール",
             "target":"割り当て済みファイアウォール",
-            "label": "ファイアウォールに直接接続されている LAN ネットワークは、自動的に共有グループに追加されます。各ファイアウォールのクライアントネットワークは、次の手順でカスタマイズできます。"
+            "label": "ファイアウォールに直接接続されている LAN ネットワークは、以下の手順で共有グループに追加できます。各ファイアウォールのクライアントネットワークは、次の手順でカスタマイズできます。",
+            "filter-notes": "注: SD-WAN 接続グループに参加するためのライセンスが付与されているファイアウォールのみが表示され選択できます。また、ファイアウォールは、この機能をサポートするファームウェアにアップグレードする必要があります。",
+            "learn-more": "詳細情報"
           },
           "select": {
             "heading": "含めるファイアウォールの選択"
@@ -153,7 +310,7 @@
           "heading": "ネットワークとルートの設定",
           "error": "競合を検出中、エラーが発生しました。",
           "subnet-error": "1つまたは複数のサブネットが無効です",
-          "description": "共有グループにアクセスを許可するネットワークを各ファイアウォールでカスタマイズし、競合を回避するためにネットワークを異なるアドレス範囲として表示する必要があるかどうかを考慮し、複数のインターネット接続が存在する場合にトンネルの冗長化を設定します。",
+          "description": "各ファイアウォールで、共有グループへのアクセスを許可するネットワークをカスタマイズし、競合を回避するためにネットワークを異なるアドレス範囲として表示する必要があるかどうかを考慮します。",
           "no-conflict": {
             "heading": "解析後、ネットワーク競合が検出されなかったファイアウォールの数: {{ count }}。"
           },
@@ -209,12 +366,12 @@
         "share-resources": {
           "label": "リソースの共有",
           "heading": "リソースの共有",
-          "description": "各サイトのユーザーがアクセスできる社内リソースを選択します",
+          "description": "各サイトのユーザーがアクセスできる社内リソースを追加します",
           "modal": {
             "title": "リソースの追加",
             "firewall": {
               "title": "ファイアウォール",
-              "placeholder": "選択してください"
+              "placeholder": "ファイアウォールの選択"
             },
             "shared-resource": {
               "title": "共有済みリソース",
@@ -238,7 +395,8 @@
                   "1": "TCP/UDP",
                   "2": "IP",
                   "3": "ICMP",
-                  "7": "ICMPv6"
+                  "7": "ICMPv6",
+                  "0": "任意"
                 },
                 "heartbeat": {
                   "1": "緑",
@@ -308,10 +466,10 @@
         }
       },
       "no-data": {
-        "info": "「SD WAN 接続グループ」は、自動生成されたポリシーを利用して、リージョン間でリソースを共有するのに役立ちます。",
+        "info": "「SD-WAN 接続グループ」は、自動生成されたポリシーを利用して、リージョン間でリソースを共有するのに役立ちます。",
         "process": "グループ作成時に、接続グループに含めるファイアウォールを選択できます。",
         "how": "アシスタントを開始するには、「接続グループの作成」ボタンをクリックします。",
-        "header": "接続グループを使用して、SD WAN 設定を簡素化する",
+        "header": "接続グループを使用して、SD-WAN 設定を簡素化する",
         "learn-more": "詳細情報"
       }
     },

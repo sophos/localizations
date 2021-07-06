@@ -18,7 +18,9 @@
       "name-length-validation": "名稱不應超過 100 個字元",
       "whitespace-name-validation": "需要名稱",
       "description-length-validation": "說明不應超過 300 個字元",
-      "required": "* 必要"
+      "required": "* 必要",
+      "yes": "是",
+      "no": "否"
     },
     "application": {
       "form": {
@@ -26,6 +28,7 @@
         "name-placeholder": "資源名稱",
         "description": "說明（最多 250 個字元）",
         "description-placeholder": "描述",
+        "show-resource": "在使用者入口網站中顯示資源",
         "port-validation": "無效連接埠",
         "application-type": "資源類型",
         "application-type-placeholder": "選擇",
@@ -43,7 +46,7 @@
         "add-port-link": "新增另一項",
         "application-fqdn": "資源 FQDN",
         "application-icon": "顯示圖示（檔案大小上限：100K)",
-        "acceptable-formats": "（寬：256px，高：256px；格式：.jpg、.jpeg、.png、.gif）",
+        "acceptable-formats": "（寬：256px，高：256px；格式：jpg、.jpeg、.png、.gif）",
         "port": "連接埠",
         "title-add": "新增資源",
         "deploy": "部署",
@@ -74,6 +77,7 @@
           "internal-fqdn": "內部 FQDN/IP",
           "external-fqdn": "外部 FQDN"
         },
+        "no-application-found": "未找到資源！",
         "no-application-configured": "您尚未新增任何資源。",
         "no-application-configured-help": "按一下「新增資源」按鈕以新增資源。",
         "error": "擷取資源清單時出現錯誤。",
@@ -96,7 +100,9 @@
             "domain": "網域：",
             "agent": "代理程式",
             "agentless": "無代理",
-            "display-in-user-portal": "在使用者入口網站中顯示：",
+            "display-in-user-portal": {
+              "label": "在使用者入口網站中顯示："
+            },
             "access-ports": {
               "label": "存取連接埠",
               "columns": {
@@ -119,7 +125,7 @@
           "user-groups-policies": {
             "label": "使用者群組 ({{count}})，原則",
             "policy-label": "政策： ",
-            "switch-policy": "交換器原則",
+            "switch-policy": "變更原則",
             "edit-groups": "編輯群組",
             "groups-label": "群組"
           }
@@ -134,7 +140,8 @@
     },
     "dashboard": {
       "title": "Zero Trust Network Access - 儀錶板",
-      "breadcrumb-text": "Zero Trust Network Access 儀錶板"
+      "breadcrumb-text": "Zero Trust Network Access 儀錶板",
+      "nodata": "无可用数据"
     },
     "report": {
       "title": "Zero Trust Network Access - 報告",
@@ -151,6 +158,7 @@
     },
     "gateway": {
       "list": {
+        "no-gateway-found": "未找到閘道！",
         "no-gateway-configured": "您尚未新增任何閘道。",
         "no-gateway-configured-help": "按一下「新增閘道」按鈕以新增閘道。",
         "download-gateway-VM": "下載閘道 VM",
@@ -187,7 +195,13 @@
                 "name": "名稱",
                 "status": "狀態",
                 "version": "版本",
-                "support": "Sophos 支援"
+                "support": "Sophos 支援",
+                "support-status": "Sophos 支援狀態"
+              },
+              "support-status": {
+                "connected": "已連線",
+                "disconnected": "已中斷連線",
+                "disabled": "已停用"
               }
             },
             "note": "為實現負載平衡，您必須具有奇數個執行個體。",
@@ -214,7 +228,7 @@
             "certificate": "憑證",
             "upload-certificate": "上傳憑證",
             "certificate-validation": "無效憑證",
-            "certificate-wildcard-message-example": "使用萬用資源憑證。例如：*.test.com",
+            "certificate-wildcard-message-example": "使用萬用字元憑證，例如，*.test.com",
             "privatekey": "私密金鑰",
             "upload-privatekey": "上傳私密金鑰",
             "private-key-validation": "無效的私密金鑰",
@@ -243,6 +257,7 @@
         "title-edit": "編輯閘道",
         "title-delete": "刪除閘道",
         "software-update": "軟體更新",
+        "try-again": "請重試",
         "edit-software-update": "編輯軟體更新排程",
         "try-software-update-again": "請重試",
         "name": "名稱",
@@ -447,10 +462,12 @@
         },
         "vm-name": "VM 名稱",
         "vm-placeholder": "VM 名稱",
+        "vm-duplicate-error": "重複的名稱",
         "external-ip-placeholder": "外部 IP",
         "internal-ip-placeholder": "內部 IP",
         "external-interface-ip": "外部介面 IP 位址",
         "internal-interface-ip": "內部介面 IP",
+        "interface-ip-duplicate-error": "重複的 IP",
         "interface-ip": "介面 IP",
         "warning-box": "執行個體的總數必須為奇數。您擁有 {{instanceCount}}",
         "form": {
@@ -478,7 +495,9 @@
           "disable-success": "已停用 Sophos 支援",
           "disable-error": "停用 Sophos 支援時出現錯誤",
           "copy": "複製",
-          "fetch-error": "無法擷取遠端偵錯詳情"
+          "fetch-error": "無法擷取遠端偵錯詳情",
+          "unreachable": "閘道無法存取伺服器。",
+          "try-again": "請稍後再試一次。"
         }
       },
       "schedule": {
@@ -493,6 +512,7 @@
         "cancel-schedule": "取消排程",
         "cancelling-update": "正在取消更新",
         "update-failed": "更新失敗 ",
+        "try-again": "請再次嘗試更新",
         "updating": " 更新",
         "edit-schedule": " 編輯排程",
         "cancel-first": "在進行任何變更之前，必須先取消設定的排程。",
@@ -511,6 +531,7 @@
         "configure-idp": "設定識別提供者",
         "no-idp-configured": "您尚未新增任何識別提供者",
         "no-idp-configured-help": "按一下「新增識別提供者」按鈕以新增識別提供者。",
+        "no-gateway-assigned-idp-configured": "您尚未指派任何閘道。",
         "columns": {
           "name": "名稱",
           "provider": "提供者",
@@ -559,12 +580,14 @@
       "delete": {
         "header": "刪除識別提供者",
         "message": "刪除識別提供者",
+        "message-linked": "以下閘道需要移至其他身份識別提供者，然後您才能將其刪除",
         "success": "識別提供者已刪除",
         "error": "識別提供者刪除失敗"
       }
     },
     "policies": {
       "list": {
+        "expires": "過期",
         "columns": {
           "name": "名稱",
           "status": "狀態",
@@ -586,7 +609,7 @@
         "resource": "资源",
         "resource-and-access": "Zero Trust - 資源存取",
         "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">Learn more</i18n>",
-        "no-policy-configured": "您尚無任何原則。",
+        "no-policy-configured": "您尚未新增任何原則。",
         "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
       },
       "delete": {
@@ -654,7 +677,7 @@
       "fqdn.format.invalid": "FQDN 必須為有效格式",
       "fqdn_ip.format.invalid": "內部 FQDN/IPv4 位址必須為有效格式",
       "field.value.invalid": "為欄位 {{1}} 提供的輸入值 {{0}} 無效",
-      "request.json.malformed": "接收到格式錯誤請求 JSON",
+      "request.json.malformed": "請求中收到的請求 JSON 格式錯誤",
       "http.request.header.missing": "請求中缺少必填項 HTTP 標頭 {{0}}",
       "request.data.format.invalid": "請求中收到的資料格式無效",
       "request.data.uri.invalid": "請求中收到的 URI 無效",
@@ -737,7 +760,7 @@
       "gateway.instanceIpAddress.duplicate": "為閘道指定的執行個體 IP {{0}} 重複",
       "gateway.ip.notInSubnet": "閘道執行個體 IP {{0}} 不在閘道的子網路範圍內",
       "gateway.remote.config.notEnabled": "所選執行個體未啟用遠端偵錯",
-      "gateway.presignedURL.generation.error":"生成預先簽署的 URL 時出現錯誤。影像狀態為：給定閘道的 {{0}}",
+      "gateway.presignedURL.generation.error": "生成預先簽署的 URL 時出現錯誤。影像狀態為：給定閘道的 {{0}}",
       "gateway.presignedURL.malformed": "影像 URL 格式錯誤",
       "gateway.cluster.notEnabled": "閘道叢集未啟用，但找到不止一個執行個體",
       "gateway.cluster.change.notAllowed": "無法停用閘道叢集",
@@ -746,7 +769,7 @@
       "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
       "policy.valid-until.not.allowed": "如果未強制執行原則，則無法設定 validUntil",
       "policy.access-rules.invalid": "為 accessRules 物件提供的值無效",
-      "policy.application.association":"原則與以下應用程式相關聯：{{0}}",
+      "policy.application.association": "原則與以下應用程式相關聯：{{0}}",
       "policy-type.notNull": "必須設定原則類型",
       "policy.access-rules.not.allowed.with.agentless": "使用無代理程式原則不允許存取規則",
       "policy.rule-value.invalid": "為原則規則值提供的值無效",
@@ -898,7 +921,7 @@
       "yAxis": "Y 軸",
       "groupBy": "分組依據",
       "deleteExport": "刪除匯出",
-      "firewalls": "執行個體",
+      "firewalls": "閘道",
       "tooManyDevices": "已達到裝置限制。您無法執行此操作",
       "deviceNotFound": "未找到設備。",
       "groupNotFound": "群組已滿或未找到群組"
@@ -1082,10 +1105,10 @@
         "deselectAll": "取消全選",
         "single": {
           "noItemSelected": "選取一個閘道",
-          "selectedItemMessage": "已選取 {{count}} 個閘道"
+          "selectedItemMessage": "已選取 {{count}} 個執行個體"
         },
         "checkbox": {
-          "selectedItemMessage": "已選取 {{count}} 個閘道",
+          "selectedItemMessage": "已選取 {{count}} 個執行個體",
           "noItemSelected": "選取閘道"
         },
         "search": "搜尋",
@@ -1181,8 +1204,9 @@
           "threats-ips": "IPS 威脅",
           "threats-sandstorm": "Sandstorm 威脅",
           "threats-antivirus": "防病毒威脅",
-          "authentication": "驗證",
-          "resource-access": "資源存取",
+          "authentication": "已驗證的使用者",
+          "resource-access": "資源頻寬",
+          "denied-resource-access": "已拒絕的資源存取",
           "blank": ""
         }
       },
@@ -1531,7 +1555,16 @@
       "browser_version": "瀏覽器版本",
       "authentication-success-count": "驗證成功數",
       "resource_access": "資源存取",
-      "authentication_events": "驗證"
+      "authentication_events": "驗證",
+      "gateway_name": "閘道",
+      "instance_name": "執行個體",
+      "denied_resource_access": "已拒絕的資源存取",
+      "deny_reason": "已拒絕的理由",
+      "agent_version": "代理程式",
+      "sync_sec_status": "安全狀態",
+      "application_type": "應用程式類型",
+      "policy": "原則",
+      "deny_reason_count": "已拒絕的理由計數"
     },
     "template": {
       "messages": {
