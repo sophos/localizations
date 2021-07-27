@@ -20,7 +20,10 @@
       "description-length-validation": "説明は 300文字以内で入力してください",
       "required": "* 必須項目",
       "yes": "はい",
-      "no": "いいえ"
+      "no": "いいえ",
+      "day": "日",
+      "days": "日",
+      "seconds": "秒"
     },
     "application": {
       "form": {
@@ -65,8 +68,8 @@
       },
       "list": {
         "add": "リソースの追加",
-        "title": "Zero Trust Network Access - リソース＆アクセス",
-        "breadcrumb-text": "リソース＆アクセス",
+        "title": "Zero Trust Network Access - リソースとアクセス",
+        "breadcrumb-text": "リソースとアクセス",
         "columns": {
           "name": "名前",
           "policy": "割り当て済みポリシー",
@@ -245,7 +248,7 @@
                 "type": "リソースの種類",
                 "port": "ポート"
               },
-              "resources-access": "リソース＆アクセス",
+              "resources-access": "リソースとアクセス",
               "no-application-configured": "このゲートウェイに関連付けられているリソースがありません。",
               "no-application-configured-help": "<i18n slot=\"resource\">リソース＆アクセス</i18n>ページから、ゲートウェイにリソースを追加します。"
             }
@@ -315,11 +318,11 @@
         "upload-certificate": "証明書のアップロード",
         "certificate-validation": "証明書が無効です",
         "certificate-wildcard-message": "ワイルドカード証明書である必要があります",
-        "certificate-acceptable-formats": "(最大サイズ：10Kb - 形式: .pem、.crt、.cer)",
+        "certificate-acceptable-formats": "(最大サイズ: 10Kb - 形式: .pem、.crt、.cer)",
         "privatekey": "秘密鍵",
         "upload-privatekey": "秘密鍵のアップロード",
         "private-key-validation": "秘密鍵が無効です",
-        "private-key-acceptable-formats": "(最大サイズ：10Kb - 形式: .key)",
+        "private-key-acceptable-formats": "(最大サイズ: 10Kb - 形式: .key)",
         "save-and-generate-image": "保存して、ファイルを生成",
         "packageType-placeholder": "選択",
         "identity-provider-placeholder": "選択",
@@ -357,8 +360,8 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
-        "warn-message-2": " ？"
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか",
+        "warn-message-2": "？"
       },
       "status": {
         "waiting-for-deployment": {
@@ -463,7 +466,7 @@
         "vm-name": "VM 名",
         "vm-placeholder": "VM 名",
         "vm-duplicate-error": "重複した名前です",
-        "external-ip-placeholder": "外部 IP",
+        "external-ip-placeholder": "外部 IP アドレス",
         "internal-ip-placeholder": "内部 IP アドレス",
         "external-interface-ip": "外部インターフェース IP",
         "internal-interface-ip": "内部インターフェース IP",
@@ -485,7 +488,7 @@
           "sophos-token-header": "ソフォス サポート トークン",
           "enable-sophos-support": "サポートをオンにする",
           "enable-confirm": "{{gatewayInstanceName}} に対して、ソフォスサポートをオンにしますか？",
-          "enable-details": "ソフォスサポートをオンにして、ゲートウェイインスタンスへのリモート トラブルシューティング アクセスを、サポートチームに 1日間提供します。",
+          "enable-details": "ソフォスサポートをオンにして、ゲートウェイインスタンスへのリモート トラブルシューティング アクセスを、次の期間、サポートチームに提供します:",
           "token-header": "このトークンをソフォスサポートに渡して、ゲートウェイインスタンスへのアクセスを許可します。",
           "instance-name": "ゲートウェイインスタンス: {{gatewayInstanceName}}",
           "token-expiry": "トークンの失効日: {{tokenExpiryDate}}",
@@ -497,7 +500,7 @@
           "copy": "コピー",
           "fetch-error": "リモートデバッグの詳細を取得できません",
           "unreachable": "ゲートウェイはサーバーに到達できませんでした。",
-          "try-again": "しばらくしてからもう一度やり直してください。"
+          "try-again": "後でもう一度やり直してください。"
         }
       },
       "schedule": {
@@ -661,6 +664,24 @@
           "resource-access-agent": "リソースアクセス: エージェントレス"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "ゲートウェイインスタンスに対するソフォス サポート",
+        "instance-expiration-label": "トークンの失効日",
+        "instance-token-desc": "トラブルシューティングの目的で、ソフォス サポートにゲートウェイインスタンスへのアクセスを許可できます。このサポートトークンは、一定期間後、期限切れになります。",
+        "instance-token-help-text": "管理者は、各ゲートウェイインスタンスのサポートをオンにできます。サポートがオンになっている場合、トークンとトークンの失効日が割り当てられます。トークンが期限切れになると、アクセスは拒否されます。"
+      },
+      "policy": {
+        "health-trigger-heading": "デバイスのセキュリティ状態によってルールがトリガされるまでの最小時間",
+        "health-trigger-label": "最小期間",
+        "health-trigger-desc": "デバイスのセキュリティ状態によって、アクセスポリシーのルールがトリガされるまでの最小時間を設定します。これによって、一時的な問題が発生した際に、 ZTNA で直ちに操作が実行されることを防ぐことができます。"
+      },
+      "updated": "設定が正常に更新されました",
+      "list": {
+        "title": "Zero Trust Network Access - 設定",
+        "breadcrumb-text": "設定"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "ゲートウェイクラスタリングが有効になっていませんが、複数のインスタンスが見つかりました",
       "gateway.cluster.change.notAllowed": "ゲートウェイクラスタを無効にすることはできません",
       "gateway.cluster.notEmpty": "ゲートウェイクラスタのフィールドが見つかりません",
+      "gateway.not.connected.or.approved": "ゲートウェイが接続している、または承認されている状態ではなく、インスタンスがアクティブな状態でない場合、リモートデバッグを有効にすることはできません",
       "policy.invalid": "指定されたポリシーオブジェクトが無効です",
       "policy.isEnforced.notNull": "ポリシーオブジェクトの isEnforced フィールドは Null にできません",
       "policy.valid-until.not.allowed": "ポリシーが適用されていない場合、validUntil は設定できません",
@@ -1184,8 +1206,8 @@
           "web-usage": "Web 使用状況",
           "ips": "IPS (侵入防御システム)",
           "sandstorm": "Sandstorm イベント",
-          "syslog": "ログビューア＆検索",
-          "syslogview": "ログビューア＆検索",
+          "syslog": "ログビューアと検索",
+          "syslogview": "ログビューアと検索",
           "vpn": "VPN 使用状況",
           "antivirus": "ウイルス対策",
           "geoactivity": "脅威 Geo アクティビティ",
@@ -1305,7 +1327,7 @@
       "top_blocked_app_categories": "上位のブロックされたアプリカテゴリ",
       "status": "状態",
       "sum_of_receivedkbits": "受信したキロビットの合計",
-      "application_classification": "リソース＆アクセスの分類",
+      "application_classification": "リソースとアクセスの分類",
       "risky_apps_seen": "危険なアプリの検出",
       "endpoint_id": "エンドポイント ID",
       "memory_usage": "メモリ使用率",
@@ -1517,7 +1539,7 @@
       "temp_disk_usage": "Temp のディスク使用量",
       "dst_trans_port": "宛先トランザクションのポート",
       "file": "ファイル",
-      "syslogview": "ログビューア＆検索",
+      "syslogview": "ログビューアと検索",
       "ssl_tls_policy": "SSL TLS ポリシー",
       "blank": "",
       "red_id": "RED ID",

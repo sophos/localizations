@@ -33,7 +33,8 @@
       "hide": "Masquer",
       "details": "Détails",
       "no-data": "Aucune donnée",
-      "beta": "bêta"
+      "beta": "bêta",
+      "copied": "Copié"
     },
     "global": {
       "onBoard": {
@@ -52,6 +53,9 @@
         "popover2": "Rechercher par {{ field0 }} ou {{ field1 }}",
         "popover3": "Rechercher par {{ field0 }}, {{ field1 }} ou {{ field2 }}",
         "popover4": "Rechercher par {{ field0 }}, {{ field1 }}, {{ field2 }} ou {{ field3 }}"
+      },
+      "messages": {
+        "password-strength": "Complexité du mot de passe :"
       }
     },
     "dashboard": {
@@ -73,7 +77,7 @@
       "stop-title": "Arrêter",
       "packet-capture": {
         "client-mac": "Client Mac",
-        "duration": "Durée",
+        "duration": "Durée (sec)",
         "mac-optional": "Adresse MAC",
         "start-message": "La commande de CAPTURE DE PAQUETS a démarré.",
         "start-fail-message": "Impossible de démarrer la commande de CAPTURE DE PAQUETS.",
@@ -123,7 +127,7 @@
       },
       "advanced-rf-management": {
         "roaming-assist": "Assistance à l’itinérance",
-        "advanced-notification": "Notification AdvanceRF",
+        "advanced-notification": "Notification AdvancedRF",
         "co-channel": "Notification d’un événement CoChannel"
       },
       "discovery-protocol": {
@@ -190,7 +194,9 @@
         "listLoadingError": "Impossible de charger la liste des SSID",
         "headers": {
           "ssid": "SSID",
+          "passphrase": "Phrase secrète",
           "encryption-mode": "Mode de chiffrement",
+          "encryption-algorithm": "Algorithme de chiffrement",
           "bands": "Bandes",
           "status": "État",
           "access-points-count": "Point d’accès assigné",
@@ -212,6 +218,8 @@
         "frequency-band": "Bande de fréquence",
         "assign-ssid": "Nombre de points d’accès assignés",
         "enable-ssid": "Activer le SSID",
+        "enable-ssid-help-text": "Active le SSID immédiatement.",
+        "config-ready-msg": "Votre configuration est maintenant prête, veuillez enregistrer et continuer.",
         "advanced-settings": "Paramètres avancés",
         "previous-section": "Précédent",
         "main-label": "Veuillez choisir les appareils à assigner à ce SSID.",
@@ -293,7 +301,37 @@
         "aps-no-band-supported": "Ce point d’accès ne prend pas en charge la bande de fréquence sélectionnée.",
         "aps-band-not-supported": "Ce point d’accès ne prend pas en charge cette bande de fréquence.",
         "primary-dns-server-short-description": "Serveur utilisé par les clients connectés à ce réseau d’invités.",
-        "primary-dns-server-description": " Sauvegarde du serveur DNS que les clients peuvent utiliser si le serveur principal ne répond pas. La mesure de l’utilisation se fait en fonction du client."
+        "primary-dns-server-description": " Sauvegarde du serveur DNS que les clients peuvent utiliser si le serveur principal ne répond pas. La mesure de l’utilisation se fait en fonction du client.",
+        "ssid-required-validation-msg": "SSID obligatoire.",
+        "ssid-maxlength-validation-msg": "Le SSID ne doit pas contenir de caractères à plus de 32 octets.",
+        "ssid-duplicate-validation-msg": "Dupliquer le nom du SSID",
+        "ssid-network-name": "Nom du réseau.",
+        "password-auto-generate-msg": "Le mot de passe va être créé automatiquement",
+        "insecure-encryption-mode-msg": "Ce mode de chiffrement n’est pas sécurisé",
+        "insecure-encryption-algorithm-msg":  "Cet algorithme de chiffrement n’est pas sécurisé",
+        "encryption-mode-help-msg": "Nous conseillons l’utilisation de WPA2.",
+        "encryption-algorithm-help-msg": "L’algorithme par défaut est AES. Son utilisation est conseillée pour des raisons de sécurité.",
+        "radius-secret-help-msg": "Le secret partagé doit être suffisamment long et inclure une combinaison de lettres, de majuscules et de chiffres. Secret pour authentifier un point d’accès sur le serveur RADIUS.",
+        "radius-server-required-validation-msg": "L’adresse du serveur RADIUS est requise",
+        "radius-server-valid-ip-validation-msg": "Le serveur RADIUS doit avoir une adresse IP valide",
+        "radius-server-help-msg": "Serveur RADIUS pour votre réseau local.",
+        "radius-server-shared-secret": "Secret partagé",
+        "passphrase-required": "Phrase secrète obligatoire.",
+        "frequency-band-inline-help-msg": "Limiter les bandes sur lesquelles le réseau doit être transmis. Cette option pourrait limiter les points d’accès que vous diffusez sur le SSID car certains modèles peuvent uniquement diffuser sur des bandes spécifiques et pas sur toutes les bandes en même temps.",
+        "enable-mesh-mode": "Activer le mode de réseau maillé",
+        "enable-mesh-mode-help-msg": "Vous permet de vous connecter aux points d’accès sans accès à Internet commun.",
+        "port-required-validation-msg": "Port obligatoire.",
+        "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
+        "port-number-help-msg": "Numéro de port pour le serveur RADIUS.",
+        "optimize-multicast":"Optimise le traitement du trafic multidiffusion comme le streaming multimédia. Augmente le débit général.",
+        "arp-proxy":"Un point d’accès répond aux demandes ARP pour les adresses réseau. Augmente le débit général.",
+        "quality-fast-roaming":"L’itinérance rapide entre les points d’accès assure une meilleure qualité de connexion, notamment pour la voix sur IP.",
+        "broadcast-outdated": "Le SSID continue à diffuser si le point d’accès ne parvient pas à joindre Sophos Central après un redémarrage.",
+        "band-steering-label":"Redirection de bande",
+        "quality-band-steering":"Les clients sans fil à double bande seront dirigés vers la bande à 5 GHz si possible. Améliore l’expérience d’utilisation pour le client.",
+        "band-steering-warning":"La redirection de bande va également être appliquée à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
+        "broadcast-outdated-label":"Continuer la diffusion",
+        "multicast-label":"Conversion de multidiffusion à monodiffusion"
       },
       "network-editor": {
         "sync-security-label": "Sécurité synchronisée",
@@ -349,7 +387,30 @@
         "blocked-mac-filter": "Les adresses MAC bloquées ne pourront pas se connecter à ce SSID.",
         "mac-filter-whitelist": "Liste d’autorisation",
         "mac-filter": "Limite le nombre d’adresses MAC autorisées à se connecter à ce SSID.",
-        "mac-filter-warning": "Remarque : Cette option assure une sécurité minimale. Elle ne protège pas contre l’usurpation de l’adresse MAC."
+        "mac-filter-warning": "Remarque : Cette option assure une sécurité minimale. Elle ne protège pas contre l’usurpation de l’adresse MAC.",
+        "mac-filter-dynamic-blacklist": "Liste de blocage",
+        "mac-filter-dynamic-none": "Aucune",
+        "mac-filter-dynamic-whitelist": "Liste d’autorisation",
+        "captive-portal": {
+          "enable-hotspot": "Activer la borne Wi-Fi",
+          "incapable-hotspot-label": "La fonction du portail captif est désactivée car certains points d’accès assignés ne permettent pas l’utilisation de plusieurs SSID de portail captif. La liste des points d’accès est : ",
+          "disabled-hotspot-dynamicVlan-label": "La fonction Portail captif ne peut pas être activée sur un SSID avec une assignation du VLAN RADIUS ",
+          "disabled-hotspot-syncSecurity-label": "La fonction Portail captif ne peut pas être activée sur un SSID avec la Sécurité synchronisée",
+          "template": "Modèle",
+          "default-logo": "Valeur par défaut",
+          "customize-logo": "Personnalisé",
+          "landing-page-title": "Page de destination",
+          "page-title-label": "Titre de la page",
+          "page-title-placeholder": "Conditions d’utilisation",
+          "page-title-required": "Titre de la page obligatoire.",
+          "page-title-max-length": "Le Titre de la page ne doit pas dépasser 128 caractères.",
+          "welcome-text-label": "Texte de bienvenue",
+          "welcome-text-max-length": "Le Texte de bienvenue ne doit pas dépasser 64 caractères.",
+          "welcome-text-required": "Texte de bienvenue obligatoire.",
+          "portal-terms-label": "Conditions d’utilisation",
+          "portal-terms-max-length": "Les Conditions d’utilisation ne doivent pas dépasser 102 400 caractères.",
+          "portal-config-message": "Pour personnaliser la page de destination du portail captif, veuillez d’abord enregistrer le SSID."
+        }
       },
       "access-point-editor": {
         "captive-portal-enabled": "Portail captif activé"

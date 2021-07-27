@@ -97,7 +97,7 @@
         "no-references": "Aucune stratégie ne fait référence à cet objet dynamique.",
         "column": {
           "group": "Groupe",
-          "sub-entity": "Sous-entité de référence",
+          "sub-entity": "Sous-entité de la référence",
           "entity-name": "Nom de la stratégie"
         }
       },
@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "Confirmation de la suppression",
         "content": "Le groupe de connexion '{{ name }}' va être marqué pour suppression et les paramètres des pare-feu assignés à ce groupe vont être rétablis. Remarque : tant que les paramètres de tous les pare-feu de ce groupe n’ont pas été rétablis, ils ne peuvent pas faire partie d’un autre groupe.",
-        "success": "Groupe de connexions supprimé.",
+        "success": "Le groupe de connexions a bien été marqué pour suppression.",
         "error": "Erreur lors de la suppression du groupe.",
         "marked": "Ce groupe a été marqué pour suppression. L’opération sera terminée une fois que tous les pare-feu auront appliqué les paramètres rétablis. Vérifiez la progression de cette tâche dans la file d’attente."
       },
@@ -298,7 +298,7 @@
             "source":"Pare-feu disponibles",
             "target":"Pare-feu assignés",
             "label": "Les réseaux LAN connectés directement au pare-feu seront ajoutés au groupe de partage aux étapes suivantes. Vous pourrez personnaliser chaque réseau client du pare-feu à la prochaine étape.",
-            "filter-notes": "Remarque : Les pare-feu autorisés à participer aux groupes de connexion SD-WAN sont uniquement visibles pour la sélection. En outre, les pare-feu doivent être mis à niveau au firmware qui prend en charge cette fonction.",
+            "filter-notes": "Remarque : Seuls les pare-feu autorisés à participer aux groupes de connexion SD-WAN sont disponibles à la sélection. En outre, les pare-feu doivent être mis à niveau au firmware qui prend en charge cette fonction.",
             "learn-more": "Plus d’info"
           },
           "select": {
@@ -332,7 +332,6 @@
               "details-edit": "Détails/Modifier",
               "fix-conflicts": "Résoudre le conflit"
             },
-            "non-resolvable-conflict": "Un pare-feu avec partage de ressources ne peut pas avoir de conflit réseau. Ceci peut être impossible à résoudre.",
             "not-participating": "Aucune interface n’est activée pour participer au réseau local. Vous pouvez modifier les paramètres pour les activer."
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "Activer",
               "nat": "Activer le NAT",
               "nat-address": "Adresse NAT",
-              "nat-subnet": "L’adresse NAT traduite doit appartenir au même sous-réseau que l’interface.",
+              "nat-subnet": "Les adresses NAT peuvent être utilisées pour résoudre les conflits réseau. L’adresse NAT traduite doit appartenir au même sous-réseau que l’interface.",
               "conflicts": "Conflits",
               "wan": "Lien WAN",
               "selected": "Sélectionné",
               "gateway": "Passerelle de secours",
               "xfrm-ip": "Adresses IP Xfrm",
-              "add": "Ajouter un réseau"
+              "add": "Ajouter un réseau",
+              "public-ip": "Adresse IP publique ou Nom de domaine complet pour la liaison WAN sélectionnée",
+              "behind-nat": "Remplacer l’adresse de la passerelle"
             },
             "conflicts": {
-              "subnet-conflict": "Réseau en conflit avec : {{ subnet }}.",
+              "subnet-conflict": "Réseau en conflit avec : '{{ subnet }}'",
               "missing-mandatory": "Champs obligatoires manquants.",
-              "invalid-nat": "Adresse NAT incorrecte.",
-              "invalid-ip": "Adresse IP incorrecte.",
-              "invalid-netmask": "Masque réseau non valide.",
+              "invalid-nat": "Adresse NAT IPv4 non valide.",
+              "invalid-ip": "Adresse IPv4 non valide.",
+              "invalid-netmask": "Masque de réseau IPv4 non valide.",
               "name-conflicts": "Conflits de nom.",
               "xfrm-ip-needed": "Adresses IP {{ need }} minimales requises.",
-              "in-use": "Une ou plusieurs adresses IP sont déjà utilisées pour d’autres pare-feu"
+              "in-use": "Une ou plusieurs adresses IP sont déjà utilisées pour d’autres pare-feu",
+              "public-ip-needed": "Adresse IP publique ou Nom de domaine complet obligatoire."
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "Ressource partagée",
               "placeholder": "Saisissez l’adresse IP de la ressource cible",
               "help": {
-                "heading": "Vous pouvez indiquer l’adresse sous l’un des formats suivants :",
-                "type-ip": "Adresse IP : Par ex. 10.12.22.34",
-                "type-iplist": "Liste d’adresses IP : Par ex. 10.12.22.34,10.12.22.35",
-                "type-iprange": "Plage d’adresses IP : Par ex. 10.12.22.34-10.12.22.35",
-                "type-crdi": "Format réseau : Par ex. 10.12.22.34/2"
+                "heading": "Vous pouvez indiquer l’adresse de l’hôte sous l’un des formats suivants :",
+                "type-ip": "Adresse IPv4 : Par ex. 10.12.22.34",
+                "type-iplist": "Liste IPv4 : Par ex. 10.12.22.34,10.12.22.35",
+                "type-iprange": "Plage IPv4 : Par ex. 10.12.22.34-10.12.22.35",
+                "type-crdi": "Format réseau IPv4 : Par ex. 10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "Aucune restriction"
                 }
               },
-              "invalid": "Format non valide pour la ressource partagée"
+              "invalid": "Format IPv4 non valide pour la ressource partagée"
             },
             "service": {
               "title": "Service",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "Paramètres et stratégies"
 
+    },
+    "component": {
+      "state": {
+        "connected": "connecté",
+        "disconnected": "déconnecté",
+        "approval-pending": "Autorisation en attente",
+        "management-disabled": "Gestion désactivée",
+        "synchronizing": "En cours de synchronisation",
+        "synchronized": "Synchronisé"
+      }
     }
   }
 }

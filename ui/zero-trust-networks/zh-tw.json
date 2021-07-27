@@ -20,7 +20,10 @@
       "description-length-validation": "說明不應超過 300 個字元",
       "required": "* 必要",
       "yes": "是",
-      "no": "否"
+      "no": "否",
+      "day": "天",
+      "days": "天",
+      "seconds": "秒"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Sophos 支援權杖",
           "enable-sophos-support": "開啟支援",
           "enable-confirm": "是否為 {{gatewayInstanceName}} 開啟 Sophos 支援？",
-          "enable-details": "開啟 Sophos 支援，為您的閘道執行個體提供 1 天的支援遠端疑難排解存取。",
+          "enable-details": "開啟 Sophos 支援，為您的閘道執行個體提供支援遠端疑難排解存取",
           "token-header": "將此權杖提供給 Sophos 支援，以便它們可以存取您的閘道執行個體。",
           "instance-name": "閘道執行個體：{{gatewayInstanceName}}",
           "token-expiry": "權杖到期日：{{tokenExpiryDate}}",
@@ -497,7 +500,7 @@
           "copy": "複製",
           "fetch-error": "無法擷取遠端偵錯詳情",
           "unreachable": "閘道無法存取伺服器。",
-          "try-again": "請稍後再試一次。"
+          "try-again": "請稍後重試。"
         }
       },
       "schedule": {
@@ -661,6 +664,24 @@
           "resource-access-agent": "資源存取：無代理"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "適用於閘道執行個體的 Sophos 支援",
+        "instance-expiration-label": "權杖到期",
+        "instance-token-desc": "您可以授予 Sophos 支援存取閘道執行個體的權限以進行疑難排解。此支援權杖將在固定時間後到期。",
+        "instance-token-help-text": "管理員可以為其擁有的每個閘道執行個體開啟支援。開啟支援時，會指派權杖及其到期時間。權杖到期後，存取會遭到拒絕。"
+      },
+      "policy": {
+        "health-trigger-heading": "裝置安全狀態觸發規則之前的最短時間",
+        "health-trigger-label": "最短持續時間",
+        "health-trigger-desc": "設定裝置的安全狀態觸發存取原則中的規則前的最短時間。如果出現臨時問題，這可以防止 ZTNA 過快採取動作。"
+      },
+      "updated": "設定已成功更新",
+      "list": {
+        "title": "Zero Trust Network Access - 設定",
+        "breadcrumb-text": "設定"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "閘道叢集未啟用，但找到不止一個執行個體",
       "gateway.cluster.change.notAllowed": "無法停用閘道叢集",
       "gateway.cluster.notEmpty": "未找到閘道叢集欄位",
+      "gateway.not.connected.or.approved": "如果閘道未處於連線或批准狀態並且執行個體未處於活動狀態，則無法啟用遠端偵錯",
       "policy.invalid": "提供的原則物件無效",
       "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
       "policy.valid-until.not.allowed": "如果未強制執行原則，則無法設定 validUntil",

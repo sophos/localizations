@@ -12,10 +12,14 @@
       "details": "Detalhes",
       "template": "Site",
       "firmware": "Firmware",
-      "minutes-ago": "minutos atrás",
-      "hours-ago": "horas atrás",
-      "days-ago": "dias atrás",
-      "months-ago": "meses atrás",
+      "minutes-ago": "{{unit}} minutos atrás",
+      "minute-ago": "{{unit}} minuto atrás",
+      "hours-ago": "{{unit}} horas atrás",
+      "hour-ago": "{{unit}} hora atrás",
+      "days-ago": "{{unit}} dias atrás",
+      "day-ago": "{{unit}} dia atrás",
+      "months-ago": "{{unit}} meses atrás",
+      "month-ago": "{{unit}} mês atrás",
       "button": {
         "register": "Registrar",
         "cancel": "Cancelar",
@@ -23,7 +27,8 @@
         "bugs": "Erros",
         "apply": "Aplicar",
         "confirm": "Confirmar",
-        "delete": "Deletar"
+        "delete": "Deletar",
+        "add": "Adicionar"
       },
       "status": {
         "registering": "Aguardando conexão",
@@ -73,10 +78,10 @@
         "breadcrumb-text": "Switches",
         "title": "Nuvem - Switches",
         "toggle-columns-title": "Alternar colunas",
-        "remove-dialog-title": "Deletar switch",
-        "remove-dialog-message": "Deletar switch <strong>{{switchSerial}}</strong>.",
+        "remove-dialog-title": "Remover do Sophos Central",
+        "remove-dialog-message": "Remova o switch <strong>{{switchSerial}}</strong> do Sophos Central.",
         "retry-dialog-title": "Tentar registro novamente",
-        "delete-note": "Nota: Se você deletar este switch, ele será removido do Sophos Central.",
+        "delete-note": "O switch registrado foi <strong>reinicializado</strong>.<br/> Se o switch estiver desconectado, será feita a reinicialização quando o switch tentar se conectar ao Sophos Central.<br/> Nota: As configurações atuais do switch são mantidas.",
         "txtbox": {
           "search-placeholder": "Pesquisar switch"
         },
@@ -87,7 +92,7 @@
         "button": {
           "auto-refresh": "Autoatualizar",
           "add-template": "Adicionar site",
-          "switch-delete-confirm": "Deletar switch",
+          "switch-delete-confirm": "Remover switch",
           "template-delete-confirm": "Deletar site"
         },
         "table-headers": {
@@ -108,24 +113,30 @@
         },
         "upgrade": {
           "update-available": "Há novas atualizações de firmware disponíveis.",
-          "upgrade-message": "Esses upgrades podem ser agendados ou aplicados imediatamente.",
-          "schedule-upgrade": "Gerenciar ou agendar upgrade",
-          "schedule": "Cronograma",
-          "manage-schedule-dialog-title": "Gerenciar upgrades de firmware",
-          "upgrade-schedule-dialog-title": "Agendar upgrades de firmware",
-          "dialog-heading": "Gerenciar agendamentos e upgrades de switch",
-          "schedule-info-message": "Escolha quando atualizar os switches selecionados",
-          "update-now": "Atualizar agora",
+          "rollback-available": "Reverter para a versão anterior {{ version }}",
+          "rollback-message": "Isso reinicializará o switch a partir da partição de backup.",
+          "schedule-rollback": "Agendar uma reversão",
+          "upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente.",
+          "schedule-upgrade": "Agendar um upgrade",
+          "schedule": "Adicionar Agenda",
+          "manage-schedule-dialog-title": "Gerenciar firmware: {{ site }}",
+          "upgrade-schedule-dialog-title": "Escolha uma agenda",
+          "dialog-heading": "Gerenciar firmware para switches no site: {{ site }}. Você pode adicionar ou cancelar upgrades ou reversões de firmware na seleção abaixo.",
+          "schedule-info-message": "Escolha quando atualizar ou reverter os switches selecionados.",
+          "update-now": "Agora",
           "custom": "Personalizado",
+          "schedule-now-note": "Os switches conectados serão notificados para realizar o upgrade/reversão imediatamente. Os switches desconectados serão notificados assim que se conectarem. Isso pode exigir a reinicialização do switch.",
+          "schedule-custom-note": "A agenda programada seguirá o horário local do switch, independentemente do fuso horário. O upgrade/reversão pode exigir a reinicialização.",
           "scheduled-success-message": "O upgrade de firmware foi agendado",
           "scheduled-success-failure": "O upgrade de firmware falhou",
           "update-cancel-message": "O upgrade de firmware foi cancelado",
-          "cancel-upgrade": "Cancelar upgrade",
+          "cancel-upgrade": "Cancelar agendamento",
+          "rollback": "Reverter ({{ version }})",
           "table": {
-            "serial-number": "Número de série",
+            "serial-number": "Switch",
             "version": "Versão",
-            "update-to": "Atualizar para",
-            "currently-scheduled-upgrades": "Upgrades agendados no momento",
+            "update-to": "Para a versão",
+            "currently-scheduled-upgrades": "Agenda programada",
             "release-notes": "Notas de versão",
             "edit": "Editar",
             "selected": "Selecionado(s)"
@@ -143,7 +154,7 @@
         },
         "delete-template": {
           "dialog-title": "Deletar site",
-          "delete-template-confirm-text": "Deletar site <strong>{{templateName}}</strong>."
+          "delete-template-confirm-text": "Deletar site <strong>{{templateName}}</strong>. Os switches sob este site serão movidos para o site padrão."
         },
         "edit-template": {
           "dialog-title": "Editar site"
@@ -190,33 +201,31 @@
         "title": "Adicionar switches",
         "step-1": {
           "title": "Passo 1",
-          "description": "Conecte os seus switches à rede de modo que possam alcançar a internet."
+          "description": "Conecte os seus switches à rede de modo que possam alcançar a internet. Ligue os switches, ou reinicialize-os se já estiverem ligados."
         },
         "step-2": {
           "title": "Passo 2",
-          "description": "Encontre o número de série (S/N) nos switches. O número de série é a identidade do switch."
+          "description": "O registro tem um tempo limite: você tem quinze minutos para adicionar o switch ao Sophos Central depois de ligá-lo."
         },
         "step-3": {
           "title": "Passo 3",
-          "description": "Insira os números de série dos switches para registrar. (Separados por vírgula)"
+          "description": "Insira os números de série dos switches para registrar.",
+          "placeholder": "Um número de série por linha."
         },
         "checkbox": {
-          "terms-and-conditions": "Eu concordo com os <a style=\"text-decoration:underline\" id=\"anchor-user-agreement\" href=\"https://www.sophos.com\" target=\"_blank\">Termos e Condições</a>",
+          "terms-and-conditions": "Termos e condições",
           "auto-approve": "Aprove o dispositivo automaticamente assim que for estabelecida a conexão com o Sophos Central para registro",
           "auto-upgrade": "Atualize os switches automaticamente com a versão mais recente do software disponível, se não for necessária a reinicialização para o upgrade"
         },
         "body": {
-          "line-1": "Certifique-se de que os switches estejam ativados durante o registro. O processo de registro sem toque ficará ativo por apenas 5 minutos.",
-          "line-2": "Os switches registrados serão movidos para um site padrão, inicialmente.",
-          "line-3": "Os switches serão atualizados automaticamente com a versão mais recente do software disponível, logo após o registro. Isso pode exigir a reinicialização do dispositivo."
+          "line": "Os switches serão atualizados automaticamente com a versão mais recente do software disponível, logo após o registro. Isso pode exigir a reinicialização do dispositivo."
         }
       },
       "message": {
-        "already-reported": "Os switches com números de série {{ switches }} já estão registrados no Sophos Central.",
+        "already-reported": "Já registrados no Sophos Central: {{ switches }}",
         "registration-error": "Não foi possível registrar os switches.",
-        "switches-registered": "Os switches estão sendo registrados no Sophos Central.",
-        "switch-registration-state-invalid": "Os números de série {{ switches }} são inválidos",
-        "switch-registration-exception": "Estamos registrando os seus outros switches no Sophos Central.",
+        "switches-registered": "Switches sendo registrados no Sophos Central: {{ switches }}",
+        "switch-registration-state-invalid": "Número de série inválido: {{ switches }}",
         "invalid-serial": "Um ou mais números de série são inválidos.",
         "empty-switch-list-error": "Não há nenhum número de série válido."
       }
@@ -232,17 +241,24 @@
     },
     "vlan": {
       "search-placeholder-text": "Pesquisar por ID ou nome",
-      "color-dd-default-title": "Selecionar uma cor",
-      "untagged-dd-default-title": "Selecionar uma porta",
       "ports-dd-default-title": "Selecionar portas",
       "add-vlan-dialog-title": "Adicionar VLAN",
       "edit-vlan-dialog-title": "Editar VLAN",
       "button": {
         "add": "Adicionar VLAN"
       },
+      "color": {
+        "red": "Vermelho",
+        "green": "Verde",
+        "blue": "Azul",
+        "yellow": "Amarelo",
+        "purple": "Roxo",
+        "none": "Nenhuma"
+      },
       "table-headers": {
         "vlan-id": "ID de VLAN",
         "name": "Nome de VLAN",
+        "description": "Descrição",
         "tagged-ports": "Portas com tag",
         "untagged-ports": "Portas sem tag",
         "forbidden-ports": "Portas proibidas"
@@ -255,6 +271,7 @@
         "forbidden-ports": "Portas proibidas",
         "vlan-type-standard": "Padrão",
         "vlan-type-voice": "Voz",
+        "color": "Cor",
         "vlan-id-required-message": "É necessária uma ID de VLAN.",
         "vlan-id-invalid-message": "A ID de VLAN é inválida.",
         "vlan-name-required-message": "É necessário um nome.",
@@ -269,6 +286,56 @@
         "delete-success": "As VLANs foram deletadas",
         "delete-confirm-title": "Deletar VLANs",
         "delete-info-message": "Deletar VLANs <strong>{{vlans}}</strong>"
+      }
+    },
+    "task-queue": {
+      "total-tasks": "Total de tarefas",
+      "pending": "Pendente",
+      "in-progress": "Em andamento",
+      "failed": "Falhou",
+      "skipped": "Ignorada",
+      "completed": "Concluída",
+      "button": {
+        "show-history": "Exibir histórico"
+      },
+      "table-headers": {
+        "status": "Status",
+        "switch": "Switch",
+        "site": "Site",
+        "entity": "Entidade",
+        "sub-entity": "Subentidade",
+        "date-time": "Última modificação em"
+      },
+      "status": {
+        "pending": "Pendente",
+        "success": "Bem-sucedido",
+        "failed": "Falhou",
+        "deleted": "Deletado",
+        "skipped": "Ignorada",
+        "in_progress": "Em andamento"
+      },
+      "action": {
+        "retry": "Tentar novamente",
+        "skip": "Pular"
+      },
+      "type": {
+        "add": "Adicionar",
+        "update": "Atualizar",
+        "delete": "Deletar",
+        "firmware_upgrade": "Upgrade de firmware"
+      },
+      "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
+      "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
+      "skip-success": "A tarefa selecionada é ignorada e as tarefas pendentes enviadas ao switch, se houver.",
+      "skip-error": "Falha ao ignorar a tarefa selecionada."
+    },
+    "port-settings": {
+      "table-headers": {
+        "port-id": "Porta",
+        "label": "Rótulo",
+        "link-speed": "Velocidade/Duplex",
+        "untagged-vlan": "VLAN sem tags",
+        "tagged-vlans": "VLANs com tags"
       }
     }
   }

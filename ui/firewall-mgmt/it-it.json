@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "Conferma eliminazione",
         "content": "Questa azione contrassegnerà il gruppo '{{ name }}' per l'eliminazione e ripristinerà le impostazioni nei firewall assegnati a questo gruppo. Nota: prima che vengano ripristinate le impostazioni di tutti i firewall in questo gruppo, questi firewall non potranno essere inseriti in nessun altro gruppo.",
-        "success": "Gruppo di connessione eliminato.",
+        "success": "Il gruppo di connessione è stato contrassegnato per l'eliminazione.",
         "error": "Errore durante l'eliminazione del gruppo.",
         "marked": "Questo gruppo è stato contrassegnato per l'eliminazione. Il processo verrà completato dopo che tutti i firewall avranno applicato le impostazioni ripristinate. Controlla la coda delle operazioni per monitorare il progresso di queste operazioni."
       },
@@ -332,7 +332,6 @@
               "details-edit": "Dettagli/modifica",
               "fix-conflicts": "Risolvi conflitto"
             },
-            "non-resolvable-conflict": "Un firewall che condivide risorse non può avere un conflitto di rete. Potrebbe non essere risolvibile.",
             "not-participating": "Nessuna interfaccia abilitata per partecipare alla rete locale. Puoi modificare le impostazioni per abilitarle."
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "Abilita",
               "nat": "Abilita NAT",
               "nat-address": "Indirizzo NAT",
-              "nat-subnet": "L'indirizzo tradotto (NAT) deve appartenere alla stessa subnet dell'interfaccia.",
+              "nat-subnet": "È possibile utilizzare indirizzi NATtati per risolvere eventuali conflitti di rete. L'indirizzo tradotto (NAT) deve appartenere alla stessa subnet dell'interfaccia.",
               "conflicts": "Conflitti",
               "wan": "Link WAN",
               "selected": "Selezionata/e",
               "gateway": "Gateway di backup",
               "xfrm-ip": "Indirizzi IP xfrm",
-              "add": "Aggiungi rete"
+              "add": "Aggiungi rete",
+              "public-ip": "IP o FQDN pubblico per il link WAN selezionato",
+              "behind-nat": "Sovrascrivi indirizzo del gateway"
             },
             "conflicts": {
-              "subnet-conflict": "Rete in conflitto con: {{ subnet }}.",
+              "subnet-conflict": "Rete in conflitto con: '{{ subnet }}'",
               "missing-mandatory": "Mancano campi obbligatori.",
-              "invalid-nat": "Indirizzo NAT non valido.",
-              "invalid-ip": "Indirizzo IP non valido.",
-              "invalid-netmask": "Netmask non valida.",
+              "invalid-nat": "Indirizzo NAT IPv4 non valido.",
+              "invalid-ip": "Indirizzo IPv4 non valido.",
+              "invalid-netmask": "Netmask IPv4 non valida.",
               "name-conflicts": "Conflitti di nome.",
               "xfrm-ip-needed": "Occorrono come minimo {{ need }} indirizzi IP.",
-              "in-use": "Uno o più IP sono già utilizzati per altri firewall"
+              "in-use": "Uno o più IP sono già utilizzati per altri firewall",
+              "public-ip-needed": "L'IP o FQDN pubblico è obbligatorio."
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "Risorsa condivisa",
               "placeholder": "Immetti l'indirizzo IP della risorsa di destinazione",
               "help": {
-                "heading": "Puoi specificare l'indirizzo in uno dei seguenti formati:",
-                "type-ip": "Indirizzo IP: Es. 10.12.22.34",
-                "type-iplist": "Elenco di IP: Es. 10.12.22.34,10.12.22.35",
-                "type-iprange": "Intervallo di IP: Es. 10.12.22.34-10.12.22.35",
-                "type-crdi": "Formato di rete: Es. 10.12.22.34/2"
+                "heading": "Puoi specificare l'indirizzo dell'host in uno dei seguenti formati:",
+                "type-ip": "Indirizzo IPv4: Es. 10.12.22.34",
+                "type-iplist": "Elenco IPv4: Es. 10.12.22.34,10.12.22.35",
+                "type-iprange": "Intervallo IPv4: Es. 10.12.22.34-10.12.22.35",
+                "type-crdi": "Formato di rete IPv4: Es. 10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "Nessuna limitazione"
                 }
               },
-              "invalid": "Formato non valido per la risorsa condivisa"
+              "invalid": "Formato IPv4 non valido per la risorsa condivisa"
             },
             "service": {
               "title": "Servizio",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "Impostazioni e criteri"
 
+    },
+    "component": {
+      "state": {
+        "connected": "connesso",
+        "disconnected": "disconnesso",
+        "approval-pending": "Approvazione in sospeso",
+        "management-disabled": "Gestione disattivata",
+        "synchronizing": "Sincronizzazione in corso",
+        "synchronized": "Sincronizzato"
+      }
     }
   }
 }

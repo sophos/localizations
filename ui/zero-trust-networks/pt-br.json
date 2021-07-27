@@ -20,7 +20,10 @@
       "description-length-validation": "A descrição não pode ter mais do que 300 caracteres",
       "required": "* Obrigatório",
       "yes": "Sim",
-      "no": "Não"
+      "no": "Não",
+      "day": "dia",
+      "days": "dias",
+      "seconds": "segundos"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Token de suporte da Sophos",
           "enable-sophos-support": "Ativar suporte",
           "enable-confirm": "Ativar o suporte da Sophos para {{gatewayInstanceName}}?",
-          "enable-details": "Ative o suporte da Sophos para dar ao suporte o acesso remoto à sua instância de gateway por 1 dia para a solução de problemas.",
+          "enable-details": "Ative o suporte da Sophos para dar ao suporte o acesso remoto à sua instância de gateway para a solução de problemas.",
           "token-header": "Dê este token para o suporte da Sophos para que possam acessar a sua instância de gateway.",
           "instance-name": "Instância de gateway: {{gatewayInstanceName}}",
           "token-expiry": "Token expira em: {{tokenExpiryDate}}",
@@ -497,7 +500,7 @@
           "copy": "Copiar",
           "fetch-error": "Não foi possível buscar detalhes de depuração remota",
           "unreachable": "O gateway não conseguiu acessar o servidor.",
-          "try-again": "Tente novamente mais tarde."
+          "try-again": "Tente de novo mais tarde."
         }
       },
       "schedule": {
@@ -661,6 +664,24 @@
           "resource-access-agent": "Acesso a recurso: Sem agente"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "Suporte da Sophos para instância de gateway",
+        "instance-expiration-label": "Expiração do token",
+        "instance-token-desc": "Você pode dar ao suporte da Sophos acesso a uma instância de gateway para solucionar problemas. Esse token de suporte expira após um tempo estabelecido.",
+        "instance-token-help-text": "Um Admin pode ativar o suporte para cada instância de gateway que tenha. Quando o suporte é ativado, são atribuídos um token e a expiração do token. Quando o token expira, o acesso é negado."
+      },
+      "policy": {
+        "health-trigger-heading": "Tempo mínimo antes que a integridade do dispositivo dispare uma regra",
+        "health-trigger-label": "Duração mínima",
+        "health-trigger-desc": "Defina o tempo mínimo antes que a integridade de segurança do dispositivo dispare uma regra em uma política de acesso. Isso pode impedir que o ZTNA aja com rapidez caso haja um problema temporário."
+      },
+      "updated": "Configurações atualizadas com sucesso",
+      "list": {
+        "title": "Zero Trust Network Access - Configurações",
+        "breadcrumb-text": "Configurações"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "Clustering de gateway não habilitado, mas foi encontrada mais de uma instância",
       "gateway.cluster.change.notAllowed": "O cluster de gateway não pode ser desabilitado",
       "gateway.cluster.notEmpty": "Campo de cluster de gateway não encontrado",
+      "gateway.not.connected.or.approved": "A depuração remota não pode ser habilitada se o gateway não estiver no estado conectado ou aprovado e a instância não estiver no estado ativo",
       "policy.invalid": "O objeto de política fornecido é inválido",
       "policy.isEnforced.notNull": "O campo isEnforced no objeto da política não pode ser nulo",
       "policy.valid-until.not.allowed": "validUntil não pode ser definido se a política não for forçada",

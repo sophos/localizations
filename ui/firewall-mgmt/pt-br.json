@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "Confirmação de deleção",
         "content": "Isso marcará este como o grupo de conexão '{{ name }}' para deleção e reverterá as configurações nos firewalls atribuídas a este grupo. Observe que até que todos os firewalls sob o grupo revertam as configurações, eles não podem ser parte de nenhum outro grupo.",
-        "success": "Grupo de conexão deletado com sucesso.",
+        "success": "Grupo de conexão marcado para deleção com sucesso.",
         "error": "Erro ao deletar o grupo.",
         "marked": "Este grupo foi marcado para deleção. Isso será concluído assim que todos os firewalls aplicarem as configurações reversas. Verifique a fila de tarefas para ver o andamento das tarefas."
       },
@@ -298,7 +298,7 @@
             "source":"Firewalls disponíveis",
             "target":"Firewalls atribuídos",
             "label": "Redes LAN conectadas diretamente ao firewall podem ser adicionadas ao grupo de compartilhamento nas próximas etapas. Você pode personalizar as redes cliente de cada firewall no próximo passo.",
-            "filter-notes": "Nota: Os firewalls que estão licenciados para participar dos grupos de conexão SD-WAN só estão visíveis para seleção. Além disso, os firewalls deve ser atualizados com o firmware que suporta esse recurso.",
+            "filter-notes": "Nota: Apenas os firewalls que estão licenciados para participar dos grupos de conexão SD-WAN estão visíveis para seleção. Além disso, os firewalls deve ser atualizados com o firmware que suporta esse recurso.",
             "learn-more": "Saiba mais"
           },
           "select": {
@@ -332,7 +332,6 @@
               "details-edit": "Detalhes/Editar",
               "fix-conflicts": "Corrigir conflito"
             },
-            "non-resolvable-conflict": "Um firewall de compartilhamento de recurso não pode ter um conflito de rede. Isso pode ser irreparável.",
             "not-participating": "Nenhuma interface está habilitada para participar da rede local. Você pode editar as configurações para habilitá-las."
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "Habilitar",
               "nat": "Habilitar NAT",
               "nat-address": "Endereço de NAT",
-              "nat-subnet": "Endereço de (NAT) traduzido deve pertencer à mesma sub-rede que a interface.",
+              "nat-subnet": "Endereços com NAT podem ser usados para resolver conflitos de rede. Endereço de (NAT) traduzido deve pertencer à mesma sub-rede que a interface.",
               "conflicts": "Conflitos",
               "wan": "Link WAN",
               "selected": "Selecionado",
               "gateway": "Gateway de Backup",
               "xfrm-ip": "Endereços de IP Xfrm",
-              "add": "Adicionar rede"
+              "add": "Adicionar rede",
+              "public-ip": "FQDN ou IP público para o link WAN selecionado",
+              "behind-nat": "Substituir endereço de gateway"
             },
             "conflicts": {
-              "subnet-conflict": "Rede conflitante com: {{ subnet }}.",
+              "subnet-conflict": "Rede conflitante com: '{{ subnet }}'",
               "missing-mandatory": "Campos obrigatórios faltando.",
-              "invalid-nat": "Endereço Inválido de NAT.",
-              "invalid-ip": "Endereço Inválido de IP.",
-              "invalid-netmask": "Máscara de rede inválida.",
+              "invalid-nat": "Endereço NAT IPv4 inválido.",
+              "invalid-ip": "Endereço de IPv4 inválido.",
+              "invalid-netmask": "Máscara de rede IPv4 inválida.",
               "name-conflicts": "Conflitos de nome.",
               "xfrm-ip-needed": "No mínimo {{ need }} endereços de IP são necessários.",
-              "in-use": "Um ou mais IPs já estão em uso por outros firewalls"
+              "in-use": "Um ou mais IPs já estão em uso por outros firewalls",
+              "public-ip-needed": "FQDN ou IP público é necessário."
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "Recurso compartilhado",
               "placeholder": "Insira o endereço de IP do recurso de destino",
               "help": {
-                "heading": "Você pode especificar o endereço nos formatos abaixo:",
-                "type-ip": "Endereço de IP: Ex.: 10.12.22.34",
-                "type-iplist": "Lista de IP: Ex.: 10.12.22.34,10.12.22.35",
-                "type-iprange": "Intervalo de IP: Ex.: 10.12.22.34-10.12.22.35",
-                "type-crdi": "Formato de rede: Ex.: 10.12.22.34/2"
+                "heading": "Você pode especificar o endereço de host nos formatos abaixo:",
+                "type-ip": "Endereço de IPv4: Ex.: 10.12.22.34",
+                "type-iplist": "Lista de IPv4: Ex.: 10.12.22.34,10.12.22.35",
+                "type-iprange": "Intervalo de IPv4: Ex.: 10.12.22.34-10.12.22.35",
+                "type-crdi": "Formato de rede IPv4: Ex.: 10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "Sem Restrição"
                 }
               },
-              "invalid": "Formato inválido do recurso compartilhado"
+              "invalid": "Formato de IPv4 inválido para o recurso compartilhado"
             },
             "service": {
               "title": "Serviço",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "Configurações e Políticas"
 
+    },
+    "component": {
+      "state": {
+        "connected": "conectado",
+        "disconnected": "desconectado",
+        "approval-pending": "Aprovação pendente",
+        "management-disabled": "Gerenciamento desabilitado",
+        "synchronizing": "Em sincronização",
+        "synchronized": "Sincronizado"
+      }
     }
   }
 }

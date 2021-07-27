@@ -44,7 +44,6 @@
       "more": "詳細",
       "network": "ネットワーク",
       "noData": "表示するデータはありません",
-      "none": "なし",
       "ok": "OK",
       "password": "パスワード",
       "port": "ポート",
@@ -56,6 +55,7 @@
       "confirm": "確定",
       "to": "～",
       "na": "該当なし",
+      "notApplicable": "該当なし",
       "yes": "はい",
       "no": "いいえ",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 ライセンス = {{storageMultiplier}}GB",
       "licExpirationInfo": "<span><b>CFR Advanced </b>ライセンスの</span><span>失効日</span>",
       "manageCentralLicensesBtn": "製品ライセンスの管理",
-      "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
+      "projectedTooltip": "ログの平均受信レートと割り当てられたストレージに基づいて推定される、データの保存期間。",
       "transferText": "ライセンスとデータの交換デバイスへの関連付け",
-      "reclaimText": "すべてのライセンスの再確保 (無償版への切り替え)",
+      "reclaimText": "すべてのライセンスの再確保 (Basic 版への切り替え)",
       "deleteLogText": "ログデータの削除",
       "removeFirewallText": "ログデータの削除と Sophos Central からの登録解除",
       "reclaimDialogTitle": "レポートライセンスの再確保",
-      "moveFullToFreeLabel": "Advanced 版から無償版へのデバイスの移動",
+      "moveFullToFreeLabel": "Advanced 版から Basic 版へのデバイスの移動",
       "transferLabel": "ライセンスとデータの関連付け:",
       "removeFirewallDialogTitle": "ファイアウォールの削除",
       "deleteLogLabel": "このデバイスに対するログデータを削除してもよいですか？",
@@ -175,8 +175,8 @@
       "removeFirewallLabel": "Sophos Central から次のファイアウォールが削除されます",
       "deleteWarningLabel": "このプロセスはログに記録され、元に戻すことはできません",
       "logDeleteInfoLabel": "ログの削除は、終了するまで 1日かかることがあります。",
-      "reclaimDialogWarning": "警告: ライセンスを無償版に変更すると、Advanced 版なるレポート機能をデバイスで使用できなくなります。無償版ではストレージ容量に制限があり、無償版の機能を使用できます",
-      "reclaimDialogNote": "無償版に切り替えると、このデバイスに対して保存されている既存のログとレポートが削除されます。購入済み容量、および使用済み容量はすべて利用可能になります。",
+      "reclaimDialogWarning": "警告: ライセンスを Basic 版に変更すると、Advanced 版レポート機能をデバイスで使用できなくなります。Basic 版ではストレージ容量に制限があり、Basic 版の機能を使用できます",
+      "reclaimDialogNote": "無償版に切り替えると、このデバイスに対して保存されている既存のログとレポートが削除されます。これにより、関連付けられているストレージ容量はすべて使用可能になります。",
       "licenseIsNotActiveMsg": "ライセンスは使用されていません",
       "licenseTransferText": "ライセンスは使用されておらず、{{deviceName}} に転送されました",
       "freeToPremiumConversionMsg": "このライセンスは、Advanced ライセンスに切り替えられます",
@@ -191,9 +191,9 @@
       "allocateTooltipText": "詳細は次をご覧ください:",
       "thisPageText": "このページ",
       "full": "Advanced",
-      "free":"Standard",
-      "xgsToFree":"XGS ライセンスバンドルを、ライセンスのないデバイスに転送することはできません",
-      "xgsToNoneXgs":"XGS ライセンスバンドルは失われます",
+      "free": "Basic",
+      "xgsToFree": "Xstream Protection ライセンスバンドルを、ライセンスのないデバイスに転送することはできません",
+      "xgsToNoneXgs": "Advanced ライセンスは、別のファイアウォールに転送できます。Xstream Protection ライセンスを転送することはできません。",
       "tableNote": "以下の + / - カウンタを使用して、Firewall Reporting ライセンスの割り当てを管理できます。",
       "transferNote": "注: 古いデバイスは非アクティブとしてマークされ、Sophos Central にデータを送信しなくなります。",
       "deleteDataWarningLabel": "すべてのデータが削除されます。",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "これは <strong>CFR Advanced</strong> に含まれる機能です",
       "features": {
         "freeFeatureItems": {
-          "title": "無償版の機能",
+          "title": "Basic",
           "feature1": "7日間のデータ保持期間 (容量の上限付き)",
           "feature2": "Syslog の検索と表示",
           "feature3": "Sophos Central でのオンデマンドのレポート"
         },
         "fullFeatureItems": {
-          "title": "Advanced 版の機能",
-          "feature1": "データの保時期間を 1年間に延長",
+          "title": "Advanced",
+          "feature1": "ログとレポートを最大 1年間保存します。詳細は、<a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a> を参照してください",
           "feature2": "Syslog の検索と表示",
           "feature3": "Sophos Central でのオンデマンドのレポート",
           "feature4": "レポートのダウンロード (PDF、HTML、CSV)",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "予定されている機能",
           "feature1": "Sophos Central レポートへの API アクセス"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "過去 30日間のログとレポートを保存します。さらに拡張するには、Advanced ライセンスを追加してください"
         }
       },
       "table": {
@@ -230,12 +234,12 @@
         "ip": "IP",
         "centralStorageUsed": "Central ストレージの使用量",
         "allocateLicenses": "ライセンスの割り当て",
-        "estimated": "ストレージの推定サイズ",
-        "oldestSavedData": "最も古い保存データ",
-        "tier": "レベル",
+        "estimated": "保存期間",
+        "oldestSavedData": "最も古い保存済みデータ",
+        "tier": "ライセンスの種類",
         "actions": "アクション",
         "haStatus": "HA ステータス",
-        "xgsStorage": "XGS ストレージ"
+        "averageDailyUpload": "平均日次アップロード"
       },
       "messages": {
         "invalidAssetId": "デバイスが無効です",
@@ -265,7 +269,7 @@
           "duplicateRequest": "リクエストは作成されませんでした: 似たようなフィルタ条件のあるリクエストを見つけました。既存のリクエストに移動します",
           "emptyTableHeader": "キューに項目はありません",
           "emptyTableBody": "キューは、生成に時間がかかるレポートをまとめて表示するビューです。",
-          "queryBeyondSevenDays": "無償版のデバイスでは、7日間を超える古いデータに関するレポートは生成できません。"
+          "queryBeyondSevenDays": "Basic 版のデバイスでは、7日間を超える古いデータに関するレポートは生成できません。"
         },
         "tableHeaders": {
           "requestedOn": "リクエスト日:",
@@ -386,8 +390,8 @@
           "web-usage": "Web 使用状況",
           "ips": "IPS (侵入防御システム)",
           "sandstorm": "ゼロデイ対策",
-          "syslog": "ログビューア＆検索",
-          "syslogview": "ログビューア＆検索",
+          "syslog": "ログビューアと検索",
+          "syslogview": "ログビューアと検索",
           "vpn": "VPN 使用状況",
           "antivirus": "ウイルス対策",
           "geoactivity": "脅威 Geo アクティビティ",
@@ -718,7 +722,7 @@
       "temp_disk_usage": "Temp のディスク使用量",
       "dst_trans_port": "宛先トランザクションのポート",
       "file": "ファイル",
-      "syslogview": "ログビューア＆検索",
+      "syslogview": "ログビューアと検索",
       "ssl_tls_policy": "SSL TLS ポリシー",
       "blank": "",
       "red_id": "RED ID",

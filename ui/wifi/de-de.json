@@ -33,7 +33,8 @@
       "hide": "Ausblenden",
       "details": "Details",
       "no-data": "Keine Daten",
-      "beta": "Beta"
+      "beta": "Beta",
+      "copied": "Kopiert"
     },
     "global": {
       "onBoard": {
@@ -52,6 +53,9 @@
         "popover2": "Suchen nach {{ field0 }} oder {{ field1 }}",
         "popover3": "Suchen nach {{ field0 }}, {{ field1 }} oder {{ field2 }}",
         "popover4": "Suchen nach {{ field0 }}, {{ field1 }}, {{ field2 }} oder {{ field3 }}"
+      },
+      "messages": {
+        "password-strength": "Kennwortstärke:"
       }
     },
     "dashboard": {
@@ -73,7 +77,7 @@
       "stop-title": "Stopp",
       "packet-capture": {
         "client-mac": "Client Mac",
-        "duration": "Dauer",
+        "duration": "Dauer (Sek.)",
         "mac-optional": "MAC-Adresse",
         "start-message": "Kommando PACKET CAPTURE gestartet.",
         "start-fail-message": "Start des Kommandos PACKET CAPTURE fehlgeschlagen.",
@@ -117,7 +121,7 @@
       "sections": {
         "login-title": "Grundeinstellungen",
         "analysis-title": "Analyse",
-        "access-point-detection-title": "Erkennung von nicht berechtigten Access Points",
+        "access-point-detection-title": "Erkennung unautorisierter Access Points (Rogue Access Points)",
         "advancedRF-title": "AdvancedRF-Management",
         "discovery-protocol-title": "Discovery-Protokoll"
       },
@@ -190,7 +194,9 @@
         "listLoadingError": "SSID-Liste kann nicht geladen werden",
         "headers": {
           "ssid": "SSID",
+          "passphrase": "Passphrase",
           "encryption-mode": "Verschlüsselungsmodus",
+          "encryption-algorithm": "Verschlüsselungsalgorithmus",
           "bands": "Bänder",
           "status": "Status",
           "access-points-count": "Zugewiesener Access Point",
@@ -212,6 +218,8 @@
         "frequency-band": "Frequenzband",
         "assign-ssid": "Anzahl zugewiesener Access Points",
         "enable-ssid": "SSID aktivieren",
+        "enable-ssid-help-text": "Aktiviert sofort die SSID.",
+        "config-ready-msg": "Ihre Konfiguration ist abgeschlossen. Sie können diese jetzt speichern und fortfahren.",
         "advanced-settings": "Erweiterte Einstellungen",
         "previous-section": "Zurück",
         "main-label": "Wählen Sie die Geräte aus, denen diese SSID zugewiesen werden soll.",
@@ -243,7 +251,7 @@
         "network-availablity": "Netzwerkverfügbarkeit",
         "multicast": "Multicast",
         "proxy-arp": "Proxy-ARP",
-        "fast-roaming": "Fast Roaming",
+        "fast-roaming": "Schnelles Roaming",
         "broad-casting": "Weiter ausstrahlen...",
         "band-steering": "Band Steering",
         "hotspot": "Hotspot",
@@ -293,7 +301,37 @@
         "aps-no-band-supported": "Dieser Access Point unterstützt das ausgewählte Band nicht.",
         "aps-band-not-supported": "Dieser Access Point unterstützt dieses Band nicht.",
         "primary-dns-server-short-description": "Server, der von mit diesem Gastnetzwerk verbundenen Clients genutzt wird.",
-        "primary-dns-server-description": " Backup-DNS-Server, den Clients nutzen können, wenn der Primärserver nicht antwortet. Nutzung ist clientabhängig."
+        "primary-dns-server-description": " Backup-DNS-Server, den Clients nutzen können, wenn der Primärserver nicht antwortet. Nutzung ist clientabhängig.",
+        "ssid-required-validation-msg": "SSID ist erforderlich.",
+        "ssid-maxlength-validation-msg": "SSID darf nicht länger als 32 Byte sein.",
+        "ssid-duplicate-validation-msg": "SSID-Namen duplizieren",
+        "ssid-network-name": "Name für das Netzwerk.",
+        "password-auto-generate-msg": "Kennwort wird automatisch generiert",
+        "insecure-encryption-mode-msg": "Diese Verschlüsselungsmethode ist nicht sicher",
+        "insecure-encryption-algorithm-msg":  "Dieser Verschlüsselungsalgorithmus ist nicht sicher",
+        "encryption-mode-help-msg": "Wir empfehlen WPA2.",
+        "encryption-algorithm-help-msg": "Der Standardalgorithmus ist AES. Dieser wird aus Sicherheitsgründen empfohlen.",
+        "radius-secret-help-msg": "Der gemeinsame geheime Schlüssel (Shared Secret) sollte möglichst lang sein und verschiedene Buchstaben, Großbuchstaben und Zahlen enthalten. Geheimer Schlüssel für die Authentifizierung eines AP am Radius-Server.",
+        "radius-server-required-validation-msg": "RADIUS-Serveradresse ist erforderlich",
+        "radius-server-valid-ip-validation-msg": "RADIUS-Server muss eine gültige IP-Adresse sein",
+        "radius-server-help-msg": "RADIUS-Server für Ihr lokales Netzwerk.",
+        "radius-server-shared-secret": "Gemeinsamer geheimer Schlüssel",
+        "passphrase-required": "Passphrase ist erforderlich.",
+        "frequency-band-inline-help-msg": "Beschränken Sie das Netzwerk-Broadcasting auf bestimmte Bänder. Dies beschränkt möglicherweise die APs, auf denen SSID-Broadcasting stattfindet, da einige Modelle Broadcasting nur in bestimmten Bändern oder nicht in allen Bändern gleichzeitig unterstützen.",
+        "enable-mesh-mode": "Mesh-Modus aktivieren",
+        "enable-mesh-mode-help-msg": "Ermöglicht es Ihnen, APs ohne Internetverbindung miteinander zu verbinden.",
+        "port-required-validation-msg": "Port ist erforderlich.",
+        "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
+        "port-number-help-msg": "Portnummer für den RADIUS-Server.",
+        "optimize-multicast":"Optimiert die Behandlung von Multicast-Datenverkehr wie z. B. Medienstreaming. Erhöht den allgemeinen Durchsatz.",
+        "arp-proxy":"Ein AP beantwortet ARP-Abfragen für Netzwerkadressen. Erhöht den allgemeinen Durchsatz.",
+        "quality-fast-roaming":"Schnelles Roaming zwischen Access Points ermöglicht bessere Verbindungen vor allem bei VoIP.",
+        "broadcast-outdated": "SSID-Broadcasting findet weiterhin statt, falls der AP Sophos Central nach einem Neustart nicht erreicht.",
+        "band-steering-label":"Band Steering",
+        "quality-band-steering":"Dual-Band-fähige Wireless-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
+        "band-steering-warning":"Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
+        "broadcast-outdated-label":"Broadcasting aktiviert lassen",
+        "multicast-label":"Umwandlung Multicast in Unicast"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
@@ -316,7 +354,7 @@
         "endpoint-protection": "Security Heartbeat für Endpoint Protection auf Windows-, macOS- oder Linux-Geräten aktivieren.",
         "endpoint-protection-enabled-info": "Wählen Sie diese Option nur aus, wenn Sie Synchronized Security mit XG Firewall nicht verwenden.",
         "restrict-ssid": "Diese SSID auf Geräte, die über dieses Sophos Central-Konto verwaltet werden, beschränken. Die Option ist verfügbar, wenn Geräte, auf denen sowohl UEM als auch Endpoint ausgeführt werden, über dieses Sophos Central-Konto verwaltet werden.",
-        "landing-page-title": "Zielseite",
+        "landing-page-title": "Landing-Page",
         "restric-ssid-checkbox-label": "SSID auf mit Sophos verwaltete Geräte beschränken",
         "page-title-label": "Seitentitel",
         "page-title-placeholder": "Nutzungsbedingungen",
@@ -349,7 +387,30 @@
         "blocked-mac-filter": "Blockierte MAC-Adressen können keine Verbindung zu dieser SSID herstellen.",
         "mac-filter-whitelist": "Liste „Erlaubt“",
         "mac-filter": "Hier können Sie festlegen, welche MAC-Adressen sich mit dieser SSID verbinden dürfen.",
-        "mac-filter-warning": "Hinweis: Hier ist die Sicherheit sehr schwach. Es besteht kein Schutz vor MAC-Spoofing."
+        "mac-filter-warning": "Hinweis: Hier ist die Sicherheit sehr schwach. Es besteht kein Schutz vor MAC-Spoofing.",
+        "mac-filter-dynamic-blacklist": "Liste „Blockiert“",
+        "mac-filter-dynamic-none": "Ohne",
+        "mac-filter-dynamic-whitelist": "Liste „Erlaubt“",
+        "captive-portal": {
+          "enable-hotspot": "Hotspot aktivieren",
+          "incapable-hotspot-label": "Die Captive-Portal-Funktion ist deaktiviert, da einige der zugewiesenen Access Points nicht mehrere Captive-Portal-SSIDs zulassen. Diese Access Points sind: ",
+          "disabled-hotspot-dynamicVlan-label": "Die Captive-Portal-Funktion kann nicht für eine SSID, die eine RADIUS-basierte VLAN-Zuweisung hat, aktiviert werden. ",
+          "disabled-hotspot-syncSecurity-label": "Die Captive-Portal-Funktion kann nicht für eine SSID mit Synchronized Security aktiviert werden.",
+          "template": "Vorlage",
+          "default-logo": "Standard",
+          "customize-logo": "Benutzerdefiniert",
+          "landing-page-title": "Landing-Page",
+          "page-title-label": "Seitentitel",
+          "page-title-placeholder": "Nutzungsbedingungen",
+          "page-title-required": "Seitentitel ist erforderlich.",
+          "page-title-max-length": "Seitentitel darf höchstens 128 Zeichen haben.",
+          "welcome-text-label": "Begrüßungstext",
+          "welcome-text-max-length": "Begrüßungstext darf nicht länger als 64 Zeichen sein.",
+          "welcome-text-required": "Begrüßungstext ist erforderlich.",
+          "portal-terms-label": "Nutzungsbedingungen",
+          "portal-terms-max-length": "Nutzungsbedingungen dürfen nicht länger als 102.400 Zeichen sein.",
+          "portal-config-message": "Um die Captive-Portal-Landing-Page anzupassen, speichern Sie bitte zuerst die SSID."
+        }
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive-Portal aktiviert"

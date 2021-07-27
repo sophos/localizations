@@ -33,7 +33,8 @@
       "hide": "Nascondi",
       "details": "Dettagli",
       "no-data": "Nessun dato",
-      "beta": "beta"
+      "beta": "beta",
+      "copied": "Copiato"
     },
     "global": {
       "onBoard": {
@@ -52,6 +53,9 @@
         "popover2": "Cerca per {{ field0 }} o {{ field1 }}",
         "popover3": "Cerca per {{ field0 }}, {{ field1 }} o {{ field2 }}",
         "popover4": "Cerca per {{ field0 }}, {{ field1 }}, {{ field2 }} o {{ field3 }}"
+      },
+      "messages": {
+        "password-strength": "Sicurezza della password:"
       }
     },
     "dashboard": {
@@ -73,7 +77,7 @@
       "stop-title": "Arresta",
       "packet-capture": {
         "client-mac": "Mac del client",
-        "duration": "Durata",
+        "duration": "Durata (sec)",
         "mac-optional": "Indirizzo MAC",
         "start-message": "Comando ACQUISIZIONE PACCHETTI avviato.",
         "start-fail-message": "Non è stato possibile avviare il comando ACQUISIZIONE PACCHETTI.",
@@ -190,7 +194,9 @@
         "listLoadingError": "Impossibile caricare l'elenco di SSID",
         "headers": {
           "ssid": "SSID",
+          "passphrase": "Passphrase",
           "encryption-mode": "Modalità di cifratura",
+          "encryption-algorithm": "Algoritmo di cifratura",
           "bands": "Bande",
           "status": "Stato",
           "access-points-count": "Access point assegnato",
@@ -212,6 +218,8 @@
         "frequency-band": "Banda di frequenza",
         "assign-ssid": "Conteggio degli access point assegnati",
         "enable-ssid": "Abilita SSID",
+        "enable-ssid-help-text": "Abilita immediatamente l'SSID.",
+        "config-ready-msg": "La configurazione è pronta, si prega di salvare e procedere",
         "advanced-settings": "Impostazioni avanzate",
         "previous-section": "Precedente",
         "main-label": "Selezionare i dispositivi a cui assegnare questo SSID.",
@@ -293,7 +301,37 @@
         "aps-no-band-supported": "L'access point non supporta la banda selezionata",
         "aps-band-not-supported": "L'access point non supporta questa banda",
         "primary-dns-server-short-description": "Server utilizzato dai client connessi a questa rete guest.",
-        "primary-dns-server-description": " Backup che può essere utilizzato dai client del server DNS quando il server primario non risponde. L'utilizzo dipende dal client."
+        "primary-dns-server-description": " Backup che può essere utilizzato dai client del server DNS quando il server primario non risponde. L'utilizzo dipende dal client.",
+        "ssid-required-validation-msg": "SSID obbligatorio.",
+        "ssid-maxlength-validation-msg": "L'SSID non può superare la lunghezza di 32 caratteri byte.",
+        "ssid-duplicate-validation-msg": "Nome SSID duplicato",
+        "ssid-network-name": "Nome della rete.",
+        "password-auto-generate-msg": "La password verrà automaticamente generata",
+        "insecure-encryption-mode-msg": "La modalità di cifratura non è sicura",
+        "insecure-encryption-algorithm-msg":  "L'algoritmo di cifratura non è sicuro",
+        "encryption-mode-help-msg": "Si consiglia di utilizzare WPA2.",
+        "encryption-algorithm-help-msg": "L'algoritmo predefinito è AES. Viene consigliato per motivi di sicurezza.",
+        "radius-secret-help-msg": "Il segreto condiviso deve essere piuttosto lungo e contenere una varietà di caratteri alfabetici, lettere maiuscole e cifre. Il segreto necessario per autenticare un AP al server RADIUS.",
+        "radius-server-required-validation-msg": "Indirizzo del server RADIUS obbligatorio",
+        "radius-server-valid-ip-validation-msg": "Il server RADIUS deve essere un valido indirizzo IP",
+        "radius-server-help-msg": "Il server RADIUS della rete locale.",
+        "radius-server-shared-secret": "Segreto condiviso",
+        "passphrase-required": "Passphrase obbligatoria.",
+        "frequency-band-inline-help-msg": "Limita le bande su cui la rete deve essere trasmessa. Questa opzione potrebbe limitare gli AP su cui si trasmette l'SSID, in quanto alcuni modelli sono in grado di trasmettere solamente su bande specifiche, oppure non su tutte le bande contemporaneamente.",
+        "enable-mesh-mode": "Attiva modalità mesh",
+        "enable-mesh-mode-help-msg": "Permette di connettere reciprocamente AP che non hanno accesso a Internet.",
+        "port-required-validation-msg": "Porta obbligatoria.",
+        "port-range-validate-msg": "Il numero di porta deve essere compreso tra 1 e 65535.",
+        "port-number-help-msg": "Numero di porta del server RADIUS.",
+        "optimize-multicast":"Ottimizza la gestione del traffico multicast, come ad es. quello di streaming. Incrementa il throughput complessivo.",
+        "arp-proxy":"Un AP risponde a query ARP per gli indirizzi di rete. Incrementa il throughput complessivo.",
+        "quality-fast-roaming":"Il roaming veloce tra access point offre una migliore esperienza di connettività, specialmente per il VoIP.",
+        "broadcast-outdated": "L'SSID continua a trasmettere se l'AP non è in grado di raggiungere Sophos Central dopo un riavvio.",
+        "band-steering-label":"Band steering",
+        "quality-band-steering":"Se le circostanze lo consentono, i client wireless con funzione dual-band vengono indirizzati sulla banda a 5 GHz. Il risultato è una migliore esperienza client.",
+        "band-steering-warning":"Il band steering verrà applicato anche a tutte le altre reti dell'AP in cui è configurata questa rete.",
+        "broadcast-outdated-label":"Continua a trasmettere",
+        "multicast-label":"Conversione da multicast a unicast"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
@@ -349,7 +387,30 @@
         "blocked-mac-filter": "Gli indirizzi MAC bloccati non potranno connettersi a questo SSID.",
         "mac-filter-whitelist": "Elenco Consentiti",
         "mac-filter": "Limita il numero di indirizzi MAC a cui è consentito connettersi all'SSID in questione.",
-        "mac-filter-warning": "Nota. Questa opzione offre solo una sicurezza di livelli minimi. Non protegge contro lo spoofing dei MAC."
+        "mac-filter-warning": "Nota. Questa opzione offre solo una sicurezza di livelli minimi. Non protegge contro lo spoofing dei MAC.",
+        "mac-filter-dynamic-blacklist": "Elenco Bloccati",
+        "mac-filter-dynamic-none": "Nessuno",
+        "mac-filter-dynamic-whitelist": "Elenco Consentiti",
+        "captive-portal": {
+          "enable-hotspot": "Abilita hotspot",
+          "incapable-hotspot-label": "La funzionalità Captive Portal è disattivata, in quanto per alcuni degli access point assegnati non è possibile consentire l'uso di SSID multipli per Captive Portal. Gli access point in questione sono i seguenti: ",
+          "disabled-hotspot-dynamicVlan-label": "La funzionalità Captive Portal non può essere attivata su uno SSID con Assegnazione della VLAN basata su RADIUS ",
+          "disabled-hotspot-syncSecurity-label": "La funzionalità Captive Portal non può essere attivata su uno SSID con Synchronized Security",
+          "template": "Modello",
+          "default-logo": "Impostazione predefinita",
+          "customize-logo": "Personalizza",
+          "landing-page-title": "Landing page",
+          "page-title-label": "Titolo pagina",
+          "page-title-placeholder": "Termini e condizioni di servizio",
+          "page-title-required": "Occorre specificare il titolo pagina.",
+          "page-title-max-length": "Il titolo della pagina non deve contenere più di 128 caratteri.",
+          "welcome-text-label": "Testo di benvenuto",
+          "welcome-text-max-length": "Il testo di benvenuto non deve contenere più di 64 caratteri.",
+          "welcome-text-required": "Occorre specificare il testo di benvenuto.",
+          "portal-terms-label": "Termini e condizioni di servizio",
+          "portal-terms-max-length": "Il campo 'Termini e condizioni di servizio' non deve contenere più di 102400 caratteri.",
+          "portal-config-message": "Per personalizzare la landing page del captive portal, salvare prima l'SSID."
+        }
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive Portal abilitato"
@@ -451,7 +512,7 @@
           "apRebootSuccessMessage": "Riavvio dell'access point iniziato.",
           "apRebootErrorMessage": "Impossibile iniziare il riavvio dell'access point.",
           "antenna-modal-header": "Comunicazione importante per l'Amministratore",
-          "antenna-modal-body": "Verifica di aver selezionato la configurazione dell'antenna che utilizzi.Una configurazione non corretta potrebbe portare a un funzionamento dell'access point che non rientra nei limiti normativi.",
+          "antenna-modal-body": "Verifica di aver selezionato la configurazione dell'antenna che utilizzi. Una configurazione non corretta potrebbe portare a un funzionamento dell'access point che non rientra nei limiti normativi.",
           "rebootApDialogHeader": "Riavviare questo access point con il numero di serie {{ sn }}?",
           "update-firmware": "Disponibile aggiornamento firmware",
           "rebootbutton": "Riavvia access point",

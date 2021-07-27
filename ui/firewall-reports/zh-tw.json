@@ -44,7 +44,6 @@
       "more": "更多",
       "network": "網路",
       "noData": "無資料顯示",
-      "none": "无",
       "ok": "確定",
       "password": "密碼",
       "port": "連接埠",
@@ -56,6 +55,7 @@
       "confirm": "確認",
       "to": "到",
       "na": "不適用",
+      "notApplicable": "不適用",
       "yes": "是",
       "no": "否",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 授權 = {{storageMultiplier}} GB",
       "licExpirationInfo": "<span><b>CFR Advanced </b>授權</span><span>到期日</span>",
       "manageCentralLicensesBtn": "管理產品授權",
-      "projectedTooltip": "這是基於平均傳入記錄檔速率和配置的儲存體的預計資料保留視窗。",
+      "projectedTooltip": "根據記錄進入的平均速率和您分配的存儲空間，估計我們將存儲您的資料的時間。",
       "transferText": "將授權和資料與替換裝置關聯",
-      "reclaimText": "回收所有授權（轉換為免費）",
+      "reclaimText": "回收所有授權（轉換為基本）",
       "deleteLogText": "刪除記錄資料",
       "removeFirewallText": "刪除記錄資料並從 Sophos Central 取消註冊",
       "reclaimDialogTitle": "回收報告授權",
-      "moveFullToFreeLabel": "將裝置從「進階」移動到「免費」",
+      "moveFullToFreeLabel": "將裝置從「進階」移動到「基本」",
       "transferLabel": "將授權和資料關聯：",
       "removeFirewallDialogTitle": "移除防火墻",
       "deleteLogLabel": "確定要從此裝置刪除記錄資料嗎？",
@@ -175,8 +175,8 @@
       "removeFirewallLabel": "下列防火墻將從 Sophos Central 移除",
       "deleteWarningLabel": "此流程已記錄且無法復原",
       "logDeleteInfoLabel": "記錄刪除可能需要一天時間才能完成。",
-      "reclaimDialogWarning": "警告：將授權變更為「免費」會將裝置從進階報告功能中移除。「免費層」提供有限的存儲容量以及「免費層」功能",
-      "reclaimDialogNote": "轉換為「免費」將會刪除此裝置的現有存儲記錄和報告。任何已購買和已使用的功能將仍然可用。",
+      "reclaimDialogWarning": "警告：將授權變更為「基本」會將裝置從進階報告功能中移除。「基本層」提供有限的存儲容量以及「基本層」功能",
+      "reclaimDialogNote": "轉換為「基本」將會刪除此裝置的現有存儲記錄和報告。這使得任何相關的存儲容量可用。",
       "licenseIsNotActiveMsg": "授權未處於使用中",
       "licenseTransferText": "授權未處於使用中，並且已傳輸給 {{deviceName}}",
       "freeToPremiumConversionMsg": "此授權將轉換為進階授權",
@@ -191,9 +191,9 @@
       "allocateTooltipText": "如需更多資訊，請造訪",
       "thisPageText": "此頁面",
       "full": "進階",
-      "free":"標準",
-      "xgsToFree":"您不能將 XGS 授權套件組合傳輸至未獲授權裝置",
-      "xgsToNoneXgs":"您的 XGS 授權套件組合將丟失",
+      "free": "基礎",
+      "xgsToFree": "您不能將 Xstream 保護授權套件組合傳輸至未獲授權裝置",
+      "xgsToNoneXgs": "您可以將進階授權傳輸至其他防火墻。您不能傳輸 Xstream 保護授權。",
       "tableNote": "使用下列 + / - 計數器管理防火墻報告授權分配。",
       "transferNote": "注意：舊裝置將被標記為非使用中，並將不再傳送資料至 Sophos Central。",
       "deleteDataWarningLabel": "將刪除所有資料。",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "此功能屬於 <strong>CFR Advanced</strong>",
       "features": {
         "freeFeatureItems": {
-          "title": "免費功能",
+          "title": "基礎",
           "feature1": "7 天資料保留（具有容量上限）",
           "feature2": "Syslog 搜尋與檢視",
           "feature3": "Sophos Central 中的隨選報告"
         },
         "fullFeatureItems": {
-          "title": "進階功能",
-          "feature1": "資料保留延長為 1 年",
+          "title": "進階",
+          "feature1": "存儲記錄和報告長達 1 年。有關更多詳細資料，請參閱 <a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a>。",
           "feature2": "Syslog 搜尋與檢視",
           "feature3": "Sophos Central 中的隨選報告",
           "feature4": "以 PDF、HTML 和 CSV 格式下載報告",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "計劃功能",
           "feature1": "Sophos Central 報告的 API 存取"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "存儲最近 30 天的記錄和報告。透過新增進階授權進一步擴展它"
         }
       },
       "table": {
@@ -230,12 +234,12 @@
         "ip": "IP",
         "centralStorageUsed": "已用中央存儲",
         "allocateLicenses": "配置授權",
-        "estimated": "估計存儲空間",
-        "oldestSavedData": "最早儲存的資料",
-        "tier": "層",
+        "estimated": "儲存期限",
+        "oldestSavedData": "最早的儲存資料",
+        "tier": "授權類型",
         "actions": "動作",
         "haStatus": "HA 狀態",
-        "xgsStorage": "XGS 儲存"
+        "averageDailyUpload": "平均每日上傳"
       },
       "messages": {
         "invalidAssetId": "裝置無效",
@@ -265,7 +269,7 @@
           "duplicateRequest": "未建立請求：找到一個篩選條件類似的項目。現在引導您導覽現有請求",
           "emptyTableHeader": "您的佇列中沒有項目",
           "emptyTableBody": "佇列就像報告的收件匣，需要很長時間才能生成。",
-          "queryBeyondSevenDays": "免費裝置不能報告超過 7 天的資料。"
+          "queryBeyondSevenDays": "基本裝置不能報告超過 7 天的資料。"
         },
         "tableHeaders": {
           "requestedOn": "要求日期",

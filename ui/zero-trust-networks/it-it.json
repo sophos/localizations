@@ -20,7 +20,10 @@
       "description-length-validation": "La descrizione non deve superare i 300 caratteri",
       "required": "* Obbligatorio",
       "yes": "Sì",
-      "no": "No"
+      "no": "No",
+      "day": "giorno",
+      "days": "giorni",
+      "seconds": "secondi"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Token del Supporto tecnico Sophos",
           "enable-sophos-support": "Attiva supporto tecnico",
           "enable-confirm": "Attivare il Supporto tecnico Sophos per {{gatewayInstanceName}}?",
-          "enable-details": "Attiva il Supporto tecnico Sophos per concedere al Supporto tecnico l'accesso remoto al tuo gateway per 1 giorno, a scopo di risoluzione dei problemi.",
+          "enable-details": "Attiva il Supporto tecnico Sophos per concedere al Supporto tecnico l'accesso remoto alla tua istanza del gateway a scopo di risoluzione dei problemi per",
           "token-header": "Fornisci questo token al Supporto tecnico Sophos per concedere l'accesso alla tua istanza del gateway.",
           "instance-name": "Istanza del gateway: {{gatewayInstanceName}}",
           "token-expiry": "Il token scade il: {{tokenExpiryDate}}",
@@ -661,6 +664,24 @@
           "resource-access-agent": "Accesso alle risorse: Senza agente"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "Supporto tecnico Sophos per istanza del gateway",
+        "instance-expiration-label": "Scadenza del token",
+        "instance-token-desc": "Puoi concedere al Supporto tecnico Sophos l’accesso a un'istanza del gateway a scopo di risoluzione dei problemi. Questo token di supporto scade dopo un periodo di tempo definito.",
+        "instance-token-help-text": "Gli amministratori possono attivare il supporto tecnico per ogni istanza del gateway in loro possesso. Una volta attivato il supporto tecnico, vengono assegnati un token e una scadenza per il token. Una volta scaduto il token, l'accesso sarà negato."
+      },
+      "policy": {
+        "health-trigger-heading": "Tempo minimo al termine del quale lo stato di integrità di un dispositivo attiva una regola",
+        "health-trigger-label": "Durata minima",
+        "health-trigger-desc": "Imposta il tempo minimo al termine del quale lo stato di integrità di un dispositivo attiva una regola in un criterio di accesso. Questa opzione può impedire a ZTNA di attivarsi troppo rapidamente in caso di un problema temporaneo."
+      },
+      "updated": "Impostazioni aggiornate",
+      "list": {
+        "title": "Zero Trust Network Access - Impostazioni",
+        "breadcrumb-text": "Impostazioni"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "Clustering di gateway non abilitato, ma è stata individuata più di un'istanza",
       "gateway.cluster.change.notAllowed": "Il cluster di gateway non può essere disattivato",
       "gateway.cluster.notEmpty": "Campo Cluster di gateway non trovato",
+      "gateway.not.connected.or.approved": "Il debug remoto non può essere abilitato se il gateway non si trova in stato connesso o approvato e se l'istanza non si trova in stato attivo",
       "policy.invalid": "L'oggetto criterio fornito non è valido",
       "policy.isEnforced.notNull": "Il campo isEnforced nell'oggetto criterio non deve avere valore null",
       "policy.valid-until.not.allowed": "Il campo validUntil non può essere impostato se il criterio non è implementato",

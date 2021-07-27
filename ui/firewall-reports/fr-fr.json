@@ -44,7 +44,6 @@
       "more": "plus",
       "network": "Réseau",
       "noData": "Aucune donnée à afficher",
-      "none": "Aucune",
       "ok": "OK",
       "password": "Mot de passe",
       "port": "Port",
@@ -56,6 +55,7 @@
       "confirm": "Confirmer",
       "to": "à",
       "na": "S/O",
+      "notApplicable": "Non applicable",
       "yes": "Oui",
       "no": "Non",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 licence = {{storageMultiplier}} Go",
       "licExpirationInfo": "<span>Date d’expiration de la licence <b>CFR Advanced</b></span><span></span>",
       "manageCentralLicensesBtn": "Gérer les licences produit",
-      "projectedTooltip": "Il s’agit d’une estimation de rétention des données basée sur le taux moyen de journaux entrants et sur le stockage alloué.",
+      "projectedTooltip": "Estimation de la durée de stockage de vos données, basée sur le taux moyen d’entrée des journaux et sur le stockage alloué.",
       "transferText": "Associer les licences et les données à l’appareil de remplacement",
-      "reclaimText": "Récupérer toutes les licences (convertir en licences gratuites)",
+      "reclaimText": "Récupérer toutes les licences (convertir en licences basiques)",
       "deleteLogText": "Supprimer les données du journal",
       "removeFirewallText": "Supprimer les données du journal et se désinscrire de Sophos Central",
       "reclaimDialogTitle": "Récupérer une licence de rapport",
-      "moveFullToFreeLabel": "Déplacer les appareils de la licence Avancée à la licence Gratuite",
+      "moveFullToFreeLabel": "Déplacer les appareils de la licence Avancée à la licence Basique",
       "transferLabel": "Associer les licences et les données :",
       "removeFirewallDialogTitle": "Supprimer les pare-feu",
       "deleteLogLabel": "Voulez-vous vraiment supprimer les données du journal pour cet appareil ?",
@@ -175,8 +175,8 @@
       "removeFirewallLabel": "Les pare-feu suivants seront supprimés de Sophos Central",
       "deleteWarningLabel": "Cette opération est consignée dans le journal et elle est irréversible",
       "logDeleteInfoLabel": "La suppression du journal peut prendre un jour.",
-      "reclaimDialogWarning": "Avertissement ! Le passage à la licence Gratuite va retirer un appareil des fonctions de rapport avancées. Le niveau Gratuit offre une capacité de stockage réduite et des fonctions gratuites",
-      "reclaimDialogNote": "Le passage à la licence Gratuite va supprimer les journaux et rapports déjà stockés pour cet appareil. Toute capacité achetée et utilisée sera mise à disposition.",
+      "reclaimDialogWarning": "Avertissement ! Le passage à la licence Basique va retirer un appareil des fonctions de rapport avancées. Le niveau Basique offre une capacité de stockage réduite et des fonctions du niveau Basique",
+      "reclaimDialogNote": "Le passage à la licence Basique supprime les journaux et rapports déjà stockés pour cet appareil. Ainsi, toute capacité de stockage associée est disponible.",
       "licenseIsNotActiveMsg": "La licence n’est pas activement utilisée",
       "licenseTransferText": "Cette licence n’est pas active et a été transférée à {{deviceName}}",
       "freeToPremiumConversionMsg": "Cette licence sera convertie en licence Avancée",
@@ -191,9 +191,9 @@
       "allocateTooltipText": "Retrouvez plus de renseignements sur",
       "thisPageText": "cette page",
       "full": "Avancée",
-      "free":"Normal",
-      "xgsToFree":"Vous ne pouvez pas transférer le groupe de licences XGS vers un appareil sans licence.",
-      "xgsToNoneXgs":"Votre groupe de licences XGS sera perdu.",
+      "free": "Basique",
+      "xgsToFree": "Vous ne pouvez pas transférer le groupe de licences de la protection Xstream vers un appareil sans licence.",
+      "xgsToNoneXgs": "Vous pouvez transférer des licences avancées vers un autre pare-feu. Vous ne pouvez pas transférer une licence de protection Xstream.",
       "tableNote": "Utilisez les signes + / - ci-dessous pour gérer les allocations de licence de Firewall Reporting.",
       "transferNote": "Remarque : L’ancien appareil sera marqué comme inactif et n’enverra plus de données à Sophos Central.",
       "deleteDataWarningLabel": "Toutes les données vont être supprimées.",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "Cette fonction fait partie de <strong>CFR Advanced</strong>",
       "features": {
         "freeFeatureItems": {
-          "title": "Fonctions gratuites",
+          "title": "Basique",
           "feature1": "7 jours de conservation des données (avec seuil de capacité)",
           "feature2": "Recherche et visualisation du syslog",
           "feature3": "Rapports à la demande dans Sophos Central"
         },
         "fullFeatureItems": {
-          "title": "Fonctions avancées",
-          "feature1": "Rétention des données étendue jusqu’à 1 an",
+          "title": "Avancée",
+          "feature1": "Stocke les journaux et les rapports pendant un an maximum. Retrouvez plus de renseignements sur <a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a>.",
           "feature2": "Recherche et visualisation du syslog",
           "feature3": "Rapports à la demande dans Sophos Central",
           "feature4": "Télécharger les rapports aux formats PDF, HTML et CSV",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "Fonctions planifiées",
           "feature1": "Accès API aux rapports Sophos Central"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "Stocke les journaux et rapports des 30 derniers jours. Étendez la période en ajoutant des licences avancées"
         }
       },
       "table": {
@@ -230,12 +234,12 @@
         "ip": "IP",
         "centralStorageUsed": "Stockage Central utilisé",
         "allocateLicenses": "Allouer des licences",
-        "estimated": "Stockage estimé",
-        "oldestSavedData": "Plus anciennes données enregistrées",
-        "tier": "Niveau",
+        "estimated": "Période de stockage",
+        "oldestSavedData": "Données stockées les plus anciennes",
+        "tier": "Type de licence",
         "actions": "Actions",
         "haStatus": "État de la haute disponibilité",
-        "xgsStorage": "Stockage XGS"
+        "averageDailyUpload": "Chargement quotidien moyen"
       },
       "messages": {
         "invalidAssetId": "Appareil incorrect",
@@ -265,7 +269,7 @@
           "duplicateRequest": "Demande non créée : Une demande avec les mêmes critères de filtrage existe déjà. Nous vous redirigeons vers la demande déjà existante",
           "emptyTableHeader": "Aucun élément dans votre file d’attente.",
           "emptyTableBody": "La file d’attente est comme une boîte de réception pour les rapports qui prennent beaucoup de temps à générer.",
-          "queryBeyondSevenDays": "Vous ne pouvez pas créer de rapport sur des données de plus de 7 jours pour un appareil qui n’est pas sous licence."
+          "queryBeyondSevenDays": "Vous ne pouvez pas créer de rapport sur des données de plus de 7 jours pour un appareil sous licence Basique."
         },
         "tableHeaders": {
           "requestedOn": "Demande effectuée le",

@@ -20,7 +20,10 @@
       "description-length-validation": "설명은 300자를 초과해서는 안 됨",
       "required": "* 필수",
       "yes": "예",
-      "no": "아니요"
+      "no": "아니요",
+      "day": "일",
+      "days": "일",
+      "seconds": "초"
     },
     "application": {
       "form": {
@@ -213,7 +216,7 @@
               "status": "상태: ",
               "fqdn": "FQDN: ",
               "type": "유형: ",
-              "idp": "ID 제공자: ",
+              "idp": "ID 공급자: ",
               "edit": "편집",
               "delete": "삭제",
               "connection-status-connected": "연결 상태: 연결됨: {{connectedSince}}",
@@ -268,7 +271,7 @@
         "description": "설명(최대 250자)",
         "description-placeholder": "설명",
         "packageType": "플랫폼 유형",
-        "identity-provider": "ID 제공자",
+        "identity-provider": "ID 공급자",
         "fqdn": "FQDN",
         "appDomain": "도메인",
         "app-domain-validation": "잘못된 리소스 도메인",
@@ -485,7 +488,7 @@
           "sophos-token-header": "Sophos 지원 토큰",
           "enable-sophos-support": "지원 켜기",
           "enable-confirm": "{{gatewayInstanceName}}에 대한 Sophos 지원을 켜시겠습니까?",
-          "enable-details": "Sophos 지원을 켜서 1일 동안 게이트웨이 인스턴스에 대한 원격 문제 해결 액세스를 지원합니다.",
+          "enable-details": "다음 기간 동안 게이트웨이 인스턴스에 대한 원격 문제 해결 액세스를 지원하기 위해 Sophos 지원을 켭니다.",
           "token-header": "게이트웨이 인스턴스에 액세스할 수 있도록 이 토큰을 Sophos 지원에 제공하십시오.",
           "instance-name": "게이트웨이 인스턴스: {{gatewayInstanceName}}",
           "token-expiry": "토큰 만료일: {{tokenExpiryDate}}",
@@ -497,7 +500,7 @@
           "copy": "복사",
           "fetch-error": "원격 디버그 세부 정보를 가져올 수 없음",
           "unreachable": "게이트웨이가 서버에 도달할 수 없습니다.",
-          "try-again": "잠시 후 다시 시도하십시오."
+          "try-again": "나중에 다시 시도하십시오."
         }
       },
       "schedule": {
@@ -523,18 +526,18 @@
       }
     },
     "idp": {
-      "fetch-error": "ID 제공자 목록을 가져오는 중 오류 발생",
+      "fetch-error": "ID 공급자 목록을 가져오는 중 오류 발생",
       "list": {
-        "add": "ID 제공자 추가",
-        "breadcrumb-text": "ID 제공자",
-        "title": "Zero Trust Network Access - ID 제공자",
-        "configure-idp": "ID 제공자 구성",
-        "no-idp-configured": "ID 제공자를 추가하지 않았습니다.",
-        "no-idp-configured-help": "ID 제공자를 추가하려면 ‘ID 제공자 추가’ 버튼을 클릭하십시오.",
+        "add": "ID 공급자 추가",
+        "breadcrumb-text": "ID 공급자",
+        "title": "Zero Trust Network Access - ID 공급자",
+        "configure-idp": "ID 공급자 구성",
+        "no-idp-configured": "ID 공급자를 추가하지 않았습니다.",
+        "no-idp-configured-help": "ID 공급자를 추가하려면 ‘ID 공급자 추가’ 버튼을 클릭하십시오.",
         "no-gateway-assigned-idp-configured": "게이트웨이를 할당하지 않았습니다.",
         "columns": {
           "name": "이름",
-          "provider": "제공자",
+          "provider": "공급자",
           "action": "작업",
           "description": "설명",
           "type": "유형",
@@ -542,24 +545,24 @@
         }
       },
       "form": {
-        "title-add": "ID 제공자 추가",
-        "title-edit": "ID 제공자 편집",
+        "title-add": "ID 공급자 추가",
+        "title-edit": "ID 공급자 편집",
         "selectprovider": "선택",
         "name": "이름",
-        "name-placeholder": "ID 제공자",
+        "name-placeholder": "ID 공급자",
         "description": "설명(최대 250자)",
         "description-placeholder": "설명",
-        "provider": "제공자",
+        "provider": "공급자",
         "tenantid": "테넌트 ID",
         "clientid": "클라이언트 ID",
         "clientsecret": "Client secret",
         "issuer-uri": "발급자 URI",
         "scope": "범위",
-        "add-success": "ID 제공자 생성됨",
-        "add-error": "ID 제공자 생성 실패",
-        "edit-success": "ID 제공자 업데이트됨",
-        "edit-error": "ID 제공자 업데이트 실패",
-        "provider-type-error": "제공자 유형을 가져오는 중 오류 발생",
+        "add-success": "ID 공급자 생성됨",
+        "add-error": "ID 공급자 생성 실패",
+        "edit-success": "ID 공급자 업데이트됨",
+        "edit-error": "ID 공급자 업데이트 실패",
+        "provider-type-error": "공급자 유형을 가져오는 중 오류 발생",
         "configure-okta-settings": "Okta 설정 구성",
         "configure-azure-settings": "Azure 동기화 설정 구성",
         "test-connection-azure-label": "Azure 동기화 연결 유효성 검사",
@@ -568,21 +571,21 @@
         "test-connection-button": "연결 테스트",
         "test-connection-success": "연결 성공",
         "test-connection-failure": "연결이 실패했습니다",
-        "provider-error": "이 유형의 ID 제공자가 이미 존재함",
+        "provider-error": "이 유형의 ID 공급자가 이미 존재함",
         "clientId-validation": "Client ID가 필요",
         "tenantId-validation": "테넌트 ID가 필요함",
         "clientSecret-validation": "클라이언트 암호가 필요함",
-        "loading-error": "ID 제공자 로드 중 오류 발생",
+        "loading-error": "ID 공급자 로드 중 오류 발생",
         "issuer-uri-validation": "발급자 URI 필수 ",
         "invalid-issuer-uri": "잘못된 URI",
         "scope-validation": "범위 필수"
       },
       "delete": {
-        "header": "ID 제공자 삭제",
-        "message": "ID 제공자 삭제",
+        "header": "ID 공급자 삭제",
+        "message": "ID 공급자 삭제",
         "message-linked": "삭제하려면 먼저 다음 게이트웨이를 다른 ID 공급자로 이동해야 합니다.",
-        "success": "ID 제공자 삭제됨",
-        "error": "ID 제공자 삭제 실패"
+        "success": "ID 공급자 삭제됨",
+        "error": "ID 공급자 삭제 실패"
       }
     },
     "policies": {
@@ -661,6 +664,24 @@
           "resource-access-agent": "리소스 액세스: 에이전트리스"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "게이트웨이 인스턴스에 대한 Sophos 지원",
+        "instance-expiration-label": "토큰 만료",
+        "instance-token-desc": "문제 해결을 위해 게이트웨이 인스턴스에 대한 액세스 권한을 Sophos 지원에 부여할 수 있습니다. 이 지원 토큰은 지정된 시간 후에 만료됩니다.",
+        "instance-token-help-text": "관리자는 보유한 각 게이트웨이 인스턴스에 대한 지원을 켤 수 있습니다. 지원이 켜져 있으면 토큰과 토큰 만료가 할당됩니다. 토큰이 만료되면 액세스가 거부됩니다."
+      },
+      "policy": {
+        "health-trigger-heading": "장치 상태가 규칙을 트리거하기까지의 최소 시간",
+        "health-trigger-label": "최소 기간",
+        "health-trigger-desc": "장치의 보안 상태가 액세스 정책에서 규칙을 트리거하기까지의 최소 시간을 설정합니다. 이렇게 하면 일시적인 문제가 있는 경우 ZTNA가 너무 빠르게 반응하는 것을 방지할 수 있습니다."
+      },
+      "updated": "설정이 성공적으로 업데이트되었습니다.",
+      "list": {
+        "title": "Zero Trust Network Access - 설정",
+        "breadcrumb-text": "설정"
+      }
     }
   },
   "ztna": {
@@ -720,13 +741,13 @@
       "application.policy.port.mismatch": "제공된 포트 유형이 선택한 정책 유형에 유효하지 않음",
       "application.policy.resourcetype.mismatch": "제공된 리소스 유형이 선택한 정책 유형에 유효하지 않음",
       "application.gateway.not.assigned": "응용 프로그램에 게이트웨이를 할당해야 함",
-      "idp.field.validation.error": "ID 제공자 필드 유효성 검사 오류",
-      "azure.tenantId.notBlank": "Azure ID 제공자의 경우 테넌트 ID는 비워둘 수 없음",
-      "idp.clientId.notBlank": "ID 제공자 클라이언트 ID는 비워둘 수 없음",
-      "idp.clientSecret.notBlank": "ID 제공자 클라이언트 암호는 비워둘 수 없음",
-      "idp.provider.notnull": "제공자는 Null이거나 공백이 아니어야 함",
-      "idp.name.notblank": "ID 제공자 이름은 비워둘 수 없음",
-      "idp.provider.unknown": "요청에 알 수 없는 제공자 유형",
+      "idp.field.validation.error": "ID 공급자 필드 유효성 검사 오류",
+      "azure.tenantId.notBlank": "Azure ID 공급자의 경우 테넌트 ID는 비워둘 수 없음",
+      "idp.clientId.notBlank": "ID 공급자 클라이언트 ID는 비워둘 수 없음",
+      "idp.clientSecret.notBlank": "ID 공급자 클라이언트 암호는 비워둘 수 없음",
+      "idp.provider.notnull": "공급자는 Null이거나 공백이 아니어야 함",
+      "idp.name.notblank": "ID 공급자 이름은 비워둘 수 없음",
+      "idp.provider.unknown": "요청에 알 수 없는 공급자 유형",
       "gateway.idpId.notNull": "게이트웨이에 할당된 IdP ID는 Null이 아니어야 함",
       "gateway.clientId.notBlank": "게이트웨이 클라이언트 ID를 제공해야 함",
       "gateway.appDomain.notBlank": "게이트웨이 앱 도메인을 제공해야 함",
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "게이트웨이 클러스터링이 사용되지 않았지만 둘 이상의 인스턴스가 발견됨",
       "gateway.cluster.change.notAllowed": "게이트웨이 클러스터를 사용 안 함으로 설정할 수 없음",
       "gateway.cluster.notEmpty": "게이트웨이 클러스터 필드를 찾을 수 없음",
+      "gateway.not.connected.or.approved": "게이트웨이가 연결되거나 승인된 상태가 아니고 인스턴스가 활성 상태가 아닌 경우에는 원격 디버깅을 활성화할 수 없습니다.",
       "policy.invalid": "제공된 정책 개체가 잘못됨",
       "policy.isEnforced.notNull": "정책 개체의 isEnforced 필드는 Null이 아니어야 함",
       "policy.valid-until.not.allowed": "정책이 시행되지 않으면 validUntil을 설정할 수 없음",
@@ -790,11 +812,11 @@
       "okta.invalid.issuerUri": "잘못된 issuerURI, URI에 authServerId 누락",
       "connection-test.config.field.validation.error": "연결 테스트 구성에서 필드 유효성 검사 오류",
       "property.invalid": "속성 {{0}}에 대해 제공된 값을 처리하는 데 실패",
-      "idp.already.exists": "이 계정에 대해 제공된 이름의 ID 제공자가 이미 존재함",
-      "idp.provider.already.exists": "이 계정에 대한 제공자 유형을 가진 ID 제공자가 이미 존재함.",
+      "idp.already.exists": "이 계정에 대해 제공된 이름의 ID 공급자가 이미 존재함",
+      "idp.provider.already.exists": "이 계정에 대한 공급자 유형을 가진 ID 공급자가 이미 존재함.",
       "gateway.already.exists": "이 계정에 대해 제공된 이름의 게이트웨이가 이미 존재함",
       "fqdn.not.unique": "제공된 FQDN이 이미 다른 게이트웨이에 존재함",
-      "gateway.idp.association": "ID 제공자가 하나 이상의 게이트웨이에 연결되어 있음",
+      "gateway.idp.association": "ID 공급자가 하나 이상의 게이트웨이에 연결되어 있음",
       "application.already.exists": "이 계정에 대해 제공된 이름의 응용 프로그램이 이미 존재함",
       "gateway.application.association": "게이트웨이가 하나 이상의 응용 프로그램에 연결되어 있음",
       "fqdn-port.not.unique": "이미 다른 응용 프로그램에 할당된 FQDN 포트 쌍이 제공됨",
@@ -1165,7 +1187,7 @@
           "warningForColumnLimit": "{{number}}개 컬럼이 있으며, PDF 내보내기는 처음 15개를 표시합니다.",
           "dialogHeader": "경고"
         },
-        "filterNote": "결과 {{from}} - {{to}}을(를) 필터링합니다.",
+        "filterNote": "결과 {{from}}~{{to}}을(를) 필터링합니다.",
         "generating": "생성하는 중...",
         "deleteExportSuccess": "내보내기 삭제됨",
         "deleteExportWarning": "내보내기를 삭제하지 못함",
