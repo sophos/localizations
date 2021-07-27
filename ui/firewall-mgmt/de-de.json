@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "Löschbestätigung",
         "content": "Dadurch wird die Verbindungsgruppe '{{ name }}' zum Löschen markiert und die Einstellungen der der Gruppe zugewiesenen Firewalls werden zurückgesetzt. Bitte beachten Sie: Erst wenn die Einstellungen aller Firewalls in der Gruppe zurückgesetzt wurden, können die Firewalls anderen Gruppen zugewiesen werden.",
-        "success": "Verbindungsgruppe erfolgreich gelöscht.",
+        "success": "Verbindungsgruppe erfolgreich zum Löschen markiert.",
         "error": "Fehler beim Löschen der Gruppe.",
         "marked": "Diese Gruppe wurde zum Löschen markiert. Der Vorgang wird abgeschlossen, wenn alle Firewalls die zurückgesetzten Einstellungen übernehmen. Überprüfen Sie den Fortschritt bitte in der Auftrags-Warteschlange."
       },
@@ -332,7 +332,6 @@
               "details-edit": "Details/Bearbeiten",
               "fix-conflicts": "Konflikt beheben"
             },
-            "non-resolvable-conflict": "Bei Ressourcen-Sharing-Firewalls können keine Netzwerkkonflikte auftreten. Dieses Problem lässt sich möglicherweise nicht beheben.",
             "not-participating": "Keine Schnittstellen zur Teilnahme am lokalen Netzwerk aktiviert. Sie können die Einstellungen bearbeiten, um sie zu aktivieren."
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "Aktivieren",
               "nat": "NAT aktivieren",
               "nat-address": "NAT-Adresse",
-              "nat-subnet": "Übersetzte (NAT-)Adresse muss zum selben Subnetz gehören wie die Schnittstelle.",
+              "nat-subnet": "Durch NAT übersetzte Adressen können verwendet werden, um Netzwerk-Konflikte zu beheben. Übersetzte (NAT-)Adresse muss zum selben Subnetz gehören wie die Schnittstelle.",
               "conflicts": "Konflikte",
               "wan": "WAN-Link",
               "selected": "Ausgewählt",
               "gateway": "Backup-Gateway",
               "xfrm-ip": "Xfrm-IP-Adressen",
-              "add": "Netzwerk hinzufügen"
+              "add": "Netzwerk hinzufügen",
+              "public-ip": "Öffentliche IP oder FQDN für ausgewählten WAN-Link",
+              "behind-nat": "Gateway-Adresse überschreiben"
             },
             "conflicts": {
-              "subnet-conflict": "Netzwerkkonflikt mit: {{ subnet }}.",
+              "subnet-conflict": "Netzwerkkonflikt mit: '{{ subnet }}'",
               "missing-mandatory": "Pflichtfelder fehlen.",
-              "invalid-nat": "Ungültige NAT-Adresse.",
-              "invalid-ip": "Ungültige IP-Adresse.",
-              "invalid-netmask": "Ungültige Netzmaske.",
+              "invalid-nat": "Ungültige IPv4-NAT-Adresse.",
+              "invalid-ip": "Ungültige IPv4-Adresse.",
+              "invalid-netmask": "Ungültige IPv4-Netzmaske.",
               "name-conflicts": "Namenskonflikte.",
               "xfrm-ip-needed": "Mindestens {{ need }} IP-Adressen erforderlich.",
-              "in-use": "Eine oder mehrere IP-Adressen werden bereits für andere Firewalls verwendet"
+              "in-use": "Eine oder mehrere IP-Adressen werden bereits für andere Firewalls verwendet",
+              "public-ip-needed": "Öffentliche IP oder FQDN ist erforderlich."
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "Geteilte Ressource",
               "placeholder": "IP-Adresse der Ziel-Ressource eingeben",
               "help": {
-                "heading": "Sie können die Adresse in einem der folgenden Formate angeben:",
-                "type-ip": "IP-Adresse: z.B. 10.12.22.34",
-                "type-iplist": "IP-Liste: z.B. 10.12.22.34,10.12.22.35",
-                "type-iprange": "IP-Bereich: z.B. 10.12.22.34-10.12.22.35",
-                "type-crdi": "Netzwerkformat: z.B. 10.12.22.34/2"
+                "heading": "Sie können die Host-Adresse in einem der folgenden Formate angeben:",
+                "type-ip": "IPv4-Adresse: z.B. 10.12.22.34",
+                "type-iplist": "IPv4-Liste: z.B. 10.12.22.34,10.12.22.35",
+                "type-iprange": "IPv4-Bereich: z.B. 10.12.22.34-10.12.22.35",
+                "type-crdi": "IPv4-Netzwerkformat: z.B. 10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "Keine Beschränkung"
                 }
               },
-              "invalid": "Geteilte Ressource hat ungültiges Format"
+              "invalid": "Geteilte Ressource hat ungültiges IPv4-Format"
             },
             "service": {
               "title": "Dienst",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "Einstellungen und Richtlinien"
 
+    },
+    "component": {
+      "state": {
+        "connected": "verbunden",
+        "disconnected": "getrennt",
+        "approval-pending": "Genehmigung steht aus",
+        "management-disabled": "Management deaktiviert",
+        "synchronizing": "Wird synchronisiert",
+        "synchronized": "Synchronisiert"
+      }
     }
   }
 }

@@ -33,7 +33,8 @@
       "hide": "隱藏",
       "details": "詳細資訊",
       "no-data": "無資料",
-      "beta": "Beta 版"
+      "beta": "Beta 版",
+      "copied": "已複製"
     },
     "global": {
       "onBoard": {
@@ -52,6 +53,9 @@
         "popover2": "透過 {{ field0 }} 或 {{ field1 }}搜尋",
         "popover3": "透過 {{ field0 }}、{{ field1 }} 或 {{ field2 }}搜尋",
         "popover4": "透過 {{ field0 }}、{{ field1 }}、{{ field2 }} 或 {{ field3 }}搜尋"
+      },
+      "messages": {
+        "password-strength": "密碼強度："
       }
     },
     "dashboard": {
@@ -73,7 +77,7 @@
       "stop-title": "停止",
       "packet-capture": {
         "client-mac": "用戶端 Mac",
-        "duration": "持續時間",
+        "duration": "持續時間(秒)",
         "mac-optional": "MAC 位址",
         "start-message": "PACKET CAPTURE 命令已啟動。",
         "start-fail-message": "PACKET CAPTURE 命令無法啟動。",
@@ -117,13 +121,13 @@
       "sections": {
         "login-title": "基礎設定",
         "analysis-title": "分析",
-        "access-point-detection-title": "紅色存取點偵測",
+        "access-point-detection-title": "惡意存取點偵測",
         "advancedRF-title": "AdvancedRF 管理",
         "discovery-protocol-title": "發現協議"
       },
       "advanced-rf-management": {
         "roaming-assist": "漫遊輔助",
-        "advanced-notification": "AdvanceRF 通知",
+        "advanced-notification": "AdvancedRF 通知",
         "co-channel": "CoChannel 事件通知"
       },
       "discovery-protocol": {
@@ -190,7 +194,9 @@
         "listLoadingError": "無法載入 SSID 清單",
         "headers": {
           "ssid": "SSID",
+          "passphrase": "複雜密碼",
           "encryption-mode": "加密模式",
+          "encryption-algorithm": "加密演算法",
           "bands": "頻帶",
           "status": "狀態",
           "access-points-count": "指派的存取點",
@@ -212,6 +218,8 @@
         "frequency-band": "頻寬",
         "assign-ssid": "指派存取點計數",
         "enable-ssid": "啟用 SSID",
+        "enable-ssid-help-text": "立即啟用 SSID。",
+        "config-ready-msg": "您的配置現已完成，請儲存並繼續操作",
         "advanced-settings": "進階設定",
         "previous-section": "先前版本",
         "main-label": "請選擇裝置以指派該 SSID。",
@@ -293,10 +301,40 @@
         "aps-no-band-supported": "該存取點不支援選定的頻寬",
         "aps-band-not-supported": "該存取點不支援此頻寬",
         "primary-dns-server-short-description": "連接至該訪客網路的用戶端使用的伺服器。",
-        "primary-dns-server-description": " 如果主伺服器無回應，可以使用備份的 DNS 伺服器用戶端。使用取決於用戶端。"
+        "primary-dns-server-description": " 如果主伺服器無回應，可以使用備份的 DNS 伺服器用戶端。使用取決於用戶端。",
+        "ssid-required-validation-msg": "需要 SSID。",
+        "ssid-maxlength-validation-msg": "SSID 最多不可超過 32 位元組字元。",
+        "ssid-duplicate-validation-msg": "複製 SSID 名稱",
+        "ssid-network-name": "網路名稱。",
+        "password-auto-generate-msg": "會自動產生密碼",
+        "insecure-encryption-mode-msg": "此加密模式不安全",
+        "insecure-encryption-algorithm-msg":  "此加密演算法不安全",
+        "encryption-mode-help-msg": "我們建議使用 WPA2。",
+        "encryption-algorithm-help-msg": "預設算法為 AES。該建議是出於安全考慮。",
+        "radius-secret-help-msg": "共用的密碼應很長並且含有多種字母、大寫字母以及數字。在 radius 伺服器驗證 AP 的密碼。",
+        "radius-server-required-validation-msg": "需要 RADIUS 伺服器位址",
+        "radius-server-valid-ip-validation-msg": "RADIUS 伺服器必須位於有效的 IP 位址",
+        "radius-server-help-msg": "您的本地網路的 RADIUS 伺服器。",
+        "radius-server-shared-secret": "共用密碼",
+        "passphrase-required": "需要複雜密碼。",
+        "frequency-band-inline-help-msg": "限制應廣播網路的頻帶。這可能會限制您廣播 SSID 的 AP，因為某些型號只能在特定頻帶上廣播或無法同時在所有頻帶上廣播。",
+        "enable-mesh-mode": "啟用網狀模式",
+        "enable-mesh-mode-help-msg": "允許您連接沒有網際網路訪問的 AP。",
+        "port-required-validation-msg": "必須提供連接埠。",
+        "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
+        "port-number-help-msg": "RADIUS 伺服器的連接埠號碼。",
+        "optimize-multicast":"優化多點傳播流量的處理，如流媒體。提高總吞吐量。",
+        "arp-proxy":"AP 接收網路地址的 ARP 查詢。提高總吞吐量。",
+        "quality-fast-roaming":"存取點之間的快速漫遊提供了更好的連接體驗，尤其對於 VoIP。",
+        "broadcast-outdated": "如果 AP 在重新開機後無法達到 Sophos Central，則 SSID 繼續廣播。",
+        "band-steering-label":"頻寬操控",
+        "quality-band-steering":"如果可能，雙頻容量的無線用戶端將被引導至 5 GHz。改善用戶端體驗。",
+        "band-steering-warning":"頻寬操控也會被套用至 APs 上所有和此網路有相同設定的網路。",
+        "broadcast-outdated-label":"保持廣播",
+        "multicast-label":"多重播送轉換至單重播送"
       },
       "network-editor": {
-        "sync-security-label": "同步的安全性",
+        "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "同步安全性是為 Sophos APX Series 存取點提供的獨特功能。我們革命性的 Security Heartbeat™ 允許您的端點、行動保護和存取點交換資訊，從而共同運作，有效抵禦來自網路的安全威脅。",
         "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "sync-security-disbale-info-captive-portal": "<Sup>&#1645;&#1645;</sup>啟用訪客網路或管制入口網站的 SSID 不支援同步安全性。",
@@ -349,7 +387,30 @@
         "blocked-mac-filter": "受封鎖的 MAC 地址將無法連線到此 SSID。",
         "mac-filter-whitelist": "允许清單",
         "mac-filter": "限制允許連接到此 SSID 的 MAC 位址。",
-        "mac-filter-warning": "注意：這僅能提供最低的安全性。它無法防護 MAC 詐騙。"
+        "mac-filter-warning": "注意：這僅能提供最低的安全性。它無法防護 MAC 詐騙。",
+        "mac-filter-dynamic-blacklist": "攔截清單",
+        "mac-filter-dynamic-none": "无",
+        "mac-filter-dynamic-whitelist": "允许清單",
+        "captive-portal": {
+          "enable-hotspot": "啟用熱點",
+          "incapable-hotspot-label": "由於部份已指派的存取點不允許多個管制入口網站 SSID，因此管制入口網站功能已停用。這些存取點的清單如下： ",
+          "disabled-hotspot-dynamicVlan-label": "無法在具有基於 RADIUS 的 VLAN 指派的 SSID 上啟用強製入口網站功能 ",
+          "disabled-hotspot-syncSecurity-label": "無法在具有同步安全性的 SSID 上啟用強製入口網站功能",
+          "template": "範本",
+          "default-logo": "預設值",
+          "customize-logo": "自訂",
+          "landing-page-title": "登入頁面",
+          "page-title-label": "頁面標題",
+          "page-title-placeholder": "服務條款",
+          "page-title-required": "必須提供頁面標題。",
+          "page-title-max-length": "頁面標題最多不可超過 128 字元。",
+          "welcome-text-label": "歡迎文字",
+          "welcome-text-max-length": "歡迎文字應具有至多 64 個字符。",
+          "welcome-text-required": "必須提供歡迎文字。",
+          "portal-terms-label": "服務條款",
+          "portal-terms-max-length": "服務條款最多不可超過 102400 字元。",
+          "portal-config-message": "為了自訂網頁驗證入口登入頁面，請先儲存 SSID。"
+        }
       },
       "access-point-editor": {
         "captive-portal-enabled": "已啟用管制入口網站"

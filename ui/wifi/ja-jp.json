@@ -33,7 +33,8 @@
       "hide": "非表示",
       "details": "詳細",
       "no-data": "データはありません",
-      "beta": "ベータ版"
+      "beta": "ベータ版",
+      "copied": "コピー済み"
     },
     "global": {
       "onBoard": {
@@ -52,6 +53,9 @@
         "popover2": "検索する項目: {{ field0 }} または {{ field1 }}",
         "popover3": "検索する項目: {{ field0 }}、{{ field1 }} または {{ field2 }}",
         "popover4": "検索する項目: {{ field0 }}、{{ field1 }}、{{ field2 }} または {{ field3 }}"
+      },
+      "messages": {
+        "password-strength": "パスワードの強度:"
       }
     },
     "dashboard": {
@@ -73,7 +77,7 @@
       "stop-title": "停止",
       "packet-capture": {
         "client-mac": "クライアント Mac",
-        "duration": "期間",
+        "duration": "期間 (秒)",
         "mac-optional": "MAC アドレス",
         "start-message": "PACKET CAPTURE コマンドを開始しました。",
         "start-fail-message": "PACKET CAPTURE コマンドを開始できませんでした。",
@@ -123,7 +127,7 @@
       },
       "advanced-rf-management": {
         "roaming-assist": "ローミングアシスト",
-        "advanced-notification": "AdvanceｄRF の通知",
+        "advanced-notification": "AdvancedRF の通知",
         "co-channel": "CoChannel イベントの通知"
       },
       "discovery-protocol": {
@@ -164,7 +168,7 @@
           "DAILY": "毎日",
           "MONTHLY": "毎月",
           "WEEKLY": "毎週",
-          "week": "1週間",
+          "week": "週",
           "weekday": "曜日",
           "time": "時間 (UTC)"
         }
@@ -190,11 +194,13 @@
         "listLoadingError": "SSID リストを読み込めません",
         "headers": {
           "ssid": "SSID",
+          "passphrase": "パスフレーズ",
           "encryption-mode": "暗号化モード",
+          "encryption-algorithm": "暗号化アルゴリズム",
           "bands": "帯域",
           "status": "状態",
           "access-points-count": "割り当てられているアクセスポイント",
-          "mesh": "メッシュネットワーク",
+          "mesh": "メッシュ",
           "healthStatus": "Security Heartbeat™",
           "captive-portal": "キャプティブポータル",
           "errorMessage": "SSID を削除できません"
@@ -212,6 +218,8 @@
         "frequency-band": "周波数帯",
         "assign-ssid": "割り当てられているアクセスポイント数",
         "enable-ssid": "SSID を有効にする",
+        "enable-ssid-help-text": "SSID をただちに有効にします。",
+        "config-ready-msg": "設定ができました。保存して続行してください",
         "advanced-settings": "詳細設定",
         "previous-section": "戻る",
         "main-label": "この SSID に割り当てるデバイスを選択してください。",
@@ -293,7 +301,37 @@
         "aps-no-band-supported": "このアクセスポイントは選択した帯域に対応していません。",
         "aps-band-not-supported": "このアクセスポイントはこの帯域に対応していません。",
         "primary-dns-server-short-description": "このゲストネットワークに接続するクライアントが使用するサーバーです。",
-        "primary-dns-server-description": " プライマリサーバーの応答がない場合にクライアントが使用できるバックアップの DNS サーバーです。使用はクライアントに依存します。"
+        "primary-dns-server-description": " プライマリサーバーの応答がない場合にクライアントが使用できるバックアップの DNS サーバーです。使用はクライアントに依存します。",
+        "ssid-required-validation-msg": "SSID を指定してください。",
+        "ssid-maxlength-validation-msg": "SSID は 32バイト以下の文字列を入力してください",
+        "ssid-duplicate-validation-msg": "重複した SSID 名です",
+        "ssid-network-name": "ネットワークの名前です。",
+        "password-auto-generate-msg": "パスワードは自動生成されます",
+        "insecure-encryption-mode-msg": "この暗号化モードは安全ではありません",
+        "insecure-encryption-algorithm-msg":  "この暗号化アルゴリズムは安全ではありません",
+        "encryption-mode-help-msg": "WPA2 の使用を推奨します。",
+        "encryption-algorithm-help-msg": "デフォルトのアルゴリズムは AES です。セキュリティ上の理由から、このアルゴリズムを推奨します。",
+        "radius-secret-help-msg": "共有シークレットは十分な長さがあり、大文字や数字など、さまざまな種類の文字が含まれている必要があります。RADIUS サーバーでアクセスポイントを認証するためのシークレット (パスワード) です。",
+        "radius-server-required-validation-msg": "RADIUS サーバーのアドレスを指定してください",
+        "radius-server-valid-ip-validation-msg": "RADIUS サーバーには、有効な IP アドレスを指定してください",
+        "radius-server-help-msg": "ローカルネットワークの RADIUS サーバーです。",
+        "radius-server-shared-secret": "共有シークレット",
+        "passphrase-required": "パスフレーズを指定してください。",
+        "frequency-band-inline-help-msg": "ネットワークがブロードキャストされる周波数帯を制限します。アクセスポイントの中には、特定の周波数帯のみブロードキャストが可能な機種や、同時にすべての周波数帯をブロードキャストできない機種もあるため、この設定により、SSID をブロードキャストするアクセスポイントが制限される場合があります。",
+        "enable-mesh-mode": "メッシュモードを有効にする",
+        "enable-mesh-mode-help-msg": "互いにインターネット接続のないアクセスポイントを接続できるようになります。",
+        "port-required-validation-msg": "ポートを指定してください。",
+        "port-range-validate-msg": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
+        "port-number-help-msg": "RADIUS サーバーのポート番号です。",
+        "optimize-multicast":"メディアのストリーミングなど、マルチキャストトラフィックの処理が最適化されます。全体のスループットが向上します。",
+        "arp-proxy":"ネットワークアドレスへの ARP 要求にアクセスポイントが応答します。全体のスループットが向上します。",
+        "quality-fast-roaming":"アクセスポイントのローミングが高速だと、特に VoIP の接続がスムーズになります。",
+        "broadcast-outdated": "アクセスポイントを再起動した後、Sophos Central に接続できない場合でも、SSID がブロードキャストを行い続けるようにします。",
+        "band-steering-label":"バンドステアリング",
+        "quality-band-steering":"デュアルバンド対応ワイヤレスクライアントは、可能な場合、5GHz 帯に誘導されます。クライアント側のパフォーマンスが向上します。",
+        "band-steering-warning":"バンドステアリングは、このネットワークに登録されたアクセスポイントに設定されている他のすべてのネットワークにも適用されます。",
+        "broadcast-outdated-label":"ブロードキャストを継続する",
+        "multicast-label":"マルチキャストをユニキャストに変換する"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
@@ -316,7 +354,7 @@
         "endpoint-protection": "Windows、macOS、または Linux を実行しているデバイスのエンドポイント保護に対して、セキュリティハートビートを有効にします。",
         "endpoint-protection-enabled-info": "このオプションは、XG Firewall で Synchronized Security を使用していない場合のみに選択してください。",
         "restrict-ssid": "この SSID を、この Sophos Central アカウントで管理されるデバイスに制限します。このオプションは、UEM とエンドポイントの両方を実行しているデバイスが、この Sophos Central アカウントで管理されている場合に使用できます。",
-        "landing-page-title": "ランディングページ",
+        "landing-page-title": "トップページ",
         "restric-ssid-checkbox-label": "SSID を管理対象デバイスに制限する",
         "page-title-label": "ページのタイトル",
         "page-title-placeholder": "サービス利用規約",
@@ -349,7 +387,30 @@
         "blocked-mac-filter": "ブロックされた MAC アドレスはこの SSID に接続できません。",
         "mac-filter-whitelist": "許可リスト",
         "mac-filter": "SSID に接続できる MAC アドレスを制限します。",
-        "mac-filter-warning": "注: この方式では最小限のセキュリティのみが提供されます。MAC アドレスの偽装による接続を防ぐことはできません。"
+        "mac-filter-warning": "注: この方式では最小限のセキュリティのみが提供されます。MAC アドレスの偽装による接続を防ぐことはできません。",
+        "mac-filter-dynamic-blacklist": "ブロックリスト",
+        "mac-filter-dynamic-none": "なし",
+        "mac-filter-dynamic-whitelist": "許可リスト",
+        "captive-portal": {
+          "enable-hotspot": "ホットスポットを有効にする",
+          "incapable-hotspot-label": "一部の割り当てられているアクセスポイントに、複数のキャプティブポータルの SSID を設定できないため、キャプティブポータル機能は無効になっています。これらのアクセスポイントの一覧は次のとおりです: ",
+          "disabled-hotspot-dynamicVlan-label": "キャプティブポータル機能を、RADIUS VLAN が割り当てられている SSID で有効にすることはできません。 ",
+          "disabled-hotspot-syncSecurity-label": "キャプティブポータル機能を、Synchronized Security のある SSID で有効にすることはできません。",
+          "template": "テンプレート",
+          "default-logo": "デフォルト",
+          "customize-logo": "カスタム",
+          "landing-page-title": "トップページ",
+          "page-title-label": "ページのタイトル",
+          "page-title-placeholder": "サービス利用規約",
+          "page-title-required": "ページタイトルが必要です。",
+          "page-title-max-length": "ページのタイトルは最大 128文字まで入力できます。",
+          "welcome-text-label": "開始テキスト",
+          "welcome-text-max-length": "開始テキストは最大 64文字まで入力できます。",
+          "welcome-text-required": "開始テキストを入力してください。",
+          "portal-terms-label": "サービス利用規約",
+          "portal-terms-max-length": "サービス利用規約は最大 102400文字まで入力できます。",
+          "portal-config-message": "キャプティブポータルのトップページをカスタマイズするには、まず SSID を保存してください。"
+        }
       },
       "access-point-editor": {
         "captive-portal-enabled": "キャプティブポータルが有効になっています"

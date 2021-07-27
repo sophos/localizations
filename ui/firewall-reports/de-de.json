@@ -44,7 +44,6 @@
       "more": "mehr",
       "network": "Netzwerk",
       "noData": "Keine Daten zum Anzeigen",
-      "none": "Ohne",
       "ok": "OK",
       "password": "Kennwort",
       "port": "Port",
@@ -56,6 +55,7 @@
       "confirm": "Bestätigen",
       "to": "bis",
       "na": "N/A",
+      "notApplicable": "Nicht anwendbar",
       "yes": "Ja",
       "no": "Nein",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 Lizenz = {{storageMultiplier}} GB",
       "licExpirationInfo": "<span><b>CFR Advanced</b>-Lizenz</span>-<span>Ablaufdatum</span>",
       "manageCentralLicensesBtn": "Produktlizenzen verwalten",
-      "projectedTooltip": "Hierbei handelt es sich um den anhand von eingehender Protokollrate und zugewiesenem Speicher prognostizierten Datenvorhaltungszeitrum.",
+      "projectedTooltip": "Ein Schätzwert, wie lange wir Ihre Daten speichern, basierend auf der Durchschnitts-Erstellungsrate von Logeinträgen und Ihrem zugewiesenen Speicher.",
       "transferText": "Lizenzen und Daten mit dem Austauschgerät verknüpfen",
-      "reclaimText": "Alle Lizenzen zurückfordern (konvertieren zu „kostenlos“)",
+      "reclaimText": "Alle Lizenzen zurückfordern (in Basic umwandeln)",
       "deleteLogText": "Protokolldaten löschen",
       "removeFirewallText": "Protokolldaten löschen und Registrierung bei Sophos Central löschen",
       "reclaimDialogTitle": "Reporting-Lizenz zurückfordern",
-      "moveFullToFreeLabel": "Geräte von „Advanced“ nach „Kostenlos“ verschieben",
+      "moveFullToFreeLabel": "Geräte von Advanced zu Basic verschieben",
       "transferLabel": "Lizenzen und Daten verknüpfen:",
       "removeFirewallDialogTitle": "Firewall(s) entfernen",
       "deleteLogLabel": "Wollen Sie die Protokolldaten für dieses Gerät wirklich löschen?",
@@ -175,8 +175,8 @@
       "removeFirewallLabel": "Die folgenden Firewalls werden aus Sophos Central entfernt",
       "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig  gemacht werden",
       "logDeleteInfoLabel": "Das Löschen des Protokolls kann einen Tag dauern.",
-      "reclaimDialogWarning": "Warnung: Wenn Sie zur kostenlosen Lizenz wechseln, stehen für ein Gerät nicht mehr die Advanced-Reporting-Funktionen zur Verfügung. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
-      "reclaimDialogNote": "Durch das Ändern in „Kostenlos“ werden vorhandene gespeicherte Protokolle und Berichte für dieses Gerät gelöscht. Alle gekauften und verwendeten Kapazitäten werden zur Verfügung gestellt.",
+      "reclaimDialogWarning": "Warnung: Wenn Sie zur Basic-Lizenz wechseln, stehen für ein Gerät nicht mehr die Advanced-Reporting-Funktionen zur Verfügung. Der Lizenztyp Basic bietet nur begrenzte Speicherkapazität und die Funktionen des Lizenztyps Basic",
+      "reclaimDialogNote": "Durch die Umwandlung in Basic werden vorhandene gespeicherte Protokolle und Berichte für dieses Gerät gelöscht. Dadurch wird die zugehörige Speicherkapazität wieder freigegeben.",
       "licenseIsNotActiveMsg": "Die Lizenz wird nicht aktiv genutzt",
       "licenseTransferText": "Die Lizenz wird nicht aktiv verwendet und wurde auf {{deviceName}} übertragen",
       "freeToPremiumConversionMsg": "Diese Lizenz wird in eine Advanced-Lizenz umgewandelt",
@@ -191,9 +191,9 @@
       "allocateTooltipText": "Weitere Informationen finden Sie hier",
       "thisPageText": "diese Seite",
       "full": "Erweitert",
-      "free":"Standard",
-      "xgsToFree":"Sie können das XGS-Lizenzpaket nicht auf ein nicht lizensiertes Gerät übertragen",
-      "xgsToNoneXgs":"Ihr XGS-Lizenzpaket geht verloren",
+      "free": "Basic",
+      "xgsToFree": "Sie können das Lizenzpaket für den Xstream-Schutz nicht auf ein nicht lizensiertes Gerät übertragen",
+      "xgsToNoneXgs": "Sie können Advanced-Lizenzen auf eine andere Firewall übertragen. Sie können eine Lizenz für den Xstream-Schutz nicht übertragen.",
       "tableNote": "Verwenden Sie die folgenden Zähler +/- , um die Lizenzzuweisungen für Firewall Reporting zu verwalten.",
       "transferNote": "Hinweis: Das alte Gerät wird als inaktiv markiert und sendet keine Daten mehr an Sophos Central.",
       "deleteDataWarningLabel": "Alle Daten werden gelöscht.",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "Diese Funktion ist Teil von <strong>CFR Advanced</strong>",
       "features": {
         "freeFeatureItems": {
-          "title": "Kostenlose Funktionen",
+          "title": "Basic",
           "feature1": "Datenvorhaltung von 7 Tagen (mit maximaler Kapazität)",
           "feature2": "Syslog-Suche & -Ansicht",
           "feature3": "On-Demand-Reporting in Sophos Central"
         },
         "fullFeatureItems": {
-          "title": "Erweiterte Funktionen",
-          "feature1": "Erweiterte Vorratsdatenspeicherung bis zu 1 Jahr",
+          "title": "Advanced",
+          "feature1": "Speichert Logdateien und Berichte für bis zu ein Jahr. Für weitere Details siehe <a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a>",
           "feature2": "Syslog-Suche & -Ansicht",
           "feature3": "On-Demand-Reporting in Sophos Central",
           "feature4": "Berichte als PDF, HTML oder CSV herunterladen",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "Geplante Funktionen",
           "feature1": "API-Zugang zu Sophos Central Reporting"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "Speichert Logdateien und Berichte der letzten 30 Tage. Verlängern Sie dies, indem Sie Advanced-Lizenzen hinzufügen"
         }
       },
       "table": {
@@ -230,12 +234,12 @@
         "ip": "IP",
         "centralStorageUsed": "Verwendeter Central Storage",
         "allocateLicenses": "Lizenzen zuteilen",
-        "estimated": "Geschätzter Speicher",
+        "estimated": "Speicherzeitraum",
         "oldestSavedData": "Älteste gespeicherte Daten",
-        "tier": "Programmstufe",
+        "tier": "Lizenztyp",
         "actions": "Aktionen",
         "haStatus": "HA-Status",
-        "xgsStorage": "XGS-Speicher"
+        "averageDailyUpload": "Durchschnittlicher täglicher Upload"
       },
       "messages": {
         "invalidAssetId": "Gerät ist ungültig",
@@ -265,7 +269,7 @@
           "duplicateRequest": "Anfrage nicht erstellt: Es wurde eine mit ähnlichen Filterkriterien gefunden. Wir bringen Sie zur bestehenden Anfrage",
           "emptyTableHeader": "Ihre Warteschlange enthält keine Elemente",
           "emptyTableBody": "Die Warteschlange ist wie ein Posteingang für Berichte, deren Erstellung lange dauert.",
-          "queryBeyondSevenDays": "Für ein Gerät mit kostenloser Lizenz enthalten Berichte nur Daten der letzten 7 Tage."
+          "queryBeyondSevenDays": "Für Geräte mit Basic-Lizenz enthalten Berichte nur Daten der letzten 7 Tage."
         },
         "tableHeaders": {
           "requestedOn": "Angefordert am",

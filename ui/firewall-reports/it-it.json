@@ -44,7 +44,6 @@
       "more": "altro",
       "network": "Rete",
       "noData": "Nessun dato da visualizzare",
-      "none": "Nessuno",
       "ok": "OK",
       "password": "Password",
       "port": "Porta",
@@ -56,6 +55,7 @@
       "confirm": "Conferma",
       "to": "a",
       "na": "N.D.",
+      "notApplicable": "Non applicabile",
       "yes": "Sì",
       "no": "No",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 licenza = {{storageMultiplier}} GB",
       "licExpirationInfo": "<span>Licenza <b>CFR Advanced</b></span><span>Data di scadenza</span>",
       "manageCentralLicensesBtn": "Gestisci licenze dei prodotti",
-      "projectedTooltip": "È il periodo di conservazione dei dati previsto, in base al tasso medio dei log in ingresso e allo spazio di archiviazione assegnato.",
+      "projectedTooltip": "Una stima del periodo di conservazione dei dati, in base al tasso medio dei log in ingresso e allo spazio di archiviazione assegnato.",
       "transferText": "Associa licenze e dati al dispositivo sostitutivo",
-      "reclaimText": "Recupera tutte le licenze (converti a versione gratuita)",
+      "reclaimText": "Recupera tutte le licenze (converti a licenze Di base)",
       "deleteLogText": "Elimina dati di log",
       "removeFirewallText": "Elimina dati di log e annulla la registrazione a Sophos Central",
       "reclaimDialogTitle": "Recupera licenza della reportistica",
-      "moveFullToFreeLabel": "Trasferisci dispositivo/i da Advanced a Free (a funzionalità gratuite)",
+      "moveFullToFreeLabel": "Trasferisci dispositivo/i dalla licenza Advanced alla licenza Di base",
       "transferLabel": "Associa licenze e dati:",
       "removeFirewallDialogTitle": "Rimuovi firewall",
       "deleteLogLabel": "Eliminare i dati di log di questo dispositivo?",
@@ -175,8 +175,8 @@
       "removeFirewallLabel": "Il/i seguente/i firewall verrà/verranno rimosso/i da Sophos Central",
       "deleteWarningLabel": "Questo processo viene registrato nel log ed è irreversibile",
       "logDeleteInfoLabel": "L'eliminazione del log potrebbe richiedere un giorno per essere completata.",
-      "reclaimDialogWarning": "Avviso: La modifica della licenza alla versione Free (a funzionalità gratuite) rimuoverà un dispositivo dalle funzionalità di Advanced Reporting. Il livello Free offre capacità limitate di archiviazione e include le funzionalità del livello Free",
-      "reclaimDialogNote": "La conversione a Free eliminerà i log e i report memorizzati che esistono per questo dispositivo. Le capacità acquistate e utilizzate saranno rese disponibili.",
+      "reclaimDialogWarning": "Avviso: La modifica della licenza alla versione Di base rimuoverà un dispositivo dalle funzionalità di Advanced Reporting. Il livello Di base offre capacità limitate di archiviazione e include le funzionalità del livello Di base",
+      "reclaimDialogNote": "La conversione alla licenza Di base elimina i log e i report archiviati che esistono per questo dispositivo. In questo modo si renderà disponibile ogni capacità di archiviazione associata.",
       "licenseIsNotActiveMsg": "La licenza non è utilizzata attivamente",
       "licenseTransferText": "La licenza non è utilizzata attivamente ed è stata trasferita a {{deviceName}}",
       "freeToPremiumConversionMsg": "Questa licenza sarà convertita a una licenza Advanced",
@@ -190,10 +190,10 @@
       "licenseTransferSuccessMsg": "Licenza/e trasferita/e",
       "allocateTooltipText": "Per maggiori informazioni, visitare",
       "thisPageText": "questa pagina",
-      "full": "Avanzate",
-      "free":"Standard",
-      "xgsToFree":"Non puoi trasferire il bundle di licenza XGS su un dispositivo senza licenza",
-      "xgsToNoneXgs":"Perderai il tuo bundle di licenza XGS",
+      "full": "Advanced",
+      "free": "Di base",
+      "xgsToFree": "Non puoi trasferire il bundle di licenza Xstream Protection su un dispositivo senza licenza",
+      "xgsToNoneXgs": "Puoi trasferire le licenze Advanced su un altro firewall. Non puoi trasferire una licenza Xstream Protection.",
       "tableNote": "Utilizzare i contatori + / - per gestire l'assegnazione delle licenze di reportistica del firewall",
       "transferNote": "Nota. Il dispositivo precedente verrà contrassegnato come inattivo e non invierà più dati a Sophos Central.",
       "deleteDataWarningLabel": "Tutti i dati verranno eliminati.",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "Questa funzionalità è inclusa in <strong>CFR Advanced</strong>",
       "features": {
         "freeFeatureItems": {
-          "title": "Funzionalità gratuite",
+          "title": "Di base",
           "feature1": "Conservazione dei dati 7 giorni (con limite massimo per la capacità)",
           "feature2": "Ricerca Syslog e visualizzazione",
           "feature3": "Reportistica on-demand in Sophos Central"
         },
         "fullFeatureItems": {
-          "title": "Funzionalità Advanced",
-          "feature1": "Periodo di conservazione dei dati esteso fino a 1 anno",
+          "title": "Advanced",
+          "feature1": "Conserva log e report fino a 1 anno. Vedi <a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a> per maggiori informazioni",
           "feature2": "Ricerca Syslog e visualizzazione",
           "feature3": "Reportistica on-demand in Sophos Central",
           "feature4": "Scarica report in PDF, HTML e CSV",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "Funzionalità pianificate",
           "feature1": "Accesso API alla reportistica di Sophos Central"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "Conserva i log e i report degli ultimi 30 giorni. Estendi ulteriormente il periodo di conservazione aggiungendo licenze Advanced"
         }
       },
       "table": {
@@ -230,12 +234,12 @@
         "ip": "IP",
         "centralStorageUsed": "Archiviazione di Central utilizzata",
         "allocateLicenses": "Assegna licenze",
-        "estimated": "Stima dello spazio di archiviazione",
-        "oldestSavedData": "Dati salvati meno recenti",
-        "tier": "Livello",
+        "estimated": "Periodo di conservazione",
+        "oldestSavedData": "Dati meno recenti archiviati",
+        "tier": "Tipo di licenza",
         "actions": "Azioni",
         "haStatus": "Stato di disponibilità elevata (HA)",
-        "xgsStorage": "Archiviazione di XGS"
+        "averageDailyUpload": "Caricamento giornaliero medio"
       },
       "messages": {
         "invalidAssetId": "Il dispositivo non è valido",
@@ -265,7 +269,7 @@
           "duplicateRequest": "Richieste non create: Individuata una con criteri filtro simili. Esplorazione in corso verso la richiesta esistente",
           "emptyTableHeader": "La coda non contiene elementi",
           "emptyTableBody": "La coda è come una casella di posta per i report che richiedono diverso tempo per essere generati.",
-          "queryBeyondSevenDays": "Non puoi compilare report su dati che risalgono a più di 7 giorni fa per un dispositivo con licenza gratuita."
+          "queryBeyondSevenDays": "Non puoi compilare report su dati che risalgono a più di 7 giorni fa per un dispositivo con licenza di base."
         },
         "tableHeaders": {
           "requestedOn": "Richiesto il",

@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "刪除確認",
         "content": "這會將此項標記為連線群組 '{{ name }}' 等待刪除，並還原指派到此群組的防火墻中的設定。請注意，在此群組下的所有防火墻還原設定之前，它們不能歸屬到任何其他群組。",
-        "success": "已成功刪除連線群組。",
+        "success": "已成功標記連線群組進行刪除。",
         "error": "刪除群組時出錯。",
         "marked": "已標記此群組等待刪除。所有防火墻套用還原的設定之後，將完成此步驟。請在工作佇列中查看這些工作的進度。"
       },
@@ -298,7 +298,7 @@
             "source":"可用防火墻",
             "target":"已指派的防火牆",
             "label": "後續步驟中可將直接連線到防火墻的 LAN 網路新增到共用群組。您可以在下一步中自訂每個防火墻的用戶端網路。",
-            "filter-notes": "注意：獲授權參與 SD-WAN 連線群組的防火墻僅對選擇可見。此外，應將防火墻升級至支援此功能的韌體。",
+            "filter-notes": "注意：只有獲得授權參與 SD-WAN 連線群組的防火牆才可見以供選擇。此外，應將防火墻升級至支援此功能的韌體。",
             "learn-more": "瞭解更多"
           },
           "select": {
@@ -332,7 +332,6 @@
               "details-edit": "詳細資料/編輯",
               "fix-conflicts": "修復衝突"
             },
-            "non-resolvable-conflict": "資源共用防火牆不能有網路衝突。這種情況可能無法解決。",
             "not-participating": "任何介面都不能參與本機網路。您可以編輯設定以啟用它們。"
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "啟用",
               "nat": "啟用 NAT",
               "nat-address": "NAT 位址",
-              "nat-subnet": "轉換 (NAT) 地址必須與介面屬於同一子網路。",
+              "nat-subnet": "NATed 位址可用於解決任何網路衝突。轉換 (NAT) 地址必須與介面屬於同一子網路。",
               "conflicts": "衝突",
               "wan": "WAN 連結",
               "selected": "已選",
               "gateway": "備用閘道",
               "xfrm-ip": "Xfrm IP 位址",
-              "add": "新增網段"
+              "add": "新增網段",
+              "public-ip": "所選 WAN 連結的公共 IP 或 FQDN",
+              "behind-nat": "覆寫閘道位址"
             },
             "conflicts": {
-              "subnet-conflict": "衝突網路：{{ subnet }}。",
+              "subnet-conflict": "衝突網路：'{{ subnet }}'",
               "missing-mandatory": "缺少必填欄位。",
-              "invalid-nat": "無效的 NAT 位址。",
-              "invalid-ip": "無效的 IP 位址。",
-              "invalid-netmask": "無效的網路遮罩。",
+              "invalid-nat": "無效的 IPv4 NAT 位址。",
+              "invalid-ip": "無效的 IPv4 位址。",
+              "invalid-netmask": "無效的 IPv4 網路遮罩。",
               "name-conflicts": "命名衝突。",
               "xfrm-ip-needed": "最少需要 {{ need }} 個 IP 位址。",
-              "in-use": "一個或多個 IP 已用於其他防火牆"
+              "in-use": "一個或多個 IP 已用於其他防火牆",
+              "public-ip-needed": "公共 IP 或 FQDN 為必填項。"
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "已共用的資源",
               "placeholder": "輸入目標資源的 IP 位址",
               "help": {
-                "heading": "您可以按照下列任一格式指定位址：",
-                "type-ip": "IP 位址：例如10.12.22.34",
-                "type-iplist": "IP 清單：例如10.12.22.34,10.12.22.35",
-                "type-iprange": "IP 範圍：例如10.12.22.34-10.12.22.35",
-                "type-crdi": "網路格式：例如10.12.22.34/2"
+                "heading": "您可以按照下列任一格式指定主機位址：",
+                "type-ip": "IPv4 位址：例如10.12.22.34",
+                "type-iplist": "IPv4 清單：例如10.12.22.34,10.12.22.35",
+                "type-iprange": "IPv4 範圍：例如10.12.22.34-10.12.22.35",
+                "type-crdi": "IPv4 網路格式：例如10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "無限制"
                 }
               },
-              "invalid": "共用資源的格式無效"
+              "invalid": "共用資源的 IPv4 格式無效"
             },
             "service": {
               "title": "服務",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "設定與原則"
 
+    },
+    "component": {
+      "state": {
+        "connected": "已連線",
+        "disconnected": "已斷開連線",
+        "approval-pending": "核准擱置",
+        "management-disabled": "管理已停用",
+        "synchronizing": "同步中",
+        "synchronized": "已經同步"
+      }
     }
   }
 }

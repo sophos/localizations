@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "삭제 확인",
         "content": "이 ‘{{ name }}’ 연결 그룹을 삭제 대상으로 표시하고 이 그룹에 할당된 방화벽의 설정을 되돌립니다. 이 그룹의 모든 방화벽이 설정을 되돌릴 때까지는 다른 그룹의 일부가 될 수 없습니다.",
-        "success": "연결 그룹을 삭제했습니다.",
+        "success": "연결 그룹을 삭제 대상으로 성공적으로 표시했습니다.",
         "error": "그룹을 삭제하는 동안 오류가 발생했습니다.",
         "marked": "이 그룹은 삭제 대상으로 표시되었습니다. 되돌린 설정이 모든 방화벽에 적용되면 완료됩니다. 해당 작업의 진행 상황은 작업 대기열을 확인하십시오."
       },
@@ -298,7 +298,7 @@
             "source":"사용 가능한 방화벽",
             "target":"할당된 방화벽",
             "label": "방화벽에 직접 연결된 LAN 네트워크는 다음 단계에서 공유 그룹에 추가될 수 있습니다. 다음 단계에서 각 방화벽의 클라이언트 네트워크를 사용자 지정할 수 있습니다.",
-            "filter-notes": "참고: SD-WAN 연결 그룹에 참여하도록 라이선스가 부여된 방화벽은 선택 시에만 표시됩니다. 또한 방화벽을 이 기능을 지원하는 펌웨어로 업그레이드해야 합니다.",
+            "filter-notes": "참고: SD-WAN 연결 그룹에 참여하도록 라이선스가 부여된 방화벽만 선택 시 표시됩니다. 또한 방화벽을 이 기능을 지원하는 펌웨어로 업그레이드해야 합니다.",
             "learn-more": "자세히 알아보기"
           },
           "select": {
@@ -332,7 +332,6 @@
               "details-edit": "세부 정보/편집",
               "fix-conflicts": "충돌 수정"
             },
-            "non-resolvable-conflict": "리소스 공유 방화벽에 네트워크 충돌이 있을 수 없습니다. 이 문제를 해결할 수 없습니다.",
             "not-participating": "로컬 네트워크에 참여할 수 있도록 활성화된 인터페이스가 없습니다. 설정을 편집하여 사용할 수 있습니다."
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "사용",
               "nat": "NAT 사용",
               "nat-address": "NAT 주소",
-              "nat-subnet": "변환된(NAT) 주소는 인터페이스와 동일한 서브넷에 속해야 합니다.",
+              "nat-subnet": "NAT 주소는 네트워크 충돌을 해결하는 데 사용할 수 있습니다. 변환된(NAT) 주소는 인터페이스와 동일한 서브넷에 속해야 합니다.",
               "conflicts": "충돌",
               "wan": "WAN 링크",
               "selected": "선택됨",
               "gateway": "백업 게이트웨이",
               "xfrm-ip": "Xfrm IP 주소",
-              "add": "네트워크 추가"
+              "add": "네트워크 추가",
+              "public-ip": "선택한 WAN 링크에 대한 공용 IP 또는 FQDN",
+              "behind-nat": "게이트웨이 주소 재정의"
             },
             "conflicts": {
-              "subnet-conflict": "네트워크 충돌 대상: {{ subnet }}.",
+              "subnet-conflict": "네트워크 충돌 대상: '{{ subnet }}'",
               "missing-mandatory": "필수 필드가 누락되었습니다.",
-              "invalid-nat": "잘못된 NAT 주소입니다.",
-              "invalid-ip": "잘못된 IP 주소입니다.",
-              "invalid-netmask": "넷마스크가 잘못되었습니다.",
+              "invalid-nat": "잘못된 IPv4 NAT 주소.",
+              "invalid-ip": "잘못된 IPv4 주소.",
+              "invalid-netmask": "잘못된 IPv4 넷마스크.",
               "name-conflicts": "이름이 충돌합니다.",
               "xfrm-ip-needed": "최소 {{ need }}개의 IP 주소가 필요합니다.",
-              "in-use": "하나 이상의 IP가 이미 다른 방화벽에 사용되고 있습니다"
+              "in-use": "하나 이상의 IP가 이미 다른 방화벽에 사용되고 있습니다",
+              "public-ip-needed": "공용 IP 또는 FQDN은 필수입니다."
             }
           }
         },
@@ -377,11 +379,11 @@
               "title": "공유된 리소스",
               "placeholder": "대상 리소스의 IP 주소를 입력하십시오.",
               "help": {
-                "heading": "아래 형식 중 하나로 주소를 지정할 수 있습니다.",
-                "type-ip": "IP 주소: 예: 10.12.22.34",
-                "type-iplist": "IP 목록: 예: 10.12.22.34,10.12.22.35",
-                "type-iprange": "IP 범위: 예: 10.12.22.34-10.12.22.35",
-                "type-crdi": "네트워크 형식: 예: 10.12.22.34/2"
+                "heading": "아래 형식 중 하나로 호스트 주소를 지정할 수 있습니다.",
+                "type-ip": "IPv4 주소: 예: 10.12.22.34",
+                "type-iplist": "IPv4 목록: 예: 10.12.22.34,10.12.22.35",
+                "type-iprange": "IPv4 범위: 예: 10.12.22.34-10.12.22.35",
+                "type-crdi": "IPv4 네트워크 형식: 예: 10.12.22.34/24"
               },
              
               "_dynamic_": {
@@ -404,7 +406,7 @@
                   "3": "제한 없음"
                 }
               },
-              "invalid": "공유 리소스에 대한 잘못된 형식"
+              "invalid": "공유 리소스에 대한 잘못된 IPv4 형식"
             },
             "service": {
               "title": "서비스",
@@ -641,6 +643,16 @@
     "global-settings": {
       "breadcrumb-text": "설정 및 정책"
 
+    },
+    "component": {
+      "state": {
+        "connected": "연결됨",
+        "disconnected": "연결 해제됨",
+        "approval-pending": "보류 중인 승인",
+        "management-disabled": "관리 사용 안 함",
+        "synchronizing": "동기화 중",
+        "synchronized": "동기화됨"
+      }
     }
   }
 }

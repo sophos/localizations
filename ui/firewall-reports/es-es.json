@@ -44,7 +44,6 @@
       "more": "más",
       "network": "Red",
       "noData": "No hay datos para mostrar",
-      "none": "Ninguno",
       "ok": "correcto",
       "password": "Contraseña",
       "port": "Puerto",
@@ -56,6 +55,7 @@
       "confirm": "Confirmar",
       "to": "a",
       "na": "N/A",
+      "notApplicable": "No aplicable",
       "yes": "Sí",
       "no": "No",
       "tFooter": {
@@ -159,13 +159,13 @@
       "licDetails": "1 licencia = {{storageMultiplier}} GB",
       "licExpirationInfo": "<span>Licencia <b>CFR Advanced</b></span><span>Fecha de caducidad</span>",
       "manageCentralLicensesBtn": "Administrar licencias de producto",
-      "projectedTooltip": "Este es el periodo de retención de datos previsto en función del índice medio de creación de registros y el almacenamiento asignado.",
+      "projectedTooltip": "Una estimación del tiempo que almacenaremos sus datos, basada en el ritmo medio de entrada de registros y el almacenamiento asignado.",
       "transferText": "Asociar licencias y datos con el dispositivo sustituto",
-      "reclaimText": "Reclamar todas las licencias (convertir en gratuitas)",
+      "reclaimText": "Reclamar todas las licencias (convertir en Básica)",
       "deleteLogText": "Eliminar datos de registro",
       "removeFirewallText": "Eliminar datos de registro y anular registro de Sophos Central",
       "reclaimDialogTitle": "Reclamar licencia de informes",
-      "moveFullToFreeLabel": "Mover dispositivo(s) de Advanced a Free",
+      "moveFullToFreeLabel": "Mover dispositivo(s) de Avanzada a Básica",
       "transferLabel": "Asociar licencias y datos:",
       "removeFirewallDialogTitle": "Eliminar firewall(s)",
       "deleteLogLabel": "¿Seguro que desea eliminar los datos de registro para este dispositivo?",
@@ -175,11 +175,11 @@
       "removeFirewallLabel": "Los siguientes firewalls se eliminarán de Sophos Central",
       "deleteWarningLabel": "Este proceso se incluye en el registro y es irreversible",
       "logDeleteInfoLabel": "La eliminación del registro puede tardar un día en completarse.",
-      "reclaimDialogWarning": "Aviso: Al cambiar la licencia a Free, se quitará el dispositivo de las funciones de generación de informes de nivel Advanced. El nivel Free ofrece una capacidad de almacenamiento limitada y las funciones del nivel Free.",
-      "reclaimDialogNote": "La conversión a Free eliminará los registros e informes almacenados que existan para este dispositivo. Cualquier capacidad comprada y utilizada pasará a estar disponible.",
+      "reclaimDialogWarning": "Aviso: Al cambiar la licencia a Básica, se quitará el dispositivo de las funciones de generación de informes de nivel Avanzado. El nivel Básico ofrece una capacidad de almacenamiento limitada y las funciones del nivel Básico.",
+      "reclaimDialogNote": "La conversión a Básica elimina los registros e informes almacenados que existan para este dispositivo. Esto hace que cualquier capacidad de almacenamiento asociada esté disponible.",
       "licenseIsNotActiveMsg": "La licencia no está en uso activo",
       "licenseTransferText": "La licencia no está en uso activo y se ha transferido a {{deviceName}}",
-      "freeToPremiumConversionMsg": "Esta licencia se convertirá en una licencia Advanced",
+      "freeToPremiumConversionMsg": "Esta licencia se convertirá en una licencia Avanzada",
       "reduceLicenseMsg": "Al reducir las licencias asignadas se eliminará una parte de los datos guardados más antiguos",
       "licenseSaveFailedMsg": "No se han podido guardar las licencias",
       "licenseReclaimSuccessMsg": "Se han reclamado licencias",
@@ -190,10 +190,10 @@
       "licenseTransferSuccessMsg": "Se han transferido licencias",
       "allocateTooltipText": "Para obtener más información, visite",
       "thisPageText": "esta página",
-      "full": "Advanced",
-      "free":"Estándar",
-      "xgsToFree":"No se puede transferir el paquete de licencias XGS a un dispositivo sin licencia",
-      "xgsToNoneXgs":"Su paquete de licencias XGS se perderá",
+      "full": "Avanzada",
+      "free": "Básica",
+      "xgsToFree": "No se puede transferir el paquete de licencias de protección Xstream a un dispositivo sin licencia",
+      "xgsToNoneXgs": "Puede transferir licencias Avanzada a un firewall diferente. No puede transferir una licencia de protección Xstream.",
       "tableNote": "Utilice los contadores + / - de abajo para administrar las asignaciones de licencias de informes de firewall.",
       "transferNote": "Nota: El dispositivo anterior se marcará como inactivo y ya no enviará datos a Sophos Central.",
       "deleteDataWarningLabel": "Se eliminarán todos los datos.",
@@ -203,14 +203,14 @@
       "featureUpgradePrompt": "Esta función forma parte de <strong>CFR Advanced</strong>",
       "features": {
         "freeFeatureItems": {
-          "title": "Funciones gratuitas",
+          "title": "Básica",
           "feature1": "7 días de retención de datos (con límite de capacidad)",
           "feature2": "Búsqueda y visualización de syslog",
           "feature3": "Informes bajo demanda en Sophos Central"
         },
         "fullFeatureItems": {
-          "title": "Funciones de Advanced",
-          "feature1": "Retención de datos ampliada hasta 1 año",
+          "title": "Avanzada",
+          "feature1": "Almacena los registros e informes hasta 1 año. Consulte <a href=\"https://sophos.com/cfrsizing\" target=\"_blank\">Sophos.com/cfrsizing</a> para obtener más información.",
           "feature2": "Búsqueda y visualización de syslog",
           "feature3": "Informes bajo demanda en Sophos Central",
           "feature4": "Descargar informes en PDF, HTML y CSV",
@@ -220,6 +220,10 @@
         "plannedFeatureItems": {
           "title": "Funciones planificadas",
           "feature1": "Acceso de la API a Sophos Central Reporting"
+        },
+        "xstreamFeatureItems": {
+          "title": "Xstream",
+          "feature1": "Almacena los últimos 30 días de registros e informes. Amplíelo aún más añadiendo licencias Avanzada"
         }
       },
       "table": {
@@ -230,17 +234,17 @@
         "ip": "IP",
         "centralStorageUsed": "Almacenamiento de Central usado",
         "allocateLicenses": "Asignar licencias",
-        "estimated": "Almacenamiento estimado",
-        "oldestSavedData": "Datos guardados más antiguos",
-        "tier": "Nivel",
+        "estimated": "Período de almacenamiento",
+        "oldestSavedData": "Datos almacenados más antiguos",
+        "tier": "Tipo de licencia",
         "actions": "Acciones",
         "haStatus": "Estado HA",
-        "xgsStorage": "Almacenamiento XGS"
+        "averageDailyUpload": "Carga media diaria"
       },
       "messages": {
         "invalidAssetId": "El dispositivo no es válido",
         "assetIdDoesntExist": "El dispositivo no existe",
-        "transferNoPremiumLicense": "El dispositivo no tiene licencia Advanced",
+        "transferNoPremiumLicense": "El dispositivo no tiene licencia Avanzada",
         "transferNoActiveDevice": "El nuevo dispositivo no es un dispositivo activo",
         "transferFromHAPairNotAllowed": "El dispositivo forma parte de un par de alta disponibilidad; no puede transferirse",
         "customerQuotaNotAvailable": "Los detalles de la cuota de licencia del cliente no están disponibles",
@@ -265,7 +269,7 @@
           "duplicateRequest": "Solicitud no creada: se ha encontrado una con criterios de filtro similares. Dirigiéndole a la solicitud existente",
           "emptyTableHeader": "No hay elementos en su cola",
           "emptyTableBody": "La cola es como una bandeja de entrada para informes que tardan mucho tiempo en generarse.",
-          "queryBeyondSevenDays": "Para un dispositivo que no es Premium, no se puede informar sobre datos de más de 7 días."
+          "queryBeyondSevenDays": "Para un dispositivo con licencia Básica, no se puede informar sobre datos de más de 7 días."
         },
         "tableHeaders": {
           "requestedOn": "Solicitado el",
@@ -316,7 +320,7 @@
         "search": "Buscar",
         "noRecords": "No hay registros",
         "apply": "Aplicar",
-        "multiDeviceReportingNote": "Los informes multidispositivo solo están disponibles con la licencia Advanced.",
+        "multiDeviceReportingNote": "Los informes multidispositivo solo están disponibles con la licencia Avanzada.",
         "tooManyFirewallSelected": "Ha alcanzado el límite máximo de firewalls seleccionados"
       },
       "savedTemplates": {

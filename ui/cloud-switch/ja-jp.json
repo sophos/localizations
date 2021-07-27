@@ -12,10 +12,14 @@
       "details": "詳細",
       "template": "サイト",
       "firmware": "ファームウェア",
-      "minutes-ago": "分前",
-      "hours-ago": "時間前",
-      "days-ago": "日前",
-      "months-ago": "カ月前",
+      "minutes-ago": "{{unit}}分前",
+      "minute-ago": "{{unit}}分前",
+      "hours-ago": "{{unit}}時間前",
+      "hour-ago": "{{unit}}時間前",
+      "days-ago": "{{unit}}日前",
+      "day-ago": "{{unit}}日前",
+      "months-ago": "{{unit}}カ月前",
+      "month-ago": "{{unit}}カ月前",
       "button": {
         "register": "登録",
         "cancel": "キャンセル",
@@ -23,7 +27,8 @@
         "bugs": "バグ",
         "apply": "適用",
         "confirm": "確認",
-        "delete": "削除"
+        "delete": "削除",
+        "add": "追加"
       },
       "status": {
         "registering": "接続を待機中",
@@ -73,10 +78,10 @@
         "breadcrumb-text": "スイッチ",
         "title": "クラウド - スイッチ",
         "toggle-columns-title": "列の切り替え",
-        "remove-dialog-title": "スイッチの削除",
-        "remove-dialog-message": "スイッチ <strong>{{switchSerial}}</strong> の削除。",
+        "remove-dialog-title": "Sophos Central から削除",
+        "remove-dialog-message": "Sophos Central からのスイッチ <strong>{{switchSerial}}</strong> の削除",
         "retry-dialog-title": "登録の再試行",
-        "delete-note": "注: このスイッチを削除すると、Sophos Central から削除されます。",
+        "delete-note": "登録済みスイッチは<strong>再起動</strong>されます。<br/>スイッチが切断されている場合は、スイッチが Sophos Central に接続しようとする際に再起動が行われます。<br/>注: スイッチの現在の設定は保持されます。",
         "txtbox": {
           "search-placeholder": "スイッチの検索"
         },
@@ -108,24 +113,30 @@
         },
         "upgrade": {
           "update-available": "ファームウェアの新しいアップデートがあります。",
-          "upgrade-message": "これらのアップグレードは、スケジュール設定することも、すぐに適用することもできます。",
-          "schedule-upgrade": "アップグレードの管理またはスケジュール設定",
-          "schedule": "スケジュール",
-          "manage-schedule-dialog-title": "ファームウェアのアップグレードの管理",
-          "upgrade-schedule-dialog-title": "ファームウェアのアップグレードのスケジュール設定",
-          "dialog-heading": "スイッチのアップグレード/スケジュールの管理",
-          "schedule-info-message": "選択したスイッチを更新するタイミングを選択します",
-          "update-now": "今すぐアップデート",
+          "rollback-available": "以前のバージョン {{ version }} へのロールバック",
+          "rollback-message": "これにより、バックアップのパーティションからスイッチが再起動されます。",
+          "schedule-rollback": "ロールバックのスケジュール設定",
+          "upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。",
+          "schedule-upgrade": "アップグレードのスケジュール設定",
+          "schedule": "スケジュールの追加",
+          "manage-schedule-dialog-title": "ファームウェアの管理: {{ site }}",
+          "upgrade-schedule-dialog-title": "スケジュールの選択",
+          "dialog-heading": "次のサイトにあるスイッチのファームウェアを管理します: {{ site }}。以下の選択肢から、ファームウェアのアップグレードを追加、キャンセル、またはロールバックできます。",
+          "schedule-info-message": "選択したスイッチを更新またはロールバックするタイミングを選択します。",
+          "update-now": "今すぐ",
           "custom": "カスタム",
+          "schedule-now-note": "接続されているスイッチには、直ちにアップグレード/ロールバックするよう通知が送信されます。切断されているスイッチは、接続後すぐに通知が送信されます。これには、スイッチの再起動が必要になる場合があります。",
+          "schedule-custom-note": "選択されたスケジュールは、タイムゾーンに関係なく、スイッチの現地時間に従います。アップグレード/ロールバックには再起動が必要になる場合があります。",
           "scheduled-success-message": "ファームウェアのアップグレードがスケジュール設定されました",
           "scheduled-success-failure": "ファームウェアのアップグレードに失敗しました",
           "update-cancel-message": "ファームウェアのアップグレードがキャンセルされました",
-          "cancel-upgrade": "アップグレードのキャンセル",
+          "cancel-upgrade": "スケジュールのキャンセル",
+          "rollback": "ロールバック ({{ version }})",
           "table": {
-            "serial-number": "シリアル番号",
+            "serial-number": "スイッチ",
             "version": "バージョン",
-            "update-to": "アップデート版:",
-            "currently-scheduled-upgrades": "現在スケジュール設定されているアップグレード",
+            "update-to": "アップデートバージョン:",
+            "currently-scheduled-upgrades": "選択済みスケジュール",
             "release-notes": "リリースノート",
             "edit": "編集",
             "selected": "選択済み"
@@ -143,7 +154,7 @@
         },
         "delete-template": {
           "dialog-title": "サイトの削除",
-          "delete-template-confirm-text": "サイト <strong>{{templateName}}</strong> の削除"
+          "delete-template-confirm-text": "サイト <strong>{{templateName}}</strong> の削除このサイトにあるスイッチは、デフォルトのサイトに移動されます。"
         },
         "edit-template": {
           "dialog-title": "サイトの編集"
@@ -180,7 +191,7 @@
           "serial-no": "シリアル番号",
           "model": "機種",
           "powered-on": "電源オン",
-          "switch-firmware": "スイッチファームウェア",
+          "switch-firmware": "スイッチのファームウェア",
           "central-agent": "Central エージェント"
         }
       }
@@ -190,33 +201,31 @@
         "title": "スイッチの追加",
         "step-1": {
           "title": "ステップ 1",
-          "description": "スイッチをネットワークに接続して、インターネットに接続できるようにします。"
+          "description": "スイッチをネットワークに接続して、インターネットに接続できるようにします。スイッチの電源をオンにし、既に電源がオンになっている場合は再起動します。"
         },
         "step-2": {
           "title": "ステップ 2",
-          "description": "スイッチのシリアル番号を見つけます。シリアル番号は、スイッチの ID です。"
+          "description": "登録には時間制限があります。電源をオンにした後、15分以内にスイッチを Sophos Central に追加する必要があります。"
         },
         "step-3": {
           "title": "ステップ 3",
-          "description": "登録するスイッチのシリアル番号を入力します。(カンマ区切り)"
+          "description": "登録するスイッチのシリアル番号を入力します。",
+          "placeholder": "1行に 1つのシリアル番号を入力します。"
         },
         "checkbox": {
-          "terms-and-conditions": "<a style=\"text-decoration:underline\" id=\"anchor-user-agreement\" href=\"https://www.sophos.com\" target=\"_blank\">利用規約</a>に同意します",
+          "terms-and-conditions": "利用規約",
           "auto-approve": "デバイスが Sophos Central に接続したらすぐにデバイスを自動承認する",
           "auto-upgrade": "アップグレード後の再起動が不要な場合は、使用可能な最新バージョンのソフトウェアにスイッチを自動アップグレードする"
         },
         "body": {
-          "line-1": "登録時にスイッチがオンになっていることを確認してください。ゼロタッチ登録プロセスは、5分間だけアクティブになります。",
-          "line-2": "登録済みスイッチは、まずデフォルトのサイトに移動されます。",
-          "line-3": "スイッチは、登録後すぐに、使用可能な最新バージョンのソフトウェアに自動アップグレードされます。これには、デバイスの再起動が必要になる場合があります。"
+          "line": "スイッチは、登録後すぐに、使用可能な最新バージョンのソフトウェアに自動アップグレードされます。これには、デバイスの再起動が必要になる場合があります。"
         }
       },
       "message": {
-        "already-reported": "シリアル番号が {{ switches }} のスイッチは、既に Sophos Central に登録されています。",
+        "already-reported": "既に Sophos Central に登録されています: {{ switches }}",
         "registration-error": "スイッチを登録できません。",
-        "switches-registered": "スイッチを Sophos Central に登録しています。",
-        "switch-registration-state-invalid": "シリアル番号 {{ switches }} が無効です",
-        "switch-registration-exception": "他のスイッチを Sophos Central に登録しています。",
+        "switches-registered": "Sophos Central に登録中のスイッチ: {{ switches }}",
+        "switch-registration-state-invalid": "シリアル番号が無効です: {{ switches }}",
         "invalid-serial": "1つまたは複数のシリアル番号が無効です。",
         "empty-switch-list-error": "有効なシリアル番号がありません。"
       }
@@ -232,17 +241,24 @@
     },
     "vlan": {
       "search-placeholder-text": "ID または名前で検索",
-      "color-dd-default-title": "色を選択します",
-      "untagged-dd-default-title": "ポートを選択します",
       "ports-dd-default-title": "ポートを選択します",
       "add-vlan-dialog-title": "VLAN の追加",
       "edit-vlan-dialog-title": "VLAN の編集",
       "button": {
         "add": "VLAN の追加"
       },
+      "color": {
+        "red": "赤",
+        "green": "緑",
+        "blue": "青",
+        "yellow": "黄色",
+        "purple": "紫",
+        "none": "なし"
+      },
       "table-headers": {
         "vlan-id": "VLAN ID",
         "name": "VLAN 名",
+        "description": "説明",
         "tagged-ports": "タグ付きポート",
         "untagged-ports": "タグなしポート",
         "forbidden-ports": "禁止ポート"
@@ -255,6 +271,7 @@
         "forbidden-ports": "禁止ポート",
         "vlan-type-standard": "標準",
         "vlan-type-voice": "ボイス",
+        "color": "色",
         "vlan-id-required-message": "VLAN ID を指定してください。",
         "vlan-id-invalid-message": "VLAN ID は無効です。",
         "vlan-name-required-message": "名前を指定してください。",
@@ -269,6 +286,56 @@
         "delete-success": "VLAN が削除されました",
         "delete-confirm-title": "VLAN の削除",
         "delete-info-message": "VLAN <strong>{{vlans}}</strong> の削除"
+      }
+    },
+    "task-queue": {
+      "total-tasks": "タスク総数",
+      "pending": "保留中",
+      "in-progress": "進行中",
+      "failed": "失敗",
+      "skipped": "スキップ",
+      "completed": "完了",
+      "button": {
+        "show-history": "履歴の表示"
+      },
+      "table-headers": {
+        "status": "状態",
+        "switch": "スイッチ",
+        "site": "サイト",
+        "entity": "エンティティ",
+        "sub-entity": "サブエンティティ",
+        "date-time": "前回更新日時"
+      },
+      "status": {
+        "pending": "保留中",
+        "success": "成功",
+        "failed": "失敗",
+        "deleted": "削除",
+        "skipped": "スキップ",
+        "in_progress": "進行中"
+      },
+      "action": {
+        "retry": "再試行",
+        "skip": "スキップ"
+      },
+      "type": {
+        "add": "追加",
+        "update": "更新",
+        "delete": "削除",
+        "firmware_upgrade": "ファームウェアのアップグレード"
+      },
+      "retry-success": "選択したタスクが再びスイッチにプッシュされます。",
+      "retry-error": "失敗したタスクの実行を再試行できませんでした。",
+      "skip-success": "選択したタスクはスキップされ、保留中のタスクがある場合はスイッチに送信されます。",
+      "skip-error": "選択したタスクをスキップできませんでした。"
+    },
+    "port-settings": {
+      "table-headers": {
+        "port-id": "ポート",
+        "label": "ラベル",
+        "link-speed": "速度/二重通信",
+        "untagged-vlan": "タグなし VLAN",
+        "tagged-vlans": "タグ付き VLAN"
       }
     }
   }

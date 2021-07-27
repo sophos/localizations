@@ -125,7 +125,7 @@
             "name": "動的インターフェース",
             "zone-type": "ゾーンの種類",
             "ip-address-family": "IP アドレスファミリー",
-            "last-modified": "最終更新日時"
+            "last-modified": "前回更新日時"
           }
         }
       },
@@ -138,7 +138,7 @@
             "name": "動的ゾーン",
             "zone-type": "ゾーンの種類",
             "description": "説明",
-            "last-modified": "最終更新日時"
+            "last-modified": "前回更新日時"
           }
         }
       }
@@ -150,7 +150,7 @@
       "delete": {
         "confirm": "削除の確認",
         "content": "この接続グループ '{{ name }}' が削除対象として指定され、このグループに割り当てられているファイアウォールの設定が元に戻ります。このグループ内のすべてのファイアウォールの設定が元に戻るまで、他のグループに含めることはできません。",
-        "success": "接続グループの削除に成功しました。",
+        "success": "接続グループを削除対象に指定しました。",
         "error": "グループの削除中、エラーが発生しました。",
         "marked": "このグループは削除対象に指定されました。すべてのファイアウォールに元の設定が適用されると、この操作は完了します。これらのタスクの進行状況については、タスクのキューを確認してください。"
       },
@@ -250,11 +250,11 @@
           "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "クラス '{{ className }}' に固有の属性がありません",
           "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "クラス '{{ className }}' に必須の属性 '{{ name }}' がありません",
           "UNSUPPORTED_CLASS" : "サポートされていないクラス '{{ name }}' です",
-          "INVALID_ATTRIBUTE_DATATYPE" : "クラス '{{ className }}' の属性 '{{ name }}' のデータがサポートされていません ",
+          "INVALID_ATTRIBUTE_DATATYPE" : "クラス '{{ className }}' の属性 '{{ name }}' のデータがサポートされていません",
           "MISSING_ATTRIBUTE" : "クラス '{{ className }}' に属性 '{{ name }}' がありません",
           "INVALID_IP_ADDRESS" : "無効な IP アドレスです: {{ values }}",
           "INVALID_IP_NETMASK_ADDRESS" : "無効な IP アドレス '{{ ip }}' ネットマスク/プレフィックス '{{ netmask }}' です",
-          "INVALID_IP_RANGE" : "無効な IP 範囲です：下部範囲 {{ low }}、上部範囲 {{ high }}",
+          "INVALID_IP_RANGE" : "無効な IP 範囲です: 下部範囲 {{ low }}、上部範囲 {{ high }}",
           "INVALID_CIDR_FORMAT" : "無効な CIDR 形式です: {{ value }}",
           "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "属性 '{{ name }}' の値の上限数を超えています。許可されている数は {{ maxSize }} です",
           "ICMP_PARAM_SIZE_MISMATCH" : "ICMP の種類と ICMP コードのサイズは同じである必要があります。ICMP の種類のサイズ: {{ typeSize }}、ICMP コードのサイズ: {{ codeSize }}。",
@@ -332,7 +332,6 @@
               "details-edit": "詳細/編集",
               "fix-conflicts": "競合の修正"
             },
-            "non-resolvable-conflict": "リソース共有ファイアウォールで、ネットワークの競合は許可されません。これは解決できない場合があります。",
             "not-participating": "ローカルネットワークに参加するために有効化されているインターフェースはありません。設定を編集して有効にすることができます。"
           },
           "modal": {
@@ -343,23 +342,26 @@
               "participate": "有効",
               "nat": "NAT を有効にする",
               "nat-address": "NAT アドレス",
-              "nat-subnet": "NAT で変換されたアドレスは、インターフェースと同じサブネットに属する必要があります。",
+              "nat-subnet": "NAT で変換されたアドレスを使用すると、ネットワークの競合を解決できます。NAT で変換されたアドレスは、インターフェースと同じサブネットに属する必要があります。",
               "conflicts": "競合",
               "wan": "WAN リンク",
               "selected": "選択済み",
               "gateway": "バックアップゲートウェイ",
               "xfrm-ip": "Xfrm の IP アドレス",
-              "add": "ネットワークの追加"
+              "add": "ネットワークの追加",
+              "public-ip": "選択した WAN リンクのパブリック IP または FQDN",
+              "behind-nat": "ゲートウェイアドレスの上書き"
             },
             "conflicts": {
-              "subnet-conflict": "競合するネットワーク: {{ subnet }}。",
+              "subnet-conflict": "競合するネットワーク: '{{ subnet }}'",
               "missing-mandatory": "必須フィールドがありません。",
-              "invalid-nat": "無効な NAT アドレスです。",
-              "invalid-ip": "無効な IP アドレスです。",
-              "invalid-netmask": "無効なネットマスクです。",
+              "invalid-nat": "無効な IPv4 NAT アドレスです。",
+              "invalid-ip": "無効な IPv4 アドレスです。",
+              "invalid-netmask": "無効な IPv4 ネットマスクです。",
               "name-conflicts": "名前が競合しています。",
               "xfrm-ip-needed": "最低 2つの {{ need }} IP アドレスが必要です。",
-              "in-use": "1つまたは複数の IP が、既に他のファイアウォールに使用されています"
+              "in-use": "1つまたは複数の IP が、既に他のファイアウォールに使用されています",
+              "public-ip-needed": "パブリック IP または FQDN が必要です。"
             }
           }
         },
@@ -377,17 +379,17 @@
               "title": "共有済みリソース",
               "placeholder": "ターゲットリソースの IP アドレスを入力します。",
               "help": {
-                "heading": "アドレスは、次のいずれかの形式で指定できます。",
-                "type-ip": "IP アドレス: 例: 10.12.22.34",
-                "type-iplist": "IP リスト: 例: 10.12.22.34,10.12.22.35",
-                "type-iprange": "IP の範囲: 例: 10.12.22.34-10.12.22.35",
-                "type-crdi": "ネットワーク形式: 例: 10.12.22.34/2"
+                "heading": "ホストアドレスは、次のいずれかの形式で指定できます。",
+                "type-ip": "IPv4 アドレス: 例: 10.12.22.34",
+                "type-iplist": "IPv4 リスト: 例: 10.12.22.34,10.12.22.35",
+                "type-iprange": "IPv4 範囲: 例: 10.12.22.34-10.12.22.35",
+                "type-crdi": "IPv4 ネットワーク形式: 例: 10.12.22.34/24"
               },
              
               "_dynamic_": {
                 "host": {
                 "2": "IP アドレス",
-                "9": "ネットワークデバイス",
+                "9": "ネットワーク",
                 "4": "IP のリスト",
                 "3": "IP の範囲"
                 },
@@ -404,7 +406,7 @@
                   "3": "制限なし"
                 }
               },
-              "invalid": "共有リソースの形式が無効です"
+              "invalid": "共有リソースの IPv4 形式が無効です"
             },
             "service": {
               "title": "サービス",
@@ -639,8 +641,18 @@
       }
     },
     "global-settings": {
-      "breadcrumb-text": "設定＆ポリシー"
+      "breadcrumb-text": "設定とポリシー"
 
+    },
+    "component": {
+      "state": {
+        "connected": "接続",
+        "disconnected": "切断",
+        "approval-pending": "承認保留中",
+        "management-disabled": "管理: 無効",
+        "synchronizing": "同期中",
+        "synchronized": "同期"
+      }
     }
   }
 }

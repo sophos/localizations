@@ -20,7 +20,10 @@
       "description-length-validation": "La descripción no debe tener más de 300 caracteres",
       "required": "* Necesario",
       "yes": "Sí",
-      "no": "No"
+      "no": "No",
+      "day": "día",
+      "days": "días",
+      "seconds": "segundos"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Token de soporte de Sophos",
           "enable-sophos-support": "Activar soporte",
           "enable-confirm": "¿Desea activar el soporte de Sophos para {{gatewayInstanceName}}?",
-          "enable-details": "Active el soporte de Sophos para que el equipo de soporte tenga acceso remoto a su instancia de puerta de enlace durante 1 día.",
+          "enable-details": "Active el soporte de Sophos para que el equipo de soporte tenga acceso remoto a su instancia de puerta de enlace durante",
           "token-header": "Facilite este token al soporte de Sophos para que puedan acceder a su instancia de puerta de enlace.",
           "instance-name": "Instancia de puerta de enlace: {{gatewayInstanceName}}",
           "token-expiry": "El token caduca el: {{tokenExpiryDate}}",
@@ -497,7 +500,7 @@
           "copy": "Copiar",
           "fetch-error": "No se pueden obtener los detalles de la depuración remota",
           "unreachable": "La puerta de enlace no ha podido contactar con el servidor.",
-          "try-again": "Inténtelo de nuevo dentro de un rato."
+          "try-again": "Inténtelo más tarde."
         }
       },
       "schedule": {
@@ -661,6 +664,24 @@
           "resource-access-agent": "Acceso a recursos: Sin agente"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "Soporte de Sophos para instancia de puerta de enlace",
+        "instance-expiration-label": "Caducidad del token",
+        "instance-token-desc": "Puede dar acceso al soporte de Sophos a una instancia de puerta de enlace para la resolución de problemas. Este token de soporte caduca después de un tiempo determinado.",
+        "instance-token-help-text": "El administrador puede activar el soporte para cada instancia de puerta de enlace que tenga. Cuando se activa el soporte, se asigna un token y la caducidad del mismo. Cuando el token caduca, se deniega el acceso."
+      },
+      "policy": {
+        "health-trigger-heading": "Tiempo mínimo antes de que el estado de seguridad de un dispositivo active una regla",
+        "health-trigger-label": "Duración mínima",
+        "health-trigger-desc": "Establezca el tiempo mínimo antes de que el estado de seguridad de un dispositivo active una regla en una política de acceso. Esto puede evitar que ZTNA actúe demasiado rápido si hay un problema temporal."
+      },
+      "updated": "La configuración se ha actualizado correctamente",
+      "list": {
+        "title": "Zero Trust Network Access - Configuración",
+        "breadcrumb-text": "Configuración"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "El uso de clústeres de puerta de enlace no está activado pero se ha encontrado más de una instancia",
       "gateway.cluster.change.notAllowed": "No puede desactivarse el clúster de puerta de enlace",
       "gateway.cluster.notEmpty": "No se encuentra el campo del clúster de puerta de enlace",
+      "gateway.not.connected.or.approved": "La depuración remota no puede activarse si la puerta de enlace no está en estado conectado o aprobado y la instancia no está en estado activo",
       "policy.invalid": "El objeto de política indicado no es válido",
       "policy.isEnforced.notNull": "El campo isEnforced del objeto de política no puede ser nulo",
       "policy.valid-until.not.allowed": "validUntil no puede establecerse si la política no se aplica",

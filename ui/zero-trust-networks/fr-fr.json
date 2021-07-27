@@ -20,7 +20,10 @@
       "description-length-validation": "La description ne doit pas contenir plus de 300 caractères",
       "required": "* Obligatoire",
       "yes": "Oui",
-      "no": "Non"
+      "no": "Non",
+      "day": "jour",
+      "days": "jours",
+      "seconds": "secondes"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Token du support Sophos",
           "enable-sophos-support": "Activer le support",
           "enable-confirm": "Activer le support Sophos pour {{gatewayInstanceName}} ?",
-          "enable-details": "Activez le support Sophos pour donner au support l’accès de dépannage à distance à votre instance de passerelle pendant 1 jour.",
+          "enable-details": "Activez le support Sophos pour donner au support l’accès de dépannage à distance à votre instance de passerelle pendant",
           "token-header": "Donnez ce token au support Sophos pour qu’il puisse accéder à votre instance de passerelle.",
           "instance-name": "Instance de la passerelle : {{gatewayInstanceName}}",
           "token-expiry": "Le token expire le : {{tokenExpiryDate}}",
@@ -661,6 +664,24 @@
           "resource-access-agent": "Accès aux ressources : Sans agent"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "Prise en charge de Sophos pour l’instance de passerelle",
+        "instance-expiration-label": "Expiration du token",
+        "instance-token-desc": "Vous pouvez autoriser le support Sophos à accéder à une instance de passerelle pour la dépanner. Ce token de support expire après un délai fixe.",
+        "instance-token-help-text": "L’administrateur peut activer le support de chaque instance de passerelle dont il dispose. Lorsque le support est activé, un token est créé et une date d’expiration du token est assignée. Lorsque le token expire, l’accès est refusé."
+      },
+      "policy": {
+        "health-trigger-heading": "Temps minimum avant que l’intégrité de l’appareil ne déclenche une règle",
+        "health-trigger-label": "Durée minimale",
+        "health-trigger-desc": "Définir le délai minimum avant que l’intégrité de la sécurité d’un appareil ne déclenche une règle dans une stratégie d’accès. Ceci peut empêcher ZTNA d’agir trop rapidement en cas de problème temporaire."
+      },
+      "updated": "Les paramètres ont été mis à jour",
+      "list": {
+        "title": "Zero Trust Network Access - Paramètres",
+        "breadcrumb-text": "Paramètres"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "Le clustering de la passerelle n’est pas activé mais plusieurs instances ont été trouvées",
       "gateway.cluster.change.notAllowed": "Le cluster de passerelle ne peut pas être désactivé",
       "gateway.cluster.notEmpty": "Champ de cluster de la passerelle introuvable",
+      "gateway.not.connected.or.approved": "Le débogage à distance ne peut pas être activé si la passerelle n’est pas connectée ou approuvée et que l’instance n’est pas active",
       "policy.invalid": "L’objet de stratégie fourni n’est pas valide",
       "policy.isEnforced.notNull": "Le champ « isEnforced » de l’objet de stratégie ne doit pas être vide",
       "policy.valid-until.not.allowed": "Le champ « ValidUntil » ne peut pas être défini si la stratégie n’est pas appliquée",

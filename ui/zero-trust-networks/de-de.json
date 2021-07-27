@@ -20,7 +20,10 @@
       "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein",
       "required": "* Pflichtfeld",
       "yes": "Ja",
-      "no": "Keine"
+      "no": "Keine",
+      "day": "Tag",
+      "days": "Tage",
+      "seconds": "Sekunden"
     },
     "application": {
       "form": {
@@ -485,7 +488,7 @@
           "sophos-token-header": "Sophos-Support-Token",
           "enable-sophos-support": "Support aktivieren",
           "enable-confirm": "Support für {{gatewayInstanceName}} aktivieren?",
-          "enable-details": "Aktivieren Sie den Sophos Support, um der Support-Abteilung einen Tag lang Remote-Zugriff auf Ihre Gateway-Instanz zur Problembehebung zu gewähren.",
+          "enable-details": "Aktivieren Sie den Sophos-Support, um der Support-Abteilung zur Problembehebung Remote-Zugriff auf Ihre Gateway-Instanz zu gewähren für",
           "token-header": "Übermitteln Sie dieses Token an den Sophos Support, damit unser Team auf Ihre Gateway-Instanz zugreifen kann.",
           "instance-name": "Gateway-Instanz: {{gatewayInstanceName}}",
           "token-expiry": "Token läuft am: {{tokenExpiryDate}}",
@@ -552,7 +555,7 @@
         "provider": "Anbieter",
         "tenantid": "Mandanten-ID",
         "clientid": "Client-ID",
-        "clientsecret": "Client-Secret",
+        "clientsecret": "Geheimer Clientschlüssel",
         "issuer-uri": "Issuer URI",
         "scope": "Bereich",
         "add-success": "Identitätsanbieter erstellt",
@@ -661,6 +664,24 @@
           "resource-access-agent": "Ressourcenzugriff: Ohne Agent"
         }
       }
+    },
+    "settings": {
+      "gateway": {
+        "instance-heading": "Sophos-Support für Gateway-Instanz",
+        "instance-expiration-label": "Token-Ablauf",
+        "instance-token-desc": "Sie können dem Sophos-Support zur Problembehebung Zugriff auf eine Gateway-Instanz gewähren. Dieses Support-Token läuft nach einer festen Zeit ab.",
+        "instance-token-help-text": "Administratoren können den Support für jede ihrer Gateway-Instanzen einschalten. Wenn der Support eingeschaltet wird, wird ein Token mit einer bestimmtem Gültigkeitsdauer zugewiesen. Wenn das Token abläuft, wird der Zugriff verweigert."
+      },
+      "policy": {
+        "health-trigger-heading": "Mindestzeit, bevor der Geräte-Integritätsstatus eine Regel auslöst",
+        "health-trigger-label": "Mindestdauer",
+        "health-trigger-desc": "Legen Sie die Mindestzeit fest, bevor durch den Integritätsstatus eines Gerätes eine Zugriffsrichtlinien-Regel ausgelöst wird. Dadurch kann vermieden werden, dass ZTNA bei temporären Problemen zu schnell reagiert."
+      },
+      "updated": "Einstellungen erfolgreich aktualisiert",
+      "list": {
+        "title": "Zero Trust Network Access - Einstellungen",
+        "breadcrumb-text": "Einstellungen"
+      }
     }
   },
   "ztna": {
@@ -765,6 +786,7 @@
       "gateway.cluster.notEnabled": "Gateway-Clustering nicht aktiviert, obwohl mehr als eine Instanz gefunden wurde",
       "gateway.cluster.change.notAllowed": "Gateway-Cluster lässt sich nicht deaktivieren",
       "gateway.cluster.notEmpty": "Gateway-Cluster-Feld nicht gefunden",
+      "gateway.not.connected.or.approved": "Remote-Debuggen kann nicht aktiviert werden, wenn das Gateway nicht den Status Verbunden oder Genehmigt hat und die Instanz nicht im aktiven Zustand ist",
       "policy.invalid": "Angegebenes Richtlinienobjekt ist ungültig",
       "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt muss vorhanden sein",
       "policy.valid-until.not.allowed": "'validUntil' kann nicht festgelegt werden, wenn Richtlinie nicht durchgesetzt ist",
