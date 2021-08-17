@@ -34,16 +34,25 @@
       "details": "詳細",
       "no-data": "データはありません",
       "beta": "ベータ版",
-      "copied": "コピー済み"
+      "copied": "コピー済み",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "作成",
+      "no": "いいえ"
     },
     "global": {
+      "form": {
+        "required": "必須項目です。"
+      },
       "onBoard": {
         "access-point": "アクセスポイント",
         "ssid": "SSID",
         "sites": "サイト",
         "summary": "サマリー",
         "on-board-step-finish": "完了",
-        "enabled": "有効"
+        "enabled": "オンに設定"
       },
       "search": {
         "placeholder": "検索",
@@ -172,12 +181,25 @@
           "weekday": "曜日",
           "time": "時間 (UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "ファームウェアの更新",
+        "body": "ファームウェアの更新中は、アクセスポイントとアクセスポイントに設定されている SSID は一時的に使用できなくなります。今すぐバージョン {{ version }} に更新しますか？",
+        "success": "ファームウェアのバージョン {{ version }} への更新を開始しました。",
+        "failure": "ファームウェアをバージョン {{ version }} に更新できませんでした。",
+        "force-firmware-update": "ファームウェアアップグレードの無効フラグの消去",
+        "force-update-label": "ファームウェアアップグレードの無効フラグは、アクセスポイントをデバッグ ファームウェア イメージファイルでアップグレードする設定になっています。",
+        "disable-factory-defaults": "出荷時の設定",
+        "factory-default-label": "AP の出荷時の設定を有効にする設定です。"
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "サイト",
-        "title": "ワイヤレス - サイト"
+        "title": "ワイヤレス - サイト",
+        "no-sites-defined": "定義済みのサイトがありません。",
+        "delete-dialog-text": "選択したカスタマーサイトの構内図はすべて削除されます。サイト {{site}} を削除しますか？",
+        "confirm-delete-header": "サイトの削除"
       }
     },
     "networks": {
@@ -308,7 +330,7 @@
         "ssid-network-name": "ネットワークの名前です。",
         "password-auto-generate-msg": "パスワードは自動生成されます",
         "insecure-encryption-mode-msg": "この暗号化モードは安全ではありません",
-        "insecure-encryption-algorithm-msg":  "この暗号化アルゴリズムは安全ではありません",
+        "insecure-encryption-algorithm-msg": "この暗号化アルゴリズムは安全ではありません",
         "encryption-mode-help-msg": "WPA2 の使用を推奨します。",
         "encryption-algorithm-help-msg": "デフォルトのアルゴリズムは AES です。セキュリティ上の理由から、このアルゴリズムを推奨します。",
         "radius-secret-help-msg": "共有シークレットは十分な長さがあり、大文字や数字など、さまざまな種類の文字が含まれている必要があります。RADIUS サーバーでアクセスポイントを認証するためのシークレット (パスワード) です。",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "ポートを指定してください。",
         "port-range-validate-msg": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
         "port-number-help-msg": "RADIUS サーバーのポート番号です。",
-        "optimize-multicast":"メディアのストリーミングなど、マルチキャストトラフィックの処理が最適化されます。全体のスループットが向上します。",
-        "arp-proxy":"ネットワークアドレスへの ARP 要求にアクセスポイントが応答します。全体のスループットが向上します。",
-        "quality-fast-roaming":"アクセスポイントのローミングが高速だと、特に VoIP の接続がスムーズになります。",
+        "optimize-multicast": "メディアのストリーミングなど、マルチキャストトラフィックの処理が最適化されます。全体のスループットが向上します。",
+        "arp-proxy": "ネットワークアドレスへの ARP 要求にアクセスポイントが応答します。全体のスループットが向上します。",
+        "quality-fast-roaming": "アクセスポイントのローミングが高速だと、特に VoIP の接続がスムーズになります。",
         "broadcast-outdated": "アクセスポイントを再起動した後、Sophos Central に接続できない場合でも、SSID がブロードキャストを行い続けるようにします。",
-        "band-steering-label":"バンドステアリング",
-        "quality-band-steering":"デュアルバンド対応ワイヤレスクライアントは、可能な場合、5GHz 帯に誘導されます。クライアント側のパフォーマンスが向上します。",
-        "band-steering-warning":"バンドステアリングは、このネットワークに登録されたアクセスポイントに設定されている他のすべてのネットワークにも適用されます。",
-        "broadcast-outdated-label":"ブロードキャストを継続する",
-        "multicast-label":"マルチキャストをユニキャストに変換する"
+        "band-steering-label": "バンドステアリング",
+        "quality-band-steering": "デュアルバンド対応ワイヤレスクライアントは、可能な場合、5GHz 帯に誘導されます。クライアント側のパフォーマンスが向上します。",
+        "band-steering-warning": "バンドステアリングは、このネットワークに登録されたアクセスポイントに設定されている他のすべてのネットワークにも適用されます。",
+        "broadcast-outdated-label": "ブロードキャストを継続する",
+        "multicast-label": "マルチキャストをユニキャストに変換する",
+        "radius-server-error-msgs": {
+          "required": "RADIUS サーバーのアドレスを指定してください",
+          "invalid-radius-server": "RADIUS サーバーには、有効な IP アドレスを指定してください"
+        },
+        "radius-port-error-msgs": {
+          "required": "ポートを指定してください。",
+          "min": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
+          "max": "ポート番号は、1 から 65535 の範囲で指定する必要があります。"
+        },
+        "radius-password-error-msgs": {
+          "required": "パスフレーズを指定してください。"
+        },
+        "email-error-msgs": {
+          "pattern": "有効なメールアドレスを入力してください"
+        },
+        "generate-new": "新規生成",
+        "select-week": "週の選択",
+        "certificate-error-msgs": {
+          "file-error": "ファイルエラー。",
+          "file-format-error": "対応していないファイル形式です。",
+          "file-size-exceed": "ファイルの最大サイズを超えています。"
+        },
+        "accept-terms-and-conditions": "利用規約に同意し、接続"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security は、Sophos APX シリーズで活用できる独自の機能です。ソフォスの革新的テクノロジー「Security Heartbeat™」は、エンドポイント、モバイルプロテクション、およびアクセスポイントが情報を交換して連係することで、ネットワークからのセキュリティ脅威をブロックすることを可能にします。",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security は、ゲストネットワーク、もしくはキャプティブポータルが有効な SSID には対応していません。",
-        "green-option-label": "Security Heartbeat™ 緑色",
-        "green-option-value": "すべてのトラフィックを許可",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;</sup>ゲストネットワークやキャプティブポータルがオンになっている SSID では、Synchronized Security を使用できません。",
+        "green-option-label": "Security Heartbeat 緑色",
+        "green-option-value": "すべてのトラフィックを許可する",
         "green-option-info": "クライアント保護済み。",
-        "yellow-option-label": "Security Heartbeat™ 黄色",
+        "yellow-option-label": "Security Heartbeat 黄色",
         "yellow-option-value": "すべてのトラフィックを許可 (警告)",
         "yellow-option-info": "問題が検出され、クライアントが危険にさらされている可能性があります。エンドポイントで、これは非アクティブなマルウェアまたは不要と思われるアプリケーション (PUA) である可能性があります。モバイルデバイスの場合、さまざまなコンプライアンス違反に対するハートビートのステータスを定義できます。",
-        "red-option-label": "Security Heartbeat™ 赤",
+        "red-option-label": "Security Heartbeat 赤",
         "red-option-value": "ウォールドガーデン",
         "red-option-info": "以下の許可リストに登録されているドメインを除き、すべてのインターネットトラフィックがブロックされます。ユーザーには、警告を通知する Web ページが表示されます。",
         "uem-label": "Sophos Mobile (UEM)",
@@ -380,7 +425,7 @@
         "client-isolation": "同じ無線方式で接続しているクライアント同士が直接通信を行うことを防止します。この設定はゲストやホットスポットの SSID に対して使用することを推奨します。",
         "client-isolation-enabled-info": "ホットスポットが有効化されているため、クライアントの隔離も有効化されています。",
         "mac-filter-header": "MAC フィルタリング",
-        "mac-filter-none": "指定なし",
+        "mac-filter-none": "なし",
         "mac-filter-blacklist": "ブロックリスト",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "MAC アドレス",
@@ -409,7 +454,93 @@
           "welcome-text-required": "開始テキストを入力してください。",
           "portal-terms-label": "サービス利用規約",
           "portal-terms-max-length": "サービス利用規約は最大 102400文字まで入力できます。",
-          "portal-config-message": "キャプティブポータルのトップページをカスタマイズするには、まず SSID を保存してください。"
+          "portal-config-message": "キャプティブポータルのトップページをカスタマイズするには、まず SSID を保存してください。",
+          "authentication-types": "認証の種類",
+          "authentication-type-none": "なし",
+          "backend-authentication": "バックエンド認証",
+          "password-schedule": "パスワードの定期更新",
+          "social-login": "ソーシャルネットワークのアカウントでログイン",
+          "google-console-help-text": "Google のクライアント ID とクライアントシークレットは、組織のアカウントで <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google Developer Console</a> にログインして取得できます。",
+          "google-console-second-label": "「新しいプロジェクト」を作成して、「認証情報」セクションで「クライアント ID」および「クライアントシークレット」を取得します。",
+          "client-id-label": "クライアント ID",
+          "client-secret-label": "クライアントシークレット",
+          "facebook-console-help-text": "Facebook のアプリケーション ID とアプリケーションシークレットは、組織のアカウントで <a href={{facebookDevelopersSite}} target='_blank'>Facebook Developer アカウント</a> にログインして取得できます。",
+          "facebook-console-second-label": "「マイアプリ」セクションで、アプリを作成します。アプリ ID とアプリシークレットを「設定」セクションから取得します。",
+          "app-id-label": "アプリケーション ID",
+          "app-secret-label": "アプリケーションシークレット",
+          "session-timeout-label": "セッションタイムアウト",
+          "session-timeout-inline-help": "セッションタイムアウトは、1時間～24時間の範囲で指定できます。",
+          "relogin-timeout": "再ログインのタイムアウト",
+          "relogin-timeout-inlineHelp": "ユーザーが初めて認証してから 24時間が経過するまで、再度ネットワークにサインインする必要はありません。",
+          "voucher": "バウチャー",
+          "help-text": {
+            "backend-authentication": "RADIUS サーバーでのパスワード認証プロトコル (PAP) による認証を許可します。",
+            "password-schedule": "新しいパスワードが設定した日時に自動的に作成されます。パスワードは、指定したメールアドレスに送信されます。",
+            "social-login": "ソーシャルメディアのアカウント使用した認証を許可します。",
+            "voucher": "印刷できる有効期限付きバウチャーを使用して認証します。"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "バウチャーの作成",
+            "voucher-support-text": "バウチャーを作成するには、SSID を保存します。",
+            "delete-confirm-header": "バウチャーの削除",
+            "delete-confirm-message": "このバッチのバウチャーはすべて削除されます。バウチャーのバッチ {{batchName}} を削除しますか？",
+            "pdf-file-name": "ホットスポット バウチャー",
+            "create": {
+              "header": "バウチャーの作成",
+              "name": "バウチャー名",
+              "access-time": "アクセス時間",
+              "unlimited": "無制限",
+              "period": "期間",
+              "start-date": "開始日",
+              "end-date": "終了日",
+              "timezone": "タイムゾーン",
+              "data-limit": "データ通信の制限量",
+              "limit": "上限",
+              "data": "データ",
+              "unit": "単位",
+              "number-of-vouchers": "バウチャー数",
+              "number-of-devices": "バウチャー別デバイス",
+              "valid-for": "有効期間",
+              "days": "日",
+              "hours": "時間",
+              "name-error-msg": {
+                "required": "バウチャー名を指定してください",
+                "maxlength": "バウチャー名は 128文字以内で指定してください"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "開始日を指定してください",
+                "endDateRequired": "終了日を指定してください",
+                "datesImbalanced": "開始日を終了日よりも後に設定することはできません"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "データ通信の制限量を指定してください",
+                "pattern": "データ通信の制限量には、数字のみを指定する必要があります。小数点以下の数値も使用できます。"
+              },
+              "duration-error-msg": {
+                "durationRequired": "期間を指定してください"
+              }
+            },
+            "table": {
+              "name": "名前",
+              "period": "期間",
+              "number": "番号",
+              "showPdf": "PDF の表示",
+              "delete": "削除",
+              "unlimited": "無制限",
+              "empty-message": "バウチャーはありません"
+            }
+          },
+          "redirectUrl": {
+            "label": "転送 URL",
+            "original-label": "元の URL への転送",
+            "redirect-url-original-help": "認証後、ユーザーが認証前にアクセスしようとしていた Web サイトが表示されます。",
+            "custom-label": "カスタム URL",
+            "redirect-url-custom-help": "認証後、ユーザーは選択した特定の Web サイトにリダイレクトされます。",
+            "custom-url-required": "転送 URL を指定してください。",
+            "custom-url-domainName": "例: https://yourdomain.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">ネットワークプロトコル (例: https://) を含む、有効な URL を入力してください。</span>",
+            "custom-url-valid": "無効な形式の転送 URL です。"
+          }
         }
       },
       "access-point-editor": {

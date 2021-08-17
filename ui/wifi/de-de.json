@@ -34,13 +34,22 @@
       "details": "Details",
       "no-data": "Keine Daten",
       "beta": "Beta",
-      "copied": "Kopiert"
+      "copied": "Kopiert",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "Erstellen",
+      "no": "Nein"
     },
     "global": {
+      "form": {
+        "required": "Angabe ist erforderlich."
+      },
       "onBoard": {
         "access-point": "Access Points",
         "ssid": "SSIDs",
-        "sites": "SITEs",
+        "sites": "Standorte",
         "summary": "Zusammenfassung",
         "on-board-step-finish": "Beenden",
         "enabled": "Aktiviert"
@@ -172,12 +181,25 @@
           "weekday": "Wochentag",
           "time": "Uhrzeit (UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "Firmware aktualisieren",
+        "body": "Ihre Access Points und die darauf konfigurierten SSIDs sind während eines Firmware-Updates vorübergehend nicht verfügbar. Möchten Sie jetzt auf Version {{ version }} aktualisieren?",
+        "success": "Firmware-Update auf Version {{ version }} gestartet.",
+        "failure": "Firmware-Update auf Version {{ version }} fehlgeschlagen",
+        "force-firmware-update": "Das Flag, dass ein Firmware-Upgrade deaktiviert, zurücksetzen",
+        "force-update-label": "Das Flag zur Deaktivierung von Firmware-Upgrades ist so gesetzt, dass APs mit Debug-Firmware-Images aktualisiert werden sollen.",
+        "disable-factory-defaults": "Werkseinstellung",
+        "factory-default-label": "Einstellung zum Aktivieren der Werkseinstellungen für AP."
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "Standorte",
-        "title": "Wireless - Standorte"
+        "title": "Wireless - Standorte",
+        "no-sites-defined": "Es sind keine Standorte festgelegt.",
+        "delete-dialog-text": "Alle Ihre Grundrisse werden für diesen Kundenstandort gelöscht. Möchten Sie Ihren Standort {{site}} wirklich löschen?",
+        "confirm-delete-header": "Standort löschen"
       }
     },
     "networks": {
@@ -189,7 +211,7 @@
         "no-ssid-configured": "Sie haben keine SSID hinzugefügt",
         "no-ssid-configured-help": "Klicken Sie auf die Hinzufügen-Schaltfläche, um die SSID zu konfigurieren",
         "pagination": "{{ from }} bis {{ to }} von {{ of }}",
-        "create": "Erzeugen",
+        "create": "Erstellen",
         "deleteDialogText": "Möchten Sie die ausgewählten SSIDs löschen?",
         "listLoadingError": "SSID-Liste kann nicht geladen werden",
         "headers": {
@@ -209,7 +231,7 @@
       "create": {
         "help": "Hilfe",
         "general-setting-encryption-mode": "Legen Sie die allgemeinen Einstellungen für Ihre neue SSID fest. Wählen Sie aus, welche Verschlüsselungsmethode und welche Art von SSID Sie bereitstellen wollen.",
-        "band-encryption-mode": " Wir empfehlen die Verschlüsselungsmethode WPA2 mit AES und die Frequenzbänder 2.4 und 5 GHz.",
+        "band-encryption-mode": " Wir empfehlen die Verschlüsselungsmethode WPA2 mit AES und die Frequenzbänder 2,4 und 5 GHz.",
         "settings": "Ihre Einstellungen",
         "basic-setting": "Grundeinstellungen",
         "encryption-algorithm": "Verschlüsselungsalgorithmus",
@@ -308,7 +330,7 @@
         "ssid-network-name": "Name für das Netzwerk.",
         "password-auto-generate-msg": "Kennwort wird automatisch generiert",
         "insecure-encryption-mode-msg": "Diese Verschlüsselungsmethode ist nicht sicher",
-        "insecure-encryption-algorithm-msg":  "Dieser Verschlüsselungsalgorithmus ist nicht sicher",
+        "insecure-encryption-algorithm-msg": "Dieser Verschlüsselungsalgorithmus ist nicht sicher",
         "encryption-mode-help-msg": "Wir empfehlen WPA2.",
         "encryption-algorithm-help-msg": "Der Standardalgorithmus ist AES. Dieser wird aus Sicherheitsgründen empfohlen.",
         "radius-secret-help-msg": "Der gemeinsame geheime Schlüssel (Shared Secret) sollte möglichst lang sein und verschiedene Buchstaben, Großbuchstaben und Zahlen enthalten. Geheimer Schlüssel für die Authentifizierung eines AP am Radius-Server.",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
-        "optimize-multicast":"Optimiert die Behandlung von Multicast-Datenverkehr wie z. B. Medienstreaming. Erhöht den allgemeinen Durchsatz.",
-        "arp-proxy":"Ein AP beantwortet ARP-Abfragen für Netzwerkadressen. Erhöht den allgemeinen Durchsatz.",
-        "quality-fast-roaming":"Schnelles Roaming zwischen Access Points ermöglicht bessere Verbindungen vor allem bei VoIP.",
+        "optimize-multicast": "Optimiert die Behandlung von Multicast-Datenverkehr wie z. B. Medienstreaming. Erhöht den allgemeinen Durchsatz.",
+        "arp-proxy": "Ein AP beantwortet ARP-Abfragen für Netzwerkadressen. Erhöht den allgemeinen Durchsatz.",
+        "quality-fast-roaming": "Schnelles Roaming zwischen Access Points ermöglicht bessere Verbindungen vor allem bei VoIP.",
         "broadcast-outdated": "SSID-Broadcasting findet weiterhin statt, falls der AP Sophos Central nach einem Neustart nicht erreicht.",
-        "band-steering-label":"Band Steering",
-        "quality-band-steering":"Dual-Band-fähige Wireless-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
-        "band-steering-warning":"Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
-        "broadcast-outdated-label":"Broadcasting aktiviert lassen",
-        "multicast-label":"Umwandlung Multicast in Unicast"
+        "band-steering-label": "Band Steering",
+        "quality-band-steering": "Dual-Band-fähige Wireless-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
+        "band-steering-warning": "Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
+        "broadcast-outdated-label": "Broadcasting aktiviert lassen",
+        "multicast-label": "Umwandlung Multicast in Unicast",
+        "radius-server-error-msgs": {
+          "required": "RADIUS-Serveradresse ist erforderlich",
+          "invalid-radius-server": "RADIUS-Server muss eine gültige IP-Adresse sein"
+        },
+        "radius-port-error-msgs": {
+          "required": "Port ist erforderlich.",
+          "min": "Port muss zwischen 1 und 65535 liegen.",
+          "max": "Port muss zwischen 1 und 65535 liegen."
+        },
+        "radius-password-error-msgs": {
+          "required": "Passphrase ist erforderlich."
+        },
+        "email-error-msgs": {
+          "pattern": "Bitte eine gültige E-Mail-Adresse eingeben"
+        },
+        "generate-new": "Neu generieren",
+        "select-week": "Wählen Sie eine Woche aus",
+        "certificate-error-msgs": {
+          "file-error": "Dateifehler.",
+          "file-format-error": "Dateiformat wird nicht unterstützt.",
+          "file-size-exceed": "Datei überschreitet die maximale Größe."
+        },
+        "accept-terms-and-conditions": "Nutzungsbedingungen akzeptieren und verbinden"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security ist eine einzigartige Funktion für Access Points der Sophos APX-Serie. Unser revolutionäres Security Heartbeat™ erlaubt Ihrem Endpoint, Mobile Protection und Access Points Informationen auszutauschen und so zusammenzuarbeiten um Sicherheitsbedrohungen in Ihrem Netzwerk zu blockieren.",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security wird nicht für SSIDs unterstützt, bei denen ein Gastnetzwerk oder ein Captive Portal eingerichtet sind.",
-        "green-option-label": "Security Heartbeat™ Grün",
-        "green-option-value": "Allen Traffic zulassen",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security kann nicht für SSIDs mit aktiviertem Gastnetzwerk oder Captive Portal verwendet werden.",
+        "green-option-label": "Security Heartbeat grün",
+        "green-option-value": "Gesamten Datenverkehr zulassen",
         "green-option-info": "Der Client ist geschützt.",
-        "yellow-option-label": "Security Heartbeat™ Gelb",
-        "yellow-option-value": "Allen Traffic zulassen (Warnung)",
+        "yellow-option-label": "Security Heartbeat gelb",
+        "yellow-option-value": "Gesamten Datenverkehr zulassen (Warnung)",
         "yellow-option-info": "Es wurde ein Problem festgestellt und der Client ist möglicherweise gefährdet. Auf einem Endpoint kann dies inaktive Malware oder eine potenziell unerwünschte Anwendung (PUA) sein. Für Mobilgeräte können Sie den Heartbeat-Status für verschiedene Compliance-Verstöße definieren.",
-        "red-option-label": "Security Heartbeat™ Rot",
+        "red-option-label": "Security Heartbeat rot",
         "red-option-value": "Kontrollierte Umgebung",
         "red-option-info": "Der gesamte Internetverkehr ist blockiert, außer zu den unten erlaubten Domänen. Der Benutzer sieht eine Webseite mit einer Warnung.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -409,7 +454,93 @@
           "welcome-text-required": "Begrüßungstext ist erforderlich.",
           "portal-terms-label": "Nutzungsbedingungen",
           "portal-terms-max-length": "Nutzungsbedingungen dürfen nicht länger als 102.400 Zeichen sein.",
-          "portal-config-message": "Um die Captive-Portal-Landing-Page anzupassen, speichern Sie bitte zuerst die SSID."
+          "portal-config-message": "Um die Captive-Portal-Landing-Page anzupassen, speichern Sie bitte zuerst die SSID.",
+          "authentication-types": "Authentifizierungstypen",
+          "authentication-type-none": "Keine",
+          "backend-authentication": "Backend-Authentifizierung",
+          "password-schedule": "Kennwortplanung",
+          "social-login": "Anmeldeinformationen für soziale Medien",
+          "google-console-help-text": "Sie können Ihre Google-Client-ID und den geheimen Clientschlüssel erhalten, wenn Sie sich in der <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google-Entwickler-Konsole</a>&nbsp an Ihrem Unternehmenskonto anmelden.",
+          "google-console-second-label": "Erstellen Sie ein neues Projekt und ermitteln Sie die Werte für Client-ID und Clientschlüssel auf der Seite Anmeldedaten.",
+          "client-id-label": "Client-ID",
+          "client-secret-label": "Geheimer Clientschlüssel",
+          "facebook-console-help-text": "Sie können Ihre Facebook-Anwendungs-ID und den geheimen Anwendungsschlüssel erhalten, wenn Sie sich am <a href={{facebookDevelopersSite}} target='_blank'>Facebook-Entwicklerkonto</a>&nbsp Ihres Unternehmens anmelden.",
+          "facebook-console-second-label": "Erstellen Sie im Abschnitt \"Meine Apps\" eine App. Ermitteln Sie Anwendungs-ID und Schlüssel im Abschnitt Einstellungen.",
+          "app-id-label": "Anwendungs-ID",
+          "app-secret-label": "Geheimer Anwendungsschlüssel",
+          "session-timeout-label": "Sitzungs-Timeout",
+          "session-timeout-inline-help": "Sie können für das Sitzungs-Timeout einen Wert zwischen einer und 24 Stunden festlegen.",
+          "relogin-timeout": "Wiederanmeldungs-Timeout",
+          "relogin-timeout-inlineHelp": "Benutzer für 24 Stunden nach der erstmaligen Authentifizierung daran hindern, sich erneut am Netzwerk anzumelden.",
+          "voucher": "Voucher",
+          "help-text": {
+            "backend-authentication": "Ermöglicht die Authentifizierung über einen RADIUS-Server mit Password Authentication Protocol (PAP).",
+            "password-schedule": "Erstellt automatisch nach einem festen Zeitplan ein neues Kennwort. Dieses wird an die festgelegten E-Mail-Adressen geschickt.",
+            "social-login": "Lässt die Authentifizierung über Social-Media-Konten zu.",
+            "voucher": "Druckbare Voucher mit Zeitbeschränkung für die Authentifizierung verwenden"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "Voucher erstellen",
+            "voucher-support-text": "Um Voucher zu erstellen, speichern Sie die SSID.",
+            "delete-confirm-header": "Voucher löschen",
+            "delete-confirm-message": "Alle Voucher dieser Charge werden gelöscht. Wollen Sie Ihre Voucher-Charge {{batchName}} löschen?",
+            "pdf-file-name": "Hotspot-Voucher",
+            "create": {
+              "header": "Voucher erstellen",
+              "name": "Voucher-Name",
+              "access-time": "Zugriffszeit",
+              "unlimited": "Unbegrenzt",
+              "period": "Zeitraum",
+              "start-date": "Startdatum",
+              "end-date": "Enddatum",
+              "timezone": "Zeitzone",
+              "data-limit": "Datenvolumen",
+              "limit": "Obergrenze",
+              "data": "Daten",
+              "unit": "Einheit",
+              "number-of-vouchers": "Voucher-Anzahl ",
+              "number-of-devices": "Geräte je Voucher",
+              "valid-for": "Gültig für",
+              "days": "Tage",
+              "hours": "Stunden",
+              "name-error-msg": {
+                "required": "Voucher-Name ist erforderlich",
+                "maxlength": "Voucher-Name darf nicht länger als 128 Zeichen sein"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "Startdatum ist erforderlich",
+                "endDateRequired": "Enddatum ist erforderlich",
+                "datesImbalanced": "Startdatum muss vor dem Enddatum liegen"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "Datenvolumen ist erforderlich",
+                "pattern": "Datenvolumen muss eine Zahl sein. Sie können einen Kommawert angeben."
+              },
+              "duration-error-msg": {
+                "durationRequired": "Dauer ist eine Pflichtangabe"
+              }
+            },
+            "table": {
+              "name": "Name",
+              "period": "Zeitraum",
+              "number": "Nummer",
+              "showPdf": "PDF anzeigen",
+              "delete": "Löschen",
+              "unlimited": "Unbegrenzt",
+              "empty-message": "Keine Voucher"
+            }
+          },
+          "redirectUrl": {
+            "label": "Umleitungs-URL",
+            "original-label": "Umleitung zu ursprünglicher URL",
+            "redirect-url-original-help": "Leitet Benutzer nach der Authentifizierung auf die Website um, die sie ursprünglich aufrufen wollten.",
+            "custom-label": "Benutzerspezifische URL",
+            "redirect-url-custom-help": "Leitet Benutzer nach der Authentifizierung auf eine von Ihnen gewählte Website um.",
+            "custom-url-required": "Umleitungs-URL ist erforderlich.",
+            "custom-url-domainName": "Beispiel: https://ihredomain.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">Geben Sie eine gültige URL, einschließlich Netzwerkprotokoll [Beispiel: https://], ein.</span>",
+            "custom-url-valid": "Umleitungs-URL hat kein gültiges Format."
+          }
         }
       },
       "access-point-editor": {

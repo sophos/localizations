@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Firewall Management - Novo grupo de conexão SD-WAN",
-        "breadcrumb-text": "Adicionar um grupo de conexão SD-WAN",
+        "name": "Firewall Management - Configurar grupo de conexão SD-WAN",
+        "breadcrumb-text": "Configurar grupo de conexão SD-WAN",
         "error" : {
           "string": "Erro",
           "INVALID_XFRM_IP" : "IPs XFRM inválidos foram escolhidos para um dos firewalls no grupo.",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "GroupId {{ groupId }} não existe",
           "INTERNAL_REQUEST_ERROR" : "Algo deu errado. Erro interno de servidor!",
           "INTERNAL_SERVER_ERROR": "Algo deu errado. Erro interno de servidor!",
-          "GROUP_NAME_EXISTS": "O nome do grupo já existe. Escolha um diferente."
+          "GROUP_NAME_EXISTS": "O nome do grupo já existe. Escolha um diferente.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "IP público ou FQDN especificado para o link WAN é inválido: {{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "Erro desconhecido ao salvar o grupo de conexão.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} firewalls analisados com conflito de rede detectado."
           },
           "network-missing": {
-            "heading": "{{ count }} firewalls de compartilhamento sem recursos e sem redes locais."
+            "heading": "{{ count }} firewalls sem redes locais"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "Porta de WAN",
               "gateway": "Gateway de Backup",
               "nat": "NAT",
-              "respond-only": "Respondente",
-              "initiator": "Iniciador",
+              "respond-only": "Compartilhamento de recurso",
+              "initiator": "Acesso a recurso",
               "details-edit": "Detalhes/Editar",
               "fix-conflicts": "Corrigir conflito"
             },
-            "not-participating": "Nenhuma interface está habilitada para participar da rede local. Você pode editar as configurações para habilitá-las."
+            "not-participating": "Nenhuma rede local está selecionada para participar do grupo de conexão."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "Habilitar",
               "nat": "Habilitar NAT",
               "nat-address": "Endereço de NAT",
-              "nat-subnet": "Endereços com NAT podem ser usados para resolver conflitos de rede. Endereço de (NAT) traduzido deve pertencer à mesma sub-rede que a interface.",
+              "nat-subnet": "O NAT pode ser usado para evitar conflitos de rede, alterando uma rede para que apareça como uma faixa de endereço IP diferente quando o tráfego passa pelo túnel. Insira o endereço de NAT que deve aparecer na rede. Por exemplo, se o endereço original é 192.168.1.1 e o endereço de NAT é 10.1.1.0, os endereços são traduzidos relativamente, de modo que o IP 192.168.1.1 aparece como 10.1.1.2, 192.168.1.2 como 10.1.1.2, etc.",
               "conflicts": "Conflitos",
               "wan": "Link WAN",
               "selected": "Selecionado",
@@ -385,7 +386,7 @@
                 "type-iprange": "Intervalo de IPv4: Ex.: 10.12.22.34-10.12.22.35",
                 "type-crdi": "Formato de rede IPv4: Ex.: 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "Endereço de IP",
@@ -426,7 +427,7 @@
             "help": "As redes compartilhadas estarão disponíveis para todos os firewalls que são parte deste grupo de compartilhamento.",
             "auto-rules": "Criar regras de firewall automaticamente",
             "limit-access": "Limitar acesso a usuários autenticados",
-            
+
             "sync-sec": {
               "enable": "Configurar Security Heartbeat sincronizado",
               "src": "HB de origem mínimo permitido",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "Crie configurações de firewall comuns e conjuntos de modelos de política básica para usar com diferentes clientes.",
           "customer": "Você não possui nenhum cliente neste modelo.",
+          "groups": "Você não possui nenhum grupo para este cliente.",
+          "firewalls": "Você não possui nenhum firewall para este cliente.",
           "header": "Você não possui nenhum modelo de firewall",
           "learn-more": "Saiba mais",
           "what": "O que é um modelo de firewall?",

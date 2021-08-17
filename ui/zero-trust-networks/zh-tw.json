@@ -14,8 +14,10 @@
       "continue": "繼續",
       "fqdn-validation": "無效的 FQDN",
       "fqdn-ip-validation": "無效 FQDN/IP",
+      "fqdn-duplicate-validation": "FQDN 已使用",
       "invalid-name": "名稱僅可含有：A-Z、a-z、0-9、-、_、空格",
       "name-length-validation": "名稱不應超過 100 個字元",
+      "name-duplicate-validation": "名稱已使用",
       "whitespace-name-validation": "需要名稱",
       "description-length-validation": "說明不應超過 300 個字元",
       "required": "* 必要",
@@ -100,6 +102,8 @@
             "resource-type": "資源類型：",
             "gateway": "閘道：",
             "local-address": "本機位址：",
+            "internal-fqdn": "內部 FQDN/IP 位址：",
+            "external-fqdn": "外部 FQDN：",
             "domain": "網域：",
             "agent": "代理程式",
             "agentless": "無代理",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - 儀錶板",
       "breadcrumb-text": "Zero Trust Network Access 儀錶板",
-      "nodata": "无可用数据"
+      "nodata": "无可用数据",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1.同步使用者",
+          "add-idp": "2.新增識別提供者",
+          "set-up-gateways": "3.設定閘道",
+          "add-policy": "4.新增政策",
+          "add-resources": "5.新增資源"
+        },
+        "help": {
+          "sync-users": "設定 Directory 同步",
+          "add-idp": "設定驗證所需的 IDP",
+          "set-up-gateways": "為每個網路地址建立虛擬閘道",
+          "add-policy": "設定資源存取規則",
+          "add-resources": "指定可存取它們的資源和使用者群組"
+        },
+        "header": "按照下方步驟，獲取 Zero Trust 網路存取設定"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - 報告",
@@ -156,7 +177,8 @@
         "high-alerts": "高度警示",
         "medium-alerts": "中度警示",
         "low-alerts": "低級警示",
-        "fetch-error": "擷取警示摘要時出錯"
+        "fetch-error": "擷取警示摘要時出錯",
+        "header": "警示摘要"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "閘道建立失敗",
         "loading-error": "載入閘道時出現錯誤",
         "otp-error": "產生 OTP 時出現錯誤",
+        "session-timeout-error": "工作階段已過期。請重新登入",
         "edit-success": "閘道已更新",
         "edit-error": "閘道更新失敗",
         "password-rules": {
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "閘道叢集未啟用，但找到不止一個執行個體",
       "gateway.cluster.change.notAllowed": "無法停用閘道叢集",
       "gateway.cluster.notEmpty": "未找到閘道叢集欄位",
+      "gateway.cluster.changeSizeInvalid": "在刪除舊執行個體之前，顯示更多執行個體，叢集大小應該大於 (n+1)/2",
       "gateway.not.connected.or.approved": "如果閘道未處於連線或批准狀態並且執行個體未處於活動狀態，則無法啟用遠端偵錯",
       "policy.invalid": "提供的原則物件無效",
       "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
@@ -1137,7 +1161,10 @@
         "noRecords": "沒有記錄",
         "apply": "套用",
         "multiDeviceReportingNote": "多裝置報告僅適用於「進階」授權。",
-        "tooManyFirewallSelected": "您已達到閘道選擇上限"
+        "tooManyFirewallSelected": "您已達到閘道選擇上限",
+        "selectGateway": "選取閘道",
+        "selectTemplate": "選取範本",
+        "selectCreatedBy": "選擇建立者"
       },
       "savedTemplates": {
         "allFirewalls": "所有閘道",

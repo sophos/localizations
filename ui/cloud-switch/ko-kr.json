@@ -12,6 +12,10 @@
       "details": "세부 정보",
       "template": "사이트",
       "firmware": "펌웨어",
+      "port": "포트",
+      "state": "상태",
+      "tagged": "태그가 지정됨",
+      "untagged": "태그 해제됨",
       "minutes-ago": "{{unit}}분 전",
       "minute-ago": "{{unit}}분 전",
       "hours-ago": "{{unit}}시간 전",
@@ -20,6 +24,18 @@
       "day-ago": "{{unit}}일 전",
       "months-ago": "{{unit}}개월 전",
       "month-ago": "{{unit}}개월 전",
+      "link-speed": {
+        "10mh": "10M/절반",
+        "10mf": "10M/전체",
+        "100mh": "100M/절반",
+        "100mf": "100M/전체",
+        "1g": "1G/전체",
+        "2-5g": "2.5G/전체",
+        "5g": "5G/전체",
+        "10g": "10G/전체",
+        "auto": "자동",
+        "disabled": "사용 안 함"
+      },
       "button": {
         "register": "등록",
         "cancel": "취소",
@@ -28,7 +44,9 @@
         "apply": "적용",
         "confirm": "확인",
         "delete": "삭제",
-        "add": "추가"
+        "add": "추가",
+        "update": "업데이트",
+        "reset": "재설정"
       },
       "status": {
         "registering": "연결 대기 중",
@@ -37,7 +55,8 @@
         "unregistered": "등록 시간 초과됨",
         "disconnected": "연결 해제됨",
         "suspended": "일시 중단됨",
-        "disabled": "사용 안 함"
+        "disabled": "사용 안 함",
+        "enabled": "사용함"
       },
       "form": {
         "name": "이름",
@@ -48,7 +67,8 @@
         "port-settings-title": "포트 설정",
         "vlans-title": "VLAN",
         "network-settings-title": "네트워크 설정",
-        "task-queue-title": "작업 대기열"
+        "task-queue-title": "작업 대기열",
+        "site-details": "사이트 세부 정보"
       },
       "error": "오류",
       "success": "성공",
@@ -81,7 +101,10 @@
         "remove-dialog-title": "Sophos Central에서 제거",
         "remove-dialog-message": "Sophos Central에서 스위치 <strong>{{switchSerial}}</strong>을(를) 제거합니다.",
         "retry-dialog-title": "등록 다시 시도",
-        "delete-note": "등록된 스위치가 <strong>다시 시작</strong>됩니다.<br/> 스위치 연결이 해제되면 스위치가 Sophos Central에 연결을 시도할 때 재부팅됩니다.<br/> 참고: 스위치의 현재 구성은 유지됩니다.",
+        "delete-note": "스위치가 연결되어 있으면 제거 후 곧 <strong>재시작</strong>됩니다. 연결이 해제되면 <br>스위치가 Sophos Central에 연결을 시도할 때 재부팅됩니다.<br/><br/> 참고: 스위치의 현재 구성은 유지됩니다.",
+        "move-to-site-dialog-title": "스위치를 사이트로 이동",
+        "move-to-site-text": "{{ switches }}개의 선택한 스위치가 사이트로 이동",
+        "move-to-site-checkbox-label": "모든 사이트 설정을 스위치에 즉시 동기화",
         "txtbox": {
           "search-placeholder": "스위치 검색"
         },
@@ -93,7 +116,8 @@
           "auto-refresh": "자동 새로 고침",
           "add-template": "사이트 추가",
           "switch-delete-confirm": "스위치 제거",
-          "template-delete-confirm": "사이트 삭제"
+          "template-delete-confirm": "사이트 삭제",
+          "move-to-site": "사이트로 이동"
         },
         "table-headers": {
           "name": "이름",
@@ -112,34 +136,233 @@
           "template-overridden": "사이트가 재정의되었습니까?"
         },
         "upgrade": {
+          "state": {
+            "action": {
+              "edit": "예약 변경",
+              "cancel": "취소"
+            },
+            "SCHEDULED_UPGRADE": {
+              "SCHEDULED": {
+                "text": "{{ version }} 버전으로의 업그레이드가 예약되었습니다.",
+                "note": {
+                  "now": "스위치가 요청을 수신한 후 즉시 업그레이드가 시작됩니다.",
+                  "date": "스위치의 시간이 {{ date }}일 때 업그레이드가 수행됩니다."
+                },
+                "action": "펌웨어 관리"
+              },
+              "UPDATING": {
+                "text": "{{ version }} 버전으로 업그레이드",
+                "note": {
+                  "now": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
+                  "date": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다."
+                }
+              },
+              "SUCCESS": {
+                "text": "{{ currentVersion }} 버전으로의 업그레이드가 성공했습니다.",
+                "note": {
+                  "now": "스위치가 {{ version }}에서 업그레이드되었습니다.",
+                  "date": "스위치가 {{ date }}에 {{ version }}에서 업그레이드되었습니다."
+                }
+              },
+              "FAILURE": {
+                "text": "{{ version }} 버전으로 업그레이드하지 못했습니다.",
+                "note": {
+                  "now": "",
+                  "date": "{{ date }}에 시도함"
+                },
+                "reason": {
+                  "NO_ERROR" : "오류가 아직 Sophos Central에 보고되지 않았습니다.",
+                  "SUCCESS": "알 수 없는 오류가 발생했습니다.",
+                  "TIME_ALREADY_ELAPSED":  "예약된 시간이 이미 지났습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              },
+              "CANCELLED": {
+                "text": "관리자가 {{ version }} 버전으로의 업그레이드를 취소했습니다.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "아직 취소 성공을 기다리고 있습니다.",
+                  "SUCCESS": "스위치가 예약을 취소했습니다. 변경 사항이 없습니다.",
+                  "TIME_ALREADY_ELAPSED":  "그러나 스위치는 예약을 이미 실행했습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              }
+            },
+            "AUTO_UPGRADE": {
+              "SCHEDULED": {
+                "text": "{{ version }} 버전에 대한 자동 업그레이드가 예약되었습니다.",
+                "note": {
+                  "now": "스위치가 요청을 수신한 후 즉시 업그레이드가 시작됩니다.",
+                  "date": "스위치의 시간이 {{ date }}일 때 업그레이드가 수행됩니다."
+                },
+                "action": "펌웨어 관리"
+              },
+              "UPDATING": {
+                "text": "{{ version }} 버전으로 자동 업그레이드",
+                "note": {
+                  "now": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
+                  "date": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다."
+                }
+              },
+              "SUCCESS": {
+                "text": "{{ currentVersion }} 버전으로의 자동 업그레이드가 성공했습니다.",
+                "note": {
+                  "now": "스위치가 {{ version }}에서 업그레이드되었습니다.",
+                  "date": "스위치가 {{ date }}에 {{ version }}에서 업그레이드되었습니다."
+                }
+              },
+              "FAILURE": {
+                "text": "{{ version }} 버전으로 자동 업그레이드하지 못했습니다.",
+                "note": {
+                  "now": "",
+                  "date": "{{ date }}에 시도함"
+                },
+                "reason": {
+                  "NO_ERROR" : "오류가 아직 Sophos Central에 보고되지 않았습니다.",
+                  "SUCCESS": "알 수 없는 오류가 발생했습니다.",
+                  "TIME_ALREADY_ELAPSED":  "예약된 시간이 이미 지났습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              },
+              "CANCELLED": {
+                "text": "{{ version }} 버전으로의 자동 업그레이드가 취소되었습니다.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "아직 취소 성공을 기다리고 있습니다.",
+                  "SUCCESS": "스위치가 예약을 취소했습니다. 변경 사항이 없습니다.",
+                  "TIME_ALREADY_ELAPSED":  "그러나 스위치는 예약을 이미 실행했습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              }
+            },
+            "ROLLBACK": {
+              "SCHEDULED": {
+                "text": "{{ version }} 버전으로의 롤오버가 예약되었습니다.",
+                "note": {
+                  "now": "스위치가 요청을 수신한 후 즉시 롤오버가 시작됩니다.",
+                  "date": "스위치의 시간이 {{ date }}일 때 롤오버가 수행됩니다."
+                },
+                "action": "펌웨어 관리"
+              },
+              "UPDATING": {
+                "text": "{{ version }} 버전으로 롤오버 중",
+                "note": {
+                  "now": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
+                  "date": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다."
+                }
+              },
+              "SUCCESS": {
+                "text": "{{ currentVersion }} 버전으로의 롤오버가 성공했습니다.",
+                "note": {
+                  "now": "스위치가 {{ version }}에서 업그레이드되었습니다.",
+                  "date": "스위치가 {{ date }}에 {{ version }}에서 업그레이드되었습니다."
+                }
+              },
+              "FAILURE": {
+                "text": "{{ version }} 버전으로 롤오버하지 못했습니다.",
+                "note": {
+                  "now": "",
+                  "date": "{{ date }}에 시도함"
+                },
+                "reason": {
+                  "NO_ERROR" : "오류가 아직 Sophos Central에 보고되지 않았습니다.",
+                  "SUCCESS": "알 수 없는 오류가 발생했습니다.",
+                  "TIME_ALREADY_ELAPSED":  "예약된 시간이 이미 지났습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              },
+              "CANCELLED": {
+                "text": "{{ version }} 버전으로의 롤오버가 취소되었습니다.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "아직 취소 성공을 기다리고 있습니다.",
+                  "SUCCESS": "스위치가 예약을 취소했습니다. 변경 사항이 없습니다.",
+                  "TIME_ALREADY_ELAPSED":  "그러나 스위치는 예약을 이미 실행했습니다.",
+                  "TOO_MANY_PENDING_REQUESTS": "스위치가 다른 작업에 사용되고 있었습니다.",
+                  "LINK_NOT_REACHABLE": "현재 펌웨어 서버에 연결할 수 없습니다.",
+                  "DOWNLOAD_ERROR": "펌웨어를 다운로드할 수 없습니다.",
+                  "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
+                  "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
+                  "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
+                  "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+                }
+              }
+            }
+          },
+          "up-to-date": "펌웨어가 최신 상태입니다.",
+          "up-to-date-message": "다운로드 가능한 펌웨어가 없습니다.",
+          "cannot-manage": "진행 중인 업그레이드가 완료되면 예약을 선택할 수 있습니다.",
           "update-available": "새 펌웨어 업데이트를 사용할 수 있습니다.",
-          "rollback-available": "이전 버전 {{ version }}(으)로 롤백",
+          "rollback-available": "백업 파티션 {{ version }} 버전으로 롤오버",
           "rollback-message": "이렇게 하면 백업 파티션에서 스위치를 다시 시작합니다.",
-          "schedule-rollback": "롤백 예약",
+          "schedule-rollback": "롤오버 예약",
           "upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다.",
           "schedule-upgrade": "업그레이드 예약",
-          "schedule": "일정 추가",
+          "schedule": "예약 변경",
           "manage-schedule-dialog-title": "펌웨어 관리: {{ site }}",
-          "upgrade-schedule-dialog-title": "일정 선택",
-          "dialog-heading": "사이트의 스위치에 대한 펌웨어 관리: {{ site }}. 아래 선택 항목에서 펌웨어 업그레이드 또는 롤백을 추가하거나 취소할 수 있습니다.",
-          "schedule-info-message": "선택한 스위치를 업데이트하거나 롤백할 시간을 선택합니다.",
+          "upgrade-schedule-dialog-title": "예약 선택",
+          "dialog-heading": "사이트의 스위치에 대한 펌웨어 관리: {{ site }}. 아래 선택 항목에서 펌웨어 업그레이드 또는 롤오버를 추가하거나 취소할 수 있습니다.",
+          "schedule-info-message": "선택한 스위치를 업데이트하거나 롤오버할 시간을 선택합니다.",
           "update-now": "지금",
           "custom": "사용자 지정",
-          "schedule-now-note": "연결된 스위치는 즉시 업그레이드/롤백에 대한 알림을 받습니다. 연결 해제된 스위치는 연결 직후 알림을 받습니다. 이때 스위치를 다시 시작하게 될 수 있습니다.",
-          "schedule-custom-note": "선택한 일정은 표준 시간대에 관계없이 스위치의 로컬 시간을 따릅니다. 업그레이드/롤백을 하면 다시 시작하게 될 수 있습니다.",
+          "schedule-now-note": "연결된 스위치는 즉시 업그레이드/롤오버에 대한 알림을 받습니다. 연결 해제된 스위치는 연결 직후 알림을 받습니다. 이때 스위치를 다시 시작하게 될 수 있습니다. 즉각적인 예약은 저장하고 나면 수정할 수 없습니다. 새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.",
+          "schedule-custom-note": "선택한 예약은 표준 시간대에 관계없이 스위치의 로컬 시간을 따릅니다. 업그레이드/롤오버를 하면 다시 시작하게 될 수 있습니다.",
           "scheduled-success-message": "펌웨어 업그레이드가 예약됨",
           "scheduled-success-failure": "펌웨어 업그레이드가 실패함",
           "update-cancel-message": "펌웨어 업그레이드가 취소됨",
-          "cancel-upgrade": "일정 취소",
-          "rollback": "롤백({{ version }})",
+          "cancel-upgrade": "예약 취소",
+          "rollback": "롤오버({{ version }})",
+          "modified": "기존 예약 {{ version }} | {{ schedule }}이(가) 수정됩니다.",
+          "new-schedule": "새로운 예약",
           "table": {
             "serial-number": "스위치",
             "version": "버전",
             "update-to": "끝 버전",
-            "currently-scheduled-upgrades": "선택한 일정",
+            "currently-scheduled-upgrades": "선택한 예약",
             "release-notes": "릴리스 노트",
             "edit": "편집",
-            "selected": "선택됨"
+            "selected": "선택됨",
+            "modified": "수정됨",
+            "cancel-warning": "즉각적인 업그레이드 요청은 수정할 수 없습니다. 새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다."
           }
         },
         "add-template": {
@@ -169,7 +392,11 @@
           "delete-template-success": "사이트가 삭제되었음",
           "delete-template-error": "사이트를 삭제할 수 없음",
           "update-template-success": "사이트가 업데이트되었음",
-          "update-template-error": "사이트를 업데이트할 수 없음"
+          "update-template-error": "사이트를 업데이트할 수 없음",
+          "transfer-success": "스위치가 이동되었음",
+          "transfer-failed": "스위치를 이동할 수 없음",
+          "full-sync-success": "사이트 설정이 선택한 스위치에 동기화되었음",
+          "full-sync-failed": "사이트 설정을 선택한 스위치에 동기화할 수 없음"
         },
         "groupInfoText": {
           "what": "사이트가 무엇입니까?",
@@ -232,7 +459,21 @@
     },
     "template": {
       "page-title": "스위치 - 사이트 관리",
-      "breadcrumb-text": "사이트"
+      "breadcrumb-text": "사이트",
+      "new-page-title": "스위치 - 사이트 만들기",
+      "site-details": "사이트 세부 정보",
+      "message": {
+        "site-name-required-message": "사이트 이름이 필요합니다",
+        "site-name-invalid-message": "사이트 이름이 잘못되었습니다.",
+        "site-description-invalid-message": "사이트 설명이 잘못되었습니다.",
+        "create-success": "사이트가 생성되었습니다.",
+        "create-error": "사이트를 생성할 수 없음",
+        "update-success": "사이트가 업데이트되었음",
+        "update-error": "사이트를 업데이트할 수 없음"
+      },
+      "form": {
+        "location": "사이트 위치"
+      }
     },
     "switch-view": {
       "summary-legend-title": "요약",
@@ -304,7 +545,7 @@
         "site": "사이트",
         "entity": "엔터티",
         "sub-entity": "하위 엔터티",
-        "date-time": "마지막 수정 시간"
+        "date-time": "만든 위치"
       },
       "status": {
         "pending": "보류 중",
@@ -319,12 +560,19 @@
         "skip": "건너뛰기"
       },
       "type": {
-        "add": "추가",
+        "none": "없음",
+        "create": "만들기",
         "update": "업데이트",
         "delete": "삭제",
-        "firmware_upgrade": "펌웨어 업그레이드"
+        "full_sync": "전체 동기화",
+        "vlan": "VLAN",
+        "firmware_upgrade": "펌웨어",
+        "schedule_upgrade": "펌웨어 업그레이드 예약",
+        "cancel_upgrade": "펌웨어 업그레이드 취소",
+        "rollback": "롤오버 펌웨어",
+        "port": "포트"
       },
-      "retry-success": "선택한 작업이 스위치로 다시 푸시됩니다.",
+      "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
       "skip-success": "선택한 작업을 건너뛰고, 보류 중인 작업은(있는 경우) 스위치로 전송됩니다.",
       "skip-error": "선택한 작업을 건너뛰지 못했습니다."
@@ -333,9 +581,14 @@
       "table-headers": {
         "port-id": "포트",
         "label": "레이블",
+        "flow-control": "흐름 제어",
         "link-speed": "속도/이중",
         "untagged-vlan": "태그 없는 VLAN",
         "tagged-vlans": "태그 있는 VLAN"
+      },
+      "message": {
+        "port-update-success": "포트가 업데이트되었습니다.",
+        "port-update-error": "하나 이상의 포트를 업데이트할 수 없습니다."
       }
     }
   }

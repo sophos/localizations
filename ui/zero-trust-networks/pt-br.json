@@ -14,8 +14,10 @@
       "continue": "Continuar",
       "fqdn-validation": "FQDN inválido",
       "fqdn-ip-validation": "FQDN/IP inválido",
+      "fqdn-duplicate-validation": "FQDN já em uso",
       "invalid-name": "O nome pode conter apenas: A-Z, a-z , 0-9, -, _, espaço",
       "name-length-validation": "O nome não pode ter mais do que 100 caracteres",
+      "name-duplicate-validation": "Nome em uso",
       "whitespace-name-validation": "É necessário um nome",
       "description-length-validation": "A descrição não pode ter mais do que 300 caracteres",
       "required": "* Obrigatório",
@@ -100,6 +102,8 @@
             "resource-type": "Tipo de recurso:",
             "gateway": "Gateway:",
             "local-address": "Endereço de IP Local:",
+            "internal-fqdn": "Endereço de IP/FQDN interno:",
+            "external-fqdn": "FQDN externo:",
             "domain": "Domínio:",
             "agent": "Agente",
             "agentless": "Sem agente",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Painel",
       "breadcrumb-text": "Painel do Zero Trust Network Access",
-      "nodata": "Nenhum dado disponível"
+      "nodata": "Nenhum dado disponível",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1. Sincronizar usuários",
+          "add-idp": "2. Adicionar provedor de identidade",
+          "set-up-gateways": "3. Configurar gateways",
+          "add-policy": "4. Adicionar política",
+          "add-resources": "5. Adicionar recursos"
+        },
+        "help": {
+          "sync-users": "Configurar sincronização do Directory",
+          "add-idp": "Configurar IDPs necessários para autenticação",
+          "set-up-gateways": "Criar um gateway virtual para cada localização de rede",
+          "add-policy": "Definir regras para acesso a recursos",
+          "add-resources": "Especificar recursos e os grupos de usuários que podem acessá-los"
+        },
+        "header": "Siga as etapas abaixo para configurar o Zero Trust Network Access"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - Relatórios",
@@ -156,7 +177,8 @@
         "high-alerts": "Alertas altos",
         "medium-alerts": "Alertas médios",
         "low-alerts": "Alertas baixos",
-        "fetch-error": "Erro ao buscar o resumo de alertas"
+        "fetch-error": "Erro ao buscar o resumo de alertas",
+        "header": "Resumo de alertas"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "Falha na criação do gateway",
         "loading-error": "Erro ao carregar o gateway",
         "otp-error": "Erro ao gerar OTP",
+        "session-timeout-error": "A sessão expirou. Faça login novamente",
         "edit-success": "Gateway atualizado",
         "edit-error": "Falha na atualização do gateway",
         "password-rules": {
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "Clustering de gateway não habilitado, mas foi encontrada mais de uma instância",
       "gateway.cluster.change.notAllowed": "O cluster de gateway não pode ser desabilitado",
       "gateway.cluster.notEmpty": "Campo de cluster de gateway não encontrado",
+      "gateway.cluster.changeSizeInvalid": "Traga mais instâncias antes de deletar as instâncias antigas; o tamanho do cluster deve ser maior que (n+1)/2",
       "gateway.not.connected.or.approved": "A depuração remota não pode ser habilitada se o gateway não estiver no estado conectado ou aprovado e a instância não estiver no estado ativo",
       "policy.invalid": "O objeto de política fornecido é inválido",
       "policy.isEnforced.notNull": "O campo isEnforced no objeto da política não pode ser nulo",
@@ -1137,7 +1161,10 @@
         "noRecords": "Nenhum registro",
         "apply": "Aplicar",
         "multiDeviceReportingNote": "Relatório multidispositivo só está disponível com a licença Advanced.",
-        "tooManyFirewallSelected": "Você atingiu o limite máximo de seleção de gateway"
+        "tooManyFirewallSelected": "Você atingiu o limite máximo de seleção de gateway",
+        "selectGateway": "Selecionar gateway(s)",
+        "selectTemplate": "Selecionar Modelo",
+        "selectCreatedBy": "Selecionar Criado por"
       },
       "savedTemplates": {
         "allFirewalls": "Todos os gateways",

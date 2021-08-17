@@ -14,8 +14,10 @@
       "continue": "계속",
       "fqdn-validation": "잘못된 FQDN",
       "fqdn-ip-validation": "잘못된 FQDN/IP",
-      "invalid-name": "이름에는 다음만 포함될 수 있습니다. A-Z, a-z , 0-9, -, _, 공백",
+      "fqdn-duplicate-validation": "FQDN이 이미 사용됨",
+      "invalid-name": "이름에는 다음만 포함될 수 있습니다. A~Z, a~z, 0~9, -, _, 공백",
       "name-length-validation": "이름은 100자를 초과해서는 안 됨",
+      "name-duplicate-validation": "이미 사용된 이름",
       "whitespace-name-validation": "이름이 필요함",
       "description-length-validation": "설명은 300자를 초과해서는 안 됨",
       "required": "* 필수",
@@ -100,6 +102,8 @@
             "resource-type": "리소스 유형:",
             "gateway": "게이트웨이:",
             "local-address": "로컬 주소:",
+            "internal-fqdn": "내부 FQDN/IP 주소:",
+            "external-fqdn": "외부 FQDN:",
             "domain": "도메인:",
             "agent": "에이전트",
             "agentless": "에이전트리스",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - 대시보드",
       "breadcrumb-text": "Zero Trust Network Access 대시보드",
-      "nodata": "사용할 수 있는 데이터 없음"
+      "nodata": "사용할 수 있는 데이터 없음",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1. 사용자 동기화",
+          "add-idp": "2. ID 공급자 추가",
+          "set-up-gateways": "3. 게이트웨이 설정",
+          "add-policy": "4. 정책 추가",
+          "add-resources": "5. 리소스 추가"
+        },
+        "help": {
+          "sync-users": "디렉토리 동기화 설정",
+          "add-idp": "인증에 필요한 IDP 설정",
+          "set-up-gateways": "각 네트워크 위치에 대한 가상 게이트웨이 생성",
+          "add-policy": "리소스 액세스 규칙 설정",
+          "add-resources": "액세스할 수 있는 리소스 및 사용자 그룹 지정"
+        },
+        "header": "Zero Trust Network Access를 설정하려면 아래 단계를 따르십시오."
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - 보고서",
@@ -156,7 +177,8 @@
         "high-alerts": "높음 경고",
         "medium-alerts": "중간 경고",
         "low-alerts": "낮음 경고",
-        "fetch-error": "경고 요약을 가져오는 중 오류 발생"
+        "fetch-error": "경고 요약을 가져오는 중 오류 발생",
+        "header": "경고 요약"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "게이트웨이 생성 실패",
         "loading-error": "게이트웨이 로드 중 오류 발생",
         "otp-error": "OTP 생성 중 오류 발생",
+        "session-timeout-error": "세션이 만료되었습니다. 다시 로그인하십시오.",
         "edit-success": "게이트웨이 업데이트됨",
         "edit-error": "게이트웨이 업데이트 실패",
         "password-rules": {
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "게이트웨이 클러스터링이 사용되지 않았지만 둘 이상의 인스턴스가 발견됨",
       "gateway.cluster.change.notAllowed": "게이트웨이 클러스터를 사용 안 함으로 설정할 수 없음",
       "gateway.cluster.notEmpty": "게이트웨이 클러스터 필드를 찾을 수 없음",
+      "gateway.cluster.changeSizeInvalid": "이전 인스턴스를 삭제하기 전에 더 많은 인스턴스를 불러오십시오. 클러스터 크기는(n+1)/2보다 커야 합니다.",
       "gateway.not.connected.or.approved": "게이트웨이가 연결되거나 승인된 상태가 아니고 인스턴스가 활성 상태가 아닌 경우에는 원격 디버깅을 활성화할 수 없습니다.",
       "policy.invalid": "제공된 정책 개체가 잘못됨",
       "policy.isEnforced.notNull": "정책 개체의 isEnforced 필드는 Null이 아니어야 함",
@@ -1137,7 +1161,10 @@
         "noRecords": "레코드 없음",
         "apply": "적용",
         "multiDeviceReportingNote": "다중 장치 보고는 Advanced 라이선스에서만 이용할 수 있습니다.",
-        "tooManyFirewallSelected": "최대 게이트웨이 선택 수 제한에 도달했습니다."
+        "tooManyFirewallSelected": "최대 게이트웨이 선택 수 제한에 도달했습니다.",
+        "selectGateway": "게이트웨이 선택",
+        "selectTemplate": "템플릿 선택",
+        "selectCreatedBy": "만든 사람 선택"
       },
       "savedTemplates": {
         "allFirewalls": "모든 게이트웨이",

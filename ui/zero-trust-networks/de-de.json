@@ -12,10 +12,12 @@
       "approve": "Genehmigen",
       "search": "SUCHE",
       "continue": "Fortfahren",
-      "fqdn-validation": "Ungültige FQDN",
-      "fqdn-ip-validation": "Ungültige FQDN/IP",
+      "fqdn-validation": "Ungültiger FQDN",
+      "fqdn-ip-validation": "Ungültiger FQDN/IP",
+      "fqdn-duplicate-validation": "FQDN bereits verwendet",
       "invalid-name": "Der Name darf nur enthalten: A-Z, a-z , 0-9, -, _, Leerzeichen",
       "name-length-validation": "Name darf nicht länger als 100 Zeichen sein",
+      "name-duplicate-validation": "Der Name ist schon vergeben",
       "whitespace-name-validation": "Name ist erforderlich",
       "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein",
       "required": "* Pflichtfeld",
@@ -44,8 +46,8 @@
         "no-agentless-policy-info": "Sie haben keine Richtlinie, die Ressourcen ohne Agenten unterstützt. Sie können eine solche Richtlinie erstellen in",
         "policies": "Richtlinien",
         "policy-placeholder": "Auswählen",
-        "external-fqdn": "Externe FQDN",
-        "internal-fqdn": "Interne FQDN/IP-Adresse",
+        "external-fqdn": "Externer FQDN",
+        "internal-fqdn": "Interner FQDN/IP-Adresse",
         "add-port-link": "Weitere hinzufügen",
         "application-fqdn": "FQDN der Ressource",
         "application-icon": "Anzeigesymbol (max. Dateigröße: 100K)",
@@ -77,8 +79,8 @@
           "port": "Port",
           "ip": "FQDN der Ressource",
           "type": "Ressourcentyp",
-          "internal-fqdn": "Interne FQDN/IP",
-          "external-fqdn": "Externe FQDN"
+          "internal-fqdn": "Interner FQDN/IP",
+          "external-fqdn": "Externer FQDN"
         },
         "no-application-found": "Keine Ressourcen gefunden.",
         "no-application-configured": "Sie haben keine Ressourcen hinzugefügt.",
@@ -99,7 +101,9 @@
             "access-method": "Zugriffsmethode:",
             "resource-type": "Ressourcentyp:",
             "gateway": "Gateway:",
-            "local-address": "Lokale IP-Adresse:",
+            "local-address": "Lokale Adresse:",
+            "internal-fqdn": "Interner FQDN/IP-Adresse:",
+            "external-fqdn": "Externer FQDN:",
             "domain": "Domäne:",
             "agent": "Agent",
             "agentless": "Ohne Agent",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Dashboard",
       "breadcrumb-text": "Zero-Trust-Network-Access-Dashboard",
-      "nodata": "Keine Daten vorhanden"
+      "nodata": "Keine Daten vorhanden",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1. Benutzer synchronisieren",
+          "add-idp": "2. Identitätsanbieter hinzufügen",
+          "set-up-gateways": "3. Gateways einrichten",
+          "add-policy": "4. Richtlinie hinzufügen",
+          "add-resources": "5. Ressourcen hinzufügen"
+        },
+        "help": {
+          "sync-users": "Verzeichnis-Synchronisierung einrichten",
+          "add-idp": "Die für die Authentifizierung benötigten Identitätsanbieter einrichten",
+          "set-up-gateways": "Für jeden Netzwerkstandort ein virtuelles Gateway erstellen",
+          "add-policy": "Regeln für den Ressourcenzugriff festlegen",
+          "add-resources": "Ressourcen und Benutzergruppen, die auf die Ressourcen zugreifen dürfen, angeben"
+        },
+        "header": "Führen Sie die nachfolgenden Schritte aus, um Zero Trust Network Access einzurichten"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - Berichte",
@@ -156,7 +177,8 @@
         "high-alerts": "Alarme mit hoher Einstufung",
         "medium-alerts": "Alarme mit mittlerer Einstufung",
         "low-alerts": "Alarme mit niedriger Einstufung",
-        "fetch-error": "Fehler beim Abruf der Alarmzusammenfassung"
+        "fetch-error": "Fehler beim Abruf der Alarmzusammenfassung",
+        "header": "Zusammenfassung der Warnhinweise"
       }
     },
     "gateway": {
@@ -243,8 +265,8 @@
             "list": {
               "columns": {
                 "name": "Name",
-                "external-fqdn": "Externe FQDN",
-                "internal-fqdn": "Interne FQDN/IP",
+                "external-fqdn": "Externer FQDN",
+                "internal-fqdn": "Interner FQDN/IP",
                 "type": "Ressourcentyp",
                 "port": "Port"
               },
@@ -332,6 +354,7 @@
         "add-error": "Gateway-Erstellung fehlgeschlagen",
         "loading-error": "Fehler beim Laden des Gateways",
         "otp-error": "Fehler beim Erzeugen des OTP",
+        "session-timeout-error": "Sitzung abgelaufen. Bitte erneut anmelden",
         "edit-success": "Gateway aktualisiert",
         "edit-error": "Aktualisierung des Gateways fehlgeschlagen",
         "password-rules": {
@@ -696,7 +719,7 @@
       "exception.unexpected": "Bei der Verarbeitung der Anfrage ist ein unerwarteter Fehler aufgetreten.",
       "exception.AccessDeniedException": "Zugriff verweigert",
       "fqdn.format.invalid": "FQDN muss gültiges Format haben",
-      "fqdn_ip.format.invalid": "Interne FQDN/IPv4-Adresse muss gültiges Format haben",
+      "fqdn_ip.format.invalid": "Interner FQDN bzw. IPv4-Adresse muss gültiges Format haben",
       "field.value.invalid": "Ungültiger Eingabewert {{0}} für Feld {{1}}",
       "request.json.malformed": "Falsch formatiertes Anfrage-JSON in Anfrage erhalten",
       "http.request.header.missing": "Erforderlicher HTTP-Header {{0}} fehlt in Anfrage",
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "Gateway-Clustering nicht aktiviert, obwohl mehr als eine Instanz gefunden wurde",
       "gateway.cluster.change.notAllowed": "Gateway-Cluster lässt sich nicht deaktivieren",
       "gateway.cluster.notEmpty": "Gateway-Cluster-Feld nicht gefunden",
+      "gateway.cluster.changeSizeInvalid": "Aktivieren Sie weitere Instanzen, bevor Sie die alten Instanzen löschen; die Clustergröße muss größer als (n+1)/2 sein",
       "gateway.not.connected.or.approved": "Remote-Debuggen kann nicht aktiviert werden, wenn das Gateway nicht den Status Verbunden oder Genehmigt hat und die Instanz nicht im aktiven Zustand ist",
       "policy.invalid": "Angegebenes Richtlinienobjekt ist ungültig",
       "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt muss vorhanden sein",
@@ -1069,7 +1093,7 @@
         "transferNotEnoughUnitsAsPerDeviceModel": "Neues Gerät verfügt nicht über die dem Modell entsprechenden erforderlichen Mindesteinheiten",
         "updateLicensesAllocationOutsideDeviceModelRange": "Zugewiesene Einheiten liegen außerhalb des Mindest- oder Höchstgrenzwerts des Gerätemodells",
         "updateLicensesInsufficientUnits": "Nicht genügend Einheiten im Kontingent",
-        "graceperiodisover": "Vorgang kann nicht ausgeführt werden, da Ihre Lizenz abgelaufen und die Toleranzfrist überschritten ist"
+        "graceperiodisover": "Vorgang kann nicht ausgeführt werden, weil Ihre Lizenz abgelaufen und die Toleranzfrist überschritten ist"
       }
     },
     "report": {
@@ -1137,7 +1161,10 @@
         "noRecords": "Keine Einträge",
         "apply": "Anwenden",
         "multiDeviceReportingNote": "Geräte-übergreifende Reports sind nur mit Advanced-Lizenz verfügbar.",
-        "tooManyFirewallSelected": "Maximale Anzahl ausgewählter Gateways erreicht"
+        "tooManyFirewallSelected": "Maximale Anzahl ausgewählter Gateways erreicht",
+        "selectGateway": "Gateway(s) auswählen",
+        "selectTemplate": "Vorlage auswählen",
+        "selectCreatedBy": "Erstellt von auswählen"
       },
       "savedTemplates": {
         "allFirewalls": "Alle Gateways",
@@ -1182,7 +1209,7 @@
           "actions": "Aktionen"
         },
         "messages": {
-          "emptyTableHeader": "Es gibt zur Zeit keine geplanten Exporte",
+          "emptyTableHeader": "Es gibt derzeit keine geplanten Exporte",
           "emptyTableBody": "Dieses Tab enthält PDF-, CSV- und HTML-Exporte, die von einem Exportzeitplan erzeugt werden",
           "warningForColumnLimit": "Sie haben {{number}} Spalten, PDF-Exporte zeigen maximal die ersten 15.",
           "dialogHeader": "Warnung"

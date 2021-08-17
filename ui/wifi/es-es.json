@@ -34,16 +34,25 @@
       "details": "Detalles",
       "no-data": "Sin datos",
       "beta": "beta",
-      "copied": "Copiado"
+      "copied": "Copiado",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "Crear",
+      "no": "No"
     },
     "global": {
+      "form": {
+        "required": "Campo requerido."
+      },
       "onBoard": {
         "access-point": "Puntos de acceso",
         "ssid": "SSID",
         "sites": "Sitios",
         "summary": "Resumen",
         "on-board-step-finish": "Finalizar",
-        "enabled": "Activada"
+        "enabled": "Activado"
       },
       "search": {
         "placeholder": "Buscar",
@@ -172,12 +181,25 @@
           "weekday": "Día laborable",
           "time": "Hora (UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "Actualizar firmware",
+        "body": "Sus puntos de acceso y los SSID configurados en los mismos no estarán disponibles temporalmente durante una actualización de firmware. ¿Desea actualizar ahora a la versión {{ version }}?",
+        "success": "Actualización del firmware a la versión {{ version }} iniciada.",
+        "failure": "Error al actualizar el firmware a la versión {{ version }}",
+        "force-firmware-update": "Borrar marca de actualización de firmware desactivada",
+        "force-update-label": "La marca de actualización de firmware desactivada está configurada para actualizar puntos de acceso con la función de depuración de la imagen del firmware.",
+        "disable-factory-defaults": "Configuración predeterminada de fábrica",
+        "factory-default-label": "Opción para activar la configuración predeterminada de fábrica para un punto de acceso."
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "Sitios",
-        "title": "Wireless - Sitios"
+        "title": "Wireless - Sitios",
+        "no-sites-defined": "No hay ningún sitio definido.",
+        "delete-dialog-text": "Todos sus planos de planta para este sitio de cliente se eliminarán. ¿Desea eliminar el sitio {{site}}?",
+        "confirm-delete-header": "Eliminar sitio"
       }
     },
     "networks": {
@@ -308,7 +330,7 @@
         "ssid-network-name": "Nombre de la red.",
         "password-auto-generate-msg": "La contraseña se generará de forma automática",
         "insecure-encryption-mode-msg": "El modo de cifrado no es seguro",
-        "insecure-encryption-algorithm-msg":  "El algoritmo de cifrado no es seguro",
+        "insecure-encryption-algorithm-msg": "El algoritmo de cifrado no es seguro",
         "encryption-mode-help-msg": "Recomendamos utilizar WPA2.",
         "encryption-algorithm-help-msg": "El algoritmo predeterminado es AES. Se recomienda por motivos de seguridad.",
         "radius-secret-help-msg": "El secreto compartido debe ser considerablemente largo y estar formado por una combinación de letras, letras en mayúscula y números. Secreto para autenticar un punto de acceso en el servidor RADIUS.",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "Se requiere el puerto.",
         "port-range-validate-msg": "El puerto debe ser un número entre 1 y 65535.",
         "port-number-help-msg": "Número de puerto para el servidor RADIUS.",
-        "optimize-multicast":"Optimiza la gestión del tráfico de multidifusión como la retransmisión multimedia. Aumenta el rendimiento general.",
-        "arp-proxy":"Un punto de acceso responde a las consultas ARP de direcciones de red. Aumenta el rendimiento general.",
-        "quality-fast-roaming":"La itinerancia rápida entre puntos de acceso ofrece una mejor conectividad, especialmente para VoIP.",
+        "optimize-multicast": "Optimiza la gestión del tráfico de multidifusión como la retransmisión multimedia. Aumenta el rendimiento general.",
+        "arp-proxy": "Un punto de acceso responde a las consultas ARP de direcciones de red. Aumenta el rendimiento general.",
+        "quality-fast-roaming": "La itinerancia rápida entre puntos de acceso ofrece una mejor conectividad, especialmente para VoIP.",
         "broadcast-outdated": "El SSID sigue transmitiéndose si el punto de acceso no puede comunicarse con Sophos Central después de un reinicio.",
-        "band-steering-label":"Direccionamiento de banda",
-        "quality-band-steering":"Los clientes inalámbricos de doble banda se dirigirán a la banda de 5 GHz si es posible. Mejora la experiencia del cliente.",
-        "band-steering-warning":"El direccionamiento de banda también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
-        "broadcast-outdated-label":"Seguir transmitiendo",
-        "multicast-label":"Conversión de multidifusión a unidifusión"
+        "band-steering-label": "Direccionamiento de banda",
+        "quality-band-steering": "Los clientes inalámbricos de doble banda se dirigirán a la banda de 5 GHz si es posible. Mejora la experiencia del cliente.",
+        "band-steering-warning": "El direccionamiento de banda también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
+        "broadcast-outdated-label": "Seguir transmitiendo",
+        "multicast-label": "Conversión de multidifusión a unidifusión",
+        "radius-server-error-msgs": {
+          "required": "La dirección del servidor RADIUS es obligatoria",
+          "invalid-radius-server": "El servidor RADIUS debe ser una dirección IP válida"
+        },
+        "radius-port-error-msgs": {
+          "required": "Se requiere el puerto.",
+          "min": "El puerto debe ser un número entre 1 y 65535.",
+          "max": "El puerto debe ser un número entre 1 y 65535."
+        },
+        "radius-password-error-msgs": {
+          "required": "Se requiere Frase de acceso."
+        },
+        "email-error-msgs": {
+          "pattern": "Introduzca una dirección de correo electrónico válida"
+        },
+        "generate-new": "Generar nuevo",
+        "select-week": "Seleccione una semana",
+        "certificate-error-msgs": {
+          "file-error": "Error de archivo.",
+          "file-format-error": "Formato de archivo no admitido.",
+          "file-size-exceed": "El archivo supera el tamaño máximo."
+        },
+        "accept-terms-and-conditions": "Aceptar Términos y condiciones y conectar"
       },
       "network-editor": {
         "sync-security-label": "Seguridad Sincronizada",
         "inline-help-sync-security": "La Seguridad Sincronizada es una función única disponible para los puntos de acceso de la serie Sophos APX. Nuestro revolucionario Security Heartbeat™ permite que su estación de trabajo, protección de dispositivos móviles y puntos de acceso compartan información y, de este modo, puedan funcionar de forma conjunta para bloquear las amenazas de seguridad en su red.",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>Los SSID con la Seguridad Sincronizada habilitada no son compatibles con los puntos de acceso distintos de la serie APX.",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>La Seguridad Sincronizada no es compatible con los SSID que tengan habilitada la red de invitado o el portal cautivo.",
-        "green-option-label": "Security Heartbeat™ Verde",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Los SSID con Seguridad Sincronizada habilitada no son compatibles con puntos de acceso distintos a los de la serie APX.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>No puedo usar Seguridad Sincronizada en SSID con red de invitados o portal cautivo activados.",
+        "green-option-label": "Security Heartbeat verde",
         "green-option-value": "Permitir todo el tráfico",
         "green-option-info": "Cliente protegido.",
-        "yellow-option-label": "Security Heartbeat™ Amarillo",
+        "yellow-option-label": "Security Heartbeat amarillo",
         "yellow-option-value": "Permitir todo el tráfico (advertencia)",
         "yellow-option-info": "Se ha detectado un problema y hay un cliente posiblemente en riesgo. En una estación de trabajo, puede tratarse de una aplicación maliciosa inactiva o una aplicación no deseada (PUA). En dispositivos móviles, puede definir el estado de Heartbeat para varias infracciones de cumplimiento.",
-        "red-option-label": "Security Heartbeat™ Rojo",
+        "red-option-label": "Security Heartbeat rojo",
         "red-option-value": "Jardín vallado",
         "red-option-info": "Todo el tráfico de Internet está bloqueado excepto los dominios de la lista de permitidos de abajo. El usuario ve una página web con una advertencia.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -409,7 +454,93 @@
           "welcome-text-required": "Se requiere un texto de bienvenida.",
           "portal-terms-label": "Términos de servicio",
           "portal-terms-max-length": "Los términos de servicio deben tener 102.400 caracteres como máximo.",
-          "portal-config-message": "Para personalizar la página de destino del portal cautivo, primero guarde el SSID."
+          "portal-config-message": "Para personalizar la página de destino del portal cautivo, primero guarde el SSID.",
+          "authentication-types": "Tipos de autenticación",
+          "authentication-type-none": "Ninguna",
+          "backend-authentication": "Autenticación de back-end",
+          "password-schedule": "Programación de constraseña",
+          "social-login": "Iniciar sesión con sus credenciales de redes sociales",
+          "google-console-help-text": "Puede obtener su ID de cliente de Google y el secreto del cliente en la <a href={{gooleDeveloperConsoleSite}} target='_blank'>consola para desarrolladores de Google</a>&nbsp e iniciando sesión con la cuenta de su organización.",
+          "google-console-second-label": "Cree un nuevo proyecto y, desde la sección de credenciales, recupere el ID del cliente y el secreto del cliente.",
+          "client-id-label": "ID de cliente",
+          "client-secret-label": "Secreto del cliente",
+          "facebook-console-help-text": "Puede obtener su ID de la app de Facebook y el secreto de la aplicación en la <a href={{facebookDevelopersSite}} target='_blank'>cuenta para desarrolladores de Facebook</a>&nbsp e iniciando sesión con la cuenta de su organización.",
+          "facebook-console-second-label": "Cree una aplicación desde la sección \"Mis Apps\". Recupere el ID de la app y el secreto de la sección Configuración.",
+          "app-id-label": "ID de aplicación",
+          "app-secret-label": "Secreto de la aplicación",
+          "session-timeout-label": "Tiempo de espera de sesión",
+          "session-timeout-inline-help": "Puede ajustar el tiempo de espera de sesión entre 1 hora y 24 horas.",
+          "relogin-timeout": "Tiempo de espera de reinicio de sesión",
+          "relogin-timeout-inlineHelp": "Impide que los usuarios pueden iniciar sesión en la red durante las 24 horas siguientes tras su primera autenticación.",
+          "voucher": "Cupón",
+          "help-text": {
+            "backend-authentication": "Permite la autenticación mediante un servidor RADIUS con PAP (protocolo de autenticación de contraseña).",
+            "password-schedule": "Crea una nueva contraseña automáticamente con una frecuencia determinada. Se enviará a las direcciones de correo electrónico especificadas.",
+            "social-login": "Permite la autenticación mediante cuentas de redes sociales.",
+            "voucher": "Usar cupones imprimibles con limitación de tiempo para la autenticación"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "Crear cupón",
+            "voucher-support-text": "Para crear cupones, guarde el SSID.",
+            "delete-confirm-header": "Eliminar cupón",
+            "delete-confirm-message": "Todos los cupones de este lote se eliminarán. ¿Desea eliminar su lote {{batchName}} de cupones?",
+            "pdf-file-name": "Cupón zona wifi",
+            "create": {
+              "header": "Crear cupón",
+              "name": "Nombre del cupón",
+              "access-time": "Tiempo de acceso",
+              "unlimited": "Ilimitado",
+              "period": "Período",
+              "start-date": "Fecha de inicio",
+              "end-date": "Fecha de finalización",
+              "timezone": "Zona horaria",
+              "data-limit": "Límite de datos",
+              "limit": "Límite",
+              "data": "Datos",
+              "unit": "Unidad",
+              "number-of-vouchers": "Número de cupones",
+              "number-of-devices": "Dispositivos por cupón",
+              "valid-for": "Válido durante",
+              "days": "Días",
+              "hours": "Horas",
+              "name-error-msg": {
+                "required": "Se requiere un nombre para el cupón",
+                "maxlength": "El nombre del cupón no puede tener más de 128 caracteres"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "Se requiere una fecha de inicio",
+                "endDateRequired": "Se requiere una fecha de finalización",
+                "datesImbalanced": "La fecha de inicio no puede ser posterior a la fecha de finalización"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "Se requiere un límite de datos",
+                "pattern": "El límite de datos solo debe contener números. Puede usar decimales."
+              },
+              "duration-error-msg": {
+                "durationRequired": "Se requiere la duración"
+              }
+            },
+            "table": {
+              "name": "Nombre",
+              "period": "Período",
+              "number": "Número",
+              "showPdf": "Mostrar PDF",
+              "delete": "Borrar",
+              "unlimited": "Ilimitado",
+              "empty-message": "Sin cupones"
+            }
+          },
+          "redirectUrl": {
+            "label": "URL de redireccionamiento",
+            "original-label": "Redireccionar a URL original",
+            "redirect-url-original-help": "Redirige a los usuarios al sitio web al que querían llegar originalmente tras la autenticación.",
+            "custom-label": "URL personalizada",
+            "redirect-url-custom-help": "Redirige a los usuarios al sitio web específico que usted elija tras la autenticación.",
+            "custom-url-required": "Se requiere la URL de redireccionamiento.",
+            "custom-url-domainName": "Ejemplo: https://sudominio.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">Introduzca una URL válida, incluido el protocolo de red [Ejemplo: https://]</span>",
+            "custom-url-valid": "La URL de redireccionamiento no tiene un formato válido."
+          }
         }
       },
       "access-point-editor": {

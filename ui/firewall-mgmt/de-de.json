@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Firewall Management - Neue SD-WAN-Verbindungsgruppe",
-        "breadcrumb-text": "Eine SD-WAN-Verbindungsgruppe hinzufügen",
+        "name": "Firewall Management - SD-WAN-Verbindungsgruppe konfigurieren",
+        "breadcrumb-text": "SD-WAN-Verbindungsgruppe konfigurieren",
         "error" : {
           "string": "Fehler",
           "INVALID_XFRM_IP" : "Ungültige XFRM-IPs ausgewählt für eine Firewall in der Gruppe.",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "GroupId {{ groupId }} existiert nicht",
           "INTERNAL_REQUEST_ERROR" : "Ein Fehler ist aufgetreten. Interner Serverfehler.",
           "INTERNAL_SERVER_ERROR": "Ein Fehler ist aufgetreten. Interner Serverfehler.",
-          "GROUP_NAME_EXISTS": "Gruppenname ist bereits vorhanden. Wählen Sie einen anderen Namen."
+          "GROUP_NAME_EXISTS": "Gruppenname ist bereits vorhanden. Wählen Sie einen anderen Namen.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "Öffentliche IP oder FQDN für den WAN-Link ist ungültig: {{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "Unbekannter Fehler beim Speichern der Verbindungsgruppe.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} Firewalls analysiert und Netzwerkkonflikte festgestellt."
           },
           "network-missing": {
-            "heading": "{{ count }} Firewalls ohne Ressourcen-Sharing und ohne lokale Netzwerke."
+            "heading": "{{ count }} Firewalls ohne lokale Netzwerke"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "WAN-Port",
               "gateway": "Backup-Gateway",
               "nat": "NAT",
-              "respond-only": "Responder",
-              "initiator": "Initiator",
+              "respond-only": "Ressourcen-Sharing",
+              "initiator": "Ressourcenzugriff",
               "details-edit": "Details/Bearbeiten",
               "fix-conflicts": "Konflikt beheben"
             },
-            "not-participating": "Keine Schnittstellen zur Teilnahme am lokalen Netzwerk aktiviert. Sie können die Einstellungen bearbeiten, um sie zu aktivieren."
+            "not-participating": "Es sind keine lokalen Netzwerke für die Verbindungsgruppe ausgewählt."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "Aktivieren",
               "nat": "NAT aktivieren",
               "nat-address": "NAT-Adresse",
-              "nat-subnet": "Durch NAT übersetzte Adressen können verwendet werden, um Netzwerk-Konflikte zu beheben. Übersetzte (NAT-)Adresse muss zum selben Subnetz gehören wie die Schnittstelle.",
+              "nat-subnet": "Mit NAT können Sie Netzwerkkonflikte vermeiden, indem ein Netzwerk für den getunnelten Datenverkehr in einem anderen IP-Adressbereich erscheint. Geben Sie eine NAT-Adresse ein, unter der das Netzwerk erscheinen soll. Wenn zum Beispiel die Originaladresse 192.168.1.1 und die NAT-Adresse 10.1.1.0 sind, werden Adressen folgendermaßen übersetzt: IP 192.168.1.1 wird zu 10.1.1.2, 192.168.1.2 wird zu 10.1.1.2, etc.",
               "conflicts": "Konflikte",
               "wan": "WAN-Link",
               "selected": "Ausgewählt",
@@ -385,7 +386,7 @@
                 "type-iprange": "IPv4-Bereich: z.B. 10.12.22.34-10.12.22.35",
                 "type-crdi": "IPv4-Netzwerkformat: z.B. 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "IP-Adresse",
@@ -426,7 +427,7 @@
             "help": "Geteilte Netzwerke stehen allen Firewalls zur Verfügung, die in dieser Gruppe enthalten sind.",
             "auto-rules": "Firewall-Regeln automatisch erstellen",
             "limit-access": "Zugriff nur für authentifizierte Benutzer",
-            
+
             "sync-sec": {
               "enable": "Synchronized Security Heartbeat konfigurieren",
               "src": "Minimal zulässige Quell-HBs",
@@ -478,8 +479,8 @@
     "firmware" : {
       "upgrade" : {
         "modal": {
-          "title": "Firmware-Aktualisierungen",
-          "title-with-name": "Firmware-Aktualisierungen - {{ groupName }}",
+          "title": "Firmware-Upgrades",
+          "title-with-name": "Firmware-Upgrades - {{ groupName }}",
           "apply": "Aktualisierungen für die ausgewählten Firewalls anwenden",
           "option": {
             "immediately": "Sofort",
@@ -521,7 +522,7 @@
           "no-data-subtext": "Wenn die Aktualisierungen verfügbar sind, werden die Firewalls hier angezeigt.",
           "cannot-load": "Aktualisierbare Firewalls können nicht geladen werden.",
           "cannot-load-groups": "Gruppen-Informationen können nicht geladen werden.",
-          "cannot-schedule": "Firmware-Aktualisierung kann nicht geplant werden. Keine Zeitzonen-Information vorhanden.",
+          "cannot-schedule": "Firmware-Upgrade kann nicht geplant werden. Keine Zeitzonen-Information vorhanden.",
           "scheduled": "Aktualisierung der ausgewählten Firewalls erfolgreich geplant.",
           "cancelled": "Geplante Aktualisierungen erfolgreich widerrufen.",
           "cannot-cancel": "Beim Widerrufen des Zeitplans ist ein Fehler aufgetreten.",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "Erstellen Sie allgemeine Vorlagen für Firewall-Einstellungen und Basisrichtlinien, die Sie für verschiedene Kunden nutzen können.",
           "customer": "Sie haben keine Kunden in dieser Vorlage.",
+          "groups": "Sie haben keine Gruppen für diesen Kunden.",
+          "firewalls": "Sie haben keine Firewalls für diesen Kunden.",
           "header": "Sie haben keine Firewall-Vorlagen",
           "learn-more": "Mehr erfahren",
           "what": "Was ist eine Firewall-Vorlage?",

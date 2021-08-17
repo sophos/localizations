@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Administración del firewall - Nuevo grupos de conexiones SD-WAN",
-        "breadcrumb-text": "Añadir un grupos de conexiones SD-WAN",
+        "name": "Administración del firewall - Configuración de grupo de conexiones SD-WAN",
+        "breadcrumb-text": "Configuración de grupo de conexiones SD-WAN",
         "error" : {
           "string": "Error",
           "INVALID_XFRM_IP" : "Se han elegido IP XFRM no válidas para uno de los firewalls del grupo.",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "El ID de grupo {{ groupId }} no existe",
           "INTERNAL_REQUEST_ERROR" : "Algo ha ido mal. Error interno del servidor",
           "INTERNAL_SERVER_ERROR": "Algo ha ido mal. Error interno del servidor",
-          "GROUP_NAME_EXISTS": "Este nombre de grupo ya existe. Seleccione otro."
+          "GROUP_NAME_EXISTS": "Este nombre de grupo ya existe. Seleccione otro.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "La IP o FQDN públicos especificados para el enlace WAN no son válidos: {{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "Error desconocido al guardar el grupo de conexiones.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} firewalls analizados en los que se ha detectado un conflicto de red."
           },
           "network-missing": {
-            "heading": "{{ count }} firewalls que no comparten recursos sin redes locales."
+            "heading": "{{ count }} firewalls sin redes locales"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "Puerto WAN",
               "gateway": "Puerta de enlace de reserva",
               "nat": "NAT",
-              "respond-only": "Respondedor",
-              "initiator": "Iniciador",
+              "respond-only": "Intercambio de recursos",
+              "initiator": "Acceso a recursos",
               "details-edit": "Detalles/Editar",
               "fix-conflicts": "Corregir conflicto"
             },
-            "not-participating": "No hay interfaces habilitadas para participar en la red local. Puede editar la configuración para activarla."
+            "not-participating": "Ninguna red local seleccionada para participar en el grupo de conexiones."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "Activar",
               "nat": "Habilitar NAT",
               "nat-address": "Dirección NAT",
-              "nat-subnet": "Las direcciones vía NAT pueden utilizarse para resolver cualquier conflicto de red. La dirección traducida (NAT) debe pertenecer a la misma subred que la interfaz.",
+              "nat-subnet": "NAT se puede usar para evitar conflictos de red cambiando una red para aparecer con un rango de direcciones IP distinto cuando el tráfico pasa por el túnel. Introduzca una dirección NAT con la que debe aparecer la red. P. ej., si la dirección original es 192.168.1.1 y la dirección NAT es 10.1.1.0, las direcciones son traducidas correlativamente, de modo que la IP 192.168.1.1 aparece como 10.1.1.2, la 192.168.1.2 como 10.1.1.2, etc.",
               "conflicts": "Conflictos",
               "wan": "Enlace WAN",
               "selected": "Seleccionado",
@@ -385,7 +386,7 @@
                 "type-iprange": "Rango IPv4: P. ej., 10.12.22.34-10.12.22.35",
                 "type-crdi": "Formato de red IPv4: P. ej., 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "Dirección IP",
@@ -426,7 +427,7 @@
             "help": "Las redes compartidas estarán disponibles para todos los firewalls que formen parte de este grupo de uso compartido.",
             "auto-rules": "Crear automáticamente reglas de firewall",
             "limit-access": "Limitar el acceso a los usuarios autentificados",
-            
+
             "sync-sec": {
               "enable": "Configurar Seguridad Sincronizada con Security Heartbeat",
               "src": "HB de origen mínimo permitido",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "Cree conjuntos de plantillas de políticas base y opciones de configuración de firewall comunes para utilizarlos con distintos clientes.",
           "customer": "No tiene ningún cliente en esta plantilla.",
+          "groups": "No tiene ningún grupo para este cliente.",
+          "firewalls": "No tiene ningún firewall para este cliente.",
           "header": "No tiene ninguna plantilla de firewall",
           "learn-more": "Más información",
           "what": "¿Qué es una plantilla de firewall?",

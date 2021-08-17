@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Gestione del firewall - Nuovo gruppo di connessione SD-WAN",
-        "breadcrumb-text": "Aggiungi un gruppo di connessione SD-WAN",
+        "name": "Gestione del firewall - Configura gruppo di connessione SD-WAN",
+        "breadcrumb-text": "Configura gruppo di connessione SD-WAN",
         "error" : {
           "string": "Errore",
           "INVALID_XFRM_IP" : "Sono selezionati IP XFRM non validi per uno dei firewall nel gruppo.",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "ID gruppo {{ groupId }} inesistente",
           "INTERNAL_REQUEST_ERROR" : "Si è verificato un errore. Errore interno del server.",
           "INTERNAL_SERVER_ERROR": "Si è verificato un errore. Errore interno del server.",
-          "GROUP_NAME_EXISTS": "Nome del gruppo già esistente. Scegline uno diverso."
+          "GROUP_NAME_EXISTS": "Nome del gruppo già esistente. Scegline uno diverso.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "L'IP o FQDN pubblico specificato per il link WAN selezionato non è valido: {{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "Errore sconosciuto durante il salvataggio del gruppo di connessione.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} firewall analizzati per i quali è stato rilevato un conflitto di rete."
           },
           "network-missing": {
-            "heading": "{{ count }} firewall che non condividono risorse senza reti locali."
+            "heading": "{{ count }} firewall senza reti locali"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "Porta WAN",
               "gateway": "Gateway di backup",
               "nat": "NAT",
-              "respond-only": "Risponditore",
-              "initiator": "Iniziatore",
+              "respond-only": "Condivisione di risorse",
+              "initiator": "Accesso alle risorse",
               "details-edit": "Dettagli/modifica",
               "fix-conflicts": "Risolvi conflitto"
             },
-            "not-participating": "Nessuna interfaccia abilitata per partecipare alla rete locale. Puoi modificare le impostazioni per abilitarle."
+            "not-participating": "Nessuna rete locale è stata selezionata per partecipare al gruppo di connessione."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "Abilita",
               "nat": "Abilita NAT",
               "nat-address": "Indirizzo NAT",
-              "nat-subnet": "È possibile utilizzare indirizzi NATtati per risolvere eventuali conflitti di rete. L'indirizzo tradotto (NAT) deve appartenere alla stessa subnet dell'interfaccia.",
+              "nat-subnet": "Puoi utilizzare NAT per evitare i conflitti di rete, modificando una rete per far sì che venga visualizzata con un intervallo di indirizzi IP diverso quando il traffico attraversa il tunnel. Immetti un indirizzo NAT con il quale visualizzare la rete. Ad es. se l'indirizzo originale è 192.168.1.1 e l'indirizzo NAT è 10.1.1.0, gli indirizzi verranno NATtati in maniera corrispondente, per cui l'IP 192.168.1.1 sarà visualizzato come 10.1.1.2, 192.168.1.2 come 10.1.1.2 e così via.",
               "conflicts": "Conflitti",
               "wan": "Link WAN",
               "selected": "Selezionata/e",
@@ -385,7 +386,7 @@
                 "type-iprange": "Intervallo IPv4: Es. 10.12.22.34-10.12.22.35",
                 "type-crdi": "Formato di rete IPv4: Es. 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "Indirizzo IP",
@@ -426,7 +427,7 @@
             "help": "Le reti condivise saranno disponibili per tutti i firewall che appartengono a questo gruppo di condivisione.",
             "auto-rules": "Crea automaticamente regole firewall",
             "limit-access": "Limita l'accesso agli utenti autenticati",
-            
+
             "sync-sec": {
               "enable": "Configura Synchronized Security Heartbeat",
               "src": "HB di origine minimo consentito",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "Crea set di modelli comuni di impostazioni e criteri di base per il firewall da utilizzare per clienti diversi.",
           "customer": "Non ci sono clienti in questo modello.",
+          "groups": "Non ci sono gruppi per questo cliente.",
+          "firewalls": "Non ci sono firewall per questo cliente.",
           "header": "Non ci sono modelli firewall",
           "learn-more": "Ulteriori informazioni",
           "what": "Che cos'è un modello firewall?",
