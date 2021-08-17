@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Gestion de pare-feu - Nouveau groupe de connexion SD-WAN",
-        "breadcrumb-text": "Ajouter un groupe de connexion SD-WAN",
+        "name": "Gestion du pare-feu - Configurer le groupe de connexion SD-WAN",
+        "breadcrumb-text": "Configurer le groupe de connexion SD-WAN",
         "error" : {
           "string": "Erreur",
           "INVALID_XFRM_IP" : "Les adresses IP XFRM non valides sont choisies pour l’un des pare-feu dans le groupe.",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "ID de groupe {{ groupId }} inexistant",
           "INTERNAL_REQUEST_ERROR" : "Nous avons rencontré un problème. Erreur interne du serveur.",
           "INTERNAL_SERVER_ERROR": "Nous avons rencontré un problème. Erreur interne du serveur.",
-          "GROUP_NAME_EXISTS": "Ce nom de groupe existe déjà. Veuillez-en choisir un autre."
+          "GROUP_NAME_EXISTS": "Ce nom de groupe existe déjà. Veuillez-en choisir un autre.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "L’adresse IP publique ou le FQDN indiqué pour le lien WAN est invalide : {{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "Erreur inconnue lors de l’enregistrement du groupe de connexions.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} pare-feu analysés avec un conflit réseau détecté."
           },
           "network-missing": {
-            "heading": "{{ count }} pare-feu sans partage de ressources sans réseaux locaux."
+            "heading": "{{ count }} Pare-feu sans réseaux locaux"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "Port du réseau étendu (WAN)",
               "gateway": "Passerelle de secours",
               "nat": "NAT",
-              "respond-only": "Répondant",
-              "initiator": "Initiateur",
+              "respond-only": "Partage des ressources",
+              "initiator": "Accès aux ressources",
               "details-edit": "Détails/Modifier",
               "fix-conflicts": "Résoudre le conflit"
             },
-            "not-participating": "Aucune interface n’est activée pour participer au réseau local. Vous pouvez modifier les paramètres pour les activer."
+            "not-participating": "Aucun réseau local ne fait partie de ce groupe de connexion."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "Activer",
               "nat": "Activer le NAT",
               "nat-address": "Adresse NAT",
-              "nat-subnet": "Les adresses NAT peuvent être utilisées pour résoudre les conflits réseau. L’adresse NAT traduite doit appartenir au même sous-réseau que l’interface.",
+              "nat-subnet": "L’adresse NAT peut être utilisée pour éviter les conflits de réseau en modifiant l’adresse du réseau vers une plage IP différente lorsque le trafic traverse le tunnel. Saisir l’adresse NAT à attribuer au réseau. Par ex. si l’adresse initiale est 192.168.1.1 et que l’adresse NAT est 10.1.1.0, les adresses sont traduites de façon relative. Par conséquent, l’adresse IP 192.168.1.1 apparait en tant que 10.1.1.2, 192.168.1.2 en tant que 10.1.1.2, etc.",
               "conflicts": "Conflits",
               "wan": "Lien WAN",
               "selected": "Sélectionné",
@@ -385,7 +386,7 @@
                 "type-iprange": "Plage IPv4 : Par ex. 10.12.22.34-10.12.22.35",
                 "type-crdi": "Format réseau IPv4 : Par ex. 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "Adresse IP",
@@ -426,7 +427,7 @@
             "help": "Les réseaux partagés seront disponible à tous les pare-feu qui font partie de ce groupe de partage.",
             "auto-rules": "Créer automatiquement des règles de pare-feu",
             "limit-access": "Limiter l’accès aux utilisateurs authentifiés",
-            
+
             "sync-sec": {
               "enable": "Configurer Synchronized Security HeartBeat",
               "src": "Source HD minimale autorisée",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "Créer des paramètres de pare-feu communs et des séries de modèles de stratégies de base à utiliser sur différents clients.",
           "customer": "Vous n’avez aucun client dans ce modèle.",
+          "groups": "Vous n’avez aucun groupe pour ce client.",
+          "firewalls": "Vous n’avez aucun pare-feu pour ce client.",
           "header": "Vous n’avez aucun modèle de pare-feu.",
           "learn-more": "Plus d’info",
           "what": "Qu’est-ce qu’un modèle de pare-feu ?",

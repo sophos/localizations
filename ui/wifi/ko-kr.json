@@ -34,16 +34,25 @@
       "details": "세부 정보",
       "no-data": "데이터가 없음",
       "beta": "베타",
-      "copied": "복사됨"
+      "copied": "복사됨",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "만들기",
+      "no": "아니요"
     },
     "global": {
+      "form": {
+        "required": "필드는 필수 항목입니다."
+      },
       "onBoard": {
         "access-point": "액세스 지점",
         "ssid": "SSID",
         "sites": "사이트",
         "summary": "요약",
         "on-board-step-finish": "마침",
-        "enabled": "사용함"
+        "enabled": "켜짐"
       },
       "search": {
         "placeholder": "검색",
@@ -172,12 +181,25 @@
           "weekday": "평일",
           "time": "시간(UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "펌웨어 업데이트",
+        "body": "펌웨어 업데이트 중에는 그 펌웨어에 구성된 액세스 지점 및 SSID를 일시적으로 이용할 수 없습니다. 지금 {{ version }} 버전으로 업데이트하시겠습니까?",
+        "success": "{{ version }} 버전으로 펌웨어 업데이트가 시작되었습니다.",
+        "failure": "{{ version }} 버전으로 펌웨어를 업데이트하지 못했습니다.",
+        "force-firmware-update": "펌웨어 업그레이드 비활성화됨 플래그 지우기",
+        "force-update-label": "펌웨어 업그레이드 비활성화됨 플래그가 펌웨어 이미지 디버깅을 포함한 AP 업그레이드에 대해 설정되었습니다.",
+        "disable-factory-defaults": "공장 기본값",
+        "factory-default-label": "AP에 대한 공장 기본값을 활성화하도록 설정."
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "사이트",
-        "title": "무선 - 사이트"
+        "title": "무선 - 사이트",
+        "no-sites-defined": "정의된 사이트가 없습니다.",
+        "delete-dialog-text": "이 고객 사이트에 대한 모든 평면도가 삭제됩니다. 사이트 {{site}}을(를) 삭제하시겠습니까?",
+        "confirm-delete-header": "사이트 삭제"
       }
     },
     "networks": {
@@ -308,7 +330,7 @@
         "ssid-network-name": "네트워크의 이름.",
         "password-auto-generate-msg": "암호가 자동으로 생성됩니다.",
         "insecure-encryption-mode-msg": "이 암호화 모드가 안전하지 않습니다.",
-        "insecure-encryption-algorithm-msg":  "이 암호화 알고리즘이 안전하지 않습니다.",
+        "insecure-encryption-algorithm-msg": "이 암호화 알고리즘이 안전하지 않습니다.",
         "encryption-mode-help-msg": "WPA2를 사용하는 것이 좋습니다.",
         "encryption-algorithm-help-msg": "기본 알고리즘은 AES입니다. 이것은 보안을 위해 권장됩니다.",
         "radius-secret-help-msg": "공유 비밀은 매우 길어야 하고 다양한 글자, 대문자 및 숫자를 포함해야 합니다. RADIUS 서버에서 AP를 인증하기 위한 비밀.",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "포트가 필요합니다.",
         "port-range-validate-msg": "포트는 1~65535의 숫자여야 합니다.",
         "port-number-help-msg": "RADIUS 서버용 포트 번호.",
-        "optimize-multicast":"미디어 스트리밍과 같은 멀티캐스트 트래픽 처리를 최적화합니다. 전체 처리량을 증가시킵니다.",
-        "arp-proxy":"AP는 네트워크 주소에 대한 ARP 질의에 응답합니다. 전체 처리량을 증가시킵니다.",
-        "quality-fast-roaming":"액세스 지점 간의 빠른 로밍은 특히 VoIP에 보다 나은 연결 경험을 제공합니다.",
+        "optimize-multicast": "미디어 스트리밍과 같은 멀티캐스트 트래픽 처리를 최적화합니다. 전체 처리량을 증가시킵니다.",
+        "arp-proxy": "AP는 네트워크 주소에 대한 ARP 질의에 응답합니다. 전체 처리량을 증가시킵니다.",
+        "quality-fast-roaming": "액세스 지점 간의 빠른 로밍은 특히 VoIP에 보다 나은 연결 경험을 제공합니다.",
         "broadcast-outdated": "재부팅 후 AP가 Sophos Central에 접근할 수 없는 경우 SSID가 브로드캐스팅을 계속합니다.",
-        "band-steering-label":"대역 조종",
-        "quality-band-steering":"이중 대역 가능 무선 클라이언트는 가능한 경우 5GHz로 조종됩니다. 클라이언트 경험을 향상시킵니다.",
-        "band-steering-warning":"대역 조종은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용할 수 있습니다.",
-        "broadcast-outdated-label":"브로드캐스팅 유지",
-        "multicast-label":"멀티캐스트에서 유니캐스트로 변환"
+        "band-steering-label": "대역 조종",
+        "quality-band-steering": "이중 대역 가능 무선 클라이언트는 가능한 경우 5GHz로 조종됩니다. 클라이언트 경험을 향상시킵니다.",
+        "band-steering-warning": "대역 조종은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용할 수 있습니다.",
+        "broadcast-outdated-label": "브로드캐스팅 유지",
+        "multicast-label": "멀티캐스트에서 유니캐스트로 변환",
+        "radius-server-error-msgs": {
+          "required": "RADIUS 서버 주소가 필요합니다",
+          "invalid-radius-server": "RADIUS 서버는 유효한 IP 주소여야 합니다."
+        },
+        "radius-port-error-msgs": {
+          "required": "포트가 필요합니다.",
+          "min": "포트는 1~65535의 숫자여야 합니다.",
+          "max": "포트는 1~65535의 숫자여야 합니다."
+        },
+        "radius-password-error-msgs": {
+          "required": "암호가 필요합니다."
+        },
+        "email-error-msgs": {
+          "pattern": "유효한 이메일 주소를 입력하십시오."
+        },
+        "generate-new": "새로 생성",
+        "select-week": "주 선택",
+        "certificate-error-msgs": {
+          "file-error": "파일 오류입니다.",
+          "file-format-error": "파일 형식이 지원되지 않습니다.",
+          "file-size-exceed": "파일이 최대 크기를 초과합니다."
+        },
+        "accept-terms-and-conditions": "T&C 수락 및 연결"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security는 Sophos APX 시리즈 액세스 지점에 대해 제공되는 고유한 기능입니다. 당사의 혁신적인 Security Heartbeat™는 엔드포인트, 모바일 보호, 액세스 지점이 정보를 교환하여 네트워크의 보안 위협을 함께 차단할 수 있도록 지원합니다.",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security는 게스트 네트워크 또는 종속 포털이 활성화된 SSID에서 지원되지 않습니다.",
-        "green-option-label": "Security Heartbeat™ 그린",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>게스트 네트워크 또는 종속 포털이 켜져 있는 SSID에서는 동기화된 보안을 사용할 수 없습니다.",
+        "green-option-label": "Security Heartbeat 녹색",
         "green-option-value": "모든 트래픽 허용",
         "green-option-info": "클라이언트가 보호됨.",
-        "yellow-option-label": "Security Heartbeat™ 옐로",
+        "yellow-option-label": "Security Heartbeat 노란색",
         "yellow-option-value": "모든 트래픽 허용(경고)",
         "yellow-option-info": "문제가 탐지되어 클라이언트가 위험에 노출될 수 있습니다. 엔드포인트에서 이것은 비활성 맬웨어 또는 PUA(사용자 동의 없이 설치된 응용 프로그램)일 수 있습니다. 모바일 장치의 경우 다양한 규정 준수 위반에 대한 하트비트 상태를 정의할 수 있습니다.",
-        "red-option-label": "Security Heartbeat™ 레드",
+        "red-option-label": "Security Heartbeat 빨간색",
         "red-option-value": "폐쇄형 네트워크 서비스(Walled Garden)",
         "red-option-info": "아래의 허용된 도메인을 제외한 모든 인터넷 트래픽이 차단됩니다. 사용자에게 경고가 있는 웹 페이지가 표시됩니다.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -409,7 +454,93 @@
           "welcome-text-required": "시작 텍스트가 필요합니다.",
           "portal-terms-label": "서비스 약관",
           "portal-terms-max-length": "서비스 약관은 최대 102,400자여야 합니다.",
-          "portal-config-message": "종속 포털 랜딩 페이지를 사용자 지정하려면 먼저 SSID를 저장하십시오."
+          "portal-config-message": "종속 포털 랜딩 페이지를 사용자 지정하려면 먼저 SSID를 저장하십시오.",
+          "authentication-types": "인증 유형",
+          "authentication-type-none": "없음",
+          "backend-authentication": "백엔드 인증",
+          "password-schedule": "암호 일정",
+          "social-login": "소셜 로그인",
+          "google-console-help-text": "조직의 계정을 사용해 로그인하여 <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google Developer Console</a>에서 Google 클라이언트 ID와 클라이언트 암호를 얻을 수 있습니다.",
+          "google-console-second-label": "새 프로젝트를 만들고 자격 증명 섹션에서 클라이언트 ID와 클라이언트 암호를 가져옵니다.",
+          "client-id-label": "클라이언트 ID",
+          "client-secret-label": "클라이언트 암호",
+          "facebook-console-help-text": "조직의 계정을 사용해 로그인하여 <a href={{facebookDevelopersSite}} target='_blank'>Facebook Developer Account</a>에서 Facebook 응용 프로그램 ID와 응용 프로그램 암호를 얻을 수 있습니다.",
+          "facebook-console-second-label": "\"My Apps\" 섹션에서 앱을 만듭니다. 설정 섹션에서 앱 ID와 암호를 가져옵니다.",
+          "app-id-label": "응용 프로그램 ID",
+          "app-secret-label": "응용 프로그램 암호",
+          "session-timeout-label": "세션 시간 제한",
+          "session-timeout-inline-help": "세션 시간 초과를 1~24시간 사이로 설정할 수 있습니다.",
+          "relogin-timeout": "다시 로그인 시간 제한",
+          "relogin-timeout-inlineHelp": "사용자가 처음 인증한 후 24시간 동안 네트워크에 로그인하지 못하도록 합니다.",
+          "voucher": "바우처",
+          "help-text": {
+            "backend-authentication": "암호 인증 프로토콜(PAP)을 사용하여 RADIUS 서버를 통해 인증을 허용합니다.",
+            "password-schedule": "정해진 일정에 따라 새 암호를 자동으로 만듭니다. 암호는 지정된 이메일 주소로 전송됩니다.",
+            "social-login": "소셜 미디어 계정을 통한 인증을 허용합니다.",
+            "voucher": "인증에 대한 시간 제한이 있는 인쇄 가능한 바우처 사용"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "바우처 만들기",
+            "voucher-support-text": "바우처를 생성하려면 SSID를 저장하십시오.",
+            "delete-confirm-header": "바우처 삭제",
+            "delete-confirm-message": "이 배치의 모든 바우처가 삭제됩니다. {{batchName}} 바우처 배치를 삭제하시겠습니까?",
+            "pdf-file-name": "핫스팟 바우처",
+            "create": {
+              "header": "바우처 만들기",
+              "name": "바우처 이름",
+              "access-time": "액세스 시간",
+              "unlimited": "제한 없음",
+              "period": "기간",
+              "start-date": "시작 날짜",
+              "end-date": "종료 날짜",
+              "timezone": "시간대",
+              "data-limit": "데이터 제한",
+              "limit": "제한",
+              "data": "데이터",
+              "unit": "단위",
+              "number-of-vouchers": "바우처 수",
+              "number-of-devices": "바우처당 장치",
+              "valid-for": "유효 기간",
+              "days": "일",
+              "hours": "시간",
+              "name-error-msg": {
+                "required": "바우처 이름은 필수 항목입니다.",
+                "maxlength": "바우처 이름은 128자 이하여야 합니다."
+              },
+              "dates-error-msg": {
+                "startDateRequired": "시작 날짜는 필수 항목입니다.",
+                "endDateRequired": "종료 날짜는 필수 항목입니다.",
+                "datesImbalanced": "시작 날짜는 종료 날짜 이후일 수 없습니다."
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "데이터 제한은 필수 항목입니다.",
+                "pattern": "데이터 제한에는 숫자만 포함되어야 합니다. 소수를 사용할 수 있습니다."
+              },
+              "duration-error-msg": {
+                "durationRequired": "기간을 입력해야 합니다."
+              }
+            },
+            "table": {
+              "name": "이름",
+              "period": "기간",
+              "number": "번호",
+              "showPdf": "PDF 보기",
+              "delete": "삭제",
+              "unlimited": "제한 없음",
+              "empty-message": "바우처가 없음"
+            }
+          },
+          "redirectUrl": {
+            "label": "리디렉션 URL",
+            "original-label": "원래 URL로 리디렉션",
+            "redirect-url-original-help": "인증 후 원래 도달하고 싶었던 웹 사이트로 사용자를 리디렉션합니다.",
+            "custom-label": "사용자 지정 URL",
+            "redirect-url-custom-help": "인증 후 사용자가 선택한 특정 웹 사이트로 사용자를 리디렉션합니다.",
+            "custom-url-required": "리디렉션 URL이 필요합니다.",
+            "custom-url-domainName": "예: https://yourdomain.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">네트워크 프로토콜 [예제: https://]을 포함하여 올바른 URL을 입력하십시오.</span>",
+            "custom-url-valid": "리디렉션 URL 형식이 올바르지 않습니다."
+          }
         }
       },
       "access-point-editor": {

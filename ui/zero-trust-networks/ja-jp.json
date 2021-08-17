@@ -14,8 +14,10 @@
       "continue": "続行",
       "fqdn-validation": "FQDN が無効です",
       "fqdn-ip-validation": "FQDN/IP が無効です",
+      "fqdn-duplicate-validation": "FQDN は既に使用されています",
       "invalid-name": "名前には、次のみ使用できます: A-Z、a-z、0-9、-、_、スペース文字",
       "name-length-validation": "名前は 100文字以内で入力してください",
+      "name-duplicate-validation": "名前は既に使用されています",
       "whitespace-name-validation": "名前を指定してください",
       "description-length-validation": "説明は 300文字以内で入力してください",
       "required": "* 必須項目",
@@ -100,6 +102,8 @@
             "resource-type": "リソースの種類:",
             "gateway": "ゲートウェイ:",
             "local-address": "ローカルアドレス:",
+            "internal-fqdn": "内部 FQDN/IP アドレス:",
+            "external-fqdn": "外部 FQDN:",
             "domain": "ドメイン:",
             "agent": "エージェント",
             "agentless": "エージェントレス",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - ダッシュボード",
       "breadcrumb-text": "Zero Trust Network Access ダッシュボード",
-      "nodata": "表示対象のデータはありません"
+      "nodata": "表示対象のデータはありません",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1.ユーザーの同期",
+          "add-idp": "2.IdP の追加",
+          "set-up-gateways": "3.ゲートウェイの設定",
+          "add-policy": "4.ポリシーの追加",
+          "add-resources": "5.リソースの追加"
+        },
+        "help": {
+          "sync-users": "ディレクトリ同期を設定します",
+          "add-idp": "認証に必要な IdP を設定します",
+          "set-up-gateways": "ネットワークの場所ごとに仮想ゲートウェイを作成します",
+          "add-policy": "リソースアクセスのルールを設定します",
+          "add-resources": "リソース、およびそれにアクセスできるユーザーグループを指定します"
+        },
+        "header": "以下の手順に従って Zero Trust Network Access を設定します"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - レポート",
@@ -156,7 +177,8 @@
         "high-alerts": "重要度 - 高",
         "medium-alerts": "重要度 - 中",
         "low-alerts": "重要度 - 低",
-        "fetch-error": "警告のサマリーの取得中、エラーが発生しました"
+        "fetch-error": "警告のサマリーの取得中、エラーが発生しました",
+        "header": "警告のサマリー"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "ゲートウェイの作成に失敗しました",
         "loading-error": "ゲートウェイの読み込み中、エラーが発生しました",
         "otp-error": "OTP の生成中、エラーが発生しました",
+        "session-timeout-error": "セッションの有効期限が切れました。もう一度ログインしてください",
         "edit-success": "ゲートウェイが更新されました",
         "edit-error": "ゲートウェイの更新に失敗しました",
         "password-rules": {
@@ -360,8 +383,8 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか",
-        "warn-message-2": "？"
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
+        "warn-message-2": " ？"
       },
       "status": {
         "waiting-for-deployment": {
@@ -576,9 +599,9 @@
         "tenantId-validation": "テナント ID を指定してください",
         "clientSecret-validation": "クライアントシークレットを指定してください",
         "loading-error": "IdP の読み込み中、エラーが発生しました",
-        "issuer-uri-validation": "発行者 URI が必要です",
+        "issuer-uri-validation": "発行者 URI を指定してください",
         "invalid-issuer-uri": "URI が無効です",
-        "scope-validation": "スコープが必要です"
+        "scope-validation": "スコープを指定してください"
       },
       "delete": {
         "header": "IdP の削除",
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "ゲートウェイクラスタリングが有効になっていませんが、複数のインスタンスが見つかりました",
       "gateway.cluster.change.notAllowed": "ゲートウェイクラスタを無効にすることはできません",
       "gateway.cluster.notEmpty": "ゲートウェイクラスタのフィールドが見つかりません",
+      "gateway.cluster.changeSizeInvalid": "古いインスタンスを削除する前にインスタンスを増やしてください。クラスタサイズは (n+1)/2 より大きくする必要があります",
       "gateway.not.connected.or.approved": "ゲートウェイが接続している、または承認されている状態ではなく、インスタンスがアクティブな状態でない場合、リモートデバッグを有効にすることはできません",
       "policy.invalid": "指定されたポリシーオブジェクトが無効です",
       "policy.isEnforced.notNull": "ポリシーオブジェクトの isEnforced フィールドは Null にできません",
@@ -1137,7 +1161,10 @@
         "noRecords": "レコードがありません",
         "apply": "適用",
         "multiDeviceReportingNote": "マルチデバイスのレポート機能は、 Advanced ライセンスのみで使用できます。",
-        "tooManyFirewallSelected": "ゲートウェイ選択の上限に達しました"
+        "tooManyFirewallSelected": "ゲートウェイ選択の上限に達しました",
+        "selectGateway": "ゲートウェイの選択",
+        "selectTemplate": "テンプレートの選択",
+        "selectCreatedBy": "作成者の選択"
       },
       "savedTemplates": {
         "allFirewalls": "すべてのゲートウェイ",

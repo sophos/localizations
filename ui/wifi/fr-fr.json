@@ -34,13 +34,22 @@
       "details": "Détails",
       "no-data": "Aucune donnée",
       "beta": "bêta",
-      "copied": "Copié"
+      "copied": "Copié",
+      "data-size": {
+        "mb": "Mo",
+        "gb": "Go"
+      },
+      "create": "Créer",
+      "no": "Non"
     },
     "global": {
+      "form": {
+        "required": "Champ obligatoire."
+      },
       "onBoard": {
         "access-point": "Points d’accès",
         "ssid": "SSID",
-        "sites": "SITEs",
+        "sites": "Sites",
         "summary": "Résumé",
         "on-board-step-finish": "Terminer",
         "enabled": "Activé"
@@ -147,7 +156,7 @@
       },
       "diagnostics-setting": {
         "forward-ap-logs": "Transférer les journaux des points d’accès",
-        "forward-ap-message": "Transférer le message du point d'accès",
+        "forward-ap-message": "Transférer le message du point d’accès",
         "remote-login-title": "Connexion à distance aux points d’accès du support Sophos",
         "expiration-message": "si cette option est activée, l’accès à distance par le support technique de Sophos est autorisé pendant la durée de temps convenue. Le temps restant est affiché. Vous pouvez désactiver cette option pour empêcher immédiatement l’accès à distance"
       },
@@ -172,12 +181,25 @@
           "weekday": "Jours de la semaine",
           "time": "Heure (UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "Mettre à jour le firmware",
+        "body": "Vos points d’accès et les SSID configurés sur ceux-ci sont temporairement indisponibles pendant la mise à jour du firmware. Voulez-vous procéder à la mise à jour à la version {{ version }} ?",
+        "success": "La mise à jour du firmware à la version {{ version }} a commencé.",
+        "failure": "La mise à jour du firmware vers la version {{ version }} a échoué.",
+        "force-firmware-update": "Effacer le drapeau de mise à niveau désactivée du firmware",
+        "force-update-label": "Le drapeau de mise à niveau désactivée du firmware est défini pour la mise à niveau du point d’accès avec correction de l’image du firmware.",
+        "disable-factory-defaults": "Paramètres d’usine",
+        "factory-default-label": "Paramètre d’activation des paramètres d’usine d’un point d’accès."
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "Sites",
-        "title": "Wireless - sites"
+        "title": "Wireless - sites",
+        "no-sites-defined": "Aucun site n’a été défini.",
+        "delete-dialog-text": "Tous vos plans d’étage seront supprimés pour le site de ce client. Voulez-vous vraiment supprimer votre site {{site}} ?",
+        "confirm-delete-header": "Supprimer le site"
       }
     },
     "networks": {
@@ -235,7 +257,7 @@
         "assigned-aps": "Points d’accès assignés",
         "broad-cast-ap": "Choisir les points d’accès sur lesquels ce SSID sera diffusé.",
         "max-ssid-per-band": "Chaque point d’accès dispose d’un maximum de 8 SSID par bande.",
-        "depend-onap": "Selon le point d'accès utilisé, les fréquences 2,4 GHz et/ou 5GHz sont disponibles.",
+        "depend-onap": "Selon le point d’accès utilisé, les fréquences 2,4 GHz et/ou 5GHz sont disponibles.",
         "sec": "Pour sécuriser votre réseau de manière optimale, veuillez définir les paramètres de sécurité.",
         "sec1": "Définir quels clients peuvent se connecter et quel trafic est autorisé.",
         "sync-sec": "Sécurité synchronisée",
@@ -308,7 +330,7 @@
         "ssid-network-name": "Nom du réseau.",
         "password-auto-generate-msg": "Le mot de passe va être créé automatiquement",
         "insecure-encryption-mode-msg": "Ce mode de chiffrement n’est pas sécurisé",
-        "insecure-encryption-algorithm-msg":  "Cet algorithme de chiffrement n’est pas sécurisé",
+        "insecure-encryption-algorithm-msg": "Cet algorithme de chiffrement n’est pas sécurisé",
         "encryption-mode-help-msg": "Nous conseillons l’utilisation de WPA2.",
         "encryption-algorithm-help-msg": "L’algorithme par défaut est AES. Son utilisation est conseillée pour des raisons de sécurité.",
         "radius-secret-help-msg": "Le secret partagé doit être suffisamment long et inclure une combinaison de lettres, de majuscules et de chiffres. Secret pour authentifier un point d’accès sur le serveur RADIUS.",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "Port obligatoire.",
         "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
         "port-number-help-msg": "Numéro de port pour le serveur RADIUS.",
-        "optimize-multicast":"Optimise le traitement du trafic multidiffusion comme le streaming multimédia. Augmente le débit général.",
-        "arp-proxy":"Un point d’accès répond aux demandes ARP pour les adresses réseau. Augmente le débit général.",
-        "quality-fast-roaming":"L’itinérance rapide entre les points d’accès assure une meilleure qualité de connexion, notamment pour la voix sur IP.",
+        "optimize-multicast": "Optimise le traitement du trafic multidiffusion comme le streaming multimédia. Augmente le débit général.",
+        "arp-proxy": "Un point d’accès répond aux demandes ARP pour les adresses réseau. Augmente le débit général.",
+        "quality-fast-roaming": "L’itinérance rapide entre les points d’accès assure une meilleure qualité de connexion, notamment pour la voix sur IP.",
         "broadcast-outdated": "Le SSID continue à diffuser si le point d’accès ne parvient pas à joindre Sophos Central après un redémarrage.",
-        "band-steering-label":"Redirection de bande",
-        "quality-band-steering":"Les clients sans fil à double bande seront dirigés vers la bande à 5 GHz si possible. Améliore l’expérience d’utilisation pour le client.",
-        "band-steering-warning":"La redirection de bande va également être appliquée à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
-        "broadcast-outdated-label":"Continuer la diffusion",
-        "multicast-label":"Conversion de multidiffusion à monodiffusion"
+        "band-steering-label": "Redirection de bande",
+        "quality-band-steering": "Les clients sans fil à double bande seront dirigés vers la bande à 5 GHz si possible. Améliore l’expérience d’utilisation pour le client.",
+        "band-steering-warning": "La redirection de bande va également être appliquée à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
+        "broadcast-outdated-label": "Continuer la diffusion",
+        "multicast-label": "Conversion de multidiffusion à monodiffusion",
+        "radius-server-error-msgs": {
+          "required": "L’adresse du serveur RADIUS est requise",
+          "invalid-radius-server": "Le serveur RADIUS doit avoir une adresse IP valide"
+        },
+        "radius-port-error-msgs": {
+          "required": "Port obligatoire.",
+          "min": "Le numéro du port doit être compris entre 1 et 65535.",
+          "max": "Le numéro du port doit être compris entre 1 et 65535."
+        },
+        "radius-password-error-msgs": {
+          "required": "Phrase secrète obligatoire."
+        },
+        "email-error-msgs": {
+          "pattern": "Veuillez saisir adresse email valide"
+        },
+        "generate-new": "Générer",
+        "select-week": "Sélectionnez une semaine",
+        "certificate-error-msgs": {
+          "file-error": "Erreur de fichier.",
+          "file-format-error": "Format de fichier incompatible.",
+          "file-size-exceed": "La taille du fichier dépasse le maximum autorisé."
+        },
+        "accept-terms-and-conditions": "Acceptez les Conditions d’utilisation et connectez-vous"
       },
       "network-editor": {
         "sync-security-label": "Sécurité synchronisée",
         "inline-help-sync-security": "La Sécurité synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>La Sécurité synchronisée n’est pas compatible avec les SSID sur lesquels le réseau invité ou le portail captif est activé.",
-        "green-option-label": "Security Heartbeat™ - Vert",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Impossible d’utiliser la sécurité synchronisée sur les SSIDs ayant activé un réseau invité ou un portail captif.",
+        "green-option-label": "Security Heartbeat affiché en vert",
         "green-option-value": "Autoriser tout le trafic",
         "green-option-info": "Client protégé.",
-        "yellow-option-label": "Security Heartbeat™ - Jaune",
+        "yellow-option-label": "Security Heartbeat en jaune",
         "yellow-option-value": "Autoriser tout le trafic (avertissement)",
         "yellow-option-info": "Un problème a été détecté et un client est potentiellement à risque. Sur un terminal, il peut s’agir d’un malware inactif ou d’une application potentiellement indésirable (PUA). Pour les appareils mobiles, vous pouvez définir l’état Heartbeat pour diverses violations de conformité.",
-        "red-option-label": "Security Heartbeat™ - Rouge",
+        "red-option-label": "Security Heartbeat affiché en rouge",
         "red-option-value": "Environnement clôturé",
         "red-option-info": "Tout le trafic Internet est bloqué, à l’exception des domaines autorisés ci-dessous. L’utilisateur voit une page Web avec un avertissement.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -409,7 +454,93 @@
           "welcome-text-required": "Texte de bienvenue obligatoire.",
           "portal-terms-label": "Conditions d’utilisation",
           "portal-terms-max-length": "Les Conditions d’utilisation ne doivent pas dépasser 102 400 caractères.",
-          "portal-config-message": "Pour personnaliser la page de destination du portail captif, veuillez d’abord enregistrer le SSID."
+          "portal-config-message": "Pour personnaliser la page de destination du portail captif, veuillez d’abord enregistrer le SSID.",
+          "authentication-types": "Types d’authentification",
+          "authentication-type-none": "Aucun",
+          "backend-authentication": "Authentification du backend",
+          "password-schedule": "Planification du changement de mot de passe",
+          "social-login": "Connexion par réseau social",
+          "google-console-help-text": "Vous pouvez obtenir votre ID du client Google et votre clé secrète client depuis la <a href={{gooleDeveloperConsoleSite}} target='_blank'>Console Google Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
+          "google-console-second-label": "Créer un nouveau projet et récupérer l’ID du client et la clé secrète du client dans la section Codes d’accès.",
+          "client-id-label": "Client ID",
+          "client-secret-label": "Clé secrète client",
+          "facebook-console-help-text": "Vous pouvez obtenir votre ID d’application Facebook et votre clé secrète de l’application depuis le <a href={{facebookDevelopersSite}} target='_blank'>Compte Facebook Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
+          "facebook-console-second-label": "Créer une appli depuis la section « Mes applis ». Récupérer l’ID de l’appli et la clé secrète depuis la section Paramètres.",
+          "app-id-label": "ID d’application",
+          "app-secret-label": "Clé secrète de l’application",
+          "session-timeout-label": "Expiration de la session",
+          "session-timeout-inline-help": "Vous pouvez configurer la durée d’expiration de la session entre 1 et 24 heures.",
+          "relogin-timeout": "Délai de reconnexion expiré",
+          "relogin-timeout-inlineHelp": "Empêcher les utilisateurs de se connecter au réseau pendant 24 heures suivant leur première authentification.",
+          "voucher": "Coupon",
+          "help-text": {
+            "backend-authentication": "Permet l’authentification via un serveur RADIUS avec protocole d’authentification du mot de passe (PAP).",
+            "password-schedule": "Crée un nouveau mot de passe automatiquement à une date fixe. Il sera envoyé aux adresses email indiquées.",
+            "social-login": "Permet l’authentification avec des comptes de réseaux sociaux.",
+            "voucher": "Utiliser des coupons imprimables avec une durée limitée d’authentification"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "Créer un coupon",
+            "voucher-support-text": "Pour créer un coupon, enregistrez le SSID.",
+            "delete-confirm-header": "Supprimer le coupon",
+            "delete-confirm-message": "Tous le coupons de ce lot seront supprimés. Voulez-vous supprimer le lot de coupons {{batchName}} ?",
+            "pdf-file-name": "Coupon de borne Wi-Fi",
+            "create": {
+              "header": "Créer un coupon",
+              "name": "Nom du coupon",
+              "access-time": "Temps d’accès",
+              "unlimited": "Illimité",
+              "period": "Période",
+              "start-date": "Date de début",
+              "end-date": "Date de fin",
+              "timezone": "Fuseau horaire",
+              "data-limit": "Limite de données",
+              "limit": "Limite",
+              "data": "Données",
+              "unit": "Unité",
+              "number-of-vouchers": "Nombre de coupons",
+              "number-of-devices": "Appareils par bon",
+              "valid-for": "Valable pour",
+              "days": "Jours",
+              "hours": "Heures",
+              "name-error-msg": {
+                "required": "Nom de coupon obligatoire",
+                "maxlength": "Le nom de coupon ne peut pas contenir plus de 128 caractères"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "Date de début requise",
+                "endDateRequired": "Date de fin requise",
+                "datesImbalanced": "La date de début ne peut pas être postérieure à la date de fin"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "Limite de données requise",
+                "pattern": "La limite de données doit uniquement contenir des numéros. Vous pouvez utiliser des nombres décimaux."
+              },
+              "duration-error-msg": {
+                "durationRequired": "Veuillez saisir une durée"
+              }
+            },
+            "table": {
+              "name": "Nom",
+              "period": "Période",
+              "number": "Nombre",
+              "showPdf": "Afficher le PDF",
+              "delete": "Supprimer",
+              "unlimited": "Illimité",
+              "empty-message": "Aucun coupon"
+            }
+          },
+          "redirectUrl": {
+            "label": "URL de redirection",
+            "original-label": "Rediriger vers l’URL d’origine",
+            "redirect-url-original-help": "Redirige les utilisateurs vers le site Web sur lequel ils voulaient se rendre après authentification.",
+            "custom-label": "URL personnalisée",
+            "redirect-url-custom-help": "Redirige les utilisateurs vers un site Web de votre choix après authentification.",
+            "custom-url-required": "URL de redirection obligatoire.",
+            "custom-url-domainName": "Exemple : https://votredomaine.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">Veuillez saisir une URL valide avec le protocole réseau [Exemple : https://]</span>",
+            "custom-url-valid": "Le format de cette URL de redirection est incorrect."
+          }
         }
       },
       "access-point-editor": {

@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "防火墻管理 - 新的 SD-WAN 連線群組",
-        "breadcrumb-text": "新增 SD-WAN 連線群組",
+        "name": "防火墻管理 - 設定 SD-WAN 連線群組",
+        "breadcrumb-text": "設定 SD-WAN 連線群組",
         "error" : {
           "string": "錯誤",
           "INVALID_XFRM_IP" : "為群組中的某個防火墻選擇了無效的 XFRM IP。",
@@ -272,7 +272,8 @@
           "GROUP_DOES_NOT_EXISTS" : "群組 ID {{ groupId }} 不存在",
           "INTERNAL_REQUEST_ERROR" : "發生錯誤。內部伺服器錯誤！",
           "INTERNAL_SERVER_ERROR": "發生錯誤。內部伺服器錯誤！",
-          "GROUP_NAME_EXISTS": "群組名稱已存在。請選擇其他名稱。"
+          "GROUP_NAME_EXISTS": "群組名稱已存在。請選擇其他名稱。",
+          "INVALID_IP_ADDRESS_OR_FQDN": "WAN 連結的公共 IP 或 FQDN 無效：{{ IPOrFQDN }}"
         },
         "states": {
           "cannot-save": "儲存連線群組時出現未知錯誤。",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} 已分析防火墻，偵測到網路衝突。"
           },
           "network-missing": {
-            "heading": "{{ count }} 沒有本機網路的非資源共用防火牆。"
+            "heading": "{{ count }} 沒有本機網路的防火墻"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "WAN 連接埠",
               "gateway": "備用閘道",
               "nat": "NAT",
-              "respond-only": "回應程式",
-              "initiator": "啟動器",
+              "respond-only": "資源共用",
+              "initiator": "資源存取",
               "details-edit": "詳細資料/編輯",
               "fix-conflicts": "修復衝突"
             },
-            "not-participating": "任何介面都不能參與本機網路。您可以編輯設定以啟用它們。"
+            "not-participating": "沒有選擇可參與連線群組的本機網路"
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "啟用",
               "nat": "啟用 NAT",
               "nat-address": "NAT 位址",
-              "nat-subnet": "NATed 位址可用於解決任何網路衝突。轉換 (NAT) 地址必須與介面屬於同一子網路。",
+              "nat-subnet": "NAT 可以在流量通過隧道時，透過將一個網路變更爲不同的 IP 地址範圍來避免網路衝突。輸入該網路應當顯示的 NAT 地址。例如，如果原地址爲 192.168.1.1，NAT 地址爲 10.1.1.0，則對地址進行相對轉換，因此 IP 192.168.1.1 顯示爲 10.1.1.2，192.168.1.2 顯示爲 10.1.1.2 等。",
               "conflicts": "衝突",
               "wan": "WAN 連結",
               "selected": "已選",
@@ -385,7 +386,7 @@
                 "type-iprange": "IPv4 範圍：例如10.12.22.34-10.12.22.35",
                 "type-crdi": "IPv4 網路格式：例如10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "IP 位址 (IP 位址)",
@@ -426,7 +427,7 @@
             "help": "已共用的網路將可供此共用群組中的所有防火墻使用。",
             "auto-rules": "自動建立防火牆規則",
             "limit-access": "限制存取已驗證的使用者",
-            
+
             "sync-sec": {
               "enable": "配置同步的安全性活動訊號",
               "src": "已允許最小的來源 HB",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "建立通用的防火牆設定及基本原則範本組合，應用於不同客戶。",
           "customer": "您在此範本中沒有客戶。",
+          "groups": "您沒有此客戶的群組。",
+          "firewalls": "您沒有此客戶的防火牆。",
           "header": "您沒有任何防火牆範本",
           "learn-more": "瞭解更多",
           "what": "何謂防火牆範本？",

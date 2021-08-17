@@ -12,6 +12,10 @@
       "details": "Details",
       "template": "Standort",
       "firmware": "Firmware",
+      "port": "Port",
+      "state": "Status",
+      "tagged": "Getaggt",
+      "untagged": "Ungetaggt",
       "minutes-ago": "vor {{unit}} Minuten",
       "minute-ago": "vor {{unit}} Minute",
       "hours-ago": "vor {{unit}} Stunden",
@@ -20,6 +24,18 @@
       "day-ago": "vor {{unit}} Tag",
       "months-ago": "vor {{unit}} Monaten",
       "month-ago": "vor {{unit}} Monat",
+      "link-speed": {
+        "10mh": "10M/Halb",
+        "10mf": "10M/Voll",
+        "100mh": "100M/Halb",
+        "100mf": "100M/Voll",
+        "1g": "1G/Voll",
+        "2-5g": "2,5G/Voll",
+        "5g": "5G/Voll",
+        "10g": "10G/Voll",
+        "auto": "Auto",
+        "disabled": "Deaktiviert"
+      },
       "button": {
         "register": "Registrieren",
         "cancel": "Abbrechen",
@@ -28,7 +44,9 @@
         "apply": "Anwenden",
         "confirm": "Bestätigen",
         "delete": "Löschen",
-        "add": "Hinzufügen"
+        "add": "Hinzufügen",
+        "update": "Aktualisieren",
+        "reset": "Reset"
       },
       "status": {
         "registering": "Warte auf Verbindung",
@@ -37,7 +55,8 @@
         "unregistered": "Zeitüberschreitung für Registrierung",
         "disconnected": "Verbindung getrennt",
         "suspended": "Vorübergehend außer Kraft gesetzt",
-        "disabled": "Deaktiviert"
+        "disabled": "Deaktiviert",
+        "enabled": "Aktiviert"
       },
       "form": {
         "name": "Name",
@@ -48,7 +67,8 @@
         "port-settings-title": "Port-Einstellungen",
         "vlans-title": "VLANs",
         "network-settings-title": "Netzwerkeinstellungen",
-        "task-queue-title": "Auftrags-Warteschlange"
+        "task-queue-title": "Auftrags-Warteschlange",
+        "site-details": "Standortdetails"
       },
       "error": "Fehler",
       "success": "Erfolgreich",
@@ -81,7 +101,10 @@
         "remove-dialog-title": "Aus Sophos Central entfernen",
         "remove-dialog-message": "Switch <strong>{{switchSerial}}</strong> aus Sophos Central entfernen.",
         "retry-dialog-title": "Registrierung erneut versuchen",
-        "delete-note": "Der registrierte Switch wird <strong>neu gestartet</strong>.<br/> Wenn der Switch getrennt wird, erfolgt ein Neustart, wenn der Switch versucht, sich mit Sophos Central zu verbinden.<br/> Hinweis: Die aktuellen Konfigurationen des Switch bleiben erhalten.",
+        "delete-note": "Falls der Switch verbunden ist, wird er kurz nach dem Entfernen <strong>neu gestartet</strong>. Falls der Switch getrennt ist, erfolgt ein <br>Neustart, wenn der Switch versucht, sich mit Sophos Central zu verbinden.<br/><br/> Hinweis: Die aktuellen Konfigurationen des Switch bleiben erhalten.",
+        "move-to-site-dialog-title": "Switches zum Standort verschieben",
+        "move-to-site-text": "{{ switches }} ausgewählte Switches werden zum Standort verschoben",
+        "move-to-site-checkbox-label": "Synchronisieren Sie umgehend alle Standorteinstellungen mit den Switches",
         "txtbox": {
           "search-placeholder": "Switch suchen"
         },
@@ -93,7 +116,8 @@
           "auto-refresh": "Automatisch aktualisieren",
           "add-template": "Standort hinzufügen",
           "switch-delete-confirm": "Switch entfernen",
-          "template-delete-confirm": "Standort löschen"
+          "template-delete-confirm": "Standort löschen",
+          "move-to-site": "Zum Standort verschieben"
         },
         "table-headers": {
           "name": "Name",
@@ -112,26 +136,223 @@
           "template-overridden": "Standort überschrieben?"
         },
         "upgrade": {
-          "update-available": "Es gibt neue Firmware-Aktualisierungen.",
-          "rollback-available": "Rollback zur vorhergehenden Version {{ version }}",
+          "state": {
+            "action": {
+              "edit": "Zeitplan ändern",
+              "cancel": "Abbrechen"
+            },
+            "SCHEDULED_UPGRADE": {
+              "SCHEDULED": {
+                "text": "Upgrade auf Version {{ version }} wurde geplant.",
+                "note": {
+                  "now": "Das Upgrade startet, sobald der Switch die Aufforderung erhalten hat.",
+                  "date": "Das Upgrade startet um {{ date }} (Uhrzeit des Switch)"
+                },
+                "action": "Firmware verwalten"
+              },
+              "UPDATING": {
+                "text": "Upgrade auf Version {{ version }} läuft",
+                "note": {
+                  "now": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+                  "date": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen."
+                }
+              },
+              "SUCCESS": {
+                "text": "Upgrade auf Version {{ currentVersion }} war erfolgreich.",
+                "note": {
+                  "now": "Switch wurde von {{ version }} aktualisiert",
+                  "date": "Switch wurde von {{ version }} aktualisiert um {{ date }}"
+                }
+              },
+              "FAILURE": {
+                "text": "Upgrade auf Version {{ version }} ist fehlgeschlagen.",
+                "note": {
+                  "now": "",
+                  "date": "Versucht um {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "Fehler wurde noch nicht an Sophos Central gemeldet.",
+                  "SUCCESS": "Ein unbekannter Fehler ist aufgetreten.",
+                  "TIME_ALREADY_ELAPSED":  "Geplante Ausführungszeit liegt in der Vergangenheit.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              },
+              "CANCELLED": {
+                "text": "Upgrade auf Version {{ version }} wurde vom Administrator widerrufen.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "Die Bestätigung des Widerrufs steht noch aus.",
+                  "SUCCESS": "Switch hat die geplante Ausführung widerrufen, keine Änderungen durchgeführt",
+                  "TIME_ALREADY_ELAPSED":  "Aber der Switch hat den geplanten Vorgang bereits ausgeführt.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              }
+            },
+            "AUTO_UPGRADE": {
+              "SCHEDULED": {
+                "text": "Ein Auto-Upgrade auf Version {{ version }} wurde geplant.",
+                "note": {
+                  "now": "Das Upgrade startet, sobald der Switch die Aufforderung erhalten hat.",
+                  "date": "Das Upgrade startet um {{ date }} (Uhrzeit des Switch)"
+                },
+                "action": "Firmware verwalten"
+              },
+              "UPDATING": {
+                "text": "Auto-Upgrade auf Version {{ version }} läuft",
+                "note": {
+                  "now": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+                  "date": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen."
+                }
+              },
+              "SUCCESS": {
+                "text": "Auto-Upgrade auf Version {{ currentVersion }} war erfolgreich.",
+                "note": {
+                  "now": "Switch wurde von {{ version }} aktualisiert",
+                  "date": "Switch wurde von {{ version }} aktualisiert um {{ date }}"
+                }
+              },
+              "FAILURE": {
+                "text": "Auto-Upgrade auf Version {{ version }} ist fehlgeschlagen.",
+                "note": {
+                  "now": "",
+                  "date": "Versucht um {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "Fehler wurde noch nicht an Sophos Central gemeldet.",
+                  "SUCCESS": "Ein unbekannter Fehler ist ausgetreten.",
+                  "TIME_ALREADY_ELAPSED":  "Geplante Ausführungszeit liegt in der Vergangenheit.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              },
+              "CANCELLED": {
+                "text": "Auto-Upgrade auf Version {{ version }} wurde widerrufen.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "Die Bestätigung des Widerrufs steht noch aus.",
+                  "SUCCESS": "Switch hat die geplante Ausführung widerrufen, keine Änderungen durchgeführt",
+                  "TIME_ALREADY_ELAPSED":  "Aber der Switch hat den geplanten Vorgang bereits ausgeführt.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              }
+            },
+            "ROLLBACK": {
+              "SCHEDULED": {
+                "text": "Rollover auf Version {{ version }} wurde geplant.",
+                "note": {
+                  "now": "Das Rollover startet, sobald der Switch die Aufforderung erhalten hat.",
+                  "date": "Das Rollover startet um {{ date }} (Uhrzeit des Switch)"
+                },
+                "action": "Firmware verwalten"
+              },
+              "UPDATING": {
+                "text": "Rollover auf {{ version }} läuft",
+                "note": {
+                  "now": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+                  "date": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen."
+                }
+              },
+              "SUCCESS": {
+                "text": "Rollover auf Version {{ currentVersion }} war erfolgreich.",
+                "note": {
+                  "now": "Switch wurde von {{ version }} aktualisiert",
+                  "date": "Switch wurde von {{ version }} aktualisiert um {{ date }}"
+                }
+              },
+              "FAILURE": {
+                "text": "Rollover auf Version {{ version }} ist fehlgeschlagen.",
+                "note": {
+                  "now": "",
+                  "date": "Versucht um {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "Fehler wurde noch nicht an Sophos Central gemeldet.",
+                  "SUCCESS": "Ein unbekannter Fehler ist ausgetreten.",
+                  "TIME_ALREADY_ELAPSED":  "Geplante Ausführungszeit liegt in der Vergangenheit.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              },
+              "CANCELLED": {
+                "text": "Rollover auf Version {{ version }} wurde widerrufen.",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "Die Bestätigung des Widerrufs steht noch aus.",
+                  "SUCCESS": "Switch hat die geplante Ausführung widerrufen, keine Änderungen durchgeführt",
+                  "TIME_ALREADY_ELAPSED":  "Aber der Switch hat den geplanten Vorgang bereits ausgeführt.",
+                  "TOO_MANY_PENDING_REQUESTS": "Switch war mit anderen Aufgaben beschäftigt.",
+                  "LINK_NOT_REACHABLE": "Der Firmware-Server ist im Moment nicht erreichbar.",
+                  "DOWNLOAD_ERROR": "Die Firmware kann nicht heruntergeladen werden.",
+                  "INTEGRITY_ERROR": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+                  "ALREADY_UPDATED": "Der Switch wurde bereits auf die neue Version aktualisiert.",
+                  "UPGRADE_ERROR": "Anwendung der Firmware ist fehlgeschlagen.",
+                  "UNKNOWN_ERROR": "Ein unbekannter Fehler ist ausgetreten."
+                }
+              }
+            }
+          },
+          "up-to-date": "Firmware ist aktuell.",
+          "up-to-date-message": "Es steht keine neue Firmware zum Download bereit.",
+          "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
+          "update-available": "Es gibt neue Firmware-Updates.",
+          "rollback-available": "Rollover zur Backup-Partitions-Version {{ version }}",
           "rollback-message": "Dies startet den Switch von der Backup-Partition.",
-          "schedule-rollback": "Ein Rollback planen",
+          "schedule-rollback": "Ein Rollover planen",
           "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
           "schedule-upgrade": "Eine Aktualisierung planen",
-          "schedule": "Zeitplan hinzufügen",
+          "schedule": "Zeitplan ändern",
           "manage-schedule-dialog-title": "Firmware verwalten: {{ site }}",
           "upgrade-schedule-dialog-title": "Wählen Sie einen Zeitplan aus",
-          "dialog-heading": "Firmware für Switches am Standort verwalten: {{ site }}. Im folgenden Bereich können Sie Firmware-Aktualisierungen und -Rollbacks hinzufügen oder widerrufen.",
-          "schedule-info-message": "Wählen Sie den Zeitpunkt für Aktualisierung oder Rollback der ausgewählten Switches aus.",
+          "dialog-heading": "Firmware für Switches am Standort verwalten: {{ site }}. Im folgenden Bereich können Sie Firmware-Upgrades und Rollover hinzufügen oder widerrufen.",
+          "schedule-info-message": "Wählen Sie für die ausgewählten Switches den Upgrade- bzw. Rollover-Zeitpunkt aus.",
           "update-now": "Jetzt",
           "custom": "Benutzerdefiniert",
-          "schedule-now-note": "Verbundene Switches erhalten sofort eine Aufforderung zu Aktualisierung bzw. Rollback. Getrennte Switches erhalten eine Aufforderung, wenn sie sich wieder verbunden haben. Hierbei wird der Switch eventuell neu gestartet.",
-          "schedule-custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Switches ohne Berücksichtigung von Zeitzonen. Durch Aktualisierung bzw. Rollback wird der Switch eventuell neu gestartet.",
-          "scheduled-success-message": "Firmware-Aktualisierung wurde geplant",
-          "scheduled-success-failure": "Firmware-Aktualisierung ist fehlgeschlagen",
-          "update-cancel-message": "Firmware-Aktualisierung wurde widerrufen",
+          "schedule-now-note": "Verbundene Switches erhalten sofort eine Aufforderung für das Upgrade bzw. Rollback. Getrennte Switches erhalten eine Aufforderung, wenn sie sich wieder verbunden haben. Hierbei wird der Switch eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
+          "schedule-custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Switches ohne Berücksichtigung von Zeitzonen. Beim Upgrade bzw. Rollover wird der Switch eventuell neu gestartet.",
+          "scheduled-success-message": "Firmware-Upgrade wurde geplant",
+          "scheduled-success-failure": "Firmware-Upgrade ist fehlgeschlagen",
+          "update-cancel-message": "Firmware-Upgrade wurde widerrufen",
           "cancel-upgrade": "Zeitplan widerrufen",
-          "rollback": "Rollback ({{ version }})",
+          "rollback": "Rollover ({{ version }})",
+          "modified": "Vorhandener Zeitplan {{ version }} | {{ schedule }} wird geändert.",
+          "new-schedule": "Neuer Zeitplan",
           "table": {
             "serial-number": "Switch",
             "version": "Version",
@@ -139,7 +360,9 @@
             "currently-scheduled-upgrades": "Gewählter Zeitplan",
             "release-notes": "Versionshinweise",
             "edit": "Bearbeiten",
-            "selected": "Ausgewählt"
+            "selected": "Ausgewählt",
+            "modified": "Geändert",
+            "cancel-warning": "Sofortige Upgrade-Ausführungen können nicht geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist."
           }
         },
         "add-template": {
@@ -169,7 +392,11 @@
           "delete-template-success": "Standort wurde gelöscht",
           "delete-template-error": "Standort kann nicht gelöscht werden",
           "update-template-success": "Standort wurde aktualisiert",
-          "update-template-error": "Standort kann nicht aktualisiert werden"
+          "update-template-error": "Standort kann nicht aktualisiert werden",
+          "transfer-success": "Switches wurden verschoben",
+          "transfer-failed": "Switches können nicht verschoben werden",
+          "full-sync-success": "Standorteinstellungen wurden mit den ausgewählten Switches synchronisiert",
+          "full-sync-failed": "Standorteinstellungen können nicht mit den ausgewählten Switches synchronisiert werden"
         },
         "groupInfoText": {
           "what": "Was ist ein Standort?",
@@ -232,7 +459,21 @@
     },
     "template": {
       "page-title": "Switches - Standortverwaltung",
-      "breadcrumb-text": "Standort"
+      "breadcrumb-text": "Standort",
+      "new-page-title": "Switches - Standort erstellen",
+      "site-details": "Standortdetails",
+      "message": {
+        "site-name-required-message": "Standortname ist erforderlich",
+        "site-name-invalid-message": "Standortname ist ungültig",
+        "site-description-invalid-message": "Standortbeschreibung ist ungültig",
+        "create-success": "Standort wurde erstellt",
+        "create-error": "Es kann kein Standort erstellt werden",
+        "update-success": "Standort wurde aktualisiert",
+        "update-error": "Standort kann nicht aktualisiert werden"
+      },
+      "form": {
+        "location": "Standort"
+      }
     },
     "switch-view": {
       "summary-legend-title": "Zusammenfassung",
@@ -304,7 +545,7 @@
         "site": "Standort",
         "entity": "Einheit",
         "sub-entity": "Untereinheit",
-        "date-time": "Letzte Änderung am"
+        "date-time": "Erstellt am"
       },
       "status": {
         "pending": "Ausstehend",
@@ -319,12 +560,19 @@
         "skip": "Überspringen"
       },
       "type": {
-        "add": "Hinzufügen",
+        "none": "Keine",
+        "create": "Erstellen",
         "update": "Aktualisieren",
         "delete": "Löschen",
-        "firmware_upgrade": "Firmware-Aktualisierung"
+        "full_sync": "Vollständig synchronisieren",
+        "vlan": "VLAN",
+        "firmware_upgrade": "Firmware",
+        "schedule_upgrade": "Firmware-Upgrade planen",
+        "cancel_upgrade": "Firmware-Upgrade widerrufen",
+        "rollback": "Firmware-Rollover ausführen",
+        "port": "Port"
       },
-      "retry-success": "Geplante Aufgaben werden wieder an den Switch gesendet.",
+      "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Erneute Ausführung fehlgeschlagener Aufgaben ist fehlgeschlagen.",
       "skip-success": "Ausgewählte Aufgabe wird übersprungen, ausstehende Aufgaben, sofern vorhanden, werden an den Switch gesendet.",
       "skip-error": "Überspringen der ausgewählten Aufgabe fehlgeschlagen."
@@ -333,9 +581,14 @@
       "table-headers": {
         "port-id": "Port",
         "label": "Bezeichnung",
+        "flow-control": "Datenflusskontrolle",
         "link-speed": "Geschwindigkeit/Duplex",
         "untagged-vlan": "Ungetaggtes VLAN",
         "tagged-vlans": "Getaggte VLANs"
+      },
+      "message": {
+        "port-update-success": "Ports wurden aktualisiert.",
+        "port-update-error": "Ein oder mehrere Ports können nicht aktualisiert werden."
       }
     }
   }

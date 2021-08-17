@@ -34,16 +34,25 @@
       "details": "詳細資訊",
       "no-data": "無資料",
       "beta": "Beta 版",
-      "copied": "已複製"
+      "copied": "已複製",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "建立",
+      "no": "無"
     },
     "global": {
+      "form": {
+        "required": "欄位為必填欄位。"
+      },
       "onBoard": {
         "access-point": "存取點",
         "ssid": "SSID",
-        "sites": "網站",
+        "sites": "地點",
         "summary": "摘要",
         "on-board-step-finish": "完成",
-        "enabled": "啟用"
+        "enabled": "已打開"
       },
       "search": {
         "placeholder": "搜尋",
@@ -172,12 +181,25 @@
           "weekday": "平日",
           "time": "時間 (全球標準時間 UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "更新韌體",
+        "body": "更新韌體時，位於您韌體上的存取點和 SSID設定暫無法使用。您是否要立即升級至版本 {{ version }}？",
+        "success": "已開始將韌體更新為版本 {{ version }}。",
+        "failure": "韌體更新為版本 {{ version }} 失敗。",
+        "force-firmware-update": "清除韌體升級禁用標誌",
+        "force-update-label": "已設定韌體升級禁用標誌，用於使用調試韌體映像升級 AP。",
+        "disable-factory-defaults": "原廠預設設定",
+        "factory-default-label": "設定為啟用 AP 的原廠預設。"
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "地點",
-        "title": "無線 - 網站"
+        "title": "無線 - 網站",
+        "no-sites-defined": "沒有已定義的站點。",
+        "delete-dialog-text": "該客戶網站中所有的平面佈置圖將被刪除。確定要刪除您的站點 {{site}}？",
+        "confirm-delete-header": "刪除地點"
       }
     },
     "networks": {
@@ -308,7 +330,7 @@
         "ssid-network-name": "網路名稱。",
         "password-auto-generate-msg": "會自動產生密碼",
         "insecure-encryption-mode-msg": "此加密模式不安全",
-        "insecure-encryption-algorithm-msg":  "此加密演算法不安全",
+        "insecure-encryption-algorithm-msg": "此加密演算法不安全",
         "encryption-mode-help-msg": "我們建議使用 WPA2。",
         "encryption-algorithm-help-msg": "預設算法為 AES。該建議是出於安全考慮。",
         "radius-secret-help-msg": "共用的密碼應很長並且含有多種字母、大寫字母以及數字。在 radius 伺服器驗證 AP 的密碼。",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
         "port-number-help-msg": "RADIUS 伺服器的連接埠號碼。",
-        "optimize-multicast":"優化多點傳播流量的處理，如流媒體。提高總吞吐量。",
-        "arp-proxy":"AP 接收網路地址的 ARP 查詢。提高總吞吐量。",
-        "quality-fast-roaming":"存取點之間的快速漫遊提供了更好的連接體驗，尤其對於 VoIP。",
+        "optimize-multicast": "優化多點傳播流量的處理，如流媒體。提高總吞吐量。",
+        "arp-proxy": "AP 接收網路地址的 ARP 查詢。提高總吞吐量。",
+        "quality-fast-roaming": "存取點之間的快速漫遊提供了更好的連接體驗，尤其對於 VoIP。",
         "broadcast-outdated": "如果 AP 在重新開機後無法達到 Sophos Central，則 SSID 繼續廣播。",
-        "band-steering-label":"頻寬操控",
-        "quality-band-steering":"如果可能，雙頻容量的無線用戶端將被引導至 5 GHz。改善用戶端體驗。",
-        "band-steering-warning":"頻寬操控也會被套用至 APs 上所有和此網路有相同設定的網路。",
-        "broadcast-outdated-label":"保持廣播",
-        "multicast-label":"多重播送轉換至單重播送"
+        "band-steering-label": "頻寬操控",
+        "quality-band-steering": "如果可能，雙頻容量的無線用戶端將被引導至 5 GHz。改善用戶端體驗。",
+        "band-steering-warning": "頻寬操控也會被套用至 APs 上所有和此網路有相同設定的網路。",
+        "broadcast-outdated-label": "保持廣播",
+        "multicast-label": "多重播送轉換至單重播送",
+        "radius-server-error-msgs": {
+          "required": "需要 RADIUS 伺服器位址",
+          "invalid-radius-server": "RADIUS 伺服器必須位於有效的 IP 位址"
+        },
+        "radius-port-error-msgs": {
+          "required": "必須提供連接埠。",
+          "min": "連接埠必須是 1 到 65535 之間的數字。",
+          "max": "連接埠必須是 1 到 65535 之間的數字。"
+        },
+        "radius-password-error-msgs": {
+          "required": "需要複雜密碼。"
+        },
+        "email-error-msgs": {
+          "pattern": "請輸入有效的電子郵件位址"
+        },
+        "generate-new": "產生新的",
+        "select-week": "選擇一週",
+        "certificate-error-msgs": {
+          "file-error": "檔案錯誤。",
+          "file-format-error": "不支援檔案格式。",
+          "file-size-exceed": "檔案超過最大大小"
+        },
+        "accept-terms-and-conditions": "接受條款與條件並連接"
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "同步安全性是為 Sophos APX Series 存取點提供的獨特功能。我們革命性的 Security Heartbeat™ 允許您的端點、行動保護和存取點交換資訊，從而共同運作，有效抵禦來自網路的安全威脅。",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
-        "sync-security-disbale-info-captive-portal": "<Sup>&#1645;&#1645;</sup>啟用訪客網路或管制入口網站的 SSID 不支援同步安全性。",
-        "green-option-label": "Security Heartbeat™ 為綠色",
-        "green-option-value": "允許所有資料流",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>無法在已開啟訪客網路或管制入口網站的 SSID 上使用同步安全性。",
+        "green-option-label": "Security Heartbeat 呈綠色",
+        "green-option-value": "許可所有資料流",
         "green-option-info": "用戶端已受到防護。",
-        "yellow-option-label": "Security Heartbeat™ 為黃色",
-        "yellow-option-value": "允許所有資料流　(警告)",
+        "yellow-option-label": "Security Heartbeat 呈黃色",
+        "yellow-option-value": "允許所有資料流（警告）",
         "yellow-option-info": "偵測到一個問題，用戶端可能有風險。這可能是端點上的非使用惡意軟體或可能不需要的應用程式 (PUA)。對於行動裝置，您可以為多項合規性違規定義活動訊號狀態。",
-        "red-option-label": "Security Heartbeat™ 為紅色",
+        "red-option-label": "Security Heartbeat 呈紅色",
         "red-option-value": "圍牆花園",
         "red-option-info": "所有網際網路流量都已封鎖，除了以下允許的網域。使用者將看到一個包含警告的網頁。",
         "uem-label": "Sophos Mobile（UEM）",
@@ -409,7 +454,93 @@
           "welcome-text-required": "必須提供歡迎文字。",
           "portal-terms-label": "服務條款",
           "portal-terms-max-length": "服務條款最多不可超過 102400 字元。",
-          "portal-config-message": "為了自訂網頁驗證入口登入頁面，請先儲存 SSID。"
+          "portal-config-message": "為了自訂網頁驗證入口登入頁面，請先儲存 SSID。",
+          "authentication-types": "驗證類型",
+          "authentication-type-none": "无",
+          "backend-authentication": "後台驗證",
+          "password-schedule": "密碼排程",
+          "social-login": "社交網站帳戶登入",
+          "google-console-help-text": "您可透過使用組織帳戶登入，從 <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google 開發人員主控台</a>獲取您的 Google 用戶端 ID 和用戶端密碼。",
+          "google-console-second-label": "建立新的專案，從「憑證」部分擷取用戶端 ID 和用戶端祕密。",
+          "client-id-label": "Client ID",
+          "client-secret-label": "用戶端密碼",
+          "facebook-console-help-text": "您可透過使用組織帳戶登入，從 <a href={{facebookDevelopersSite}} target='_blank'>Facebook 開發人員帳戶</a>獲取您的 Facebook 應用程式 ID 和應用程式密碼。",
+          "facebook-console-second-label": "在「My Apps」部分建立應用程式。在設定部分取得應用程式 ID 和密碼。",
+          "app-id-label": "應用程式 ID",
+          "app-secret-label": "應用程式密碼",
+          "session-timeout-label": "工作階段逾時",
+          "session-timeout-inline-help": "您可將工作階段逾時設定在 1 小時至 24 小時之間。",
+          "relogin-timeout": "重新登入超時",
+          "relogin-timeout-inlineHelp": "在使用者首次驗證後 24 小時內禁止使用者登入網路。",
+          "voucher": "證件",
+          "help-text": {
+            "backend-authentication": "允許透過使用密碼驗證通訊協定 (PAP) 的 RADIUS 伺服器進行驗證。",
+            "password-schedule": "在固定的排程上自動建立一個新密碼。其將被傳送到指定的電子郵件地址。",
+            "social-login": "允許透過社交媒體帳戶驗證。",
+            "voucher": "使用具有時間限制的可打印憑證進行驗證"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "建立憑證",
+            "voucher-support-text": "如需建立憑證，請儲存 SSID。",
+            "delete-confirm-header": "刪除憑證",
+            "delete-confirm-message": "此批號的所有憑證將被刪除。是否確定要刪除您的憑證批號 {{batchName}}？",
+            "pdf-file-name": "熱點憑證",
+            "create": {
+              "header": "建立憑證",
+              "name": "證件名稱",
+              "access-time": "存取時間",
+              "unlimited": "無限制",
+              "period": "期間",
+              "start-date": "開始日期",
+              "end-date": "結束日期",
+              "timezone": "時區",
+              "data-limit": "資料限制",
+              "limit": "限制",
+              "data": "資料",
+              "unit": "單位",
+              "number-of-vouchers": "憑證數目",
+              "number-of-devices": "按證件的裝置",
+              "valid-for": "有效於",
+              "days": "天",
+              "hours": "小時",
+              "name-error-msg": {
+                "required": "憑證名稱為必填項",
+                "maxlength": "憑證名稱不得超過 128 個字元"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "開始日期為必填項",
+                "endDateRequired": "結束日期為必填項",
+                "datesImbalanced": "開始日期不得晚於結束日期"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "資料限制為必填項",
+                "pattern": "資料限制僅可包含數字。您可使用小數。"
+              },
+              "duration-error-msg": {
+                "durationRequired": "必须提供持續時間。"
+              }
+            },
+            "table": {
+              "name": "名稱",
+              "period": "期間",
+              "number": "編號",
+              "showPdf": "顯示 PDF",
+              "delete": "删除",
+              "unlimited": "無限制",
+              "empty-message": "沒有證件"
+            }
+          },
+          "redirectUrl": {
+            "label": "重新定位 URL",
+            "original-label": "重新定位至原始 URL",
+            "redirect-url-original-help": "驗證後，將使用者重新導向至他們最初想訪問的網站。",
+            "custom-label": "自訂 URL",
+            "redirect-url-custom-help": "驗證後，將使用者重新導向至您選擇的指定網站。",
+            "custom-url-required": "需要重新定位 URL。",
+            "custom-url-domainName": "示例：https://您的網域.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">請輸入有效的 URL，包括網路協議 [示例：https://]</span>",
+            "custom-url-valid": "重新定位 URL 沒有有效的格式。"
+          }
         }
       },
       "access-point-editor": {

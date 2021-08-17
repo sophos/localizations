@@ -14,8 +14,10 @@
       "continue": "Continuar",
       "fqdn-validation": "FQDN no válida",
       "fqdn-ip-validation": "FQDN/IP no válido/a",
+      "fqdn-duplicate-validation": "FQDN ya en uso",
       "invalid-name": "El nombre solo puede contener: A-Z, a-z , 0-9, -, _, espacio",
       "name-length-validation": "El nombre no debe tener más de 100 caracteres",
+      "name-duplicate-validation": "Nombre ya utilizado",
       "whitespace-name-validation": "Nombre es obligatorio",
       "description-length-validation": "La descripción no debe tener más de 300 caracteres",
       "required": "* Necesario",
@@ -100,6 +102,8 @@
             "resource-type": "Tipo de recurso:",
             "gateway": "Puerta de enlace:",
             "local-address": "Dirección local:",
+            "internal-fqdn": "FQDN/dirección IP interno/a",
+            "external-fqdn": "FQDN externo:",
             "domain": "Dominio:",
             "agent": "Agente",
             "agentless": "Sin agente",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Panel de control",
       "breadcrumb-text": "Panel de control de Zero Trust Network Access",
-      "nodata": "No hay datos disponibles"
+      "nodata": "No hay datos disponibles",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1. Sincronizar usuarios",
+          "add-idp": "2. Añadir proveedor de identidad",
+          "set-up-gateways": "3. Configurar puertas de enlace",
+          "add-policy": "4. Añadir política",
+          "add-resources": "5. Añadir recursos"
+        },
+        "help": {
+          "sync-users": "Configurar sincronización de directorios",
+          "add-idp": "Configurar IDP necesarios para autenticación",
+          "set-up-gateways": "Crear una puerta de enlace virtual para cada ubicación de red",
+          "add-policy": "Definir reglas para el acceso a recursos",
+          "add-resources": "Especificar recursos y grupos de usuarios con acceso"
+        },
+        "header": "Siga los pasos a continuación para la configuración de Zero Trust Network Access"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - Informes",
@@ -156,7 +177,8 @@
         "high-alerts": "Alertas altas",
         "medium-alerts": "Alertas medias",
         "low-alerts": "Alertas bajas",
-        "fetch-error": "Error al recuperar el resumen de alertas"
+        "fetch-error": "Error al recuperar el resumen de alertas",
+        "header": "Resumen de alertas"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "Error al crear la puerta de enlace",
         "loading-error": "Error al cargar la puerta de enlace",
         "otp-error": "Error al generar la OTP",
+        "session-timeout-error": "La sesión ha expirado. Inicie sesión de nuevo",
         "edit-success": "Puerta de enlace actualizada",
         "edit-error": "No se ha podido actualizar la puerta de enlace",
         "password-rules": {
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "El uso de clústeres de puerta de enlace no está activado pero se ha encontrado más de una instancia",
       "gateway.cluster.change.notAllowed": "No puede desactivarse el clúster de puerta de enlace",
       "gateway.cluster.notEmpty": "No se encuentra el campo del clúster de puerta de enlace",
+      "gateway.cluster.changeSizeInvalid": "Abra más instancias antes de eliminar las instancias antiguas, el tamaño de clúster debe ser superior a (n+1)/2",
       "gateway.not.connected.or.approved": "La depuración remota no puede activarse si la puerta de enlace no está en estado conectado o aprobado y la instancia no está en estado activo",
       "policy.invalid": "El objeto de política indicado no es válido",
       "policy.isEnforced.notNull": "El campo isEnforced del objeto de política no puede ser nulo",
@@ -1137,7 +1161,10 @@
         "noRecords": "No hay registros",
         "apply": "Aplicar",
         "multiDeviceReportingNote": "Los informes multidispositivo solo están disponibles con la licencia Advanced.",
-        "tooManyFirewallSelected": "Ha alcanzado el límite máximo de selección de puertas de enlace"
+        "tooManyFirewallSelected": "Ha alcanzado el límite máximo de selección de puertas de enlace",
+        "selectGateway": "Seleccionar puertas de enlace",
+        "selectTemplate": "Seleccionar plantilla",
+        "selectCreatedBy": "Selección creada por"
       },
       "savedTemplates": {
         "allFirewalls": "Todas las puertas de enlace",

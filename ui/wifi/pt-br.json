@@ -34,16 +34,25 @@
       "details": "Detalhes",
       "no-data": "Nenhum dado",
       "beta": "beta",
-      "copied": "Copiado"
+      "copied": "Copiado",
+      "data-size": {
+        "mb": "MB",
+        "gb": "GB"
+      },
+      "create": "Criar",
+      "no": "Não"
     },
     "global": {
+      "form": {
+        "required": "O campo é obrigatório."
+      },
       "onBoard": {
         "access-point": "Pontos de Acesso",
         "ssid": "SSIDs",
-        "sites": "SITEs",
+        "sites": "Sites",
         "summary": "Resumo",
         "on-board-step-finish": "Concluir",
-        "enabled": "Habilitado"
+        "enabled": "Ativado"
       },
       "search": {
         "placeholder": "Pesquisar",
@@ -172,12 +181,25 @@
           "weekday": "Dia útil",
           "time": "Hora (UTC)"
         }
+      },
+      "firmware-update": {
+        "title": "Atualizar firmware",
+        "body": "Seus pontos de acesso e os SSIDs configurados neles ficam temporariamente indisponíveis durante a atualização do firmware. Deseja atualizar para a versão {{ version }} agora?",
+        "success": "A atualização do firmware para a versão {{ version }} começou.",
+        "failure": "Falha ao atualizar o firmware para a versão {{ version }}",
+        "force-firmware-update": "Limpar sinalizador desabilitado de atualização de firmware",
+        "force-update-label": "O sinalizador desabilitado de atualização de firmware está definido para atualizar o AP com a depuração de imagem de firmware.",
+        "disable-factory-defaults": "Padrão de fábrica",
+        "factory-default-label": "Configuração para habilitar os padrões de fábrica para um AP."
       }
     },
     "sites": {
       "list": {
         "breadcrumb-text": "Sites",
-        "title": "Sem Fio - Sites"
+        "title": "Sem Fio - Sites",
+        "no-sites-defined": "Não há sites definidos.",
+        "delete-dialog-text": "Todas as plantas baixas serão deletadas da localidade deste cliente. Tem certeza de que deseja deletar o site {{site}}?",
+        "confirm-delete-header": "Deletar localidade"
       }
     },
     "networks": {
@@ -308,7 +330,7 @@
         "ssid-network-name": "Nome para a rede.",
         "password-auto-generate-msg": "A senha será gerada automaticamente",
         "insecure-encryption-mode-msg": "Este modo de encriptação não é seguro",
-        "insecure-encryption-algorithm-msg":  "Este algoritmo de encriptação não é seguro",
+        "insecure-encryption-algorithm-msg": "Este algoritmo de encriptação não é seguro",
         "encryption-mode-help-msg": "Recomendamos usar WPA2.",
         "encryption-algorithm-help-msg": "O algoritmo default é AES. Recomendado por questões de segurança.",
         "radius-secret-help-msg": "O segredo compartilhado deve ser relativamente longo e conter uma diversidade de letras minúsculas e maiúsculas e números. Segredo para autenticar um AP no servidor radius.",
@@ -323,28 +345,51 @@
         "port-required-validation-msg": "É necessária uma porta.",
         "port-range-validate-msg": "A porta deve ser um número entre 1 e 65535.",
         "port-number-help-msg": "Número da porta do servidor RADIUS.",
-        "optimize-multicast":"Otimiza o tratamento de tráfego multicast como mídia de fluxo contínuo. Aumenta a taxa de transferência geral.",
-        "arp-proxy":"Um AP responde às consultas ARP dos endereços de rede. Aumenta a taxa de transferência geral.",
-        "quality-fast-roaming":"O roaming rápido entre pontos de acesso proporciona uma melhor experiência de conectividade, especialmente para VoIP.",
+        "optimize-multicast": "Otimiza o tratamento de tráfego multicast como mídia de fluxo contínuo. Aumenta a taxa de transferência geral.",
+        "arp-proxy": "Um AP responde às consultas ARP dos endereços de rede. Aumenta a taxa de transferência geral.",
+        "quality-fast-roaming": "O roaming rápido entre pontos de acesso proporciona uma melhor experiência de conectividade, especialmente para VoIP.",
         "broadcast-outdated": "O SSID continua a transmissão se o AP não puder acessar o Sophos Central após uma reinicialização.",
-        "band-steering-label":"Direção de banda",
-        "quality-band-steering":"Clientes sem fio com capacidade de banda dupla serão direcionados à de 5 GHz, se possível. Melhora a experiência do usuário.",
-        "band-steering-warning":"A direção de banda também será aplicada a todas as outras redes nos APs em que esta rede está configurada.",
-        "broadcast-outdated-label":"Manter transmissão",
-        "multicast-label":"Conversão multicast para unicast"
+        "band-steering-label": "Direção de banda",
+        "quality-band-steering": "Clientes sem fio com capacidade de banda dupla serão direcionados à de 5 GHz, se possível. Melhora a experiência do usuário.",
+        "band-steering-warning": "A direção de banda também será aplicada a todas as outras redes nos APs em que esta rede está configurada.",
+        "broadcast-outdated-label": "Manter transmissão",
+        "multicast-label": "Conversão multicast para unicast",
+        "radius-server-error-msgs": {
+          "required": "É necessário o endereço de servidor Radius",
+          "invalid-radius-server": "O servidor RADIUS deve ter um endereço de IP válido"
+        },
+        "radius-port-error-msgs": {
+          "required": "É necessária uma porta.",
+          "min": "A porta deve ser um número entre 1 e 65535.",
+          "max": "A porta deve ser um número entre 1 e 65535."
+        },
+        "radius-password-error-msgs": {
+          "required": "É necessária uma frase de segurança."
+        },
+        "email-error-msgs": {
+          "pattern": "Insira um endereço de e-mail válido"
+        },
+        "generate-new": "Gerar novo",
+        "select-week": "Selecione uma semana",
+        "certificate-error-msgs": {
+          "file-error": "Erro de arquivo.",
+          "file-format-error": "O formato de arquivo não é compatível.",
+          "file-size-exceed": "O arquivo ultrapassou o tamanho máximo."
+        },
+        "accept-terms-and-conditions": "Aceitar Termos e Condições e conectar"
       },
       "network-editor": {
         "sync-security-label": "Segurança Sincronizada",
         "inline-help-sync-security": "O Synchronized Security é um recurso exclusivo disponível para pontos de acesso Sophos APX Series. Nossa revolucionária tecnologia Security Heartbeat™ permite que seu endpoint, proteção móvel e pontos de acesso troquem informações e trabalhem juntos para bloquear ameaças de segurança da sua rede.",
-        "sync-security-disbale-info": "<sup>&#1645;&#1645;</sup>SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
-        "sync-security-disbale-info-captive-portal": "<sup>&#1645;&#1645;</sup>A Segurança Sincronizada não é suportada em SSIDs que têm rede de convidados ou portal cativo habilitados.",
-        "green-option-label": "Security Heartbeat™ verde",
-        "green-option-value": "Permitir todos os tráfegos",
+        "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Não é possível usar a Segurança Sincronizada em SSIDs que têm a rede de convidados ou o portal cativo ativado.",
+        "green-option-label": "Security Heartbeat verde",
+        "green-option-value": "Permitir todo o tráfego",
         "green-option-info": "O cliente está protegido.",
-        "yellow-option-label": "Security Heartbeat™ amarelo",
-        "yellow-option-value": "Permitir todos os tráfegos (advertência)",
+        "yellow-option-label": "Security Heartbeat amarelo",
+        "yellow-option-value": "Permitir todo o tráfego (aviso)",
         "yellow-option-info": "Foi detectado um problema e um cliente está potencialmente em risco. No endpoint, poderia ser um malware inativo ou um aplicativo potencialmente indesejado (PUA). Para dispositivos móveis, você pode definir o status de pulsação de segurança para várias violações de conformidade.",
-        "red-option-label": "Security Heartbeat™ vermelho",
+        "red-option-label": "Security Heartbeat vermelho",
         "red-option-value": "Jardim Murado",
         "red-option-info": "Todo o tráfego da Internet é bloqueado, exceto aos domínios na lista de permissão abaixo. O usuário vê uma página da web com um alerta.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -409,7 +454,93 @@
           "welcome-text-required": "É necessário um texto de boas-vindas.",
           "portal-terms-label": "Termos de serviço",
           "portal-terms-max-length": "Os termos de serviço podem ter no máximo 102400 caracteres.",
-          "portal-config-message": "Para personalizar a página inicial do portal cativo, primeiro salve o SSID."
+          "portal-config-message": "Para personalizar a página inicial do portal cativo, primeiro salve o SSID.",
+          "authentication-types": "Tipos de autenticação",
+          "authentication-type-none": "Nenhum",
+          "backend-authentication": "Autenticação de Backend",
+          "password-schedule": "Agendamento da senha",
+          "social-login": "Login via rede social",
+          "google-console-help-text": "Você pode obter seu Google Client ID e Client Secret no <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google Developer Console</a>&nbsp fazendo login usando a conta da sua organização.",
+          "google-console-second-label": "Crie um Novo Projeto na seção Credenciais, acesse a seção Client ID e Client Secret.",
+          "client-id-label": "ID do cliente",
+          "client-secret-label": "Segredo do cliente",
+          "facebook-console-help-text": "Você pode obter seu Facebook Application ID e Application Secret na <a href={{facebookDevelopersSite}} target='_blank'>Facebook Developer Account</a>&nbsp fazendo login usando a conta da sua organização.",
+          "facebook-console-second-label": "Crie um App na seção \"My Apps\". Acesse a seção App ID and Secret em Settings.",
+          "app-id-label": "ID do aplicativo",
+          "app-secret-label": "Segredo do aplicativo",
+          "session-timeout-label": "Limite de Tempo de Sessão",
+          "session-timeout-inline-help": "Você pode configurar o Limite de Tempo de Sessão entre 1 e 24 horas.",
+          "relogin-timeout": "Limite de tempo para fazer novo login",
+          "relogin-timeout-inlineHelp": "Impede que os usuários façam login na rede por 24 horas após sua primeira autenticação.",
+          "voucher": "Voucher",
+          "help-text": {
+            "backend-authentication": "Permite a autenticação via servidor RADIUS com protocolo PAP (Password Authentication Protocol).",
+            "password-schedule": "Cria uma nova senha automaticamente em uma data fixa. Ela será enviada aos endereços de e-mail especificados.",
+            "social-login": "Permite autenticação através de contas de redes sociais.",
+            "voucher": "Use vouchers imprimíveis com limitação de tempo para autenticação"
+          },
+          "hotspot-voucher": {
+            "create-voucher-label": "Criar Voucher",
+            "voucher-support-text": "Para criar vouchers, salve o SSID.",
+            "delete-confirm-header": "Deletar voucher",
+            "delete-confirm-message": "Todos os vouchers neste lote serão deletados. Tem certeza de que deseja deletar seu lote de voucher {{batchName}}?",
+            "pdf-file-name": "Voucher de hotspot",
+            "create": {
+              "header": "Criar Voucher",
+              "name": "Nome do voucher",
+              "access-time": "Tempo de acesso",
+              "unlimited": "Ilimitado",
+              "period": "Período",
+              "start-date": "Data de início",
+              "end-date": "Data de término",
+              "timezone": "Fuso horário",
+              "data-limit": "Limite de dados",
+              "limit": "Limite",
+              "data": "Dados",
+              "unit": "Unidade",
+              "number-of-vouchers": "Número de vouchers",
+              "number-of-devices": "Dispositivos por voucher",
+              "valid-for": "Válido para",
+              "days": "Dias",
+              "hours": "Horas",
+              "name-error-msg": {
+                "required": "Nome do voucher é obrigatório",
+                "maxlength": "O nome do voucher não pode ter mais de 128 caracteres"
+              },
+              "dates-error-msg": {
+                "startDateRequired": "Data de início é obrigatória",
+                "endDateRequired": "Data de término é obrigatória",
+                "datesImbalanced": "A data de início não pode ser posterior à data de término"
+              },
+              "data-error-msg": {
+                "dataAllowedRequired": "Limite de dados é obrigatório",
+                "pattern": "O limite de dados deve conter apenas números. Você pode usar decimais."
+              },
+              "duration-error-msg": {
+                "durationRequired": "É necessária uma duração"
+              }
+            },
+            "table": {
+              "name": "Nome",
+              "period": "Período",
+              "number": "Número",
+              "showPdf": "Mostrar PDF",
+              "delete": "Deletar",
+              "unlimited": "Ilimitado",
+              "empty-message": "nenhum voucher"
+            }
+          },
+          "redirectUrl": {
+            "label": "URL de redirecionamento",
+            "original-label": "Redirecionar à URL original",
+            "redirect-url-original-help": "Redireciona os usuários ao site da web o qual originalmente desejavam acessar após a autenticação.",
+            "custom-label": "URL personalizada",
+            "redirect-url-custom-help": "Redireciona os usuários a um site específico da web da sua escolha após a autenticação.",
+            "custom-url-required": "É necessária uma URL de redirecionamento",
+            "custom-url-domainName": "Exemplo: https://seudomínio.com",
+            "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">Insira uma URL, válida, incluindo o protocolo de rede [Exemplo: https://]</span>",
+            "custom-url-valid": "A URL de redirecionamento não tem um formato válido."
+          }
         }
       },
       "access-point-editor": {

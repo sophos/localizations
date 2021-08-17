@@ -211,8 +211,8 @@
         }
       },
       "add": {
-        "name": "Firewall Management - 새로운 SD-WAN 연결 그룹",
-        "breadcrumb-text": "SD-WAN 연결 그룹 추가",
+        "name": "Firewall Management - SD-WAN 연결 그룹 구성",
+        "breadcrumb-text": "SD-WAN 연결 그룹 구성",
         "error" : {
           "string": "오류",
           "INVALID_XFRM_IP" : "그룹의 방화벽 중 하나에 대해 잘못된 XFRM IP가 선택되었습니다.",
@@ -272,10 +272,11 @@
           "GROUP_DOES_NOT_EXISTS" : "그룹 ID({{ groupId }})가 존재하지 않음",
           "INTERNAL_REQUEST_ERROR" : "문제가 발생했습니다. 내부 서버 오류!",
           "INTERNAL_SERVER_ERROR": "문제가 발생했습니다. 내부 서버 오류!",
-          "GROUP_NAME_EXISTS": "그룹 이름이 이미 있습니다. 다른 것을 선택하십시오."
+          "GROUP_NAME_EXISTS": "그룹 이름이 이미 있습니다. 다른 것을 선택하십시오.",
+          "INVALID_IP_ADDRESS_OR_FQDN": "WAN 링크에 대해 지정된 공용 IP 또는 FQDN이 잘못됨: {{ IPOrFQDN }}"
         },
         "states": {
-          "cannot-save": "연결 그룹을 저장하는 동안 알 수없는 오류가 발생했습니다.",
+          "cannot-save": "연결 그룹을 저장하는 동안 알 수 없는 오류가 발생했습니다.",
           "created": "새 연결 그룹을 성공적으로 만들었습니다.",
           "updated": "연결 그룹을 성공적으로 업데이트했습니다.",
           "service-object-create-failed": "서비스 개체를 만들 수 없습니다.",
@@ -318,7 +319,7 @@
             "heading": "{{ count }} 방화벽 분석됨(감지된 네트워크 충돌 있음)."
           },
           "network-missing": {
-            "heading": "{{ count }} 로컬 네트워크가 없는 비 리소스 공유 방화벽입니다."
+            "heading": "{{ count }} 방화벽(로컬 네트워크 없음)"
           },
           "table": {
             "column": {
@@ -327,12 +328,12 @@
               "wan-ports": "WAN 포트",
               "gateway": "백업 게이트웨이",
               "nat": "NAT",
-              "respond-only": "응답자",
-              "initiator": "초기자",
+              "respond-only": "리소스 공유",
+              "initiator": "리소스 액세스",
               "details-edit": "세부 정보/편집",
               "fix-conflicts": "충돌 수정"
             },
-            "not-participating": "로컬 네트워크에 참여할 수 있도록 활성화된 인터페이스가 없습니다. 설정을 편집하여 사용할 수 있습니다."
+            "not-participating": "연결 그룹에 참여할 로컬 네트워크가 선택되지 않았습니다."
           },
           "modal": {
             "table": {
@@ -342,7 +343,7 @@
               "participate": "사용",
               "nat": "NAT 사용",
               "nat-address": "NAT 주소",
-              "nat-subnet": "NAT 주소는 네트워크 충돌을 해결하는 데 사용할 수 있습니다. 변환된(NAT) 주소는 인터페이스와 동일한 서브넷에 속해야 합니다.",
+              "nat-subnet": "NAT는 트래픽이 터널을 통과할 때 다른 IP 주소 범위로 나타나도록 하나의 네트워크를 변경하여 네트워크 충돌을 방지하는 데 사용할 수 있습니다. 네트워크가 표시되어야 하는 NAT 주소를 입력합니다. 예를 들어, 원래 주소가 192.168.1.1이고 NAT 주소가 10.1.1.0이면 이러한 주소가 상대적으로 변환되므로 IP 192.168.1.1은 10.1.1.2로, 192.168.1.2는 10.1.1.2로 나타나는 식입니다.",
               "conflicts": "충돌",
               "wan": "WAN 링크",
               "selected": "선택됨",
@@ -385,7 +386,7 @@
                 "type-iprange": "IPv4 범위: 예: 10.12.22.34-10.12.22.35",
                 "type-crdi": "IPv4 네트워크 형식: 예: 10.12.22.34/24"
               },
-             
+
               "_dynamic_": {
                 "host": {
                 "2": "IP 주소",
@@ -426,7 +427,7 @@
             "help": "공유된 네트워크는 이 공유 그룹의 일부인 모든 방화벽에서 사용할 수 있습니다.",
             "auto-rules": "방화벽 규칙 자동 생성",
             "limit-access": "인증된 사용자에 대한 액세스 제한",
-            
+
             "sync-sec": {
               "enable": "동기화된 보안 하트비트 구성",
               "src": "최소 소스 HB 허용됨",
@@ -604,6 +605,8 @@
         "no-data": {
           "info": "다양한 고객에 대하여 사용할 수 있는 공통된 방화벽 설정 및 기본 정책 템플릿 집합을 만듭니다.",
           "customer": "이 템플릿에 고객이 없습니다.",
+          "groups": "이 고객에 대한 그룹이 없습니다.",
+          "firewalls": "이 고객에 대한 방화벽이 없습니다.",
           "header": "방화벽 템플릿이 없습니다.",
           "learn-more": "자세히 알아보기",
           "what": "방화벽 템플릿이란?",

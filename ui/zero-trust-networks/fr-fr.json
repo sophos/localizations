@@ -14,8 +14,10 @@
       "continue": "Continuer",
       "fqdn-validation": "Nom de domaine complet non valide",
       "fqdn-ip-validation": "Nom de domaine complet/IP non valide",
+      "fqdn-duplicate-validation": "Nom de domaine complet déjà utilisé",
       "invalid-name": "Le nom doit uniquement contenir : A-Z, a-z , 0-9, -, _, espace",
       "name-length-validation": "Le nom ne doit pas contenir plus de 100 caractères",
+      "name-duplicate-validation": "Nom déjà utilisé",
       "whitespace-name-validation": "Nom obligatoire",
       "description-length-validation": "La description ne doit pas contenir plus de 300 caractères",
       "required": "* Obligatoire",
@@ -100,6 +102,8 @@
             "resource-type": "Type de ressources :",
             "gateway": "Passerelle :",
             "local-address": "Adresse IP locale :",
+            "internal-fqdn": "Nom de domaine complet/Adresse IP interne :",
+            "external-fqdn": "Nom de domaine complet externe :",
             "domain": "Domaine :",
             "agent": "Agent",
             "agentless": "Sans agent",
@@ -144,7 +148,24 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Tableau de bord",
       "breadcrumb-text": "Tableau de bord de Zero Trust Access Network",
-      "nodata": "Aucune donnée disponible"
+      "nodata": "Aucune donnée disponible",
+      "set-up-banner": {
+        "title": {
+          "sync-users": "1. Synchroniser les utilisateurs",
+          "add-idp": "2. Ajouter un fournisseur d’identité",
+          "set-up-gateways": "3. Installer les passerelles",
+          "add-policy": "4. Ajouter une stratégie",
+          "add-resources": "5. Ajouter les ressources"
+        },
+        "help": {
+          "sync-users": "Configurer la synchronisation avec le répertoire",
+          "add-idp": "Configurer les IDP requis pour l’authentification",
+          "set-up-gateways": "Créer une passerelle virtuelle pour chaque emplacement réseau",
+          "add-policy": "Configurer les paramètres relatifs à l’accès aux ressources",
+          "add-resources": "Indiquer les ressources et groupes d’utilisateurs autorisés à y accéder"
+        },
+        "header": "Suivez les étapes ci-dessous pour configurer Zero Trust Network Access"
+      }
     },
     "report": {
       "title": "Zero Trust Network Access - Rapports",
@@ -156,7 +177,8 @@
         "high-alerts": "Alertes élevées",
         "medium-alerts": "Alertes moyennes",
         "low-alerts": "Alertes basses",
-        "fetch-error": "Erreur de récupération du résumé des alertes"
+        "fetch-error": "Erreur de récupération du résumé des alertes",
+        "header": "Résumé des alertes"
       }
     },
     "gateway": {
@@ -332,6 +354,7 @@
         "add-error": "Impossible de créer la passerelle",
         "loading-error": "Erreur de chargement de la passerelle",
         "otp-error": "Erreur lors de la création de l’OTP",
+        "session-timeout-error": "La session a expiré. Veuillez vous réinscrire",
         "edit-success": "Passerelle mise à jour",
         "edit-error": "Impossible de mettre à jour la passerelle",
         "password-rules": {
@@ -786,6 +809,7 @@
       "gateway.cluster.notEnabled": "Le clustering de la passerelle n’est pas activé mais plusieurs instances ont été trouvées",
       "gateway.cluster.change.notAllowed": "Le cluster de passerelle ne peut pas être désactivé",
       "gateway.cluster.notEmpty": "Champ de cluster de la passerelle introuvable",
+      "gateway.cluster.changeSizeInvalid": "Affichez plus d’instances avant de supprimer les anciennes. La taille du cluster doit être supérieure à (n+1)/2",
       "gateway.not.connected.or.approved": "Le débogage à distance ne peut pas être activé si la passerelle n’est pas connectée ou approuvée et que l’instance n’est pas active",
       "policy.invalid": "L’objet de stratégie fourni n’est pas valide",
       "policy.isEnforced.notNull": "Le champ « isEnforced » de l’objet de stratégie ne doit pas être vide",
@@ -1137,7 +1161,10 @@
         "noRecords": "Aucun enregistrement",
         "apply": "Appliquer",
         "multiDeviceReportingNote": "L’édition de rapport sur plusieurs appareils est uniquement disponible avec la licence « Advanced ».",
-        "tooManyFirewallSelected": "Vous avez atteint le nombre maximum de sélection de passerelle"
+        "tooManyFirewallSelected": "Vous avez atteint le nombre maximum de sélection de passerelle",
+        "selectGateway": "Sélectionner les passerelles",
+        "selectTemplate": "Sélectionner le modèle",
+        "selectCreatedBy": "Sélection créée par"
       },
       "savedTemplates": {
         "allFirewalls": "Toutes les passerelles",

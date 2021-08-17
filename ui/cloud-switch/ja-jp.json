@@ -12,6 +12,10 @@
       "details": "詳細",
       "template": "サイト",
       "firmware": "ファームウェア",
+      "port": "ポート",
+      "state": "状態",
+      "tagged": "タグあり",
+      "untagged": "タグなし",
       "minutes-ago": "{{unit}}分前",
       "minute-ago": "{{unit}}分前",
       "hours-ago": "{{unit}}時間前",
@@ -20,6 +24,18 @@
       "day-ago": "{{unit}}日前",
       "months-ago": "{{unit}}カ月前",
       "month-ago": "{{unit}}カ月前",
+      "link-speed": {
+        "10mh": "10M/半",
+        "10mf": "10M/全",
+        "100mh": "100M/半",
+        "100mf": "100M/全",
+        "1g": "1G/全",
+        "2-5g": "2.5G/全",
+        "5g": "5G/全",
+        "10g": "10G/全",
+        "auto": "自動",
+        "disabled": "無効"
+      },
       "button": {
         "register": "登録",
         "cancel": "キャンセル",
@@ -28,7 +44,9 @@
         "apply": "適用",
         "confirm": "確認",
         "delete": "削除",
-        "add": "追加"
+        "add": "追加",
+        "update": "更新",
+        "reset": "リセット"
       },
       "status": {
         "registering": "接続を待機中",
@@ -37,7 +55,8 @@
         "unregistered": "登録がタイムアウトしました",
         "disconnected": "切断",
         "suspended": "中断",
-        "disabled": "無効"
+        "disabled": "無効",
+        "enabled": "有効"
       },
       "form": {
         "name": "名前",
@@ -48,7 +67,8 @@
         "port-settings-title": "ポートの設定",
         "vlans-title": "VLAN",
         "network-settings-title": "ネットワークの設定",
-        "task-queue-title": "タスクのキュー"
+        "task-queue-title": "タスクのキュー",
+        "site-details": "サイトの詳細"
       },
       "error": "エラー",
       "success": "成功",
@@ -81,7 +101,10 @@
         "remove-dialog-title": "Sophos Central から削除",
         "remove-dialog-message": "Sophos Central からのスイッチ <strong>{{switchSerial}}</strong> の削除",
         "retry-dialog-title": "登録の再試行",
-        "delete-note": "登録済みスイッチは<strong>再起動</strong>されます。<br/>スイッチが切断されている場合は、スイッチが Sophos Central に接続しようとする際に再起動が行われます。<br/>注: スイッチの現在の設定は保持されます。",
+        "delete-note": "スイッチが接続されている場合は、取り外し後すぐに<strong>再起動</strong>が行われます。切断されている場合は、スイッチが Sophos Central に<br>接続しようとする際に再起動が行われます。<br/><br/>注: スイッチの現在の設定は保持されます。",
+        "move-to-site-dialog-title": "スイッチをサイトに移動",
+        "move-to-site-text": "選択した {{ switches }}個のスイッチがサイトに移動されます",
+        "move-to-site-checkbox-label": "すべてのサイト設定を直ちにスイッチに同期する",
         "txtbox": {
           "search-placeholder": "スイッチの検索"
         },
@@ -93,7 +116,8 @@
           "auto-refresh": "自動更新",
           "add-template": "サイトの追加",
           "switch-delete-confirm": "スイッチの削除",
-          "template-delete-confirm": "サイトの削除"
+          "template-delete-confirm": "サイトの削除",
+          "move-to-site": "サイトに移動"
         },
         "table-headers": {
           "name": "名前",
@@ -112,26 +136,223 @@
           "template-overridden": "サイトの上書き済み？"
         },
         "upgrade": {
+          "state": {
+            "action": {
+              "edit": "スケジュールの変更",
+              "cancel": "キャンセル"
+            },
+            "SCHEDULED_UPGRADE": {
+              "SCHEDULED": {
+                "text": "バージョン {{ version }} へのアップグレードがスケジュール設定されました。",
+                "note": {
+                  "now": "アップグレードは、スイッチがリクエストを受信した直後に開始されます。",
+                  "date": "アップグレードは、スイッチの日時が {{ date }} になったら実行されます"
+                },
+                "action": "ファームウェアの管理"
+              },
+              "UPDATING": {
+                "text": "バージョン {{ version }} にアップグレード中",
+                "note": {
+                  "now": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+                  "date": "現在、変更が適用されています。この操作には時間がかかることがあります。"
+                }
+              },
+              "SUCCESS": {
+                "text": "バージョン {{ currentVersion }} へのアップグレードに成功しました。",
+                "note": {
+                  "now": "スイッチは {{ version }} からアップグレードされました",
+                  "date": "スイッチは {{ date }} に {{ version }} からアップグレードされました"
+                }
+              },
+              "FAILURE": {
+                "text": "バージョン {{ version }} へのアップグレードに失敗しました。",
+                "note": {
+                  "now": "",
+                  "date": "試行日: {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "エラーはまだ Sophos Central に報告されていません。",
+                  "SUCCESS": "不明なエラーが発生しました。",
+                  "TIME_ALREADY_ELAPSED":  "スケジュール日時は既に経過しました。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              },
+              "CANCELLED": {
+                "text": "バージョン {{ version }} へのアップグレードは、管理者によってキャンセルされました。",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "キャンセルの成功を待機しています。",
+                  "SUCCESS": "スイッチは、スケジュールをキャンセルしました。変更は行われませんでした",
+                  "TIME_ALREADY_ELAPSED":  "なお、スイッチは既にスケジュールを実行済みです。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              }
+            },
+            "AUTO_UPGRADE": {
+              "SCHEDULED": {
+                "text": "バージョン {{ version }} への自動アップグレードがスケジュール設定されました。",
+                "note": {
+                  "now": "アップグレードは、スイッチがリクエストを受信した直後に開始されます。",
+                  "date": "アップグレードは、スイッチの日時が {{ date }} になったら実行されます"
+                },
+                "action": "ファームウェアの管理"
+              },
+              "UPDATING": {
+                "text": "バージョン {{ version }} に自動アップグレード中",
+                "note": {
+                  "now": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+                  "date": "現在、変更が適用されています。この操作には時間がかかることがあります。"
+                }
+              },
+              "SUCCESS": {
+                "text": "バージョン {{ currentVersion }} への自動アップグレードに成功しました。",
+                "note": {
+                  "now": "スイッチは {{ version }} からアップグレードされました",
+                  "date": "スイッチは {{ date }} に {{ version }} からアップグレードされました"
+                }
+              },
+              "FAILURE": {
+                "text": "バージョン {{ version }} への自動アップグレードに失敗しました。",
+                "note": {
+                  "now": "",
+                  "date": "試行日: {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "エラーはまだ Sophos Central に報告されていません。",
+                  "SUCCESS": "不明なエラーが発生しました。",
+                  "TIME_ALREADY_ELAPSED":  "スケジュール日時は既に経過しました。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              },
+              "CANCELLED": {
+                "text": "バージョン {{ version }} への自動アップグレードがキャンセルされました。",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "キャンセルの成功を待機しています。",
+                  "SUCCESS": "スイッチは、スケジュールをキャンセルしました。変更は行われませんでした",
+                  "TIME_ALREADY_ELAPSED":  "なお、スイッチは既にスケジュールを実行済みです。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              }
+            },
+            "ROLLBACK": {
+              "SCHEDULED": {
+                "text": "バージョン {{ version }} へのロールオーバーがスケジュール設定されました。",
+                "note": {
+                  "now": "ロールオーバーは、スイッチがリクエストを受信した直後に開始されます。",
+                  "date": "ロールオーバーは、スイッチの日時が {{ date }} になったら実行されます"
+                },
+                "action": "ファームウェアの管理"
+              },
+              "UPDATING": {
+                "text": "バージョン {{ version }} へのロールオーバー",
+                "note": {
+                  "now": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+                  "date": "現在、変更が適用されています。この操作には時間がかかることがあります。"
+                }
+              },
+              "SUCCESS": {
+                "text": "バージョン {{ currentVersion }} へのロールオーバーに成功しました。",
+                "note": {
+                  "now": "スイッチは {{ version }} からアップグレードされました",
+                  "date": "スイッチは {{ date }} に {{ version }} からアップグレードされました"
+                }
+              },
+              "FAILURE": {
+                "text": "バージョン {{ version }} へのロールオーバーに失敗しました。",
+                "note": {
+                  "now": "",
+                  "date": "試行日: {{ date }}"
+                },
+                "reason": {
+                  "NO_ERROR" : "エラーはまだ Sophos Central に報告されていません。",
+                  "SUCCESS": "不明なエラーが発生しました。",
+                  "TIME_ALREADY_ELAPSED":  "スケジュール日時は既に経過しました。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              },
+              "CANCELLED": {
+                "text": "バージョン {{ version }} へのロールオーバーがキャンセルされました。",
+                "note": {
+                  "now": "",
+                  "date": ""
+                },
+                "reason": {
+                  "NO_ERROR" : "キャンセルの成功を待機しています。",
+                  "SUCCESS": "スイッチは、スケジュールをキャンセルしました。変更は行われませんでした",
+                  "TIME_ALREADY_ELAPSED":  "なお、スイッチは既にスケジュールを実行済みです。",
+                  "TOO_MANY_PENDING_REQUESTS": "スイッチは他のタスクでビジー状態でした。",
+                  "LINK_NOT_REACHABLE": "現在、ファームウェアサーバーに到達できません。",
+                  "DOWNLOAD_ERROR": "ファームウェアをダウンロードできません。",
+                  "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
+                  "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+                  "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
+                  "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+                }
+              }
+            }
+          },
+          "up-to-date": "ファームウェアは最新です。",
+          "up-to-date-message": "ダウンロード可能なファームウェアはありません。",
+          "cannot-manage": "実行中のアップグレードが完了したら、スケジュールを設定できます。",
           "update-available": "ファームウェアの新しいアップデートがあります。",
-          "rollback-available": "以前のバージョン {{ version }} へのロールバック",
+          "rollback-available": "バックアップのパーティションのバージョン {{ version }} へのロールオーバー ",
           "rollback-message": "これにより、バックアップのパーティションからスイッチが再起動されます。",
-          "schedule-rollback": "ロールバックのスケジュール設定",
+          "schedule-rollback": "ロールオーバーのスケジュール設定",
           "upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。",
           "schedule-upgrade": "アップグレードのスケジュール設定",
-          "schedule": "スケジュールの追加",
+          "schedule": "スケジュールの変更",
           "manage-schedule-dialog-title": "ファームウェアの管理: {{ site }}",
           "upgrade-schedule-dialog-title": "スケジュールの選択",
-          "dialog-heading": "次のサイトにあるスイッチのファームウェアを管理します: {{ site }}。以下の選択肢から、ファームウェアのアップグレードを追加、キャンセル、またはロールバックできます。",
-          "schedule-info-message": "選択したスイッチを更新またはロールバックするタイミングを選択します。",
+          "dialog-heading": "次のサイトにあるスイッチのファームウェアを管理します: {{ site }}。以下の選択肢から、ファームウェアのアップグレードやロールオーバーを追加またはキャンセルできます。",
+          "schedule-info-message": "選択したスイッチを更新またはロールオーバーするタイミングを選択します。",
           "update-now": "今すぐ",
           "custom": "カスタム",
-          "schedule-now-note": "接続されているスイッチには、直ちにアップグレード/ロールバックするよう通知が送信されます。切断されているスイッチは、接続後すぐに通知が送信されます。これには、スイッチの再起動が必要になる場合があります。",
-          "schedule-custom-note": "選択されたスケジュールは、タイムゾーンに関係なく、スイッチの現地時間に従います。アップグレード/ロールバックには再起動が必要になる場合があります。",
+          "schedule-now-note": "接続されているスイッチには、直ちにアップグレード/ロールオーバーするよう通知が送信されます。切断されているスイッチは、接続後すぐに通知が送信されます。これには、スイッチの再起動が必要になる場合があります。今すぐ実行するタスクは、一度保存すると変更できません。新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。",
+          "schedule-custom-note": "選択されたスケジュールは、タイムゾーンに関係なく、スイッチの現地時間に従います。アップグレード/ロールオーバーには再起動が必要になる場合があります。",
           "scheduled-success-message": "ファームウェアのアップグレードがスケジュール設定されました",
           "scheduled-success-failure": "ファームウェアのアップグレードに失敗しました",
           "update-cancel-message": "ファームウェアのアップグレードがキャンセルされました",
           "cancel-upgrade": "スケジュールのキャンセル",
-          "rollback": "ロールバック ({{ version }})",
+          "rollback": "ロールオーバー ({{ version }})",
+          "modified": "既存のスケジュール {{ version }} | {{ schedule }} が変更されました。",
+          "new-schedule": "新しいスケジュール",
           "table": {
             "serial-number": "スイッチ",
             "version": "バージョン",
@@ -139,7 +360,9 @@
             "currently-scheduled-upgrades": "選択済みスケジュール",
             "release-notes": "リリースノート",
             "edit": "編集",
-            "selected": "選択済み"
+            "selected": "選択済み",
+            "modified": "変更済み",
+            "cancel-warning": "今すぐアップグレードするリクエストは変更できません。新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。"
           }
         },
         "add-template": {
@@ -169,7 +392,11 @@
           "delete-template-success": "サイトが削除されました",
           "delete-template-error": "サイトを削除できません",
           "update-template-success": "サイトが更新されました",
-          "update-template-error": "サイトを更新できません"
+          "update-template-error": "サイトを更新できません",
+          "transfer-success": "スイッチが移動されました。",
+          "transfer-failed": "スイッチを移動できません",
+          "full-sync-success": "サイト設定は、選択したスイッチに同期されました",
+          "full-sync-failed": "選択したスイッチにサイト設定を同期できません"
         },
         "groupInfoText": {
           "what": "サイトとは？",
@@ -180,7 +407,7 @@
       "manage": {
         "page-title": "スイッチ - スイッチ管理",
         "breadcrumb-text": "スイッチの管理",
-        "template-dd-default-title": "サイトを選択します",
+        "template-dd-default-title": "サイトの選択",
         "upgrade-checkbox-label": "Central エージェントを自動的にアップグレードする",
         "button": {
           "reboot": "再起動",
@@ -232,7 +459,21 @@
     },
     "template": {
       "page-title": "スイッチ - サイト管理",
-      "breadcrumb-text": "サイト"
+      "breadcrumb-text": "サイト",
+      "new-page-title": "スイッチ - サイトの作成",
+      "site-details": "サイトの詳細",
+      "message": {
+        "site-name-required-message": "サイト名を指定してください",
+        "site-name-invalid-message": "サイト名が無効です",
+        "site-description-invalid-message": "サイトの説明が無効です",
+        "create-success": "サイトが作成されました",
+        "create-error": "サイトを作成できません",
+        "update-success": "サイトが更新されました",
+        "update-error": "サイトを更新できません"
+      },
+      "form": {
+        "location": "サイト所在地"
+      }
     },
     "switch-view": {
       "summary-legend-title": "サマリー",
@@ -241,7 +482,7 @@
     },
     "vlan": {
       "search-placeholder-text": "ID または名前で検索",
-      "ports-dd-default-title": "ポートを選択します",
+      "ports-dd-default-title": "ポートの選択",
       "add-vlan-dialog-title": "VLAN の追加",
       "edit-vlan-dialog-title": "VLAN の編集",
       "button": {
@@ -273,7 +514,7 @@
         "vlan-type-voice": "ボイス",
         "color": "色",
         "vlan-id-required-message": "VLAN ID を指定してください。",
-        "vlan-id-invalid-message": "VLAN ID は無効です。",
+        "vlan-id-invalid-message": "VLAN ID が無効です。",
         "vlan-name-required-message": "名前を指定してください。",
         "vlan-name-invalid-message": "名前が無効です。"
       },
@@ -304,7 +545,7 @@
         "site": "サイト",
         "entity": "エンティティ",
         "sub-entity": "サブエンティティ",
-        "date-time": "前回更新日時"
+        "date-time": "作成日時"
       },
       "status": {
         "pending": "保留中",
@@ -319,12 +560,19 @@
         "skip": "スキップ"
       },
       "type": {
-        "add": "追加",
+        "none": "なし",
+        "create": "作成",
         "update": "更新",
         "delete": "削除",
-        "firmware_upgrade": "ファームウェアのアップグレード"
+        "full_sync": "完全同期",
+        "vlan": "VLAN",
+        "firmware_upgrade": "ファームウェア",
+        "schedule_upgrade": "ファームウェアのアップグレードのスケジュール設定",
+        "cancel_upgrade": "ファームウェアのアップグレードのキャンセル",
+        "rollback": "ファームウェアのロールオーバー",
+        "port": "ポート"
       },
-      "retry-success": "選択したタスクが再びスイッチにプッシュされます。",
+      "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
       "skip-success": "選択したタスクはスキップされ、保留中のタスクがある場合はスイッチに送信されます。",
       "skip-error": "選択したタスクをスキップできませんでした。"
@@ -333,9 +581,14 @@
       "table-headers": {
         "port-id": "ポート",
         "label": "ラベル",
+        "flow-control": "フロー制御",
         "link-speed": "速度/二重通信",
         "untagged-vlan": "タグなし VLAN",
         "tagged-vlans": "タグ付き VLAN"
+      },
+      "message": {
+        "port-update-success": "ポートが更新されました。",
+        "port-update-error": "1つまたは複数のポートを更新できません。"
       }
     }
   }
