@@ -25,7 +25,8 @@
       "no": "Non",
       "day": "jour",
       "days": "jours",
-      "seconds": "secondes"
+      "seconds": "secondes",
+      "required-error": "Obligatoire"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Tableau de bord",
       "breadcrumb-text": "Tableau de bord de Zero Trust Access Network",
+      "eap-program-message": "Ce produit est fourni dans le cadre du programme d’accès anticipé (EAP). Cliquez sur « Commentaires » pour signaler tout problème ou donner votre avis.",
       "nodata": "Aucune donnée disponible",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "État",
                 "version": "Version",
                 "support": "Support Sophos",
-                "support-status": "État du support Sophos"
+                "support-status": "État du support Sophos",
+                "troubleshooting-logs": "Journal de résolution des problèmes"
               },
               "support-status": {
                 "connected": "Connecté",
@@ -230,6 +233,15 @@
               }
             },
             "note": "Pour l’équilibrage de charge, vous devez avoir un nombre impair d’instances.",
+            "troubleshoot": {
+              "logs": "Journaux de résolution des problèmes",
+              "generate-logs": "Générer des journaux",
+              "troubleshoot-logs-info1": "Vous pouvez utiliser ces journaux et rapports pour la résolution des problèmes ou les envoyer au support Sophos.",
+              "troubleshoot-logs-info2": "Les journaux sont créés en quelques minutes. Vous n’avez pas besoin de rester sur cette page.",
+              "troubleshoot-logs-info3": "Un téléchargement s’affichera à côté de chaque instance et sera disponible pendant 5 heures."
+            },
+
+
             "add": "Ajouter/Modifier des instances",
             "header": {
               "name": "Nom : ",
@@ -524,6 +536,16 @@
           "fetch-error": "Impossible de récupérer les détails de débogage à distance",
           "unreachable": "La passerelle n’a pas pu joindre le serveur.",
           "try-again": "Veuillez réessayer ultérieurement."
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "Expire le : {{linkExpiryDate}}",
+          "expired": "Le lien de téléchargement a expiré",
+          "success-msg": "Génération de journaux",
+          "error-msg": "Erreur lors de la génération des journaux",
+          "status": {
+            "generating-log": "Génération du journal"
+          },
+          "error": "Erreur, veuillez réessayer plus tard."
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "Champ de cluster de la passerelle introuvable",
       "gateway.cluster.changeSizeInvalid": "Affichez plus d’instances avant de supprimer les anciennes. La taille du cluster doit être supérieure à (n+1)/2",
       "gateway.not.connected.or.approved": "Le débogage à distance ne peut pas être activé si la passerelle n’est pas connectée ou approuvée et que l’instance n’est pas active",
+      "gateway.key-cert.mismatch": "Le certificat et la clé privée ne correspondent pas",
+      "gateway.log.collection.ongoing": "La passerelle collecte déjà les journaux. Veuillez réessayer ultérieurement.",
+      "gateway.log.collection.wrong.request": "Seul l’état COLLECTER est pris en charge pour récupérer les journaux",
+      "gateway.log.collection.no.active": "Aucune instance active disponible pour la collecte des journaux",
       "policy.invalid": "L’objet de stratégie fourni n’est pas valide",
       "policy.isEnforced.notNull": "Le champ « isEnforced » de l’objet de stratégie ne doit pas être vide",
       "policy.valid-until.not.allowed": "Le champ « ValidUntil » ne peut pas être défini si la stratégie n’est pas appliquée",

@@ -14,14 +14,16 @@
       "update": "Aktualisieren",
       "start-date": "Startdatum",
       "end-date": "Enddatum",
-      "confirmDeleteHeader": "Löschen bestätigen",
+      "confirm-delete-header": "Löschen bestätigen",
       "error": "Fehler",
       "success": "Erfolgreich",
       "retry": "Erneut versuchen",
-      "accessPoints": "Access Points",
+      "access-points": "Access Points",
+      "assign-accesspoints": "Access Points zuweisen",
       "ssids": "SSIDs",
       "settings": "Einstellungen",
       "sites": "Standorte",
+      "site-name":"Name des Standorts",
       "statistic": "Statistik",
       "devices": "Geräte",
       "reset": "Reset",
@@ -33,6 +35,7 @@
       "hide": "Ausblenden",
       "details": "Details",
       "no-data": "Keine Daten",
+      "no-records": "Keine Einträge",
       "beta": "Beta",
       "copied": "Kopiert",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "GB"
       },
       "create": "Erstellen",
-      "no": "Nein"
+      "no": "Nein",
+      "online": "Online",
+      "offline": "Offline"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "Produkt-Dashboard",
       "page-title": "Wireless - Dashboard",
       "breadcrumb-text": "Wireless-Dashboard"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "Geräte",
+        "title": "Wireless - Geräte",
+        "show-chart": "Diagramm anzeigen",
+        "hide-chart": "Diagramm ausblenden",
+        "ghz-2-4": "2,4 GHz",
+        "ghz-5": "5 GHz",
+        "ghz-both": "2,4 GHz und 5 GHz",
+        "status-both": "Online und offline"
+      },
+      "device-list": {
+        "show-period": "Zeitraum anzeigen:",
+        "period-24-h": "24h",
+        "period-7-d": "7d",
+        "export-csv": "Als CSV exportieren",
+        "status": "Status",
+        "name": "Gerätename",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "Benutzername",
+        "vendor": "Anbieter",
+        "access-point": "Access Point",
+        "ssid": "SSID",
+        "band": "Band",
+        "connection-speed": "Verbindungsgeschwindigkeit",
+        "first-seen": "Zuerst gesehen",
+        "last-seen": "Zuletzt gesehen",
+        "security-heartbeat": {
+          "security-heartbeat": "Security Heartbeat",
+          "health-status-red": "Client gefährdet",
+          "health-status-green": "Geschützt",
+          "health-status-missing": "Fehlender Security Heartbeat",
+          "health-status-grey": "Kein Security Heartbeat",
+          "health-status-yellow": "Stufe möglicherweise gefährdet",
+          "health-status-not-available": "Nicht verfügbar"
+        },
+        "no-devices-found": "Keine verbundenen WLAN-Clients zum Anzeigen.",
+        "pagination-text": "{{ filtered }} Clients werden angezeigt. Insgesamt {{ all }}"
+      }
     },
     "diagnostics": {
       "events": "Ereignisse",
@@ -199,7 +245,44 @@
         "title": "Wireless - Standorte",
         "no-sites-defined": "Es sind keine Standorte festgelegt.",
         "delete-dialog-text": "Alle Ihre Grundrisse werden für diesen Kundenstandort gelöscht. Möchten Sie Ihren Standort {{site}} wirklich löschen?",
-        "confirm-delete-header": "Standort löschen"
+        "confirm-delete-header": "Standort löschen",
+        "online-_dynamic_": {
+          "false": "Offline",
+          "true": "Online"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "Standortname ist erforderlich.",
+        "maxlength": "Standardname darf höchstens 64 Zeichen haben."
+      },
+      "detail": {
+        "select-view": "Ansicht auswählen"
+      },
+      "network-list": {
+        "filter-placeholder": "Filteroption auswählen",
+        "filter-all-label": "Alle Netzwerke anzeigen",
+        "classification": "Klassifizierung auswählen",
+        "edit-classification-prefix-label": "Markieren als",
+        "filter-options": {
+          "rogue": "Unautorisiert",
+          "trusted": "Zuverlässig",
+          "untrusted": "Nicht vertrauenswürdig",
+          "advanced-impersonate": "Erweitertes Impersonate",
+          "evil-twin": "Evil Twin",
+          "bssid-impersonate": "BSSID Impersonate",
+          "ssid-impersonate": "SSID Impersonate",
+          "adhoc": "Adhoc"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "Als unautorisiert markieren",
+          "mark-as-trusted": "Als zuverlässig markieren",
+          "mark-as-untrusted": "Als nicht vertrauenswürdig markieren",
+          "mark-as-advanced-impersonate": "Als Erweitertes Impersonate markieren",
+          "mark-as-evil-twin": "Als Evil Twin markieren",
+          "mark-as-bssid-impersonate": "Als BSSID Impersonate markieren",
+          "mark-as-ssid-impersonate": "Als SSID Impersonate markieren",
+          "mark-as-adhoc": "Als Adhoc markieren"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "Dateiformat wird nicht unterstützt.",
           "file-size-exceed": "Datei überschreitet die maximale Größe."
         },
+        "start-time": "Startzeitpunkt",
+        "end-time": "Endzeitpunkt",
         "accept-terms-and-conditions": "Nutzungsbedingungen akzeptieren und verbinden"
       },
       "network-editor": {
@@ -427,6 +512,8 @@
         "mac-filter-header": "MAC-Filterung",
         "mac-filter-none": "Keine",
         "mac-filter-blacklist": "Liste „Blockiert“",
+        "scheduled": "Geplant",
+        "always": "Immer",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "MAC-Adressen",
         "blocked-mac-filter": "Blockierte MAC-Adressen können keine Verbindung zu dieser SSID herstellen.",

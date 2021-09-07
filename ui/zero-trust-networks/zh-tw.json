@@ -25,7 +25,8 @@
       "no": "否",
       "day": "天",
       "days": "天",
-      "seconds": "秒"
+      "seconds": "秒",
+      "required-error": "必要"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - 儀錶板",
       "breadcrumb-text": "Zero Trust Network Access 儀錶板",
+      "eap-program-message": "此產品根據提前存取計劃提供。按一下 \"反馈\" 報告錯誤或提供回饋意見。",
       "nodata": "无可用数据",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "狀態",
                 "version": "版本",
                 "support": "Sophos 支援",
-                "support-status": "Sophos 支援狀態"
+                "support-status": "Sophos 支援狀態",
+                "troubleshooting-logs": "疑難排解記錄"
               },
               "support-status": {
                 "connected": "已連線",
@@ -230,6 +233,15 @@
               }
             },
             "note": "為實現負載平衡，您必須具有奇數個執行個體。",
+            "troubleshoot": {
+              "logs": "疑難排解記錄",
+              "generate-logs": "產生記錄",
+              "troubleshoot-logs-info1": "您可以使用這些記錄和報告進行疑難排解或將其傳送至 Sophos 支援團隊。",
+              "troubleshoot-logs-info2": "產生記錄需要幾分鐘時間。您無需停留在此頁面。",
+              "troubleshoot-logs-info3": "下載將顯示在每個執行個體旁，5 小時內可用。"
+            },
+
+
             "add": "新增/編輯執行個體",
             "header": {
               "name": "名稱： ",
@@ -524,6 +536,16 @@
           "fetch-error": "無法擷取遠端偵錯詳情",
           "unreachable": "閘道無法存取伺服器。",
           "try-again": "請稍後重試。"
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "逾期：{{linkExpiryDate}}",
+          "expired": "下載連結已到期",
+          "success-msg": "正在產生記錄",
+          "error-msg": "產生記錄時出錯",
+          "status": {
+            "generating-log": "正在產生記錄"
+          },
+          "error": "出現錯誤，請稍後再試一次"
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "未找到閘道叢集欄位",
       "gateway.cluster.changeSizeInvalid": "在刪除舊執行個體之前，顯示更多執行個體，叢集大小應該大於 (n+1)/2",
       "gateway.not.connected.or.approved": "如果閘道未處於連線或批准狀態並且執行個體未處於活動狀態，則無法啟用遠端偵錯",
+      "gateway.key-cert.mismatch": "憑證和私有金鑰不匹配",
+      "gateway.log.collection.ongoing": "閘道已在收集記錄，請稍後再試一次",
+      "gateway.log.collection.wrong.request": "僅支援 COLLECT 狀態以獲取記錄",
+      "gateway.log.collection.no.active": "記錄收集未找到活動的執行個體",
       "policy.invalid": "提供的原則物件無效",
       "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
       "policy.valid-until.not.allowed": "如果未強制執行原則，則無法設定 validUntil",

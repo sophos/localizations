@@ -25,7 +25,8 @@
       "no": "Keine",
       "day": "Tag",
       "days": "Tage",
-      "seconds": "Sekunden"
+      "seconds": "Sekunden",
+      "required-error": "Erforderlich"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Dashboard",
       "breadcrumb-text": "Zero-Trust-Network-Access-Dashboard",
+      "eap-program-message": "Dieses Produkt wird im Rahmen des Early-Access-Programms bereitgestellt. Klicken Sie zum Melden von Bugs oder zur Abgabe von Feedback bitte auf \"Feedback\".",
       "nodata": "Keine Daten vorhanden",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "Status",
                 "version": "Version",
                 "support": "Sophos Support",
-                "support-status": "Sophos-Supportstatus"
+                "support-status": "Sophos-Supportstatus",
+                "troubleshooting-logs": "Fehlerbehebungs-Protokoll"
               },
               "support-status": {
                 "connected": "Verbunden",
@@ -230,6 +233,15 @@
               }
             },
             "note": "Für eine Lastverteilung benötigen Sie eine ungerade Instanzen-Anzahl.",
+            "troubleshoot": {
+              "logs": "Fehlerbehebungs-Protokolle",
+              "generate-logs": "Protokelle generieren",
+              "troubleshoot-logs-info1": "Sie können diese Protokolle und Berichte zur Problembehebung nutzen oder an den Support von Sophos senden.",
+              "troubleshoot-logs-info2": "Das Erstellen von Protokollen kann einige Minuten dauern. Sie müssen nicht auf dieser Seite bleiben.",
+              "troubleshoot-logs-info3": "Neben jeder Instanz wird ein Download-Link angezeigt, der 5 Stunden lang zur Verfügung steht."
+            },
+
+
             "add": "Instanzen hinzufügen/bearbeiten",
             "header": {
               "name": "Name: ",
@@ -524,6 +536,16 @@
           "fetch-error": "Fehler beim Abrufen der Remote-Debug-Details",
           "unreachable": "Das Gateway konnte den Server nicht erreichen.",
           "try-again": "Bitte versuchen Sie es später erneut."
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "Läuft ab: {{linkExpiryDate}}",
+          "expired": "Download-Link abgelaufen",
+          "success-msg": "Protokelle werden generiert",
+          "error-msg": "Fehler beim Generieren von Protokellen",
+          "status": {
+            "generating-log": "Protokoll wird generiert"
+          },
+          "error": "Fehler, bitte versuchen Sie es später erneut"
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "Gateway-Cluster-Feld nicht gefunden",
       "gateway.cluster.changeSizeInvalid": "Aktivieren Sie weitere Instanzen, bevor Sie die alten Instanzen löschen; die Clustergröße muss größer als (n+1)/2 sein",
       "gateway.not.connected.or.approved": "Remote-Debuggen kann nicht aktiviert werden, wenn das Gateway nicht den Status Verbunden oder Genehmigt hat und die Instanz nicht im aktiven Zustand ist",
+      "gateway.key-cert.mismatch": "Zertifikat und privater Schlüssel stimmen nicht überein",
+      "gateway.log.collection.ongoing": "Gateway sammelt bereits Protokolle. Versuchen Sie es später erneut",
+      "gateway.log.collection.wrong.request": "Beim Abrufen von Protokollen wird ausschließlich der Status „SAMMELN“ unterstützt",
+      "gateway.log.collection.no.active": "Keine aktiven Instanzen für Protokollsammlung gefunden",
       "policy.invalid": "Angegebenes Richtlinienobjekt ist ungültig",
       "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt muss vorhanden sein",
       "policy.valid-until.not.allowed": "'validUntil' kann nicht festgelegt werden, wenn Richtlinie nicht durchgesetzt ist",

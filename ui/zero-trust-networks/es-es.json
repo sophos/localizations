@@ -25,7 +25,8 @@
       "no": "No",
       "day": "día",
       "days": "días",
-      "seconds": "segundos"
+      "seconds": "segundos",
+      "required-error": "Necesario"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Panel de control",
       "breadcrumb-text": "Panel de control de Zero Trust Network Access",
+      "eap-program-message": "Este producto se ofrece dentro del programa de acceso temprano. Haga clic en \"Comentarios\" para informar de errores o dar su opinión.",
       "nodata": "No hay datos disponibles",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "Estado",
                 "version": "Versión",
                 "support": "Soporte de Sophos",
-                "support-status": "Estado del soporte de Sophos"
+                "support-status": "Estado del soporte de Sophos",
+                "troubleshooting-logs": "Registro de resolución de problemas"
               },
               "support-status": {
                 "connected": "Conectado",
@@ -230,6 +233,15 @@
               }
             },
             "note": "Para el equilibrio de carga, debe tener un número impar de instancias.",
+            "troubleshoot": {
+              "logs": "Registros de resolución de problemas",
+              "generate-logs": "Generar registros",
+              "troubleshoot-logs-info1": "Puede utilizar estos registros e informes para solucionar problemas o enviarlos al soporte de Sophos.",
+              "troubleshoot-logs-info2": "Los registros pueden tardar unos minutos en generarse. No es necesario que se quede en esta página.",
+              "troubleshoot-logs-info3": "Junto a cada instancia se mostrará una descarga que estará disponible durante 5 horas."
+            },
+
+
             "add": "Añadir/Editar instancias",
             "header": {
               "name": "Nombre: ",
@@ -524,6 +536,16 @@
           "fetch-error": "No se pueden obtener los detalles de la depuración remota",
           "unreachable": "La puerta de enlace no ha podido contactar con el servidor.",
           "try-again": "Inténtelo más tarde."
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "Caduca: {{linkExpiryDate}}",
+          "expired": "Enlace de descarga caducado",
+          "success-msg": "Generando registros",
+          "error-msg": "Error al generar registros",
+          "status": {
+            "generating-log": "Generando registro"
+          },
+          "error": "Error; inténtelo más tarde"
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "No se encuentra el campo del clúster de puerta de enlace",
       "gateway.cluster.changeSizeInvalid": "Abra más instancias antes de eliminar las instancias antiguas, el tamaño de clúster debe ser superior a (n+1)/2",
       "gateway.not.connected.or.approved": "La depuración remota no puede activarse si la puerta de enlace no está en estado conectado o aprobado y la instancia no está en estado activo",
+      "gateway.key-cert.mismatch": "El certificado y la clave privada no coinciden",
+      "gateway.log.collection.ongoing": "La puerta de enlace ya está recopilando registros; vuelva a intentarlo más tarde",
+      "gateway.log.collection.wrong.request": "Solo se admite el estado RECOPILAR para obtener registros",
+      "gateway.log.collection.no.active": "No se han encontrado instancias activas para la recopilación de registros",
       "policy.invalid": "El objeto de política indicado no es válido",
       "policy.isEnforced.notNull": "El campo isEnforced del objeto de política no puede ser nulo",
       "policy.valid-until.not.allowed": "validUntil no puede establecerse si la política no se aplica",

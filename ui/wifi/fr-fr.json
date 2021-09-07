@@ -14,14 +14,16 @@
       "update": "Mettre à jour",
       "start-date": "Date de début",
       "end-date": "Date de fin",
-      "confirmDeleteHeader": "Confirmation de la suppression",
+      "confirm-delete-header": "Confirmation de la suppression",
       "error": "Erreur",
       "success": "Succès",
       "retry": "Réessayer",
-      "accessPoints": "Points d’accès",
+      "access-points": "points d’accès",
+      "assign-accesspoints": "Assigner les point d’accès",
       "ssids": "SSID",
       "settings": "Paramètres",
       "sites": "Sites",
+      "site-name":"Nom du site",
       "statistic": "Statistiques",
       "devices": "Appareils",
       "reset": "Réinitialiser",
@@ -33,6 +35,7 @@
       "hide": "Masquer",
       "details": "Détails",
       "no-data": "Aucune donnée",
+      "no-records": "Aucun enregistrement",
       "beta": "bêta",
       "copied": "Copié",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "Go"
       },
       "create": "Créer",
-      "no": "Non"
+      "no": "Non",
+      "online": "Connecté",
+      "offline": "Hors connexion"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "Tableau de bord des produits",
       "page-title": "Tableau de bord - Wireless",
       "breadcrumb-text": "Tableau de bord Wireless"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "Appareils",
+        "title": "Sans fil - Appareils",
+        "show-chart": "Afficher le graphique",
+        "hide-chart": "Masquer le graphique",
+        "ghz-2-4": "2,4 GHz",
+        "ghz-5": "5 GHz",
+        "ghz-both": "2,4 GHz et 5 GHz",
+        "status-both": "Connecté et hors connexion"
+      },
+      "device-list": {
+        "show-period": "Afficher la période :",
+        "period-24-h": "24h",
+        "period-7-d": "7d",
+        "export-csv": "Exporter au format CSV",
+        "status": "État",
+        "name": "Nom de l’appareil",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "Nom d’utilisateur",
+        "vendor": "Fournisseur",
+        "access-point": "Points d’accès",
+        "ssid": "SSID",
+        "band": "Bande",
+        "connection-speed": "Vitesse de connexion",
+        "first-seen": "Première activité",
+        "last-seen": "Dernière activité",
+        "security-heartbeat": {
+          "security-heartbeat": "Security Heartbeat",
+          "health-status-red": "Client en danger",
+          "health-status-green": "Protégé",
+          "health-status-missing": "Security Heartbeat manquant",
+          "health-status-grey": "Aucun Security Heartbeat",
+          "health-status-yellow": "Étape potentiellement en danger",
+          "health-status-not-available": "Indisponible"
+        },
+        "no-devices-found": "Aucun client sans fil connecté à afficher.",
+        "pagination-text": "Affichage de {{ filtered }} clients. Total : {{ all }}."
+      }
     },
     "diagnostics": {
       "events": "Événements",
@@ -199,7 +245,44 @@
         "title": "Wireless - sites",
         "no-sites-defined": "Aucun site n’a été défini.",
         "delete-dialog-text": "Tous vos plans d’étage seront supprimés pour le site de ce client. Voulez-vous vraiment supprimer votre site {{site}} ?",
-        "confirm-delete-header": "Supprimer le site"
+        "confirm-delete-header": "Supprimer le site",
+        "online-_dynamic_": {
+          "false": "Hors connexion",
+          "true": "En ligne"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "Nom du site obligatoire.",
+        "maxlength": "Le nom du site ne doit pas dépasser 64 caractères."
+      },
+      "detail": {
+        "select-view": "Sélectionner la vue"
+      },
+      "network-list": {
+        "filter-placeholder": "Sélectionner l’option du filtre",
+        "filter-all-label": "Afficher tous les réseaux",
+        "classification": "Sélectionner la classification",
+        "edit-classification-prefix-label": "Marquer comme",
+        "filter-options": {
+          "rogue": "Non autorisé",
+          "trusted": "Fiable",
+          "untrusted": "Non fiable",
+          "advanced-impersonate": "Usurpation d’identité avancée",
+          "evil-twin": "Jumeau diabolique",
+          "bssid-impersonate": "Usurpation d’identité du BSSID",
+          "ssid-impersonate": "Usurpation d’identité du SSID",
+          "adhoc": "Ad hoc"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "Marquer comme Non autorisé",
+          "mark-as-trusted": "Marquer comme Fiable",
+          "mark-as-untrusted": "Marquer comme Non fiable",
+          "mark-as-advanced-impersonate": "Marquer comme Usurpation d’identité avancée",
+          "mark-as-evil-twin": "Marquer comme Jumeau diabolique",
+          "mark-as-bssid-impersonate": "Marquer comme Usurpation d’identité du BSSID",
+          "mark-as-ssid-impersonate": "Marquer comme Usurpation d’identité SSID",
+          "mark-as-adhoc": "Marquer comme Ad hoc"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "Format de fichier incompatible.",
           "file-size-exceed": "La taille du fichier dépasse le maximum autorisé."
         },
+        "start-time": "Heure de début",
+        "end-time": "Heure de fin",
         "accept-terms-and-conditions": "Acceptez les Conditions d’utilisation et connectez-vous"
       },
       "network-editor": {
@@ -427,6 +512,8 @@
         "mac-filter-header": "Filtrage MAC",
         "mac-filter-none": "Aucune",
         "mac-filter-blacklist": "Liste de blocage",
+        "scheduled": "Planifié",
+        "always": "Toujours",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "Adresses MAC",
         "blocked-mac-filter": "Les adresses MAC bloquées ne pourront pas se connecter à ce SSID.",

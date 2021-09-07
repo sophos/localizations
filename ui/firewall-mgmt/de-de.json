@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "Firewall-Verwaltung",
+    "tooltip": {
+      "title" : {
+        "name": "Name:",
+        "label": "Bezeichnung:"
+      }
+    },
     "cancel": "Abbrechen",
     "save": "Speichern",
     "confirm": "Bestätigen",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "Firmware-Upgrades",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} bis {{ to }} von {{ of }}",
         "column": {
           "name": "Name",
-          "no-of-customer": "# Kunden",
-          "sync-and-management": "Synchronisierung & Management",
-          "description": "Beschreibung"
+          "status": "Status",
+          "no-of-customers": "# Kunden",
+          "sync-and-management": "Synchronisierung und Verwaltung",
+          "description": "Beschreibung",
+          "version": "Version",
+          "model": "Modell",
+          "serial": "Seriennummer"
         },
         "menu": {
           "manage": "Richtlinien verwalten",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} Firewall(s)"
+          "firewalls" : "{{ count }} Firewall(s)",
+          "no-data": "Keine Untergruppen oder Firewalls gefunden.",
+          "error-groups": "Fehler beim Abrufen von Untergruppen-Details.",
+          "error-firewalls": "Fehler beim Abrufen von Firewall-Details.",
+          "error-both": "Fehler beim Abrufen von Untergruppen- und Firewall-Details."
         },
         "stats": {
-          "disconnected": "{{ count }} Getrennt",
-          "out-of-sync": "{{ count }} Nicht synchronisiert",
-          "suspended": "{{ count }} Vorübergehend außer Kraft gesetzt",
-          "connection-error": "Fehler beim Laden der Verbindungsstatistiken.",
-          "sync-error": "Fehler beim Laden der Synchronisierungsstatistiken."
+          "sync": {
+            "state" : "{{ count }} Synchronisiert",
+            "header":  {
+              "one":  "Eine Firewall wurde synchronisiert",
+              "more":  "{{ count }} Firewalls wurden synchronisiert"
+            },
+            "subtext": "Richtlinien in diesen Firewalls befinden sich auf dem aktuellen Stand."
+          },
+          "syncing": {
+            "state" : "{{ count }} Synchronisieren",
+            "header":  {
+              "one":  "Eine Firewall wird synchronisiert",
+              "more":  "{{ count }} Firewalls werden synchronisiert"
+            },
+            "subtext": "Richtlinien werden auf diese Firewalls übertragen. Rufen Sie die Auftrags-Warteschlange auf, um den Fortschritt zu überwachen."
+          },
+          "outofsync": {
+            "state": "{{ count }} Nicht synchronisiert",
+            "header": {
+              "one": "Bei einer Firewall ist die Anwendung der Richtlinien fehlgeschlagen",
+              "more": "Bei {{ count }} Firewalls ist die Anwendung der Richtlinien fehlgeschlagen"
+            },
+            "subtext": "In der Auftrags-Warteschlange im Kunden-Dashboard können Sie fehlgeschlagene Auftrage wiederholen oder überspringen."
+          },
+          "disconnected": {
+            "state": "{{ count }} Getrennt",
+            "header": {
+              "one": "Eine Firewall sendet keine Heartbeats an Sophos Central",
+              "more": "{{ count }} Firewalls senden keine Heartbeats an Sophos Central."
+            },
+            "subtext": "Prüfen Sie bitte die Internetverbindung der Firewalls."
+          },
+          "suspended": {
+            "state": "{{ count }} Vorübergehend außer Kraft gesetzt",
+            "header": {
+              "one": "Eine Firewall wurde aufgrund anhaltender Fehler vorübergehend außer Kraft gesetzt",
+              "more": "{{ count }} Firewalls wurden aufgrund anhaltender Fehler vorübergehend außer Kraft gesetzt"
+            },
+            "subtext": "Verschieben Sie bitte die Firewalls aus der Gruppe und fügen Sie sie erneut im Kunden-Dashboard hinzu."
+          },
+          "total-of": "{{ total }} Firewalls.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "Fehler beim Laden der Statistik-Details."
         },
-        "overlay-stats": {
-            "connected": " Alle Firewalls sind mit Sophos Central verbunden und synchronisiert.",
-            "disconnected": "Verbleibende {{ count }} Firewalls senden einen Security Heartbeat.",
-            "out-of-sync": "Verbleibende {{ count }} Firewalls sind synchronisiert. Der Fehler muss behoben werden, damit weitere Richtlinienänderungen wirksam werden.",
-            "suspended": "Die Gruppenrichtlinien für diese Firewalls werden nicht synchronisiert. Verschieben Sie diese Firewalls aus den Gruppen und fügen Sie sie erneut hinzu, um neue Gruppenrichtlinien zu erhalten. "
-         },
-        "header": {
-            "connected": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind mit Sophos Central verbunden.",
-            "disconnected": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind von Sophos Central getrennt.",
-            "out-of-sync": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind nicht mit Sophos Central synchronisiert.",
-            "suspended": "{{ count }} Firewalls von {{ totalCount }} {{ type }} sind angehalten (suspended)."
-         }
+         "no-customers": "Keine Kunden wurden dieser Vorlage zugewiesen."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "getrennt",
         "approval-pending": "Genehmigung steht aus",
         "management-disabled": "Management deaktiviert",
-        "synchronizing": "Wird synchronisiert",
-        "synchronized": "Synchronisiert"
+        "syncing": "Wird synchronisiert",
+        "sync": "Synchronisiert",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "Letzter Kontakt {{ time }}",
+        "registered": "Nicht durch Sophos Central verwaltet",
+        "pending": "Genehmigung steht aus",
+        "no-reporting": "Central Reporting ist deaktiviert",
+        "waiting": "Warten auf Bereitstellung",
+        "initializing": "Initialisierung",
+        "disconnected": "Verbindung getrennt",
+        "connected": "Verbunden",
+        "sync": "Synchronisiert",
+        "syncing": "Synchronisierung läuft",
+        "outofsync": "Fehler braucht Aufmerksamkeit",
+        "unmanaged": "Verwaltung ist deaktiviert",
+        "tooltip": {
+          "waiting": "Light Touch-Bereitstellungsprozess abschließen",
+          "sync": "Erfolgreich synchronisiert {{ time }}",
+          "syncing": {
+            "current": "Synchronisierung gestartet {{ time }}",
+            "past": "Richtlinien wurden angewendet {{ time }}"
+          },
+          "suspended": "Firewall ist angehalten.",
+          "unsupported": "Firewall-Gruppen werden nicht unterstützt",
+          "initializing": "Services werden initialisiert...",
+          "outofsync": "Anwendung einer Richtlinie fehlgeschlagen",
+          "disconnected": "Fehlt seit {{ time }}",
+          "connected": "Verbunden seit {{ time }}",
+          "subtext": {
+            "registered": "Registriert bei Sophos Central für Security Heartbeat. Aber nicht verwaltet",
+            "pending": "Diese Firewall wartet auf Ihre Zustimmung zur Verwaltung in Sophos Central",
+            "no-reporting": "Reporting ist bei der Firewall nicht aktiviert.",
+            "report-pending": "Central Reporting ist für die Firewall aktiviert und wartet auf Ihre Bestätigung.",
+            "waiting": "Speichern Sie die Konfiguration auf einem USB-Gerät, Verbinden Sie sich mit der Firewall, Stellen Sie eine Verbindung mit dem Internet her und schalten Sie ein.",
+            "initializing": "Warten auf die Firewall-Informationen",
+            "disconnected": "Security Heartbeats werden nicht empfangen.",
+            "connected": "Es werden Security Heartbeats empfangen.",
+            "sync": "Alle Richtlinien wurden auf die Firewall angewendet.",
+            "time": "{{ time }}",
+            "syncing": "Dies kann einige Zeit dauern, da die Richtlinien auf Remote-Geräte übertragen werden.",
+            "outofsync": "Der Fehler muss behoben werden, damit weitere Richtlinienänderungen wirksam werden.",
+            "suspended": "Die Gruppenrichtlinien werden nicht synchronisiert. Verschieben Sie diese Firewall aus der Gruppe und fügen Sie sie erneut hinzu, um neue Richtlinien von der Gruppe zu erhalten.",
+            "unsupported": "Nur Firewalls mit Version 18.X oder höher unterstützen Firewall-Gruppen."
+          }
+        }
       }
     }
   }

@@ -14,14 +14,16 @@
       "update": "Atualizar",
       "start-date": "Data de Início",
       "end-date": "Data de término",
-      "confirmDeleteHeader": "Confirmar deleção",
+      "confirm-delete-header": "Confirmar deleção",
       "error": "Erro",
       "success": "Bem-sucedido",
       "retry": "Tentar novamente",
-      "accessPoints": "Pontos de Acesso",
+      "access-points": "pontos de acesso",
+      "assign-accesspoints": "Atribuir pontos de acesso",
       "ssids": "SSIDs",
       "settings": "Configurações",
       "sites": "Sites",
+      "site-name":"Nome do site",
       "statistic": "Estatística",
       "devices": "Dispositivos",
       "reset": "Redefinir",
@@ -33,6 +35,7 @@
       "hide": "Ocultar",
       "details": "Detalhes",
       "no-data": "Nenhum dado",
+      "no-records": "Nenhum registro",
       "beta": "beta",
       "copied": "Copiado",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "GB"
       },
       "create": "Criar",
-      "no": "Não"
+      "no": "Não",
+      "online": "Online",
+      "offline": "Offline"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "Painel de controle do produto",
       "page-title": "Sem Fio - Painel",
       "breadcrumb-text": "Painel de Controle de Rede Sem Fio"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "Dispositivos",
+        "title": "Sem Fio - Dispositivos",
+        "show-chart": "Exibir gráficos",
+        "hide-chart": "Ocultar gráficos",
+        "ghz-2-4": "2,4 GHz",
+        "ghz-5": "5 GHz",
+        "ghz-both": "2,4 GHz e 5 GHz",
+        "status-both": "Online e Offline"
+      },
+      "device-list": {
+        "show-period": "Exibir período:",
+        "period-24-h": "24h",
+        "period-7-d": "7d",
+        "export-csv": "Exportar para CSV",
+        "status": "Status",
+        "name": "Nome do dispositivo",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "Nome de usuário",
+        "vendor": "Fornecedor",
+        "access-point": "Ponto de acesso",
+        "ssid": "SSID",
+        "band": "Banda",
+        "connection-speed": "Velocidade de conexão",
+        "first-seen": "Primeira visualização",
+        "last-seen": "Última visualização",
+        "security-heartbeat": {
+          "security-heartbeat": "Security Heartbeat",
+          "health-status-red": "Cliente em risco",
+          "health-status-green": "Protegido",
+          "health-status-missing": "Security Heartbeat ausente",
+          "health-status-grey": "Sem Security Heartbeat",
+          "health-status-yellow": "O estágio pode estar em risco",
+          "health-status-not-available": "Não disponível"
+        },
+        "no-devices-found": "Nenhum cliente sem fio conectado para exibir.",
+        "pagination-text": "Exibindo {{ filtered }} clientes. Total {{ all }}"
+      }
     },
     "diagnostics": {
       "events": "Eventos",
@@ -199,7 +245,44 @@
         "title": "Sem Fio - Sites",
         "no-sites-defined": "Não há sites definidos.",
         "delete-dialog-text": "Todas as plantas baixas serão deletadas da localidade deste cliente. Tem certeza de que deseja deletar o site {{site}}?",
-        "confirm-delete-header": "Deletar localidade"
+        "confirm-delete-header": "Deletar localidade",
+        "online-_dynamic_": {
+          "false": "Offline",
+          "true": "Online"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "É necessário um nome de localidade.",
+        "maxlength": "O nome da localidade deve ter um máximo de 64 caracteres."
+      },
+      "detail": {
+        "select-view": "Selecionar exibição"
+      },
+      "network-list": {
+        "filter-placeholder": "Selecione uma opção de filtro",
+        "filter-all-label": "Exibir todas as redes",
+        "classification": "Selecionar Classificação",
+        "edit-classification-prefix-label": "Marcar como",
+        "filter-options": {
+          "rogue": "Ilegítimo",
+          "trusted": "Confiável",
+          "untrusted": "Não confiável",
+          "advanced-impersonate": "Representação avançada",
+          "evil-twin": "Gêmeo maligno",
+          "bssid-impersonate": "Representação de BSSID",
+          "ssid-impersonate": "Representação de SSID",
+          "adhoc": "Adhoc"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "Marcar como Ilegítimo",
+          "mark-as-trusted": "Marcar como Confiável",
+          "mark-as-untrusted": "Marcar como Não confiável",
+          "mark-as-advanced-impersonate": "Marcar como Representação avançada",
+          "mark-as-evil-twin": "Marcar como Gêmeo maligno",
+          "mark-as-bssid-impersonate": "Marcar como Representação de BSSID",
+          "mark-as-ssid-impersonate": "Marcar como Representação de SSID",
+          "mark-as-adhoc": "Marcar como Adhoc"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "O formato de arquivo não é compatível.",
           "file-size-exceed": "O arquivo ultrapassou o tamanho máximo."
         },
+        "start-time": "Hora de início",
+        "end-time": "Hora de término",
         "accept-terms-and-conditions": "Aceitar Termos e Condições e conectar"
       },
       "network-editor": {
@@ -427,6 +512,8 @@
         "mac-filter-header": "Filtragem de MAC",
         "mac-filter-none": "Nenhum",
         "mac-filter-blacklist": "Lista de bloqueadas",
+        "scheduled": "Agendada",
+        "always": "Sempre",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "Endereços de MAC",
         "blocked-mac-filter": "Endereços de MAC bloqueados não poderão se conectar a este SSID.",

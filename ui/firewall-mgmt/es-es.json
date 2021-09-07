@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "Administración del firewall",
+    "tooltip": {
+      "title" : {
+        "name": "Nombre:",
+        "label": "Etiqueta:"
+      }
+    },
     "cancel": "Cancelar",
     "save": "Guardar",
     "confirm": "Confirmar",
@@ -432,7 +438,7 @@
               "enable": "Configurar Seguridad Sincronizada con Security Heartbeat",
               "src": "HB de origen mínimo permitido",
               "dst": "HB de destino mínimo permitido",
-              "block-clients": "Bloquear clientes sin latido",
+              "block-clients": "Bloquear clientes sin Heartbeat",
               "block-requests": "Bloquear solicitud al destino sin Heartbeat"
             }
           },
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "Actualizaciones de firmware",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} a {{ to }} de {{ of }}",
         "column": {
           "name": "Nombre",
-          "no-of-customer": "# clientes",
+          "status": "Estado",
+          "no-of-customers": "# clientes",
           "sync-and-management": "Sincronización y administración",
-          "description": "Descripción"
+          "description": "Descripción",
+          "version": "Versión",
+          "model": "Modelo",
+          "serial": "Número de serie"
         },
         "menu": {
           "manage": "Administrar política",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} firewall(s)"
+          "firewalls" : "{{ count }} firewall(s)",
+          "no-data": "No se han encontrado subgrupos ni firewalls.",
+          "error-groups": "Error al obtener los detalles de subgrupos.",
+          "error-firewalls": "Error al obtener los detalles de firewalls.",
+          "error-both": "Error al obtener los detalles de subgrupos y de firewalls."
         },
         "stats": {
-          "disconnected": "{{ count }} desconectado(s)",
-          "out-of-sync": "{{ count }} no sincronizado(s)",
-          "suspended": "{{ count }} suspendido(s)",
-          "connection-error": "Error al cargar las estadísticas de conexión.",
-          "sync-error": "Error al cargar las estadísticas de sincronización."
+          "sync": {
+            "state" : "{{ count }} sincronizado",
+            "header":  {
+              "one":  "Un firewall está sincronizado",
+              "more":  "{{ count }} firewalls están sincronizados"
+            },
+            "subtext": "Las políticas están actualizadas en estos firewalls."
+          },
+          "syncing": {
+            "state" : "{{ count }} sincronizando",
+            "header":  {
+              "one":  "Un firewall se está sincronizando",
+              "more":  "{{ count }} firewalls se están sincronizando"
+            },
+            "subtext": "Las políticas se están transfiriendo a estos firewalls. Consulte la cola de tareas para supervisar el progreso."
+          },
+          "outofsync": {
+            "state": "{{ count }} sin sincronizar",
+            "header": {
+              "one": "Un firewall no ha aplicado las políticas",
+              "more": "{{ count }} firewalls no han aplicado las políticas"
+            },
+            "subtext": "Consulte la cola de tareas en el panel de control del cliente para reintentar u omitir las tareas con errores."
+          },
+          "disconnected": {
+            "state": "{{ count }} desconectado(s)",
+            "header": {
+              "one": "Un firewall no envía informes de Heartbeat a Sophos Central",
+              "more": "{{ count }} firewalls no envían informes de Heartbeat a Sophos Central."
+            },
+            "subtext": "Compruebe la conexión de los firewalls a Internet."
+          },
+          "suspended": {
+            "state": "{{ count }} suspendido(s)",
+            "header": {
+              "one": "Un firewall está suspendido debido a continuos errores",
+              "more": "{{ count }} firewalls están suspendidos debido a continuos errores"
+            },
+            "subtext": "Mueva los firewalls fuera del grupo y añádalos de nuevo en el panel de control del cliente."
+          },
+          "total-of": "{{ total }} firewalls.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "Error al cargar detalles estadísticos."
         },
-        "overlay-stats": {
-            "connected": " Todos los firewalls están conectados y sincronizados con Sophos Central.",
-            "disconnected": "El/Los {{ count }} firewall(s) restante(s) está(n) enviando latidos de Security Heartbeat.",
-            "out-of-sync": "El/Los {{ count }} firewall(s) restante(s) está(n) sincronizado(s). Es necesario resolver el fallo para aplicar más cambios de políticas.",
-            "suspended": "Las políticas de grupo para estos firewalls no se sincronizarán. Saque estos firewalls de sus grupos y vuelva a añadirlos para obtener nuevas políticas del grupo. "
-         },
-        "header": {
-            "connected": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} está(n) conectado(s) a Sophos Central.",
-            "disconnected": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} está(n) desconectado(s) de Sophos Central.",
-            "out-of-sync": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} no está(n) sincronizado(s) con Sophos Central.",
-            "suspended": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} está(n) en estado suspendido."
-         }
+         "no-customers": "No hay clientes asignados a esta plantilla."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "desconectado",
         "approval-pending": "Aprobación pendiente",
         "management-disabled": "Administración desactivada",
-        "synchronizing": "Sincronizando",
-        "synchronized": "Sincronizado"
+        "syncing": "Sincronizando",
+        "sync": "Sincronizado",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "Visto por última vez {{ time }}",
+        "registered": "No administrado por Sophos Central",
+        "pending": "Aprobación pendiente",
+        "no-reporting": "Central Reporting está desactivado",
+        "waiting": "Esperando despliegue",
+        "initializing": "Inicializando",
+        "disconnected": "Desconectado",
+        "connected": "Conectado",
+        "sync": "Sincronizado",
+        "syncing": "Sincronizando",
+        "outofsync": "El error requiere atención",
+        "unmanaged": "La administración está desactivada",
+        "tooltip": {
+          "waiting": "Complete el proceso de despliegue de Lite Touch",
+          "sync": "Sincronización correcta {{ time }}",
+          "syncing": {
+            "current": "Sincronización iniciada {{ time }}",
+            "past": "Se estaban aplicando políticas {{ time }}"
+          },
+          "suspended": "El firewall está suspendido.",
+          "unsupported": "Los grupos de firewalls no son compatibles",
+          "initializing": "Inicializando servicios...",
+          "outofsync": "No se ha podido aplicar una política",
+          "disconnected": "Falta desde {{ time }}",
+          "connected": "Conectada desde {{ time }}",
+          "subtext": {
+            "registered": "Registrado en Sophos Central para Security Heartbeat. Pero no administrado",
+            "pending": "Este firewall está esperando su aceptación para ser gestionado en Sophos Central",
+            "no-reporting": "El firewall no tiene activada la generación de informes.",
+            "report-pending": "Central Reporting está activado en este firewall y está esperando su aceptación.",
+            "waiting": "Guarde la configuración en USB, conéctese al firewall, conéctese a Internet y encienda el equipo.",
+            "initializing": "Esperando la información del firewall",
+            "disconnected": "No se están recibiendo informes de Security Heartbeat.",
+            "connected": "Se están recibiendo informes de Security Heartbeat.",
+            "sync": "Todas las políticas se han aplicado al firewall.",
+            "time": "{{ time }}",
+            "syncing": "Este proceso puede tardar algún tiempo porque las políticas se están distribuyendo a los dispositivos remotos.",
+            "outofsync": "Es necesario resolver el fallo para aplicar más cambios de políticas.",
+            "suspended": "Las políticas de grupo no se sincronizarán. Saque este firewall del grupo y vuelva a añadirlo para obtener nuevas políticas del grupo.",
+            "unsupported": "Solo los firewalls con la versión 18.X o superior admiten grupos de firewalls."
+          }
+        }
       }
     }
   }
