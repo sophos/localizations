@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "Gerenciamento de Firewall",
+    "tooltip": {
+      "title" : {
+        "name": "Nome:",
+        "label": "Rótulo:"
+      }
+    },
     "cancel": "Cancelar",
     "save": "Salvar",
     "confirm": "Confirmar",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "Upgrades de firmware",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} a {{ to }} de {{ of }}",
         "column": {
           "name": "Nome",
-          "no-of-customer": "Nº de clientes",
+          "status": "Status",
+          "no-of-customers": "Nº de clientes",
           "sync-and-management": "Sincronização e Gerenciamento",
-          "description": "Descrição"
+          "description": "Descrição",
+          "version": "Versão",
+          "model": "Modelo",
+          "serial": "Número de série"
         },
         "menu": {
           "manage": "Gerenciar política",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} firewall(s)"
+          "firewalls" : "{{ count }} firewall(s)",
+          "no-data": "Nenhum subgrupo ou firewall encontrado.",
+          "error-groups": "Erro ao obter detalhes do subgrupo.",
+          "error-firewalls": "Erro ao obter detalhes do firewall.",
+          "error-both": "Erro ao obter detalhes dos subgrupos e firewall."
         },
         "stats": {
-          "disconnected": "{{ count }} desconectado(s)",
-          "out-of-sync": "{{ count }} fora de sincronização",
-          "suspended": "{{ count }} suspenso(s)",
-          "connection-error": "Erro ao carregar estatísticas de conexão.",
-          "sync-error": "Erro ao carregar estatísticas de sincronização."
+          "sync": {
+            "state" : "{{ count }} sincronizado(s)",
+            "header":  {
+              "one":  "Um firewall está sincronizado",
+              "more":  "{{ count }} firewalls estão sincronizados"
+            },
+            "subtext": "As políticas estão atualizadas nesses firewalls."
+          },
+          "syncing": {
+            "state" : "{{ count }} em sincronização",
+            "header":  {
+              "one":  "Um firewall está sendo sincronizado",
+              "more":  "{{ count }} firewalls estão sendo sincronizados"
+            },
+            "subtext": "As políticas estão sendo enviadas a esses firewalls. Vá para a guia Fila de tarefas para monitorar o andamento."
+          },
+          "outofsync": {
+            "state": "{{ count }} fora de sincronização",
+            "header": {
+              "one": "Um firewall apresentou falha ao aplicar as políticas",
+              "more": "{{ count }} firewalls apresentaram falha ao aplicar as políticas"
+            },
+            "subtext": "Vá para a guia Fila de tarefas, no painel do cliente, para tentar novamente ou ignore as tarefas com falha."
+          },
+          "disconnected": {
+            "state": "{{ count }} desconectado(s)",
+            "header": {
+              "one": "Um firewall não está enviando pulsações de segurança para o Sophos Central",
+              "more": "{{ count }} firewalls não estão enviando pulsações de segurança para o Sophos Central."
+            },
+            "subtext": "Verifique a conexão dos firewalls à internet."
+          },
+          "suspended": {
+            "state": "{{ count }} suspenso(s)",
+            "header": {
+              "one": "Um firewall está suspenso devido a erros contínuos",
+              "more": "{{ count }} firewalls estão suspensos devido a erros contínuos"
+            },
+            "subtext": "Mova os firewalls para fora do grupo e adicione-os novamente no painel do cliente."
+          },
+          "total-of": "{{ total }} firewalls.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "Erro ao carregar os detalhes das estatísticas."
         },
-        "overlay-stats": {
-            "connected": " Todos os firewalls estão conectados e sincronizados com o Sophos Central.",
-            "disconnected": "Os {{ count }} firewalls restantes estão enviando pulsações de segurança.",
-            "out-of-sync": "Os {{ count }} firewalls restantes estão sincronizados. A falha precisa ser examinada para a aplicação de mais alterações da política.",
-            "suspended": "As políticas de grupo destes firewalls não serão sincronizadas. Mova esses firewalls para fora do grupo e adicione-os novamente para obterem novas políticas de grupo. "
-         },
-        "header": {
-            "connected": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} estão conectados ao Sophos Central.",
-            "disconnected": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} estão desconectados do Sophos Central.",
-            "out-of-sync": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} estão fora de sincronia com o Sophos Central.",
-            "suspended": "{{ count }} firewall(s) de {{ totalCount }} {{ type }} estão no estado suspenso."
-         }
+         "no-customers": "Não há clientes atribuídos a este modelo."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "desconectado",
         "approval-pending": "Aprovação pendente",
         "management-disabled": "Gerenciamento desabilitado",
-        "synchronizing": "Em sincronização",
-        "synchronized": "Sincronizado"
+        "syncing": "Em sincronização",
+        "sync": "Sincronizado",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "Última visualização às {{ time }}",
+        "registered": "Não gerenciado pelo Sophos Central",
+        "pending": "Aprovação pendente",
+        "no-reporting": "O Central Reporting está desativado",
+        "waiting": "Aguardando implantação",
+        "initializing": "Inicializando",
+        "disconnected": "Desconectado",
+        "connected": "Conectado",
+        "sync": "Sincronizado",
+        "syncing": "Em sincronização",
+        "outofsync": "Erro requer atenção",
+        "unmanaged": "O Gerenciamento está desativado",
+        "tooltip": {
+          "waiting": "Conclua o processo de Implantação de Light-Touch",
+          "sync": "Sincronização bem-sucedida às {{ time }}",
+          "syncing": {
+            "current": "A sincronização começou às {{ time }}",
+            "past": "As políticas estavam sendo aplicadas às {{ time }}"
+          },
+          "suspended": "O Firewall está suspenso.",
+          "unsupported": "Grupos de firewall não são aceitos",
+          "initializing": "Inicializando serviços...",
+          "outofsync": "Falha ao aplicar uma política",
+          "disconnected": "Ausente desde {{ time }}",
+          "connected": "Conectado desde {{ time }}",
+          "subtext": {
+            "registered": "Registrado no Sophos Central para Security Heartbeat. Porém não gerenciado",
+            "pending": "Este firewall está aguardando a sua aceitação para ser gerenciado no Sophos Central",
+            "no-reporting": "O Reporting não está ativado neste firewall.",
+            "report-pending": "O Central Reporting está ativado neste firewall e aguardando pela sua aceitação.",
+            "waiting": "Salvar configuração na unidade USB, conectar-se ao firewall, conectar-se à Internet e ligar.",
+            "initializing": "Aguardando informações do firewall",
+            "disconnected": "As pulsações de segurança não estão sendo recebidas.",
+            "connected": "As pulsações de segurança estão sendo recebidas.",
+            "sync": "Todas as políticas foram aplicadas ao firewall.",
+            "time": "{{ time }}",
+            "syncing": "Isso pode demorar, pois as políticas são enviadas aos dispositivos remotos por push.",
+            "outofsync": "A falha precisa ser examinada para a aplicação de mais alterações da política.",
+            "suspended": "As políticas de grupo não serão sincronizadas. Mova este firewall para fora do grupo e adicione-o novamente para obter novas políticas do grupo.",
+            "unsupported": "Somente firewalls com versão 18.X ou acima aceitam Grupos de Firewall."
+          }
+        }
       }
     }
   }

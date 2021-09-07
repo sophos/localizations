@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "防火牆管理",
+    "tooltip": {
+      "title" : {
+        "name": "名稱：",
+        "label": "標籤："
+      }
+    },
     "cancel": "取消",
     "save": "儲存",
     "confirm": "確認",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "韌體更新",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} 至 {{ to }} / {{ of }}",
         "column": {
           "name": "名稱",
-          "no-of-customer": "# 客戶",
-          "sync-and-management": "同步及管理",
-          "description": "說明"
+          "status": "狀態",
+          "no-of-customers": "# 客戶",
+          "sync-and-management": "同步和管理",
+          "description": "描述",
+          "version": "版本",
+          "model": "型號",
+          "serial": "序號"
         },
         "menu": {
           "manage": "管理策略",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} 防火牆"
+          "firewalls" : "{{ count }} 防火牆",
+          "no-data": "未找到子群組或防火墻。",
+          "error-groups": "獲取子群組詳細資料時出錯。",
+          "error-firewalls": "獲取防火墻詳細資料時出錯。",
+          "error-both": "獲取子群組和防火墻詳細資料時出錯。"
         },
         "stats": {
-          "disconnected": "{{ count }} 個已中斷連線",
-          "out-of-sync": "{{ count }} 個非同步",
-          "suspended": "{{ count }} 個已暫停",
-          "connection-error": "載入連線統計資料時出錯。",
-          "sync-error": "載入同步統計資料時出錯。"
+          "sync": {
+            "state" : "已同步 {{ count }}",
+            "header":  {
+              "one":  "已同步一個防火墻",
+              "more":  "已同步 {{ count }} 個防火墻"
+            },
+            "subtext": "這些防火墻中的原則為最新狀態。"
+          },
+          "syncing": {
+            "state" : "{{ count }} 同步中",
+            "header":  {
+              "one":  "一個防火墻正在同步中",
+              "more":  "{{ count }} 個防火墻正在同步中"
+            },
+            "subtext": "正在將原則推送到這些防火墻。造訪工作佇列以監視進程。"
+          },
+          "outofsync": {
+            "state": "{{ count }} 未同步",
+            "header": {
+              "one": "一個防火墻未能套用原則",
+              "more": "{{ count }} 個防火墻未能套用原則"
+            },
+            "subtext": "造訪客戶儀表板中的工作佇列以重試或跳過失敗的工作。"
+          },
+          "disconnected": {
+            "state": "{{ count }} 個已中斷連線",
+            "header": {
+              "one": "一個防火墻未將活動訊號傳送至 Sophos Central",
+              "more": "{{ count }} 個防火墻未將活動訊號傳送至 Sophos Central。"
+            },
+            "subtext": "請檢查防火墻與網際網路的連線情況。"
+          },
+          "suspended": {
+            "state": "{{ count }} 個已暫停",
+            "header": {
+              "one": "由於錯誤持續存在，一個防火墻已擱置",
+              "more": "由於錯誤持續存在，{{ count }} 個防火墻已擱置"
+            },
+            "subtext": "請將防火墻移出群組，然後在客戶儀表板中再次新增它。"
+          },
+          "total-of": "{{ total }} 個防火牆。",
+          "stats-alert": "{{ messages }}",
+          "error-both": "載入統計詳細資料時出錯。"
         },
-        "overlay-stats": {
-            "connected": " 所有防火墻均已連線至 Sophos Central 並與其同步。",
-            "disconnected": "剩餘的 {{ count }} 個防火墻正在傳送安全活動訊號。",
-            "out-of-sync": "剩餘的 {{ count }} 個防火墻已同步。需要解決此故障，才能套用進一步的策略變更。",
-            "suspended": "這些防火墻的群組原則將不會同步。將這些防火墻移出各自的群組，然後再次新增以獲取新的群組原則。 "
-         },
-        "header": {
-            "connected": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻已連線至 Sophos Central。",
-            "disconnected": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻已斷開與 Sophos Central 的連線。",
-            "out-of-sync": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻與 Sophos Central 不同步。",
-            "suspended": "{{ totalCount }} 個 {{ type }} 中的 {{ count }} 個防火墻處於擱置狀態。"
-         }
+         "no-customers": "未將任何客戶指派到此範本。"
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "已斷開連線",
         "approval-pending": "核准擱置",
         "management-disabled": "管理已停用",
-        "synchronizing": "同步中",
-        "synchronized": "已經同步"
+        "syncing": "同步中",
+        "sync": "已經同步",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "上次出現於 {{ time }}",
+        "registered": "並非由 Sophos Central 管理",
+        "pending": "核准擱置",
+        "no-reporting": "Central Reporting 已關閉",
+        "waiting": "正在等待部署",
+        "initializing": "正在初始化",
+        "disconnected": "已中斷連線",
+        "connected": "已連線",
+        "sync": "已經同步",
+        "syncing": "同步中",
+        "outofsync": "錯誤需要注意",
+        "unmanaged": "管理已關閉",
+        "tooltip": {
+          "waiting": "完成輕觸部署過程",
+          "sync": "成功同步 {{ time }}",
+          "syncing": {
+            "current": "同步已開始 {{ time }}",
+            "past": "原則已套用 {{ time }}"
+          },
+          "suspended": "防火牆已暫停。",
+          "unsupported": "防火墻群組不受支援。",
+          "initializing": "正在初始化服務…",
+          "outofsync": "無法套用策略",
+          "disconnected": "{{ time }} 後缺失",
+          "connected": "{{ time }} 後已連線",
+          "subtext": {
+            "registered": "註冊到 Sophos Central 以獲取安全活動訊號。並未管理",
+            "pending": "防火牆正在等待您的接受以透過 Sophos Central 託管",
+            "no-reporting": "防火墻未開啟報告。",
+            "report-pending": "Central Reporting 已在此防火墻中開啟，正等待您的接受。",
+            "waiting": "將配置儲存至 USB、連接至防火牆、連接至網際網路，然後開啟。",
+            "initializing": "等待防火牆資訊",
+            "disconnected": "沒有收到安全活動訊號。",
+            "connected": "正在接收安全活動訊號。",
+            "sync": "所有策略均已套用至防火牆。",
+            "time": "{{ time }}",
+            "syncing": "由於正在將策略推送到遠端裝置，因此此動作可能需要一些時間。",
+            "outofsync": "需要解決此故障，才能套用進一步的策略變更。",
+            "suspended": "群組原則將不會同步。將此防火墻移出群組，然後再次新增以從群組獲取新原則。",
+            "unsupported": "只有 18.X 或以上版本的防火牆才支援防火牆組。"
+          }
+        }
       }
     }
   }

@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "Gestione del firewall",
+    "tooltip": {
+      "title" : {
+        "name": "Nome:",
+        "label": "Etichetta:"
+      }
+    },
     "cancel": "Annulla",
     "save": "Salva",
     "confirm": "Conferma",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "Upgrade del firmware in corso",
@@ -592,9 +599,13 @@
         "pagination": "Da {{ from }} a {{ to }} su {{ of }}",
         "column": {
           "name": "Nome",
-          "no-of-customer": "Num. clienti",
+          "status": "Stato",
+          "no-of-customers": "Num. clienti",
           "sync-and-management": "Sincronizzazione e gestione",
-          "description": "Descrizione"
+          "description": "Descrizione",
+          "version": "Versione",
+          "model": "Modello",
+          "serial": "Numero di serie"
         },
         "menu": {
           "manage": "Gestisci criterio",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} firewall"
+          "firewalls" : "{{ count }} firewall",
+          "no-data": "Nessun sottogruppo o firewall trovato.",
+          "error-groups": "Errore durante il recupero dei dettagli del sottogruppo.",
+          "error-firewalls": "Errore durante il recupero dei dettagli del firewall.",
+          "error-both": "Errore durante il recupero dei dettagli dei sottogruppi e del firewall."
         },
         "stats": {
-          "disconnected": "{{ count }} disconnesso/i",
-          "out-of-sync": "{{ count }} non sincronizzato/i",
-          "suspended": "{{ count }} sospeso/i",
-          "connection-error": "Errore durante il caricamento delle statistiche di connessione.",
-          "sync-error": "Errore durante il caricamento delle statistiche di sincronizzazione."
+          "sync": {
+            "state" : "{{ count }} sincronizzato/i",
+            "header":  {
+              "one":  "Un firewall è sincronizzato",
+              "more":  "{{ count }} firewall sono sincronizzati"
+            },
+            "subtext": "I criteri sono aggiornati in questi firewall."
+          },
+          "syncing": {
+            "state" : "{{ count }} con sincronizzazione in corso",
+            "header":  {
+              "one":  "Un firewall sta effettuando la sincronizzazione",
+              "more":  "Sincronizzazione in corso su {{ count }} firewall"
+            },
+            "subtext": "Questi firewall stanno ricevendo criteri tramite push. Visita la coda delle attività per monitorare lo stato di avanzamento."
+          },
+          "outofsync": {
+            "state": "{{ count }} non sincronizzato/i",
+            "header": {
+              "one": "Un firewall non è riuscito ad applicare i criteri",
+              "more": "{{ count }} firewall non sono riusciti ad applicare i criteri"
+            },
+            "subtext": "Visita la coda delle attività nella dashboard del cliente per riprovare o per saltare le attività non riuscite."
+          },
+          "disconnected": {
+            "state": "{{ count }} disconnesso/i",
+            "header": {
+              "one": "Un firewall non sta inviando heartbeat a Sophos Central",
+              "more": "{{ count }} firewall non stanno inviando heartbeat a Sophos Central."
+            },
+            "subtext": "Controlla la connessione dei firewall a Internet."
+          },
+          "suspended": {
+            "state": "{{ count }} sospeso/i",
+            "header": {
+              "one": "Un firewall è sospeso a causa di errori ripetuti",
+              "more": "{{ count }} firewall sono sospesi a causa di errori ripetuti"
+            },
+            "subtext": "Rimuovi i firewall dal gruppo e riprova dalla dashboard del cliente."
+          },
+          "total-of": "{{ total }} firewall.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "Errore durante il caricamento dei dettagli delle statistiche."
         },
-        "overlay-stats": {
-            "connected": " Tutti i firewall sono connessi e sincronizzati con Sophos Central.",
-            "disconnected": "Il/i rimanente/i {{ count }} firewall invia/inviano Security Heartbeat.",
-            "out-of-sync": "Il/i rimanente/i {{ count }} firewall è/sono sincronizzato/i. Occorre risolvere l'operazione non riuscita per applicare ulteriori modifiche ai criteri.",
-            "suspended": "I criteri di gruppo di questi firewall non verranno sincronizzati. Rimuovi questi firewall dai loro gruppi e aggiungili nuovamente per ottenere nuovi criteri di gruppo. "
-         },
-        "header": {
-            "connected": "{{ count }} firewall di {{ totalCount }} {{ type }} sono connessi a Sophos Central.",
-            "disconnected": "{{ count }} firewall di {{ totalCount }} {{ type }} sono disconnessi da Sophos Central.",
-            "out-of-sync": "{{ count }} firewall di {{ totalCount }} {{ type }} non sono sincronizzati con Sophos Central.",
-            "suspended": "{{ count }} firewall di {{ totalCount }} {{ type }} sono in stato sospeso."
-         }
+         "no-customers": "Nessun cliente assegnato a questo modello."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "disconnesso",
         "approval-pending": "Approvazione in sospeso",
         "management-disabled": "Gestione disattivata",
-        "synchronizing": "Sincronizzazione in corso",
-        "synchronized": "Sincronizzato"
+        "syncing": "Sincronizzazione in corso",
+        "sync": "Sincronizzato",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "Ultimo rilevamento: {{ time }}",
+        "registered": "Non gestito da Sophos Central",
+        "pending": "Approvazione in sospeso",
+        "no-reporting": "Central Reporting è disattivata",
+        "waiting": "In attesa di distribuzione",
+        "initializing": "Inizializzazione in corso",
+        "disconnected": "Disconnesso",
+        "connected": "Connesso",
+        "sync": "Sincronizzato",
+        "syncing": "Sincronizzazione in corso",
+        "outofsync": "Errore che richiede attenzione",
+        "unmanaged": "La gestione è disattivata",
+        "tooltip": {
+          "waiting": "Completa il processo di distribuzione Lite Touch",
+          "sync": "Sincronizzazione completata: {{ time }}",
+          "syncing": {
+            "current": "Sincronizzazione avviata: {{ time }}",
+            "past": "Era in corso l'applicazione dei criteri: {{ time }}"
+          },
+          "suspended": "Firewall sospeso.",
+          "unsupported": "I gruppi di firewall non sono supportati",
+          "initializing": "Inizializzazione dei servizi in corso...",
+          "outofsync": "Applicazione del criterio non riuscita",
+          "disconnected": "Mancante da {{ time }}",
+          "connected": "Connesso da {{ time }}",
+          "subtext": {
+            "registered": "Registrato a Sophos Central per Security Heartbeat. Ma non gestito",
+            "pending": "Questo firewall è in attesa della tua conferma per accettare la gestione con Sophos Central",
+            "no-reporting": "Nel firewall non è attivata la reportistica.",
+            "report-pending": "Central Reporting è abilitata su questo firewall ed è in attesa che accetti.",
+            "waiting": "Salva configurazione su USB, connetti al firewall, effettua connessione a Internet e accendi il dispositivo.",
+            "initializing": "In attesa delle informazioni del firewall",
+            "disconnected": "I Security Heartbeat non vengono ricevuti.",
+            "connected": "Si ricevono Security Heartbeat.",
+            "sync": "Tutti i criteri sono stati applicati al firewall.",
+            "time": "{{ time }}",
+            "syncing": "L'operazione potrebbe richiedere diverso tempo, poiché è in corso il push dei criteri ai dispositivi remoti.",
+            "outofsync": "Occorre risolvere l'operazione non riuscita per applicare ulteriori modifiche ai criteri.",
+            "suspended": "I criteri di gruppo non verranno sincronizzati. Rimuovi questo firewall dal gruppo e riaggiungilo per ricevere nuovi criteri dal gruppo.",
+            "unsupported": "Solo i firewall con la versione 18.X o superiore supportano i Gruppi di firewall."
+          }
+        }
       }
     }
   }

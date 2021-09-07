@@ -14,14 +14,16 @@
       "update": "更新",
       "start-date": "開始日期",
       "end-date": "結束日期",
-      "confirmDeleteHeader": "確認刪除",
+      "confirm-delete-header": "確認刪除",
       "error": "錯誤",
       "success": "成功",
       "retry": "重試",
-      "accessPoints": "存取點",
+      "access-points": "存取點",
+      "assign-accesspoints": "指派存取點",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "地點",
+      "site-name":"站點名稱",
       "statistic": "統計資料",
       "devices": "設備",
       "reset": "重設",
@@ -33,6 +35,7 @@
       "hide": "隱藏",
       "details": "詳細資訊",
       "no-data": "無資料",
+      "no-records": "沒有記錄",
       "beta": "Beta 版",
       "copied": "已複製",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "GB"
       },
       "create": "建立",
-      "no": "無"
+      "no": "無",
+      "online": "上線",
+      "offline": "離線"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "產品儀錶板",
       "page-title": "無線 - 儀錶板",
       "breadcrumb-text": "無線儀錶板"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "設備",
+        "title": "無線 - 裝置",
+        "show-chart": "顯示圖表",
+        "hide-chart": "隱藏圖表",
+        "ghz-2-4": "2.4 GHz",
+        "ghz-5": "5 GHz",
+        "ghz-both": "2.4 GHz 與 5 GHz",
+        "status-both": "上線和離線"
+      },
+      "device-list": {
+        "show-period": "顯示期間：",
+        "period-24-h": "24 小時",
+        "period-7-d": "7 天",
+        "export-csv": "匯出為 CSV",
+        "status": "狀態",
+        "name": "裝置名稱",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "使用者名稱",
+        "vendor": "供應商",
+        "access-point": "存取點",
+        "ssid": "SSID",
+        "band": "頻帶",
+        "connection-speed": "連線速度",
+        "first-seen": "首次出現",
+        "last-seen": "上次出現",
+        "security-heartbeat": {
+          "security-heartbeat": "Security HeartBeat",
+          "health-status-red": "用戶端處於風險中",
+          "health-status-green": "受保護",
+          "health-status-missing": "丟失安全活動訊號",
+          "health-status-grey": "無 Security Heartbeat",
+          "health-status-yellow": "階段可能處於風險中",
+          "health-status-not-available": "不可用"
+        },
+        "no-devices-found": "沒有已連接的無線用戶端可顯示。",
+        "pagination-text": "顯示 {{ filtered }} 用戶端。總數 {{ all }}"
+      }
     },
     "diagnostics": {
       "events": "事件",
@@ -199,7 +245,44 @@
         "title": "無線 - 網站",
         "no-sites-defined": "沒有已定義的站點。",
         "delete-dialog-text": "該客戶網站中所有的平面佈置圖將被刪除。確定要刪除您的站點 {{site}}？",
-        "confirm-delete-header": "刪除地點"
+        "confirm-delete-header": "刪除地點",
+        "online-_dynamic_": {
+          "false": "離線",
+          "true": "上線"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "必須提供地點名稱。",
+        "maxlength": "地點名稱最多包括 64 個字元。"
+      },
+      "detail": {
+        "select-view": "選擇檢視"
+      },
+      "network-list": {
+        "filter-placeholder": "選取篩選器選項",
+        "filter-all-label": "顯示所有網路",
+        "classification": "選取分類",
+        "edit-classification-prefix-label": "標記為",
+        "filter-options": {
+          "rogue": "欺詐",
+          "trusted": "信任",
+          "untrusted": "不信任",
+          "advanced-impersonate": "進階模擬",
+          "evil-twin": "雙面惡魔",
+          "bssid-impersonate": "BSSID 模擬",
+          "ssid-impersonate": "SSID 模擬",
+          "adhoc": "Adhoc"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "標示為欺詐",
+          "mark-as-trusted": "標示為信任",
+          "mark-as-untrusted": "標示為不受信任",
+          "mark-as-advanced-impersonate": "標示為進階模擬",
+          "mark-as-evil-twin": "標示為 Evil Twin",
+          "mark-as-bssid-impersonate": "標示為 BSSID 模擬",
+          "mark-as-ssid-impersonate": "標示為 SSID 模擬",
+          "mark-as-adhoc": "標示為 Adhoc"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "不支援檔案格式。",
           "file-size-exceed": "檔案超過最大大小"
         },
+        "start-time": "開始時間",
+        "end-time": "結束時間",
         "accept-terms-and-conditions": "接受條款與條件並連接"
       },
       "network-editor": {
@@ -427,6 +512,8 @@
         "mac-filter-header": "MAC 篩選",
         "mac-filter-none": "無",
         "mac-filter-blacklist": "攔截清單",
+        "scheduled": "已排程",
+        "always": "一律",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "MAC 地址",
         "blocked-mac-filter": "受封鎖的 MAC 地址將無法連線到此 SSID。",

@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "Firewall Management",
+    "tooltip": {
+      "title" : {
+        "name": "Nom :",
+        "label": "Étiquette :"
+      }
+    },
     "cancel": "Annuler",
     "save": "Enregistrer",
     "confirm": "Confirmer",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "Mises à niveau du firmware",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} à {{ to }} sur {{ of }}",
         "column": {
           "name": "Nom",
-          "no-of-customer": "Nombre de clients",
-          "sync-and-management": "Synchro et gestion",
-          "description": "Description"
+          "status": "État",
+          "no-of-customers": "Nombre de clients",
+          "sync-and-management": "Synchronisation et gestion",
+          "description": "Description",
+          "version": "Version",
+          "model": "Modèle",
+          "serial": "Numéro de série"
         },
         "menu": {
           "manage": "Administrer la stratégie",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} pare-feu"
+          "firewalls" : "{{ count }} pare-feu",
+          "no-data": "Sous-groupe ou pare-feu introuvable.",
+          "error-groups": "Erreur de récupération des détails du sous-groupe.",
+          "error-firewalls": "Erreur de récupération des détails du pare-feu",
+          "error-both": "Erreur de récupération des détails des sous-groupes et du pare-feu"
         },
         "stats": {
-          "disconnected": "{{ count }} déconnectés",
-          "out-of-sync": "{{ count }} non synchronisés",
-          "suspended": "{{ count }} suspendus",
-          "connection-error": "Erreur lors du chargement des statistiques de connexion.",
-          "sync-error": "Erreur lors du chargement des statistiques de synchronisation."
+          "sync": {
+            "state" : "{{ count }} synchronisé",
+            "header":  {
+              "one":  "Un pare-feu est synchronisé",
+              "more":  "{{ count }} pare-feu synchronisés"
+            },
+            "subtext": "Les stratégies sont à jour dans ces pare-feu."
+          },
+          "syncing": {
+            "state" : "{{ count }} en cours de synchronisation",
+            "header":  {
+              "one":  "Un pare-feu est en cours de synchronisation",
+              "more":  "{{ count }} pare-feu en cours de synchronisation"
+            },
+            "subtext": "Les stratégies sont déployées sur ces pare-feu. Consultez la file des tâches en attente pour suivre la progression."
+          },
+          "outofsync": {
+            "state": "{{ count }} non synchronisé",
+            "header": {
+              "one": "Un pare-feu n’a pas pu appliquer les stratégies",
+              "more": "{{ count }} pare-feu n’ont pas pu appliquer les stratégies"
+            },
+            "subtext": "Consultez la file des tâches en attente du tableau de bord du client pour réessayer ou ignorer les tâches ayant échoué."
+          },
+          "disconnected": {
+            "state": "{{ count }} déconnectés",
+            "header": {
+              "one": "Un pare-feu n’envoie pas de signaux Heartbeat à Sophos Central",
+              "more": "{{ count }} pare-feu n’envoient pas de signaux à Sophos Central."
+            },
+            "subtext": "Vérifiez la connexion des pare-feu à Internet."
+          },
+          "suspended": {
+            "state": "{{ count }} suspendus",
+            "header": {
+              "one": "Un pare-feu est suspendu en raison d’erreurs continues",
+              "more": "{{ count }} pare-feu sont suspendus en raison d’erreurs continues"
+            },
+            "subtext": "Veuillez déplacer les pare-feu hors du groupe et les ajouter à nouveau dans le tableau de bord du client."
+          },
+          "total-of": "Pare-feu {{ total }}.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "Erreur lors du chargement des statistiques."
         },
-        "overlay-stats": {
-            "connected": " Tous les pare-feu sont connectés et synchronisés avec Sophos Central.",
-            "disconnected": "Les {{ count }} pare-feu restants envoient des signaux Security Heartbeat.",
-            "out-of-sync": "Les {{ count }} pare-feu restants sont synchronisés. Le problème doit être résolu pour appliquer d’autres modifications de la stratégie.",
-            "suspended": "Les stratégies de groupe de ces pare-feu ne seront pas synchronisées. Déplacez ces pare-feu hors de leurs groupes et ajoutez-les de nouveau pour récupérer les nouvelles stratégies du groupe. "
-         },
-        "header": {
-            "connected": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont connectés à Sophos Central.",
-            "disconnected": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont déconnectés de Sophos Central.",
-            "out-of-sync": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} ne sont pas synchronisés avec Sophos Central.",
-            "suspended": "{{ count }} pare-feu sur {{ totalCount }} {{ type }} sont à l’état suspendu."
-         }
+         "no-customers": "Aucun client n’est assigné à ce modèle."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "déconnecté",
         "approval-pending": "Autorisation en attente",
         "management-disabled": "Gestion désactivée",
-        "synchronizing": "En cours de synchronisation",
-        "synchronized": "Synchronisé"
+        "syncing": "En cours de synchronisation",
+        "sync": "Synchronisé",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "Vu pour la dernière fois à {{ time }}",
+        "registered": "Pas administré par Sophos Central",
+        "pending": "Autorisation en attente",
+        "no-reporting": "Édition de rapport Central désactivée",
+        "waiting": "Déploiement en attente",
+        "initializing": "Initialisation",
+        "disconnected": "Déconnecté",
+        "connected": "Connecté",
+        "sync": "Synchronisé",
+        "syncing": "En cours de synchronisation",
+        "outofsync": "Erreur nécessitant votre attention",
+        "unmanaged": "Gestion désactivée",
+        "tooltip": {
+          "waiting": "Terminer le processus de déploiement « Light-Touch »",
+          "sync": "Synchronisé avec succès à {{ time }}",
+          "syncing": {
+            "current": "Synchronisation commencé à {{ time }}",
+            "past": "Les stratégies ont été appliquées à {{ time }}"
+          },
+          "suspended": "Pare-feu suspendu.",
+          "unsupported": "Les groupes de pare-feu ne sont pas pris en charge",
+          "initializing": "Services d’initialisation...",
+          "outofsync": "Impossible d’appliquer une stratégie",
+          "disconnected": "Manquant depuis {{ time }}",
+          "connected": "Connectée depuis {{ time }}",
+          "subtext": {
+            "registered": "Enregistré à Sophos Central pour Security Heartbeat. Mais n’est pas administré",
+            "pending": "Ce pare-feu est en attente de votre accord pour être administré dans Sophos Central",
+            "no-reporting": "L’édition des rapports n’est pas activée sur le pare-feu.",
+            "report-pending": "L’édition de rapports Central est activée sur ce pare-feu et en attente de votre approbation.",
+            "waiting": "Enregistrer la configuration sur une clé USB, connecter au pare-feu, connecter à Internet et mettre en marche.",
+            "initializing": "En attente d’informations sur le pare-feu",
+            "disconnected": "Security Heartbeat non reçus.",
+            "connected": "Plusieurs Security Heartbeat ont été reçus.",
+            "sync": "Toutes les stratégies ont été appliquées au pare-feu.",
+            "time": "{{ time }}",
+            "syncing": "L’opération peut durer quelques instants pendant le déploiement des stratégies sur les appareils distants.",
+            "outofsync": "Le problème doit être résolu pour appliquer d’autres modifications de la stratégie.",
+            "suspended": "Les stratégies de groupe ne seront pas synchronisées. Déplacez ce pare-feu hors du groupe et l’ajouter de nouveau pour récupérer les nouvelles stratégies du groupe.",
+            "unsupported": "Seuls les pare-feu à partir de la version 18.x sont compatibles avec les groupes de pare-feu."
+          }
+        }
       }
     }
   }

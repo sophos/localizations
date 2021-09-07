@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "ファイアウォール管理",
+    "tooltip": {
+      "title" : {
+        "name": "名前:",
+        "label": "ラベル:"
+      }
+    },
     "cancel": "キャンセル",
     "save": "保存",
     "confirm": "確認",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "ファームウェアのアップグレード",
@@ -592,9 +599,13 @@
         "pagination": "{{ from }} ～ {{ to }} (合計 {{ of }})",
         "column": {
           "name": "名前",
-          "no-of-customer": "顧客数",
+          "status": "状態",
+          "no-of-customers": "顧客数",
           "sync-and-management": "同期と管理",
-          "description": "説明"
+          "description": "説明",
+          "version": "バージョン",
+          "model": "機種",
+          "serial": "シリアル番号"
         },
         "menu": {
           "manage": "ポリシーの管理",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "ファイアウォール: {{ count }}"
+          "firewalls" : "ファイアウォール: {{ count }}",
+          "no-data": "サブグループまたはファイアウォールが見つかりません。",
+          "error-groups": "サブグループの詳細の取得中、エラーが発生しました。",
+          "error-firewalls": "ファイアウォールの詳細の取得中、エラーが発生しました。",
+          "error-both": "サブグループおよびファイアウォールの詳細の取得中、エラーが発生しました。"
         },
         "stats": {
-          "disconnected": "切断: {{ count }}",
-          "out-of-sync": "非同期: {{ count }}",
-          "suspended": "中断: {{ count }}",
-          "connection-error": "接続統計の読み込み中、エラーが発生しました。",
-          "sync-error": "同期統計の読み込み中、エラーが発生しました。"
+          "sync": {
+            "state" : "同期: {{ count }}",
+            "header":  {
+              "one":  "1台のファイアウォールが同期済みです",
+              "more":  "{{ count }}台のファイアウォールが同期済みです"
+            },
+            "subtext": "これらのファイアウォールでは、ポリシーが最新の状態になっています。"
+          },
+          "syncing": {
+            "state" : "同期中: {{ count }}",
+            "header":  {
+              "one":  "1台のファイアウォールが同期中です",
+              "more":  "{{ count }}台のファイアウォールが同期中です"
+            },
+            "subtext": "これらのファイアウォールにポリシーを適用中です。タスクキューにアクセスして、進行状況を監視してください。"
+          },
+          "outofsync": {
+            "state": "非同期: {{ count }}",
+            "header": {
+              "one": "1台のファイアウォールがポリシーの適用に失敗しました",
+              "more": "{{ count }}台のファイアウォールがポリシーの適用に失敗しました"
+            },
+            "subtext": "顧客のダッシュボードのタスクキューにアクセスして、失敗したタスクを再試行するかスキップしてください。"
+          },
+          "disconnected": {
+            "state": "切断: {{ count }}",
+            "header": {
+              "one": "1台のファイアウォールが Sophos Central にハートビートを送信していません",
+              "more": "{{ count }}台のファイアウォールが Sophos Central にハートビートを送信していません"
+            },
+            "subtext": "ファイアウォールのインターネット接続を確認してください。"
+          },
+          "suspended": {
+            "state": "中断: {{ count }}",
+            "header": {
+              "one": "1台のファイアウォールが、継続的なエラーが原因で中断されました",
+              "more": "{{ count }}台のファイアウォールが、継続的なエラーが原因で中断されました"
+            },
+            "subtext": "ファイアウォールをグループから削除して、顧客のダッシュボードで再度追加してください。"
+          },
+          "total-of": "ファイアウォール: {{ total }}。",
+          "stats-alert": "{{ messages }}",
+          "error-both": "統計情報の詳細の読み込み中、エラーが発生しました。"
         },
-        "overlay-stats": {
-            "connected": " すべてのファイアウォールは、Sophos Central に接続され、同期されています。",
-            "disconnected": "残り {{ count }}台のファイアウォールは、セキュリティハートビートを送信しています。",
-            "out-of-sync": "残り {{ count }}台のファイアウォールは同期されています。新たなポリシーの変更を適用するには、エラーに対処する必要があります。",
-            "suspended": "これらのファイアウォールのグループポリシーは同期されません。新しいグループポリシーを取得するには、これらのファイアウォールをグループから削除して再度追加してください。 "
-         },
-        "header": {
-            "connected": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central に接続されています。",
-            "disconnected": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central から切断されています。",
-            "out-of-sync": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、Sophos Central と同期していません。",
-            "suspended": "{{ totalCount }}台中 {{ count }}台のファイアウォール ({{ type }}) は、中断状態にあります。"
-         }
+         "no-customers": "このテンプレートには顧客が割り当てられていません。"
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "切断",
         "approval-pending": "承認保留中",
         "management-disabled": "管理: 無効",
-        "synchronizing": "同期中",
-        "synchronized": "同期"
+        "syncing": "同期中",
+        "sync": "同期",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "前回の日時: {{ time }}",
+        "registered": "Sophos Central の管理下にない",
+        "pending": "承認保留中",
+        "no-reporting": "Central レポートはオフになっています",
+        "waiting": "導入待機中",
+        "initializing": "初期化中",
+        "disconnected": "切断",
+        "connected": "接続",
+        "sync": "同期",
+        "syncing": "同期中",
+        "outofsync": "対処が必要なエラーあり",
+        "unmanaged": "管理はオフになっています",
+        "tooltip": {
+          "waiting": "ライトタッチ導入プロセスの完了",
+          "sync": "同期に成功しました: {{ time }}",
+          "syncing": {
+            "current": "同期が開始されました: {{ time }}",
+            "past": "ポリシーが適用されていました: {{ time }}"
+          },
+          "suspended": "ファイアウォールが中断されました。",
+          "unsupported": "ファイアウォールグループはサポートされていません",
+          "initializing": "サービスを初期化中です...",
+          "outofsync": "ポリシーの適用に失敗しました",
+          "disconnected": "切断日: {{ time }}",
+          "connected": "接続日: {{ time }}",
+          "subtext": {
+            "registered": "セキュリティハートビートを使用するため Sophos Central に登録済み。しかし、管理状態にありません",
+            "pending": "このファイアウォールを Sophos Central で管理するには、それを承諾する必要があります",
+            "no-reporting": "ファイアウォールでレポート機能がオンになっていません。",
+            "report-pending": "ファイアウォールで Central レポートがオンになっており、承諾待ちの状態です。",
+            "waiting": "USB メモリへの設定の保存、ファイアウォールへの接続、インターネットへの接続、電源の投入。",
+            "initializing": "ファイアウォール情報を待機しています",
+            "disconnected": "セキュリティハートビートを受信していません。",
+            "connected": "セキュリティハートビートを受信しています。",
+            "sync": "すべてのポリシーがファイアウォールに適用されました。",
+            "time": "{{ time }}",
+            "syncing": "リモートデバイスにポリシーを適用しているため、この操作には時間がかかることがあります。",
+            "outofsync": "新たなポリシーの変更を適用するには、エラーに対処する必要があります。",
+            "suspended": "グループポリシーは同期されません。グループから新しいポリシーを取得するには、このファイアウォールをグループから削除して再度追加してください。",
+            "unsupported": "バージョン 18.X 以降のファイアウォールのみが、ファイアウォールグループに対応しています。"
+          }
+        }
       }
     }
   }

@@ -24,6 +24,7 @@
       "day-ago": "hace {{unit}} día",
       "months-ago": "hace {{unit}} meses",
       "month-ago": "hace {{unit}} mes",
+      "tags": "Etiquetas",
       "link-speed": {
         "10mh": "10M/medio dúplex",
         "10mf": "10M/dúplex completo",
@@ -46,7 +47,9 @@
         "delete": "Borrar",
         "add": "Añadir",
         "update": "Actualizar",
-        "reset": "Restablecer"
+        "reset": "Restablecer",
+        "enable": "Activar",
+        "disable": "Desactivar"
       },
       "status": {
         "registering": "Esperando para conectarse",
@@ -68,7 +71,8 @@
         "vlans-title": "Redes VLAN",
         "network-settings-title": "Configuración de red",
         "task-queue-title": "Cola de tareas",
-        "site-details": "Detalles sitio"
+        "site-details": "Detalles sitio",
+        "diagnostics": "Diagnósticos"
       },
       "error": "Error",
       "success": "Completada",
@@ -117,7 +121,11 @@
           "add-template": "Añadir un sitio",
           "switch-delete-confirm": "Eliminar switch",
           "template-delete-confirm": "Eliminar sitio",
-          "move-to-site": "Mover a sitio"
+          "move-to-site": "Mover a sitio",
+          "fullSync": "Sincronizar"
+        },
+        "full-sync": {
+          "dialog-title": "Sincronizar"
         },
         "table-headers": {
           "name": "Nombre",
@@ -136,194 +144,79 @@
           "template-overridden": "¿Sitio anulado?"
         },
         "upgrade": {
+          "type": {
+            "AGENT": "Cliente de Central",
+            "FULL": "Firmware"
+          },
           "state": {
             "action": {
               "edit": "Cambiar programación",
               "cancel": "Cancelar"
             },
-            "SCHEDULED_UPGRADE": {
-              "SCHEDULED": {
-                "text": "Actualización a la versión {{ version }} programada.",
-                "note": {
-                  "now": "La actualización se iniciará poco después de que el switch reciba la solicitud.",
-                  "date": "La actualización tendrá lugar cuando la hora del switch sea {{ date }}"
-                },
-                "action": "Administrar firmware"
-              },
-              "UPDATING": {
-                "text": "Actualización a la versión {{ version }}",
-                "note": {
-                  "now": "Aplicando cambios en este momento. Esto puede tardar algún tiempo.",
-                  "date": "Aplicando cambios en este momento. Esto puede tardar algún tiempo."
-                }
-              },
-              "SUCCESS": {
-                "text": "La actualización a la versión {{ currentVersion }} se ha producido correctamente.",
-                "note": {
-                  "now": "Switch actualizado desde {{ version }}",
-                  "date": "Switch actualizado desde {{ version }} el {{ date }}"
-                }
-              },
-              "FAILURE": {
-                "text": "La actualización a la versión {{ version }} ha fallado.",
-                "note": {
-                  "now": "",
-                  "date": "Intentado el {{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "El error no se ha comunicado todavía a Sophos Central.",
-                  "SUCCESS": "Detectado error desconocido.",
-                  "TIME_ALREADY_ELAPSED":  "La hora programada ya había pasado.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
-                }
-              },
-              "CANCELLED": {
-                "text": "Actualización a la versión {{ version }} cancelada por el administrador.",
-                "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "Todavía estamos esperando a que la cancelación se produzca correctamente.",
-                  "SUCCESS": "El switch ha cancelado la programación, ningún cambio realizado.",
-                  "TIME_ALREADY_ELAPSED":  "Pero el switch ya había ejecutado la programación.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
-                }
-              }
+            "process": {
+              "SCHEDULED_UPGRADE": "Actualizar",
+              "AUTO_UPGRADE": "Actualización automática",
+              "ROLLBACK": "Cambiar de firmware"
             },
-            "AUTO_UPGRADE": {
-              "SCHEDULED": {
-                "text": "Se ha programado una actualización automática a la versión {{ version }}.",
-                "note": {
-                  "now": "La actualización se iniciará poco después de que el switch reciba la solicitud.",
-                  "date": "La actualización tendrá lugar cuando la hora del switch sea {{ date }}"
-                },
-                "action": "Administrar firmware"
-              },
-              "UPDATING": {
-                "text": "Actualización automática a la versión {{ version }}",
-                "note": {
-                  "now": "Aplicando cambios en este momento. Esto puede tardar algún tiempo.",
-                  "date": "Aplicando cambios en este momento. Esto puede tardar algún tiempo."
-                }
-              },
-              "SUCCESS": {
-                "text": "La actualización automática a la versión {{ currentVersion }} se ha producido correctamente.",
-                "note": {
-                  "now": "Switch actualizado desde {{ version }}",
-                  "date": "Switch actualizado desde {{ version }} el {{ date }}"
-                }
-              },
-              "FAILURE": {
-                "text": "La actualización automática a la versión {{ version }} ha fallado.",
-                "note": {
-                  "now": "",
-                  "date": "Intentado el {{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "El error no se ha comunicado todavía a Sophos Central.",
-                  "SUCCESS": "Detectado error desconocido.",
-                  "TIME_ALREADY_ELAPSED":  "La hora programada ya había pasado.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
-                }
-              },
-              "CANCELLED": {
-                "text": "La actualización automática a la versión {{ version }} se ha cancelado.",
-                "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "Todavía estamos esperando a que la cancelación se produzca correctamente.",
-                  "SUCCESS": "El switch ha cancelado la programación, ningún cambio realizado.",
-                  "TIME_ALREADY_ELAPSED":  "Pero el switch ya había ejecutado la programación.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
-                }
-              }
+            "reason": {
+              "NO_ERROR": "No se ha informado de ningún error a Sophos Central.",
+              "TIME_ALREADY_ELAPSED": "La hora programada ya había pasado.",
+              "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
+              "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
+              "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
+              "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
+              "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
+              "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
+              "UNKNOWN_ERROR": "Detectado error desconocido."
             },
-            "ROLLBACK": {
+            "status": {
               "SCHEDULED": {
-                "text": "Se ha programado el cambio a la {{ version }}.",
+                "text": "Se ha programado el {{ process }} a la versión {{ version }} ({{ type }}).",
                 "note": {
-                  "now": "El cambio se iniciará poco después de que el switch reciba la solicitud.",
-                  "date": "El cambio tendrá lugar cuando la hora del switch sea {{ date }}"
-                },
-                "action": "Administrar firmware"
+                  "now": "El {{ process }} se iniciará poco después de que el switch reciba la solicitud.",
+                  "date": "El {{ process }} tendrá lugar cuando la hora del switch sea {{ schedule }}"
+                }
               },
               "UPDATING": {
-                "text": "Cambio a la versión {{ version }}",
+                "text": "El {{ process }} a la versión {{ version }} ({{ type }}) está en curso.",
                 "note": {
                   "now": "Aplicando cambios en este momento. Esto puede tardar algún tiempo.",
                   "date": "Aplicando cambios en este momento. Esto puede tardar algún tiempo."
                 }
               },
               "SUCCESS": {
-                "text": "El cambio a la versión {{ currentVersion }} se ha producido correctamente.",
+                "text": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha producido correctamente.",
                 "note": {
-                  "now": "Switch actualizado desde {{ version }}",
-                  "date": "Switch actualizado desde {{ version }} el {{ date }}"
+                  "now": "El {{ process }} se ha completado el {{ date }}",
+                  "date": "Programado para el {{ schedule }}, el {{ process }} se ha completado el {{ date }}"
                 }
               },
-              "FAILURE": {
-                "text": "El cambio a la versión {{ version }} ha fallado.",
+              "CANCELLING": {
+                "text": "El {{ process }} a la versión {{ version }} ({{ type }}) será cancelado.",
                 "note": {
-                  "now": "",
-                  "date": "Intentado el {{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "El error no se ha comunicado todavía a Sophos Central.",
-                  "SUCCESS": "Detectado error desconocido.",
-                  "TIME_ALREADY_ELAPSED":  "La hora programada ya había pasado.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
+                  "now": "Todavía no se ha recibido la confirmación del switch",
+                  "date": "Todavía no se ha recibido la confirmación del switch"
                 }
               },
               "CANCELLED": {
-                "text": "El cambio a la {{ version }} se ha cancelado.",
+                "text": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha cancelado.",
                 "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "Todavía estamos esperando a que la cancelación se produzca correctamente.",
-                  "SUCCESS": "El switch ha cancelado la programación, ningún cambio realizado.",
-                  "TIME_ALREADY_ELAPSED":  "Pero el switch ya había ejecutado la programación.",
-                  "TOO_MANY_PENDING_REQUESTS": "El switch estaba ocupado con otras tareas.",
-                  "LINK_NOT_REACHABLE": "El servidor de firmware no está disponible en este momento.",
-                  "DOWNLOAD_ERROR": "Imposible descargar el firmware.",
-                  "INTEGRITY_ERROR": "Error de comprobación de integridad en el switch.",
-                  "ALREADY_UPDATED": "Switch ya actualizado a la versión solicitada.",
-                  "UPGRADE_ERROR": "No se ha podido aplicar el firmware.",
-                  "UNKNOWN_ERROR": "Detectado error desconocido."
+                  "now": "No se han realizado cambios en el switch durante este proceso",
+                  "date": "No se han realizado cambios en el switch durante este proceso"
+                }
+              },
+              "FAILURE": {
+                "text": "Se ha producido un error con el {{ process }} a la versión {{ version }} ({{ type }}).",
+                "note": {
+                  "now": "{{ reason }}",
+                  "date": "Programado para el {{ schedule }}, se ha intentado el realizar el {{ date }}. {{ reason }}"
+                }
+              },
+              "CANCEL_FAILURE": {
+                "text": "No se ha podido cancelar el {{ process }} a la versión {{ version }}({{type}})",
+                "note": {
+                  "now": "{{ reason }}",
+                  "date": "Programado para el {{ schedule }}, se ha intentado el realizar el {{ date }}. {{ reason }}"
                 }
               }
             }
@@ -332,25 +225,25 @@
           "up-to-date-message": "No hay ningún firmware disponible para descargar.",
           "cannot-manage": "Puede seleccionar una programación una vez se haya completado la actualización en curso.",
           "update-available": "Hay nuevas actualizaciones de firmware.",
-          "rollback-available": "Cambio a la versión {{ version }} en la partición de copia de seguridad",
+          "rollback-available": "Cambiar el firmware a la versión {{ version }} de la partición de copia de seguridad",
           "rollback-message": "Esto reiniciará el switch desde la partición de copia de seguridad.",
-          "schedule-rollback": "Programar un cambio",
+          "schedule-rollback": "Programar cambio de firmware",
           "upgrade-message": "Puede aplicar estas actualizaciones inmediatamente o en una fecha futura.",
           "schedule-upgrade": "Programar una actualización",
           "schedule": "Cambiar programación",
           "manage-schedule-dialog-title": "Administrar firmware: {{ site }}",
           "upgrade-schedule-dialog-title": "Elegir una programación",
           "dialog-heading": "Administrar el firmware de los switches en el sitio: {{ site }}. Puede añadir, cancelar actualizaciones o cambios de firmware en la selección a continuación.",
-          "schedule-info-message": "Seleccione cuándo actualizar o cambiar los switches seleccionados.",
+          "schedule-info-message": "Seleccione cuándo actualizar o cambiar el firmware de los switches seleccionados.",
           "update-now": "Ahora",
           "custom": "Personalizada",
-          "schedule-now-note": "A los switches conectados se les notifica inmediatamente que procedan a la actualización/cambio. Los switches desconectados serán notificados en cuanto se conecten. Esto quizá requiera el reinicio del switch. Las programaciones inmediatas no se pueden modificar, una vez guardadas. Las programaciones nuevas solo se pueden añadir una vez completada la programación existente.",
-          "schedule-custom-note": "La programación elegida respetará la hora local del switch, independientemente de las zonas horarias. La actualización/el cambio puede requerir un reinicio.",
+          "schedule-now-note": "A los switches conectados se les notifica inmediatamente que procedan a la actualización o cambio de firmware. Los switches desconectados serán notificados en cuanto se conecten. Esto quizá requiera el reinicio del switch. Las programaciones inmediatas no se pueden modificar, una vez guardadas. Las programaciones nuevas solo se pueden añadir una vez completada la programación existente.",
+          "schedule-custom-note": "La programación elegida respetará la hora local del switch, independientemente de las zonas horarias. La actualización o el cambio de firmware puede requerir un reinicio.",
           "scheduled-success-message": "Se ha programado la actualización del firmware",
           "scheduled-success-failure": "Error al actualizar el firmware",
           "update-cancel-message": "Se ha cancelado la actualización del firmware",
           "cancel-upgrade": "Cancelar programación",
-          "rollback": "Cambio ({{ version }})",
+          "rollback": "Cambiar de firmware ({{ version }})",
           "modified": "La programación {{ version }} | {{ schedule }} existente se ha modificado.",
           "new-schedule": "Nueva programación",
           "table": {
@@ -396,30 +289,83 @@
           "transfer-success": "Los switches se han movido",
           "transfer-failed": "Imposible mover los switches",
           "full-sync-success": "Las opciones de configuración del sitio se han sincronizado con los switches seleccionados",
-          "full-sync-failed": "No es posible sincronizar las opciones de configuración con los switches seleccionados"
+          "full-sync-failed": "No es posible sincronizar las opciones de configuración con los switches seleccionados",
+          "full-sync-confirm-dialog": "Las opciones de configuración del sitio se sincronizarán con los switches seleccionados"
         },
         "groupInfoText": {
           "what": "¿Qué es un sitio?",
           "information": "Un sitio de switch es una configuración virtual que puede aplicarse a uno o más switches. Podemos mover un switch a un sitio o quitarlo de un sitio según sea necesario. Mientras un switch se encuentre en un sitio, las configuraciones realizadas a nivel de sitio se sincronizarán automáticamente con los switches.",
           "note": "Si hay configuraciones conflictivas a nivel de switch y de sitio, las configuraciones a nivel de switch tienen prioridad."
+        },
+        "site-without-switch": {
+          "label": "No se han añadido switches",
+          "add-switch": "Añadir conmutador"
         }
       },
       "manage": {
         "page-title": "Switches - Administración del switch",
         "breadcrumb-text": "Administrar switch",
         "template-dd-default-title": "Seleccione un sitio",
-        "upgrade-checkbox-label": "Actualizar automáticamente los agentes de Central",
+        "upgrade-checkbox-label": "Actualizar automáticamente clientes de Sophos Central",
+        "add-edit-tags": "Añadir o editar etiquetas",
+        "add-edit-location": "Añadir o editar ubicación",
         "button": {
           "reboot": "Reiniciar",
-          "open-local-mgmt-console": "Abrir consola de administración local",
-          "remove": "Eliminar de Sophos Central"
+          "open-local-mgmt-console": "Abrir administración del switch local",
+          "open-local-mgmt-console-helper-text": "Esto abrirá una nueva pestaña del navegador con la dirección de administración del switch. Solo se abrirá si se puede acceder a la ubicación de administración del switch desde este navegador.",
+          "remove": "Eliminar de Sophos Central",
+          "add-tags": "Añadir etiquetas",
+          "add-location": "Añadir ubicación"
         },
         "tab-fields": {
           "serial-no": "N.º de serie",
           "model": "Modelo",
           "powered-on": "Encendido",
           "switch-firmware": "Firmware del switch",
-          "central-agent": "Agente de Central"
+          "central-agent": "Clientes de Sophos Central"
+        },
+        "reboot": {
+          "reboot-dialog-title": "Reiniciar",
+          "reboot-dialog-message": "Reiniciar <strong>{{switchSerial}}</strong>"
+        },
+        "edit-success": "Actualizaciones automáticas activadas para los clientes de Central",
+        "edit-success-disabled-auto-update": "Actualizaciones automáticas desactivadas para los clientes de Central",
+        "mgmt-console": {
+          "title": "Las siguientes herramientas de diagnóstico y resolución de problemas están disponibles desde la interfaz de usuario del switch local. Se puede acceder a ellas entrando directamente en la interfaz de administración local del switch.",
+          "resource-usage": "Uso de recursos",
+          "resource-usage-item": "IU web de switch local: Monitorizar > Contadores en tiempo real",
+          "resource-usage-helper": "Los contadores en tiempo real ofrecen un seguimiento gráfico del uso de la CPU y la memoria a lo largo del tiempo.",
+          "port-statistics": "Estadísticas de puerto",
+          "port-statistics-item": "IU web de switch local: Monitorizar > Estadísticas > Puertos",
+          "port-statistics-helper": "Las estadísticas de puerto proporcionarán el recuento de paquetes de entrada/salida y los errores TX/RX por puerto.",
+          "mac-address-table": "Tabla de direcciones MAC",
+          "mac-address-table-item": "IU web de switch local: Monitorizar > Monitorizar dirección MAC dinámica > Dirección MAC estática",
+          "mac-address-table-helper": "Las tablas de direcciones MAC mostrarán los dispositivos detectados por puerto y VLAN.",
+          "poe-power-usage": "Uso de la alimentación PoE",
+          "poe-power-usage-item": "IU web de switch local: Monitorizar > Configuración del panel de control > Configuración de puertos PoE",
+          "poe-power-usage-helper": "Las páginas de configuración del panel de control y de los puertos PoE ofrecen información por puerto sobre la corriente, el voltaje y el consumo de energía.",
+          "network-diagnostics": "Diagnóstico de redes",
+          "network-diagnostics-item": "IU web de switch local: Analizar > Analizar prueba de ping > Ruta de seguimiento",
+          "network-diagnostics-helper": "La prueba ping y la ruta de seguimiento pueden utilizarse para probar la conectividad del switch y la funcionalidad de enrutamiento L3.",
+          "event-loggging": "Registro de eventos",
+          "event-loggging-item": "IU web de switch local: Monitorizar > Monitorizar registro local > Tabla de registros",
+          "event-loggging-helper": "El registro local permite configurar qué eventos se registrarán localmente en el switch. Es posible que sea necesario editar y activar el registro de niveles de error más altos para detectar los eventos necesarios; esto solo debe habilitarse durante la resolución de problemas. Los detalles registrados pueden revisarse en la tabla de registros.",
+          "cable-diagnostics": "Diagnóstico de cables",
+          "cable-diagnostics-item": "IU web de switch local: Analizar > Herramientas de diagnóstico",
+          "cable-diagnostics-helper": "Seleccione los puertos y, a continuación, haga clic en Probar para ejecutar el diagnóstico de cables en los puertos del switch seleccionados.",
+          "sfp-module-info": "Información del módulo SFP",
+          "sfp-module-info-item": "IU web de switch local: Monitorizar > Información del módulo SFP",
+          "sfp-module-info-helper": "La información del módulo SFP muestra las funciones y la información que los módulos de fibra conectados proporcionan al switch."
+        },
+        "message": {
+          "auto-update-enable-success": "Actualizaciones automáticas activadas para los clientes de Central",
+          "auto-update-enable-error": "No se pueden activar las actualizaciones automáticas para los clientes de Central",
+          "auto-update-disable-success": "Actualizaciones automáticas desactivadas para los clientes de Central",
+          "auto-update-disable-error": "No se pueden desactivar las actualizaciones automáticas para los clientes de Central",
+          "tags-update-success": "Se han actualizado las etiquetas",
+          "tags-update-error": "No se han podido actualizar las etiquetas",
+          "location-update-success": "Se ha actualizado la ubicación",
+          "location-update-error": "No se ha podido actualizar la ubicación"
         }
       }
     },
@@ -569,8 +515,11 @@
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Programar actualización de firmware",
         "cancel_upgrade": "Cancelar actualización de firmware",
-        "rollback": "Cambiar firmware",
-        "port": "Puerto"
+        "rollback": "Cambiar de firmware",
+        "port": "Puerto",
+        "remote_support": "Soporte remoto",
+        "enable_remote_support": "Activar",
+        "disable_remote_support": "Desactivar"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -589,6 +538,24 @@
       "message": {
         "port-update-success": "Se han actualizado los puertos.",
         "port-update-error": "No es posible actualizar uno o más puertos."
+      }
+    },
+    "remote-debugging": {
+      "debugging-enabled-title": "Depuración remota activada",
+      "debugging-disabled-title": "Activar depuración remota",
+      "token": "Token",
+      "duration-day": "{{duration}} día",
+      "duration-days": "{{duration}} días",
+      "copy": "Copiar",
+      "date-expiry-string": "Este token de acceso es válido hasta {{expiry}}",
+      "form": {
+        "validity": "Validez"
+      },
+      "message": {
+        "apu-enable-success": "Se ha activado la depuración remota",
+        "apu-enable-error": "No se puede activar la depuración remota",
+        "apu-disable-success": "Se ha desactivado la depuración remota",
+        "apu-disable-error": "No se puede desactivar la depuración remota"
       }
     }
   }

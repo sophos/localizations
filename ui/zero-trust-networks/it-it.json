@@ -25,7 +25,8 @@
       "no": "No",
       "day": "giorno",
       "days": "giorni",
-      "seconds": "secondi"
+      "seconds": "secondi",
+      "required-error": "Obbligatorio"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Dashboard",
       "breadcrumb-text": "Dashboard di Zero Trust Network Access",
+      "eap-program-message": "Questo prodotto viene fornito nell'ambito del Programma di accesso in anteprima (Early Access Program). Clicca su \"Feedback\" per segnalare bug o inviarci feedback.",
       "nodata": "Nessun dato disponibile",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "Stato",
                 "version": "Versione",
                 "support": "Supporto tecnico",
-                "support-status": "Stato Supporto tecnico Sophos"
+                "support-status": "Stato Supporto tecnico Sophos",
+                "troubleshooting-logs": "Log per la risoluzione dei problemi"
               },
               "support-status": {
                 "connected": "Connesso",
@@ -230,6 +233,15 @@
               }
             },
             "note": "Per il bilanciamento del carico deve esserci un numero dispari di istanze.",
+            "troubleshoot": {
+              "logs": "Log per la risoluzione dei problemi",
+              "generate-logs": "Genera log",
+              "troubleshoot-logs-info1": "Puoi utilizzare questi log e report per risolvere i problemi oppure puoi inviarli al supporto tecnico Sophos.",
+              "troubleshoot-logs-info2": "La generazione dei log può richiedere qualche minuto. Non hai l'obbligo di rimanere su questa pagina.",
+              "troubleshoot-logs-info3": "Accanto a ciascuna istanza verrà visualizzato un download, che sarà disponibile per 5 ore."
+            },
+
+
             "add": "Aggiungi/modifica istanze",
             "header": {
               "name": "Nome: ",
@@ -524,6 +536,16 @@
           "fetch-error": "Impossibile recuperare i dettagli del debug remoto",
           "unreachable": "Il gateway non è riuscito a contattare il server.",
           "try-again": "Riprova più tardi."
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "Scadenza: {{linkExpiryDate}}",
+          "expired": "Link di download scaduto",
+          "success-msg": "Generazione dei log in corso",
+          "error-msg": "Errore durante la generazione dei log",
+          "status": {
+            "generating-log": "Generazione del log in corso"
+          },
+          "error": "Errore, riprova più tardi"
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "Campo Cluster di gateway non trovato",
       "gateway.cluster.changeSizeInvalid": "Aggiungi altre istanze prima di eliminare quelle meno recenti, le dimensioni del cluster devono essere superiori a (n+1)/2",
       "gateway.not.connected.or.approved": "Il debug remoto non può essere abilitato se il gateway non si trova in stato connesso o approvato e se l'istanza non si trova in stato attivo",
+      "gateway.key-cert.mismatch": "Mancata corrispondenza tra certificato e chiave privata",
+      "gateway.log.collection.ongoing": "Il gateway sta già raccogliendo log, riprova più tardi",
+      "gateway.log.collection.wrong.request": "Per il recupero dei log è supportato solo lo stato RACCOGLI",
+      "gateway.log.collection.no.active": "Nessuna istanza attiva trovata per la raccolta dei log",
       "policy.invalid": "L'oggetto criterio fornito non è valido",
       "policy.isEnforced.notNull": "Il campo isEnforced nell'oggetto criterio non deve avere valore null",
       "policy.valid-until.not.allowed": "Il campo validUntil non può essere impostato se il criterio non è implementato",

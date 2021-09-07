@@ -14,14 +14,16 @@
       "update": "업데이트",
       "start-date": "시작일",
       "end-date": "종료일",
-      "confirmDeleteHeader": "삭제 확인",
+      "confirm-delete-header": "삭제 확인",
       "error": "오류",
       "success": "성공",
       "retry": "다시 시도",
-      "accessPoints": "액세스 지점",
+      "access-points": "액세스 지점",
+      "assign-accesspoints": "액세스 지점 할당",
       "ssids": "SSID",
       "settings": "설정",
       "sites": "사이트",
+      "site-name":"사이트 이름",
       "statistic": "통계",
       "devices": "장치",
       "reset": "재설정",
@@ -33,6 +35,7 @@
       "hide": "숨기기",
       "details": "세부 정보",
       "no-data": "데이터가 없음",
+      "no-records": "레코드 없음",
       "beta": "베타",
       "copied": "복사됨",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "GB"
       },
       "create": "만들기",
-      "no": "아니요"
+      "no": "아니요",
+      "online": "온라인",
+      "offline": "오프라인"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "제품 대시보드",
       "page-title": "무선 - 대시보드",
       "breadcrumb-text": "무선 대시보드"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "장치",
+        "title": "무선 - 장치",
+        "show-chart": "그래프 표시",
+        "hide-chart": "그래프 숨기기",
+        "ghz-2-4": "2.4GHz",
+        "ghz-5": "5GHz",
+        "ghz-both": "2.4GHz 및 5GHz",
+        "status-both": "온라인 및 오프라인"
+      },
+      "device-list": {
+        "show-period": "기간 표시:",
+        "period-24-h": "24시간",
+        "period-7-d": "7일",
+        "export-csv": "CSV로 내보내기",
+        "status": "상태",
+        "name": "장치 이름",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "사용자 이름",
+        "vendor": "공급업체",
+        "access-point": "액세스 지점",
+        "ssid": "SSID",
+        "band": "대역",
+        "connection-speed": "연결 속도",
+        "first-seen": "처음 표시된 시간",
+        "last-seen": "마지막 표시된 시간",
+        "security-heartbeat": {
+          "security-heartbeat": "Security Heartbeat",
+          "health-status-red": "위험 상황의 클라이언트",
+          "health-status-green": "보호됨",
+          "health-status-missing": "누락된 Security Heartbeat",
+          "health-status-grey": "Security Heartbeat 없음",
+          "health-status-yellow": "단계가 위험 상황에 있을 수 있음",
+          "health-status-not-available": "사용할 수 없음"
+        },
+        "no-devices-found": "표시할 연결된 무선 클라이언트가 없습니다.",
+        "pagination-text": "{{ filtered }}개의 클라이언트를 표시하는 중입니다. 총 {{ all }}개"
+      }
     },
     "diagnostics": {
       "events": "이벤트",
@@ -199,7 +245,44 @@
         "title": "무선 - 사이트",
         "no-sites-defined": "정의된 사이트가 없습니다.",
         "delete-dialog-text": "이 고객 사이트에 대한 모든 평면도가 삭제됩니다. 사이트 {{site}}을(를) 삭제하시겠습니까?",
-        "confirm-delete-header": "사이트 삭제"
+        "confirm-delete-header": "사이트 삭제",
+        "online-_dynamic_": {
+          "false": "오프라인",
+          "true": "온라인"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "사이트 이름이 필요합니다.",
+        "maxlength": "사이트 이름은 최대 64자여야 합니다."
+      },
+      "detail": {
+        "select-view": "보기 선택"
+      },
+      "network-list": {
+        "filter-placeholder": "필터 옵션 선택",
+        "filter-all-label": "모든 네트워크 표시",
+        "classification": "분류 선택",
+        "edit-classification-prefix-label": "다음으로 표시",
+        "filter-options": {
+          "rogue": "루즈",
+          "trusted": "신뢰됨",
+          "untrusted": "신뢰되지 않음",
+          "advanced-impersonate": "고급 가장",
+          "evil-twin": "에빌 트윈",
+          "bssid-impersonate": "BSSID 가장",
+          "ssid-impersonate": "SSID 가장",
+          "adhoc": "Adhoc"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "루즈로 표시",
+          "mark-as-trusted": "신뢰됨으로 표시",
+          "mark-as-untrusted": "신뢰되지 않음으로 표시",
+          "mark-as-advanced-impersonate": "고급 가장으로 표시",
+          "mark-as-evil-twin": "이블 트윈으로 표시",
+          "mark-as-bssid-impersonate": "BSSID 가장으로 표시",
+          "mark-as-ssid-impersonate": "SSID 가장으로 표시",
+          "mark-as-adhoc": "Adhoc으로 표시"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "파일 형식이 지원되지 않습니다.",
           "file-size-exceed": "파일이 최대 크기를 초과합니다."
         },
+        "start-time": "시작 시간",
+        "end-time": "종료 시간",
         "accept-terms-and-conditions": "T&C 수락 및 연결"
       },
       "network-editor": {
@@ -427,6 +512,8 @@
         "mac-filter-header": "MAC 필터링",
         "mac-filter-none": "없음",
         "mac-filter-blacklist": "차단된 목록",
+        "scheduled": "예약됨",
+        "always": "항상",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "MAC 주소",
         "blocked-mac-filter": "차단된 MAC 주소는 이 SSID에 연결할 수 없습니다.",

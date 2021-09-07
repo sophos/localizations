@@ -1,6 +1,12 @@
 {
   "firewall-management": {
     "name": "방화벽 관리",
+    "tooltip": {
+      "title" : {
+        "name": "이름:",
+        "label": "레이블:"
+      }
+    },
     "cancel": "취소",
     "save": "저장",
     "confirm": "확인",
@@ -429,7 +435,7 @@
             "limit-access": "인증된 사용자에 대한 액세스 제한",
 
             "sync-sec": {
-              "enable": "동기화된 보안 하트비트 구성",
+              "enable": "동기화된 Security Heartbeat 구성",
               "src": "최소 소스 HB 허용됨",
               "dst": "최소 대상 HB 허용됨",
               "block-clients": "하트비트 없는 클라이언트 차단",
@@ -477,6 +483,7 @@
       }
     },
     "firmware" : {
+      "version": "{{ version }}",
       "upgrade" : {
         "modal": {
           "title": "펌웨어 업그레이드",
@@ -592,9 +599,13 @@
         "pagination": "{{ of }}의 {{ from }}부터 {{ to }}까지",
         "column": {
           "name": "이름",
-          "no-of-customer": "# 고객",
+          "status": "상태",
+          "no-of-customers": "# 고객",
           "sync-and-management": "동기화 및 관리",
-          "description": "설명"
+          "description": "설명",
+          "version": "버전",
+          "model": "모델",
+          "serial": "일련 번호"
         },
         "menu": {
           "manage": "정책 관리",
@@ -620,27 +631,58 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} 방화벽"
+          "firewalls" : "{{ count }} 방화벽",
+          "no-data": "하위 그룹 또는 방화벽을 찾을 수 없습니다.",
+          "error-groups": "하위 그룹 세부 정보를 가져오는 동안 오류가 발생했습니다.",
+          "error-firewalls": "방화벽 세부 정보를 가져오는 동안 오류가 발생했습니다.",
+          "error-both": "하위 그룹 및 방화벽 세부 정보를 가져오는 동안 오류가 발생했습니다."
         },
         "stats": {
-          "disconnected": "{{ count }} 연결 해제됨",
-          "out-of-sync": "{{ count }} 동기화되지 않음",
-          "suspended": "{{ count }} 일시 중단됨",
-          "connection-error": "연결 통계를 로드하는 중에 오류가 발생했습니다.",
-          "sync-error": "동기화 통계를 로드하는 중에 오류가 발생했습니다."
+          "sync": {
+            "state" : "{{ count }}개 동기화됨",
+            "header":  {
+              "one":  "하나의 방화벽이 동기화됨",
+              "more":  "{{ count }}개의 방화벽이 동기화됨"
+            },
+            "subtext": "정책이 이 방화벽에서 최신 상태입니다."
+          },
+          "syncing": {
+            "state" : "{{ count }}개 동기화 중",
+            "header":  {
+              "one":  "하나의 방화벽이 동기화 중",
+              "more":  "{{ count }}개의 방화벽이 동기화 중"
+            },
+            "subtext": "정책이 이러한 방화벽으로 푸시되고 있습니다. 진행 상황을 모니터링하려면 작업 대기열을 방문하십시오."
+          },
+          "outofsync": {
+            "state": "{{ count }}개 동기화되지 않음",
+            "header": {
+              "one": "하나의 방화벽이 정책을 적용하지 못했습니다.",
+              "more": "{{ count }}개의 방화벽이 정책을 적용하지 못했습니다."
+            },
+            "subtext": "실패한 작업을 다시 시도하거나 건너뛰려면 고객 대시보드의 작업 대기열을 방문하십시오."
+          },
+          "disconnected": {
+            "state": "{{ count }}개 연결 해제됨",
+            "header": {
+              "one": "하나의 방화벽이 Sophos Central에 하트비트를 보내지 않습니다.",
+              "more": "{{ count }}개의 방화벽이 Sophos Central에 하트비트를 보내지 않습니다."
+            },
+            "subtext": "방화벽이 인터넷에 연결되어 있는지 확인하십시오."
+          },
+          "suspended": {
+            "state": "{{ count }}개 일시 중단됨",
+            "header": {
+              "one": "지속적인 오류로 인해 하나의 방화벽이 추가되었습니다.",
+              "more": "지속적인 오류로 인해 {{ count }}개의 방화벽이 추가되었습니다."
+            },
+            "subtext": "방화벽을 그룹 밖으로 옮기고 고객 대시보드에 다시 추가하십시오."
+          },
+          "total-of": "{{ total }}개 방화벽.",
+          "stats-alert": "{{ messages }}",
+          "error-both": "통계 세부 정보를 로드하는 동안 오류가 발생했습니다."
         },
-        "overlay-stats": {
-            "connected": " 모든 방화벽이 Sophos Central에 연결되고 동기화되었습니다.",
-            "disconnected": "나머지 {{ count }}개의 방화벽은 Security Heartbeat를 전송하고 있습니다.",
-            "out-of-sync": "나머지 {{ count }}개의 방화벽은 동기화되었습니다. 추가 정책 변경 사항을 적용하려면 오류를 해결해야 합니다.",
-            "suspended": "이러한 방화벽에 대한 그룹 정책은 동기화되지 않습니다. 이러한 방화벽을 해당 그룹 외부로 이동했다가 다시 추가하여 그룹의 새 정책을 가져오십시오. "
-         },
-        "header": {
-            "connected": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에 연결되어 있습니다.",
-            "disconnected": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에서 연결 해제되었습니다.",
-            "out-of-sync": "{{ totalCount }} {{ type }} 중 {{ count }}개 방화벽이 Sophos Central에서 동기화되지 않았습니다.",
-            "suspended": "{{ totalCount }} {{ type }} 중 {{ count }}개의 방화벽이 일시 중지된 상태입니다."
-         }
+         "no-customers": "이 템플릿에 할당된 고객이 없습니다."
       }
     },
     "global-settings": {
@@ -653,8 +695,53 @@
         "disconnected": "연결 해제됨",
         "approval-pending": "보류 중인 승인",
         "management-disabled": "관리 사용 안 함",
-        "synchronizing": "동기화 중",
-        "synchronized": "동기화됨"
+        "syncing": "동기화 중",
+        "sync": "동기화됨",
+        "loading": ""
+      },
+      "status": {
+        "last-seen": "마지막 확인 시간: {{ time }}",
+        "registered": "Sophos Central에서 관리하지 않음",
+        "pending": "보류 중인 승인",
+        "no-reporting": "Central Reporting이 꺼져 있음",
+        "waiting": "배포 대기 중",
+        "initializing": "초기화하는 중",
+        "disconnected": "연결 해제됨",
+        "connected": "연결됨",
+        "sync": "동기화됨",
+        "syncing": "동기화 중",
+        "outofsync": "오류에 주의 필요",
+        "unmanaged": "Management가 꺼져 있음",
+        "tooltip": {
+          "waiting": "Light Touch Deployment 프로세스 완료",
+          "sync": "성공적으로 동기화된 시간: {{ time }}",
+          "syncing": {
+            "current": "동기화가 시작된 시간: {{ time }}",
+            "past": "정책이 적용된 시간: {{ time }}"
+          },
+          "suspended": "방화벽이 일시 중단되었습니다.",
+          "unsupported": "방화벽 그룹은 지원되지 않습니다.",
+          "initializing": "서비스를 초기화하는 중...",
+          "outofsync": "정책을 적용하지 못 함",
+          "disconnected": "{{ time }} 이후 누락",
+          "connected": "{{ time }} 이후 연결됨",
+          "subtext": {
+            "registered": "Security Heartbeat를 위해 Sophos Central에 등록됨. 그렇지만 관리되지 않음",
+            "pending": "이 방화벽은 Sophos Central에서 관리되기 위해 귀하의 수락을 기다리고 있습니다.",
+            "no-reporting": "방화벽에 보고 기능이 켜져 있지 않습니다.",
+            "report-pending": "Central Reporting이 이 방화벽에서 켜져 있고 귀하의 수락을 기다리고 있습니다.",
+            "waiting": "구성을 USB에 저장하고, 방화벽에 연결하고, 인터넷에 연결하고, 전원을 켭니다.",
+            "initializing": "방화벽 정보를 기다리는 중",
+            "disconnected": "Security Heartbeat가 수신되지 않습니다.",
+            "connected": "Security Heartbeat를 수신하고 있습니다.",
+            "sync": "모든 정책이 방화벽에 적용되었습니다.",
+            "time": "{{ time }}",
+            "syncing": "정책이 원격 장치로 푸시되고 있으므로 이 작업은 시간이 걸릴 수 있습니다",
+            "outofsync": "추가 정책 변경 사항을 적용하려면 오류를 해결해야 합니다.",
+            "suspended": "그룹 정책은 동기화되지 않습니다. 이 방화벽을 그룹 외부로 이동했다가 다시 추가하여 그룹의 새 정책을 가져오십시오.",
+            "unsupported": "버전 18.X 이상의 방화벽만이 방화벽 그룹을 지원합니다."
+          }
+        }
       }
     }
   }

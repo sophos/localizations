@@ -24,6 +24,7 @@
       "day-ago": "{{unit}} 天前",
       "months-ago": "{{unit}} 個月前",
       "month-ago": "{{unit}} 個月前",
+      "tags": "標籤",
       "link-speed": {
         "10mh": "10M/Half",
         "10mf": "10M/Full",
@@ -46,7 +47,9 @@
         "delete": "刪除",
         "add": "新增",
         "update": "更新",
-        "reset": "重設"
+        "reset": "重設",
+        "enable": "打開",
+        "disable": "關閉"
       },
       "status": {
         "registering": "正在等待連線",
@@ -68,7 +71,8 @@
         "vlans-title": "VLAN",
         "network-settings-title": "網路設定",
         "task-queue-title": "工作佇列",
-        "site-details": "站點詳細資料"
+        "site-details": "站點詳細資料",
+        "diagnostics": "診斷"
       },
       "error": "錯誤",
       "success": "成功",
@@ -117,7 +121,11 @@
           "add-template": "新增網站",
           "switch-delete-confirm": "移除交換機",
           "template-delete-confirm": "刪除網站",
-          "move-to-site": "移至站點"
+          "move-to-site": "移至站點",
+          "fullSync": "同步"
+        },
+        "full-sync": {
+          "dialog-title": "同步"
         },
         "table-headers": {
           "name": "名稱",
@@ -136,194 +144,79 @@
           "template-overridden": "覆蓋網站？"
         },
         "upgrade": {
+          "type": {
+            "AGENT": "Central 用戶端",
+            "FULL": "韌體"
+          },
           "state": {
             "action": {
               "edit": "變更排程",
               "cancel": "取消"
             },
-            "SCHEDULED_UPGRADE": {
-              "SCHEDULED": {
-                "text": "升級至版本 {{ version }} 已排程。",
-                "note": {
-                  "now": "交換機接收請求後升級將立即開始。",
-                  "date": "交換機的時間為 {{ date }} 時，將開始升級"
-                },
-                "action": "管理韌體"
-              },
-              "UPDATING": {
-                "text": "正在升級至版本 {{ version }}",
-                "note": {
-                  "now": "當前正在套用變更。此項操作可能需要一些時間。",
-                  "date": "當前正在套用變更。此項操作可能需要一些時間。"
-                }
-              },
-              "SUCCESS": {
-                "text": "升級至版本 {{ currentVersion }} 成功。",
-                "note": {
-                  "now": "交換機從 {{ version }} 開始升級",
-                  "date": "交換機於 {{ date }} 從 {{ version }} 開始升級"
-                }
-              },
-              "FAILURE": {
-                "text": "升級至版本 {{ version }} 失敗。",
-                "note": {
-                  "now": "",
-                  "date": "嘗試時間：{{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "錯誤尚未報告給 Sophos Central。",
-                  "SUCCESS": "出現未知錯誤。",
-                  "TIME_ALREADY_ELAPSED":  "排程時間已過去。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
-                }
-              },
-              "CANCELLED": {
-                "text": "管理員已取消升級至版本 {{ version }}。",
-                "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "我們仍在等待取消成功。",
-                  "SUCCESS": "交換機已取消排程，沒有任何變更",
-                  "TIME_ALREADY_ELAPSED":  "但是交換機已執行排程。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
-                }
-              }
+            "process": {
+              "SCHEDULED_UPGRADE": "升级",
+              "AUTO_UPGRADE": "自動升級",
+              "ROLLBACK": "切換韌體"
             },
-            "AUTO_UPGRADE": {
-              "SCHEDULED": {
-                "text": "自動升級至版本 {{ version }} 已排程。",
-                "note": {
-                  "now": "交換機接收請求後升級將立即開始。",
-                  "date": "交換機的時間為 {{ date }} 時，將開始升級"
-                },
-                "action": "管理韌體"
-              },
-              "UPDATING": {
-                "text": "自動升級至 {{ version }}",
-                "note": {
-                  "now": "當前正在套用變更。此項操作可能需要一些時間。",
-                  "date": "當前正在套用變更。此項操作可能需要一些時間。"
-                }
-              },
-              "SUCCESS": {
-                "text": "自動升級至版本 {{ currentVersion }} 成功。",
-                "note": {
-                  "now": "交換機從 {{ version }} 開始升級",
-                  "date": "交換機於 {{ date }} 從 {{ version }} 開始升級"
-                }
-              },
-              "FAILURE": {
-                "text": "自動升級至版本 {{ version }} 失敗。",
-                "note": {
-                  "now": "",
-                  "date": "嘗試時間：{{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "錯誤尚未報告給 Sophos Central。",
-                  "SUCCESS": "出現未知錯誤。",
-                  "TIME_ALREADY_ELAPSED":  "排程時間已過去。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
-                }
-              },
-              "CANCELLED": {
-                "text": "自動升級至版本 {{ version }} 已取消。",
-                "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "我們仍在等待取消成功。",
-                  "SUCCESS": "交換機已取消排程，沒有任何變更",
-                  "TIME_ALREADY_ELAPSED":  "但是交換機已執行排程。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
-                }
-              }
+            "reason": {
+              "NO_ERROR": "未向 Sophos Central 報告任何錯誤。",
+              "TIME_ALREADY_ELAPSED": "排程時間已過去。",
+              "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
+              "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
+              "DOWNLOAD_ERROR": "無法下載韌體。",
+              "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
+              "ALREADY_UPDATED": "交換機已升級至所需版本。",
+              "UPGRADE_ERROR": "無法套用韌體。",
+              "UNKNOWN_ERROR": "出現未知錯誤。"
             },
-            "ROLLBACK": {
+            "status": {
               "SCHEDULED": {
-                "text": "變換至版本 {{ version }} 已排程。",
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已排程。",
                 "note": {
-                  "now": "交換機接收請求後變換將立即開始。",
-                  "date": "交換機的時間為 {{ date }} 時，將開始變換"
-                },
-                "action": "管理韌體"
+                  "now": "交換器收到請求後，{{ process }} 將立即啟動。",
+                  "date": "交換器的時間為 {{ schedule }} 時，將發生 {{ process }}"
+                }
               },
               "UPDATING": {
-                "text": "變換至版本 {{ version }}",
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 正在進行中。",
                 "note": {
                   "now": "當前正在套用變更。此項操作可能需要一些時間。",
                   "date": "當前正在套用變更。此項操作可能需要一些時間。"
                 }
               },
               "SUCCESS": {
-                "text": "變換至版本 {{ currentVersion }} 成功。",
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。",
                 "note": {
-                  "now": "交換機從 {{ version }} 開始升級",
-                  "date": "交換機於 {{ date }} 從 {{ version }} 開始升級"
+                  "now": "{{ process }} 於 {{ date }} 完成",
+                  "date": "按照 {{ schedule }} 的排程，{{ process }} 於 {{ date }} 完成"
                 }
               },
-              "FAILURE": {
-                "text": "變換至版本 {{ version }} 失敗。",
+              "CANCELLING": {
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 將被取消。",
                 "note": {
-                  "now": "",
-                  "date": "嘗試時間：{{ date }}"
-                },
-                "reason": {
-                  "NO_ERROR" : "錯誤尚未報告給 Sophos Central。",
-                  "SUCCESS": "出現未知錯誤。",
-                  "TIME_ALREADY_ELAPSED":  "排程時間已過去。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
+                  "now": "尚未收到交換器的確認訊息",
+                  "date": "尚未收到交換器的確認訊息"
                 }
               },
               "CANCELLED": {
-                "text": "變換至版本 {{ version }} 已取消。",
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已取消。",
                 "note": {
-                  "now": "",
-                  "date": ""
-                },
-                "reason": {
-                  "NO_ERROR" : "我們仍在等待取消成功。",
-                  "SUCCESS": "交換機已取消排程，沒有任何變更",
-                  "TIME_ALREADY_ELAPSED":  "但是交換機已執行排程。",
-                  "TOO_MANY_PENDING_REQUESTS": "交換機正在處理其他工作。",
-                  "LINK_NOT_REACHABLE": "韌體伺服器目前可能無法使用。",
-                  "DOWNLOAD_ERROR": "無法下載韌體。",
-                  "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
-                  "ALREADY_UPDATED": "交換機已升級至所需版本。",
-                  "UPGRADE_ERROR": "無法套用韌體。",
-                  "UNKNOWN_ERROR": "出現未知錯誤。"
+                  "now": "此過程中未對交換器做任何變更",
+                  "date": "此過程中未對交換器做任何變更"
+                }
+              },
+              "FAILURE": {
+                "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 失敗。",
+                "note": {
+                  "now": "{{ reason }}",
+                  "date": "根據 {{ schedule }} 的排程，嘗試於 {{ date }}。{{ reason }}"
+                }
+              },
+              "CANCEL_FAILURE": {
+                "text": "無法取消 {{ process }} 至版本 {{ version }}({{type}})",
+                "note": {
+                  "now": "{{ reason }}",
+                  "date": "根據 {{ schedule }} 的排程，嘗試於 {{ date }}。{{ reason }}"
                 }
               }
             }
@@ -332,25 +225,25 @@
           "up-to-date-message": "沒有可下載的韌體。",
           "cannot-manage": "正在進行的升級完成後，您可選擇排程。",
           "update-available": "新韌體更新現已可用。",
-          "rollback-available": "變換至備份磁碟分割版本 {{ version }}",
+          "rollback-available": "切換韌體以備份磁碟分割版本 {{ version }}",
           "rollback-message": "這將從備份磁碟分割重新啟動交換機。",
-          "schedule-rollback": "排程變換",
+          "schedule-rollback": "排程切換韌體",
           "upgrade-message": "您可以立即或在將來套用這些升級。",
           "schedule-upgrade": "排程升級",
           "schedule": "變更排程",
           "manage-schedule-dialog-title": "管理韌體：{{ site }}",
           "upgrade-schedule-dialog-title": "選擇排程",
-          "dialog-heading": "管理現場交換機的韌體：{{ site }}。您可以從下面的選項中新增、取消韌體升級或變換。",
-          "schedule-info-message": "選擇更新或變換所選交換機的時間。",
+          "dialog-heading": "管理現場交換機的韌體：{{ site }}。您可以從以下選項新增、取消韌體升級或切換韌體。",
+          "schedule-info-message": "選擇何時更新或切換所選交換器的韌體。",
           "update-now": "立即",
           "custom": "自訂",
-          "schedule-now-note": "連線的交換機將收到立即升級/變換的通知。斷開連線的交換機將在連線後很快收到通知。這可能需要重新啟動交換機。即時排程一旦儲存，就不可修改。只有完成當前排程後才可新增新排程。",
-          "schedule-custom-note": "選擇的排程將遵守交換機的本地時間，而與時區無關。升級/變換可能需要重新啟動。",
+          "schedule-now-note": "連線的交換器將收到通知，立即升級或切換韌體。斷開連線的交換機將在連線後很快收到通知。這可能需要重新啟動交換機。即時排程一旦儲存，就不可修改。只有完成當前排程後才可新增新排程。",
+          "schedule-custom-note": "選擇的排程將遵守交換機的本地時間，而與時區無關。升級或切換韌體可能需要重新啟動。",
           "scheduled-success-message": "韌體升級已排定",
           "scheduled-success-failure": "韌體升級已失敗",
           "update-cancel-message": "韌體升級已取消",
           "cancel-upgrade": "取消排程",
-          "rollback": "變換 ({{ version }})",
+          "rollback": "切換韌體 ({{ version }})",
           "modified": "現有排程 {{ version }} | {{ schedule }} 已修改。",
           "new-schedule": "新排程",
           "table": {
@@ -396,30 +289,83 @@
           "transfer-success": "交換機已移动",
           "transfer-failed": "無法移動交換機",
           "full-sync-success": "站點設定已同步至所選交換機",
-          "full-sync-failed": "無法將站點設定同步至所選交換機"
+          "full-sync-failed": "無法將站點設定同步至所選交換機",
+          "full-sync-confirm-dialog": "網站設定將同步至所選交換器"
         },
         "groupInfoText": {
           "what": "什麼是網站？",
           "information": "交換器網站是一種虛擬設定，可套用於一個或多個交換器。我們可以根據需要將交換器移入或移出網站。只要交換器處於網站之下，在網站層級完成的設定將會自動同步至交換器。",
           "note": "如果交換器層級和網站層級的設定存在衝突，則以交換器層級的設定為準。"
+        },
+        "site-without-switch": {
+          "label": "尚未新增任何交換器",
+          "add-switch": "新增切換器"
         }
       },
       "manage": {
         "page-title": "交換器 - 交換器管理",
         "breadcrumb-text": "管理交換器",
         "template-dd-default-title": "選取一個網站",
-        "upgrade-checkbox-label": "自動升級中央代理程式",
+        "upgrade-checkbox-label": "自動更新 Sophos Central 用戶端",
+        "add-edit-tags": "新增或編輯標記",
+        "add-edit-location": "新增或編輯位置",
         "button": {
           "reboot": "重新開機",
-          "open-local-mgmt-console": "打開本機管理主控台",
-          "remove": "從 Sophos Central 移除"
+          "open-local-mgmt-console": "打開本機交換器管理",
+          "open-local-mgmt-console-helper-text": "這將打開新的瀏覽器標籤，其中帶有交換器的管理地址。只有交換器管理位置可以從此瀏覽器存取時，才能將其打開。",
+          "remove": "從 Sophos Central 移除",
+          "add-tags": "新增標記",
+          "add-location": "新增地點"
         },
         "tab-fields": {
           "serial-no": "序號",
           "model": "型號",
           "powered-on": "打開電源",
           "switch-firmware": "交換器韌體",
-          "central-agent": "Central 代理程式"
+          "central-agent": "Sophos Central 用戶端"
+        },
+        "reboot": {
+          "reboot-dialog-title": "重新開機",
+          "reboot-dialog-message": "重新開機 <strong>{{switchSerial}}</strong>"
+        },
+        "edit-success": "Central 用戶端已啟用自動更新",
+        "edit-success-disabled-auto-update": "Central 用戶端已停用自動更新",
+        "mgmt-console": {
+          "title": "本機交換器使用者介面中提供以下診斷和疑難排解工具。直接登入交換器的本機管理介面可以存取這些工具。",
+          "resource-usage": "資源使用情況",
+          "resource-usage-item": "本機交換器 Web UI：監視器 > 即時儀表",
+          "resource-usage-helper": "即時儀表提供 CPU 和記憶體使用情況的圖形追蹤。",
+          "port-statistics": "連接埠統計資料",
+          "port-statistics-item": "本機交換器 Web UI：監視器 > 統計資料 > 連接埠",
+          "port-statistics-helper": "連接埠統計資料將提供輸入/輸出封包計數，以及每個連接埠的 TX/RX 錯誤。",
+          "mac-address-table": "MAC 地址表",
+          "mac-address-table-item": "本機交換器 Web UI：監視器 > 動態 MAC 地址監視器 > 靜態 MAC 地址",
+          "mac-address-table-helper": "MAC 地址表將顯示每個連接埠和 VLAN 發現的裝置。",
+          "poe-power-usage": "PoE 用電量",
+          "poe-power-usage-item": "本機交換器 Web UI：監視器 > 儀表板設定 > PoE 連接埠設定",
+          "poe-power-usage-helper": "儀表板和 PoE 連接埠設定頁面提供每個連接埠的電流、電壓和功率消耗資訊的詳細資料。",
+          "network-diagnostics": "網路診斷",
+          "network-diagnostics-item": "本機交換器 Web UI：分析 > Ping 測試分析 > 追蹤路由",
+          "network-diagnostics-helper": "Ping 和追蹤路由可用於測試交換器連接性和 L3 路由功能。",
+          "event-loggging": "事件紀錄",
+          "event-loggging-item": "本機交換器 Web UI：監視器 > 本機記錄監視器 > 記錄表",
+          "event-loggging-helper": "本機記錄允許設定哪些事件將在交換器上本機記錄。可能需要編輯和啟用更高錯誤級別的記錄以偵測必要的事件。這應該只在疑難排解時啟用。記錄的詳細資料可在記錄表中檢閱。",
+          "cable-diagnostics": "電纜診斷",
+          "cable-diagnostics-item": "本機交換器 Web UI：分析 > 診斷工具",
+          "cable-diagnostics-helper": "選取連接埠，然後按一下測試以在所選交換器連接埠上執行電纜診斷。",
+          "sfp-module-info": "SFP 模組資訊",
+          "sfp-module-info-item": "本機交換器 Web UI：監視器 > SFP 模組資訊",
+          "sfp-module-info-helper": "SFP 模組資訊顯示連線的光纖模組向交換器提供的功能和資訊。"
+        },
+        "message": {
+          "auto-update-enable-success": "Central 用戶端已啟用自動更新",
+          "auto-update-enable-error": "無法啟用 Central 用戶端的自動更新",
+          "auto-update-disable-success": "Central 用戶端已停用自動更新",
+          "auto-update-disable-error": "無法停用 Central 用戶端的自動更新",
+          "tags-update-success": "標記已更新",
+          "tags-update-error": "無法更新標記",
+          "location-update-success": "位置已更新",
+          "location-update-error": "無法更新位置"
         }
       }
     },
@@ -569,8 +515,11 @@
         "firmware_upgrade": "韌體",
         "schedule_upgrade": "排程韌體升級",
         "cancel_upgrade": "取消韌體升級",
-        "rollback": "變換韌體",
-        "port": "連接埠"
+        "rollback": "切換韌體",
+        "port": "連接埠",
+        "remote_support": "遠端支援",
+        "enable_remote_support": "打開",
+        "disable_remote_support": "關閉"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -589,6 +538,24 @@
       "message": {
         "port-update-success": "連接埠未更新。",
         "port-update-error": "無法更新一個或多個連接埠。"
+      }
+    },
+    "remote-debugging": {
+      "debugging-enabled-title": "遠端偵錯已啟用",
+      "debugging-disabled-title": "啟用遠端偵錯",
+      "token": "權杖",
+      "duration-day": "{{duration}} 天",
+      "duration-days": "{{duration}} 天",
+      "copy": "複製",
+      "date-expiry-string": "此存取權杖在 {{expiry}} 之前有效",
+      "form": {
+        "validity": "有效期"
+      },
+      "message": {
+        "apu-enable-success": "已開啟遠端偵錯",
+        "apu-enable-error": "無法開啟遠端偵錯",
+        "apu-disable-success": "已關閉遠端偵錯",
+        "apu-disable-error": "無法關閉遠端偵錯"
       }
     }
   }

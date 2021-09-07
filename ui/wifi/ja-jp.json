@@ -14,14 +14,16 @@
       "update": "更新",
       "start-date": "開始日",
       "end-date": "終了日",
-      "confirmDeleteHeader": "削除の確認",
+      "confirm-delete-header": "削除の確認",
       "error": "エラー",
       "success": "成功",
       "retry": "再試行",
-      "accessPoints": "アクセスポイント",
+      "access-points": "アクセスポイント",
+      "assign-accesspoints": "アクセスポイントの割り当て",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "サイト",
+      "site-name":"サイト名",
       "statistic": "統計",
       "devices": "デバイス",
       "reset": "リセット",
@@ -33,6 +35,7 @@
       "hide": "非表示",
       "details": "詳細",
       "no-data": "データはありません",
+      "no-records": "レコードがありません",
       "beta": "ベータ版",
       "copied": "コピー済み",
       "data-size": {
@@ -40,7 +43,9 @@
         "gb": "GB"
       },
       "create": "作成",
-      "no": "いいえ"
+      "no": "いいえ",
+      "online": "オンライン",
+      "offline": "オフライン"
     },
     "global": {
       "form": {
@@ -71,6 +76,47 @@
       "breadcrumb-title": "製品ダッシュボード",
       "page-title": "ワイヤレス - ダッシュボード",
       "breadcrumb-text": "ワイヤレスダッシュボード"
+    },
+    "devices": {
+      "device-container": {
+        "breadcrumb-text": "デバイス",
+        "title": "ワイヤレス - デバイス",
+        "show-chart": "グラフの表示",
+        "hide-chart": "グラフの非表示",
+        "ghz-2-4": "2.4GHz",
+        "ghz-5": "5GHz",
+        "ghz-both": "2.4GHz と 5GHz",
+        "status-both": "オンラインとオフライン"
+      },
+      "device-list": {
+        "show-period": "表示期間:",
+        "period-24-h": "24時間",
+        "period-7-d": "7日",
+        "export-csv": "CSV 形式で出力",
+        "status": "状態",
+        "name": "デバイス名",
+        "mac": "MAC",
+        "ip": "IP",
+        "username": "ユーザー名",
+        "vendor": "ベンダー",
+        "access-point": "アクセスポイント",
+        "ssid": "SSID",
+        "band": "帯域",
+        "connection-speed": "接続速度",
+        "first-seen": "初回表示",
+        "last-seen": "最終表示",
+        "security-heartbeat": {
+          "security-heartbeat": "セキュリティハードビート",
+          "health-status-red": "クライアントにリスクあり",
+          "health-status-green": "保護済み",
+          "health-status-missing": "セキュリティハートビートの欠落",
+          "health-status-grey": "セキュリティハートビートなし",
+          "health-status-yellow": "クライアントにリスクの可能性あり",
+          "health-status-not-available": "表示する内容はありません"
+        },
+        "no-devices-found": "表示可能な接続されている無線クライアントはありません。",
+        "pagination-text": "{{ filtered }}台のクライアントを表示。合計 {{ all }}台"
+      }
     },
     "diagnostics": {
       "events": "イベント",
@@ -199,7 +245,44 @@
         "title": "ワイヤレス - サイト",
         "no-sites-defined": "定義済みのサイトがありません。",
         "delete-dialog-text": "選択したカスタマーサイトの構内図はすべて削除されます。サイト {{site}} を削除しますか？",
-        "confirm-delete-header": "サイトの削除"
+        "confirm-delete-header": "サイトの削除",
+        "online-_dynamic_": {
+          "false": "オフライン",
+          "true": "オンライン"
+        }
+      },
+      "site-name-error-msgs": {
+        "required": "サイト名を指定してください。",
+        "maxlength": "サイト名は最大 64文字まで入力できます。"
+      },
+      "detail": {
+        "select-view": "表示の選択"
+      },
+      "network-list": {
+        "filter-placeholder": "フィルタオプションの選択",
+        "filter-all-label": "すべてのネットワークを表示",
+        "classification": "分類の選択",
+        "edit-classification-prefix-label": "次のようにマーク:",
+        "filter-options": {
+          "rogue": "不正",
+          "trusted": "信頼する",
+          "untrusted": "信頼しない",
+          "advanced-impersonate": "高度な偽装",
+          "evil-twin": "悪魔の双子 (Evil Twin)",
+          "bssid-impersonate": "BSSID 偽装",
+          "ssid-impersonate": "SSID 偽装",
+          "adhoc": "アドホック"
+        },
+        "edit-classification-options": {
+          "mark-as-rogue": "不正としてマーク",
+          "mark-as-trusted": "信頼するとしてマーク",
+          "mark-as-untrusted": "信頼しないとしてマーク",
+          "mark-as-advanced-impersonate": "高度な偽装としてマーク",
+          "mark-as-evil-twin": "悪魔の双子としてマーク",
+          "mark-as-bssid-impersonate": "BSSID 偽装としてマーク",
+          "mark-as-ssid-impersonate": "SSID 偽装としてマーク",
+          "mark-as-adhoc": "アドホックとしてマーク"
+        }
       }
     },
     "networks": {
@@ -376,6 +459,8 @@
           "file-format-error": "対応していないファイル形式です。",
           "file-size-exceed": "ファイルの最大サイズを超えています。"
         },
+        "start-time": "開始時刻",
+        "end-time": "終了時刻",
         "accept-terms-and-conditions": "利用規約に同意し、接続"
       },
       "network-editor": {
@@ -383,13 +468,13 @@
         "inline-help-sync-security": "Synchronized Security は、Sophos APX シリーズで活用できる独自の機能です。ソフォスの革新的テクノロジー「Security Heartbeat™」は、エンドポイント、モバイルプロテクション、およびアクセスポイントが情報を交換して連係することで、ネットワークからのセキュリティ脅威をブロックすることを可能にします。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;</sup>ゲストネットワークやキャプティブポータルがオンになっている SSID では、Synchronized Security を使用できません。",
-        "green-option-label": "Security Heartbeat 緑色",
+        "green-option-label": "セキュリティハードビート: 緑色",
         "green-option-value": "すべてのトラフィックを許可する",
         "green-option-info": "クライアント保護済み。",
-        "yellow-option-label": "Security Heartbeat 黄色",
+        "yellow-option-label": "セキュリティハードビート: 黄色",
         "yellow-option-value": "すべてのトラフィックを許可 (警告)",
         "yellow-option-info": "問題が検出され、クライアントが危険にさらされている可能性があります。エンドポイントで、これは非アクティブなマルウェアまたは不要と思われるアプリケーション (PUA) である可能性があります。モバイルデバイスの場合、さまざまなコンプライアンス違反に対するハートビートのステータスを定義できます。",
-        "red-option-label": "Security Heartbeat 赤",
+        "red-option-label": "セキュリティハードビート: 赤",
         "red-option-value": "ウォールドガーデン",
         "red-option-info": "以下の許可リストに登録されているドメインを除き、すべてのインターネットトラフィックがブロックされます。ユーザーには、警告を通知する Web ページが表示されます。",
         "uem-label": "Sophos Mobile (UEM)",
@@ -427,6 +512,8 @@
         "mac-filter-header": "MAC フィルタリング",
         "mac-filter-none": "なし",
         "mac-filter-blacklist": "ブロックリスト",
+        "scheduled": "スケジュール済み",
+        "always": "常時",
         "input-mac": "aa:bb:cc:dd:ee:ff",
         "input-label": "MAC アドレス",
         "blocked-mac-filter": "ブロックされた MAC アドレスはこの SSID に接続できません。",

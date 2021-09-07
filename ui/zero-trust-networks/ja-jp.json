@@ -25,7 +25,8 @@
       "no": "いいえ",
       "day": "日",
       "days": "日",
-      "seconds": "秒"
+      "seconds": "秒",
+      "required-error": "必須"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - ダッシュボード",
       "breadcrumb-text": "Zero Trust Network Access ダッシュボード",
+      "eap-program-message": "この製品は、アーリー アクセス プログラムで提供されます。「フィードバック」をクリックしてバグを報告したり、フィードバックを送信したりしてください。",
       "nodata": "表示対象のデータはありません",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "状態",
                 "version": "バージョン",
                 "support": "ソフォスサポート",
-                "support-status": "ソフォスサポートの状態"
+                "support-status": "ソフォスサポートの状態",
+                "troubleshooting-logs": "トラブルシューティングログ"
               },
               "support-status": {
                 "connected": "接続",
@@ -230,6 +233,15 @@
               }
             },
             "note": "負荷分散を行うためには、インスタンス数は奇数である必要があります。",
+            "troubleshoot": {
+              "logs": "トラブルシューティングログ",
+              "generate-logs": "ログの生成",
+              "troubleshoot-logs-info1": "このようなログやレポートは、トラブルシューティングに使用したり、ソフォスのサポートに送信したりできます。",
+              "troubleshoot-logs-info2": "ログが生成されるまで数分かかることがあります。このページから離れることができます。",
+              "troubleshoot-logs-info3": "各インスタンスの横にダウンロードファイルが表示され、5時間使用できます。"
+            },
+
+
             "add": "インスタンスの追加/編集",
             "header": {
               "name": "名前: ",
@@ -524,6 +536,16 @@
           "fetch-error": "リモートデバッグの詳細を取得できません",
           "unreachable": "ゲートウェイはサーバーに到達できませんでした。",
           "try-again": "後でもう一度やり直してください。"
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "失効日: {{linkExpiryDate}}",
+          "expired": "ダウンロードリンクの有効期限が切れました",
+          "success-msg": "ログの生成中",
+          "error-msg": "ログの生成中、エラーが発生しました",
+          "status": {
+            "generating-log": "ログの生成中"
+          },
+          "error": "エラー; 後でもう一度やり直してください"
         }
       },
       "schedule": {
@@ -613,7 +635,7 @@
     },
     "policies": {
       "list": {
-        "expires": "有効期限",
+        "expires": "失効日",
         "columns": {
           "name": "名前",
           "status": "状態",
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "ゲートウェイクラスタのフィールドが見つかりません",
       "gateway.cluster.changeSizeInvalid": "古いインスタンスを削除する前にインスタンスを増やしてください。クラスタサイズは (n+1)/2 より大きくする必要があります",
       "gateway.not.connected.or.approved": "ゲートウェイが接続している、または承認されている状態ではなく、インスタンスがアクティブな状態でない場合、リモートデバッグを有効にすることはできません",
+      "gateway.key-cert.mismatch": "証明書と秘密鍵が一致しません",
+      "gateway.log.collection.ongoing": "ゲートウェイは既にログを収集しています。しばらくしてから再試行してください",
+      "gateway.log.collection.wrong.request": "ログの取得では、「収集」状態のみがサポートされています",
+      "gateway.log.collection.no.active": "ログ収集のアクティブなインスタンスが見つかりません",
       "policy.invalid": "指定されたポリシーオブジェクトが無効です",
       "policy.isEnforced.notNull": "ポリシーオブジェクトの isEnforced フィールドは Null にできません",
       "policy.valid-until.not.allowed": "ポリシーが適用されていない場合、validUntil は設定できません",

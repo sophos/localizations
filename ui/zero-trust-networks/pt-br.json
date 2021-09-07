@@ -25,7 +25,8 @@
       "no": "Não",
       "day": "dia",
       "days": "dias",
-      "seconds": "segundos"
+      "seconds": "segundos",
+      "required-error": "Obrigatório"
     },
     "application": {
       "form": {
@@ -148,6 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Painel",
       "breadcrumb-text": "Painel do Zero Trust Network Access",
+      "eap-program-message": "Esse produto é fornecido através do Early Access Program. Clique em \"Feedback\" para informar sobre falhas ou dar feedback.",
       "nodata": "Nenhum dado disponível",
       "set-up-banner": {
         "title": {
@@ -221,7 +223,8 @@
                 "status": "Status",
                 "version": "Versão",
                 "support": "Suporte da Sophos",
-                "support-status": "Status de suporte da Sophos"
+                "support-status": "Status de suporte da Sophos",
+                "troubleshooting-logs": "Log de solução de problemas"
               },
               "support-status": {
                 "connected": "Conectado",
@@ -230,6 +233,15 @@
               }
             },
             "note": "Para balanceamento de carga, você deve ter um número ímpar de instâncias.",
+            "troubleshoot": {
+              "logs": "Logs de solução de problemas",
+              "generate-logs": "Gerar logs",
+              "troubleshoot-logs-info1": "Você pode usar esses logs e relatórios para solucionar problemas ou enviá-los para o Suporte da Sophos.",
+              "troubleshoot-logs-info2": "Os logs levam alguns minutos para serem gerados. Você não precisa ficar nessa página.",
+              "troubleshoot-logs-info3": "O download será exibido ao lado de cada instância e ficará disponível por 5 horas."
+            },
+
+
             "add": "Adicionar/Editar instâncias",
             "header": {
               "name": "Nome: ",
@@ -524,6 +536,16 @@
           "fetch-error": "Não foi possível buscar detalhes de depuração remota",
           "unreachable": "O gateway não conseguiu acessar o servidor.",
           "try-again": "Tente de novo mais tarde."
+        },
+        "troubleshooting-logs": {
+          "link-expiry-date": "Expira: {{linkExpiryDate}}",
+          "expired": "O link de download expirou",
+          "success-msg": "Gerando logs",
+          "error-msg": "Erro ao gerar logs",
+          "status": {
+            "generating-log": "Gerando log"
+          },
+          "error": "Erro, tente de novo mais tarde"
         }
       },
       "schedule": {
@@ -811,6 +833,10 @@
       "gateway.cluster.notEmpty": "Campo de cluster de gateway não encontrado",
       "gateway.cluster.changeSizeInvalid": "Traga mais instâncias antes de deletar as instâncias antigas; o tamanho do cluster deve ser maior que (n+1)/2",
       "gateway.not.connected.or.approved": "A depuração remota não pode ser habilitada se o gateway não estiver no estado conectado ou aprovado e a instância não estiver no estado ativo",
+      "gateway.key-cert.mismatch": "Discrepância entre certificado e chave privada",
+      "gateway.log.collection.ongoing": "O gateway já está coletando logs; tente novamente mais tarde",
+      "gateway.log.collection.wrong.request": "Apenas o status COLETA é aceito para obter logs",
+      "gateway.log.collection.no.active": "Nenhuma instância ativa encontrada para a coleta de log",
       "policy.invalid": "O objeto de política fornecido é inválido",
       "policy.isEnforced.notNull": "O campo isEnforced no objeto da política não pode ser nulo",
       "policy.valid-until.not.allowed": "validUntil não pode ser definido se a política não for forçada",
