@@ -149,7 +149,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Dashboard",
       "breadcrumb-text": "Zero-Trust-Network-Access-Dashboard",
-      "eap-program-message": "Dieses Produkt wird im Rahmen des Early-Access-Programms bereitgestellt. Klicken Sie zum Melden von Bugs oder zur Abgabe von Feedback bitte auf \"Feedback\".",
+      "eap-program-message": "Dieses Produkt wird im Rahmen des Early-Access-Programms bereitgestellt. Wenn Sie Fehler melden oder Feedback geben möchten, klicken Sie auf \"Feedback\".",
       "nodata": "Keine Daten vorhanden",
       "set-up-banner": {
         "title": {
@@ -235,9 +235,9 @@
             "note": "Für eine Lastverteilung benötigen Sie eine ungerade Instanzen-Anzahl.",
             "troubleshoot": {
               "logs": "Fehlerbehebungs-Protokolle",
-              "generate-logs": "Protokelle generieren",
-              "troubleshoot-logs-info1": "Sie können diese Protokolle und Berichte zur Problembehebung nutzen oder an den Support von Sophos senden.",
-              "troubleshoot-logs-info2": "Das Erstellen von Protokollen kann einige Minuten dauern. Sie müssen nicht auf dieser Seite bleiben.",
+              "generate-logs": "Protokolle generieren",
+              "troubleshoot-logs-info1": "Sie können diese Protokolle und Berichte zur Problembehebung nutzen oder an den Sophos-Support senden.",
+              "troubleshoot-logs-info2": "Das Erstellen von Protokollen kann einige Minuten dauern. Sie können diese Seite schließen.",
               "troubleshoot-logs-info3": "Neben jeder Instanz wird ein Download-Link angezeigt, der 5 Stunden lang zur Verfügung steht."
             },
 
@@ -523,7 +523,7 @@
           "sophos-token-header": "Sophos-Support-Token",
           "enable-sophos-support": "Support aktivieren",
           "enable-confirm": "Support für {{gatewayInstanceName}} aktivieren?",
-          "enable-details": "Aktivieren Sie den Sophos-Support, um der Support-Abteilung zur Problembehebung Remote-Zugriff auf Ihre Gateway-Instanz zu gewähren für",
+          "enable-details": "Aktivieren Sie den Sophos-Support, um der Support-Abteilung zur Problembehebung Remote-Zugriff auf Ihre Gateway-Instanz für {{tokenExpirationPeriod}} zu gewähren.",
           "token-header": "Übermitteln Sie dieses Token an den Sophos Support, damit unser Team auf Ihre Gateway-Instanz zugreifen kann.",
           "instance-name": "Gateway-Instanz: {{gatewayInstanceName}}",
           "token-expiry": "Token läuft am: {{tokenExpiryDate}}",
@@ -540,12 +540,12 @@
         "troubleshooting-logs": {
           "link-expiry-date": "Läuft ab: {{linkExpiryDate}}",
           "expired": "Download-Link abgelaufen",
-          "success-msg": "Protokelle werden generiert",
-          "error-msg": "Fehler beim Generieren von Protokellen",
+          "success-msg": "Protokolle werden generiert",
+          "error-msg": "Fehler beim Generieren von Protokollen",
           "status": {
             "generating-log": "Protokoll wird generiert"
           },
-          "error": "Fehler, bitte versuchen Sie es später erneut"
+          "error": "Fehler, versuchen Sie es später erneut"
         }
       },
       "schedule": {
@@ -669,7 +669,7 @@
       },
       "add-modal": {
         "resource-access": "Ressourcenzugriff",
-        "tooltip-resource-access-info1": "Richtlinien können den Ressourcenzugriff mit oder ohne Agent unterstützen. Ein Agent kann den Zugriff auf Basis des Integritätsstatus steuern.",
+        "tooltip-resource-access-info1": "Richtlinien können den Ressourcenzugriff mit oder ohne Agent unterstützen. Ein Agent kann auf Basis des Sicherheitszustands die Zugriffsrechte steuern.",
         "agent": "Agent",
         "agentless": "Ohne Agent"
       },
@@ -718,9 +718,9 @@
         "instance-token-help-text": "Administratoren können den Support für jede ihrer Gateway-Instanzen einschalten. Wenn der Support eingeschaltet wird, wird ein Token mit einer bestimmtem Gültigkeitsdauer zugewiesen. Wenn das Token abläuft, wird der Zugriff verweigert."
       },
       "policy": {
-        "health-trigger-heading": "Mindestzeit, bevor der Geräte-Integritätsstatus eine Regel auslöst",
+        "health-trigger-heading": "Mindestzeit, bevor der Sicherheitszustand eine Regel auslöst",
         "health-trigger-label": "Mindestdauer",
-        "health-trigger-desc": "Legen Sie die Mindestzeit fest, bevor durch den Integritätsstatus eines Gerätes eine Zugriffsrichtlinien-Regel ausgelöst wird. Dadurch kann vermieden werden, dass ZTNA bei temporären Problemen zu schnell reagiert."
+        "health-trigger-desc": "Legen Sie die Mindestzeit fest, bevor durch den Sicherheitszustand eines Gerätes eine Zugriffsrichtlinien-Regel ausgelöst wird. Dadurch kann vermieden werden, dass ZTNA bei temporären Problemen zu schnell reagiert."
       },
       "updated": "Einstellungen erfolgreich aktualisiert",
       "list": {
@@ -832,11 +832,12 @@
       "gateway.cluster.change.notAllowed": "Gateway-Cluster lässt sich nicht deaktivieren",
       "gateway.cluster.notEmpty": "Gateway-Cluster-Feld nicht gefunden",
       "gateway.cluster.changeSizeInvalid": "Aktivieren Sie weitere Instanzen, bevor Sie die alten Instanzen löschen; die Clustergröße muss größer als (n+1)/2 sein",
+      "gateway.cluster.maxSizeInvalid": "Gateway-Cluster darf nicht größer als 9 sein",
       "gateway.not.connected.or.approved": "Remote-Debuggen kann nicht aktiviert werden, wenn das Gateway nicht den Status Verbunden oder Genehmigt hat und die Instanz nicht im aktiven Zustand ist",
-      "gateway.key-cert.mismatch": "Zertifikat und privater Schlüssel stimmen nicht überein",
-      "gateway.log.collection.ongoing": "Gateway sammelt bereits Protokolle. Versuchen Sie es später erneut",
-      "gateway.log.collection.wrong.request": "Beim Abrufen von Protokollen wird ausschließlich der Status „SAMMELN“ unterstützt",
-      "gateway.log.collection.no.active": "Keine aktiven Instanzen für Protokollsammlung gefunden",
+      "gateway.key-cert.mismatch": "Zertifikat und privater Schlüssel passen nicht zusammen",
+      "gateway.log.collection.ongoing": "Gateway sammelt bereits Protokolle. Bitte versuchen Sie es später erneut.",
+      "gateway.log.collection.wrong.request": "Beim Abrufen von Protokollen wird ausschließlich der Status COLLECT unterstützt",
+      "gateway.log.collection.no.active": "Keine aktiven Instanzen für das Sammeln von Protokollen gefunden",
       "policy.invalid": "Angegebenes Richtlinienobjekt ist ungültig",
       "policy.isEnforced.notNull": "Feld 'isEnforced' in Richtlinienobjekt muss vorhanden sein",
       "policy.valid-until.not.allowed": "'validUntil' kann nicht festgelegt werden, wenn Richtlinie nicht durchgesetzt ist",

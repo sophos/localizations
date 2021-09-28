@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "Visão Geral",
       "alerts": "Alertas",
-      "connections": "Conexões",
+      "connections": "Uso da porta",
       "poe": "PoE",
       "uplink": "Uplink",
       "free": "grátis",
@@ -16,6 +16,9 @@
       "state": "Estado",
       "tagged": "Com tag",
       "untagged": "Sem tag",
+      "switches": "Switches",
+      "sync-pending": "Sincronização pendente",
+      "sync-failed": "Falha ao sincronizar",
       "minutes-ago": "{{unit}} minutos atrás",
       "minute-ago": "{{unit}} minuto atrás",
       "hours-ago": "{{unit}} horas atrás",
@@ -35,7 +38,13 @@
         "5g": "5G/Full",
         "10g": "10G/Full",
         "auto": "Auto",
-        "disabled": "Desabilitado"
+        "disabled": "Desabilitado",
+        "ignored": "Ignorar"
+      },
+      "flow-control": {
+        "true": "Habilitar",
+        "false": "Desabilitar",
+        "ignored": "Ignorar"
       },
       "button": {
         "register": "Registrar",
@@ -47,7 +56,7 @@
         "delete": "Deletar",
         "add": "Adicionar",
         "update": "Atualizar",
-        "reset": "Redefinir",
+        "reset": "Apagar",
         "enable": "Ativar",
         "disable": "Desativar"
       },
@@ -95,6 +104,23 @@
         "add-switch": "Adicionar switches"
       }
     },
+    "get-started": {
+      "get-started-title": "Como começar",
+      "step1-header": "1. Configurações do site padrão",
+      "step1-sub-header": "Esta etapa é opcional, mas recomendamos executá-la",
+      "step1-content": "O primeiro site foi criado. Revise as configurações do site e altere-as, se necessário.",
+      "step2-header": "2. Adicionar outro site",
+      "step2-sub-header": "Esta etapa é opcional",
+      "step2-content": "Quando o primeiro site estiver pronto, e se você precisar de mais sites, recomendamos que os adicione antes de adicionar os switches. Você pode adicionar sites quando quiser e mover os switches para novos sites a qualquer hora.",
+      "step3-header": "3. Adicionar o primeiro switch",
+      "step3-sub-header": "Um novo switch herda as configurações do site. Os switches que você move para um site não herdam as configurações automaticamente.",
+      "step3-content": "Após revisar as configurações do site você pode adicionar switches. Quando estiver pronto para começar, você precisará do número de série do switch para conectá-lo a uma conexão da Internet que funcione.",
+      "button": {
+        "review": "Revisar",
+        "add-site": "Adicionar site",
+        "add-switch": "Adicionar um switch"
+      }
+    },
     "switches": {
       "list": {
         "menu-title": "Switches",
@@ -107,8 +133,13 @@
         "retry-dialog-title": "Tentar registro novamente",
         "delete-note": "Se o switch estiver conectado, ele será <strong>reiniciado</strong> logo após a remoção. Se estiver desconectado, será feita a reinicialização <br>quando o switch tentar se conectar ao Sophos Central.<br/><br/> Nota: As configurações atuais do switch são mantidas.",
         "move-to-site-dialog-title": "Mover switches para o site",
-        "move-to-site-text": "{{ switches }} switches selecionados serão movidos para o site",
-        "move-to-site-checkbox-label": "Sincronizar todas as configurações do site com os switches imediatamente",
+        "no-of-switches": "{0} switch(es)",
+        "no-switch-label": "Nenhum",
+        "move-to-site-text": "{{ switches }} switches selecionados serão movidos para o site. Os switches herdarão as configurações do site. Você pode optar por sincronizar agora ou mais tarde.",
+        "move-to-site-checkbox-label": "Sincronizar todas as configurações do site com esses switches imediatamente",
+        "regenerate-confirm-text": "Gere todas as configurações novamente para o switch. Você pode monitorar as tarefas criadas na fila de tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "regenerate-confirm-dialog": "Aplicar todas as configurações novamente",
+        "regenerate-checkbox-label": "Sincronizar as configurações imediatamente com o switch.",
         "txtbox": {
           "search-placeholder": "Pesquisar switch"
         },
@@ -122,10 +153,11 @@
           "switch-delete-confirm": "Remover switch",
           "template-delete-confirm": "Deletar site",
           "move-to-site": "Mover para o site",
-          "fullSync": "Sincronizar"
+          "sync": "Sincronizar"
         },
         "full-sync": {
-          "dialog-title": "Sincronizar"
+          "sync-dialog-title": "Sincronizar",
+          "full-sync-dialog-title": "Regenerar"
         },
         "table-headers": {
           "name": "Nome",
@@ -134,10 +166,10 @@
           "version": "Versão",
           "location": "Localização",
           "ports": "Portas",
-          "connections": "Conexões",
+          "connections": "Uso da porta",
           "vlans": "VLANs",
           "untagged-vlans": "VLANs sem tags",
-          "ip-address": "Nome de host / Endereço IP",
+          "ip-address": "Endereço de IP",
           "tags": "Tags",
           "model": "Modelo",
           "serial-number": "Número de série",
@@ -187,8 +219,8 @@
               "SUCCESS": {
                 "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi bem-sucedido.",
                 "note": {
-                  "now": "O processo de {{ process }} foi concluído em {{ date }}",
-                  "date": "Agendado para {{ schedule }}, o processo de {{ process }} foi concluído em {{ date }}"
+                  "now": "O processo de {{ process }} foi solicitado em {{ date }}",
+                  "date": "Agendado para {{ schedule }}, o processo de {{ process }} foi solicitado em {{ date }}"
                 }
               },
               "CANCELLING": {
@@ -230,19 +262,18 @@
           "schedule-rollback": "Agendar troca de firmware",
           "upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente.",
           "schedule-upgrade": "Agendar um upgrade",
-          "schedule": "Alterar cronograma",
+          "schedule": "Escolha uma agenda",
           "manage-schedule-dialog-title": "Gerenciar firmware: {{ site }}",
           "upgrade-schedule-dialog-title": "Escolha uma agenda",
-          "dialog-heading": "Gerenciar firmware para switches no site: {{ site }}. Você pode adicionar ou cancelar upgrades de firmware ou trocar firmwares na seleção abaixo.",
+          "dialog-heading": "Gerenciar firmware para switches no site: {{ site }}. Você pode adicionar ou cancelar upgrades de firmware ou trocar versões de firmware na seleção abaixo.",
           "schedule-info-message": "Escolha quando atualizar ou trocar o firmware dos switches selecionados.",
           "update-now": "Agora",
           "custom": "Personalizado",
           "schedule-now-note": "Os switches conectados serão notificados para realizar o upgrade ou a troca de firmware imediatamente. Os switches desconectados serão notificados assim que se conectarem. Isso pode exigir a reinicialização do switch. Os agendamentos imediatos não podem ser modificados depois que são salvos. Novas agendas podem ser adicionadas somente depois da conclusão da agenda existente.",
           "schedule-custom-note": "A agenda programada seguirá o horário local do switch, independentemente do fuso horário. O upgrade ou troca de firmware pode exigir a reinicialização.",
-          "scheduled-success-message": "O upgrade de firmware foi agendado",
-          "scheduled-success-failure": "O upgrade de firmware falhou",
-          "update-cancel-message": "O upgrade de firmware foi cancelado",
-          "cancel-upgrade": "Cancelar agendamento",
+          "scheduled-success-message": "Mudanças no cronograma do firmware foram salvas com sucesso.",
+          "scheduled-success-failure": "Falha ao salvar as alterações feitas ao cronograma do firmware.",
+          "cancel-upgrade": "Remover cronograma",
           "rollback": "Troca de firmware ({{ version }})",
           "modified": "O cronograma existente {{ version }} | {{ schedule }} foi modificado.",
           "new-schedule": "Novo cronograma",
@@ -288,9 +319,11 @@
           "update-template-error": "O site não pode ser atualizado",
           "transfer-success": "Os switches foram movidos",
           "transfer-failed": "Não foi possível mover os switches",
-          "full-sync-success": "As configurações do site foram sincronizadas para os switches selecionados",
-          "full-sync-failed": "Não foi possível sincronizar as configurações do site para os switches selecionados",
-          "full-sync-confirm-dialog": "As configurações do site serão sincronizadas para os switches selecionados"
+          "full-sync-success": "Todas as configurações do switch foram aplicadas novamente com sucesso.",
+          "full-sync-failed": "Não foi possível reaplicar as configurações ao switch",
+          "sync-success": "As configurações do site foram sincronizadas para os switches selecionados",
+          "sync-failed": "Não foi possível sincronizar as configurações do site para os switches selecionados",
+          "sync-confirm-dialog": "As configurações do site serão sincronizadas para os switches selecionados. Você pode monitorar o andamento na fila de tarefas."
         },
         "groupInfoText": {
           "what": "O que é um site?",
@@ -300,6 +333,12 @@
         "site-without-switch": {
           "label": "Nenhum switch foi adicionado",
           "add-switch": "Adicionar um switch"
+        },
+        "vlan": {
+          "name": "Nome",
+          "id": "ID de VLAN",
+          "tagged": "Com tag",
+          "untagged": "Sem tag"
         }
       },
       "manage": {
@@ -314,6 +353,7 @@
           "open-local-mgmt-console": "Abrir gerenciamento do switch local",
           "open-local-mgmt-console-helper-text": "Abrirá uma nova guia no navegador com o endereço de gerenciamento do switch. Ela só abrirá se a localização do gerenciamento do switch for acessível pelo navegador.",
           "remove": "Remover do Sophos Central",
+          "regenerate-config": "Aplicar todas as configurações novamente",
           "add-tags": "Adicionar tags",
           "add-location": "Adicionar localização"
         },
@@ -322,11 +362,14 @@
           "model": "Modelo",
           "powered-on": "Ligado",
           "switch-firmware": "Firmware do switch",
-          "central-agent": "Clientes Sophos Central"
+          "central-agent": "Clientes Sophos Central",
+          "site-name": "Site"
         },
         "reboot": {
           "reboot-dialog-title": "Reinicializar",
-          "reboot-dialog-message": "Reinicializar <strong>{{switchSerial}}</strong>"
+          "reboot-dialog-message": "Reinicializar <strong>{{switchSerial}}</strong>",
+          "success": "Tarefa de reinicialização do switch gerada com sucesso.",
+          "error": "Erro ao criar a tarefa de reinicialização do switch"
         },
         "edit-success": "Atualizações automáticas habilitadas para os clientes Central",
         "edit-success-disabled-auto-update": "Atualizações automáticas desabilitadas para os clientes Central",
@@ -342,7 +385,7 @@
           "mac-address-table-item": "IU da Web do Switch Local: Monitorar > Monitorar endereço MAC dinâmico > Endereço MAC estático",
           "mac-address-table-helper": "Tabelas de endereços MAC mostrarão os dispositivos descobertos por porta e VLAN.",
           "poe-power-usage": "Utilização de potência PoE",
-          "poe-power-usage-item": "IU da Web do Switch Local: Monitorar > Configuração do painel > Configurações da porta PoE",
+          "poe-power-usage-item": "IU da Web do Switch Local: Monitorar > Painel > Configurações da porta PoE",
           "poe-power-usage-helper": "As páginas das configurações do painel e da porta PoE oferecem informações com detalhes de corrente, tensão e consumo de energia.",
           "network-diagnostics": "Diagnóstico da rede",
           "network-diagnostics-item": "IU da Web do Switch Local: Analisar > Analisar teste de ping > Rastreio de rota",
@@ -391,7 +434,8 @@
           "auto-upgrade": "Atualize os switches automaticamente com a versão mais recente do software disponível, se não for necessária a reinicialização para o upgrade"
         },
         "body": {
-          "line": "Os switches serão atualizados automaticamente com a versão mais recente do software disponível, logo após o registro. Isso pode exigir a reinicialização do dispositivo."
+          "line": "Os switches serão atualizados automaticamente com a versão mais recente do software disponível, logo após o registro. Isso pode exigir a reinicialização do dispositivo.",
+          "move-switches": "Mover switches para o site"
         }
       },
       "message": {
@@ -412,13 +456,15 @@
         "site-name-required-message": "É necessário um nome de site",
         "site-name-invalid-message": "O nome do site é inválido",
         "site-description-invalid-message": "A descrição do site é inválida",
+        "site-name-exists-message": "O nome do site já existe",
         "create-success": "O site foi criado",
         "create-error": "Não foi possível criar um site",
         "update-success": "O site foi atualizado",
         "update-error": "Não foi possível atualizar o site"
       },
       "form": {
-        "location": "Local do site"
+        "location": "Local do site",
+        "remove": "Deletar site"
       }
     },
     "switch-view": {
@@ -431,6 +477,7 @@
       "ports-dd-default-title": "Selecionar portas",
       "add-vlan-dialog-title": "Adicionar VLAN",
       "edit-vlan-dialog-title": "Editar VLAN",
+      "misconfigured": "As portas {{ ports }} estão sem tag em várias VLANs.",
       "button": {
         "add": "Adicionar VLAN"
       },
@@ -448,7 +495,8 @@
         "description": "Descrição",
         "tagged-ports": "Portas com tag",
         "untagged-ports": "Portas sem tag",
-        "forbidden-ports": "Portas proibidas"
+        "forbidden-ports": "Portas proibidas",
+        "inherited": "Origem"
       },
       "form": {
         "vlan-id": "ID de VLAN",
@@ -461,8 +509,10 @@
         "color": "Cor",
         "vlan-id-required-message": "É necessária uma ID de VLAN.",
         "vlan-id-invalid-message": "A ID de VLAN é inválida.",
+        "vlan-id-exists-message": "A ID de VLAN já existe.",
         "vlan-name-required-message": "É necessário um nome.",
-        "vlan-name-invalid-message": "O nome é inválido."
+        "vlan-name-invalid-message": "O nome é inválido. Não é permitido o caractere especial",
+        "vlan-name-exists-message": "O nome já existe."
       },
       "message": {
         "create-error": "Não foi possível criar VLAN",
@@ -472,16 +522,26 @@
         "delete-error": "Não foi possível deletar uma ou mais VLANs",
         "delete-success": "As VLANs foram deletadas",
         "delete-confirm-title": "Deletar VLANs",
-        "delete-info-message": "Deletar VLANs <strong>{{vlans}}</strong>"
+        "site-delete-info-message": "Delete {{ vlanCount }} VLANs. {{ count }} switches removerão esta VLAN e serão criadas tarefas para deleção. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-delete-info-message": "Delete {{ vlanCount }} VLANs e as tarefas para deleção serão criadas. Você pode optar por sincronizar agora ou mais tarde.",
+        "save-dialog-title": "Confirme a ação de salvar",
+        "site-save-dialog-text": "{{ count }} switches terão esta VLAN e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-save-dialog-text": "O switch terá esta VLAN e as tarefas serão criadas. Você pode optar por sincronizar agora ou mais tarde.",
+        "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente"
       }
     },
     "task-queue": {
       "total-tasks": "Total de tarefas",
+      "created": "Aguardando",
       "pending": "Pendente",
-      "in-progress": "Em andamento",
+      "in-progress": "Sincronizando",
       "failed": "Falhou",
       "skipped": "Ignorada",
       "completed": "Concluída",
+      "sync-dialog-text": "As tarefas em estados de 'Espera' serão enviadas ao switch.",
+      "details-dialog-title": "Detalhes da tarefa",
+      "sync-dialog-select-text": "Selecione os switches que precisam ser sincronizados",
+      "sync-dialog-title": "Sincronizar",
       "button": {
         "show-history": "Exibir histórico"
       },
@@ -490,16 +550,17 @@
         "switch": "Switch",
         "site": "Site",
         "entity": "Entidade",
-        "sub-entity": "Subentidade",
+        "sub-entity": "Ação",
         "date-time": "Criada em"
       },
       "status": {
+        "created": "Aguardando",
         "pending": "Pendente",
         "success": "Bem-sucedido",
         "failed": "Falhou",
         "deleted": "Deletado",
         "skipped": "Ignorada",
-        "in_progress": "Em andamento"
+        "in_progress": "Sincronizando"
       },
       "action": {
         "retry": "Tentar novamente",
@@ -513,13 +574,23 @@
         "full_sync": "Sincronização completa",
         "vlan": "VLAN",
         "firmware_upgrade": "Firmware",
-        "schedule_upgrade": "Agendar upgrade de firmware",
-        "cancel_upgrade": "Cancelar upgrade de firmware",
+        "schedule_upgrade": "Cronograma",
+        "cancel_upgrade": "Cancelar",
         "rollback": "Troca de firmware",
         "port": "Porta",
         "remote_support": "Suporte Remoto",
         "enable_remote_support": "Ativar",
-        "disable_remote_support": "Desativar"
+        "disable_remote_support": "Desativar",
+        "reboot": "Reinicializar",
+        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_full": "Cronograma de upgrade (Firmware)",
+        "schedule_rollback": "Agenda de troca de partição",
+        "cancel_agent": "Cancelar agendamento (cliente)",
+        "cancel_full": "Cancelar agendamento (firmware)",
+        "cancel_rollback": "Cancelar (troca de partição)",
+        "schedule_agent_auto": "Upgrade automático (cliente)",
+        "schedule_full_auto": "Upgrade automático (firmware)",
+        "schedule_rollback_auto": "Troca de partição automática"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -533,11 +604,16 @@
         "flow-control": "Controle de Fluxo",
         "link-speed": "Velocidade/Duplex",
         "untagged-vlan": "VLAN sem tags",
-        "tagged-vlans": "VLANs com tags"
+        "tagged-vlans": "VLANs com tags",
+        "inherited": "Origem"
       },
       "message": {
         "port-update-success": "As portas foram atualizadas.",
-        "port-update-error": "Não foi possível atualizar uma ou mais portas."
+        "port-update-error": "Não foi possível atualizar uma ou mais portas.",
+        "save-dialog-title": "Confirmar atualização",
+        "site-save-dialog-text": "{{ count }} switches terão as portas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-save-dialog-text": "O switch terá as portas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente"
       }
     },
     "remote-debugging": {
@@ -557,6 +633,28 @@
         "apu-disable-success": "Depuração remota desativada",
         "apu-disable-error": "Não é possível desativar a depuração remota"
       }
+    },
+    "poe": {
+      "name": "PoE",
+      "power-limit": "Modo de limite de potência",
+      "priority": "Prioridade",
+      "power-limit-auto": "Auto",
+      "power-limit-manual": "Manual",
+      "power-defined": "Limite de potência",
+      "power-drawn": "Consumo de potência",
+      "poe-status": "Status",
+      "poe-status-Disabled": "Desabilitado",
+      "poe-status-Searching": "Pesquisando",
+      "poe-status-Delivering": "Entregando",
+      "poe-status-Fault": "Falha",
+      "poe-status-MPS_Absent" : "MPS ausente",
+      "poe-status-Short": "Curto",
+      "poe-status-Overload": "Sobrecarga",
+      "poe-status-Power_Denied": "Potência negada",
+      "poe-status-Thermal_Shutdown": "Desligamento térmico",
+      "poe-status-Startup_Failure": "Falha de inicialização",
+      "poe-status-Classification_Failure": "Falha de classificação",
+      "poe-status-Requesting_Power": "Solicitando potência"
     }
   }
 }

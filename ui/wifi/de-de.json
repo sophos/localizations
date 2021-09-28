@@ -17,13 +17,14 @@
       "confirm-delete-header": "Löschen bestätigen",
       "error": "Fehler",
       "success": "Erfolgreich",
+      "info": "Infos",
       "retry": "Erneut versuchen",
       "access-points": "Access Points",
-      "assign-accesspoints": "Access Points zuweisen",
+      "assign-access-points": "Access Points zuweisen",
       "ssids": "SSIDs",
       "settings": "Einstellungen",
       "sites": "Standorte",
-      "site-name":"Name des Standorts",
+      "site-name": "Name des Standorts",
       "statistic": "Statistik",
       "devices": "Geräte",
       "reset": "Reset",
@@ -36,6 +37,8 @@
       "details": "Details",
       "no-data": "Keine Daten",
       "no-records": "Keine Einträge",
+      "status": "Status",
+      "username": "Benutzername",
       "beta": "Beta",
       "copied": "Kopiert",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "Wireless-Dashboard"
     },
     "devices": {
+      "static-details": "Statische Daten",
+      "mac-address": "MAC-Adresse",
+      "current-access-point": "Aktueller Access Point",
+      "current-site": "Aktueller Standort",
+      "current-network": "Aktuelles Netzwerk",
+      "signal-quality": "Signalqualität",
+      "band": "Band",
+      "host-name": "Hostname",
+      "signal-quality-header": "Signalqualität (in dBm)",
+      "ip": "IP",
+      "vendor": "Anbieter",
+      "usage-details": "Nutzungsdetails",
+      "connectivity": "Konnektivität",
       "device-container": {
         "breadcrumb-text": "Geräte",
         "title": "Wireless - Geräte",
@@ -111,7 +127,7 @@
           "health-status-green": "Geschützt",
           "health-status-missing": "Fehlender Security Heartbeat",
           "health-status-grey": "Kein Security Heartbeat",
-          "health-status-yellow": "Stufe möglicherweise gefährdet",
+          "health-status-yellow": "Client möglicherweise gefährdet",
           "health-status-not-available": "Nicht verfügbar"
         },
         "no-devices-found": "Keine verbundenen WLAN-Clients zum Anzeigen.",
@@ -171,7 +187,7 @@
       "low-severity": "Zur Information"
     },
     "settings": {
-      "setting-configuration-save-success-msg": "Konfiguration wurde erfolgreich gespeichert!",
+      "setting-configuration-save-success-msg": "Konfiguration erfolgreich gespeichert.",
       "setting-configuration-save-error-msg": "Die Konfiguration konnte nicht gespeichert werden",
       "sections": {
         "login-title": "Grundeinstellungen",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "Offline",
           "true": "Online"
-        }
+        },
+        "no-aps-found": "Es ist kein registrierter Access Point vorhanden!"
       },
       "site-name-error-msgs": {
         "required": "Standortname ist erforderlich.",
         "maxlength": "Standardname darf höchstens 64 Zeichen haben."
+      },
+      "site-location-error-msgs": {
+        "required": "Standortangabe ist erforderlich."
       },
       "detail": {
         "select-view": "Ansicht auswählen"
@@ -264,7 +284,7 @@
         "classification": "Klassifizierung auswählen",
         "edit-classification-prefix-label": "Markieren als",
         "filter-options": {
-          "rogue": "Unautorisiert",
+          "rogue": "Unberechtigt",
           "trusted": "Zuverlässig",
           "untrusted": "Nicht vertrauenswürdig",
           "advanced-impersonate": "Erweitertes Impersonate",
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "Als BSSID Impersonate markieren",
           "mark-as-ssid-impersonate": "Als SSID Impersonate markieren",
           "mark-as-adhoc": "Als Adhoc markieren"
+        },
+        "syslog-server-error-msgs": {
+          "required": "Serveradresse ist erforderlich.",
+          "invalid-server": "Server ist keine gültige IP oder Hostname."
+        },
+        "syslog-port-error-msgs": {
+          "required": "Port ist erforderlich.",
+          "min": "Port muss zwischen 1 und 65535 liegen.",
+          "max": "Port muss zwischen 1 und 65535 liegen."
+        },
+        "scan-ssid": {
+          "scan": "Scannen",
+          "confirm": {
+            "title": "Scannen bestätigen",
+            "label": "Der Scan wird an allen Online-Access Points an diesem Standort ausgeführt. Für die verbundenen Clients kommt es für mindestens 3-5 Minuten zu Netzwerkunterbrechungen.",
+            "success": "Scan der Nachbarschaft erfolgreich gestartet",
+            "fail": "Scan der Nachbarschaft fehlgeschlagen"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "SSID erfolgreich gespeichert.",
         "help": "Hilfe",
         "general-setting-encryption-mode": "Legen Sie die allgemeinen Einstellungen für Ihre neue SSID fest. Wählen Sie aus, welche Verschlüsselungsmethode und welche Art von SSID Sie bereitstellen wollen.",
         "band-encryption-mode": " Wir empfehlen die Verschlüsselungsmethode WPA2 mit AES und die Frequenzbänder 2,4 und 5 GHz.",
@@ -502,7 +541,7 @@
         "image-dimension": "* Empfohlene Bildgröße ist 200x200 px.",
         "logo-upload": "Logo hochladen",
         "whitelist-domains-label": "Erlaubte Domänen",
-        "whitelist-domains": "Auf Domänen auf der Zulassungsliste kann auch dann zugegriffen werden, wenn der Security Heartbeat eines drahtlosen Gerätes Rot ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
+        "whitelist-domains": "Auf Domänen auf der Zulassungsliste kann auch dann zugegriffen werden, wenn der Security Heartbeat eines drahtlosen Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
         "hidden-label": "Verdeckte SSID",
         "hidden-ssid": "Blendet die SSID für Netzwerk-Scans aus. Benutzer müssen den SSID-Namen angeben, um sich verbinden zu können.",
         "hidden-ssid-warning": "Hinweis: Die verborgene SSID muss weiterhin geschützt werden.",

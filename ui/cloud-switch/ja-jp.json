@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "概要",
       "alerts": "警告",
-      "connections": "接続",
+      "connections": "ポートの使用状況",
       "poe": "PoE",
       "uplink": "アップリンク",
       "free": "空き",
@@ -16,6 +16,9 @@
       "state": "状態",
       "tagged": "タグあり",
       "untagged": "タグなし",
+      "switches": "スイッチ",
+      "sync-pending": "同期 - 保留中",
+      "sync-failed": "同期に失敗しました",
       "minutes-ago": "{{unit}}分前",
       "minute-ago": "{{unit}}分前",
       "hours-ago": "{{unit}}時間前",
@@ -35,7 +38,13 @@
         "5g": "5G/全",
         "10g": "10G/全",
         "auto": "自動",
-        "disabled": "無効"
+        "disabled": "無効",
+        "ignored": "無視"
+      },
+      "flow-control": {
+        "true": "有効",
+        "false": "無効",
+        "ignored": "無視"
       },
       "button": {
         "register": "登録",
@@ -47,7 +56,7 @@
         "delete": "削除",
         "add": "追加",
         "update": "更新",
-        "reset": "リセット",
+        "reset": "クリア",
         "enable": "オンにする",
         "disable": "オフにする"
       },
@@ -95,6 +104,23 @@
         "add-switch": "スイッチの追加"
       }
     },
+    "get-started": {
+      "get-started-title": "作業の開始",
+      "step1-header": "1.デフォルトサイトの設定",
+      "step1-sub-header": "この手順は任意ですが、実行することを推奨します。",
+      "step1-content": "最初のサイトが作成されました。サイトの設定を確認し、必要に応じて変更してください。",
+      "step2-header": "2.別のサイトの追加",
+      "step2-sub-header": "この手順は任意です。",
+      "step2-content": "最初のサイトの準備の完了後、さらにサイトが必要な場合は、スイッチを追加する前に、サイトを追加することを推奨します。サイトはいつでも追加可能で、いつでもスイッチを新しいサイトに移動できます。",
+      "step3-header": "3.最初のスイッチの追加",
+      "step3-sub-header": "新しいスイッチはサイトの設定を継承します。サイトに移動したスイッチは、設定を自動的に継承しません。",
+      "step3-content": "サイトの設定を確認したら、スイッチを追加できます。スイッチのシリアル番号が必要です。また、起動する準備ができたら、インターネットに接続する必要があります。",
+      "button": {
+        "review": "確認",
+        "add-site": "サイトの追加",
+        "add-switch": "スイッチの追加"
+      }
+    },
     "switches": {
       "list": {
         "menu-title": "スイッチ",
@@ -107,8 +133,13 @@
         "retry-dialog-title": "登録の再試行",
         "delete-note": "スイッチが接続されている場合は、取り外し後すぐに<strong>再起動</strong>が行われます。切断されている場合は、スイッチが Sophos Central に<br>接続しようとする際に再起動が行われます。<br/><br/>注: スイッチの現在の設定は保持されます。",
         "move-to-site-dialog-title": "スイッチをサイトに移動",
-        "move-to-site-text": "選択した {{ switches }}個のスイッチがサイトに移動されます",
-        "move-to-site-checkbox-label": "すべてのサイト設定を直ちにスイッチに同期する",
+        "no-of-switches": "スイッチ: {0}",
+        "no-switch-label": "なし",
+        "move-to-site-text": "選択した {{ switches }}個のスイッチがサイトに移動されます。スイッチはサイトの設定を継承します。今すぐ、または後で同期すること選択できます。",
+        "move-to-site-checkbox-label": "今すぐすべてのサイト設定を、選択したスイッチに同期する",
+        "regenerate-confirm-text": "スイッチのすべての設定を再度生成します。作成されたタスクは、タスクキューで監視できます。今すぐ、または後で同期すること選択できます。",
+        "regenerate-confirm-dialog": "すべての設定の再適用",
+        "regenerate-checkbox-label": "今すぐ設定をスイッチに同期する。",
         "txtbox": {
           "search-placeholder": "スイッチの検索"
         },
@@ -122,10 +153,11 @@
           "switch-delete-confirm": "スイッチの削除",
           "template-delete-confirm": "サイトの削除",
           "move-to-site": "サイトに移動",
-          "fullSync": "同期"
+          "sync": "同期"
         },
         "full-sync": {
-          "dialog-title": "同期"
+          "sync-dialog-title": "同期",
+          "full-sync-dialog-title": "再生成"
         },
         "table-headers": {
           "name": "名前",
@@ -134,10 +166,10 @@
           "version": "バージョン",
           "location": "場所",
           "ports": "ポート",
-          "connections": "接続",
+          "connections": "ポートの使用状況",
           "vlans": "VLAN",
           "untagged-vlans": "タグなし VLAN",
-          "ip-address": "ホスト名/IP アドレス",
+          "ip-address": "IP アドレス",
           "tags": "タグ",
           "model": "機種",
           "serial-number": "シリアル番号",
@@ -187,8 +219,8 @@
               "SUCCESS": {
                 "text": "バージョン {{ version }} ({{ type }}) への{{ process }}に成功しました。",
                 "note": {
-                  "now": "{{ process }}は、{{ date }}に完了しました",
-                  "date": "{{ schedule }}にスケジュール設定された{{ process }}は、{{ date }}に完了しました"
+                  "now": "{{ process }} は {{ date }} に要求されました",
+                  "date": "スケジュール日時: {{ schedule }}、{{ process }} は {{ date }} に要求されました"
                 }
               },
               "CANCELLING": {
@@ -230,19 +262,18 @@
           "schedule-rollback": "ファームウェアの切り替えのスケジュール設定",
           "upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。",
           "schedule-upgrade": "アップグレードのスケジュール設定",
-          "schedule": "スケジュールの変更",
+          "schedule": "スケジュールの選択",
           "manage-schedule-dialog-title": "ファームウェアの管理: {{ site }}",
           "upgrade-schedule-dialog-title": "スケジュールの選択",
-          "dialog-heading": "次のサイトにあるスイッチのファームウェアを管理します: {{ site }}。以下から、ファームウェアのアップグレードの追加、ファームウェアのアップグレードのキャンセル、またはファームウェアの切り替えを選択できます。",
+          "dialog-heading": "次のサイトにあるスイッチのファームウェアを管理します: {{ site }}。以下から、ファームウェアのアップグレードの追加/キャンセル、またはファームウェアの切り替えを選択できます。",
           "schedule-info-message": "選択したスイッチの更新またはファームウェアの切り替えを実行するタイミングを選択します。",
           "update-now": "今すぐ",
           "custom": "カスタム",
           "schedule-now-note": "接続されているスイッチには、直ちにアップグレード/ファームウェアの切り替えを実行するよう通知が送信されます。切断されているスイッチは、接続後すぐに通知が送信されます。これには、スイッチの再起動が必要になる場合があります。今すぐ実行するタスクは、一度保存すると変更できません。新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。",
           "schedule-custom-note": "選択されたスケジュールは、タイムゾーンに関係なく、スイッチの現地時間に従います。アップグレードやファームウェアの切り替えには、再起動が必要になる場合があります。",
-          "scheduled-success-message": "ファームウェアのアップグレードがスケジュール設定されました",
-          "scheduled-success-failure": "ファームウェアのアップグレードに失敗しました",
-          "update-cancel-message": "ファームウェアのアップグレードがキャンセルされました",
-          "cancel-upgrade": "スケジュールのキャンセル",
+          "scheduled-success-message": "ファームウェアスケジュールの変更が正常に保存されました。",
+          "scheduled-success-failure": "ファームウェアスケジュールの変更を保存できませんでした。",
+          "cancel-upgrade": "スケジュールの削除",
           "rollback": "ファームウェアの切り替え ({{ version }})",
           "modified": "既存のスケジュール {{ version }} | {{ schedule }} が変更されました。",
           "new-schedule": "新しいスケジュール",
@@ -288,9 +319,11 @@
           "update-template-error": "サイトを更新できません",
           "transfer-success": "スイッチが移動されました。",
           "transfer-failed": "スイッチを移動できません",
-          "full-sync-success": "サイト設定は、選択したスイッチに同期されました",
-          "full-sync-failed": "選択したスイッチにサイト設定を同期できません",
-          "full-sync-confirm-dialog": "サイト設定は、選択したスイッチに同期されます"
+          "full-sync-success": "すべてのスイッチ設定が正常に再適用されました。",
+          "full-sync-failed": "すべての設定をスイッチに再適用できませんでした",
+          "sync-success": "サイト設定は、選択したスイッチに同期されました",
+          "sync-failed": "選択したスイッチにサイト設定を同期できません",
+          "sync-confirm-dialog": "サイト設定は、選択したスイッチに同期されます。進行助教は、タスクキューで監視できます。"
         },
         "groupInfoText": {
           "what": "サイトとは？",
@@ -300,6 +333,12 @@
         "site-without-switch": {
           "label": "スイッチが追加されていません",
           "add-switch": "スイッチの追加"
+        },
+        "vlan": {
+          "name": "名前",
+          "id": "VLAN ID",
+          "tagged": "タグあり",
+          "untagged": "タグなし"
         }
       },
       "manage": {
@@ -314,6 +353,7 @@
           "open-local-mgmt-console": "ローカルスイッチ管理を開く",
           "open-local-mgmt-console-helper-text": "スイッチの管理アドレスを含む新しいブラウザタブが開きます。これは、このブラウザからスイッチ管理の場所にアクセスできる場合のみに開きます。",
           "remove": "Sophos Central から削除",
+          "regenerate-config": "すべての設定の再適用",
           "add-tags": "タグの追加",
           "add-location": "場所の追加"
         },
@@ -322,11 +362,14 @@
           "model": "機種",
           "powered-on": "電源オン",
           "switch-firmware": "スイッチのファームウェア",
-          "central-agent": "Sophos Central クライアント"
+          "central-agent": "Sophos Central クライアント",
+          "site-name": "サイト"
         },
         "reboot": {
           "reboot-dialog-title": "再起動",
-          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> の再起動"
+          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> の再起動",
+          "success": "スイッチを再起動するタスクが正常に生成されました。",
+          "error": "スイッチの再起動タスクの作成中、エラーが発生しました"
         },
         "edit-success": "Central クライアントの自動更新が有効になっています",
         "edit-success-disabled-auto-update": "Central クライアントの自動更新が無効になっています",
@@ -342,7 +385,7 @@
           "mac-address-table-item": "ローカルスイッチ Web UI: モニター > 動的 MAC アドレスモニター > 静的 MAC アドレス",
           "mac-address-table-helper": "MAC アドレステーブルには、ポートおよび VLAN ごとに検出されたデバイスが表示されます。",
           "poe-power-usage": "PoE 電力の使用状況",
-          "poe-power-usage-item": "ローカルスイッチ Web UI: モニター > ダッシュボード設定 > PoE ポート設定",
+          "poe-power-usage-item": "ローカルスイッチ Web UI: モニター > ダッシュボード > PoE ポート設定",
           "poe-power-usage-helper": "ダッシュボードおよび「PoE ポートの設定」ページには、電流、電圧、消費電力に関するポートごとの詳細情報が表示されます。",
           "network-diagnostics": "ネットワーク診断",
           "network-diagnostics-item": "ローカルスイッチ Web UI: 解析 > Ping テストの解析 > トレースルート",
@@ -391,7 +434,8 @@
           "auto-upgrade": "アップグレード後の再起動が不要な場合は、使用可能な最新バージョンのソフトウェアにスイッチを自動アップグレードする"
         },
         "body": {
-          "line": "スイッチは、登録後すぐに、使用可能な最新バージョンのソフトウェアに自動アップグレードされます。これには、デバイスの再起動が必要になる場合があります。"
+          "line": "スイッチは、登録後すぐに、使用可能な最新バージョンのソフトウェアに自動アップグレードされます。これには、デバイスの再起動が必要になる場合があります。",
+          "move-switches": "スイッチをサイトに移動"
         }
       },
       "message": {
@@ -412,13 +456,15 @@
         "site-name-required-message": "サイト名を指定してください",
         "site-name-invalid-message": "サイト名が無効です",
         "site-description-invalid-message": "サイトの説明が無効です",
+        "site-name-exists-message": "サイト名は既に存在します",
         "create-success": "サイトが作成されました",
         "create-error": "サイトを作成できません",
         "update-success": "サイトが更新されました",
         "update-error": "サイトを更新できません"
       },
       "form": {
-        "location": "サイト所在地"
+        "location": "サイト所在地",
+        "remove": "サイトの削除"
       }
     },
     "switch-view": {
@@ -431,6 +477,7 @@
       "ports-dd-default-title": "ポートの選択",
       "add-vlan-dialog-title": "VLAN の追加",
       "edit-vlan-dialog-title": "VLAN の編集",
+      "misconfigured": "ポート {{ ports }} は、複数の VLAN でタグ付けされていません。",
       "button": {
         "add": "VLAN の追加"
       },
@@ -448,7 +495,8 @@
         "description": "説明",
         "tagged-ports": "タグ付きポート",
         "untagged-ports": "タグなしポート",
-        "forbidden-ports": "禁止ポート"
+        "forbidden-ports": "禁止ポート",
+        "inherited": "ソース"
       },
       "form": {
         "vlan-id": "VLAN ID",
@@ -461,8 +509,10 @@
         "color": "色",
         "vlan-id-required-message": "VLAN ID を指定してください。",
         "vlan-id-invalid-message": "VLAN ID が無効です。",
+        "vlan-id-exists-message": "この VLAN ID は既に存在します。",
         "vlan-name-required-message": "名前を指定してください。",
-        "vlan-name-invalid-message": "名前が無効です。"
+        "vlan-name-invalid-message": "名前が無効です。特殊文字は使用できません",
+        "vlan-name-exists-message": "この名前は既に存在します。"
       },
       "message": {
         "create-error": "VLAN を作成できません",
@@ -472,16 +522,26 @@
         "delete-error": "1つまたは複数の VLAN を削除できません",
         "delete-success": "VLAN が削除されました",
         "delete-confirm-title": "VLAN の削除",
-        "delete-info-message": "VLAN <strong>{{vlans}}</strong> の削除"
+        "site-delete-info-message": "{{ vlanCount }}個の VLAN の削除。{{ count }}個のスイッチによって、この VLAN が削除され、削除するタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-delete-info-message": "{{ vlanCount }}個の VLAN が削除され、削除するタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "save-dialog-title": "保存の確認",
+        "site-save-dialog-text": "{{ count }}個のスイッチにこの VLAN が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-dialog-text": "スイッチにこの VLAN が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する"
       }
     },
     "task-queue": {
       "total-tasks": "タスク総数",
+      "created": "待機中",
       "pending": "保留中",
-      "in-progress": "進行中",
+      "in-progress": "同期中",
       "failed": "失敗",
       "skipped": "スキップ",
       "completed": "完了",
+      "sync-dialog-text": "「待機中」状態のタスクはスイッチにプッシュされます。",
+      "details-dialog-title": "タスクの詳細",
+      "sync-dialog-select-text": "同期する必要があるスイッチを選択します",
+      "sync-dialog-title": "同期",
       "button": {
         "show-history": "履歴の表示"
       },
@@ -490,16 +550,17 @@
         "switch": "スイッチ",
         "site": "サイト",
         "entity": "エンティティ",
-        "sub-entity": "サブエンティティ",
+        "sub-entity": "アクション",
         "date-time": "作成日時"
       },
       "status": {
+        "created": "待機中",
         "pending": "保留中",
         "success": "成功",
         "failed": "失敗",
         "deleted": "削除",
         "skipped": "スキップ",
-        "in_progress": "進行中"
+        "in_progress": "同期中"
       },
       "action": {
         "retry": "再試行",
@@ -513,13 +574,23 @@
         "full_sync": "完全同期",
         "vlan": "VLAN",
         "firmware_upgrade": "ファームウェア",
-        "schedule_upgrade": "ファームウェアのアップグレードのスケジュール設定",
-        "cancel_upgrade": "ファームウェアのアップグレードのキャンセル",
+        "schedule_upgrade": "スケジュール",
+        "cancel_upgrade": "キャンセル",
         "rollback": "ファームウェアの切り替え",
         "port": "ポート",
         "remote_support": "リモートサポート",
         "enable_remote_support": "オンにする",
-        "disable_remote_support": "オフにする"
+        "disable_remote_support": "オフにする",
+        "reboot": "再起動",
+        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_full": "スケジュールのアップグレード (ファームウェア)",
+        "schedule_rollback": "パーティションのスケジュールの切り替え",
+        "cancel_agent": "スケジュールのキャンセル (クライアント)",
+        "cancel_full": "スケジュールのキャンセル (ファームウェア)",
+        "cancel_rollback": "キャンセル (パーティションの切り替え)",
+        "schedule_agent_auto": "自動アップグレード (クライアント)",
+        "schedule_full_auto": "自動アップグレード (ファームウェア)",
+        "schedule_rollback_auto": "パーティションの自動切り替え"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -533,11 +604,16 @@
         "flow-control": "フロー制御",
         "link-speed": "速度/二重通信",
         "untagged-vlan": "タグなし VLAN",
-        "tagged-vlans": "タグ付き VLAN"
+        "tagged-vlans": "タグ付き VLAN",
+        "inherited": "ソース"
       },
       "message": {
         "port-update-success": "ポートが更新されました。",
-        "port-update-error": "1つまたは複数のポートを更新できません。"
+        "port-update-error": "1つまたは複数のポートを更新できません。",
+        "save-dialog-title": "更新の確認",
+        "site-save-dialog-text": "{{ count }}個のスイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-dialog-text": "スイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する"
       }
     },
     "remote-debugging": {
@@ -557,6 +633,28 @@
         "apu-disable-success": "リモートデバッグをオフにしました",
         "apu-disable-error": "リモートデバッグをオフにできません"
       }
+    },
+    "poe": {
+      "name": "PoE",
+      "power-limit": "電力制限モード",
+      "priority": "優先",
+      "power-limit-auto": "自動",
+      "power-limit-manual": "手動",
+      "power-defined": "電力制限",
+      "power-drawn": "消費電力",
+      "poe-status": "状態",
+      "poe-status-Disabled": "無効",
+      "poe-status-Searching": "検索中",
+      "poe-status-Delivering": "配信中",
+      "poe-status-Fault": "故障",
+      "poe-status-MPS_Absent" : "MPS なし",
+      "poe-status-Short": "短絡",
+      "poe-status-Overload": "過負荷",
+      "poe-status-Power_Denied": "電力拒否",
+      "poe-status-Thermal_Shutdown": "過熱保護",
+      "poe-status-Startup_Failure": "起動エラー",
+      "poe-status-Classification_Failure": "分類の失敗",
+      "poe-status-Requesting_Power": "電力の要求中"
     }
   }
 }

@@ -17,13 +17,14 @@
       "confirm-delete-header": "確認刪除",
       "error": "錯誤",
       "success": "成功",
+      "info": "資訊",
       "retry": "重試",
       "access-points": "存取點",
-      "assign-accesspoints": "指派存取點",
+      "assign-access-points": "指派存取點",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "地點",
-      "site-name":"站點名稱",
+      "site-name": "站點名稱",
       "statistic": "統計資料",
       "devices": "設備",
       "reset": "重設",
@@ -36,6 +37,8 @@
       "details": "詳細資訊",
       "no-data": "無資料",
       "no-records": "沒有記錄",
+      "status": "狀態",
+      "username": "使用者名稱",
       "beta": "Beta 版",
       "copied": "已複製",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "無線儀錶板"
     },
     "devices": {
+      "static-details": "靜態詳情",
+      "mac-address": "MAC 位址",
+      "current-access-point": "目前存取點",
+      "current-site": "目前地點",
+      "current-network": "目前網路",
+      "signal-quality": "訊號品質",
+      "band": "頻帶",
+      "host-name": "主機名稱",
+      "signal-quality-header": "訊號品質（單位為 dBm）",
+      "ip": "ip",
+      "vendor": "供應商",
+      "usage-details": "使用詳情",
+      "connectivity": "連線能力",
       "device-container": {
         "breadcrumb-text": "設備",
         "title": "無線 - 裝置",
@@ -111,7 +127,7 @@
           "health-status-green": "受保護",
           "health-status-missing": "丟失安全活動訊號",
           "health-status-grey": "無 Security Heartbeat",
-          "health-status-yellow": "階段可能處於風險中",
+          "health-status-yellow": "用戶端可能處於風險中",
           "health-status-not-available": "不可用"
         },
         "no-devices-found": "沒有已連接的無線用戶端可顯示。",
@@ -171,7 +187,7 @@
       "low-severity": "資訊"
     },
     "settings": {
-      "setting-configuration-save-success-msg": "成功儲存設定！",
+      "setting-configuration-save-success-msg": "成功儲存設定。",
       "setting-configuration-save-error-msg": "無法儲存設定",
       "sections": {
         "login-title": "基礎設定",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "離線",
           "true": "上線"
-        }
+        },
+        "no-aps-found": "沒有已註冊的存取點！"
       },
       "site-name-error-msgs": {
         "required": "必須提供地點名稱。",
         "maxlength": "地點名稱最多包括 64 個字元。"
+      },
+      "site-location-error-msgs": {
+        "required": "需要地點位置。"
       },
       "detail": {
         "select-view": "選擇檢視"
@@ -264,7 +284,7 @@
         "classification": "選取分類",
         "edit-classification-prefix-label": "標記為",
         "filter-options": {
-          "rogue": "欺詐",
+          "rogue": "惡意",
           "trusted": "信任",
           "untrusted": "不信任",
           "advanced-impersonate": "進階模擬",
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "標示為 BSSID 模擬",
           "mark-as-ssid-impersonate": "標示為 SSID 模擬",
           "mark-as-adhoc": "標示為 Adhoc"
+        },
+        "syslog-server-error-msgs": {
+          "required": "必須提供伺服器地址。",
+          "invalid-server": "伺服器不是有效 IP 或主機名稱。"
+        },
+        "syslog-port-error-msgs": {
+          "required": "必須提供連接埠。",
+          "min": "連接埠必須是 1 到 65535 之間的數字。",
+          "max": "連接埠必須是 1 到 65535 之間的數字。"
+        },
+        "scan-ssid": {
+          "scan": "掃描",
+          "confirm": {
+            "title": "確認掃描",
+            "label": "掃描將在本網站的所有線上存取點執行。連線的用戶端將遇到至少 3-5 分鐘的網路中斷。",
+            "success": "臨近掃描成功啟動",
+            "fail": "臨近掃描失敗"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "成功儲存 SSID。",
         "help": "說明",
         "general-setting-encryption-mode": "為您的新 SSID 指定一般設定。選擇所需的加密模式以及您要提供哪種 SSID。",
         "band-encryption-mode": " 我們建議使用帶有 AES 的 WPA2 作為加密模式以及 2.4 和 5 GHz 頻帶。",
@@ -324,7 +363,7 @@
         "assign-ssid": "指派存取點計數",
         "enable-ssid": "啟用 SSID",
         "enable-ssid-help-text": "立即啟用 SSID。",
-        "config-ready-msg": "您的配置現已完成，請儲存並繼續操作",
+        "config-ready-msg": "您的配置現已完成，請儲存並繼續操作。",
         "advanced-settings": "進階設定",
         "previous-section": "先前版本",
         "main-label": "請選擇裝置以指派該 SSID。",

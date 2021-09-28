@@ -17,13 +17,14 @@
       "confirm-delete-header": "삭제 확인",
       "error": "오류",
       "success": "성공",
+      "info": "정보",
       "retry": "다시 시도",
       "access-points": "액세스 지점",
-      "assign-accesspoints": "액세스 지점 할당",
+      "assign-access-points": "액세스 지점 할당",
       "ssids": "SSID",
       "settings": "설정",
       "sites": "사이트",
-      "site-name":"사이트 이름",
+      "site-name": "사이트 이름",
       "statistic": "통계",
       "devices": "장치",
       "reset": "재설정",
@@ -36,6 +37,8 @@
       "details": "세부 정보",
       "no-data": "데이터가 없음",
       "no-records": "레코드 없음",
+      "status": "상태",
+      "username": "사용자 이름",
       "beta": "베타",
       "copied": "복사됨",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "무선 대시보드"
     },
     "devices": {
+      "static-details": "정적 세부 정보",
+      "mac-address": "MAC 주소",
+      "current-access-point": "현재 액세스 지점",
+      "current-site": "현재 사이트",
+      "current-network": "현재 네트워크",
+      "signal-quality": "신호 품질",
+      "band": "대역",
+      "host-name": "호스트 이름",
+      "signal-quality-header": "신호 품질(dBm)",
+      "ip": "ip",
+      "vendor": "공급업체",
+      "usage-details": "사용 현황 세부 정보",
+      "connectivity": "연결",
       "device-container": {
         "breadcrumb-text": "장치",
         "title": "무선 - 장치",
@@ -111,7 +127,7 @@
           "health-status-green": "보호됨",
           "health-status-missing": "누락된 Security Heartbeat",
           "health-status-grey": "Security Heartbeat 없음",
-          "health-status-yellow": "단계가 위험 상황에 있을 수 있음",
+          "health-status-yellow": "클라이언트가 위험 상황에 있을 수 있음",
           "health-status-not-available": "사용할 수 없음"
         },
         "no-devices-found": "표시할 연결된 무선 클라이언트가 없습니다.",
@@ -171,7 +187,7 @@
       "low-severity": "정보 제공"
     },
     "settings": {
-      "setting-configuration-save-success-msg": "구성이 성공적으로 저장되었습니다!",
+      "setting-configuration-save-success-msg": "구성이 성공적으로 저장되었습니다.",
       "setting-configuration-save-error-msg": "구성을 저장하지 못함",
       "sections": {
         "login-title": "기본 설정",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "오프라인",
           "true": "온라인"
-        }
+        },
+        "no-aps-found": "등록된 액세스 지점이 없습니다!"
       },
       "site-name-error-msgs": {
         "required": "사이트 이름이 필요합니다.",
         "maxlength": "사이트 이름은 최대 64자여야 합니다."
+      },
+      "site-location-error-msgs": {
+        "required": "사이트 위치가 필요합니다."
       },
       "detail": {
         "select-view": "보기 선택"
@@ -264,7 +284,7 @@
         "classification": "분류 선택",
         "edit-classification-prefix-label": "다음으로 표시",
         "filter-options": {
-          "rogue": "루즈",
+          "rogue": "불법",
           "trusted": "신뢰됨",
           "untrusted": "신뢰되지 않음",
           "advanced-impersonate": "고급 가장",
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "BSSID 가장으로 표시",
           "mark-as-ssid-impersonate": "SSID 가장으로 표시",
           "mark-as-adhoc": "Adhoc으로 표시"
+        },
+        "syslog-server-error-msgs": {
+          "required": "서버 주소가 필요합니다.",
+          "invalid-server": "서버가 유효한 IP 또는 호스트 이름이 아닙니다."
+        },
+        "syslog-port-error-msgs": {
+          "required": "포트가 필요합니다.",
+          "min": "포트는 1~65535의 숫자여야 합니다.",
+          "max": "포트는 1~65535의 숫자여야 합니다."
+        },
+        "scan-ssid": {
+          "scan": "검사",
+          "confirm": {
+            "title": "검사 확인",
+            "label": "검사는 이 사이트의 모든 온라인 액세스 지점에서 수행됩니다. 연결된 클라이언트에서 최소 3~5분간의 네트워크 중단이 발생합니다.",
+            "success": "근접 검사가 시작됨",
+            "fail": "근접 검사 실패"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "SSID을 저장했습니다.",
         "help": "도움말",
         "general-setting-encryption-mode": "새 SSID에 대한 일반 설정을 지정하십시오. 필요한 암호화 모드와 제공할 SSID 유형을 선택하십시오.",
         "band-encryption-mode": " 암호화 모드로 WPA2와 AES를 사용하고 2.4 및 5GHz 주파수 대역을 사용하는 것이 좋습니다.",
@@ -324,7 +363,7 @@
         "assign-ssid": "할당된 액세스 지점 수",
         "enable-ssid": "SSID 사용",
         "enable-ssid-help-text": "즉시 SSID를 활성화합니다.",
-        "config-ready-msg": "이제 구성이 준비되었습니다. 저장하고 진행하십시오!",
+        "config-ready-msg": "이제 구성이 준비되었습니다. 저장하고 진행하십시오.",
         "advanced-settings": "고급 설정",
         "previous-section": "이전",
         "main-label": "이 SSID를 할당할 장치를 선택하십시오.",

@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "개요",
       "alerts": "경고",
-      "connections": "연결",
+      "connections": "포트 사용",
       "poe": "PoE",
       "uplink": "업링크",
       "free": "무료",
@@ -16,6 +16,9 @@
       "state": "상태",
       "tagged": "태그가 지정됨",
       "untagged": "태그 해제됨",
+      "switches": "스위치",
+      "sync-pending": "보류 중인 동기화",
+      "sync-failed": "동기화 실패",
       "minutes-ago": "{{unit}}분 전",
       "minute-ago": "{{unit}}분 전",
       "hours-ago": "{{unit}}시간 전",
@@ -35,7 +38,13 @@
         "5g": "5G/전체",
         "10g": "10G/전체",
         "auto": "자동",
-        "disabled": "사용 안 함"
+        "disabled": "사용 안 함",
+        "ignored": "무시"
+      },
+      "flow-control": {
+        "true": "사용",
+        "false": "사용 안 함",
+        "ignored": "무시"
       },
       "button": {
         "register": "등록",
@@ -47,7 +56,7 @@
         "delete": "삭제",
         "add": "추가",
         "update": "업데이트",
-        "reset": "재설정",
+        "reset": "지우기",
         "enable": "켜기",
         "disable": "끄기"
       },
@@ -95,6 +104,23 @@
         "add-switch": "스위치 추가"
       }
     },
+    "get-started": {
+      "get-started-title": "시작하기",
+      "step1-header": "1. 기본 사이트 설정",
+      "step1-sub-header": "이 단계는 선택 사항이지만 수행하는 것이 좋습니다.",
+      "step1-content": "첫 번째 사이트가 생성되었습니다. 사이트 설정을 검토하고 필요한 경우 변경합니다.",
+      "step2-header": "2. 다른 사이트 추가",
+      "step2-sub-header": "이 단계는 선택 사항입니다.",
+      "step2-content": "첫 번째 사이트가 준비되었을 때 사이트가 더 필요한 경우에는 사이트를 추가한 후 스위치를 추가하는 것이 좋습니다. 언제든지 사이트를 추가하고 스위치를 새 사이트로 이동할 수 있습니다.",
+      "step3-header": "3. 첫 번째 스위치 추가",
+      "step3-sub-header": "새 스위치는 사이트의 설정을 상속합니다. 사이트로 이동하는 모든 스위치는 설정을 자동으로 상속하지 않습니다.",
+      "step3-content": "사이트 설정을 검토한 후 스위치를 추가할 수 있습니다. 스위치 일련 번호가 필요하며 시작할 준비가 되면 작동 중인 인터넷 연결에 연결해야 합니다.",
+      "button": {
+        "review": "검토",
+        "add-site": "사이트 추가",
+        "add-switch": "스위치 추가"
+      }
+    },
     "switches": {
       "list": {
         "menu-title": "스위치",
@@ -107,8 +133,13 @@
         "retry-dialog-title": "등록 다시 시도",
         "delete-note": "스위치가 연결되어 있으면 제거 후 곧 <strong>재시작</strong>됩니다. 연결이 해제되면 <br>스위치가 Sophos Central에 연결을 시도할 때 재부팅됩니다.<br/><br/> 참고: 스위치의 현재 구성은 유지됩니다.",
         "move-to-site-dialog-title": "스위치를 사이트로 이동",
-        "move-to-site-text": "{{ switches }}개의 선택한 스위치가 사이트로 이동",
-        "move-to-site-checkbox-label": "모든 사이트 설정을 스위치에 즉시 동기화",
+        "no-of-switches": "{0} 스위치",
+        "no-switch-label": "없음",
+        "move-to-site-text": "{{ switches }}개의 선택한 스위치가 사이트로 이동. 스위치는 사이트 구성을 상속합니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "move-to-site-checkbox-label": "모든 사이트 설정을 이러한 스위치에 즉시 동기화",
+        "regenerate-confirm-text": "스위치에 대한 모든 설정을 다시 생성합니다. 작업 대기열에서 생성된 작업을 모니터링할 수 있습니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "regenerate-confirm-dialog": "모든 설정 다시 적용",
+        "regenerate-checkbox-label": "설정을 스위치에 즉시 동기화합니다.",
         "txtbox": {
           "search-placeholder": "스위치 검색"
         },
@@ -122,10 +153,11 @@
           "switch-delete-confirm": "스위치 제거",
           "template-delete-confirm": "사이트 삭제",
           "move-to-site": "사이트로 이동",
-          "fullSync": "동기화"
+          "sync": "동기화"
         },
         "full-sync": {
-          "dialog-title": "동기화"
+          "sync-dialog-title": "동기화",
+          "full-sync-dialog-title": "다시 생성"
         },
         "table-headers": {
           "name": "이름",
@@ -134,10 +166,10 @@
           "version": "버전",
           "location": "위치",
           "ports": "포트",
-          "connections": "연결",
+          "connections": "포트 사용",
           "vlans": "VLAN",
           "untagged-vlans": "태그 없는 VLAN",
-          "ip-address": "호스트 이름 / IP 주소",
+          "ip-address": "IP 주소",
           "tags": "태그",
           "model": "모델",
           "serial-number": "일련 번호",
@@ -187,8 +219,8 @@
               "SUCCESS": {
                 "text": "{{ version }} 버전으로의 {{ process }}({{ type }})이(가) 성공했습니다.",
                 "note": {
-                  "now": "{{ date }}에 {{ process }} 완료됨",
-                  "date": "{{ schedule }}에 예약됨, {{ date }}에 {{ process }} 완료됨"
+                  "now": "{{ process }}이(가) {{ date }}에 요청되었습니다.",
+                  "date": "{{ schedule }}에 예약된 {{ process }}이(가) {{ date }}에 요청되었습니다."
                 }
               },
               "CANCELLING": {
@@ -202,7 +234,7 @@
                 "text": "{{ version }} 버전으로의 {{ process }}({{ type }})이(가) 취소되었습니다.",
                 "note": {
                   "now": "이 프로세스 도중에 스위치에 대한 변경 사항이 없습니다.",
-                  "date": "이 프로세스 도중에 스위치 전환에 대한 변경 사항이 없습니다."
+                  "date": "이 프로세스 도중에 스위치에 대한 변경 사항이 없습니다."
                 }
               },
               "FAILURE": {
@@ -230,19 +262,18 @@
           "schedule-rollback": "펌웨어 교체 예약",
           "upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다.",
           "schedule-upgrade": "업그레이드 예약",
-          "schedule": "예약 변경",
+          "schedule": "일정 선택",
           "manage-schedule-dialog-title": "펌웨어 관리: {{ site }}",
           "upgrade-schedule-dialog-title": "예약 선택",
-          "dialog-heading": "사이트의 스위치에 대한 펌웨어 관리: {{ site }}. 아래 선택 항목에서 펌웨어 업그레이드를 추가, 취소하거나 펌웨어를 교체할 수 있습니다.",
+          "dialog-heading": "사이트의 스위치에 대한 펌웨어 관리: {{ site }}. 아래 선택 항목에서 펌웨어 업그레이드를 추가 또는 취소하거나 펌웨어 버전을 교체할 수 있습니다.",
           "schedule-info-message": "선택한 스위치에 대한 펌웨어를 업데이트하거나 교체할 시간을 선택합니다.",
           "update-now": "지금",
           "custom": "사용자 지정",
           "schedule-now-note": "연결된 스위치는 즉시 펌웨어 교체 또는 업그레이드에 대한 알림을 받습니다. 연결 해제된 스위치는 연결 직후 알림을 받습니다. 이때 스위치를 다시 시작하게 될 수 있습니다. 즉각적인 예약은 저장하고 나면 수정할 수 없습니다. 새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.",
           "schedule-custom-note": "선택한 예약은 표준 시간대에 관계없이 스위치의 로컬 시간을 따릅니다. 업그레이드 또는 펌웨어를 교체하면 다시 시작하게 될 수 있습니다.",
-          "scheduled-success-message": "펌웨어 업그레이드가 예약됨",
-          "scheduled-success-failure": "펌웨어 업그레이드가 실패함",
-          "update-cancel-message": "펌웨어 업그레이드가 취소됨",
-          "cancel-upgrade": "예약 취소",
+          "scheduled-success-message": "펌웨어 일정에 대한 변경 사항이 성공적으로 저장되었습니다.",
+          "scheduled-success-failure": "펌웨어 일정에 대한 변경 사항을 저장하지 못했습니다.",
+          "cancel-upgrade": "일정 제거",
           "rollback": "펌웨어 교체({{ version }})",
           "modified": "기존 예약 {{ version }} | {{ schedule }}이(가) 수정됩니다.",
           "new-schedule": "새로운 예약",
@@ -288,9 +319,11 @@
           "update-template-error": "사이트를 업데이트할 수 없음",
           "transfer-success": "스위치가 이동되었음",
           "transfer-failed": "스위치를 이동할 수 없음",
-          "full-sync-success": "사이트 설정이 선택한 스위치에 동기화되었음",
-          "full-sync-failed": "사이트 설정을 선택한 스위치에 동기화할 수 없음",
-          "full-sync-confirm-dialog": "사이트 설정이 선택한 스위치에 동기화됨"
+          "full-sync-success": "모든 스위치 설정이 성공적으로 다시 적용되었습니다.",
+          "full-sync-failed": "모든 설정을 스위치에 다시 적용할 수 없음",
+          "sync-success": "사이트 설정이 선택한 스위치에 동기화되었음",
+          "sync-failed": "사이트 설정을 선택한 스위치에 동기화할 수 없음",
+          "sync-confirm-dialog": "사이트 설정이 선택한 스위치에 동기화됨. 작업 대기열에서 진행 상황을 모니터링할 수 있습니다."
         },
         "groupInfoText": {
           "what": "사이트가 무엇입니까?",
@@ -300,6 +333,12 @@
         "site-without-switch": {
           "label": "스위치가 추가되지 않았음",
           "add-switch": "스위치 추가"
+        },
+        "vlan": {
+          "name": "이름",
+          "id": "VLAN ID",
+          "tagged": "태그가 지정됨",
+          "untagged": "태그 해제됨"
         }
       },
       "manage": {
@@ -314,6 +353,7 @@
           "open-local-mgmt-console": "로컬 스위치 관리 열기",
           "open-local-mgmt-console-helper-text": "이렇게 하면 스위치의 관리 주소가 있는 새 브라우저 탭이 열립니다. 이 브라우저에서 스위치 관리 위치에 도달할 수 있는 경우에만 열립니다.",
           "remove": "Sophos Central에서 제거",
+          "regenerate-config": "모든 설정 다시 적용",
           "add-tags": "태그 추가",
           "add-location": "위치 추가"
         },
@@ -322,11 +362,14 @@
           "model": "모델",
           "powered-on": "전원 켜짐",
           "switch-firmware": "스위치 펌웨어",
-          "central-agent": "Sophos Central 클라이언트"
+          "central-agent": "Sophos Central 클라이언트",
+          "site-name": "사이트"
         },
         "reboot": {
           "reboot-dialog-title": "재부팅",
-          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> 재부팅"
+          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> 재부팅",
+          "success": "스위치를 재부팅하는 작업이 성공적으로 생성되었습니다.",
+          "error": "스위치에 대한 재부팅 작업을 생성하는 중 오류 발생"
         },
         "edit-success": "중앙 클라이언트에 대해 자동 업데이트 사용",
         "edit-success-disabled-auto-update": "중앙 클라이언트에 대해 자동 업데이트 사용 안 함",
@@ -342,7 +385,7 @@
           "mac-address-table-item": "로컬 스위치 웹 UI: 모니터 > 동적 MAC 주소 모니터 > 정적 MAC 주소",
           "mac-address-table-helper": "MAC 주소 테이블에는 포트 및 VLAN별로 검색된 장치가 표시됩니다.",
           "poe-power-usage": "PoE 전력 사용량",
-          "poe-power-usage-item": "로컬 스위치 웹 UI: 모니터 > 대시보드 구성 > PoE 포트 설정",
+          "poe-power-usage-item": "로컬 스위치 웹 UI: 모니터 > 대시보드 > PoE 포트 설정",
           "poe-power-usage-helper": "대시보드 및 PoE 포트 설정 페이지는 전류, 전압 및 전력 소비 정보에 대한 포트별 세부 정보를 제공합니다.",
           "network-diagnostics": "네트워크 진단",
           "network-diagnostics-item": "로컬 스위치 웹 UI: 분석 > Ping 테스트 분석 > 경로 추적",
@@ -391,7 +434,8 @@
           "auto-upgrade": "업그레이드를 위해 재부팅이 필요하지 않은 경우, 스위치를 사용 가능한 최신 버전의 소프트웨어로 자동 업그레이드"
         },
         "body": {
-          "line": "스위치는 등록 직후 사용 가능한 최신 버전의 소프트웨어로 자동 업그레이드됩니다. 이때 장치가 재부팅될 수 있습니다."
+          "line": "스위치는 등록 직후 사용 가능한 최신 버전의 소프트웨어로 자동 업그레이드됩니다. 이때 장치가 재부팅될 수 있습니다.",
+          "move-switches": "스위치를 사이트로 이동"
         }
       },
       "message": {
@@ -412,13 +456,15 @@
         "site-name-required-message": "사이트 이름이 필요합니다",
         "site-name-invalid-message": "사이트 이름이 잘못되었습니다.",
         "site-description-invalid-message": "사이트 설명이 잘못되었습니다.",
+        "site-name-exists-message": "사이트 이름이 이미 있음",
         "create-success": "사이트가 생성되었습니다.",
         "create-error": "사이트를 생성할 수 없음",
         "update-success": "사이트가 업데이트되었음",
         "update-error": "사이트를 업데이트할 수 없음"
       },
       "form": {
-        "location": "사이트 위치"
+        "location": "사이트 위치",
+        "remove": "사이트 삭제"
       }
     },
     "switch-view": {
@@ -431,6 +477,7 @@
       "ports-dd-default-title": "포트 선택",
       "add-vlan-dialog-title": "VLAN 추가",
       "edit-vlan-dialog-title": "VLAN 편집",
+      "misconfigured": "포트 {{ ports }}은(는) 여러 VLAN에서 태그가 지정되지 않았습니다.",
       "button": {
         "add": "VLAN 추가"
       },
@@ -448,7 +495,8 @@
         "description": "설명",
         "tagged-ports": "태그 지정된 포트",
         "untagged-ports": "태그 지정이 해제된 포트",
-        "forbidden-ports": "금지된 포트"
+        "forbidden-ports": "금지된 포트",
+        "inherited": "소스"
       },
       "form": {
         "vlan-id": "VLAN ID",
@@ -461,8 +509,10 @@
         "color": "색",
         "vlan-id-required-message": "VLAN ID는 필수입니다.",
         "vlan-id-invalid-message": "VLAN ID가 잘못되었습니다.",
+        "vlan-id-exists-message": "VLAN ID가 이미 있습니다.",
         "vlan-name-required-message": "이름은 필수입니다.",
-        "vlan-name-invalid-message": "이름이 잘못되었습니다."
+        "vlan-name-invalid-message": "이름이 잘못되었습니다. 특수 문자는 허용되지 않음",
+        "vlan-name-exists-message": "이름이 이미 있습니다."
       },
       "message": {
         "create-error": "VLAN을 생성할 수 없음",
@@ -472,16 +522,26 @@
         "delete-error": "하나 이상의 VLAN을 삭제할 수 없음",
         "delete-success": "VLAN이 삭제됨",
         "delete-confirm-title": "VLAN 삭제",
-        "delete-info-message": "VLAN 삭제 <strong>{{vlans}}</strong>"
+        "site-delete-info-message": "{{ vlanCount }}개의 VLAN을 삭제합니다. {{ count }}개의 스위치가 이 VLAN을 제거하면 삭제할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-delete-info-message": "{{ vlanCount }}개의 VLAN을 삭제하면 삭제할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "save-dialog-title": "저장 확인",
+        "site-save-dialog-text": "{{ count }}개의 스위치가 이 VLAN을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-save-dialog-text": "스위치가 이 VLAN을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "save-checkbox-text": "설정을 이러한 스위치에 즉시 동기화"
       }
     },
     "task-queue": {
       "total-tasks": "총 작업",
+      "created": "대기 중",
       "pending": "보류 중",
-      "in-progress": "진행 중",
+      "in-progress": "동기화 중",
       "failed": "실패",
       "skipped": "건너뜀",
       "completed": "완료됨",
+      "sync-dialog-text": "'대기 중' 상태인 작업은 스위치로 푸시됩니다.",
+      "details-dialog-title": "작업 세부 정보",
+      "sync-dialog-select-text": "동기화해야 하는 스위치 선택",
+      "sync-dialog-title": "동기화",
       "button": {
         "show-history": "기록 표시"
       },
@@ -490,16 +550,17 @@
         "switch": "스위치",
         "site": "사이트",
         "entity": "엔터티",
-        "sub-entity": "하위 엔터티",
+        "sub-entity": "조치",
         "date-time": "만든 위치"
       },
       "status": {
+        "created": "대기 중",
         "pending": "보류 중",
         "success": "성공",
         "failed": "실패",
         "deleted": "삭제됨",
         "skipped": "건너뜀",
-        "in_progress": "진행 중"
+        "in_progress": "동기화 중"
       },
       "action": {
         "retry": "다시 시도",
@@ -513,13 +574,23 @@
         "full_sync": "전체 동기화",
         "vlan": "VLAN",
         "firmware_upgrade": "펌웨어",
-        "schedule_upgrade": "펌웨어 업그레이드 예약",
-        "cancel_upgrade": "펌웨어 업그레이드 취소",
+        "schedule_upgrade": "예약",
+        "cancel_upgrade": "취소",
         "rollback": "펌웨어 교체",
         "port": "포트",
         "remote_support": "원격 지원",
         "enable_remote_support": "켜기",
-        "disable_remote_support": "끄기"
+        "disable_remote_support": "끄기",
+        "reboot": "재부팅",
+        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_full": "업그레이드 일정(펌웨어)",
+        "schedule_rollback": "스왑 파티션 일정",
+        "cancel_agent": "일정 취소(클라이언트)",
+        "cancel_full": "일정 취소(펌웨어)",
+        "cancel_rollback": "취소(스왑 파티션)",
+        "schedule_agent_auto": "자동 업그레이드(클라이언트)",
+        "schedule_full_auto": "자동 업그레이드(펌웨어)",
+        "schedule_rollback_auto": "자동 스왑 파티션"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -533,11 +604,16 @@
         "flow-control": "흐름 제어",
         "link-speed": "속도/이중",
         "untagged-vlan": "태그 없는 VLAN",
-        "tagged-vlans": "태그 있는 VLAN"
+        "tagged-vlans": "태그 있는 VLAN",
+        "inherited": "소스"
       },
       "message": {
         "port-update-success": "포트가 업데이트되었습니다.",
-        "port-update-error": "하나 이상의 포트를 업데이트할 수 없습니다."
+        "port-update-error": "하나 이상의 포트를 업데이트할 수 없습니다.",
+        "save-dialog-title": "업데이트 확인",
+        "site-save-dialog-text": "{{ count }}개의 스위치가 포트 업데이트를 얻으면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-save-dialog-text": "스위치가 포트 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "save-checkbox-text": "설정을 이러한 스위치에 즉시 동기화"
       }
     },
     "remote-debugging": {
@@ -557,6 +633,28 @@
         "apu-disable-success": "원격 디버깅 꺼짐",
         "apu-disable-error": "원격 디버깅을 끌 수 없음"
       }
+    },
+    "poe": {
+      "name": "PoE",
+      "power-limit": "전력 제한 모드",
+      "priority": "우선순위",
+      "power-limit-auto": "자동",
+      "power-limit-manual": "수동",
+      "power-defined": "전력 제한",
+      "power-drawn": "전력 소비됨",
+      "poe-status": "상태",
+      "poe-status-Disabled": "사용 안 함",
+      "poe-status-Searching": "검색",
+      "poe-status-Delivering": "전달",
+      "poe-status-Fault": "장애",
+      "poe-status-MPS_Absent" : "MPS 없음",
+      "poe-status-Short": "단락",
+      "poe-status-Overload": "과부하",
+      "poe-status-Power_Denied": "전력 거부됨",
+      "poe-status-Thermal_Shutdown": "열 차단",
+      "poe-status-Startup_Failure": "시작 실패",
+      "poe-status-Classification_Failure": "분류 실패",
+      "poe-status-Requesting_Power": "전력 요청"
     }
   }
 }

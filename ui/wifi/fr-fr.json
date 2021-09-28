@@ -17,13 +17,14 @@
       "confirm-delete-header": "Confirmation de la suppression",
       "error": "Erreur",
       "success": "Succès",
+      "info": "Info",
       "retry": "Réessayer",
-      "access-points": "points d’accès",
-      "assign-accesspoints": "Assigner les point d’accès",
+      "access-points": "Points d’accès",
+      "assign-access-points": "Assigner les point d’accès",
       "ssids": "SSID",
       "settings": "Paramètres",
       "sites": "Sites",
-      "site-name":"Nom du site",
+      "site-name": "Nom du site",
       "statistic": "Statistiques",
       "devices": "Appareils",
       "reset": "Réinitialiser",
@@ -36,6 +37,8 @@
       "details": "Détails",
       "no-data": "Aucune donnée",
       "no-records": "Aucun enregistrement",
+      "status": "État",
+      "username": "Nom d’utilisateur",
       "beta": "bêta",
       "copied": "Copié",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "Tableau de bord Wireless"
     },
     "devices": {
+      "static-details": "Informations statiques",
+      "mac-address": "Adresse MAC",
+      "current-access-point": "Point d’accès actuel",
+      "current-site": "Site actuel",
+      "current-network": "Réseau actuel",
+      "signal-quality": "Qualité du signal",
+      "band": "Bande",
+      "host-name": "Nom d’hôte",
+      "signal-quality-header": "Qualité du signal (en dBm)",
+      "ip": "IP",
+      "vendor": "Fournisseur",
+      "usage-details": "Informations d’utilisation",
+      "connectivity": "Connectivité",
       "device-container": {
         "breadcrumb-text": "Appareils",
         "title": "Sans fil - Appareils",
@@ -111,7 +127,7 @@
           "health-status-green": "Protégé",
           "health-status-missing": "Security Heartbeat manquant",
           "health-status-grey": "Aucun Security Heartbeat",
-          "health-status-yellow": "Étape potentiellement en danger",
+          "health-status-yellow": "Client potentiellement en danger",
           "health-status-not-available": "Indisponible"
         },
         "no-devices-found": "Aucun client sans fil connecté à afficher.",
@@ -171,7 +187,7 @@
       "low-severity": "Pour information"
     },
     "settings": {
-      "setting-configuration-save-success-msg": "Configuration enregistrée !",
+      "setting-configuration-save-success-msg": "Configuration enregistrée.",
       "setting-configuration-save-error-msg": "Impossible d’enregistrer la configuration.",
       "sections": {
         "login-title": "Paramètres basiques",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "Hors connexion",
           "true": "En ligne"
-        }
+        },
+        "no-aps-found": "Aucun point d’accès enregistré."
       },
       "site-name-error-msgs": {
         "required": "Nom du site obligatoire.",
         "maxlength": "Le nom du site ne doit pas dépasser 64 caractères."
+      },
+      "site-location-error-msgs": {
+        "required": "Emplacement du site obligatoire."
       },
       "detail": {
         "select-view": "Sélectionner la vue"
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "Marquer comme Usurpation d’identité du BSSID",
           "mark-as-ssid-impersonate": "Marquer comme Usurpation d’identité SSID",
           "mark-as-adhoc": "Marquer comme Ad hoc"
+        },
+        "syslog-server-error-msgs": {
+          "required": "Adresse du serveur obligatoire.",
+          "invalid-server": "L’adresse IP ou le nom d’hôte de ce serveur n’est pas valide."
+        },
+        "syslog-port-error-msgs": {
+          "required": "Port obligatoire.",
+          "min": "Le numéro du port doit être compris entre 1 et 65535.",
+          "max": "Le numéro du port doit être compris entre 1 et 65535."
+        },
+        "scan-ssid": {
+          "scan": "Contrôler",
+          "confirm": {
+            "title": "Confirmer le contrôle",
+            "label": "Le contrôle va être effectué sur tous les points d’accès en ligne de ce site. Les clients connectés subiront des interruptions du réseau pendant au moins 3 à 5 minutes.",
+            "success": "Contrôle du voisinage démarré",
+            "fail": "Impossible de contrôler le voisinage"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "SSID enregistré.",
         "help": "Aide",
         "general-setting-encryption-mode": "Indiquez les paramètres généraux de votre nouveau SSID. Choisir le mode de chiffrement et le type de SSID à fournir.",
         "band-encryption-mode": " Nous conseillons l’utilisation du mode de chiffrement WPA2 avec AES et une bande de fréquence de 2,4 et 5 GHz.",
