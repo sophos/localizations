@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "Übersicht",
       "alerts": "Alarme",
-      "connections": "Verbindungen",
+      "connections": "Port-Verwendung",
       "poe": "PoE",
       "uplink": "Uplink",
       "free": "frei",
@@ -16,6 +16,9 @@
       "state": "Status",
       "tagged": "Getaggt",
       "untagged": "Ungetaggt",
+      "switches": "Switches",
+      "sync-pending": "Synchronisierung ausstehend",
+      "sync-failed": "Synchronisierung fehlgeschlagen",
       "minutes-ago": "vor {{unit}} Minuten",
       "minute-ago": "vor {{unit}} Minute",
       "hours-ago": "vor {{unit}} Stunden",
@@ -35,7 +38,13 @@
         "5g": "5G/Voll",
         "10g": "10G/Voll",
         "auto": "Auto",
-        "disabled": "Deaktiviert"
+        "disabled": "Deaktiviert",
+        "ignored": "Ignorieren"
+      },
+      "flow-control": {
+        "true": "Aktivieren",
+        "false": "Deaktivieren",
+        "ignored": "Ignorieren"
       },
       "button": {
         "register": "Registrieren",
@@ -47,7 +56,7 @@
         "delete": "Löschen",
         "add": "Hinzufügen",
         "update": "Aktualisieren",
-        "reset": "Reset",
+        "reset": "Löschen",
         "enable": "Einschalten",
         "disable": "Ausschalten"
       },
@@ -95,6 +104,23 @@
         "add-switch": "Switches hinzufügen"
       }
     },
+    "get-started": {
+      "get-started-title": "Erste Schritte",
+      "step1-header": "1. Standard-Standorteinstellungen",
+      "step1-sub-header": "Dieser Schritt ist optional, aber zu empfehlen",
+      "step1-content": "Der erste Standort wurde erstellt. Prüfen Sie die Standorteinstellungen und ändern Sie diese bei Bedarf.",
+      "step2-header": "2. Einen weiteren Standort hinzufügen",
+      "step2-sub-header": "Dieser Schritt ist optional",
+      "step2-content": "Wenn Sie den ersten Standort angelegt haben und weitere Standorte benötigen, empfehlen wir Ihnen, diese hinzuzufügen, bevor Sie Switches hinzufügen. Sie können jederzeit Standorte hinzufügen und Switches zu neuen Standorten verschieben.",
+      "step3-header": "3. Den ersten Switch hinzufügen",
+      "step3-sub-header": "Ein neuer Switch übernimmt die Einstellungen des Standorts. Switches, die Sie zu einem Standort verschieben, übernehmen die Einstellungen nicht automatisch.",
+      "step3-content": "Nachdem Sie die Standorteinstellungen geprüft haben, können Sie Switches hinzufügen. Sie benötigen die Seriennummer des Switch. Wenn Sie bereit sind, müssen Sie den Switch mit dem Internet verbinden.",
+      "button": {
+        "review": "Prüfung",
+        "add-site": "Standort hinzufügen",
+        "add-switch": "Switch hinzufügen"
+      }
+    },
     "switches": {
       "list": {
         "menu-title": "Switches",
@@ -107,8 +133,13 @@
         "retry-dialog-title": "Registrierung erneut versuchen",
         "delete-note": "Falls der Switch verbunden ist, wird er kurz nach dem Entfernen <strong>neu gestartet</strong>. Falls der Switch getrennt ist, erfolgt ein <br>Neustart, wenn der Switch versucht, sich mit Sophos Central zu verbinden.<br/><br/> Hinweis: Die aktuellen Konfigurationen des Switch bleiben erhalten.",
         "move-to-site-dialog-title": "Switches zum Standort verschieben",
-        "move-to-site-text": "{{ switches }} ausgewählte Switches werden zum Standort verschoben",
-        "move-to-site-checkbox-label": "Synchronisieren Sie umgehend alle Standorteinstellungen mit den Switches",
+        "no-of-switches": "{0} Switches",
+        "no-switch-label": "Keine",
+        "move-to-site-text": "{{ switches }} ausgewählte Switches werden zum Standort verschoben. Switches übernehmen Standorteinstellungen. Sie können entweder jetzt oder später synchronisieren.",
+        "move-to-site-checkbox-label": "Alle Standorteinstellungen sofort mit diesen Switches synchronisieren",
+        "regenerate-confirm-text": "Erzeugen Sie erneut alle Einstellungen für den Switch. In der Auftrags-Warteschlange können Sie die erstellten Aufträge sehen. Sie können entweder jetzt oder später synchronisieren.",
+        "regenerate-confirm-dialog": "Alle Einstellungen erneut anwenden",
+        "regenerate-checkbox-label": "Synchronisieren Sie die Einstellungen sofort mit dem Switch.",
         "txtbox": {
           "search-placeholder": "Switch suchen"
         },
@@ -122,10 +153,11 @@
           "switch-delete-confirm": "Switch entfernen",
           "template-delete-confirm": "Standort löschen",
           "move-to-site": "Zum Standort verschieben",
-          "fullSync": "Synchronisieren"
+          "sync": "Synchronisieren"
         },
         "full-sync": {
-          "dialog-title": "Synchronisieren"
+          "sync-dialog-title": "Synchronisieren",
+          "full-sync-dialog-title": "Neu generieren"
         },
         "table-headers": {
           "name": "Name",
@@ -134,10 +166,10 @@
           "version": "Version",
           "location": "Verzeichnis",
           "ports": "Ports",
-          "connections": "Verbindungen",
+          "connections": "Port-Verwendung",
           "vlans": "VLANs",
           "untagged-vlans": "Ungetaggte VLANs",
-          "ip-address": "Host-Name / IP-Adresse",
+          "ip-address": "IP-Adresse",
           "tags": "Tags",
           "model": "Modell",
           "serial-number": "Seriennummer",
@@ -187,8 +219,8 @@
               "SUCCESS": {
                 "text": "{{ process }} auf Version {{ version }} ({{ type }}) war erfolgreich.",
                 "note": {
-                  "now": "{{ process }} wurde am {{ date }} abgeschlossen",
-                  "date": "{{ process }} wurde geplant am {{ schedule }} und fertiggestellt am {{ date }}"
+                  "now": "Das {{ process }} wurde angefordert am {{ date }}",
+                  "date": "Für die Ausführung am {{ schedule }} wurde das {{ process }} angefordert am {{ date }}"
                 }
               },
               "CANCELLING": {
@@ -230,19 +262,18 @@
           "schedule-rollback": "Firmware-Austausch planen",
           "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
           "schedule-upgrade": "Eine Aktualisierung planen",
-          "schedule": "Zeitplan ändern",
+          "schedule": "Zeitplan auswählen",
           "manage-schedule-dialog-title": "Firmware verwalten: {{ site }}",
           "upgrade-schedule-dialog-title": "Wählen Sie einen Zeitplan aus",
-          "dialog-heading": "Firmware für Switches am Standort verwalten: {{ site }}. Im folgenden Bereich können Sie Firmware-Upgrades und Firmware-Austausche hinzufügen oder widerrufen.",
+          "dialog-heading": "Firmware für Switches am Standort verwalten: {{ site }}. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen sowie die Firmware-Version austauschen.",
           "schedule-info-message": "Wählen Sie für die ausgewählten Switches den Upgrade- bzw. Firmware-Austausch-Zeitpunkt aus.",
           "update-now": "Jetzt",
           "custom": "Benutzerdefiniert",
           "schedule-now-note": "Verbundene Switches erhalten sofort eine Aufforderung für das Upgrade bzw. den Firmware-Austausch. Getrennte Switches erhalten eine Aufforderung, wenn sie sich wieder verbunden haben. Hierbei wird der Switch eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
           "schedule-custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Switches ohne Berücksichtigung von Zeitzonen. Beim Upgrade bzw. Firmware-Austausch wird der Switch eventuell neu gestartet.",
-          "scheduled-success-message": "Firmware-Upgrade wurde geplant",
-          "scheduled-success-failure": "Firmware-Upgrade ist fehlgeschlagen",
-          "update-cancel-message": "Firmware-Upgrade wurde widerrufen",
-          "cancel-upgrade": "Zeitplan widerrufen",
+          "scheduled-success-message": "Geänderte Firmware-Zeitpläne wurden erfolgreich gespeichert.",
+          "scheduled-success-failure": "Speichern der an den Firmware-Zeitplänen vorgenommenen Änderungen fehlgeschlagen.",
+          "cancel-upgrade": "Zeitplan entfernen",
           "rollback": "Firmware-Austausch ({{ version }})",
           "modified": "Vorhandener Zeitplan {{ version }} | {{ schedule }} wird geändert.",
           "new-schedule": "Neuer Zeitplan",
@@ -288,9 +319,11 @@
           "update-template-error": "Standort kann nicht aktualisiert werden",
           "transfer-success": "Switches wurden verschoben",
           "transfer-failed": "Switches können nicht verschoben werden",
-          "full-sync-success": "Standorteinstellungen wurden mit den ausgewählten Switches synchronisiert",
-          "full-sync-failed": "Standorteinstellungen können nicht mit den ausgewählten Switches synchronisiert werden",
-          "full-sync-confirm-dialog": "Standorteinstellungen werden mit den ausgewählten Switches synchronisiert"
+          "full-sync-success": "Alle Switch-Einstellungen wurden erfolgreich erneut angewendet.",
+          "full-sync-failed": "Erneutes Anwenden der Einstellungen auf den Switch fehlgeschlagen",
+          "sync-success": "Standorteinstellungen wurden mit den ausgewählten Switches synchronisiert",
+          "sync-failed": "Standorteinstellungen können nicht mit den ausgewählten Switches synchronisiert werden",
+          "sync-confirm-dialog": "Standorteinstellungen werden mit den ausgewählten Switches synchronisiert. In der Auftrags-Warteschlange können Sie den Fortschritt sehen."
         },
         "groupInfoText": {
           "what": "Was ist ein Standort?",
@@ -300,20 +333,27 @@
         "site-without-switch": {
           "label": "Es wurden keine Switches hinzugefügt",
           "add-switch": "Switch hinzufügen"
+        },
+        "vlan": {
+          "name": "Name",
+          "id": "VLAN-ID",
+          "tagged": "Getaggt",
+          "untagged": "Ungetaggt"
         }
       },
       "manage": {
         "page-title": "Switches - Switch-Verwaltung",
         "breadcrumb-text": "Switch verwalten",
         "template-dd-default-title": "Einen Standort auswählen",
-        "upgrade-checkbox-label": "Sophos Central-Clients automatisch aktualisieren",
+        "upgrade-checkbox-label": "Sophos-Central-Clients automatisch aktualisieren",
         "add-edit-tags": "Tags hinzufügen oder bearbeiten",
         "add-edit-location": "Standort hinzufügen oder bearbeiten",
         "button": {
           "reboot": "Neu starten",
           "open-local-mgmt-console": "Lokale Switch-Verwaltung öffnen",
-          "open-local-mgmt-console-helper-text": "Dadurch wird eine neue Browser-Registerkarte mit der Management-Adresse des Switch geöffnet. Sie wird nur geöffnet, wenn der Switch-Verwaltungs-Standort mit diesem Browser zugänglich ist.",
+          "open-local-mgmt-console-helper-text": "Dadurch wird ein neuer Browser-Tab mit der Management-Adresse des Switch geöffnet. Sie wird nur geöffnet, wenn der Switch-Verwaltungs-Standort für diesen Browser verfügbar ist.",
           "remove": "Aus Sophos Central entfernen",
+          "regenerate-config": "Alle Einstellungen erneut anwenden",
           "add-tags": "Tags hinzufügen",
           "add-location": "Speicherort hinzufügen"
         },
@@ -322,11 +362,14 @@
           "model": "Modell",
           "powered-on": "Eingeschaltet",
           "switch-firmware": "Switch-Firmware",
-          "central-agent": "Sophos Central-Clients"
+          "central-agent": "Sophos-Central-Clients",
+          "site-name": "Standort"
         },
         "reboot": {
           "reboot-dialog-title": "Neu starten",
-          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> neu starten"
+          "reboot-dialog-message": "<strong>{{switchSerial}}</strong> neu starten",
+          "success": "Auftrag zum Neustart des Switch erfolgreich erzeugt.",
+          "error": "Fehler beim Erstellen des Auftrags zum Neustart des Switch"
         },
         "edit-success": "Automatische Updates für Central-Clients aktiviert",
         "edit-success-disabled-auto-update": "Automatische Updates für Central-Clients deaktiviert",
@@ -342,17 +385,17 @@
           "mac-address-table-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Überwachen dynamische MAC-Adresse > Statische MAC-Adresse",
           "mac-address-table-helper": "Die MAC-Adressen-Tabelle zeigt die erkannten Geräte je Port und VLAN an.",
           "poe-power-usage": "PoE-Leistungsnutzung",
-          "poe-power-usage-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Dashboard-Konfiguration > PoE-Port-Einstellungen",
+          "poe-power-usage-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Dashboard > PoE-Port-Einstellungen",
           "poe-power-usage-helper": "Die Seiten „Dashboard-Einstellungen“ und „PoE-Port-Einstellungen“ liefern Informationen zu Strom, Spannung und Leistungsaufnahme.",
           "network-diagnostics": "Netzwerkdiagnose",
           "network-diagnostics-item": "Lokale Web-Benutzeroberfläche des Switch: Analyse > Ping-Test-Analyse > Traceroute",
-          "network-diagnostics-helper": "Anhand von Ping und Traceroute lassen sich die Konnektivität des Switch sowie die L3-Routing-Funktionalität testen.",
+          "network-diagnostics-helper": "Mit Ping und Traceroute können Sie die Konnektivität und die L3-Routing-Funktionalität des Switch testen.",
           "event-loggging": "Ereignis-Protokollierung",
           "event-loggging-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Lokale Protokollierung überwachen > Protokolltabelle",
-          "event-loggging-helper": "Mit der lokalen Protokollierung lassen sich die Ereignisse konfigurieren, die lokal am Switch protokolliert werden. Unter Umständen muss die Protokollierung schwerwiegender Fehlerstufen bearbeitet und aktiviert werden, um die erforderlichen Ereignisse zu erkennen. Diese Option sollte nur bei der Problembehebung aktiviert werden. Protokollierte Details können in der Protokolltabelle nachgelesen werden.",
+          "event-loggging-helper": "Mit der lokalen Protokollierung können Sie die Ereignisse konfigurieren, die lokal am Switch protokolliert werden. Unter Umständen muss die Protokollierung schwerwiegender Fehlerstufen bearbeitet und aktiviert werden, um die erforderlichen Ereignisse zu erkennen. Diese Option sollte nur bei der Problembehebung aktiviert werden. Protokollierte Details können in der Protokolltabelle nachgelesen werden.",
           "cable-diagnostics": "Kabeldiagnostik",
           "cable-diagnostics-item": "Lokale Web-Benutzeroberfläche des Switch: Analyse > Diag.-Werkzeuge",
-          "cable-diagnostics-helper": "Wählen Sie Ports aus und klicken Sie anschließend auf „Test“, um Kabeldiagnostik auf den ausgewählten Switch-Ports auszuwählen.",
+          "cable-diagnostics-helper": "Wählen Sie Ports aus und klicken Sie anschließend auf „Test“, um Kabeldiagnostik auf den ausgewählten Switch-Ports auszuführen.",
           "sfp-module-info": "SFP-Modul-Info",
           "sfp-module-info-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > SFP-Modulinformationen",
           "sfp-module-info-helper": "SFP-Modulinformationen zeigen, welche Funktionalitäten und Informationen angeschlossene Glasfaser-Module dem Switch liefern."
@@ -391,7 +434,8 @@
           "auto-upgrade": "Switch-Software automatisch auf die neueste verfügbare Version aktualisieren, sofern dafür kein Neustart erforderlich ist"
         },
         "body": {
-          "line": "Kurz nach der Registrierung wird die Switch-Software automatisch auf die neueste verfügbare Version aktualisiert. Hierbei wird das Gerät eventuell neu gestartet."
+          "line": "Kurz nach der Registrierung wird die Switch-Software automatisch auf die neueste verfügbare Version aktualisiert. Hierbei wird das Gerät eventuell neu gestartet.",
+          "move-switches": "Switches zum Standort verschieben"
         }
       },
       "message": {
@@ -412,13 +456,15 @@
         "site-name-required-message": "Standortname ist erforderlich",
         "site-name-invalid-message": "Standortname ist ungültig",
         "site-description-invalid-message": "Standortbeschreibung ist ungültig",
+        "site-name-exists-message": "Standortname ist bereits vorhanden",
         "create-success": "Standort wurde erstellt",
         "create-error": "Es kann kein Standort erstellt werden",
         "update-success": "Standort wurde aktualisiert",
         "update-error": "Standort kann nicht aktualisiert werden"
       },
       "form": {
-        "location": "Standort"
+        "location": "Standort",
+        "remove": "Standort löschen"
       }
     },
     "switch-view": {
@@ -431,6 +477,7 @@
       "ports-dd-default-title": "Ports auswählen",
       "add-vlan-dialog-title": "VLAN hinzufügen",
       "edit-vlan-dialog-title": "VLAN bearbeiten",
+      "misconfigured": "Ports {{ ports }} sind in mehreren VLANs ungetaggt.",
       "button": {
         "add": "VLAN hinzufügen"
       },
@@ -448,7 +495,8 @@
         "description": "Beschreibung",
         "tagged-ports": "Getaggte Ports",
         "untagged-ports": "Ungetaggte Ports",
-        "forbidden-ports": "Verbotene Ports"
+        "forbidden-ports": "Verbotene Ports",
+        "inherited": "Quelle"
       },
       "form": {
         "vlan-id": "VLAN-ID",
@@ -461,8 +509,10 @@
         "color": "Farbe",
         "vlan-id-required-message": "VLAN-ID ist erforderlich.",
         "vlan-id-invalid-message": "VLAN-ID ist ungültig.",
+        "vlan-id-exists-message": "VLAN-ID ist bereits vorhanden.",
         "vlan-name-required-message": "Name ist erforderlich.",
-        "vlan-name-invalid-message": "Der Name ist ungültig."
+        "vlan-name-invalid-message": "Der Name ist ungültig. Sonderzeichen sind nicht zulässig",
+        "vlan-name-exists-message": "Name ist bereits vorhanden."
       },
       "message": {
         "create-error": "VLAN kann nicht erstellt werden",
@@ -472,16 +522,26 @@
         "delete-error": "Ein oder mehrere VLANs können nicht gelöscht werden",
         "delete-success": "VLANs wurden gelöscht",
         "delete-confirm-title": "VLANs löschen",
-        "delete-info-message": "VLANs <strong>{{vlans}}</strong> löschen"
+        "site-delete-info-message": "{{ vlanCount }} VLANs löschen. {{ count }} Switches löschen dieses VLAN und Aufträge zum Löschen werden angelegt. Sie können entweder jetzt oder später synchronisieren.",
+        "switch-delete-info-message": "{{ vlanCount }} VLANs löschen und Aufträge zum Löschen werden angelegt. Sie können entweder jetzt oder später synchronisieren.",
+        "save-dialog-title": "Speichern bestätigen",
+        "site-save-dialog-text": "{{ count }} Switches erhalten dieses VLAN und Aufträge werden angelegt. Sie können entweder jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält dieses VLAN und Aufträge werden angelegt. Sie können entweder jetzt oder später synchronisieren.",
+        "save-checkbox-text": "Die Einstellungen sofort mit diesen Switches synchronisieren"
       }
     },
     "task-queue": {
       "total-tasks": "Aufgaben gesamt",
+      "created": "Wartet",
       "pending": "Ausstehend",
-      "in-progress": "In Bearbeitung",
+      "in-progress": "Wird synchronisiert",
       "failed": "Fehlgeschlagen",
       "skipped": "Übersprungen",
       "completed": "Abgeschlossen",
+      "sync-dialog-text": "Aufträge im Status 'Wartet' werden an den Switch gesendet.",
+      "details-dialog-title": "Auftragsdetails",
+      "sync-dialog-select-text": "Wählen Sie die zu synchronisierenden Switches aus",
+      "sync-dialog-title": "Synchronisieren",
       "button": {
         "show-history": "Verlauf anzeigen"
       },
@@ -490,16 +550,17 @@
         "switch": "Switch",
         "site": "Standort",
         "entity": "Einheit",
-        "sub-entity": "Untereinheit",
+        "sub-entity": "Maßnahme",
         "date-time": "Erstellt am"
       },
       "status": {
+        "created": "Wartet",
         "pending": "Ausstehend",
         "success": "Erfolg",
         "failed": "Fehlgeschlagen",
         "deleted": "Gelöscht",
         "skipped": "Übersprungen",
-        "in_progress": "In Bearbeitung"
+        "in_progress": "Wird synchronisiert"
       },
       "action": {
         "retry": "Erneut versuchen",
@@ -513,13 +574,23 @@
         "full_sync": "Vollständig synchronisieren",
         "vlan": "VLAN",
         "firmware_upgrade": "Firmware",
-        "schedule_upgrade": "Firmware-Upgrade planen",
-        "cancel_upgrade": "Firmware-Upgrade widerrufen",
+        "schedule_upgrade": "Planen",
+        "cancel_upgrade": "Abbrechen",
         "rollback": "Firmware-Austausch",
         "port": "Port",
         "remote_support": "Remote Support",
         "enable_remote_support": "Einschalten",
-        "disable_remote_support": "Ausschalten"
+        "disable_remote_support": "Ausschalten",
+        "reboot": "Neu starten",
+        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_full": "Upgrade-Zeitplan (Firmware)",
+        "schedule_rollback": "Partitionsaustausch-Zeitplan",
+        "cancel_agent": "Zeitplan widerrufen (Client)",
+        "cancel_full": "Zeitplan widerrufen (Firmware)",
+        "cancel_rollback": "Widerrufen (Partitionsaustausch)",
+        "schedule_agent_auto": "Auto-Upgrade (Client)",
+        "schedule_full_auto": "Auto-Upgrade (Firmware)",
+        "schedule_rollback_auto": "Auto-Partitionsaustausch"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Erneute Ausführung fehlgeschlagener Aufgaben ist fehlgeschlagen.",
@@ -533,16 +604,21 @@
         "flow-control": "Datenflusskontrolle",
         "link-speed": "Geschwindigkeit/Duplex",
         "untagged-vlan": "Ungetaggtes VLAN",
-        "tagged-vlans": "Getaggte VLANs"
+        "tagged-vlans": "Getaggte VLANs",
+        "inherited": "Quelle"
       },
       "message": {
         "port-update-success": "Ports wurden aktualisiert.",
-        "port-update-error": "Ein oder mehrere Ports können nicht aktualisiert werden."
+        "port-update-error": "Ein oder mehrere Ports können nicht aktualisiert werden.",
+        "save-dialog-title": "Update bestätigen",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "save-checkbox-text": "Die Einstellungen sofort mit diesen Switches synchronisieren"
       }
     },
     "remote-debugging": {
-      "debugging-enabled-title": "Remote-Debuggen aktiviert",
-      "debugging-disabled-title": "Remote-Debuggen aktivieren",
+      "debugging-enabled-title": "Remote-Debugging aktiviert",
+      "debugging-disabled-title": "Remote-Debugging aktivieren",
       "token": "Token",
       "duration-day": "{{duration}} Tag",
       "duration-days": "{{duration}} Tage",
@@ -557,6 +633,28 @@
         "apu-disable-success": "Remote-Debugging wurde deaktiviert",
         "apu-disable-error": "Remote-Debugging kann nicht deaktiviert werden"
       }
+    },
+    "poe": {
+      "name": "PoE",
+      "power-limit": "Leistungsbegrenzungsmodus",
+      "priority": "Priorität",
+      "power-limit-auto": "Auto",
+      "power-limit-manual": "Manuell",
+      "power-defined": "Leistungsbegrenzung",
+      "power-drawn": "Bezogene Leistung",
+      "poe-status": "Status",
+      "poe-status-Disabled": "Deaktiviert",
+      "poe-status-Searching": "Wird gesucht",
+      "poe-status-Delivering": "Wird zugestellt",
+      "poe-status-Fault": "Fehler",
+      "poe-status-MPS_Absent" : "MPS fehlend",
+      "poe-status-Short": "Unzureichend",
+      "poe-status-Overload": "Überlastung",
+      "poe-status-Power_Denied": "Leistung verweigert",
+      "poe-status-Thermal_Shutdown": "Überhitzungsabschaltung",
+      "poe-status-Startup_Failure": "Fehler beim Hochfahren",
+      "poe-status-Classification_Failure": "Klassifikationsfehler",
+      "poe-status-Requesting_Power": "Leistung wird angefordert"
     }
   }
 }

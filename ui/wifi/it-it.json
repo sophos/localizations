@@ -17,13 +17,14 @@
       "confirm-delete-header": "Conferma eliminazione",
       "error": "Errore",
       "success": "Operazione completata",
+      "info": "Info",
       "retry": "Riprova",
-      "access-points": "access point",
-      "assign-accesspoints": "Assegna access point",
+      "access-points": "Access Point",
+      "assign-access-points": "Assegna access point",
       "ssids": "SSID",
       "settings": "impostazioni",
       "sites": "Siti",
-      "site-name":"Nome sito",
+      "site-name": "Nome sito",
       "statistic": "Statistica",
       "devices": "Dispositivi",
       "reset": "Reimposta",
@@ -36,6 +37,8 @@
       "details": "Dettagli",
       "no-data": "Nessun dato",
       "no-records": "Nessun record",
+      "status": "Stato",
+      "username": "Nome utente",
       "beta": "beta",
       "copied": "Copiato",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "Dashboard di Wireless"
     },
     "devices": {
+      "static-details": "Dettagli statici",
+      "mac-address": "Indirizzo MAC",
+      "current-access-point": "Access point corrente",
+      "current-site": "Sito corrente",
+      "current-network": "Rete corrente",
+      "signal-quality": "Qualità del segnale",
+      "band": "Banda",
+      "host-name": "Nome host",
+      "signal-quality-header": "Qualità del segnale (in dBm)",
+      "ip": "ip",
+      "vendor": "Vendor",
+      "usage-details": "Dettagli sull'utilizzo",
+      "connectivity": "Connettività",
       "device-container": {
         "breadcrumb-text": "Dispositivi",
         "title": "Wireless - Dispositivi",
@@ -111,7 +127,7 @@
           "health-status-green": "Protetto",
           "health-status-missing": "Security Heartbeat mancante",
           "health-status-grey": "Nessun Security Heartbeat",
-          "health-status-yellow": "La fase potrebbe essere a rischio",
+          "health-status-yellow": "Il client potrebbe essere a rischio",
           "health-status-not-available": "Non disponibile"
         },
         "no-devices-found": "Nessun client wireless connesso da mostrare.",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "Offline",
           "true": "Online"
-        }
+        },
+        "no-aps-found": "Nessun access point registrato."
       },
       "site-name-error-msgs": {
         "required": "Il nome del sito è obbligatorio.",
         "maxlength": "Il nome del sito non può contenere più di 64 caratteri."
+      },
+      "site-location-error-msgs": {
+        "required": "Il percorso del sito è obbligatorio."
       },
       "detail": {
         "select-view": "Seleziona vista"
@@ -264,7 +284,7 @@
         "classification": "Seleziona classificazione",
         "edit-classification-prefix-label": "Contrassegna come",
         "filter-options": {
-          "rogue": "Non autorizzata",
+          "rogue": "Rogue",
           "trusted": "Attendibile",
           "untrusted": "Non attendibile",
           "advanced-impersonate": "Advanced Impersonate",
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "Contrassegna come BSSID Impersonate",
           "mark-as-ssid-impersonate": "Contrassegna come SSID Impersonate",
           "mark-as-adhoc": "Contrassegna come Ad hoc"
+        },
+        "syslog-server-error-msgs": {
+          "required": "L'indirizzo del server è obbligatorio.",
+          "invalid-server": "Il Server non è un valido IP o nome host."
+        },
+        "syslog-port-error-msgs": {
+          "required": "Porta obbligatoria.",
+          "min": "Il numero di porta deve essere compreso tra 1 e 65535.",
+          "max": "Il numero di porta deve essere compreso tra 1 e 65535."
+        },
+        "scan-ssid": {
+          "scan": "Scansione",
+          "confirm": {
+            "title": "Conferma scansione",
+            "label": "La scansione verrà effettuata su tutti gli Access Point on-line in questo sito. I client connessi riscontreranno interruzioni nel servizio di rete per almeno 3-5 minuti.",
+            "success": "Scansione degli elementi vicini avviata",
+            "fail": "Scansione degli elementi vicini non riuscita"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "Salvataggio del SSID completato.",
         "help": "Assistenza",
         "general-setting-encryption-mode": "Specifica le impostazioni generali del nuovo SSID. Scegli la modalità di cifratura richiesta e il tipo di SSID che desideri fornire.",
         "band-encryption-mode": " Consigliamo di utilizzare WPA2 con modalità di cifratura AES e banda di frequenza a 2,4 e 5 GHz.",
@@ -324,7 +363,7 @@
         "assign-ssid": "Conteggio degli access point assegnati",
         "enable-ssid": "Abilita SSID",
         "enable-ssid-help-text": "Abilita immediatamente l'SSID.",
-        "config-ready-msg": "La configurazione è pronta, si prega di salvare e procedere",
+        "config-ready-msg": "La configurazione è pronta, si prega di salvare e procedere.",
         "advanced-settings": "Impostazioni avanzate",
         "previous-section": "Precedente",
         "main-label": "Selezionare i dispositivi a cui assegnare questo SSID.",

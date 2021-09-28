@@ -17,13 +17,14 @@
       "confirm-delete-header": "削除の確認",
       "error": "エラー",
       "success": "成功",
+      "info": "情報",
       "retry": "再試行",
       "access-points": "アクセスポイント",
-      "assign-accesspoints": "アクセスポイントの割り当て",
+      "assign-access-points": "アクセスポイントの割り当て",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "サイト",
-      "site-name":"サイト名",
+      "site-name": "サイト名",
       "statistic": "統計",
       "devices": "デバイス",
       "reset": "リセット",
@@ -36,6 +37,8 @@
       "details": "詳細",
       "no-data": "データはありません",
       "no-records": "レコードがありません",
+      "status": "状態",
+      "username": "ユーザー名",
       "beta": "ベータ版",
       "copied": "コピー済み",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "ワイヤレスダッシュボード"
     },
     "devices": {
+      "static-details": "詳細",
+      "mac-address": "MAC アドレス",
+      "current-access-point": "現在のアクセスポイント",
+      "current-site": "現在のサイト",
+      "current-network": "現在のネットワーク",
+      "signal-quality": "シグナル強度",
+      "band": "帯域",
+      "host-name": "ホスト名",
+      "signal-quality-header": "シグナル強度 (単位: dBm)",
+      "ip": "IP",
+      "vendor": "ベンダー",
+      "usage-details": "使用状況の詳細",
+      "connectivity": "接続",
       "device-container": {
         "breadcrumb-text": "デバイス",
         "title": "ワイヤレス - デバイス",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "オフライン",
           "true": "オンライン"
-        }
+        },
+        "no-aps-found": "登録されているアクセスポイントがありません。"
       },
       "site-name-error-msgs": {
         "required": "サイト名を指定してください。",
         "maxlength": "サイト名は最大 64文字まで入力できます。"
+      },
+      "site-location-error-msgs": {
+        "required": "サイト所在地を指定してください。"
       },
       "detail": {
         "select-view": "表示の選択"
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "BSSID 偽装としてマーク",
           "mark-as-ssid-impersonate": "SSID 偽装としてマーク",
           "mark-as-adhoc": "アドホックとしてマーク"
+        },
+        "syslog-server-error-msgs": {
+          "required": "サーバーアドレスを指定してください。",
+          "invalid-server": "サーバーの IP アドレスまたはホスト名が無効です。"
+        },
+        "syslog-port-error-msgs": {
+          "required": "ポートを指定してください。",
+          "min": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
+          "max": "ポート番号は、1 から 65535 の範囲で指定する必要があります。"
+        },
+        "scan-ssid": {
+          "scan": "Scan",
+          "confirm": {
+            "title": "スキャンの確定",
+            "label": "このサイトのすべてのオンラインのアクセスポイントに対してスキャンが実行されます。接続しているクライアントでは、少なくとも 3～5分間、ネットワークの中断が発生します。",
+            "success": "周辺のスキャンが開始しました",
+            "fail": "周辺のスキャンに失敗しました"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "SSID が正常に保存されました。",
         "help": "ヘルプ",
         "general-setting-encryption-mode": "新しい SSID の全般的な設定を行います。必要な暗号化モードと、提供する SSID の種類を選択します。",
         "band-encryption-mode": " 暗号化モードは「WPA2」、暗号化アルゴリズムは「AES」、周波数帯は「2.4GHz および 5GHz」を使用することを推奨します。",
@@ -324,7 +363,7 @@
         "assign-ssid": "割り当てられているアクセスポイント数",
         "enable-ssid": "SSID を有効にする",
         "enable-ssid-help-text": "SSID をただちに有効にします。",
-        "config-ready-msg": "設定ができました。保存して続行してください",
+        "config-ready-msg": "設定ができました。保存して続行してください。",
         "advanced-settings": "詳細設定",
         "previous-section": "戻る",
         "main-label": "この SSID に割り当てるデバイスを選択してください。",

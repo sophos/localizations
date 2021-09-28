@@ -351,9 +351,11 @@
               "nat-address": "NAT-Adresse",
               "nat-subnet": "Mit NAT können Sie Netzwerkkonflikte vermeiden, indem ein Netzwerk für den getunnelten Datenverkehr in einem anderen IP-Adressbereich erscheint. Geben Sie eine NAT-Adresse ein, unter der das Netzwerk erscheinen soll. Wenn zum Beispiel die Originaladresse 192.168.1.1 und die NAT-Adresse 10.1.1.0 sind, werden Adressen folgendermaßen übersetzt: IP 192.168.1.1 wird zu 10.1.1.2, 192.168.1.2 wird zu 10.1.1.2, etc.",
               "conflicts": "Konflikte",
-              "wan": "WAN-Link",
+              "wan": "WAN-Links",
               "selected": "Ausgewählt",
               "gateway": "Backup-Gateway",
+              "select-backup-gateway": "Backup-Gateway auswählen",
+              "tunnel-redundancy-gateway": "Redundanten Tunnel als Backup-Gateway verwenden",
               "xfrm-ip": "Xfrm-IP-Adressen",
               "add": "Netzwerk hinzufügen",
               "public-ip": "Öffentliche IP oder FQDN für ausgewählten WAN-Link",
@@ -639,15 +641,15 @@
         },
         "stats": {
           "sync": {
-            "state" : "{{ count }} Synchronisiert",
+            "state" : "{{ count }} synchronisiert",
             "header":  {
               "one":  "Eine Firewall wurde synchronisiert",
               "more":  "{{ count }} Firewalls wurden synchronisiert"
             },
-            "subtext": "Richtlinien in diesen Firewalls befinden sich auf dem aktuellen Stand."
+            "subtext": "Diese Firewalls haben die aktuellen Richtlinien."
           },
           "syncing": {
-            "state" : "{{ count }} Synchronisieren",
+            "state" : "{{ count }} synchronisieren",
             "header":  {
               "one":  "Eine Firewall wird synchronisiert",
               "more":  "{{ count }} Firewalls werden synchronisiert"
@@ -655,7 +657,7 @@
             "subtext": "Richtlinien werden auf diese Firewalls übertragen. Rufen Sie die Auftrags-Warteschlange auf, um den Fortschritt zu überwachen."
           },
           "outofsync": {
-            "state": "{{ count }} Nicht synchronisiert",
+            "state": "{{ count }} nicht synchronisiert",
             "header": {
               "one": "Bei einer Firewall ist die Anwendung der Richtlinien fehlgeschlagen",
               "more": "Bei {{ count }} Firewalls ist die Anwendung der Richtlinien fehlgeschlagen"
@@ -674,7 +676,7 @@
             "state": "{{ count }} Vorübergehend außer Kraft gesetzt",
             "header": {
               "one": "Eine Firewall wurde aufgrund anhaltender Fehler vorübergehend außer Kraft gesetzt",
-              "more": "{{ count }} Firewalls wurden aufgrund anhaltender Fehler vorübergehend außer Kraft gesetzt"
+              "more": "{{ count }} Firewalls wurden aufgrund andauernder Fehler vorübergehend außer Kraft gesetzt"
             },
             "subtext": "Verschieben Sie bitte die Firewalls aus der Gruppe und fügen Sie sie erneut im Kunden-Dashboard hinzu."
           },

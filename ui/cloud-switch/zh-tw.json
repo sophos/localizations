@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "概觀",
       "alerts": "警示",
-      "connections": "連接",
+      "connections": "連接埠使用情況",
       "poe": "PoE",
       "uplink": "上行",
       "free": "免費",
@@ -16,6 +16,9 @@
       "state": "狀態",
       "tagged": "已標記",
       "untagged": "未標記",
+      "switches": "切換器",
+      "sync-pending": "正在同步擱置",
+      "sync-failed": "同步失敗",
       "minutes-ago": "{{unit}} 分鐘前",
       "minute-ago": "{{unit}} 分鐘前",
       "hours-ago": "{{unit}} 小時前",
@@ -35,7 +38,13 @@
         "5g": "5G/Full",
         "10g": "10G/Full",
         "auto": "自動",
-        "disabled": "已停用"
+        "disabled": "已停用",
+        "ignored": "忽略"
+      },
+      "flow-control": {
+        "true": "開啟",
+        "false": "停用",
+        "ignored": "忽略"
       },
       "button": {
         "register": "註冊",
@@ -47,7 +56,7 @@
         "delete": "刪除",
         "add": "新增",
         "update": "更新",
-        "reset": "重設",
+        "reset": "清除",
         "enable": "打開",
         "disable": "關閉"
       },
@@ -95,6 +104,23 @@
         "add-switch": "新增切換器"
       }
     },
+    "get-started": {
+      "get-started-title": "開始進行操作",
+      "step1-header": "1.預設站點設定",
+      "step1-sub-header": "這是可選步驟，但我們建議您這樣做",
+      "step1-content": "第一個站點已建立。如有必要，檢閱站點設定並變更設定。",
+      "step2-header": "2.新增其他站點",
+      "step2-sub-header": "這是可選步驟",
+      "step2-content": "當第一個站點準備就緒時，如果您需要更多站點，我們建議您在新增交換器之前新增站點。您可隨時新增站點，並隨時將交換器移至新站點。",
+      "step3-header": "3.新增第一個交換器",
+      "step3-sub-header": "新交換器繼承了站點的設定。您移至站點的交換器不會自動繼承設定。",
+      "step3-content": "檢閱站點設定後，可新增交換器。當您準備好開始時，您需要交換器序號，並將其與有效的網際網路連線連接。",
+      "button": {
+        "review": "複習",
+        "add-site": "新增網站",
+        "add-switch": "新增切換器"
+      }
+    },
     "switches": {
       "list": {
         "menu-title": "切換器",
@@ -107,8 +133,13 @@
         "retry-dialog-title": "再試一次註冊",
         "delete-note": "如果交換機已連線，它將在移除後<strong>重新啟動</strong>。如果交換機斷開連線，<br>則當交換機嘗試連線到 Sophos Central 時將重新啟動。<br/><br/>注意：交換機目前的設定將保持不變。",
         "move-to-site-dialog-title": "將交換機移至站點",
-        "move-to-site-text": "{{ switches }} 個已選交換機將移至站點",
-        "move-to-site-checkbox-label": "立即將所有站點設定同步至交換機",
+        "no-of-switches": "{0} 個交換器",
+        "no-switch-label": "无",
+        "move-to-site-text": "{{ switches }} 個已選交換機將移至站點。交換器將繼承站點設定。您可以選擇現在或稍後同步。",
+        "move-to-site-checkbox-label": "立即將所有站點設定同步至交換器",
+        "regenerate-confirm-text": "再次為所有交換器生成所有設定。您可在任務佇列中監視已建立的任務。您可以選擇現在或稍後同步。",
+        "regenerate-confirm-dialog": "重新套用所有設定",
+        "regenerate-checkbox-label": "立即將設定同步至交換器。",
         "txtbox": {
           "search-placeholder": "搜尋交換機"
         },
@@ -122,10 +153,11 @@
           "switch-delete-confirm": "移除交換機",
           "template-delete-confirm": "刪除網站",
           "move-to-site": "移至站點",
-          "fullSync": "同步"
+          "sync": "同步"
         },
         "full-sync": {
-          "dialog-title": "同步"
+          "sync-dialog-title": "同步",
+          "full-sync-dialog-title": "重新產生"
         },
         "table-headers": {
           "name": "名稱",
@@ -134,10 +166,10 @@
           "version": "版本",
           "location": "位置",
           "ports": "連接埠",
-          "connections": "連接",
+          "connections": "連接埠使用情況",
           "vlans": "VLAN",
           "untagged-vlans": "取消標記的 VLAN",
-          "ip-address": "主機名稱/ IP 位址",
+          "ip-address": "IP 位址 (IP 位址)",
           "tags": "標籤",
           "model": "型號",
           "serial-number": "序號",
@@ -187,8 +219,8 @@
               "SUCCESS": {
                 "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。",
                 "note": {
-                  "now": "{{ process }} 於 {{ date }} 完成",
-                  "date": "按照 {{ schedule }} 的排程，{{ process }} 於 {{ date }} 完成"
+                  "now": "已於 {{ date }} 要求 {{ process }}",
+                  "date": "排程於 {{ schedule }}，已於 {{ date }} 要求 {{ process }}"
                 }
               },
               "CANCELLING": {
@@ -230,19 +262,18 @@
           "schedule-rollback": "排程切換韌體",
           "upgrade-message": "您可以立即或在將來套用這些升級。",
           "schedule-upgrade": "排程升級",
-          "schedule": "變更排程",
+          "schedule": "選擇排程",
           "manage-schedule-dialog-title": "管理韌體：{{ site }}",
           "upgrade-schedule-dialog-title": "選擇排程",
-          "dialog-heading": "管理現場交換機的韌體：{{ site }}。您可以從以下選項新增、取消韌體升級或切換韌體。",
+          "dialog-heading": "管理現場交換機的韌體：{{ site }}。您可以從以下選項新增或刪除韌體升級或切換韌體版本。",
           "schedule-info-message": "選擇何時更新或切換所選交換器的韌體。",
           "update-now": "立即",
           "custom": "自訂",
           "schedule-now-note": "連線的交換器將收到通知，立即升級或切換韌體。斷開連線的交換機將在連線後很快收到通知。這可能需要重新啟動交換機。即時排程一旦儲存，就不可修改。只有完成當前排程後才可新增新排程。",
           "schedule-custom-note": "選擇的排程將遵守交換機的本地時間，而與時區無關。升級或切換韌體可能需要重新啟動。",
-          "scheduled-success-message": "韌體升級已排定",
-          "scheduled-success-failure": "韌體升級已失敗",
-          "update-cancel-message": "韌體升級已取消",
-          "cancel-upgrade": "取消排程",
+          "scheduled-success-message": "已成功儲存針對韌體排程的變更。",
+          "scheduled-success-failure": "無法儲存針對韌體排程的變更。",
+          "cancel-upgrade": "移除排程",
           "rollback": "切換韌體 ({{ version }})",
           "modified": "現有排程 {{ version }} | {{ schedule }} 已修改。",
           "new-schedule": "新排程",
@@ -288,9 +319,11 @@
           "update-template-error": "無法更新網站",
           "transfer-success": "交換機已移动",
           "transfer-failed": "無法移動交換機",
-          "full-sync-success": "站點設定已同步至所選交換機",
-          "full-sync-failed": "無法將站點設定同步至所選交換機",
-          "full-sync-confirm-dialog": "網站設定將同步至所選交換器"
+          "full-sync-success": "所有交換器設定已成功重新套用。",
+          "full-sync-failed": "無法將所有設定重新套用至交換器",
+          "sync-success": "站點設定已同步至所選交換機",
+          "sync-failed": "無法將站點設定同步至所選交換機",
+          "sync-confirm-dialog": "網站設定將同步至所選交換器。您可在任務佇列中監視進度。"
         },
         "groupInfoText": {
           "what": "什麼是網站？",
@@ -300,6 +333,12 @@
         "site-without-switch": {
           "label": "尚未新增任何交換器",
           "add-switch": "新增切換器"
+        },
+        "vlan": {
+          "name": "名稱",
+          "id": "VLAN ID",
+          "tagged": "已標記",
+          "untagged": "未標記"
         }
       },
       "manage": {
@@ -314,6 +353,7 @@
           "open-local-mgmt-console": "打開本機交換器管理",
           "open-local-mgmt-console-helper-text": "這將打開新的瀏覽器標籤，其中帶有交換器的管理地址。只有交換器管理位置可以從此瀏覽器存取時，才能將其打開。",
           "remove": "從 Sophos Central 移除",
+          "regenerate-config": "重新套用所有設定",
           "add-tags": "新增標記",
           "add-location": "新增地點"
         },
@@ -322,11 +362,14 @@
           "model": "型號",
           "powered-on": "打開電源",
           "switch-firmware": "交換器韌體",
-          "central-agent": "Sophos Central 用戶端"
+          "central-agent": "Sophos Central 用戶端",
+          "site-name": "網站"
         },
         "reboot": {
           "reboot-dialog-title": "重新開機",
-          "reboot-dialog-message": "重新開機 <strong>{{switchSerial}}</strong>"
+          "reboot-dialog-message": "重新開機 <strong>{{switchSerial}}</strong>",
+          "success": "已成功生成重新啟動交換器任務。",
+          "error": "建立重新啟動交換器任務時出現錯誤"
         },
         "edit-success": "Central 用戶端已啟用自動更新",
         "edit-success-disabled-auto-update": "Central 用戶端已停用自動更新",
@@ -342,12 +385,12 @@
           "mac-address-table-item": "本機交換器 Web UI：監視器 > 動態 MAC 地址監視器 > 靜態 MAC 地址",
           "mac-address-table-helper": "MAC 地址表將顯示每個連接埠和 VLAN 發現的裝置。",
           "poe-power-usage": "PoE 用電量",
-          "poe-power-usage-item": "本機交換器 Web UI：監視器 > 儀表板設定 > PoE 連接埠設定",
+          "poe-power-usage-item": "本機交換器 Web UI：監視器 > 儀表板 > PoE 連接埠設定",
           "poe-power-usage-helper": "儀表板和 PoE 連接埠設定頁面提供每個連接埠的電流、電壓和功率消耗資訊的詳細資料。",
           "network-diagnostics": "網路診斷",
           "network-diagnostics-item": "本機交換器 Web UI：分析 > Ping 測試分析 > 追蹤路由",
           "network-diagnostics-helper": "Ping 和追蹤路由可用於測試交換器連接性和 L3 路由功能。",
-          "event-loggging": "事件紀錄",
+          "event-loggging": "事件記錄",
           "event-loggging-item": "本機交換器 Web UI：監視器 > 本機記錄監視器 > 記錄表",
           "event-loggging-helper": "本機記錄允許設定哪些事件將在交換器上本機記錄。可能需要編輯和啟用更高錯誤級別的記錄以偵測必要的事件。這應該只在疑難排解時啟用。記錄的詳細資料可在記錄表中檢閱。",
           "cable-diagnostics": "電纜診斷",
@@ -391,7 +434,8 @@
           "auto-upgrade": "如果更新後不需要重新開機，將切換器自動更新至最新可用軟體版本"
         },
         "body": {
-          "line": "註冊後，切換器將被自動升級至可用軟體的最新版本。可能需要裝置重新開機。"
+          "line": "註冊後，切換器將被自動升級至可用軟體的最新版本。可能需要裝置重新開機。",
+          "move-switches": "將交換器移至站點"
         }
       },
       "message": {
@@ -412,13 +456,15 @@
         "site-name-required-message": "網站名稱為必填項",
         "site-name-invalid-message": "站點名稱無效",
         "site-description-invalid-message": "站點說明無效",
+        "site-name-exists-message": "站點名稱已存在",
         "create-success": "站點已建立",
         "create-error": "無法建立站點",
         "update-success": "已更新網站",
         "update-error": "無法更新站點"
       },
       "form": {
-        "location": "地點位置"
+        "location": "地點位置",
+        "remove": "刪除網站"
       }
     },
     "switch-view": {
@@ -431,6 +477,7 @@
       "ports-dd-default-title": "選取多個連接埠",
       "add-vlan-dialog-title": "新增 VLAN",
       "edit-vlan-dialog-title": "編輯 VLAN",
+      "misconfigured": "連接埠 {{ ports }} 在多個 VLAN 中已取消標記。",
       "button": {
         "add": "新增 VLAN"
       },
@@ -448,7 +495,8 @@
         "description": "說明",
         "tagged-ports": "已標記的連接埠",
         "untagged-ports": "未標記的連接埠",
-        "forbidden-ports": "已禁止的連接埠"
+        "forbidden-ports": "已禁止的連接埠",
+        "inherited": "來源"
       },
       "form": {
         "vlan-id": "VLAN ID",
@@ -461,8 +509,10 @@
         "color": "色彩",
         "vlan-id-required-message": "VLAN ID 為必填項。",
         "vlan-id-invalid-message": "VLAN ID 無效。",
+        "vlan-id-exists-message": "VLAN ID 已存在。",
         "vlan-name-required-message": "名稱為必填項。",
-        "vlan-name-invalid-message": "無效的名稱。"
+        "vlan-name-invalid-message": "無效的名稱。不允許使用特殊字元。",
+        "vlan-name-exists-message": "名稱已存在。"
       },
       "message": {
         "create-error": "無法建立 VLAN",
@@ -472,16 +522,26 @@
         "delete-error": "無法刪除一個或多個 VLAN",
         "delete-success": "VLAN 已刪除",
         "delete-confirm-title": "刪除 VLAN",
-        "delete-info-message": "刪除 VLAN <strong>{{vlans}}</strong>"
+        "site-delete-info-message": "刪除 {{ vlanCount }} VLAN。{{ count }} 交換器將移除此 VLAN，刪除任務將建立。您可以選擇現在或稍後同步。",
+        "switch-delete-info-message": "刪除 {{ vlanCount }} VLAN，刪除任務將建立。您可以選擇現在或稍後同步。",
+        "save-dialog-title": "確認儲存",
+        "site-save-dialog-text": "{{ count }} 交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
+        "switch-save-dialog-text": "交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
+        "save-checkbox-text": "立即將設定同步至交換器"
       }
     },
     "task-queue": {
       "total-tasks": "工作總數",
+      "created": "正在等候",
       "pending": "擱置",
-      "in-progress": "進行中",
+      "in-progress": "正在同步",
       "failed": "失敗",
       "skipped": "已跳過",
       "completed": "已完成",
+      "sync-dialog-text": "處於「等待」狀態的任務將推送至交換器。",
+      "details-dialog-title": "工作詳細資料",
+      "sync-dialog-select-text": "選擇需要同步的交換器。",
+      "sync-dialog-title": "同步",
       "button": {
         "show-history": "顯示歷史"
       },
@@ -490,16 +550,17 @@
         "switch": "交換器",
         "site": "網站",
         "entity": "實體",
-        "sub-entity": "子實體",
+        "sub-entity": "行動",
         "date-time": "建立日期"
       },
       "status": {
-        "pending": "待處理",
+        "created": "正在等候",
+        "pending": "擱置",
         "success": "成功",
         "failed": "失敗",
         "deleted": "已刪除",
         "skipped": "已跳過",
-        "in_progress": "進行中"
+        "in_progress": "正在同步"
       },
       "action": {
         "retry": "重試",
@@ -513,13 +574,23 @@
         "full_sync": "完全同步",
         "vlan": "VLAN",
         "firmware_upgrade": "韌體",
-        "schedule_upgrade": "排程韌體升級",
-        "cancel_upgrade": "取消韌體升級",
+        "schedule_upgrade": "排程",
+        "cancel_upgrade": "取消",
         "rollback": "切換韌體",
         "port": "連接埠",
         "remote_support": "遠端支援",
         "enable_remote_support": "打開",
-        "disable_remote_support": "關閉"
+        "disable_remote_support": "關閉",
+        "reboot": "重新開機",
+        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_full": "升級排程（韌體）",
+        "schedule_rollback": "切換分割區排程",
+        "cancel_agent": "取消排程（用戶端）",
+        "cancel_full": "取消排程（韌體）",
+        "cancel_rollback": "取消（切換分割區）",
+        "schedule_agent_auto": "自動升級（用戶端）",
+        "schedule_full_auto": "自動升級（韌體）",
+        "schedule_rollback_auto": "自動切換分割區"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -533,11 +604,16 @@
         "flow-control": "流量控制",
         "link-speed": "速度/雙向",
         "untagged-vlan": "取消標記的 VLAN",
-        "tagged-vlans": "已標記的 VLAN"
+        "tagged-vlans": "已標記的 VLAN",
+        "inherited": "來源"
       },
       "message": {
         "port-update-success": "連接埠未更新。",
-        "port-update-error": "無法更新一個或多個連接埠。"
+        "port-update-error": "無法更新一個或多個連接埠。",
+        "save-dialog-title": "確認更新",
+        "site-save-dialog-text": "{{ count }} 個交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
+        "switch-save-dialog-text": "交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
+        "save-checkbox-text": "立即將設定同步至交換器"
       }
     },
     "remote-debugging": {
@@ -557,6 +633,28 @@
         "apu-disable-success": "已關閉遠端偵錯",
         "apu-disable-error": "無法關閉遠端偵錯"
       }
+    },
+    "poe": {
+      "name": "PoE",
+      "power-limit": "功率限制模式",
+      "priority": "優先順序",
+      "power-limit-auto": "自動",
+      "power-limit-manual": "手動",
+      "power-defined": "功率限制",
+      "power-drawn": "功耗",
+      "poe-status": "狀態",
+      "poe-status-Disabled": "已停用",
+      "poe-status-Searching": "正在搜尋",
+      "poe-status-Delivering": "正在送出",
+      "poe-status-Fault": "故障",
+      "poe-status-MPS_Absent" : "缺少 MPS",
+      "poe-status-Short": "短缺",
+      "poe-status-Overload": "過載",
+      "poe-status-Power_Denied": "電源遭拒",
+      "poe-status-Thermal_Shutdown": "熱關斷",
+      "poe-status-Startup_Failure": "啟動失敗",
+      "poe-status-Classification_Failure": "分類失敗",
+      "poe-status-Requesting_Power": "請求電源"
     }
   }
 }

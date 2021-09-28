@@ -17,13 +17,14 @@
       "confirm-delete-header": "Confirmar eliminación",
       "error": "Error",
       "success": "Completada",
+      "info": "Info",
       "retry": "Reintentar",
-      "access-points": "puntos de acceso",
-      "assign-accesspoints": "Asignar puntos de acceso",
+      "access-points": "Puntos de acceso",
+      "assign-access-points": "Asignar puntos de acceso",
       "ssids": "Identificadores de red (SSID)",
       "settings": "Configuración",
       "sites": "Sitios",
-      "site-name":"Nombre del sitio",
+      "site-name": "Nombre del sitio",
       "statistic": "Estadísticas",
       "devices": "Dispositivos",
       "reset": "Restablecer",
@@ -36,6 +37,8 @@
       "details": "Detalles",
       "no-data": "Sin datos",
       "no-records": "No hay registros",
+      "status": "Estado",
+      "username": "Nombre de usuario",
       "beta": "beta",
       "copied": "Copiado",
       "data-size": {
@@ -78,6 +81,19 @@
       "breadcrumb-text": "Panel de control de Wireless"
     },
     "devices": {
+      "static-details": "Datos estáticos",
+      "mac-address": "Dirección MAC",
+      "current-access-point": "Punto de acceso actual",
+      "current-site": "Sitio actual",
+      "current-network": "Red actual",
+      "signal-quality": "Calidad de la señal",
+      "band": "Banda",
+      "host-name": "Nombre de host",
+      "signal-quality-header": "Calidad de la señal (en dBm)",
+      "ip": "ip",
+      "vendor": "Fabricante",
+      "usage-details": "Detalles de uso",
+      "connectivity": "Conectividad",
       "device-container": {
         "breadcrumb-text": "Dispositivos",
         "title": "Wireless - Dispositivos",
@@ -111,7 +127,7 @@
           "health-status-green": "Protegido",
           "health-status-missing": "Latido de Security Heartbeat ausente",
           "health-status-grey": "Sin Security Heartbeat",
-          "health-status-yellow": "La fase podría estar en riesgo",
+          "health-status-yellow": "El cliente podría estar en riesgo",
           "health-status-not-available": "No disponible"
         },
         "no-devices-found": "No hay clientes inalámbricos conectados para mostrar.",
@@ -249,11 +265,15 @@
         "online-_dynamic_": {
           "false": "Sin conexión",
           "true": "Online"
-        }
+        },
+        "no-aps-found": "No hay ningún punto de acceso registrado."
       },
       "site-name-error-msgs": {
         "required": "Se requiere el nombre del sitio.",
         "maxlength": "El nombre del sitio debe tener un máximo de 64 caracteres."
+      },
+      "site-location-error-msgs": {
+        "required": "Se requiere la ubicación del sitio."
       },
       "detail": {
         "select-view": "Seleccionar vista"
@@ -264,7 +284,7 @@
         "classification": "Seleccionar clasificación",
         "edit-classification-prefix-label": "Marcar como",
         "filter-options": {
-          "rogue": "No autorizado",
+          "rogue": "Fraudulento",
           "trusted": "De confianza",
           "untrusted": "Sospechoso",
           "advanced-impersonate": "Suplantado avanzado",
@@ -282,6 +302,24 @@
           "mark-as-bssid-impersonate": "Marcar como BSSID suplantado",
           "mark-as-ssid-impersonate": "Marcar como SSID suplantado",
           "mark-as-adhoc": "Marcar como ad hoc"
+        },
+        "syslog-server-error-msgs": {
+          "required": "Se requiere la dirección del servidor.",
+          "invalid-server": "El servidor no es una dirección IP o un nombre de host válido."
+        },
+        "syslog-port-error-msgs": {
+          "required": "Se requiere el puerto.",
+          "min": "El puerto debe ser un número entre 1 y 65535.",
+          "max": "El puerto debe ser un número entre 1 y 65535."
+        },
+        "scan-ssid": {
+          "scan": "Escanear",
+          "confirm": {
+            "title": "Confirmar escaneado",
+            "label": "El escaneado se realizará en todos los puntos de acceso online de este sitio. Los clientes conectados experimentarán interrupciones en la red durante al menos 3-5 minutos.",
+            "success": "El escaneado de la zona se ha iniciado correctamente",
+            "fail": "Error en el escaneado de la zona"
+          }
         }
       }
     },
@@ -312,6 +350,7 @@
         }
       },
       "create": {
+        "add-success": "La SSID se ha guardado correctamente.",
         "help": "Ayuda",
         "general-setting-encryption-mode": "Especifique la configuración general del nuevo SSID. Elija el modo de cifrado requerido y el tipo de SSID que desea facilitar.",
         "band-encryption-mode": " Recomendamos utilizar WPA2 con AES como modo de cifrado y una banda de frecuencia de 2,4 y 5 GHz.",
