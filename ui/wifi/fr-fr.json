@@ -4,10 +4,13 @@
     "main-dashboard-breadcrumb-text": "Vue générale",
     "common": {
       "add": "Ajouter",
+      "all": "Toutes",
+      "alerts": "Alertes",
       "save": "Enregistrer",
       "cancel": "Annuler",
       "edit": "Éditer",
       "delete": "Supprimer",
+      "threats": "Menaces",
       "download": "Télécharger",
       "approve": "Approuver",
       "confirm": "Confirmer",
@@ -16,10 +19,15 @@
       "end-date": "Date de fin",
       "confirm-delete-header": "Confirmation de la suppression",
       "error": "Erreur",
+      "errors": "Erreurs",
+      "warnings": "Avertissements",
       "success": "Succès",
       "info": "Info",
       "retry": "Réessayer",
       "access-points": "Points d’accès",
+      "networks": "Réseaux",
+      "network-security": "Sécurité Réseau",
+      "bands": "Bandes",
       "assign-access-points": "Assigner les point d’accès",
       "ssids": "SSID",
       "settings": "Paramètres",
@@ -41,6 +49,7 @@
       "username": "Nom d’utilisateur",
       "beta": "bêta",
       "copied": "Copié",
+      "category": "CATÉGORIE",
       "data-size": {
         "mb": "Mo",
         "gb": "Go"
@@ -48,7 +57,10 @@
       "create": "Créer",
       "no": "Non",
       "online": "Connecté",
-      "offline": "Hors connexion"
+      "offline": "Hors connexion",
+      "GHZ_2_4": "2,4 GHz",
+      "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
+      "GHZ_5": "5 GHz"
     },
     "global": {
       "form": {
@@ -69,7 +81,8 @@
         "popover1": "Rechercher par {{ field0 }}",
         "popover2": "Rechercher par {{ field0 }} ou {{ field1 }}",
         "popover3": "Rechercher par {{ field0 }}, {{ field1 }} ou {{ field2 }}",
-        "popover4": "Rechercher par {{ field0 }}, {{ field1 }}, {{ field2 }} ou {{ field3 }}"
+        "popover4": "Rechercher par {{ field0 }}, {{ field1 }}, {{ field2 }} ou {{ field3 }}",
+        "popover5": "Rechercher par {{ field0 }}, {{ field1 }}, {{ field2 }}, {{ field3 }} ou {{ field4 }}"
       },
       "messages": {
         "password-strength": "Complexité du mot de passe :"
@@ -94,6 +107,18 @@
       "vendor": "Fournisseur",
       "usage-details": "Informations d’utilisation",
       "connectivity": "Connectivité",
+      "signal-strength": {
+        "signal-strength": "Force du signal",
+        "signal-strength-blue": "0 - (-50dBm)",
+        "signal-strength-green": "(-50dBm) - (-60dBm)",
+        "signal-strength-yellow": "(-60dBm) - (-70dBm)",
+        "signal-strength-red": "(-70dBm) - (-100dBm)",
+        "impact": "Impact",
+        "impact-message-blue": "Excellente couverture pour toutes les applications",
+        "impact-message-green": "Bonne couverture pour la majorité des applications. Il peut très rarement se produire un effet de gigue dans la voix/vidéo",
+        "impact-message-yellow": "Couverture moyenne pour la majorité des applications. Un effet de gigue se produit fréquemment dans les applications vocales et vidéos",
+        "impact-message-red": "Couverture médiocre pour la majorité des applications. Des effets de gigue et des pertes de connexions se produisent régulièrement."
+      },
       "device-container": {
         "breadcrumb-text": "Appareils",
         "title": "Sans fil - Appareils",
@@ -131,8 +156,21 @@
           "health-status-not-available": "Indisponible"
         },
         "no-devices-found": "Aucun client sans fil connecté à afficher.",
-        "pagination-text": "Affichage de {{ filtered }} clients. Total : {{ all }}."
+        "pagination-text": "Affichage de {{ filtered }} appareils sans fil. Total : {{ all }}."
+      },
+      "chart": {
+        "max-connected-devices": "Nombre max. d’appareils connectés",
+        "devices-with-poor-signal-quality": "Appareils ayant une mauvaise qualité de signal"
       }
+    },
+    "usage-insight": {
+      "breadcrumb-text": "Informations sur l’utilisation",
+      "title": "Sans fil - informations sur l’utilisation",
+      "category": "Catégorie",
+      "category-details": "Informations sur la catégorie",
+      "detail": "détail",
+      "usage": "usage",
+      "empty-category-message": "Veuillez sélectionner une catégorie pour obtenir plus d’informations."
     },
     "diagnostics": {
       "events": "Événements",
@@ -201,6 +239,11 @@
         "advanced-notification": "Notification AdvancedRF",
         "co-channel": "Notification d’un événement CoChannel"
       },
+      "remote-login-a": {
+        "today": "La connexion à distance sera automatiquement désactivée aujourd’hui",
+        "tomorrow": "La connexion à distance sera automatiquement désactivée demain",
+        "indays": "La connexion à distance sera automatiquement désactivée dans {{days}} jours"
+      },
       "discovery-protocol": {
         "lldp-label": "Link layer discovery protocol (LLDP)",
         "network-message": "Si cette option est activée, Link layer discovery protocol (LLDP) détectera facilement les appareils avoisinants."
@@ -230,6 +273,7 @@
         "customer-unique-id-title": "Identifiant client unique à Sophos",
         "firmware-update": {
           "title": "Mise à jour du firmware",
+          "help-text": "Vous pouvez planifier les mises à jour du firmware en sélectionnant la fréquence et l’heure.",
           "current-version": "Version actuelle",
           "release-date": "Date de publication",
           "installed-at": "Installé à",
@@ -507,13 +551,13 @@
         "inline-help-sync-security": "La Sécurité synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Impossible d’utiliser la sécurité synchronisée sur les SSIDs ayant activé un réseau invité ou un portail captif.",
-        "green-option-label": "Security Heartbeat affiché en vert",
+        "green-option-label": "Security Heartbeat Vert",
         "green-option-value": "Autoriser tout le trafic",
         "green-option-info": "Client protégé.",
-        "yellow-option-label": "Security Heartbeat en jaune",
+        "yellow-option-label": "Security Heartbeat Jaune",
         "yellow-option-value": "Autoriser tout le trafic (avertissement)",
         "yellow-option-info": "Un problème a été détecté et un client est potentiellement à risque. Sur un terminal, il peut s’agir d’un malware inactif ou d’une application potentiellement indésirable (PUA). Pour les appareils mobiles, vous pouvez définir l’état Heartbeat pour diverses violations de conformité.",
-        "red-option-label": "Security Heartbeat affiché en rouge",
+        "red-option-label": "Security Heartbeat Rouge",
         "red-option-value": "Environnement clôturé",
         "red-option-info": "Tout le trafic Internet est bloqué, à l’exception des domaines autorisés ci-dessous. L’utilisateur voit une page Web avec un avertissement.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -598,22 +642,22 @@
           "session-timeout-inline-help": "Vous pouvez configurer la durée d’expiration de la session entre 1 et 24 heures.",
           "relogin-timeout": "Délai de reconnexion expiré",
           "relogin-timeout-inlineHelp": "Empêcher les utilisateurs de se connecter au réseau pendant 24 heures suivant leur première authentification.",
-          "voucher": "Coupon",
+          "voucher": "Bon d’accès",
           "help-text": {
             "backend-authentication": "Permet l’authentification via un serveur RADIUS avec protocole d’authentification du mot de passe (PAP).",
             "password-schedule": "Crée un nouveau mot de passe automatiquement à une date fixe. Il sera envoyé aux adresses email indiquées.",
             "social-login": "Permet l’authentification avec des comptes de réseaux sociaux.",
-            "voucher": "Utiliser des coupons imprimables avec une durée limitée d’authentification"
+            "voucher": "Utiliser des bons d’accès imprimables avec une durée limitée d’authentification"
           },
           "hotspot-voucher": {
-            "create-voucher-label": "Créer un coupon",
-            "voucher-support-text": "Pour créer un coupon, enregistrez le SSID.",
-            "delete-confirm-header": "Supprimer le coupon",
-            "delete-confirm-message": "Tous le coupons de ce lot seront supprimés. Voulez-vous supprimer le lot de coupons {{batchName}} ?",
-            "pdf-file-name": "Coupon de borne Wi-Fi",
+            "create-voucher-label": "Créer un bon d’accès",
+            "voucher-support-text": "Pour créer des bons d’accès, enregistrez le SSID.",
+            "delete-confirm-header": "Supprimer le bon d’accès",
+            "delete-confirm-message": "Tous le bons d’accès de ce lot seront supprimés. Voulez-vous supprimer le lot de bons d’accès {{batchName}} ?",
+            "pdf-file-name": "Bon d’accès à la borne Wi-Fi",
             "create": {
-              "header": "Créer un coupon",
-              "name": "Nom du coupon",
+              "header": "Créer un bon d’accès",
+              "name": "Nom du bon d’accès",
               "access-time": "Temps d’accès",
               "unlimited": "Illimité",
               "period": "Période",
@@ -624,14 +668,14 @@
               "limit": "Limite",
               "data": "Données",
               "unit": "Unité",
-              "number-of-vouchers": "Nombre de coupons",
+              "number-of-vouchers": "Nombre de bons d’accès",
               "number-of-devices": "Appareils par bon",
               "valid-for": "Valable pour",
               "days": "Jours",
               "hours": "Heures",
               "name-error-msg": {
-                "required": "Nom de coupon obligatoire",
-                "maxlength": "Le nom de coupon ne peut pas contenir plus de 128 caractères"
+                "required": "Nom de bon d’accès obligatoire",
+                "maxlength": "Le nom du bon d’accès ne peut pas contenir plus de 128 caractères"
               },
               "dates-error-msg": {
                 "startDateRequired": "Date de début requise",
@@ -653,7 +697,7 @@
               "showPdf": "Afficher le PDF",
               "delete": "Supprimer",
               "unlimited": "Illimité",
-              "empty-message": "Aucun coupon"
+              "empty-message": "Aucun bon d’accès"
             }
           },
           "redirectUrl": {

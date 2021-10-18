@@ -4,10 +4,13 @@
     "main-dashboard-breadcrumb-text": "개요",
     "common": {
       "add": "추가",
+      "all": "모두",
+      "alerts": "경고",
       "save": "저장",
       "cancel": "취소",
       "edit": "편집",
       "delete": "삭제",
+      "threats": "위협",
       "download": "다운로드",
       "approve": "지지",
       "confirm": "확인",
@@ -16,10 +19,15 @@
       "end-date": "종료일",
       "confirm-delete-header": "삭제 확인",
       "error": "오류",
+      "errors": "오류",
+      "warnings": "경고",
       "success": "성공",
       "info": "정보",
       "retry": "다시 시도",
       "access-points": "액세스 지점",
+      "networks": "네트워크",
+      "network-security": "네트워크 보안",
+      "bands": "대역",
       "assign-access-points": "액세스 지점 할당",
       "ssids": "SSID",
       "settings": "설정",
@@ -41,6 +49,7 @@
       "username": "사용자 이름",
       "beta": "베타",
       "copied": "복사됨",
+      "category": "범주",
       "data-size": {
         "mb": "MB",
         "gb": "GB"
@@ -48,7 +57,10 @@
       "create": "만들기",
       "no": "아니요",
       "online": "온라인",
-      "offline": "오프라인"
+      "offline": "오프라인",
+      "GHZ_2_4": "2.4GHz",
+      "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
+      "GHZ_5": "5분"
     },
     "global": {
       "form": {
@@ -69,7 +81,8 @@
         "popover1": "검색 기준: {{ field0 }}",
         "popover2": "검색 기준: {{ field0 }} 또는 {{ field1 }}",
         "popover3": "검색 기준: {{ field0 }}, {{ field1 }} 또는 {{ field2 }}",
-        "popover4": "검색 기준: {{ field0 }}, {{ field1 }}, {{ field2 }} 또는 {{ field3 }}"
+        "popover4": "검색 기준: {{ field0 }}, {{ field1 }}, {{ field2 }} 또는 {{ field3 }}",
+        "popover5": "검색 기준: {{ field0 }}, {{ field1 }}, {{ field2 }}, {{ field3 }} 또는 {{ field4 }} "
       },
       "messages": {
         "password-strength": "암호 강도:"
@@ -94,6 +107,18 @@
       "vendor": "공급업체",
       "usage-details": "사용 현황 세부 정보",
       "connectivity": "연결",
+      "signal-strength": {
+        "signal-strength": "신호 강도",
+        "signal-strength-blue": "0 - (-50dBm)",
+        "signal-strength-green": "(-50dBm) - (-60dBm)",
+        "signal-strength-yellow": "(-60dBm) - (-70dBm)",
+        "signal-strength-red": "(-70dBm) - (-100dBm)",
+        "impact": "영향력",
+        "impact-message-blue": "모든 응용 프로그램에 탁월한 서비스를 제공하는 적용 범위",
+        "impact-message-green": "대부분의 응용 프로그램에 우수한 서비스를 제공하는 적용 범위. 음성/영상이 드물게 불안정할 수 있음",
+        "impact-message-yellow": "대부분의 응용 프로그램에 평균적인 서비스를 제공하는 적용 범위. 음성/영상이 자주 불안정할 수 있음",
+        "impact-message-red": "모든 응용 프로그램에 열악한 서비스를 제공하는 적용 범위. 연결이 자주 불안정하거나 끊김"
+      },
       "device-container": {
         "breadcrumb-text": "장치",
         "title": "무선 - 장치",
@@ -131,8 +156,21 @@
           "health-status-not-available": "사용할 수 없음"
         },
         "no-devices-found": "표시할 연결된 무선 클라이언트가 없습니다.",
-        "pagination-text": "{{ filtered }}개의 클라이언트를 표시하는 중입니다. 총 {{ all }}개"
+        "pagination-text": "{{ filtered }}개의 무선 장치를 표시하는 중입니다. 총 {{ all }}개"
+      },
+      "chart": {
+        "max-connected-devices": "최대 연결 장치 수",
+        "devices-with-poor-signal-quality": "신호 품질이 낮은 장치"
       }
+    },
+    "usage-insight": {
+      "breadcrumb-text": "사용 현황 파악",
+      "title": "무선 - 사용 현황 파악",
+      "category": "범주",
+      "category-details": "범주 세부 정보",
+      "detail": "세부 정보",
+      "usage": "사용 현황",
+      "empty-category-message": "자세한 내용을 보려면 범주를 선택하십시오."
     },
     "diagnostics": {
       "events": "이벤트",
@@ -201,6 +239,11 @@
         "advanced-notification": "AdvancedRF 알림",
         "co-channel": "CoChannel 이벤트 알림"
       },
+      "remote-login-a": {
+        "today": "원격 로그인은 오늘 자동으로 비활성화됩니다.",
+        "tomorrow": "원격 로그인은 내일 자동으로 비활성화됩니다.",
+        "indays": "원격 로그인은 {{days}}일 후 자동으로 비활성화됩니다."
+      },
       "discovery-protocol": {
         "lldp-label": "링크 계층 검색 프로토콜(LLDP)",
         "network-message": "이 기능을 사용할 수 있도록 설정하면 링크 계층 프로토콜(LLDP)이 다른 인접한 장치를 쉽게 검색합니다."
@@ -230,6 +273,7 @@
         "customer-unique-id-title": "Sophos 고유 고객 ID",
         "firmware-update": {
           "title": "펌웨어 업데이트",
+          "help-text": "주기와 시간을 선택해 펌웨어 업데이트를 예약할 수 있습니다.",
           "current-version": "현재 버전",
           "release-date": "출시일",
           "installed-at": "다음에 설치됨",

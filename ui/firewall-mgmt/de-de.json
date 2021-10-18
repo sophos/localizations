@@ -20,6 +20,10 @@
     "error": "Fehler!",
     "error-default": "Ein Fehler ist aufgetreten. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Übersicht",
+    "list": {
+      "auto-refresh": "Automatisch aktualisieren",
+      "auto-refresh-hint": "Seitendaten werden alle 10 Sekunden aktualisiert"
+    },
     "dashboard": {
       "name": "Firewall Management - Dashboard",
       "breadcrumb-text": "Firewall-Management-Dashboard"
@@ -160,6 +164,11 @@
         "error": "Fehler beim Löschen der Gruppe.",
         "marked": "Diese Gruppe wurde zum Löschen markiert. Der Vorgang wird abgeschlossen, wenn alle Firewalls die zurückgesetzten Einstellungen übernehmen. Überprüfen Sie den Fortschritt bitte in der Auftrags-Warteschlange."
       },
+      "save": {
+        "header": "SD-WAN-Verbindungsgruppe konfigurieren",
+        "message": "Möchten Sie wirklich fortfahren?",
+        "message-conflict": "* Wenn nicht alle gefundenen Netzwerkkonflikte behoben werden, kann dies Störungen des Datenverkehrs verursachen. Wir empfehlen Ihnen, die gefundenen Netzwerkkonflikte zu beheben."
+      },
       "status": {
         "good": "Gut",
         "bad": {
@@ -172,7 +181,7 @@
         },
         "lost-connection": {
           "one": "Verbindung deaktiviert",
-          "more": "Verbindungen deaktiviert mit {{ bad }} Firewall(s)"
+          "more": "Verbindung deaktiviert mit {{ bad }} VPN-Tunnel"
         },
         "unknown-connection": {
           "one":  "Unbekannt",
@@ -183,8 +192,8 @@
           "more": "{{ total }} Ressourcen-Sharing-Firewalls"
         },
         "remote-firewalls": {
-          "one": "{{ total }} Remote-Firewall",
-          "more": "{{ total }} Remote-Firewalls"
+          "one": "{{ total }} VPN-Tunnel",
+          "more": "{{ total }} VPN-Tunnel"
         },
         "local-network": {
           "one": "{{ total }} lokales Netzwerk",
@@ -214,7 +223,8 @@
         "services": {
           "one": "{{ total }} Dienst",
           "more": "{{ total }} Dienste"
-        }
+        },
+        "vpn-link": "VPN-Tunnel"
       },
       "add": {
         "name": "Firewall Management - SD-WAN-Verbindungsgruppe konfigurieren",
@@ -351,11 +361,13 @@
               "nat-address": "NAT-Adresse",
               "nat-subnet": "Mit NAT können Sie Netzwerkkonflikte vermeiden, indem ein Netzwerk für den getunnelten Datenverkehr in einem anderen IP-Adressbereich erscheint. Geben Sie eine NAT-Adresse ein, unter der das Netzwerk erscheinen soll. Wenn zum Beispiel die Originaladresse 192.168.1.1 und die NAT-Adresse 10.1.1.0 sind, werden Adressen folgendermaßen übersetzt: IP 192.168.1.1 wird zu 10.1.1.2, 192.168.1.2 wird zu 10.1.1.2, etc.",
               "conflicts": "Konflikte",
-              "wan": "WAN-Links",
+              "wan": "WAN-Link",
+              "wan-primary": "Primärer WAN-Link",
+              "wan-redundant": "Sekundärer WAN-Link",
               "selected": "Ausgewählt",
               "gateway": "Backup-Gateway",
               "select-backup-gateway": "Backup-Gateway auswählen",
-              "tunnel-redundancy-gateway": "Redundanten Tunnel als Backup-Gateway verwenden",
+              "tunnel-redundancy-gateway": "Sekundären Tunnel als Backup-Gateway verwenden",
               "xfrm-ip": "Xfrm-IP-Adressen",
               "add": "Netzwerk hinzufügen",
               "public-ip": "Öffentliche IP oder FQDN für ausgewählten WAN-Link",
@@ -711,7 +723,7 @@
         "disconnected": "Verbindung getrennt",
         "connected": "Verbunden",
         "sync": "Synchronisiert",
-        "syncing": "Synchronisierung läuft",
+        "syncing": "Wird synchronisiert",
         "outofsync": "Fehler braucht Aufmerksamkeit",
         "unmanaged": "Verwaltung ist deaktiviert",
         "tooltip": {

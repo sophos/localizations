@@ -20,6 +20,10 @@
     "error": "¡Error!",
     "error-default": "Algo ha ido mal. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Introducción",
+    "list": {
+      "auto-refresh": "Actualizar automáticamente",
+      "auto-refresh-hint": "Refrescar los datos de la página cada 10 segundos"
+    },
     "dashboard": {
       "name": "Administración del firewall - Panel de control",
       "breadcrumb-text": "Panel de control de administración del firewall"
@@ -160,6 +164,11 @@
         "error": "Error al eliminar el grupo.",
         "marked": "Este grupo ha sido marcado para eliminarse. Se completará una vez que todos los firewalls apliquen la configuración revertida. Compruebe en la cola de tareas el progreso de las mismas."
       },
+      "save": {
+        "header": "Configuración de grupo de conexiones SD-WAN",
+        "message": "¿Seguro que desea continuar?",
+        "message-conflict": "* Si no se resuelven todos los conflictos de red detectados, se puede interrumpir el tráfico. Le recomendamos que resuelva los conflictos de red detectados."
+      },
       "status": {
         "good": "Correcto",
         "bad": {
@@ -172,19 +181,19 @@
         },
         "lost-connection": {
           "one": "Enlace inactivo",
-          "more": "Enlace inactivo con {{ bad }} firewall(s)"
+          "more": "Enlace inactivo con {{ bad }} túnel(es) VPN"
         },
         "unknown-connection": {
-          "one":  "Desconocida",
-          "more": "{{ unknown }} desconocida"
+          "one":  "Desconocido",
+          "more": "{{ unknown }} desconocido"
         },
         "resource-sharing": {
           "one": "{{ total }} firewall que comparte recursos",
           "more": "{{ total }} firewalls que comparten recursos"
         },
         "remote-firewalls": {
-          "one": "{{ total }} firewall remoto",
-          "more": "{{ total }} firewalls remotos"
+          "one": "{{ total }} túnel VPN",
+          "more": "{{ total }} túneles VPN"
         },
         "local-network": {
           "one": "{{ total }} red local",
@@ -214,7 +223,8 @@
         "services": {
           "one": "{{ total }} servicio",
           "more": "{{ total }} servicios"
-        }
+        },
+        "vpn-link": "Túnel(es) VPN"
       },
       "add": {
         "name": "Administración del firewall - Configuración de grupo de conexiones SD-WAN",
@@ -351,11 +361,13 @@
               "nat-address": "Dirección NAT",
               "nat-subnet": "NAT se puede usar para evitar conflictos de red cambiando una red para aparecer con un rango de direcciones IP distinto cuando el tráfico pasa por el túnel. Introduzca una dirección NAT con la que debe aparecer la red. P. ej., si la dirección original es 192.168.1.1 y la dirección NAT es 10.1.1.0, las direcciones son traducidas correlativamente, de modo que la IP 192.168.1.1 aparece como 10.1.1.2, la 192.168.1.2 como 10.1.1.2, etc.",
               "conflicts": "Conflictos",
-              "wan": "Enlace(s) WAN",
+              "wan": "Enlace WAN",
+              "wan-primary": "Enlace WAN principal",
+              "wan-redundant": "Enlace WAN secundario",
               "selected": "Seleccionado",
               "gateway": "Puerta de enlace de reserva",
               "select-backup-gateway": "Seleccionar puerta de enlace de reserva",
-              "tunnel-redundancy-gateway": "Utilizar túnel redundante como puerta de enlace de reserva",
+              "tunnel-redundancy-gateway": "Utilizar túnel secundario como puerta de enlace de reserva",
               "xfrm-ip": "Direcciones IP xfrm",
               "add": "Añadir red",
               "public-ip": "IP pública o FQDN para el enlace WAN seleccionado",

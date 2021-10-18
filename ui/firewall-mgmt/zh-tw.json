@@ -20,6 +20,10 @@
     "error": "錯誤！",
     "error-default": "發生錯誤。({{ errorCode }})。",
     "main-dashboard-breadcrumb-text": "概觀",
+    "list": {
+      "auto-refresh": "自動重新整理",
+      "auto-refresh-hint": "每 10 秒重新整理一次頁面資料"
+    },
     "dashboard": {
       "name": "防火牆管理 - 儀表板",
       "breadcrumb-text": "防火牆管理儀表板"
@@ -160,6 +164,11 @@
         "error": "刪除群組時出錯。",
         "marked": "已標記此群組等待刪除。所有防火墻套用還原的設定之後，將完成此步驟。請在工作佇列中查看這些工作的進度。"
       },
+      "save": {
+        "header": "設定 SD-WAN 連線群組",
+        "message": "確定要進行？",
+        "message-conflict": "* 未解決所有偵測到的網路衝突可能會導致流量中斷。我們建議您解決已偵測的網路衝突。"
+      },
       "status": {
         "good": "良好",
         "bad": {
@@ -172,7 +181,7 @@
         },
         "lost-connection": {
           "one": "向下連結",
-          "more": "使用 {{ bad }} 防火墻向下連結"
+          "more": "向下連結 {{ bad }} VPN 通道"
         },
         "unknown-connection": {
           "one":  "未知",
@@ -183,8 +192,8 @@
           "more": "{{ total }} 資源共用防火墻"
         },
         "remote-firewalls": {
-          "one": "{{ total }} 遠端防火墻",
-          "more": "{{ total }} 遠端防火墻"
+          "one": "{{ total }} VPN 通道",
+          "more": "{{ total }} VPN 通道"
         },
         "local-network": {
           "one": "{{ total }} 本機網路",
@@ -214,7 +223,8 @@
         "services": {
           "one": "{{ total }} 服務",
           "more": "{{ total }} 服務"
-        }
+        },
+        "vpn-link": "VPN 通道"
       },
       "add": {
         "name": "防火墻管理 - 設定 SD-WAN 連線群組",
@@ -352,10 +362,12 @@
               "nat-subnet": "NAT 可以在流量通過隧道時，透過將一個網路變更爲不同的 IP 地址範圍來避免網路衝突。輸入該網路應當顯示的 NAT 地址。例如，如果原地址爲 192.168.1.1，NAT 地址爲 10.1.1.0，則對地址進行相對轉換，因此 IP 192.168.1.1 顯示爲 10.1.1.2，192.168.1.2 顯示爲 10.1.1.2 等。",
               "conflicts": "衝突",
               "wan": "WAN 連結",
+              "wan-primary": "主要 WAN 連結",
+              "wan-redundant": "次要 WAN 連結",
               "selected": "已選",
               "gateway": "備用閘道",
               "select-backup-gateway": "選取備用閘道",
-              "tunnel-redundancy-gateway": "將備援通道用作備用閘道",
+              "tunnel-redundancy-gateway": "將次要通道用作備用閘道",
               "xfrm-ip": "Xfrm IP 位址",
               "add": "新增網段",
               "public-ip": "所選 WAN 連結的公共 IP 或 FQDN",

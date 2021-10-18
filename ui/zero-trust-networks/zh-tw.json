@@ -156,7 +156,7 @@
           "sync-users": "1.同步使用者",
           "add-idp": "2.新增識別提供者",
           "set-up-gateways": "3.設定閘道",
-          "add-policy": "4.新增政策",
+          "add-policy": "4.新增原則",
           "add-resources": "5.新增資源"
         },
         "help": {
@@ -218,6 +218,7 @@
             },
             "instance": {
               "label": "閘道執行個體",
+              "label-singular": "閘道執行個體",
               "columns": {
                 "name": "名稱",
                 "status": "狀態",
@@ -238,7 +239,7 @@
               "generate-logs": "產生記錄",
               "troubleshoot-logs-info1": "您可以使用這些記錄和報告進行疑難排解或將其傳送至 Sophos 支援團隊。",
               "troubleshoot-logs-info2": "產生記錄需要幾分鐘時間。您無需停留在此頁面。",
-              "troubleshoot-logs-info3": "下載將顯示在每個執行個體旁，5 小時內可用。"
+              "troubleshoot-logs-info3": "下載將顯示在每個執行個體旁，1 小時內可用。"
             },
 
 
@@ -384,6 +385,14 @@
           "external-tooltip": "這用於負載平衡。如果您使用的是外部負載平衡器，請留空。",
           "internal-tooltip": "這用於叢集管理。",
           "single-arm-tooltip": "這用於叢集管理和負載平衡。"
+        },
+        "modal": {
+          "tooltip-deployment-mode": {
+            "one-arm": "單臂",
+            "two-arm": "雙臂",
+            "one-arm-info": "使用流入與流出資料流的 WAN 連接埠。",
+            "two-arm-info": "使用裝置的實體連接埠（WAN 與 LAN）。"
+          }
         }
       },
       "delete": {
@@ -649,14 +658,14 @@
         "breadcrumb-text": "策略",
         "breadcrumb-sub-text": "新策略",
         "edit-breadcrumb-sub-text": "編輯原則",
-        "add": "新增策略",
+        "add": "新增原則",
         "fetch-error": "擷取原則清單時出現錯誤",
         "enforced": "強制執行",
         "bypassed": "略過",
-        "note": "注意：原則已指派給資源。您可以在 <i18n slot=\"policy-resource\">resource</i18n> 層級指派使用者。",
+        "note": "注意：原則已指派給資源。您可以在 <i18n slot=\"policy-resource\">資源</i18n> 層級指派使用者。",
         "resource": "资源",
         "resource-and-access": "Zero Trust - 資源存取",
-        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">Learn more</i18n>",
+        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">了解更多資訊</i18n>",
         "no-policy-configured": "您尚未新增任何原則。",
         "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
       },
@@ -726,7 +735,8 @@
       "list": {
         "title": "Zero Trust Network Access - 設定",
         "breadcrumb-text": "設定"
-      }
+      },
+      "error": "擷取設定時出現錯誤"
     }
   },
   "ztna": {

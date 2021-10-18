@@ -4,10 +4,13 @@
     "main-dashboard-breadcrumb-text": "概觀",
     "common": {
       "add": "新增",
+      "all": "所有",
+      "alerts": "警示",
       "save": "无",
       "cancel": "取消",
       "edit": "編輯",
       "delete": "刪除",
+      "threats": "安全威脅",
       "download": "下載",
       "approve": "贊成",
       "confirm": "確認",
@@ -16,10 +19,15 @@
       "end-date": "結束日期",
       "confirm-delete-header": "確認刪除",
       "error": "錯誤",
+      "errors": "錯誤",
+      "warnings": "警告",
       "success": "成功",
       "info": "資訊",
       "retry": "重試",
       "access-points": "存取點",
+      "networks": "網路",
+      "network-security": "網路安全",
+      "bands": "頻帶",
       "assign-access-points": "指派存取點",
       "ssids": "SSID",
       "settings": "設定",
@@ -41,6 +49,7 @@
       "username": "使用者名稱",
       "beta": "Beta 版",
       "copied": "已複製",
+      "category": "類別",
       "data-size": {
         "mb": "MB",
         "gb": "GB"
@@ -48,7 +57,10 @@
       "create": "建立",
       "no": "無",
       "online": "上線",
-      "offline": "離線"
+      "offline": "離線",
+      "GHZ_2_4": "2.4 GHz",
+      "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
+      "GHZ_5": "5 GHz"
     },
     "global": {
       "form": {
@@ -69,7 +81,8 @@
         "popover1": "透過 {{ field0 }}搜尋",
         "popover2": "透過 {{ field0 }} 或 {{ field1 }}搜尋",
         "popover3": "透過 {{ field0 }}、{{ field1 }} 或 {{ field2 }}搜尋",
-        "popover4": "透過 {{ field0 }}、{{ field1 }}、{{ field2 }} 或 {{ field3 }}搜尋"
+        "popover4": "透過 {{ field0 }}、{{ field1 }}、{{ field2 }} 或 {{ field3 }}搜尋",
+        "popover5": "透過 {{ field0 }}、{{ field1 }}、{{ field2 }}、{{ field3 }} 或 {{ field4 }}搜尋"
       },
       "messages": {
         "password-strength": "密碼強度："
@@ -94,6 +107,18 @@
       "vendor": "供應商",
       "usage-details": "使用詳情",
       "connectivity": "連線能力",
+      "signal-strength": {
+        "signal-strength": "訊號強度",
+        "signal-strength-blue": "0 - (-50dBm)",
+        "signal-strength-green": "(-50dBm) - (-60dBm)",
+        "signal-strength-yellow": "(-60dBm) - (-70dBm)",
+        "signal-strength-red": "(-70dBm) - (-100dBm)",
+        "impact": "影響",
+        "impact-message-blue": "所有應用程式覆蓋極佳",
+        "impact-message-green": "大部分應用程式覆蓋良好可能有非常罕見的聲音/視訊抖動",
+        "impact-message-yellow": "大部分應用程式覆蓋普通聲音及視訊應用程式可能經常抖動",
+        "impact-message-red": "大部分應用程式覆蓋欠佳經常抖動且連線中斷。"
+      },
       "device-container": {
         "breadcrumb-text": "設備",
         "title": "無線 - 裝置",
@@ -131,8 +156,21 @@
           "health-status-not-available": "不可用"
         },
         "no-devices-found": "沒有已連接的無線用戶端可顯示。",
-        "pagination-text": "顯示 {{ filtered }} 用戶端。總數 {{ all }}"
+        "pagination-text": "顯示 {{ filtered }} 無線裝置。總數 {{ all }}"
+      },
+      "chart": {
+        "max-connected-devices": "最多連線裝置",
+        "devices-with-poor-signal-quality": "具有不良訊號品質的裝置"
       }
+    },
+    "usage-insight": {
+      "breadcrumb-text": "使用狀況探究",
+      "title": "無線 - 使用狀況探究",
+      "category": "類別",
+      "category-details": "類別詳情",
+      "detail": "詳細資訊",
+      "usage": "使用",
+      "empty-category-message": "請選擇類別以取得更多資訊。"
     },
     "diagnostics": {
       "events": "事件",
@@ -201,6 +239,11 @@
         "advanced-notification": "AdvancedRF 通知",
         "co-channel": "CoChannel 事件通知"
       },
+      "remote-login-a": {
+        "today": "遠程登入將在今天自動停用",
+        "tomorrow": "遠程登入將在明天自動停用",
+        "indays": "遠程登入將在 {{days}} 天內自動停用"
+      },
       "discovery-protocol": {
         "lldp-label": "鏈路層發現協議 (LLDP)",
         "network-message": "如果啟用此功能，鏈路層發現協議 (LLDP) 將輕鬆偵測其他相鄰裝置。"
@@ -230,6 +273,7 @@
         "customer-unique-id-title": "Sophos 唯一客戶 ID",
         "firmware-update": {
           "title": "韌體更新",
+          "help-text": "您可透過選取頻率和時間來安排韌體更新。",
           "current-version": "目前版本",
           "release-date": "發佈日期",
           "installed-at": "安裝時間為",

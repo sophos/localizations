@@ -218,6 +218,7 @@
             },
             "instance": {
               "label": "ゲートウェイインスタンス",
+              "label-singular": "ゲートウェイインスタンス",
               "columns": {
                 "name": "名前",
                 "status": "状態",
@@ -238,7 +239,7 @@
               "generate-logs": "ログの生成",
               "troubleshoot-logs-info1": "このようなログやレポートは、トラブルシューティングに使用したり、ソフォスのサポートに送信したりできます。",
               "troubleshoot-logs-info2": "ログが生成されるまで数分かかることがあります。このページから離れることができます。",
-              "troubleshoot-logs-info3": "各インスタンスの横にダウンロードファイルが表示され、5時間使用できます。"
+              "troubleshoot-logs-info3": "各インスタンスの横にダウンロードファイルが表示され、1時間使用できます。"
             },
 
 
@@ -249,7 +250,7 @@
               "description": "説明: ",
               "status": "状態: ",
               "fqdn": "FQDN: ",
-              "type": "次のように入力します。 ",
+              "type": "種類: ",
               "idp": "IdP (Identity Provider): ",
               "edit": "編集",
               "delete": "削除",
@@ -384,6 +385,14 @@
           "external-tooltip": "これは負荷分散に使用されます。外部の負荷分散を使用している場合は、空白のままにしてください。",
           "internal-tooltip": "これはクラスタ管理に使用されます。",
           "single-arm-tooltip": "これは、クラスタ管理および負荷分散に使用されます。"
+        },
+        "modal": {
+          "tooltip-deployment-mode": {
+            "one-arm": "ワンアーム",
+            "two-arm": "ツーアーム",
+            "one-arm-info": "受信トラフィックと送信トラフィックの両方に WAN ポートを使用します。",
+            "two-arm-info": "デバイスの物理ポートの両方 (WAN および LAN) を使用します。"
+          }
         }
       },
       "delete": {
@@ -395,8 +404,8 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
-        "warn-message-2": " ？"
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか",
+        "warn-message-2": "？"
       },
       "status": {
         "waiting-for-deployment": {
@@ -726,7 +735,8 @@
       "list": {
         "title": "Zero Trust Network Access - 設定",
         "breadcrumb-text": "設定"
-      }
+      },
+      "error": "設定の取得中、エラーが発生しました"
     }
   },
   "ztna": {
@@ -1185,7 +1195,7 @@
           "noItemSelected": "ゲートウェイの選択"
         },
         "search": "検索",
-        "noRecords": "レコードがありません",
+        "noRecords": "レコードはありません",
         "apply": "適用",
         "multiDeviceReportingNote": "マルチデバイスのレポート機能は、 Advanced ライセンスのみで使用できます。",
         "tooManyFirewallSelected": "ゲートウェイ選択の上限に達しました",
@@ -1460,7 +1470,7 @@
       "victim": "被害者",
       "status_count": "ステータス数",
       "direction": "方向",
-      "severity": "危険度",
+      "severity": "重要度",
       "application_count": "リソース数",
       "interfaces": "インターフェース",
       "red_count": "RED 数",
