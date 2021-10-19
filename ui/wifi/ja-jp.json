@@ -4,10 +4,13 @@
     "main-dashboard-breadcrumb-text": "概要",
     "common": {
       "add": "追加",
+      "all": "すべて",
+      "alerts": "警告",
       "save": "保存",
       "cancel": "キャンセル",
       "edit": "編集",
       "delete": "削除",
+      "threats": "脅威",
       "download": "ダウンロード",
       "approve": "承認",
       "confirm": "確認",
@@ -16,10 +19,15 @@
       "end-date": "終了日",
       "confirm-delete-header": "削除の確認",
       "error": "エラー",
+      "errors": "エラー",
+      "warnings": "警告",
       "success": "成功",
       "info": "情報",
       "retry": "再試行",
       "access-points": "アクセスポイント",
+      "networks": "ネットワーク",
+      "network-security": "ネットワークセキュリティ",
+      "bands": "帯域",
       "assign-access-points": "アクセスポイントの割り当て",
       "ssids": "SSID",
       "settings": "設定",
@@ -36,11 +44,12 @@
       "hide": "非表示",
       "details": "詳細",
       "no-data": "データはありません",
-      "no-records": "レコードがありません",
+      "no-records": "レコードはありません",
       "status": "状態",
       "username": "ユーザー名",
       "beta": "ベータ版",
       "copied": "コピー済み",
+      "category": "カテゴリ",
       "data-size": {
         "mb": "MB",
         "gb": "GB"
@@ -48,7 +57,10 @@
       "create": "作成",
       "no": "いいえ",
       "online": "オンライン",
-      "offline": "オフライン"
+      "offline": "オフライン",
+      "GHZ_2_4": "2.4GHz",
+      "GHZ_2_4,GHZ_5": "2.4GHz と 5GHz",
+      "GHZ_5": "5GHz"
     },
     "global": {
       "form": {
@@ -69,7 +81,8 @@
         "popover1": "検索する項目: {{ field0 }}",
         "popover2": "検索する項目: {{ field0 }} または {{ field1 }}",
         "popover3": "検索する項目: {{ field0 }}、{{ field1 }} または {{ field2 }}",
-        "popover4": "検索する項目: {{ field0 }}、{{ field1 }}、{{ field2 }} または {{ field3 }}"
+        "popover4": "検索する項目: {{ field0 }}、{{ field1 }}、{{ field2 }} または {{ field3 }}",
+        "popover5": "検索する項目: {{ field0 }}、{{ field1 }}、{{ field2 }}、{{ field3 }} または {{ field4 }}"
       },
       "messages": {
         "password-strength": "パスワードの強度:"
@@ -86,14 +99,26 @@
       "current-access-point": "現在のアクセスポイント",
       "current-site": "現在のサイト",
       "current-network": "現在のネットワーク",
-      "signal-quality": "シグナル強度",
+      "signal-quality": "信号強度",
       "band": "帯域",
       "host-name": "ホスト名",
-      "signal-quality-header": "シグナル強度 (単位: dBm)",
+      "signal-quality-header": "信号強度 (単位: dBm)",
       "ip": "IP",
       "vendor": "ベンダー",
       "usage-details": "使用状況の詳細",
       "connectivity": "接続",
+      "signal-strength": {
+        "signal-strength": "信号強度",
+        "signal-strength-blue": "0 ～ (-50dBm)",
+        "signal-strength-green": "(-50dBm) ～ (-60dBm)",
+        "signal-strength-yellow": "(-60dBm) ～ (-70dBm)",
+        "signal-strength-red": "(-70dBm) ～ (-100dBm)",
+        "impact": "カバレッジ",
+        "impact-message-blue": "すべてのアプリケーションに対する最高レベルのカバレッジ。",
+        "impact-message-green": "大半のアプリケーションに対する高レベルのカバレッジ。ごくまれに、音声/動画でジッタが発生することがあります",
+        "impact-message-yellow": "大半のアプリケーションに対する中レベルのカバレッジ。頻繁に、音声/動画アプリケーションでジッタが発生します",
+        "impact-message-red": "すべてのアプリケーションに対する低レベルのカバレッジ。頻繁に、ジッタと接続の切断が発生します。"
+      },
       "device-container": {
         "breadcrumb-text": "デバイス",
         "title": "ワイヤレス - デバイス",
@@ -131,8 +156,21 @@
           "health-status-not-available": "表示する内容はありません"
         },
         "no-devices-found": "表示可能な接続されている無線クライアントはありません。",
-        "pagination-text": "{{ filtered }}台のクライアントを表示。合計 {{ all }}台"
+        "pagination-text": "{{ filtered }}台の無線デバイスを表示。合計 {{ all }}台"
+      },
+      "chart": {
+        "max-connected-devices": "最大接続デバイス",
+        "devices-with-poor-signal-quality": "信号強度の弱いデバイス"
       }
+    },
+    "usage-insight": {
+      "breadcrumb-text": "使用状況",
+      "title": "ワイヤレス - 使用状況",
+      "category": "カテゴリ",
+      "category-details": "カテゴリの詳細",
+      "detail": "詳細",
+      "usage": "使用状況",
+      "empty-category-message": "カテゴリを選択すると、詳細な情報が表示されます。"
     },
     "diagnostics": {
       "events": "イベント",
@@ -179,7 +217,7 @@
       "csv-of-past-90-days": "CSV - 過去 90日",
       "pdf-of-past-90-days": "PDF - 過去 90日",
       "question-mark-icon-onhover-msg": "使用しているすべての検索フィルタは、エクスポート時にも適用されます。なお、過去 90日間のレポートをエクスポートする場合、ここで指定した日付の範囲は適用されません。",
-      "access-point-severity": "危険度",
+      "access-point-severity": "重要度",
       "event-name": "イベント",
       "search-by-accesspoint": "アクセスポイント名で検索",
       "search-by-name-or-serial-number": "名前やシリアル番号で検索",
@@ -201,6 +239,11 @@
         "advanced-notification": "AdvancedRF の通知",
         "co-channel": "CoChannel イベントの通知"
       },
+      "remote-login-a": {
+        "today": "リモートログインは、今日、自動的に無効化されます",
+        "tomorrow": "リモートログインは、明日、自動的に無効化されます",
+        "indays": "リモートログインは、{{days}}日後に自動で無効になります"
+      },
       "discovery-protocol": {
         "lldp-label": "LLDP (Link Layer Discovery Protocol)",
         "network-message": "有効にすると、LLDP (Link Layer Discovery Protocol) で近くにある他のデバイスが検出しやすくなります。"
@@ -210,7 +253,7 @@
         "analysis-message": "トラフィックをカテゴリ化するオプションを有効にすると、ユーザーが生成するトラフィックがカテゴリ別に分類され、「使用状況」に表示されます。このオプションはデフォルトで無効になっています",
         "statistics-report": "アクセスポイントの使用状況",
         "device-discovery-label": "デバイスの分類と表示",
-        "device-discovery-message": "デバイスタイプ、プロファイル、カテゴリにカテゴリ化することで、ワイヤレスデバイスの可視性を強化します。この機能は、APX シリーズのアクセスポイントのみで使用できます。"
+        "device-discovery-message": "デバイスの種類、プロファイル、カテゴリにカテゴリ化することで、ワイヤレスデバイスの可視性を強化します。この機能は、APX シリーズのアクセスポイントのみで使用できます。"
       },
       "rogue-ap-detection-settings": {
         "rogue-ap-detection": "不正アクセスポイントを検出・レポートする",
@@ -230,6 +273,7 @@
         "customer-unique-id-title": "一意のソフォス顧客 ID",
         "firmware-update": {
           "title": "ファームウェア更新",
+          "help-text": "頻度や日時を選択してファームウェアの更新スケジュールを設定することができます。",
           "current-version": "現在のバージョン",
           "release-date": "リリース日",
           "installed-at": "インストール日",
@@ -313,7 +357,7 @@
           "max": "ポート番号は、1 から 65535 の範囲で指定する必要があります。"
         },
         "scan-ssid": {
-          "scan": "Scan",
+          "scan": "スキャン",
           "confirm": {
             "title": "スキャンの確定",
             "label": "このサイトのすべてのオンラインのアクセスポイントに対してスキャンが実行されます。接続しているクライアントでは、少なくとも 3～5分間、ネットワークの中断が発生します。",
@@ -504,7 +548,7 @@
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
-        "inline-help-sync-security": "Synchronized Security は、Sophos APX シリーズで活用できる独自の機能です。ソフォスの革新的テクノロジー「Security Heartbeat™」は、エンドポイント、モバイルプロテクション、およびアクセスポイントが情報を交換して連係することで、ネットワークからのセキュリティ脅威をブロックすることを可能にします。",
+        "inline-help-sync-security": "Synchronized Security は、Sophos APX シリーズで活用できる独自の機能です。ソフォスの革新的テクノロジー「Security Heartbeat™」は、エンドポイント、モバイルプロテクション、およびアクセスポイントが情報を交換して連携することで、ネットワークからのセキュリティ脅威をブロックすることを可能にします。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;</sup>ゲストネットワークやキャプティブポータルがオンになっている SSID では、Synchronized Security を使用できません。",
         "green-option-label": "セキュリティハードビート: 緑色",
@@ -657,15 +701,15 @@
             }
           },
           "redirectUrl": {
-            "label": "転送 URL",
-            "original-label": "元の URL への転送",
-            "redirect-url-original-help": "認証後、ユーザーが認証前にアクセスしようとしていた Web サイトが表示されます。",
+            "label": "リダイレクト URL",
+            "original-label": "元の URL へのリダイレクト",
+            "redirect-url-original-help": "認証後、ユーザーはアクセスしようとしていた Web サイトにリダイレクトされます。",
             "custom-label": "カスタム URL",
-            "redirect-url-custom-help": "認証後、ユーザーは選択した特定の Web サイトにリダイレクトされます。",
-            "custom-url-required": "転送 URL を指定してください。",
+            "redirect-url-custom-help": "認証後、ユーザーは設定済みの特定の Web サイトにリダイレクトされます。",
+            "custom-url-required": "リダイレクト URL を指定してください。",
             "custom-url-domainName": "例: https://yourdomain.com",
             "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">ネットワークプロトコル (例: https://) を含む、有効な URL を入力してください。</span>",
-            "custom-url-valid": "無効な形式の転送 URL です。"
+            "custom-url-valid": "無効な形式のリダイレクト URL です。"
           }
         }
       },

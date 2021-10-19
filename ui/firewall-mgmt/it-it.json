@@ -20,6 +20,10 @@
     "error": "Errore!",
     "error-default": "Si è verificato un errore. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Panoramica",
+    "list": {
+      "auto-refresh": "Aggiornamento automatico",
+      "auto-refresh-hint": "Aggiornamento dei dati della pagina ogni 10 sec"
+    },
     "dashboard": {
       "name": "Gestione del Firewall - Dashboard",
       "breadcrumb-text": "Dashboard di gestione del firewall"
@@ -160,6 +164,11 @@
         "error": "Errore durante l'eliminazione del gruppo.",
         "marked": "Questo gruppo è stato contrassegnato per l'eliminazione. Il processo verrà completato dopo che tutti i firewall avranno applicato le impostazioni ripristinate. Controlla la coda delle operazioni per monitorare il progresso di queste operazioni."
       },
+      "save": {
+        "header": "Configura gruppo di connessione SD-WAN",
+        "message": "Procedere?",
+        "message-conflict": "* Se il o i conflitti di rete rilevati non vengono risolti, potrebbero verificarsi interruzioni del traffico. Ti consigliamo di risolvere il o i conflitti di rete rilevati."
+      },
       "status": {
         "good": "Buono",
         "bad": {
@@ -172,19 +181,19 @@
         },
         "lost-connection": {
           "one": "Link non disponibile",
-          "more": "Link non disponibile con {{ bad }} firewall"
+          "more": "Link non disponibile per {{ bad }} tunnel VPN"
         },
         "unknown-connection": {
-          "one":  "Sconosciuto",
-          "more": "{{ unknown }} sconosciuta"
+          "one":  "Sconosciuto/a",
+          "more": "{{ unknown }} sconosciuto"
         },
         "resource-sharing": {
           "one": "{{ total }} firewall che condivide risorse",
           "more": "{{ total }} firewall che condividono risorse"
         },
         "remote-firewalls": {
-          "one": "{{ total }} firewall remoto",
-          "more": "{{ total }} firewall remoti"
+          "one": "{{ total }} tunnel VPN",
+          "more": "{{ total }} tunnel VPN"
         },
         "local-network": {
           "one": "{{ total }} rete locale",
@@ -214,7 +223,8 @@
         "services": {
           "one": "{{ total }} servizio",
           "more": "{{ total }} servizi"
-        }
+        },
+        "vpn-link": "Tunnel VPN"
       },
       "add": {
         "name": "Gestione del firewall - Configura gruppo di connessione SD-WAN",
@@ -352,10 +362,12 @@
               "nat-subnet": "Puoi utilizzare NAT per evitare i conflitti di rete, modificando una rete per far sì che venga visualizzata con un intervallo di indirizzi IP diverso quando il traffico attraversa il tunnel. Immetti un indirizzo NAT con il quale visualizzare la rete. Ad es. se l'indirizzo originale è 192.168.1.1 e l'indirizzo NAT è 10.1.1.0, gli indirizzi verranno NATtati in maniera corrispondente, per cui l'IP 192.168.1.1 sarà visualizzato come 10.1.1.2, 192.168.1.2 come 10.1.1.2 e così via.",
               "conflicts": "Conflitti",
               "wan": "Link WAN",
+              "wan-primary": "Link WAN primario",
+              "wan-redundant": "Link WAN secondario",
               "selected": "Selezionata/e",
               "gateway": "Gateway di backup",
               "select-backup-gateway": "Seleziona gateway di backup",
-              "tunnel-redundancy-gateway": "Utilizza tunnel ridondante come gateway di backup",
+              "tunnel-redundancy-gateway": "Utilizza tunnel secondario come gateway di backup",
               "xfrm-ip": "Indirizzi IP xfrm",
               "add": "Aggiungi rete",
               "public-ip": "IP o FQDN pubblico per il link WAN selezionato",
@@ -481,7 +493,7 @@
         "process": "Puoi selezionare i firewall da includere nei gruppi di connessione durante la creazione di un gruppo.",
         "how": "Clicca sul pulsante 'Crea un gruppo di connessione' per avviare l'assistente.",
         "header": "Semplifica la configurazione della SD-WAN con i Gruppi di connessione",
-        "learn-more": "Scopri di più"
+        "learn-more": "Maggiori informazioni"
       }
     },
     "firmware" : {
@@ -621,7 +633,7 @@
           "groups": "Non ci sono gruppi per questo cliente.",
           "firewalls": "Non ci sono firewall per questo cliente.",
           "header": "Non ci sono modelli firewall",
-          "learn-more": "Ulteriori informazioni",
+          "learn-more": "Maggiori informazioni",
           "what": "Che cos'è un modello firewall?",
           "what-answer": "Un modello firewall è un set di criteri di base e impostazioni per il firewall. Viene applicato ai clienti da gestire.",
           "why": "Perché utilizzare un modello firewall?",

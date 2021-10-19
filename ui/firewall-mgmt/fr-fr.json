@@ -20,6 +20,10 @@
     "error": "Erreur !",
     "error-default": "Nous avons rencontré un problème. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Vue générale",
+    "list": {
+      "auto-refresh": "Actualiser automatiquement",
+      "auto-refresh-hint": "Actualisation des données de la page toutes les 10 secondes"
+    },
     "dashboard": {
       "name": "Firewall Management - Tableau de bord",
       "breadcrumb-text": "Tableau de bord de gestion des pare-feu"
@@ -160,6 +164,11 @@
         "error": "Erreur lors de la suppression du groupe.",
         "marked": "Ce groupe a été marqué pour suppression. L’opération sera terminée une fois que tous les pare-feu auront appliqué les paramètres rétablis. Vérifiez la progression de cette tâche dans la file d’attente."
       },
+      "save": {
+        "header": "Configurer le groupe de connexion SD-WAN",
+        "message": "Êtes-vous sûr de vouloir continuer ?",
+        "message-conflict": "* La non résolution de tous les conflits réseau détectés peut entraîner une interruption du trafic. Nous vous recommandons de résoudre les conflits réseau détectés."
+      },
       "status": {
         "good": "Bon",
         "bad": {
@@ -172,7 +181,7 @@
         },
         "lost-connection": {
           "one": "Panne de liaison",
-          "more": "Panne de liaison avec {{ bad }} pare-feu"
+          "more": "Liaison avec de {{ bad }} tunnels VPN"
         },
         "unknown-connection": {
           "one":  "Inconnue",
@@ -183,8 +192,8 @@
           "more": "{{ total }} pare-feu avec partage de ressources"
         },
         "remote-firewalls": {
-          "one": "{{ total }} pare-feu distant",
-          "more": "{{ total }} pare-feu distants"
+          "one": "{{ total }} tunnel VPN",
+          "more": "{{ total }} tunnels VPN"
         },
         "local-network": {
           "one": "{{ total }} réseau local",
@@ -214,7 +223,8 @@
         "services": {
           "one": "{{ total }} service",
           "more": "{{ total }} services"
-        }
+        },
+        "vpn-link": "Tunnel(s) VPN"
       },
       "add": {
         "name": "Gestion du pare-feu - Configurer le groupe de connexion SD-WAN",
@@ -351,11 +361,13 @@
               "nat-address": "Adresse NAT",
               "nat-subnet": "L’adresse NAT peut être utilisée pour éviter les conflits de réseau en modifiant l’adresse du réseau vers une plage IP différente lorsque le trafic traverse le tunnel. Saisir l’adresse NAT à attribuer au réseau. Par ex. si l’adresse initiale est 192.168.1.1 et que l’adresse NAT est 10.1.1.0, les adresses sont traduites de façon relative. Par conséquent, l’adresse IP 192.168.1.1 apparait en tant que 10.1.1.2, 192.168.1.2 en tant que 10.1.1.2, etc.",
               "conflicts": "Conflits",
-              "wan": "Lien(s) WAN",
+              "wan": "Lien de réseau étendu",
+              "wan-primary": "Lien de réseau étendu principal",
+              "wan-redundant": "Lien de réseau étendu secondaire",
               "selected": "Sélectionné",
               "gateway": "Passerelle de secours",
               "select-backup-gateway": "Sélectionner la passerelle de sauvegarde",
-              "tunnel-redundancy-gateway": "Utiliser le tunnel redondant comme passerelle de sauvegarde",
+              "tunnel-redundancy-gateway": "Utiliser le tunnel secondaire comme passerelle de sauvegarde",
               "xfrm-ip": "Adresses IP Xfrm",
               "add": "Ajouter un réseau",
               "public-ip": "Adresse IP publique ou Nom de domaine complet pour la liaison WAN sélectionnée",

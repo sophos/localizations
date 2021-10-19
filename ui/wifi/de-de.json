@@ -4,10 +4,13 @@
     "main-dashboard-breadcrumb-text": "Überblick",
     "common": {
       "add": "Hinzufügen",
+      "all": "Alle",
+      "alerts": "Alarme",
       "save": "Speichern",
       "cancel": "Abbrechen",
       "edit": "Bearbeiten",
       "delete": "Löschen",
+      "threats": "Bedrohungen",
       "download": "Herunterladen",
       "approve": "Genehmigen",
       "confirm": "Bestätigen",
@@ -16,10 +19,15 @@
       "end-date": "Enddatum",
       "confirm-delete-header": "Löschen bestätigen",
       "error": "Fehler",
+      "errors": "Fehler",
+      "warnings": "Benachrichtigungen",
       "success": "Erfolgreich",
       "info": "Infos",
       "retry": "Erneut versuchen",
       "access-points": "Access Points",
+      "networks": "Netzwerke",
+      "network-security": "Network Security",
+      "bands": "Bänder",
       "assign-access-points": "Access Points zuweisen",
       "ssids": "SSIDs",
       "settings": "Einstellungen",
@@ -41,6 +49,7 @@
       "username": "Benutzername",
       "beta": "Beta",
       "copied": "Kopiert",
+      "category": "KATEGORIE",
       "data-size": {
         "mb": "MB",
         "gb": "GB"
@@ -48,7 +57,10 @@
       "create": "Erstellen",
       "no": "Nein",
       "online": "Online",
-      "offline": "Offline"
+      "offline": "Offline",
+      "GHZ_2_4": "2,4 GHz",
+      "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
+      "GHZ_5": "5 GHz"
     },
     "global": {
       "form": {
@@ -63,13 +75,14 @@
         "enabled": "Aktiviert"
       },
       "search": {
-        "placeholder": "Suche",
+        "placeholder": "Suchen",
         "name": "Name",
         "serial-number": "Seriennummer",
         "popover1": "Suchen nach {{ field0 }}",
         "popover2": "Suchen nach {{ field0 }} oder {{ field1 }}",
         "popover3": "Suchen nach {{ field0 }}, {{ field1 }} oder {{ field2 }}",
-        "popover4": "Suchen nach {{ field0 }}, {{ field1 }}, {{ field2 }} oder {{ field3 }}"
+        "popover4": "Suchen nach {{ field0 }}, {{ field1 }}, {{ field2 }} oder {{ field3 }}",
+        "popover5": "Suchen nach {{ field0 }}, {{ field1 }}, {{ field2 }}, {{ field3 }} oder {{ field4 }}"
       },
       "messages": {
         "password-strength": "Kennwortstärke:"
@@ -94,6 +107,18 @@
       "vendor": "Anbieter",
       "usage-details": "Nutzungsdetails",
       "connectivity": "Konnektivität",
+      "signal-strength": {
+        "signal-strength": "Signalstärke",
+        "signal-strength-blue": "0 - (-50dBm)",
+        "signal-strength-green": "(-50dBm) - (-60dBm)",
+        "signal-strength-yellow": "(-60dBm) - (-70dBm)",
+        "signal-strength-red": "(-70dBm) - (-100dBm)",
+        "impact": "Auswirkung",
+        "impact-message-blue": "Ausgezeichnete Abdeckung für alle Anwendungen.",
+        "impact-message-green": "Gute Abdeckung für die meisten Anwendungen. Es kann sehr selten zu Sprach-/Videostörungen kommen.",
+        "impact-message-yellow": "Durchschnittliche Abdeckung für die meisten Anwendungen. In Sprach- und Videoanwendungen würde es häufig zu Störungen kommen.",
+        "impact-message-red": "Schlechte Abdeckung für alle Anwendungen. Häufige Störungen und Abbrechen der Verbindung."
+      },
       "device-container": {
         "breadcrumb-text": "Geräte",
         "title": "Wireless - Geräte",
@@ -131,8 +156,21 @@
           "health-status-not-available": "Nicht verfügbar"
         },
         "no-devices-found": "Keine verbundenen WLAN-Clients zum Anzeigen.",
-        "pagination-text": "{{ filtered }} Clients werden angezeigt. Insgesamt {{ all }}"
+        "pagination-text": "Anzeige {{ filtered }} Wireless-Geräte. Insgesamt {{ all }}"
+      },
+      "chart": {
+        "max-connected-devices": "Maximal verbundene Geräte",
+        "devices-with-poor-signal-quality": "Geräte mit schlechter Signalqualität"
       }
+    },
+    "usage-insight": {
+      "breadcrumb-text": "Nutzungsdaten",
+      "title": "Wireless - Nutzungsdaten",
+      "category": "Kategorie",
+      "category-details": "Kategorie-Details",
+      "detail": "Detail",
+      "usage": "Nutzung",
+      "empty-category-message": "Wählen Sie eine Kategorie aus, um mehr zu erfahren."
     },
     "diagnostics": {
       "events": "Ereignisse",
@@ -201,6 +239,11 @@
         "advanced-notification": "AdvancedRF-Benachrichtigung",
         "co-channel": "CoChannel-Ereignis-Benachrichtigung"
       },
+      "remote-login-a": {
+        "today": "Remote-Login wird automatisch heute deaktiviert",
+        "tomorrow": "Remote-Login wird automatisch morgen deaktiviert",
+        "indays": "Remote-Login wird automatisch in {{days}} Tagen deaktiviert"
+      },
       "discovery-protocol": {
         "lldp-label": "Link Layer Discovery Protocol (LLDP)",
         "network-message": "Wenn Sie diese Option aktivieren, werden andere in der Nähe befindliche Geräte auf einfache Weise mittels Link Layer Discovery Protocol (LLDP) erkannt."
@@ -230,6 +273,7 @@
         "customer-unique-id-title": "Eindeutige Sophos Kunden-ID",
         "firmware-update": {
           "title": "Firmware-Update",
+          "help-text": "Sie können Firmware-Updates planen, indem Sie Häufigkeit und Zeitpunkt festlegen.",
           "current-version": "Aktuelle Version",
           "release-date": "Veröffentlichungsdatum",
           "installed-at": "Installiert am",
@@ -507,13 +551,13 @@
         "inline-help-sync-security": "Synchronized Security ist eine einzigartige Funktion für Access Points der Sophos APX-Serie. Unser revolutionäres Security Heartbeat™ erlaubt Ihrem Endpoint, Mobile Protection und Access Points Informationen auszutauschen und so zusammenzuarbeiten um Sicherheitsbedrohungen in Ihrem Netzwerk zu blockieren.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security kann nicht für SSIDs mit aktiviertem Gastnetzwerk oder Captive Portal verwendet werden.",
-        "green-option-label": "Security Heartbeat grün",
+        "green-option-label": "Security Heartbeat (Grün)",
         "green-option-value": "Gesamten Datenverkehr zulassen",
         "green-option-info": "Der Client ist geschützt.",
-        "yellow-option-label": "Security Heartbeat gelb",
+        "yellow-option-label": "Security Heartbeat (Gelb)",
         "yellow-option-value": "Gesamten Datenverkehr zulassen (Warnung)",
         "yellow-option-info": "Es wurde ein Problem festgestellt und der Client ist möglicherweise gefährdet. Auf einem Endpoint kann dies inaktive Malware oder eine potenziell unerwünschte Anwendung (PUA) sein. Für Mobilgeräte können Sie den Heartbeat-Status für verschiedene Compliance-Verstöße definieren.",
-        "red-option-label": "Security Heartbeat rot",
+        "red-option-label": "Security Heartbeat (Rot)",
         "red-option-value": "Kontrollierte Umgebung",
         "red-option-info": "Der gesamte Internetverkehr ist blockiert, außer zu den unten erlaubten Domänen. Der Benutzer sieht eine Webseite mit einer Warnung.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -624,7 +668,7 @@
               "limit": "Obergrenze",
               "data": "Daten",
               "unit": "Einheit",
-              "number-of-vouchers": "Voucher-Anzahl ",
+              "number-of-vouchers": "Voucher-Anzahl",
               "number-of-devices": "Geräte je Voucher",
               "valid-for": "Gültig für",
               "days": "Tage",

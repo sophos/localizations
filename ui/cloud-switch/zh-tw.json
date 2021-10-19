@@ -3,7 +3,7 @@
     "common": {
       "main-dashboard-breadcrumb-text": "概觀",
       "alerts": "警示",
-      "connections": "連接埠使用情況",
+      "connections": "連線使用情況",
       "poe": "PoE",
       "uplink": "上行",
       "free": "免費",
@@ -28,23 +28,37 @@
       "months-ago": "{{unit}} 個月前",
       "month-ago": "{{unit}} 個月前",
       "tags": "標籤",
+      "linkspeed": "速度/雙向",
       "link-speed": {
         "10mh": "10M/Half",
+        "10m_h": "10M/Half",
+        "ten_mh": "10M/Half",
         "10mf": "10M/Full",
+        "ten_mf": "10M/Full",
+        "10m_f": "10M/Full",
         "100mh": "100M/Half",
+        "hundred_mh": "100M/Half",
+        "100m_h": "100M/Half",
         "100mf": "100M/Full",
+        "100m_f": "100M/Full",
+        "hundred_mf": "100M/Full",
         "1g": "1G/Full",
+        "one_g": "1G/Full",
         "2-5g": "2.5G/Full",
+        "two_point_five": "2.5G/Full",
+        "2_5g": "2.5G/Full",
         "5g": "5G/Full",
+        "five_g": "5G/Full",
         "10g": "10G/Full",
+        "ten_g": "10G/Full",
         "auto": "自動",
         "disabled": "已停用",
-        "ignored": "忽略"
+        "ignored": "未設定"
       },
       "flow-control": {
         "true": "開啟",
         "false": "停用",
-        "ignored": "忽略"
+        "ignored": "未設定"
       },
       "button": {
         "register": "註冊",
@@ -66,8 +80,13 @@
         "registered": "已註冊",
         "unregistered": "註冊超時",
         "disconnected": "已中斷連線",
-        "suspended": "暫停",
-        "disabled": "已停用",
+        "synchronized": "已經同步",
+        "waiting_for_sync": "等待同步",
+        "pending": "工作擱置中",
+        "syncing": "同步中",
+        "out_of_sync": "錯誤需要注意",
+        "suspended": "韌體過舊",
+        "disabled": "停用",
         "enabled": "已啟用"
       },
       "form": {
@@ -107,13 +126,13 @@
     "get-started": {
       "get-started-title": "開始進行操作",
       "step1-header": "1.預設站點設定",
-      "step1-sub-header": "這是可選步驟，但我們建議您這樣做",
+      "step1-sub-header": "這是可選步驟，但我們建議您這樣做。站點可保留多個交換器的設定。一旦交換器新增至站點，設定將於交換器同步。",
       "step1-content": "第一個站點已建立。如有必要，檢閱站點設定並變更設定。",
       "step2-header": "2.新增其他站點",
-      "step2-sub-header": "這是可選步驟",
-      "step2-content": "當第一個站點準備就緒時，如果您需要更多站點，我們建議您在新增交換器之前新增站點。您可隨時新增站點，並隨時將交換器移至新站點。",
+      "step2-sub-header": "這是可選步驟。如果您需要更多站點，我們建議您在新增交換器之前新增站點。",
+      "step2-content": "您可隨時新增站點，並隨時將交換器移至新站點。您可變更站定設定並在設定時，選擇將其同步至交換器。",
       "step3-header": "3.新增第一個交換器",
-      "step3-sub-header": "新交換器繼承了站點的設定。您移至站點的交換器不會自動繼承設定。",
+      "step3-sub-header": "新交換器繼承了站點的設定，但無法立即與交換器同步。當註冊交換器後，您需要同步該設定。",
       "step3-content": "檢閱站點設定後，可新增交換器。當您準備好開始時，您需要交換器序號，並將其與有效的網際網路連線連接。",
       "button": {
         "review": "複習",
@@ -135,13 +154,14 @@
         "move-to-site-dialog-title": "將交換機移至站點",
         "no-of-switches": "{0} 個交換器",
         "no-switch-label": "无",
-        "move-to-site-text": "{{ switches }} 個已選交換機將移至站點。交換器將繼承站點設定。您可以選擇現在或稍後同步。",
+        "move-to-site-text": "{{ switches }} 個已選交換機將移至站點。您可選擇現在或稍後將新設定同步至交換器。",
+        "move-to-site-warning": "這將清除 Sophos Central 的所有交換器層級設定。交換機上的設定將更新爲新的站點層級設定。",
         "move-to-site-checkbox-label": "立即將所有站點設定同步至交換器",
         "regenerate-confirm-text": "再次為所有交換器生成所有設定。您可在任務佇列中監視已建立的任務。您可以選擇現在或稍後同步。",
         "regenerate-confirm-dialog": "重新套用所有設定",
         "regenerate-checkbox-label": "立即將設定同步至交換器。",
         "txtbox": {
-          "search-placeholder": "搜尋交換機"
+          "search-placeholder": "尋找"
         },
         "action-menu": {
           "retry": "再試一次註冊",
@@ -166,7 +186,7 @@
           "version": "版本",
           "location": "位置",
           "ports": "連接埠",
-          "connections": "連接埠使用情況",
+          "connections": "連線使用情況",
           "vlans": "VLAN",
           "untagged-vlans": "取消標記的 VLAN",
           "ip-address": "IP 位址 (IP 位址)",
@@ -177,7 +197,7 @@
         },
         "upgrade": {
           "type": {
-            "AGENT": "Central 用戶端",
+            "AGENT": "Sophos Central 代理",
             "FULL": "韌體"
           },
           "state": {
@@ -241,14 +261,14 @@
                 "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 失敗。",
                 "note": {
                   "now": "{{ reason }}",
-                  "date": "根據 {{ schedule }} 的排程，嘗試於 {{ date }}。{{ reason }}"
+                  "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}"
                 }
               },
               "CANCEL_FAILURE": {
                 "text": "無法取消 {{ process }} 至版本 {{ version }}({{type}})",
                 "note": {
                   "now": "{{ reason }}",
-                  "date": "根據 {{ schedule }} 的排程，嘗試於 {{ date }}。{{ reason }}"
+                  "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}"
                 }
               }
             }
@@ -321,7 +341,7 @@
           "transfer-failed": "無法移動交換機",
           "full-sync-success": "所有交換器設定已成功重新套用。",
           "full-sync-failed": "無法將所有設定重新套用至交換器",
-          "sync-success": "站點設定已同步至所選交換機",
+          "sync-success": "設定已同步至所選交換機",
           "sync-failed": "無法將站點設定同步至所選交換機",
           "sync-confirm-dialog": "網站設定將同步至所選交換器。您可在任務佇列中監視進度。"
         },
@@ -332,6 +352,7 @@
         },
         "site-without-switch": {
           "label": "尚未新增任何交換器",
+          "label-with-site-name": "尚未新增任何交換器至 <strong>{{siteName}}</strong>",
           "add-switch": "新增切換器"
         },
         "vlan": {
@@ -345,25 +366,29 @@
         "page-title": "交換器 - 交換器管理",
         "breadcrumb-text": "管理交換器",
         "template-dd-default-title": "選取一個網站",
-        "upgrade-checkbox-label": "自動更新 Sophos Central 用戶端",
-        "add-edit-tags": "新增或編輯標記",
-        "add-edit-location": "新增或編輯位置",
+        "upgrade-checkbox-label": "自動更新 Sophos Central 代理",
+        "suspended": "由於韌體過舊，交換器層級設定已關閉。請將交換器升級至最新可用的韌體，並繼續從 Sophos Central 設定交換器。",
         "button": {
           "reboot": "重新開機",
           "open-local-mgmt-console": "打開本機交換器管理",
           "open-local-mgmt-console-helper-text": "這將打開新的瀏覽器標籤，其中帶有交換器的管理地址。只有交換器管理位置可以從此瀏覽器存取時，才能將其打開。",
           "remove": "從 Sophos Central 移除",
           "regenerate-config": "重新套用所有設定",
-          "add-tags": "新增標記",
-          "add-location": "新增地點"
+          "add-meta": "新增標籤/地點"
         },
         "tab-fields": {
           "serial-no": "序號",
           "model": "型號",
           "powered-on": "打開電源",
           "switch-firmware": "交換器韌體",
-          "central-agent": "Sophos Central 用戶端",
-          "site-name": "網站"
+          "central-agent": "Sophos Central 代理",
+          "site-name": "網站",
+          "device-name": "裝置名稱",
+          "current-state": "狀態",
+          "state-changed-at": "已更新 {{ ago }}",
+          "system-time": "系統時間",
+          "mac-address": "MAC 位址"
+
         },
         "reboot": {
           "reboot-dialog-title": "重新開機",
@@ -371,10 +396,10 @@
           "success": "已成功生成重新啟動交換器任務。",
           "error": "建立重新啟動交換器任務時出現錯誤"
         },
-        "edit-success": "Central 用戶端已啟用自動更新",
-        "edit-success-disabled-auto-update": "Central 用戶端已停用自動更新",
+        "edit-success": "Sophos Central 代理的自動更新開啟",
+        "edit-success-disabled-auto-update": "Sophos Central 代理的自動更新關閉",
         "mgmt-console": {
-          "title": "本機交換器使用者介面中提供以下診斷和疑難排解工具。直接登入交換器的本機管理介面可以存取這些工具。",
+          "title": "本機交換器使用者介面中提供以下診斷和疑難排解工具。登入交換器的本機管理介面可以存取這些工具。",
           "resource-usage": "資源使用情況",
           "resource-usage-item": "本機交換器 Web UI：監視器 > 即時儀表",
           "resource-usage-helper": "即時儀表提供 CPU 和記憶體使用情況的圖形追蹤。",
@@ -392,7 +417,7 @@
           "network-diagnostics-helper": "Ping 和追蹤路由可用於測試交換器連接性和 L3 路由功能。",
           "event-loggging": "事件記錄",
           "event-loggging-item": "本機交換器 Web UI：監視器 > 本機記錄監視器 > 記錄表",
-          "event-loggging-helper": "本機記錄允許設定哪些事件將在交換器上本機記錄。可能需要編輯和啟用更高錯誤級別的記錄以偵測必要的事件。這應該只在疑難排解時啟用。記錄的詳細資料可在記錄表中檢閱。",
+          "event-loggging-helper": "本機記錄允許設定哪些事件將在交換器上本機記錄。可能需要編輯和啟用更高錯誤級別以偵測必要的事件。這應該只在疑難排解時開啟。記錄的詳細資料可在記錄表中檢閱。",
           "cable-diagnostics": "電纜診斷",
           "cable-diagnostics-item": "本機交換器 Web UI：分析 > 診斷工具",
           "cable-diagnostics-helper": "選取連接埠，然後按一下測試以在所選交換器連接埠上執行電纜診斷。",
@@ -401,14 +426,12 @@
           "sfp-module-info-helper": "SFP 模組資訊顯示連線的光纖模組向交換器提供的功能和資訊。"
         },
         "message": {
-          "auto-update-enable-success": "Central 用戶端已啟用自動更新",
-          "auto-update-enable-error": "無法啟用 Central 用戶端的自動更新",
-          "auto-update-disable-success": "Central 用戶端已停用自動更新",
-          "auto-update-disable-error": "無法停用 Central 用戶端的自動更新",
-          "tags-update-success": "標記已更新",
-          "tags-update-error": "無法更新標記",
-          "location-update-success": "位置已更新",
-          "location-update-error": "無法更新位置"
+          "auto-update-enable-success": "Sophos Central 代理的自動更新開啟",
+          "auto-update-enable-error": "無法關閉 Sophos Central 代理的自動更新",
+          "auto-update-disable-success": "Sophos Central 代理的自動更新關閉",
+          "auto-update-disable-error": "無法關閉 Sophos Central 代理的自動更新",
+          "meta-update-success": "標籤和位置已更新",
+          "meta-update-error": "無法更新標籤或位置"
         }
       }
     },
@@ -470,7 +493,9 @@
     "switch-view": {
       "summary-legend-title": "摘要",
       "gbps": "{{unit}} Gbps",
-      "mbps": "{{unit}} Mbps"
+      "mbps": "{{unit}} Mbps",
+      "auto": "自動",
+      "notSet": "未設定"
     },
     "vlan": {
       "search-placeholder-text": "透過 ID 或名稱搜尋",
@@ -522,8 +547,8 @@
         "delete-error": "無法刪除一個或多個 VLAN",
         "delete-success": "VLAN 已刪除",
         "delete-confirm-title": "刪除 VLAN",
-        "site-delete-info-message": "刪除 {{ vlanCount }} VLAN。{{ count }} 交換器將移除此 VLAN，刪除任務將建立。您可以選擇現在或稍後同步。",
-        "switch-delete-info-message": "刪除 {{ vlanCount }} VLAN，刪除任務將建立。您可以選擇現在或稍後同步。",
+        "site-delete-info-message": "刪除 {{ vlanCount }} VLAN。{{ count }} 交換器將移除此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
+        "switch-delete-info-message": "刪除 {{ vlanCount }} VLAN，任務將建立。您可以選擇現在或稍後同步。",
         "save-dialog-title": "確認儲存",
         "site-save-dialog-text": "{{ count }} 交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
         "switch-save-dialog-text": "交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
@@ -542,6 +567,8 @@
       "details-dialog-title": "工作詳細資料",
       "sync-dialog-select-text": "選擇需要同步的交換器。",
       "sync-dialog-title": "同步",
+      "save-override-warning": "如果交換機已有此設定，Sophos Central 將覆寫此設定。",
+      "save-uplink-warning": "如果變更與「上行」或「管理」連接埠有關，請小心，因爲變更可能會使交換器網路斷開。",
       "button": {
         "show-history": "顯示歷史"
       },
@@ -582,15 +609,15 @@
         "enable_remote_support": "打開",
         "disable_remote_support": "關閉",
         "reboot": "重新開機",
-        "schedule_agent": "Upgrade schedule (Client)", 
+        "schedule_agent": "升級排程（用戶端）",
         "schedule_full": "升級排程（韌體）",
-        "schedule_rollback": "切換分割區排程",
+        "schedule_rollback": "切換開機分割區排程",
         "cancel_agent": "取消排程（用戶端）",
         "cancel_full": "取消排程（韌體）",
-        "cancel_rollback": "取消（切換分割區）",
+        "cancel_rollback": "取消（切換開機分割區）",
         "schedule_agent_auto": "自動升級（用戶端）",
         "schedule_full_auto": "自動升級（韌體）",
-        "schedule_rollback_auto": "自動切換分割區"
+        "schedule_rollback_auto": "自動切換開機分割區"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -617,8 +644,8 @@
       }
     },
     "remote-debugging": {
-      "debugging-enabled-title": "遠端偵錯已啟用",
-      "debugging-disabled-title": "啟用遠端偵錯",
+      "debugging-enabled-title": "遠端調試已開啟",
+      "debugging-disabled-title": "開啟遠端偵錯",
       "token": "權杖",
       "duration-day": "{{duration}} 天",
       "duration-days": "{{duration}} 天",
@@ -647,7 +674,7 @@
       "poe-status-Searching": "正在搜尋",
       "poe-status-Delivering": "正在送出",
       "poe-status-Fault": "故障",
-      "poe-status-MPS_Absent" : "缺少 MPS",
+      "poe-status-MPS_Absent": "缺少 MPS",
       "poe-status-Short": "短缺",
       "poe-status-Overload": "過載",
       "poe-status-Power_Denied": "電源遭拒",
@@ -655,6 +682,139 @@
       "poe-status-Startup_Failure": "啟動失敗",
       "poe-status-Classification_Failure": "分類失敗",
       "poe-status-Requesting_Power": "請求電源"
+    },
+    "switch-errors": {
+      "1300": "VLAN：獲取最大 VLAN ID 失敗",
+      "1301": "VLAN：獲取 VLAN 名稱失敗",
+      "1302": "VLAN：獲取輸出連接埠清單失敗",
+      "1303": "VLAN：獲取 VLAN 取消標記連接埠清單失敗",
+      "1304": "VLAN：獲取 VLAN 禁止連接埠清單失敗",
+      "1305": "VLAN：剖析 VID 無效貼文失敗",
+      "1306": "VLAN：剖析 NAME 無效自我測試失敗",
+      "1307": "VLAN：剖析標記連接埠無效貼文失敗",
+      "1308": "VLAN：剖析取消標記連接埠無效貼文失敗",
+      "1309": "VLAN：設定主幹連接埠成員貼文失敗",
+      "1310": "VLAN：已存在貼文失敗",
+      "1311": "VLAN：設定建立狀態貼文失敗",
+      "1312": "VLAN：設定姓名貼文失敗",
+      "1313": "VLAN：設定輸出連接埠清單貼文失敗",
+      "1314": "VLAN：設定取消標記連接埠清單貼文失敗",
+      "1315": "VLAN：設定作用中狀態貼文失敗",
+      "1316": "VLAN 剖析 VID 無效修補程式失敗",
+      "1317": "VLAN 不存在修補程式失敗",
+      "1318": "VLAN 設定不在服務中狀態修補程式失敗",
+      "1319": "VLAN 設定名稱修補程式失敗",
+      "1320": "VLAN 獲取取消標記連接埠清單修補程式失敗",
+      "1321": "VLAN 獲取輸出連接埠清單修補程式失敗",
+      "1322": "VLAN 設定主幹連接埠成員修補程式失敗",
+      "1323": "VLAN 設定輸出連接埠清單修補程式失敗",
+      "1324": "VLAN 設定取消標記連接埠清單修補程式失敗",
+      "1325": "VLAN 設定作用中狀態修補程式失敗",
+      "1326": "VLAN 剖析 VID 無效刪除失敗",
+      "1327": "VLAN 設定毀滅狀態刪除失敗",
+      "1328": "VLAN 不存在刪除失敗",
+      "1329": "VALN 獲取取消標記成員貼文清單修補程式失敗",
+      "1330": "VALN 將標記連接埠字串傳輸至連接埠清單貼文失敗",
+      "1331": "VALN 將取消輸標記連接埠字串傳輸至連接埠清單貼文失敗",
+      "1332": "VALN 當 tagged_ports 和 untagged_ports 同時設定修補程式時將標記連接埠字串傳輸至連接埠清單失敗",
+      "1333": "VALN 當 tagged_ports 和 untagged_ports 同時設定修補程式時將取消標記連接埠字串傳輸至連接埠清單失敗",
+      "1334": "VALN 當 tagged_ports 僅設定修補程式時將標記連接埠字串傳輸至連接埠清單失敗",
+      "1335": "VALN 當 untagged_ports 僅設定修補程式時將取消標記連接埠字串暫時傳輸至連接埠清單失敗",
+      "1336": "VALN 當 untagged_ports 僅設定修補程式時將取消標記連接埠字串傳輸至連接埠清單失敗",
+      "1337": "VLAN 測試建立狀態貼文失敗",
+      "1338": "VLAN 測試名稱貼文失敗",
+      "1339": "VLAN 測試作用中狀態貼文失敗",
+      "1340": "VLAN 測試不在服務中狀態修補程式失敗",
+      "1341": "VLAN 測試名稱修補程式失敗",
+      "1342": "VLAN 測試作用中狀態修補程式失敗",
+      "1343": "VLAN 測試毀滅狀態刪除失敗",
+      "1344": "VLAN 修補程式連接埠清單無效",
+      "1345": "VLAN 修補程式 VLAN 禁止設定失敗",
+      "1346": "VLAN 修補程式廣告測試失敗",
+      "1347": "VLAN 修補程式廣告設定失敗",
+      "1348": "VLAN 修補程式標記取消標記連接埠清單重疊",
+      "1349": "VLAN 修補程式標記禁止連接埠清單重疊",
+      "1350": "VLAN 修補程式取消標記禁止連接埠清單重疊",
+      "1351": "VLAN 貼文剖析 VLAN 名稱資料錯誤",
+      "1352": "VLAN 貼文剖析標記連接埠清單資料錯誤",
+      "1353": "VLAN 貼文剖析取消標記連接埠清單資料錯誤",
+      "1354": "VLAN 修補剖析 VLAN 名稱資料錯誤",
+      "1355": "VLAN 修補剖析標記連接埠清單資料錯誤",
+      "1356": "VLAN 修補剖析取消標記連接埠清單資料錯誤",
+      "1357": "VLAN 修補剖析禁止連接埠清單資料錯誤",
+      "1358": "VLAN 貼文剖析禁止連接埠資料錯誤",
+      "1359": "VLAN 需要貼文剖析禁止連接埠資料",
+      "1360": "VALN 貼文傳輸禁止連接埠字串至連接埠清單失敗",
+      "1361": "VLAN 貼文已標記取消標記連接埠清單重疊",
+      "1362": "VLAN 貼文已標記禁止連接埠清單重疊",
+      "1363": "VLAN 貼文取消標記禁止連接埠清單重疊",
+      "1364": "VLAN 貼文 VLAN 禁止連接埠設定失敗",
+      "1365": "VLAN 貼文 GVRP 廣告測試失敗",
+      "1366": "VLAN 貼文 GVRP 廣告設定失敗",
+      "1367": "VLAN 修補程式獲取取消標記連接埠清單失敗",
+      "1368": "VLAN 修補程式獲取輸入連接埠清單失敗",
+      "1369": "VLAN 修補程式獲取禁止連接埠清單失敗",
+      "800": "連接埠獲取 Pvid 失敗",
+      "801": "連接埠剖析連接埠編號錯誤修補程式失敗",
+      "802": "連接埠剖析連接埠編號無效修補程式失敗",
+      "803": "連接埠設定主幹連接埠成員修補程式失敗",
+      "804": "連接埠主幹連接埠超出最大主幹群組數",
+      "805": "連接埠剖析連接埠編號格式錯誤修補程式失敗",
+      "806": "連接埠主幹連接埠成員測試管理員狀態修補程式失敗",
+      "807": "連接埠主幹連接埠成員設定管理員狀態修補程式失敗",
+      "808": "連接埠連接埠測試管理員狀態修補程式失敗",
+      "809": "連接埠連接埠設定管理員狀態修補程式失敗",
+      "810": "連接埠主幹連接埠成員測試自動模式修補程式失敗",
+      "811": "連接埠主幹連接埠成員設定自動模式修補程式失敗",
+      "812": "連接埠連接埠測試自動模式修補程式失敗",
+      "813": "連接埠連接埠設定自動模式修補程式失敗",
+      "814": "連接埠強制連結速度設定無效修補程式失敗",
+      "815": "連接埠主幹連接埠成員測試強制模式修補程式失敗",
+      "816": "連接埠主幹連接埠成員設定強制模式修補程式失敗",
+      "817": "連接埠主幹連接埠成員測試強制速度修補程式失敗",
+      "818": "連接埠主幹連接埠成員設定強制速度修補程式失敗",
+      "819": "連接埠主幹連接埠成員測試強制雙工修補程式失敗",
+      "820": "連接埠主幹連接埠成員設定強制雙工修補程式失敗",
+      "821": "連接埠連接埠測試強制模式修補程式失敗",
+      "822": "連接埠連接埠設定強制模式修補程式失敗",
+      "823": "連接埠連接埠測試強制速度修補程式失敗",
+      "824": "連接埠連接埠設定強制速度修補程式失敗",
+      "825": "連接埠連接埠測試強制雙工修補程式失敗",
+      "826": "連接埠連接埠設定強制雙工修補程式失敗",
+      "827": "連接埠主幹連接埠成員測試流量控制修補程式失敗",
+      "828": "連接埠主幹連接埠成員設定流量控制修補程式失敗",
+      "829": "連接埠連接埠測試流量控制修補程式失敗",
+      "830": "連接埠連接埠設定流量控制修補程式失敗",
+      "831": "連接埠連接埠測試 Pvid 修補程式失敗",
+      "832": "連接埠連接埠設定 Pvid 修補程式失敗",
+      "833": "連接埠主幹連接埠成員測試連接埠預設優先順序修補程式失敗",
+      "834": "連接埠主幹連接埠成員設定連接埠預設優先順序修補程式失敗",
+      "835": "連接埠連接埠測試連接埠預設優先順序修補程式失敗",
+      "836": "連接埠連接埠設定連接埠預設優先順序修補程式失敗",
+      "837": "連接埠獲取接受框架類型失敗",
+      "838": "連接埠獲取接受框架類型值無效失敗",
+      "839": "連接埠獲取輸入篩選器失敗",
+      "840": "連接埠修補接受框架類型（帶有無效值）失敗",
+      "841": "連接埠修補程式接受框架類型測試失敗",
+      "842": "連接埠修補程式接受框架類型設定失敗",
+      "843": "連接埠修補程式輸入篩選器測試失敗",
+      "844": "連接埠修補程式輸入篩選器設定失敗",
+      "845": "連接埠獲取 MTU 失敗",
+      "846": "連接埠修補程式連接埠 MTU 列狀態測試失敗",
+      "847": "連接埠修補程式連接埠 MTU 列狀態類型測試失敗",
+      "848": "連接埠修補程式連接埠 MTU 測試失敗",
+      "849": "連接埠修補程式連接埠 MTU 設定失敗",
+      "850": "連接埠獲取說明失敗",
+      "851": "連接埠修補程式連接埠說明測試失敗",
+      "852": "連接埠修補程式連接埠說明設定失敗",
+      "853": "連接埠修補程式連接埠安全性測試失敗",
+      "854": "連接埠修補程式連接埠安全性設定失敗",
+      "855": "連接埠修補程式連接埠 MTU 不支援",
+      "856": "連接埠修補程式連接埠 ID 剖析失敗",
+      "857": "連接埠修補程式連接埠說明剖析失敗",
+      "858": "連接埠修補程式連接埠連結速度設定剖析失敗",
+      "859": "連接埠修補程式連接埠接受框架類型剖析失敗",
+      "860": "連接埠修補程式連接埠設定擴展模式測試失敗"
     }
   }
 }
