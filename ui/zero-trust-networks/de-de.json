@@ -26,7 +26,11 @@
       "day": "Tag",
       "days": "Tage",
       "seconds": "Sekunden",
-      "required-error": "Erforderlich"
+      "required-error": "Erforderlich",
+      "agent-app-request": "Wenn Sie Richtlinien hinzufügen wollen, welche den ZTNA-Agent benötigen, fordern Sie diesen zuerst an. Wir informieren Sie, wenn er zur Verfügung steht. Sie können in der Zwischenzeit bereits Richtlinien hinzufügen. Diese sind aber noch nicht aktiv.",
+      "agent-app-request-action": "Agent anfordern",
+      "agent-app-request-title": "Agent-basierten Richtlinienzugriff aktivieren",
+      "agent-app-request-comment": "Bitte erlauben Sie den Zugriff auf [n] Plätze. Mein Sophos-Central-Anmeldename ist {{login}} und die Kunden-ID ist {{customer_id}}."
     },
     "application": {
       "form": {
@@ -241,8 +245,6 @@
               "troubleshoot-logs-info2": "Das Erstellen von Protokollen kann einige Minuten dauern. Sie können diese Seite schließen.",
               "troubleshoot-logs-info3": "Neben jeder Instanz wird ein Download-Link angezeigt, der eine Stunde lang gültig ist."
             },
-
-
             "add": "Instanzen hinzufügen/bearbeiten",
             "header": {
               "name": "Name: ",
@@ -678,9 +680,11 @@
       },
       "add-modal": {
         "resource-access": "Ressourcenzugriff",
-        "tooltip-resource-access-info1": "Richtlinien können den Ressourcenzugriff mit oder ohne Agent unterstützen. Ein Agent kann auf Basis des Sicherheitszustands die Zugriffsrechte steuern.",
+        "tooltip-resource-access-info1": "Hinweis: Für eine Agent-basierte Richtlinie müssen Sie den Sophos-Endpoint-Agent auf Ihren Geräten installieren.",
         "agent": "Agent",
-        "agentless": "Ohne Agent"
+        "agentdesc": "Hiermit können Sie den Geräte-Sicherheitszustand prüfen und den Zugriff auf alle Arten von Ressourcen einschränken.",
+        "agentless": "Ohne Agent",
+        "agentlessdesc": "Hiermit können Sie nicht den Geräte-Sicherheitszustand prüfen und nur den Zugriff auf Internet-Ressourcen einschränken."
       },
       "form": {
         "agent-based-policy": {
@@ -1069,18 +1073,18 @@
       "licenseIsNotActiveMsg": "Die Lizenz wird nicht aktiv genutzt",
       "licenseTransferText": "Die Lizenz wird nicht aktiv verwendet und wurde auf {{deviceName}} übertragen",
       "freeToPremiumConversionMsg": "Diese Lizenz wird in eine Advanced-Lizenz umgewandelt",
-      "reduceLicenseMsg": "Durch das Reduzieren der zugewiesenen Lizenzen wird ein Teil Ihrer ältesten gespeicherten Daten gelöscht",
+      "reduceLicenseMsg": "Durch das Reduzieren der zugeteilten Lizenzen wird ein Teil Ihrer ältesten gespeicherten Daten gelöscht",
       "licenseSaveFailedMsg": "Die Lizenz konnte nicht gespeichert werden",
       "licenseReclaimSuccessMsg": "Lizenz(en) wurde(n) freigegeben",
       "licenseRemoveSuccessMsg": "Geräte wurden entfernt",
       "deleteLogSuccessMsg": "Protokolle wurden gelöscht",
-      "reducedStorageConfirmationMsg": "Warnung: Wenn Sie die Lizenzzuweisung für mehr als den aktuell verbrauchten Speicherplatz reduzieren, werden die ältesten Daten irreversibel gelöscht. Möchten Sie wirklich fortfahren?",
+      "reducedStorageConfirmationMsg": "Warnung: Wenn Sie die Lizenzzuteilung für mehr als den aktuell verbrauchten Speicherplatz reduzieren, werden die ältesten Daten unwiderruflich gelöscht. Wollen Sie wirklich fortfahren?",
       "licenseSaveSuccessMsg": "Lizenzen wurden aktualisiert",
       "licenseTransferSuccessMsg": "Lizenzen wurden übertragen",
       "allocateTooltipText": "Weitere Informationen finden Sie hier",
       "thisPageText": "diese Seite",
-      "full": "Erweitert:",
-      "tableNote": "Verwenden Sie die folgenden Zähler +/- , um die Lizenzzuweisungen für Gateway Reporting zu verwalten.",
+      "full": "Erweitert",
+      "tableNote": "Verwenden Sie die folgenden Zähler +/- , um die Lizenzzuteilung für Gateway Reporting zu verwalten.",
       "transferNote": "Bitte beachten: Das alte Gerät wird als inaktiv markiert und sendet keine Daten mehr an Sophos Central.",
       "deleteDataWarningLabel": "Alle Daten werden gelöscht.",
       "viewDeviceReports": "Geräteberichte anzeigen",
@@ -1110,7 +1114,7 @@
         "device": "Gerät",
         "model": "Modell",
         "deviceName": "Gerätename",
-        "ip": "IP-Adresse",
+        "ip": "IP",
         "centralStorageUsed": "Verwendeter Central Storage",
         "allocateLicenses": "Lizenzen zuteilen",
         "estimated": "Geschätzter Speicher",
@@ -1487,7 +1491,7 @@
       "message": "Nachricht",
       "bytes_sent": "Gesendete Bytes",
       "application": "Ressource",
-      "source_country": "Quellland",
+      "source_country": "Ursprungsland",
       "vpn": "VPN-Nutzung",
       "bytes": "Gesamt-Bytes",
       "malicious_hits": "Schädliche Ereignisse",
