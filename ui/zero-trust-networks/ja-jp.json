@@ -26,7 +26,11 @@
       "day": "日",
       "days": "日",
       "seconds": "秒",
-      "required-error": "必須"
+      "required-error": "必須",
+      "agent-app-request": "ZTNA エージェントを必要とするポリシーを追加する場合は、まずエージェントをリクエストします。利用可能になった時点でお知らせします。ポリシーは事前に追加できますが、アクティブにはなりません。",
+      "agent-app-request-action": "エージェントのリクエスト",
+      "agent-app-request-title": "エージェントベースのポリシーアクセスの有効化",
+      "agent-app-request-comment": "[n]個のシートにアクセスを許可してください。Central ログインは {{login}} で、顧客 ID は {{customer_id}} です。"
     },
     "application": {
       "form": {
@@ -241,8 +245,6 @@
               "troubleshoot-logs-info2": "ログが生成されるまで数分かかることがあります。このページから離れることができます。",
               "troubleshoot-logs-info3": "各インスタンスの横にダウンロードファイルが表示され、1時間使用できます。"
             },
-
-
             "add": "インスタンスの追加/編集",
             "header": {
               "name": "名前: ",
@@ -404,8 +406,8 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか",
-        "warn-message-2": "？"
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
+        "warn-message-2": " ？"
       },
       "status": {
         "waiting-for-deployment": {
@@ -554,7 +556,7 @@
           "status": {
             "generating-log": "ログの生成中"
           },
-          "error": "エラー; 後でもう一度やり直してください"
+          "error": "エラー: 後でもう一度やり直してください"
         }
       },
       "schedule": {
@@ -678,9 +680,11 @@
       },
       "add-modal": {
         "resource-access": "リソースアクセス",
-        "tooltip-resource-access-info1": "ポリシーは、エージェントまたはエージェントレスで、リソースアクセスに対応できます。エージェントは、セキュリティ状態をチェックしてアクセスを判断できます。",
+        "tooltip-resource-access-info1": "注: エージェントベースのポリシーの場合は、Sophos Endpoint エージェントをデバイスにインストールする必要があります。",
         "agent": "エージェント",
-        "agentless": "エージェントレス"
+        "agentdesc": "デバイスのセキュリティ状態をチェックし、全種類のリソースへのアクセスを制御できます。",
+        "agentless": "エージェントレス",
+        "agentlessdesc": "デバイスのセキュリティ状態をチェックできず、Web リソースへのアクセスのみを制御できます。"
       },
       "form": {
         "agent-based-policy": {
@@ -754,7 +758,7 @@
       "fqdn_ip.format.invalid": "内部 FQDN/IPv4 アドレスは有効な形式である必要があります",
       "field.value.invalid": "無効な入力値 {{0}} が、{{1}} フィールドに指定されました",
       "request.json.malformed": "リクエストで不正な JSON を受信しました",
-      "http.request.header.missing": "必要な HTTP ヘッダ {{0}} がリクエストにありません",
+      "http.request.header.missing": "必要な HTTP ヘッダー {{0}} がリクエストにありません",
       "request.data.format.invalid": "リクエストで無効なデータ形式を受信しました",
       "request.data.uri.invalid": "リクエストで無効な URI を受信しました",
       "name.invalid": "名前は空白にできず、100文字を超えることはできません。また、アルファベット、数字、アンダースコアを含めることはできますが、特殊文字を含めることはできません",
@@ -820,7 +824,7 @@
       "gateway.schedule.notFound": "ゲートウェイのアップグレードのスケジュール設定が見つかりません",
       "gateway.schedule.alreadyExists": "ゲートウェイのアップグレードのスケジュール設定は既に存在します",
       "gateway.version.isLower": "ゲートウェイのアップグレードバージョンは、現在のバージョン {{0}} よりも古いバージョンです ",
-      "gateway.upgrade.inPast": "ゲートウェイのアップグレードは、既にスケジュール設定されています; {{0}}",
+      "gateway.upgrade.inPast": "ゲートウェイのアップグレードは、既にスケジュール設定されています: {{0}}",
       "gateway.upgrade.cancelNotAllowed": "ゲートウェイのアップグレードは、開始する 5分前以内にキャンセルすることはできません",
       "gateway.armChange.notAllowed": "ゲートウェイのシングル/デュアルアームのインストールを変更することはできません",
       "gateway.instance.notFound": "ゲートウェイインスタンスがゲートウェイにありません",
@@ -1550,7 +1554,7 @@
       "policy_name": "ポリシー名",
       "transmittedkbits": "送信したキロビット",
       "message_id": "メッセージ ID",
-      "rule_priority": "ルールの優先順位",
+      "rule_priority": "ルールの優先度",
       "cert_chain_served": "提供された証明書チェーン",
       "dst_mac": "宛先 Mac",
       "file_size": "ファイルサイズ",

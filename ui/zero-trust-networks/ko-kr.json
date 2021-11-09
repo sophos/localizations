@@ -26,7 +26,11 @@
       "day": "일",
       "days": "일",
       "seconds": "초",
-      "required-error": "필수"
+      "required-error": "필수",
+      "agent-app-request": "ZTNA 에이전트에 필요한 정책을 추가하려면 에이전트를 먼저 요청합니다. 확보되면 알려 드리겠습니다. 그 전에 정책을 추가할 수 있지만 활성화되지는 않습니다.",
+      "agent-app-request-action": "에이전트 요청",
+      "agent-app-request-title": "에이전트 기반 정책 액세스 활성화",
+      "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 중앙 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다."
     },
     "application": {
       "form": {
@@ -241,8 +245,6 @@
               "troubleshoot-logs-info2": "로그를 생성하는 데 몇 분이 걸릴 수 있습니다. 이 페이지에 머물 필요는 없습니다.",
               "troubleshoot-logs-info3": "다운로드는 각 인스턴스 옆에 표시되며 1시간 동안 사용할 수 있습니다."
             },
-
-
             "add": "인스턴스 추가/편집",
             "header": {
               "name": "이름: ",
@@ -609,7 +611,7 @@
         "provider": "공급자",
         "tenantid": "테넌트 ID",
         "clientid": "클라이언트 ID",
-        "clientsecret": "Client secret",
+        "clientsecret": "클라이언트 암호",
         "issuer-uri": "발급자 URI",
         "scope": "범위",
         "add-success": "ID 공급자 생성됨",
@@ -624,13 +626,13 @@
         "test-connection-label": "Azure 동기화 연결 유효성 검사",
         "test-connection-button": "연결 테스트",
         "test-connection-success": "연결 성공",
-        "test-connection-failure": "연결이 실패했습니다",
+        "test-connection-failure": "연결 실패",
         "provider-error": "이 유형의 ID 공급자가 이미 존재함",
         "clientId-validation": "Client ID가 필요",
         "tenantId-validation": "테넌트 ID가 필요함",
         "clientSecret-validation": "클라이언트 암호가 필요함",
         "loading-error": "ID 공급자 로드 중 오류 발생",
-        "issuer-uri-validation": "발급자 URI 필수 ",
+        "issuer-uri-validation": "발급자 URI 필수",
         "invalid-issuer-uri": "잘못된 URI",
         "scope-validation": "범위 필수"
       },
@@ -644,12 +646,12 @@
     },
     "policies": {
       "list": {
-        "expires": "만료되는 날짜",
+        "expires": "만료 날짜",
         "columns": {
           "name": "이름",
           "status": "상태",
           "resources": "리소스",
-          "lastModified": "최근 수정된 날짜"
+          "lastModified": "마지막으로 수정한 날짜"
         },
         "assign": "할당",
         "title": "Zero Trust Network Access - 정책",
@@ -678,9 +680,11 @@
       },
       "add-modal": {
         "resource-access": "리소스 액세스",
-        "tooltip-resource-access-info1": "정책은 에이전트/에이전트리스 리소스 액세스를 지원할 수 있습니다. 에이전트는 상태를 확인하여 액세스를 결정할 수 있습니다.",
+        "tooltip-resource-access-info1": "참고: 에이전트 기반 정책의 경우 장치에 Sophos Endpoint 에이전트를 설치해야 합니다.",
         "agent": "에이전트",
-        "agentless": "에이전트리스"
+        "agentdesc": "이를 통해 장치 상태를 확인하고 모든 유형의 리소스에 대한 액세스를 제어할 수 있습니다.",
+        "agentless": "에이전트리스",
+        "agentlessdesc": "장치 상태를 확인할 수 없으며 웹 리소스에 대한 액세스만 제어합니다."
       },
       "form": {
         "agent-based-policy": {
@@ -1242,7 +1246,7 @@
           "firewalls": "템플릿의 게이트웨이",
           "createdBy": "만든 사람",
           "type": "유형",
-          "expires": "만료되는 날짜",
+          "expires": "만료 날짜",
           "actions": "조치"
         },
         "messages": {
@@ -1438,8 +1442,8 @@
       "malware_count": "맬웨어 수",
       "allowed_app_categories": "허용된 앱 범주",
       "user_group": "사용자 그룹",
-      "bandwidth_usage": "대역폭 사용",
-      "gateway_bandwidth": "대역폭 사용",
+      "bandwidth_usage": "대역폭 사용량",
+      "gateway_bandwidth": "대역폭 사용량",
       "new_cloud_apps": "새 클라우드 앱",
       "source_zone": "원본 영역",
       "cpu": "CPU",
@@ -1625,7 +1629,7 @@
       "totalHits": "총 적중 횟수",
       "recent_client_health": "최신 클라이언트 상태",
       "state": "상태",
-      "count": "카운트",
+      "count": "개수",
       "time": "시간",
       "threats_events_blocked": "위협 및 이벤트가 차단됨",
       "Wireless": "Wireless",
