@@ -30,7 +30,7 @@
       "agent-app-request": "ZTNA 에이전트에 필요한 정책을 추가하려면 에이전트를 먼저 요청합니다. 확보되면 알려 드리겠습니다. 그 전에 정책을 추가할 수 있지만 활성화되지는 않습니다.",
       "agent-app-request-action": "에이전트 요청",
       "agent-app-request-title": "에이전트 기반 정책 액세스 활성화",
-      "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 중앙 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다."
+      "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 Central 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다."
     },
     "application": {
       "form": {
@@ -287,7 +287,7 @@
               },
               "resources-access": "리소스 및 액세스",
               "no-application-configured": "이 게이트웨이와 연관된 리소스가 없습니다.",
-              "no-application-configured-help": "<i18n slot=\"resource\">Resources & access</i18n> 페이지에서 게이트웨이에 리소스를 추가하십시오."
+              "no-application-configured-help": "<i18n slot=\"resource\">리소스 및 액세스</i18n> 페이지에서 게이트웨이에 리소스를 추가하십시오."
             }
           }
         }
@@ -339,7 +339,7 @@
         "internal-interface": "내부 인터페이스",
         "interface-settings": "인터페이스 설정",
         "ipAddress-validation": "잘못된 IP",
-        "subnetMask": "서브넷",
+        "subnetMask": "서브넷 마스크",
         "subnetMask-validation": "잘못된 서브넷",
         "default-gateway": "게이트웨이",
         "defaultGateway-validation": "잘못된 게이트웨이",
@@ -664,10 +664,10 @@
         "fetch-error": "정책 목록을 가져오는 중 오류 발생",
         "enforced": "적용됨",
         "bypassed": "바이패스됨",
-        "note": "참고: 리소스에 정책이 할당됩니다. <i18n slot=\"policy-resource\">resource</i18n> 수준에서 사용자를 할당할 수 있습니다.",
+        "note": "참고: 리소스에 정책이 할당됩니다. <i18n slot=\"policy-resource\">리소스</i18n> 수준에서 사용자를 할당할 수 있습니다.",
         "resource": "리소스",
         "resource-and-access": "Zero Trust - 리소스 액세스",
-        "endpoint-agent": "<i18n slot=\"policy-download\">Downloads</i18n> 페이지에서 Sophos Endpoint 에이전트를 다운로드하십시오. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
+        "endpoint-agent": "<i18n slot=\"policy-download\">다운로드</i18n> 페이지에서 Sophos Endpoint 에이전트를 다운로드하십시오. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
         "no-policy-configured": "정책을 추가하지 않았습니다.",
         "no-policy-configured-help": "정책 추가 버튼을 클릭하여 리소스에 대한 액세스 권한을 부여하기 위한 정책을 추가하십시오."
       },
@@ -700,7 +700,7 @@
           "policy-bypassed-label2": "정책이 <b>바이패스됨</b>",
           "policy-enforced-info": "정책이 적용되지 않으면 이 정책에 할당된 리소스에 액세스할 수 없습니다.",
           "policy-enforced-disable": "특정 시간 이후 자동으로 비활성화",
-          "access-rules-info": "사용자 그룹 할당 및 정책 예외는 <i18n slot=\"policy-resource\">resources</i18n>에서 관리됩니다. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
+          "access-rules-info": "사용자 그룹 할당 및 정책 예외는 <i18n slot=\"policy-resource\">리소스</i18n>에서 관리됩니다. <i18n slot=\"policy-learn-more\">자세히 알아보기</i18n>",
           "resource-access-agent": "리소스 액세스: 에이전트",
           "manage-access": "조건을 사용하여 액세스 관리",
           "allow-access": "액세스 허용",
@@ -710,7 +710,7 @@
           "deny-access": "액세스 거부:",
           "deny-access-info": " 위의 사항이 충족되지 않으면 액세스가 거부됩니다.",
           "expires-at": "다음 시간에 만료됨",
-          "assign-resources-info": "리소스는 하나의 정책에만 속할 수 있습니다. 이미 할당된 리소스를 다른 데 할당하면 여기에 다시 할당됩니다. 사용자는 <i18n slot=\"policy-resource\">resource</i18n>에 할당됩니다.",
+          "assign-resources-info": "리소스는 하나의 정책에만 속할 수 있습니다. 이미 할당된 리소스를 다른 데 할당하면 여기에 다시 할당됩니다. 사용자는 <i18n slot=\"policy-resource\">리소스</i18n>에 할당됩니다.",
           "no-resources-configured": "리소스가 없습니다.",
           "no-resources-configured-help": "아직 정책에 추가할 수 있는 리소스가 없습니다. 나중에 추가할 수 있습니다.",
           "add-success": "정책 생성됨",
@@ -800,6 +800,8 @@
       "application.policy.port.mismatch": "제공된 포트 유형이 선택한 정책 유형에 유효하지 않음",
       "application.policy.resourcetype.mismatch": "제공된 리소스 유형이 선택한 정책 유형에 유효하지 않음",
       "application.gateway.not.assigned": "응용 프로그램에 게이트웨이를 할당해야 함",
+      "application.internal.fqdn.conflicts.gateway.fqdn": "응용 프로그램 내부 FQDN이 게이트웨이 FQDN 중 하나와 충돌합니다.",
+      "application.external.fqdn.conflicts.gateway.fqdn": "응용 프로그램 외부 FQDN이 게이트웨이 FQDN 중 하나와 충돌합니다.",
       "idp.field.validation.error": "ID 공급자 필드 유효성 검사 오류",
       "azure.tenantId.notBlank": "Azure ID 공급자의 경우 테넌트 ID는 비워둘 수 없음",
       "idp.clientId.notBlank": "ID 공급자 클라이언트 ID는 비워둘 수 없음",
@@ -852,6 +854,9 @@
       "gateway.log.collection.ongoing": "게이트웨이가 이미 로그를 수집 중입니다. 잠시 후 다시 시도하십시오.",
       "gateway.log.collection.wrong.request": "COLLECT 상태만 로그 가져오기에 대해 지원됩니다.",
       "gateway.log.collection.no.active": "로그 수집을 위한 활성 인스턴스가 없습니다.",
+      "gateway.fqdn.not.subdomain.of.appDomain": "게이트웨이 FQDN은 응용 프로그램 도메인의 하위 도메인이어야 합니다.",
+      "gateway.fqdn.conflicts.application.internal.fqdn": "게이트웨이 FQDN이 응용 프로그램 내부 FQDN 중 하나와 충돌합니다.",
+      "gateway.fqdn.conflicts.application.external.fqdn": "게이트웨이 FQDN이 응용 프로그램 외부 FQDN 중 하나와 충돌합니다.",
       "policy.invalid": "제공된 정책 개체가 잘못됨",
       "policy.isEnforced.notNull": "정책 개체의 isEnforced 필드는 Null이 아니어야 함",
       "policy.valid-until.not.allowed": "정책이 시행되지 않으면 validUntil을 설정할 수 없음",
@@ -1652,7 +1657,7 @@
       "deny_reason": "거부된 사유",
       "agent_version": "에이전트",
       "sync_sec_status": "상태",
-      "application_type": "앱 유형",
+      "application_type": "리소스 유형",
       "policy": "정책",
       "deny_reason_count": "거부된 사유 수"
     },
