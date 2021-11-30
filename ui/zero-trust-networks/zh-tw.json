@@ -30,7 +30,7 @@
       "agent-app-request": "如果您想要新增需要 ZTNA 代理的原則，請首先請求代理。當可用時我們會告知您。在此之前，您可新增原則，但它們不會啟用。",
       "agent-app-request-action": "請求代理",
       "agent-app-request-title": "啟用基於代理的原則存取權限",
-      "agent-app-request-comment": "請允許存取 [n] 個座椅。我的 central 登入資訊為 {{login}}，客戶 ID 為 {{customer_id}}。"
+      "agent-app-request-comment": "請允許存取 [n] 個座椅。我的 Central 登入資訊為 {{login}}，客戶 ID 為 {{customer_id}}。"
     },
     "application": {
       "form": {
@@ -339,7 +339,7 @@
         "internal-interface": "內部介面",
         "interface-settings": "介面設定",
         "ipAddress-validation": "無效的 IP",
-        "subnetMask": "子網路",
+        "subnetMask": "子網路遮罩",
         "subnetMask-validation": "無效的子網路",
         "default-gateway": "閘道",
         "defaultGateway-validation": "無效的閘道",
@@ -654,7 +654,7 @@
           "lastModified": "上次修改"
         },
         "assign": "指派",
-        "title": "Zero Trust Network Access - 政策",
+        "title": "Zero Trust Network Access - 策略",
         "new-policy": "Zero Trust Network Access - 新策略",
         "edit-policy": "Zero Trust Network Access - 編輯原則",
         "breadcrumb-text": "政策",
@@ -667,7 +667,7 @@
         "note": "注意：原則已指派給資源。您可以在 <i18n slot=\"policy-resource\">資源</i18n> 層級指派使用者。",
         "resource": "资源",
         "resource-and-access": "Zero Trust - 資源存取",
-        "endpoint-agent": "從 <i18n slot=\"policy-download\">下載</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">了解更多資訊</i18n>",
+        "endpoint-agent": "從 <i18n slot=\"policy-download\">Downloads</i18n> 頁面下載 Sophos Endpoint 代理程式。<i18n slot=\"policy-learn-more\">了解更多資訊</i18n>",
         "no-policy-configured": "您尚未新增任何原則。",
         "no-policy-configured-help": "按一下「新增原則」按鈕新增原則，以開始授予對您的資源的存取權限。"
       },
@@ -800,6 +800,8 @@
       "application.policy.port.mismatch": "為所選原則類型提供的連接埠類型無效",
       "application.policy.resourcetype.mismatch": "為所選原則類型提供的資源類型無效",
       "application.gateway.not.assigned": "必須向應用程式指派閘道",
+      "application.internal.fqdn.conflicts.gateway.fqdn": "與閘道 FQDN 之一發生應用程式內部 FQDN 衝突",
+      "application.external.fqdn.conflicts.gateway.fqdn": "與閘道 FQDN 之一發生應用程式外部 FQDN 衝突",
       "idp.field.validation.error": "識別提供者欄位驗證錯誤",
       "azure.tenantId.notBlank": "Azure 識別提供者的租用戶 ID 不得為空",
       "idp.clientId.notBlank": "識別提供者用戶端 ID 不得為空",
@@ -852,6 +854,9 @@
       "gateway.log.collection.ongoing": "閘道已在收集記錄，請稍後再試",
       "gateway.log.collection.wrong.request": "僅支援 COLLECT 狀態以獲取記錄",
       "gateway.log.collection.no.active": "記錄收集未找到活動的執行個體",
+      "gateway.fqdn.not.subdomain.of.appDomain": "閘道 FQDN 必須為應用程式網域的子網域",
+      "gateway.fqdn.conflicts.application.internal.fqdn": "與應用程式內部 FQDN 之一發生閘道 FQDN 衝突",
+      "gateway.fqdn.conflicts.application.external.fqdn": "與應用程式外部 FQDN 之一發生閘道 FQDN 衝突",
       "policy.invalid": "提供的原則物件無效",
       "policy.isEnforced.notNull": "原則物件中的 isEnforced 欄位不得為 Null",
       "policy.valid-until.not.allowed": "如果未強制執行原則，則無法設定 validUntil",
@@ -1652,8 +1657,8 @@
       "deny_reason": "已拒絕的理由",
       "agent_version": "代理程式",
       "sync_sec_status": "安全狀態",
-      "application_type": "應用程式類型",
-      "policy": "原則",
+      "application_type": "資源類型",
+      "policy": "政策",
       "deny_reason_count": "已拒絕的理由計數"
     },
     "template": {
