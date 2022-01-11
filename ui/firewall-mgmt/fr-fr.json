@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "Gestion du pare-feu - Pare-feu",
       "new-group": "Gestion du pare-feu - Nouveau groupe de pare-feu",
+      "sub-group": "Gestion du pare-feu - Ajouter un nouveau sous-groupe",
       "breadcrumb-text": "Pare-feu",
       "create": "Créer un nouveau groupe",
+      "edit": {
+        "label": "Modifier le groupe",
+        "warn-info": "L’assignation d’un pare-feu au groupe entraînera l’application d’une configuration par défaut au pare-feu. Ceci risque de modifier les configurations déjà existantes du pare-feu.",
+        "edit-group-success": "Groupe mis à jour",
+        "edit-group-error": "Mise à jour du groupe impossible"
+      },
       "config-radio": {
         "first-radio-label": "Utiliser les valeurs Sophos par défaut",
         "second-radio-label": "Importer la configuration existante"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "Groupe créé avec succès",
         "duplicate-group-name": "Ce nom de groupe existe déjà"
-      }},
+      },
+      "delete": {
+        "label": "Supprimer le groupe",
+        "error": "Suppression du groupe impossible",
+        "success": "Groupe supprimé",
+        "child-group-exists": "Impossible de supprimer le groupe. Veuillez supprimer les sous-groupes avant de supprimer ce groupe."
+      },
+      "group-list": {
+        "partner-managed-group": "Groupe administré Partenaires",
+        "no-firewall-assigned":"Aucun pare-feu/sous-groupe disponible dans ce groupe.",
+        "edit-this-group": "Ajouter des pare-feu au groupe",
+        "add-sub-group": "Ajouter un sous-groupe sous ce groupe",
+        "add-sub-group-info": "Il s’agira d’un sous-groupe sous le groupe : ",
+        "delete-this-group": "Supprimer ce groupe",
+        "add-new-firewall": "Ajouter un pare-feu",
+        "manage-firewall": "Gestion du pare-feu",
+        "manage-policy": "Administrer la stratégie",
+        "view-policy": "Voir la stratégie",
+        "reports-title": "Voir le rapport de l’appareil",
+        "reports-title-primary": "Voir le rapport de l’appareil - Principal",
+        "reports-title-auxiliary": "Voir le rapport de l’appareil - Auxiliaire",
+        "reports-title-groups": "Voir le rapport du groupe",
+        "deployment-config-button": "Gérer la configuration du déploiement",
+        "attach-label-title": "Joindre une étiquette",
+        "edit-label-title": "Modifier/Supprimer une étiquette",
+        "ungroup-firewall-title": "Retirer le pare-feu de ce groupe",
+        "remove-firewall": "Supprimer le pare-feu de Sophos Central",
+        "edit-group": "Modifier le groupe",
+        "sub-group-add": "Ajouter un sous-groupe",
+        "firmware-upgrade-group": "Mises à niveau du firmware...",
+        "column": {
+          "name": "Nom",
+          "no-of-customers": "Nombre de clients",
+          "sync-and-management": "Synchronisation et gestion",
+          "description": "Description",
+          "synchronized-security": "Sécurité Synchronisée",
+          "version": "Version",
+          "alerts": "Alertes",
+          "ip-address": "Adresse IP",
+          "model": "Modèle",
+          "serial": "Numéro de série"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -736,13 +786,16 @@
     },
     "component": {
       "state": {
-        "connected": "connecté",
-        "disconnected": "déconnecté",
+        "connected": "Connecté",
+        "disconnected": "Déconnecté",
         "approval-pending": "Autorisation en attente",
         "management-disabled": "Gestion désactivée",
         "syncing": "En cours de synchronisation",
         "sync": "Synchronisé",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "Gestion désactivée",
+        "approval_pending": "Autorisation en attente",
+        "initializing": "Initialisation en cours..."
       },
       "status": {
         "last-seen": "Vu pour la dernière fois à {{ time }}",

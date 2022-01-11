@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "Gerenciamento do Firewall - Firewalls",
       "new-group": "Gerenciamento do Firewall - Novo grupo de firewall",
+      "sub-group": "Gerenciamento do Firewall - Adicionar novo subgrupo",
       "breadcrumb-text": "Firewall",
       "create": "Criar novo grupo",
+      "edit": {
+        "label": "Editar grupo",
+        "warn-info": "Atribuir um firewall ao grupo aplicará uma configuração default ao firewall. Isso poderá alterar as configurações do firewall atual.",
+        "edit-group-success": "Grupo atualizado com sucesso",
+        "edit-group-error": "Falha na atualização do grupo"
+      },
       "config-radio": {
         "first-radio-label": "Usar padrão da Sophos",
         "second-radio-label": "Importar configuração existente"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "Grupo criado com sucesso",
         "duplicate-group-name": "O nome do grupo já existe"
-      }},
+      },
+      "delete": {
+        "label": "Deletar grupo",
+        "error": "Falha ao deletar grupo",
+        "success": "O grupo foi deletado com sucesso",
+        "child-group-exists": "O grupo não pôde ser deletado. Delete os subgrupos antes de tentar deletar este grupo."
+      },
+      "group-list": {
+        "partner-managed-group": "Grupo gerenciado de parceiros",
+        "no-firewall-assigned":"Nenhum firewall/subgrupo disponível neste grupo.",
+        "edit-this-group": "Adicionar firewalls a este grupo",
+        "add-sub-group": "Adicionar um subgrupo sob este grupo",
+        "add-sub-group-info": "Esse será um subgrupo sob o grupo: ",
+        "delete-this-group": "Deletar este usuário",
+        "add-new-firewall": "Adicionar um firewall",
+        "manage-firewall": "Gerenciar firewall",
+        "manage-policy": "Gerenciar política",
+        "view-policy": "Ver política",
+        "reports-title": "Ver relatório do dispositivo",
+        "reports-title-primary": "Ver relatório do dispositivo - Primário",
+        "reports-title-auxiliary": "Ver relatório do dispositivo - Auxiliar",
+        "reports-title-groups": "Ver relatório do grupo",
+        "deployment-config-button": "Gerenciar Config de implantação",
+        "attach-label-title": "Anexar um rótulo",
+        "edit-label-title": "Editar/Deletar rótulo",
+        "ungroup-firewall-title": "Remover o firewall deste grupo",
+        "remove-firewall": "Remover o Firewall do Sophos Central",
+        "edit-group": "Editar Grupo",
+        "sub-group-add": "Adicionar um subgrupo",
+        "firmware-upgrade-group": "Upgrades de firmware...",
+        "column": {
+          "name": "Nome",
+          "no-of-customers": "Nº de clientes",
+          "sync-and-management": "Sincronização e Gerenciamentos",
+          "description": "Descrição",
+          "synchronized-security": "Segurança Sincronizada",
+          "version": "Versão",
+          "alerts": "Alertas",
+          "ip-address": "Endereço de IP",
+          "model": "Modelo",
+          "serial": "Número de série"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -736,13 +786,16 @@
     },
     "component": {
       "state": {
-        "connected": "conectado",
-        "disconnected": "desconectado",
+        "connected": "Conectado",
+        "disconnected": "Desconectado",
         "approval-pending": "Aprovação pendente",
         "management-disabled": "Gerenciamento desabilitado",
         "syncing": "Em sincronização",
         "sync": "Sincronizado",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "Gerenciamento desabilitado",
+        "approval_pending": "Aprovação pendente",
+        "initializing": "Inicializando..."
       },
       "status": {
         "last-seen": "Última visualização às {{ time }}",

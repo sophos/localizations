@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "Firewall Management - 방화벽",
       "new-group": "Firewall Management - 새 방화벽 그룹",
+      "sub-group": "Firewall Management - 새 하위 그룹 추가",
       "breadcrumb-text": "방화벽",
       "create": "새 그룹 만들기",
+      "edit": {
+        "label": "그룹 편집",
+        "warn-info": "그룹에 방화벽을 할당하면 방화벽에 기본 구성이 적용됩니다. 그러면 현재 방화벽 구성이 변경될 수 있습니다.",
+        "edit-group-success": "그룹이 성공적으로 업데이트되었습니다.",
+        "edit-group-error": "그룹 업데이트 실패"
+      },
       "config-radio": {
         "first-radio-label": "Sophos 기본값 사용",
         "second-radio-label": "기존 구성 가져오기"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "그룹이 성공적으로 만들어졌음",
         "duplicate-group-name": "그룹 이름이 이미 있습니다"
-      }},
+      },
+      "delete": {
+        "label": "그룹 삭제",
+        "error": "그룹 삭제 실패",
+        "success": "그룹이 성공적으로 삭제됨",
+        "child-group-exists": "그룹을 삭제할 수 없습니다. 이 그룹을 삭제하기 전에 하위 그룹을 삭제하십시오."
+      },
+      "group-list": {
+        "partner-managed-group": "파트너 관리 그룹",
+        "no-firewall-assigned":"이 그룹에서 사용할 수 있는 방화벽/하위 그룹이 없습니다.",
+        "edit-this-group": "이 그룹에 방화벽 추가",
+        "add-sub-group": "이 그룹 아래에 하위 그룹 추가",
+        "add-sub-group-info": "이는 다음 그룹 아래 하위 그룹이 됩니다. ",
+        "delete-this-group": "이 그룹 삭제",
+        "add-new-firewall": "방화벽 추가",
+        "manage-firewall": "방화벽 관리",
+        "manage-policy": "정책 관리",
+        "view-policy": "정책 보기",
+        "reports-title": "장치 보고서 보기",
+        "reports-title-primary": "장치 보고서 보기 - 기본",
+        "reports-title-auxiliary": "장치 보고서 보기 - 보조",
+        "reports-title-groups": "그룹 보고서 보기",
+        "deployment-config-button": "배포 구성 관리",
+        "attach-label-title": "레이블 첨부",
+        "edit-label-title": "레이블 편집/삭제",
+        "ungroup-firewall-title": "이 그룹에서 방화벽 제거",
+        "remove-firewall": "Sophos Central에서 방화벽 제거",
+        "edit-group": "그룹 편집",
+        "sub-group-add": "하위 그룹 추가",
+        "firmware-upgrade-group": "펌웨어 업그레이드...",
+        "column": {
+          "name": "이름",
+          "no-of-customers": "# 고객",
+          "sync-and-management": "동기화 및 관리",
+          "description": "설명",
+          "synchronized-security": "동기화된 보안",
+          "version": "버전",
+          "alerts": "경고",
+          "ip-address": "IP 주소",
+          "model": "모델",
+          "serial": "일련 번호"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -742,7 +792,10 @@
         "management-disabled": "관리 사용 안 함",
         "syncing": "동기화 중",
         "sync": "동기화됨",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "관리 사용 안 함",
+        "approval_pending": "보류 중인 승인",
+        "initializing": "초기화하는 중..."
       },
       "status": {
         "last-seen": "마지막 확인 시간: {{ time }}",

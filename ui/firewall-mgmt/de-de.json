@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "Firewall Management - Firewalls",
       "new-group": "Firewall Management - Neue Firewall-Gruppe",
+      "sub-group": "Firewall Management - Neue Untergruppe hinzufügen",
       "breadcrumb-text": "Firewall",
       "create": "Neue Gruppe erstellen",
+      "edit": {
+        "label": "Gruppe bearbeiten",
+        "warn-info": "Wenn Sie der Gruppe eine Firewall zuweisen, wird der Firewall eine Standardkonfiguration zugewiesen. Dies ändert eventuell die aktuellen Firewall-Konfigurationen.",
+        "edit-group-success": "Gruppe erfolgreich aktualisiert",
+        "edit-group-error": "Aktualisieren der Gruppe fehlgeschlagen"
+      },
       "config-radio": {
         "first-radio-label": "Sophos-Standardwerte verwenden",
         "second-radio-label": "Vorhandene Konfiguration importieren"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "Gruppe erfolgreich erstellt",
         "duplicate-group-name": "Gruppenname ist bereits vorhanden"
-      }},
+      },
+      "delete": {
+        "label": "Gruppe löschen",
+        "error": "Löschen der Gruppe fehlgeschlagen",
+        "success": "Gruppe erfolgreich gelöscht",
+        "child-group-exists": "Die Gruppe konnte nicht gelöscht werden. Bitte löschen Sie Untergruppen, bevor Sie versuchen, diese Gruppe zu löschen."
+      },
+      "group-list": {
+        "partner-managed-group": "Von Partner verwaltete Gruppe",
+        "no-firewall-assigned":"Keine Firewalls/Untergruppen in dieser Gruppe verfügbar.",
+        "edit-this-group": "Firewalls zu dieser Gruppe hinzufügen",
+        "add-sub-group": "Eine Untergruppe zu dieser Gruppe hinzufügen",
+        "add-sub-group-info": "Die Gruppe wird eine Untergruppe folgender Gruppe sein: ",
+        "delete-this-group": "Diese Gruppe löschen",
+        "add-new-firewall": "Firewall hinzufügen",
+        "manage-firewall": "Firewall verwalten",
+        "manage-policy": "Richtlinie verwalten",
+        "view-policy": "Richtlinie anzeigen",
+        "reports-title": "Gerätebericht anzeigen",
+        "reports-title-primary": "Gerätebericht anzeigen - Primär",
+        "reports-title-auxiliary": "Gerätebericht anzeigen - Sekundär",
+        "reports-title-groups": "Bericht der Gruppe anzeigen",
+        "deployment-config-button": "Einrichtungskonfiguration verwalten",
+        "attach-label-title": "Bezeichnung hinzufügen",
+        "edit-label-title": "Bezeichnung bearbeiten/löschen",
+        "ungroup-firewall-title": "Firewall aus dieser Gruppe entfernen",
+        "remove-firewall": "Firewall aus Sophos Central entfernen",
+        "edit-group": "Gruppe bearbeiten",
+        "sub-group-add": "Eine Untergruppe hinzufügen",
+        "firmware-upgrade-group": "Firmware-Upgrades...",
+        "column": {
+          "name": "Name",
+          "no-of-customers": "Anz. Kunden",
+          "sync-and-management": "Synchronisierung & Verwaltungen",
+          "description": "Beschreibung",
+          "synchronized-security": "Synchronized Security",
+          "version": "Version",
+          "alerts": "Alarme",
+          "ip-address": "IP-Adresse",
+          "model": "Modell",
+          "serial": "Seriennummer"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -653,7 +703,7 @@
           "serial": "Seriennummer"
         },
         "menu": {
-          "manage": "Richtlinien verwalten",
+          "manage": "Richtlinie verwalten",
           "edit": "Vorlage bearbeiten",
           "delete": "Löschen",
           "edit-customers": "Kunden bearbeiten"
@@ -736,13 +786,16 @@
     },
     "component": {
       "state": {
-        "connected": "verbunden",
-        "disconnected": "getrennt",
+        "connected": "Verbunden",
+        "disconnected": "Verbindung getrennt",
         "approval-pending": "Genehmigung steht aus",
         "management-disabled": "Management deaktiviert",
         "syncing": "Wird synchronisiert",
         "sync": "Synchronisiert",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "Management deaktiviert",
+        "approval_pending": "Genehmigung steht aus",
+        "initializing": "Wird initialisiert..."
       },
       "status": {
         "last-seen": "Letzter Kontakt {{ time }}",
@@ -750,7 +803,7 @@
         "pending": "Genehmigung steht aus",
         "no-reporting": "Central Reporting ist deaktiviert",
         "waiting": "Warten auf Bereitstellung",
-        "initializing": "Initialisierung",
+        "initializing": "Wird initialisiert",
         "disconnected": "Verbindung getrennt",
         "connected": "Verbunden",
         "sync": "Synchronisiert",

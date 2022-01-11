@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "ファイアウォール管理 - ファイアウォール",
       "new-group": "ファイアウォール管理 - 新しいファイアウォールグループ",
+      "sub-group": "ファイアウォール管理 - 新しいサブグループの追加",
       "breadcrumb-text": "ファイアウォール",
       "create": "新しいグループの作成",
+      "edit": {
+        "label": "グループの編集",
+        "warn-info": "グループにファイアウォールを割り当てると、ファイアウォールにはデフォルトの設定が適用されます。現在のファイアウォールの設定が変更される場合があります。",
+        "edit-group-success": "グループの更新に成功しました",
+        "edit-group-error": "グループの更新に失敗しました"
+      },
       "config-radio": {
         "first-radio-label": "ソフォスのデフォルト設定を使用",
         "second-radio-label": "既存の設定のインポート"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "グループの作成に成功しました",
         "duplicate-group-name": "グループ名は既に存在します"
-      }},
+      },
+      "delete": {
+        "label": "グループの削除",
+        "error": "グループの削除に失敗しました",
+        "success": "グループの削除に成功しました",
+        "child-group-exists": "グループを削除できませんでした。このグループを削除する前に、サブグループを削除してください。"
+      },
+      "group-list": {
+        "partner-managed-group": "パートナーが管理しているグループ",
+        "no-firewall-assigned":"ファイアウォール/サブグループは、このグループにありません。",
+        "edit-this-group": "このグループへのファイアウォールの追加",
+        "add-sub-group": "このグループの下へのサブグループの追加",
+        "add-sub-group-info": "サブグループは、次のグループの下に追加されます: ",
+        "delete-this-group": "このグループの削除",
+        "add-new-firewall": "ファイアウォールの追加",
+        "manage-firewall": "ファイアウォールの管理",
+        "manage-policy": "ポリシーの管理",
+        "view-policy": "ポリシーの表示",
+        "reports-title": "デバイスレポートの表示",
+        "reports-title-primary": "デバイスレポートの表示 - プライマリ",
+        "reports-title-auxiliary": "デバイスレポートの表示 - 補助",
+        "reports-title-groups": "グループのレポートの表示",
+        "deployment-config-button": "導入設定の管理",
+        "attach-label-title": "ラベルの貼り付け",
+        "edit-label-title": "ラベルの編集/削除",
+        "ungroup-firewall-title": "このグループからのファイアウォールの削除",
+        "remove-firewall": "Sophos Central でのファイアウォールの削除",
+        "edit-group": "グループの編集",
+        "sub-group-add": "サブグループの追加",
+        "firmware-upgrade-group": "ファームウェアのアップグレード...",
+        "column": {
+          "name": "名前",
+          "no-of-customers": "顧客数",
+          "sync-and-management": "同期と管理",
+          "description": "説明",
+          "synchronized-security": "Synchronized Security",
+          "version": "バージョン",
+          "alerts": "警告",
+          "ip-address": "IP アドレス",
+          "model": "機種",
+          "serial": "シリアル番号"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -742,7 +792,10 @@
         "management-disabled": "管理: 無効",
         "syncing": "同期中",
         "sync": "同期",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "管理: 無効",
+        "approval_pending": "承認保留中",
+        "initializing": "初期化中..."
       },
       "status": {
         "last-seen": "前回の日時: {{ time }}",
