@@ -75,7 +75,7 @@
             "same-as-object": "Dinamico",
             "add": "Aggiungi",
             "replace": "Sostituisci",
-            "default-cannot-delete": "I mapping predefiniti non possono essere eliminati",
+            "default-cannot-delete": "I mapping predefiniti possono essere solo sostituiti, non eliminati.",
             "zones": {
               "mappedName" : "Aree mappate",
               "firewall": "Firewall"
@@ -504,8 +504,15 @@
     "firewall-groups": {
       "name": "Gestione del Firewall - Firewall",
       "new-group": "Gestione del Firewall - Nuovo gruppo Firewall",
+      "sub-group": "Gestione del Firewall - Aggiungi nuovo sottogruppo",
       "breadcrumb-text": "Firewall",
       "create": "Crea nuovo gruppo",
+      "edit": {
+        "label": "Modifica il gruppo",
+        "warn-info": "L'assegnazione di un firewall al gruppo applicherà al firewall una configurazione predefinita. Questo potrebbe modificare le configurazioni attuali del firewall.",
+        "edit-group-success": "Aggiornamento del gruppo completato",
+        "edit-group-error": "Aggiornamento del gruppo non riuscito"
+      },
       "config-radio": {
         "first-radio-label": "Utilizza impostazioni predefinite di Sophos",
         "second-radio-label": "Importa configurazione esistente"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "Creazione del gruppo completata",
         "duplicate-group-name": "Nome del gruppo già esistente"
-      }},
+      },
+      "delete": {
+        "label": "Elimina gruppo",
+        "error": "Eliminazione del gruppo non riuscita",
+        "success": "Eliminazione del gruppo completata",
+        "child-group-exists": "Non è stato possibile eliminare il gruppo. Eliminare i sottogruppi, prima di eliminare questo gruppo."
+      },
+      "group-list": {
+        "partner-managed-group": "Gruppo gestito da partner",
+        "no-firewall-assigned":"Nessun firewall/sottogruppo disponibile in questo gruppo.",
+        "edit-this-group": "Aggiungi firewall a questo gruppo",
+        "add-sub-group": "Aggiungi un sottogruppo sotto questo gruppo",
+        "add-sub-group-info": "Sarà un sottogruppo sotto il gruppo: ",
+        "delete-this-group": "Elimina questo gruppo",
+        "add-new-firewall": "Aggiungi un firewall",
+        "manage-firewall": "Gestisci firewall",
+        "manage-policy": "Gestisci criterio",
+        "view-policy": "Visualizza criterio",
+        "reports-title": "Visualizza report sul dispositivo",
+        "reports-title-primary": "Visualizza report sul dispositivo - Primario",
+        "reports-title-auxiliary": "Visualizza report sul dispositivo - Ausiliario",
+        "reports-title-groups": "Visualizza report del gruppo",
+        "deployment-config-button": "Gestisci config della distribuzione",
+        "attach-label-title": "Allega un'etichetta",
+        "edit-label-title": "Modifica/Elimina etichetta",
+        "ungroup-firewall-title": "Rimuovi firewall da questo gruppo",
+        "remove-firewall": "Rimuovere Firewall da Sophos Central",
+        "edit-group": "Modifica gruppo",
+        "sub-group-add": "Aggiungi un sottogruppo",
+        "firmware-upgrade-group": "Upgrade del firmware in corso...",
+        "column": {
+          "name": "Nome",
+          "no-of-customers": "Num. clienti",
+          "sync-and-management": "Sincronizzazione e gestione",
+          "description": "Descrizione",
+          "synchronized-security": "Sicurezza Sincronizzata",
+          "version": "Versione",
+          "alerts": "Avvisi",
+          "ip-address": "Indirizzo IP",
+          "model": "Modello",
+          "serial": "Numero di serie"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -736,13 +786,16 @@
     },
     "component": {
       "state": {
-        "connected": "connesso",
-        "disconnected": "disconnesso",
+        "connected": "Connesso",
+        "disconnected": "Disconnesso",
         "approval-pending": "Approvazione in sospeso",
         "management-disabled": "Gestione disattivata",
         "syncing": "Sincronizzazione in corso",
         "sync": "Sincronizzato",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "Gestione disattivata",
+        "approval_pending": "Approvazione in sospeso",
+        "initializing": "Inizializzazione in corso..."
       },
       "status": {
         "last-seen": "Ultimo rilevamento: {{ time }}",

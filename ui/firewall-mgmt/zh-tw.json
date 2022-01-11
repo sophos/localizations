@@ -503,9 +503,16 @@
     },
     "firewall-groups": {
       "name": "防火牆管理 - 防火墻",
-      "new-group": "防火墻管理 -  新防火墻群組",
+      "new-group": "防火墻管理 - 新防火墻群組",
+      "sub-group": "防火牆管理 - 新增子群組",
       "breadcrumb-text": "防火墻",
       "create": "建立新群組",
+      "edit": {
+        "label": "編輯群組",
+        "warn-info": "將防火墻指派到群組會將預設設定套用至防火墻。這可能會變更目前的防火墻設定。",
+        "edit-group-success": "已成功更新群組",
+        "edit-group-error": "群組更新失敗"
+      },
       "config-radio": {
         "first-radio-label": "使用 Sophos 預設項",
         "second-radio-label": "匯入現有設定"
@@ -526,7 +533,50 @@
         },
         "create-group-success": "已成功建立群組",
         "duplicate-group-name": "群組名稱已存在"
-      }},
+      },
+      "delete": {
+        "label": "刪除群組",
+        "error": "群組刪除失敗",
+        "success": "已成功刪除群組",
+        "child-group-exists": "無法刪除群組。請刪除子群組，然後再嘗試刪除此群組。"
+      },
+      "group-list": {
+        "partner-managed-group": "合作夥伴管理群組",
+        "no-firewall-assigned":"此群組中無防火墻/子群組可用。",
+        "edit-this-group": "新增防火牆至此群組",
+        "add-sub-group": "在此群組下新增子群組",
+        "add-sub-group-info": "這將是群組下的子群組： ",
+        "delete-this-group": "刪除此群組",
+        "add-new-firewall": "新增防火牆",
+        "manage-firewall": "管理防火牆",
+        "manage-policy": "管理策略",
+        "view-policy": "檢視原則",
+        "reports-title": "檢視裝置報告",
+        "reports-title-primary": "檢視裝置報告 - 主要",
+        "reports-title-auxiliary": "檢視裝置報告 - 次要",
+        "reports-title-groups": "檢視群組報告",
+        "deployment-config-button": "管理部署 Config",
+        "attach-label-title": "附加標籤",
+        "edit-label-title": "編輯/刪除標籤",
+        "ungroup-firewall-title": "從群組移除防火牆",
+        "remove-firewall": "從 Sophos Central 移除防火牆",
+        "edit-group": "編輯群組",
+        "sub-group-add": "新增子群組",
+        "firmware-upgrade-group": "韌體升級...",
+        "column": {
+          "name": "名稱",
+          "no-of-customers": "# 客戶",
+          "sync-and-management": "同步及管理",
+          "description": "描述",
+          "synchronized-security": "同步的安全性",
+          "version": "版本",
+          "alerts": "警示",
+          "ip-address": "IP 位址 (IP 位址)",
+          "model": "機型",
+          "serial": "序號"
+        }
+      }
+    },
     "firmware" : {
       "version": "{{ version }}",
       "upgrade" : {
@@ -737,12 +787,15 @@
     "component": {
       "state": {
         "connected": "已連線",
-        "disconnected": "已斷開連線",
+        "disconnected": "已中斷連線",
         "approval-pending": "核准擱置",
         "management-disabled": "管理已停用",
         "syncing": "同步中",
         "sync": "已經同步",
-        "loading": ""
+        "loading": "",
+        "unmanaged": "管理已停用",
+        "approval_pending": "核准擱置",
+        "initializing": "正在初始化..."
       },
       "status": {
         "last-seen": "上次出現於 {{ time }}",
