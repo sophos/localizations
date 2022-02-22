@@ -22,7 +22,7 @@
       "error": "Fehler",
       "errors": "Fehler",
       "warnings": "Benachrichtigungen",
-      "success": "Erfolgreich",
+      "success": "Erfolg",
       "info": "Info",
       "retry": "Erneut versuchen",
       "access-points": "Access Points",
@@ -202,7 +202,7 @@
       "audit-logs": "Audit-Protokolle",
       "server-ip": "Server-IP",
       "serial-no": "Seriennummer",
-      "action": "Maßnahme",
+      "action": "Aktion",
       "status": "Status",
       "name": "Name des Access Point",
       "ip_address": "IP-Adresse",
@@ -324,7 +324,7 @@
       }
     },
     "sites": {
-      "siteOverview": "Standort-Übersicht",
+      "site-overview": "Standort-Übersicht",
       "neighbourhoodNetworks": "Netzwerke in der Nachbarschaft",
       "list": {
         "breadcrumb-text": "Standorte",
@@ -398,13 +398,34 @@
         "aps-none-placed": "Kein Access Point installiert.",
         "ap-simulated": "Simulierter AP",
         "failed-to-load-floor": "Grundriss konnte nicht geladen werden",
+        "deleting": "Löschen",
+        "editing": "Bearbeiten",
+        "save": "Speichern",
+        "floorplan-update": "Grundriss erfolgreich gespeichert.",
+        "floorplan-update-failure": "Der Grundriss konnte nicht gespeichert werden.",
+        "cancel": "Abbrechen",
+        "delete": {
+          "error": "Grundriss konnte nicht gelöscht werden.",
+          "success": "Grundriss erfolgreich gelöscht.",
+          "confirmation-header": "Stockwerk löschen",
+          "confirmation-text": "Möchten Sie das Stockwerk ‚{{ name }}‘ wirklich löschen? Alle Access Points sind dann nicht mehr zugeordnet."
+        },
+        "scale": {
+          "scale-label": "Maßstab zuweisen:",
+          "scale-placeholder": "Abstand (m)",
+          "scale-headline": "Abmessungen zuweisen:",
+          "hint": {
+            "input": "Legen Sie den Abstand entsprechend fest und klicken Sie auf „Fertig“.",
+            "pins": "Platzieren Sie zwei Stecknadeln auf dem Grundriss, um den Maßstab festzulegen."
+          }
+        },
         "upload": {
           "upload-success": "Datei erfolgreich hochgeladen",
           "upload-error": "Grundrissbild konnte nicht gespeichert werden.",
           "floorplan-setup": {
             "question": "Wie wäre es mit einem Grundriss?",
             "text": "Laden Sie jetzt als erstes ein Bild hoch. Zulässige Formate: JPG, GIF, PNG... max. Dateigröße 1 MB",
-            "GDPR-text": "Gemäß der Datenschutz-Grundverordnung müssen Sie sicherstellen, dass Grundrisse/Raumbelegungspläne keine persönlichen Informationen enthalten.",
+            "GDPR-text": "Die Datenschutz-Grundverordnung verpflichtet Sie, sicherzustellen, dass Grundrisse/Raumbelegungspläne keine persönlichen Informationen enthalten.",
             "dragtext": "Einfach Datei in die Dropzone ziehen oder",
             "upload-button": "Hochladen",
             "upload-label": "Eine Datei auswählen",
@@ -689,7 +710,7 @@
           "password-schedule": "Kennwortplanung",
           "social-login": "Anmeldeinformationen für soziale Medien",
           "google-console-help-text": "Sie können Ihre Google-Client-ID und den geheimen Clientschlüssel erhalten, wenn Sie sich in der <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google-Entwickler-Konsole</a>&nbsp an Ihrem Unternehmenskonto anmelden.",
-          "google-console-second-label": "Erstellen Sie ein neues Projekt und ermitteln Sie die Werte für Client-ID und geheimen Clientschlüssel auf der Seite „Anmeldeinformationen“.",
+          "google-console-second-label": "Erstellen Sie ein neues Projekt und ermitteln Sie die Werte für Client-ID und Clientschlüssel auf der Seite Anmeldedaten.",
           "client-id-label": "Client-ID",
           "client-secret-label": "Geheimer Clientschlüssel",
           "facebook-console-help-text": "Sie können Ihre Facebook-Anwendungs-ID und den geheimen Anwendungsschlüssel erhalten, wenn Sie sich am <a href={{facebookDevelopersSite}} target='_blank'>Facebook-Entwicklerkonto</a>&nbsp Ihres Unternehmens anmelden.",
@@ -782,7 +803,6 @@
       }
     },
     "accessPoints": {
-      "no-access-point-configured": "Sie haben keinen Access Point hinzugefügt",
       "list": {
         "breadcrumb-text": "Access Points",
         "title": "Wireless - Access Points",
@@ -800,16 +820,16 @@
           "workload": "Arbeitslast",
           "band": "Band",
           "mode": "Modus",
-          "no-access-point-configured": "kein Access Point konfiguriert",
           "channels": "Kanäle",
           "mesh": "Mesh-Rolle",
           "exportToCsvText": "Als CSV exportieren",
           "errorMessage": "Access Point kann nicht gelöscht werden",
-          "accessPointNotFoundErrorMessage": "Access Point nicht gefunden",
+          "access-point-not-found": "Access Point nicht gefunden",
           "dataLoadErrorMessage": "Access Point kann nicht geladen werden",
           "editHostNameErrorMessage": "Access Point kann nicht registriert werden",
           "all-sites": "Alle Sites",
           "select-site": "Standort auswählen",
+          "auto-refresh": "Automatisch aktualisieren",
           "unassigned-sites": "Nicht zugewiesene Sites",
           "emptyListMessage": "Sie haben keine Access Points hinzugefügt.",
           "listRegisterInfo": "Klicken Sie auf die Schaltfläche „Registrieren“, um die Access Points hinzuzufügen."
@@ -822,6 +842,7 @@
         "deleteAp": "Möchten Sie diesen Access Point löschen?",
         "forceDelete": "Löschen erzwingen",
         "automaticOnce": "Einmalig automatisch",
+        "automaticContinuous": "Automatisch kontinuierlich",
         "manual": "Manuell",
         "currenSite": "Aktueller Standort",
         "connectedDevice": "Verbundene Geräte",
@@ -952,7 +973,7 @@
           "registerAP": {
             "title": "Schritt 3",
             "description": "Geben Sie die S/N ein und klicken Sie auf „Registrieren“. Die Registrierung kann bis zu 5 Minuten dauern.",
-            "agreement": "Indem ich nachfolgend auf „Registrieren“ klicke, erkenne ich die Bedingungen der <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/de-de/legal/sophos-end-user-license-agreement.aspx\" target=\"_blank\">Sophos-Endbenutzer-Lizenzvereinbarung</a> an und stimme diesen zu.",
+            "agreement": "Indem ich nachfolgend auf „Registrieren“ klicke, erkenne ich die Bedingungen der <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos Nutzungsbedingungen für Endbenutzer</a> an und stimme diesen zu.",
             "enterSerialNumber": "Geben Sie die Seriennummer ein",
             "register": "Registrieren",
             "editHost": "Weiter"

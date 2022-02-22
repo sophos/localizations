@@ -7,6 +7,7 @@
       "cancel": "Abbrechen",
       "edit": "Bearbeiten",
       "delete": "Löschen",
+      "copy": "Kopieren",
       "ok": "OK",
       "download": "Herunterladen",
       "approve": "Genehmigen",
@@ -30,7 +31,8 @@
       "agent-app-request": "Wenn Sie Richtlinien hinzufügen wollen, welche den ZTNA-Agent benötigen, fordern Sie diesen zuerst an. Wir informieren Sie, wenn er zur Verfügung steht. Sie können in der Zwischenzeit bereits Richtlinien hinzufügen. Diese sind aber noch nicht aktiv.",
       "agent-app-request-action": "Agent anfordern",
       "agent-app-request-title": "Agent-basierten Richtlinienzugriff aktivieren",
-      "agent-app-request-comment": "Bitte erlauben Sie den Zugriff auf [n] Plätze. Mein Sophos-Central-Anmeldename ist {{login}} und die Kunden-ID ist {{customer_id}}."
+      "agent-app-request-comment": "Bitte erlauben Sie den Zugriff auf [n] Plätze. Mein Sophos-Central-Anmeldename ist {{login}} und die Kunden-ID ist {{customer_id}}.",
+      "read-more": "mehr erfahren..."
     },
     "application": {
       "form": {
@@ -184,7 +186,7 @@
         "medium-alerts": "Alarme mit mittlerer Einstufung",
         "low-alerts": "Alarme mit niedriger Einstufung",
         "fetch-error": "Fehler beim Abruf der Alarmzusammenfassung",
-        "header": "Zusammenfassung der Warnhinweise"
+        "header": "Alarm-Zusammenfassung"
       }
     },
     "gateway": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - Gateways",
         "breadcrumb-text": "Gateways",
-        "error": "Fehler beim Abrufen der Gateway-Liste"
+        "error": "Fehler beim Abrufen der Gateway-Liste",
+        "connector-modal": {
+          "header": "Erfolg! Connector hinzugefügt",
+          "copy-fqdn-label": "Fügen Sie den folgenden Link zu Ihrem DNS-Server hinzu:",
+          "alias-domain": "Alias-Domäne",
+          "dns-info": "Bitte fügen Sie in Ihrem DNS-Server die unten stehende Alias-Domäne als CNAME-Record für den vollständigen Domänennamen (FQDN) des Connectors hinzu"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Gateway-Details",
@@ -311,6 +319,7 @@
         "identity-provider": "Identitätsanbieter",
         "fqdn": "FQDN",
         "appDomain": "Domäne",
+        "appDomainVerified": "Domäne (verifiziert)",
         "app-domain-validation": "Ungültige Ressourcen-Domäne",
         "password": "Gateway-Kennwort",
         "password-placeholder": "Kennwort",
@@ -396,7 +405,14 @@
             "two-arm-info": "Verwendet beide physikalischen Ports (WAN und LAN) des Gerätes."
           }
         },
-        "ztna-saas": "Connector-Modus aktivieren"
+        "gateway": "Gateway",
+        "connector": "Anschluss",
+        "mode": "Modus",
+        "gateway-mode": "Gateway-Modus: Gateways werden in Kunden-Rechenzentren bereitgestellt und die Datenebene wird durch die Kunden verwaltet. Diese Gateways sind aus dem öffentlichen Internet zugänglich",
+        "connector-mode": "Connector-Modus: Die Datenebene wird von Sophos verwaltet. Die Connectors sind nicht aus dem öffentlichen Internet zugänglich. Über Connectors wird die Sophos-Cloud mit internen Ressourcen verknüpft.",
+        "no-verified-domain": "Keine verifizierten Domänen verfügbar.",
+        "add-verify-domain": "Fügen Sie Domänen hinzu und verifizieren diese.",
+        "read-more": "mehr erfahren..."
       },
       "delete": {
         "header": "Gateway löschen",
@@ -632,7 +648,7 @@
         "provider-error": "Identitätsanbieter dieses Typs ist bereits vorhanden",
         "clientId-validation": "Client-ID ist erforderlich",
         "tenantId-validation": "Mandanten-ID ist erforderlich",
-        "clientSecret-validation": "Geheimer Clientschlüssel ist erforderlich",
+        "clientSecret-validation": "Client-Secret ist erforderlich",
         "loading-error": "Fehler beim Laden des Identitätsanbieters",
         "issuer-uri-validation": "Aussteller-URL erforderlich",
         "invalid-issuer-uri": "Ungültige URI",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - Einstellungen",
         "breadcrumb-text": "Einstellungen"
       },
-      "error": "Fehler beim Abruf der Einstellungen"
+      "error": "Fehler beim Abruf der Einstellungen",
+      "service-edge": {
+        "on": "Sophos Service Edge einschalten",
+        "off": "Sophos Service Edge ausschalten",
+        "domains": "Domänen",
+        "domains-desc": "Eine Domäne für ZTNAaaS hinzufügen und verifizieren"
+      }
     }
   },
   "ztna": {
@@ -1038,7 +1060,7 @@
       "casb": "Neue Cloud-Anwendungen",
       "cpu": "CPU",
       "interfaces": "Schnittstellen",
-      "intrusionAttacks": "Angriffe",
+      "intrusionAttacks": "Eindring-Angriffe",
       "memory": "Speicher",
       "network": "Netzwerk",
       "objectionableWebsites": "Unerwünschte Kategorie",
@@ -1393,7 +1415,7 @@
       "firewall_rule_type": "Gateway-Regeltyp",
       "received_kbits": "Empfangene KBits",
       "event_type": "Ereignistyp",
-      "top_intrusion_attacks": "Häufigste Angriffe",
+      "top_intrusion_attacks": "Häufigste Eindring-Angriffe",
       "connection": "Verbindung",
       "device_id": "Geräte-ID",
       "total_memory_usage": "Gesamtspeichernutzung",
@@ -1455,7 +1477,7 @@
       "total_records": "Gesamte Einträge",
       "system_and_user_cpu_usage": "System- und CPU-Nutzung Benutzer",
       "atp": "ATP",
-      "intrusion_attack": "Angriff",
+      "intrusion_attack": "Eindring-Angriff",
       "malware_count": "Anzahl Malware",
       "allowed_app_categories": "Zugelassene Anwendungskategorien",
       "user_group": "Benutzergruppe",
@@ -1672,7 +1694,9 @@
       "application_type": "Ressourcentyp",
       "policy": "Richtlinie",
       "deny_reason_count": "Anzahl Verweigerungsgründe"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "Text der Anfrage zum Erstellen ist ungültig",

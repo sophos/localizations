@@ -6,48 +6,69 @@
           "edit": "編集",
           "delete": "削除",
           "update": "更新",
-          "save": "保存"
-      }
+          "save": "保存",
+          "disable": "無効",
+          "cancel": "キャンセル",
+          "enter": "入力",
+          "remove": "削除",
+          "modify": "変更",
+          "confirm": "確定",
+          "approve": "承認",
+          "search":  "検索"
+      },
+      "manage": "管理",
+      "status": {
+        "success": "成功",
+        "error": "エラー"
+      },
+      "confirm-delete-header": "削除の確認"
     },
     "nav-title": {
         "clusters": "クラスタ",
-        "dashboard": "ダッシュボード"
+        "dashboard": "ダッシュボード",
+        "waf-rules": "WAF のルール",
+        "certificates": "証明書",
+        "ips-rule": "IPS 保護"
     },
     "clusters-list": {
-        "title": "クラウド シリーズ ファイアウォール",
-        "search-placeholder": "クラスタの検索",
-        "add": "ファイアウォールの追加",
-        "name": "名前",
-        "status": "状態",
-        "description": "説明",
-        "license": "ライセンス",
-        "type": "種類",
-        "features": "機能",
-        "manage": "管理",
-        "feature": {
-          "firewall":  "ファイアウォール",
-          "waf": "WAF",
-          "ips": "IPS"
-        },
-        "registration-status": {
-          "waiting-for-deployment": "導入待機中",
-          "awaiting-approval": "承認を待機中",
-          "approved": "承認済み"
-        },
-        "installation-type": {
-          "aws": "Amazon EKS",
-          "on-prem": "オンプレミス"
-        }
+      "title": "クラウド シリーズ ファイアウォール",
+      "breadcrumbs-text": "クラウド シリーズ ファイアウォール",
+      "search-placeholder": "クラスタの検索",
+      "add": "ファイアウォールの追加",
+      "name": "名前",
+      "status": "状態",
+      "description": "説明",
+      "license": "ライセンス",
+      "type": "種類",
+      "features": "機能",
+      "manage": "管理",
+      "feature": {
+        "firewall": "ファイアウォール",
+        "waf": "WAF",
+        "ips": "IPS"
+      },
+      "registration-status": {
+        "waiting-for-deployment": "導入待機中",
+        "awaiting-approval": "承認を待機中",
+        "approved": "承認済み"
+      },
+      "installation-type": {
+        "aws": "Amazon EKS",
+        "on-prem": "オンプレミス"
+      }
     },
     "add-cluster": {
+      "title": "ファイアウォールの追加",
+      "breadcrumbs-text": "ファイアウォールの追加",
       "cluster-name": "クラスタ名",
-      "cluster-type":  "Kubernetes のインストールの種類",
+      "cluster-type": "Kubernetes のインストールの種類",
       "cluster-description": "説明",
-      "cluster-labels":  "ラベル",
+      "cluster-labels": "ラベル",
       "cluster-services": "サービスのリスト",
       "cluster-installation-heading": "インストールの手順",
       "type-place-holder": "種類の選択",
       "action": "アクション",
+      "status": "状態",
       "type": {
         "premises": "オンプレミスインストール",
         "aws": "Amazon EKS"
@@ -62,7 +83,7 @@
       "wafoptions-place-holder": "イングレスコントローラーの選択",
       "waf-options": {
         "no-ingress": "イングレスコントローラーはインストールされていません",
-        "curifence": "Curifence は既にインストールされています",
+        "curifence": "Curiefense は既にインストールされています",
         "traefik": "Traefik は既にインストールされています",
         "nginx": "NGINX は既にインストールされています",
         "different": "既に別のプロキシがインストールされています"
@@ -75,14 +96,151 @@
         "waf-label": "Web アプリケーションを安全に公開・保護します",
         "ip-label": "NGFW によるイングレス/エグレストラフィックの保護"
       },
+      "s3-config": {
+        "section-title": "S3 バケット設定",
+        "section-help": "S3 バケットを設定してください。これは、Web アプリケーション ファイアウォールが、オブジェクトストレージを設定するために必要です",
+        "s3-url": "バケット URL",
+        "access-key": "アクセスキー",
+        "secret-key": "シークレットキー"
+      },
       "btn-label": "導入の準備ができました",
+      "btn-edit": "編集",
       "cluster-name-error": "クラスタ名は 100文字を超えてはいけません。",
       "name-pattern-error": "クラスタ名に無効な文字が含まれています。",
       "cluster-description-error": "説明は、最大半角 250文字まで入力可能です。",
-      "not-slected-cni": "CNI が選択されていません。現在の CNI を選択して続行してください。",
+      "not-selected-cni": "CNI が選択されていません。現在の CNI を選択して続行してください。",
       "require-cni": "Cloud Series Firewall では、前提条件として CNI をインストール済みである必要があります。公式サイトから Calico CNI をインストールすることを推奨します。",
-      "not-selected-ingress": "イングレスコントローラーが選択されていません。続行するには、イングレスコントローラーを選択するか、WAF 機能の選択を解除してください。",
-      "not-supported-ingress": "WAF でサポートされていない既存のイングレスコントローラーが選択されました。WAF を使用するに合は、既存のイングレスコントローラーをクラスタから削除するか、WAF の選択を解除する必要があります。"
+      "not-selected-ingress": "イングレスコントローラーが選択されていません。続行するには、イングレスコントローラーを選択するか、WAF をオフにしてください。",
+      "not-supported-ingress": "WAF でサポートされていない既存のイングレスコントローラーが選択されました。WAF を使用する場合は、イングレスコントローラーをクラスタから削除する必要があります。それ以外の場合は、WAF をオフにしてください。"
+    },
+    "cluster-overview": {
+      "title": "概要",
+      "breadcrumbs-text": "クラスタの概要",
+      "status": "状態",
+      "installation-steps": "インストールの手順",
+      "confirm-cluster-delete": "クラスタを削除してもよいですか？"
+    },
+    "waf": {
+      "list": {
+        "title": "Web アプリケーション ファイアウォール ルール",
+        "breadcrumb-text": "Web アプリケーション ファイアウォール ルール",
+        "search-placeholder":"WAF ルールの検索",
+        "add": "ルールの追加",
+        "name": "名前",
+        "description": "説明",
+        "entry-points": "エントリポイント",
+        "redirect-http": "HTTP のリダイレクト",
+        "routes": "ルート",
+        "routers": "ルーター",
+        "web-services": "Web サービス",
+        "protection-rule": "保護ルール",
+        "rate-limit": "レートの制限",
+        "status": "状態",
+        "age": "経過時間",
+        "messages": {
+          "delete-rule-success": "ルールが削除されました。",
+          "delete-rule-error": "ルールを削除できません。"
+        }
+      },
+      "add": {
+        "title": "WAF ルールの追加",
+        "breadcrumb-text": "WAF ルールの追加"
+      },
+      "edit": {
+        "title": "WAF ルールの編集",
+        "breadcrumb-text": "WAF ルールの編集",
+        "status": "状態",
+        "rule-name": "ルール名",
+        "description": "説明",
+        "entry-points": "エントリポイント",
+        "listening-port": "リスニングポート (1～65535)",
+        "http-listening-port": "HTTP リスニングポート (1～65535)",
+        "http-only": "HTTPS/TLS",
+        "redirect-http": "HTTP のリダイレクト",
+        "request-path": "パスの要求",
+        "request-from": "宛先パスにマッピング",
+        "routes": "ルート",
+        "fqdn": "FQDN",
+        "header": "ヘッダー",
+        "name-placeholder": "名前",
+        "value-placeholder": "値",
+        "destination-type": "宛先の種類",
+        "destination-type-placeholder": "宛先の種類の選択",
+        "namespace": "名前空間",
+        "namespace-placeholder": "名前空間の選択",
+        "service": "サービス",
+        "service-placeholder": "サービスを選択してください",
+        "service-port": "サービスポート",
+        "service-port-placeholder": "ポートの選択",
+        "destination-ip-fqdn": "宛先 IP/FQDN",
+        "destination-port": "宛先ポート",
+        "web-service-use-tls": "Web サービスは TLS を使用",
+        "path": "パス",
+        "destination-path": "宛先パス",
+        "headers": "ヘッダー",
+        "type": "種類",
+        "destination": "宛先",
+        "port": "ポート",
+        "https-s": "HTTPS/S",
+        "action": "アクション",
+        "edit-route-tooltip": "ルートの編集",
+        "delete-route-tooltip": "ルートの削除",
+        "clone-route-tooltip": "ルートの複製",
+        "protections": "保護",
+        "protection-policies": "保護ポリシー",
+        "policy-placeholder": "ポリシーの選択",
+        "certificate": "証明書",
+        "certificate-placeholder": "証明書の選択",
+        "domains-fqdn-placeholder": "ホスト名の選択",
+        "add-route": "Add route" 
+      }
+    },
+    "certificate": {
+      "title": "証明書の追加",
+      "name": "名前",
+      "description": "説明",
+      "certificate": "証明書",
+      "private-key": "秘密鍵",
+      "browse": "参照",
+      "breadcrumb-text": "証明書の追加",
+      "list": {
+        "title": "証明書",
+        "add-certificate": "証明書の追加",
+        "search-placeholder": "証明書の検索",
+        "domain-names": "ドメイン名",
+        "breadcrumb-text": "証明書"
+      },
+      "messages": {
+        "success-notification-title": "成功",
+        "error-notification-title": "エラー",
+        "certificate-delete-success": "証明書が削除されました。",
+        "certificate-delete-error": "証明書を削除できません。"
+      }
+    },
+    "firewall-rules": {
+      "list": {
+        "title": "ファイアウォールルール",
+        "breadcrumb-text": "ファイアウォールルール",
+        "add": "ルールの追加",
+        "name": "名前",
+        "description": "説明",
+        "pod-selector": "ポッドセレクタ",
+        "ingress": "入力",
+        "ingress-service": "入力サービス",
+        "egress": "出力",
+        "egress-service": "出力サービス"
+      }
+    },
+    "ips": {
+      "rule": {
+        "title": "侵入防御 (Intrusion Protection)",
+        "breadcrumb-text": "侵入防御 (Intrusion Protection)",
+        "section-title": "保護ポリシー",
+        "ns-policy-disabled": "North-South トラフィックの IPS スキャンを有効にする。",
+        "ew-policy-disabled": "East-West トラフィックの IPS スキャンを有効にする。",
+        "save-success": "設定の保存に成功しました。",
+        "save-failed": "変更内容を保存できませんでした。"
+      }
     }
   }
 }

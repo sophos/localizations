@@ -6,48 +6,69 @@
           "edit": "Editar",
           "delete": "Deletar",
           "update": "Atualizar",
-          "save": "Salvar"
-      }
+          "save": "Salvar",
+          "disable": "Desabilitar",
+          "cancel": "Cancelar",
+          "enter": "Inserir",
+          "remove": "Remover",
+          "modify": "Modificar",
+          "confirm": "Confirmar",
+          "approve": "Aprovar",
+          "search":  "Pesquisar"
+      },
+      "manage": "Gerenciar",
+      "status": {
+        "success": "Sucesso",
+        "error": "Erro"
+      },
+      "confirm-delete-header": "Confirmar deleção"
     },
     "nav-title": {
         "clusters": "Clusters",
-        "dashboard": "Painel de Controle"
+        "dashboard": "Painel de Controle",
+        "waf-rules": "Regras de WAF",
+        "certificates": "Certificados",
+        "ips-rule": "Proteção IPS"
     },
     "clusters-list": {
-        "title": "Firewalls da Série Cloud",
-        "search-placeholder": "Pesquisar cluster",
-        "add": "Adicionar firewall",
-        "name": "Nome",
-        "status": "Status",
-        "description": "Descrição",
-        "license": "Licença",
-        "type": "Tipo",
-        "features": "Recursos",
-        "manage": "Gerenciar",
-        "feature": {
-          "firewall":  "Firewall",
-          "waf": "WAF",
-          "ips": "IPS"
-        },
-        "registration-status": {
-          "waiting-for-deployment": "Aguardando implantação",
-          "awaiting-approval": "Aguardando aprovação",
-          "approved": "Aprovado"
-        },
-        "installation-type": {
-          "aws": "Amazon EKS",
-          "on-prem": "No local"
-        }
+      "title": "Firewalls da Série Cloud",
+      "breadcrumbs-text": "Firewalls da Série Cloud",
+      "search-placeholder": "Pesquisar cluster",
+      "add": "Adicionar firewall",
+      "name": "Nome",
+      "status": "Status",
+      "description": "Descrição",
+      "license": "Licença",
+      "type": "Tipo",
+      "features": "Recursos",
+      "manage": "Gerenciar",
+      "feature": {
+        "firewall": "Firewall",
+        "waf": "WAF",
+        "ips": "IPS"
+      },
+      "registration-status": {
+        "waiting-for-deployment": "Aguardando implantação",
+        "awaiting-approval": "Aguardando aprovação",
+        "approved": "Aprovado"
+      },
+      "installation-type": {
+        "aws": "Amazon EKS",
+        "on-prem": "No local"
+      }
     },
     "add-cluster": {
+      "title": "Adicionar Firewall",
+      "breadcrumbs-text": "Adicionar Firewall",
       "cluster-name": "Nome do cluster",
-      "cluster-type":  "Tipo de instalação Kubernetes",
+      "cluster-type": "Tipo de instalação Kubernetes",
       "cluster-description": "Descrição",
-      "cluster-labels":  "Rótulos",
+      "cluster-labels": "Rótulos",
       "cluster-services": "Lista de serviços",
       "cluster-installation-heading": "Etapas de instalação",
       "type-place-holder": "Selecione um tipo",
       "action": "Ação",
+      "status": "Status",
       "type": {
         "premises": "Instalação no local",
         "aws": "Amazon EKS"
@@ -62,7 +83,7 @@
       "wafoptions-place-holder": "Selecionar o controlador de entrada",
       "waf-options": {
         "no-ingress": "Não há controlador de entrada instalado",
-        "curifence": "Eu já tenho o Curifence instalado",
+        "curifence": "Eu já tenho o Curiefense instalado",
         "traefik": "Eu já tenho o Traefik instalado",
         "nginx": "Eu já tenho o NGINX instalado",
         "different": "Eu já tenho um proxy diferente instalado"
@@ -75,14 +96,151 @@
         "waf-label": "Publique e proteja aplicativos web com segurança",
         "ip-label": "Proteção NGFW para tráfego de entrada/saída"
       },
+      "s3-config": {
+        "section-title": "Configuração do bucket S3",
+        "section-help": "Fornecer configuração do bucket S3; o firewall de aplicação da Web precisa dela para o armazenamento do objeto de configuração",
+        "s3-url": "URL do bucket",
+        "access-key": "Chave de acesso",
+        "secret-key": "Chave secreta"
+      },
       "btn-label": "Pronto para implantar",
+      "btn-edit": "Editar",
       "cluster-name-error": "O nome do cluster não deve exceder 100 caracteres.",
       "name-pattern-error": "O nome do cluster contém caracteres inválidos.",
       "cluster-description-error": "A descrição pode ter, no máximo, 250 caracteres.",
-      "not-slected-cni": "Você não selecionou um CNI; selecione o seu CNI atual para continuar.",
+      "not-selected-cni": "Você não selecionou um CNI; selecione o seu CNI atual para continuar.",
       "require-cni": "O Firewall Série Cloud exige a instalação do CNI como pré-requisito. É recomendado instalar o Calico CNI do site oficial.",
-      "not-selected-ingress": "Você não selecionou o controlador de entrada. Para continuar, selecione um controlador de entrada ou desmarque o recurso WAF.",
-      "not-supported-ingress": "Você selecionou um controlador de entrada existente que não é compatível com WAF. Se deseja usar o WAF, será necessário remover o controlador de entrada existente do seu cluster ou desmarcar o WAF."
+      "not-selected-ingress": "Você não selecionou o controlador de entrada. Para continuar, selecione um controlador de entrada ou desative o WAF.",
+      "not-supported-ingress": "Você selecionou um controlador de entrada existente que não é compatível com WAF. Se deseja usar o WAF, você precisa remover o controlador de entrada do seu cluster. Do contrário, desative o WAF."
+    },
+    "cluster-overview": {
+      "title": "Visão geral",
+      "breadcrumbs-text": "Visão geral do cluster",
+      "status": "Status",
+      "installation-steps": "Etapas de instalação",
+      "confirm-cluster-delete": "Tem certeza de que deseja deletar o cluster?"
+    },
+    "waf": {
+      "list": {
+        "title": "Regras de firewall de aplicativo web",
+        "breadcrumb-text": "Regras de firewall de aplicativo web",
+        "search-placeholder":"Pesquisar regra de WAF",
+        "add": "Adicionar regra",
+        "name": "Nome",
+        "description": "Descrição",
+        "entry-points": "Pontos de entrada",
+        "redirect-http": "Redirecionar HTTP",
+        "routes": "Rotas",
+        "routers": "Roteadores",
+        "web-services": "Serviços da web",
+        "protection-rule": "Regra de proteção",
+        "rate-limit": "Limite da taxa",
+        "status": "Status",
+        "age": "Idade",
+        "messages": {
+          "delete-rule-success": "A regra foi deletada.",
+          "delete-rule-error": "Não foi possível deletar a regra."
+        }
+      },
+      "add": {
+        "title": "Adicionar Regra de WAF",
+        "breadcrumb-text": "Adicionar Regra de WAF"
+      },
+      "edit": {
+        "title": "Editar Regra de WAF",
+        "breadcrumb-text": "Editar Regra de WAF",
+        "status": "Status",
+        "rule-name": "Nome da regra",
+        "description": "Descrição",
+        "entry-points": "Pontos de entrada",
+        "listening-port": "Porta de Escuta (1-65535)",
+        "http-listening-port": "Porta de Escuta HTTP (1-65535)",
+        "http-only": "HTTPS/TLS",
+        "redirect-http": "Redirecionar HTTP",
+        "request-path": "Solicitar caminho",
+        "request-from": "Mapear para o caminho de destino",
+        "routes": "Rotas",
+        "fqdn": "FQDN",
+        "header": "Cabeçalho",
+        "name-placeholder": "Nome",
+        "value-placeholder": "Valor",
+        "destination-type": "Tipo de destino",
+        "destination-type-placeholder": "Selecionar o tipo de destino",
+        "namespace": "Espaço de nomes",
+        "namespace-placeholder": "Selecionar espaço de nomes",
+        "service": "Serviço",
+        "service-placeholder": "Selecionar Serviço",
+        "service-port": "Porta de serviço",
+        "service-port-placeholder": "Selecionar porta",
+        "destination-ip-fqdn": "IP/FQDN de destino",
+        "destination-port": "Porta de Destino",
+        "web-service-use-tls": "O serviço da Web usa TLS",
+        "path": "Caminho",
+        "destination-path": "Caminho de destino",
+        "headers": "Cabeçalhos",
+        "type": "Tipo",
+        "destination": "Destino",
+        "port": "Porta",
+        "https-s": "HTTPS/S",
+        "action": "Ação",
+        "edit-route-tooltip": "Editar Rota",
+        "delete-route-tooltip": "Deletar rota",
+        "clone-route-tooltip": "Clonar rota",
+        "protections": "Proteções",
+        "protection-policies": "Políticas de Proteção",
+        "policy-placeholder": "Selecionar política",
+        "certificate": "Certificado",
+        "certificate-placeholder": "Selecionar certificado",
+        "domains-fqdn-placeholder": "Selecionar nome de host",
+        "add-route": "Add route" 
+      }
+    },
+    "certificate": {
+      "title": "Adicionar Certificado",
+      "name": "Nome",
+      "description": "Descrição",
+      "certificate": "Certificado",
+      "private-key": "Chave Privada",
+      "browse": "Procurar",
+      "breadcrumb-text": "Adicionar certificado",
+      "list": {
+        "title": "Certificados",
+        "add-certificate": "Adicionar certificado",
+        "search-placeholder": "Pesquisar certificados",
+        "domain-names": "Nomes de domínio",
+        "breadcrumb-text": "Certificados"
+      },
+      "messages": {
+        "success-notification-title": "Sucesso",
+        "error-notification-title": "Erro",
+        "certificate-delete-success": "O certificado foi deletado.",
+        "certificate-delete-error": "Não foi possível deletar o certificado."
+      }
+    },
+    "firewall-rules": {
+      "list": {
+        "title": "Regras de Firewall",
+        "breadcrumb-text": "Regras de Firewall",
+        "add": "Adicionar Regra",
+        "name": "Nome",
+        "description": "Descrição",
+        "pod-selector": "Seletor de pod",
+        "ingress": "Entrada",
+        "ingress-service": "Serviço de entrada",
+        "egress": "Saída",
+        "egress-service": "Serviço de saída"
+      }
+    },
+    "ips": {
+      "rule": {
+        "title": "Proteção contra invasões",
+        "breadcrumb-text": "Proteção contra invasões",
+        "section-title": "Políticas de Proteção",
+        "ns-policy-disabled": "Habilitar a varredura de IPS do tráfego Norte-Sul.",
+        "ew-policy-disabled": "Habilitar a varredura de IPS do tráfego Leste-Oeste.",
+        "save-success": "A configuração foi salva com sucesso.",
+        "save-failed": "Falha ao salvar alterações."
+      }
     }
   }
 }

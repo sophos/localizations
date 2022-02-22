@@ -7,6 +7,7 @@
       "cancel": "Cancelar",
       "edit": "Editar",
       "delete": "Eliminar",
+      "copy": "Copiar",
       "ok": "Aceptar",
       "download": "Descargar",
       "approve": "Aprobar",
@@ -30,7 +31,8 @@
       "agent-app-request": "Si quiere añadir políticas que necesiten el agente ZTNA, solicite primero el agente. Le avisaremos cuando esté disponible. Puede añadir políticas antes, pero no estarán activas.",
       "agent-app-request-action": "Solicitar agente",
       "agent-app-request-title": "Activar el acceso a las políticas basadas en el agente",
-      "agent-app-request-comment": "Permita el acceso a [n] plazas. Mi inicio de sesión de Central es {{login}} y mi ID de cliente es {{customer_id}}."
+      "agent-app-request-comment": "Permita el acceso a [n] plazas. Mi inicio de sesión de Central es {{login}} y mi ID de cliente es {{customer_id}}.",
+      "read-more": "más información..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - Puertas de enlace",
         "breadcrumb-text": "Puertas de enlace",
-        "error": "Error al recuperar la lista de puertas de enlace"
+        "error": "Error al recuperar la lista de puertas de enlace",
+        "connector-modal": {
+          "header": "Completado Conector añadido",
+          "copy-fqdn-label": "Añada el siguiente enlace a su servidor DNS:",
+          "alias-domain": "Dominio de alias",
+          "dns-info": "Añada el siguiente dominio de alias como un registro CNAME para el FQDN del conector en su servidor DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Detalles de puerta de enlace",
@@ -311,6 +319,7 @@
         "identity-provider": "Proveedor de identidad",
         "fqdn": "FQDN",
         "appDomain": "Dominio",
+        "appDomainVerified": "Dominio (verificado)",
         "app-domain-validation": "Dominio de recursos no válido",
         "password": "Contraseña de la puerta de enlace",
         "password-placeholder": "Contraseña",
@@ -396,7 +405,14 @@
             "two-arm-info": "Utiliza los dos puertos físicos (WAN y LAN) del dispositivo."
           }
         },
-        "ztna-saas": "Activar modo conector"
+        "gateway": "Puerta de enlace",
+        "connector": "Conector",
+        "mode": "Modo",
+        "gateway-mode": "Modo puerta de enlace: Las puertas de enlace se despliegan en centros de datos gestionados por el cliente y, por tanto, este gestiona el plano de datos. Estas puertas de enlace están expuestas a la Internet pública",
+        "connector-mode": "Modo conector: Sophos gestiona el plano de datos. Los conectores no están expuestos a la Internet pública. Los conectores unen la nube de Sophos con los recursos internos.",
+        "no-verified-domain": "No hay dominios verificados disponibles.",
+        "add-verify-domain": "Añada/verifique dominios.",
+        "read-more": "más información..."
       },
       "delete": {
         "header": "Eliminar puerta de enlace",
@@ -611,7 +627,7 @@
         "description-placeholder": "Descripción",
         "provider": "Proveedor",
         "tenantid": "ID de inquilino",
-        "clientid": "ID del cliente",
+        "clientid": "ID de cliente",
         "clientsecret": "Secreto del cliente",
         "issuer-uri": "URI de emisor",
         "scope": "Alcance",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - Configuración",
         "breadcrumb-text": "Configuración"
       },
-      "error": "Error al obtener la configuración"
+      "error": "Error al obtener la configuración",
+      "service-edge": {
+        "on": "Activar Sophos Service Edge",
+        "off": "Desactivar Sophos Service Edge",
+        "domains": "Dominios",
+        "domains-desc": "Añadir y verificar un dominio para su uso con ZTNAaaS"
+      }
     }
   },
   "ztna": {
@@ -1672,7 +1694,9 @@
       "application_type": "Tipo de recurso",
       "policy": "Política",
       "deny_reason_count": "Recuento de motivos de denegación"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "El cuerpo de la solicitud de creación no es válido",

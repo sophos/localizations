@@ -7,6 +7,7 @@
       "cancel": "취소",
       "edit": "편집",
       "delete": "삭제",
+      "copy": "복사",
       "ok": "확인",
       "download": "다운로드",
       "approve": "지지",
@@ -30,7 +31,8 @@
       "agent-app-request": "ZTNA 에이전트에 필요한 정책을 추가하려면 에이전트를 먼저 요청합니다. 확보되면 알려 드리겠습니다. 그 전에 정책을 추가할 수 있지만 활성화되지는 않습니다.",
       "agent-app-request-action": "에이전트 요청",
       "agent-app-request-title": "에이전트 기반 정책 액세스 활성화",
-      "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 Central 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다."
+      "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 Central 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다.",
+      "read-more": "자세히 읽기..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - 게이트웨이",
         "breadcrumb-text": "게이트웨이",
-        "error": "게이트웨이 목록을 가져오는 중 오류 발생"
+        "error": "게이트웨이 목록을 가져오는 중 오류 발생",
+        "connector-modal": {
+          "header": "성공! 커넥터 추가됨",
+          "copy-fqdn-label": "DNS 서버에 다음 링크를 추가하십시오.",
+          "alias-domain": "별칭 도메인",
+          "dns-info": "DNS 서버에서 커넥터의 FQDN에 대한 CNAME 레코드로 아래 별칭 도메인을 추가하십시오."
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - 게이트웨이 세부 정보",
@@ -311,6 +319,7 @@
         "identity-provider": "ID 공급자",
         "fqdn": "FQDN",
         "appDomain": "도메인",
+        "appDomainVerified": "도메인(확인됨)",
         "app-domain-validation": "잘못된 리소스 도메인",
         "password": "게이트웨이 암호",
         "password-placeholder": "암호",
@@ -396,7 +405,14 @@
             "two-arm-info": "장치의 물리적 포트(WAN 및 LAN)를 모두 사용합니다."
           }
         },
-        "ztna-saas": "커넥터 모드 활성화"
+        "gateway": "게이트웨이",
+        "connector": "커넥터",
+        "mode": "모드",
+        "gateway-mode": "게이트웨이 모드: 게이트웨이는 고객 관리 데이터 센터에 배포되므로 고객은 데이터 플레인을 관리합니다. 이 게이트웨이는 공용 인터넷에 노출됩니다.",
+        "connector-mode": "커넥터 모드: Sophos는 데이터 플레인을 관리합니다. 커넥터는 공용 인터넷에 노출되지 않습니다. 커넥터는 Sophos 클라우드를 내부 리소스와 연결합니다.",
+        "no-verified-domain": "확인된 도메인이 없습니다.",
+        "add-verify-domain": "도메인을 추가/확인합니다.",
+        "read-more": "자세히 읽기..."
       },
       "delete": {
         "header": "게이트웨이 삭제",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - 설정",
         "breadcrumb-text": "설정"
       },
-      "error": "설정을 가져오는 중 오류 발생"
+      "error": "설정을 가져오는 중 오류 발생",
+      "service-edge": {
+        "on": "Sophos Service Edge 켜기",
+        "off": "Sophos Service Edge 끄기",
+        "domains": "도메인",
+        "domains-desc": "ZTNAaaS와 함께 사용할 도메인 추가 및 확인"
+      }
     }
   },
   "ztna": {
@@ -1672,7 +1694,9 @@
       "application_type": "리소스 유형",
       "policy": "정책",
       "deny_reason_count": "거부된 사유 수"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "생성 요청 본문이 유효하지 않음",

@@ -6,48 +6,69 @@
           "edit": "편집",
           "delete": "삭제",
           "update": "업데이트",
-          "save": "저장"
-      }
+          "save": "저장",
+          "disable": "사용 안 함",
+          "cancel": "취소",
+          "enter": "입력",
+          "remove": "제거",
+          "modify": "수정",
+          "confirm": "확인",
+          "approve": "지지",
+          "search":  "검색"
+      },
+      "manage": "관리",
+      "status": {
+        "success": "성공",
+        "error": "오류"
+      },
+      "confirm-delete-header": "삭제 확인"
     },
     "nav-title": {
         "clusters": "클러스터",
-        "dashboard": "대시보드"
+        "dashboard": "대시보드",
+        "waf-rules": "WAF 규칙",
+        "certificates": "인증서",
+        "ips-rule": "IPS 보호"
     },
     "clusters-list": {
-        "title": "클라우드 시리즈 방화벽",
-        "search-placeholder": "클러스터 검색",
-        "add": "방화벽 추가",
-        "name": "이름",
-        "status": "상태",
-        "description": "설명",
-        "license": "라이선스",
-        "type": "유형",
-        "features": "기능",
-        "manage": "관리",
-        "feature": {
-          "firewall":  "방화벽",
-          "waf": "WAF",
-          "ips": "IPS"
-        },
-        "registration-status": {
-          "waiting-for-deployment": "배포 대기 중",
-          "awaiting-approval": "승인 대기 중",
-          "approved": "승인됨"
-        },
-        "installation-type": {
-          "aws": "Amazon EKS",
-          "on-prem": "온프레미스"
-        }
+      "title": "클라우드 시리즈 방화벽",
+      "breadcrumbs-text": "클라우드 시리즈 방화벽",
+      "search-placeholder": "클러스터 검색",
+      "add": "방화벽 추가",
+      "name": "이름",
+      "status": "상태",
+      "description": "설명",
+      "license": "라이선스",
+      "type": "유형",
+      "features": "기능",
+      "manage": "관리",
+      "feature": {
+        "firewall": "방화벽",
+        "waf": "WAF",
+        "ips": "IPS"
+      },
+      "registration-status": {
+        "waiting-for-deployment": "배포 대기 중",
+        "awaiting-approval": "승인 대기 중",
+        "approved": "승인됨"
+      },
+      "installation-type": {
+        "aws": "Amazon EKS",
+        "on-prem": "온프레미스"
+      }
     },
     "add-cluster": {
+      "title": "방화벽 추가",
+      "breadcrumbs-text": "방화벽 추가",
       "cluster-name": "클러스터 이름",
-      "cluster-type":  "Kubernetes 설치 유형",
+      "cluster-type": "Kubernetes 설치 유형",
       "cluster-description": "설명",
-      "cluster-labels":  "레이블",
+      "cluster-labels": "레이블",
       "cluster-services": "서비스 목록",
       "cluster-installation-heading": "설치 단계",
       "type-place-holder": "유형 선택",
       "action": "조치",
+      "status": "상태",
       "type": {
         "premises": "온프레미스 설치",
         "aws": "Amazon EKS"
@@ -62,7 +83,7 @@
       "wafoptions-place-holder": "수신 컨트롤러 선택",
       "waf-options": {
         "no-ingress": "수신 컨트롤러가 설치되어 있지 않음",
-        "curifence": "Curifence가 이미 설치되어 있습니다.",
+        "curifence": "Curiefense가 이미 설치되어 있습니다.",
         "traefik": "Traefik이 이미 설치되어 있습니다.",
         "nginx": "NGINX가 이미 설치되어 있습니다.",
         "different": "다른 프록시가 이미 설치되어 있습니다."
@@ -75,14 +96,151 @@
         "waf-label": "웹 애플리케이션을 안전하게 게시 및 보호",
         "ip-label": "Ingress/Egress 트래픽에 대한 NGFW 보호"
       },
+      "s3-config": {
+        "section-title": "S3 버킷 구성",
+        "section-help": "S3 버킷 구성 제공, 웹 응용 프로그램 방화벽에서 구성 개체 스토리지에 필요함",
+        "s3-url": "버킷 URL",
+        "access-key": "액세스 키",
+        "secret-key": "비밀 키"
+      },
       "btn-label": "배포 준비 완료",
+      "btn-edit": "편집",
       "cluster-name-error": "클러스터 이름은 100자를 초과해서는 안 됩니다.",
       "name-pattern-error": "클러스터 이름에 잘못된 문자가 있습니다.",
       "cluster-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
-      "not-slected-cni": "CNI를 선택하지 않았습니다. 계속하려면 현재 CNI를 선택하십시오.",
+      "not-selected-cni": "CNI를 선택하지 않았습니다. 계속하려면 현재 CNI를 선택하십시오.",
       "require-cni": "클라우드 시리즈 방화벽을 사용하려면 전제 조건으로 CNI가 설치되어 있어야 합니다. 공식 사이트에 있는 Calico CNI를 설치하는 것이 좋습니다.",
-      "not-selected-ingress": "수신 컨트롤러를 선택하지 않았습니다. 계속하려면 수신 컨트롤러를 선택하거나 WAF 기능을 선택 해제하십시오.",
-      "not-supported-ingress": "WAF에서 지원되지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 클러스터에서 기존 수신 컨트롤러를 제거하거나 WAF를 선택 취소해야 합니다."
+      "not-selected-ingress": "수신 컨트롤러를 선택하지 않았습니다. 계속하려면 수신 컨트롤러를 선택하거나 WAF를 끄십시오.",
+      "not-supported-ingress": "WAF에서 지원되지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 클러스터에서 수신 컨트롤러를 제거해야 합니다. 그렇지 않으면 WAF를 끄십시오."
+    },
+    "cluster-overview": {
+      "title": "개요",
+      "breadcrumbs-text": "클러스터 개요",
+      "status": "상태",
+      "installation-steps": "설치 단계",
+      "confirm-cluster-delete": "클러스터를 삭제하시겠습니까?"
+    },
+    "waf": {
+      "list": {
+        "title": "웹 응용 프로그램 방화벽 규칙",
+        "breadcrumb-text": "웹 응용 프로그램 방화벽 규칙",
+        "search-placeholder":"WAF 규칙 검색",
+        "add": "규칙 추가",
+        "name": "이름",
+        "description": "설명",
+        "entry-points": "진입점",
+        "redirect-http": "리디렉션 HTTP",
+        "routes": "경로",
+        "routers": "라우터",
+        "web-services": "웹 서비스",
+        "protection-rule": "보호 규칙",
+        "rate-limit": "속도 제한",
+        "status": "상태",
+        "age": "나이",
+        "messages": {
+          "delete-rule-success": "규칙이 삭제되었습니다.",
+          "delete-rule-error": "규칙을 삭제할 수 없습니다."
+        }
+      },
+      "add": {
+        "title": "Waf 규칙 추가",
+        "breadcrumb-text": "Waf 규칙 추가"
+      },
+      "edit": {
+        "title": "WAF 규칙 편집",
+        "breadcrumb-text": "WAF 규칙 편집",
+        "status": "상태",
+        "rule-name": "규칙 이름",
+        "description": "설명",
+        "entry-points": "진입점",
+        "listening-port": "수신 대기 포트 (1-65535)",
+        "http-listening-port": "HTTP 수신 포트(1-65535)",
+        "http-only": "HTTPS/TLS",
+        "redirect-http": "리디렉션 HTTP",
+        "request-path": "요청 경로",
+        "request-from": "대상 경로에 매핑",
+        "routes": "경로",
+        "fqdn": "FQDN",
+        "header": "머리글",
+        "name-placeholder": "이름",
+        "value-placeholder": "값",
+        "destination-type": "대상 유형",
+        "destination-type-placeholder": "대상 유형 선택",
+        "namespace": "네임스페이스",
+        "namespace-placeholder": "네임스페이스 선택",
+        "service": "서비스",
+        "service-placeholder": "서비스 선택",
+        "service-port": "서비스 포트",
+        "service-port-placeholder": "포트 선택",
+        "destination-ip-fqdn": "대상 IP/FQDN",
+        "destination-port": "대상 포트",
+        "web-service-use-tls": "웹 서비스는 TLS 사용",
+        "path": "경로",
+        "destination-path": "대상 경로",
+        "headers": "헤더",
+        "type": "유형",
+        "destination": "대상",
+        "port": "포트",
+        "https-s": "HTTPS/S",
+        "action": "작업",
+        "edit-route-tooltip": "경로 수정",
+        "delete-route-tooltip": "경로 삭제",
+        "clone-route-tooltip": "경로 복제",
+        "protections": "보호",
+        "protection-policies": "보호 정책",
+        "policy-placeholder": "정책 선택",
+        "certificate": "인증서",
+        "certificate-placeholder": "인증서 선택",
+        "domains-fqdn-placeholder": "호스트 이름 선택",
+        "add-route": "Add route" 
+      }
+    },
+    "certificate": {
+      "title": "인증서 추가",
+      "name": "이름",
+      "description": "설명",
+      "certificate": "인증서",
+      "private-key": "개인 키",
+      "browse": "찾아보기",
+      "breadcrumb-text": "인증서 추가",
+      "list": {
+        "title": "인증서",
+        "add-certificate": "인증서 추가",
+        "search-placeholder": "인증서 검색",
+        "domain-names": "도메인 이름",
+        "breadcrumb-text": "인증서"
+      },
+      "messages": {
+        "success-notification-title": "성공",
+        "error-notification-title": "오류",
+        "certificate-delete-success": "인증서가 삭제되었습니다.",
+        "certificate-delete-error": "인증서를 삭제할 수 없습니다."
+      }
+    },
+    "firewall-rules": {
+      "list": {
+        "title": "방화벽 규칙",
+        "breadcrumb-text": "방화벽 규칙",
+        "add": "규칙 추가",
+        "name": "이름",
+        "description": "설명",
+        "pod-selector": "Pod 선택기",
+        "ingress": "수신",
+        "ingress-service": "수신 서비스",
+        "egress": "송신",
+        "egress-service": "송신 서비스"
+      }
+    },
+    "ips": {
+      "rule": {
+        "title": "침입 방지",
+        "breadcrumb-text": "침입 방지",
+        "section-title": "보호 정책",
+        "ns-policy-disabled": "노스-사우스(North-South) 트래픽에 대한 IPS 검색을 활성화합니다.",
+        "ew-policy-disabled": "이스트-웨스트(East-West) 트래픽에 대한 IPS 검색을 활성화합니다.",
+        "save-success": "구성이 성공적으로 저장되었습니다.",
+        "save-failed": "변경 사항을 저장하지 못했습니다."
+      }
     }
   }
 }

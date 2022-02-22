@@ -7,6 +7,7 @@
       "cancel": "Annuler",
       "edit": "Éditer",
       "delete": "Supprimer",
+      "copy": "Copier",
       "ok": "OK",
       "download": "Télécharger",
       "approve": "Approuver",
@@ -30,7 +31,8 @@
       "agent-app-request": "Si vous souhaitez ajouter des stratégies nécessitant un agent ZTNA, demandez d’abord l’agent. Nous vous informerons lorsqu’il sera disponible. Vous pouvez ajouter des stratégies avant, mais elles ne seront pas actives.",
       "agent-app-request-action": "Demander un agent",
       "agent-app-request-title": "Activer l’accès aux stratégies via l’agent",
-      "agent-app-request-comment": "Veuillez autoriser l’accès à [n] postes. Mon identifiant Central est {{login}} et mon ID client est {{customer_id}}."
+      "agent-app-request-comment": "Veuillez autoriser l’accès à [n] postes. Mon identifiant Central est {{login}} et mon ID client est {{customer_id}}.",
+      "read-more": "en savoir plus..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - Passerelles",
         "breadcrumb-text": "Passerelles",
-        "error": "Erreur lors de la récupération de la liste des passerelles"
+        "error": "Erreur lors de la récupération de la liste des passerelles",
+        "connector-modal": {
+          "header": "Succès ! Connecteur ajouté",
+          "copy-fqdn-label": "Ajoutez le lien suivant à votre serveur DNS :",
+          "alias-domain": "Domaine d’alias",
+          "dns-info": "Veuillez ajouter le domaine d’alias ci-dessous en tant qu’enregistrement CNAME pour le nom complet de domaine du connecteur sur votre serveur DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Détails de la passerelle",
@@ -311,6 +319,7 @@
         "identity-provider": "Fournisseur d’identité",
         "fqdn": "Nom de domaine complet",
         "appDomain": "Domaine",
+        "appDomainVerified": "Domaine (vérifié)",
         "app-domain-validation": "Domaine de la ressource incorrect",
         "password": "Mot de passe de la passerelle",
         "password-placeholder": "Mot de passe",
@@ -396,7 +405,14 @@
             "two-arm-info": "Utilise à la fois le ports physique (WAN et LAN) de l’appareil."
           }
         },
-        "ztna-saas": "Activer le mode connecteur"
+        "gateway": "Passerelle",
+        "connector": "Connecteur",
+        "mode": "Mode",
+        "gateway-mode": "Mode passerelle : Les passerelles sont déployées dans les centres de données gérés par le client et, par conséquent, les clients gèrent le plan de données. Ces passerelles sont exposées à l’Internet public",
+        "connector-mode": "Mode du connecteur : Sophos gère le plan de données. Les connecteurs ne sont pas exposés à l’Internet public. Les connecteurs relient le Cloud Sophos aux ressources internes.",
+        "no-verified-domain": "Aucun domaine vérifié disponible.",
+        "add-verify-domain": "Ajouter/vérifier des domaines.",
+        "read-more": "en savoir plus..."
       },
       "delete": {
         "header": "Supprimer une passerelle",
@@ -611,7 +627,7 @@
         "description-placeholder": "Description",
         "provider": "Fournisseur",
         "tenantid": "ID du locataire",
-        "clientid": "ID client",
+        "clientid": "ID du client",
         "clientsecret": "Clé secrète client",
         "issuer-uri": "URI de l’émetteur",
         "scope": "Portée",
@@ -630,7 +646,7 @@
         "test-connection-success": "Connexion réussie",
         "test-connection-failure": "Connexion impossible",
         "provider-error": "Un fournisseur d’identité de ce type existe déjà",
-        "clientId-validation": "ID client obligatoire",
+        "clientId-validation": "ID Client obligatoire",
         "tenantId-validation": "ID locataire obligatoire",
         "clientSecret-validation": "Secret client obligatoire",
         "loading-error": "Erreur de chargement du fournisseur d’identité",
@@ -751,12 +767,18 @@
         "title": "Zero Trust Network Access - Paramètres",
         "breadcrumb-text": "Paramètres"
       },
-      "error": "Erreur lors de la récupération des paramètres."
+      "error": "Erreur lors de la récupération des paramètres.",
+      "service-edge": {
+        "on": "Activer Sophos Service Edge",
+        "off": "Désactiver Sophos Service Edge",
+        "domains": "Domaines",
+        "domains-desc": "Ajouter et vérifier un domaine à utiliser avec ZTNAaaS"
+      }
     }
   },
   "ztna": {
     "apiLabel": {
-      "dashboard-data-duration": "Dernières 24 heures",
+      "dashboard-data-duration": "Les dernières 24 heures",
       "top5AppsByBytes": "Top 5 des applis par transfert de données",
       "applicationName": "Ressource",
       "appTotalBytes": "Total d’octets (Mo)",
@@ -1672,7 +1694,9 @@
       "application_type": "Type de ressources",
       "policy": "Stratégie",
       "deny_reason_count": "Nombre de motifs de refus"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "Création de la demande de corps non valide",
