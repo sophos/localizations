@@ -7,6 +7,7 @@
       "cancel": "キャンセル",
       "edit": "編集",
       "delete": "削除",
+      "copy": "コピー",
       "ok": "OK",
       "download": "ダウンロード",
       "approve": "承認",
@@ -30,7 +31,8 @@
       "agent-app-request": "ZTNA エージェントを必要とするポリシーを追加する場合は、まずエージェントをリクエストします。利用可能になった時点でお知らせします。ポリシーは事前に追加できますが、アクティブにはなりません。",
       "agent-app-request-action": "エージェントのリクエスト",
       "agent-app-request-title": "エージェントベースのポリシーアクセスの有効化",
-      "agent-app-request-comment": "[n]個のシートにアクセスを許可してください。Central ログインは {{login}} で、顧客 ID は {{customer_id}} です。"
+      "agent-app-request-comment": "[n]個のシートにアクセスを許可してください。Central ログインは {{login}} で、顧客 ID は {{customer_id}} です。",
+      "read-more": "詳細情報..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - ゲートウェイ",
         "breadcrumb-text": "ゲートウェイ",
-        "error": "ゲートウェイリストの取得中、エラーが発生しました"
+        "error": "ゲートウェイリストの取得中、エラーが発生しました",
+        "connector-modal": {
+          "header": "成功！コネクタが追加されました",
+          "copy-fqdn-label": "次のリンクを DNS サーバーに追加します:",
+          "alias-domain": "エイリアスドメイン",
+          "dns-info": "DNS サーバーのコネクタの FQDN の CNAME レコードとして、次のエイリアスドメインを追加してください"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - ゲートウェイの詳細",
@@ -311,6 +319,7 @@
         "identity-provider": "IdP (Identity Provider)",
         "fqdn": "FQDN",
         "appDomain": "ドメイン",
+        "appDomainVerified": "ドメイン (検証済み)",
         "app-domain-validation": "リソースドメインが無効です",
         "password": "ゲートウェイパスワード",
         "password-placeholder": "パスワード",
@@ -396,7 +405,14 @@
             "two-arm-info": "デバイスの物理ポートの両方 (WAN および LAN) を使用します。"
           }
         },
-        "ztna-saas": "コネクタモードの有効化"
+        "gateway": "ゲートウェイ",
+        "connector": "コネクタ",
+        "mode": "モード",
+        "gateway-mode": "ゲートウェイモード: ゲートウェイは顧客管理型データセンターで導入されるため、顧客がデータプレーンを管理します。このようなゲートウェイは、パブリックインターネットに公開されます",
+        "connector-mode": "コネクタモード: ソフォスがデータプレーンを管理します。コネクタは、パブリックインターネットに公開されません。コネクタは、ソフォスのクラウドと内部リソースをリンクします。",
+        "no-verified-domain": "有効な検証済みドメインはありません。",
+        "add-verify-domain": "ドメインの追加/検証。",
+        "read-more": "詳細情報..."
       },
       "delete": {
         "header": "ゲートウェイの削除",
@@ -407,7 +423,7 @@
         "info": "ゲートウェイ {{gatewayName}} 情報:",
         "gateway-instances": " ゲートウェイインスタンス",
         "resources": " リソース",
-        "warn-message-1": "ゲートウェイと ",
+        "warn-message-1": "ゲートウェイとすべてのリソースを削除しますか ",
         "warn-message-2": " 個のリソースすべてを削除しますか？"
       },
       "status": {
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - 設定",
         "breadcrumb-text": "設定"
       },
-      "error": "設定の取得中、エラーが発生しました"
+      "error": "設定の取得中、エラーが発生しました",
+      "service-edge": {
+        "on": "Sophos Service Edge をオンにする",
+        "off": "Sophos Service Edge をオフにする",
+        "domains": "ドメイン",
+        "domains-desc": "ZTNAaaS で使用するドメインを追加して検証します"
+      }
     }
   },
   "ztna": {
@@ -1672,7 +1694,9 @@
       "application_type": "リソースの種類",
       "policy": "ポリシー",
       "deny_reason_count": "拒否された理由の数"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "リクエストボディの作成が無効です",

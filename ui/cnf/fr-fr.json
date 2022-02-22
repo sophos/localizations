@@ -6,48 +6,69 @@
           "edit": "Modifier",
           "delete": "Supprimer",
           "update": "Mettre à jour",
-          "save": "Enregistrer"
-      }
+          "save": "Enregistrer",
+          "disable": "Désactiver",
+          "cancel": "Annuler",
+          "enter": "Saisir",
+          "remove": "Supprimer",
+          "modify": "Modifier",
+          "confirm": "Confirmer",
+          "approve": "Approuver",
+          "search":  "Rechercher"
+      },
+      "manage": "Gérer",
+      "status": {
+        "success": "Succès",
+        "error": "Erreur"
+      },
+      "confirm-delete-header": "Confirmation de la suppression"
     },
     "nav-title": {
         "clusters": "Clusters",
-        "dashboard": "Tableau de bord"
+        "dashboard": "Tableau de bord",
+        "waf-rules": "Règles WAF",
+        "certificates": "Certificats",
+        "ips-rule": "Protection IPS"
     },
     "clusters-list": {
-        "title": "Pare-feu de la série Cloud",
-        "search-placeholder": "Rechercher un cluster",
-        "add": "Ajouter un pare-feu",
-        "name": "Nom",
-        "status": "État",
-        "description": "Description",
-        "license": "Licence",
-        "type": "Type",
-        "features": "Fonctions",
-        "manage": "Gérer",
-        "feature": {
-          "firewall":  "Pare-feu",
-          "waf": "WAF",
-          "ips": "IPS"
-        },
-        "registration-status": {
-          "waiting-for-deployment": "Déploiement en attente",
-          "awaiting-approval": "En attende de confirmation",
-          "approved": "Approuvé"
-        },
-        "installation-type": {
-          "aws": "Amazon EKS",
-          "on-prem": "Local"
-        }
+      "title": "Pare-feu de la série Cloud",
+      "breadcrumbs-text": "Pare-feu de la série Cloud",
+      "search-placeholder": "Rechercher un cluster",
+      "add": "Ajouter un pare-feu",
+      "name": "Nom",
+      "status": "État",
+      "description": "Description",
+      "license": "Licence",
+      "type": "Type",
+      "features": "Fonctions",
+      "manage": "Gérer",
+      "feature": {
+        "firewall": "Pare-feu",
+        "waf": "WAF",
+        "ips": "IPS"
+      },
+      "registration-status": {
+        "waiting-for-deployment": "Déploiement en attente",
+        "awaiting-approval": "En attende de confirmation",
+        "approved": "Approuvé"
+      },
+      "installation-type": {
+        "aws": "Amazon EKS",
+        "on-prem": "Local"
+      }
     },
     "add-cluster": {
+      "title": "Ajouter un pare-feu",
+      "breadcrumbs-text": "Ajouter un pare-feu",
       "cluster-name": "Nom du cluster",
-      "cluster-type":  "Type d’installation Kubernetes",
+      "cluster-type": "Type d’installation Kubernetes",
       "cluster-description": "Description",
-      "cluster-labels":  "Identifiants",
+      "cluster-labels": "Identifiants",
       "cluster-services": "Liste des services",
       "cluster-installation-heading": "Étapes d’installation",
       "type-place-holder": "Sélectionner un type",
       "action": "Action",
+      "status": "État",
       "type": {
         "premises": "Installation locale",
         "aws": "Amazon EKS"
@@ -62,7 +83,7 @@
       "wafoptions-place-holder": "Sélectionner le contrôleur d'entrée",
       "waf-options": {
         "no-ingress": "Aucun contrôleur d’entrée installé",
-        "curifence": "J’ai déjà installé Curifence",
+        "curifence": "J’ai déjà installé Curiefense",
         "traefik": "J’ai déjà installé Traefik",
         "nginx": "J’ai déjà installé NGINX",
         "different": "J’ai déjà installé un autre proxy"
@@ -75,14 +96,151 @@
         "waf-label": "Publiez et protégez vos applications Web en toute sécurité",
         "ip-label": "Protection NGFW pour le trafic entrant/sortant"
       },
+      "s3-config": {
+        "section-title": "Configuration du compartiment S3",
+        "section-help": "Fournir la configuration du compartiment S3 dont a besoin le pare-feu d’application Web (WAF) pour le stockage des objets de configuration",
+        "s3-url": "URL du compartiment",
+        "access-key": "Clé d’accès",
+        "secret-key": "Clé secrète"
+      },
       "btn-label": "Prêt à être déployé",
+      "btn-edit": "Modifier",
       "cluster-name-error": "Le nom du cluster ne doit pas dépasser 100 caractères.",
       "name-pattern-error": "Le nom du cluster comporte des caractères non valides.",
       "cluster-description-error": "La description ne doit pas dépasser plus de 250 caractères.",
-      "not-slected-cni": "Vous n’avez pas sélectionné de CNI, sélectionnez votre CNI actuel pour continuer.",
+      "not-selected-cni": "Vous n’avez pas sélectionné de CNI, sélectionnez votre CNI actuel pour continuer.",
       "require-cni": "Le pare-feu Cloud Series Firewall nécessite l’installation de CNI. Il est recommandé d’installer Calico CNI à partir du site officiel.",
-      "not-selected-ingress": "Vous n’avez pas sélectionné le contrôleur d’entrée. Pour continuer, sélectionnez un contrôleur d’entrée ou dessélectionnez la fonction WAF.",
-      "not-supported-ingress": "Vous avez sélectionné un contrôleur d’entrée existant qui n’est pas pris en charge avec WAF. Si vous souhaitez utiliser WAF, veuillez supprimer le contrôleur d’entrée existant de votre cluster ou dessélectionner WAF."
+      "not-selected-ingress": "Vous n’avez pas sélectionné le contrôleur d’entrée. Pour continuer, sélectionnez un contrôleur d’entrée ou désactivez le WAF.",
+      "not-supported-ingress": "Vous avez sélectionné un contrôleur d’entrée existant qui n’est pas pris en charge avec WAF. Si vous souhaitez utiliser le WAF, veuillez supprimer le contrôleur d’entrée de votre cluster. Sinon, désactivez le WAF."
+    },
+    "cluster-overview": {
+      "title": "Vue générale",
+      "breadcrumbs-text": "Vue générale du cluster",
+      "status": "État",
+      "installation-steps": "Étapes d’installation",
+      "confirm-cluster-delete": "Êtes-vous sûr(e) de vouloir supprimer le cluster ?"
+    },
+    "waf": {
+      "list": {
+        "title": "Règles de pare-feu d’application Web",
+        "breadcrumb-text": "Règles de pare-feu d’application Web",
+        "search-placeholder":"Rechercher la règle WAF",
+        "add": "Ajouter une règle",
+        "name": "Nom",
+        "description": "Description",
+        "entry-points": "Points d’entrée",
+        "redirect-http": "Redirection HTTP",
+        "routes": "Routes",
+        "routers": "Routeurs",
+        "web-services": "Services Web",
+        "protection-rule": "Règle de protection",
+        "rate-limit": "Limite de débit",
+        "status": "État",
+        "age": "Âge",
+        "messages": {
+          "delete-rule-success": "Règle de pare-feu supprimée.",
+          "delete-rule-error": "Impossible de supprimer la règle."
+        }
+      },
+      "add": {
+        "title": "Ajouter une règle WAF",
+        "breadcrumb-text": "Ajouter une règle WAF"
+      },
+      "edit": {
+        "title": "Modifier une règle WAF",
+        "breadcrumb-text": "Modifier une règle WAF",
+        "status": "État",
+        "rule-name": "Nom de la règle",
+        "description": "Description",
+        "entry-points": "Points d’entrée",
+        "listening-port": "Port d’écoute (1-65535)",
+        "http-listening-port": "Port d’écoute HTTP (1-65535)",
+        "http-only": "HTTPS/TLS",
+        "redirect-http": "Redirection HTTP",
+        "request-path": "Chemin de la demande",
+        "request-from": "Mapper vers le chemin de destination",
+        "routes": "Routes",
+        "fqdn": "Nom de domaine complet",
+        "header": "En-tête",
+        "name-placeholder": "Nom",
+        "value-placeholder": "Valeur",
+        "destination-type": "Type de destination",
+        "destination-type-placeholder": "Sélectionner le type de destination",
+        "namespace": "Espace de noms",
+        "namespace-placeholder": "Sélectionner l’espace de noms",
+        "service": "Service",
+        "service-placeholder": "Sélectionner un service",
+        "service-port": "Port du service",
+        "service-port-placeholder": "Sélectionner le port",
+        "destination-ip-fqdn": "IP de destination/Nom de domaine complet",
+        "destination-port": "Port de destination",
+        "web-service-use-tls": "Le service Web utilise TLS",
+        "path": "Chemin",
+        "destination-path": "Chemin de destination",
+        "headers": "En-têtes",
+        "type": "Type",
+        "destination": "Destination",
+        "port": "Port",
+        "https-s": "HTTPS/S",
+        "action": "Action",
+        "edit-route-tooltip": "Modifier la route",
+        "delete-route-tooltip": "Supprimer la route",
+        "clone-route-tooltip": "Cloner la route",
+        "protections": "Protections",
+        "protection-policies": "Stratégies de protection",
+        "policy-placeholder": "Sélectionner une stratégie",
+        "certificate": "Certificat",
+        "certificate-placeholder": "Sélectionner le certificat",
+        "domains-fqdn-placeholder": "Sélectionnez le nom d’hôte",
+        "add-route": "Add route" 
+      }
+    },
+    "certificate": {
+      "title": "Ajouter un certificat",
+      "name": "Nom",
+      "description": "Description",
+      "certificate": "Certificat",
+      "private-key": "Clé privée",
+      "browse": "Parcourir",
+      "breadcrumb-text": "Ajouter un certificat",
+      "list": {
+        "title": "Certificats",
+        "add-certificate": "Ajouter un certificat",
+        "search-placeholder": "Rechercher des certificats",
+        "domain-names": "Noms de domaine",
+        "breadcrumb-text": "Certificats"
+      },
+      "messages": {
+        "success-notification-title": "Succès",
+        "error-notification-title": "Erreur",
+        "certificate-delete-success": "Le certificat a été supprimé.",
+        "certificate-delete-error": "Impossible de supprimer le certificat."
+      }
+    },
+    "firewall-rules": {
+      "list": {
+        "title": "Règles de pare-feu",
+        "breadcrumb-text": "Règles de pare-feu",
+        "add": "Ajouter une règle",
+        "name": "Nom",
+        "description": "Description",
+        "pod-selector": "Sélecteur de boîtier",
+        "ingress": "Entrée",
+        "ingress-service": "Service d’entrée",
+        "egress": "Sortie",
+        "egress-service": "Service de sortie"
+      }
+    },
+    "ips": {
+      "rule": {
+        "title": "Protection contre les intrusions",
+        "breadcrumb-text": "Protection contre les intrusions",
+        "section-title": "Stratégies de protection",
+        "ns-policy-disabled": "Activer le contrôle IPS pour le trafic Nord-Sud.",
+        "ew-policy-disabled": "Activer le contrôle IPS pour le trafic Est-Ouest.",
+        "save-success": "La configuration a bien été enregistrée.",
+        "save-failed": "Impossible d’enregistrer les modifications."
+      }
     }
   }
 }

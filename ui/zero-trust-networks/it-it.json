@@ -7,6 +7,7 @@
       "cancel": "Annulla",
       "edit": "Modifica",
       "delete": "Elimina",
+      "copy": "Copia",
       "ok": "OK",
       "download": "Scarica",
       "approve": "Approva",
@@ -30,7 +31,8 @@
       "agent-app-request": "Se desideri aggiungere criteri che hanno bisogno dell'agente ZTNA, richiedi prima l'agente. Una volta disponibile, te lo comunicheremo. Nel frattempo puoi aggiungere criteri, ma non saranno attivi.",
       "agent-app-request-action": "Richiedi agente",
       "agent-app-request-title": "Abilita accesso ai criteri basato sull'agente",
-      "agent-app-request-comment": "Concedi l'accesso a [n] utenti. Il mio accesso a Central è {{login}} e l'ID cliente è {{customer_id}}."
+      "agent-app-request-comment": "Concedi l'accesso a [n] utenti. Il mio accesso a Central è {{login}} e l'ID cliente è {{customer_id}}.",
+      "read-more": "ulteriori informazioni..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - Gateway",
         "breadcrumb-text": "Gateway",
-        "error": "Errore durante il recupero dell'elenco dei gateway"
+        "error": "Errore durante il recupero dell'elenco dei gateway",
+        "connector-modal": {
+          "header": "Operazione completata. Connettore aggiunto",
+          "copy-fqdn-label": "Aggiungi questo link al tuo server DNS:",
+          "alias-domain": "Dominio dell’alias",
+          "dns-info": "Aggiungi il seguente dominio dell’alias come record CNAME per l’FQDN del connettore sul tuo server DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Dettagli gateway",
@@ -311,6 +319,7 @@
         "identity-provider": "Provider di identità",
         "fqdn": "FQDN",
         "appDomain": "Dominio",
+        "appDomainVerified": "Dominio (verificato)",
         "app-domain-validation": "Dominio della risorsa non valido",
         "password": "Password del gateway",
         "password-placeholder": "Password",
@@ -396,7 +405,14 @@
             "two-arm-info": "Utilizza entrambe le porte fisiche (WAN e LAN) del dispositivo."
           }
         },
-        "ztna-saas": "Abilita modalità connettore"
+        "gateway": "Gateway",
+        "connector": "Connettore",
+        "mode": "Modalità",
+        "gateway-mode": "Modalità gateway: I gateway vengono distribuiti in data center gestiti dai clienti, quindi sono i clienti a gestire il piano dati. Questi gateway sono esposti all’Internet pubblico",
+        "connector-mode": "Modalità connettore: Sophos gestisce il piano dati. I connettori non sono esposti all’Internet pubblico. I connettori connettono il cloud di Sophos alle risorse interne.",
+        "no-verified-domain": "Non sono disponibili domini verificati.",
+        "add-verify-domain": "Aggiungi/verifica domini.",
+        "read-more": "ulteriori informazioni..."
       },
       "delete": {
         "header": "Elimina gateway",
@@ -630,7 +646,7 @@
         "test-connection-success": "Connessione riuscita.",
         "test-connection-failure": "Connessione non riuscita",
         "provider-error": "Esiste già un provider di identità di questo tipo",
-        "clientId-validation": "L'ID client è obbligatorio",
+        "clientId-validation": "L’ID client è obbligatorio",
         "tenantId-validation": "L'ID tenant è obbligatorio",
         "clientSecret-validation": "Il segreto client è obbligatorio",
         "loading-error": "Errore durante il caricamento del provider di identità",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - Impostazioni",
         "breadcrumb-text": "Impostazioni"
       },
-      "error": "Errore durante il recupero delle impostazioni"
+      "error": "Errore durante il recupero delle impostazioni",
+      "service-edge": {
+        "on": "Attiva Sophos Service Edge",
+        "off": "Disattiva Sophos Service Edge",
+        "domains": "Domini",
+        "domains-desc": "Aggiungi e verifica un dominio da utilizzare con ZTNAaaS"
+      }
     }
   },
   "ztna": {
@@ -1414,7 +1436,7 @@
       "sum_of_receivedkbits": "Somma kbit ricevuti",
       "application_classification": "Classificazione di Risorse e accesso",
       "risky_apps_seen": "Sono state rilevate app rischiose",
-      "endpoint_id": "ID dell'Endpoint",
+      "endpoint_id": "ID dell’Endpoint",
       "memory_usage": "Utilizzo della memoria",
       "process_user": "Utente del processo",
       "log_type": "Tipo di log",
@@ -1672,7 +1694,9 @@
       "application_type": "Tipo di risorsa",
       "policy": "Criterio",
       "deny_reason_count": "Conteggio motivo negato"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "Il corpo del messaggio per la richiesta di creazione non è valido",

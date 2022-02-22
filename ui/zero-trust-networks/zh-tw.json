@@ -7,6 +7,7 @@
       "cancel": "取消",
       "edit": "編輯",
       "delete": "刪除",
+      "copy": "複製",
       "ok": "確定",
       "download": "下載",
       "approve": "贊成",
@@ -30,7 +31,8 @@
       "agent-app-request": "如果您想要新增需要 ZTNA 代理的原則，請首先請求代理。當可用時我們會告知您。在此之前，您可新增原則，但它們不會啟用。",
       "agent-app-request-action": "請求代理",
       "agent-app-request-title": "啟用基於代理的原則存取權限",
-      "agent-app-request-comment": "請允許存取 [n] 個座椅。我的 Central 登入資訊為 {{login}}，客戶 ID 為 {{customer_id}}。"
+      "agent-app-request-comment": "請允許存取 [n] 個座椅。我的 Central 登入資訊為 {{login}}，客戶 ID 為 {{customer_id}}。",
+      "read-more": "閱讀更多..."
     },
     "application": {
       "form": {
@@ -154,7 +156,7 @@
       "title": "Zero Trust Network Access - 儀錶板",
       "breadcrumb-text": "Zero Trust Network Access 儀錶板",
       "eap-program-message": "此產品根據提前存取計劃提供。按一下 \"反馈\" 報告錯誤或提供回饋意見。",
-      "nodata": "無可用数据",
+      "nodata": "无可用数据",
       "set-up-banner": {
         "title": {
           "sync-users": "1.同步使用者",
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - 閘道",
         "breadcrumb-text": "閘道",
-        "error": "擷取閘道清單時出現錯誤"
+        "error": "擷取閘道清單時出現錯誤",
+        "connector-modal": {
+          "header": "成功！已新增連接器",
+          "copy-fqdn-label": "將以下連結新增至您的 DNS 伺服器：",
+          "alias-domain": "別名網域",
+          "dns-info": "請在您的 DNS 伺服器上爲連接器的 FQDN 新增以下別名網域作爲 CNAME 記錄"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - 閘道詳細資料",
@@ -311,6 +319,7 @@
         "identity-provider": "識別提供者",
         "fqdn": "FQDN",
         "appDomain": "網域",
+        "appDomainVerified": "網域（已驗證）",
         "app-domain-validation": "無效的資源網域",
         "password": "閘道密碼",
         "password-placeholder": "密碼",
@@ -396,7 +405,14 @@
             "two-arm-info": "使用裝置的實體連接埠（WAN 與 LAN）。"
           }
         },
-        "ztna-saas": "啟用連接器模式"
+        "gateway": "閘道",
+        "connector": "連接器",
+        "mode": "模式",
+        "gateway-mode": "閘道模式：閘道部署在客戶管理的資料中心，由客戶對資料平面進行管理。這些閘道會在網際網路上公開",
+        "connector-mode": "連接器模式：Sophos 管理資料平面。連接器不會在網際網路上公開。連接器將 Sophos Cloud 與內部資源連結。",
+        "no-verified-domain": "沒有可用的已驗證網域。",
+        "add-verify-domain": "新增/驗證網域。",
+        "read-more": "閱讀更多..."
       },
       "delete": {
         "header": "刪除閘道",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - 設定",
         "breadcrumb-text": "設定"
       },
-      "error": "擷取設定時出現錯誤"
+      "error": "擷取設定時出現錯誤",
+      "service-edge": {
+        "on": "開啟 Sophos Service Edge",
+        "off": "關閉 Sophos Service Edge",
+        "domains": "網域",
+        "domains-desc": "新增並驗證用於與 ZTNAaaS 搭配使用的網域"
+      }
     }
   },
   "ztna": {
@@ -1672,7 +1694,9 @@
       "application_type": "資源類型",
       "policy": "政策",
       "deny_reason_count": "已拒絕的理由計數"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "建立請求主體無效",

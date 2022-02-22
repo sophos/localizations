@@ -324,7 +324,7 @@
       }
     },
     "sites": {
-      "siteOverview": "Vue générale du site",
+      "site-overview": "Vue générale du site",
       "neighbourhoodNetworks": "Réseaux avoisinants",
       "list": {
         "breadcrumb-text": "Sites",
@@ -398,6 +398,27 @@
         "aps-none-placed": "Aucun point d’accès n’a été placé.",
         "ap-simulated": "Point d’accès simulé",
         "failed-to-load-floor": "Impossible de charger le plan d’étage",
+        "deleting": "Supprimer",
+        "editing": "Modifier",
+        "save": "Enregistrer",
+        "floorplan-update": "Plan d’étage enregistré !",
+        "floorplan-update-failure": "Impossible d’enregistrer le plan d’étage.",
+        "cancel": "Annuler",
+        "delete": {
+          "error": "Impossible de supprimer le plan d’étage.",
+          "success": "Plan d’étage supprimé.",
+          "confirmation-header": "Supprimer l’étage",
+          "confirmation-text": "Voulez-vous vraiment supprimer l’étage '{{ name }}' ? Les points d’accès ne seront plus assignés suite à cette opération."
+        },
+        "scale": {
+          "scale-label": "Assigner une échelle :",
+          "scale-placeholder": "Distance (m)",
+          "scale-headline": "Assigner des dimensions :",
+          "hint": {
+            "input": "Veuillez définir la distance adéquate et cliquer sur Terminé.",
+            "pins": "Placez deux punaises sur le plan d’étage pour définir l’échelle."
+          }
+        },
         "upload": {
           "upload-success": "Fichier téléchargé",
           "upload-error": "Impossible d’archiver l’image du plan d’étage.",
@@ -495,7 +516,7 @@
         "welcome-text": "Texte de bienvenue",
         "portal-terms": "Conditions générales d’utilisation",
         "auth-type": "Type d’authentification",
-        "google-client-id": "ID client Google",
+        "google-client-id": "ID du client Google",
         "google-client-app": "ID de l’appli Google",
         "radius-server": "IP du serveur Radius",
         "port": "Port",
@@ -688,9 +709,9 @@
           "backend-authentication": "Authentification du backend",
           "password-schedule": "Planification du changement de mot de passe",
           "social-login": "Connexion par réseau social",
-          "google-console-help-text": "Vous pouvez obtenir votre ID client Google et votre clé secrète client depuis la <a href={{gooleDeveloperConsoleSite}} target='_blank'>Console Google Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
-          "google-console-second-label": "Créer un nouveau projet et récupérer l’ID client et la clé secrète du client dans la section Codes d’accès.",
-          "client-id-label": "ID client",
+          "google-console-help-text": "Vous pouvez obtenir votre ID du client Google et votre clé secrète client depuis la <a href={{gooleDeveloperConsoleSite}} target='_blank'>Console Google Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
+          "google-console-second-label": "Créer un nouveau projet et récupérer l’ID du client et la clé secrète du client dans la section Codes d’accès.",
+          "client-id-label": "Client ID",
           "client-secret-label": "Clé secrète client",
           "facebook-console-help-text": "Vous pouvez obtenir votre ID d’application Facebook et votre clé secrète de l’application depuis le <a href={{facebookDevelopersSite}} target='_blank'>Compte Facebook Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
           "facebook-console-second-label": "Créer une appli depuis la section « Mes applis ». Récupérer l’ID de l’appli et la clé secrète depuis la section Paramètres.",
@@ -727,7 +748,7 @@
               "data": "Données",
               "unit": "Unité",
               "number-of-vouchers": "Nombre de bons d’accès",
-              "number-of-devices": "Appareils par bon d’accès",
+              "number-of-devices": "Appareils par bon",
               "valid-for": "Valable pour",
               "days": "Jours",
               "hours": "Heures",
@@ -782,7 +803,6 @@
       }
     },
     "accessPoints": {
-      "no-access-point-configured": "Aucun points d’accès n’a été ajouté",
       "list": {
         "breadcrumb-text": "Points d’accès",
         "title": "Sans fil - Point d’accès",
@@ -800,16 +820,16 @@
           "workload": "Charge de travail",
           "band": "Bande",
           "mode": "Mode",
-          "no-access-point-configured": "aucun point d’accès n’a été configuré.",
           "channels": "Canaux",
           "mesh": "Rôle de maillage",
           "exportToCsvText": "Exporter au format CSV",
           "errorMessage": "Impossible de supprimer le point d’accès",
-          "accessPointNotFoundErrorMessage": "Point d’accès introuvable",
+          "access-point-not-found": "Point d’accès introuvable",
           "dataLoadErrorMessage": "Impossible de charger le point d’accès",
           "editHostNameErrorMessage": "Impossible d’enregistrer le point d’accès",
           "all-sites": "Tous les sites",
           "select-site": "Sélectionner un site",
+          "auto-refresh": "Actualiser automatiquement",
           "unassigned-sites": "Sites non assignés",
           "emptyListMessage": "Aucun points d’accès n’a été ajouté.",
           "listRegisterInfo": "Cliquez sur le bouton Enregistrer pour ajouter les points d’accès."
@@ -822,6 +842,7 @@
         "deleteAp": "Voulez-vous supprimer ce point d’accès ?",
         "forceDelete": "forcer la suppression",
         "automaticOnce": "Automatique une fois",
+        "automaticContinuous": "Automatique en permanence",
         "manual": "Manuel",
         "currenSite": "Site actuel",
         "connectedDevice": "Appareils connectés",
@@ -952,7 +973,7 @@
           "registerAP": {
             "title": "Étape 3",
             "description": "Saisissez le numéro de série et cliquez sur « Enregistrer ». L’enregistrement peut durer jusqu’à 5 minutes.",
-            "agreement": "En cliquant sur « Enregistrer », j’accepte les conditions générales du <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/fr-fr/legal/sophos-end-user-license-agreement.aspx\" target=\"_blank\">Contrat de Licence Utilisateur Final Sophos</a>.",
+            "agreement": "En cliquant sur « Enregistrer », j’accepte les <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/fr-fr/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Conditions d’utilisation de Sophos pour l’utilisateur final.</a>",
             "enterSerialNumber": "Saisir le numéro de série",
             "register": "Enregistrer",
             "editHost": "Suivant"

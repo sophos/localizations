@@ -7,6 +7,7 @@
       "cancel": "Cancelar",
       "edit": "Editar",
       "delete": "Deletar",
+      "copy": "Copiar",
       "ok": "Ok",
       "download": "Fazer o Download",
       "approve": "Aprovar",
@@ -30,7 +31,8 @@
       "agent-app-request": "Se quiser adicionar políticas que requerem o agente ZTNA, primeiro solicite o agente. Nós o avisaremos quando estiver disponível. Você pode adicionar políticas antes disso, mas elas não estarão ativas.",
       "agent-app-request-action": "Solicitar agente",
       "agent-app-request-title": "Ativar agente baseado no acesso à política",
-      "agent-app-request-comment": "Permitir acesso a [n] vagas. Meu login do Central é {{login}} e meu ID de cliente é {{customer_id}}."
+      "agent-app-request-comment": "Permitir acesso a [n] vagas. Meu login do Central é {{login}} e meu ID de cliente é {{customer_id}}.",
+      "read-more": "saiba mais..."
     },
     "application": {
       "form": {
@@ -206,7 +208,13 @@
         },
         "title": "Zero Trust Network Access - Gateways",
         "breadcrumb-text": "Gateways",
-        "error": "Erro ao buscar a lista de gateways"
+        "error": "Erro ao buscar a lista de gateways",
+        "connector-modal": {
+          "header": "Sucesso! Conector adicionado",
+          "copy-fqdn-label": "Adicione o seguinte link ao seu servidor DNS:",
+          "alias-domain": "Domínio de alias",
+          "dns-info": "Adicione o domínio de alias abaixo como um registro CNAME para o FQDN do conector no seu servidor DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Detalhes de Gateway",
@@ -311,6 +319,7 @@
         "identity-provider": "Provedor de identidade",
         "fqdn": "FQDN",
         "appDomain": "Domínio",
+        "appDomainVerified": "Domínio (verificado)",
         "app-domain-validation": "Domínio do recurso inválido",
         "password": "Senha do Gateway",
         "password-placeholder": "Senha",
@@ -396,7 +405,14 @@
             "two-arm-info": "Usa as portas físicas (WAN e LAN) do dispositivo."
           }
         },
-        "ztna-saas": "Habilitar o modo de conector"
+        "gateway": "Gateway",
+        "connector": "Conector",
+        "mode": "Modo",
+        "gateway-mode": "Modo de gateway: Os gateways são implantados nos centros de dados gerenciados do cliente, portanto, os clientes gerenciam o plano de dados. Esses gateways são expostos à Internet pública",
+        "connector-mode": "Modo de conector: A Sophos gerencia o plano de dados. Esses conectores não são expostos à Internet pública. Os conectores vinculam a nuvem da Sophos com os recursos internos.",
+        "no-verified-domain": "Nenhum domínio verificado disponível.",
+        "add-verify-domain": "Adicione/verifique os domínios.",
+        "read-more": "saiba mais..."
       },
       "delete": {
         "header": "Deletar gateway",
@@ -751,7 +767,13 @@
         "title": "Zero Trust Network Access - Configurações",
         "breadcrumb-text": "Configurações"
       },
-      "error": "Erro ao buscar as configurações"
+      "error": "Erro ao buscar as configurações",
+      "service-edge": {
+        "on": "Ativar o Sophos Service Edge",
+        "off": "Desativar o Sophos Service Edge",
+        "domains": "Domínios",
+        "domains-desc": "Adicionar e verificar um domínio para usar com ZTNAaaS"
+      }
     }
   },
   "ztna": {
@@ -1002,7 +1024,7 @@
       "error": {
         "http": {
           "default": "Problema no carregamento de dados.",
-          "500": "Ocorreu um erro. Tente novamente mais tarde."
+          "500": "Ocorreu um erro. Tente de novo mais tarde."
         }
       },
       "fileAnalysis": "Análise de arquivos",
@@ -1672,7 +1694,9 @@
       "application_type": "Tipo de recurso",
       "policy": "Política",
       "deny_reason_count": "Contagem de motivo de negação"
-    },
+    }
+  },
+  "report": {
     "template": {
       "messages": {
         "createRequestBodyNotValid": "O corpo da solicitação Criar não é válido",
