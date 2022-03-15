@@ -2,33 +2,42 @@
   "cnf": {
     "common": {
       "action": {
-          "add": "추가",
-          "edit": "편집",
-          "delete": "삭제",
-          "update": "업데이트",
-          "save": "저장",
-          "disable": "사용 안 함",
-          "cancel": "취소",
-          "enter": "입력",
-          "remove": "제거",
-          "modify": "수정",
-          "confirm": "확인",
-          "approve": "지지",
-          "search":  "검색"
+        "add": "추가",
+        "edit": "편집",
+        "delete": "삭제",
+        "update": "업데이트",
+        "save": "저장",
+        "disable": "사용 안 함",
+        "cancel": "취소",
+        "enter": "입력",
+        "remove": "제거",
+        "modify": "수정",
+        "confirm": "확인",
+        "approve": "지지",
+        "search": "검색"
       },
       "manage": "관리",
       "status": {
         "success": "성공",
         "error": "오류"
       },
-      "confirm-delete-header": "삭제 확인"
+      "confirm-delete-header": "삭제 확인",
+      "auth-suv-unreachable": "인증 서비스에 연결할 수 없음",
+      "clientid-exists": "클라이언트 ID가 이미 있음",
+      "messages": {
+        "denied": "액세스가 거부되었습니다.",
+        "generic-error": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다.",
+        "info": "정보",
+        "bad-credentials": "잘못된 자격 증명 또는 인증서입니다."
+      }
     },
     "nav-title": {
-        "clusters": "클러스터",
-        "dashboard": "대시보드",
-        "waf-rules": "WAF 규칙",
-        "certificates": "인증서",
-        "ips-rule": "IPS 보호"
+      "clusters": "클러스터",
+      "dashboard": "대시보드",
+      "waf-rules": "WAF 규칙",
+      "certificates": "인증서",
+      "ips-rule": "IPS 보호",
+      "admission-control": "승인 제어"
     },
     "clusters-list": {
       "title": "클라우드 시리즈 방화벽",
@@ -45,7 +54,8 @@
       "feature": {
         "firewall": "방화벽",
         "waf": "WAF",
-        "ips": "IPS"
+        "ips": "IPS",
+        "admission-control": "승인 제어"
       },
       "registration-status": {
         "waiting-for-deployment": "배포 대기 중",
@@ -55,7 +65,14 @@
       "installation-type": {
         "aws": "Amazon EKS",
         "on-prem": "온프레미스"
+      },
+      "messages": {
+        "empty-message": "사용 가능한 클러스터가 없습니다."
       }
+    },
+    "edit-cluster": {
+      "title": "방화벽 편집",
+      "breadcrumbs-text": "방화벽 편집"
     },
     "add-cluster": {
       "title": "방화벽 추가",
@@ -69,6 +86,14 @@
       "type-place-holder": "유형 선택",
       "action": "조치",
       "status": "상태",
+      "btn-label": "배포 준비 완료",
+      "cluster-name-error": "클러스터 이름은 100자를 초과해서는 안 됩니다.",
+      "name-pattern-error": "클러스터 이름에 잘못된 문자가 있습니다.",
+      "cluster-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
+      "not-selected-cni": "CNI를 선택하지 않았습니다. 계속하려면 현재 CNI를 선택하십시오.",
+      "require-cni": "클라우드 시리즈 방화벽을 사용하려면 전제 조건으로 CNI가 설치되어 있어야 합니다. 공식 사이트에 있는 Calico CNI를 설치하는 것이 좋습니다.",
+      "not-selected-ingress": "수신 컨트롤러를 선택하지 않았습니다. 계속하려면 수신 컨트롤러를 선택하거나 WAF를 끄십시오.",
+      "not-supported-ingress": "WAF에서 지원되지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 클러스터에서 수신 컨트롤러를 제거해야 합니다. 그렇지 않으면 WAF를 끄십시오.",
       "type": {
         "premises": "온프레미스 설치",
         "aws": "Amazon EKS"
@@ -90,41 +115,54 @@
       },
       "services": {
         "network-firewall": "네트워크 방화벽",
-        "waf": "웹 응용 프로그램 방화벽",
-        "ip": "침입 방지",
         "nf-label": "Kubernetes용 Zero-Trust 방화벽 규칙",
+        "waf": "웹 응용 프로그램 방화벽",
         "waf-label": "웹 애플리케이션을 안전하게 게시 및 보호",
-        "ip-label": "Ingress/Egress 트래픽에 대한 NGFW 보호"
+        "ip": "침입 방지",
+        "ip-label": "Ingress/Egress 트래픽에 대한 NGFW 보호",
+        "admission-control": "승인 제어",
+        "admission-control-label": "컨테이너 배포 표준 제어"
       },
       "s3-config": {
         "section-title": "S3 버킷 구성",
         "section-help": "S3 버킷 구성 제공, 웹 응용 프로그램 방화벽에서 구성 개체 스토리지에 필요함",
-        "s3-url": "버킷 URL",
+        "s3-url": "버킷 이름",
         "access-key": "액세스 키",
         "secret-key": "비밀 키"
       },
-      "btn-label": "배포 준비 완료",
-      "btn-edit": "편집",
-      "cluster-name-error": "클러스터 이름은 100자를 초과해서는 안 됩니다.",
-      "name-pattern-error": "클러스터 이름에 잘못된 문자가 있습니다.",
-      "cluster-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
-      "not-selected-cni": "CNI를 선택하지 않았습니다. 계속하려면 현재 CNI를 선택하십시오.",
-      "require-cni": "클라우드 시리즈 방화벽을 사용하려면 전제 조건으로 CNI가 설치되어 있어야 합니다. 공식 사이트에 있는 Calico CNI를 설치하는 것이 좋습니다.",
-      "not-selected-ingress": "수신 컨트롤러를 선택하지 않았습니다. 계속하려면 수신 컨트롤러를 선택하거나 WAF를 끄십시오.",
-      "not-supported-ingress": "WAF에서 지원되지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 클러스터에서 수신 컨트롤러를 제거해야 합니다. 그렇지 않으면 WAF를 끄십시오."
+      "service-type": {
+        "section-title": "WAF 프록시 서비스 유형",
+        "service-type-label": "서비스 유형",
+        "section-help": "부하 분산기를 클러스터 앞에서 사용하려면 LoadBalancer를 선택하고 클러스터가 부하 분산기 역할을 하게 하려면 NodePort를 선택하십시오."
+      },
+      "messages": {
+        "updated-message": "클러스터가 성공적으로 업데이트되었습니다.",
+        "added-message": "클러스터가 성공적으로 추가되었습니다.",
+        "cluster-name-already-exists": "제공된 이름을 가진 클러스터가 이미 있습니다.",
+        "default-error": "요청을 처리하는 동안 오류가 발생했습니다.",
+        "exception": {
+          "resource": {
+            "not-found": "리소스를 찾을 수 없습니다."
+          }
+        }
+      }
     },
     "cluster-overview": {
       "title": "개요",
       "breadcrumbs-text": "클러스터 개요",
       "status": "상태",
       "installation-steps": "설치 단계",
-      "confirm-cluster-delete": "클러스터를 삭제하시겠습니까?"
+      "confirm-cluster-delete": "클러스터를 삭제하시겠습니까?",
+      "messages": {
+        "deleted-message": "클러스터가 성공적으로 삭제되었습니다.",
+        "updated-message": "클러스터가 성공적으로 업데이트되었습니다."
+      }
     },
     "waf": {
       "list": {
         "title": "웹 응용 프로그램 방화벽 규칙",
-        "breadcrumb-text": "웹 응용 프로그램 방화벽 규칙",
-        "search-placeholder":"WAF 규칙 검색",
+        "breadcrumb-text": "WAF 규칙",
+        "search-placeholder": "WAF 규칙 검색",
         "add": "규칙 추가",
         "name": "이름",
         "description": "설명",
@@ -137,17 +175,33 @@
         "rate-limit": "속도 제한",
         "status": "상태",
         "age": "나이",
+        "entry-point": "진입점",
+        "details": "세부 정보 보기",
+        "fqdn": "FQDN",
+        "destination": "대상",
+        "request-path": "요청 경로",
         "messages": {
+          "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
           "delete-rule-success": "규칙이 삭제되었습니다.",
-          "delete-rule-error": "규칙을 삭제할 수 없습니다."
+          "delete-rule-error": "규칙을 삭제할 수 없습니다.",
+          "empty-message": "이 클러스터에 사용할 수 있는 WAF 규칙이 없습니다."
         }
       },
       "add": {
-        "title": "Waf 규칙 추가",
-        "breadcrumb-text": "Waf 규칙 추가"
+        "title": "웹 응용 프로그램 방화벽 규칙 추가",
+        "breadcrumb-text": "WAF 규칙 추가",
+        "messages": {
+          "waf-rule-add-success": "규칙이 성공적으로 만들어졌습니다.",
+          "waf-rule-add-error": "규칙을 생성할 수 없습니다."
+        },
+        "help-text": {
+          "entry-point": "클러스터가 수신 대기해야 하는 수신 포트와 원하는 암호화 설정을 선택하십시오. 방화벽은 액세스 가능한 모든 클러스터 IP의 선택된 포트에서 수신 대기합니다.",
+          "routes": "클라이언트 트래픽을 대상 웹 서비스로 라우팅하는 방법을 선택하십시오.",
+          "protection-policy": "이 서비스를 보호하는 데 사용할 기본 웹 정책을 선택하십시오."
+        }
       },
       "edit": {
-        "title": "WAF 규칙 편집",
+        "title": "웹 응용 프로그램 방화벽 규칙 편집",
         "breadcrumb-text": "WAF 규칙 편집",
         "status": "상태",
         "rule-name": "규칙 이름",
@@ -181,7 +235,8 @@
         "type": "유형",
         "destination": "대상",
         "port": "포트",
-        "https-s": "HTTPS/S",
+        "https-s": "HTTP/S",
+        "web-service-uses-tls": "웹 서비스는 TLS 사용",
         "action": "작업",
         "edit-route-tooltip": "경로 수정",
         "delete-route-tooltip": "경로 삭제",
@@ -192,7 +247,29 @@
         "certificate": "인증서",
         "certificate-placeholder": "인증서 선택",
         "domains-fqdn-placeholder": "호스트 이름 선택",
-        "add-route": "Add route" 
+        "add-route": "경로 추가",
+        "option-labels": {
+          "local": "로컬",
+          "external": "외부",
+          "http-only": "HTTP 전용",
+          "https": "HTTPS",
+          "exact": "정확",
+          "prefix": "접두사",
+          "suffix": "접미사",
+          "contains": "포함",
+          "present": "현재"
+        },
+        "messages": {
+          "change-certificate-prompt-confirmation": "이미 경로를 구성했습니다. 인증서를 변경하면 모든 기존 경로 구성이 플러시됩니다. 계속하시겠습니까?",
+          "waf-rule-update-success": "WAF 규칙이 업데이트되었습니다.",
+          "waf-rule-update-error": "WAF 규칙을 업데이트할 수 없습니다.",
+          "entrypoint-port-redirectport-not-same": "WAF 규칙 진입점 포트와 redirectPort는 동일할 수 없습니다.",
+          "entrypoint-port-inuse": "진입점 포트가 이미 사용 중입니다. 사용 가능한 포트를 지정하십시오.",
+          "entrypoint-redirectfrom-inuse": "이미 사용 중인 포트의 진입점 리디렉션입니다. 사용 가능한 포트를 지정하십시오.",
+          "name-already-exists": "제공된 이름을 가진 WAF 규칙이 이미 있습니다.",
+          "routes-destination-host-fqdn-invalid": "대상 호스트 FQDN은 유효한 형식이어야 합니다.",
+          "field-value-notvalid": "속성 값이 없거나 잘못되었습니다."
+        }
       }
     },
     "certificate": {
@@ -214,7 +291,12 @@
         "success-notification-title": "성공",
         "error-notification-title": "오류",
         "certificate-delete-success": "인증서가 삭제되었습니다.",
-        "certificate-delete-error": "인증서를 삭제할 수 없습니다."
+        "certificate-delete-error": "인증서를 삭제할 수 없습니다.",
+        "added-message": "인증서가 성공적으로 추가되었습니다.",
+        "update-message": "인증서가 성공적으로 업데이트되었습니다.",
+        "certificate-name-already-exists": "제공된 이름을 가진 인증서가 이미 있습니다.",
+        "certificate-usedby-waf-rule": "WAF 규칙에서 사용 중인 인증서는 삭제할 수 없습니다.",
+        "change-certificate-prompt-confirmation": "이미 경로를 구성했습니다. 인증서를 변경하면 모든 기존 경로 구성이 플러시됩니다. 계속하시겠습니까?"
       }
     },
     "firewall-rules": {
@@ -228,7 +310,102 @@
         "ingress": "수신",
         "ingress-service": "수신 서비스",
         "egress": "송신",
-        "egress-service": "송신 서비스"
+        "egress-service": "송신 서비스",
+        "status": "상태",
+        "disabled" : "사용 안 함",
+        "enabled" : "사용함",
+        "messages": {
+          "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
+          "delete-rule-success": "규칙이 삭제되었습니다.",
+          "empty-message": "이 클러스터에 사용할 수 있는 방화벽 규칙이 없습니다.",
+          "cidr-invalid": "방화벽 규칙 cidr이 잘못되었습니다.",
+          "exceptlist-invalid": "방화벽 규칙 예외 목록이 잘못되었습니다.",
+          "ipblock-cidr-except-notinrange": "예외 목록 항목이 cidr 범위를 벗어납니다.",
+          "ipblock-cidr-except-samerange": "예외 목록 항목이 cidr과 동일한 범위를 갖습니다.",
+          "name-already-exists": "제공된 이름을 가진 방화벽 규칙이 이미 있습니다.",
+          "delete-rule-error": "규칙을 삭제할 수 없습니다."
+        },
+        "options":{
+          "namespace": "네임스페이스",
+          "label-name": "레이블",
+          "pod-name": "포드 레이블",
+          "allowall": "모두 허용",
+          "denyall": "모두 거부",
+          "service-name": "서비스 이름",
+          "custom" : "사용자 지정"
+        }
+      },
+      "add": {
+        "title": "방화벽 규칙 추가",
+        "breadcrumb-text": "방화벽 규칙 추가",
+        "help-text": {
+          "match-criteria": "이 규칙이 보호할 네임스페이스와 레이블을 선택하십시오.",
+          "ingress-heading": "수신은 선택한 네임스페이스 및 레이블과 일치하는 컨테이너로 들어오는 트래픽을 나타냅니다. 이 기준을 사용하여 이 규칙을 적용해야 하는 들어오는 트래픽을 선택합니다.",
+          "egress-heading": "송신은 선택한 네임스페이스 및 레이블과 일치하는 컨테이너에서 나가는 트래픽을 나타냅니다. 이 기준을 사용하여 이 규칙을 적용해야 하는 아웃바운드 트래픽을 선택합니다."
+        }
+      },
+      "edit": {
+        "title": "방화벽 규칙 편집",
+        "breadcrumb-text": "방화벽 규칙 편집",
+        "status": "상태",
+        "rule-name": "규칙 이름",
+        "description": "설명",
+        "namespace": "네임스페이스",
+        "namespace-placeholder": "네임스페이스 선택",
+        "namespace-label-placeholder": "네임스페이스 레이블 선택",
+        "match-criteria": "일치 기준",
+        "service-labels": "서비스 레이블",
+        "type": "유형",
+        "local": "로컬",
+        "external": "외부",
+        "select-services": "서비스 선택",
+        "select-service-label": "서비스 레이블 선택",
+        "ingress-type": "수신 유형",
+        "namespace-labels": "네임스페이스 레이블",
+        "value": "값",
+        "custom": "사용자 지정",
+        "allow-all": "모두 허용",
+        "deny-all": "모두 거부",
+        "is": "은(는)",
+        "in": "입력",
+        "not-in": "안에 없음",
+        "exists": "있음",
+        "not-exists": "없음",
+        "egress-type": "송신 유형",
+        "service-ports": "서비스 포트",
+        "port-number": "포트 번호",
+        "from-ip": "IP 또는 서브넷에서",
+        "not-from-ip": "IP 또는 서브넷에서 온 것이 아님",
+        "tcp": "TCP",
+        "udp": "UDP",
+        "sctp": "SCTP",
+        "add-ingress": "수신 추가",
+        "add-egress": "송신 추가",
+        "rule-name-error": "규칙 이름은 100자를 초과해서는 안 됩니다.",
+        "name-pattern-error": "규칙 이름에 잘못된 문자가 있습니다.",
+        "rule-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
+        "namespace-address": "네임스페이스 또는 주소",
+        "service": "서비스",
+        "action": "조치",
+        "edit-route-tooltip": "경로 수정",
+        "delete-route-tooltip": "경로 삭제",
+        "clone-route-tooltip": "경로 복제",
+        "egress-heading": "송신",
+        "ingress-heading": "수신",
+        "rule-required-error": "규칙 이름은 필수 필드입니다.",
+        "namespace-required-error": "네임스페이스는 필수 필드입니다.",
+        "ip-address-invalid": "IP 주소 또는 서브넷이 잘못되었습니다.",
+        "ip-address-invalid-range": "IP 주소 또는 서브넷의 범위가 잘못되었습니다.",
+        "empty-rules-text": "수신 및 송신 규칙이 모두 비어 있습니다.",
+        "ip-address-cidr": "IP 또는 서브넷 입력",
+        "ip-address-except": "쉼표로 구분된 IP 또는 서브넷 입력",
+        "from-ip-not-filled": "IP 또는 서브넷에서를 입력해야 합니다.",
+        "port-value-error": "포트 번호는 1 ~ 65535이어야 합니다.",
+        "messages": {
+          "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
+          "delete-rule-success": "규칙이 삭제되었습니다.",
+          "delete-rule-error": "규칙을 삭제할 수 없습니다."
+        }
       }
     },
     "ips": {
@@ -241,6 +418,61 @@
         "save-success": "구성이 성공적으로 저장되었습니다.",
         "save-failed": "변경 사항을 저장하지 못했습니다."
       }
+    },
+    "admission-control-list": {
+      "search-placeholder": "규칙 검색",
+      "title": "승인 제어 규칙",
+      "breadcrumb-text": "승인 제어 규칙",
+      "add": "규칙 추가",
+      "name": "이름",
+      "description": "설명",
+      "repository": "리포지토리",
+      "rule-type": "규칙 유형",
+      "namespaces": "네임스페이스",
+      "status": "상태",
+      "allowed-repositories": "리포지토리 허용",
+      "label-requirements": "레이블 요구 사항",
+      "messages": {
+        "success-notification-title": "성공",
+        "error-notification-title": "오류",
+        "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
+        "delete-rule-success": "규칙이 삭제되었습니다.",
+        "delete-rule-error": "규칙을 삭제할 수 없습니다."
+      }
+    },
+    "admission-control-add": {
+      "title": "승인 제어 규칙 추가",
+      "breadcrumb-text": "승인 제어 추가",
+      "status": "상태",
+      "rule-name": "이름",
+      "description": "설명",
+      "namespace-labels": "네임스페이스",
+      "rule-type": "규칙 유형",
+      "target-namespace": "대상 네임스페이스",
+      "permitted-repository": "허용된 리포지토리",
+      "container-repository": "컨테이너 리포지토리",
+      "optix-scan-label": "Sophos Cloud Optix 스캔 필요",
+      "api-key": "API 키",
+      "disallow-levels": "허용되지 않는 컨테이너 취약성 수준",
+      "disallow-levels-placeholder": "수준 선택",
+      "disallow-levels-descp": "취약점 수가 0보다 크지 않아야 하는 취약성 수준",
+      "namespaces-placeholder": "네임스페이스 선택",
+      "messages": {
+        "success-notification-title": "성공",
+        "error-notification-title": "오류",
+        "add-rule-success": "규칙이 성공적으로 추가되었습니다.",
+        "add-rule-error": "규칙을 추가할 수 없습니다.",
+        "update-rule-success": "규칙이 성공적으로 업데이트되었습니다.",
+        "update-rule-error": "규칙을 업데이트할 수 없습니다.",
+        "name-already-exists" : "제공된 이름을 가진 승인 제어가 이미 있습니다."
+      },
+      "help-text": {
+        "target-namespace": "이 규칙이 보호할 네임스페이스를 선택하십시오."
+      }
+    },
+    "admission-control-edit": {
+      "title": "승인 제어 규칙 편집",
+      "breadcrumb-text": "승인 제어 편집"
     }
   }
 }

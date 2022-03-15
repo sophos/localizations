@@ -21,8 +21,12 @@
       "confirm-delete-header": "Löschen bestätigen",
       "error": "Fehler",
       "errors": "Fehler",
+      "http-errors": {
+        "500": "Ein Fehler aufgetreten, bitte versuchen Sie es später erneut.",
+        "default": "Problem beim Laden der Daten."
+      },
       "warnings": "Benachrichtigungen",
-      "success": "Erfolg",
+      "success": "Erfolgreich",
       "info": "Info",
       "retry": "Erneut versuchen",
       "access-points": "Access Points",
@@ -35,6 +39,7 @@
       "sites": "Standorte",
       "site-name": "Name des Standorts",
       "statistic": "Statistik",
+      "task-queue": "Auftrags-Warteschlange",
       "devices": "Geräte",
       "reset": "Reset",
       "select-all": "Alle ausw.",
@@ -178,8 +183,8 @@
           "health-status-yellow": "Client möglicherweise gefährdet",
           "health-status-not-available": "Nicht verfügbar"
         },
-        "no-devices-found": "Keine verbundenen WLAN-Clients zum Anzeigen.",
-        "pagination-text": "Anzeige {{ filtered }} Wireless-Geräte. Insgesamt {{ all }}"
+        "no-devices-found": "Keine verbundenen Drahtlos-Clients zum Anzeigen.",
+        "pagination-text": "Anzeige {{ filtered }} Drahtlos-Geräte. Insgesamt {{ all }}"
       },
       "chart": {
         "max-connected-devices": "Maximal verbundene Geräte",
@@ -202,7 +207,7 @@
       "audit-logs": "Audit-Protokolle",
       "server-ip": "Server-IP",
       "serial-no": "Seriennummer",
-      "action": "Aktion",
+      "action": "Maßnahme",
       "status": "Status",
       "name": "Name des Access Point",
       "ip_address": "IP-Adresse",
@@ -277,7 +282,7 @@
         "analysis-message": "Wenn die Datenverkehr-Kategorisierung aktiviert ist, wird der vom Benutzer generierte Datenverkehr kategorisiert und unter Nutzungsdaten aufgeführt. Diese Option ist standardmäßig deaktiviert.",
         "statistics-report": "Access Point-Statistiken",
         "device-discovery-label": "Geräteklassifizierung und Sichtbarkeit",
-        "device-discovery-message": "Mehr Transparenz über WLAN-Geräte durch Kategorisierung nach Gerätetyp, Profil und Kategorie. Die Funktion steht nur für Access Points der APX-Serie zur Verfügung."
+        "device-discovery-message": "Mehr Transparenz über Drahtlos-Geräte durch Kategorisierung nach Gerätetyp, Profil und Kategorie. Die Funktion steht nur für Access Points der APX-Serie zur Verfügung."
       },
       "rogue-ap-detection-settings": {
         "rogue-ap-detection": "Nicht berechtigte Access Points erkennen und melden",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "Standort-Übersicht",
-      "neighbourhoodNetworks": "Netzwerke in der Nachbarschaft",
+      "neighborhoodNetworks": "Netzwerke in der Nachbarschaft",
       "list": {
         "breadcrumb-text": "Standorte",
         "title": "Wireless - Standorte",
@@ -411,7 +416,7 @@
           "confirmation-text": "Möchten Sie das Stockwerk ‚{{ name }}‘ wirklich löschen? Alle Access Points sind dann nicht mehr zugeordnet."
         },
         "scale": {
-          "scale-label": "Maßstab zuweisen:",
+          "scale-label": "Skala zuweisen:",
           "scale-placeholder": "Abstand (m)",
           "scale-headline": "Abmessungen zuweisen:",
           "hint": {
@@ -425,7 +430,7 @@
           "floorplan-setup": {
             "question": "Wie wäre es mit einem Grundriss?",
             "text": "Laden Sie jetzt als erstes ein Bild hoch. Zulässige Formate: JPG, GIF, PNG... max. Dateigröße 1 MB",
-            "GDPR-text": "Die Datenschutz-Grundverordnung verpflichtet Sie, sicherzustellen, dass Grundrisse/Raumbelegungspläne keine persönlichen Informationen enthalten.",
+            "GDPR-text": "Gemäß der Datenschutz-Grundverordnung müssen Sie sicherstellen, dass Grundrisse/Raumbelegungspläne keine persönlichen Informationen enthalten.",
             "dragtext": "Einfach Datei in die Dropzone ziehen oder",
             "upload-button": "Hochladen",
             "upload-label": "Eine Datei auswählen",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "Dieser Access Point unterstützt dieses Band nicht.",
         "primary-dns-server-short-description": "Server, der von mit diesem Gastnetzwerk verbundenen Clients genutzt wird.",
         "primary-dns-server-description": " Backup-DNS-Server, den Clients nutzen können, wenn der Primärserver nicht antwortet. Nutzung ist clientabhängig.",
-        "ssid-required-validation-msg": "SSID ist erforderlich.",
-        "ssid-maxlength-validation-msg": "SSID darf nicht länger als 32 Byte sein.",
-        "ssid-duplicate-validation-msg": "SSID-Namen duplizieren",
         "ssid-network-name": "Name für das Netzwerk.",
         "password-auto-generate-msg": "Kennwort wird automatisch generiert",
         "insecure-encryption-mode-msg": "Diese Verschlüsselungsmethode ist nicht sicher",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "RADIUS-Server für Ihr lokales Netzwerk.",
         "radius-server-shared-secret": "Gemeinsamer geheimer Schlüssel",
         "passphrase-required": "Passphrase ist erforderlich.",
+        "passphrase-placeholder": "Geben Sie eine sichere Passphrase ein.",
+        "shared-secret-placeholder": "Passphrase eingeben",
         "frequency-band-inline-help-msg": "Beschränken Sie das Netzwerk-Broadcasting auf bestimmte Bänder. Dies beschränkt möglicherweise die APs, auf denen SSID-Broadcasting stattfindet, da einige Modelle Broadcasting nur in bestimmten Bändern oder nicht in allen Bändern gleichzeitig unterstützen.",
         "enable-mesh-mode": "Mesh-Modus aktivieren",
         "enable-mesh-mode-help-msg": "Ermöglicht es Ihnen, APs ohne Internetverbindung miteinander zu verbinden.",
+        "only-one-mesh-network": "Sie können nur eine Mesh-SSID erstellen",
+        "disable-mesh": "Zum Deaktivieren des Mesh-Modus diese SSID löschen",
+        "no-root-ap": "Mesh setzt voraus, dass mindestens ein Access Point über LAN mit dem Internet verbunden ist.",
+        "stp-packets-warning": "Mesh-Access-Points senden STP-Pakete – stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist.",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
@@ -583,7 +591,7 @@
         "quality-fast-roaming": "Schnelles Roaming zwischen Access Points ermöglicht bessere Verbindungen vor allem bei VoIP.",
         "broadcast-outdated": "SSID-Broadcasting findet weiterhin statt, falls der AP Sophos Central nach einem Neustart nicht erreicht.",
         "band-steering-label": "Band Steering",
-        "quality-band-steering": "Dual-Band-fähige Wireless-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
+        "quality-band-steering": "Dual-Band-fähige Drahtlos-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
         "band-steering-warning": "Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
         "broadcast-outdated-label": "Broadcasting aktiviert lassen",
         "multicast-label": "Umwandlung Multicast in Unicast",
@@ -832,7 +840,8 @@
           "auto-refresh": "Automatisch aktualisieren",
           "unassigned-sites": "Nicht zugewiesene Sites",
           "emptyListMessage": "Sie haben keine Access Points hinzugefügt.",
-          "listRegisterInfo": "Klicken Sie auf die Schaltfläche „Registrieren“, um die Access Points hinzuzufügen."
+          "listRegisterInfo": "Klicken Sie auf die Schaltfläche „Registrieren“, um die Access Points hinzuzufügen.",
+          "sitesNotFoundErrorMessage": "Standorte können nicht geladen werden."
         },
         "statusOnline": "aktuell",
         "stateOffline": "Offline",
@@ -858,7 +867,8 @@
         "minutesShort": "m",
         "monthsShort": "mo",
         "secondsShort": "s",
-        "yearsShort": "j"
+        "yearsShort": "j",
+        "firmware-upgrade": "Firmware-Aktualisierung"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "Sind Sie sicher, dass Sie diesen Access Point mit der Seriennummer {{ sn }} neu starten möchten?",
           "update-firmware": "Firmware-Update verfügbar",
           "rebootbutton": "Access Point neu starten",
+          "radios": "Funk {{index}}",
           "radiosZero": "Funk 0",
           "radiosOne": "Funk 1",
           "choose-band": "Band",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2,4 GHz",
             "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
             "GHZ_5": "5 GHz",
-            "both": "2,4 GHz und 5 GHz"
+            "both": "2,4 GHz und 5 GHz",
+            "GHZ_6": "6 GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "Aufgaben gesamt",
+        "created": "Erstellt",
+        "pending": "Ausstehend",
+        "in-progress": "In Bearbeitung",
+        "failed": "Fehlgeschlagen",
+        "success": "Erfolg",
+        "table": {
+          "status": "Status",
+          "site": "Standort",
+          "entity": "Einheit",
+          "action": "Aktion",
+          "createdBy": "Erstellt von",
+          "createdAt": "Erstellt am"
+        },
+        "status": {
+          "created": "Erstellt",
+          "pending": "Ausstehend",
+          "inProgress": "In Bearbeitung",
+          "failed": "Fehlgeschlagen",
+          "success": "Erfolg"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "Auftragsdetails - Konfiguration",
+            "reboot": "Auftragsdetails - Neustart",
+            "firmwareUpgrade": "Auftragsdetails - Firmware-Upgrade"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "Bereits registriert",
               "limit-exceeded": "Grenze überschritten"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "Firmware verwalten: {{site}}",
+        "header-text-no-site": "Firmware verwalten",
+        "note-no-site": "Firmware für Access Points verwalten. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
+        "note-for-site": "Firmware für Access Points am Standort verwalten: '{{site}}'. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
+        "remove-schedule": "Zeitplan entfernen",
+        "choose-schedule": "Zeitplan wählen",
+        "rollback": "Firmware-Austausch ({{ version }})",
+        "week": "Woche",
+        "weekday": "Wochentag",
+        "time": "Uhrzeit",
+        "list": {
+          "headers": {
+            "name": "Name",
+            "serial-number": "Seriennummer",
+            "version": "Version",
+            "to-version": "Auf Version",
+            "chosen-schedule": "Gewählter Zeitplan"
+          },
+          "selected-text": "{{selected}} ausgewählt",
+          "modified-text": "{{selected}} ausgewählt - {{modified}} geändert",
+          "modified": "Vorhandener Zeitplan {{ version }} | {{ schedule }} wird geändert.",
+          "new-schedule": "Neuer Zeitplan",
+          "cancel-warning": "Sie können Upgrades mit sofortiger Ausführung nicht abbrechen. Sie können neue Zeitpläne hinzufügen, nachdem der vorhandene Zeitplan ausgeführt wurde."
+        },
+        "schedule": {
+          "update-now": "Jetzt",
+          "custom": "Benutzerdefiniert",
+          "recurring": "Wiederkehrend",
+          "daily": "Täglich",
+          "weekly": "Wöchentlich",
+          "monthly": "Monatlich",
+          "header-text": "Wählen Sie einen Zeitplan aus",
+          "note": "Zeitpunkt für die Aktualisierung der ausgewählten Access Points wählen.",
+          "now-note": "Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade. Getrennte Access Points erhalten eine Aufforderung, wenn sie sich wieder verbunden haben. Hierbei wird der Access Point eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
+          "custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen. Während des Upgrades kommt es möglicherweise zu einem Neustart.",
+          "daily-schedule": "Täglich um {{time}}",
+          "weekly-schedule": "Jeden {{day}} um {{time}}",
+          "monthly-schedule": {
+            "1": "Jeden ersten {{day}} des Monats um {{time}}",
+            "2": "Jeden zweiten {{day}} des Monats um {{time}}",
+            "3": "Jeden dritten {{day}} des Monats um {{time}}",
+            "4": "Jeden vierten {{day}} des Monats um {{time}}"
           }
         }
       }

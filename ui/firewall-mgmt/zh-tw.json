@@ -24,7 +24,7 @@
     "main-dashboard-breadcrumb-text": "概觀",
     "list": {
       "auto-refresh": "自動重新整理",
-      "auto-refresh-hint": "每 10 秒重新整理一次頁面資料"
+      "auto-refresh-hint": "每 {{ interval }} 秒重新整理一次頁面資料"
     },
     "dashboard": {
       "name": "防火牆管理 - 儀表板",
@@ -510,6 +510,10 @@
       "edit-group": "防火墻管理 - 編輯防火墻群組",
       "breadcrumb-text": "防火墻",
       "create": "建立新群組",
+      "filtering": {
+        "showing-firewall-filter": "篩選：\"{{value}}\"",
+        "show-firewall-filter": "搜尋以下條件：\"{{value}}\""
+      },
       "edit": {
         "label": "編輯群組",
         "warn-info": "將防火墻指派到群組會將預設設定套用至防火墻。這可能會變更目前的防火墻設定。",
@@ -519,6 +523,16 @@
       "config-radio": {
         "first-radio-label": "使用 Sophos 預設項",
         "second-radio-label": "匯入現有設定"
+      },
+      "banner": {
+        "info": {
+          "label": "已找到過期韌體",
+          "text": "<strong>{{ name }}</strong> 正在執行生命週期結束的韌體版本，可能很快就無法從 Sophos Central 管理了。請於 2021 年 11 月 30 日將此韌體升級至受支援的韌體版本，以避免中斷。",
+          "alert-text": "{{ name }} 正在執行生命週期結束的韌體版本，可能很快就無法從 Sophos Central 管理了。請於 2021 年 11 月 30 日將此韌體升級至受支援的韌體版本，以避免中斷。",
+          "action": "如需詳細資訊，請閱讀我們的 知識庫文章。",
+          "learn-more": "了解更多資訊",
+          "continue": "繼續"
+        }
       },
       "add":  {
         "firewall": "新增防火牆",
@@ -600,7 +614,11 @@
         "modal": {
           "location": {
             "latitude": "緯度",
-            "longitude": "經度"
+            "longitude": "經度",
+            "message": {
+              "success": "防火墻位置已儲存。",
+              "error": "儲存位置時出現錯誤。"
+            }
           },
           "edit-location-title": "編輯防火牆位置",
           "add-location-title": "新增防火墻位置",
@@ -610,6 +628,12 @@
           "add": {
             "confirm-button": "新增"
           }
+        },
+        "dashboard": {
+          "total-connections": "總數",
+          "good-connections": "良好",
+          "bad-connections": "差",
+          "unknown-connections": "未知的"
         }
       }
     },
@@ -831,7 +855,9 @@
         "loading": "",
         "unmanaged": "管理已停用",
         "approval_pending": "核准擱置",
-        "initializing": "正在初始化..."
+        "initializing": "正在初始化...",
+        "outofsync": "錯誤需要注意",
+        "waiting": "正在等待部署"
       },
       "status": {
         "last-seen": "上次出現於 {{ time }}",

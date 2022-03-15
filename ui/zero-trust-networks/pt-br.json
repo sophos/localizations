@@ -11,6 +11,7 @@
       "ok": "Ok",
       "download": "Fazer o Download",
       "approve": "Aprovar",
+      "validate": "Validar",
       "search": "Pesquisar",
       "continue": "Continuar",
       "fqdn-validation": "FQDN inválido",
@@ -32,7 +33,8 @@
       "agent-app-request-action": "Solicitar agente",
       "agent-app-request-title": "Ativar agente baseado no acesso à política",
       "agent-app-request-comment": "Permitir acesso a [n] vagas. Meu login do Central é {{login}} e meu ID de cliente é {{customer_id}}.",
-      "read-more": "saiba mais..."
+      "read-more": "saiba mais...",
+      "copy-to-clipboard-success": "Copiado para área de transferência"
     },
     "application": {
       "form": {
@@ -94,7 +96,13 @@
         "no-application-configured-help": "Clique no botão 'Adicionar recurso' para adicionar um recurso.",
         "error": "Erro ao buscar a lista de Recursos.",
         "no-userGroups-configured": "Nenhum grupo de usuário disponível.",
-        "no-userGroups-assigned": "Nenhum grupo de usuário atribuído."
+        "no-userGroups-assigned": "Nenhum grupo de usuário atribuído.",
+        "domain-modal": {
+          "header": "Recurso adicionado",
+          "copy-fqdn-label": "Adicione o seguinte link ao seu servidor DNS:",
+          "alias-domain": "Domínio de alias",
+          "dns-info": "Adicione o domínio de alias abaixo como um registro CNAME para o FQDN do recurso no seu servidor DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access – Detalhes do recurso",
@@ -114,6 +122,7 @@
             "domain": "Domínio:",
             "agent": "Agente",
             "agentless": "Sem agente",
+            "alias-domain": "Domínio de alias",
             "display-in-user-portal": {
               "label": "Exibir no portal do usuário:"
             },
@@ -194,23 +203,34 @@
         "no-gateway-found": "Não foi encontrado nenhum Gateway",
         "no-gateway-configured": "Você ainda não adicionou nenhum gateway.",
         "no-gateway-configured-help": "Clique no botão 'Adicionar Gateway' para adicionar um gateway.",
+        "no-gateway-connector-configured": "Você ainda não tem nenhum gateway/conector",
+        "no-gateway-connector-message": "Para adicionar um gateway/conector, veja as instruções abaixo:",
+        "no-gateway-connector-aws": "Amazon Web Service",
+        "no-gateway-connector-vmware": "VMware ESXi",
+        "statusicon-info": "Status de Gateway",
+        "statusicon-info-with-connector": "Status do gateway/conector",
         "download-gateway-VM": "Baixar VM do gateway",
         "add": "Adicionar Gateway",
+        "add-gateway-connector": "Adicionar gateway/conector",
+        "gateway-mode": "Gateway",
+        "connector-mode": "Conector",
         "columns": {
           "name": "Nome",
+          "mode": "Modo",
           "description": "Descrição",
           "fqdn": "FQDN",
           "package": "Tipo de pacote",
-          "type": "Tipo",
+          "type": "Tipo de plataforma",
           "version": "Versão",
           "identity-provider": "Provedor de identidade",
           "status": "Status"
         },
         "title": "Zero Trust Network Access - Gateways",
         "breadcrumb-text": "Gateways",
+        "breadcrumb-text-gateway-connector": "Gateways/Conectores",
         "error": "Erro ao buscar a lista de gateways",
         "connector-modal": {
-          "header": "Sucesso! Conector adicionado",
+          "header": "Conector adicionado",
           "copy-fqdn-label": "Adicione o seguinte link ao seu servidor DNS:",
           "alias-domain": "Domínio de alias",
           "dns-info": "Adicione o domínio de alias abaixo como um registro CNAME para o FQDN do conector no seu servidor DNS"
@@ -260,6 +280,7 @@
               "description": "Descrição: ",
               "status": "Status: ",
               "fqdn": "FQDN: ",
+              "alias-domain": "Domínio de alias: ",
               "type": "Tipo: ",
               "idp": "Provedor de identidade: ",
               "edit": "Editar",
@@ -303,7 +324,10 @@
       "form": {
         "title-add": "Adicionar gateway",
         "title-edit": "Editar gateway",
+        "gateway-connector-title-add": "Adicionar gateway/conector",
+        "gateway-connector-title-edit": "Editar gateway/conector",
         "title-delete": "Deletar gateway",
+        "gateway-connector-title-delete": "Deletar gateway/conector",
         "software-update": "Atualização de software",
         "try-again": "Tente outra vez",
         "edit-software-update": "Editar cronograma de atualização de software",
@@ -312,14 +336,15 @@
         "location": "Localização",
         "location-length-validation": "A localização não pode ter mais do que 100 caracteres",
         "whitespace-location-validation": "É necessária uma localização",
-        "name-placeholder": "Nome de Gateway",
+        "name-placeholder-gateway": "Nome de Gateway",
+        "name-placeholder-connector": "Nome do conector",
         "description": "Descrição (máx. de 250 caracteres)",
         "description-placeholder": "Descrição",
         "packageType": "Tipo de plataforma",
         "identity-provider": "Provedor de identidade",
         "fqdn": "FQDN",
         "appDomain": "Domínio",
-        "appDomainVerified": "Domínio (verificado)",
+        "appDomainVerified": "Domínio (validado)",
         "app-domain-validation": "Domínio do recurso inválido",
         "password": "Senha do Gateway",
         "password-placeholder": "Senha",
@@ -410,8 +435,8 @@
         "mode": "Modo",
         "gateway-mode": "Modo de gateway: Os gateways são implantados nos centros de dados gerenciados do cliente, portanto, os clientes gerenciam o plano de dados. Esses gateways são expostos à Internet pública",
         "connector-mode": "Modo de conector: A Sophos gerencia o plano de dados. Esses conectores não são expostos à Internet pública. Os conectores vinculam a nuvem da Sophos com os recursos internos.",
-        "no-verified-domain": "Nenhum domínio verificado disponível.",
-        "add-verify-domain": "Adicione/verifique os domínios.",
+        "no-verified-domain": "Nenhum domínio validado disponível.",
+        "add-verify-domain": "Adicionar/validar domínios.",
         "read-more": "saiba mais..."
       },
       "delete": {
@@ -751,6 +776,7 @@
       }
     },
     "settings": {
+      "breadcrumb-text": "Configurações",
       "gateway": {
         "instance-heading": "Suporte da Sophos para instância de gateway",
         "instance-expiration-label": "Expiração do token",
@@ -772,7 +798,53 @@
         "on": "Ativar o Sophos Service Edge",
         "off": "Desativar o Sophos Service Edge",
         "domains": "Domínios",
-        "domains-desc": "Adicionar e verificar um domínio para usar com ZTNAaaS"
+        "domains-desc": "Adicionar e validar um domínio para usar com ZTNAaaS"
+      },
+      "domain": {
+        "list": {
+          "title": "Zero Trust Network Access - Domínios",
+          "breadcrumb-text": "Domínios",
+          "header": "Você deve validar os domínios usados com o Sophos Secure Edge",
+          "sub-header1": "1. Adicione um domínio. Um registro TXT é automaticamente adicionado à tabela.",
+          "sub-header2": "2. Copie o seu registro TXT.",
+          "sub-header3": "3. Vá para os registros DNS do seu domínio e adicione o registro TXT ao host do domínio.",
+          "sub-header4": "4. Clique em Validar.",
+          "columns": {
+            "domain": "Nome",
+            "txtrecord": "Registro TXT",
+            "status": "Status",
+            "assigned-connectors": "Conector"
+          },
+          "add": "Adicionar domínio",
+          "verify": "Validar",
+          "verified": "Validado",
+          "not-verified": "Não validado",
+          "copy-to-clipboard": "(copiar para área de transferência)",
+          "fetch-error": "Erro ao buscar a lista de domínios",
+          "no-domain-found": "Você não tem nenhum domínio configurado"
+        },
+        "form": {
+          "title-add": "Adicionar domínio",
+          "title-delete": "Deletar domínio",
+          "title-verify": "Validar domínio",
+          "add-success": "Domínio criado",
+          "add-failed": "Falha na criação do domínio",
+          "name": "Domínio",
+          "name-placeholder": "exemplo.com",
+          "invalid-name": "Formato de domínio inválido",
+          "info": "Geraremos automaticamente um registro TXT e o adicionaremos à tabela Domínios."
+        },
+        "fetch-error": "Erro ao buscar a lista de domínios",
+        "delete": {
+          "message": "Deletar domínio",
+          "success": "Domínio deletado"
+        },
+        "verify": {
+          "message": "Você deve adicionar o registro TXT ao seu servidor de DNS antes de validar o domínio.",
+          "confirmation": "Eu adicionei o registro TXT ao meu servidor de DNS.",
+          "success": "Domínio verificado.",
+          "failed": "Falha de verificação de domínio"
+        }
       }
     }
   },
@@ -825,6 +897,7 @@
       "application.policy.notnull": "Uma política deve ser atribuída a um aplicativo",
       "application.port.range": "O valor de porta do aplicativo deve estar entre 0 e 65535",
       "application.fqdn.notnull": "O FQDN do aplicativo não pode ser nulo",
+      "application.fqdn.appdomain.mismatch": "O FQDN do recurso deve ser subdomínios do nome de domínio do seu gateway/conector",
       "application.logo.upload.error": "Ocorreu um erro durante o carregamento do logotipo do aplicativo",
       "application.user-groups.not-empty": "Pelo menos um grupo de usuário deve ser atribuído ao aplicativo",
       "application.fqdn.already.configured": "O FQDN do aplicativo já está configurado",
@@ -931,7 +1004,12 @@
       "remote.status.updatedOn.empty": "Status de depuração remota updatedOn não pode ficar vazio",
       "remote.status.createdOn.empty": "Status de depuração remota createdOn não pode ficar vazio",
       "remote.status.expiryOn.empty": "Status de depuração remota expiryOn não pode ficar vazio",
-      "remote.status.accessId.empty": "Status de depuração remota accessId não pode ficar vazio"
+      "remote.status.accessId.empty": "Status de depuração remota accessId não pode ficar vazio",
+      "domain.action.not.null": "A ação do domínio não pode ser nula",
+      "domain.not.found": "Domínio não encontrado",
+      "domain.format.invalid": "O domínio deve estar em um formato válido",
+      "customer.unauthorized": "O cliente não possui o sinalizador de recurso obrigatório ativado",
+      "domain.name.unverified": "O nome do domínio não está validado"
     }
   },
   "ztna-report": {

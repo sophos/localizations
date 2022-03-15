@@ -11,6 +11,7 @@
       "ok": "Aceptar",
       "download": "Descargar",
       "approve": "Aprobar",
+      "validate": "Validar",
       "search": "Buscar",
       "continue": "Continuar",
       "fqdn-validation": "FQDN no válida",
@@ -32,7 +33,8 @@
       "agent-app-request-action": "Solicitar agente",
       "agent-app-request-title": "Activar el acceso a las políticas basadas en el agente",
       "agent-app-request-comment": "Permita el acceso a [n] plazas. Mi inicio de sesión de Central es {{login}} y mi ID de cliente es {{customer_id}}.",
-      "read-more": "más información..."
+      "read-more": "más información...",
+      "copy-to-clipboard-success": "Copiado al portapapeles"
     },
     "application": {
       "form": {
@@ -94,7 +96,13 @@
         "no-application-configured-help": "Haga clic en el botón 'Añadir recurso' para añadir un recurso.",
         "error": "Error al recuperar la lista de recursos.",
         "no-userGroups-configured": "No hay grupos de usuarios disponibles.",
-        "no-userGroups-assigned": "No hay grupos de usuarios asignados."
+        "no-userGroups-assigned": "No hay grupos de usuarios asignados.",
+        "domain-modal": {
+          "header": "Recurso añadido",
+          "copy-fqdn-label": "Añada el siguiente enlace a su servidor DNS:",
+          "alias-domain": "Dominio de alias",
+          "dns-info": "Añada el siguiente dominio de alias como un registro CNAME para el FQDN del recurso en su servidor DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Detalles de los recursos",
@@ -114,6 +122,7 @@
             "domain": "Dominio:",
             "agent": "Agente",
             "agentless": "Sin agente",
+            "alias-domain": "Dominio de alias",
             "display-in-user-portal": {
               "label": "Mostrar en el portal del usuario:"
             },
@@ -155,7 +164,7 @@
     "dashboard": {
       "title": "Zero Trust Network Access - Panel de control",
       "breadcrumb-text": "Panel de control de Zero Trust Network Access",
-      "eap-program-message": "Este producto se ofrece dentro del programa de acceso temprano. Haga clic en \"Comentarios\" para informar de errores o dar su opinión.",
+      "eap-program-message": "Este producto se ofrece dentro del Early Access Program. Haga clic en \"Comentarios\" para informar de errores o dar su opinión.",
       "nodata": "No hay datos disponibles",
       "set-up-banner": {
         "title": {
@@ -194,23 +203,34 @@
         "no-gateway-found": "Ninguna puerta de enlace encontrada",
         "no-gateway-configured": "No ha añadido ninguna puerta de enlace.",
         "no-gateway-configured-help": "Haga clic en el botón 'Añadir puerta de enlace' para añadir una puerta de enlace.",
+        "no-gateway-connector-configured": "Todavía no tiene ninguna puerta de enlace/conector",
+        "no-gateway-connector-message": "Para añadir una puerta de enlace o un conector, consulte las instrucciones siguientes:",
+        "no-gateway-connector-aws": "Amazon Web Service",
+        "no-gateway-connector-vmware": "VMware ESXi",
+        "statusicon-info": "Estado de puerta de enlace",
+        "statusicon-info-with-connector": "Estado de puerta de enlace/conector",
         "download-gateway-VM": "Descargar equipo virtual de puerta de enlace",
         "add": "Añadir puerta de enlace",
+        "add-gateway-connector": "Añadir puerta de enlace/conector",
+        "gateway-mode": "Puerta de enlace",
+        "connector-mode": "Conector",
         "columns": {
           "name": "Nombre",
+          "mode": "Modo",
           "description": "Descripción",
           "fqdn": "FQDN",
           "package": "Tipo de embalaje",
-          "type": "Tipo",
+          "type": "Tipo de plataforma",
           "version": "Versión",
           "identity-provider": "Proveedor de identidad",
           "status": "Estado"
         },
         "title": "Zero Trust Network Access - Puertas de enlace",
         "breadcrumb-text": "Puertas de enlace",
+        "breadcrumb-text-gateway-connector": "Puertas de enlace/Conectores",
         "error": "Error al recuperar la lista de puertas de enlace",
         "connector-modal": {
-          "header": "Completado Conector añadido",
+          "header": "Conector añadido",
           "copy-fqdn-label": "Añada el siguiente enlace a su servidor DNS:",
           "alias-domain": "Dominio de alias",
           "dns-info": "Añada el siguiente dominio de alias como un registro CNAME para el FQDN del conector en su servidor DNS"
@@ -260,6 +280,7 @@
               "description": "Descripción: ",
               "status": "Estado: ",
               "fqdn": "FQDN: ",
+              "alias-domain": "Dominio de alias: ",
               "type": "Tipo: ",
               "idp": "Proveedor de identidad: ",
               "edit": "Editar",
@@ -303,7 +324,10 @@
       "form": {
         "title-add": "Añadir puerta de enlace",
         "title-edit": "Editar puerta de enlace",
+        "gateway-connector-title-add": "Añadir puerta de enlace/conector",
+        "gateway-connector-title-edit": "Editar puerta de enlace/conector",
         "title-delete": "Eliminar puerta de enlace",
+        "gateway-connector-title-delete": "Eliminar puerta de enlace/conector",
         "software-update": "Actualización de software",
         "try-again": "Volver a intentar",
         "edit-software-update": "Editar programación de actualización de software",
@@ -312,14 +336,15 @@
         "location": "Ubicación",
         "location-length-validation": "La ubicación no debe tener más de 100 caracteres",
         "whitespace-location-validation": "Se requiere la ubicación",
-        "name-placeholder": "Nombre de puerta de enlace",
+        "name-placeholder-gateway": "Nombre de puerta de enlace",
+        "name-placeholder-connector": "Nombre de conector",
         "description": "Descripción (250 caracteres como máximo)",
         "description-placeholder": "Descripción",
         "packageType": "Tipo de plataforma",
         "identity-provider": "Proveedor de identidad",
         "fqdn": "FQDN",
         "appDomain": "Dominio",
-        "appDomainVerified": "Dominio (verificado)",
+        "appDomainVerified": "Dominio (validado)",
         "app-domain-validation": "Dominio de recursos no válido",
         "password": "Contraseña de la puerta de enlace",
         "password-placeholder": "Contraseña",
@@ -410,8 +435,8 @@
         "mode": "Modo",
         "gateway-mode": "Modo puerta de enlace: Las puertas de enlace se despliegan en centros de datos gestionados por el cliente y, por tanto, este gestiona el plano de datos. Estas puertas de enlace están expuestas a la Internet pública",
         "connector-mode": "Modo conector: Sophos gestiona el plano de datos. Los conectores no están expuestos a la Internet pública. Los conectores unen la nube de Sophos con los recursos internos.",
-        "no-verified-domain": "No hay dominios verificados disponibles.",
-        "add-verify-domain": "Añada/verifique dominios.",
+        "no-verified-domain": "No hay dominios validados disponibles.",
+        "add-verify-domain": "Añadir/Validar dominios.",
         "read-more": "más información..."
       },
       "delete": {
@@ -751,6 +776,7 @@
       }
     },
     "settings": {
+      "breadcrumb-text": "Configuración",
       "gateway": {
         "instance-heading": "Soporte de Sophos para instancia de puerta de enlace",
         "instance-expiration-label": "Caducidad del token",
@@ -772,7 +798,53 @@
         "on": "Activar Sophos Service Edge",
         "off": "Desactivar Sophos Service Edge",
         "domains": "Dominios",
-        "domains-desc": "Añadir y verificar un dominio para su uso con ZTNAaaS"
+        "domains-desc": "Añadir y validar un dominio para su uso con ZTNAaaS"
+      },
+      "domain": {
+        "list": {
+          "title": "Zero Trust Network Access - Dominios",
+          "breadcrumb-text": "Dominios",
+          "header": "Debe validar los dominios utilizados con Sophos Secure Edge",
+          "sub-header1": "1. Añada un dominio; un registro TXT se añade automáticamente a la tabla.",
+          "sub-header2": "2. Copie su registro TXT.",
+          "sub-header3": "3. Vaya a los registros DNS de su dominio y añada el registro TXT al host de su dominio.",
+          "sub-header4": "4. Haga clic en Validar.",
+          "columns": {
+            "domain": "Nombre",
+            "txtrecord": "Registro TXT",
+            "status": "Estado",
+            "assigned-connectors": "Conector"
+          },
+          "add": "Añadir dominio",
+          "verify": "Validar",
+          "verified": "Validado",
+          "not-verified": "Sin validar",
+          "copy-to-clipboard": "(copiar al portapapeles)",
+          "fetch-error": "Error al recuperar la lista de dominios",
+          "no-domain-found": "No tiene ningún dominio configurado"
+        },
+        "form": {
+          "title-add": "Añadir dominio",
+          "title-delete": "Eliminar dominio",
+          "title-verify": "Validar dominio",
+          "add-success": "Dominio creado",
+          "add-failed": "Error al crear dominio",
+          "name": "Dominio",
+          "name-placeholder": "ejemplo.com",
+          "invalid-name": "Formato de dominio no válido",
+          "info": "Generaremos automáticamente un registro TXT y lo añadiremos a la tabla de dominios."
+        },
+        "fetch-error": "Error al recuperar la lista de dominios",
+        "delete": {
+          "message": "Eliminar dominio",
+          "success": "Dominio eliminado"
+        },
+        "verify": {
+          "message": "Debe añadir el registro TXT a su servidor DNS antes de validar el dominio.",
+          "confirmation": "He añadido el registro TXT a mi servidor DNS.",
+          "success": "Dominio verificado.",
+          "failed": "Ha fallado la verificación del dominio"
+        }
       }
     }
   },
@@ -825,6 +897,7 @@
       "application.policy.notnull": "Se debe asignar una política a una aplicación",
       "application.port.range": "El valor del puerto de la aplicación debe estar entre 0 y 65535",
       "application.fqdn.notnull": "El FQDN de la aplicación no puede ser nulo",
+      "application.fqdn.appdomain.mismatch": "El FQDN del recurso debe ser un subdominio del nombre de dominio de su puerta de enlace/conector",
       "application.logo.upload.error": "Se ha producido un error al cargar el logotipo de la aplicación",
       "application.user-groups.not-empty": "Debe asignarse al menos un grupo de usuarios a la aplicación",
       "application.fqdn.already.configured": "El FQDN de la aplicación ya está configurado",
@@ -931,7 +1004,12 @@
       "remote.status.updatedOn.empty": "El estado de depuración remota updatedOn no puede estar vacío",
       "remote.status.createdOn.empty": "El estado de depuración remota createdOn no puede estar vacío",
       "remote.status.expiryOn.empty": "El estado de depuración remota expiryOn no puede estar vacío",
-      "remote.status.accessId.empty": "El estado de depuración remota accessId no puede estar vacío"
+      "remote.status.accessId.empty": "El estado de depuración remota accessId no puede estar vacío",
+      "domain.action.not.null": "La acción del dominio no debe ser nula",
+      "domain.not.found": "Dominio no encontrado",
+      "domain.format.invalid": "El dominio debe tener un formato válido",
+      "customer.unauthorized": "El cliente no ha activado el indicador de función requerido",
+      "domain.name.unverified": "El nombre de dominio no es válido"
     }
   },
   "ztna-report": {

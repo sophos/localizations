@@ -11,6 +11,7 @@
       "ok": "確定",
       "download": "下載",
       "approve": "贊成",
+      "validate": "驗證",
       "search": "搜尋",
       "continue": "繼續",
       "fqdn-validation": "無效的 FQDN",
@@ -32,7 +33,8 @@
       "agent-app-request-action": "請求代理",
       "agent-app-request-title": "啟用基於代理的原則存取權限",
       "agent-app-request-comment": "請允許存取 [n] 個座椅。我的 Central 登入資訊為 {{login}}，客戶 ID 為 {{customer_id}}。",
-      "read-more": "閱讀更多..."
+      "read-more": "閱讀更多...",
+      "copy-to-clipboard-success": "已複製到剪貼簿"
     },
     "application": {
       "form": {
@@ -94,7 +96,13 @@
         "no-application-configured-help": "按一下「新增資源」按鈕以新增資源。",
         "error": "擷取資源清單時出現錯誤。",
         "no-userGroups-configured": "沒有可用的使用者群組。",
-        "no-userGroups-assigned": "未指派使用者群組。"
+        "no-userGroups-assigned": "未指派使用者群組。",
+        "domain-modal": {
+          "header": "已新增資源",
+          "copy-fqdn-label": "將以下連結新增至您的 DNS 伺服器：",
+          "alias-domain": "別名網域",
+          "dns-info": "請在您的 DNS 伺服器上爲資源的 FQDN 新增以下別名網域作爲 CNAME 記錄"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - 資源詳細資料",
@@ -114,6 +122,7 @@
             "domain": "網域：",
             "agent": "代理程式",
             "agentless": "無代理",
+            "alias-domain": "別名網域",
             "display-in-user-portal": {
               "label": "在使用者入口網站中顯示："
             },
@@ -194,23 +203,34 @@
         "no-gateway-found": "未找到閘道！",
         "no-gateway-configured": "您尚未新增任何閘道。",
         "no-gateway-configured-help": "按一下「新增閘道」按鈕以新增閘道。",
+        "no-gateway-connector-configured": "您尚且沒有任何閘道/連接器",
+        "no-gateway-connector-message": "要新增閘道/連接器，請參見以下說明：",
+        "no-gateway-connector-aws": "Amazon Web Service",
+        "no-gateway-connector-vmware": "VMware ESXi",
+        "statusicon-info": "閘道狀態",
+        "statusicon-info-with-connector": "閘道/連接器狀態",
         "download-gateway-VM": "下載閘道 VM",
         "add": "新增閘道",
+        "add-gateway-connector": "新增閘道/連接器",
+        "gateway-mode": "閘道",
+        "connector-mode": "連接器",
         "columns": {
           "name": "名稱",
+          "mode": "模式",
           "description": "說明",
           "fqdn": "FQDN",
           "package": "套件類型",
-          "type": "類型",
+          "type": "平台類型",
           "version": "版本",
           "identity-provider": "識別提供者",
           "status": "狀態"
         },
         "title": "Zero Trust Network Access - 閘道",
         "breadcrumb-text": "閘道",
+        "breadcrumb-text-gateway-connector": "閘道/連接器",
         "error": "擷取閘道清單時出現錯誤",
         "connector-modal": {
-          "header": "成功！已新增連接器",
+          "header": "已新增連接器",
           "copy-fqdn-label": "將以下連結新增至您的 DNS 伺服器：",
           "alias-domain": "別名網域",
           "dns-info": "請在您的 DNS 伺服器上爲連接器的 FQDN 新增以下別名網域作爲 CNAME 記錄"
@@ -260,6 +280,7 @@
               "description": "描述： ",
               "status": "狀態： ",
               "fqdn": "FQDN： ",
+              "alias-domain": "別名網域： ",
               "type": "類型： ",
               "idp": "識別提供者： ",
               "edit": "編輯",
@@ -303,7 +324,10 @@
       "form": {
         "title-add": "新增閘道",
         "title-edit": "編輯閘道",
+        "gateway-connector-title-add": "新增閘道/連接器",
+        "gateway-connector-title-edit": "編輯閘道/連接器",
         "title-delete": "刪除閘道",
+        "gateway-connector-title-delete": "刪除閘道/連接器",
         "software-update": "軟體更新",
         "try-again": "請重試",
         "edit-software-update": "編輯軟體更新排程",
@@ -312,7 +336,8 @@
         "location": "位置",
         "location-length-validation": "位置說明不應超過 100 個字元",
         "whitespace-location-validation": "需要位置",
-        "name-placeholder": "閘道名稱",
+        "name-placeholder-gateway": "閘道名稱",
+        "name-placeholder-connector": "連接器名稱",
         "description": "說明（最多 250 個字元）",
         "description-placeholder": "描述",
         "packageType": "平台類型",
@@ -410,7 +435,7 @@
         "mode": "模式",
         "gateway-mode": "閘道模式：閘道部署在客戶管理的資料中心，由客戶對資料平面進行管理。這些閘道會在網際網路上公開",
         "connector-mode": "連接器模式：Sophos 管理資料平面。連接器不會在網際網路上公開。連接器將 Sophos Cloud 與內部資源連結。",
-        "no-verified-domain": "沒有可用的已驗證網域。",
+        "no-verified-domain": "沒有已驗證的網域可用。",
         "add-verify-domain": "新增/驗證網域。",
         "read-more": "閱讀更多..."
       },
@@ -751,6 +776,7 @@
       }
     },
     "settings": {
+      "breadcrumb-text": "設定",
       "gateway": {
         "instance-heading": "適用於閘道執行個體的 Sophos 支援",
         "instance-expiration-label": "權杖到期",
@@ -773,6 +799,52 @@
         "off": "關閉 Sophos Service Edge",
         "domains": "網域",
         "domains-desc": "新增並驗證用於與 ZTNAaaS 搭配使用的網域"
+      },
+      "domain": {
+        "list": {
+          "title": "Zero Trust Network Access - 網域",
+          "breadcrumb-text": "網域",
+          "header": "您必須驗證與 Sophos Secure Edge 搭配使用的網域",
+          "sub-header1": "1.新增一個網域，一條 TXT 記錄已自動新增至表格。",
+          "sub-header2": "2.複製您的 TXT 記錄",
+          "sub-header3": "3.轉至您的網域的 DNS 記錄並將 TXT 記錄新增至您的網域主機。",
+          "sub-header4": "4.按一下「驗證」。",
+          "columns": {
+            "domain": "名稱",
+            "txtrecord": "TXT 記錄",
+            "status": "狀態",
+            "assigned-connectors": "連接器"
+          },
+          "add": "新增網域",
+          "verify": "驗證",
+          "verified": "已驗證",
+          "not-verified": "未驗證",
+          "copy-to-clipboard": "（複製到剪貼簿）",
+          "fetch-error": "擷取網域清單時出現錯誤",
+          "no-domain-found": "您尚未設定任何網域"
+        },
+        "form": {
+          "title-add": "新增網域",
+          "title-delete": "刪除網域",
+          "title-verify": "驗證網域",
+          "add-success": "網域已建立",
+          "add-failed": "網域建立失敗",
+          "name": "網域",
+          "name-placeholder": "example.com",
+          "invalid-name": "網域格式無效",
+          "info": "我們將自動產生一條 TXT 記錄並將其新增至網域表格。"
+        },
+        "fetch-error": "擷取網域清單時出現錯誤",
+        "delete": {
+          "message": "刪除網域",
+          "success": "已刪除網域"
+        },
+        "verify": {
+          "message": "在驗證網域之前，您必須將 TXT 記錄新增至您的 DNS 伺服器。",
+          "confirmation": "我已將 TXT 記錄新增至我的 DNS 伺服器。",
+          "success": "驗證的網域。",
+          "failed": "網域驗證失敗"
+        }
       }
     }
   },
@@ -825,6 +897,7 @@
       "application.policy.notnull": "必須向應用程式指派原則",
       "application.port.range": "應用程式連接埠值必須介於 0 到 65535 之間",
       "application.fqdn.notnull": "應用程式 FQDN 不得為 Null",
+      "application.fqdn.appdomain.mismatch": "資源 FQDN 應為您的閘道/連接器網域名稱的子網域",
       "application.logo.upload.error": "上傳應用程式標誌時發生錯誤。",
       "application.user-groups.not-empty": "必須向應用程式指派至少一個使用者群組",
       "application.fqdn.already.configured": "已設定應用程式 FQDN",
@@ -931,7 +1004,12 @@
       "remote.status.updatedOn.empty": "遠端偵錯状态 updatedOn 不能為空白",
       "remote.status.createdOn.empty": "遠端偵錯状态 createdOn 不能為空白",
       "remote.status.expiryOn.empty": "遠端偵錯状态 expiryOn 不能為空白",
-      "remote.status.accessId.empty": "遠端偵錯状态 accessId 不能為空白"
+      "remote.status.accessId.empty": "遠端偵錯状态 accessId 不能為空白",
+      "domain.action.not.null": "網域動作不得為 Null",
+      "domain.not.found": "找不到網域",
+      "domain.format.invalid": "網域必須為有效格式",
+      "customer.unauthorized": "客戶沒有啟用所需的功能旗標",
+      "domain.name.unverified": "網域名稱未經驗證"
     }
   },
   "ztna-report": {

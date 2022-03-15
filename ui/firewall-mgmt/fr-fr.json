@@ -24,7 +24,7 @@
     "main-dashboard-breadcrumb-text": "Vue générale",
     "list": {
       "auto-refresh": "Actualiser automatiquement",
-      "auto-refresh-hint": "Actualisation des données de la page toutes les 10 secondes"
+      "auto-refresh-hint": "Actualisation des données de la page toutes les {{ interval }} secondes"
     },
     "dashboard": {
       "name": "Firewall Management - Tableau de bord",
@@ -510,6 +510,10 @@
       "edit-group": "Gestion du pare-feu - Modifier le groupe de pare-feu",
       "breadcrumb-text": "Pare-feu",
       "create": "Créer un nouveau groupe",
+      "filtering": {
+        "showing-firewall-filter": "Filtré : \"{{value}}\"",
+        "show-firewall-filter": "Rechercher avec : \"{{value}}\""
+      },
       "edit": {
         "label": "Modifier le groupe",
         "warn-info": "L’assignation d’un pare-feu au groupe entraînera l’application d’une configuration par défaut au pare-feu. Ceci risque de modifier les configurations déjà existantes du pare-feu.",
@@ -519,6 +523,16 @@
       "config-radio": {
         "first-radio-label": "Utiliser les valeurs Sophos par défaut",
         "second-radio-label": "Importer la configuration existante"
+      },
+      "banner": {
+        "info": {
+          "label": "Firmware OBSOLÈTE détecté",
+          "text": "<strong>{{ name }}</strong> exécute une version du firmware arrivant à échéance et qui va bientôt ne plus être gérée depuis Sophos Central. Veuillez mettre à niveau ce pare-feu vers une version du firmware prise en charge avant le 30 novembre 2021 pour éviter toute interruption.",
+          "alert-text": "{{ name }} exécute une version du firmware arrivant à échéance et qui va bientôt ne plus être gérée depuis Sophos Central. Veuillez mettre à niveau ce pare-feu vers une version du firmware prise en charge avant le 30 novembre 2021 pour éviter toute interruption.",
+          "action": "Retrouvez plus de renseignements dans notre article de la base de connaissances.",
+          "learn-more": "Plus d’info",
+          "continue": "Continuer"
+        }
       },
       "add":  {
         "firewall": "Ajouter un pare-feu",
@@ -600,7 +614,11 @@
         "modal": {
           "location": {
             "latitude": "Latitude",
-            "longitude": "Longitude"
+            "longitude": "Longitude",
+            "message": {
+              "success": "Emplacement du pare-feu enregistré.",
+              "error": "Une erreur s’est produite lors de l’enregistrement de l’emplacement."
+            }
           },
           "edit-location-title": "Modifier l’emplacement du pare-feu",
           "add-location-title": "Ajouter un emplacement de pare-feu",
@@ -610,6 +628,12 @@
           "add": {
             "confirm-button": "Ajouter"
           }
+        },
+        "dashboard": {
+          "total-connections": "Total",
+          "good-connections": "Bon",
+          "bad-connections": "Mauvais",
+          "unknown-connections": "Inconnu"
         }
       }
     },
@@ -831,7 +855,9 @@
         "loading": "",
         "unmanaged": "Gestion désactivée",
         "approval_pending": "Autorisation en attente",
-        "initializing": "Initialisation en cours..."
+        "initializing": "Initialisation en cours...",
+        "outofsync": "Erreur nécessitant votre attention",
+        "waiting": "Déploiement en attente"
       },
       "status": {
         "last-seen": "Vu pour la dernière fois à {{ time }}",

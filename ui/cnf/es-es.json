@@ -2,33 +2,42 @@
   "cnf": {
     "common": {
       "action": {
-          "add": "Añadir",
-          "edit": "Editar",
-          "delete": "Eliminar",
-          "update": "Actualizar",
-          "save": "Guardar",
-          "disable": "Desactivar",
-          "cancel": "Cancelar",
-          "enter": "Introducir",
-          "remove": "Eliminar",
-          "modify": "Modificar",
-          "confirm": "Confirmar",
-          "approve": "Aprobar",
-          "search":  "Buscar"
+        "add": "Añadir",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "update": "Actualizar",
+        "save": "Guardar",
+        "disable": "Desactivar",
+        "cancel": "Cancelar",
+        "enter": "Introducir",
+        "remove": "Eliminar",
+        "modify": "Modificar",
+        "confirm": "Confirmar",
+        "approve": "Aprobar",
+        "search": "Buscar"
       },
       "manage": "Gestionar",
       "status": {
         "success": "Completado",
         "error": "Error"
       },
-      "confirm-delete-header": "Confirmar eliminación"
+      "confirm-delete-header": "Confirmar eliminación",
+      "auth-suv-unreachable": "El servicio de autorización no está accesible",
+      "clientid-exists": "El ID de cliente ya existe",
+      "messages": {
+        "denied": "Acceso denegado.",
+        "generic-error": "Se ha producido un error inesperado al procesar la solicitud.",
+        "info": "Info",
+        "bad-credentials": "Credenciales o certificado incorrectos."
+      }
     },
     "nav-title": {
-        "clusters": "Clústeres",
-        "dashboard": "Panel de control",
-        "waf-rules": "Reglas WAF",
-        "certificates": "Certificados",
-        "ips-rule": "Protección IPS"
+      "clusters": "Clústeres",
+      "dashboard": "Panel de control",
+      "waf-rules": "Reglas WAF",
+      "certificates": "Certificados",
+      "ips-rule": "Protección IPS",
+      "admission-control": "Control de admisión"
     },
     "clusters-list": {
       "title": "Firewalls Cloud Series",
@@ -45,7 +54,8 @@
       "feature": {
         "firewall": "Firewall",
         "waf": "WAF",
-        "ips": "IPS"
+        "ips": "IPS",
+        "admission-control": "Control de admisión"
       },
       "registration-status": {
         "waiting-for-deployment": "Esperando despliegue",
@@ -55,7 +65,14 @@
       "installation-type": {
         "aws": "Amazon EKS",
         "on-prem": "Local"
+      },
+      "messages": {
+        "empty-message": "No hay clústeres disponibles."
       }
+    },
+    "edit-cluster": {
+      "title": "Editar firewall",
+      "breadcrumbs-text": "Editar firewall"
     },
     "add-cluster": {
       "title": "Añadir firewall",
@@ -69,6 +86,14 @@
       "type-place-holder": "Seleccione un tipo",
       "action": "Acción",
       "status": "Estado",
+      "btn-label": "Lista para desplegar",
+      "cluster-name-error": "El nombre del clúster no debe ser superior a 100 caracteres.",
+      "name-pattern-error": "El nombre del clúster tiene caracteres no válidos.",
+      "cluster-description-error": "La descripción puede tener un máximo de 250 caracteres.",
+      "not-selected-cni": "No ha seleccionado una CNI; seleccione su CNI actual para continuar.",
+      "require-cni": "Cloud Series Firewall requiere tener instalada la CNI como requisito previo. Se recomienda instalar la CNI de Calico desde el sitio oficial.",
+      "not-selected-ingress": "No ha seleccionado un controlador de entrada. Para continuar, seleccione un controlador de entrada o bien desactive el WAF.",
+      "not-supported-ingress": "Ha seleccionado un controlador de entrada existente que no es compatible con WAF. Si desea utilizar el WAF, tendrá que eliminar el controlador de entrada de su clúster. De lo contrario, desactive el WAF.",
       "type": {
         "premises": "Instalación local",
         "aws": "Amazon EKS"
@@ -89,42 +114,55 @@
         "different": "Ya tengo instalado otro proxy"
       },
       "services": {
-        "network-firewall": "Cortafuegos de red",
-        "waf": "Firewall de aplicaciones web",
-        "ip": "Prevención de intrusiones",
+        "network-firewall": "Firewall de red",
         "nf-label": "Reglas de firewall de Zero Trust para Kubernetes",
+        "waf": "Firewall de aplicaciones web",
         "waf-label": "Publicar y proteger de forma segura las aplicaciones web",
-        "ip-label": "Protección NGFW para el tráfico de entrada/salida"
+        "ip": "Prevención de intrusiones",
+        "ip-label": "Protección NGFW para el tráfico de entrada/salida",
+        "admission-control": "Control de admisión",
+        "admission-control-label": "Controlar las normas de despliegue de los contenedores"
       },
       "s3-config": {
         "section-title": "Configuración de bucket de S3",
         "section-help": "Proporcione la configuración de bucket de S3; el firewall de aplicaciones web la necesita para el almacenamiento de objetos de configuración",
-        "s3-url": "URL del bucket",
+        "s3-url": "Nombre de bucket",
         "access-key": "Clave de acceso",
         "secret-key": "Clave secreta"
       },
-      "btn-label": "Lista para desplegar",
-      "btn-edit": "Editar",
-      "cluster-name-error": "El nombre del clúster no debe ser superior a 100 caracteres.",
-      "name-pattern-error": "El nombre del clúster tiene caracteres no válidos.",
-      "cluster-description-error": "La descripción puede tener un máximo de 250 caracteres.",
-      "not-selected-cni": "No ha seleccionado una CNI; seleccione su CNI actual para continuar.",
-      "require-cni": "Cloud Series Firewall requiere tener instalada la CNI como requisito previo. Se recomienda instalar la CNI de Calico desde el sitio oficial.",
-      "not-selected-ingress": "No ha seleccionado un controlador de entrada. Para continuar, seleccione un controlador de entrada o bien desactive el WAF.",
-      "not-supported-ingress": "Ha seleccionado un controlador de entrada existente que no es compatible con WAF. Si desea utilizar el WAF, tendrá que eliminar el controlador de entrada de su clúster. De lo contrario, desactive el WAF."
+      "service-type": {
+        "section-title": "Tipo de servicio de proxy de WAF",
+        "service-type-label": "Tipo de servicio",
+        "section-help": "Seleccione LoadBalancer si se utilizará un equilibrador de carga delante del clúster o bien NodePort para permitir que el clúster actúe como equilibrador de carga."
+      },
+      "messages": {
+        "updated-message": "Clúster actualizado correctamente.",
+        "added-message": "Clúster añadido correctamente.",
+        "cluster-name-already-exists": "Ya existe un clúster con el mismo nombre.",
+        "default-error": "Se ha producido un error al procesar la solicitud.",
+        "exception": {
+          "resource": {
+            "not-found": "No se ha encontrado el recurso."
+          }
+        }
+      }
     },
     "cluster-overview": {
       "title": "Introducción",
       "breadcrumbs-text": "Visión general del clúster",
       "status": "Estado",
       "installation-steps": "Pasos de instalación",
-      "confirm-cluster-delete": "¿Está seguro de que desea eliminar el clúster?"
+      "confirm-cluster-delete": "¿Está seguro de que desea eliminar el clúster?",
+      "messages": {
+        "deleted-message": "Clúster eliminado correctamente.",
+        "updated-message": "Clúster actualizado correctamente."
+      }
     },
     "waf": {
       "list": {
         "title": "Reglas de firewall de aplicaciones web",
-        "breadcrumb-text": "Reglas de firewall de aplicaciones web",
-        "search-placeholder":"Buscar regla WAF",
+        "breadcrumb-text": "Reglas WAF",
+        "search-placeholder": "Buscar regla WAF",
         "add": "Añadir regla",
         "name": "Nombre",
         "description": "Descripción",
@@ -137,17 +175,33 @@
         "rate-limit": "Límite de velocidad",
         "status": "Estado",
         "age": "Edad",
+        "entry-point": "Punto de entrada",
+        "details": "Ver detalles",
+        "fqdn": "FQDN",
+        "destination": "Destino",
+        "request-path": "Ruta de acceso de solicitud",
         "messages": {
+          "delete-rule-confirmation": "¿Desea eliminar la regla?",
           "delete-rule-success": "Se ha eliminado la regla.",
-          "delete-rule-error": "No se puede eliminar la regla."
+          "delete-rule-error": "No se puede eliminar la regla.",
+          "empty-message": "No hay reglas WAF disponibles para este clúster."
         }
       },
       "add": {
-        "title": "Añadir regla WAF",
-        "breadcrumb-text": "Añadir regla WAF"
+        "title": "Añadir regla de firewall de aplicaciones web",
+        "breadcrumb-text": "Añadir regla WAF",
+        "messages": {
+          "waf-rule-add-success": "La regla se ha creado correctamente.",
+          "waf-rule-add-error": "No se puede crear la regla."
+        },
+        "help-text": {
+          "entry-point": "Seleccione el/los puerto(s) de escucha del clúster y la configuración de cifrado deseada. El firewall escuchará en los puertos seleccionados en todas las IP accesibles del clúster.",
+          "routes": "Elija cómo enrutar el tráfico del cliente a los servicios web de destino.",
+          "protection-policy": "Elija la política web predeterminada que se utilizará para proteger este servicio."
+        }
       },
       "edit": {
-        "title": "Editar regla WAF",
+        "title": "Editar regla de firewall de aplicaciones web",
         "breadcrumb-text": "Editar regla WAF",
         "status": "Estado",
         "rule-name": "Nombre de la regla",
@@ -181,7 +235,8 @@
         "type": "Tipo",
         "destination": "Destino",
         "port": "Puerto",
-        "https-s": "HTTPS/S",
+        "https-s": "HTTP/S",
+        "web-service-uses-tls": "El servicio web utiliza TLS",
         "action": "Acción",
         "edit-route-tooltip": "Editar ruta",
         "delete-route-tooltip": "Eliminar ruta",
@@ -192,7 +247,29 @@
         "certificate": "Certificado",
         "certificate-placeholder": "Seleccionar certificado",
         "domains-fqdn-placeholder": "Seleccionar nombre de host",
-        "add-route": "Add route" 
+        "add-route": "Añadir ruta",
+        "option-labels": {
+          "local": "Local",
+          "external": "Externo",
+          "http-only": "Solo HTTP",
+          "https": "HTTPS",
+          "exact": "Exacto",
+          "prefix": "Prefijo",
+          "suffix": "Sufijo",
+          "contains": "Contiene",
+          "present": "Presente"
+        },
+        "messages": {
+          "change-certificate-prompt-confirmation": "Ya ha configurado las rutas; el cambio de certificado vaciará todas las configuraciones de rutas existentes. ¿Desea continuar?",
+          "waf-rule-update-success": "La regla WAF ha sido actualizada.",
+          "waf-rule-update-error": "No se puede actualizar la regla WAF.",
+          "entrypoint-port-redirectport-not-same": "redirectPort y el puerto entrypoint de la regla WAF no pueden ser iguales.",
+          "entrypoint-port-inuse": "El puerto entrypoint ya está en uso; especifique el puerto disponible",
+          "entrypoint-redirectfrom-inuse": "Redirección de entrypoint desde un puerto ya en uso; especifique el puerto disponible.",
+          "name-already-exists": "Ya existe la regla WAF con el mismo nombre.",
+          "routes-destination-host-fqdn-invalid": "El FQDN del host de destino debe tener un formato válido.",
+          "field-value-notvalid": "Falta un valor de atributo o no es válido."
+        }
       }
     },
     "certificate": {
@@ -214,7 +291,12 @@
         "success-notification-title": "Completado",
         "error-notification-title": "Error",
         "certificate-delete-success": "Se ha eliminado el certificado.",
-        "certificate-delete-error": "No se puede eliminar el certificado."
+        "certificate-delete-error": "No se puede eliminar el certificado.",
+        "added-message": "Certificado añadido correctamente.",
+        "update-message": "Certificado actualizado correctamente.",
+        "certificate-name-already-exists": "Ya existe un certificado con el mismo nombre.",
+        "certificate-usedby-waf-rule": "No se puede eliminar el certificado utilizado por la regla WAF.",
+        "change-certificate-prompt-confirmation": "Ya ha configurado las rutas; el cambio de certificado vaciará todas las configuraciones de rutas existentes. ¿Desea continuar?"
       }
     },
     "firewall-rules": {
@@ -228,7 +310,102 @@
         "ingress": "Entrada",
         "ingress-service": "Servicio de entrada",
         "egress": "Salida",
-        "egress-service": "Servicio de salida"
+        "egress-service": "Servicio de salida",
+        "status": "Estado",
+        "disabled" : "Desactivado",
+        "enabled" : "Activado",
+        "messages": {
+          "delete-rule-confirmation": "¿Está seguro de que desea eliminar la regla?",
+          "delete-rule-success": "Se ha eliminado la regla.",
+          "empty-message": "No hay reglas de firewall disponibles para este clúster.",
+          "cidr-invalid": "El CIDR de la regla de firewall no es válido.",
+          "exceptlist-invalid": "La lista de excepciones de reglas de firewall no es válida.",
+          "ipblock-cidr-except-notinrange": "Entrada de la lista de excepciones fuera del rango de CIDR.",
+          "ipblock-cidr-except-samerange": "La entrada de la lista de excepciones tiene el mismo rango que CIDR.",
+          "name-already-exists": "Ya existe una regla de firewall con el mismo nombre.",
+          "delete-rule-error": "No se puede eliminar la regla."
+        },
+        "options":{
+          "namespace": "Espacio de nombre",
+          "label-name": "Etiquetas",
+          "pod-name": "Etiqueta de pod",
+          "allowall": "Permitir todo",
+          "denyall": "Denegar todo",
+          "service-name": "Nombre de servicio",
+          "custom" : "Personalizada"
+        }
+      },
+      "add": {
+        "title": "Añadir regla de firewall",
+        "breadcrumb-text": "Añadir regla de firewall",
+        "help-text": {
+          "match-criteria": "Elija el espacio de nombre y las etiquetas que esta regla debe proteger.",
+          "ingress-heading": "La entrada se refiere al tráfico que llega a los contenedores que coinciden con el espacio de nombre y las etiquetas seleccionadas. Utilice estos criterios para seleccionar a qué tráfico entrante debe aplicarse esta regla.",
+          "egress-heading": "La salida se refiere al tráfico que se origina en los contenedores que coinciden con el espacio de nombre y las etiquetas seleccionadas. Utilice estos criterios para seleccionar a qué tráfico saliente debe aplicarse esta regla."
+        }
+      },
+      "edit": {
+        "title": "Editar regla de firewall",
+        "breadcrumb-text": "Editar regla de firewall",
+        "status": "Estado",
+        "rule-name": "Nombre de la regla",
+        "description": "Descripción",
+        "namespace": "Espacio de nombre",
+        "namespace-placeholder": "Seleccionar espacio de nombre",
+        "namespace-label-placeholder": "Seleccionar etiqueta del espacio de nombre",
+        "match-criteria": "Criterios de coincidencia",
+        "service-labels": "Etiquetas de servicio",
+        "type": "Tipo",
+        "local": "Local",
+        "external": "Externo",
+        "select-services": "Seleccionar servicios",
+        "select-service-label": "Seleccionar etiqueta de servicio",
+        "ingress-type": "Tipo de entrada",
+        "namespace-labels": "Etiquetas de espacio de nombre",
+        "value": "Valor",
+        "custom": "Personalizada",
+        "allow-all": "Permitir todas",
+        "deny-all": "Denegar todas",
+        "is": "es",
+        "in": "aparece en",
+        "not-in": "no aparece en",
+        "exists": "Existe",
+        "not-exists": "No existe",
+        "egress-type": "Tipo de salida",
+        "service-ports": "Puertos de servicio",
+        "port-number": "Número de puerto",
+        "from-ip": "De la IP o subred",
+        "not-from-ip": "No es de la IP o subred",
+        "tcp": "TCP",
+        "udp": "UDP",
+        "sctp": "SCTP",
+        "add-ingress": "Añadir entrada",
+        "add-egress": "Añadir salida",
+        "rule-name-error": "El nombre de la regla no debe ser superior a 100 caracteres.",
+        "name-pattern-error": "El nombre de la regla tiene caracteres no válidos.",
+        "rule-description-error": "La descripción puede tener un máximo de 250 caracteres.",
+        "namespace-address": "Espacio de nombre o dirección",
+        "service": "Servicio",
+        "action": "Acción",
+        "edit-route-tooltip": "Editar ruta",
+        "delete-route-tooltip": "Eliminar ruta",
+        "clone-route-tooltip": "Clonar ruta",
+        "egress-heading": "Salida",
+        "ingress-heading": "Entrada",
+        "rule-required-error": "El nombre de la regla es un campo obligatorio.",
+        "namespace-required-error": "El espacio de nombre es un campo obligatorio.",
+        "ip-address-invalid": "La dirección IP o la subred no es válida.",
+        "ip-address-invalid-range": "La dirección IP o la subred tiene un rango no válido.",
+        "empty-rules-text": "Tanto las reglas de entrada como las de salida están vacías.",
+        "ip-address-cidr": "Introducir IP o subred",
+        "ip-address-except": "Introducir IP o subredes separadas por comas",
+        "from-ip-not-filled": "El campo De la IP o subred debe rellenarse.",
+        "port-value-error": "El número de puerto debe hallarse entre 1 y 65535.",
+        "messages": {
+          "delete-rule-confirmation": "¿Está seguro de que desea eliminar la regla?",
+          "delete-rule-success": "Se ha eliminado la regla.",
+          "delete-rule-error": "No se puede eliminar la regla."
+        }
       }
     },
     "ips": {
@@ -241,6 +418,61 @@
         "save-success": "La configuración se ha guardado correctamente.",
         "save-failed": "Error al guardar los cambios."
       }
+    },
+    "admission-control-list": {
+      "search-placeholder": "Buscar regla",
+      "title": "Reglas de control de admisión",
+      "breadcrumb-text": "Reglas de control de admisión",
+      "add": "Añadir regla",
+      "name": "Nombre",
+      "description": "Descripción",
+      "repository": "Repositorio",
+      "rule-type": "Tipo de regla",
+      "namespaces": "Espacios de nombre",
+      "status": "Estado",
+      "allowed-repositories": "Permitir repositorios",
+      "label-requirements": "Requisitos de las etiquetas",
+      "messages": {
+        "success-notification-title": "Completado",
+        "error-notification-title": "Error",
+        "delete-rule-confirmation": "¿Desea eliminar la regla?",
+        "delete-rule-success": "Se ha eliminado la regla.",
+        "delete-rule-error": "No se puede eliminar la regla."
+      }
+    },
+    "admission-control-add": {
+      "title": "Añadir regla de control de admisión",
+      "breadcrumb-text": "Añadir control de admisión",
+      "status": "Estado",
+      "rule-name": "Nombre",
+      "description": "Descripción",
+      "namespace-labels": "Espacio de nombre",
+      "rule-type": "Tipo de regla",
+      "target-namespace": "Espacio de nombre de destino",
+      "permitted-repository": "Repositorio permitido",
+      "container-repository": "Repositorio de contenedores",
+      "optix-scan-label": "Requiere el escaneado de Sophos Cloud Optix",
+      "api-key": "Clave de API",
+      "disallow-levels": "Niveles de vulnerabilidad de contenedores no permitidos",
+      "disallow-levels-placeholder": "Seleccionar niveles",
+      "disallow-levels-descp": "Niveles de vulnerabilidad para los que el número de vulnerabilidades no debe ser superior a cero",
+      "namespaces-placeholder": "Seleccionar espacio de nombre",
+      "messages": {
+        "success-notification-title": "Completado",
+        "error-notification-title": "Error",
+        "add-rule-success": "Regla añadida correctamente.",
+        "add-rule-error": "No se puede añadir la regla.",
+        "update-rule-success": "Regla actualizada correctamente.",
+        "update-rule-error": "No se puede actualizar la regla.",
+        "name-already-exists" : "Ya existe un control de admisión con el mismo nombre."
+      },
+      "help-text": {
+        "target-namespace": "Elija el espacio de nombre que esta regla debe proteger."
+      }
+    },
+    "admission-control-edit": {
+      "title": "Editar regla de control de admisión",
+      "breadcrumb-text": "Editar control de admisión"
     }
   }
 }

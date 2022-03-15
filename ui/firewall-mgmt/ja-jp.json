@@ -24,7 +24,7 @@
     "main-dashboard-breadcrumb-text": "概要",
     "list": {
       "auto-refresh": "自動更新",
-      "auto-refresh-hint": "10秒ごとにページデータを更新します"
+      "auto-refresh-hint": "{{ interval }}秒ごとにページデータを更新します"
     },
     "dashboard": {
       "name": "ファイアウォール管理 - ダッシュボード",
@@ -510,6 +510,10 @@
       "edit-group": "ファイアウォール管理 - ファイアウォールグループの編集",
       "breadcrumb-text": "ファイアウォール",
       "create": "新しいグループの作成",
+      "filtering": {
+        "showing-firewall-filter": "フィルタ: \"{{value}}\"",
+        "show-firewall-filter": "検索条件: \"{{value}}\""
+      },
       "edit": {
         "label": "グループの編集",
         "warn-info": "グループにファイアウォールを割り当てると、ファイアウォールにはデフォルトの設定が適用されます。現在のファイアウォールの設定が変更される場合があります。",
@@ -519,6 +523,16 @@
       "config-radio": {
         "first-radio-label": "ソフォスのデフォルト設定を使用",
         "second-radio-label": "既存の設定のインポート"
+      },
+      "banner": {
+        "info": {
+          "label": "最新でないファームウェアが見つかりました",
+          "text": "<strong>{{ name }}</strong> は、サポート終了日 (EOL) を超えたファームウェアバージョンを実行しているため、Sophos Central で管理できない可能性があります。保護の中断を避けるため、2021年 11月 30日までに、このファイアウォールを、対応しているファームウェアバージョンにアップグレードするようにしてください。",
+          "alert-text": "{{ name }} は、サポート終了日 (EOL) を超えたファームウェアバージョンを実行しているため、Sophos Central で管理できない可能性があります。保護の中断を避けるため、2021年 11月 30日までに、このファイアウォールを、対応しているファームウェアバージョンにアップグレードするようにしてください。",
+          "action": "詳細は、サポートデータベースの文章を参照してください。",
+          "learn-more": "詳細情報",
+          "continue": "続行"
+        }
       },
       "add":  {
         "firewall": "ファイアウォールの追加",
@@ -600,7 +614,11 @@
         "modal": {
           "location": {
             "latitude": "緯度",
-            "longitude": "経度"
+            "longitude": "経度",
+            "message": {
+              "success": "ファイアウォールの場所が保存されました。",
+              "error": "場所の保存中、エラーが発生しました。"
+            }
           },
           "edit-location-title": "ファイアウォールの場所の編集",
           "add-location-title": "ファイアウォールの場所の追加",
@@ -610,6 +628,12 @@
           "add": {
             "confirm-button": "追加"
           }
+        },
+        "dashboard": {
+          "total-connections": "合計",
+          "good-connections": "正常",
+          "bad-connections": "問題あり",
+          "unknown-connections": "不明"
         }
       }
     },
@@ -831,7 +855,9 @@
         "loading": "",
         "unmanaged": "管理: 無効",
         "approval_pending": "承認保留中",
-        "initializing": "初期化中..."
+        "initializing": "初期化中...",
+        "outofsync": "対処が必要なエラーあり",
+        "waiting": "導入待機中"
       },
       "status": {
         "last-seen": "前回の日時: {{ time }}",

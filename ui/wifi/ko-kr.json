@@ -21,6 +21,10 @@
       "confirm-delete-header": "삭제 확인",
       "error": "오류",
       "errors": "오류",
+      "http-errors": {
+        "500": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
+        "default": "데이터 로드 중 문제 발생."
+      },
       "warnings": "경고",
       "success": "성공",
       "info": "정보",
@@ -35,6 +39,7 @@
       "sites": "사이트",
       "site-name": "사이트 이름",
       "statistic": "통계",
+      "task-queue": "작업 대기열",
       "devices": "장치",
       "reset": "재설정",
       "select-all": "모두 선택",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "사이트 개요",
-      "neighbourhoodNetworks": "인접 네트워크",
+      "neighborhoodNetworks": "인접 네트워크",
       "list": {
         "breadcrumb-text": "사이트",
         "title": "무선 - 사이트",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "이 액세스 지점은 해당 대역을 지원하지 않습니다.",
         "primary-dns-server-short-description": "이 게스트 네트워크에 연결된 클라이언트가 사용한 서버.",
         "primary-dns-server-description": " 기본 서버가 응답하지 않는 경우 백업 DNS 서버 클라이언트가 사용할 수 있습니다. 사용량은 클라이언트에 따라 달라집니다.",
-        "ssid-required-validation-msg": "SSID가 필요합니다.",
-        "ssid-maxlength-validation-msg": "SSID는 길이가 32바이트 미만이어야 합니다.",
-        "ssid-duplicate-validation-msg": "중복 SSID 이름",
         "ssid-network-name": "네트워크의 이름.",
         "password-auto-generate-msg": "암호가 자동으로 생성됩니다.",
         "insecure-encryption-mode-msg": "이 암호화 모드가 안전하지 않습니다.",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "로컬 네트워크용 RADIUS 서버.",
         "radius-server-shared-secret": "공유 암호",
         "passphrase-required": "암호가 필요합니다.",
+        "passphrase-placeholder": "보안 암호를 입력하십시오.",
+        "shared-secret-placeholder": "암호 입력",
         "frequency-band-inline-help-msg": "네트워크를 브로드캐스트해야 하는 대역을 제한합니다. 이것은 일부 모델이 특정 대역에서만 브로드캐스트하거나 일부 대역은 동시에 브로드캐스트할 수 없도록 SSID를 브로드캐스트하는 AP를 제한할 수 있습니다.",
         "enable-mesh-mode": "메시 모드 사용",
         "enable-mesh-mode-help-msg": "서로 인터넷에 액세스하지 않고 AP를 연결할 수 있습니다.",
+        "only-one-mesh-network": "메시 SSID는 하나만 만들 수 있습니다.",
+        "disable-mesh": "메시 모드를 사용하지 않으려면 이 SSID를 삭제하십시오.",
+        "no-root-ap": "메시에 LAN을 통해 인터넷에 연결된 하나 이상의 액세스 지점이 필요합니다.",
+        "stp-packets-warning": "메시 액세스 지점이 STP 패킷을 전송하므로 IT 규정을 준수하는지 확인하십시오.",
         "port-required-validation-msg": "포트가 필요합니다.",
         "port-range-validate-msg": "포트는 1~65535의 숫자여야 합니다.",
         "port-number-help-msg": "RADIUS 서버용 포트 번호.",
@@ -832,7 +840,8 @@
           "auto-refresh": "자동 새로 고침",
           "unassigned-sites": "할당되지 않은 사이트",
           "emptyListMessage": "추가된 액세스 지점이 없습니다.",
-          "listRegisterInfo": "등록 버튼을 클릭하여 액세스 지점을 추가하십시오."
+          "listRegisterInfo": "등록 버튼을 클릭하여 액세스 지점을 추가하십시오.",
+          "sitesNotFoundErrorMessage": "사이트를 로드할 수 없습니다."
         },
         "statusOnline": "최신 상태",
         "stateOffline": "오프라인",
@@ -858,7 +867,8 @@
         "minutesShort": "m",
         "monthsShort": "mo",
         "secondsShort": "s",
-        "yearsShort": "y"
+        "yearsShort": "y",
+        "firmware-upgrade": "펌웨어 업그레이드"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "이 액세스 지점을 일련 번호{{ sn }}(으)로 재부팅하시겠습니까?",
           "update-firmware": "펌웨어 업데이트 가능",
           "rebootbutton": "액세스 지점 재부팅",
+          "radios": "무선 {{index}}",
           "radiosZero": "무선 0",
           "radiosOne": "무선 1",
           "choose-band": "대역",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2.4GHz",
             "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
             "GHZ_5": "5분",
-            "both": "2.4GHz 및 5GHz"
+            "both": "2.4GHz 및 5GHz",
+            "GHZ_6": "6GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "총 작업",
+        "created": "만든 날짜",
+        "pending": "보류 중",
+        "in-progress": "진행 중",
+        "failed": "실패",
+        "success": "성공",
+        "table": {
+          "status": "상태",
+          "site": "사이트",
+          "entity": "엔터티",
+          "action": "조치",
+          "createdBy": "만든 사람",
+          "createdAt": "만든 위치"
+        },
+        "status": {
+          "created": "만든 날짜",
+          "pending": "보류 중",
+          "inProgress": "진행 중",
+          "failed": "실패",
+          "success": "성공"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "작업 세부 정보 - 구성",
+            "reboot": "작업 세부 정보 - 재부팅",
+            "firmwareUpgrade": "작업 세부 정보 - 펌웨어 업그레이드"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "이미 등록됨",
               "limit-exceeded": "한도 초과"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "펌웨어 관리: {{site}}",
+        "header-text-no-site": "펌웨어 관리",
+        "note-no-site": "액세스 포인트용 펌웨어를 관리합니다. 아래 선택 항목에서 펌웨어 업그레이드를 추가하거나 취소할 수 있습니다.",
+        "note-for-site": "사이트의 액세스 포인트용 펌웨어 관리: '{{site}}'. 아래 선택 항목에서 펌웨어 업그레이드를 추가하거나 취소할 수 있습니다.",
+        "remove-schedule": "일정 제거",
+        "choose-schedule": "일정 선택",
+        "rollback": "펌웨어 교체({{ version }})",
+        "week": "주",
+        "weekday": "평일",
+        "time": "시간",
+        "list": {
+          "headers": {
+            "name": "이름",
+            "serial-number": "일련 번호",
+            "version": "버전",
+            "to-version": "끝 버전",
+            "chosen-schedule": "선택한 예약"
+          },
+          "selected-text": "{{selected}} 선택됨",
+          "modified-text": "{{selected}} 선택됨 - {{modified}} 수정됨",
+          "modified": "기존 예약 {{ version }} | {{ schedule }}이(가) 수정됩니다.",
+          "new-schedule": "새로운 예약",
+          "cancel-warning": "즉각적인 업그레이드 요청은 취소할 수 없습니다. 기존 일정이 완료된 후 새 일정을 추가할 수 있습니다."
+        },
+        "schedule": {
+          "update-now": "지금",
+          "custom": "사용자 지정",
+          "recurring": "반복",
+          "daily": "매일",
+          "weekly": "매주",
+          "monthly": "매월",
+          "header-text": "예약 선택",
+          "note": "선택한 액세스 포인트에 대한 업데이트 시기를 선택합니다.",
+          "now-note": "연결된 액세스 포인트는 펌웨어를 즉시 업그레이드하라는 알림을 받습니다. 연결 해제된 액세스 포인트는 연결 직후 알림을 받습니다. 이때 액세스 포인트를 다시 시작하게 될 수 있습니다. 즉각적인 예약은 저장하고 나면 수정할 수 없습니다. 새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.",
+          "custom-note": "선택한 일정은 표준 시간대에 관계없이 액세스 포인트의 로컬 시간을 따릅니다. 업그레이드를 하면 다시 시작하게 될 수 있습니다.",
+          "daily-schedule": "매일 {{time}}시",
+          "weekly-schedule": "{{day}}일마다 {{time}}",
+          "monthly-schedule": {
+            "1": "매월 첫 번째 {{day}}, {{time}}시",
+            "2": "매월 두 번째 {{day}}, {{time}}시",
+            "3": "매월 세 번째 {{day}}, {{time}}시",
+            "4": "매월 네 번째 {{day}}, {{time}}시"
           }
         }
       }

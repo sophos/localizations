@@ -11,6 +11,7 @@
       "ok": "OK",
       "download": "Herunterladen",
       "approve": "Genehmigen",
+      "validate": "Validieren",
       "search": "Suchen",
       "continue": "Fortfahren",
       "fqdn-validation": "Ungültiger FQDN",
@@ -32,7 +33,8 @@
       "agent-app-request-action": "Agent anfordern",
       "agent-app-request-title": "Agent-basierten Richtlinienzugriff aktivieren",
       "agent-app-request-comment": "Bitte erlauben Sie den Zugriff auf [n] Plätze. Mein Sophos-Central-Anmeldename ist {{login}} und die Kunden-ID ist {{customer_id}}.",
-      "read-more": "mehr erfahren..."
+      "read-more": "Mehr erfahren...",
+      "copy-to-clipboard-success": "In die Zwischenablage kopiert"
     },
     "application": {
       "form": {
@@ -94,7 +96,13 @@
         "no-application-configured-help": "Klicken Sie auf 'Ressource hinzufügen', um eine Ressource hinzuzufügen.",
         "error": "Fehler beim Abruf der Ressourcenliste.",
         "no-userGroups-configured": "Keine Benutzergruppen verfügbar.",
-        "no-userGroups-assigned": "Keine Benutzergruppen zugewiesen."
+        "no-userGroups-assigned": "Keine Benutzergruppen zugewiesen.",
+        "domain-modal": {
+          "header": "Ressource hinzugefügt",
+          "copy-fqdn-label": "Fügen Sie den folgenden Link zu Ihrem DNS-Server hinzu:",
+          "alias-domain": "Alias-Domäne",
+          "dns-info": "Bitte fügen Sie in Ihrem DNS-Server die unten stehende Alias-Domäne als CNAME-Record für den vollständigen Domänennamen (FQDN) der Ressource hinzu"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Ressourcendetails",
@@ -114,6 +122,7 @@
             "domain": "Domäne:",
             "agent": "Agent",
             "agentless": "Ohne Agent",
+            "alias-domain": "Alias-Domäne",
             "display-in-user-portal": {
               "label": "Anzeige im Benutzerportal:"
             },
@@ -186,7 +195,7 @@
         "medium-alerts": "Alarme mit mittlerer Einstufung",
         "low-alerts": "Alarme mit niedriger Einstufung",
         "fetch-error": "Fehler beim Abruf der Alarmzusammenfassung",
-        "header": "Alarm-Zusammenfassung"
+        "header": "Zusammenfassung der Warnhinweise"
       }
     },
     "gateway": {
@@ -194,23 +203,34 @@
         "no-gateway-found": "Keine Gateways gefunden.",
         "no-gateway-configured": "Sie haben keine Gateways hinzugefügt.",
         "no-gateway-configured-help": "Klicken Sie auf 'Gateway hinzufügen', um ein Gateway hinzuzufügen.",
+        "no-gateway-connector-configured": "Sie haben noch keine Gateways/Connectors",
+        "no-gateway-connector-message": "Für das Hinzufügen eines Gateways/Connectors siehe die nachfolgende Anleitung:",
+        "no-gateway-connector-aws": "Amazon Web Service",
+        "no-gateway-connector-vmware": "VMware ESXi",
+        "statusicon-info": "Gateway-Status",
+        "statusicon-info-with-connector": "Gateway-/Connector-Status",
         "download-gateway-VM": "Gateway-VM herunterladen",
         "add": "Gateway hinzufügen",
+        "add-gateway-connector": "Gateway/Connector hinzufügen",
+        "gateway-mode": "Gateway",
+        "connector-mode": "Anschluss",
         "columns": {
           "name": "Name",
+          "mode": "Modus",
           "description": "Beschreibung",
           "fqdn": "FQDN",
           "package": "Pakettyp",
-          "type": "Typ",
+          "type": "Plattformtyp",
           "version": "Version",
           "identity-provider": "Identitätsanbieter",
           "status": "Status"
         },
         "title": "Zero Trust Network Access - Gateways",
         "breadcrumb-text": "Gateways",
+        "breadcrumb-text-gateway-connector": "Gateways/Connectors",
         "error": "Fehler beim Abrufen der Gateway-Liste",
         "connector-modal": {
-          "header": "Erfolg! Connector hinzugefügt",
+          "header": "Connector hinzugefügt",
           "copy-fqdn-label": "Fügen Sie den folgenden Link zu Ihrem DNS-Server hinzu:",
           "alias-domain": "Alias-Domäne",
           "dns-info": "Bitte fügen Sie in Ihrem DNS-Server die unten stehende Alias-Domäne als CNAME-Record für den vollständigen Domänennamen (FQDN) des Connectors hinzu"
@@ -260,6 +280,7 @@
               "description": "Beschreibung: ",
               "status": "Status: ",
               "fqdn": "FQDN: ",
+              "alias-domain": "Alias-Domäne: ",
               "type": "Typ: ",
               "idp": "Identitätsanbieter: ",
               "edit": "Bearbeiten",
@@ -303,7 +324,10 @@
       "form": {
         "title-add": "Gateway hinzufügen",
         "title-edit": "Gateway bearbeiten",
+        "gateway-connector-title-add": "Gateway/Connector hinzufügen",
+        "gateway-connector-title-edit": "Gateway/Connector bearbeiten",
         "title-delete": "Gateway löschen",
+        "gateway-connector-title-delete": "Gateway/Connector löschen",
         "software-update": "Software-Aktualisierung",
         "try-again": "Erneut versuchen",
         "edit-software-update": "Software-Aktualisierungszeitplan bearbeiten",
@@ -312,14 +336,15 @@
         "location": "Verzeichnis",
         "location-length-validation": "Verzeichnis darf nicht länger als 100 Zeichen sein",
         "whitespace-location-validation": "Verzeichnis ist erforderlich",
-        "name-placeholder": "Gateway-Name",
+        "name-placeholder-gateway": "Gateway-Name",
+        "name-placeholder-connector": "Connector-Name",
         "description": "Beschreibung (max. 250 Zeichen)",
         "description-placeholder": "Beschreibung",
         "packageType": "Plattformtyp",
         "identity-provider": "Identitätsanbieter",
         "fqdn": "FQDN",
         "appDomain": "Domäne",
-        "appDomainVerified": "Domäne (verifiziert)",
+        "appDomainVerified": "Domäne (validiert)",
         "app-domain-validation": "Ungültige Ressourcen-Domäne",
         "password": "Gateway-Kennwort",
         "password-placeholder": "Kennwort",
@@ -410,9 +435,9 @@
         "mode": "Modus",
         "gateway-mode": "Gateway-Modus: Gateways werden in Kunden-Rechenzentren bereitgestellt und die Datenebene wird durch die Kunden verwaltet. Diese Gateways sind aus dem öffentlichen Internet zugänglich",
         "connector-mode": "Connector-Modus: Die Datenebene wird von Sophos verwaltet. Die Connectors sind nicht aus dem öffentlichen Internet zugänglich. Über Connectors wird die Sophos-Cloud mit internen Ressourcen verknüpft.",
-        "no-verified-domain": "Keine verifizierten Domänen verfügbar.",
-        "add-verify-domain": "Fügen Sie Domänen hinzu und verifizieren diese.",
-        "read-more": "mehr erfahren..."
+        "no-verified-domain": "Keine validierten Domänen verfügbar.",
+        "add-verify-domain": "Domänen hinzufügen/validieren.",
+        "read-more": "Mehr erfahren..."
       },
       "delete": {
         "header": "Gateway löschen",
@@ -444,10 +469,10 @@
           "content-generating": "Erzeugung des Gateway-Image läuft. Sie werden nach Fertigstellung benachrichtigt."
         },
         "awaiting-approval": {
-          "label": "Warte auf Genehmigung",
+          "label": "Warten auf Genehmigung",
           "gateway-approve": "Anfrage zur Gateway-Registrierung genehmigt",
           "gateway-approve-error": "Fehler beim Genehmigen der Gateway-Registrierung.",
-          "header-approval": "Warte auf Genehmigung",
+          "header-approval": "Warten auf Genehmigung",
           "content-approval": "Genehmigen Sie die Anfrage zur Gateway-Registrierung, um die Gateway-Einrichtung abzuschließen",
           "eap2": {
             "label": "Genehmigen",
@@ -751,6 +776,7 @@
       }
     },
     "settings": {
+      "breadcrumb-text": "Einstellungen",
       "gateway": {
         "instance-heading": "Sophos-Support für Gateway-Instanz",
         "instance-expiration-label": "Token-Ablauf",
@@ -772,7 +798,53 @@
         "on": "Sophos Service Edge einschalten",
         "off": "Sophos Service Edge ausschalten",
         "domains": "Domänen",
-        "domains-desc": "Eine Domäne für ZTNAaaS hinzufügen und verifizieren"
+        "domains-desc": "Eine Domäne für ZTNAaaS hinzufügen und validieren"
+      },
+      "domain": {
+        "list": {
+          "title": "Zero Trust Network Access - Domänen",
+          "breadcrumb-text": "Domänen",
+          "header": "Sie müssen die von Sophos Secure Edge verwendeten Domänen validieren",
+          "sub-header1": "1. Fügen Sie eine Domäne hinzu. Ein TXT-Record wird automatisch zur Tabelle hinzugefügt.",
+          "sub-header2": "2. Kopieren Sie Ihren TXT-Record.",
+          "sub-header3": "3. Fügen Sie in den DNS-Einträgen Ihrer Domäne den TXT-Record zu Ihrem Domänen-Host hinzu.",
+          "sub-header4": "4. Klicken Sie auf Validieren.",
+          "columns": {
+            "domain": "Name",
+            "txtrecord": "TXT-Eintrag",
+            "status": "Status",
+            "assigned-connectors": "Anschluss"
+          },
+          "add": "Domäne hinzufügen",
+          "verify": "Validieren",
+          "verified": "Validiert",
+          "not-verified": "Nicht validiert",
+          "copy-to-clipboard": "(in die Zwischenablage kopieren)",
+          "fetch-error": "Fehler beim Abruf der Domänenliste",
+          "no-domain-found": "Sie haben keine Domänen konfiguriert"
+        },
+        "form": {
+          "title-add": "Domäne hinzufügen",
+          "title-delete": "Domäne löschen",
+          "title-verify": "Domäne validieren",
+          "add-success": "Domäne erstellt",
+          "add-failed": "Domänenerstellung fehlgeschlagen",
+          "name": "Domäne",
+          "name-placeholder": "example.com",
+          "invalid-name": "Ungültiges Domänenformat",
+          "info": "Wir erzeugen automatisch einen TXT-Record und fügen diesen zur Domänentabelle hinzu."
+        },
+        "fetch-error": "Fehler beim Abruf der Domänenliste",
+        "delete": {
+          "message": "Domäne löschen",
+          "success": "Domäne gelöscht"
+        },
+        "verify": {
+          "message": "Bevor Sie die Domäne validieren, müssen Sie den TXT-Record zu Ihrem DNS-Server hinzufügen.",
+          "confirmation": "Ich habe den TXT-Record zu meinem DNS-Server hinzugefügt.",
+          "success": "Domäne verifiziert.",
+          "failed": "Domänenverifizierung fehlgeschlagen"
+        }
       }
     }
   },
@@ -825,6 +897,7 @@
       "application.policy.notnull": "Eine Richtlinie muss einer Anwendung zugewiesen werden",
       "application.port.range": "Der Anwendungs-Portwert muss zwischen 0 und 65535 liegen",
       "application.fqdn.notnull": "Anwendungs-FQDN muss vorhanden sein",
+      "application.fqdn.appdomain.mismatch": "Ressourcen-FQDN sollten Unterdomänen Ihres Gateway-/Connector-Domänennamens sein",
       "application.logo.upload.error": "Fehler beim Hochladen des Anwendungslogos",
       "application.user-groups.not-empty": "Der Anwendung muss mindestens eine Benutzergruppe zugewiesen werden",
       "application.fqdn.already.configured": "Anwendungs-FQDN ist bereits konfiguriert",
@@ -931,7 +1004,12 @@
       "remote.status.updatedOn.empty": "Remote-Debug-Status 'updatedOn' kann nicht leer sein",
       "remote.status.createdOn.empty": "Remote-Debug-Status 'createdOn' kann nicht leer sein",
       "remote.status.expiryOn.empty": "Remote-Debug-Status 'expiryOn' kann nicht leer sein",
-      "remote.status.accessId.empty": "Remote-Debug-Status 'accessId' kann nicht leer sein"
+      "remote.status.accessId.empty": "Remote-Debug-Status 'accessId' kann nicht leer sein",
+      "domain.action.not.null": "Domänenaktion muss existieren",
+      "domain.not.found": "Domäne nicht gefunden",
+      "domain.format.invalid": "Domäne muss gültiges Format haben",
+      "customer.unauthorized": "Kunde hat benötigtes Feature-Flag nicht gesetzt",
+      "domain.name.unverified": "Domänenname wurde nicht validiert"
     }
   },
   "ztna-report": {
@@ -1016,10 +1094,10 @@
       "update": "Aktualisieren",
       "generate": "Erstellen",
       "username": "Benutzername",
-      "waitingForData": "Warte auf Daten …",
+      "waitingForData": "Warten auf Daten …",
       "gatheringReportData": "Daten für den Bericht werden gesammelt...",
       "problemLoadingData": "Problem beim Laden der Daten",
-      "static": "Static",
+      "static": "Statisch",
       "dynamic": "Dynamisch",
       "error": {
         "http": {
@@ -1060,7 +1138,7 @@
       "casb": "Neue Cloud-Anwendungen",
       "cpu": "CPU",
       "interfaces": "Schnittstellen",
-      "intrusionAttacks": "Eindring-Angriffe",
+      "intrusionAttacks": "Angriffe",
       "memory": "Speicher",
       "network": "Netzwerk",
       "objectionableWebsites": "Unerwünschte Kategorie",
@@ -1105,7 +1183,7 @@
       "removeDeviceDataButton": "Alle Daten entfernen und löschen",
       "deleteLogReason": "Geben Sie einen Grund ein (optional)",
       "removeFirewallLabel": "Folgende Gateways werden aus Sophos Central entfernt",
-      "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig  gemacht werden",
+      "deleteWarningLabel": "Dieser Vorgang wird protokolliert und kann nicht rückgängig gemacht werden",
       "logDeleteInfoLabel": "Das Löschen des Protokolls kann einen Tag dauern.",
       "reclaimDialogWarning": "Warnung: Wenn Sie zur kostenlosen Lizenz wechseln, stehen für ein Gerät nicht mehr die Advanced-Reporting-Funktionen zur Verfügung. Die Stufe „Kostenlos“ bietet nur begrenzte Speicherkapazität und die Funktionen der Stufe „Kostenlos“.",
       "reclaimDialogNote": "Durch das Ändern in „Kostenlos“ werden vorhandene gespeicherte Protokolle und Berichte für dieses Gerät gelöscht. Alle gekauften und verwendeten Kapazitäten werden zur Verfügung gestellt.",
@@ -1415,7 +1493,7 @@
       "firewall_rule_type": "Gateway-Regeltyp",
       "received_kbits": "Empfangene KBits",
       "event_type": "Ereignistyp",
-      "top_intrusion_attacks": "Häufigste Eindring-Angriffe",
+      "top_intrusion_attacks": "Häufigste Angriffe",
       "connection": "Verbindung",
       "device_id": "Geräte-ID",
       "total_memory_usage": "Gesamtspeichernutzung",
@@ -1477,7 +1555,7 @@
       "total_records": "Gesamte Einträge",
       "system_and_user_cpu_usage": "System- und CPU-Nutzung Benutzer",
       "atp": "ATP",
-      "intrusion_attack": "Eindring-Angriff",
+      "intrusion_attack": "Angriff",
       "malware_count": "Anzahl Malware",
       "allowed_app_categories": "Zugelassene Anwendungskategorien",
       "user_group": "Benutzergruppe",
@@ -1671,7 +1749,7 @@
       "count": "Anzahl",
       "time": "Zeit",
       "threats_events_blocked": "Bedrohungen & Ereignisse blockiert",
-      "Wireless": "WLAN",
+      "Wireless": "Wireless",
       "accessPointID": "ID des Access Points",
       "ssid_count": "Anzahl der SSIDs",
       "maxConnections": "Max. Anzahl an Verbindungen",
