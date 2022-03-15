@@ -21,6 +21,10 @@
       "confirm-delete-header": "Confirmar deleção",
       "error": "Erro",
       "errors": "Erros",
+      "http-errors": {
+        "500": "Ocorreu um erro. Tente de novo mais tarde.",
+        "default": "Problema no carregamento de dados."
+      },
       "warnings": "Avisos",
       "success": "Bem-sucedido",
       "info": "Info",
@@ -35,6 +39,7 @@
       "sites": "Sites",
       "site-name": "Nome do site",
       "statistic": "Estatística",
+      "task-queue": "Fila da tarefa",
       "devices": "Dispositivos",
       "reset": "Redefinir",
       "select-all": "Selecionar todos",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "Visão geral do site",
-      "neighbourhoodNetworks": "Redes da vizinhança",
+      "neighborhoodNetworks": "Redes da vizinhança",
       "list": {
         "breadcrumb-text": "Sites",
         "title": "Sem Fio - Sites",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "Este ponto de acesso não aceita esta banda",
         "primary-dns-server-short-description": "Servidor usado pelos clientes conectados a esta rede de convidado.",
         "primary-dns-server-description": " Os clientes do servidor DNS de backup podem usar se o servidor primário não responder. O uso é dependente do cliente.",
-        "ssid-required-validation-msg": "É necessário um SSID.",
-        "ssid-maxlength-validation-msg": "SSID não pode conter mais do que 32 caracteres de um byte.",
-        "ssid-duplicate-validation-msg": "Duplicata de Nome de SSID",
         "ssid-network-name": "Nome para a rede.",
         "password-auto-generate-msg": "A senha será gerada automaticamente",
         "insecure-encryption-mode-msg": "Este modo de encriptação não é seguro",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "O servidor RADIUS para a sua rede local.",
         "radius-server-shared-secret": "Segredo compartilhado",
         "passphrase-required": "É necessária uma frase de segurança.",
+        "passphrase-placeholder": "Insira uma frase de segurança protegida.",
+        "shared-secret-placeholder": "Inserir frase de segurança",
         "frequency-band-inline-help-msg": "Limite as bandas em que a conexão de rede deve ser transmitida. Isso poderá restringir os APs em que você transmite o SSID, isso porque alguns modelos podem transmitir apenas em bandas específicas e não em todas as bandas simultaneamente.",
         "enable-mesh-mode": "Habilitar o modo de malha",
         "enable-mesh-mode-help-msg": "Permite conectar os APs entre si sem acesso à Internet.",
+        "only-one-mesh-network": "Você pode criar apenas um SSID de malha",
+        "disable-mesh": "Para desabilitar o modo de malha, delete este SSID",
+        "no-root-ap": "A malha requer, no mínimo, um ponto de acesso conectado à internet via LAN.",
+        "stp-packets-warning": "Pontos de acesso de malha enviarão pacotes STP, portanto certifique-se de que estejam em conformidade com as regras de TI.",
         "port-required-validation-msg": "É necessária uma porta.",
         "port-range-validate-msg": "A porta deve ser um número entre 1 e 65535.",
         "port-number-help-msg": "Número da porta do servidor RADIUS.",
@@ -832,7 +840,8 @@
           "auto-refresh": "Auto-Atualizar",
           "unassigned-sites": "Sites sem atribuição",
           "emptyListMessage": "Não há nenhum ponto de acesso adicionado para você.",
-          "listRegisterInfo": "Clique no botão Registrar para adicionar pontos de acesso."
+          "listRegisterInfo": "Clique no botão Registrar para adicionar pontos de acesso.",
+          "sitesNotFoundErrorMessage": "Não é possível carregar os sites."
         },
         "statusOnline": "atualizado",
         "stateOffline": "Offline",
@@ -858,7 +867,8 @@
         "minutesShort": "m",
         "monthsShort": "mo",
         "secondsShort": "s",
-        "yearsShort": "y"
+        "yearsShort": "y",
+        "firmware-upgrade": "Upgrade de firmware"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "Tem certeza de que deseja reinicializar este ponto de acesso com número de série {{ sn }}?",
           "update-firmware": "Atualização de firmware disponível",
           "rebootbutton": "Reinicializar ponto de acesso",
+          "radios": "Rádio {{index}}",
           "radiosZero": "Rádio 0",
           "radiosOne": "Rádio 1",
           "choose-band": "Banda",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2,4 GHz",
             "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
             "GHZ_5": "5 GHz",
-            "both": "2,4 GHz e 5 GHz"
+            "both": "2,4 GHz e 5 GHz",
+            "GHZ_6": "6 GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "Total de tarefas",
+        "created": "Criada",
+        "pending": "Pendente",
+        "in-progress": "Em andamento",
+        "failed": "Falhou",
+        "success": "Bem-sucedido",
+        "table": {
+          "status": "Status",
+          "site": "Site",
+          "entity": "Entidade",
+          "action": "Ação",
+          "createdBy": "Criado por",
+          "createdAt": "Criada em"
+        },
+        "status": {
+          "created": "Criada",
+          "pending": "Pendente",
+          "inProgress": "Em andamento",
+          "failed": "Falhou",
+          "success": "Bem-sucedido"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "Detalhes da tarefa - Configuração",
+            "reboot": "Detalhes da tarefa - Reinicialização",
+            "firmwareUpgrade": "Detalhes da tarefa - Atualização de firmware"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "Já registrado",
               "limit-exceeded": "Limite ultrapassado"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "Gerenciar firmware: {{site}}",
+        "header-text-no-site": "Gerenciar firmware",
+        "note-no-site": "Gerencie o firmware para pontos de acesso. Você pode adicionar ou cancelar upgrades de firmware na seleção abaixo.",
+        "note-for-site": "Gerenciar firmware para pontos de acesso no site: '{{site}}'. Você pode adicionar ou cancelar upgrades de firmware na seleção abaixo.",
+        "remove-schedule": "Remover agenda",
+        "choose-schedule": "Escolher agenda",
+        "rollback": "Troca de firmware ({{ version }})",
+        "week": "Semana",
+        "weekday": "Dia útil",
+        "time": "Hora",
+        "list": {
+          "headers": {
+            "name": "Nome",
+            "serial-number": "Número de série",
+            "version": "Versão",
+            "to-version": "Para versão",
+            "chosen-schedule": "Agenda programada"
+          },
+          "selected-text": "{{selected}} selecionada(s)",
+          "modified-text": "{{selected}} selecionada(s) - {{modified}} modificada(s)",
+          "modified": "O cronograma existente {{ version }} | {{ schedule }} foi modificado.",
+          "new-schedule": "Novo cronograma",
+          "cancel-warning": "Não é possível cancelar solicitações de atualização imediatas. Você pode adicionar novos agendamentos após a agenda existente ser concluída."
+        },
+        "schedule": {
+          "update-now": "Agora",
+          "custom": "Personalizado",
+          "recurring": "Recorrente",
+          "daily": "Diário",
+          "weekly": "Semanal",
+          "monthly": "Mensal",
+          "header-text": "Escolha uma agenda",
+          "note": "Escolha quando atualizar para os pontos de acesso selecionados.",
+          "now-note": "Os pontos de acesso conectados serão notificados para realizar o upgrade do firmware imediatamente. Os pontos de acesso desconectados serão notificados assim que se conectarem. Isso pode exigir a reinicialização do ponto de acesso. Os agendamentos imediatos não podem ser modificados depois que são salvos. Novas agendas podem ser adicionadas somente depois da conclusão da agenda existente.",
+          "custom-note": "A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário. O upgrade do firmware pode exigir a reinicialização.",
+          "daily-schedule": "Diariamente às {{time}}",
+          "weekly-schedule": "Todo {{day}} às {{time}}",
+          "monthly-schedule": {
+            "1": "Toda 1ª {{day}} do mês às {{time}}",
+            "2": "Toda 2ª {{day}} do mês às {{time}}",
+            "3": "Toda 3ª {{day}} do mês às {{time}}",
+            "4": "Toda 4ª {{day}} do mês às {{time}}"
           }
         }
       }

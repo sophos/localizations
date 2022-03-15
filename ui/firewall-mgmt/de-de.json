@@ -14,17 +14,17 @@
     "remove": "Entfernen",
     "success": "Erfolg!",
     "next": "Weiter",
-    "search": "Suchen",
+    "search": "Suche",
     "add": "Hinzufügen",
     "previous": "Zurück",
-    "finish": "Fertigstellen",
+    "finish": "Beenden",
     "success-default": "Der Vorgang war erfolgreich.",
     "error": "Fehler!",
     "error-default": "Ein Fehler ist aufgetreten. ({{ errorCode }}).",
     "main-dashboard-breadcrumb-text": "Übersicht",
     "list": {
       "auto-refresh": "Automatisch aktualisieren",
-      "auto-refresh-hint": "Seitendaten werden alle 10 Sekunden aktualisiert"
+      "auto-refresh-hint": "Seiteninhalt wird alle {{ interval }} Sekunden aktualisiert"
     },
     "dashboard": {
       "name": "Firewall Management - Dashboard",
@@ -274,7 +274,7 @@
           "INVALID_IP_NETMASK_ADDRESS" : "Ungültige IP-Adresse '{{ ip }}' Netzmaske/Präfix '{{ netmask }}'",
           "INVALID_IP_RANGE" : "Ungültiger IP-Bereich: Unterer Bereich {{ low }} und oberer Bereich {{ high }}",
           "INVALID_CIDR_FORMAT" : "Ungültiges CIDR-Format: {{ value }}",
-          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "Zu viele Werte für Attribut  '{{ name }}', maximal {{ maxSize }} erlaubt",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "Zu viele Werte für Attribut '{{ name }}', maximal {{ maxSize }} erlaubt",
           "ICMP_PARAM_SIZE_MISMATCH" : "Größen der ICMP-Typen und ICMP-Codes müssen gleich sein. ICMP-Typen-Größe {{ typeSize }} und ICMP-Codes-Größe {{ codeSize }}.",
           "PROTOCOL_SIZE_MISMATCH" : "Größen der Protokolle, Quell-Ports und Ziel-Ports müssen gleich sein. Protokoll-Größe {{ protocolSize }}, Quell-Port-Größe {{ sourceSize }}, Ziel-Port-Größe {{ destinationSize }}.",
           "INVALID_PROTOCOL" : "Ungültiges Protokoll '{{ name }}'",
@@ -510,6 +510,10 @@
       "edit-group": "Firewall Management - Firewall-Gruppe bearbeiten",
       "breadcrumb-text": "Firewall",
       "create": "Neue Gruppe erstellen",
+      "filtering": {
+        "showing-firewall-filter": "Gefiltert: \"{{value}}\"",
+        "show-firewall-filter": "Suche mit: \"{{value}}\""
+      },
       "edit": {
         "label": "Gruppe bearbeiten",
         "warn-info": "Wenn Sie der Gruppe eine Firewall zuweisen, wird der Firewall eine Standardkonfiguration zugewiesen. Dies ändert eventuell die aktuellen Firewall-Konfigurationen.",
@@ -519,6 +523,16 @@
       "config-radio": {
         "first-radio-label": "Sophos-Standardwerte verwenden",
         "second-radio-label": "Vorhandene Konfiguration importieren"
+      },
+      "banner": {
+        "info": {
+          "label": "Veraltete Firmware gefunden",
+          "text": "<strong>{{ name }}</strong> verwendet eine veraltete Firmware-Version und kann demnächst möglicherweise nicht mehr mit Sophos Central verwaltet werden. Um Unterbrechungen zu vermeiden, aktualisieren Sie diese Firewall bitte bis zum 30. November 2021 auf eine unterstützte Firmware-Version.",
+          "alert-text": "{{ name }} verwendet eine veraltete Firmware-Version und kann demnächst möglicherweise nicht mehr mit Sophos Central verwaltet werden. Um Unterbrechungen zu vermeiden, aktualisieren Sie diese Firewall bitte bis zum 30. November 2021 auf eine unterstützte Firmware-Version.",
+          "action": "Lesen Sie unseren Support-Artikel für weitere Informationen.",
+          "learn-more": "Mehr erfahren",
+          "continue": "Fortfahren"
+        }
       },
       "add":  {
         "firewall": "Firewall hinzufügen",
@@ -600,7 +614,11 @@
         "modal": {
           "location": {
             "latitude": "Breitengrad",
-            "longitude": "Längengrad"
+            "longitude": "Längengrad",
+            "message": {
+              "success": "Firewall-Standort gespeichert.",
+              "error": "Beim Speichern des Standorts ist ein Fehler aufgetreten."
+            }
           },
           "edit-location-title": "Firewall-Standort bearbeiten",
           "add-location-title": "Firewall-Standort hinzufügen",
@@ -610,6 +628,12 @@
           "add": {
             "confirm-button": "Hinzufügen"
           }
+        },
+        "dashboard": {
+          "total-connections": "Gesamt",
+          "good-connections": "Gut",
+          "bad-connections": "Schlecht",
+          "unknown-connections": "Unbekannt"
         }
       }
     },
@@ -831,7 +855,9 @@
         "loading": "",
         "unmanaged": "Management deaktiviert",
         "approval_pending": "Genehmigung steht aus",
-        "initializing": "Wird initialisiert..."
+        "initializing": "Wird initialisiert...",
+        "outofsync": "Fehler braucht Aufmerksamkeit",
+        "waiting": "Warten auf Bereitstellung"
       },
       "status": {
         "last-seen": "Letzter Kontakt {{ time }}",

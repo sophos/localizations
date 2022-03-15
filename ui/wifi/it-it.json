@@ -21,6 +21,10 @@
       "confirm-delete-header": "Conferma eliminazione",
       "error": "Errore",
       "errors": "Errori",
+      "http-errors": {
+        "500": "Si è verificato un errore, riprovare più tardi.",
+        "default": "Si è verificato un problema durante il caricamento dei dati."
+      },
       "warnings": "Avvisi",
       "success": "Operazione completata",
       "info": "Info",
@@ -35,6 +39,7 @@
       "sites": "Siti",
       "site-name": "Nome sito",
       "statistic": "Statistica",
+      "task-queue": "Coda delle attività",
       "devices": "Dispositivi",
       "reset": "Reimposta",
       "select-all": "Seleziona tutto",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "Panoramica del sito",
-      "neighbourhoodNetworks": "Reti adiacenti",
+      "neighborhoodNetworks": "Reti adiacenti",
       "list": {
         "breadcrumb-text": "Siti",
         "title": "Wireless - Siti",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "L'access point non supporta questa banda",
         "primary-dns-server-short-description": "Server utilizzato dai client connessi a questa rete guest.",
         "primary-dns-server-description": " Backup che può essere utilizzato dai client del server DNS quando il server primario non risponde. L'utilizzo dipende dal client.",
-        "ssid-required-validation-msg": "SSID obbligatorio.",
-        "ssid-maxlength-validation-msg": "L'SSID non può superare la lunghezza di 32 caratteri byte.",
-        "ssid-duplicate-validation-msg": "Nome SSID duplicato",
         "ssid-network-name": "Nome della rete.",
         "password-auto-generate-msg": "La password verrà automaticamente generata",
         "insecure-encryption-mode-msg": "La modalità di cifratura non è sicura",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "Il server RADIUS della rete locale.",
         "radius-server-shared-secret": "Segreto condiviso",
         "passphrase-required": "Passphrase obbligatoria.",
+        "passphrase-placeholder": "Inserire una passphrase sicura.",
+        "shared-secret-placeholder": "Inserisci la passphrase",
         "frequency-band-inline-help-msg": "Limita le bande su cui la rete deve essere trasmessa. Questa opzione potrebbe limitare gli AP su cui si trasmette l'SSID, in quanto alcuni modelli sono in grado di trasmettere solamente su bande specifiche, oppure non su tutte le bande contemporaneamente.",
         "enable-mesh-mode": "Attiva modalità mesh",
         "enable-mesh-mode-help-msg": "Permette di connettere reciprocamente AP che non hanno accesso a Internet.",
+        "only-one-mesh-network": "Puoi creare un solo SSID mesh",
+        "disable-mesh": "Per disattivare la modalità mesh, elimina questo SSID",
+        "no-root-ap": "La modalità mesh richiede che almeno un access point sia connesso a internet tramite LAN.",
+        "stp-packets-warning": "Gli access point mesh invieranno pacchetti STP. Accertati quindi che questo comportamento sia conforme alle regole IT.",
         "port-required-validation-msg": "Porta obbligatoria.",
         "port-range-validate-msg": "Il numero di porta deve essere compreso tra 1 e 65535.",
         "port-number-help-msg": "Numero di porta del server RADIUS.",
@@ -832,7 +840,8 @@
           "auto-refresh": "Aggiornamento automatico",
           "unassigned-sites": "Siti non assegnati",
           "emptyListMessage": "Non sono stati aggiunti Access Point.",
-          "listRegisterInfo": "Cliccare sul pulsante Registrazione per aggiungere gli Access Point."
+          "listRegisterInfo": "Cliccare sul pulsante Registrazione per aggiungere gli Access Point.",
+          "sitesNotFoundErrorMessage": "Non è stato possibile caricare i siti."
         },
         "statusOnline": "aggiornato",
         "stateOffline": "Offline",
@@ -858,7 +867,8 @@
         "minutesShort": "min",
         "monthsShort": "m",
         "secondsShort": "s",
-        "yearsShort": "a"
+        "yearsShort": "a",
+        "firmware-upgrade": "Upgrade del firmware"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "Riavviare questo access point con il numero di serie {{ sn }}?",
           "update-firmware": "Disponibile aggiornamento firmware",
           "rebootbutton": "Riavvia access point",
+          "radios": "Radio {{index}}",
           "radiosZero": "Radio 0",
           "radiosOne": "Radio 1",
           "choose-band": "Banda",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2,4 GHz",
             "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
             "GHZ_5": "5 GHz",
-            "both": "2,4 GHz e 5 GHz"
+            "both": "2,4 GHz e 5 GHz",
+            "GHZ_6": "6 GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "Operazioni totali",
+        "created": "Creato",
+        "pending": "In sospeso",
+        "in-progress": "In corso",
+        "failed": "Non riuscito",
+        "success": "Operazione completata",
+        "table": {
+          "status": "Stato",
+          "site": "Sito",
+          "entity": "Entità",
+          "action": "Azione",
+          "createdBy": "Creato da",
+          "createdAt": "Creazione"
+        },
+        "status": {
+          "created": "Creato",
+          "pending": "In sospeso",
+          "inProgress": "In corso",
+          "failed": "Non riuscito",
+          "success": "Operazione completata"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "Dettagli operazione - Configurazione",
+            "reboot": "Dettagli operazione - Riavvio",
+            "firmwareUpgrade": "Dettagli operazione - Upgrade del firmware"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "Già registrato",
               "limit-exceeded": "Limite superato"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "Gestisci firmware: {{site}}",
+        "header-text-no-site": "Gestisci firmware",
+        "note-no-site": "Gestisci firmware per gli access point. Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
+        "note-for-site": "Gestisci firmware per gli access point nel sito: '{{site}}'. Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
+        "remove-schedule": "Rimuovi pianificazione",
+        "choose-schedule": "Seleziona una pianificazione",
+        "rollback": "Effettua swap del firmware ({{ version }})",
+        "week": "Settimana",
+        "weekday": "Giorno feriale",
+        "time": "Orario",
+        "list": {
+          "headers": {
+            "name": "Nome",
+            "serial-number": "Numero di serie",
+            "version": "Versione",
+            "to-version": "Alla versione",
+            "chosen-schedule": "Pianificazione selezionata"
+          },
+          "selected-text": "{{selected}} selezionata/e",
+          "modified-text": "{{selected}} selezionata/e - {{modified}} modificata/e",
+          "modified": "La pianificazione esistente {{ version }} | {{ schedule }} è stata modificata.",
+          "new-schedule": "Nuova pianificazione",
+          "cancel-warning": "Non è possibile annullare le richieste di upgrade immediato. Puoi aggiungere nuove pianificazioni dopo il completamento della pianificazione esistente."
+        },
+        "schedule": {
+          "update-now": "Ora",
+          "custom": "Personalizza",
+          "recurring": "Ricorrente",
+          "daily": "Ogni giorno",
+          "weekly": "Ogni settimana",
+          "monthly": "Ogni mese",
+          "header-text": "Seleziona una pianificazione",
+          "note": "Scegli quando aggiornare gli access point selezionati.",
+          "now-note": "Gli access point connessi riceveranno una notifica per l’upgrade immediato del firmware. Gli access point disconnessi riceveranno la notifica non appena si connettono. Potrebbe essere necessario un riavvio dell’access point. Una volta salvate, le pianificazioni immediate non possono essere modificate. È possibile aggiungere nuove pianificazioni solo dopo aver completato la pianificazione esistente.",
+          "custom-note": "La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario. Il firmware dell’upgrade potrebbe richiedere un riavvio.",
+          "daily-schedule": "Ogni giorno alle ore {{time}}",
+          "weekly-schedule": "Ogni {{day}} alle ore {{time}}",
+          "monthly-schedule": {
+            "1": "Ogni 1º {{day}} del mese alle ore {{time}}",
+            "2": "Ogni 2º {{day}} del mese alle ore {{time}}",
+            "3": "Ogni 3º {{day}} del mese alle ore {{time}}",
+            "4": "Ogni 4º {{day}} del mese alle ore {{time}}"
           }
         }
       }

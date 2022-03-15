@@ -2,33 +2,42 @@
   "cnf": {
     "common": {
       "action": {
-          "add": "追加",
-          "edit": "編集",
-          "delete": "削除",
-          "update": "更新",
-          "save": "保存",
-          "disable": "無効",
-          "cancel": "キャンセル",
-          "enter": "入力",
-          "remove": "削除",
-          "modify": "変更",
-          "confirm": "確定",
-          "approve": "承認",
-          "search":  "検索"
+        "add": "追加",
+        "edit": "編集",
+        "delete": "削除",
+        "update": "更新",
+        "save": "保存",
+        "disable": "無効",
+        "cancel": "キャンセル",
+        "enter": "入力",
+        "remove": "削除",
+        "modify": "変更",
+        "confirm": "確定",
+        "approve": "承認",
+        "search": "検索"
       },
       "manage": "管理",
       "status": {
         "success": "成功",
         "error": "エラー"
       },
-      "confirm-delete-header": "削除の確認"
+      "confirm-delete-header": "削除の確認",
+      "auth-suv-unreachable": "承認サービスに到達できません",
+      "clientid-exists": "クライアント ID は既に存在します",
+      "messages": {
+        "denied": "アクセスが拒否されました。",
+        "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。",
+        "info": "情報",
+        "bad-credentials": "不正な認証情報または証明書です。"
+      }
     },
     "nav-title": {
-        "clusters": "クラスタ",
-        "dashboard": "ダッシュボード",
-        "waf-rules": "WAF のルール",
-        "certificates": "証明書",
-        "ips-rule": "IPS 保護"
+      "clusters": "クラスタ",
+      "dashboard": "ダッシュボード",
+      "waf-rules": "WAF のルール",
+      "certificates": "証明書",
+      "ips-rule": "IPS 保護",
+      "admission-control": "アドミッション制御"
     },
     "clusters-list": {
       "title": "クラウド シリーズ ファイアウォール",
@@ -45,7 +54,8 @@
       "feature": {
         "firewall": "ファイアウォール",
         "waf": "WAF",
-        "ips": "IPS"
+        "ips": "IPS",
+        "admission-control": "アドミッション制御"
       },
       "registration-status": {
         "waiting-for-deployment": "導入待機中",
@@ -55,7 +65,14 @@
       "installation-type": {
         "aws": "Amazon EKS",
         "on-prem": "オンプレミス"
+      },
+      "messages": {
+        "empty-message": "使用可能なクラスタがありません。"
       }
+    },
+    "edit-cluster": {
+      "title": "ファイアウォールの編集",
+      "breadcrumbs-text": "ファイアウォールの編集"
     },
     "add-cluster": {
       "title": "ファイアウォールの追加",
@@ -69,6 +86,14 @@
       "type-place-holder": "種類の選択",
       "action": "アクション",
       "status": "状態",
+      "btn-label": "導入の準備ができました",
+      "cluster-name-error": "クラスタ名は 100文字を超えてはいけません。",
+      "name-pattern-error": "クラスタ名に無効な文字が含まれています。",
+      "cluster-description-error": "説明は、最大半角 250文字まで入力可能です。",
+      "not-selected-cni": "CNI が選択されていません。現在の CNI を選択して続行してください。",
+      "require-cni": "Cloud Series Firewall では、前提条件として CNI をインストール済みである必要があります。公式サイトから Calico CNI をインストールすることを推奨します。",
+      "not-selected-ingress": "イングレスコントローラーが選択されていません。続行するには、イングレスコントローラーを選択するか、WAF をオフにしてください。",
+      "not-supported-ingress": "WAF でサポートされていない既存のイングレスコントローラーが選択されました。WAF を使用する場合は、イングレスコントローラーをクラスタから削除する必要があります。それ以外の場合は、WAF をオフにしてください。",
       "type": {
         "premises": "オンプレミスインストール",
         "aws": "Amazon EKS"
@@ -90,41 +115,54 @@
       },
       "services": {
         "network-firewall": "ネットワークファイアウォール",
-        "waf": "Web アプリケーション ファイアウォール",
-        "ip": "IPS (侵入防御)",
         "nf-label": "Kubernetes 用の Zero Trust ファイアウォールルール",
+        "waf": "Web アプリケーション ファイアウォール",
         "waf-label": "Web アプリケーションを安全に公開・保護します",
-        "ip-label": "NGFW によるイングレス/エグレストラフィックの保護"
+        "ip": "IPS (侵入防御)",
+        "ip-label": "NGFW によるイングレス/エグレストラフィックの保護",
+        "admission-control": "アドミッション制御",
+        "admission-control-label": "コンテナの導入標準を制御します"
       },
       "s3-config": {
         "section-title": "S3 バケット設定",
         "section-help": "S3 バケットを設定してください。これは、Web アプリケーション ファイアウォールが、オブジェクトストレージを設定するために必要です",
-        "s3-url": "バケット URL",
+        "s3-url": "バケット名",
         "access-key": "アクセスキー",
         "secret-key": "シークレットキー"
       },
-      "btn-label": "導入の準備ができました",
-      "btn-edit": "編集",
-      "cluster-name-error": "クラスタ名は 100文字を超えてはいけません。",
-      "name-pattern-error": "クラスタ名に無効な文字が含まれています。",
-      "cluster-description-error": "説明は、最大半角 250文字まで入力可能です。",
-      "not-selected-cni": "CNI が選択されていません。現在の CNI を選択して続行してください。",
-      "require-cni": "Cloud Series Firewall では、前提条件として CNI をインストール済みである必要があります。公式サイトから Calico CNI をインストールすることを推奨します。",
-      "not-selected-ingress": "イングレスコントローラーが選択されていません。続行するには、イングレスコントローラーを選択するか、WAF をオフにしてください。",
-      "not-supported-ingress": "WAF でサポートされていない既存のイングレスコントローラーが選択されました。WAF を使用する場合は、イングレスコントローラーをクラスタから削除する必要があります。それ以外の場合は、WAF をオフにしてください。"
+      "service-type": {
+        "section-title": "WAF プロキシサービスの種類",
+        "service-type-label": "サービスの種類",
+        "section-help": "負荷分散をクラスタの前で使用する場合は、「LoadBalancer」を選択します。クラスタを負荷分散として使用する場合は、「NodePort」を選択します。"
+      },
+      "messages": {
+        "updated-message": "クラスタの更新に成功しました。",
+        "added-message": "クラスタの追加に成功しました。",
+        "cluster-name-already-exists": "指定された名前のクラスタは既に存在します。",
+        "default-error": "リクエストの処理中、エラーが発生しました。",
+        "exception": {
+          "resource": {
+            "not-found": "リソースが見つかりません。"
+          }
+        }
+      }
     },
     "cluster-overview": {
       "title": "概要",
       "breadcrumbs-text": "クラスタの概要",
       "status": "状態",
       "installation-steps": "インストールの手順",
-      "confirm-cluster-delete": "クラスタを削除してもよいですか？"
+      "confirm-cluster-delete": "クラスタを削除してもよいですか？",
+      "messages": {
+        "deleted-message": "クラスタの削除に成功しました。",
+        "updated-message": "クラスタの更新に成功しました。"
+      }
     },
     "waf": {
       "list": {
         "title": "Web アプリケーション ファイアウォール ルール",
-        "breadcrumb-text": "Web アプリケーション ファイアウォール ルール",
-        "search-placeholder":"WAF ルールの検索",
+        "breadcrumb-text": "WAF のルール",
+        "search-placeholder": "WAF ルールの検索",
         "add": "ルールの追加",
         "name": "名前",
         "description": "説明",
@@ -137,17 +175,33 @@
         "rate-limit": "レートの制限",
         "status": "状態",
         "age": "経過時間",
+        "entry-point": "エントリポイント",
+        "details": "詳細の表示",
+        "fqdn": "FQDN",
+        "destination": "宛先",
+        "request-path": "パスの要求",
         "messages": {
+          "delete-rule-confirmation": "ルールを削除しますか？",
           "delete-rule-success": "ルールが削除されました。",
-          "delete-rule-error": "ルールを削除できません。"
+          "delete-rule-error": "ルールを削除できません。",
+          "empty-message": "このクラスタで使用できる WAF ルールはありません。"
         }
       },
       "add": {
-        "title": "WAF ルールの追加",
-        "breadcrumb-text": "WAF ルールの追加"
+        "title": "Web アプリケーション ファイアウォール ルールの追加",
+        "breadcrumb-text": "WAF ルールの追加",
+        "messages": {
+          "waf-rule-add-success": "ルールの作成に成功しました。",
+          "waf-rule-add-error": "ルールを作成できません。"
+        },
+        "help-text": {
+          "entry-point": "クラスタが待機するリスニングポート、および必要な暗号化の設定を選択します。ファイアウォールは、アクセス可能なすべてのクラスタ IP 上の選択されたポートで待機します。",
+          "routes": "クライアントトラフィックをターゲット Web サービスにルーティングする方法を選択します。",
+          "protection-policy": "このサービスの保護に使用するデフォルトの Web ポリシーを選択します。"
+        }
       },
       "edit": {
-        "title": "WAF ルールの編集",
+        "title": "Web アプリケーション ファイアウォール ルールの編集",
         "breadcrumb-text": "WAF ルールの編集",
         "status": "状態",
         "rule-name": "ルール名",
@@ -181,7 +235,8 @@
         "type": "種類",
         "destination": "宛先",
         "port": "ポート",
-        "https-s": "HTTPS/S",
+        "https-s": "HTTP/S",
+        "web-service-uses-tls": "Web サービスは TLS を使用",
         "action": "アクション",
         "edit-route-tooltip": "ルートの編集",
         "delete-route-tooltip": "ルートの削除",
@@ -192,7 +247,29 @@
         "certificate": "証明書",
         "certificate-placeholder": "証明書の選択",
         "domains-fqdn-placeholder": "ホスト名の選択",
-        "add-route": "Add route" 
+        "add-route": "ルートの追加",
+        "option-labels": {
+          "local": "ローカル",
+          "external": "外部",
+          "http-only": "HTTP のみ",
+          "https": "HTTPS",
+          "exact": "正確",
+          "prefix": "プレフィックス",
+          "suffix": "サフィックス",
+          "contains": "次を含む",
+          "present": "存在する"
+        },
+        "messages": {
+          "change-certificate-prompt-confirmation": "既にルートを設定済みです。証明書を変更すると、既存のルート設定すべてが消去されます。続行しますか？",
+          "waf-rule-update-success": "WAF ルールが更新されました。",
+          "waf-rule-update-error": "WAF ルールを更新できません。",
+          "entrypoint-port-redirectport-not-same": "WAF ルールのエントリポイントのポートと、リダイレクトポートを同じにすることはできません。",
+          "entrypoint-port-inuse": "エントリポイントのポートは既に使用されています。使用可能なポートを指定してください",
+          "entrypoint-redirectfrom-inuse": "ポートからのエントリポイントのリダイレクトは既に使用されています。使用可能なポートを指定してください。",
+          "name-already-exists": "指定された名前の WAF ルールが既に存在します。",
+          "routes-destination-host-fqdn-invalid": "宛先ホストの FQDN は有効な形式である必要があります。",
+          "field-value-notvalid": "属性値が欠けているか、無効です。"
+        }
       }
     },
     "certificate": {
@@ -214,7 +291,12 @@
         "success-notification-title": "成功",
         "error-notification-title": "エラー",
         "certificate-delete-success": "証明書が削除されました。",
-        "certificate-delete-error": "証明書を削除できません。"
+        "certificate-delete-error": "証明書を削除できません。",
+        "added-message": "証明書の追加に成功しました。",
+        "update-message": "証明書の更新に成功しました。",
+        "certificate-name-already-exists": "指定された名前の証明書は既に存在します。",
+        "certificate-usedby-waf-rule": "WAF ルールで使用されている証明書は削除できません。",
+        "change-certificate-prompt-confirmation": "既にルートを設定済みです。証明書を変更すると、既存のルート設定すべてが消去されます。続行しますか？"
       }
     },
     "firewall-rules": {
@@ -224,11 +306,106 @@
         "add": "ルールの追加",
         "name": "名前",
         "description": "説明",
-        "pod-selector": "ポッドセレクタ",
+        "pod-selector": "ポッドセレクター",
         "ingress": "入力",
         "ingress-service": "入力サービス",
         "egress": "出力",
-        "egress-service": "出力サービス"
+        "egress-service": "出力サービス",
+        "status": "状態",
+        "disabled" : "無効",
+        "enabled" : "有効",
+        "messages": {
+          "delete-rule-confirmation": "ルールを削除してもよいですか？",
+          "delete-rule-success": "ルールが削除されました。",
+          "empty-message": "このクラスタで使用できるファイアウォールルールはありません。",
+          "cidr-invalid": "ファイアウォールルールの CIDR が無効です。",
+          "exceptlist-invalid": "ファイアウォールルールの例外リストが無効です。",
+          "ipblock-cidr-except-notinrange": "例外リストのエントリが、CIDR の範囲外です。",
+          "ipblock-cidr-except-samerange": "例外リストのエントリの範囲が、CIDR の範囲と同じです。",
+          "name-already-exists": "指定された名前のファイアウォールルールが既に存在します。",
+          "delete-rule-error": "ルールを削除できません。"
+        },
+        "options":{
+          "namespace": "名前空間",
+          "label-name": "ラベル",
+          "pod-name": "ポッドラベル",
+          "allowall": "すべて許可",
+          "denyall": "すべて拒否",
+          "service-name": "サービス名",
+          "custom" : "カスタム"
+        }
+      },
+      "add": {
+        "title": "ファイアウォールルールの追加",
+        "breadcrumb-text": "ファイアウォールルールの追加",
+        "help-text": {
+          "match-criteria": "このルールで保護する名前空間とラベルを選択します。",
+          "ingress-heading": "「イングレス」は、選択した名前空間とラベルに一致する、コンテナで受信するトラフィックを指します。これらの基準を使用して、このルールを適用する受信トラフィックを選択してください。",
+          "egress-heading": "「エグレス」とは、選択した名前空間とラベルに一致する、コンテナから送信されるトラフィックを指します。これらの基準を使用して、このルールを適用する送信トラフィックを選択してください。"
+        }
+      },
+      "edit": {
+        "title": "ファイアウォールルールの編集",
+        "breadcrumb-text": "ファイアウォールルールの編集",
+        "status": "状態",
+        "rule-name": "ルール名",
+        "description": "説明",
+        "namespace": "名前空間",
+        "namespace-placeholder": "名前空間の選択",
+        "namespace-label-placeholder": "名前空間のラベルの選択",
+        "match-criteria": "一致条件",
+        "service-labels": "サービスラベル",
+        "type": "種類",
+        "local": "ローカル",
+        "external": "外部",
+        "select-services": "サービスの選択",
+        "select-service-label": "サービスラベルの選択",
+        "ingress-type": "イングレスの種類",
+        "namespace-labels": "名前空間ラベル",
+        "value": "値",
+        "custom": "カスタム",
+        "allow-all": "すべて許可",
+        "deny-all": "すべて拒否",
+        "is": "次に一致する",
+        "in": "次に含まれる",
+        "not-in": "次に含まれない",
+        "exists": "存在する",
+        "not-exists": "存在しない",
+        "egress-type": "エグレスの種類",
+        "service-ports": "サービスポート",
+        "port-number": "ポート番号",
+        "from-ip": "次の IP またはサブネットから",
+        "not-from-ip": "次の IP またはサブネットからではない",
+        "tcp": "TCP",
+        "udp": "UDP",
+        "sctp": "SCTP",
+        "add-ingress": "イングレスの追加",
+        "add-egress": "エグレスの追加",
+        "rule-name-error": "ルール名は 100文字を超えてはいけません。",
+        "name-pattern-error": "ルール名に無効な文字が含まれています。",
+        "rule-description-error": "説明は、最大半角 250文字まで入力可能です。",
+        "namespace-address": "名前空間またはアドレス",
+        "service": "サービス",
+        "action": "アクション",
+        "edit-route-tooltip": "ルートの編集",
+        "delete-route-tooltip": "ルートの削除",
+        "clone-route-tooltip": "ルートの複製",
+        "egress-heading": "出力",
+        "ingress-heading": "入力",
+        "rule-required-error": "ルール名は必須のフィールドです。",
+        "namespace-required-error": "名前空間は必須のフィールドです。",
+        "ip-address-invalid": "IP アドレスまたはサブネットが無効です。",
+        "ip-address-invalid-range": "IP アドレスまたはサブネットの範囲が無効です。",
+        "empty-rules-text": "イングレスルールとエグレスルールの両方が空です。",
+        "ip-address-cidr": "IP またはサブネットの入力",
+        "ip-address-except": "カンマで区切って IP またはサブネットを入力",
+        "from-ip-not-filled": "「次の IP またはサブネットから」に入力する必要があります。",
+        "port-value-error": "ポート番号には 1 ～ 65535 の値を指定してください。",
+        "messages": {
+          "delete-rule-confirmation": "ルールを削除してもよいですか？",
+          "delete-rule-success": "ルールが削除されました。",
+          "delete-rule-error": "ルールを削除できません。"
+        }
       }
     },
     "ips": {
@@ -241,6 +418,61 @@
         "save-success": "設定の保存に成功しました。",
         "save-failed": "変更内容を保存できませんでした。"
       }
+    },
+    "admission-control-list": {
+      "search-placeholder": "ルールの検索",
+      "title": "アドミッション制御ルール",
+      "breadcrumb-text": "アドミッション制御ルール",
+      "add": "ルールの追加",
+      "name": "名前",
+      "description": "説明",
+      "repository": "リポジトリ",
+      "rule-type": "ルールの種類",
+      "namespaces": "名前空間",
+      "status": "状態",
+      "allowed-repositories": "リポジトリの許可",
+      "label-requirements": "ラベルの要件",
+      "messages": {
+        "success-notification-title": "成功",
+        "error-notification-title": "エラー",
+        "delete-rule-confirmation": "ルールを削除しますか？",
+        "delete-rule-success": "ルールが削除されました。",
+        "delete-rule-error": "ルールを削除できません。"
+      }
+    },
+    "admission-control-add": {
+      "title": "アドミッション制御ルールの追加",
+      "breadcrumb-text": "アドミッション制御の追加",
+      "status": "状態",
+      "rule-name": "名前",
+      "description": "説明",
+      "namespace-labels": "名前空間",
+      "rule-type": "ルールの種類",
+      "target-namespace": "ターゲット名前空間",
+      "permitted-repository": "許可されたリポジトリ",
+      "container-repository": "コンテナリポジトリ",
+      "optix-scan-label": "Sophos Cloud Optix スキャンが必要です",
+      "api-key": "API キー",
+      "disallow-levels": "禁止されたコンテナの脆弱性レベル",
+      "disallow-levels-placeholder": "レベルの選択",
+      "disallow-levels-descp": "脆弱性レベル - 脆弱性の数が 0",
+      "namespaces-placeholder": "名前空間の選択",
+      "messages": {
+        "success-notification-title": "成功",
+        "error-notification-title": "エラー",
+        "add-rule-success": "ルールの追加に成功しました。",
+        "add-rule-error": "ルールを追加できません。",
+        "update-rule-success": "ルールの更新に成功しました。",
+        "update-rule-error": "ルールを更新できません。",
+        "name-already-exists" : "指定された名前のアドミッション制御は既に存在します。"
+      },
+      "help-text": {
+        "target-namespace": "このルールで保護する名前空間を選択します。"
+      }
+    },
+    "admission-control-edit": {
+      "title": "アドミッション制御ルールの編集",
+      "breadcrumb-text": "アドミッション制御の編集"
     }
   }
 }

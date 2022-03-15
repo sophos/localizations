@@ -21,6 +21,10 @@
       "confirm-delete-header": "確認刪除",
       "error": "錯誤",
       "errors": "錯誤",
+      "http-errors": {
+        "500": "出現錯誤，請稍後再試。",
+        "default": "載入資料時出現問題。"
+      },
       "warnings": "警告",
       "success": "成功",
       "info": "資訊",
@@ -35,7 +39,8 @@
       "sites": "地點",
       "site-name": "站點名稱",
       "statistic": "統計資料",
-      "devices": "設備",
+      "task-queue": "工作佇列",
+      "devices": "裝置",
       "reset": "重設",
       "select-all": "全選",
       "deselect-all": "取消全選",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "地點瀏覽",
-      "neighbourhoodNetworks": "鄰近網絡",
+      "neighborhoodNetworks": "鄰近網絡",
       "list": {
         "breadcrumb-text": "地點",
         "title": "無線 - 網站",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "該存取點不支援此頻寬",
         "primary-dns-server-short-description": "連接至該訪客網路的用戶端使用的伺服器。",
         "primary-dns-server-description": " 如果主伺服器無回應，可以使用備份的 DNS 伺服器用戶端。使用取決於用戶端。",
-        "ssid-required-validation-msg": "需要 SSID。",
-        "ssid-maxlength-validation-msg": "SSID 最多不可超過 32 位元組字元。",
-        "ssid-duplicate-validation-msg": "複製 SSID 名稱",
         "ssid-network-name": "網路名稱。",
         "password-auto-generate-msg": "會自動產生密碼",
         "insecure-encryption-mode-msg": "此加密模式不安全",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "您的本地網路的 RADIUS 伺服器。",
         "radius-server-shared-secret": "共用密碼",
         "passphrase-required": "需要複雜密碼。",
+        "passphrase-placeholder": "輸入安全的通關密碼。",
+        "shared-secret-placeholder": "輸入複雜密碼",
         "frequency-band-inline-help-msg": "限制應廣播網路的頻帶。這可能會限制您廣播 SSID 的 AP，因為某些型號只能在特定頻帶上廣播或無法同時在所有頻帶上廣播。",
         "enable-mesh-mode": "啟用網狀模式",
         "enable-mesh-mode-help-msg": "允許您連接沒有網際網路訪問的 AP。",
+        "only-one-mesh-network": "您只能建立一個網狀 SSID",
+        "disable-mesh": "若要禁用網狀模式，請刪除該 SSID",
+        "no-root-ap": "網狀需要至少一個存取點透過 LAN 連接至網路。",
+        "stp-packets-warning": "網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
         "port-number-help-msg": "RADIUS 伺服器的連接埠號碼。",
@@ -832,7 +840,8 @@
           "auto-refresh": "自動重新整理",
           "unassigned-sites": "未指派的站點",
           "emptyListMessage": "您沒有新增任何存取點。",
-          "listRegisterInfo": "點選註冊按鈕以新增存取點。"
+          "listRegisterInfo": "點選註冊按鈕以新增存取點。",
+          "sitesNotFoundErrorMessage": "無法載入網站。"
         },
         "statusOnline": "最新",
         "stateOffline": "離線",
@@ -858,7 +867,8 @@
         "minutesShort": "m",
         "monthsShort": "mo",
         "secondsShort": "s",
-        "yearsShort": "y"
+        "yearsShort": "y",
+        "firmware-upgrade": "韌體升級"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "確定要將這個序號為 {{ sn }} 的存取點重新啟動？",
           "update-firmware": "有可用的韌體更新",
           "rebootbutton": "將存取點重新啟動",
+          "radios": "無線電 {{index}}",
           "radiosZero": "無線電 0",
           "radiosOne": "無線電 1",
           "choose-band": "頻帶",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2.4 GHz",
             "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
             "GHZ_5": "5 GHz",
-            "both": "2.4 GHz 與 5 GHz"
+            "both": "2.4 GHz 與 5 GHz",
+            "GHZ_6": "6 GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "工作總數",
+        "created": "建立",
+        "pending": "擱置",
+        "in-progress": "進行中",
+        "failed": "失敗",
+        "success": "成功",
+        "table": {
+          "status": "狀態",
+          "site": "網站",
+          "entity": "實體",
+          "action": "行動",
+          "createdBy": "建立者",
+          "createdAt": "建立日期"
+        },
+        "status": {
+          "created": "建立",
+          "pending": "擱置",
+          "inProgress": "進行中",
+          "failed": "失敗",
+          "success": "成功"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "工作詳情 - 設定",
+            "reboot": "工作詳情 - 重新啟動",
+            "firmwareUpgrade": "工作詳情 - 韌體升級"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "已註冊",
               "limit-exceeded": "已超出限制"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "管理韌體：{{site}}",
+        "header-text-no-site": "管理韌體",
+        "note-no-site": "管理存取點的韌體。您可以從以下選項新增或取消韌體升級。",
+        "note-for-site": "管理網站內存取點的韌體：'{{site}}'.您可以從以下選項新增或取消韌體升級。",
+        "remove-schedule": "移除排程",
+        "choose-schedule": "選擇排程",
+        "rollback": "切換韌體 ({{ version }})",
+        "week": "週",
+        "weekday": "平日",
+        "time": "時間",
+        "list": {
+          "headers": {
+            "name": "名稱",
+            "serial-number": "序號",
+            "version": "版本",
+            "to-version": "至版本",
+            "chosen-schedule": "所選排程"
+          },
+          "selected-text": "已選 {{selected}}",
+          "modified-text": "已選 {{selected}} - 已修改 {{modified}}",
+          "modified": "現有排程 {{ version }} | {{ schedule }} 已修改。",
+          "new-schedule": "新排程",
+          "cancel-warning": "您無法立即取消升級請求。您可在現有排程完成後新增新的排程。"
+        },
+        "schedule": {
+          "update-now": "立即",
+          "custom": "自訂",
+          "recurring": "週期性",
+          "daily": "每日",
+          "weekly": "每週",
+          "monthly": "每月",
+          "header-text": "選擇排程",
+          "note": "選擇所選存取點的更新時間。",
+          "now-note": "連線的存取點將收到立即升級韌體的通知。斷開連線的存取點將在連線後很快收到通知。這可能需要重新啟動存取點。即時排程一旦儲存，就不可修改。只有完成當前排程後才可新增新排程。",
+          "custom-note": "選擇的排程將遵守存取點的本地時間，而與時區無關。升級韌體可能需要重新啟動。",
+          "daily-schedule": "每日於 {{time}}",
+          "weekly-schedule": "每 {{day}} {{time}} 時",
+          "monthly-schedule": {
+            "1": "每個月第 1  {{day}} 的 {{time}}",
+            "2": "每個月第 2  {{day}} 的 {{time}}",
+            "3": "每個月第 3  {{day}} 的 {{time}}",
+            "4": "每個月第 4  {{day}} 的 {{time}}"
           }
         }
       }

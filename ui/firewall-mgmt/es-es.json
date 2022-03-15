@@ -24,7 +24,7 @@
     "main-dashboard-breadcrumb-text": "Introducción",
     "list": {
       "auto-refresh": "Actualizar automáticamente",
-      "auto-refresh-hint": "Refrescar los datos de la página cada 10 segundos"
+      "auto-refresh-hint": "Refrescar los datos de la página cada {{ interval }} segundos"
     },
     "dashboard": {
       "name": "Administración del firewall - Panel de control",
@@ -510,6 +510,10 @@
       "edit-group": "Administración del firewall - Editar grupo de firewalls",
       "breadcrumb-text": "Firewall",
       "create": "Crear nuevo grupo",
+      "filtering": {
+        "showing-firewall-filter": "Filtrado: \"{{value}}\"",
+        "show-firewall-filter": "Buscar con: \"{{value}}\""
+      },
       "edit": {
         "label": "Editar grupo",
         "warn-info": "Asignar un firewall al grupo aplicará una configuración predeterminada al firewall. Puede cambiar las configuraciones actuales del firewall.",
@@ -519,6 +523,16 @@
       "config-radio": {
         "first-radio-label": "Usar las opciones predeterminadas de Sophos",
         "second-radio-label": "Importar configuración existente"
+      },
+      "banner": {
+        "info": {
+          "label": "Se ha encontrado firmware NO ACTUALIZADO",
+          "text": "<strong>{{ name }}</strong> tiene una versión de firmware que llega a su fin de vida útil y es posible que pronto deje de poder administrarse desde Sophos Central. Para evitar interrupciones, actualice este firewall a una versión de firmware compatible antes del 30 de noviembre de 2021.",
+          "alert-text": "{{ name }} tiene una versión de firmware que llega a su fin de vida útil y es posible que pronto deje de poder administrarse desde Sophos Central. Para evitar interrupciones, actualice este firewall a una versión de firmware compatible antes del 30 de noviembre de 2021.",
+          "action": "Lea nuestro artículo de la base de conocimiento para más información.",
+          "learn-more": "Más información",
+          "continue": "Continuar"
+        }
       },
       "add":  {
         "firewall": "Añadir firewall",
@@ -600,7 +614,11 @@
         "modal": {
           "location": {
             "latitude": "Latitud",
-            "longitude": "Longitud"
+            "longitude": "Longitud",
+            "message": {
+              "success": "Ubicación del firewall guardada.",
+              "error": "Se ha producido un error al guardar la ubicación."
+            }
           },
           "edit-location-title": "Editar ubicación del firewall",
           "add-location-title": "Añadir ubicación del firewall",
@@ -610,6 +628,12 @@
           "add": {
             "confirm-button": "Añadir"
           }
+        },
+        "dashboard": {
+          "total-connections": "Total",
+          "good-connections": "Bien",
+          "bad-connections": "Incorrecto",
+          "unknown-connections": "Desconocido"
         }
       }
     },
@@ -831,7 +855,9 @@
         "loading": "",
         "unmanaged": "Administración desactivada",
         "approval_pending": "Aprobación pendiente",
-        "initializing": "Inicializando..."
+        "initializing": "Inicializando...",
+        "outofsync": "El error requiere atención",
+        "waiting": "Esperando despliegue"
       },
       "status": {
         "last-seen": "Visto por última vez {{ time }}",

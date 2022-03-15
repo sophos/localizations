@@ -21,6 +21,10 @@
       "confirm-delete-header": "Confirmation de la suppression",
       "error": "Erreur",
       "errors": "Erreurs",
+      "http-errors": {
+        "500": "Une erreur est survenue, veuillez réessayer plus tard.",
+        "default": "Problème lors du chargement des données."
+      },
       "warnings": "Avertissements",
       "success": "Succès",
       "info": "Info",
@@ -35,6 +39,7 @@
       "sites": "Sites",
       "site-name": "Nom du site",
       "statistic": "Statistiques",
+      "task-queue": "File d’attente des tâches",
       "devices": "Appareils",
       "reset": "Réinitialiser",
       "select-all": "Tout sélectionner",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "Vue générale du site",
-      "neighbourhoodNetworks": "Réseaux avoisinants",
+      "neighborhoodNetworks": "Réseaux avoisinants",
       "list": {
         "breadcrumb-text": "Sites",
         "title": "Wireless - sites",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "Ce point d’accès ne prend pas en charge cette bande de fréquence.",
         "primary-dns-server-short-description": "Serveur utilisé par les clients connectés à ce réseau d’invités.",
         "primary-dns-server-description": " Sauvegarde du serveur DNS que les clients peuvent utiliser si le serveur principal ne répond pas. La mesure de l’utilisation se fait en fonction du client.",
-        "ssid-required-validation-msg": "SSID obligatoire.",
-        "ssid-maxlength-validation-msg": "Le SSID ne doit pas contenir de caractères à plus de 32 octets.",
-        "ssid-duplicate-validation-msg": "Dupliquer le nom du SSID",
         "ssid-network-name": "Nom du réseau.",
         "password-auto-generate-msg": "Le mot de passe va être créé automatiquement",
         "insecure-encryption-mode-msg": "Ce mode de chiffrement n’est pas sécurisé",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "Serveur RADIUS pour votre réseau local.",
         "radius-server-shared-secret": "Secret partagé",
         "passphrase-required": "Phrase secrète obligatoire.",
+        "passphrase-placeholder": "Saisir une phrase secrète sécurisée.",
+        "shared-secret-placeholder": "Saisir une phrase secrète",
         "frequency-band-inline-help-msg": "Limiter les bandes sur lesquelles le réseau doit être transmis. Cette option pourrait limiter les points d’accès que vous diffusez sur le SSID car certains modèles peuvent uniquement diffuser sur des bandes spécifiques et pas sur toutes les bandes en même temps.",
         "enable-mesh-mode": "Activer le mode de réseau maillé",
         "enable-mesh-mode-help-msg": "Vous permet de vous connecter aux points d’accès sans accès à Internet commun.",
+        "only-one-mesh-network": "Vous pouvez uniquement créer un SSID maillé",
+        "disable-mesh": "Pour désactiver le mode maillé, supprimez ce SSID",
+        "no-root-ap": "Le maillage nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
+        "stp-packets-warning": "Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique.",
         "port-required-validation-msg": "Port obligatoire.",
         "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
         "port-number-help-msg": "Numéro de port pour le serveur RADIUS.",
@@ -832,7 +840,8 @@
           "auto-refresh": "Actualiser automatiquement",
           "unassigned-sites": "Sites non assignés",
           "emptyListMessage": "Aucun points d’accès n’a été ajouté.",
-          "listRegisterInfo": "Cliquez sur le bouton Enregistrer pour ajouter les points d’accès."
+          "listRegisterInfo": "Cliquez sur le bouton Enregistrer pour ajouter les points d’accès.",
+          "sitesNotFoundErrorMessage": "Impossible de charger les sites."
         },
         "statusOnline": "à jour",
         "stateOffline": "Hors connexion",
@@ -858,7 +867,8 @@
         "minutesShort": "min",
         "monthsShort": "mb",
         "secondsShort": "sec",
-        "yearsShort": "a"
+        "yearsShort": "a",
+        "firmware-upgrade": "Mise à niveau du firmware"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "Voulez-vous vraiment redémarrer le point d’accès dont le numéro de série est {{ sn }} ?",
           "update-firmware": "Mise à jour du firmware disponible",
           "rebootbutton": "Redémarrer le point d’accès",
+          "radios": "Radio {{index}}",
           "radiosZero": "Radio 0",
           "radiosOne": "Radio 1",
           "choose-band": "Bande",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2,4 GHz",
             "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
             "GHZ_5": "5 GHz",
-            "both": "2,4 GHz et 5 GHz"
+            "both": "2,4 GHz et 5 GHz",
+            "GHZ_6": "6 GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "Total de tâches",
+        "created": "Créé",
+        "pending": "En attente",
+        "in-progress": "En cours",
+        "failed": "Échec",
+        "success": "Succès",
+        "table": {
+          "status": "État",
+          "site": "Site",
+          "entity": "Entité",
+          "action": "Action",
+          "createdBy": "Créé par",
+          "createdAt": "Créé à"
+        },
+        "status": {
+          "created": "Créé",
+          "pending": "En attente",
+          "inProgress": "En cours",
+          "failed": "Échec",
+          "success": "Succès"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "Détails de la tâche - Config",
+            "reboot": "Détails de la tâche - Redémarrer",
+            "firmwareUpgrade": "Détails de la tâche - Mise à niveau du firmware"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "Déjà enregistré",
               "limit-exceeded": "Limite dépassée"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "Gérer le firmware : {{site}}",
+        "header-text-no-site": "Gérer le firmware",
+        "note-no-site": "Gérer le firmware des points d’accès. Vous pouvez ajouter et annuler des mises à niveau du firmware à partir de la sélection ci-dessous.",
+        "note-for-site": "Gérer le firmware pour les points d’accès du site : '{{site}}'. Vous pouvez ajouter et annuler des mises à niveau du firmware à partir de la sélection ci-dessous.",
+        "remove-schedule": "Supprimer la planification",
+        "choose-schedule": "Choisir une planification",
+        "rollback": "Changer de firmware ({{ version }})",
+        "week": "Semaine",
+        "weekday": "Jours de la semaine",
+        "time": "Heure",
+        "list": {
+          "headers": {
+            "name": "Nom",
+            "serial-number": "Numéro de série",
+            "version": "Version",
+            "to-version": "Vers la version",
+            "chosen-schedule": "Planification choisie"
+          },
+          "selected-text": "{{selected}} sélectionné",
+          "modified-text": "{{selected}} sélectionné - {{modified}} modifié",
+          "modified": "La planification existante {{ version }} | {{ schedule }} a été modifiée.",
+          "new-schedule": "Nouvelle planification",
+          "cancel-warning": "Vous ne pouvez pas annuler des demandes de mise à niveau immédiates. Vous pouvez ajouter de nouvelles planifications une fois la planification existante terminée."
+        },
+        "schedule": {
+          "update-now": "Maintenant",
+          "custom": "Personnaliser",
+          "recurring": "Récurrent",
+          "daily": "Tous les jours",
+          "weekly": "Toutes les semaines",
+          "monthly": "Tous les mois",
+          "header-text": "Choisir une planification",
+          "note": "Choisir le moment de la mise à jour des points d’accès sélectionnés.",
+          "now-note": "Les points d’accès connectés seront invités à immédiatement mettre à niveau leur firmware. Les points d’accès déconnectés seront notifiés peu après leur connexion. Le redémarrage du point d’accès sera nécessaire. Les mises à niveau ou à jour immédiates ne peuvent pas être modifiées une fois enregistrées. Les nouvelles mises à niveau ou à jour ne peuvent être ajoutées qu’après que la planification actuelle soit terminée.",
+          "custom-note": "La planification choisie sera appliquée à l’heure locale du point d’accès, quel que soit le fuseau horaire. La mise à niveau du firmware peut nécessiter un redémarrage.",
+          "daily-schedule": "Tous les jours à {{time}}",
+          "weekly-schedule": "Tous les {{day}} à {{time}}",
+          "monthly-schedule": {
+            "1": "Le 1er {{day}} du mois à {{time}}",
+            "2": "Le 2e {{day}} du mois à {{time}}",
+            "3": "Le 3e {{day}} du mois à {{time}}",
+            "4": "Le 4e {{day}} du mois à {{time}}"
           }
         }
       }

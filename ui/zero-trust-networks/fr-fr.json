@@ -11,7 +11,8 @@
       "ok": "OK",
       "download": "Télécharger",
       "approve": "Approuver",
-      "search": "Rechercher",
+      "validate": "Valider",
+      "search": "Recherche",
       "continue": "Continuer",
       "fqdn-validation": "Nom de domaine complet non valide",
       "fqdn-ip-validation": "Nom de domaine complet/IP non valide",
@@ -32,7 +33,8 @@
       "agent-app-request-action": "Demander un agent",
       "agent-app-request-title": "Activer l’accès aux stratégies via l’agent",
       "agent-app-request-comment": "Veuillez autoriser l’accès à [n] postes. Mon identifiant Central est {{login}} et mon ID client est {{customer_id}}.",
-      "read-more": "en savoir plus..."
+      "read-more": "en savoir plus...",
+      "copy-to-clipboard-success": "Copié dans le presse-papiers"
     },
     "application": {
       "form": {
@@ -94,7 +96,13 @@
         "no-application-configured-help": "Cliquez sur le bouton « Ajouter une ressource » pour ajouter une ressource.",
         "error": "Erreur lors de la récupération de la liste des ressources.",
         "no-userGroups-configured": "Aucun groupe d’utilisateurs disponible.",
-        "no-userGroups-assigned": "Aucun groupe d’utilisateurs assigné."
+        "no-userGroups-assigned": "Aucun groupe d’utilisateurs assigné.",
+        "domain-modal": {
+          "header": "Ressource ajoutée",
+          "copy-fqdn-label": "Ajoutez le lien suivant à votre serveur DNS :",
+          "alias-domain": "Domaine d’alias",
+          "dns-info": "Veuillez ajouter le domaine d’alias ci-dessous en tant qu’enregistrement CNAME pour le nom complet de domaine de la ressource sur votre serveur DNS"
+        }
       },
       "details": {
         "title": "Zero Trust Network Access - Détails de la ressource",
@@ -114,6 +122,7 @@
             "domain": "Domaine :",
             "agent": "Agent",
             "agentless": "Sans agent",
+            "alias-domain": "Domaine d’alias",
             "display-in-user-portal": {
               "label": "Afficher dans le portail utilisateur :"
             },
@@ -194,23 +203,34 @@
         "no-gateway-found": "Passerelles introuvables !",
         "no-gateway-configured": "Vous n’avez pas ajouté d’autres passerelles.",
         "no-gateway-configured-help": "Cliquez sur le bouton « Ajouter une passerelle » pour ajouter une passerelle.",
+        "no-gateway-connector-configured": "Vous n’avez pas encore de passerelles/connecteurs",
+        "no-gateway-connector-message": "Pour ajouter une passerelle/un connecteur, reportez-vous aux instructions ci-dessous :",
+        "no-gateway-connector-aws": "Amazon Web Service",
+        "no-gateway-connector-vmware": "VMware ESXi",
+        "statusicon-info": "État de la passerelle",
+        "statusicon-info-with-connector": "État de la passerelle/du connecteur",
         "download-gateway-VM": "Télécharger la VM passerelle",
         "add": "Ajouter une passerelle",
+        "add-gateway-connector": "Ajouter une passerelle/un connecteur",
+        "gateway-mode": "Passerelle",
+        "connector-mode": "Connecteur",
         "columns": {
           "name": "Nom",
+          "mode": "Mode",
           "description": "Description",
           "fqdn": "Nom de domaine complet",
           "package": "Type de package",
-          "type": "Type",
+          "type": "Type de plate-forme",
           "version": "Version",
           "identity-provider": "Fournisseur d’identité",
           "status": "État"
         },
         "title": "Zero Trust Network Access - Passerelles",
         "breadcrumb-text": "Passerelles",
+        "breadcrumb-text-gateway-connector": "Passerelles/Connecteurs",
         "error": "Erreur lors de la récupération de la liste des passerelles",
         "connector-modal": {
-          "header": "Succès ! Connecteur ajouté",
+          "header": "Connecteur ajouté",
           "copy-fqdn-label": "Ajoutez le lien suivant à votre serveur DNS :",
           "alias-domain": "Domaine d’alias",
           "dns-info": "Veuillez ajouter le domaine d’alias ci-dessous en tant qu’enregistrement CNAME pour le nom complet de domaine du connecteur sur votre serveur DNS"
@@ -260,6 +280,7 @@
               "description": "Description : ",
               "status": "État : ",
               "fqdn": "Nom de domaine complet : ",
+              "alias-domain": "Domaine d’alias : ",
               "type": "Type : ",
               "idp": "Fournisseur d’identité : ",
               "edit": "Éditer",
@@ -303,7 +324,10 @@
       "form": {
         "title-add": "Ajouter une passerelle",
         "title-edit": "Modifier la passerelle",
+        "gateway-connector-title-add": "Ajouter une passerelle/un connecteur",
+        "gateway-connector-title-edit": "Modifier la passerelle/le connecteur",
         "title-delete": "Supprimer une passerelle",
+        "gateway-connector-title-delete": "Supprimer la passerelle/le connecteur",
         "software-update": "Mise à jour du logiciel",
         "try-again": "Veuillez réessayer",
         "edit-software-update": "Modifier la planification de la mise à jour du logiciel",
@@ -312,14 +336,15 @@
         "location": "Emplacement géographique",
         "location-length-validation": "L’emplacement ne doit pas contenir plus de 100 caractères",
         "whitespace-location-validation": "Emplacement obligatoire",
-        "name-placeholder": "Nom de la passerelle",
+        "name-placeholder-gateway": "Nom de la passerelle",
+        "name-placeholder-connector": "Nom du connecteur",
         "description": "Description (250 caractères max.)",
         "description-placeholder": "Description",
         "packageType": "Type de plate-forme",
         "identity-provider": "Fournisseur d’identité",
         "fqdn": "Nom de domaine complet",
         "appDomain": "Domaine",
-        "appDomainVerified": "Domaine (vérifié)",
+        "appDomainVerified": "Domaine (validé)",
         "app-domain-validation": "Domaine de la ressource incorrect",
         "password": "Mot de passe de la passerelle",
         "password-placeholder": "Mot de passe",
@@ -410,8 +435,8 @@
         "mode": "Mode",
         "gateway-mode": "Mode passerelle : Les passerelles sont déployées dans les centres de données gérés par le client et, par conséquent, les clients gèrent le plan de données. Ces passerelles sont exposées à l’Internet public",
         "connector-mode": "Mode du connecteur : Sophos gère le plan de données. Les connecteurs ne sont pas exposés à l’Internet public. Les connecteurs relient le Cloud Sophos aux ressources internes.",
-        "no-verified-domain": "Aucun domaine vérifié disponible.",
-        "add-verify-domain": "Ajouter/vérifier des domaines.",
+        "no-verified-domain": "Aucun domaine validé disponible.",
+        "add-verify-domain": "Ajouter/Valider des domaines.",
         "read-more": "en savoir plus..."
       },
       "delete": {
@@ -751,6 +776,7 @@
       }
     },
     "settings": {
+      "breadcrumb-text": "Paramètres",
       "gateway": {
         "instance-heading": "Prise en charge de Sophos pour l’instance de passerelle",
         "instance-expiration-label": "Expiration du token",
@@ -772,13 +798,59 @@
         "on": "Activer Sophos Service Edge",
         "off": "Désactiver Sophos Service Edge",
         "domains": "Domaines",
-        "domains-desc": "Ajouter et vérifier un domaine à utiliser avec ZTNAaaS"
+        "domains-desc": "Ajouter et valider un domaine à utiliser avec ZTNAaaS"
+      },
+      "domain": {
+        "list": {
+          "title": "Zero Trust Network Access - Domaines",
+          "breadcrumb-text": "Domaines",
+          "header": "Veuillez valider les domaines utilisés avec Sophos Secure Edge",
+          "sub-header1": "1. Ajoutez un domaine. Un enregistrement TXT est automatiquement ajouté à la table.",
+          "sub-header2": "2. Copiez votre enregistrement TXT",
+          "sub-header3": "3. Allez dans les enregistrements DNS de votre domaine et ajoutez l’enregistrement TXT à votre hôte de domaine.",
+          "sub-header4": "4. Cliquez sur Valider.",
+          "columns": {
+            "domain": "Nom",
+            "txtrecord": "Enregistrement TXT",
+            "status": "État",
+            "assigned-connectors": "Connecteur"
+          },
+          "add": "Ajouter un domaine",
+          "verify": "Valider",
+          "verified": "Validé",
+          "not-verified": "Non validé",
+          "copy-to-clipboard": "(copier dans le Presse-papiers)",
+          "fetch-error": "Erreur lors de la récupération de la liste de domaine",
+          "no-domain-found": "Vous n’avez aucun domaine configuré"
+        },
+        "form": {
+          "title-add": "Ajouter un domaine",
+          "title-delete": "Supprimer le domaine",
+          "title-verify": "Valider le domaine",
+          "add-success": "Domaine créé",
+          "add-failed": "Création du domaine impossible",
+          "name": "Domaine",
+          "name-placeholder": "exemple.fr",
+          "invalid-name": "Format de domaine non valide",
+          "info": "Nous allons générer automatiquement un enregistrement TXT et l’ajouter à la table Domaines."
+        },
+        "fetch-error": "Erreur lors de la récupération de la liste de domaine",
+        "delete": {
+          "message": "Supprimer le domaine",
+          "success": "Domaine supprimé"
+        },
+        "verify": {
+          "message": "Veuillez ajouter l’enregistrement TXT à votre serveur DNS avant de valider le domaine.",
+          "confirmation": "J’ai ajouté l’enregistrement TXT à mon serveur DNS.",
+          "success": "Domaine vérifié.",
+          "failed": "Impossible de vérifier le domaine"
+        }
       }
     }
   },
   "ztna": {
     "apiLabel": {
-      "dashboard-data-duration": "Les dernières 24 heures",
+      "dashboard-data-duration": "Les 24 dernières heures",
       "top5AppsByBytes": "Top 5 des applis par transfert de données",
       "applicationName": "Ressource",
       "appTotalBytes": "Total d’octets (Mo)",
@@ -825,6 +897,7 @@
       "application.policy.notnull": "Une stratégie doit être assignée à une application",
       "application.port.range": "La valeur du port de l’application doit être comprise entre 0 et 65535",
       "application.fqdn.notnull": "Le nom de domaine complet de l’application ne doit pas avoir la valeur null",
+      "application.fqdn.appdomain.mismatch": "Le nom de domaine complet de la ressource doit être un sous-domaine du nom de domaine de votre passerelle/connecteur",
       "application.logo.upload.error": "Une erreur s’est produite lors du téléchargement du logo de l’application",
       "application.user-groups.not-empty": "Au moins un groupe d’utilisateurs doit être assigné à l’application",
       "application.fqdn.already.configured": "Le nom de domaine complet de l’application est déjà configuré",
@@ -931,7 +1004,12 @@
       "remote.status.updatedOn.empty": "L’état du débogage à distance « updatedOn » ne peut pas être vide",
       "remote.status.createdOn.empty": "L’état du débogage à distance « createdOn » ne peut pas être vide",
       "remote.status.expiryOn.empty": "L’état du débogage à distance « expiryOn » ne peut pas être vide",
-      "remote.status.accessId.empty": "L’état du débogage à distance « accessId » ne peut pas être vide"
+      "remote.status.accessId.empty": "L’état du débogage à distance « accessId » ne peut pas être vide",
+      "domain.action.not.null": "L’action Domaine ne doit pas être nulle",
+      "domain.not.found": "Domaine introuvable",
+      "domain.format.invalid": "Le domaine complet doit avoir un format valide",
+      "customer.unauthorized": "Le client n’a pas activé l’indicateur de fonction requis",
+      "domain.name.unverified": "Nom de domaine non validé"
     }
   },
   "ztna-report": {

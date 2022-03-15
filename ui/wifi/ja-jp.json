@@ -21,6 +21,10 @@
       "confirm-delete-header": "削除の確認",
       "error": "エラー",
       "errors": "エラー",
+      "http-errors": {
+        "500": "エラーが発生しました。後でもう一度やり直してください。",
+        "default": "データの読み込中に問題が発生しました。"
+      },
       "warnings": "警告",
       "success": "成功",
       "info": "情報",
@@ -35,6 +39,7 @@
       "sites": "サイト",
       "site-name": "サイト名",
       "statistic": "統計",
+      "task-queue": "タスクのキュー",
       "devices": "デバイス",
       "reset": "リセット",
       "select-all": "すべて選択",
@@ -325,7 +330,7 @@
     },
     "sites": {
       "site-overview": "サイトの概要",
-      "neighbourhoodNetworks": "周辺のネットワーク",
+      "neighborhoodNetworks": "周辺のネットワーク",
       "list": {
         "breadcrumb-text": "サイト",
         "title": "ワイヤレス - サイト",
@@ -557,9 +562,6 @@
         "aps-band-not-supported": "このアクセスポイントはこの帯域に対応していません。",
         "primary-dns-server-short-description": "このゲストネットワークに接続するクライアントが使用するサーバーです。",
         "primary-dns-server-description": " プライマリサーバーの応答がない場合にクライアントが使用できるバックアップの DNS サーバーです。使用はクライアントに依存します。",
-        "ssid-required-validation-msg": "SSID を指定してください。",
-        "ssid-maxlength-validation-msg": "SSID は 32バイト以下の文字列を入力してください",
-        "ssid-duplicate-validation-msg": "重複した SSID 名です",
         "ssid-network-name": "ネットワークの名前です。",
         "password-auto-generate-msg": "パスワードは自動生成されます",
         "insecure-encryption-mode-msg": "この暗号化モードは安全ではありません",
@@ -572,9 +574,15 @@
         "radius-server-help-msg": "ローカルネットワークの RADIUS サーバーです。",
         "radius-server-shared-secret": "共有シークレット",
         "passphrase-required": "パスフレーズを指定してください。",
+        "passphrase-placeholder": "安全なパスフレーズを入力してください。",
+        "shared-secret-placeholder": "パスフレーズを入力してください",
         "frequency-band-inline-help-msg": "ネットワークがブロードキャストされる周波数帯を制限します。アクセスポイントの中には、特定の周波数帯のみブロードキャストが可能な機種や、同時にすべての周波数帯をブロードキャストできない機種もあるため、この設定により、SSID をブロードキャストするアクセスポイントが制限される場合があります。",
         "enable-mesh-mode": "メッシュモードを有効にする",
         "enable-mesh-mode-help-msg": "互いにインターネット接続のないアクセスポイントを接続できるようになります。",
+        "only-one-mesh-network": "メッシュ SSID は 1つのみ作成できます",
+        "disable-mesh": "メッシュモードを削除するには、この SSID を削除します",
+        "no-root-ap": "メッシュを使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。",
+        "stp-packets-warning": "メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。",
         "port-required-validation-msg": "ポートを指定してください。",
         "port-range-validate-msg": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
         "port-number-help-msg": "RADIUS サーバーのポート番号です。",
@@ -832,7 +840,8 @@
           "auto-refresh": "自動更新",
           "unassigned-sites": "割り当てられていないサイト",
           "emptyListMessage": "アクセスポイントは追加されていません。",
-          "listRegisterInfo": "「登録」ボタンをクリックして、アクセスポイントを追加してください。"
+          "listRegisterInfo": "「登録」ボタンをクリックして、アクセスポイントを追加してください。",
+          "sitesNotFoundErrorMessage": "サイトを読み込めませんでした。"
         },
         "statusOnline": "最新状態",
         "stateOffline": "オフライン",
@@ -858,7 +867,8 @@
         "minutesShort": "分",
         "monthsShort": "月",
         "secondsShort": "秒",
-        "yearsShort": "年"
+        "yearsShort": "年",
+        "firmware-upgrade": "ファームウェアのアップグレード"
       },
       "edit": {
         "editor": {
@@ -896,6 +906,7 @@
           "rebootApDialogHeader": "このアクセスポイント (シリアル番号 {{ sn }}) を再起動してもよいですか？",
           "update-firmware": "ファームウェアの更新が可能です",
           "rebootbutton": "アクセスポイントの再起動",
+          "radios": "無線方式 {{index}}",
           "radiosZero": "無線方式 0",
           "radiosOne": "無線方式 1",
           "choose-band": "帯域",
@@ -929,7 +940,38 @@
             "GHZ_2_4": "2.4GHz",
             "GHZ_2_4,GHZ_5": "2.4GHz と 5GHz",
             "GHZ_5": "5GHz",
-            "both": "2.4GHz と 5GHz"
+            "both": "2.4GHz と 5GHz",
+            "GHZ_6": "6GHz"
+          }
+        }
+      },
+      "taskQueue": {
+        "totalTasks": "タスク総数",
+        "created": "作成",
+        "pending": "保留中",
+        "in-progress": "進行中",
+        "failed": "失敗",
+        "success": "成功",
+        "table": {
+          "status": "状態",
+          "site": "サイト",
+          "entity": "エンティティ",
+          "action": "アクション",
+          "createdBy": "作成者",
+          "createdAt": "作成日時"
+        },
+        "status": {
+          "created": "作成",
+          "pending": "保留中",
+          "inProgress": "進行中",
+          "failed": "失敗",
+          "success": "成功"
+        },
+        "dialog": {
+          "configurationDataDialogTitle": {
+            "config": "タスクの詳細 - 設定",
+            "reboot": "タスクの詳細 - 再起動",
+            "firmwareUpgrade": "タスクの詳細 - ファームウェアのアップグレード"
           }
         }
       },
@@ -1006,6 +1048,52 @@
               "already-registered": "登録済みです",
               "limit-exceeded": "上限を超えました"
             }
+          }
+        }
+      },
+      "firmware-upgrade": {
+        "header-text-for-site": "ファームウェアの管理: {{site}}",
+        "header-text-no-site": "ファームウェアの管理",
+        "note-no-site": "アクセスポイントのファームウェアを管理します。以下から、ファームウェアのアップグレードの追加やキャンセルを選択できます。",
+        "note-for-site": "次のサイトにあるアクセスポイントのファームウェアを管理します: '{{site}}'。以下から、ファームウェアのアップグレードの追加やキャンセルを選択できます。",
+        "remove-schedule": "スケジュールの削除",
+        "choose-schedule": "スケジュールの選択",
+        "rollback": "ファームウェアの切り替え ({{ version }})",
+        "week": "週",
+        "weekday": "曜日",
+        "time": "時刻",
+        "list": {
+          "headers": {
+            "name": "名前",
+            "serial-number": "シリアル番号",
+            "version": "バージョン",
+            "to-version": "次のバージョンへ",
+            "chosen-schedule": "選択済みスケジュール"
+          },
+          "selected-text": "選択数: {{selected}}",
+          "modified-text": "選択数: {{selected}} - 変更数: {{modified}}",
+          "modified": "既存のスケジュール {{ version }} | {{ schedule }} が変更されました。",
+          "new-schedule": "新しいスケジュール",
+          "cancel-warning": "即時アップグレードのリクエストはキャンセルできません。新しいスケジュールは、既存のスケジュールの完了後に追加できます。"
+        },
+        "schedule": {
+          "update-now": "今すぐ",
+          "custom": "カスタム",
+          "recurring": "繰り返す",
+          "daily": "毎日",
+          "weekly": "毎週",
+          "monthly": "毎月",
+          "header-text": "スケジュールの選択",
+          "note": "選択したアクセスポイントを更新するタイミングを選択します。",
+          "now-note": "接続されているアクセスポイントには、直ちにファームウェアをアップグレードするよう通知が送信されます。切断されているアクセスポイントは、接続後すぐに通知が送信されます。これには、アクセスポイントの再起動が必要になる場合があります。今すぐ実行するタスクは、一度保存すると変更できません。新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。",
+          "custom-note": "選択されたスケジュールは、タイムゾーンに関係なく、アクセスポイントの現地時間に従います。ファームウェアのアップグレードには再起動が必要になる場合があります。",
+          "daily-schedule": "毎日 {{time}}",
+          "weekly-schedule": "毎{{day}}、{{time}}",
+          "monthly-schedule": {
+            "1": "毎月第1{{day}}、{{time}}",
+            "2": "毎月第2{{day}}、{{time}}",
+            "3": "毎月第3{{day}}、{{time}}",
+            "4": "毎月第4{{day}}、{{time}}"
           }
         }
       }
