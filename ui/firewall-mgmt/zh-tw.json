@@ -11,6 +11,8 @@
     "save": "儲存",
     "confirm": "確認",
     "delete": "删除",
+    "delete-firewall": "刪除防火牆",
+    "hide-firewall": "隱藏防火牆",
     "remove": "刪除",
     "success": "成功！",
     "next": "下一步 ",
@@ -400,10 +402,10 @@
               "placeholder": "選取防火牆"
             },
             "shared-resource": {
-              "title": "已共用的資源",
-              "placeholder": "輸入目標資源的 IP 位址",
+              "title": "共用的資源",
+              "placeholder": "輸入目標資源的多個 IP 位址",
               "help": {
-                "heading": "您可以按照下列任一格式指定主機位址：",
+                "heading": "您可以按照下列任一格式指定多個主機位址：",
                 "type-ip": "IPv4 位址：例如10.12.22.34",
                 "type-iplist": "IPv4 清單：例如10.12.22.34,10.12.22.35",
                 "type-iprange": "IPv4 範圍：例如10.12.22.34-10.12.22.35",
@@ -614,7 +616,9 @@
         "modal": {
           "location": {
             "latitude": "緯度",
+            "latitude-invalid": "無效的緯度",
             "longitude": "經度",
+            "longitude-invalid": "無效的經度",
             "message": {
               "success": "防火墻位置已儲存。",
               "error": "儲存位置時出現錯誤。"
@@ -838,6 +842,59 @@
           "error-both": "載入統計詳細資料時出錯。"
         },
          "no-customers": "未將任何客戶指派到此範本。"
+      }
+    },
+    "licensing-and-billing": {
+      "add": {
+        "add": "新增虛擬防火牆",
+        "modal": {
+          "title-add": "新增虛擬防火牆",
+          "title-virtual-edit": "編輯虛擬防火牆 - {{ name }}",
+          "title-edit": "編輯防火牆 - {{ name }}",
+          "create-account": "建立新的受管理客戶",
+          "registrant": {
+            "label": "註冊人： ",
+            "required": "註冊人是必填項"
+          },
+          "description": {
+            "label": "描述： ",
+            "placeholder": "輸入防火牆的說明 (最多 250 個字元)",
+            "length": "說明可最多使用 250 個字元。"
+          },
+          "model": {
+            "label": "型號： "
+          },
+          "type": {
+            "label": "類型： "
+          },
+          "pending": {
+            "label": "擱置： "
+          },
+          "subscription": {
+            "label": "訂閱： ",
+            "info": "當前訂閱： ",
+            "required": "訂閱是必填項"
+          },
+          "assigned": {
+            "label": "指定的客户： ",
+            "required": "指定的客户是必填項"
+          },
+          "firewall-size": {
+            "label": "虛擬防火牆大小： ",
+            "required": "虛擬防火牆大小是必填項"
+          }
+        },
+        "states": {
+          "data-not-loaded": "擷取伺服器資料時出錯。請稍候再試。",
+          "cannot-save": "儲存虛擬防火牆時出錯。",
+          "cannot-delete": "刪除防火牆時出錯。",
+          "created": "虛擬防火牆已成功建立。",
+          "updated": "防火牆已成功更新。",
+          "deleted": "防火牆已成功刪除。",
+          "hidden": "防火牆隱藏成功。",
+          "not-hidden": "隱藏防火牆時出錯。",
+          "duplicate-entry": "虛擬防火牆無法保存，選取的名稱已存在。"
+        }
       }
     },
     "global-settings": {

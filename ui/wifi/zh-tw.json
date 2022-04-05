@@ -3,6 +3,7 @@
   "wireless": {
     "main-dashboard-breadcrumb-text": "概觀",
     "common": {
+      "skip": "跳過",
       "add": "新增",
       "all": "所有",
       "alerts": "警示",
@@ -78,7 +79,8 @@
         "sites": "地點",
         "summary": "摘要",
         "on-board-step-finish": "完成",
-        "enabled": "已打開"
+        "enabled": "已打開",
+        "ssid-sites-unavailable": "SSID 與站點目前無法提供 WIFI-6 型號使用。"
       },
       "search": {
         "placeholder": "搜尋",
@@ -830,7 +832,7 @@
           "mode": "模式",
           "channels": "頻道",
           "mesh": "網狀角色",
-          "exportToCsvText": "匯出為 CSV",
+          "export-to-csv": "匯出為 CSV",
           "errorMessage": "無法刪除存取點",
           "access-point-not-found": "未找到存取點",
           "dataLoadErrorMessage": "無法載入存取點",
@@ -868,7 +870,8 @@
         "monthsShort": "mo",
         "secondsShort": "s",
         "yearsShort": "y",
-        "firmware-upgrade": "韌體升級"
+        "firmware-upgrade": "韌體升級",
+        "tx-power": "{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1054,14 +1057,16 @@
       "firmware-upgrade": {
         "header-text-for-site": "管理韌體：{{site}}",
         "header-text-no-site": "管理韌體",
-        "note-no-site": "管理存取點的韌體。您可以從以下選項新增或取消韌體升級。",
+        "note-no-site": "您可以從以下選項新增或取消韌體升級。",
         "note-for-site": "管理網站內存取點的韌體：'{{site}}'.您可以從以下選項新增或取消韌體升級。",
         "remove-schedule": "移除排程",
         "choose-schedule": "選擇排程",
         "rollback": "切換韌體 ({{ version }})",
         "week": "週",
-        "weekday": "平日",
+        "weekDay": "平日",
         "time": "時間",
+        "scheduled-success-message": "已成功儲存針對韌體排程的變更。",
+        "scheduled-failure-message": "無法儲存針對韌體排程的變更。",
         "list": {
           "headers": {
             "name": "名稱",
@@ -1090,11 +1095,121 @@
           "daily-schedule": "每日於 {{time}}",
           "weekly-schedule": "每 {{day}} {{time}} 時",
           "monthly-schedule": {
-            "1": "每個月第 1  {{day}} 的 {{time}}",
-            "2": "每個月第 2  {{day}} 的 {{time}}",
-            "3": "每個月第 3  {{day}} 的 {{time}}",
-            "4": "每個月第 4  {{day}} 的 {{time}}"
+            "1": "每個月第 1 {{day}} 的 {{time}}",
+            "2": "每個月第 2 {{day}} 的 {{time}}",
+            "3": "每個月第 3 {{day}} 的 {{time}}",
+            "4": "每個月第 4 {{day}} 的 {{time}}"
           }
+        },
+        "type": {
+          "agent": "Sophos Central 代理",
+          "full": "韌體"
+        }
+      },
+      "firmware-info": {
+        "update-available": "新韌體更新現已可用。",
+        "upgrade-message": "您可以立即或在將來套用這些升級。",
+        "schedule-upgrade": "排程升級",
+        "cannot-manage": "正在進行的升級完成後，您可選擇排程。",
+        "up-to-date": "韌體已為最新。",
+        "up-to-date-message": "沒有可下載的韌體。",
+        "action": {
+          "edit": "變更排程",
+          "cancel": "取消"
+        },
+        "monthly-schedule": {
+          "1": "每月第 1 個 {{weekDay}}",
+          "2": "每月第 2 個 {{weekDay}}",
+          "3": "每月第 3 個 {{weekDay}}",
+          "4": "每月第 4 個 {{weekDay}}"
+        },
+        "status": {
+          "scheduled": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已排程。",
+            "note": {
+              "now": "存取點收到請求後，{{ process }} 將立即啟動。",
+              "date": "存取點的時間為 {{ schedule }} 時，將發生 {{ process }}",
+              "daily": "存取點的時間為 {{ timeOfDay }} 時，將發生 {{ process }}",
+              "weekly": "存取點的時間為 {{ timeOfDay }} 時，將於每周 {{ weekDay }} 發生 {{ process }}",
+              "monthly": "存取點的時間為 {{ timeOfDay }}，將於 {{ occurrenceInMonth }} 發生 {{ process }}"
+            }
+          },
+          "updating": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 正在進行中。",
+            "note": {
+              "now": "當前正在套用變更。此項操作可能需要一些時間。",
+              "date": "當前正在套用變更。此項操作可能需要一些時間。",
+              "daily": "當前正在套用變更。此項操作可能需要一些時間。",
+              "weekly": "當前正在套用變更。此項操作可能需要一些時間。",
+              "monthly": "當前正在套用變更。此項操作可能需要一些時間。"
+            }
+          },
+          "success": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。",
+            "note": {
+              "now": "已於 {{ date }} 要求 {{ process }}",
+              "date": "排程於 {{ schedule }}，已於 {{ date }} 要求 {{ process }}",
+              "daily": "已排程每日在 {{ timeOfDay }}，已於 {{ date }} 要求 {{ process }}",
+              "weekly": "已排程每 {{ weekDay }} 在 {{ timeOfDay }}，已於 {{ date }} 要求 {{ process }}",
+              "monthly": "已排程 {{ occurrenceInMonth }} 時在 {{ timeOfDay }}，已於 {{ date }} 要求 {{ process }}"
+            }
+          },
+          "cancelling": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 將被取消。",
+            "note": {
+              "now": "尚未收到存取點的確認",
+              "date": "尚未收到存取點的確認",
+              "daily": "尚未收到存取點的確認",
+              "weekly": "尚未收到存取點的確認",
+              "monthly": "尚未收到存取點的確認"
+            }
+          },
+          "cancelled": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已取消。",
+            "note": {
+              "now": "此過程中未對存取點做任何變更",
+              "date": "此過程中未對存取點做任何變更",
+              "daily": "此過程中未對存取點做任何變更",
+              "weekly": "此過程中未對存取點做任何變更",
+              "monthly": "此過程中未對存取點做任何變更"
+            }
+          },
+          "failure": {
+            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 失敗。",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "daily": "已排程每日在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "weekly": "已排程每 {{ weekDay }} 在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "monthly": "已排程 {{ occurrenceInMonth }} 時在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}"
+            }
+          },
+          "cancel-failure": {
+            "text": "無法取消 {{ process }} 至版本 {{ version }}({{type}})",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "daily": "已排程每日在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "weekly": "已排程每 {{ weekDay }} 在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
+              "monthly": "已排程 {{ occurrenceInMonth }} 時在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}"
+            }
+          }
+        },
+        "process": {
+          "scheduled-upgrade": "升級",
+          "auto-upgrade": "自動升級",
+          "rollback": "切換韌體"
+        },
+        "reason": {
+          "no-error": "未向 Sophos Central 報告任何錯誤。",
+          "time-already-elapsed": "排程時間已過去。",
+          "too-many-pending-requests": "交換機正在處理其他工作。",
+          "link-not-reachable": "韌體伺服器目前可能無法使用。",
+          "download-error": "無法下載韌體。",
+          "integrity-error": "交換機的完整性檢查失敗。",
+          "already-updated": "交換機已升級至所需版本。",
+          "upgrade-error": "無法套用韌體。",
+          "unknown-error": "出現未知錯誤。"
         }
       }
     }

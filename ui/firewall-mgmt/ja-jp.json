@@ -11,6 +11,8 @@
     "save": "保存",
     "confirm": "確認",
     "delete": "削除",
+    "delete-firewall": "ファイアウォールの削除",
+    "hide-firewall": "ファイアウォールの非表示",
     "remove": "削除",
     "success": "成功！",
     "next": "次へ",
@@ -401,9 +403,9 @@
             },
             "shared-resource": {
               "title": "共有済みリソース",
-              "placeholder": "ターゲットリソースの IP アドレスを入力します",
+              "placeholder": "ターゲットリソースの複数の IP アドレスを入力します",
               "help": {
-                "heading": "ホストアドレスは、次のいずれかの形式で指定できます。",
+                "heading": "複数のホストアドレスは、次のいずれかの形式で指定できます。",
                 "type-ip": "IPv4 アドレス: 例: 10.12.22.34",
                 "type-iplist": "IPv4 リスト: 例: 10.12.22.34,10.12.22.35",
                 "type-iprange": "IPv4 範囲: 例: 10.12.22.34-10.12.22.35",
@@ -614,7 +616,9 @@
         "modal": {
           "location": {
             "latitude": "緯度",
+            "latitude-invalid": "緯度が無効です",
             "longitude": "経度",
+            "longitude-invalid": "経度が無効です",
             "message": {
               "success": "ファイアウォールの場所が保存されました。",
               "error": "場所の保存中、エラーが発生しました。"
@@ -838,6 +842,59 @@
           "error-both": "統計情報の詳細の読み込み中、エラーが発生しました。"
         },
          "no-customers": "このテンプレートには顧客が割り当てられていません。"
+      }
+    },
+    "licensing-and-billing": {
+      "add": {
+        "add": "仮想ファイアウォールの追加",
+        "modal": {
+          "title-add": "仮想ファイアウォールの追加",
+          "title-virtual-edit": "仮想ファイアウォールの編集 - {{ name }} ",
+          "title-edit": "ファイアウォールの編集 - {{ name }} ",
+          "create-account": "管理対象顧客の新規作成",
+          "registrant": {
+            "label": "登録者: ",
+            "required": "登録者が必要です"
+          },
+          "description": {
+            "label": "説明： ",
+            "placeholder": "ファイアウォールの説明を入力 (最大 250文字)",
+            "length": "説明は 250文字以内で入力してください。"
+          },
+          "model": {
+            "label": "機種: "
+          },
+          "type": {
+            "label": "種類: "
+          },
+          "pending": {
+            "label": "保留中: "
+          },
+          "subscription": {
+            "label": "サブスクリプション: ",
+            "info": "現在のサブスクリプション: ",
+            "required": "サブスクリプションが必要です"
+          },
+          "assigned": {
+            "label": "割り当て済み顧客: ",
+            "required": "割り当て済み顧客が必要です"
+          },
+          "firewall-size": {
+            "label": "仮想ファイアウォールのサイズ: ",
+            "required": "仮想ファイアウォールのサイズが必要です"
+          }
+        },
+        "states": {
+          "data-not-loaded": "サーバーからデータを取得中、エラーが発生しました。しばらくしてからもう一度やり直してください。",
+          "cannot-save": "仮想ファイアウォールの保存中、エラーが発生しました。",
+          "cannot-delete": "ファイアウォールの削除中、エラーが発生しました。",
+          "created": "仮想ファイアウォールの作成に成功しました。",
+          "updated": "ファイアウォールの更新に成功しました。",
+          "deleted": "ファイアウォールの削除に成功しました。",
+          "hidden": "ファイアウォールの非表示に成功しました。",
+          "not-hidden": "ファイアウォールの非表示中、エラーが発生しました。",
+          "duplicate-entry": "仮想ファイアウォールを保存できません。指定された名前は既に存在します。"
+        }
       }
     },
     "global-settings": {

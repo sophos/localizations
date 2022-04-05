@@ -11,6 +11,8 @@
     "save": "Salva",
     "confirm": "Conferma",
     "delete": "Elimina",
+    "delete-firewall": "Elimina firewall",
+    "hide-firewall": "Nascondi firewall",
     "remove": "Rimuovi",
     "success": "Operazione completata.",
     "next": "Avanti",
@@ -24,7 +26,7 @@
     "main-dashboard-breadcrumb-text": "Panoramica",
     "list": {
       "auto-refresh": "Aggiornamento automatico",
-      "auto-refresh-hint": "Aggiornamento dei dati della pagina ogni 10 sec"
+      "auto-refresh-hint": "Aggiornamento dei dati della pagina ogni {{ interval }} sec"
     },
     "dashboard": {
       "name": "Gestione del Firewall - Dashboard",
@@ -400,10 +402,10 @@
               "placeholder": "Seleziona un firewall"
             },
             "shared-resource": {
-              "title": "Risorsa condivisa",
-              "placeholder": "Immetti l'indirizzo IP della risorsa di destinazione",
+              "title": "Risorse condivise",
+              "placeholder": "Immetti gli indirizzi IP multipli della risorsa di destinazione",
               "help": {
-                "heading": "Puoi specificare l'indirizzo dell'host in uno dei seguenti formati:",
+                "heading": "Puoi specificare indirizzi host multipli nei seguenti formati:",
                 "type-ip": "Indirizzo IPv4: Es. 10.12.22.34",
                 "type-iplist": "Elenco IPv4: Es. 10.12.22.34,10.12.22.35",
                 "type-iprange": "Intervallo IPv4: Es. 10.12.22.34-10.12.22.35",
@@ -510,6 +512,10 @@
       "edit-group": "Gestione del Firewall - Modifica gruppo Firewall",
       "breadcrumb-text": "Firewall",
       "create": "Crea nuovo gruppo",
+      "filtering": {
+        "showing-firewall-filter": "Filtrato/i: \"{{value}}\"",
+        "show-firewall-filter": "Cerca con: \"{{value}}\""
+      },
       "edit": {
         "label": "Modifica il gruppo",
         "warn-info": "L'assegnazione di un firewall al gruppo applicherà al firewall una configurazione predefinita. Questo potrebbe modificare le configurazioni attuali del firewall.",
@@ -519,6 +525,16 @@
       "config-radio": {
         "first-radio-label": "Utilizza impostazioni predefinite di Sophos",
         "second-radio-label": "Importa configurazione esistente"
+      },
+      "banner": {
+        "info": {
+          "label": "Trovato firmware OBSOLETO",
+          "text": "<strong>{{ name }}</strong> esegue una versione del firmware che ha raggiunto il termine del ciclo di vita e che presto potrebbe non essere più gestibile da Sophos Central. Esegui l'upgrade di questo firewall a una versione supportata del firmware entro il 30 novembre 2021 per evitare interruzioni del servizio.",
+          "alert-text": "{{ name }} esegue una versione del firmware che ha raggiunto il termine del ciclo di vita e che presto potrebbe non essere più gestibile da Sophos Central. Esegui l'upgrade di questo firewall a una versione supportata del firmware entro il 30 novembre 2021 per evitare interruzioni del servizio.",
+          "action": "Consultare il nostro articolo della knowledge base per maggiori informazioni.",
+          "learn-more": "Maggiori info",
+          "continue": "Continua"
+        }
       },
       "add":  {
         "firewall": "Aggiungi firewall",
@@ -600,16 +616,28 @@
         "modal": {
           "location": {
             "latitude": "Latitudine",
-            "longitude": "Longitudine"
+            "latitude-invalid": "Latitudine non valida",
+            "longitude": "Longitudine",
+            "longitude-invalid": "Longitudine non valida",
+            "message": {
+              "success": "Posizione del firewall salvata.",
+              "error": "Si è verificato un errore durante il salvataggio della posizione."
+            }
           },
-          "edit-location-title": "Modifica percorso firewall",
-          "add-location-title": "Aggiungi percorso firewall",
+          "edit-location-title": "Modifica posizione firewall",
+          "add-location-title": "Aggiungi posizione firewall",
           "edit": {
             "confirm-button": "Aggiorna"
           },
           "add": {
             "confirm-button": "Aggiungi"
           }
+        },
+        "dashboard": {
+          "total-connections": "Totale",
+          "good-connections": "Buona",
+          "bad-connections": "Cattiva",
+          "unknown-connections": "Sconosciuta"
         }
       }
     },
@@ -816,6 +844,59 @@
          "no-customers": "Nessun cliente assegnato a questo modello."
       }
     },
+    "licensing-and-billing": {
+      "add": {
+        "add": "Aggiungi firewall virtuale",
+        "modal": {
+          "title-add": "Aggiungi un firewall virtuale",
+          "title-virtual-edit": "Modifica firewall virtuale - {{ name }}",
+          "title-edit": "Modifica firewall - {{ name }}",
+          "create-account": "Crea nuovo cliente gestito",
+          "registrant": {
+            "label": "Registrante: ",
+            "required": "Registrante è un campo obbligatorio"
+          },
+          "description": {
+            "label": "Descrizione: ",
+            "placeholder": "Immetti la descrizione del firewall (max 250 caratteri)",
+            "length": "La descrizione non può superare i 250 caratteri."
+          },
+          "model": {
+            "label": "Modello: "
+          },
+          "type": {
+            "label": "Tipo: "
+          },
+          "pending": {
+            "label": "In sospeso: "
+          },
+          "subscription": {
+            "label": "Sottoscrizione: ",
+            "info": "Sottoscrizione attuale: ",
+            "required": "Sottoscrizione è un campo obbligatorio"
+          },
+          "assigned": {
+            "label": "Cliente assegnato: ",
+            "required": "Cliente assegnato è un campo obbligatorio"
+          },
+          "firewall-size": {
+            "label": "Dimensioni del firewall virtuale: ",
+            "required": "Dimensioni del firewall virtuale è un campo obbligatorio"
+          }
+        },
+        "states": {
+          "data-not-loaded": "Si è verificato un errore durante il recupero dei dati dal server. Riprova più tardi.",
+          "cannot-save": "Si è verificato un errore durante salvataggio del firewall virtuale.",
+          "cannot-delete": "Si è verificato un errore durante l’eliminazione del firewall virtuale.",
+          "created": "Creazione del firewall virtuale completata.",
+          "updated": "Il firewall è stato aggiornato.",
+          "deleted": "Il firewall è stato eliminato.",
+          "hidden": "Il firewall è stato nascosto.",
+          "not-hidden": "Si è verificato un errore durante il tentativo di nascondere il firewall.",
+          "duplicate-entry": "Impossibile salvare il firewall virtuale, il nome selezionato è già esistente."
+        }
+      }
+    },
     "global-settings": {
       "breadcrumb-text": "Impostazioni e criteri"
 
@@ -831,7 +912,9 @@
         "loading": "",
         "unmanaged": "Gestione disattivata",
         "approval_pending": "Approvazione in sospeso",
-        "initializing": "Inizializzazione in corso..."
+        "initializing": "Inizializzazione in corso...",
+        "outofsync": "Errore che richiede attenzione",
+        "waiting": "In attesa di distribuzione"
       },
       "status": {
         "last-seen": "Ultimo rilevamento: {{ time }}",

@@ -7,6 +7,7 @@
         "delete": "削除",
         "update": "更新",
         "save": "保存",
+        "copy": "コピー",
         "disable": "無効",
         "cancel": "キャンセル",
         "enter": "入力",
@@ -14,7 +15,9 @@
         "modify": "変更",
         "confirm": "確定",
         "approve": "承認",
-        "search": "検索"
+        "accept": "同意",
+        "search": "検索",
+        "clear": "クリア"
       },
       "manage": "管理",
       "status": {
@@ -28,16 +31,14 @@
         "denied": "アクセスが拒否されました。",
         "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。",
         "info": "情報",
-        "bad-credentials": "不正な認証情報または証明書です。"
+        "bad-credentials": "不正な認証情報または証明書です。",
+        "waf-rule-disabled": "このファイアウォールでは、Web アプリケーション ファイアウォールが有効になっていません。",
+        "network-rule-disabled": "このファイアウォールでは、ネットワークファイアウォールが有効になっていません。",
+        "ips-rule-disabled": "このファイアウォールでは、侵入防御が有効になっていません。",
+        "admission-control-rule-disabled": "このファイアウォールでは、アドミッション制御が有効になっていません。",
+        "cluster-not-approved" : "このファイアウォールの Sophos Central からの管理はまだ承認されていません。ファイアウォールを承認して、設定を続行してください。",
+        "entry-port-null" : "WAF ルールのエントリポイントのポートは Null にできません"
       }
-    },
-    "nav-title": {
-      "clusters": "クラスタ",
-      "dashboard": "ダッシュボード",
-      "waf-rules": "WAF のルール",
-      "certificates": "証明書",
-      "ips-rule": "IPS 保護",
-      "admission-control": "アドミッション制御"
     },
     "clusters-list": {
       "title": "クラウド シリーズ ファイアウォール",
@@ -58,9 +59,9 @@
         "admission-control": "アドミッション制御"
       },
       "registration-status": {
-        "waiting-for-deployment": "導入待機中",
+        "waiting-for-deployment": "導入の準備完了",
         "awaiting-approval": "承認を待機中",
-        "approved": "承認済み"
+        "approved": "導入済み"
       },
       "installation-type": {
         "aws": "Amazon EKS",
@@ -91,19 +92,21 @@
       "name-pattern-error": "クラスタ名に無効な文字が含まれています。",
       "cluster-description-error": "説明は、最大半角 250文字まで入力可能です。",
       "not-selected-cni": "CNI が選択されていません。現在の CNI を選択して続行してください。",
-      "require-cni": "Cloud Series Firewall では、前提条件として CNI をインストール済みである必要があります。公式サイトから Calico CNI をインストールすることを推奨します。",
+      "require-cni": "Cloud Series Firewall では、前提条件として CNI をインストール済みである必要があります。<a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">公式サイト</a>から Calico CNI をインストールすることを推奨します。",
       "not-selected-ingress": "イングレスコントローラーが選択されていません。続行するには、イングレスコントローラーを選択するか、WAF をオフにしてください。",
       "not-supported-ingress": "WAF でサポートされていない既存のイングレスコントローラーが選択されました。WAF を使用する場合は、イングレスコントローラーをクラスタから削除する必要があります。それ以外の場合は、WAF をオフにしてください。",
+      "cluster-success-notification": "ファイアウォールの追加に成功しました。<br><br><b>次のステップ</b><br>新しく追加したファイアウォールの名前をクリックして、ファイアウォールのインストール手順を表示してください。",
       "type": {
         "premises": "オンプレミスインストール",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "CNI の選択",
+      "nfoptions-place-holder": "CNI オプションの選択",
       "nf-options": {
-        "new-cni": "既存の CNI は導入されていません",
-        "flannel": "既存の Flannel のテイクオーバーがインストールされています",
-        "calico": "Calico CNI は既にインストールされています",
-        "different": "別の CNI がインストールされています"
+        "new-cni": "CNI はインストールされていない",
+        "flannel": "既存の Flannel CNI を Calico CNI で置き換える",
+        "calico": "Calico CNI が既にインストールされている",
+        "calico-with-vpc": "VPC CNI とともに Calico をインストールする",
+        "different": "他の CNI がインストールされている"
       },
       "wafoptions-place-holder": "イングレスコントローラーの選択",
       "waf-options": {
@@ -118,7 +121,7 @@
         "nf-label": "Kubernetes 用の Zero Trust ファイアウォールルール",
         "waf": "Web アプリケーション ファイアウォール",
         "waf-label": "Web アプリケーションを安全に公開・保護します",
-        "ip": "IPS (侵入防御)",
+        "ip": "侵入防御",
         "ip-label": "NGFW によるイングレス/エグレストラフィックの保護",
         "admission-control": "アドミッション制御",
         "admission-control-label": "コンテナの導入標準を制御します"
@@ -155,7 +158,9 @@
       "confirm-cluster-delete": "クラスタを削除してもよいですか？",
       "messages": {
         "deleted-message": "クラスタの削除に成功しました。",
-        "updated-message": "クラスタの更新に成功しました。"
+        "updated-message": "クラスタの更新に成功しました。",
+        "status-waiting-for-deploy": "このファイアウォールは、まだクラスタに導入されておらず、Sophos Central に接続されていません。",
+        "status-awaiting-for-approval": "このファイアウォールは、Sophos Central アカウントによる管理の承認を要求しています。これが予期されるリクエストの場合は、「同意」をクリックして承認してください。"
       }
     },
     "waf": {
@@ -179,7 +184,7 @@
         "details": "詳細の表示",
         "fqdn": "FQDN",
         "destination": "宛先",
-        "request-path": "パスの要求",
+        "request-path": "リクエストパス",
         "messages": {
           "delete-rule-confirmation": "ルールを削除しますか？",
           "delete-rule-success": "ルールが削除されました。",
@@ -203,31 +208,42 @@
       "edit": {
         "title": "Web アプリケーション ファイアウォール ルールの編集",
         "breadcrumb-text": "WAF ルールの編集",
-        "status": "状態",
+        "status": "ルールの状態",
         "rule-name": "ルール名",
+        "rule-name-required-error": "ルール名は必須のフィールドです。",
         "description": "説明",
         "entry-points": "エントリポイント",
         "listening-port": "リスニングポート (1～65535)",
+        "listening-port-required-error": "リスニングポートは必須のフィールドです。",
         "http-listening-port": "HTTP リスニングポート (1～65535)",
+        "http-listening-port-required-error": "HTTP リスニングポートは必須のフィールドです。",
+        "port-range-error": "ポートは、1 から 65535 の範囲で指定する必要があります。",
         "http-only": "HTTPS/TLS",
         "redirect-http": "HTTP のリダイレクト",
-        "request-path": "パスの要求",
+        "request-path": "リクエストパス",
+        "request-path-required-error": "リクエストパスは必須のフィールドです。",
         "request-from": "宛先パスにマッピング",
         "routes": "ルート",
         "fqdn": "FQDN",
+        "fqdn-required-error": "FQDN は必須のフィールドです。",
         "header": "ヘッダー",
         "name-placeholder": "名前",
         "value-placeholder": "値",
         "destination-type": "宛先の種類",
         "destination-type-placeholder": "宛先の種類の選択",
         "namespace": "名前空間",
+        "namespace-required-error": "名前空間は必須のフィールドです。",
         "namespace-placeholder": "名前空間の選択",
         "service": "サービス",
+        "service-required-error": "サービスは必須のフィールドです。",
         "service-placeholder": "サービスを選択してください",
         "service-port": "サービスポート",
+        "service-port-required-error": "サービスポートは必須のフィールドです。",
         "service-port-placeholder": "ポートの選択",
         "destination-ip-fqdn": "宛先 IP/FQDN",
+        "destination-ip-fqdn-required-error": "宛先 IP/FQDN は必須のフィールドです。",
         "destination-port": "宛先ポート",
+        "destination-port-required-error": "宛先ポートは必須のフィールドです",
         "web-service-use-tls": "Web サービスは TLS を使用",
         "path": "パス",
         "destination-path": "宛先パス",
@@ -245,6 +261,7 @@
         "protection-policies": "保護ポリシー",
         "policy-placeholder": "ポリシーの選択",
         "certificate": "証明書",
+        "certificate-required-error": "証明書は必須のフィールドです。",
         "certificate-placeholder": "証明書の選択",
         "domains-fqdn-placeholder": "ホスト名の選択",
         "add-route": "ルートの追加",
@@ -264,11 +281,14 @@
           "waf-rule-update-success": "WAF ルールが更新されました。",
           "waf-rule-update-error": "WAF ルールを更新できません。",
           "entrypoint-port-redirectport-not-same": "WAF ルールのエントリポイントのポートと、リダイレクトポートを同じにすることはできません。",
-          "entrypoint-port-inuse": "エントリポイントのポートは既に使用されています。使用可能なポートを指定してください",
-          "entrypoint-redirectfrom-inuse": "ポートからのエントリポイントのリダイレクトは既に使用されています。使用可能なポートを指定してください。",
+          "entrypoint-port-in-use": "リスニングポートは既に使用されています。使用可能なポートを指定してください",
+          "entrypoint-redirect-from-in-use": "HTTP リスニングポートは既に使用されています。使用可能なポートを指定してください",
           "name-already-exists": "指定された名前の WAF ルールが既に存在します。",
           "routes-destination-host-fqdn-invalid": "宛先ホストの FQDN は有効な形式である必要があります。",
-          "field-value-notvalid": "属性値が欠けているか、無効です。"
+          "field-value-notvalid": "属性値が欠けているか、無効です。",
+          "rule-name-error": "WAF ルール名は 100文字を超えてはいけません。",
+          "name-pattern-error": "WAF ルール名に無効な文字が含まれています。",
+          "name-space-error": "WAF ルール名にスペース文字を含めることはできません。"
         }
       }
     },
@@ -347,7 +367,7 @@
       "edit": {
         "title": "ファイアウォールルールの編集",
         "breadcrumb-text": "ファイアウォールルールの編集",
-        "status": "状態",
+        "status": "ルールの状態",
         "rule-name": "ルール名",
         "description": "説明",
         "namespace": "名前空間",
@@ -382,7 +402,7 @@
         "add-ingress": "イングレスの追加",
         "add-egress": "エグレスの追加",
         "rule-name-error": "ルール名は 100文字を超えてはいけません。",
-        "name-pattern-error": "ルール名に無効な文字が含まれています。",
+        "name-pattern-error": "Rule name have invalid characters.",  
         "rule-description-error": "説明は、最大半角 250文字まで入力可能です。",
         "namespace-address": "名前空間またはアドレス",
         "service": "サービス",
@@ -404,14 +424,16 @@
         "messages": {
           "delete-rule-confirmation": "ルールを削除してもよいですか？",
           "delete-rule-success": "ルールが削除されました。",
-          "delete-rule-error": "ルールを削除できません。"
+          "delete-rule-error": "ルールを削除できません。",
+          "delete-service-confirmation": "名前空間を変更すると、選択したサービスラベルが消去されます。<br/>続行しますか？",
+          "confirmation": "確認"
         }
       }
     },
     "ips": {
       "rule": {
-        "title": "侵入防御 (Intrusion Protection)",
-        "breadcrumb-text": "侵入防御 (Intrusion Protection)",
+        "title": "侵入防御",
+        "breadcrumb-text": "侵入防御",
         "section-title": "保護ポリシー",
         "ns-policy-disabled": "North-South トラフィックの IPS スキャンを有効にする。",
         "ew-policy-disabled": "East-West トラフィックの IPS スキャンを有効にする。",
@@ -437,13 +459,14 @@
         "error-notification-title": "エラー",
         "delete-rule-confirmation": "ルールを削除しますか？",
         "delete-rule-success": "ルールが削除されました。",
-        "delete-rule-error": "ルールを削除できません。"
+        "delete-rule-error": "ルールを削除できません。",
+        "empty-message": "このクラスタで使用できるアドミッション制御ルールはありません。"
       }
     },
     "admission-control-add": {
       "title": "アドミッション制御ルールの追加",
       "breadcrumb-text": "アドミッション制御の追加",
-      "status": "状態",
+      "status": "ルールの状態",
       "rule-name": "名前",
       "description": "説明",
       "namespace-labels": "名前空間",
@@ -455,7 +478,7 @@
       "api-key": "API キー",
       "disallow-levels": "禁止されたコンテナの脆弱性レベル",
       "disallow-levels-placeholder": "レベルの選択",
-      "disallow-levels-descp": "脆弱性レベル - 脆弱性の数が 0",
+      "disallow-levels-descp": "脆弱性の数が 0 であることが必要な脆弱性レベル",
       "namespaces-placeholder": "名前空間の選択",
       "messages": {
         "success-notification-title": "成功",
@@ -464,7 +487,15 @@
         "add-rule-error": "ルールを追加できません。",
         "update-rule-success": "ルールの更新に成功しました。",
         "update-rule-error": "ルールを更新できません。",
-        "name-already-exists" : "指定された名前のアドミッション制御は既に存在します。"
+        "flag-not-set": "ルールの状態を設定する必要があります。",
+        "name-already-exists" : "指定された名前のアドミッション制御ルールは既に存在します。",
+        "rule-required-error" : "アドミッション制御ルール名は必須のフィールドです。",
+        "rule-name-error" : "アドミッション制御ルール名は 100文字を超えてはいけません。",
+        "name-pattern-error" : "アドミッション制御ルール名に無効な文字が含まれています。",
+        "namespace-null" : "名前空間フィールドは空白にできません。",
+        "repository-blank" : "コンテナリポジトリフィールドは空白にできません。",
+        "optixScans-apikey-blank" : "OptixScan の API キーフィールドは空白にできません。",
+        "optixScans-disallowed-levels-null" : "OptixScan の禁止されたレベルフィールドは空白にできません。"
       },
       "help-text": {
         "target-namespace": "このルールで保護する名前空間を選択します。"

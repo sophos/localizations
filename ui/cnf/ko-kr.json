@@ -7,6 +7,7 @@
         "delete": "삭제",
         "update": "업데이트",
         "save": "저장",
+        "copy": "복사",
         "disable": "사용 안 함",
         "cancel": "취소",
         "enter": "입력",
@@ -14,7 +15,9 @@
         "modify": "수정",
         "confirm": "확인",
         "approve": "지지",
-        "search": "검색"
+        "accept": "동의",
+        "search": "검색",
+        "clear": "지우기"
       },
       "manage": "관리",
       "status": {
@@ -28,16 +31,14 @@
         "denied": "액세스가 거부되었습니다.",
         "generic-error": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다.",
         "info": "정보",
-        "bad-credentials": "잘못된 자격 증명 또는 인증서입니다."
+        "bad-credentials": "잘못된 자격 증명 또는 인증서입니다.",
+        "waf-rule-disabled": "이 방화벽에 대해 웹 응용 프로그램 방화벽이 활성화되어 있지 않습니다.",
+        "network-rule-disabled": "이 방화벽에 대해 네트워크 방화벽이 활성화되어 있지 않습니다.",
+        "ips-rule-disabled": "이 방화벽에 대해 침입 방지가 활성화되어 있지 않습니다.",
+        "admission-control-rule-disabled": "이 방화벽에 대해 승인 제어가 활성화되어 있지 않습니다.",
+        "cluster-not-approved" : "이 방화벽은 아직 Sophos Central에서 관리하도록 승인되지 않았습니다. 구성을 계속 진행하려면 방화벽을 승인하십시오.",
+        "entry-port-null" : "WAF 규칙 진입점 포트는 null일 수 없습니다."
       }
-    },
-    "nav-title": {
-      "clusters": "클러스터",
-      "dashboard": "대시보드",
-      "waf-rules": "WAF 규칙",
-      "certificates": "인증서",
-      "ips-rule": "IPS 보호",
-      "admission-control": "승인 제어"
     },
     "clusters-list": {
       "title": "클라우드 시리즈 방화벽",
@@ -58,9 +59,9 @@
         "admission-control": "승인 제어"
       },
       "registration-status": {
-        "waiting-for-deployment": "배포 대기 중",
+        "waiting-for-deployment": "배포 준비 완료",
         "awaiting-approval": "승인 대기 중",
-        "approved": "승인됨"
+        "approved": "배포됨"
       },
       "installation-type": {
         "aws": "Amazon EKS",
@@ -91,19 +92,21 @@
       "name-pattern-error": "클러스터 이름에 잘못된 문자가 있습니다.",
       "cluster-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
       "not-selected-cni": "CNI를 선택하지 않았습니다. 계속하려면 현재 CNI를 선택하십시오.",
-      "require-cni": "클라우드 시리즈 방화벽을 사용하려면 전제 조건으로 CNI가 설치되어 있어야 합니다. 공식 사이트에 있는 Calico CNI를 설치하는 것이 좋습니다.",
+      "require-cni": "클라우드 시리즈 방화벽을 사용하려면 전제 조건으로 CNI가 설치되어 있어야 합니다. <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">공식 사이트</a>에 있는 Calico CNI를 설치하는 것이 좋습니다.",
       "not-selected-ingress": "수신 컨트롤러를 선택하지 않았습니다. 계속하려면 수신 컨트롤러를 선택하거나 WAF를 끄십시오.",
       "not-supported-ingress": "WAF에서 지원되지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 클러스터에서 수신 컨트롤러를 제거해야 합니다. 그렇지 않으면 WAF를 끄십시오.",
+      "cluster-success-notification": "방화벽이 성공적으로 추가되었습니다.<br><br><b>다음은 무엇입니까?</b><br>방화벽 설치 단계를 확인하려면 새로 추가된 방화벽 이름을 클릭하십시오.",
       "type": {
         "premises": "온프레미스 설치",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "CNI 선택",
+      "nfoptions-place-holder": "CNI 옵션 선택",
       "nf-options": {
-        "new-cni": "배포된 기존 CNI 없음",
-        "flannel": "설치된 기존 Flannel 인수",
+        "new-cni": "설치된 기존 CNI 없음",
+        "flannel": "기존 Flannel CNI를 Calico CNI로 교체",
         "calico": "Calico CNI가 이미 설치되어 있습니다.",
-        "different": "다른 CNI가 설치되어 있습니다."
+        "calico-with-vpc": "VPC CNI로 Calico 설치",
+        "different": "설치된 다른 CNI 없음"
       },
       "wafoptions-place-holder": "수신 컨트롤러 선택",
       "waf-options": {
@@ -155,7 +158,9 @@
       "confirm-cluster-delete": "클러스터를 삭제하시겠습니까?",
       "messages": {
         "deleted-message": "클러스터가 성공적으로 삭제되었습니다.",
-        "updated-message": "클러스터가 성공적으로 업데이트되었습니다."
+        "updated-message": "클러스터가 성공적으로 업데이트되었습니다.",
+        "status-waiting-for-deploy": "이 방화벽은 클러스터에 배포되지 않았으며 아직 Sophos Central에 연결되어 있습니다.",
+        "status-awaiting-for-approval": "이 방화벽은 Sophos Central 계정에서 관리되도록 승인을 요청 중입니다. 이 요청을 기대하고 있다면 수락을 클릭하여 승인하십시오."
       }
     },
     "waf": {
@@ -203,31 +208,42 @@
       "edit": {
         "title": "웹 응용 프로그램 방화벽 규칙 편집",
         "breadcrumb-text": "WAF 규칙 편집",
-        "status": "상태",
+        "status": "규칙 상태",
         "rule-name": "규칙 이름",
+        "rule-name-required-error": "규칙 이름은 필수 필드입니다.",
         "description": "설명",
         "entry-points": "진입점",
         "listening-port": "수신 대기 포트 (1-65535)",
+        "listening-port-required-error": "수신 대기 포트는 필수 필드입니다.",
         "http-listening-port": "HTTP 수신 포트(1-65535)",
+        "http-listening-port-required-error": "HTTP 수신 대기 포트는 필수 필드입니다.",
+        "port-range-error": "포트는 범위 내(1-65535)에 있어야 합니다.",
         "http-only": "HTTPS/TLS",
         "redirect-http": "리디렉션 HTTP",
         "request-path": "요청 경로",
+        "request-path-required-error": "요청 경로는 필수 필드입니다.",
         "request-from": "대상 경로에 매핑",
         "routes": "경로",
         "fqdn": "FQDN",
+        "fqdn-required-error": "FQDN은 필수 필드입니다.",
         "header": "머리글",
         "name-placeholder": "이름",
         "value-placeholder": "값",
         "destination-type": "대상 유형",
         "destination-type-placeholder": "대상 유형 선택",
         "namespace": "네임스페이스",
+        "namespace-required-error": "네임스페이스는 필수 필드입니다.",
         "namespace-placeholder": "네임스페이스 선택",
         "service": "서비스",
+        "service-required-error": "서비스는 필수 필드입니다.",
         "service-placeholder": "서비스 선택",
         "service-port": "서비스 포트",
+        "service-port-required-error": "서비스 포트는 필수 필드입니다.",
         "service-port-placeholder": "포트 선택",
         "destination-ip-fqdn": "대상 IP/FQDN",
+        "destination-ip-fqdn-required-error": "대상 IP/FQDN은 필수 필드입니다.",
         "destination-port": "대상 포트",
+        "destination-port-required-error": "대상 포트는 필수 필드입니다.",
         "web-service-use-tls": "웹 서비스는 TLS 사용",
         "path": "경로",
         "destination-path": "대상 경로",
@@ -245,6 +261,7 @@
         "protection-policies": "보호 정책",
         "policy-placeholder": "정책 선택",
         "certificate": "인증서",
+        "certificate-required-error": "인증서는 필수 필드입니다.",
         "certificate-placeholder": "인증서 선택",
         "domains-fqdn-placeholder": "호스트 이름 선택",
         "add-route": "경로 추가",
@@ -263,12 +280,15 @@
           "change-certificate-prompt-confirmation": "이미 경로를 구성했습니다. 인증서를 변경하면 모든 기존 경로 구성이 플러시됩니다. 계속하시겠습니까?",
           "waf-rule-update-success": "WAF 규칙이 업데이트되었습니다.",
           "waf-rule-update-error": "WAF 규칙을 업데이트할 수 없습니다.",
-          "entrypoint-port-redirectport-not-same": "WAF 규칙 진입점 포트와 redirectPort는 동일할 수 없습니다.",
-          "entrypoint-port-inuse": "진입점 포트가 이미 사용 중입니다. 사용 가능한 포트를 지정하십시오.",
-          "entrypoint-redirectfrom-inuse": "이미 사용 중인 포트의 진입점 리디렉션입니다. 사용 가능한 포트를 지정하십시오.",
+          "entrypoint-port-redirectport-not-same": "WAF 규칙 진입점 포트 및 리디렉션 포트는 동일할 수 없습니다.",
+          "entrypoint-port-in-use": "수신 대기 포트가 이미 사용 중입니다. 사용 가능한 포트를 지정하십시오.",
+          "entrypoint-redirect-from-in-use": "HTTP 수신 대기 포트가 이미 사용 중입니다. 사용 가능한 포트를 지정하십시오.",
           "name-already-exists": "제공된 이름을 가진 WAF 규칙이 이미 있습니다.",
           "routes-destination-host-fqdn-invalid": "대상 호스트 FQDN은 유효한 형식이어야 합니다.",
-          "field-value-notvalid": "속성 값이 없거나 잘못되었습니다."
+          "field-value-notvalid": "속성 값이 없거나 잘못되었습니다.",
+          "rule-name-error": "WAF 규칙 이름은 100자를 초과해서는 안 됩니다.",
+          "name-pattern-error": "WAF 규칙 이름에 잘못된 문자가 있습니다.",
+          "name-space-error": "WAF 규칙 이름에 공백이 포함되어서는 안 됩니다."
         }
       }
     },
@@ -347,7 +367,7 @@
       "edit": {
         "title": "방화벽 규칙 편집",
         "breadcrumb-text": "방화벽 규칙 편집",
-        "status": "상태",
+        "status": "규칙 상태",
         "rule-name": "규칙 이름",
         "description": "설명",
         "namespace": "네임스페이스",
@@ -382,7 +402,7 @@
         "add-ingress": "수신 추가",
         "add-egress": "송신 추가",
         "rule-name-error": "규칙 이름은 100자를 초과해서는 안 됩니다.",
-        "name-pattern-error": "규칙 이름에 잘못된 문자가 있습니다.",
+        "name-pattern-error": "Rule name have invalid characters.",  
         "rule-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
         "namespace-address": "네임스페이스 또는 주소",
         "service": "서비스",
@@ -404,7 +424,9 @@
         "messages": {
           "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
           "delete-rule-success": "규칙이 삭제되었습니다.",
-          "delete-rule-error": "규칙을 삭제할 수 없습니다."
+          "delete-rule-error": "규칙을 삭제할 수 없습니다.",
+          "delete-service-confirmation": "네임스페이스가 변경되면 선택한 서비스 라벨이 지워집니다. <br/>진행하시겠습니까?",
+          "confirmation": "확인"
         }
       }
     },
@@ -437,13 +459,14 @@
         "error-notification-title": "오류",
         "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
         "delete-rule-success": "규칙이 삭제되었습니다.",
-        "delete-rule-error": "규칙을 삭제할 수 없습니다."
+        "delete-rule-error": "규칙을 삭제할 수 없습니다.",
+        "empty-message": "이 클러스터에 사용할 수 있는 승인 제어 규칙이 없습니다."
       }
     },
     "admission-control-add": {
       "title": "승인 제어 규칙 추가",
       "breadcrumb-text": "승인 제어 추가",
-      "status": "상태",
+      "status": "규칙 상태",
       "rule-name": "이름",
       "description": "설명",
       "namespace-labels": "네임스페이스",
@@ -455,7 +478,7 @@
       "api-key": "API 키",
       "disallow-levels": "허용되지 않는 컨테이너 취약성 수준",
       "disallow-levels-placeholder": "수준 선택",
-      "disallow-levels-descp": "취약점 수가 0보다 크지 않아야 하는 취약성 수준",
+      "disallow-levels-descp": "취약점 수가 0이어야 하는 취약성 수준",
       "namespaces-placeholder": "네임스페이스 선택",
       "messages": {
         "success-notification-title": "성공",
@@ -464,7 +487,15 @@
         "add-rule-error": "규칙을 추가할 수 없습니다.",
         "update-rule-success": "규칙이 성공적으로 업데이트되었습니다.",
         "update-rule-error": "규칙을 업데이트할 수 없습니다.",
-        "name-already-exists" : "제공된 이름을 가진 승인 제어가 이미 있습니다."
+        "flag-not-set": "규칙 상태를 설정해야 합니다.",
+        "name-already-exists" : "제공된 이름을 가진 승인 제어 규칙이 이미 있습니다.",
+        "rule-required-error" : "승인 제어 규칙 이름은 필수 필드입니다.",
+        "rule-name-error" : "승인 제어 규칙 이름은 100자를 초과해서는 안 됩니다.",
+        "name-pattern-error" : "승인 제어 규칙 이름에 잘못된 문자가 있습니다.",
+        "namespace-null" : "네임스페이스 필드는 공백이 될 수 없습니다.",
+        "repository-blank" : "컨테이너 리포지토리 필드는 공백이 될 수 없습니다.",
+        "optixScans-apikey-blank" : "OptixScan의 API 키 필드는 공백이 될 수 없습니다.",
+        "optixScans-disallowed-levels-null" : "OptixScan의 허용되지 않는 수준 필드는 공백이 될 수 없습니다."
       },
       "help-text": {
         "target-namespace": "이 규칙이 보호할 네임스페이스를 선택하십시오."

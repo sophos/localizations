@@ -3,6 +3,7 @@
   "wireless": {
     "main-dashboard-breadcrumb-text": "Panoramica",
     "common": {
+      "skip": "Salta",
       "add": "Aggiungi",
       "all": "Tutto/i",
       "alerts": "Avvisi",
@@ -35,7 +36,7 @@
       "bands": "Bande",
       "assign-access-points": "Assegna access point",
       "ssids": "SSID",
-      "settings": "impostazioni",
+      "settings": "Impostazioni",
       "sites": "Siti",
       "site-name": "Nome sito",
       "statistic": "Statistica",
@@ -78,7 +79,8 @@
         "sites": "Siti",
         "summary": "Riepilogo",
         "on-board-step-finish": "Completata",
-        "enabled": "Attivato"
+        "enabled": "Attivato",
+        "ssid-sites-unavailable": "SSID e Sito attualmente non disponibili per il modello WIFI-6."
       },
       "search": {
         "placeholder": "Cerca",
@@ -830,7 +832,7 @@
           "mode": "Modalità",
           "channels": "Canali",
           "mesh": "Ruolo mesh",
-          "exportToCsvText": "Esporta in CSV",
+          "export-to-csv": "Esporta in CSV",
           "errorMessage": "Impossibile eliminare l'access point",
           "access-point-not-found": "Access point non trovato",
           "dataLoadErrorMessage": "Impossibile caricare l'access point",
@@ -868,7 +870,8 @@
         "monthsShort": "m",
         "secondsShort": "s",
         "yearsShort": "a",
-        "firmware-upgrade": "Upgrade del firmware"
+        "firmware-upgrade": "Upgrade del firmware",
+        "tx-power": "{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1054,14 +1057,16 @@
       "firmware-upgrade": {
         "header-text-for-site": "Gestisci firmware: {{site}}",
         "header-text-no-site": "Gestisci firmware",
-        "note-no-site": "Gestisci firmware per gli access point. Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
+        "note-no-site": "Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
         "note-for-site": "Gestisci firmware per gli access point nel sito: '{{site}}'. Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
         "remove-schedule": "Rimuovi pianificazione",
         "choose-schedule": "Seleziona una pianificazione",
         "rollback": "Effettua swap del firmware ({{ version }})",
         "week": "Settimana",
-        "weekday": "Giorno feriale",
+        "weekDay": "Giorno feriale",
         "time": "Orario",
+        "scheduled-success-message": "Le modifiche delle pianificazioni del firmware sono state salvate.",
+        "scheduled-failure-message": "Non è stato possibile salvare le modifiche apportate alle pianificazioni del firmware.",
         "list": {
           "headers": {
             "name": "Nome",
@@ -1095,6 +1100,116 @@
             "3": "Ogni 3º {{day}} del mese alle ore {{time}}",
             "4": "Ogni 4º {{day}} del mese alle ore {{time}}"
           }
+        },
+        "type": {
+          "agent": "Agente di Sophos Central",
+          "full": "Firmware"
+        }
+      },
+      "firmware-info": {
+        "update-available": "Sono disponibili nuovi aggiornamenti del firmware.",
+        "upgrade-message": "Puoi applicare questi upgrade immediatamente oppure in una data futura.",
+        "schedule-upgrade": "Pianifica un upgrade",
+        "cannot-manage": "Potrai scegliere la pianificazione subito dopo il completamento dell'upgrade in corso.",
+        "up-to-date": "Il firmware è aggiornato.",
+        "up-to-date-message": "Nessun firmware disponibile per il download.",
+        "action": {
+          "edit": "Modifica pianificazione",
+          "cancel": "Annulla"
+        },
+        "monthly-schedule": {
+          "1": "ogni 1º {{weekDay}} del mese",
+          "2": "ogni 2º {{weekDay}} del mese",
+          "3": "ogni 3º {{weekDay}} del mese",
+          "4": "ogni 4º {{weekDay}} del mese"
+        },
+        "status": {
+          "scheduled": {
+            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) è stato pianificato.",
+            "note": {
+              "now": "Il processo di {{ process }} verrà avviato non appena l’access point avrà ricevuto la richiesta.",
+              "date": "Il processo di {{ process }} verrà eseguito quando l’orario dell’access point sarà: {{ schedule }}",
+              "daily": "Il processo di {{ process }} verrà eseguito ogni giorno, quando l’orario dell’access point sarà: {{ timeOfDay }}",
+              "weekly": "Il processo di {{ process }} verrà eseguito ogni {{ weekDay }}, quando l’orario dell’access point sarà: {{ timeOfDay }}",
+              "monthly": "Il processo di {{ process }} verrà eseguito {{ occurrenceInMonth }}, quando l’orario dell’access point sarà: {{ timeOfDay }}"
+            }
+          },
+          "updating": {
+            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) è in corso.",
+            "note": {
+              "now": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
+              "date": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
+              "daily": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
+              "weekly": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
+              "monthly": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo."
+            }
+          },
+          "success": {
+            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) completato.",
+            "note": {
+              "now": "Il processo {{ process }} è stato richiesto in data {{ date }}",
+              "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}",
+              "daily": "Pianificato ogni giorno alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}",
+              "weekly": "Pianificato ogni {{ weekDay }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}",
+              "monthly": "Pianificato {{ occurrenceInMonth }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}"
+            }
+          },
+          "cancelling": {
+            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) verrà annullato.",
+            "note": {
+              "now": "Non è ancora stata ricevuta conferma dall’access point",
+              "date": "Non è ancora stata ricevuta conferma dall’access point",
+              "daily": "Non è ancora stata ricevuta conferma dall’access point",
+              "weekly": "Non è ancora stata ricevuta conferma dall’access point",
+              "monthly": "Non è ancora stata ricevuta conferma dall’access point"
+            }
+          },
+          "cancelled": {
+            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) annullato.",
+            "note": {
+              "now": "Nessuna modifica apportata all’access point durante questo processo",
+              "date": "Nessuna modifica apportata all’access point durante questo processo",
+              "daily": "Nessuna modifica apportata all’access point durante questo processo",
+              "weekly": "Nessuna modifica apportata all’access point durante questo processo",
+              "monthly": "Nessuna modifica apportata all’access point durante questo processo"
+            }
+          },
+          "failure": {
+            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) non riuscito.",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "daily": "Pianificato ogni giorno alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "weekly": "Pianificato ogni {{ weekDay }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "monthly": "Pianificato {{ occurrenceInMonth }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}"
+            }
+          },
+          "cancel-failure": {
+            "text": "Non è stato possibile annullare il processo di {{ process }} alla versione {{ version }}({{type}})",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "daily": "Pianificato ogni giorno alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "weekly": "Pianificato ogni {{ weekDay }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
+              "monthly": "Pianificato {{ occurrenceInMonth }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}"
+            }
+          }
+        },
+        "process": {
+          "scheduled-upgrade": "Upgrade",
+          "auto-upgrade": "Upgrade automatico",
+          "rollback": "Effettua swap del firmware"
+        },
+        "reason": {
+          "no-error": "Nessun errore segnalato a Sophos Central.",
+          "time-already-elapsed": "L'orario pianificato è già trascorso.",
+          "too-many-pending-requests": "Lo switch era occupato con altre attività.",
+          "link-not-reachable": "Il server del firmware non è raggiungibile al momento.",
+          "download-error": "Impossibile scaricare il firmware.",
+          "integrity-error": "Controllo dell'integrità non superato a livello di switch.",
+          "already-updated": "Era già stato completato l'upgrade dello switch alla versione richiesta.",
+          "upgrade-error": "Applicazione del firmware non riuscita.",
+          "unknown-error": "Si è verificato un errore sconosciuto."
         }
       }
     }

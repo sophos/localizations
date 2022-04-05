@@ -3,6 +3,7 @@
   "wireless": {
     "main-dashboard-breadcrumb-text": "Vue générale",
     "common": {
+      "skip": "Ignorer",
       "add": "Ajouter",
       "all": "Toutes",
       "alerts": "Alertes",
@@ -78,7 +79,8 @@
         "sites": "Sites",
         "summary": "Résumé",
         "on-board-step-finish": "Terminé",
-        "enabled": "Activé"
+        "enabled": "Activé",
+        "ssid-sites-unavailable": "Le SSID et le site sont actuellement indisponibles pour le modèle Wi-Fi-6."
       },
       "search": {
         "placeholder": "Rechercher",
@@ -830,7 +832,7 @@
           "mode": "Mode",
           "channels": "Canaux",
           "mesh": "Rôle de maillage",
-          "exportToCsvText": "Exporter au format CSV",
+          "export-to-csv": "Exporter au format CSV",
           "errorMessage": "Impossible de supprimer le point d’accès",
           "access-point-not-found": "Point d’accès introuvable",
           "dataLoadErrorMessage": "Impossible de charger le point d’accès",
@@ -868,7 +870,8 @@
         "monthsShort": "mb",
         "secondsShort": "sec",
         "yearsShort": "a",
-        "firmware-upgrade": "Mise à niveau du firmware"
+        "firmware-upgrade": "Mise à niveau du firmware",
+        "tx-power": "{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1054,14 +1057,16 @@
       "firmware-upgrade": {
         "header-text-for-site": "Gérer le firmware : {{site}}",
         "header-text-no-site": "Gérer le firmware",
-        "note-no-site": "Gérer le firmware des points d’accès. Vous pouvez ajouter et annuler des mises à niveau du firmware à partir de la sélection ci-dessous.",
+        "note-no-site": "Vous pouvez ajouter et annuler des mises à niveau du firmware à partir de la sélection ci-dessous.",
         "note-for-site": "Gérer le firmware pour les points d’accès du site : '{{site}}'. Vous pouvez ajouter et annuler des mises à niveau du firmware à partir de la sélection ci-dessous.",
         "remove-schedule": "Supprimer la planification",
         "choose-schedule": "Choisir une planification",
         "rollback": "Changer de firmware ({{ version }})",
         "week": "Semaine",
-        "weekday": "Jours de la semaine",
+        "weekDay": "Jours de la semaine",
         "time": "Heure",
+        "scheduled-success-message": "Modifications des planifications du firmware enregistrées.",
+        "scheduled-failure-message": "Impossible d’enregistrer les modifications des planification du firmware.",
         "list": {
           "headers": {
             "name": "Nom",
@@ -1095,6 +1100,116 @@
             "3": "Le 3e {{day}} du mois à {{time}}",
             "4": "Le 4e {{day}} du mois à {{time}}"
           }
+        },
+        "type": {
+          "agent": "Agent Sophos Central",
+          "full": "Firmware"
+        }
+      },
+      "firmware-info": {
+        "update-available": "De nouvelles mises à jour du firmware sont disponibles.",
+        "upgrade-message": "Vous pouvez appliquer ces mises à niveau immédiatement ou ultérieurement.",
+        "schedule-upgrade": "Planifier une mise à niveau",
+        "cannot-manage": "Vous pourrez choisir une planification dès que la mise à niveau actuelle sera terminée.",
+        "up-to-date": "Le firmware est à jour.",
+        "up-to-date-message": "Aucun firmware n’est disponible au téléchargement.",
+        "action": {
+          "edit": "Changer la planification",
+          "cancel": "Annuler"
+        },
+        "monthly-schedule": {
+          "1": "tous les 1er {{weekDay}} du mois",
+          "2": "tous les 2e {{weekDay}} du mois",
+          "3": "tous les 3e {{weekDay}} du mois",
+          "4": "tous les 4e {{weekDay}} du mois"
+        },
+        "status": {
+          "scheduled": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) planifié.",
+            "note": {
+              "now": "Le démarrage de {{ process }} aura lieu peu après que le point d’accès ait reçu la demande.",
+              "date": "{{ process }} aura lieu à {{ schedule }} sur le point d’accès",
+              "daily": "{{ process }} aura lieu tous les jours à {{ timeOfDay }} sur le point d’accès",
+              "weekly": "{{ process }} aura lieu tous les {{ weekDay }} à {{ timeOfDay }} sur le point d’accès",
+              "monthly": "{{ process }} aura lieu le {{ occurrenceInMonth }} à {{ timeOfDay }} sur le point d’accès"
+            }
+          },
+          "updating": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) en cours.",
+            "note": {
+              "now": "Des changements sont en cours. L’opération peut durer quelques instants.",
+              "date": "Des changements sont en cours. L’opération peut durer quelques instants.",
+              "daily": "Des changements sont en cours. L’opération peut durer quelques instants.",
+              "weekly": "Des changements sont en cours. L’opération peut durer quelques instants.",
+              "monthly": "Des changements sont en cours. L’opération peut durer quelques instants."
+            }
+          },
+          "success": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) réussi.",
+            "note": {
+              "now": "Le {{ process }} a été demandé le {{ date }}",
+              "date": "Programmé le {{ schedule }}, le {{ process }} a été demandé le {{ date }}",
+              "daily": "Programmé tous les jours à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}",
+              "weekly": "Programmé tous les {{ weekDay }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}",
+              "monthly": "Programmé le {{ occurrenceInMonth }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}"
+            }
+          },
+          "cancelling": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+            "note": {
+              "now": "Confirmation par le point d’accès non reçue",
+              "date": "Confirmation par le point d’accès non reçue",
+              "daily": "Confirmation par le point d’accès non reçue",
+              "weekly": "Confirmation par le point d’accès non reçue",
+              "monthly": "Confirmation par le point d’accès non reçue"
+            }
+          },
+          "cancelled": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+            "note": {
+              "now": "Aucun changement effectué sur le point d’accès pendant cette opération",
+              "date": "Aucun changement effectué sur le point d’accès pendant cette opération",
+              "daily": "Aucun changement effectué sur le point d’accès pendant cette opération",
+              "weekly": "Aucun changement effectué sur le point d’accès pendant cette opération",
+              "monthly": "Aucun changement effectué sur le point d’accès pendant cette opération"
+            }
+          },
+          "failure": {
+            "text": "{{ process }} vers la version {{ version }} ({{ type }}) impossible.",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "Programmé le {{ schedule }}, le {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "daily": "Programmé tous les jours à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "weekly": "Programmé tous les {{ weekDay }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "monthly": "Programmé le {{ occurrenceInMonth }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}"
+            }
+          },
+          "cancel-failure": {
+            "text": "Impossible d’annuler {{ process }} à la version {{ version }}({{type}})",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "Programmé le {{ schedule }}, le {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "daily": "Programmé tous les jours à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "weekly": "Programmé tous les {{ weekDay }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}",
+              "monthly": "Programmé le {{ occurrenceInMonth }} à {{ timeOfDay }}, {{ process }} a été demandé le {{ date }}. {{ reason }}"
+            }
+          }
+        },
+        "process": {
+          "scheduled-upgrade": "Mettre à niveau",
+          "auto-upgrade": "Mettre à niveau automatiquement",
+          "rollback": "Changer de firmware"
+        },
+        "reason": {
+          "no-error": "Aucune erreur signalée à Sophos Central.",
+          "time-already-elapsed": "L’heure planifiée est révolue.",
+          "too-many-pending-requests": "Le switch était occupé à effectuer d’autres tâches.",
+          "link-not-reachable": "Le serveur du firmware n’est pas joignable pour le moment.",
+          "download-error": "Impossible de télécharger le firmware.",
+          "integrity-error": "Impossible de vérifier l’intégrité au niveau du switch.",
+          "already-updated": "Le switch a déjà été mis à niveau vers la version demandée.",
+          "upgrade-error": "Impossible d’appliquer le firmware.",
+          "unknown-error": "Nous avons rencontré une erreur inconnue."
         }
       }
     }

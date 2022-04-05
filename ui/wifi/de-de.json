@@ -1,8 +1,9 @@
 {
   "wifi.test.message": "WLAN-Meldung Übersetzungstest",
   "wireless": {
-    "main-dashboard-breadcrumb-text": "Überblick",
+    "main-dashboard-breadcrumb-text": "Übersicht",
     "common": {
+      "skip": "Überspringen",
       "add": "Hinzufügen",
       "all": "Alle",
       "alerts": "Alarme",
@@ -78,7 +79,8 @@
         "sites": "Standorte",
         "summary": "Zusammenfassung",
         "on-board-step-finish": "Abschließen",
-        "enabled": "Aktiviert"
+        "enabled": "Aktiviert",
+        "ssid-sites-unavailable": "SSID und Standort sind für das WIFI-6-Modell derzeit nicht verfügbar."
       },
       "search": {
         "placeholder": "Suchen",
@@ -183,8 +185,8 @@
           "health-status-yellow": "Client möglicherweise gefährdet",
           "health-status-not-available": "Nicht verfügbar"
         },
-        "no-devices-found": "Keine verbundenen Drahtlos-Clients zum Anzeigen.",
-        "pagination-text": "Anzeige {{ filtered }} Drahtlos-Geräte. Insgesamt {{ all }}"
+        "no-devices-found": "Keine verbundenen WLAN-Clients anzuzeigen.",
+        "pagination-text": "Anzeige {{ filtered }} WLAN-Geräte. Insgesamt {{ all }}"
       },
       "chart": {
         "max-connected-devices": "Maximal verbundene Geräte",
@@ -282,7 +284,7 @@
         "analysis-message": "Wenn die Datenverkehr-Kategorisierung aktiviert ist, wird der vom Benutzer generierte Datenverkehr kategorisiert und unter Nutzungsdaten aufgeführt. Diese Option ist standardmäßig deaktiviert.",
         "statistics-report": "Access Point-Statistiken",
         "device-discovery-label": "Geräteklassifizierung und Sichtbarkeit",
-        "device-discovery-message": "Mehr Transparenz über Drahtlos-Geräte durch Kategorisierung nach Gerätetyp, Profil und Kategorie. Die Funktion steht nur für Access Points der APX-Serie zur Verfügung."
+        "device-discovery-message": "Mehr Transparenz über WLAN-Geräte durch Kategorisierung nach Gerätetyp, Profil und Kategorie. Die Funktion steht nur für Access Points der APX-Serie zur Verfügung."
       },
       "rogue-ap-detection-settings": {
         "rogue-ap-detection": "Nicht berechtigte Access Points erkennen und melden",
@@ -591,7 +593,7 @@
         "quality-fast-roaming": "Schnelles Roaming zwischen Access Points ermöglicht bessere Verbindungen vor allem bei VoIP.",
         "broadcast-outdated": "SSID-Broadcasting findet weiterhin statt, falls der AP Sophos Central nach einem Neustart nicht erreicht.",
         "band-steering-label": "Band Steering",
-        "quality-band-steering": "Dual-Band-fähige Drahtlos-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
+        "quality-band-steering": "Dual-Band-fähige WLAN-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
         "band-steering-warning": "Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
         "broadcast-outdated-label": "Broadcasting aktiviert lassen",
         "multicast-label": "Umwandlung Multicast in Unicast",
@@ -672,7 +674,7 @@
         "image-dimension": "* Empfohlene Bildgröße ist 200x200 px.",
         "logo-upload": "Logo hochladen",
         "whitelist-domains-label": "Erlaubte Domänen",
-        "whitelist-domains": "Auf Domänen auf der Zulassungsliste kann auch dann zugegriffen werden, wenn der Security Heartbeat eines drahtlosen Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
+        "whitelist-domains": "Auf Domänen auf der Liste „Erlauben“ kann auch dann zugegriffen werden, wenn der Security Heartbeat eines WLAN-Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
         "hidden-label": "Verdeckte SSID",
         "hidden-ssid": "Blendet die SSID für Netzwerk-Scans aus. Benutzer müssen den SSID-Namen angeben, um sich verbinden zu können.",
         "hidden-ssid-warning": "Hinweis: Die verborgene SSID muss weiterhin geschützt werden.",
@@ -830,7 +832,7 @@
           "mode": "Modus",
           "channels": "Kanäle",
           "mesh": "Mesh-Rolle",
-          "exportToCsvText": "Als CSV exportieren",
+          "export-to-csv": "Als CSV exportieren",
           "errorMessage": "Access Point kann nicht gelöscht werden",
           "access-point-not-found": "Access Point nicht gefunden",
           "dataLoadErrorMessage": "Access Point kann nicht geladen werden",
@@ -868,7 +870,8 @@
         "monthsShort": "mo",
         "secondsShort": "s",
         "yearsShort": "j",
-        "firmware-upgrade": "Firmware-Aktualisierung"
+        "firmware-upgrade": "Firmware-Aktualisierung",
+        "tx-power": "{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -913,7 +916,7 @@
           "unsupported-radio-info-label": "Dieser Sender wird an diesem Standort nicht unterstützt.",
           "txpower": "TX Power",
           "apNameRequired": "AP-Name ist erforderlich.",
-          "apNameMaxLength": "AP-Name darf höchstens 128 Zeichen haben.",
+          "apNameMaxLength": "AP-Name darf maximal 128 Zeichen lang sein.",
           "meshModeLabel": "Mesh erlauben",
           "channelWidth": "Kanalbreite",
           "channelWidthWarning": "40 MHz wird nicht empfohlen",
@@ -985,7 +988,7 @@
         },
         "error-message": {
           "required": "Hostname ist erforderlich.",
-          "maxlength": "AP-Name darf höchstens 128 Zeichen haben."
+          "maxlength": "AP-Name darf maximal 128 Zeichen lang sein."
         }
       },
       "apRegister": {
@@ -1054,14 +1057,16 @@
       "firmware-upgrade": {
         "header-text-for-site": "Firmware verwalten: {{site}}",
         "header-text-no-site": "Firmware verwalten",
-        "note-no-site": "Firmware für Access Points verwalten. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
+        "note-no-site": "Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
         "note-for-site": "Firmware für Access Points am Standort verwalten: '{{site}}'. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
         "remove-schedule": "Zeitplan entfernen",
         "choose-schedule": "Zeitplan wählen",
         "rollback": "Firmware-Austausch ({{ version }})",
         "week": "Woche",
-        "weekday": "Wochentag",
+        "weekDay": "Wochentag",
         "time": "Uhrzeit",
+        "scheduled-success-message": "Geänderte Firmware-Zeitpläne wurden erfolgreich gespeichert.",
+        "scheduled-failure-message": "Speichern der an den Firmware-Zeitplänen vorgenommenen Änderungen fehlgeschlagen.",
         "list": {
           "headers": {
             "name": "Name",
@@ -1085,7 +1090,7 @@
           "monthly": "Monatlich",
           "header-text": "Wählen Sie einen Zeitplan aus",
           "note": "Zeitpunkt für die Aktualisierung der ausgewählten Access Points wählen.",
-          "now-note": "Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade. Getrennte Access Points erhalten eine Aufforderung, wenn sie sich wieder verbunden haben. Hierbei wird der Access Point eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
+          "now-note": "Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade. Getrennte Access Points erhalten eine Aufforderung, nachdem sie sich wieder verbunden haben. Hierbei wird der Access Point eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
           "custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen. Während des Upgrades kommt es möglicherweise zu einem Neustart.",
           "daily-schedule": "Täglich um {{time}}",
           "weekly-schedule": "Jeden {{day}} um {{time}}",
@@ -1095,6 +1100,116 @@
             "3": "Jeden dritten {{day}} des Monats um {{time}}",
             "4": "Jeden vierten {{day}} des Monats um {{time}}"
           }
+        },
+        "type": {
+          "agent": "Sophos-Central-Agent",
+          "full": "Firmware"
+        }
+      },
+      "firmware-info": {
+        "update-available": "Es gibt neue Firmware-Updates.",
+        "upgrade-message": "Sie können diese Upgrades sofort oder zu einem späteren Zeitpunkt anwenden.",
+        "schedule-upgrade": "Ein Upgrade planen",
+        "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
+        "up-to-date": "Firmware ist aktuell.",
+        "up-to-date-message": "Es steht keine neue Firmware zum Download bereit.",
+        "action": {
+          "edit": "Zeitplan ändern",
+          "cancel": "Abbrechen"
+        },
+        "monthly-schedule": {
+          "1": "jedem ersten {{weekDay}} des Monats",
+          "2": "jedem zweiten {{weekDay}} des Monats",
+          "3": "jedem dritten {{weekDay}} des Monats",
+          "4": "jedem vierten {{weekDay}} des Monats"
+        },
+        "status": {
+          "scheduled": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wurde geplant.",
+            "note": {
+              "now": "{{ process }} startet, sobald der Access Point die Aufforderung erhalten hat.",
+              "date": "{{ process }} startet um {{ schedule }} (Uhrzeit des Access Point)",
+              "daily": "{{ process }} startet täglich um {{ timeOfDay }} (Uhrzeit des Access Point)",
+              "weekly": "{{ process }} startet an jedem {{ weekDay }} um {{ timeOfDay }} (Uhrzeit des Access Point)",
+              "monthly": "{{ process }} startet an {{ occurrenceInMonth }} um {{ timeOfDay }} (Uhrzeit des Access Point)"
+            }
+          },
+          "updating": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wird ausgeführt.",
+            "note": {
+              "now": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+              "date": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+              "daily": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+              "weekly": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
+              "monthly": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen."
+            }
+          },
+          "success": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) war erfolgreich.",
+            "note": {
+              "now": "{{ process }} wurde angefordert am {{ date }}",
+              "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}",
+              "daily": "{{ process }} wurde für die tägliche Ausführung um {{ timeOfDay }} angefordert am {{ date }}",
+              "weekly": "{{ process }} wurde für die Ausführung an jedem {{ weekDay }} um {{ timeOfDay }} angefordert am {{ date }}",
+              "monthly": "{{ process }} wurde für die Ausführung an {{ occurrenceInMonth }} um {{ timeOfDay }} angefordert am {{ date }}"
+            }
+          },
+          "cancelling": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wird abgebrochen.",
+            "note": {
+              "now": "Bestätigung durch den Access Point steht noch aus",
+              "date": "Bestätigung durch den Access Point steht noch aus",
+              "daily": "Bestätigung durch den Access Point steht noch aus",
+              "weekly": "Bestätigung durch den Access Point steht noch aus",
+              "monthly": "Bestätigung durch den Access Point steht noch aus"
+            }
+          },
+          "cancelled": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wurde abgebrochen.",
+            "note": {
+              "now": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
+              "date": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
+              "daily": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
+              "weekly": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
+              "monthly": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen"
+            }
+          },
+          "failure": {
+            "text": "{{ process }} auf Version {{ version }} ({{ type }}) ist fehlgeschlagen.",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}. {{ reason }}",
+              "daily": "{{ process }} wurde für die tägliche Ausführung um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
+              "weekly": "{{ process }} wurde für die Ausführung an jedem {{ weekDay }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
+              "monthly": "{{ process }} wurde für die Ausführung an {{ occurrenceInMonth }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}"
+            }
+          },
+          "cancel-failure": {
+            "text": "{{ process }} auf Version {{ version }}({{type}}) konnte nicht abgebrochen werden",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}. {{ reason }}",
+              "daily": "{{ process }} wurde für die tägliche Ausführung um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
+              "weekly": "{{ process }} wurde für die Ausführung an jedem {{ weekDay }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
+              "monthly": "{{ process }} wurde für die Ausführung an {{ occurrenceInMonth }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}"
+            }
+          }
+        },
+        "process": {
+          "scheduled-upgrade": "Upgrade",
+          "auto-upgrade": "Auto-Upgrade",
+          "rollback": "Firmware-Austausch"
+        },
+        "reason": {
+          "no-error": "An Sophos Central wird kein Fehler gemeldet.",
+          "time-already-elapsed": "Die geplante Ausführungszeit liegt in der Vergangenheit.",
+          "too-many-pending-requests": "Der Switch war mit anderen Aufgaben beschäftigt.",
+          "link-not-reachable": "Der Firmware-Server ist im Moment nicht erreichbar.",
+          "download-error": "Die Firmware kann nicht heruntergeladen werden.",
+          "integrity-error": "Die Integritätsprüfung auf dem Switch ist fehlgeschlagen.",
+          "already-updated": "Der Switch wurde bereits auf die gewünschte Version aktualisiert.",
+          "upgrade-error": "Die Anwendung der Firmware ist fehlgeschlagen.",
+          "unknown-error": "Es ist ein unbekannter Fehler aufgetreten."
         }
       }
     }
