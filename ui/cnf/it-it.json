@@ -7,6 +7,7 @@
         "delete": "Elimina",
         "update": "Aggiorna",
         "save": "Salva",
+        "copy": "Copia",
         "disable": "Disabilita",
         "cancel": "Annulla",
         "enter": "Immetti",
@@ -14,7 +15,9 @@
         "modify": "Modifica",
         "confirm": "Conferma",
         "approve": "Approva",
-        "search": "Cerca"
+        "accept": "Accetta",
+        "search": "Cerca",
+        "clear": "Cancella"
       },
       "manage": "Gestisci",
       "status": {
@@ -28,16 +31,14 @@
         "denied": "Accesso negato.",
         "generic-error": "Errore inatteso durante l’elaborazione della richiesta.",
         "info": "Info",
-        "bad-credentials": "Credenziali o certificato non validi."
+        "bad-credentials": "Credenziali o certificato non validi.",
+        "waf-rule-disabled": "Web Application Firewall non abilitato per questo firewall.",
+        "network-rule-disabled": "Firewall di rete non abilitato per questo firewall.",
+        "ips-rule-disabled": "Prevenzione delle intrusioni non abilitata per questo firewall.",
+        "admission-control-rule-disabled": "Controllo ammissione non abilitato per questo firewall.",
+        "cluster-not-approved" : "Questo firewall non è ancora stato approvato per la gestione da Sophos Central. Approva il firewall per procedere con qualsiasi configurazione.",
+        "entry-port-null" : "La porta per il punto di ingresso della regola WAF non può avere valore null"
       }
-    },
-    "nav-title": {
-      "clusters": "Cluster",
-      "dashboard": "Dashboard",
-      "waf-rules": "Regole WAF",
-      "certificates": "Certificati",
-      "ips-rule": "Protezione contro le IPS",
-      "admission-control": "Controllo ammissione"
     },
     "clusters-list": {
       "title": "Firewall cloud",
@@ -58,9 +59,9 @@
         "admission-control": "Controllo ammissione"
       },
       "registration-status": {
-        "waiting-for-deployment": "In attesa di distribuzione",
+        "waiting-for-deployment": "Pronto/a per la distribuzione",
         "awaiting-approval": "In attesa di approvazione",
-        "approved": "Approvato"
+        "approved": "Distribuito/a"
       },
       "installation-type": {
         "aws": "Amazon EKS",
@@ -91,19 +92,21 @@
       "name-pattern-error": "Il nome del cluster contiene caratteri non validi.",
       "cluster-description-error": "La descrizione può contenere un massimo di 250 caratteri.",
       "not-selected-cni": "Non hai selezionato una CNI, seleziona la tua CNI attuale per continuare.",
-      "require-cni": "I firewall cloud richiedono come prerequisito che sia installata la CNI. Quella consigliata è CNI Calico, dal sito web ufficiale.",
+      "require-cni": "I firewall cloud richiedono come prerequisito che sia installata la CNI. Quella consigliata è CNI Calico, dal <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">sito web ufficiale</a>.",
       "not-selected-ingress": "Non hai selezionato un controller in ingresso. Per procedere, seleziona un controller in ingresso o disattiva il WAF.",
       "not-supported-ingress": "Hai selezionato un controller in ingresso esistente che non è supportato insieme al WAF. Se desideri utilizzare il WAF, devi rimuovere dal tuo cluster il controller in ingresso, oppure disattivare il WAF.",
+      "cluster-success-notification": "Firewall aggiunto.<br><br><b>Cosa devo fare per continuare?</b><br>Clicca sul nome del firewall appena aggiunto per vedere la procedura di installazione del firewall.",
       "type": {
         "premises": "Installazione on-premise",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "Seleziona CNI",
+      "nfoptions-place-holder": "Seleziona opzione CNI",
       "nf-options": {
-        "new-cni": "Nessuna CNI esistente distribuita",
-        "flannel": "Acquisizione Flannel esistente installata",
+        "new-cni": "Nessuna CNI esistente installata",
+        "flannel": "Sostituisci la CNI Flannel attuale con la CNI Calico",
         "calico": "CNI Calico già installata",
-        "different": "Ho installato una CNI diversa"
+        "calico-with-vpc": "Installa Calico con VPC CNI",
+        "different": "Altra CNI installata"
       },
       "wafoptions-place-holder": "Seleziona controller in ingresso",
       "waf-options": {
@@ -155,7 +158,9 @@
       "confirm-cluster-delete": "Eliminare il cluster?",
       "messages": {
         "deleted-message": "Cluster eliminato.",
-        "updated-message": "Cluster aggiornato."
+        "updated-message": "Cluster aggiornato.",
+        "status-waiting-for-deploy": "Questo firewall non è distribuito in un cluster e non ha ancora contattato Sophos Central.",
+        "status-awaiting-for-approval": "Questo firewall richiede l’approvazione per poter essere gestito dal tuo account Sophos Central. Se attendevi questa richiesta, clicca su Accetta per approvarla."
       }
     },
     "waf": {
@@ -203,31 +208,42 @@
       "edit": {
         "title": "Modifica regola Web Application Firewall",
         "breadcrumb-text": "Modifica regola WAF",
-        "status": "Stato",
+        "status": "Stato regola",
         "rule-name": "Nome regola",
+        "rule-name-required-error": "Il nome della regola è un campo obbligatorio.",
         "description": "Descrizione",
         "entry-points": "Punti di accesso",
         "listening-port": "Porta di ascolto (1-65535)",
+        "listening-port-required-error": "Porta di ascolto è un campo obbligatorio.",
         "http-listening-port": "Porta di ascolto HTTP (1-65535)",
+        "http-listening-port-required-error": "Porta di ascolto HTTP è un campo obbligatorio.",
+        "port-range-error": "La porta deve essere compresa nell’intervallo (1-65535).",
         "http-only": "HTTPS/TLS",
         "redirect-http": "HTTP reindirizzato",
         "request-path": "Richiedi percorso",
+        "request-path-required-error": "Richiedi percorso è un campo obbligatorio.",
         "request-from": "Mappa al percorso di destinazione",
         "routes": "Route",
         "fqdn": "FQDN",
+        "fqdn-required-error": "FQDN è un campo obbligatorio.",
         "header": "Intestazione",
         "name-placeholder": "Nome",
         "value-placeholder": "Valore",
         "destination-type": "Tipo di destinazione",
         "destination-type-placeholder": "Seleziona tipo di destinazione",
         "namespace": "Spazio dei nomi",
+        "namespace-required-error": "Lo spazio dei nomi è un campo obbligatorio.",
         "namespace-placeholder": "Seleziona spazio dei nomi",
         "service": "Servizio",
+        "service-required-error": "Servizio è un campo obbligatorio.",
         "service-placeholder": "Seleziona servizio",
         "service-port": "Porta del servizio",
+        "service-port-required-error": "Porta del servizio è un campo obbligatorio.",
         "service-port-placeholder": "Seleziona porta",
         "destination-ip-fqdn": "IP/FQDN di destinazione",
+        "destination-ip-fqdn-required-error": "IP/FQDN di destinazione è un campo obbligatorio.",
         "destination-port": "Porta di destinazione",
+        "destination-port-required-error": "Porta di destinazione è un campo obbligatorio",
         "web-service-use-tls": "Il servizio web utilizza TLS",
         "path": "Percorso",
         "destination-path": "Percorso di destinazione",
@@ -245,6 +261,7 @@
         "protection-policies": "Criteri di protezione",
         "policy-placeholder": "Seleziona criterio",
         "certificate": "Certificato",
+        "certificate-required-error": "Certificato è un campo obbligatorio.",
         "certificate-placeholder": "Seleziona certificato",
         "domains-fqdn-placeholder": "Seleziona nome host",
         "add-route": "Aggiungi route",
@@ -263,12 +280,15 @@
           "change-certificate-prompt-confirmation": "Hai già configurato delle route; la modifica del certificato cancellerà tutte le configurazioni esistenti per le route. Continuare?",
           "waf-rule-update-success": "La regola WAF è stata aggiornata.",
           "waf-rule-update-error": "Non è stato possibile aggiornare la regola WAF.",
-          "entrypoint-port-redirectport-not-same": "La porta entrypoint e la porta redirectPort della regola WAF non possono essere la stessa.",
-          "entrypoint-port-inuse": "Porta entrypoint già in uso, specifica una porta disponibile",
-          "entrypoint-redirectfrom-inuse": "Porta entrypoint di reindirizzamento già in uso, specifica una porta disponibile.",
+          "entrypoint-port-redirectport-not-same": "La porta per il punto di ingresso della regola WAF e la porta di reindirizzamento non possono essere la stessa.",
+          "entrypoint-port-in-use": "Porta di ascolto già in uso, specifica una porta disponibile",
+          "entrypoint-redirect-from-in-use": "Porta di ascolto HTTP già in uso, specifica una porta disponibile.",
           "name-already-exists": "Esiste già una regola WAF con il nome specificato.",
           "routes-destination-host-fqdn-invalid": "L’FQDN dell’host di destinazione deve essere in un formato valido.",
-          "field-value-notvalid": "Valore dell’attributo mancante o non valido."
+          "field-value-notvalid": "Valore dell’attributo mancante o non valido.",
+          "rule-name-error": "Il nome della regola WAF non deve superare i 100 caratteri.",
+          "name-pattern-error": "Il nome della regola WAF contiene caratteri non validi.",
+          "name-space-error": "Il nome della regola WAF non deve contenere spazi."
         }
       }
     },
@@ -347,7 +367,7 @@
       "edit": {
         "title": "Modifica regola Firewall",
         "breadcrumb-text": "Modifica regola Firewall",
-        "status": "Stato",
+        "status": "Stato regola",
         "rule-name": "Nome regola",
         "description": "Descrizione",
         "namespace": "Spazio dei nomi",
@@ -368,7 +388,7 @@
         "deny-all": "Nega tutti",
         "is": "È",
         "in": "In",
-        "not-in": "Non In",
+        "not-in": "Non in",
         "exists": "Esiste",
         "not-exists": "Non esiste",
         "egress-type": "Tipo di uscita",
@@ -382,7 +402,7 @@
         "add-ingress": "Aggiungi ingresso",
         "add-egress": "Aggiungi uscita",
         "rule-name-error": "Il nome della regola non deve superare i 100 caratteri.",
-        "name-pattern-error": "Il nome della regola contiene caratteri non validi.",
+        "name-pattern-error": "Rule name have invalid characters.",  
         "rule-description-error": "La descrizione può contenere un massimo di 250 caratteri.",
         "namespace-address": "Spazio dei nomi o indirizzo",
         "service": "Servizio",
@@ -404,14 +424,16 @@
         "messages": {
           "delete-rule-confirmation": "Eliminare la regola?",
           "delete-rule-success": "Eliminazione della regola completata.",
-          "delete-rule-error": "Non è stato possibile eliminare la regola."
+          "delete-rule-error": "Non è stato possibile eliminare la regola.",
+          "delete-service-confirmation": "Modificando lo spazio dei nomi, verranno cancellate la o le etichette servizio. <br/>Procedere?",
+          "confirmation": "Conferma"
         }
       }
     },
     "ips": {
       "rule": {
-        "title": "Protezione dalle intrusioni",
-        "breadcrumb-text": "Protezione dalle intrusioni",
+        "title": "Prevenzione delle intrusioni",
+        "breadcrumb-text": "Prevenzione delle intrusioni",
         "section-title": "Criteri di protezione",
         "ns-policy-disabled": "Abilita scansione IPS per il traffico da nord a sud.",
         "ew-policy-disabled": "Abilita scansione IPS per il traffico da est a ovest.",
@@ -437,13 +459,14 @@
         "error-notification-title": "Errore",
         "delete-rule-confirmation": "Eliminare la regola?",
         "delete-rule-success": "Eliminazione della regola completata.",
-        "delete-rule-error": "Non è stato possibile eliminare la regola."
+        "delete-rule-error": "Non è stato possibile eliminare la regola.",
+        "empty-message": "Nessuna regola di controllo ammissione disponibile per questo cluster."
       }
     },
     "admission-control-add": {
       "title": "Aggiungi regola di controllo ammissione",
       "breadcrumb-text": "Aggiungi controllo ammissione",
-      "status": "Stato",
+      "status": "Stato regola",
       "rule-name": "Nome",
       "description": "Descrizione",
       "namespace-labels": "Spazio dei nomi",
@@ -455,7 +478,7 @@
       "api-key": "Chiave API",
       "disallow-levels": "Livelli di vulnerabilità dei container non consentiti",
       "disallow-levels-placeholder": "Seleziona livelli",
-      "disallow-levels-descp": "Livelli di vulnerabilità per i quali il numero di vulnerabilità non deve essere superiore a zero",
+      "disallow-levels-descp": "Livelli di vulnerabilità per i quali il numero di vulnerabilità deve essere zero",
       "namespaces-placeholder": "Seleziona spazio dei nomi",
       "messages": {
         "success-notification-title": "Operazione completata",
@@ -464,7 +487,15 @@
         "add-rule-error": "Impossibile aggiungere la regola.",
         "update-rule-success": "Regola aggiornata.",
         "update-rule-error": "Impossibile aggiornare la regola.",
-        "name-already-exists" : "Esiste già un controllo ammissione con il nome specificato."
+        "flag-not-set": "Lo stato della regola deve essere configurato.",
+        "name-already-exists" : "Esiste già una regola di controllo ammissione con il nome specificato.",
+        "rule-required-error" : "Il nome della regola di controllo ammissione è un campo obbligatorio.",
+        "rule-name-error" : "Il nome della regola di controllo ammissione non deve superare i 100 caratteri.",
+        "name-pattern-error" : "Il nome della regola di controllo ammissione contiene caratteri non validi.",
+        "namespace-null" : "Il campo Spazio dei nomi non può essere vuoto.",
+        "repository-blank" : "Il campo Repository container non può essere vuoto.",
+        "optixScans-apikey-blank" : "Il campo Chiave API di OptixScan non può essere vuoto.",
+        "optixScans-disallowed-levels-null" : "Il campo dei livelli non consentiti di OptixScan non può essere vuoto."
       },
       "help-text": {
         "target-namespace": "Seleziona lo spazio dei nomi che deve essere protetto con questa regola."

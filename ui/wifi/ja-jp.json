@@ -3,6 +3,7 @@
   "wireless": {
     "main-dashboard-breadcrumb-text": "概要",
     "common": {
+      "skip": "スキップ",
       "add": "追加",
       "all": "すべて",
       "alerts": "警告",
@@ -78,7 +79,8 @@
         "sites": "サイト",
         "summary": "サマリー",
         "on-board-step-finish": "完了",
-        "enabled": "オンに設定"
+        "enabled": "オンに設定",
+        "ssid-sites-unavailable": "SSID とサイトは、現在、WIFI-6 モデルでは使用できません。"
       },
       "search": {
         "placeholder": "検索",
@@ -830,7 +832,7 @@
           "mode": "モード",
           "channels": "チャネル",
           "mesh": "メッシュのロール",
-          "exportToCsvText": "CSV 形式で出力",
+          "export-to-csv": "CSV 形式で出力",
           "errorMessage": "アクセスポイントを削除できません",
           "access-point-not-found": "アクセスポイントが見つかりません",
           "dataLoadErrorMessage": "アクセスポイントを読み込めません",
@@ -868,7 +870,8 @@
         "monthsShort": "月",
         "secondsShort": "秒",
         "yearsShort": "年",
-        "firmware-upgrade": "ファームウェアのアップグレード"
+        "firmware-upgrade": "ファームウェアのアップグレード",
+        "tx-power": "{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1054,14 +1057,16 @@
       "firmware-upgrade": {
         "header-text-for-site": "ファームウェアの管理: {{site}}",
         "header-text-no-site": "ファームウェアの管理",
-        "note-no-site": "アクセスポイントのファームウェアを管理します。以下から、ファームウェアのアップグレードの追加やキャンセルを選択できます。",
+        "note-no-site": "以下から、ファームウェアのアップグレードの追加やキャンセルを選択できます。",
         "note-for-site": "次のサイトにあるアクセスポイントのファームウェアを管理します: '{{site}}'。以下から、ファームウェアのアップグレードの追加やキャンセルを選択できます。",
         "remove-schedule": "スケジュールの削除",
         "choose-schedule": "スケジュールの選択",
         "rollback": "ファームウェアの切り替え ({{ version }})",
         "week": "週",
-        "weekday": "曜日",
+        "weekDay": "曜日",
         "time": "時刻",
+        "scheduled-success-message": "ファームウェアスケジュールの変更が正常に保存されました。",
+        "scheduled-failure-message": "ファームウェアスケジュールの変更を保存できませんでした。",
         "list": {
           "headers": {
             "name": "名前",
@@ -1095,6 +1100,116 @@
             "3": "毎月第3{{day}}、{{time}}",
             "4": "毎月第4{{day}}、{{time}}"
           }
+        },
+        "type": {
+          "agent": "Sophos Central エージェント",
+          "full": "ファームウェア"
+        }
+      },
+      "firmware-info": {
+        "update-available": "ファームウェアの新しいアップデートがあります。",
+        "upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。",
+        "schedule-upgrade": "アップグレードのスケジュール設定",
+        "cannot-manage": "実行中のアップグレードが完了したら、スケジュールを設定できます。",
+        "up-to-date": "ファームウェアは最新です。",
+        "up-to-date-message": "ダウンロード可能なファームウェアはありません。",
+        "action": {
+          "edit": "スケジュールの変更",
+          "cancel": "キャンセル"
+        },
+        "monthly-schedule": {
+          "1": "毎月第1{{weekDay}}",
+          "2": "毎月第2{{weekDay}}",
+          "3": "毎月第3{{weekDay}}",
+          "4": "毎月第4{{weekDay}}"
+        },
+        "status": {
+          "scheduled": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}がスケジュール設定されました。",
+            "note": {
+              "now": "{{ process }}は、アクセスポイントがリクエストを受信するとすぐに開始されます。",
+              "date": "{{ process }}は、アクセスポイントの日時が {{ schedule }} になったら実行されます",
+              "daily": "{{ process }}は、アクセスポイントの時刻が毎日 {{ timeOfDay }} になったら実行されます",
+              "weekly": "{{ process }}は、アクセスポイントの時刻が、毎{{ weekDay }} {{ timeOfDay }} になったら実行されます",
+              "monthly": "{{ process }}は、アクセスポイントの日時が、{{ occurrenceInMonth }} {{ timeOfDay }} になったら実行されます"
+            }
+          },
+          "updating": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}が進行中です。",
+            "note": {
+              "now": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+              "date": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+              "daily": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+              "weekly": "現在、変更が適用されています。この操作には時間がかかることがあります。",
+              "monthly": "現在、変更が適用されています。この操作には時間がかかることがあります。"
+            }
+          },
+          "success": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}に成功しました。",
+            "note": {
+              "now": "{{ process }} は {{ date }} に要求されました",
+              "date": "スケジュール日時: {{ schedule }}、{{ process }} は {{ date }} に要求されました",
+              "daily": "スケジュール日時: 毎日 {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました",
+              "weekly": "スケジュール日時: 毎{{ weekDay }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました",
+              "monthly": "スケジュール日時: {{ occurrenceInMonth }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました"
+            }
+          },
+          "cancelling": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}は、キャンセルされます。",
+            "note": {
+              "now": "まだアクセスポイントから確認を受信していません",
+              "date": "まだアクセスポイントから確認を受信していません",
+              "daily": "まだアクセスポイントから確認を受信していません",
+              "weekly": "まだアクセスポイントから確認を受信していません",
+              "monthly": "まだアクセスポイントから確認を受信していません"
+            }
+          },
+          "cancelled": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}がキャンセルされました。",
+            "note": {
+              "now": "このプロセスの実行中に、アクセスポイントは変更されませんでした",
+              "date": "このプロセスの実行中に、アクセスポイントは変更されませんでした",
+              "daily": "このプロセスの実行中に、アクセスポイントは変更されませんでした",
+              "weekly": "このプロセスの実行中に、アクセスポイントは変更されませんでした",
+              "monthly": "このプロセスの実行中に、アクセスポイントは変更されませんでした"
+            }
+          },
+          "failure": {
+            "text": "バージョン {{ version }} ({{ type }}) への{{ process }}に失敗しました。",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "スケジュール日時: {{ schedule }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "daily": "スケジュール日時: 毎日 {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "weekly": "スケジュール日時: 毎{{ weekDay }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "monthly": "スケジュール日時: {{ occurrenceInMonth }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}"
+            }
+          },
+          "cancel-failure": {
+            "text": "バージョン {{ version }} ({{type}}) への{{ process }}をキャンセルできませんでした",
+            "note": {
+              "now": "{{ reason }}",
+              "date": "スケジュール日時: {{ schedule }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "daily": "スケジュール日時: 毎日 {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "weekly": "スケジュール日時: 毎{{ weekDay }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}",
+              "monthly": "スケジュール日時: {{ occurrenceInMonth }} {{ timeOfDay }}、{{ process }} は {{ date }} に要求されました。{{ reason }}"
+            }
+          }
+        },
+        "process": {
+          "scheduled-upgrade": "アップグレード",
+          "auto-upgrade": "自動アップグレード",
+          "rollback": "ファームウェアの切り替え"
+        },
+        "reason": {
+          "no-error": "Sophos Central にエラーは報告されていません。",
+          "time-already-elapsed": "スケジュール日時は既に経過しました。",
+          "too-many-pending-requests": "スイッチは他のタスクでビジー状態でした。",
+          "link-not-reachable": "現在、ファームウェアサーバーに到達できません。",
+          "download-error": "ファームウェアをダウンロードできません。",
+          "integrity-error": "スイッチで整合性チェックに失敗しました。",
+          "already-updated": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
+          "upgrade-error": "ファームウェアの適用に失敗しました。",
+          "unknown-error": "不明なエラーが発生しました。"
         }
       }
     }

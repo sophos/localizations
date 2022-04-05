@@ -11,6 +11,8 @@
     "save": "Guardar",
     "confirm": "Confirmar",
     "delete": "Borrar",
+    "delete-firewall": "Eliminar firewall",
+    "hide-firewall": "Ocultar firewall",
     "remove": "Eliminar",
     "success": "Completado",
     "next": "Siguiente",
@@ -400,10 +402,10 @@
               "placeholder": "Seleccionar un firewall"
             },
             "shared-resource": {
-              "title": "Recurso compartido",
-              "placeholder": "Introduzca la dirección IP del recurso de destino",
+              "title": "Recursos compartidos",
+              "placeholder": "Introduzca múltiples direcciones IP del recurso de destino",
               "help": {
-                "heading": "Puede especificar la dirección de host en cualquiera de los siguientes formatos:",
+                "heading": "Puede especificar múltiples direcciones de host en cualquiera de los siguientes formatos:",
                 "type-ip": "Dirección IPv4: P. ej., 10.12.22.34",
                 "type-iplist": "Lista IPv4: P. ej., 10.12.22.34,10.12.22.35",
                 "type-iprange": "Rango IPv4: P. ej., 10.12.22.34-10.12.22.35",
@@ -614,7 +616,9 @@
         "modal": {
           "location": {
             "latitude": "Latitud",
+            "latitude-invalid": "Latitud no válida",
             "longitude": "Longitud",
+            "longitude-invalid": "Longitud no válida",
             "message": {
               "success": "Ubicación del firewall guardada.",
               "error": "Se ha producido un error al guardar la ubicación."
@@ -838,6 +842,59 @@
           "error-both": "Error al cargar detalles estadísticos."
         },
          "no-customers": "No hay clientes asignados a esta plantilla."
+      }
+    },
+    "licensing-and-billing": {
+      "add": {
+        "add": "Añadir firewall virtual",
+        "modal": {
+          "title-add": "Añadir un firewall virtual",
+          "title-virtual-edit": "Editar firewall virtual - {{ name }}",
+          "title-edit": "Editar firewall - {{ name }}",
+          "create-account": "Crear nuevo cliente administrado",
+          "registrant": {
+            "label": "Solicitante: ",
+            "required": "El solicitante es obligatorio"
+          },
+          "description": {
+            "label": "Descripción: ",
+            "placeholder": "Introduzca la descripción del firewall (250 caracteres máx.)",
+            "length": "La descripción puede tener un máximo de 250 caracteres"
+          },
+          "model": {
+            "label": "Modelo: "
+          },
+          "type": {
+            "label": "Tipo: "
+          },
+          "pending": {
+            "label": "Pendiente: "
+          },
+          "subscription": {
+            "label": "Suscripción: ",
+            "info": "Suscripción actual: ",
+            "required": "La suscripción es obligatoria"
+          },
+          "assigned": {
+            "label": "Cliente asignado: ",
+            "required": "El cliente asignado es obligatorio"
+          },
+          "firewall-size": {
+            "label": "Tamaño del firewall virtual: ",
+            "required": "El tamaño del firewall virtual es obligatorio"
+          }
+        },
+        "states": {
+          "data-not-loaded": "Se ha producido un error al recuperar datos del servidor. Inténtelo de nuevo pasado un tiempo.",
+          "cannot-save": "Se ha producido un error al guardar el firewall virtual.",
+          "cannot-delete": "Se ha producido un error al eliminar el firewall.",
+          "created": "Firewall virtual creado correctamente.",
+          "updated": "Firewall actualizado correctamente.",
+          "deleted": "Firewall eliminado correctamente.",
+          "hidden": "Firewall ocultado correctamente.",
+          "not-hidden": "Se ha producido un error al ocultar el firewall.",
+          "duplicate-entry": "El firewall virtual no se puede guardar; el nombre elegido ya existe."
+        }
       }
     },
     "global-settings": {
