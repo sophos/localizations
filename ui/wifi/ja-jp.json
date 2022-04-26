@@ -66,7 +66,7 @@
       "online": "オンライン",
       "offline": "オフライン",
       "GHZ_2_4": "2.4GHz",
-      "GHZ_2_4,GHZ_5": "2.4GHz と 5GHz",
+      "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
       "GHZ_5": "5GHz"
     },
     "global": {
@@ -156,7 +156,7 @@
         "hide-chart": "グラフの非表示",
         "ghz-2-4": "2.4GHz",
         "ghz-5": "5GHz",
-        "ghz-both": "2.4GHz と 5GHz",
+        "ghz-both": "2.4GHz および 5GHz",
         "status-both": "オンラインとオフライン"
       },
       "device-list": {
@@ -423,7 +423,7 @@
           "scale-headline": "距離の指定:",
           "hint": {
             "input": "距離を指定し、「完了」をクリックします。",
-            "pins": "構内図上に 2つピンをドロップ/ドラッグして、尺度を定義します。"
+            "pins": "構内図の上にピンを 2つ置き、距離のわかっている場所にピンをドラッグします。"
           }
         },
         "upload": {
@@ -431,7 +431,7 @@
           "upload-error": "構内図の画像を保存できませんでした。",
           "floorplan-setup": {
             "question": "構内図の設定",
-            "text": "まずは画像をアップロードしてください。有効な形式: JPG、GIF、PNG など。ファイルサイズの上限は 1MB です。",
+            "text": "まずは画像をアップロードしてください。有効な形式: PDF、PNG、JPEG、BMP、GIF、または WBMP。ファイルサイズの上限: 1MB",
             "GDPR-text": "GDPR に遵守するために、サイト/構内図に個人情報が含まれていないことを確認してください。",
             "dragtext": "指定された枠内にファイルをドラッグしてください。または次の操作を実行してください。",
             "upload-button": "アップロード",
@@ -541,7 +541,7 @@
         "network-faster-optimal": "ネットワークのスピードを向上させたり、最適化を管理したりすることができます",
         "client-authenticate": "クライアントにインターネットへのアクセスを許可するには、キャプティブポータル認証を行う必要があります。",
         "restriction-guest": "ゲスト SSID と同様の制限が適用されます。",
-        "frequency-bands": "2.4GHz と 5GHz",
+        "frequency-bands": "2.4GHz および 5GHz",
         "lan-inline-help-text": "クライアントのトラフィックは、アクセスポイントが接続しているのと同じネットワークに直接ブリッジされます。",
         "vlan": "VLAN",
         "vlan-inline-help-text": "指定した VLAN にクライアントのトラフィックがブリッジされます。",
@@ -633,7 +633,28 @@
         },
         "start-time": "開始時刻",
         "end-time": "終了時刻",
-        "accept-terms-and-conditions": "利用規約に同意し、接続"
+        "accept-terms-and-conditions": "利用規約に同意し、接続",
+        "protection": {
+          "none": "なし",
+          "wep": "WEP (非推奨)",
+          "wpa-wpa2-enterprise": "WPA/WPA2 エンタープライズ",
+          "wpa-wpa2-personal": "WPA/WPA2 パーソナル",
+          "wpa2-enterprise": "WPA2-エンタープライズ",
+          "wpa2-personal": "WPA2-パーソナル",
+          "wpa3-personal": "WPA3-パーソナル",
+          "wpa3-enterprise": "WPA3-エンタープライズ",
+          "owe": "OWE"
+        },
+        "bands": {
+          "_dynamic_": {
+            "GHZ_2_4": "2.4GHz",
+            "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
+            "GHZ_5": "5GHz",
+            "both": "2.4GHz および 5GHz",
+            "GHZ_6": "6GHz",
+            "GHZ_2_4,GHZ_5,GHZ_6": "2.4GHz、5GHz、および 6GHz"
+          }
+        }
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
@@ -882,7 +903,8 @@
           "location": "場所",
           "mac": "MAC",
           "serial-number": "シリアル番号",
-          "version": "バージョン",
+          "fw-version": "ファームウェアバージョン",
+          "agent-version": "エージェントバージョン",
           "version-unknown": "不明",
           "uptime": "アップタイム",
           "internal-ip": "内部 IP アドレス",
@@ -909,6 +931,7 @@
           "rebootApDialogHeader": "このアクセスポイント (シリアル番号 {{ sn }}) を再起動してもよいですか？",
           "update-firmware": "ファームウェアの更新が可能です",
           "rebootbutton": "アクセスポイントの再起動",
+          "radio": "無線方式",
           "radios": "無線方式 {{index}}",
           "radiosZero": "無線方式 0",
           "radiosOne": "無線方式 1",
@@ -941,11 +964,15 @@
           },
           "bands": {
             "GHZ_2_4": "2.4GHz",
-            "GHZ_2_4,GHZ_5": "2.4GHz と 5GHz",
+            "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
             "GHZ_5": "5GHz",
-            "both": "2.4GHz と 5GHz",
+            "both": "2.4GHz および 5GHz",
             "GHZ_6": "6GHz"
-          }
+          },
+          "sophos-central-agent": "Sophos Central エージェント",
+          "upgrade-automatically": "自動アップグレード",
+          "general": "全般",
+          "radio-configuration": "無線の設定"
         }
       },
       "taskQueue": {
@@ -974,7 +1001,9 @@
           "configurationDataDialogTitle": {
             "config": "タスクの詳細 - 設定",
             "reboot": "タスクの詳細 - 再起動",
-            "firmwareUpgrade": "タスクの詳細 - ファームウェアのアップグレード"
+            "firmwareUpgrade": "タスクの詳細 - ファームウェアのアップグレード",
+            "default": "タスクの詳細",
+            "network" : "ネットワーク"
           }
         }
       },

@@ -373,10 +373,10 @@
         "upgrade-checkbox-label": "Sophos Central エージェントを自動的に更新する",
         "updated-at": "前回のイベント: {{ ago }}",
         "state-changed-at": "状態の変更: {{ time }}",
-        "mgmt-changed-at": "詳細の更新： {{ time }}",
-        "status-changed-at": "アップタイムの更新： {{ time }}",
+        "mgmt-changed-at": "詳細の更新: {{ time }}",
+        "status-changed-at": "アップタイムの更新: {{ time }}",
         "port-changed-at": "ポートの更新: {{ time }}",
-        "poe-changed-at": "PoE の更新： {{ time }}",
+        "poe-changed-at": "PoE の更新: {{ time }}",
         "firmware_too_old": "ファームウェアが古すぎるため、スイッチレベルの設定はオフになっています。Sophos Central でスイッチの設定を続行するには、スイッチを最新のファームウェアにアップグレードしてください。",
         "button": {
           "reboot": "再起動",
@@ -448,7 +448,10 @@
         "title": "スイッチコマンドの実行",
         "description": "Sophos Central からのコマンドの実行によって、コマンドを含む変更履歴が作成され、ローカル CLI から実行されたかのように実行されます。コマンドを使って変更された設定は、Sophos Central の設定には反映されません。",
         "execute": "実行",
-        "hide": "非表示"
+        "hide": "非表示",
+        "executing": "タスクの実行中 (タスク ID: {{ id }}、状態: {{ status }})",
+        "refreshing": "更新中...",
+        "parse-error": "応答を渡すときにエラーが発生しました。"
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "削除",
         "full_sync": "完全同期",
         "vlan": "VLAN",
+        "cli_commands": "コマンド",
+        "execute_cli_commands": "実行",
         "firmware_upgrade": "ファームウェア",
         "schedule_upgrade": "スケジュール",
         "cancel_upgrade": "キャンセル",
@@ -636,7 +641,8 @@
         "cancel_rollback": "キャンセル (ブートパーティションの切り替え)",
         "schedule_agent_auto": "自動アップグレード (クライアント)",
         "schedule_full_auto": "自動アップグレード (ファームウェア)",
-        "schedule_rollback_auto": "ブートパーティションの自動切り替え"
+        "schedule_rollback_auto": "ブートパーティションの自動切り替え",
+        "lag_settings": "LACP の設定"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "静的",
       "disabled": "無効",
+      "lacp-settings-button": "LACP の設定",
       "table-headers": {
         "port-id": "ポート",
         "label": "ラベル",
@@ -841,6 +848,26 @@
       "858": "ポート: リンク速度を識別できません。PATCH リクエストが無効です",
       "859": "ポート: フレームタイプを識別できません。PATCH リクエストが無効です",
       "860": "ポート: ポートの拡張モードを検証できません。PATCH リクエストが無効です"
+    },
+    "lacp-settings": {
+      "dialog-title": "LACP の設定",
+      "form": {
+        "system-priority": "システムの優先度",
+        "system-policy": "システムのポリシー",
+        "timeout-settings": "タイムアウトの設定",
+        "load-balancing-dd-title": "未設定",
+        "long-option": "長い",
+        "short-option": "短い",
+        "not-set-option": "未設定",
+        "port-table-header": "ポート",
+        "timeout-table-header": "タイムアウト",
+        "system-priority-required-message": "システムの優先度を指定してください",
+        "system-priority-invalid-message": "システムの優先度が無効です"
+      },
+      "message": {
+        "save-lacp-settings-success": "LACP の設定が更新されました",
+        "save-lacp-settings-error": "LACP の設定を更新できません"
+      }
     }
   }
 }

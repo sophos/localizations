@@ -423,7 +423,7 @@
           "scale-headline": "Asignar dimensiones:",
           "hint": {
             "input": "Ajuste la distancia adecuada y haga clic en Realizado.",
-            "pins": "Coloque y sitúe dos chinchetas en el plano de planta para definir la escala."
+            "pins": "Coloque dos chinchetas en el plano de planta y arrástrelas a los extremos donde conoce la distancia entre ambos."
           }
         },
         "upload": {
@@ -431,7 +431,7 @@
           "upload-error": "No se ha podido almacenar la imagen del plano de planta.",
           "floorplan-setup": {
             "question": "¿Cómo crear un plano de planta?",
-            "text": "Empiece por subir una imagen. Formatos aceptados: JPG, GIF, PNG... tamaño máx. de archivo 1MB",
+            "text": "Empiece por subir una imagen. Formatos aceptados: PDF, PNG, JPEG, BMP, GIF o WBMP - tamaño máximo del archivo: 1 MB",
             "GDPR-text": "A fin de cumplir el RGPD, asegúrese de que los sitios/plano de planta no incluyan información personal.",
             "dragtext": "Simplemente arrastre un archivo al área de colocación o",
             "upload-button": "Cargar",
@@ -633,10 +633,31 @@
         },
         "start-time": "Hora de inicio",
         "end-time": "Hora de finalización",
-        "accept-terms-and-conditions": "Aceptar Términos y condiciones y conectar"
+        "accept-terms-and-conditions": "Aceptar Términos y condiciones y conectar",
+        "protection": {
+          "none": "Ninguno",
+          "wep": "WEP (no recomendado)",
+          "wpa-wpa2-enterprise": "WPA/WPA2 Enterprise",
+          "wpa-wpa2-personal": "WPA/WPA2 Personal",
+          "wpa2-enterprise": "WPA2-Enterprise",
+          "wpa2-personal": "WPA2-Personal",
+          "wpa3-personal": "WPA3-Personal",
+          "wpa3-enterprise": "WPA3-Enterprise",
+          "owe": "OWE"
+        },
+        "bands": {
+          "_dynamic_": {
+            "GHZ_2_4": "2,4 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz y 5 GHz",
+            "GHZ_5": "5 GHz",
+            "both": "2,4 GHz y 5 GHz",
+            "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz y 6 GHz"
+          }
+        }
       },
       "network-editor": {
-        "sync-security-label": "Seguridad Sincronizada",
+        "sync-security-label": "Seguridad sincronizada",
         "inline-help-sync-security": "La Seguridad Sincronizada es una función única disponible para los puntos de acceso de la serie Sophos APX. Nuestro revolucionario Security Heartbeat™ permite que su estación de trabajo, protección de dispositivos móviles y puntos de acceso compartan información y, de este modo, puedan funcionar de forma conjunta para bloquear las amenazas de seguridad en su red.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Los SSID con Seguridad Sincronizada habilitada no son compatibles con puntos de acceso distintos a los de la serie APX.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>No puedo usar Seguridad Sincronizada en SSID con red de invitados o portal cautivo activados.",
@@ -882,7 +903,8 @@
           "location": "Ubicación",
           "mac": "MAC",
           "serial-number": "S/N",
-          "version": "Versión",
+          "fw-version": "Versión firmware",
+          "agent-version": "Versión del agente",
           "version-unknown": "Desconocido",
           "uptime": "Tiempo activo",
           "internal-ip": "IP interna",
@@ -909,6 +931,7 @@
           "rebootApDialogHeader": "¿Seguro que desea reiniciar este punto de acceso con el número de serie {{ sn }}?",
           "update-firmware": "Actualización de firmware disponible",
           "rebootbutton": "Reiniciar punto de acceso",
+          "radio": "Radio",
           "radios": "Radio {{index}}",
           "radiosZero": "Radio 0",
           "radiosOne": "Radio 1",
@@ -945,7 +968,11 @@
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz y 5 GHz",
             "GHZ_6": "6 GHz"
-          }
+          },
+          "sophos-central-agent": "Agentes de Sophos Central",
+          "upgrade-automatically": "Actualizar automáticamente",
+          "general": "General",
+          "radio-configuration": "Configuración de la radio"
         }
       },
       "taskQueue": {
@@ -974,7 +1001,9 @@
           "configurationDataDialogTitle": {
             "config": "Detalles de la tarea - Configuración",
             "reboot": "Detalles de la tarea - Reinicio",
-            "firmwareUpgrade": "Detalles de la tarea - Actualización del firmware"
+            "firmwareUpgrade": "Detalles de la tarea - Actualización del firmware",
+            "default": "Detalles de tarea",
+            "network" : "Red"
           }
         }
       },

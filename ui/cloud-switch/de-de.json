@@ -315,10 +315,10 @@
         },
         "add-template": {
           "dialog-title": "Standort hinzufügen",
-          "name-max-length": "Name darf maximal 30 Zeichen lang sein",
+          "name-max-length": "Name kann maximal 30 Zeichen lang sein",
           "description": "Beschreibung",
           "input-name-required-message": "Standortname ist erforderlich",
-          "template-description": "Beschreibung darf maximal 128 Zeichen lang sein.",
+          "template-description": "Beschreibung kann maximal 128 Zeichen lang sein.",
           "available-switches": "Verfügbare Switches",
           "assigned-switches": "Zugewiesene Switches",
           "sync-switches-checkbox-text": "Die Switches mit der initialen Standortkonfiguration synchronisieren"
@@ -448,7 +448,10 @@
         "title": "Switch-Befehle ausführen",
         "description": "Die Ausführung von Befehlen aus Sophos Central erzeugt ein Änderungsprotokoll mit Befehlen. Dieses wird ausgeführt, als ob die Befehle von einer lokalen Kommandozeile aus ausgeführt worden wären. Die durch die Befehle vorgenommenen Änderungen an Konfigurationseinstellungen haben keinen Einfluss auf die Konfiguration in Sophos Central.",
         "execute": "Ausführen",
-        "hide": "Ausblenden"
+        "hide": "Ausblenden",
+        "executing": "Auftragsausführung (Auftrags-ID: {{ id }}, Status: {{ status }})",
+        "refreshing": "Wird aktualisiert...",
+        "parse-error": "Fehler beim Verarbeiten der Antwort."
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "Löschen",
         "full_sync": "Vollständig synchronisieren",
         "vlan": "VLAN",
+        "cli_commands": "Befehle",
+        "execute_cli_commands": "Ausführen",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Planen",
         "cancel_upgrade": "Abbrechen",
@@ -636,7 +641,8 @@
         "cancel_rollback": "Widerrufen (Bootpartitions-Austausch)",
         "schedule_agent_auto": "Auto-Upgrade (Client)",
         "schedule_full_auto": "Auto-Upgrade (Firmware)",
-        "schedule_rollback_auto": "Auto-Bootpartitions-Austausch"
+        "schedule_rollback_auto": "Auto-Bootpartitions-Austausch",
+        "lag_settings": "LACP-Einstellungen"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Erneute Ausführung fehlgeschlagener Aufgaben ist fehlgeschlagen.",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "Statisch",
       "disabled": "Deaktiviert",
+      "lacp-settings-button": "LACP-Einstellungen",
       "table-headers": {
         "port-id": "Port",
         "label": "Bezeichnung",
@@ -841,6 +848,26 @@
       "858": "Ports: Link-Geschwindigkeit nicht erkannt. Ungültiger PATCH-Request",
       "859": "Ports: Frame Type nicht erkannt. Ungültiger PATCH-Request",
       "860": "Ports: Erweiterungsmodus kann für den Port nicht validiert werden. Ungültiger PATCH-Request"
+    },
+    "lacp-settings": {
+      "dialog-title": "LACP-Einstellungen",
+      "form": {
+        "system-priority": "Systempriorität",
+        "system-policy": "Systemrichtlinie",
+        "timeout-settings": "Timeout-Einstellungen",
+        "load-balancing-dd-title": "Nicht gesetzt",
+        "long-option": "Lang",
+        "short-option": "Kurz",
+        "not-set-option": "Nicht gesetzt",
+        "port-table-header": "Port",
+        "timeout-table-header": "Timeout",
+        "system-priority-required-message": "Systempriorität ist erforderlich",
+        "system-priority-invalid-message": "Systempriorität ist ungültig"
+      },
+      "message": {
+        "save-lacp-settings-success": "LACP-Einstellungen wurden aktualisiert",
+        "save-lacp-settings-error": "LACP-Einstellungen konnten nicht aktualisiert werden"
+      }
     }
   }
 }

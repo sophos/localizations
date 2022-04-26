@@ -448,7 +448,10 @@
         "title": "執行參數命令",
         "description": "從 Sophos Central 執行命令將建立一個包含命令的變更記錄，並將像從本機 CLI 執行一樣執行。使用命令更改的設定不會反映在 Sophos Central 設定中。",
         "execute": "執行",
-        "hide": "隱藏"
+        "hide": "隱藏",
+        "executing": "正在執行工作（工作 ID：{{ id }}，狀態：{{ status }}）",
+        "refreshing": "重新整理中...",
+        "parse-error": "剖析回應時發生錯誤。"
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "删除",
         "full_sync": "完全同步",
         "vlan": "VLAN",
+        "cli_commands": "指令",
+        "execute_cli_commands": "執行",
         "firmware_upgrade": "韌體",
         "schedule_upgrade": "排程",
         "cancel_upgrade": "取消",
@@ -636,7 +641,8 @@
         "cancel_rollback": "取消（切換開機分割區）",
         "schedule_agent_auto": "自動升級（用戶端）",
         "schedule_full_auto": "自動升級（韌體）",
-        "schedule_rollback_auto": "自動切換開機分割區"
+        "schedule_rollback_auto": "自動切換開機分割區",
+        "lag_settings": "LACP 設定"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "靜態",
       "disabled": "已停用",
+      "lacp-settings-button": "LACP 設定",
       "table-headers": {
         "port-id": "連接埠",
         "label": "標籤",
@@ -841,6 +848,26 @@
       "858": "連接埠：無法識別連結速度。PATCH 請求無效",
       "859": "連接埠：無法識別範圍類型。PATCH 請求無效",
       "860": "連接埠：無法驗證連接埠的擴展模式。PATCH 請求無效"
+    },
+    "lacp-settings": {
+      "dialog-title": "LACP 設定",
+      "form": {
+        "system-priority": "系統優先級",
+        "system-policy": "系統原則",
+        "timeout-settings": "逾時設定",
+        "load-balancing-dd-title": "未設定",
+        "long-option": "長",
+        "short-option": "短缺",
+        "not-set-option": "未設定",
+        "port-table-header": "連接埠",
+        "timeout-table-header": "逾時",
+        "system-priority-required-message": "系統優先順序為必須項",
+        "system-priority-invalid-message": "系統優先順序無效"
+      },
+      "message": {
+        "save-lacp-settings-success": "LACP 設定已更新",
+        "save-lacp-settings-error": "無法更新 LACP 設定"
+      }
     }
   }
 }

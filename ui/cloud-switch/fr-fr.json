@@ -448,7 +448,10 @@
         "title": "Exécuter les commandes du switch",
         "description": "L’exécution de commandes à partir de Sophos Central créera un journal de modifications (changelog) avec des commandes et sera exécutée comme si elle l’était à partir de l’interface de ligne de commande locale. Les configurations modifiées à l’aide de commandes ne seront pas reflétées dans la configuration Sophos Central.",
         "execute": "Exécuter",
-        "hide": "Masquer"
+        "hide": "Masquer",
+        "executing": "Exécution de la tâche (ID de tâche : {{ id }}, État : {{ status }})",
+        "refreshing": "Actualisation...",
+        "parse-error": "Erreur lors de l’analyse de la réponse."
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "Supprimer",
         "full_sync": "Synchronisation complète",
         "vlan": "VLAN",
+        "cli_commands": "Commandes",
+        "execute_cli_commands": "Exécuter",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Planifier",
         "cancel_upgrade": "Annuler",
@@ -636,7 +641,8 @@
         "cancel_rollback": "Annuler (échange de partition de démarrage)",
         "schedule_agent_auto": "Mise à niveau automatique (client)",
         "schedule_full_auto": "Mise à niveau automatique (firmware)",
-        "schedule_rollback_auto": "Échange de partition de démarrage automatique"
+        "schedule_rollback_auto": "Échange de partition de démarrage automatique",
+        "lag_settings": "Paramètres LACP"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "Statique",
       "disabled": "Désactivé",
+      "lacp-settings-button": "Paramètres LACP",
       "table-headers": {
         "port-id": "Port",
         "label": "Libellé",
@@ -841,6 +848,26 @@
       "858": "Ports : Impossible de reconnaître la vitesse de liaison. Demande PATCH non valide",
       "859": "Ports : Impossible de reconnaître le type de trame. Demande PATCH non valide",
       "860": "Ports : Impossible de valider le mode étendu mode pour le port. Demande PATCH non valide"
+    },
+    "lacp-settings": {
+      "dialog-title": "Paramètres LACP",
+      "form": {
+        "system-priority": "Priorité du système",
+        "system-policy": "Stratégie du système",
+        "timeout-settings": "Paramètres de délais d’attente",
+        "load-balancing-dd-title": "Non défini",
+        "long-option": "Long",
+        "short-option": "Court",
+        "not-set-option": "Non défini",
+        "port-table-header": "Port",
+        "timeout-table-header": "Délai d’attente",
+        "system-priority-required-message": "Priorité du système obligatoire",
+        "system-priority-invalid-message": "Priorité du système non valide"
+      },
+      "message": {
+        "save-lacp-settings-success": "Paramètres LACP mis à jour",
+        "save-lacp-settings-error": "Impossible de mettre à jour les paramètres LACP"
+      }
     }
   }
 }

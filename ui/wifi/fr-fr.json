@@ -423,7 +423,7 @@
           "scale-headline": "Assigner des dimensions :",
           "hint": {
             "input": "Veuillez définir la distance adéquate et cliquer sur Terminé.",
-            "pins": "Placez deux punaises sur le plan d’étage pour définir l’échelle."
+            "pins": "Placez deux punaises sur le plan d’étage et faites les glisser jusqu’aux bords correspondant à la distance voulue."
           }
         },
         "upload": {
@@ -431,7 +431,7 @@
           "upload-error": "Impossible d’archiver l’image du plan d’étage.",
           "floorplan-setup": {
             "question": "Voulez-vous créer un plan d’étage ?",
-            "text": "Commencez par charger une image. Formats acceptés : JPG, GIF, PNG... (taille max. du fichier : 1 Mo)",
+            "text": "Commencez par charger une image. Formats acceptés : PDF, PNG, JPEG, BMP, GIF ou WBMP - taille maximale du fichier : 1 Mo",
             "GDPR-text": "Pour être conforme au RGPD, veuillez-vous assurer que les Sites et les plans d’étage ne comprennent aucune information personnelle.",
             "dragtext": "Veuillez faire glisser un fichier dans la zone de dépôt ou",
             "upload-button": "Télécharger",
@@ -633,11 +633,32 @@
         },
         "start-time": "Heure de début",
         "end-time": "Heure de fin",
-        "accept-terms-and-conditions": "Acceptez les Conditions d’utilisation et connectez-vous"
+        "accept-terms-and-conditions": "Acceptez les Conditions d’utilisation et connectez-vous",
+        "protection": {
+          "none": "Aucune",
+          "wep": "WEP (déconseillé)",
+          "wpa-wpa2-enterprise": "WPA/WPA2 Entreprise",
+          "wpa-wpa2-personal": "WPA/WPA2 Personnel",
+          "wpa2-enterprise": "WPA2-Entreprise",
+          "wpa2-personal": "WPA2-Personnel",
+          "wpa3-personal": "WPA3-Personnel",
+          "wpa3-enterprise": "WPA3-Entreprise",
+          "owe": "OWE"
+        },
+        "bands": {
+          "_dynamic_": {
+            "GHZ_2_4": "2,4 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
+            "GHZ_5": "5 GHz",
+            "both": "2,4 GHz et 5 GHz",
+            "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz et 6 GHz"
+          }
+        }
       },
       "network-editor": {
-        "sync-security-label": "Sécurité synchronisée",
-        "inline-help-sync-security": "La Sécurité synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
+        "sync-security-label": "Synchronized Security",
+        "inline-help-sync-security": "Synchronized Security est une fonction exclusivement disponible sur la gamme Sophos APX. Notre technologie Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Impossible d’utiliser la sécurité synchronisée sur les SSIDs ayant activé un réseau invité ou un portail captif.",
         "green-option-label": "Security Heartbeat Vert",
@@ -882,7 +903,8 @@
           "location": "Emplacement",
           "mac": "MAC",
           "serial-number": "N° de série (S/N)",
-          "version": "Version",
+          "fw-version": "Version du firmware",
+          "agent-version": "Version de l’agent",
           "version-unknown": "Inconnu",
           "uptime": "Temps d’activité",
           "internal-ip": "IP interne",
@@ -909,6 +931,7 @@
           "rebootApDialogHeader": "Voulez-vous vraiment redémarrer le point d’accès dont le numéro de série est {{ sn }} ?",
           "update-firmware": "Mise à jour du firmware disponible",
           "rebootbutton": "Redémarrer le point d’accès",
+          "radio": "Radio",
           "radios": "Radio {{index}}",
           "radiosZero": "Radio 0",
           "radiosOne": "Radio 1",
@@ -945,7 +968,11 @@
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz et 5 GHz",
             "GHZ_6": "6 GHz"
-          }
+          },
+          "sophos-central-agent": "Agents Sophos Central",
+          "upgrade-automatically": "Mettre à niveau automatiquement",
+          "general": "Général",
+          "radio-configuration": "Configuration de la radio"
         }
       },
       "taskQueue": {
@@ -974,7 +1001,9 @@
           "configurationDataDialogTitle": {
             "config": "Détails de la tâche - Config",
             "reboot": "Détails de la tâche - Redémarrer",
-            "firmwareUpgrade": "Détails de la tâche - Mise à niveau du firmware"
+            "firmwareUpgrade": "Détails de la tâche - Mise à niveau du firmware",
+            "default": "Détails de la tâche",
+            "network" : "Réseau"
           }
         }
       },

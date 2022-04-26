@@ -448,7 +448,10 @@
         "title": "Executar comandos do switch",
         "description": "A execução de comandos no Sophos Central criará um log de alterações com comandos que serão executados como se fossem executados da CLI local. As configurações alteradas usando comandos não serão refletidas na configuração do Sophos Central.",
         "execute": "Executar",
-        "hide": "Ocultar"
+        "hide": "Ocultar",
+        "executing": "Executando tarefa (ID de tarefa: {{ id }}, Status: {{ status }})",
+        "refreshing": "Atualizando...",
+        "parse-error": "Erro ao analisar a resposta."
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "Deletar",
         "full_sync": "Sincronização completa",
         "vlan": "VLAN",
+        "cli_commands": "Comandos",
+        "execute_cli_commands": "Executar",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Cronograma",
         "cancel_upgrade": "Cancelar",
@@ -636,7 +641,8 @@
         "cancel_rollback": "Cancelar (troca de partição de inicialização)",
         "schedule_agent_auto": "Upgrade automático (cliente)",
         "schedule_full_auto": "Upgrade automático (firmware)",
-        "schedule_rollback_auto": "Troca automática de partição de inicialização"
+        "schedule_rollback_auto": "Troca automática de partição de inicialização",
+        "lag_settings": "Configurações de LACP"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "Estático",
       "disabled": "Desabilitado",
+      "lacp-settings-button": "Configurações de LACP",
       "table-headers": {
         "port-id": "Porta",
         "label": "Rótulo",
@@ -841,6 +848,26 @@
       "858": "Portas: Não é possível reconhecer a velocidade do link. Solicitação PATCH inválida",
       "859": "Portas: Não é possível reconhecer o tipo de quadro. Solicitação PATCH inválida",
       "860": "Portas: Não é possível validar o modo de extensão da porta. Solicitação PATCH inválida"
+    },
+    "lacp-settings": {
+      "dialog-title": "Configurações de LACP",
+      "form": {
+        "system-priority": "Prioridade do sistema",
+        "system-policy": "Política do sistema",
+        "timeout-settings": "Configurações de limite de tempo",
+        "load-balancing-dd-title": "Não configurada",
+        "long-option": "Longo",
+        "short-option": "Curto",
+        "not-set-option": "Não configurada",
+        "port-table-header": "Porta",
+        "timeout-table-header": "Limite de Tempo",
+        "system-priority-required-message": "Prioridade do sistema é necessária",
+        "system-priority-invalid-message": "Prioridade do sistema é inválida"
+      },
+      "message": {
+        "save-lacp-settings-success": "Os ajustes de LACP foram atualizados",
+        "save-lacp-settings-error": "Não foi possível atualizar as configurações de LACP"
+      }
     }
   }
 }

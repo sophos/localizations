@@ -448,7 +448,10 @@
         "title": "Esegui comandi switch",
         "description": "Eseguendo comandi da Sophos Central, si creerà un log delle modifiche contenente i comandi, che verranno eseguiti come se fossero eseguiti da una CLI locale. Le configurazioni alterate utilizzando i comandi non saranno incluse nella configurazione di Sophos Central.",
         "execute": "Esegui",
-        "hide": "Nascondi"
+        "hide": "Nascondi",
+        "executing": "Esecuzione dell’attività in corso (ID attività: {{ id }}, stato: {{ status }})",
+        "refreshing": "Aggiornamento in corso...",
+        "parse-error": "Errore durante l’analisi della risposta."
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "Elimina",
         "full_sync": "Sincronizzazione completa",
         "vlan": "VLAN",
+        "cli_commands": "Comandi",
+        "execute_cli_commands": "Esegui",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Pianificazione",
         "cancel_upgrade": "Annulla",
@@ -636,7 +641,8 @@
         "cancel_rollback": "Annulla (sostituisci partizione di avvio)",
         "schedule_agent_auto": "Upgrade automatico (client)",
         "schedule_full_auto": "Upgrade automatico (firmware)",
-        "schedule_rollback_auto": "Sostituisci automaticamente la partizione di avvio"
+        "schedule_rollback_auto": "Sostituisci automaticamente la partizione di avvio",
+        "lag_settings": "Impostazioni LACP"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "Statico",
       "disabled": "Disattivato",
+      "lacp-settings-button": "Impostazioni LACP",
       "table-headers": {
         "port-id": "Porta",
         "label": "Etichetta",
@@ -841,6 +848,26 @@
       "858": "Porte: Impossibile riconoscere la velocità di collegamento. Richiesta PATCH non valida",
       "859": "Porte: Impossibile riconoscere il tipo di frame. Richiesta PATCH non valida",
       "860": "Porte: Impossibile convalidare la modalità di estensione della porta. Richiesta PATCH non valida"
+    },
+    "lacp-settings": {
+      "dialog-title": "Impostazioni LACP",
+      "form": {
+        "system-priority": "Priorità di sistema",
+        "system-policy": "Criteri di sistema",
+        "timeout-settings": "Impostazioni di timeout",
+        "load-balancing-dd-title": "Non impostata",
+        "long-option": "Lunga",
+        "short-option": "Breve",
+        "not-set-option": "Non impostata",
+        "port-table-header": "Porta",
+        "timeout-table-header": "Timeout",
+        "system-priority-required-message": "La Priorità di sistema è un campo obbligatorio",
+        "system-priority-invalid-message": "La Priorità di sistema non è valida"
+      },
+      "message": {
+        "save-lacp-settings-success": "Le impostazioni LACP sono state aggiornate",
+        "save-lacp-settings-error": "Non è stato possibile aggiornare le impostazioni LACP"
+      }
     }
   }
 }

@@ -36,8 +36,8 @@
         "network-rule-disabled": "Firewall di rete non abilitato per questo firewall.",
         "ips-rule-disabled": "Prevenzione delle intrusioni non abilitata per questo firewall.",
         "admission-control-rule-disabled": "Controllo ammissione non abilitato per questo firewall.",
-        "cluster-not-approved" : "Questo firewall non è ancora stato approvato per la gestione da Sophos Central. Approva il firewall per procedere con qualsiasi configurazione.",
-        "entry-port-null" : "La porta per il punto di ingresso della regola WAF non può avere valore null"
+        "cluster-not-approved": "Questo firewall non è ancora stato approvato per la gestione da Sophos Central. Approva il firewall per procedere con qualsiasi configurazione.",
+        "entry-port-null": "La porta di ascolto della regola WAF è un campo obbligatorio."
       }
     },
     "clusters-list": {
@@ -156,11 +156,14 @@
       "status": "Stato",
       "installation-steps": "Passaggi di installazione",
       "confirm-cluster-delete": "Eliminare il cluster?",
+      "installation-steps-help-text": "Clicca sull’icona di copia per copiare il comando helm ed eseguirlo sul tuo cluster.",
       "messages": {
         "deleted-message": "Cluster eliminato.",
         "updated-message": "Cluster aggiornato.",
         "status-waiting-for-deploy": "Questo firewall non è distribuito in un cluster e non ha ancora contattato Sophos Central.",
-        "status-awaiting-for-approval": "Questo firewall richiede l’approvazione per poter essere gestito dal tuo account Sophos Central. Se attendevi questa richiesta, clicca su Accetta per approvarla."
+        "status-awaiting-for-approval": "Questo firewall richiede l’approvazione per poter essere gestito dal tuo account Sophos Central. Se attendevi questa richiesta, clicca su Accetta per approvarla.",
+        "copy-to-clipboard-success": "Copiato negli Appunti.",
+        "copy-to-clipboard-failed": "Copia negli Appunti non riuscita."
       }
     },
     "waf": {
@@ -185,6 +188,7 @@
         "fqdn": "FQDN",
         "destination": "Destinazione",
         "request-path": "Richiedi percorso",
+        "waf-policy-list": "Criterio WAF",
         "messages": {
           "delete-rule-confirmation": "Eliminare la regola?",
           "delete-rule-success": "Eliminazione della regola completata.",
@@ -197,7 +201,8 @@
         "breadcrumb-text": "Aggiungi regola WAF",
         "messages": {
           "waf-rule-add-success": "La regola è stata creata.",
-          "waf-rule-add-error": "Non è stato possibile creare la regola."
+          "waf-rule-add-error": "Non è stato possibile creare la regola.",
+          "no-route-specified-error": "Aggiungi almeno una route."
         },
         "help-text": {
           "entry-point": "Seleziona la o le porte di ascolto su cui il cluster deve rimanere in ascolto, e le impostazioni di cifratura desiderate. Il firewall rimarrà in ascolto sulle porte selezionate per tutti gli IP del cluster che sono accessibili.",
@@ -295,9 +300,14 @@
     "certificate": {
       "title": "Aggiungi certificato",
       "name": "Nome",
+      "name-required-error": "Il nome è un campo obbligatorio.",
+      "name-invalid-error": "Il nome contiene caratteri non validi.",
+      "name-length-error": "Il nome non deve superare i 100 caratteri.",
       "description": "Descrizione",
       "certificate": "Certificato",
+      "certificate-required-error": "Il file di certificato è obbligatorio.",
       "private-key": "Chiave privata",
+      "private-key-required-error": "Il file della chiave privata è obbligatorio.",
       "browse": "Sfoglia",
       "breadcrumb-text": "Aggiungi certificato",
       "list": {
@@ -316,7 +326,8 @@
         "update-message": "Certificato aggiornato.",
         "certificate-name-already-exists": "Esiste già un certificato con il nome specificato.",
         "certificate-usedby-waf-rule": "Non è possibile eliminare un certificato utilizzato da una regola WAF.",
-        "change-certificate-prompt-confirmation": "Hai già configurato delle route; la modifica del certificato cancellerà tutte le configurazioni esistenti per le route. Continuare?"
+        "change-certificate-prompt-confirmation": "Hai già configurato delle route; la modifica del certificato cancellerà tutte le configurazioni esistenti per le route. Continuare?",
+        "illegal-argument": "Certificato non valido, operazione non riuscita."
       }
     },
     "firewall-rules": {
@@ -332,27 +343,22 @@
         "egress": "Uscita",
         "egress-service": "Servizio in uscita",
         "status": "Stato",
-        "disabled" : "Disattivata",
-        "enabled" : "Abilitata",
+        "disabled": "Disattivata",
+        "enabled": "Abilitata",
         "messages": {
           "delete-rule-confirmation": "Eliminare la regola?",
           "delete-rule-success": "Eliminazione della regola completata.",
           "empty-message": "Nessuna regola firewall disponibile per questo cluster.",
-          "cidr-invalid": "Il CIDR della regola firewall non è valido.",
-          "exceptlist-invalid": "L’elenco delle eccezioni della regola firewall non è valido.",
-          "ipblock-cidr-except-notinrange": "La voce dell’elenco delle eccezioni non rientra nell’intervallo CIDR.",
-          "ipblock-cidr-except-samerange": "La voce dell’elenco delle eccezioni ha lo stesso intervallo del CIDR.",
-          "name-already-exists": "Esiste già una regola firewall con il nome specificato.",
           "delete-rule-error": "Non è stato possibile eliminare la regola."
         },
-        "options":{
+        "options": {
           "namespace": "Spazio dei nomi",
           "label-name": "Etichette",
           "pod-name": "Etichetta pod",
           "allowall": "Consenti tutto",
           "denyall": "Nega tutto",
           "service-name": "Nome servizio",
-          "custom" : "Personalizzato"
+          "custom": "Personalizzato"
         }
       },
       "add": {
@@ -362,6 +368,14 @@
           "match-criteria": "Seleziona lo spazio dei nomi e le etichette che devono essere protetti con questa regola.",
           "ingress-heading": "L’Ingresso si riferisce al traffico in entrata nei contenitori che trovano corrispondenza con lo spazio dei nomi e le etichette selezionati. Utilizza questi criteri per selezionare a quale tipo di traffico in entrata deve essere applicata questa regola.",
           "egress-heading": "L’Uscita si riferisce al traffico proveniente dai contenitori che trovano corrispondenza con lo spazio dei nomi e le etichette selezionati. Utilizza questi criteri per selezionare a quale tipo di traffico in uscita deve essere applicata questa regola."
+        },
+        "messages": {
+          "firewall-rule-add-success": "Regola firewall aggiunta.",
+          "name-already-exists": "Esiste già una regola firewall con il nome specificato.",
+          "cidr-invalid": "Il CIDR della regola firewall non è valido.",
+          "exceptlist-invalid": "L’elenco delle eccezioni della regola firewall non è valido.",
+          "ipblock-cidr-except-notinrange": "La voce dell’elenco delle eccezioni non rientra nell’intervallo CIDR.",
+          "ipblock-cidr-except-samerange": "La voce dell’elenco delle eccezioni ha lo stesso intervallo del CIDR."
         }
       },
       "edit": {
@@ -402,7 +416,7 @@
         "add-ingress": "Aggiungi ingresso",
         "add-egress": "Aggiungi uscita",
         "rule-name-error": "Il nome della regola non deve superare i 100 caratteri.",
-        "name-pattern-error": "Rule name have invalid characters.",  
+        "name-pattern-error": "Il nome della regola contiene caratteri non validi.",
         "rule-description-error": "La descrizione può contenere un massimo di 250 caratteri.",
         "namespace-address": "Spazio dei nomi o indirizzo",
         "service": "Servizio",
@@ -422,6 +436,7 @@
         "from-ip-not-filled": "Il campo Da IP o subnet deve essere compilato.",
         "port-value-error": "Il Numero di porta deve essere compreso tra 1 e 65535.",
         "messages": {
+          "firewall-rule-update-success": "La regola firewall è stata aggiornata.",
           "delete-rule-confirmation": "Eliminare la regola?",
           "delete-rule-success": "Eliminazione della regola completata.",
           "delete-rule-error": "Non è stato possibile eliminare la regola.",
@@ -433,12 +448,76 @@
     "ips": {
       "rule": {
         "title": "Prevenzione delle intrusioni",
-        "breadcrumb-text": "Prevenzione delle intrusioni",
-        "section-title": "Criteri di protezione",
-        "ns-policy-disabled": "Abilita scansione IPS per il traffico da nord a sud.",
-        "ew-policy-disabled": "Abilita scansione IPS per il traffico da est a ovest.",
+        "breadcrumb-text": "Regola IPS",
+        "section-title": "Regola di protezione",
+        "ns-policy-disabled": "Abilita scansione IPS per il traffico verticale alto-basso.",
+        "ew-policy-disabled": "Abilita scansione IPS per il traffico orizzontale destra-sinistra.",
         "save-success": "La configurazione è stata salvata.",
-        "save-failed": "Salvataggio delle modifiche non riuscito."
+        "save-failed": "Salvataggio delle modifiche non riuscito.",
+        "ns-policy": "Criterio verticale alto-basso",
+        "ew-policy": "Criterio orizzontale destra-sinistra",
+        "policy-placeholder": "Seleziona criterio",
+        "messages": {
+          "empty-message": "Nessun criterio IPS disponibile."
+        }
+      },
+      "policies": {
+        "title": "Criteri di prevenzione delle intrusioni",
+        "breadcrumbs-text": "Criteri IPS",
+        "add": {
+          "title": "Aggiungi criterio di prevenzione delle intrusioni",
+          "breadcrumb-text": "Aggiungi criterio IPS",
+          "status": "Stato",
+          "name": "Nome",
+          "name-required-error": "Il nome è un campo obbligatorio.",
+          "name-pattern-error" : "Il nome contiene caratteri non validi.",
+          "name-length-error" : "Il nome non deve superare i 100 caratteri.",
+          "description": "Descrizione",
+          "signature-filter-section": "Aggiungi filtri per le firme",
+          "category-placeholder": "Seleziona categoria",
+          "target-placeholder": "Seleziona destinazione",
+          "severity-placeholder": "Seleziona gravità",
+          "platform-placeholder": "Seleziona piattaforma",
+          "smart-filter-placeholder": "Filtro intelligente",
+          "signature-list-section": "Firme selezionate",
+          "add-filter": "Aggiungi filtro",
+          "disabled": "Disabilitata",
+          "log-only": "Registra solo",
+          "block": "Blocco",
+          "signature-list": {
+            "name": "Nome",
+            "sid": "SID",
+            "category": "Categoria",
+            "target": "Destinazione",
+            "severity": "Gravità",
+            "platform": "Piattaforma",
+            "action": "Azione",
+            "recommended-action": "Azione consigliata"
+          },
+          "save-failed": "Salvataggio delle modifiche non riuscito.",
+          "ns-required-error": "Il criterio per la scansione del traffico verticale alto-basso è obbligatorio.",
+          "ew-required-error": "Il criterio per la scansione del traffico orizzontale destra-sinistra è obbligatorio.",
+          "messages": {
+            "empty-message": "Nessun criterio IPS disponibile.",
+            "name-already-exists" : "Esiste già un criterio IPS con il nome specificato."
+          }
+        },
+        "edit": {
+          "title": "Modifica criterio di prevenzione delle intrusioni",
+          "breadcrumb-text": "Modifica criterio IPS"
+        },
+        "ips-policy-list": "Criterio IPS",
+        "list": {
+          "title": "Criteri condivisi",
+          "name": "Nome",
+          "description": "Descrizione",
+          "add": "Aggiungi criterio",
+          "messages":{
+            "policy-delete-success" : "Eliminazione del criterio completata.",
+            "delete-confirmation" : "Eliminare il criterio?",
+            "in-use" : "Non è stato possibile eliminare il criterio. Criterio già assegnato nella regola IPS."
+          }
+        }
       }
     },
     "admission-control-list": {
@@ -473,7 +552,7 @@
       "rule-type": "Tipo di regola",
       "target-namespace": "Spazio dei nomi di destinazione",
       "permitted-repository": "Repository consentito",
-      "container-repository": "Repository container",
+      "container-repository": "Registro/repository del container",
       "optix-scan-label": "Richiedi scansione con Sophos Cloud Optix",
       "api-key": "Chiave API",
       "disallow-levels": "Livelli di vulnerabilità dei container non consentiti",
@@ -489,13 +568,19 @@
         "update-rule-error": "Impossibile aggiornare la regola.",
         "flag-not-set": "Lo stato della regola deve essere configurato.",
         "name-already-exists" : "Esiste già una regola di controllo ammissione con il nome specificato.",
-        "rule-required-error" : "Il nome della regola di controllo ammissione è un campo obbligatorio.",
-        "rule-name-error" : "Il nome della regola di controllo ammissione non deve superare i 100 caratteri.",
-        "name-pattern-error" : "Il nome della regola di controllo ammissione contiene caratteri non validi.",
+        "rule-required-error" : "Il nome è un campo obbligatorio.",
+        "rule-name-error" : "Il nome non deve superare i 100 caratteri.",
+        "name-pattern-error" : "Il nome contiene caratteri non validi.",
         "namespace-null" : "Il campo Spazio dei nomi non può essere vuoto.",
-        "repository-blank" : "Il campo Repository container non può essere vuoto.",
+        "repository-blank" : "Il campo Registro/repository del container non può essere vuoto.",
         "optixScans-apikey-blank" : "Il campo Chiave API di OptixScan non può essere vuoto.",
-        "optixScans-disallowed-levels-null" : "Il campo dei livelli non consentiti di OptixScan non può essere vuoto."
+        "optixScans-disallowed-levels-null" : "Il campo dei livelli non consentiti di OptixScan non può essere vuoto.",
+        "repository-required-error" : "Registro/repository del container è un campo obbligatorio.",
+        "api-required-error" : "Chiave API è un campo obbligatorio.",
+        "disallow-required-error" : "Il livello non consentito è un campo obbligatorio.",
+        "rule-description-error": "La descrizione può contenere un massimo di 250 caratteri.",
+        "namespace-required-error": "Lo spazio dei nomi è un campo obbligatorio.",
+        "registry-pattern-error" : "Registro/repository del container contiene caratteri non validi."
       },
       "help-text": {
         "target-namespace": "Seleziona lo spazio dei nomi che deve essere protetto con questa regola."
