@@ -448,7 +448,10 @@
         "title": "Ejecutar comandos de switch",
         "description": "La ejecución de comandos desde Sophos Central creará un registro de cambios con los comandos y se ejecutarán como si lo hicieran desde la CLI local. Las configuraciones modificadas mediante comandos no se reflejarán en la configuración de Sophos Central.",
         "execute": "Ejecutar",
-        "hide": "Ocultar"
+        "hide": "Ocultar",
+        "executing": "Ejecutando tarea (ID de la tarea: {{ id }}, Estado: {{ status }})",
+        "refreshing": "Actualizando...",
+        "parse-error": "Error al analizar la respuesta."
       }
     },
     "register": {
@@ -619,6 +622,8 @@
         "delete": "Borrar",
         "full_sync": "Sincronización completa",
         "vlan": "VLAN",
+        "cli_commands": "Comandos",
+        "execute_cli_commands": "Ejecutar",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Programación",
         "cancel_upgrade": "Cancelar",
@@ -636,7 +641,8 @@
         "cancel_rollback": "Cancelar (cambiar partición de arranque)",
         "schedule_agent_auto": "Actualización automática (cliente)",
         "schedule_full_auto": "Actualización automática (firmware)",
-        "schedule_rollback_auto": "Cambiar partición de arranque automáticamente"
+        "schedule_rollback_auto": "Cambiar partición de arranque automáticamente",
+        "lag_settings": "Configuración LACP"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -650,6 +656,7 @@
       "lacp": "LACP",
       "static": "Estática",
       "disabled": "Desactivado",
+      "lacp-settings-button": "Configuración LACP",
       "table-headers": {
         "port-id": "Puerto",
         "label": "Etiqueta",
@@ -841,6 +848,26 @@
       "858": "Puertos: No se puede reconocer la velocidad de enlace. Solicitud PATCH no válida",
       "859": "Puertos: No se puede reconocer el tipo de trama. Solicitud PATCH no válida",
       "860": "Puertos: No se puede validar el modo de extensión para el puerto. Solicitud PATCH no válida"
+    },
+    "lacp-settings": {
+      "dialog-title": "Configuración LACP",
+      "form": {
+        "system-priority": "Prioridad del sistema",
+        "system-policy": "Política del sistema",
+        "timeout-settings": "Configuración del tiempo de espera",
+        "load-balancing-dd-title": "No establecido",
+        "long-option": "Suficiente",
+        "short-option": "Insuficiente",
+        "not-set-option": "No establecido",
+        "port-table-header": "Puerto",
+        "timeout-table-header": "Tiempo de espera",
+        "system-priority-required-message": "Prioridad del sistema obligatoria",
+        "system-priority-invalid-message": "Prioridad del sistema no válida"
+      },
+      "message": {
+        "save-lacp-settings-success": "Se ha actualizado la configuración LACP",
+        "save-lacp-settings-error": "No se puede actualizar la configuración LACP"
+      }
     }
   }
 }

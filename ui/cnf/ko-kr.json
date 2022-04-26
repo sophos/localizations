@@ -36,8 +36,8 @@
         "network-rule-disabled": "이 방화벽에 대해 네트워크 방화벽이 활성화되어 있지 않습니다.",
         "ips-rule-disabled": "이 방화벽에 대해 침입 방지가 활성화되어 있지 않습니다.",
         "admission-control-rule-disabled": "이 방화벽에 대해 승인 제어가 활성화되어 있지 않습니다.",
-        "cluster-not-approved" : "이 방화벽은 아직 Sophos Central에서 관리하도록 승인되지 않았습니다. 구성을 계속 진행하려면 방화벽을 승인하십시오.",
-        "entry-port-null" : "WAF 규칙 진입점 포트는 null일 수 없습니다."
+        "cluster-not-approved": "이 방화벽은 아직 Sophos Central에서 관리하도록 승인되지 않았습니다. 구성을 계속 진행하려면 방화벽을 승인하십시오.",
+        "entry-port-null": "WAF 규칙 수신 대기 포트가 필요합니다."
       }
     },
     "clusters-list": {
@@ -156,11 +156,14 @@
       "status": "상태",
       "installation-steps": "설치 단계",
       "confirm-cluster-delete": "클러스터를 삭제하시겠습니까?",
+      "installation-steps-help-text": "복사 아이콘을 클릭하여 아래 helm 명령어를 복사하고 클러스터에서 실행하십시오.",
       "messages": {
         "deleted-message": "클러스터가 성공적으로 삭제되었습니다.",
         "updated-message": "클러스터가 성공적으로 업데이트되었습니다.",
         "status-waiting-for-deploy": "이 방화벽은 클러스터에 배포되지 않았으며 아직 Sophos Central에 연결되어 있습니다.",
-        "status-awaiting-for-approval": "이 방화벽은 Sophos Central 계정에서 관리되도록 승인을 요청 중입니다. 이 요청을 기대하고 있다면 수락을 클릭하여 승인하십시오."
+        "status-awaiting-for-approval": "이 방화벽은 Sophos Central 계정에서 관리되도록 승인을 요청 중입니다. 이 요청을 기대하고 있다면 수락을 클릭하여 승인하십시오.",
+        "copy-to-clipboard-success": "클립보드에 성공적으로 복사되었습니다.",
+        "copy-to-clipboard-failed": "클립보드에 복사하지 못했습니다."
       }
     },
     "waf": {
@@ -185,6 +188,7 @@
         "fqdn": "FQDN",
         "destination": "대상",
         "request-path": "요청 경로",
+        "waf-policy-list": "WAF 정책",
         "messages": {
           "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
           "delete-rule-success": "규칙이 삭제되었습니다.",
@@ -197,7 +201,8 @@
         "breadcrumb-text": "WAF 규칙 추가",
         "messages": {
           "waf-rule-add-success": "규칙이 성공적으로 만들어졌습니다.",
-          "waf-rule-add-error": "규칙을 생성할 수 없습니다."
+          "waf-rule-add-error": "규칙을 생성할 수 없습니다.",
+          "no-route-specified-error": "하나 이상의 경로를 추가하십시오."
         },
         "help-text": {
           "entry-point": "클러스터가 수신 대기해야 하는 수신 포트와 원하는 암호화 설정을 선택하십시오. 방화벽은 액세스 가능한 모든 클러스터 IP의 선택된 포트에서 수신 대기합니다.",
@@ -295,9 +300,14 @@
     "certificate": {
       "title": "인증서 추가",
       "name": "이름",
+      "name-required-error": "이름은 필수 필드입니다.",
+      "name-invalid-error": "이름에 잘못된 문자가 있습니다.",
+      "name-length-error": "이름은 100자를 초과해서는 안 됩니다.",
       "description": "설명",
       "certificate": "인증서",
+      "certificate-required-error": "인증서 파일이 필요합니다.",
       "private-key": "개인 키",
+      "private-key-required-error": "개인 키 파일이 필요합니다.",
       "browse": "찾아보기",
       "breadcrumb-text": "인증서 추가",
       "list": {
@@ -316,7 +326,8 @@
         "update-message": "인증서가 성공적으로 업데이트되었습니다.",
         "certificate-name-already-exists": "제공된 이름을 가진 인증서가 이미 있습니다.",
         "certificate-usedby-waf-rule": "WAF 규칙에서 사용 중인 인증서는 삭제할 수 없습니다.",
-        "change-certificate-prompt-confirmation": "이미 경로를 구성했습니다. 인증서를 변경하면 모든 기존 경로 구성이 플러시됩니다. 계속하시겠습니까?"
+        "change-certificate-prompt-confirmation": "이미 경로를 구성했습니다. 인증서를 변경하면 모든 기존 경로 구성이 플러시됩니다. 계속하시겠습니까?",
+        "illegal-argument": "인증서가 잘못되었습니다. 작업에 실패했습니다."
       }
     },
     "firewall-rules": {
@@ -332,27 +343,22 @@
         "egress": "송신",
         "egress-service": "송신 서비스",
         "status": "상태",
-        "disabled" : "사용 안 함",
-        "enabled" : "사용함",
+        "disabled": "사용 안 함",
+        "enabled": "사용함",
         "messages": {
           "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
           "delete-rule-success": "규칙이 삭제되었습니다.",
           "empty-message": "이 클러스터에 사용할 수 있는 방화벽 규칙이 없습니다.",
-          "cidr-invalid": "방화벽 규칙 cidr이 잘못되었습니다.",
-          "exceptlist-invalid": "방화벽 규칙 예외 목록이 잘못되었습니다.",
-          "ipblock-cidr-except-notinrange": "예외 목록 항목이 cidr 범위를 벗어납니다.",
-          "ipblock-cidr-except-samerange": "예외 목록 항목이 cidr과 동일한 범위를 갖습니다.",
-          "name-already-exists": "제공된 이름을 가진 방화벽 규칙이 이미 있습니다.",
           "delete-rule-error": "규칙을 삭제할 수 없습니다."
         },
-        "options":{
+        "options": {
           "namespace": "네임스페이스",
           "label-name": "레이블",
           "pod-name": "포드 레이블",
           "allowall": "모두 허용",
           "denyall": "모두 거부",
           "service-name": "서비스 이름",
-          "custom" : "사용자 지정"
+          "custom": "사용자 지정"
         }
       },
       "add": {
@@ -362,6 +368,14 @@
           "match-criteria": "이 규칙이 보호할 네임스페이스와 레이블을 선택하십시오.",
           "ingress-heading": "수신은 선택한 네임스페이스 및 레이블과 일치하는 컨테이너로 들어오는 트래픽을 나타냅니다. 이 기준을 사용하여 이 규칙을 적용해야 하는 들어오는 트래픽을 선택합니다.",
           "egress-heading": "송신은 선택한 네임스페이스 및 레이블과 일치하는 컨테이너에서 나가는 트래픽을 나타냅니다. 이 기준을 사용하여 이 규칙을 적용해야 하는 아웃바운드 트래픽을 선택합니다."
+        },
+        "messages": {
+          "firewall-rule-add-success": "방화벽 규칙이 성공적으로 추가되었습니다.",
+          "name-already-exists": "제공된 이름을 가진 방화벽 규칙이 이미 있습니다.",
+          "cidr-invalid": "방화벽 규칙 cidr이 잘못되었습니다.",
+          "exceptlist-invalid": "방화벽 규칙 예외 목록이 잘못되었습니다.",
+          "ipblock-cidr-except-notinrange": "예외 목록 항목이 cidr 범위를 벗어납니다.",
+          "ipblock-cidr-except-samerange": "예외 목록 항목이 cidr과 동일한 범위를 갖습니다."
         }
       },
       "edit": {
@@ -402,7 +416,7 @@
         "add-ingress": "수신 추가",
         "add-egress": "송신 추가",
         "rule-name-error": "규칙 이름은 100자를 초과해서는 안 됩니다.",
-        "name-pattern-error": "Rule name have invalid characters.",  
+        "name-pattern-error": "규칙 이름에 잘못된 문자가 있습니다.",
         "rule-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
         "namespace-address": "네임스페이스 또는 주소",
         "service": "서비스",
@@ -422,6 +436,7 @@
         "from-ip-not-filled": "IP 또는 서브넷에서를 입력해야 합니다.",
         "port-value-error": "포트 번호는 1 ~ 65535이어야 합니다.",
         "messages": {
+          "firewall-rule-update-success": "방화벽 규칙이 업데이트되었습니다.",
           "delete-rule-confirmation": "규칙을 삭제하시겠습니까?",
           "delete-rule-success": "규칙이 삭제되었습니다.",
           "delete-rule-error": "규칙을 삭제할 수 없습니다.",
@@ -433,12 +448,76 @@
     "ips": {
       "rule": {
         "title": "침입 방지",
-        "breadcrumb-text": "침입 방지",
-        "section-title": "보호 정책",
+        "breadcrumb-text": "IPS 규칙",
+        "section-title": "보호 규칙",
         "ns-policy-disabled": "노스-사우스(North-South) 트래픽에 대한 IPS 검색을 활성화합니다.",
         "ew-policy-disabled": "이스트-웨스트(East-West) 트래픽에 대한 IPS 검색을 활성화합니다.",
         "save-success": "구성이 성공적으로 저장되었습니다.",
-        "save-failed": "변경 사항을 저장하지 못했습니다."
+        "save-failed": "변경 사항을 저장하지 못했습니다.",
+        "ns-policy": "노스-사우스(North-South) 정책",
+        "ew-policy": "이스트-웨스트(East-West) 정책",
+        "policy-placeholder": "정책 선택",
+        "messages": {
+          "empty-message": "사용 가능한 IPS 정책이 없습니다."
+        }
+      },
+      "policies": {
+        "title": "침입 방지 정책",
+        "breadcrumbs-text": "IPS 정책",
+        "add": {
+          "title": "침입 방지 정책 추가",
+          "breadcrumb-text": "IPS 정책 추가",
+          "status": "상태",
+          "name": "이름",
+          "name-required-error": "이름은 필수 필드입니다.",
+          "name-pattern-error" : "이름에 잘못된 문자가 있습니다.",
+          "name-length-error" : "이름은 100자를 초과해서는 안 됩니다.",
+          "description": "설명",
+          "signature-filter-section": "서명 필터 추가",
+          "category-placeholder": "범주 선택",
+          "target-placeholder": "대상 선택",
+          "severity-placeholder": "심각도 선택",
+          "platform-placeholder": "플랫폼 선택",
+          "smart-filter-placeholder": "스마트 필터",
+          "signature-list-section": "선택한 서명",
+          "add-filter": "필터 추가",
+          "disabled": "사용 안 함",
+          "log-only": "로그 전용",
+          "block": "차단",
+          "signature-list": {
+            "name": "이름",
+            "sid": "SID",
+            "category": "범주",
+            "target": "대상",
+            "severity": "심각도",
+            "platform": "플랫폼",
+            "action": "조치",
+            "recommended-action": "권장 작업"
+          },
+          "save-failed": "변경 사항을 저장하지 못했습니다.",
+          "ns-required-error": "노스-사우스(North-South) 트래픽 스캐닝 정책이 필요합니다.",
+          "ew-required-error": "이스트-웨스트(East-West) 트래픽 스캐닝 정책이 필요합니다.",
+          "messages": {
+            "empty-message": "사용 가능한 IPS 정책이 없습니다.",
+            "name-already-exists" : "제공된 이름을 가진 IPS 정책이 이미 있습니다."
+          }
+        },
+        "edit": {
+          "title": "침입 방지 정책 편집",
+          "breadcrumb-text": "IPS 정책 편집"
+        },
+        "ips-policy-list": "IPS 정책",
+        "list": {
+          "title": "공유 정책",
+          "name": "이름",
+          "description": "설명",
+          "add": "정책 추가",
+          "messages":{
+            "policy-delete-success" : "정책이 삭제되었습니다.",
+            "delete-confirmation" : "정책 을(를) 삭제하시겠습니까?",
+            "in-use" : "정책을 삭제할 수 없습니다. 정책이 IPS 규칙에 이미 할당되어 있습니다."
+          }
+        }
       }
     },
     "admission-control-list": {
@@ -473,7 +552,7 @@
       "rule-type": "규칙 유형",
       "target-namespace": "대상 네임스페이스",
       "permitted-repository": "허용된 리포지토리",
-      "container-repository": "컨테이너 리포지토리",
+      "container-repository": "컨테이너 레지스트리/리포지토리",
       "optix-scan-label": "Sophos Cloud Optix 스캔 필요",
       "api-key": "API 키",
       "disallow-levels": "허용되지 않는 컨테이너 취약성 수준",
@@ -489,13 +568,19 @@
         "update-rule-error": "규칙을 업데이트할 수 없습니다.",
         "flag-not-set": "규칙 상태를 설정해야 합니다.",
         "name-already-exists" : "제공된 이름을 가진 승인 제어 규칙이 이미 있습니다.",
-        "rule-required-error" : "승인 제어 규칙 이름은 필수 필드입니다.",
-        "rule-name-error" : "승인 제어 규칙 이름은 100자를 초과해서는 안 됩니다.",
-        "name-pattern-error" : "승인 제어 규칙 이름에 잘못된 문자가 있습니다.",
+        "rule-required-error" : "이름은 필수 필드입니다.",
+        "rule-name-error" : "이름은 100자를 초과해서는 안 됩니다.",
+        "name-pattern-error" : "이름에 잘못된 문자가 있습니다.",
         "namespace-null" : "네임스페이스 필드는 공백이 될 수 없습니다.",
-        "repository-blank" : "컨테이너 리포지토리 필드는 공백이 될 수 없습니다.",
+        "repository-blank" : "컨테이너 레지스트리/리포지토리 필드는 비워둘 수 없습니다.",
         "optixScans-apikey-blank" : "OptixScan의 API 키 필드는 공백이 될 수 없습니다.",
-        "optixScans-disallowed-levels-null" : "OptixScan의 허용되지 않는 수준 필드는 공백이 될 수 없습니다."
+        "optixScans-disallowed-levels-null" : "OptixScan의 허용되지 않는 수준 필드는 공백이 될 수 없습니다.",
+        "repository-required-error" : "컨테이너 레지스트리/리포지토리는 필수 필드입니다.",
+        "api-required-error" : "API 키는 필수 필드입니다.",
+        "disallow-required-error" : "허용되지 않는 수준은 필수 필드입니다.",
+        "rule-description-error": "설명은 최대 250자까지 입력할 수 있습니다.",
+        "namespace-required-error": "네임스페이스는 필수 필드입니다.",
+        "registry-pattern-error" : "컨테이너 레지스트리/리포지토리에 잘못된 문자가 있습니다."
       },
       "help-text": {
         "target-namespace": "이 규칙이 보호할 네임스페이스를 선택하십시오."

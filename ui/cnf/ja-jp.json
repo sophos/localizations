@@ -36,8 +36,8 @@
         "network-rule-disabled": "このファイアウォールでは、ネットワークファイアウォールが有効になっていません。",
         "ips-rule-disabled": "このファイアウォールでは、侵入防御が有効になっていません。",
         "admission-control-rule-disabled": "このファイアウォールでは、アドミッション制御が有効になっていません。",
-        "cluster-not-approved" : "このファイアウォールの Sophos Central からの管理はまだ承認されていません。ファイアウォールを承認して、設定を続行してください。",
-        "entry-port-null" : "WAF ルールのエントリポイントのポートは Null にできません"
+        "cluster-not-approved": "このファイアウォールの Sophos Central からの管理はまだ承認されていません。ファイアウォールを承認して、設定を続行してください。",
+        "entry-port-null": "WAF ルールのリスニングポートを指定してください。"
       }
     },
     "clusters-list": {
@@ -156,11 +156,14 @@
       "status": "状態",
       "installation-steps": "インストールの手順",
       "confirm-cluster-delete": "クラスタを削除してもよいですか？",
+      "installation-steps-help-text": "コピーアイコンをクリックして、以下の helm コマンドをコピーし、クラスタで実行してください。",
       "messages": {
         "deleted-message": "クラスタの削除に成功しました。",
         "updated-message": "クラスタの更新に成功しました。",
         "status-waiting-for-deploy": "このファイアウォールは、まだクラスタに導入されておらず、Sophos Central に接続されていません。",
-        "status-awaiting-for-approval": "このファイアウォールは、Sophos Central アカウントによる管理の承認を要求しています。これが予期されるリクエストの場合は、「同意」をクリックして承認してください。"
+        "status-awaiting-for-approval": "このファイアウォールは、Sophos Central アカウントによる管理の承認を要求しています。これが予期されるリクエストの場合は、「同意」をクリックして承認してください。",
+        "copy-to-clipboard-success": "クリップボードへのコピーに成功しました。",
+        "copy-to-clipboard-failed": "クリップボードへのコピーに失敗しました。"
       }
     },
     "waf": {
@@ -185,6 +188,7 @@
         "fqdn": "FQDN",
         "destination": "宛先",
         "request-path": "リクエストパス",
+        "waf-policy-list": "WAF ポリシー",
         "messages": {
           "delete-rule-confirmation": "ルールを削除しますか？",
           "delete-rule-success": "ルールが削除されました。",
@@ -197,7 +201,8 @@
         "breadcrumb-text": "WAF ルールの追加",
         "messages": {
           "waf-rule-add-success": "ルールの作成に成功しました。",
-          "waf-rule-add-error": "ルールを作成できません。"
+          "waf-rule-add-error": "ルールを作成できません。",
+          "no-route-specified-error": "少なくとも 1つのルートを追加してください。"
         },
         "help-text": {
           "entry-point": "クラスタが待機するリスニングポート、および必要な暗号化の設定を選択します。ファイアウォールは、アクセス可能なすべてのクラスタ IP 上の選択されたポートで待機します。",
@@ -295,9 +300,14 @@
     "certificate": {
       "title": "証明書の追加",
       "name": "名前",
+      "name-required-error": "名前は必須のフィールドです。",
+      "name-invalid-error": "名前に無効な文字が含まれています。",
+      "name-length-error": "名前は 100 文字を超えてはいけません。",
       "description": "説明",
       "certificate": "証明書",
+      "certificate-required-error": "証明書ファイルを指定してください。",
       "private-key": "秘密鍵",
+      "private-key-required-error": "秘密鍵ファイルを指定してください。",
       "browse": "参照",
       "breadcrumb-text": "証明書の追加",
       "list": {
@@ -316,7 +326,8 @@
         "update-message": "証明書の更新に成功しました。",
         "certificate-name-already-exists": "指定された名前の証明書は既に存在します。",
         "certificate-usedby-waf-rule": "WAF ルールで使用されている証明書は削除できません。",
-        "change-certificate-prompt-confirmation": "既にルートを設定済みです。証明書を変更すると、既存のルート設定すべてが消去されます。続行しますか？"
+        "change-certificate-prompt-confirmation": "既にルートを設定済みです。証明書を変更すると、既存のルート設定すべてが消去されます。続行しますか？",
+        "illegal-argument": "証明書が無効です。操作に失敗しました。"
       }
     },
     "firewall-rules": {
@@ -332,27 +343,22 @@
         "egress": "出力",
         "egress-service": "出力サービス",
         "status": "状態",
-        "disabled" : "無効",
-        "enabled" : "有効",
+        "disabled": "無効",
+        "enabled": "有効",
         "messages": {
           "delete-rule-confirmation": "ルールを削除してもよいですか？",
           "delete-rule-success": "ルールが削除されました。",
           "empty-message": "このクラスタで使用できるファイアウォールルールはありません。",
-          "cidr-invalid": "ファイアウォールルールの CIDR が無効です。",
-          "exceptlist-invalid": "ファイアウォールルールの例外リストが無効です。",
-          "ipblock-cidr-except-notinrange": "例外リストのエントリが、CIDR の範囲外です。",
-          "ipblock-cidr-except-samerange": "例外リストのエントリの範囲が、CIDR の範囲と同じです。",
-          "name-already-exists": "指定された名前のファイアウォールルールが既に存在します。",
           "delete-rule-error": "ルールを削除できません。"
         },
-        "options":{
+        "options": {
           "namespace": "名前空間",
           "label-name": "ラベル",
           "pod-name": "ポッドラベル",
           "allowall": "すべて許可",
           "denyall": "すべて拒否",
           "service-name": "サービス名",
-          "custom" : "カスタム"
+          "custom": "カスタム"
         }
       },
       "add": {
@@ -362,6 +368,14 @@
           "match-criteria": "このルールで保護する名前空間とラベルを選択します。",
           "ingress-heading": "「イングレス」は、選択した名前空間とラベルに一致する、コンテナで受信するトラフィックを指します。これらの基準を使用して、このルールを適用する受信トラフィックを選択してください。",
           "egress-heading": "「エグレス」とは、選択した名前空間とラベルに一致する、コンテナから送信されるトラフィックを指します。これらの基準を使用して、このルールを適用する送信トラフィックを選択してください。"
+        },
+        "messages": {
+          "firewall-rule-add-success": "ファイアウォールルールの追加に成功しました。",
+          "name-already-exists": "指定された名前のファイアウォールルールが既に存在します。",
+          "cidr-invalid": "ファイアウォールルールの CIDR が無効です。",
+          "exceptlist-invalid": "ファイアウォールルールの例外リストが無効です。",
+          "ipblock-cidr-except-notinrange": "例外リストのエントリが、CIDR の範囲外です。",
+          "ipblock-cidr-except-samerange": "例外リストのエントリの範囲が、CIDR の範囲と同じです。"
         }
       },
       "edit": {
@@ -402,7 +416,7 @@
         "add-ingress": "イングレスの追加",
         "add-egress": "エグレスの追加",
         "rule-name-error": "ルール名は 100文字を超えてはいけません。",
-        "name-pattern-error": "Rule name have invalid characters.",  
+        "name-pattern-error": "ルール名に無効な文字が含まれています。",
         "rule-description-error": "説明は、最大半角 250文字まで入力可能です。",
         "namespace-address": "名前空間またはアドレス",
         "service": "サービス",
@@ -422,6 +436,7 @@
         "from-ip-not-filled": "「次の IP またはサブネットから」に入力する必要があります。",
         "port-value-error": "ポート番号には 1 ～ 65535 の値を指定してください。",
         "messages": {
+          "firewall-rule-update-success": "ファイアウォールルールが更新されました。",
           "delete-rule-confirmation": "ルールを削除してもよいですか？",
           "delete-rule-success": "ルールが削除されました。",
           "delete-rule-error": "ルールを削除できません。",
@@ -433,12 +448,76 @@
     "ips": {
       "rule": {
         "title": "侵入防御",
-        "breadcrumb-text": "侵入防御",
-        "section-title": "保護ポリシー",
+        "breadcrumb-text": "IPS ルール",
+        "section-title": "保護ルール",
         "ns-policy-disabled": "North-South トラフィックの IPS スキャンを有効にする。",
         "ew-policy-disabled": "East-West トラフィックの IPS スキャンを有効にする。",
         "save-success": "設定の保存に成功しました。",
-        "save-failed": "変更内容を保存できませんでした。"
+        "save-failed": "変更内容を保存できませんでした。",
+        "ns-policy": "North-South ポリシー",
+        "ew-policy": "East-West ポリシー",
+        "policy-placeholder": "ポリシーの選択",
+        "messages": {
+          "empty-message": "使用可能な IPS ポリシーがありません。"
+        }
+      },
+      "policies": {
+        "title": "侵入防御ポリシー",
+        "breadcrumbs-text": "IPS ポリシー",
+        "add": {
+          "title": "侵入防御ポリシーの追加",
+          "breadcrumb-text": "IPS ポリシーの追加",
+          "status": "状態",
+          "name": "名前",
+          "name-required-error": "名前は必須のフィールドです。",
+          "name-pattern-error" : "名前に無効な文字が含まれています。",
+          "name-length-error" : "名前は 100 文字を超えてはいけません。",
+          "description": "説明",
+          "signature-filter-section": "シグネチャフィルタの追加",
+          "category-placeholder": "カテゴリの選択",
+          "target-placeholder": "対象の選択",
+          "severity-placeholder": "重要度の選択",
+          "platform-placeholder": "プラットフォームの選択",
+          "smart-filter-placeholder": "スマートフィルタ",
+          "signature-list-section": "選択したシグネチャ",
+          "add-filter": "フィルタの追加",
+          "disabled": "無効",
+          "log-only": "ログのみ",
+          "block": "ブロック",
+          "signature-list": {
+            "name": "名前",
+            "sid": "SID",
+            "category": "カテゴリ",
+            "target": "対象",
+            "severity": "重要度",
+            "platform": "プラットフォーム",
+            "action": "アクション",
+            "recommended-action": "推奨されるアクション"
+          },
+          "save-failed": "変更内容を保存できませんでした。",
+          "ns-required-error": "North-Southトラフィックのスキャンポリシーを指定してください。",
+          "ew-required-error": "East-West トラフィックのスキャンポリシーを指定してください。",
+          "messages": {
+            "empty-message": "使用可能な IPS ポリシーがありません。",
+            "name-already-exists" : "指定された名前の IPS ポリシーが既に存在します。"
+          }
+        },
+        "edit": {
+          "title": "侵入防御ポリシーの編集",
+          "breadcrumb-text": "IPS ポリシーの編集"
+        },
+        "ips-policy-list": "IPS ポリシー",
+        "list": {
+          "title": "共有ポリシー",
+          "name": "名前",
+          "description": "説明",
+          "add": "ポリシーの追加",
+          "messages":{
+            "policy-delete-success" : "ポリシーを削除しました。",
+            "delete-confirmation" : "ポリシーを削除しますか？",
+            "in-use" : "ポリシーを削除できませんでした。ポリシーは、既に IPS ルールに割り当てられています。"
+          }
+        }
       }
     },
     "admission-control-list": {
@@ -473,7 +552,7 @@
       "rule-type": "ルールの種類",
       "target-namespace": "ターゲット名前空間",
       "permitted-repository": "許可されたリポジトリ",
-      "container-repository": "コンテナリポジトリ",
+      "container-repository": "コンテナレジストリ/リポジトリ",
       "optix-scan-label": "Sophos Cloud Optix スキャンが必要です",
       "api-key": "API キー",
       "disallow-levels": "禁止されたコンテナの脆弱性レベル",
@@ -489,13 +568,19 @@
         "update-rule-error": "ルールを更新できません。",
         "flag-not-set": "ルールの状態を設定する必要があります。",
         "name-already-exists" : "指定された名前のアドミッション制御ルールは既に存在します。",
-        "rule-required-error" : "アドミッション制御ルール名は必須のフィールドです。",
-        "rule-name-error" : "アドミッション制御ルール名は 100文字を超えてはいけません。",
-        "name-pattern-error" : "アドミッション制御ルール名に無効な文字が含まれています。",
+        "rule-required-error" : "名前は必須のフィールドです。",
+        "rule-name-error" : "名前は 100 文字を超えてはいけません。",
+        "name-pattern-error" : "名前に無効な文字が含まれています。",
         "namespace-null" : "名前空間フィールドは空白にできません。",
-        "repository-blank" : "コンテナリポジトリフィールドは空白にできません。",
-        "optixScans-apikey-blank" : "OptixScan の API キーフィールドは空白にできません。",
-        "optixScans-disallowed-levels-null" : "OptixScan の禁止されたレベルフィールドは空白にできません。"
+        "repository-blank" : "コンテナレジストリ/リポジトリのフィールドは空白にできません。",
+        "optixScans-apikey-blank" : "OptixScan の API キーのフィールドは空白にできません。",
+        "optixScans-disallowed-levels-null" : "OptixScan の禁止されたレベルのフィールドは空白にできません。",
+        "repository-required-error" : "コンテナレジストリ/リポジトリは必須のフィールドです。",
+        "api-required-error" : "API キーは必須のフィールドです。",
+        "disallow-required-error" : "禁止されたレベルは必須のフィールドです。",
+        "rule-description-error": "説明は、最大半角 250文字まで入力可能です。",
+        "namespace-required-error": "名前空間は必須のフィールドです。",
+        "registry-pattern-error" : "コンテナレジストリ/リポジトリに無効な文字が含まれています。"
       },
       "help-text": {
         "target-namespace": "このルールで保護する名前空間を選択します。"

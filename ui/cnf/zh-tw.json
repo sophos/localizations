@@ -36,8 +36,8 @@
         "network-rule-disabled": "這個防火牆並未啟用網路防火牆。",
         "ips-rule-disabled": "這個防火牆並未啟用入侵防護。",
         "admission-control-rule-disabled": "這個防火牆並未啟用管理控制。",
-        "cluster-not-approved" : "這個防火牆尚未獲得 Sophos Central 管理核可。核可防火牆可配合任何組態繼續執行。",
-        "entry-port-null" : "WAF 規則 entrypoint 連接埠不能為空"
+        "cluster-not-approved": "這個防火牆尚未獲得 Sophos Central 管理核可。核可防火牆可配合任何組態繼續執行。",
+        "entry-port-null": "WAF 規則接聽連接埠為必須項。"
       }
     },
     "clusters-list": {
@@ -156,11 +156,14 @@
       "status": "狀態",
       "installation-steps": "安裝步驟",
       "confirm-cluster-delete": "確定要刪除叢集？",
+      "installation-steps-help-text": "按一下複製圖示，即可複製以下控制指令並在您的叢集上執行。",
       "messages": {
         "deleted-message": "已成功刪除叢集。",
         "updated-message": "已成功更新叢集。",
         "status-waiting-for-deploy": "這個防火牆尚未部署至叢集亦未連結 Sophos Central。",
-        "status-awaiting-for-approval": "這個防火牆正在要求核可允許接受 Sophos Central 帳戶的管理。如果您希望同意這個要求，請按一下「接受核可」。"
+        "status-awaiting-for-approval": "這個防火牆正在要求核可允許接受 Sophos Central 帳戶的管理。如果您希望同意這個要求，請按一下「接受核可」。",
+        "copy-to-clipboard-success": "已複製到剪貼簿。",
+        "copy-to-clipboard-failed": "未能複製到剪貼簿。"
       }
     },
     "waf": {
@@ -185,6 +188,7 @@
         "fqdn": "FQDN",
         "destination": "目的地",
         "request-path": "請求路徑",
+        "waf-policy-list": "WAF 政策",
         "messages": {
           "delete-rule-confirmation": "是否要刪除規則？",
           "delete-rule-success": "規則已刪除。",
@@ -197,7 +201,8 @@
         "breadcrumb-text": "新增 WAF 規則",
         "messages": {
           "waf-rule-add-success": "已成功建立規則。",
-          "waf-rule-add-error": "無法建立規則。"
+          "waf-rule-add-error": "無法建立規則。",
+          "no-route-specified-error": "新增至少一個路由。"
         },
         "help-text": {
           "entry-point": "選取叢集應接聽的接聽連接埠以及所需的加密設定。防火牆將接聽所有可存取叢集 IP 上的選定連接埠。",
@@ -295,9 +300,14 @@
     "certificate": {
       "title": "新增憑證",
       "name": "名稱",
-      "description": "說明",
+      "name-required-error": "名稱為必填欄位。",
+      "name-invalid-error": "名稱包含無效字元。",
+      "name-length-error": "名稱不得超過 100 個字元。",
+      "description": "描述",
       "certificate": "憑證",
+      "certificate-required-error": "憑證檔案為必須項。",
       "private-key": "私密金鑰",
+      "private-key-required-error": "私密金鑰檔案為必須項。",
       "browse": "瀏覽",
       "breadcrumb-text": "新增憑證",
       "list": {
@@ -316,7 +326,8 @@
         "update-message": "已成功更新憑證。",
         "certificate-name-already-exists": "具有提供的名稱的憑證已存在。",
         "certificate-usedby-waf-rule": "無法刪除 WAF 規則所使用的憑證。",
-        "change-certificate-prompt-confirmation": "您已設定路由，變更憑證將清除所有現有路由設定。確定要繼續嗎？"
+        "change-certificate-prompt-confirmation": "您已設定路由，變更憑證將清除所有現有路由設定。確定要繼續嗎？",
+        "illegal-argument": "憑證無效，作業失敗。"
       }
     },
     "firewall-rules": {
@@ -332,27 +343,22 @@
         "egress": "輸出",
         "egress-service": "輸出服務",
         "status": "狀態",
-        "disabled" : "已停用",
-        "enabled" : "已啟用",
+        "disabled": "已停用",
+        "enabled": "已啟用",
         "messages": {
           "delete-rule-confirmation": "確定要刪除規則嗎？",
           "delete-rule-success": "規則已刪除。",
           "empty-message": "此叢集無防火墻規則可用。",
-          "cidr-invalid": "防火墻規則 CIDR 無效。",
-          "exceptlist-invalid": "防火墻規則排除清單無效。",
-          "ipblock-cidr-except-notinrange": "排除清單項目超出 CIDR 範圍。",
-          "ipblock-cidr-except-samerange": "排除清單項目與 CIDR 範圍相同。",
-          "name-already-exists": "具有提供的名稱的防火墻規則已存在。",
           "delete-rule-error": "無法刪除規則。"
         },
-        "options":{
+        "options": {
           "namespace": "命名空間",
           "label-name": "標籤",
           "pod-name": "Pod 標籤",
           "allowall": "允許全部",
           "denyall": "拒絕全部",
           "service-name": "服務名稱",
-          "custom" : "自訂"
+          "custom": "自訂"
         }
       },
       "add": {
@@ -362,6 +368,14 @@
           "match-criteria": "選擇此規則旨在保護的命名空間和標籤。",
           "ingress-heading": "輸入是指傳入與所選命名空間和標籤匹配的容器的流量。使用這些標準來選取此規則應套用於哪些傳入流量。",
           "egress-heading": "輸出是指源自與所選命名空間和標籤匹配的容器的流量。使用這些標準來選取此規則應套用於哪些傳出流量。"
+        },
+        "messages": {
+          "firewall-rule-add-success": "已成功新增防火墻規則。",
+          "name-already-exists": "具有提供的名稱的防火墻規則已存在。",
+          "cidr-invalid": "防火墻規則 CIDR 無效。",
+          "exceptlist-invalid": "防火墻規則排除清單無效。",
+          "ipblock-cidr-except-notinrange": "排除清單項目超出 CIDR 範圍。",
+          "ipblock-cidr-except-samerange": "排除清單項目與 CIDR 範圍相同。"
         }
       },
       "edit": {
@@ -402,7 +416,7 @@
         "add-ingress": "新增輸入",
         "add-egress": "新增輸出",
         "rule-name-error": "規則名稱不得超過 100 個字元。",
-        "name-pattern-error": "Rule name have invalid characters.",  
+        "name-pattern-error": "規則名稱包含無效字元。",
         "rule-description-error": "描述最多可包含 250 個字元。",
         "namespace-address": "命名空間或地址",
         "service": "服務",
@@ -422,6 +436,7 @@
         "from-ip-not-filled": "應填寫來源 IP 或子網。",
         "port-value-error": "連接埠編號應介於 1 與 65535 之間。",
         "messages": {
+          "firewall-rule-update-success": "防火牆規則已更新。",
           "delete-rule-confirmation": "確定要刪除規則嗎？",
           "delete-rule-success": "規則已刪除。",
           "delete-rule-error": "無法刪除規則。",
@@ -433,12 +448,76 @@
     "ips": {
       "rule": {
         "title": "入侵防禦",
-        "breadcrumb-text": "入侵防禦",
-        "section-title": "保護政策",
+        "breadcrumb-text": "IPS 規則",
+        "section-title": "防護規則",
         "ns-policy-disabled": "啟用南北流量的 IPS 掃描。",
         "ew-policy-disabled": "啟用東西流量的 IPS 掃描。",
         "save-success": "設定已經成功儲存。",
-        "save-failed": "無法儲存變更。"
+        "save-failed": "無法儲存變更。",
+        "ns-policy": "南北原則",
+        "ew-policy": "東西原則",
+        "policy-placeholder": "選取策略",
+        "messages": {
+          "empty-message": "無 IPS 原則可用。"
+        }
+      },
+      "policies": {
+        "title": "入侵預防原則",
+        "breadcrumbs-text": "IPS 政策",
+        "add": {
+          "title": "新增入侵預防原則",
+          "breadcrumb-text": "新增 IPS 政策",
+          "status": "狀態",
+          "name": "名稱",
+          "name-required-error": "名稱為必填欄位。",
+          "name-pattern-error" : "名稱包含無效字元。",
+          "name-length-error" : "名稱不得超過 100 個字元。",
+          "description": "描述",
+          "signature-filter-section": "新增簽名篩選器",
+          "category-placeholder": "選取類別",
+          "target-placeholder": "選取目標",
+          "severity-placeholder": "選取嚴重性",
+          "platform-placeholder": "選取平臺",
+          "smart-filter-placeholder": "智能篩選器",
+          "signature-list-section": "已選簽名",
+          "add-filter": "新增篩選器",
+          "disabled": "已停用",
+          "log-only": "僅紀錄",
+          "block": "封鎖",
+          "signature-list": {
+            "name": "名稱",
+            "sid": "SID",
+            "category": "種類",
+            "target": "目標",
+            "severity": "嚴重性",
+            "platform": "平臺",
+            "action": "動作",
+            "recommended-action": "建議動作"
+          },
+          "save-failed": "無法儲存變更。",
+          "ns-required-error": "南北流量掃描原則為必須項。",
+          "ew-required-error": "東西流量掃描原則為必須項。",
+          "messages": {
+            "empty-message": "無 IPS 原則可用。",
+            "name-already-exists" : "具有所提供名稱的 IPS 原則已存在。"
+          }
+        },
+        "edit": {
+          "title": "編輯入侵預防原則",
+          "breadcrumb-text": "編輯 IPS 政策"
+        },
+        "ips-policy-list": "IPS 政策",
+        "list": {
+          "title": "共用原則",
+          "name": "名稱",
+          "description": "說明",
+          "add": "新增政策",
+          "messages":{
+            "policy-delete-success" : "政策已刪除。",
+            "delete-confirmation" : "是否要刪除策略？",
+            "in-use" : "無法刪除政策。原則已在 IPS 規則中指派。"
+          }
+        }
       }
     },
     "admission-control-list": {
@@ -473,7 +552,7 @@
       "rule-type": "規則類型",
       "target-namespace": "目標命名空間",
       "permitted-repository": "許可的存放庫",
-      "container-repository": "容器存放庫",
+      "container-repository": "容器登錄/存放庫",
       "optix-scan-label": "需要 Sophos Cloud Optix 掃描",
       "api-key": "API 金鑰",
       "disallow-levels": "不允許的容器弱點級別",
@@ -489,13 +568,19 @@
         "update-rule-error": "無法更新規則。",
         "flag-not-set": "規則狀態應已設定。",
         "name-already-exists" : "採用提供名稱的管理控制規則已存在。",
-        "rule-required-error" : "管理控制規則名稱是必填欄位。",
-        "rule-name-error" : "管理控制規則名稱不得超過 100 個字元。",
-        "name-pattern-error" : "管理控制規則名稱包含無效字元。",
+        "rule-required-error" : "名稱為必填欄位。",
+        "rule-name-error" : "名稱不得超過 100 個字元。",
+        "name-pattern-error" : "名稱包含無效字元。",
         "namespace-null" : "命名空間欄位不得為空白。",
-        "repository-blank" : "容器存放庫欄位不得為空白。",
+        "repository-blank" : "容器登錄/存放庫欄位不得為空白。",
         "optixScans-apikey-blank" : "OptixScan 的 API 金鑰欄位不得為空白。",
-        "optixScans-disallowed-levels-null" : "OptixScan 的不允許級別欄位不得為空白。"
+        "optixScans-disallowed-levels-null" : "OptixScan 的不允許級別欄位不得為空白。",
+        "repository-required-error" : "容器登錄/存放庫為必填欄位。",
+        "api-required-error" : "API 金鑰為必填欄位。",
+        "disallow-required-error" : "禁止層級為必填欄位。",
+        "rule-description-error": "描述最多可包含 250 個字元。",
+        "namespace-required-error": "命名空間為必填欄位。",
+        "registry-pattern-error" : "容器登錄/存放庫包含無效字元。"
       },
       "help-text": {
         "target-namespace": "選擇此規則旨在保護的命名空間。"
