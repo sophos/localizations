@@ -1,5 +1,6 @@
 {
   "wifi.test.message": "WLAN-Meldung Übersetzungstest",
+  "network.access-points._dynamic_.state.UPDATE_FAILED": "Aktualisierung fehlgeschlagen",
   "wireless": {
     "main-dashboard-breadcrumb-text": "Übersicht",
     "common": {
@@ -67,7 +68,8 @@
       "offline": "Offline",
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
-      "GHZ_5": "5 GHz"
+      "GHZ_5": "5 GHz",
+      "assign": "Zuweisen"
     },
     "global": {
       "form": {
@@ -174,8 +176,8 @@
         "ssid": "SSID",
         "band": "Band",
         "connection-speed": "Verbindungsgeschwindigkeit",
-        "first-seen": "Zuerst gesehen",
-        "last-seen": "Zuletzt gesehen",
+        "first-seen": "Erstmalig aufgetreten",
+        "last-seen": "Zuletzt aufgetreten",
         "security-heartbeat": {
           "security-heartbeat": "Security Heartbeat",
           "health-status-red": "Client gefährdet",
@@ -294,6 +296,11 @@
         "forward-ap-logs": "Access-Point-Protokolle weiterleiten",
         "forward-ap-message": "Ist diese Option aktiviert, werden Ihre Access Point-Protokolle an den technischen Support von Sophos weitergeleitet.",
         "remote-login-title": "Remote-Login für Access Points für Sophos Support",
+        "remaining-time": "Verbleibende Zeit: ",
+        "remaining-time-days": "{{duration}} Tage",
+        "remaining-time-hours": "{{duration}} Stunden",
+        "remaining-time-minutes": "{{duration}} Minuten",
+        "remaining-time-seconds": "{{duration}} Sekunden",
         "expiration-message": "Ist diese Option aktiviert, erhält der technische Support von Sophos für die festgelegte Zeit Remote-Zugriff. Die verbleibende Zeit wird angezeigt. Deaktivieren Sie die Option, um den Remote-Zugriff sofort zu beenden."
       },
       "list": {
@@ -660,7 +667,7 @@
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security ist eine einzigartige Funktion für Access Points der Sophos APX-Serie. Unser revolutionäres Security Heartbeat™ erlaubt Ihrem Endpoint, Mobile Protection und Access Points Informationen auszutauschen und so zusammenzuarbeiten um Sicherheitsbedrohungen in Ihrem Netzwerk zu blockieren.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
-        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security kann nicht für SSIDs mit aktiviertem Gastnetzwerk oder Captive Portal verwendet werden.",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security wird nicht für SSIDs unterstützt, bei denen ein Gastnetzwerk oder ein Captive Portal eingerichtet sind.",
         "green-option-label": "Security Heartbeat (Grün)",
         "green-option-value": "Gesamten Datenverkehr zulassen",
         "green-option-info": "Der Client ist geschützt.",
@@ -821,7 +828,8 @@
             "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">Geben Sie eine gültige URL, einschließlich Netzwerkprotokoll [Beispiel: https://], ein.</span>",
             "custom-url-valid": "Umleitungs-URL hat kein gültiges Format."
           }
-        }
+        },
+        "captive-portal-capacity": "Warnung. Mehrere Captive-Portale können nicht zugewiesen werden"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive-Portal aktiviert"
@@ -972,7 +980,13 @@
           "sophos-central-agent": "Sophos-Central-Agents",
           "upgrade-automatically": "Automatisch aktualisieren",
           "general": "Allgemein",
-          "radio-configuration": "Funkkonfiguration"
+          "radio-configuration": "Funkkonfiguration",
+          "assigned-ssids": "Zugewiesene SSIDs",
+          "assign-ssid": "SSID zuweisen",
+          "assign-ssids": "SSIDs zuweisen",
+          "no-assign-ssid": "Derzeit ist keine SSID zugewiesen.",
+          "confirm-remove": "Entfernen bestätigen",
+          "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?"
         }
       },
       "taskQueue": {
@@ -1003,7 +1017,7 @@
             "reboot": "Auftragsdetails - Neustart",
             "firmwareUpgrade": "Auftragsdetails - Firmware-Upgrade",
             "default": "Auftragsdetails",
-            "network" : "Netzwerk"
+            "network": "Netzwerk"
           }
         }
       },

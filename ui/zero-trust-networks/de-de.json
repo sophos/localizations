@@ -18,10 +18,10 @@
       "fqdn-ip-validation": "Ungültiger FQDN/IP",
       "fqdn-duplicate-validation": "FQDN bereits verwendet",
       "invalid-name": "Der Name darf nur enthalten: A-Z, a-z , 0-9, -, _, Leerzeichen",
-      "name-length-validation": "Name kann maximal 100 Zeichen lang sein",
+      "name-length-validation": "Name darf nicht länger als 100 Zeichen sein",
       "name-duplicate-validation": "Der Name ist schon vergeben",
       "whitespace-name-validation": "Name ist erforderlich",
-      "description-length-validation": "Beschreibung kann maximal 300 Zeichen lang sein",
+      "description-length-validation": "Beschreibung darf nicht länger als 300 Zeichen sein",
       "required": "* Pflichtfeld",
       "yes": "Ja",
       "no": "Keine",
@@ -213,7 +213,7 @@
         "add": "Gateway hinzufügen",
         "add-gateway-connector": "Gateway/Connector hinzufügen",
         "gateway-mode": "Gateway",
-        "connector-mode": "Anschluss",
+        "connector-mode": "Connector",
         "columns": {
           "name": "Name",
           "mode": "Modus",
@@ -334,7 +334,7 @@
         "try-software-update-again": "Erneut versuchen",
         "name": "Name",
         "location": "Verzeichnis",
-        "location-length-validation": "Verzeichnis kann maximal 100 Zeichen lang sein",
+        "location-length-validation": "Verzeichnis darf nicht länger als 100 Zeichen sein",
         "whitespace-location-validation": "Verzeichnis ist erforderlich",
         "name-placeholder-gateway": "Gateway-Name",
         "name-placeholder-connector": "Connector-Name",
@@ -431,7 +431,7 @@
           }
         },
         "gateway": "Gateway",
-        "connector": "Anschluss",
+        "connector": "Connector",
         "mode": "Modus",
         "gateway-mode": "Gateway-Modus: Gateways werden in Kunden-Rechenzentren bereitgestellt und die Datenebene wird durch die Kunden verwaltet. Diese Gateways sind aus dem öffentlichen Internet zugänglich",
         "connector-mode": "Connector-Modus: Die Datenebene wird von Sophos verwaltet. Die Connectors sind nicht aus dem öffentlichen Internet zugänglich. Über Connectors wird die Sophos-Cloud mit internen Ressourcen verknüpft.",
@@ -815,7 +815,7 @@
             "domain": "Name",
             "txtrecord": "TXT-Eintrag",
             "status": "Status",
-            "assigned-connectors": "Anschluss"
+            "assigned-connectors": "Connector"
           },
           "add": "Domäne hinzufügen",
           "verify": "Validieren",
@@ -839,7 +839,10 @@
         "fetch-error": "Fehler beim Abruf der Domänenliste",
         "delete": {
           "message": "Domäne löschen",
-          "success": "Domäne gelöscht"
+          "success": "Domäne gelöscht",
+          "message1": "Sie können die Domäne nicht löschen",
+          "message2": "Sie verwenden diese Domäne für einen Connector",
+          "message3": "Damit Sie die Domäne löschen können, müssen Sie sie aus dem zugeordneten Connector entfernen."
         },
         "verify": {
           "message": "Bevor Sie die Domäne validieren, müssen Sie den TXT-Record zu Ihrem DNS-Server hinzufügen.",
@@ -868,7 +871,7 @@
       "http.request.header.missing": "Erforderlicher HTTP-Header {{0}} fehlt in Anfrage",
       "request.data.format.invalid": "Ungültiges Datenformat in Anfrage erhalten",
       "request.data.uri.invalid": "Ungültige URL in Anfrage erhalten",
-      "name.invalid": "Der Name darf nicht leer sein, darf maximal 100 Zeichen lang sein, darf nur alphanumerische Zeichen und Unterstriche enthalten und darf keine Sonderzeichen enthalten",
+      "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, darf nur alphanumerische Zeichen und Unterstriche enthalten und darf keine Sonderzeichen enthalten",
       "encoding.invalid": "Ungültige Codierung erkannt",
       "exception.resource.creation": "Beim Erstellen der Ressource ist ein Fehler aufgetreten",
       "exception.io": "I/O-Ausnahme am Server aufgetreten",
@@ -882,9 +885,9 @@
       "record.invalid": "{{0}} ist für dieses Konto ungültig",
       "field.validation.errors.message": "Fehler bei der Feldprüfung",
       "gateway.already-deployed": "Image-URL kann nicht erstellt werden, Gateway bereits bereitgestellt",
-      "password.valid": "Das Kennwort muss zwischen 12 und 250 Zeichen lang sein und mindestens eine Ziffer, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten",
+      "password.valid": "Das Kennwort muss zwischen 12 und 250 Zeichen haben und mindestens eine Ziffer, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten",
       "file-size.upload.limit.exceeded": "Maximal erlaubte Größe hochgeladener Dateien für Datei {{0}} überschritten",
-      "description.invalid": "Die Beschreibung darf nicht leer sein und kann maximal 300 Zeichen lang sein",
+      "description.invalid": "Die Beschreibung darf nicht leer sein oder mehr als 300 Zeichen enthalten",
       "application.field.validation.error": "Fehler bei der Anwendungsfeld-Prüfung",
       "application.name.notnull": "Der Anwendungsname muss vorhanden sein",
       "application.icon.upload.failed": "Fehler beim Hochladen des Anwendungssymbols",
@@ -1012,7 +1015,8 @@
       "domain.format.invalid": "Domäne muss gültiges Format haben",
       "customer.unauthorized": "Kunde hat benötigtes Feature-Flag nicht gesetzt",
       "domain.name.unverified": "Domänenname wurde nicht validiert",
-      "domain.name.not.found": "DNS-Name nicht gefunden"
+      "domain.name.not.found": "DNS-Name nicht gefunden",
+      "domain.name.already.configured": "Domänenname ist bereits konfiguriert"
     }
   },
   "ztna-report": {

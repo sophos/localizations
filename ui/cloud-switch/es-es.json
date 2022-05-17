@@ -30,6 +30,7 @@
       "tags": "Etiquetas",
       "linkspeed": "Velocidad/Dúplex",
       "system": "Sistema",
+      "lag": "LAG",
       "link-speed": {
         "10mh": "10M/medio dúplex",
         "10m_h": "10M/medio dúplex",
@@ -398,7 +399,6 @@
           "state-changed-at": "Actualizado hace {{ ago }}",
           "system-time": "Hora del sistema",
           "mac-address": "Dirección MAC"
-
         },
         "reboot": {
           "reboot-dialog-title": "Reiniciar",
@@ -586,7 +586,7 @@
       "completed": "Completado",
       "sync-dialog-text": "Las tareas que se encuentran en estado de 'espera' se transferirán al switch.",
       "details-dialog-title": "Detalles de tarea",
-      "sync-dialog-select-text": "Seleccione los switches que deben sincronizarse",
+      "sync-dialog-select-text": "Las tareas que se encuentran en estado de 'espera' se transferirán al switch; seleccione los switches que necesitan sincronizarse.",
       "sync-dialog-title": "Sincronizar",
       "save-override-warning": "Si los switches ya tienen esta configuración, Sophos Central anulará los parámetros de configuración.",
       "save-uplink-warning": "Si los cambios están relacionados con un puerto de 'vínculo superior' o 'administración', tenga cuidado ya que los cambios pueden sacar al switch de la red.",
@@ -656,6 +656,9 @@
       "lacp": "LACP",
       "static": "Estática",
       "disabled": "Desactivado",
+      "not-set": "No establecido",
+      "ports-required-message": "Se requieren puertos",
+      "ports-min-lag-message": "Se requiere un mínimo de 2 puertos",
       "lacp-settings-button": "Configuración LACP",
       "table-headers": {
         "port-id": "Puerto",
@@ -664,6 +667,7 @@
         "link-speed": "Velocidad/Dúplex",
         "untagged-vlan": "Redes VLAN sin etiqueta",
         "tagged-vlans": "Redes VLAN etiquetadas",
+        "member-ports": "Puertos miembro",
         "inherited": "Origen de configuración"
       },
       "message": {
@@ -672,7 +676,9 @@
         "save-dialog-title": "Confirmar actualización",
         "site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de los puertos y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "switch-save-dialog-text": "El switch recibirá las actualizaciones de los puertos y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
-        "save-checkbox-text": "Sincronizar las opciones de configuración con estos switches inmediatamente"
+        "save-checkbox-text": "Sincronizar las opciones de configuración con estos switches inmediatamente",
+        "lag-site-sync-dialog-text": "{{ count }} switches recibirán las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "lag-switch-sync-dialog-text": "El switch recibirá las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde."
       }
     },
     "remote-debugging": {
@@ -866,7 +872,9 @@
       },
       "message": {
         "save-lacp-settings-success": "Se ha actualizado la configuración LACP",
-        "save-lacp-settings-error": "No se puede actualizar la configuración LACP"
+        "save-lacp-settings-error": "No se puede actualizar la configuración LACP",
+        "switch-sync-dialog-text": "El switch recibirá las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "site-sync-dialog-text": "{{ count }} switches recibirán las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde."
       }
     }
   }
