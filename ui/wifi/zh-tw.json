@@ -1,5 +1,6 @@
 {
   "wifi.test.message": "Test wifi translation message",
+  "network.access-points._dynamic_.state.UPDATE_FAILED": "無法更新",
   "wireless": {
     "main-dashboard-breadcrumb-text": "概觀",
     "common": {
@@ -67,7 +68,8 @@
       "offline": "離線",
       "GHZ_2_4": "2.4 GHz",
       "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
-      "GHZ_5": "5 GHz"
+      "GHZ_5": "5 GHz",
+      "assign": "指派"
     },
     "global": {
       "form": {
@@ -294,6 +296,11 @@
         "forward-ap-logs": "轉發存取點日誌紀錄",
         "forward-ap-message": "如果啟用，您的存取點日誌紀錄將轉寄到 Sophos 技術支援。",
         "remote-login-title": "遠端登入 Sophos 支援的存取點",
+        "remaining-time": "剩餘時間： ",
+        "remaining-time-days": "{{duration}} 天",
+        "remaining-time-hours": "{{duration}} 小時",
+        "remaining-time-minutes": "{{duration}} 分鐘",
+        "remaining-time-seconds": "{{duration}} 秒",
         "expiration-message": "如果啟用，Sophos 技術支持中心將在給定時間內進行遠程訪問。顯示剩餘時間。停用以立即禁用遠程訪問"
       },
       "list": {
@@ -660,7 +667,7 @@
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "同步安全性是為 Sophos APX Series 存取點提供的獨特功能。我們革命性的 Security Heartbeat™ 允許您的端點、行動保護和存取點交換資訊，從而共同運作，有效抵禦來自網路的安全威脅。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
-        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>無法在已開啟訪客網路或管制入口網站的 SSID 上使用同步安全性。",
+        "sync-security-disable-info-captive-portal": "<Sup>&#1645;&#1645;</sup>啟用訪客網路或管制入口網站的 SSID 不支援同步安全性。",
         "green-option-label": "Security Heartbeat 呈綠色",
         "green-option-value": "許可所有資料流",
         "green-option-info": "用戶端已受到防護。",
@@ -821,7 +828,8 @@
             "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">請輸入有效的 URL，包括網路協議 [示例：https://]</span>",
             "custom-url-valid": "重新定位 URL 沒有有效的格式。"
           }
-        }
+        },
+        "captive-portal-capacity": "警告。無法指派多個管制入口網站"
       },
       "access-point-editor": {
         "captive-portal-enabled": "已啟用管制入口網站"
@@ -972,7 +980,13 @@
           "sophos-central-agent": "Sophos Central 代理",
           "upgrade-automatically": "自動升級",
           "general": "一般設定",
-          "radio-configuration": "廣播設定"
+          "radio-configuration": "廣播設定",
+          "assigned-ssids": "已指派 SSID",
+          "assign-ssid": "指派 SSID",
+          "assign-ssids": "指派 SSID",
+          "no-assign-ssid": "目前未指派 SSID。",
+          "confirm-remove": "確認移除",
+          "remove-assign-ssid": "是否移除指派的 SSID？"
         }
       },
       "taskQueue": {
@@ -1003,7 +1017,7 @@
             "reboot": "工作詳情 - 重新啟動",
             "firmwareUpgrade": "工作詳情 - 韌體升級",
             "default": "工作詳細資料",
-            "network" : "網路"
+            "network": "網路"
           }
         }
       },

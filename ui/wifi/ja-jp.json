@@ -1,5 +1,6 @@
 {
   "wifi.test.message": "Wi-Fi 変換メッセージのテスト",
+  "network.access-points._dynamic_.state.UPDATE_FAILED": "更新に失敗しました",
   "wireless": {
     "main-dashboard-breadcrumb-text": "概要",
     "common": {
@@ -67,7 +68,8 @@
       "offline": "オフライン",
       "GHZ_2_4": "2.4GHz",
       "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
-      "GHZ_5": "5GHz"
+      "GHZ_5": "5GHz",
+      "assign": "割り当て"
     },
     "global": {
       "form": {
@@ -294,6 +296,11 @@
         "forward-ap-logs": "アクセスポイントのログを転送する",
         "forward-ap-message": "有効にすると、アクセスポイントのログがソフォスのテクニカルサポートに転送されるようになります。",
         "remote-login-title": "ソフォスのサポートにアクセスポイントへのリモートログインを許可する",
+        "remaining-time": "残り時間: ",
+        "remaining-time-days": "{{duration}}日",
+        "remaining-time-hours": "{{duration}}時間",
+        "remaining-time-minutes": "{{duration}}分",
+        "remaining-time-seconds": "{{duration}}秒",
         "expiration-message": "有効にすると、ソフォスのテクニカルサポートに一時的なリモートアクセスが許可されます。画面に残り時間が表示されます。すぐにリモートアクセスを無効にするには、設定を無効にしてください"
       },
       "list": {
@@ -660,7 +667,7 @@
         "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security は、Sophos APX シリーズで活用できる独自の機能です。ソフォスの革新的テクノロジー「Security Heartbeat™」は、エンドポイント、モバイルプロテクション、およびアクセスポイントが情報を交換して連携することで、ネットワークからのセキュリティ脅威をブロックすることを可能にします。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
-        "sync-security-disable-info-captive-portal": "<sup>&#1645;</sup>ゲストネットワークやキャプティブポータルがオンになっている SSID では、Synchronized Security を使用できません。",
+        "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security は、ゲストネットワーク、もしくはキャプティブポータルが有効な SSID には対応していません。",
         "green-option-label": "セキュリティハードビート: 緑色",
         "green-option-value": "すべてのトラフィックを許可する",
         "green-option-info": "クライアント保護済み。",
@@ -821,7 +828,8 @@
             "custom-url-tooltip-valid": "<span class=\"notranslate text-danger\">ネットワークプロトコル (例: https://) を含む、有効な URL を入力してください。</span>",
             "custom-url-valid": "無効な形式のリダイレクト URL です。"
           }
-        }
+        },
+        "captive-portal-capacity": "警告。複数のキャプティブポータルを割り当てることはできません"
       },
       "access-point-editor": {
         "captive-portal-enabled": "キャプティブポータルが有効になっています"
@@ -972,7 +980,13 @@
           "sophos-central-agent": "Sophos Central エージェント",
           "upgrade-automatically": "自動アップグレード",
           "general": "全般",
-          "radio-configuration": "無線の設定"
+          "radio-configuration": "無線の設定",
+          "assigned-ssids": "割り当て済み SSID",
+          "assign-ssid": "SSID の割り当て",
+          "assign-ssids": "SSID の割り当て",
+          "no-assign-ssid": "現在 SSID は割り当てられていません。",
+          "confirm-remove": "削除の確認",
+          "remove-assign-ssid": "割り当て済みの SSID を削除しますか？"
         }
       },
       "taskQueue": {
@@ -1003,7 +1017,7 @@
             "reboot": "タスクの詳細 - 再起動",
             "firmwareUpgrade": "タスクの詳細 - ファームウェアのアップグレード",
             "default": "タスクの詳細",
-            "network" : "ネットワーク"
+            "network": "ネットワーク"
           }
         }
       },

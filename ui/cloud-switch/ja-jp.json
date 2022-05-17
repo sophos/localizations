@@ -30,6 +30,7 @@
       "tags": "タグ",
       "linkspeed": "速度/二重通信",
       "system": "システム",
+      "lag": "LAG",
       "link-speed": {
         "10mh": "10M/半",
         "10m_h": "10M/半",
@@ -398,7 +399,6 @@
           "state-changed-at": "更新: {{ ago }}",
           "system-time": "システム時刻",
           "mac-address": "MAC アドレス"
-
         },
         "reboot": {
           "reboot-dialog-title": "再起動",
@@ -586,7 +586,7 @@
       "completed": "完了",
       "sync-dialog-text": "「待機中」状態のタスクはスイッチにプッシュされます。",
       "details-dialog-title": "タスクの詳細",
-      "sync-dialog-select-text": "同期する必要があるスイッチを選択します",
+      "sync-dialog-select-text": "「待機中」状態のタスクはスイッチにプッシュされます。同期する必要があるスイッチを選択してください",
       "sync-dialog-title": "同期",
       "save-override-warning": "この設定が既にスイッチにある場合、Sophos Central は設定を上書きします。",
       "save-uplink-warning": "「アップリンク」または「管理」ポートに関連する変更の場合、変更によってスイッチがネットワークから切断される可能性があるので注意してください。",
@@ -656,6 +656,9 @@
       "lacp": "LACP",
       "static": "静的",
       "disabled": "無効",
+      "not-set": "未設定",
+      "ports-required-message": "ポートを指定してください",
+      "ports-min-lag-message": "ポートは最低 2つ指定してください",
       "lacp-settings-button": "LACP の設定",
       "table-headers": {
         "port-id": "ポート",
@@ -664,6 +667,7 @@
         "link-speed": "速度/二重通信",
         "untagged-vlan": "タグなし VLAN",
         "tagged-vlans": "タグ付き VLAN",
+        "member-ports": "メンバーポート",
         "inherited": "設定のソース"
       },
       "message": {
@@ -672,7 +676,9 @@
         "save-dialog-title": "更新の確認",
         "site-save-dialog-text": "{{ count }}個のスイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "switch-save-dialog-text": "スイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
-        "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する"
+        "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する",
+        "lag-site-sync-dialog-text": "{{ count }}個のスイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "lag-switch-sync-dialog-text": "スイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。"
       }
     },
     "remote-debugging": {
@@ -866,7 +872,9 @@
       },
       "message": {
         "save-lacp-settings-success": "LACP の設定が更新されました",
-        "save-lacp-settings-error": "LACP の設定を更新できません"
+        "save-lacp-settings-error": "LACP の設定を更新できません",
+        "switch-sync-dialog-text": "スイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "site-sync-dialog-text": "{{ count }}個のスイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。"
       }
     }
   }
