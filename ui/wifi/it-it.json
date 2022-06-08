@@ -69,7 +69,13 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
       "GHZ_5": "5 GHz",
-      "assign": "Assegna"
+      "assign": "Assegna",
+      "logo": {
+        "upload": {
+          "error": "Non è stato possibile salvare il logo",
+          "success": "File correttamente caricato."
+        }
+      }
     },
     "global": {
       "form": {
@@ -310,6 +316,7 @@
       "config": {
         "customer-unique-id-title": "ID cliente Sophos univoco",
         "firmware-update": {
+          "note": "Questa operazione eseguirà l’upgrade di tutti gli access point legacy (AP5 e precedenti).",
           "title": "Aggiornamento firmware",
           "help-text": "Gli aggiornamenti del firmware possono essere pianificati selezionandone frequenza e orario.",
           "current-version": "Versione corrente",
@@ -456,7 +463,7 @@
         "title": "Wireless - SSID",
         "no-ssid-configured": "Non sono stati aggiunti SSID",
         "no-ssid-configured-help": "Clicca sul pulsante Aggiungi per configurare lo SSID",
-        "pagination": "Da {{ from }} a {{ to }} su {{ of }}",
+        "pagination": "Visualizzazione di {{ from }} - {{ to }} su {{ of }}",
         "create": "Crea",
         "deleteDialogText": "Eliminare gli SSID selezionati?",
         "listLoadingError": "Impossibile caricare l'elenco di SSID",
@@ -671,8 +678,8 @@
         "green-option-label": "Security Heartbeat verde",
         "green-option-value": "Consenti tutto il traffico",
         "green-option-info": "Il client è protetto.",
-        "yellow-option-label": "Security Heartbeat giallo",
-        "yellow-option-value": "Consenti tutto il traffico (avviso)",
+        "yellow-option-label": "Security Heartbeat™ giallo",
+        "yellow-option-value": "Autorizza tutto il traffico (avviso)",
         "yellow-option-info": "È stato rilevato un problema e un client è potenzialmente a rischio. Su un endpoint, si potrebbe trattare di malware non attivo o di un'applicazione potenzialmente indesiderata (PUA). Per i dispositivi mobili, è possibile definire lo stato di Heartbeat per varie violazioni alla conformità.",
         "red-option-label": "Security Heartbeat rosso",
         "red-option-value": "Walled garden",
@@ -702,7 +709,25 @@
         "image-dimension": "* Le dimensioni consigliate per l'immagine sono 200x200 px.",
         "logo-upload": "Carica logo",
         "whitelist-domains-label": "Domini consentiti",
-        "whitelist-domains": "L'accesso ai domini presenti nell'Elenco Consentiti può essere effettuato anche se il Security Heartbeat di un dispositivo wireless è rosso. Oltre ai domini definiti, *.sophos.com è consentito per impostazione predefinita.",
+        "whitelist-domains-note": "L'accesso ai domini presenti nell'Elenco Consentiti può essere effettuato anche se il Security Heartbeat di un dispositivo wireless è rosso. Oltre ai domini definiti, *.sophos.com è consentito per impostazione predefinita.",
+        "whitelist-domains-error": "Il numero di domini supera il limite. Il numero massimo di domini consentito è 16.",
+        "whitelist-domains-info": "Esempio: dominio.com",
+        "whitelist-domains-popup": {
+          "label": "Formati del dominio",
+          "allowed": {
+            "example1": "https://sophos.*/wifi",
+            "example2": "https://*.sophos.com",
+            "example3": "http://sophos.*",
+            "example4": "192.168.0.1",
+            "example5": "sophos.*",
+            "label": "Supportati:"
+          },
+          "not-allowed": {
+            "example1": "192.168.0.*",
+            "example2": "https://sophos.*.com",
+            "label": "Non supportato:"
+          }
+        },
         "hidden-label": "SSID nascosto",
         "hidden-ssid": "Nasconde l'SSID per le scansioni di rete. Gli utenti devono specificare il nome dell'SSID per connettervisi.",
         "hidden-ssid-warning": "Nota. L'SSID nascosto avrà comunque bisogno di essere protetto.",
@@ -1098,25 +1123,32 @@
         }
       },
       "firmware-upgrade": {
-        "header-text-for-site": "Gestisci firmware: {{site}}",
-        "header-text-no-site": "Gestisci firmware",
-        "note-no-site": "Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
-        "note-for-site": "Gestisci firmware per gli access point nel sito: '{{site}}'. Puoi aggiungere o annullare gli upgrade del firmware dalla seguente selezione.",
-        "remove-schedule": "Rimuovi pianificazione",
+        "header-text-for-site": "Upgrade del firmware: {{site}}",
+        "header-text-no-site": "Upgrade del firmware: Pianifica upgrade",
+        "step-one": "Passaggio 1. Seleziona access point",
+        "step-two": "Passaggio 2. Seleziona una pianificazione",
+        "note-no-site": "Puoi selezionare o annullare la pianificazione per l’access point selezionato.",
+        "note-for-site": "L’elenco sottostante mostra solo access point 6 di cui è possibile eseguire l’upgrade ({{count}}/{{total}} access point).",
+        "remove-schedule": "Annulla pianificazione",
         "choose-schedule": "Seleziona una pianificazione",
         "rollback": "Effettua swap del firmware ({{ version }})",
         "week": "Settimana",
         "weekDay": "Giorno feriale",
         "time": "Orario",
-        "scheduled-success-message": "Le modifiche delle pianificazioni del firmware sono state salvate.",
-        "scheduled-failure-message": "Non è stato possibile salvare le modifiche apportate alle pianificazioni del firmware.",
+        "change-title": "Upgrade del firmware pianificato",
+        "change-message": "L’upgrade del firmware è stato pianificato.",
+        "scheduled-failure-message": "Non è stato possibile pianificare l’upgrade del firmware.",
+        "cancel-title": "Upgrade del firmware annullato",
+        "cancel-message": "L’upgrade del firmware è stato annullato.",
+        "upgrade-old-ap": "Eseguire l’upgrade dell’AP legacy?",
+        "back": "Indietro",
         "list": {
           "headers": {
             "name": "Nome",
             "serial-number": "Numero di serie",
-            "version": "Versione",
+            "version": "Versione corrente",
             "to-version": "Alla versione",
-            "chosen-schedule": "Pianificazione selezionata"
+            "chosen-schedule": "Pianificazione attuale"
           },
           "selected-text": "{{selected}} selezionata/e",
           "modified-text": "{{selected}} selezionata/e - {{modified}} modificata/e",
@@ -1132,11 +1164,17 @@
           "weekly": "Ogni settimana",
           "monthly": "Ogni mese",
           "header-text": "Seleziona una pianificazione",
-          "note": "Scegli quando aggiornare gli access point selezionati.",
-          "now-note": "Gli access point connessi riceveranno una notifica per l’upgrade immediato del firmware. Gli access point disconnessi riceveranno la notifica non appena si connettono. Potrebbe essere necessario un riavvio dell’access point. Una volta salvate, le pianificazioni immediate non possono essere modificate. È possibile aggiungere nuove pianificazioni solo dopo aver completato la pianificazione esistente.",
-          "custom-note": "La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario. Il firmware dell’upgrade potrebbe richiedere un riavvio.",
+          "note": "Seleziona quando eseguire l’upgrade degli access point selezionati.",
+          "please-note": "Nota:",
+          "now-note": "<ul><li>Gli access point connessi riceveranno una notifica per l’upgrade immediato del firmware.</li><li>Gli access point disconnessi riceveranno la notifica non appena si connettono.</li><li>Potrebbe essere necessario un riavvio dell’access point.</li><li>Una volta salvate, le pianificazioni immediate non possono essere modificate.</li><li>È possibile aggiungere nuove pianificazioni solo dopo aver completato la pianificazione esistente.</li></ul>",
+          "custom-note": "<ul><li>La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario.</li><li>Il firmware dell’upgrade potrebbe richiedere un riavvio.</li></ul>",
           "daily-schedule": "Ogni giorno alle ore {{time}}",
           "weekly-schedule": "Ogni {{day}} alle ore {{time}}",
+          "default": "Predefinita",
+          "confirm-header": "Annulla pianificazione",
+          "confirm-msg": "Vuoi davvero annullare l’upgrade pianificato? Dopo l’annullamento, verrà impostato sulla pianificazione ricorrente predefinita.",
+          "accept": "Sì, annulla",
+          "reject": "No, non annullare",
           "monthly-schedule": {
             "1": "Ogni 1º {{day}} del mese alle ore {{time}}",
             "2": "Ogni 2º {{day}} del mese alle ore {{time}}",
@@ -1150,13 +1188,17 @@
         }
       },
       "firmware-info": {
-        "update-available": "Sono disponibili nuovi aggiornamenti del firmware.",
+        "update-available": "È disponibile un nuovo aggiornamento del firmware.",
         "upgrade-message": "Puoi applicare questi upgrade immediatamente oppure in una data futura.",
-        "schedule-upgrade": "Pianifica un upgrade",
+        "legacy-schedule-link": "Pianifica upgrade (AP5 e precedenti)",
+        "legacy-upgrade-message": "Puoi applicare questi upgrade immediatamente oppure in una data futura. Questa operazione eseguirà l’upgrade di tutti gli access point legacy (AP5 e precedenti).",
+        "default-schedule-msg": "Se non viene pianificato, l’access point eseguirà l’upgrade secondo la pianificazione ricorrente predefinita (ogni settimana).",
         "cannot-manage": "Potrai scegliere la pianificazione subito dopo il completamento dell'upgrade in corso.",
         "up-to-date": "Il firmware è aggiornato.",
         "up-to-date-message": "Nessun firmware disponibile per il download.",
         "action": {
+          "schedule-upgrade": "Pianifica upgrade",
+          "upgrade-now": "effettuate subito l’upgrade",
           "edit": "Modifica pianificazione",
           "cancel": "Annulla"
         },
@@ -1168,23 +1210,23 @@
         },
         "status": {
           "scheduled": {
-            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) è stato pianificato.",
+            "text": "Il processo di {{ process }} alla versione ({{ version }}) è stato pianificato.",
             "note": {
-              "now": "Il processo di {{ process }} verrà avviato non appena l’access point avrà ricevuto la richiesta.",
-              "date": "Il processo di {{ process }} verrà eseguito quando l’orario dell’access point sarà: {{ schedule }}",
-              "daily": "Il processo di {{ process }} verrà eseguito ogni giorno, quando l’orario dell’access point sarà: {{ timeOfDay }}",
-              "weekly": "Il processo di {{ process }} verrà eseguito ogni {{ weekDay }}, quando l’orario dell’access point sarà: {{ timeOfDay }}",
-              "monthly": "Il processo di {{ process }} verrà eseguito {{ occurrenceInMonth }}, quando l’orario dell’access point sarà: {{ timeOfDay }}"
+              "now": "L’upgrade verrà avviato non appena l’access point riceve la richiesta.",
+              "date": "L’upgrade verrà eseguito quando l’orario dell’access point sarà: {{ schedule }}",
+              "daily": "L’upgrade verrà eseguito ogni giorno, quando l’orario dell’access point sarà: {{ timeOfDay }}",
+              "weekly": "L’upgrade verrà eseguito ogni {{ weekDay }}, quando l’orario dell’access point sarà: {{ timeOfDay }}",
+              "monthly": "L’upgrade verrà eseguito {{ occurrenceInMonth }}, quando l’orario dell’access point sarà: {{ timeOfDay }}"
             }
           },
           "updating": {
-            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) è in corso.",
+            "text": "{{ process }} deve essere in esecuzione.",
             "note": {
-              "now": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
-              "date": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
-              "daily": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
-              "weekly": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo.",
-              "monthly": "È in corso l'applicazione delle modifiche. Questa operazione potrebbe richiedere diverso tempo."
+              "now": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
+              "date": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
+              "daily": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
+              "weekly": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
+              "monthly": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale."
             }
           },
           "success": {
@@ -1218,13 +1260,13 @@
             }
           },
           "failure": {
-            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) non riuscito.",
+            "text": "Processo di {{ process }} non riuscito.",
             "note": {
-              "now": "{{ reason }}",
-              "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
-              "daily": "Pianificato ogni giorno alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
-              "weekly": "Pianificato ogni {{ weekDay }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",
-              "monthly": "Pianificato {{ occurrenceInMonth }} alle ore {{ timeOfDay }}, il processo di {{ process }} è stato richiesto in data {{ date }}. {{ reason }}"
+              "now": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
+              "date": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
+              "daily": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
+              "weekly": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
+              "monthly": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione."
             }
           },
           "cancel-failure": {
@@ -1239,7 +1281,7 @@
           }
         },
         "process": {
-          "scheduled-upgrade": "Upgrade",
+          "scheduled-upgrade": "Upgrade del firmware",
           "auto-upgrade": "Upgrade automatico",
           "rollback": "Effettua swap del firmware"
         },

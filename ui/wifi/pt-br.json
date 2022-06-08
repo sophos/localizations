@@ -69,7 +69,13 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
       "GHZ_5": "5 GHz",
-      "assign": "Atribuir"
+      "assign": "Atribuir",
+      "logo": {
+        "upload": {
+          "error": "Falha ao salvar logotipo",
+          "success": "O arquivo foi carregado com sucesso."
+        }
+      }
     },
     "global": {
       "form": {
@@ -310,6 +316,7 @@
       "config": {
         "customer-unique-id-title": "ID exclusivo de cliente Sophos",
         "firmware-update": {
+          "note": "Isso atualizará todos os pontos de acesso legados (AP5 e inferiores).",
           "title": "Atualização de firmware",
           "help-text": "Você pode agendar as atualizações de firmware selecionando a frequência e hora.",
           "current-version": "Versão atual",
@@ -456,7 +463,7 @@
         "title": "Sem Fio - SSIDs",
         "no-ssid-configured": "Você não tem nenhum SSID adicionado",
         "no-ssid-configured-help": "Clique no botão Adicionar para configurar o SSID",
-        "pagination": "{{ from }} a {{ to }} de {{ of }}",
+        "pagination": "Exibindo de {{ from }} a {{ to }} de {{ of }}",
         "create": "Criar",
         "deleteDialogText": "Deseja deletar os SSIDs selecionados?",
         "listLoadingError": "Não foi possível carregar a lista de SSIDs",
@@ -671,8 +678,8 @@
         "green-option-label": "Security Heartbeat verde",
         "green-option-value": "Permitir todo o tráfego",
         "green-option-info": "O cliente está protegido.",
-        "yellow-option-label": "Security Heartbeat amarelo",
-        "yellow-option-value": "Permitir todo o tráfego (aviso)",
+        "yellow-option-label": "Security Heartbeat™ amarelo",
+        "yellow-option-value": "Permitir todos os tráfegos (advertência)",
         "yellow-option-info": "Foi detectado um problema e um cliente está potencialmente em risco. No endpoint, poderia ser um malware inativo ou um aplicativo potencialmente indesejado (PUA). Para dispositivos móveis, você pode definir o status de pulsação de segurança para várias violações de conformidade.",
         "red-option-label": "Security Heartbeat vermelho",
         "red-option-value": "Jardim Murado",
@@ -702,7 +709,25 @@
         "image-dimension": "* A dimensão recomendada da imagem é 200x200 px.",
         "logo-upload": "Carregar logotipo",
         "whitelist-domains-label": "Domínios permitidos",
-        "whitelist-domains": "Domínios na lista de permissão podem ser acessados mesmo que o Security Heartbeat de um dispositivo sem fio esteja vermelho. Além dos domínios que você define, *.sophos.com está na lista de permissão, por padrão.",
+        "whitelist-domains-note": "Domínios na lista de permissão podem ser acessados mesmo que o Security Heartbeat de um dispositivo sem fio esteja vermelho. Além dos domínios que você define, *.sophos.com está na lista de permissão, por padrão.",
+        "whitelist-domains-error": "O número de domínios ultrapassa o limite. O número máximo de domínios permitidos é 16.",
+        "whitelist-domains-info": "Exemplo: seudomínio.com",
+        "whitelist-domains-popup": {
+          "label": "Formatos de domínio",
+          "allowed": {
+            "example1": "https://sophos.*/wifi",
+            "example2": "https://*.sophos.com",
+            "example3": "http://sophos.*",
+            "example4": "192.168.0.1",
+            "example5": "sophos.*",
+            "label": "Suportado:"
+          },
+          "not-allowed": {
+            "example1": "192.168.0.*",
+            "example2": "https://sophos.*.com",
+            "label": "Não compatível:"
+          }
+        },
         "hidden-label": "SSID oculto",
         "hidden-ssid": "Oculta o SSID nas varreduras de rede. Os usuários devem especificar o nome do SSID para conexão.",
         "hidden-ssid-warning": "Observação: Você ainda precisará proteger o SSID oculto.",
@@ -1098,25 +1123,32 @@
         }
       },
       "firmware-upgrade": {
-        "header-text-for-site": "Gerenciar firmware: {{site}}",
-        "header-text-no-site": "Gerenciar firmware",
-        "note-no-site": "Você pode adicionar ou cancelar upgrades de firmware na seleção abaixo.",
-        "note-for-site": "Gerenciar firmware para pontos de acesso no site: '{{site}}'. Você pode adicionar ou cancelar upgrades de firmware na seleção abaixo.",
-        "remove-schedule": "Remover agenda",
+        "header-text-for-site": "Upgrade de firmware: {{site}}",
+        "header-text-no-site": "Upgrade de firmware: Agendar upgrade",
+        "step-one": "Passo 1: Selecione pontos de acesso",
+        "step-two": "Passo 2: Escolha uma agenda",
+        "note-no-site": "Você pode escolher ou cancelar o agendamento do ponto de acesso selecionado.",
+        "note-for-site": "A lista abaixo mostra apenas os pontos de acesso 6, que podem ser atualizados ({{count}}/{{total}} pontos de acesso).",
+        "remove-schedule": "Cancelar agendamento",
         "choose-schedule": "Escolher agenda",
         "rollback": "Troca de firmware ({{ version }})",
         "week": "Semana",
         "weekDay": "Dia útil",
         "time": "Hora",
-        "scheduled-success-message": "Mudanças no cronograma do firmware foram salvas com sucesso.",
-        "scheduled-failure-message": "Falha ao salvar as alterações feitas ao cronograma do firmware.",
+        "change-title": "Upgrade de firmware agendado",
+        "change-message": "O upgrade do firmware foi agendado.",
+        "scheduled-failure-message": "Falha ao agendar upgrade do firmware.",
+        "cancel-title": "Upgrade de firmware cancelado",
+        "cancel-message": "O upgrade do firmware foi cancelado.",
+        "upgrade-old-ap": "Atualizar o AP mais antigo?",
+        "back": "Voltar",
         "list": {
           "headers": {
             "name": "Nome",
             "serial-number": "Número de série",
-            "version": "Versão",
+            "version": "Versão atual",
             "to-version": "Para versão",
-            "chosen-schedule": "Agenda programada"
+            "chosen-schedule": "Agenda atual"
           },
           "selected-text": "{{selected}} selecionada(s)",
           "modified-text": "{{selected}} selecionada(s) - {{modified}} modificada(s)",
@@ -1132,11 +1164,17 @@
           "weekly": "Semanal",
           "monthly": "Mensal",
           "header-text": "Escolha uma agenda",
-          "note": "Escolha quando atualizar para os pontos de acesso selecionados.",
-          "now-note": "Os pontos de acesso conectados serão notificados para realizar o upgrade do firmware imediatamente. Os pontos de acesso desconectados serão notificados assim que se conectarem. Isso pode exigir a reinicialização do ponto de acesso. Os agendamentos imediatos não podem ser modificados depois que são salvos. Novas agendas podem ser adicionadas somente depois da conclusão da agenda existente.",
-          "custom-note": "A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário. O upgrade do firmware pode exigir a reinicialização.",
+          "note": "Selecione quando fazer o upgrade dos pontos de acesso selecionados.",
+          "please-note": "Observação:",
+          "now-note": "<ul><li>Os pontos de acesso conectados serão notificados para realizar o upgrade do firmware imediatamente.</li><li>Os pontos de acesso desconectados serão notificados assim que se conectarem.</li><li>Isso pode exigir a reinicialização do ponto de acesso.</li><li>Os agendamentos imediatos não podem ser modificados depois que são salvos.</li><li>Novas agendas podem ser adicionadas somente depois da conclusão do agendamento existente.</li></ul>",
+          "custom-note": "<ul><li>A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário.</li><li>O upgrade do firmware pode exigir a reinicialização.</li></ul>",
           "daily-schedule": "Diariamente às {{time}}",
           "weekly-schedule": "Todo {{day}} às {{time}}",
+          "default": "Default",
+          "confirm-header": "Cancelar agendamento",
+          "confirm-msg": "Tem certeza de que deseja cancelar o upgrade agendado? Após o cancelamento, ele será configurado seguindo a agenda recorrente padrão.",
+          "accept": "Sim, cancelar",
+          "reject": "Não, não cancelar",
           "monthly-schedule": {
             "1": "Toda 1ª {{day}} do mês às {{time}}",
             "2": "Toda 2ª {{day}} do mês às {{time}}",
@@ -1150,13 +1188,17 @@
         }
       },
       "firmware-info": {
-        "update-available": "Há novas atualizações de firmware disponíveis.",
+        "update-available": "Um novo upgrade de firmware está disponível.",
         "upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente.",
-        "schedule-upgrade": "Agendar um upgrade",
+        "legacy-schedule-link": "Agendar upgrade (AP5 e inferiores)",
+        "legacy-upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente. Isso atualizará todos os pontos de acesso legados (AP5 e inferiores).",
+        "default-schedule-msg": "Se malsucedido, o upgrade do ponto de acesso será realizado seguindo a agenda recorrente padrão (semanal).",
         "cannot-manage": "Você pode optar por agendar, assim que o upgrade em andamento estiver concluído.",
         "up-to-date": "O firmware está atualizado.",
         "up-to-date-message": "Não há firmwares disponíveis para download.",
         "action": {
+          "schedule-upgrade": "Agendar upgrade",
+          "upgrade-now": "faça o upgrade agora",
           "edit": "Alterar cronograma",
           "cancel": "Cancelar"
         },
@@ -1168,23 +1210,23 @@
         },
         "status": {
           "scheduled": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi agendado.",
+            "text": "O processo de {{ process }} para a versão {{ version }} foi agendado.",
             "note": {
-              "now": "O processo de {{ process }} começará logo após o ponto de acesso receber a solicitação.",
-              "date": "O processo de {{ process }} acontecerá quando o horário do ponto de acesso for {{ schedule }}",
-              "daily": "O processo de {{ process }} acontecerá diariamente quando o horário do ponto de acesso for {{ timeOfDay }}",
-              "weekly": "O processo de {{ process }} acontecerá toda {{ weekDay }} quando o horário do ponto de acesso for {{ timeOfDay }}",
-              "monthly": "O processo de {{ process }} acontecerá {{ occurrenceInMonth }} quando o horário do ponto de acesso for {{ timeOfDay }}"
+              "now": "O upgrade começará logo após o ponto de acesso receber a solicitação.",
+              "date": "O upgrade acontecerá às {{ schedule }} no horário do ponto de acesso",
+              "daily": "O upgrade acontecerá diariamente às {{ timeOfDay }} no horário do ponto de acesso",
+              "weekly": "O upgrade acontecerá toda {{ weekDay }} às {{ timeOfDay }} no horário do ponto de acesso",
+              "monthly": "O upgrade acontecerá em {{ occurrenceInMonth }} às {{ timeOfDay }} no horário do ponto de acesso"
             }
           },
           "updating": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) está em andamento.",
+            "text": "O processo de {{ process }} está em andamento.",
             "note": {
-              "now": "As alterações atuais estão sendo aplicadas. Isso poderá demorar um pouco.",
-              "date": "As alterações atuais estão sendo aplicadas. Isso poderá demorar um pouco.",
-              "daily": "As alterações atuais estão sendo aplicadas. Isso poderá demorar um pouco.",
-              "weekly": "As alterações atuais estão sendo aplicadas. Isso poderá demorar um pouco.",
-              "monthly": "As alterações atuais estão sendo aplicadas. Isso poderá demorar um pouco."
+              "now": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
+              "date": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
+              "daily": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
+              "weekly": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
+              "monthly": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído."
             }
           },
           "success": {
@@ -1218,13 +1260,13 @@
             }
           },
           "failure": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) falhou.",
+            "text": "Falha no processo de {{ process }}.",
             "note": {
-              "now": "{{ reason }}",
-              "date": "Agendado para {{ schedule }}, o processo de {{ process }} foi solicitado em {{ date }}. {{ reason }}",
-              "daily": "Agendado diariamente para as {{ timeOfDay }}, o processo de {{ process }} foi solicitado em {{ date }}. {{ reason }}",
-              "weekly": "Agendado para toda {{ weekDay }} às {{ timeOfDay }}, o processo de {{ process }} foi solicitado em {{ date }}. {{ reason }}",
-              "monthly": "Agendado para {{ occurrenceInMonth }} às {{ timeOfDay }}, o processo de {{ process }} foi solicitado em {{ date }}. {{ reason }}"
+              "now": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
+              "date": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
+              "daily": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
+              "weekly": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
+              "monthly": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento."
             }
           },
           "cancel-failure": {
@@ -1239,7 +1281,7 @@
           }
         },
         "process": {
-          "scheduled-upgrade": "Upgrade",
+          "scheduled-upgrade": "Upgrade de firmware",
           "auto-upgrade": "Upgrade automático",
           "rollback": "Troca de firmware"
         },

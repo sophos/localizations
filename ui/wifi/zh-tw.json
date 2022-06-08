@@ -69,7 +69,13 @@
       "GHZ_2_4": "2.4 GHz",
       "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
       "GHZ_5": "5 GHz",
-      "assign": "指派"
+      "assign": "指派",
+      "logo": {
+        "upload": {
+          "error": "標誌儲存失敗",
+          "success": "檔案成功上傳。"
+        }
+      }
     },
     "global": {
       "form": {
@@ -310,6 +316,7 @@
       "config": {
         "customer-unique-id-title": "Sophos 唯一客戶 ID",
         "firmware-update": {
+          "note": "這將升級所有舊的存取點（AP5 和更低）。",
           "title": "韌體更新",
           "help-text": "您可透過選取頻率和時間來安排韌體更新。",
           "current-version": "目前版本",
@@ -456,7 +463,7 @@
         "title": "無線 - SSID",
         "no-ssid-configured": "您沒有新增任何 SSID",
         "no-ssid-configured-help": "按一下「新增」按鈕以設定 SSID",
-        "pagination": "{{ from }} 至 {{ to }} / {{ of }}",
+        "pagination": "顯示 {{ of }} 的 {{ from }} - {{ to }}",
         "create": "建立",
         "deleteDialogText": "請問您要刪除選定的 SSID 嗎？",
         "listLoadingError": "無法載入 SSID 清單",
@@ -671,8 +678,8 @@
         "green-option-label": "Security Heartbeat 呈綠色",
         "green-option-value": "許可所有資料流",
         "green-option-info": "用戶端已受到防護。",
-        "yellow-option-label": "Security Heartbeat 呈黃色",
-        "yellow-option-value": "允許所有資料流（警告）",
+        "yellow-option-label": "Security Heartbeat™ 為黃色",
+        "yellow-option-value": "允許所有資料流　(警告)",
         "yellow-option-info": "偵測到一個問題，用戶端可能有風險。這可能是端點上的非使用惡意軟體或可能不需要的應用程式 (PUA)。對於行動裝置，您可以為多項合規性違規定義活動訊號狀態。",
         "red-option-label": "Security Heartbeat 呈紅色",
         "red-option-value": "圍牆花園",
@@ -702,7 +709,25 @@
         "image-dimension": "* 建議影像大小為 200x200 px。",
         "logo-upload": "上傳標誌",
         "whitelist-domains-label": "允許的網域",
-        "whitelist-domains": "即使無線裝置的安全活動訊號為紅色，也可存取允許清單網域。除了您定義的網域之外，*.sophos.com 預設為允許。",
+        "whitelist-domains-note": "即使無線裝置的安全活動訊號為紅色，也可存取允許清單網域。除了您定義的網域之外，*.sophos.com 預設為允許。",
+        "whitelist-domains-error": "網域數目超過限制。網域數目上限為 16。",
+        "whitelist-domains-info": "範例：yourdomain.com",
+        "whitelist-domains-popup": {
+          "label": "網域格式",
+          "allowed": {
+            "example1": "https://sophos.*/wifi",
+            "example2": "https://*.sophos.com",
+            "example3": "http://sophos.*",
+            "example4": "192.168.0.1",
+            "example5": "sophos.*",
+            "label": "支援："
+          },
+          "not-allowed": {
+            "example1": "192.168.0.*",
+            "example2": "https://sophos.*.com",
+            "label": "不受支援："
+          }
+        },
         "hidden-label": "隱藏 SSID",
         "hidden-ssid": "隱藏 SSID 以進行網路掃描。使用者須指定 SSID 名稱以連接至該 SSID。",
         "hidden-ssid-warning": "注意：您仍然需要保護隱藏的 SSID。",
@@ -1098,25 +1123,32 @@
         }
       },
       "firmware-upgrade": {
-        "header-text-for-site": "管理韌體：{{site}}",
-        "header-text-no-site": "管理韌體",
-        "note-no-site": "您可以從以下選項新增或取消韌體升級。",
-        "note-for-site": "管理網站內存取點的韌體：'{{site}}'.您可以從以下選項新增或取消韌體升級。",
-        "remove-schedule": "移除排程",
+        "header-text-for-site": "韌體升級：{{site}}",
+        "header-text-no-site": "韌體升級：排程升級",
+        "step-one": "步驟 1：選取存取點",
+        "step-two": "步驟 2：選擇排程",
+        "note-no-site": "您可以選擇或取消所選存取點的排程。",
+        "note-for-site": "以下清單僅顯示可升級的存取點 6（{{count}}/{{total}} 存取點）。",
+        "remove-schedule": "取消排程",
         "choose-schedule": "選擇排程",
         "rollback": "切換韌體 ({{ version }})",
         "week": "週",
         "weekDay": "平日",
         "time": "時間",
-        "scheduled-success-message": "已成功儲存針對韌體排程的變更。",
-        "scheduled-failure-message": "無法儲存針對韌體排程的變更。",
+        "change-title": "韌體升級已排定",
+        "change-message": "韌體升級已排定。",
+        "scheduled-failure-message": "未能安排韌體升級。",
+        "cancel-title": "韌體升級已取消",
+        "cancel-message": "韌體升級已取消。",
+        "upgrade-old-ap": "升級較舊的 AP？",
+        "back": "上一頁",
         "list": {
           "headers": {
             "name": "名稱",
             "serial-number": "序號",
-            "version": "版本",
+            "version": "目前版本",
             "to-version": "至版本",
-            "chosen-schedule": "所選排程"
+            "chosen-schedule": "目前排程"
           },
           "selected-text": "已選 {{selected}}",
           "modified-text": "已選 {{selected}} - 已修改 {{modified}}",
@@ -1132,11 +1164,17 @@
           "weekly": "每週",
           "monthly": "每月",
           "header-text": "選擇排程",
-          "note": "選擇所選存取點的更新時間。",
-          "now-note": "連線的存取點將收到立即升級韌體的通知。斷開連線的存取點將在連線後很快收到通知。這可能需要重新啟動存取點。即時排程一旦儲存，就不可修改。只有完成當前排程後才可新增新排程。",
-          "custom-note": "選擇的排程將遵守存取點的本地時間，而與時區無關。升級韌體可能需要重新啟動。",
+          "note": "請選取何時升級所選的存取點。",
+          "please-note": "請注意：",
+          "now-note": "<ul><li>連線的存取點將收到通知，立即升級韌體。</li><li>連線斷開的存取點將在連線之後很快收到通知。</li><li>這可能需要重新啟動存取點。</li><li>即時排程一旦儲存，無法修改。</li><li>新排程只能在現有排程完成之後才能新增。</li></ul>",
+          "custom-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li></ul>",
           "daily-schedule": "每日於 {{time}}",
           "weekly-schedule": "每 {{day}} {{time}} 時",
+          "default": "預設值",
+          "confirm-header": "取消排程",
+          "confirm-msg": "確定要取消排定的升級嗎？取消後，它將設定為預設的定期排程。",
+          "accept": "是，請取消",
+          "reject": "否，不要取消",
           "monthly-schedule": {
             "1": "每個月第 1 {{day}} 的 {{time}}",
             "2": "每個月第 2 {{day}} 的 {{time}}",
@@ -1150,13 +1188,17 @@
         }
       },
       "firmware-info": {
-        "update-available": "新韌體更新現已可用。",
+        "update-available": "新韌體升級可用。",
         "upgrade-message": "您可以立即或在將來套用這些升級。",
-        "schedule-upgrade": "排程升級",
+        "legacy-schedule-link": "安排升級（AP5 及更低）",
+        "legacy-upgrade-message": "您可以立即或在將來套用這些升級。這將升級所有舊的存取點（AP5 和更低）。",
+        "default-schedule-msg": "如果未安排，存取點將按照預設的定期排程進行升級（每週一次）。",
         "cannot-manage": "正在進行的升級完成後，您可選擇排程。",
         "up-to-date": "韌體已為最新。",
         "up-to-date-message": "沒有可下載的韌體。",
         "action": {
+          "schedule-upgrade": "排程升級",
+          "upgrade-now": "立即升級",
           "edit": "變更排程",
           "cancel": "取消"
         },
@@ -1168,23 +1210,23 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已排程。",
+            "text": "{{ process }} 至版本 {{ version }} 已安排。",
             "note": {
-              "now": "存取點收到請求後，{{ process }} 將立即啟動。",
-              "date": "存取點的時間為 {{ schedule }} 時，將發生 {{ process }}",
-              "daily": "存取點的時間為 {{ timeOfDay }} 時，將發生 {{ process }}",
-              "weekly": "存取點的時間為 {{ timeOfDay }} 時，將於每周 {{ weekDay }} 發生 {{ process }}",
-              "monthly": "存取點的時間為 {{ timeOfDay }}，將於 {{ occurrenceInMonth }} 發生 {{ process }}"
+              "now": "存取點收到請求後升級將立即開始。",
+              "date": "存取點的時間為 {{ schedule }} 時，升級將開始",
+              "daily": "每日存取點的時間為 {{ timeOfDay }} 時，升級將開始",
+              "weekly": "每 {{ weekDay }} 存取點的時間為 {{ timeOfDay }} 時，升級將開始",
+              "monthly": "存取點的時間為 {{ timeOfDay }} 時，升級將於 {{ occurrenceInMonth }} 開始"
             }
           },
           "updating": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 正在進行中。",
+            "text": "{{ process }} 正在執行。",
             "note": {
-              "now": "當前正在套用變更。此項操作可能需要一些時間。",
-              "date": "當前正在套用變更。此項操作可能需要一些時間。",
-              "daily": "當前正在套用變更。此項操作可能需要一些時間。",
-              "weekly": "當前正在套用變更。此項操作可能需要一些時間。",
-              "monthly": "當前正在套用變更。此項操作可能需要一些時間。"
+              "now": "韌體正在升級。您可以在目前升級完成後安排升級。",
+              "date": "韌體正在升級。您可以在目前升級完成後安排升級。",
+              "daily": "韌體正在升級。您可以在目前升級完成後安排升級。",
+              "weekly": "韌體正在升級。您可以在目前升級完成後安排升級。",
+              "monthly": "韌體正在升級。您可以在目前升級完成後安排升級。"
             }
           },
           "success": {
@@ -1218,13 +1260,13 @@
             }
           },
           "failure": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 失敗。",
+            "text": "{{ process }} 已失敗。",
             "note": {
-              "now": "{{ reason }}",
-              "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
-              "daily": "已排程每日在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
-              "weekly": "已排程每 {{ weekDay }} 在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",
-              "monthly": "已排程 {{ occurrenceInMonth }} 時在 {{ timeOfDay }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}"
+              "now": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
+              "date": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
+              "daily": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
+              "weekly": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
+              "monthly": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。"
             }
           },
           "cancel-failure": {
@@ -1239,7 +1281,7 @@
           }
         },
         "process": {
-          "scheduled-upgrade": "升級",
+          "scheduled-upgrade": "韌體升級",
           "auto-upgrade": "自動升級",
           "rollback": "切換韌體"
         },
