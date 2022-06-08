@@ -69,7 +69,13 @@
       "GHZ_2_4": "2.4GHz",
       "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
       "GHZ_5": "5분",
-      "assign": "할당"
+      "assign": "할당",
+      "logo": {
+        "upload": {
+          "error": "로고를 저장하지 못했습니다.",
+          "success": "파일이 업로드되었습니다."
+        }
+      }
     },
     "global": {
       "form": {
@@ -310,6 +316,7 @@
       "config": {
         "customer-unique-id-title": "Sophos 고유 고객 ID",
         "firmware-update": {
+          "note": "모든 레거시 액세스 포인트(AP5 이하)를 업그레이드합니다.",
           "title": "펌웨어 업데이트",
           "help-text": "주기와 시간을 선택해 펌웨어 업데이트를 예약할 수 있습니다.",
           "current-version": "현재 버전",
@@ -456,7 +463,7 @@
         "title": "무선 - SSID",
         "no-ssid-configured": "추가된 SSID가 없습니다.",
         "no-ssid-configured-help": "추가 버튼을 클릭하여 SSID를 구성합니다.",
-        "pagination": "{{ of }}의 {{ from }}부터 {{ to }}까지",
+        "pagination": "{{ of }} 중에 {{ from }}~{{ to }} 표시",
         "create": "만들기",
         "deleteDialogText": "선택한 SSID를 삭제하시겠습니까?",
         "listLoadingError": "SSID 목록을 로드할 수 없습니다.",
@@ -671,7 +678,7 @@
         "green-option-label": "Security Heartbeat 녹색",
         "green-option-value": "모든 트래픽 허용",
         "green-option-info": "클라이언트가 보호됨.",
-        "yellow-option-label": "Security Heartbeat 노란색",
+        "yellow-option-label": "Security Heartbeat™ 옐로",
         "yellow-option-value": "모든 트래픽 허용(경고)",
         "yellow-option-info": "문제가 탐지되어 클라이언트가 위험에 노출될 수 있습니다. 엔드포인트에서 이것은 비활성 맬웨어 또는 PUA(사용자 동의 없이 설치된 응용 프로그램)일 수 있습니다. 모바일 장치의 경우 다양한 규정 준수 위반에 대한 하트비트 상태를 정의할 수 있습니다.",
         "red-option-label": "Security Heartbeat 빨간색",
@@ -702,7 +709,25 @@
         "image-dimension": "* 권장되는 이미지 치수는 200x200px입니다.",
         "logo-upload": "로고 업로드",
         "whitelist-domains-label": "허용된 도메인",
-        "whitelist-domains": "무선 장치의 Security Heartbeat가 빨간색인 경우에도 허용 목록 도메인에 액세스할 수 있습니다. 사용자가 정의하는 도메인 외에도 *.sophos.com은 기본적으로 허용됩니다.",
+        "whitelist-domains-note": "무선 장치의 Security Heartbeat가 빨간색인 경우에도 허용 목록 도메인에 액세스할 수 있습니다. 사용자가 정의하는 도메인 외에도 *.sophos.com은 기본적으로 허용됩니다.",
+        "whitelist-domains-error": "도메인 수가 한도를 초과합니다. 허용되는 최대 도메인 수는 16개입니다.",
+        "whitelist-domains-info": "예: yourdomain.com",
+        "whitelist-domains-popup": {
+          "label": "도메인 형식",
+          "allowed": {
+            "example1": "https://sophos.*/wifi",
+            "example2": "https://*.sophos.com",
+            "example3": "http://sophos.*",
+            "example4": "192.168.0.1",
+            "example5": "sophos.*",
+            "label": "지원됨:"
+          },
+          "not-allowed": {
+            "example1": "192.168.0.*",
+            "example2": "https://sophos.*.com",
+            "label": "지원되지 않음:"
+          }
+        },
         "hidden-label": "숨겨진 SSID",
         "hidden-ssid": "네트워크 스캔에 SSID를 숨깁니다. 사용자는 연결할 SSID 이름을 지정해야 합니다.",
         "hidden-ssid-warning": "참고: 숨겨진 SSID를 계속 보호해야 합니다.",
@@ -1098,25 +1123,32 @@
         }
       },
       "firmware-upgrade": {
-        "header-text-for-site": "펌웨어 관리: {{site}}",
-        "header-text-no-site": "펌웨어 관리",
-        "note-no-site": "아래 선택 항목에서 펌웨어 업그레이드를 추가하거나 취소할 수 있습니다.",
-        "note-for-site": "사이트의 액세스 포인트용 펌웨어 관리: '{{site}}'. 아래 선택 항목에서 펌웨어 업그레이드를 추가하거나 취소할 수 있습니다.",
-        "remove-schedule": "일정 제거",
+        "header-text-for-site": "펌웨어 업그레이드: {{site}}",
+        "header-text-no-site": "펌웨어 업그레이드: 업그레이드 예약",
+        "step-one": "1단계: 액세스 포인트 선택",
+        "step-two": "2단계: 예약 선택",
+        "note-no-site": "선택한 액세스 포인트의 일정을 선택하거나 취소할 수 있습니다.",
+        "note-for-site": "아래 목록은 업그레이드 가능한 액세스 포인트 6개만 보여줍니다({{count}}/{{total}} 액세스 포인트).",
+        "remove-schedule": "예약 일정 취소",
         "choose-schedule": "일정 선택",
         "rollback": "펌웨어 교체({{ version }})",
         "week": "주",
         "weekDay": "평일",
         "time": "시간",
-        "scheduled-success-message": "펌웨어 일정에 대한 변경 사항이 성공적으로 저장되었습니다.",
-        "scheduled-failure-message": "펌웨어 일정에 대한 변경 사항을 저장하지 못했습니다.",
+        "change-title": "펌웨어 업그레이드가 예약됨",
+        "change-message": "펌웨어 업그레이드가 예약되었습니다.",
+        "scheduled-failure-message": "펌웨어 업그레이드를 예약하지 못했습니다.",
+        "cancel-title": "펌웨어 업그레이드 취소됨",
+        "cancel-message": "펌웨어 업그레이드가 취소되었습니다.",
+        "upgrade-old-ap": "오래된 AP를 업그레이드하시겠습니까?",
+        "back": "뒤로",
         "list": {
           "headers": {
             "name": "이름",
             "serial-number": "일련 번호",
-            "version": "버전",
+            "version": "현재 버전",
             "to-version": "끝 버전",
-            "chosen-schedule": "선택한 예약"
+            "chosen-schedule": "현재 예약"
           },
           "selected-text": "{{selected}} 선택됨",
           "modified-text": "{{selected}} 선택됨 - {{modified}} 수정됨",
@@ -1132,11 +1164,17 @@
           "weekly": "매주",
           "monthly": "매월",
           "header-text": "예약 선택",
-          "note": "선택한 액세스 포인트에 대한 업데이트 시기를 선택합니다.",
-          "now-note": "연결된 액세스 포인트는 펌웨어를 즉시 업그레이드하라는 알림을 받습니다. 연결 해제된 액세스 포인트는 연결 직후 알림을 받습니다. 이때 액세스 포인트를 다시 시작하게 될 수 있습니다. 즉각적인 예약은 저장하고 나면 수정할 수 없습니다. 새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.",
-          "custom-note": "선택한 일정은 표준 시간대에 관계없이 액세스 포인트의 로컬 시간을 따릅니다. 업그레이드를 하면 다시 시작하게 될 수 있습니다.",
+          "note": "선택한 액세스 포인트를 업그레이드할 시점을 선택하십시오.",
+          "please-note": "참고:",
+          "now-note": "<ul><li>연결된 액세스 포인트는 펌웨어를 즉시 업그레이드하라는 알림을 받습니다.</li><li>연결 해제된 액세스 포인트는 연결 직후 알림을 받습니다.</li><li>이때 액세스 포인트를 다시 시작하게 될 수 있습니다.</li><li>즉각적인 예약은 저장하고 나면 수정할 수 없습니다.</li><li>새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.</li></ul>",
+          "custom-note": "<ul><li>선택한 일정은 시간대에 관계없이 액세스 포인트의 로컬 시간을 따릅니다.</li><li>펌웨어를 업그레이드하면 다시 시작해야 할 수 있습니다.</li></ul>",
           "daily-schedule": "매일 {{time}}시",
           "weekly-schedule": "{{day}}일마다 {{time}}",
+          "default": "기본값",
+          "confirm-header": "예약 일정 취소",
+          "confirm-msg": "예약된 업그레이드를 취소하시겠습니까? 취소 후 기본 반복 일정으로 설정됩니다.",
+          "accept": "예, 취소합니다.",
+          "reject": "아니요, 취소하지 않습니다.",
           "monthly-schedule": {
             "1": "매월 첫 번째 {{day}}, {{time}}시",
             "2": "매월 두 번째 {{day}}, {{time}}시",
@@ -1152,11 +1190,15 @@
       "firmware-info": {
         "update-available": "새 펌웨어 업데이트를 사용할 수 있습니다.",
         "upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다.",
-        "schedule-upgrade": "업그레이드 예약",
+        "legacy-schedule-link": "업그레이드 예약(AP5 이하)",
+        "legacy-upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다. 모든 레거시 액세스 포인트(AP5 이하)를 업그레이드합니다.",
+        "default-schedule-msg": "예약되지 않은 경우, 액세스 포인트는 기본 반복 일정(매주)에 따라 업그레이드됩니다.",
         "cannot-manage": "진행 중인 업그레이드가 완료되면 예약을 선택할 수 있습니다.",
         "up-to-date": "펌웨어가 최신 상태입니다.",
         "up-to-date-message": "다운로드 가능한 펌웨어가 없습니다.",
         "action": {
+          "schedule-upgrade": "업그레이드 예약",
+          "upgrade-now": "지금 업그레이드",
           "edit": "예약 변경",
           "cancel": "취소"
         },
@@ -1168,23 +1210,23 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ version }} 버전으로의 {{ process }}({{ type }})이(가) 예약되었습니다.",
+            "text": "{{ version }} 버전으로 {{ process }}이(가) 예약되었습니다.",
             "note": {
-              "now": "액세스 지점에서 요청을 수신한 즉시 {{ process }}이(가) 시작됩니다.",
-              "date": "액세스 지점의 시간이 {{ schedule }}일 때 {{ process }}이(가) 수행됩니다.",
-              "daily": "액세스 지점의 시간이 {{ timeOfDay }}일 때 {{ process }}이(가) 매일 수행됩니다.",
-              "weekly": "액세스 지점의 시간이 {{ timeOfDay }}일 때 {{ weekDay }}마다 {{ process }}이(가) 수행됩니다.",
-              "monthly": "액세스 지점의 시간이 {{ timeOfDay }}일 때 {{ occurrenceInMonth }}에 {{ process }}이(가) 수행됩니다."
+              "now": "액세스 지점에서 요청을 수신한 즉시 업그레이드가 시작됩니다.",
+              "date": "액세스 지점 시간이 {{ schedule }}일 때 업그레이드가 수행됩니다.",
+              "daily": "액세스 지점 시간이 {{ timeOfDay }}일 때 매일 업그레이드가 수행됩니다.",
+              "weekly": "액세스 지점 시간이 {{ timeOfDay }}일 때 {{ weekDay }}마다 업그레이드가 수행됩니다.",
+              "monthly": "액세스 지점 시간이 {{ timeOfDay }}일 때 {{ occurrenceInMonth }}에 업그레이드가 수행됩니다."
             }
           },
           "updating": {
-            "text": "{{ version }} 버전으로의 {{ process }}({{ type }})이(가) 진행 중입니다.",
+            "text": "{{ process }}이(가) 실행 중입니다.",
             "note": {
-              "now": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
-              "date": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
-              "daily": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
-              "weekly": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다.",
-              "monthly": "현재 변경 사항이 적용되고 있습니다. 시간이 걸릴 수 있습니다."
+              "now": "펌웨어가 지금 업그레이드 중입니다. 현재 업그레이드가 완료되면 업그레이드를 예약할 수 있습니다.",
+              "date": "펌웨어가 지금 업그레이드 중입니다. 현재 업그레이드가 완료되면 업그레이드를 예약할 수 있습니다.",
+              "daily": "펌웨어가 지금 업그레이드 중입니다. 현재 업그레이드가 완료되면 업그레이드를 예약할 수 있습니다.",
+              "weekly": "펌웨어가 지금 업그레이드 중입니다. 현재 업그레이드가 완료되면 업그레이드를 예약할 수 있습니다.",
+              "monthly": "펌웨어가 지금 업그레이드 중입니다. 현재 업그레이드가 완료되면 업그레이드를 예약할 수 있습니다."
             }
           },
           "success": {
@@ -1218,13 +1260,13 @@
             }
           },
           "failure": {
-            "text": "{{ version }} 버전으로 {{ process }}({{ type }})하지 못했습니다.",
+            "text": "{{ process }}을(를) 실패했습니다.",
             "note": {
-              "now": "{{ reason }}",
-              "date": "{{ schedule }}에 예약된 {{ process }}이(가) {{ date }}에 요청되었습니다. {{ reason }}",
-              "daily": "{{ timeOfDay }}에 매일 예약된 {{ process }}이(가) {{ date }}에 요청되었습니다. {{ reason }}",
-              "weekly": "{{ timeOfDay }}에 {{ weekDay }}마다 예약된 {{ process }}이(가) {{ date }}에 요청되었습니다. {{ reason }}",
-              "monthly": "{{ timeOfDay }}에 {{ occurrenceInMonth }}에 예약된 {{ process }}이(가) {{ date }}에 요청되었습니다. {{ reason }}"
+              "now": "예상치 못한 이벤트로 인해 {{ process }}을(를) 실패했습니다. 액세스 포인트가 온라인 상태인지 확인하고 다시 예약하십시오.",
+              "date": "예상치 못한 이벤트로 인해 {{ process }}을(를) 실패했습니다. 액세스 포인트가 온라인 상태인지 확인하고 다시 예약하십시오.",
+              "daily": "예상치 못한 이벤트로 인해 {{ process }}을(를) 실패했습니다. 액세스 포인트가 온라인 상태인지 확인하고 다시 예약하십시오.",
+              "weekly": "예상치 못한 이벤트로 인해 {{ process }}을(를) 실패했습니다. 액세스 포인트가 온라인 상태인지 확인하고 다시 예약하십시오.",
+              "monthly": "예상치 못한 이벤트로 인해 {{ process }}을(를) 실패했습니다. 액세스 포인트가 온라인 상태인지 확인하고 다시 예약하십시오."
             }
           },
           "cancel-failure": {
@@ -1239,7 +1281,7 @@
           }
         },
         "process": {
-          "scheduled-upgrade": "업그레이드",
+          "scheduled-upgrade": "펌웨어 업그레이드",
           "auto-upgrade": "자동 업그레이드",
           "rollback": "펌웨어 교체"
         },

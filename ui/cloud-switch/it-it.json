@@ -642,7 +642,8 @@
         "schedule_agent_auto": "Upgrade automatico (client)",
         "schedule_full_auto": "Upgrade automatico (firmware)",
         "schedule_rollback_auto": "Sostituisci automaticamente la partizione di avvio",
-        "lag_settings": "Impostazioni LACP"
+        "lag_settings": "Impostazioni LACP",
+        "lag": "LAG"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -667,7 +668,7 @@
         "link-speed": "Speed/Duplex",
         "untagged-vlan": "VLAN senza tag",
         "tagged-vlans": "VLAN con tag",
-        "member-ports": "Porte membri",
+        "member-ports": "Porte membro",
         "inherited": "Origine configurazione"
       },
       "message": {
@@ -752,7 +753,7 @@
       "1326": "VLAN: Impossibile riconoscere l'ID VLAN. Richiesta DELETE non valida",
       "1327": "VLAN: Impossibile eliminare definitivamente lo stato. Richiesta DELETE non valida",
       "1328": "VLAN: L'ID non esiste. Richiesta DELETE non valida",
-      "1329": "VLAN: Impossibile leggere l'elenco di porte membri senza tag. Richiesta PATCH non valida",
+      "1329": "VLAN: Impossibile leggere l’elenco di porte membro senza tag. Richiesta PATCH non valida",
       "1330": "VLAN: Impossibile convertire la stringa delle porte con tag in un elenco di porte. Richiesta POST non valida",
       "1331": "VLAN: Impossibile convertire la stringa delle porte senza tag in un elenco di porte. Richiesta POST non valida",
       "1332": "VLAN: Impossibile convertire la stringa delle porte con tag in un elenco di porte quando le porte con tag e le porte senza tag vengono configurate nello stesso momento. Richiesta PATCH non valida",
@@ -853,7 +854,33 @@
       "857": "Porte: Impossibile riconoscere la descrizione della porta. Richiesta PATCH non valida",
       "858": "Porte: Impossibile riconoscere la velocità di collegamento. Richiesta PATCH non valida",
       "859": "Porte: Impossibile riconoscere il tipo di frame. Richiesta PATCH non valida",
-      "860": "Porte: Impossibile convalidare la modalità di estensione della porta. Richiesta PATCH non valida"
+      "860": "Porte: Impossibile convalidare la modalità di estensione della porta. Richiesta PATCH non valida",
+      "1400": "LAG: Errore di recupero della priorità di sistema",
+      "1401": "LAG: Priorità di sistema non valida per le patch",
+      "1402": "LAG: Errore di test delle patch per la priorità di sistema",
+      "1403": "LAG: Errore di impostazione delle patch per la priorità di sistema",
+      "1404": "LAG: Errore delle patch per il recupero del primo indice della tabella trunk LAG",
+      "1405": "LAG: Errore delle patch per il recupero dell’indice di mapping dell’algoritmo",
+      "1406": "LAG: Algoritmo per la selezione del comando di verifica per trunk",
+      "1407": "LAG: Algoritmo per la selezione del comando di impostazione per trunk",
+      "1408": "LAG: ID trunk non valido per le patch",
+      "1409": "LAG: Impossibile applicare patch, poiché le porte trunk membro sono un tipo di supporto multimediale diverso",
+      "1410": "LAG: Errore di patch non valide per l’indice delle porte trunk membro",
+      "1411": "LAG: La porta membro è una porta di destinazione per il mirroring",
+      "1412": "LAG: La porta membro è anche porta membro di un altro trunk",
+      "1413": "LAG: Il numero di porte membro supera la quantità supportata",
+      "1414": "LAG: Stato riga di configurazione del test di mirroring",
+      "1415": "LAG: Stato riga di configurazione del test di mirroring",
+      "1416": "LAG: Il numero di porte membro è inferiore a 2",
+      "1417": "LAG: Modalità patch per trunk non valida",
+      "1418": "LAG: Errore nel set di porte membro quando la modalità è disattivata",
+      "1419": "LAG: Valore di patch mancante",
+      "1420": "LAG: Valore di patch non valido",
+      "1421": "LAG: Errore delle patch per lo stato di timeout per il recupero della porta",
+      "1422": "LAG: Errore delle patch per l’analisi dell’algoritmo di bilanciamento del carico",
+      "1423": "LAG: Errore delle patch per l’analisi della porta membro",
+      "1424": "LAG: Errore delle patch per l’analisi del timeout",
+      "1425": "LAG: Errore della modalità estesa di applicazione delle patch per la porta membro"
     },
     "lacp-settings": {
       "dialog-title": "Impostazioni LACP",
@@ -876,6 +903,14 @@
         "switch-sync-dialog-text": "Lo switch riceverà gli aggiornamenti delle impostazioni LACP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "site-sync-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti delle impostazioni LCAP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
       }
+    },
+    "license-messages": {
+      "overused-message": "Utilizzo eccessivo della licenza. Per questo account sono state acquistate {{total}} subscription per {{model}}, ma gli switch gestiti sono {{used}}.",
+      "no-model-license-message": "Licenza mancante: È richiesta una subscription per gestire gli switch {{model}}.",
+      "no-license-message": "Nessuna subscription trovata: È richiesta una subscription per gestire gli switch in questo account.",
+      "about-to-expire-message": "La licenza di {{model}} sta per scadere.",
+      "grace-period-message": "La licenza di {{model}} è scaduta e al momento è stato applicato un periodo di tolleranza di {{grace}} giorni.",
+      "license-expired-message": "La licenza di {{model}} è scaduta e il periodo di tolleranza è terminato, rinnova la licenza per continuare a gestire gli switch."
     }
   }
 }

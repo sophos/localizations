@@ -69,7 +69,13 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
       "GHZ_5": "5 GHz",
-      "assign": "Zuweisen"
+      "assign": "Zuweisen",
+      "logo": {
+        "upload": {
+          "error": "Logo konnte nicht gespeichert werden",
+          "success": "Datei erfolgreich hochgeladen."
+        }
+      }
     },
     "global": {
       "form": {
@@ -310,6 +316,7 @@
       "config": {
         "customer-unique-id-title": "Eindeutige Sophos Kunden-ID",
         "firmware-update": {
+          "note": "Dabei werden alle Legacy-Access-Points (AP5 und niedriger) aktualisiert.",
           "title": "Firmware-Update",
           "help-text": "Sie können Firmware-Updates planen, indem Sie Häufigkeit und Zeitpunkt festlegen.",
           "current-version": "Aktuelle Version",
@@ -456,7 +463,7 @@
         "title": "Wireless - SSIDs",
         "no-ssid-configured": "Sie haben keine SSID hinzugefügt",
         "no-ssid-configured-help": "Klicken Sie auf die Hinzufügen-Schaltfläche, um die SSID zu konfigurieren",
-        "pagination": "{{ from }} bis {{ to }} von {{ of }}",
+        "pagination": "Anzeige: {{ from }} bis {{ to }} von {{ of }}",
         "create": "Erstellen",
         "deleteDialogText": "Möchten Sie die ausgewählten SSIDs löschen?",
         "listLoadingError": "SSID-Liste kann nicht geladen werden",
@@ -671,8 +678,8 @@
         "green-option-label": "Security Heartbeat (Grün)",
         "green-option-value": "Gesamten Datenverkehr zulassen",
         "green-option-info": "Der Client ist geschützt.",
-        "yellow-option-label": "Security Heartbeat (Gelb)",
-        "yellow-option-value": "Gesamten Datenverkehr zulassen (Warnung)",
+        "yellow-option-label": "Security Heartbeat™ Gelb",
+        "yellow-option-value": "Allen Traffic zulassen (Warnung)",
         "yellow-option-info": "Es wurde ein Problem festgestellt und der Client ist möglicherweise gefährdet. Auf einem Endpoint kann dies inaktive Malware oder eine potenziell unerwünschte Anwendung (PUA) sein. Für Mobilgeräte können Sie den Heartbeat-Status für verschiedene Compliance-Verstöße definieren.",
         "red-option-label": "Security Heartbeat (Rot)",
         "red-option-value": "Kontrollierte Umgebung",
@@ -702,7 +709,25 @@
         "image-dimension": "* Empfohlene Bildgröße ist 200x200 px.",
         "logo-upload": "Logo hochladen",
         "whitelist-domains-label": "Erlaubte Domänen",
-        "whitelist-domains": "Auf Domänen auf der Liste „Erlauben“ kann auch dann zugegriffen werden, wenn der Security Heartbeat eines WLAN-Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
+        "whitelist-domains-note": "Auf Domänen auf der Liste „Erlauben“ kann auch dann zugegriffen werden, wenn der Security Heartbeat eines WLAN-Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
+        "whitelist-domains-error": "Anzahl der Domänen überschreitet das Limit. Maximalanzahl erlaubter Domänen ist 16.",
+        "whitelist-domains-info": "Beispiel: ihredomain.com",
+        "whitelist-domains-popup": {
+          "label": "Domänenformate",
+          "allowed": {
+            "example1": "https://sophos.*/wifi",
+            "example2": "https://*.sophos.com",
+            "example3": "http://sophos.*",
+            "example4": "192.168.0.1",
+            "example5": "sophos.*",
+            "label": "Unterstützt:"
+          },
+          "not-allowed": {
+            "example1": "192.168.0.*",
+            "example2": "https://sophos.*.com",
+            "label": "Nicht unterstützt:"
+          }
+        },
         "hidden-label": "Verdeckte SSID",
         "hidden-ssid": "Blendet die SSID für Netzwerk-Scans aus. Benutzer müssen den SSID-Namen angeben, um sich verbinden zu können.",
         "hidden-ssid-warning": "Hinweis: Die verborgene SSID muss weiterhin geschützt werden.",
@@ -1098,25 +1123,32 @@
         }
       },
       "firmware-upgrade": {
-        "header-text-for-site": "Firmware verwalten: {{site}}",
-        "header-text-no-site": "Firmware verwalten",
-        "note-no-site": "Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
-        "note-for-site": "Firmware für Access Points am Standort verwalten: '{{site}}'. Im folgenden Bereich können Sie Firmware-Upgrades hinzufügen oder widerrufen.",
-        "remove-schedule": "Zeitplan entfernen",
+        "header-text-for-site": "Firmware-Upgrade: {{site}}",
+        "header-text-no-site": "Firmware-Upgrade: Aktualisierung planen",
+        "step-one": "Schritt 1: Access Points auswählen",
+        "step-two": "Schritt 2: Wählen Sie einen Zeitplan aus",
+        "note-no-site": "Sie können den Zeitplan für den ausgewählten Access Point auswählen oder stornieren.",
+        "note-for-site": "Die folgende Liste zeigt nur Access Points 6, die upgegradet werden können ({{count}}/{{total}} Access Points).",
+        "remove-schedule": "Zeitplan widerrufen",
         "choose-schedule": "Zeitplan wählen",
         "rollback": "Firmware-Austausch ({{ version }})",
         "week": "Woche",
         "weekDay": "Wochentag",
         "time": "Uhrzeit",
-        "scheduled-success-message": "Geänderte Firmware-Zeitpläne wurden erfolgreich gespeichert.",
-        "scheduled-failure-message": "Speichern der an den Firmware-Zeitplänen vorgenommenen Änderungen fehlgeschlagen.",
+        "change-title": "Firmware-Upgrade geplant",
+        "change-message": "Firmware-Upgrade wurde geplant.",
+        "scheduled-failure-message": "Fehler beim Planen des Firmware-Upgrades.",
+        "cancel-title": "Firmware-Upgrade abgebrochen",
+        "cancel-message": "Firmware-Upgrade wurde abgebrochen.",
+        "upgrade-old-ap": "Älteren AP aktualisieren?",
+        "back": "Zurück",
         "list": {
           "headers": {
             "name": "Name",
             "serial-number": "Seriennummer",
-            "version": "Version",
+            "version": "Aktuelle Version",
             "to-version": "Auf Version",
-            "chosen-schedule": "Gewählter Zeitplan"
+            "chosen-schedule": "Aktueller Plan"
           },
           "selected-text": "{{selected}} ausgewählt",
           "modified-text": "{{selected}} ausgewählt - {{modified}} geändert",
@@ -1132,11 +1164,17 @@
           "weekly": "Wöchentlich",
           "monthly": "Monatlich",
           "header-text": "Wählen Sie einen Zeitplan aus",
-          "note": "Zeitpunkt für die Aktualisierung der ausgewählten Access Points wählen.",
-          "now-note": "Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade. Getrennte Access Points erhalten eine Aufforderung, nachdem sie sich wieder verbunden haben. Hierbei wird der Access Point eventuell neu gestartet. Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden. Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.",
-          "custom-note": "Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen. Während des Upgrades kommt es möglicherweise zu einem Neustart.",
+          "note": "Wählen Sie bitte aus, wann die ausgewählten Access Points aktualisiert werden sollen.",
+          "please-note": "Hinweis:",
+          "now-note": "<ul><li>Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade.</li><li>Getrennte Access Points erhalten eine Aufforderung, nachdem sie sich wieder verbunden haben.</li><li>Hierbei wird der Access Point eventuell neu gestartet.</li><li>Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden.</li><li>Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.</li></ul>",
+          "custom-note": "<ul><li>Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen.</li><li>Während des Upgrades kommt es möglicherweise zu einem Neustart.</li></ul>",
           "daily-schedule": "Täglich um {{time}}",
           "weekly-schedule": "Jeden {{day}} um {{time}}",
+          "default": "Standard",
+          "confirm-header": "Zeitplan widerrufen",
+          "confirm-msg": "Möchten Sie das geplante Upgrade wirklich abbrechen? Wenn das Upgrade abgebrochen wird, wird der wiederkehrende Standardzeitplan eingestellt.",
+          "accept": "Ja, abbrechen",
+          "reject": "Nein, nicht abbrechen",
           "monthly-schedule": {
             "1": "Jeden ersten {{day}} des Monats um {{time}}",
             "2": "Jeden zweiten {{day}} des Monats um {{time}}",
@@ -1150,13 +1188,17 @@
         }
       },
       "firmware-info": {
-        "update-available": "Es gibt neue Firmware-Updates.",
-        "upgrade-message": "Sie können diese Upgrades sofort oder zu einem späteren Zeitpunkt anwenden.",
-        "schedule-upgrade": "Ein Upgrade planen",
+        "update-available": "Ein neues Firmware-Upgrade ist verfügbar.",
+        "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
+        "legacy-schedule-link": "Upgrade planen (AP5 und niedriger)",
+        "legacy-upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden. Dabei werden alle Legacy-Access-Points (AP5 und niedriger) aktualisiert.",
+        "default-schedule-msg": "Wenn Sie kein Upgrade planen, wird der Access Point in Einklang mit dem wiederkehrenden Zeitplan (wöchentlich) aktualisiert.",
         "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
         "up-to-date": "Firmware ist aktuell.",
         "up-to-date-message": "Es steht keine neue Firmware zum Download bereit.",
         "action": {
+          "schedule-upgrade": "Aktualisierung planen",
+          "upgrade-now": "Jetzt upgraden",
           "edit": "Zeitplan ändern",
           "cancel": "Abbrechen"
         },
@@ -1168,23 +1210,23 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wurde geplant.",
+            "text": "{{ process }} auf Version {{ version }} wurde geplant.",
             "note": {
-              "now": "{{ process }} startet, sobald der Access Point die Aufforderung erhalten hat.",
-              "date": "{{ process }} startet um {{ schedule }} (Uhrzeit des Access Point)",
-              "daily": "{{ process }} startet täglich um {{ timeOfDay }} (Uhrzeit des Access Point)",
-              "weekly": "{{ process }} startet an jedem {{ weekDay }} um {{ timeOfDay }} (Uhrzeit des Access Point)",
-              "monthly": "{{ process }} startet an {{ occurrenceInMonth }} um {{ timeOfDay }} (Uhrzeit des Access Point)"
+              "now": "Das Upgrade startet, sobald der Access Point die Aufforderung erhalten hat.",
+              "date": "Das Upgrade startet um {{ schedule }} (Uhrzeit des Access Points)",
+              "daily": "Das Upgrade startet täglich um {{ timeOfDay }} (Uhrzeit des Access Points)",
+              "weekly": "Das Upgrade startet an jedem {{ weekDay }} um {{ timeOfDay }} (Uhrzeit des Access Points)",
+              "monthly": "Das Upgrade startet an {{ occurrenceInMonth }} um {{ timeOfDay }} (Uhrzeit des Access Points)"
             }
           },
           "updating": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wird ausgeführt.",
+            "text": "{{ process }} läuft.",
             "note": {
-              "now": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
-              "date": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
-              "daily": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
-              "weekly": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen.",
-              "monthly": "Im Moment werden Änderungen durchgeführt. Dies kann einige Zeit in Anspruch nehmen."
+              "now": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
+              "date": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
+              "daily": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
+              "weekly": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
+              "monthly": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist."
             }
           },
           "success": {
@@ -1218,13 +1260,13 @@
             }
           },
           "failure": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) ist fehlgeschlagen.",
+            "text": "{{ process }} ist fehlgeschlagen.",
             "note": {
-              "now": "{{ reason }}",
-              "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}. {{ reason }}",
-              "daily": "{{ process }} wurde für die tägliche Ausführung um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
-              "weekly": "{{ process }} wurde für die Ausführung an jedem {{ weekDay }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}",
-              "monthly": "{{ process }} wurde für die Ausführung an {{ occurrenceInMonth }} um {{ timeOfDay }} angefordert am {{ date }}. {{ reason }}"
+              "now": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
+              "date": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
+              "daily": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
+              "weekly": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
+              "monthly": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung."
             }
           },
           "cancel-failure": {
@@ -1239,7 +1281,7 @@
           }
         },
         "process": {
-          "scheduled-upgrade": "Upgrade",
+          "scheduled-upgrade": "Firmware-Aktualisierung",
           "auto-upgrade": "Auto-Upgrade",
           "rollback": "Firmware-Austausch"
         },
