@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "문제가 발생했습니다. 내부 서버 오류!",
           "INTERNAL_SERVER_ERROR": "문제가 발생했습니다. 내부 서버 오류!",
           "GROUP_NAME_EXISTS": "그룹 이름이 이미 있습니다. 다른 것을 선택하십시오.",
-          "INVALID_IP_ADDRESS_OR_FQDN": "WAN 링크에 대해 지정된 공용 IP 또는 FQDN이 잘못됨: {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "WAN 링크에 대해 지정된 공용 IP 또는 FQDN이 잘못됨: {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "제공된 기본 및 보조 WAN 포트 주소가 동일합니다.",
+          "RETRY_AFTER_SOMETIME": "잠시 후 다시 시도하십시오."
         },
         "states": {
           "cannot-save": "연결 그룹을 저장하는 동안 알 수 없는 오류가 발생했습니다.",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "공유 리소스에 대한 잘못된 IPv4 형식",
-              "duplicate": "중복 IP"
+              "duplicate": "리소스가 이미 동일한 서비스에 사용되고 있습니다."
             },
             "service": {
               "title": "서비스",
@@ -555,7 +557,9 @@
         "import-config-label": "다음 위치에서 구성 가져오기",
         "error": {
           "fetch-error": "방화벽을 가져오는 중 오류 발생",
-          "save-error": "그룹 만들기 실패"
+          "save-error": "그룹 만들기 실패",
+          "HA_IN_PROGRESS": "{{ firewalls }} 방화벽이 허용 가능한 상태가 아닙니다. HA가 설정될 때까지 기다린 다음, 그룹으로 이동하십시오.",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} 방화벽이 PEER_PRIMARY_FIREWALL_NOT_SUPPLIED 상태입니다."
         },
         "create-group-success": "그룹이 성공적으로 만들어졌음",
         "duplicate-group-name": "그룹 이름이 이미 있습니다"
@@ -707,6 +711,7 @@
       "title": "방화벽 템플릿",
       "breadcrumb-text": "방화벽 템플릿",
       "cannot-load": "템플릿 목록을 로드하는 동안 오류가 발생했습니다.",
+      "manage-policy-loader-message": "방화벽 관리가 현재 로드 중입니다. 이 작업은 몇 초 정도 걸릴 수 있습니다.",
       "edit-customers": {
         "modal": {
           "title": "고객 편집 - {{ name }}",

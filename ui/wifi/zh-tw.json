@@ -469,6 +469,7 @@
         "listLoadingError": "無法載入 SSID 清單",
         "headers": {
           "ssid": "SSID",
+          "type": "類型",
           "passphrase": "複雜密碼",
           "encryption-mode": "加密模式",
           "encryption-algorithm": "加密演算法",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "無",
             "GHZ_2_4": "2.4 GHz",
-            "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
             "GHZ_5": "5 GHz",
             "both": "2.4 GHz 與 5 GHz",
             "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
+            "GHZ_5,GHZ_6": "5 GHz 及 6 GHz",
+            "GHZ_2_4,GHZ_6": "2.4 GHz 及 6 GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2.4 GHz、5 GHz 和 6 GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "兩者"
         }
       },
       "network-editor": {
@@ -1067,6 +1076,7 @@
           "title": "註冊存取點",
           "onBoardtitle": "上架精靈",
           "accessPoints": "存取點",
+          "accessPointsRegistrationStatus": "存取點註冊狀態",
           "description": "請遵循下列 3 個步驟來註冊您的存取點：",
           "next": "下一步",
           "editHostNameSave": "儲存主機名稱",
@@ -1086,7 +1096,7 @@
           "registerAP": {
             "title": "步驟 3",
             "description": "輸入 S/N 後按一下「註冊」。註冊可能會耗費 5 分鐘。",
-            "agreement": "在下方按一下「註冊」，即代表我接受並同意  <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos 終端使用者使用條款</a>中的所有條款。",
+            "agreement": "在下方按一下「註冊」，即代表我接受並同意  <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos 最終用戶使用條款</a>中的所有條款。",
             "enterSerialNumber": "輸入序號",
             "register": "註冊",
             "editHost": "下一步"
@@ -1297,6 +1307,51 @@
           "unknown-error": "出現未知錯誤。"
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "所提供之序列已註冊",
+      "ipv4.valid": "IP 位址欄位必須為有效的 IPv4 格式",
+      "ipv4Internal.valid": "內部 IP 位址欄位必須為有效的 IPv4 格式",
+      "ipv4External.valid": "外部 IP 位址欄位必須為有效的 IPv4 格式",
+      "name.notBlank": "名稱不得空白",
+      "model.notBlank": "型號不得空白",
+      "serial.notBlank": "序號不得空白",
+      "id.notBlank": "UUID 不得空白",
+      "name.invalid": "名稱不能為空，不得超過 100 個字元，可以包含字母、數字或底線，不能包含特殊字元",
+      "location.tooLong": "存取點位置不得超過 100 個字元",
+      "description.invalid": "說明不得為空並且不能超出 300 個字元",
+      "record.invalid": "所提供之 {{0}} 對於此帳戶無效",
+      "entity.not.found": "此帳戶未找到 {{0}}",
+      "validString.accessProtectionMode": "存取保護模式值無效",
+      "validString.accessProtectionType": "存取保護類型值無效",
+      "validString.encryptionAlgorithm": "加密算法值無效",
+      "validString.clientNetworkAddressType": "用戶端網路位址類型無效",
+      "validString.clientNetworkType": "用戶端網路類型無效",
+      "validString.macFilter": "Mac 篩選器無效",
+
+      "site-name.already.exists": "具有所提供名稱的客戶網站已存在",
+      "ap.name.already.exists": "所提供之存取點名稱已存在",
+      "ssid.name.already.exists": "所提供之 SSID 名稱已存在",
+      "unknown.constraint.violation": "未知的約束違反",
+
+      "serial.invalid": "序號無效",
+      "exception.unexpected": "處理請求時出現意外錯誤",
+      "exception.AccessDeniedException": "拒絕存取",
+      "field.value.invalid": "為欄位 {{1}} 提供的輸入值 {{0}} 無效",
+      "encoding.invalid": "偵測到無效的編碼",
+      "exception.io": "伺服器出現 I/O 異常",
+      "exception.json.parse": "請求中收到的 JSON 格式錯誤",
+      "request.json.malformed": "接收到格式錯誤請求 JSON",
+      "property.invalid": "為屬性 {{0}} 提供的處理值失敗",
+      "exception.illegal.argument": "請求中收到非法引數",
+      "http.request.header.missing": "請求中缺少必填項 HTTP 標頭 {{0}}",
+      "field.validation.errors.message": "欄位驗證錯誤",
+      "http.method.unsupported": "提供之路徑不支援 HTTP 方法 {{0}}",
+      "access-point.state.invalid.for.abort": "存取點狀態 [{{0}}] 對中止無效",
+      "access-point.state.invalid.for.retry": "存取點狀態 [{{0}}] 對重試無效"
     }
   }
 }

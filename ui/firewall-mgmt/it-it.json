@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "Si è verificato un errore. Errore interno del server.",
           "INTERNAL_SERVER_ERROR": "Si è verificato un errore. Errore interno del server.",
           "GROUP_NAME_EXISTS": "Nome del gruppo già esistente. Scegline uno diverso.",
-          "INVALID_IP_ADDRESS_OR_FQDN": "L'IP o FQDN pubblico specificato per il link WAN selezionato non è valido: {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "L'IP o FQDN pubblico specificato per il link WAN selezionato non è valido: {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "Gli indirizzi forniti per la porta WAN primaria e per quella secondaria sono identici.",
+          "RETRY_AFTER_SOMETIME": "Riprova più tardi."
         },
         "states": {
           "cannot-save": "Errore sconosciuto durante il salvataggio del gruppo di connessione.",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "Formato IPv4 non valido per la risorsa condivisa",
-              "duplicate": "IP duplicato"
+              "duplicate": "La risorsa è già in uso per lo stesso servizio."
             },
             "service": {
               "title": "Servizio",
@@ -555,7 +557,9 @@
         "import-config-label": "Importa configurazione da",
         "error": {
           "fetch-error": "Errore durante il recupero dei firewall",
-          "save-error": "Creazione del gruppo non riuscita"
+          "save-error": "Creazione del gruppo non riuscita",
+          "HA_IN_PROGRESS": "Lo stato di {{ firewalls }} firewall non è accettabile. Attendi che venga stabilita la disponibilità elevata e successivamente prova a trasferirli nel gruppo.",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} firewall con stato PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Creazione del gruppo completata",
         "duplicate-group-name": "Nome del gruppo già esistente"
@@ -707,6 +711,7 @@
       "title": "Modelli Firewall",
       "breadcrumb-text": "Modelli Firewall",
       "cannot-load": "Errore durante il caricamento dell'elenco di modelli.",
+      "manage-policy-loader-message": "La gestione del firewall è in fase di caricamento. Potrebbe richiedere alcuni secondi.",
       "edit-customers": {
         "modal": {
           "title": "Modifica clienti - {{ name }}",

@@ -74,7 +74,9 @@
         "update": "Mettre à jour",
         "reset": "Effacer",
         "enable": "Activer",
-        "disable": "Désactiver"
+        "disable": "Désactiver",
+        "revert": "Utiliser les paramètres du site",
+        "revert-system": "Utiliser les paramètres par défaut du système"
       },
       "status": {
         "registering": "En attente de connexion",
@@ -89,7 +91,11 @@
         "out_of_sync": "Erreur nécessitant votre attention",
         "firmware_too_old": "Firmware trop ancien",
         "disabled": "Désactivé",
-        "enabled": "Activé"
+        "enabled": "Activé",
+        "license-error": {
+          "license_expired": "Licence expirée",
+          "license_not_found": "Aucune licence trouvée"
+        }
       },
       "form": {
         "name": "Nom",
@@ -446,12 +452,26 @@
       },
       "cli": {
         "title": "Exécuter les commandes du switch",
-        "description": "L’exécution de commandes à partir de Sophos Central créera un journal de modifications (changelog) avec des commandes et sera exécutée comme si elle l’était à partir de l’interface de ligne de commande locale. Les configurations modifiées à l’aide de commandes ne seront pas reflétées dans la configuration Sophos Central.",
+        "description": "L’exécution de commandes à partir de Sophos Central crée une tâche avec les commandes données. Celles-ci sont exécutées dans une seule session, une par une comme si elles étaient exécutées à partir de l’interface de ligne de commande locale. Vous pouvez vérifier la sortie des tâches en cours ou précédentes dans la file d’attente des tâches. Notez que les configurations modifiées à l’aide de commandes ne sont pas affichées dans la configuration Sophos Central.",
         "execute": "Exécuter",
-        "hide": "Masquer",
+        "hide": "Fermer",
         "executing": "Exécution de la tâche (ID de tâche : {{ id }}, État : {{ status }})",
         "refreshing": "Actualisation...",
-        "parse-error": "Erreur lors de l’analyse de la réponse."
+        "parse-error": "Erreur lors de l’analyse de la réponse.",
+        "reset": "Créer de nouvelles commandes",
+        "reset-tooltip": "Efface l’écran et vous permet d’exécuter un nouvel ensemble de commandes sur les switchs sélectionnés. Ceci n’affecte pas les tâches en cours.",
+        "disconnected": "Le switch est actuellement déconnecté et la sortie n’apparaîtra peut-être pas immédiatement. La tâche d’exécution des commandes est déjà générée et s’exécutera lorsque l’appareil se reconnectera à Sophos Central. Vous pouvez toujours vérifier l’état des tâches dans la file d’attente des tâches.",
+        "out-of-sync": "La dernière tâche a échoué pour le switch. Les nouvelles tâches ne seront pas exécutées tant que l’échec n’aura pas été résolu manuellement. Vous pouvez cliquer sur « Ignorer » pour ignorer l’erreur ou sur « Réessayer » après avoir résolu les conflits dans les configurations locales, le cas échéant. Les tâches permettant d’exécuter les commandes ci-dessus sont déjà générées et s’exécuteront lorsque l’erreur sera résolue. ",
+        "skip": "Ignorer pour continuer",
+        "skip-tooltip": "Cette opération ignore une tâche qui a précédemment échouée pour le switch sélectionné.",
+        "no-capabilities-all": "Les {{ count }} switchs ( {{ switches }} ) utilisent un firmware plus ancien et ne peuvent pas exécuter de commandes à partir de Sophos Central. Procédez à la mise à niveau des switchs à la dernière version du firmware pour exécuter des commandes à partir de Sophos Central.",
+        "no-capabilities-few": "{{ count }} switchs ( {{ switches }} ) utilisent un firmware plus ancien et ne peuvent pas exécuter de commandes à partir de Sophos Central. Les tâches ne seront pas générées tant que le firmware n’aura pas été mis à niveau à la dernière version.",
+        "suggestions": {
+          "reset": "Vous ne pouvez pas exécuter la commande « restore-defaults » à partir de Sophos Central. En effet, ceci risque de déconnecter le switch de Sophos Central.",
+          "reboot": "Vous ne pouvez pas exécuter la commande « reboot » à partir de Sophos Central. Utilisez plutôt l’option « Redémarrer » dans la vue du switch.",
+          "shutdown": "L’arrêt de la liaison montante ou de la gestion de ports peut déconnecter le switch de Sophos Central.",
+          "management-vlan": "La modification des paramètres du VLAN de gestion peut déconnecter le switch de Sophos Central."
+        }
       }
     },
     "register": {
@@ -573,7 +593,15 @@
         "save-dialog-title": "Confirmer l’enregistrement",
         "site-save-dialog-text": "{{ count }} switchs vont récupérer ce VLAN et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "switch-save-dialog-text": "Le switch va récupérer ce VLAN et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-        "save-checkbox-text": "Synchroniser les paramètres sur ces switchs immédiatement"
+        "save-checkbox-text": "Synchroniser les paramètres sur ces switchs immédiatement",
+        "revert-success": "Les paramètres du switch ont été supprimés et le switch utilise désormais les paramètres du site.",
+        "revert-system-success": "Les paramètres du site ont été supprimés et le switch utilise désormais les paramètres par défaut du système.",
+        "revert-error": "Impossible de supprimer les paramètres du switch",
+        "revert-system-error": "Impossible de supprimer les paramètres du site",
+        "revert-to-site-confirm-title": "Utiliser les paramètres du site",
+        "revert-to-system-confirm-title": "Utiliser les paramètres par défaut du système",
+        "revert-to-site-info-message": "Les paramètres du switch sélectionnés seront supprimés. Le switch utilisera désormais les paramètres du site. Vous pouvez synchroniser vos modifications de configuration maintenant ou ultérieurement.",
+        "revert-to-system-info-message": "Les paramètres de site sélectionnés seront supprimés et le switch utilisera désormais les paramètres par défaut du système. Vous pouvez synchroniser vos modifications de configuration maintenant ou ultérieurement."
       }
     },
     "task-queue": {
@@ -679,7 +707,13 @@
         "switch-save-dialog-text": "Le switch va récupérer les mises à jour du port et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "save-checkbox-text": "Synchroniser les paramètres sur ces switchs immédiatement",
         "lag-site-sync-dialog-text": "{{ count }} switchs vont récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-        "lag-switch-sync-dialog-text": "Le switch va récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
+        "lag-switch-sync-dialog-text": "Le switch va récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "port-revert-success": "Les paramètres du switch ont été supprimés et le switch utilise les paramètres du site.",
+        "port-revert-error": "Impossible de supprimer les configurations du switch.",
+        "port-revert-system-success": "Les configurations du site ont été supprimées et le switch utilise les paramètres par défaut du système.",
+        "port-revert-system-error": "Impossible de supprimer les paramètres de configuration du site.",
+        "switch-revert-dialog-text": "Les paramètres du switch sélectionnés seront supprimés et le switch utilisera désormais les paramètres par défaut du site. Vous pouvez synchroniser vos modifications de configuration maintenant ou ultérieurement.",
+        "switch-revert-system-dialog-text": "Les paramètres de site sélectionnés seront supprimés et le switch utilisera désormais les paramètres par défaut du système. Vous pouvez synchroniser vos modifications de configuration maintenant ou ultérieurement."
       }
     },
     "remote-debugging": {
@@ -908,9 +942,7 @@
       "overused-message": "Licence trop utilisée. Ce compte a {{total}} abonnements achetés pour {{model}}, mais a {{used}} switchs gérés.",
       "no-model-license-message": "Licence manquante : Abonnement de licence requis pour gérer {{model}} switchs.",
       "no-license-message": "Aucun abonnement trouvé : Abonnement de licence requis pour gérer les switchs de ce compte.",
-      "about-to-expire-message": "La licence de {{model}} va bientôt expirer.",
-      "grace-period-message": "La licence de {{model}} a expiré et dispose actuellement d’une période de grâce de {{grace}} jours.",
-      "license-expired-message": "La licence de {{model}} a expiré et le délai de grâce est écoulé. Veuillez la renouveler pour continuer à gérer les switchs."
+      "grace-period-message": "La licence de {{model}} a expiré et dispose actuellement d’une période de grâce de {{grace}} jours ({{pending}} jours restants)."
     }
   }
 }

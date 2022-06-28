@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "Nous avons rencontré un problème. Erreur interne du serveur.",
           "INTERNAL_SERVER_ERROR": "Nous avons rencontré un problème. Erreur interne du serveur.",
           "GROUP_NAME_EXISTS": "Ce nom de groupe existe déjà. Veuillez-en choisir un autre.",
-          "INVALID_IP_ADDRESS_OR_FQDN": "L’adresse IP publique ou le FQDN indiqué pour le lien WAN est invalide : {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "L’adresse IP publique ou le FQDN indiqué pour le lien WAN est invalide : {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "Les adresses de port WAN primaire et secondaire fournies sont identiques.",
+          "RETRY_AFTER_SOMETIME": "Réessayez ultérieurement."
         },
         "states": {
           "cannot-save": "Erreur inconnue lors de l’enregistrement du groupe de connexions.",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "Format IPv4 non valide pour la ressource partagée",
-              "duplicate": "Dupliquer l’adresse IP"
+              "duplicate": "La ressource est déjà utilisée pour le même service."
             },
             "service": {
               "title": "Service",
@@ -555,7 +557,9 @@
         "import-config-label": "Importer la configuration depuis",
         "error": {
           "fetch-error": "Erreur lors de la récupération des pare-feu",
-          "save-error": "Échec de la création du groupe"
+          "save-error": "Échec de la création du groupe",
+          "HA_IN_PROGRESS": "{{ firewalls }} pare-feu ne sont pas dans un état acceptable. Veuillez patienter jusqu’à ce que la haute disponibilité (HA) ait été établie puis essayez de les déplacer dans le groupe.",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} pare-feu ayant l'état PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Groupe créé avec succès",
         "duplicate-group-name": "Ce nom de groupe existe déjà"
@@ -707,6 +711,7 @@
       "title": "Modèles de pare-feu",
       "breadcrumb-text": "Modèles de pare-feu",
       "cannot-load": "Erreur lors du chargement de la liste des modèles.",
+      "manage-policy-loader-message": "Votre gestion de pare-feu est en cours de chargement. Cette opération peut prendre quelques secondes.",
       "edit-customers": {
         "modal": {
           "title": "Modifier les clients - {{ name }}",

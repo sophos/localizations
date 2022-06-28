@@ -214,7 +214,7 @@
     "diagnostics": {
       "events": "Ereignisse",
       "packet-capture-tab": "Paketerfassung",
-      "audit-logs": "Audit-Protokolle",
+      "audit-logs": "Überwachungsprotokolle",
       "server-ip": "Server-IP",
       "serial-no": "Seriennummer",
       "action": "Maßnahme",
@@ -300,7 +300,7 @@
       },
       "diagnostics-setting": {
         "forward-ap-logs": "Access-Point-Protokolle weiterleiten",
-        "forward-ap-message": "Ist diese Option aktiviert, werden Ihre Access Point-Protokolle an den technischen Support von Sophos weitergeleitet.",
+        "forward-ap-message": "Ist diese Option aktiviert, werden Ihre Access-Point-Protokolle an den technischen Support von Sophos weitergeleitet.",
         "remote-login-title": "Remote-Login für Access Points für Sophos Support",
         "remaining-time": "Verbleibende Zeit: ",
         "remaining-time-days": "{{duration}} Tage",
@@ -469,6 +469,7 @@
         "listLoadingError": "SSID-Liste kann nicht geladen werden",
         "headers": {
           "ssid": "SSID",
+          "type": "Typ",
           "passphrase": "Passphrase",
           "encryption-mode": "Verschlüsselungsmodus",
           "encryption-algorithm": "Verschlüsselungsalgorithmus",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "Ohne",
             "GHZ_2_4": "2,4 GHz",
-            "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz und 5 GHz",
             "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
+            "GHZ_5,GHZ_6": "5 GHz und 6 GHz",
+            "GHZ_2_4,GHZ_6": "2,4 GHz und 6 GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz und 6 GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "Beides"
         }
       },
       "network-editor": {
@@ -1067,6 +1076,7 @@
           "title": "Access Point registrieren",
           "onBoardtitle": "Onboarding-Assistent",
           "accessPoints": "Access Points",
+          "accessPointsRegistrationStatus": "Access-Point-Registrierungsstatus",
           "description": "Um Ihren Access Point zu registrieren, befolgen Sie die folgenden 3 Schritte:",
           "next": "Weiter",
           "editHostNameSave": "Hostname speichern",
@@ -1128,7 +1138,7 @@
         "step-one": "Schritt 1: Access Points auswählen",
         "step-two": "Schritt 2: Wählen Sie einen Zeitplan aus",
         "note-no-site": "Sie können den Zeitplan für den ausgewählten Access Point auswählen oder stornieren.",
-        "note-for-site": "Die folgende Liste zeigt nur Access Points 6, die upgegradet werden können ({{count}}/{{total}} Access Points).",
+        "note-for-site": "Die folgende Liste zeigt nur Access Points 6, die aktualisiert werden können ({{count}}/{{total}} Access Points).",
         "remove-schedule": "Zeitplan widerrufen",
         "choose-schedule": "Zeitplan wählen",
         "rollback": "Firmware-Austausch ({{ version }})",
@@ -1192,7 +1202,7 @@
         "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
         "legacy-schedule-link": "Upgrade planen (AP5 und niedriger)",
         "legacy-upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden. Dabei werden alle Legacy-Access-Points (AP5 und niedriger) aktualisiert.",
-        "default-schedule-msg": "Wenn Sie kein Upgrade planen, wird der Access Point in Einklang mit dem wiederkehrenden Zeitplan (wöchentlich) aktualisiert.",
+        "default-schedule-msg": "Wenn Sie kein Upgrade planen, wird der Access Point regelmäßig auf Basis des Standard-Zeitplans (wöchentlich) aktualisiert.",
         "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
         "up-to-date": "Firmware ist aktuell.",
         "up-to-date-message": "Es steht keine neue Firmware zum Download bereit.",
@@ -1297,6 +1307,51 @@
           "unknown-error": "Es ist ein unbekannter Fehler aufgetreten."
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "Eingegebene Seriennummer ist bereits registriert",
+      "ipv4.valid": "IP-Adresse muss gültiges IPv4-Format haben",
+      "ipv4Internal.valid": "Interne IP-Adresse muss gültiges IPv4-Format haben",
+      "ipv4External.valid": "Externe IP-Adresse muss gültiges IPv4-Format haben",
+      "name.notBlank": "Der Name darf nicht leer sein",
+      "model.notBlank": "Das Modell darf nicht leer sein",
+      "serial.notBlank": "Die Seriennummer darf nicht leer sein",
+      "id.notBlank": "Die UUID darf nicht leer sein",
+      "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, und darf nur alphanumerische Zeichen oder Unterstriche enthalten, aber keine Sonderzeichen",
+      "location.tooLong": "Der Access-Point-Standort darf höchstens 100 Zeichen haben",
+      "description.invalid": "Die Beschreibung darf nicht leer sein und darf höchstens 300 Zeichen haben",
+      "record.invalid": "{{0}} ist für dieses Konto ungültig",
+      "entity.not.found": "{{0}} für dieses Konto nicht gefunden",
+      "validString.accessProtectionMode": "Ungültiger Wert für den Zugriffsschutz-Modus",
+      "validString.accessProtectionType": "Ungültiger Wert für den Zugriffsschutz-Typ",
+      "validString.encryptionAlgorithm": "Ungültiger Wert für den Verschlüsselungs-Algorithmus",
+      "validString.clientNetworkAddressType": "Ungültiger Wert für den Typ der Client-Netzwerkadresse",
+      "validString.clientNetworkType": "Ungültiger Wert für den Client-Netzwerktyp",
+      "validString.macFilter": "Ungültiger MAC-Filter",
+
+      "site-name.already.exists": "Ein Kundenstandort mit diesem Namen ist bereits vorhanden",
+      "ap.name.already.exists": "Der Access-Point-Name ist bereits vorhanden",
+      "ssid.name.already.exists": "Der SSID-Name ist bereits vorhanden",
+      "unknown.constraint.violation": "Unbekannte Bedingungsverletzung",
+
+      "serial.invalid": "Ungültige Seriennummer",
+      "exception.unexpected": "Bei der Verarbeitung der Anfrage ist ein unerwarteter Fehler aufgetreten",
+      "exception.AccessDeniedException": "Zugriff verweigert",
+      "field.value.invalid": "Ungültiger Eingabewert {{0}} für Feld {{1}}",
+      "encoding.invalid": "Ungültige Codierung erkannt",
+      "exception.io": "I/O-Ausnahme am Server aufgetreten",
+      "exception.json.parse": "Fehlerhaftes JSON in Anfrage erhalten",
+      "request.json.malformed": "Fehlerhaftes JSON in Anfrage erhalten",
+      "property.invalid": "Fehler bei der Verarbeitung des für Eigenschaft {{0}} angegebenen Werts",
+      "exception.illegal.argument": "Ungültiges Argument in Anfrage erhalten",
+      "http.request.header.missing": "Erforderlicher HTTP-Header {{0}} fehlt in Anfrage",
+      "field.validation.errors.message": "Fehler bei der Feldprüfung",
+      "http.method.unsupported": "HTTP-Methode {{0}} für den angegebenen Pfad nicht unterstützt",
+      "access-point.state.invalid.for.abort": "Access-Point-Status [{{0}}] ungültig für Abbruch",
+      "access-point.state.invalid.for.retry": "Access-Point-Status [{{0}}] ungültig für Wiederholen"
     }
   }
 }

@@ -74,7 +74,9 @@
         "update": "更新",
         "reset": "清除",
         "enable": "啟用",
-        "disable": "停用"
+        "disable": "停用",
+        "revert": "使用網站設定",
+        "revert-system": "使用系統預設設定"
       },
       "status": {
         "registering": "正在等待連線",
@@ -89,7 +91,11 @@
         "out_of_sync": "錯誤需要注意",
         "firmware_too_old": "韌體過舊",
         "disabled": "停用",
-        "enabled": "已啟用"
+        "enabled": "已啟用",
+        "license-error": {
+          "license_expired": "授權已過期",
+          "license_not_found": "未找到授權"
+        }
       },
       "form": {
         "name": "名稱",
@@ -446,12 +452,26 @@
       },
       "cli": {
         "title": "執行參數命令",
-        "description": "從 Sophos Central 執行命令將建立一個包含命令的變更記錄，並將像從本機 CLI 執行一樣執行。使用命令更改的設定不會反映在 Sophos Central 設定中。",
+        "description": "執行來自 Sophos Central 的命令會使用給定命令建立一項工作，它們在單個工作階段中逐個執行，就像從本機 CLI 執行一樣。您可以檢查工作佇列中目前或先前工作的輸出。請注意，使用命令修改的組態不會顯示在 Sophos Central 組態中。",
         "execute": "執行",
-        "hide": "隱藏",
+        "hide": "關閉",
         "executing": "正在執行工作（工作 ID：{{ id }}，狀態：{{ status }}）",
         "refreshing": "重新整理中...",
-        "parse-error": "剖析回應時發生錯誤。"
+        "parse-error": "剖析回應時發生錯誤。",
+        "reset": "建立新命令",
+        "reset-tooltip": "清除畫面，並允許您在所選交換器上執行新的命令集。此操作不會干擾任何正在進行的工作。",
+        "disconnected": "交換器目前已斷開，輸出可能不會立即顯示。執行命令的工作已經產生，將在裝置重新連接到 Sophos Central 時執行。您可以隨時在工作佇列中查看工作的狀態。",
+        "out-of-sync": "交換器的最後一項工作失敗。在手動解決故障之前，新工作不會執行。您可以按一下「跳過」忽略錯誤，或在解決本機組態中的衝突後按一下「重試」（如果有）。執行上述命令的工作已經產生，將在錯誤解決後執行。 ",
+        "skip": "跳過以繼續",
+        "skip-tooltip": "這會跳過所選交換器先前失敗的工作。",
+        "no-capabilities-all": "所有 {{ count }} 交換器 ( {{ switches }} ) 都使用較舊的韌體，無法執行來自 Sophos Central 的命令。將交換器升級到最新韌體以執行來自 Sophos Central 的命令。",
+        "no-capabilities-few": "{{ count }} 交換器 ( {{ switches }} ) 使用的是較舊的韌體，無法執行來自 Sophos Central 的命令。在韌體升級到最新版本之前不會產生工作。",
+        "suggestions": {
+          "reset": "您無法執行來自 Sophos Central 的 'restore-defaults' 命令。這可能會斷開交換器與 Sophos Central 的連接。",
+          "reboot": "您無法執行來自 Sophos Central 的 'reboot' 命令。請改用交換器檢視中的「重新啟動」選項。 ",
+          "shutdown": "關閉上行鏈路或管理連接埠可能會斷開交換器與 Sophos Central 的連接。 ",
+          "management-vlan": "變更管理 VLAN 的設定可能會斷開交換器與 Sophos Central 的連接。 "
+        }
       }
     },
     "register": {
@@ -573,7 +593,15 @@
         "save-dialog-title": "確認儲存",
         "site-save-dialog-text": "{{ count }} 交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
         "switch-save-dialog-text": "交換器將獲取此 VLAN，任務將建立。您可以選擇現在或稍後同步。",
-        "save-checkbox-text": "立即將設定同步至交換器"
+        "save-checkbox-text": "立即將設定同步至交換器",
+        "revert-success": "交換器設定已成功刪除，交換器改用網站設定。 ",
+        "revert-system-success": "網站設定已成功刪除，交換器改用系統預設設定。 ",
+        "revert-error": "無法刪除交換器設定 ",
+        "revert-system-error": "無法刪除網站設定 ",
+        "revert-to-site-confirm-title": "使用網站設定",
+        "revert-to-system-confirm-title": "使用系統預設設定",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。  交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。  您可以現在或以後同步組態變更。"
       }
     },
     "task-queue": {
@@ -679,7 +707,13 @@
         "switch-save-dialog-text": "交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
         "save-checkbox-text": "立即將設定同步至交換器",
         "lag-site-sync-dialog-text": "{{ count }} 個交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
-        "lag-switch-sync-dialog-text": "交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。"
+        "lag-switch-sync-dialog-text": "交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "port-revert-success": "交換器設定已成功刪除，交換器使用網站設定。",
+        "port-revert-error": "無法刪除交換器組態。 ",
+        "port-revert-system-success": "網站組態已成功刪除，交換器使用系統預設設定。",
+        "port-revert-system-error": "無法刪除網站組態設定。 ",
+        "switch-revert-dialog-text": "所選交換器設定將被刪除，交換器將改用網站設定。  您可以現在或以後同步組態變更。",
+        "switch-revert-system-dialog-text": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。"
       }
     },
     "remote-debugging": {
@@ -908,9 +942,7 @@
       "overused-message": "授權超用。此帳戶已為 {{model}} 購買了 {{total}} 個訂閱，但管理了 {{used}} 個交換器。",
       "no-model-license-message": "缺少授權：管理 {{model}} 個交換器需要授權訂閱。",
       "no-license-message": "找不到訂閱：在此帳戶中管理交換器需要授權訂閱。",
-      "about-to-expire-message": "{{model}} 的授權即將到期。",
-      "grace-period-message": "{{model}} 的授權已到期，目前還有 {{grace}} 天的寬限期。",
-      "license-expired-message": "{{model}} 的授權已到期，寬限期已過，請續訂以繼續管理交換器。"
+      "grace-period-message": "{{model}} 的授權已到期，目前正在使用 {{grace}} 天的寬限期（還剩 {{pending}} 天）。"
     }
   }
 }
