@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "Algo ha ido mal. Error interno del servidor",
           "INTERNAL_SERVER_ERROR": "Algo ha ido mal. Error interno del servidor",
           "GROUP_NAME_EXISTS": "Este nombre de grupo ya existe. Seleccione otro.",
-          "INVALID_IP_ADDRESS_OR_FQDN": "La IP o FQDN públicos especificados para el enlace WAN no son válidos: {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "La IP o FQDN públicos especificados para el enlace WAN no son válidos: {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "Las direcciones del puerto WAN primario y secundario que ha facilitado son iguales.",
+          "RETRY_AFTER_SOMETIME": "Vuelva a intentarlo dentro de un rato."
         },
         "states": {
           "cannot-save": "Error desconocido al guardar el grupo de conexiones.",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "Formato IPv4 no válido para el recurso compartido",
-              "duplicate": "IP duplicada"
+              "duplicate": "El recurso ya se utiliza para el mismo servicio."
             },
             "service": {
               "title": "Servicio",
@@ -555,7 +557,9 @@
         "import-config-label": "Importar configuración de",
         "error": {
           "fetch-error": "Error al obtener los firewalls",
-          "save-error": "Error al crear el grupo"
+          "save-error": "Error al crear el grupo",
+          "HA_IN_PROGRESS": "{{ firewalls }} firewall(s) no está(n) en un estado aceptable. Espere hasta que se haya establecido la HA y después intente moverlos al grupo.",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} firewall(s) tiene(n) el estado PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Grupo creado correctamente",
         "duplicate-group-name": "Este nombre de grupo ya existe"
@@ -707,6 +711,7 @@
       "title": "Plantillas de firewall",
       "breadcrumb-text": "Plantillas de firewall",
       "cannot-load": "Error al cargar la lista de plantillas.",
+      "manage-policy-loader-message": "Su gestión de firewalls se está cargando. Puede que tarde unos segundos.",
       "edit-customers": {
         "modal": {
           "title": "Editar clientes - {{ name }}",

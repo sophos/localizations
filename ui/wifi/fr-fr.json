@@ -469,6 +469,7 @@
         "listLoadingError": "Impossible de charger la liste des SSID",
         "headers": {
           "ssid": "SSID",
+          "type": "Type",
           "passphrase": "Phrase secrète",
           "encryption-mode": "Mode de chiffrement",
           "encryption-algorithm": "Algorithme de chiffrement",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "Aucune",
             "GHZ_2_4": "2,4 GHz",
-            "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz et 5 GHz",
             "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
+            "GHZ_5,GHZ_6": "5 GHz et 6 GHz",
+            "GHZ_2_4,GHZ_6": "2,4 GHz et 6 GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz et 6 GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "Les deux"
         }
       },
       "network-editor": {
@@ -1067,6 +1076,7 @@
           "title": "Enregistrement d’un point d’accès",
           "onBoardtitle": "Assistant Intégration",
           "accessPoints": "Points d’accès",
+          "accessPointsRegistrationStatus": "État d’enregistrement des points d’accès",
           "description": "Enregistrez votre point d’accès en suivant les 3 étapes suivantes :",
           "next": "Suivant",
           "editHostNameSave": "Enregistrer le nom d’hôte",
@@ -1297,6 +1307,51 @@
           "unknown-error": "Nous avons rencontré une erreur inconnue."
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "La série fournie est déjà enregistrée",
+      "ipv4.valid": "Le champ d’adresse IP doit être un format IPv4 valide",
+      "ipv4Internal.valid": "Le champ d’adresse IP interne doit être un format IPv4 valide",
+      "ipv4External.valid": "Le champ d’adresse IP externe doit être un format IPv4 valide",
+      "name.notBlank": "Le nom doit être renseigné",
+      "model.notBlank": "Le modèle doit être renseigné",
+      "serial.notBlank": "Le numéro de série doit être renseigné",
+      "id.notBlank": "L’UUID doit être renseigné",
+      "name.invalid": "Le nom doit être renseigné, ne doit pas dépasser 100 caractères, peut contenir des lettres, des chiffres ou des traits de soulignement mais ne doit pas contenir de caractères spéciaux",
+      "location.tooLong": "L’emplacement du point d’accès ne doit pas excéder 100 caractères.",
+      "description.invalid": "La description doit être renseignée et ne doit pas dépasser 300 caractères",
+      "record.invalid": "{{0}} n’est pas valide pour ce compte",
+      "entity.not.found": "Aucun {{0}} trouvé pour ce compte",
+      "validString.accessProtectionMode": "Valeur de mode de protection d’accès non valide",
+      "validString.accessProtectionType": "Valeur de type de protection d’accès non valide",
+      "validString.encryptionAlgorithm": "Valeur d’algorithme chiffrement non valide",
+      "validString.clientNetworkAddressType": "Type d’adresse réseau client non valide",
+      "validString.clientNetworkType": "Type de réseau client non valide",
+      "validString.macFilter": "Filtre Mac non valide",
+
+      "site-name.already.exists": "Une site client du même nom existe déjà.",
+      "ap.name.already.exists": "Un point d’accès du même nom existe déjà.",
+      "ssid.name.already.exists": "UN SSID du même nom existe déjà.",
+      "unknown.constraint.violation": "Violation de contrainte inconnue",
+
+      "serial.invalid": "Numéro de série non valide",
+      "exception.unexpected": "Une erreur inattendue s’est produite pendant le traitement de la demande.",
+      "exception.AccessDeniedException": "Accès refusé",
+      "field.value.invalid": "Valeur d’entrée {{0}} non valide fournie pour le champ {{1}}",
+      "encoding.invalid": "Codage non valide détecté",
+      "exception.io": "Une exception d’E/S s’est produite sur le serveur",
+      "exception.json.parse": "JSON mal formé reçu dans la demande",
+      "request.json.malformed": "Demande JSON mal formée reçue",
+      "property.invalid": "Échec du traitement de la valeur fournie pour la propriété {{0}}",
+      "exception.illegal.argument": "Un argument illégal a été reçu dans la demande",
+      "http.request.header.missing": "En-tête HTTP requis {{0}} manquant dans la demande",
+      "field.validation.errors.message": "Erreurs de validation de champ",
+      "http.method.unsupported": "Méthode HTTP {{0}} non prise en charge pour le chemin fourni",
+      "access-point.state.invalid.for.abort": "L’état du point d'accès [{{0}}] n’est pas valide pour l’abandon",
+      "access-point.state.invalid.for.retry": "L’état du point d’accès [{{0}}] n’est pas valide pour une nouvelle tentative"
     }
   }
 }

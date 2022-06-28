@@ -469,6 +469,7 @@
         "listLoadingError": "Não foi possível carregar a lista de SSIDs",
         "headers": {
           "ssid": "SSID",
+          "type": "Tipo",
           "passphrase": "Frase de segurança",
           "encryption-mode": "Modo de encriptação",
           "encryption-algorithm": "Algoritmo de encriptação",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "Nenhuma",
             "GHZ_2_4": "2,4 GHz",
-            "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz e 5 GHz",
             "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
+            "GHZ_5,GHZ_6": "5 GHz e 6 GHz",
+            "GHZ_2_4,GHZ_6": "2,4 GHz e 6 GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz e 6 GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "Ambos"
         }
       },
       "network-editor": {
@@ -1067,6 +1076,7 @@
           "title": "Registrar ponto de acesso",
           "onBoardtitle": "Assistente integrado",
           "accessPoints": "Pontos de Acesso",
+          "accessPointsRegistrationStatus": "Status de registro dos pontos de acesso",
           "description": "Para registrar seu ponto de acesso, siga estas três etapas:",
           "next": "Avançar",
           "editHostNameSave": "Salvar o nome de host",
@@ -1093,7 +1103,7 @@
           },
           "registerWizardTable": {
             "serialNumber": "Número de série",
-            "accessPointState": "Estado do ponto de acesso",
+            "accessPointState": "Estado do Ponto de Acesso",
             "hostName": "Nome do Host",
             "status": "Status"
           },
@@ -1297,6 +1307,51 @@
           "unknown-error": "Erro desconhecido encontrado."
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "O número de série fornecido já está registrado",
+      "ipv4.valid": "O campo de endereço IP deve ter um formato IPv4 válido",
+      "ipv4Internal.valid": "O campo de endereço IP interno deve ter um formato IPv4 válido",
+      "ipv4External.valid": "O campo de endereço IP externo deve ter um formato IPv4 válido",
+      "name.notBlank": "O nome não pode ficar em branco",
+      "model.notBlank": "O modelo não pode ficar em branco",
+      "serial.notBlank": "O número de série não pode ficar em branco",
+      "id.notBlank": "O UUID não pode ficar em branco",
+      "name.invalid": "O nome não pode ficar em branco, não deve exceder 100 caracteres, pode conter letras, números e sublinhado, e não pode conter caracteres especiais",
+      "location.tooLong": "O local do ponto de acesso não deve exceder 100 caracteres",
+      "description.invalid": "A descrição não pode ficar em branco e não pode exceder 300 caracteres",
+      "record.invalid": "{{0}} fornecida é inválida para esta conta",
+      "entity.not.found": "Nenhuma {{0}} encontrada para esta conta",
+      "validString.accessProtectionMode": "Valor inválido de Modo de proteção de acesso",
+      "validString.accessProtectionType": "Valor inválido de Tipo de proteção de acesso",
+      "validString.encryptionAlgorithm": "Valor inválido de Algoritmo de encriptação",
+      "validString.clientNetworkAddressType": "Tipo inválido de Endereço de rede cliente",
+      "validString.clientNetworkType": "Tipo inválido de Rede cliente",
+      "validString.macFilter": "Filtro Mac inválido",
+
+      "site-name.already.exists": "Já existe um site de cliente com o nome fornecido",
+      "ap.name.already.exists": "Já existe um ponto de acesso com o nome fornecido",
+      "ssid.name.already.exists": "Já existe um SSID com o nome fornecido",
+      "unknown.constraint.violation": "Violação de restrição desconhecida",
+
+      "serial.invalid": "Número de série inválido",
+      "exception.unexpected": "Ocorreu um erro inesperado durante o processamento da sua solicitação.",
+      "exception.AccessDeniedException": "Acesso Negado",
+      "field.value.invalid": "Valor de entrada inválido {{0}} fornecido para o campo {{1}}",
+      "encoding.invalid": "Codificação inválida detectada",
+      "exception.io": "Ocorreu uma exceção E/S no servidor",
+      "exception.json.parse": "JSON malformado recebido na solicitação",
+      "request.json.malformed": "JSON de solicitação malformada recebido",
+      "property.invalid": "Falha ao processar o valor fornecido para a propriedade {{0}}",
+      "exception.illegal.argument": "Um argumento ilegal foi recebido na solicitação",
+      "http.request.header.missing": "Cabeçalho HTTP necessário {{0}} ausente na solicitação",
+      "field.validation.errors.message": "Erros de validação do campo",
+      "http.method.unsupported": "Método HTTP {{0}} não é aceito no caminho fornecido",
+      "access-point.state.invalid.for.abort": "O estado do ponto de acesso [{{0}}] é inválido para abortar",
+      "access-point.state.invalid.for.retry": "O estado do ponto de acesso [{{0}}] é inválido para uma nova tentativa"
     }
   }
 }

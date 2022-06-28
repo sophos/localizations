@@ -469,6 +469,7 @@
         "listLoadingError": "SSID 목록을 로드할 수 없습니다.",
         "headers": {
           "ssid": "SSID",
+          "type": "유형",
           "passphrase": "암호",
           "encryption-mode": "암호화 모드",
           "encryption-algorithm": "암호화 알고리즘",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "없음",
             "GHZ_2_4": "2.4GHz",
-            "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
-            "GHZ_5": "5분",
+            "GHZ_5": "5GHz",
             "both": "2.4GHz 및 5GHz",
             "GHZ_6": "6GHz",
+            "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
+            "GHZ_5,GHZ_6": "5GHz 및 6GHz",
+            "GHZ_2_4,GHZ_6": "2.4GHz 및 6GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2.4GHz, 5GHz 및 6GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "모두"
         }
       },
       "network-editor": {
@@ -1067,6 +1076,7 @@
           "title": "액세스 지점 등록",
           "onBoardtitle": "온보딩 마법사",
           "accessPoints": "액세스 지점",
+          "accessPointsRegistrationStatus": "액세스 지점 등록 상태",
           "description": "액세스 지점을 등록하려면 다음 세 단계를 따르십시오.",
           "next": "다음",
           "editHostNameSave": "호스트 이름 저장",
@@ -1093,7 +1103,7 @@
           },
           "registerWizardTable": {
             "serialNumber": "일련 번호",
-            "accessPointState": "액세스 포인트 상태",
+            "accessPointState": "액세스 지점 상태",
             "hostName": "호스트 이름",
             "status": "상태"
           },
@@ -1297,6 +1307,51 @@
           "unknown-error": "알 수 없는 오류가 발생했습니다."
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "제공된 시리얼은 이미 등록되어 있습니다.",
+      "ipv4.valid": "IP 주소 필드는 유효한 IPv4 형식이어야 함",
+      "ipv4Internal.valid": "내부 IP 주소 필드는 유효한 IPv4 형식이어야 함",
+      "ipv4External.valid": "외부 IP 주소 필드는 유효한 IPv4 형식이어야 함",
+      "name.notBlank": "이름은 비워둘 수 없음",
+      "model.notBlank": "모델은 비워둘 수 없음",
+      "serial.notBlank": "일련 번호는 비워둘 수 없음",
+      "id.notBlank": "UUID는 비워둘 수 없음",
+      "name.invalid": "이름은 비워둘 수 없고 100자를 초과할 수 없으며 알파벳, 숫자 또는 밑줄을 포함할 수 있으나 특수 문자는 포함할 수 없음",
+      "location.tooLong": "액세스 지점 위치는 100자를 초과할 수 없습니다.",
+      "description.invalid": "설명은 비워둘 수 없으며 300자를 초과할 수 없음",
+      "record.invalid": "제공된 {{0}}이(가) 이 계정에 유효하지 않음",
+      "entity.not.found": "이 계정에 대한 {{0}}을(를) 찾을 수 없음",
+      "validString.accessProtectionMode": "잘못된 액세스 보호 모드 값",
+      "validString.accessProtectionType": "잘못된 액세스 보호 유형 값",
+      "validString.encryptionAlgorithm": "잘못된 암호화 알고리즘 값",
+      "validString.clientNetworkAddressType": "잘못된 클라이언트 네트워크 주소 유형",
+      "validString.clientNetworkType": "잘못된 클라이언트 네트워크 유형",
+      "validString.macFilter": "잘못된 Mac 필터",
+
+      "site-name.already.exists": "제공된 이름을 가진 고객 사이트가 이미 있습니다.",
+      "ap.name.already.exists": "제공된 액세스 지점 이름이 이미 있습니다.",
+      "ssid.name.already.exists": "제공된 SSID 이름이 이미 있습니다.",
+      "unknown.constraint.violation": "알 수 없는 제약 조건 위반",
+
+      "serial.invalid": "잘못된 일련 번호",
+      "exception.unexpected": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다.",
+      "exception.AccessDeniedException": "액세스 거부됨",
+      "field.value.invalid": "필드 {{1}}에 잘못된 입력 값({{0}})이 제공됨",
+      "encoding.invalid": "잘못된 인코딩이 감지됨",
+      "exception.io": "서버에서 I/O 예외 발생",
+      "exception.json.parse": "요청에 형식이 잘못된 JSON 수신됨",
+      "request.json.malformed": "형식이 잘못된 요청 JSON 수신됨",
+      "property.invalid": "속성 {{0}}에 대해 제공된 값을 처리하는 데 실패",
+      "exception.illegal.argument": "요청에 잘못된 인수가 수신됨",
+      "http.request.header.missing": "요청에 필수 HTTP 헤더 {{0}} 누락",
+      "field.validation.errors.message": "필드 유효성 검사 오류",
+      "http.method.unsupported": "제공된 경로에 대해 지원되지 않는 HTTP 메서드 {{0}}",
+      "access-point.state.invalid.for.abort": "액세스 지점 상태[{{0}}]가 중단에 유효하지 않습니다.",
+      "access-point.state.invalid.for.retry": "액세스 지점 상태[{{0}}]가 재시도에 유효하지 않습니다."
     }
   }
 }

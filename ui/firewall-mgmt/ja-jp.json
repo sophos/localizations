@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "エラーが発生しました。内部サーバーエラー！",
           "INTERNAL_SERVER_ERROR": "エラーが発生しました。内部サーバーエラー！",
           "GROUP_NAME_EXISTS": "グループ名は既に存在します。別のものを選択してください。",
-          "INVALID_IP_ADDRESS_OR_FQDN": "WAN リンクに指定されているパブリック IP または FQDN が無効です: {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "WAN リンクに指定されているパブリック IP または FQDN が無効です: {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "指定されたプライマリ WAN ポートアドレスとセカンダリ WAN ポートアドレスは同じです。",
+          "RETRY_AFTER_SOMETIME": "しばらくしてから再試行してください。"
         },
         "states": {
           "cannot-save": "接続グループの保存中、不明なエラーが発生しました。",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "共有リソースの IPv4 形式が無効です",
-              "duplicate": "重複した IP"
+              "duplicate": "リソースは、既に同じサービスに対して使用されています。"
             },
             "service": {
               "title": "サービス",
@@ -555,7 +557,9 @@
         "import-config-label": "設定のインポート元",
         "error": {
           "fetch-error": "ファイアウォールの取得中、エラーが発生しました",
-          "save-error": "グループの作成に失敗しました"
+          "save-error": "グループの作成に失敗しました",
+          "HA_IN_PROGRESS": "{{ firewalls }}台のファイアウォールの状態が有効ではありません。HA が確立されるまで待ってから、それをグループに移動してください。",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }}台のファイアウォールの状態が PEER_PRIMARY_FIREWALL_NOT_SUPPLIED です。"
         },
         "create-group-success": "グループの作成に成功しました",
         "duplicate-group-name": "グループ名は既に存在します"
@@ -707,6 +711,7 @@
       "title": "ファイアウォールテンプレート",
       "breadcrumb-text": "ファイアウォールテンプレート",
       "cannot-load": "テンプレートのリストを読み込み中、エラーが発生しました。",
+      "manage-policy-loader-message": "現在、ファイアウォール管理を読み込み中です。これには数秒かかることがあります。",
       "edit-customers": {
         "modal": {
           "title": "顧客の編集 - {{ name }}",

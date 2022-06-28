@@ -18,7 +18,9 @@
         "accept": "接受",
         "search": "搜尋",
         "clear": "清除",
-        "ok": "確定"
+        "rollback" : "復原",
+        "ok": "確定",
+        "close": "關閉"
       },
       "status": {
         "success": "成功",
@@ -26,19 +28,21 @@
       },
       "manage": "管理",
       "loading": "載入中...",
+      "not-applicable": "N/A",
       "confirm-delete-header": "確認刪除",
-      "auth-suv-unreachable": "無法存取授權服務",
+      "confirm-rollback-header": "確認復原",
+      "auth-service-unreachable": "無法存取授權服務",
       "clientid-exists": "用戶端 ID 已存在",
       "messages": {
         "denied": "存取遭拒。",
         "generic-error": "處理請求時出現意外錯誤。",
         "info": "資訊",
         "bad-credentials": "認證或憑證錯誤。",
-        "waf-rule-disabled": "這個防火牆並未啟用 Web 應用程式防火牆。",
-        "network-rule-disabled": "這個防火牆並未啟用網路防火牆。",
-        "ips-rule-disabled": "這個防火牆並未啟用入侵防護。",
-        "admission-control-rule-disabled": "這個防火牆並未啟用管理控制。",
-        "cluster-not-approved": "這個防火牆尚未獲得 Sophos Central 管理核可。核可防火牆可配合任何組態繼續執行。",
+        "waf-rule-disabled": "這個防火牆未啟用 Web 應用程式防火牆。",
+        "network-rule-disabled": "這個防火牆未啟用網路防火牆。",
+        "ips-rule-disabled": "這個防火牆未啟用入侵預防。",
+        "admission-control-rule-disabled": "這個防火牆未啟用許可控制。",
+        "cluster-not-approved": "您尚未核准在 Sophos Central 中管理該防火墻。請先核准，再繼續。",
         "entry-port-null": "WAF 規則接聽連接埠為必須項。",
         "invalid-description": "描述包含無效字元。"
       }
@@ -55,6 +59,7 @@
       "type": "類型",
       "features": "功能",
       "manage": "管理",
+      "version": "已安裝的版本",
       "feature": {
         "firewall": "防火墻",
         "waf": "WAF",
@@ -68,10 +73,11 @@
       },
       "installation-type": {
         "aws": "Amazon EKS",
-        "on-prem": "內部部署"
+        "on-prem": "原生 Kubernetes"
       },
       "messages": {
-        "empty-message": "無叢集可用。"
+        "empty-message": "無叢集可用。",
+        "up-grade": "此 Cloud Series Firewall 版本的升級可用。"
       }
     },
     "edit-cluster": {
@@ -84,23 +90,32 @@
       "cluster-name": "叢集名稱",
       "cluster-type": "Kubernetes 安裝類型",
       "cluster-description": "描述",
+      "number-of-nodes": "叢集中的節點數",
+      "storageClass-name": "永續性磁碟區 (PV) 儲存類別",
       "cluster-labels": "標籤",
       "cluster-services": "服務清單",
       "cluster-installation-heading": "安裝步驟",
       "type-place-holder": "選取一個類型",
-      "action": "動作",
+      "action": "現有設定",
       "status": "狀態",
-      "btn-label": "準備部署",
+      "btn-label": "下一步",
       "cluster-name-error": "叢集名稱不得超過 100 個字元。",
       "name-pattern-error": "叢集名稱包含無效字元。",
-      "cluster-description-error": "描述最多可包含 250 個字元。",
-      "not-selected-cni": "您還沒有選擇 CNI，請選擇當前 CNI 以繼續。",
-      "require-cni": "Cloud Series Firewall 需要安裝 CNI 作爲先決條件。建議從官方網站 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\"> </a>安裝 Calico CNI。",
-      "not-selected-ingress": "您尚未選擇輸入控制器。如需繼續，請選擇一個輸入控制器或關閉 WAF。",
-      "not-supported-ingress": "您選擇了 WAF 不支援的現有輸入控制器。如果您想使用 WAF，您需要從您的叢集中移除輸入控制器。否則需要關閉 WAF。",
-      "cluster-success-notification": "防火牆已新增成功。<br><br><b>接下來呢？</b><br>按一下新增防火牆的名稱以得知防火牆安裝步驟。",
+      "storageClassName-pattern-error": "儲存類別名稱包含無效字元。",
+      "storageClass-tooltip": "為了在您的叢集中安裝 Cloud Series Firewall，它需要永續性磁碟區 (PV) 來儲存組態物件。這裡提到的 PV 儲存類別將用於在安裝過程中獲取 PV。",
+      "cluster-description-error": "說明不得超過 250 個字元。",
+      "nodes-invalid-number": "節點數應處於範圍內 (1-200)",
+      "nodes-tooltip": "根據叢集中的節點數量部署具有最佳物件儲存和 Redis 執行個體數量的產品時需要此資訊。",
+      "nodes-confirmation-message": "您已選取了單節點。這將以最少數量的物件儲存和 Redis pod 部署產品以僅支援單節點叢集。<br/><br/>要在多節點叢集中部署產品，請按一下 \"取消\" 按鈕並根據您的未來計劃選取多個節點。<br/>要僅在單節點叢集中以最小模式部署產品，請按一下 \"準備部署\" 繼續。<br/>要在單節點叢集中以縮放模式部署產品，請按一下下面的核取方塊，然後按一下 \"準備部署\" 以繼續。",
+      "nodes-dialog-checkbox-message": "我想在單節點叢集中進行擴展部署。",
+      "confirmation": "確認",
+      "not-selected-cni": "選取您現有的 CNI 以繼續。",
+      "require-cni": "Cloud Series Firewall 需要一個 CNI。建議從 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">官方網站</a>安裝 Calico CNI。",
+      "not-selected-ingress": "選取入口控制器或關閉 WAF。",
+      "not-supported-ingress": "您選取了一個不適用於 WAF 的現有入口控制器。如果您要使用 WAF，請移除入口控制器。否則，請關閉 WAF。",
+      "cluster-success-notification": "已成功新增防火墻。",
       "type": {
-        "premises": "內部部署安裝",
+        "premises": "原生 Kubernetes",
         "aws": "Amazon EKS"
       },
       "nfoptions-place-holder": "選取 CNI 選項",
@@ -111,13 +126,10 @@
         "calico-with-vpc": "安裝搭配 VPC CNI 的  Calico",
         "different": "已安裝其他 CNI"
       },
-      "wafoptions-place-holder": "選擇輸入控制器",
+      "wafoptions-place-holder": "您有入口控制器嗎？",
       "waf-options": {
-        "no-ingress": "沒有已安裝的輸入控制器",
-        "curifence": "我已安裝了 Curiefense",
-        "traefik": "我已安裝了 Traefik",
-        "nginx": "我已安裝了 NGINX",
-        "different": "我已經安裝了不同的 Proxy"
+        "yes": "是",
+        "no": "無"
       },
       "services": {
         "network-firewall": "網路防火牆",
@@ -131,7 +143,7 @@
       },
       "s3-config": {
         "section-title": "S3 貯體設定",
-        "section-help": "提供 S3 貯體設定，Web 應用程式防火墻需要將其用於設定物件儲存",
+        "section-help": "提供 S3 貯體設定，Web 應用程式防火墻需要它儲存設定。",
         "s3-url": "桶名稱",
         "access-key": "存取金鑰",
         "secret-key": "秘密金鑰"
@@ -144,7 +156,7 @@
       "messages": {
         "updated-message": "已成功更新叢集。",
         "added-message": "已成功新增叢集。",
-        "cluster-name-already-exists": "具有提供的名稱的叢集已存在。",
+        "cluster-name-already-exists": "具有該名稱的叢集已存在。",
         "default-error": "處理請求時出現錯誤。",
         "exception": {
           "resource": {
@@ -154,25 +166,36 @@
       }
     },
     "cluster-overview": {
-      "title": "概觀",
+      "title": "叢集概觀",
       "breadcrumbs-text": "叢集概觀",
       "status": "狀態",
       "installation-steps": "安裝步驟",
-      "confirm-cluster-delete": "確定要移除 Cloud Series Firewall？",
+      "upgrade-steps": "升級步驟",
+      "confirm-cluster-delete": "是否移除 Cloud Series Firewall？",
       "uninstall-commands-help-text": "<br/><br/><br/><br/>刪除後，請使用以下命令從叢集中解除安裝 Cloud Series Firewall。<br/><br/>{{displayUninstallCommands}}",
-      "installation-steps-help-text": "按一下複製圖示，即可複製以下控制指令並在您的叢集上執行。",
+      "installation-steps-help-text": "按一下複製圖示，即可複製控制命令並在您的叢集上執行它。",
+      "upgrade-steps-help-text": "按一下複製圖示，即可複製以下控制命令並在您的叢集上執行，以升級 Cloud Series Firewall 版本。",
+      "installation-step-1-heading": "步驟-1",
+      "installation-step-2-heading": "步驟-2",
+      "installation-step-1": "若要在您的叢集中安裝 Cloud Series Firewall 解決方案，它需要 {{pv}} 個永續性磁碟區，每個在 \"{{storageClass}}\" 儲存類中的大小為 {{memory}} MB。",
+      "detail-info-step-1": "如需瞭解詳細資訊，請參閱 <a href=\"https://sophos.com\" target=\"_blank\">文件</a>。",
+      "PV-setup-completion-checkbox-text": "PV 設定已完成。",
+      "rollback-commands-help-text": "使用以下命令復原 Cloud Series Firewall 版本。",
       "messages": {
         "deleted-message": "已成功刪除叢集。",
         "updated-message": "已成功更新叢集。",
-        "status-waiting-for-deploy": "這個防火牆尚未部署至叢集亦未連結 Sophos Central。",
-        "status-awaiting-for-approval": "這個防火牆正在要求核可允許接受 Sophos Central 帳戶的管理。如果您希望同意這個要求，請按一下「接受核可」。",
+        "status-waiting-for-deploy": "此防火墻未部署至叢集，也沒有與 Sophos Central 聯絡。",
+        "status-awaiting-for-approval": "此防火墻正在申請由 Sophos Central 管理。如果該請求符合您的預期，請按一下「接受」。",
         "copy-to-clipboard-success": "已複製到剪貼簿。",
-        "copy-to-clipboard-failed": "未能複製到剪貼簿。"
+        "copy-to-clipboard-failed": "無法複製到剪貼簿。",
+        "upgrade-message": "使用以下控制命令將此叢集升級到最新版本的 Cloud Series Firewall。",
+        "latest-cnf-version": "此叢集的最新 Cloud Series Firewall 版本： "
+        
       }
     },
     "waf": {
       "list": {
-        "title": "Web 應用防火牆規則",
+        "title": "Web 應用程式防火牆規則",
         "breadcrumb-text": "WAF 規則",
         "search-placeholder": "搜尋 WAF 規則",
         "add": "新增規則",
@@ -194,9 +217,9 @@
         "request-path": "請求路徑",
         "waf-policy-list": "WAF 政策",
         "messages": {
-          "delete-rule-confirmation": "是否要刪除規則？",
+          "delete-rule-confirmation": "是否刪除規則？",
           "delete-rule-success": "規則已刪除。",
-          "delete-rule-error": "無法刪除規則。",
+          "delete-rule-error": "未能刪除規則。",
           "empty-message": "此叢集無 WAF 規則可用。"
         }
       },
@@ -204,8 +227,8 @@
         "title": "新增 Web 應用程式防火牆規則",
         "breadcrumb-text": "新增 WAF 規則",
         "messages": {
-          "waf-rule-add-success": "已成功建立規則。",
-          "waf-rule-add-error": "無法建立規則。",
+          "waf-rule-add-success": "規則已成功建立。",
+          "waf-rule-add-error": "未能建立規則。",
           "no-route-specified-error": "新增至少一個路由。",
           "duplicate-routes-error": "您新增了多個具有相同選取條件的路由。請刪除冗餘的路由。"
         },
@@ -220,14 +243,14 @@
         "breadcrumb-text": "編輯 WAF 規則",
         "status": "規則狀態",
         "rule-name": "規則名稱",
-        "rule-name-required-error": "規則名稱為必填欄位。",
+        "rule-name-required-error": "必須提供規則名稱。",
         "description": "描述",
         "entry-points": "進入點",
         "listening-port": "接聽連接埠 (1-65535)",
         "listening-port-required-error": "接聽連接埠是必填欄位。",
         "http-listening-port": "HTTP 接聽連接埠 (1-65535)",
         "http-listening-port-required-error": "HTTP 接聽連接埠是必填欄位。",
-        "port-range-error": "連接埠應在指定範圍內 (1-65535)。",
+        "port-range-error": "連接埠必須在範圍內 (1-65535)。",
         "http-only": "HTTPS/TLS",
         "redirect-http": "重新導向 HTTP",
         "request-path": "請求路徑",
@@ -235,14 +258,15 @@
         "request-from": "對應目的地路徑",
         "routes": "路由",
         "fqdn": "FQDN",
-        "fqdn-required-error": "FQDN 為必填欄位",
+        "fqdn-required-error": "需要 FQDN。",
         "header": "標頭",
+        "queries": "查询",
         "name-placeholder": "名稱",
         "value-placeholder": "值",
         "destination-type": "目的地類型",
         "destination-type-placeholder": "選擇目的地類型",
         "namespace": "命名空間",
-        "namespace-required-error": "命名空間為必填欄位。",
+        "namespace-required-error": "命名空間是必填欄位。",
         "namespace-placeholder": "選擇命名空間",
         "service": "服務",
         "service-required-error": "服務是必填欄位。",
@@ -251,7 +275,7 @@
         "service-port-required-error": "服務連接埠是必填欄位。",
         "service-port-placeholder": "選取連接埠",
         "destination-ip-fqdn": "目的地 IP/FQDN",
-        "destination-ip-fqdn-required-error": "目的地 IP/FQDN 是必填欄位。",
+        "destination-ip-fqdn-required-error": "目的地 IP 或 FQDN 是必填欄位。",
         "destination-port": "目的地連接埠",
         "destination-port-required-error": "目的地連接埠是必填欄位。",
         "web-service-use-tls": "Web 服務使用 TLS",
@@ -287,13 +311,13 @@
           "present": "存在"
         },
         "messages": {
-          "change-certificate-prompt-confirmation": "您已設定路由，變更憑證將清除所有現有路由設定。確定要繼續嗎？",
+          "change-certificate-prompt-confirmation": "變更憑證將會捨棄您已設定的所有路由。是否繼續？",
           "waf-rule-update-success": "WAF 規則已更新。",
           "waf-rule-update-error": "無法更新 WAF 規則。",
           "entrypoint-port-redirectport-not-same": "WAF 規則 entry point 連接埠與 redirect 連接埠不能相同。",
-          "entrypoint-port-in-use": "接聽連接埠已在使用，請指定可用的連接埠",
-          "entrypoint-redirect-from-in-use": "HTTP 連接埠已在使用，請指定可用的連接埠",
-          "name-already-exists": "具有提供的名稱的 WAF 規則已存在。",
+          "entrypoint-port-in-use": "接聽連接埠已在使用中。請指定可用的連接埠。",
+          "entrypoint-redirect-from-in-use": "HTTP 接聽連接埠已在使用中。請指定可用的連接埠。",
+          "name-already-exists": "具有該名稱的 WAF 規則已存在。",
           "routes-destination-host-fqdn-invalid": "目的主機 FQDN 必須為有效格式。",
           "field-value-notvalid": "屬性值缺失或無效。",
           "rule-name-error": "WAF 規則名稱不得超過 100 個字元。",
@@ -305,7 +329,7 @@
     "certificate": {
       "title": "新增憑證",
       "name": "名稱",
-      "name-required-error": "名稱為必填欄位。",
+      "name-required-error": "名稱是必填欄位。",
       "name-invalid-error": "名稱包含無效字元。",
       "name-length-error": "名稱不得超過 100 個字元。",
       "description": "描述",
@@ -329,10 +353,10 @@
         "certificate-delete-error": "無法刪除憑證。",
         "added-message": "已成功新增憑證。",
         "update-message": "已成功更新憑證。",
-        "certificate-name-already-exists": "具有提供的名稱的憑證已存在。",
+        "certificate-name-already-exists": "具有該名稱的憑證已存在。",
         "certificate-usedby-waf-rule": "無法刪除 WAF 規則所使用的憑證。",
-        "change-certificate-prompt-confirmation": "您已設定路由，變更憑證將清除所有現有路由設定。確定要繼續嗎？",
-        "illegal-argument": "憑證無效，作業失敗。"
+        "change-certificate-prompt-confirmation": "變更憑證將會捨棄您已設定的所有路由。是否繼續？",
+        "illegal-argument": "憑證無效。操作失敗。"
       }
     },
     "firewall-rules": {
@@ -351,7 +375,7 @@
         "disabled": "已停用",
         "enabled": "已啟用",
         "messages": {
-          "delete-rule-confirmation": "確定要刪除規則嗎？",
+          "delete-rule-confirmation": "是否刪除規則？",
           "delete-rule-success": "規則已刪除。",
           "empty-message": "此叢集無防火墻規則可用。",
           "delete-rule-error": "無法刪除規則。"
@@ -370,17 +394,17 @@
         "title": "新增防火牆規則",
         "breadcrumb-text": "新增防火牆規則",
         "help-text": {
-          "match-criteria": "選擇此規則旨在保護的命名空間和標籤。",
-          "ingress-heading": "輸入是指傳入與所選命名空間和標籤匹配的容器的流量。使用這些標準來選取此規則應套用於哪些傳入流量。",
-          "egress-heading": "輸出是指源自與所選命名空間和標籤匹配的容器的流量。使用這些標準來選取此規則應套用於哪些傳出流量。"
+          "match-criteria": "選擇您要使用此規則保護的命名空間和標籤。",
+          "ingress-heading": "入口是指傳入與所選命名空間和標籤匹配之容器的流量。指定將套用此規則的流量。",
+          "egress-heading": "出口是指從與所選命名空間和標籤匹配之容器傳出的流量。指定將套用此規則的流量。"
         },
         "messages": {
           "firewall-rule-add-success": "已成功新增防火墻規則。",
-          "name-already-exists": "具有提供的名稱的防火墻規則已存在。",
+          "name-already-exists": "具有該名稱的防火墻規則已存在。",
           "cidr-invalid": "防火墻規則 CIDR 無效。",
           "exceptlist-invalid": "防火墻規則排除清單無效。",
-          "ipblock-cidr-except-notinrange": "排除清單項目超出 CIDR 範圍。",
-          "ipblock-cidr-except-samerange": "排除清單項目與 CIDR 範圍相同。"
+          "ipblock-cidr-except-notinrange": "例外清單項目超出 CIDR 範圍。",
+          "ipblock-cidr-except-samerange": "例外清單項目與 CIDR 範圍相同。"
         }
       },
       "edit": {
@@ -410,7 +434,7 @@
         "not-in": "不包含",
         "exists": "存在",
         "not-exists": "不存在",
-        "egress-type": "輸出類型",
+        "egress-type": "出口類型",
         "service-ports": "服務連接埠",
         "port-number": "連接埠編號",
         "from-ip": "來源 IP 或子網",
@@ -418,11 +442,11 @@
         "tcp": "TCP",
         "udp": "UDP",
         "sctp": "SCTP",
-        "add-ingress": "新增輸入",
-        "add-egress": "新增輸出",
+        "add-ingress": "新增入口",
+        "add-egress": "新增出口",
         "rule-name-error": "規則名稱不得超過 100 個字元。",
         "name-pattern-error": "規則名稱包含無效字元。",
-        "rule-description-error": "描述最多可包含 250 個字元。",
+        "rule-description-error": "說明不得超過 250 個字元。",
         "namespace-address": "命名空間或地址",
         "service": "服務",
         "action": "動作",
@@ -431,21 +455,21 @@
         "clone-route-tooltip": "複製路由",
         "egress-heading": "輸出",
         "ingress-heading": "輸入",
-        "rule-required-error": "規則名稱為必填欄位。",
-        "namespace-required-error": "命名空間為必填欄位。",
+        "rule-required-error": "必須提供規則名稱。",
+        "namespace-required-error": "命名空間是必填欄位。",
         "ip-address-invalid": "IP 地址或子網無效。",
         "ip-address-invalid-range": "IP 地址或子網範圍無效。",
         "empty-rules-text": "輸入規則和輸出規則均為空。",
         "ip-address-cidr": "輸入 IP 或子網",
         "ip-address-except": "輸入逗號分隔 IP 或子網",
         "from-ip-not-filled": "應填寫來源 IP 或子網。",
-        "port-value-error": "連接埠編號應介於 1 與 65535 之間。",
+        "port-value-error": "連接埠編號必須介於 1 與 65535 之間。",
         "messages": {
           "firewall-rule-update-success": "防火牆規則已更新。",
-          "delete-rule-confirmation": "確定要刪除規則嗎？",
+          "delete-rule-confirmation": "是否刪除規則？",
           "delete-rule-success": "規則已刪除。",
           "delete-rule-error": "無法刪除規則。",
-          "delete-service-confirmation": "命名空間變更將會清除選定的服務標籤。<br/>確定要繼續嗎？",
+          "delete-service-confirmation": "變更命名空間將清除選定的服務標籤。是否繼續？",
           "confirmation": "確認"
         }
       }
@@ -474,7 +498,7 @@
           "breadcrumb-text": "新增 IPS 政策",
           "status": "狀態",
           "name": "名稱",
-          "name-required-error": "名稱為必填欄位。",
+          "name-required-error": "名稱是必需的。",
           "name-pattern-error" : "名稱包含無效字元。",
           "name-length-error" : "名稱不得超過 100 個字元。",
           "description": "描述",
@@ -504,7 +528,7 @@
           "ew-required-error": "東西流量掃描原則為必須項。",
           "messages": {
             "empty-message": "無 IPS 原則可用。",
-            "name-already-exists" : "具有所提供名稱的 IPS 原則已存在。",
+            "name-already-exists" : "具有該名稱的 IPS 原則已存在。",
             "signature-conflict" : "IPS 原則存在衝突的簽名動作。"
           }
         },
@@ -520,7 +544,7 @@
           "add": "新增政策",
           "messages":{
             "policy-delete-success" : "政策已刪除。",
-            "delete-confirmation" : "是否要刪除策略？",
+            "delete-confirmation" : "是否刪除原則？",
             "in-use" : "無法刪除政策。原則已在 IPS 規則中指派。"
           }
         }
@@ -542,7 +566,7 @@
       "messages": {
         "success-notification-title": "成功",
         "error-notification-title": "錯誤",
-        "delete-rule-confirmation": "是否要刪除規則？",
+        "delete-rule-confirmation": "是否刪除規則？",
         "delete-rule-success": "規則已刪除。",
         "delete-rule-error": "無法刪除規則。",
         "empty-message": "此叢集無管理控制規則可用。"
@@ -572,24 +596,24 @@
         "add-rule-error": "無法新增規則。",
         "update-rule-success": "已成功更新規則。",
         "update-rule-error": "無法更新規則。",
-        "flag-not-set": "規則狀態應已設定。",
-        "name-already-exists" : "採用提供名稱的管理控制規則已存在。",
-        "rule-required-error" : "名稱為必填欄位。",
+        "flag-not-set": "必須設定規則狀態。",
+        "name-already-exists" : "具有該名稱的許可控制規則已存在。",
+        "rule-required-error" : " 名稱是必需的。",
         "rule-name-error" : "名稱不得超過 100 個字元。",
         "name-pattern-error" : "名稱包含無效字元。",
-        "namespace-null" : "命名空間欄位不得為空白。",
-        "repository-blank" : "容器登錄/存放庫欄位不得為空白。",
-        "optixScans-apikey-blank" : "OptixScan 的 API 金鑰欄位不得為空白。",
-        "optixScans-disallowed-levels-null" : "OptixScan 的不允許級別欄位不得為空白。",
+        "namespace-null" : "命名空間不得為空白。",
+        "repository-blank" : "容器登錄/存放庫不得為空白。",
+        "optixScans-apikey-blank" : "OptixScan 的 API 金鑰不得為空白。",
+        "optixScans-disallowed-levels-null" : "OptixScan 的不允許級別不得為空白。",
         "repository-required-error" : "容器登錄/存放庫為必填欄位。",
         "api-required-error" : "API 金鑰為必填欄位。",
-        "disallow-required-error" : "禁止層級為必填欄位。",
-        "rule-description-error": "描述最多可包含 250 個字元。",
-        "namespace-required-error": "命名空間為必填欄位。",
+        "disallow-required-error" : "不允許級別為必填欄位。",
+        "rule-description-error": "說明不得超過 250 個字元。",
+        "namespace-required-error": "命名空間是必填欄位。",
         "registry-pattern-error" : "容器登錄/存放庫包含無效字元。"
       },
       "help-text": {
-        "target-namespace": "選擇此規則旨在保護的命名空間。"
+        "target-namespace": "選取您要使用此規則保護的命名空間。"
       }
     },
     "admission-control-edit": {

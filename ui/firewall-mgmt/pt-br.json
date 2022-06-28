@@ -293,7 +293,9 @@
           "INTERNAL_REQUEST_ERROR" : "Algo deu errado. Erro interno de servidor!",
           "INTERNAL_SERVER_ERROR": "Algo deu errado. Erro interno de servidor!",
           "GROUP_NAME_EXISTS": "O nome do grupo já existe. Escolha um diferente.",
-          "INVALID_IP_ADDRESS_OR_FQDN": "IP público ou FQDN especificado para o link WAN é inválido: {{ IPOrFQDN }}"
+          "INVALID_IP_ADDRESS_OR_FQDN": "IP público ou FQDN especificado para o link WAN é inválido: {{ IPOrFQDN }}",
+          "DUPLICATE_WAN_PORT_ADRRESS": "Os endereços de porta WAN primário e secundário são os mesmos.",
+          "RETRY_AFTER_SOMETIME": "Tente novamente mais tarde."
         },
         "states": {
           "cannot-save": "Erro desconhecido ao salvar o grupo de conexão.",
@@ -434,7 +436,7 @@
                 }
               },
               "invalid": "Formato de IPv4 inválido para o recurso compartilhado",
-              "duplicate": "IP em duplicata"
+              "duplicate": "O recurso já está em uso para o mesmo serviço."
             },
             "service": {
               "title": "Serviço",
@@ -555,7 +557,9 @@
         "import-config-label": "Importar Configuração de",
         "error": {
           "fetch-error": "Erro ao buscar os firewalls",
-          "save-error": "Falha na criação do grupo"
+          "save-error": "Falha na criação do grupo",
+          "HA_IN_PROGRESS": "{{ firewalls }} firewall(s) não apresenta(m) um estado aceitável. Aguarde até que os HAs tenham se estabelecido e tente movê-los para o grupo.",
+          "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} firewall(s) apresenta(m) o estado PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Grupo criado com sucesso",
         "duplicate-group-name": "O nome do grupo já existe"
@@ -707,6 +711,7 @@
       "title": "Modelos de firewall",
       "breadcrumb-text": "Modelos de firewall",
       "cannot-load": "Erro durante o carregamento da lista de modelos.",
+      "manage-policy-loader-message": "O gerenciamento do seu firewall está carregando no momento. Isso pode levar alguns segundos.",
       "edit-customers": {
         "modal": {
           "title": "Editar clientes - {{ name }}",

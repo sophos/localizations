@@ -469,6 +469,7 @@
         "listLoadingError": "SSID リストを読み込めません",
         "headers": {
           "ssid": "SSID",
+          "type": "種類",
           "passphrase": "パスフレーズ",
           "encryption-mode": "暗号化モード",
           "encryption-algorithm": "暗号化アルゴリズム",
@@ -661,13 +662,21 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "なし",
             "GHZ_2_4": "2.4GHz",
-            "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
             "GHZ_5": "5GHz",
             "both": "2.4GHz および 5GHz",
             "GHZ_6": "6GHz",
+            "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
+            "GHZ_5,GHZ_6": "5GHz および 6GHz",
+            "GHZ_2_4,GHZ_6": "2.4GHz および 6GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2.4GHz、5GHz、および 6GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "両方"
         }
       },
       "network-editor": {
@@ -680,7 +689,7 @@
         "green-option-info": "クライアント保護済み。",
         "yellow-option-label": "Security Heartbeat™ 黄色",
         "yellow-option-value": "すべてのトラフィックを許可 (警告)",
-        "yellow-option-info": "問題が検出され、クライアントが危険にさらされている可能性があります。エンドポイントで、これは非アクティブなマルウェアまたは不要と思われるアプリケーション (PUA) である可能性があります。モバイルデバイスの場合、さまざまなコンプライアンス違反に対するハートビートのステータスを定義できます。",
+        "yellow-option-info": "問題が検出され、クライアントが危険にさらされている可能性があります。エンドポイントで、これは非アクティブなマルウェアまたは不要と思われるアプリケーション (PUA) である可能性があります。モバイルデバイスの場合、さまざまなコンプライアンス違反に対するハートビートの状態を定義できます。",
         "red-option-label": "セキュリティハードビート: 赤",
         "red-option-value": "ウォールドガーデン",
         "red-option-info": "以下の許可リストに登録されているドメインを除き、すべてのインターネットトラフィックがブロックされます。ユーザーには、警告を通知する Web ページが表示されます。",
@@ -1067,6 +1076,7 @@
           "title": "アクセスポイントの登録",
           "onBoardtitle": "ウイザード",
           "accessPoints": "アクセスポイント",
+          "accessPointsRegistrationStatus": "アクセスポイントの登録の状態",
           "description": "アクセスポイントを登録するには、次の 3つの手順を実行してください。",
           "next": "次へ",
           "editHostNameSave": "ホスト名の保存",
@@ -1297,6 +1307,51 @@
           "unknown-error": "不明なエラーが発生しました。"
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "指定されたシリアル番号は、既に登録されています",
+      "ipv4.valid": "IP アドレスのフィールドには、有効な IPv4 形式のアドレスを入力する必要があります",
+      "ipv4Internal.valid": "内部 IP アドレスのフィールドには、有効な IPv4 形式のアドレスを入力する必要があります",
+      "ipv4External.valid": "外部 IP アドレスのフィールドには、有効な IPv4 形式のアドレスを入力する必要があります",
+      "name.notBlank": "名前を空白にすることはできません",
+      "model.notBlank": "機種を空白にすることはできません",
+      "serial.notBlank": "シリアル番号を空白にすることはできません",
+      "id.notBlank": "UUID を空白にすることはできません",
+      "name.invalid": "名前は空白にできず、100文字を超えることはできません。また、アルファベット、数字、アンダースコアを含めることはできますが、特殊文字を含めることはできません",
+      "location.tooLong": "アクセスポイントの場所は 100文字以内で指定してください",
+      "description.invalid": "説明は空白にできず、300文字を超えることはできません",
+      "record.invalid": "指定された {{0}} は、このアカウントで無効です",
+      "entity.not.found": "このアカウントの {{0}} は見つかりませんでした",
+      "validString.accessProtectionMode": "アクセス保護モードの値が無効です",
+      "validString.accessProtectionType": "アクセス保護の種類の値が無効です",
+      "validString.encryptionAlgorithm": "暗号化アルゴリズムの値が無効です",
+      "validString.clientNetworkAddressType": "クライアントネットワークアドレスの種類が無効です",
+      "validString.clientNetworkType": "クライアントネットワークの種類が無効です",
+      "validString.macFilter": "Mac フィルタが無効です",
+
+      "site-name.already.exists": "指定された名前の顧客サイトは既に存在します",
+      "ap.name.already.exists": "指定されたアクセスポイント名は既に存在します",
+      "ssid.name.already.exists": "指定された SSID 名は既に存在します",
+      "unknown.constraint.violation": "不明な制約違反です",
+
+      "serial.invalid": "シリアル番号が無効です",
+      "exception.unexpected": "リクエストの処理中に、予期しないエラーが発生しました",
+      "exception.AccessDeniedException": "アクセスが拒否されました",
+      "field.value.invalid": "無効な入力値 {{0}} が、{{1}} フィールドに指定されました",
+      "encoding.invalid": "無効なエンコーディングが検出されました",
+      "exception.io": "サーバーで I/O 例外が発生しました",
+      "exception.json.parse": "リクエストで不正な JSON を受信しました",
+      "request.json.malformed": "不正な JSON のリクエストを受信しました",
+      "property.invalid": "プロパティ {{0}} に指定された値の処理に失敗しました",
+      "exception.illegal.argument": "リクエストで不正な引数を受信しました",
+      "http.request.header.missing": "必要な HTTP ヘッダー {{0}} がリクエストにありません",
+      "field.validation.errors.message": "フィールドの検証エラー",
+      "http.method.unsupported": "指定されたパスで、HTTP メソッド {{0}} はサポートされていません",
+      "access-point.state.invalid.for.abort": "アクセスポイントの状態 [{{0}}] は、中止に対して無効です",
+      "access-point.state.invalid.for.retry": "アクセスポイントの状態 [{{0}}] は、再試行に対して無効です"
     }
   }
 }

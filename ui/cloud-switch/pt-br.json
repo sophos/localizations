@@ -74,7 +74,9 @@
         "update": "Atualizar",
         "reset": "Apagar",
         "enable": "Ativar",
-        "disable": "Desativar"
+        "disable": "Desativar",
+        "revert": "Usar configurações do site",
+        "revert-system": "Usar configurações padrão do sistema"
       },
       "status": {
         "registering": "Aguardando conexão",
@@ -89,7 +91,11 @@
         "out_of_sync": "Erro requer atenção",
         "firmware_too_old": "Firmware muito antigo",
         "disabled": "Desabilitado",
-        "enabled": "Habilitado"
+        "enabled": "Habilitado",
+        "license-error": {
+          "license_expired": "Licença expirada",
+          "license_not_found": "Nenhuma licença encontrada"
+        }
       },
       "form": {
         "name": "Nome",
@@ -446,12 +452,26 @@
       },
       "cli": {
         "title": "Executar comandos do switch",
-        "description": "A execução de comandos no Sophos Central criará um log de alterações com comandos que serão executados como se fossem executados da CLI local. As configurações alteradas usando comandos não serão refletidas na configuração do Sophos Central.",
+        "description": "A execução de comandos no Sophos Central cria uma tarefa com os comandos fornecidos que são executados em uma única sessão, um a um, como se fossem executados da CLI local. Você pode verificar o resultado das tarefas atuais ou anteriores na fila de tarefas. Observe que as configurações alteradas usando comandos não são exibidas na configuração do Sophos Central.",
         "execute": "Executar",
-        "hide": "Ocultar",
+        "hide": "Fechar",
         "executing": "Executando tarefa (ID de tarefa: {{ id }}, Status: {{ status }})",
         "refreshing": "Atualizando...",
-        "parse-error": "Erro ao analisar a resposta."
+        "parse-error": "Erro ao analisar a resposta.",
+        "reset": "Criar novos comandos",
+        "reset-tooltip": "Limpa a tela e permite que você execute um novo conjunto de comandos nos switches selecionados. Isso não interrompe nenhuma das tarefas em andamento.",
+        "disconnected": "O switch está desconectado no momento e a saída talvez não apareça imediatamente. As tarefas para executar os comandos já foram geradas e serão executadas quando o dispositivo for reconectado ao Sophos Central. Você pode verificar o status das tarefas na fila de tarefas.",
+        "out-of-sync": "A última tarefa falhou no switch. As novas tarefas não serão executadas até que a falha seja resolvida manualmente. Você pode clicar em 'Ignorar' para ignorar o erro ou em 'Tentar novamente' após resolver conflitos em configurações locais, se houver. As tarefas para executar os comandos acima já foram geradas e serão executadas quando o erro for resolvido. ",
+        "skip": "Ignorar para continuar",
+        "skip-tooltip": "Isso ignora uma tarefa que falhou anteriormente no switch selecionado.",
+        "no-capabilities-all": "Todos os {{ count }} switches ( {{ switches }} ) estão usando um firmware antigo e não podem executar comandos a partir do Sophos Central. Faça o upgrade dos switches com o último firmware para executar comandos a partir do Sophos Central.",
+        "no-capabilities-few": "{{ count }} switches ( {{ switches }} ) estão usando um firmware antigo e não podem executar comandos a partir do Sophos Central. As tarefas não serão geradas até que o firmware seja atualizado para a versão mais recente.",
+        "suggestions": {
+          "reset": "Você não pode executar o comando 'restore-defaults' a partir do Sophos Central. Isso poderá desconectar o switch do Sophos Central.",
+          "reboot": "Você não pode executar o comando 'reboot' a partir do Sophos Central. Use a opção 'Reinicializar' na exibição do switch em seu lugar.",
+          "shutdown": "Encerrar o uplink ou as portas de gerenciamento poderá desconectar o switch do Sophos Central.",
+          "management-vlan": "Alterar as configurações da VLAN de gerenciamento poderá desconectar o switch do Sophos Central."
+        }
       }
     },
     "register": {
@@ -573,7 +593,15 @@
         "save-dialog-title": "Confirme a ação de salvar",
         "site-save-dialog-text": "{{ count }} switches terão esta VLAN e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
         "switch-save-dialog-text": "O switch terá esta VLAN e as tarefas serão criadas. Você pode optar por sincronizar agora ou mais tarde.",
-        "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente"
+        "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente",
+        "revert-success": "Configurações do switch deletadas com sucesso, e o switch está usando as configurações do site em seu lugar.",
+        "revert-system-success": "Configurações do site deletadas com sucesso, e o switch está usando as configurações padrão do sistema em seu lugar.",
+        "revert-error": "Não é possível deletar configurações de switch",
+        "revert-system-error": "Não é possível deletar configurações de site",
+        "revert-to-site-confirm-title": "Usar configurações do site",
+        "revert-to-system-confirm-title": "Usar configurações padrão do sistema",
+        "revert-to-site-info-message": "As configurações do switch selecionados serão deletadas. O switch usará configurações do site em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
+        "revert-to-system-info-message": "As configurações do site selecionado serão deletadas, e o switch usará as configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde."
       }
     },
     "task-queue": {
@@ -679,7 +707,13 @@
         "switch-save-dialog-text": "O switch terá as portas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente",
         "lag-site-sync-dialog-text": "{{ count }} switches terão a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
-        "lag-switch-sync-dialog-text": "O switch terá a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde."
+        "lag-switch-sync-dialog-text": "O switch terá a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "port-revert-success": "Configurações do switch deletadas com sucesso, e o switch está usando as configurações do site.",
+        "port-revert-error": "Não é possível deletar configurações do switch.",
+        "port-revert-system-success": "Configurações do site deletadas com sucesso, e o switch está usando os padrões do sistema.",
+        "port-revert-system-error": "Não é possível deletar parâmetros de configuração do site.",
+        "switch-revert-dialog-text": "Configurações do switch selecionado serão deletadas, e o switch usará as configurações do site em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
+        "switch-revert-system-dialog-text": "As configurações do site selecionado serão deletadas, e o switch usará as configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde."
       }
     },
     "remote-debugging": {
@@ -908,9 +942,7 @@
       "overused-message": "Licença ultrapassada. Esta conta tem {{total}} assinaturas adquiridas para {{model}}, mas tem {{used}} switches gerenciados.",
       "no-model-license-message": "Licença ausente: Assinatura de licença necessária para gerenciar switches {{model}}.",
       "no-license-message": "Nenhuma assinatura encontrada: Assinatura de licença necessária para gerenciar switches nesta conta.",
-      "about-to-expire-message": "A licença para {{model}} está prestes a expirar.",
-      "grace-period-message": "A licença para {{model}} expirou e está atualmente no período de carência de {{grace}} dias.",
-      "license-expired-message": "A licença para {{model}} expirou e o período de carência terminou; renove a licença para continuar gerenciando os switches."
+      "grace-period-message": "A licença para {{model}} expirou e está atualmente no período de carência de {{grace}} dias (restam {{pending}} dias)."
     }
   }
 }

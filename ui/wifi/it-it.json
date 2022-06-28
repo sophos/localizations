@@ -469,6 +469,7 @@
         "listLoadingError": "Impossibile caricare l'elenco di SSID",
         "headers": {
           "ssid": "SSID",
+          "type": "Tipo",
           "passphrase": "Passphrase",
           "encryption-mode": "Modalità di cifratura",
           "encryption-algorithm": "Algoritmo di cifratura",
@@ -661,17 +662,25 @@
         },
         "bands": {
           "_dynamic_": {
+            "none": "Nessuna",
             "GHZ_2_4": "2,4 GHz",
-            "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
             "GHZ_5": "5 GHz",
             "both": "2,4 GHz e 5 GHz",
             "GHZ_6": "6 GHz",
+            "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
+            "GHZ_5,GHZ_6": "5 GHz e 6 GHz",
+            "GHZ_2_4,GHZ_6": "2,4 GHz e 6 GHz",
             "GHZ_2_4,GHZ_5,GHZ_6": "2,4 GHz, 5 GHz e 6 GHz"
           }
+        },
+        "types": {
+          "ap5": "APX",
+          "ap6": "AP6",
+          "both": "Entrambi"
         }
       },
       "network-editor": {
-        "sync-security-label": "Sicurezza Sincronizzata",
+        "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security è una funzionalità esclusiva, disponibile per gli access point Sophos APX Series. Il nostro rivoluzionario Security Heartbeat™ consente a endpoint, protezione dei dispositivi mobili e access point di comunicare e condividere informazioni utili per intraprendere insieme le azioni necessarie per impedire alle minacce di sicurezza di infiltrarsi nella rete.",
         "sync-security-disable-info": "<sup>**</sup>Gli SSID abilitati per Synchronized Security non sono supportati negli access point non APX.",
         "sync-security-disable-info-captive-portal": "<sup>**</sup>Synchronized Security non è supportata per gli SSID di una rete guest o per i quali è abilitato un captive portal.",
@@ -1067,6 +1076,7 @@
           "title": "Registra access point",
           "onBoardtitle": "Procedura guidata iniziale",
           "accessPoints": "Access point",
+          "accessPointsRegistrationStatus": "Stato di registrazione degli access point",
           "description": "Per registrare l'access point, seguire questa procedura a 3 passaggi:",
           "next": "Avanti",
           "editHostNameSave": "Salva nome host",
@@ -1093,7 +1103,7 @@
           },
           "registerWizardTable": {
             "serialNumber": "Numero di serie",
-            "accessPointState": "Stato dell'access point",
+            "accessPointState": "Stato dell’access point",
             "hostName": "Nome host",
             "status": "Stato"
           },
@@ -1297,6 +1307,51 @@
           "unknown-error": "Si è verificato un errore sconosciuto."
         }
       }
+    }
+
+  },
+  "wifix": {
+    "api": {
+      "serial.invalid.for.account": "Il numero di serie fornito è già registrato",
+      "ipv4.valid": "Il campo Indirizzo IP deve essere in un formato IPv4 valido",
+      "ipv4Internal.valid": "Il campo dell’indirizzo IP interno deve essere in un formato IPv4 valido",
+      "ipv4External.valid": "Il campo dell’indirizzo IP esterno deve essere in un formato IPv4 valido",
+      "name.notBlank": "Il campo del nome non può essere vuoto",
+      "model.notBlank": "Il campo del modello non può essere vuoto",
+      "serial.notBlank": "Il campo del numero di serie non può essere vuoto",
+      "id.notBlank": "Il campo dell’UUID non può essere vuoto",
+      "name.invalid": "Il campo Nome non può essere vuoto, non deve superare i 100 caratteri, può contenere caratteri alfanumerici e di sottolineatura, non può contenere caratteri speciali",
+      "location.tooLong": "Il campo della posizione dell’access point non deve superare i 100 caratteri",
+      "description.invalid": "La descrizione non può essere lasciata vuota e non può superare i 300 caratteri",
+      "record.invalid": "L’entità {{0}} fornita non è valida per questo account",
+      "entity.not.found": "Nessuna entità {{0}} trovata per questo account",
+      "validString.accessProtectionMode": "Valore non valido per la modalità di protezione degli accessi",
+      "validString.accessProtectionType": "Valore non valido per il tipo di protezione degli accessi",
+      "validString.encryptionAlgorithm": "Valore non valido per l’algoritmo di cifratura",
+      "validString.clientNetworkAddressType": "Tipo di indirizzo della rete client non valido",
+      "validString.clientNetworkType": "Tipo di rete client non valido",
+      "validString.macFilter": "Filtro Mac non valido",
+
+      "site-name.already.exists": "Esiste già un sito del cliente con il nome specificato",
+      "ap.name.already.exists": "Esiste già un access point con il nome specificato",
+      "ssid.name.already.exists": "Esiste già uno SSID con il nome specificato",
+      "unknown.constraint.violation": "Violazione delle limitazioni sconosciuta",
+
+      "serial.invalid": "Numero di serie non valido",
+      "exception.unexpected": "Si è verificato un errore inatteso durante l’elaborazione della richiesta",
+      "exception.AccessDeniedException": "Accesso negato",
+      "field.value.invalid": "Valore di input {{0}} non valido fornito per il campo {{1}}",
+      "encoding.invalid": "Rilevata codifica non valida",
+      "exception.io": "Si è verificata un'eccezione I/O nel server",
+      "exception.json.parse": "Ricevuto JSON non valido nella richiesta",
+      "request.json.malformed": "Ricevuto JSON di richiesta non valido",
+      "property.invalid": "Non è stato possibile elaborare il valore specificato per la proprietà {{0}}",
+      "exception.illegal.argument": "Argomento non consentito ricevuto nella richiesta",
+      "http.request.header.missing": "Intestazione HTTP obbligatoria {{0}} mancante nella richiesta",
+      "field.validation.errors.message": "Errori di convalida dei campi",
+      "http.method.unsupported": "Metodo HTTP {{0}} non supportato per il percorso specificato",
+      "access-point.state.invalid.for.abort": "Lo stato dell’access point [{{0}}] non è valido per un’interruzione",
+      "access-point.state.invalid.for.retry": "Lo stato dell’access point [{{0}}] non è valido per un nuovo tentativo"
     }
   }
 }
