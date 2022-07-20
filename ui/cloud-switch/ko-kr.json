@@ -79,22 +79,88 @@
         "revert-system": "시스템 기본 설정 사용"
       },
       "status": {
-        "registering": "연결 대기 중",
-        "connected": "연결됨",
-        "registered": "등록됨",
-        "unregistered": "등록 시간 초과됨",
-        "disconnected": "{{ time }} 동안 연결 해제됨",
-        "synchronized": "동기화됨",
-        "waiting_for_sync": "동기화 대기 중",
-        "pending": "작업 보류 중",
-        "syncing": "동기화 중",
-        "out_of_sync": "오류에 주의 필요",
-        "firmware_too_old": "펌웨어가 너무 오래되었음",
-        "disabled": "사용 안 함",
-        "enabled": "사용함",
+        "registering": {
+          "name": "연결 대기 중",
+          "heading": "새 스위치 등록 중",
+          "subtext": "스위치를 다시 시작하십시오(아직 이 작업을 완료하지 않은 경우). 스위치를 켠 후 15분 내에 Sophos Central에 스위치를 추가할 수 있습니다."
+        },
+        "connected": {
+          "name": "연결됨",
+          "heading": "{{ time }} 이후 연결됨",
+          "subtext": "{{ time }}"
+        },
+        "registered": {
+          "name": "등록됨",
+          "heading": "동록에 성공했습니다.",
+          "subtext": "스위치가 곧 Sophos Central에 연결됩니다. 스위치 정보를 기다리는 중"
+        },
+        "unregistered": {
+          "name": "등록 시간 초과됨",
+          "heading": "동록에 실패했습니다.",
+          "subtext": "스위치를 다시 시작하고 등록을 다시 시도할 수 있습니다. 스위치를 켠 후 15분 내에 Sophos Central에 스위치를 추가할 수 있습니다."
+        },
+        "disconnected": {
+          "name": "{{ time }} 동안 연결 해제됨",
+          "heading": "{{ time }} 이후 누락",
+          "subtext": "{{ time }}"
+        },
+        "synchronized": {
+          "name": "동기화됨",
+          "heading": "정책을 동기화하는 데 성공했습니다.",
+          "subtext": "모든 정책이 스위치에 적용되었습니다."
+        },
+        "waiting_for_sync": {
+          "name": "수동 동기화 필요",
+          "heading": "동기화를 위해 대기 중인 작업",
+          "subtext": "하나 이상의 스위치를 선택하고 '동기화'를 클릭하여 대기 중인 정책을 스위치에 적용할 수 있습니다."
+        },
+        "pending": {
+          "name": "작업 보류 중",
+          "heading": "작업 대기열에 보류 중인 작업 있음",
+          "subtext": "연결된 스위치가 순차적으로 작업을 가져옵니다. 스위치 연결이 해제되면 나중에 적용됩니다."
+        },
+        "syncing": {
+          "name": "동기화 중",
+          "heading": "동기화가 시작되었습니다.",
+          "subtext": "정책이 원격 장치로 푸시되고 있으므로 이 작업은 시간이 걸릴 수 있습니다"
+        },
+        "out_of_sync": {
+          "name": "오류에 주의 필요",
+          "heading": "정책을 적용하지 못했습니다.",
+          "subtext": "추가 정책 변경 사항을 적용하려면 실패한 정책을 다시 시도하거나 건너뛰십시오."
+        },
+        "firmware_too_old": {
+          "name": "펌웨어가 너무 오래되었음",
+          "heading": "Sophos Central에서 아무 정책도 푸시할 수 없습니다.",
+          "subtext": "스위치를 사용 가능한 최신 펌웨어로 업그레이드하십시오."
+        },
+        "disabled": {
+          "name": "사용 안 함"
+        },
+        "enabled": {
+          "name": "사용함"
+        },
         "license-error": {
-          "license_expired": "라이선스가 만료됨",
-          "license_not_found": "라이선스를 찾을 수 없음"
+          "license_expired": {
+            "name": "라이선스가 만료됨",
+            "heading": "이 모델의 라이선스가 만료되었습니다.",
+            "subtext": "Sophos Central에서 이 스위치를 관리할 수 없습니다."
+          },
+          "license_not_found": {
+            "name": "라이선스를 찾을 수 없음",
+            "heading": "이 모델의 라이선스를 찾을 수 없습니다.",
+            "subtext": "Sophos Central에서 이 스위치를 관리할 수 없습니다."
+          },
+          "license_overused": {
+            "name": "라이선스 과다신청됨",
+            "heading": "보유한 라이선스보다 더 많은 스위치를 관리 중입니다. 사용 현황: {{ used }} 한도: {{ limit }}",
+            "subtext": "추가 라이선스를 구매하십시오."
+          },
+          "license_in_grace": {
+            "name": "라이선스가 만료됨",
+            "heading": "라이선스가 만료됨",
+            "subtext": "곧 Sophos Central에서 이 스위치를 관리할 수 없습니다."
+          }
         }
       },
       "form": {
@@ -118,7 +184,8 @@
       "waiting-for-data": "데이터 대기 중...",
       "problem-loading-data": "데이터 로드 중 문제 발생",
       "no-data": "사용할 수 있는 데이터 없음",
-      "are-you-sure": "계속하시겠습니까?"
+      "are-you-sure": "계속하시겠습니까?",
+      "conflict-message": "이 설정과 충돌이 발견되었습니다. 이 구성을 저장하지 마십시오."
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -354,7 +421,7 @@
           "full-sync-failed": "모든 설정을 스위치에 다시 적용할 수 없음",
           "sync-success": "설정이 선택한 스위치에 동기화되었음",
           "sync-failed": "사이트 설정을 선택한 스위치에 동기화할 수 없음",
-          "sync-confirm-dialog": "사이트 설정이 선택한 스위치에 동기화됨. 작업 대기열에서 진행 상황을 모니터링할 수 있습니다."
+          "sync-confirm-dialog": "선택한 스위치에 대기 중인 설정을 동기화하십시오. 작업 대기열에서 진행 상황을 모니터링할 수 있습니다."
         },
         "groupInfoText": {
           "what": "사이트가 무엇입니까?",
@@ -578,7 +645,9 @@
         "vlan-id-exists-message": "VLAN ID가 이미 있습니다.",
         "vlan-name-required-message": "이름은 필수입니다.",
         "vlan-name-invalid-message": "이름이 잘못되었습니다. 특수 문자는 허용되지 않음",
-        "vlan-name-exists-message": "이름이 이미 있습니다."
+        "vlan-name-exists-message": "이름이 이미 있습니다.",
+        "lag-mode": "LAG 모드",
+        "part-of-lag": "LAG에서 사용됨"
       },
       "message": {
         "create-error": "VLAN을 생성할 수 없음",
@@ -686,9 +755,12 @@
       "static": "정적",
       "disabled": "사용 안 함",
       "not-set": "설정되지 않음",
-      "ports-required-message": "포트가 필요함",
-      "ports-min-lag-message": "최소 2개의 포트가 필요함",
+      "ports-required-message": "포트가 필요합니다.",
+      "ports-min-lag-message": "최소 2개의 포트가 필요합니다.",
+      "normal-fiber-mixed-message": "일반 포트와 섬유 포트를 혼합할 수 없습니다.",
       "lacp-settings-button": "LACP 설정",
+      "lag-settings-button": "LAG 포트",
+      "select-ports-dd-placeholder": "포트 선택",
       "table-headers": {
         "port-id": "포트",
         "label": "레이블",
@@ -713,7 +785,8 @@
         "port-revert-system-success": "사이트 구성이 성공적으로 삭제되었으며 스위치가 시스템 기본값을 사용하고 있습니다.",
         "port-revert-system-error": "사이트 구성 설정을 삭제할 수 없습니다.",
         "switch-revert-dialog-text": "선택한 스위치 설정이 삭제되고 대신에 스위치가 사이트 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
-        "switch-revert-system-dialog-text": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다."
+        "switch-revert-system-dialog-text": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
+        "lag-conflict-message": "{{ports}} 포트가 충돌합니다. 이 구성을 저장하지 마십시오."
       }
     },
     "remote-debugging": {
@@ -918,6 +991,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP 설정",
+      "config-source": "현재 구성 소스",
       "form": {
         "system-priority": "시스템 우선순위",
         "system-policy": "시스템 정책",
@@ -939,10 +1013,10 @@
       }
     },
     "license-messages": {
-      "overused-message": "라이선스가 과도하게 사용되었습니다. 이 계정에는 {{model}}에 대해 구매한 {{total}} 구독이 있지만 관리되는 {{used}} 스위치가 있습니다.",
-      "no-model-license-message": "라이선스 누락: {{model}} 스위치를 관리하려면 라이선스 구독이 필요합니다.",
-      "no-license-message": "구독을 찾을 수 없음: 이 계정의 스위치를 관리하려면 라이선스 구독이 필요합니다.",
-      "grace-period-message": "{{model}}에 대한 라이선스가 만료되었으며 현재 {{grace}}일의 유예 기간 중에 있습니다({{pending}}일 남음)."
+      "overused-message": "하나 이상의 라이선스가 과다신청되었습니다. 보유한 라이선스보다 더 많은 스위치를 관리하려 합니다. Sophos Central에서 이러한 스위치를 관리하려면 추가 라이선스를 구매하십시오.",
+      "grace-period-message": "하나 이상의 라이선스가 만료되었습니다. 곧 Sophos Central에서 이러한 스위치를 관리할 수 없습니다. 라이선스를 갱신하십시오.",
+      "license-error": "과다신청한 라이선스를 발견했습니다!",
+      "license-warning": "만료된 라이선스를 발견했습니다!"
     }
   }
 }

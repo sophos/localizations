@@ -13,6 +13,7 @@
     "delete": "删除",
     "delete-firewall": "刪除防火牆",
     "hide-firewall": "隱藏防火牆",
+    "re-sync": "重新同步",
     "remove": "刪除",
     "success": "成功！",
     "next": "下一步 ",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "空閒的 Xfrm IP 位址",
               "add": "新增網段",
               "public-ip": "所選 WAN 連結的公共 IP 或 FQDN",
-              "behind-nat": "覆寫閘道位址"
+              "behind-nat": "覆寫閘道位址",
+              "general": "一般設定",
+              "load-balance": {
+                "title": "負載平衡",
+                "routing-strategy": "路由策略",
+                "first-available-gateway": "首個可用閘道",
+                "load-balancing": "負載平衡",
+                "load-balancing-method": "載入平衡方法",
+                "round-robin": "循環配置資源",
+                "session-persistence-type": "工作階段持續性類型",
+                "source-ip-address": "來源 IP 位址",
+                "destination-ip-address": "目的地 IP 位址",
+                "source-and-destination-ip-addresses": "來源和目的地 IP 位址",
+                "connection": "連線",
+                "help": {
+                  "first-available-gateway": "如果 SLA 關閉，則基於第一個可用閘道路由流量。",
+                  "load-balancing": "在所有可用閘道或滿足 SLA 的閘道之間平衡流量負載。"
+                }
+              },
+              "service-level-agreement": {
+                "title": "服務級別協議 (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "SLA 策略",
+                "best-quality": "最佳品質",
+                "custom": "自訂 SLA",
+                "latency": "延遲",
+                "jitter": "Jitter",
+                "packet-loss": "封包丟失",
+                "max-latency": "最大延遲",
+                "max-jitter": "最大 Jitter",
+                "max-packet-loss": "最大封包丟失",
+                "latency-margin": "(1-60000 ms)",
+                "jitter-margin": "(1-60000 ms)",
+                "packet-loss-margin": "(0-100 %)",
+                "recomended-sla-values": "推薦的 SLA 值",
+                "help": {
+                  "best-quality": "透過效能最佳的閘道路由流量。只有當兩個或兩個以上的閘道都具有最佳 SLA 效能時，才會平衡負載。",
+                  "custom": "透過滿足 SLA 的第一個閘道路由流量。若要平衡負載，它使用滿足 SLA 的所有閘道。如果沒有閘道滿足 SLA，則會套用設定的路由策略。",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "常規 Web 流量",
+                      "latency": "延遲： 250 ms",
+                      "jitter": "抖動：50 ms",
+                      "packet-loss": "封包丟失：2%"
+                    },
+                    "media": {
+                      "title": "媒體（例如：視訊、IP 電話語音）",
+                      "latency": "延遲：150 ms",
+                      "jitter": "抖動：30 ms",
+                      "packet-loss": "封包丟失：1%"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "延遲：250 ms",
+                      "jitter": "抖動：50 ms",
+                      "packet-loss": "封包丟失：5%"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "健康情況檢查",
+                "protocol": "通訊協定",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "探查目標",
+                "ip-address": "IP 位址",
+                "port": "連接埠",
+                "health-check-attempts": "健康情況檢查嘗試",
+                "interval-between-checks": "檢查之間的間隔",
+                "response-time-out": "回應逾時",
+                "action": "動作",
+                "deactivate-gateway-after": "以下時間後停用閘道：",
+                "activate-gateway-after": "以下時間後啟用閘道：",
+                "sample-size-for-SLA": "SLA 樣本尺寸",
+                "margin": {
+                  "interval-between-checks": "(1-3600 秒)",
+                  "response-time-out": "(1-10 秒)",
+                  "deactivate-gateway-after": "（1-10 連續失敗）",
+                  "activate-gateway-after": "（1-10 連續回應）",
+                  "sample-size-for-SLA": "（5-100 個樣本）"
+                },
+                "help": {
+                  "title": "如果您關閉了 SLA，健康情況檢查仍然開啟。",
+                  "probe-target": "如果首個主機響應一個探查，則防火牆不會探查下一個設定主機。",
+                  "deactivate-gateway-after": "當目標主機沒有回應時，將閘道視爲非使用狀態。",
+                  "activate-gateway-after": "當目標主機沒有回應時，將閘道視爲使用狀態。",
+                  "sample-size-for-SLA": "確認平均連結效能的檢查數。"
+                },
+                "error": {
+                  "ip-required": "IP 是必填項",
+                  "invalid-ip": "無效的 IP"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "衝突網路：'{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "編輯群組",
         "warn-info": "將防火墻指派到群組會將預設設定套用至防火墻。這可能會變更目前的防火墻設定。",
         "edit-group-success": "已成功更新群組",
-        "edit-group-error": "群組更新失敗"
+        "edit-group-error": "群組更新失敗",
+        "edit-group-invalid-error": "不允許將自動縮放防火牆指派給普通群組或將普通防火牆指派給自動縮放群組。"
       },
       "config-radio": {
         "first-radio-label": "使用 Sophos 預設項",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "虛擬防火牆大小： ",
             "required": "虛擬防火牆大小是必填項"
-          }
+          },
+          "subscription-resync-success": "訂閱重新同步成功。",
+          "subscription-resync-fail": "訂閱重新同步失敗。"
         },
         "states": {
           "data-not-loaded": "擷取伺服器資料時出錯。請稍候再試。",

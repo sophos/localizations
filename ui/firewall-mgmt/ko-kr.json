@@ -13,6 +13,7 @@
     "delete": "삭제",
     "delete-firewall": "방화벽 삭제",
     "hide-firewall": "방화벽 숨기기",
+    "re-sync": "재동기화",
     "remove": "제거",
     "success": "성공!",
     "next": "다음",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "사용 가능한 Xfrm IP 주소",
               "add": "네트워크 추가",
               "public-ip": "선택한 WAN 링크에 대한 공용 IP 또는 FQDN",
-              "behind-nat": "게이트웨이 주소 재정의"
+              "behind-nat": "게이트웨이 주소 재정의",
+              "general": "일반",
+              "load-balance": {
+                "title": "부하 분산",
+                "routing-strategy": "라우팅 전략",
+                "first-available-gateway": "사용 가능한 첫 번째 게이트웨이",
+                "load-balancing": "부하 분산",
+                "load-balancing-method": "부하 분산 방법",
+                "round-robin": "라운드 로빈",
+                "session-persistence-type": "세션 지속 유형",
+                "source-ip-address": "원본 IP 주소",
+                "destination-ip-address": "대상 IP 주소",
+                "source-and-destination-ip-addresses": "소스 및 대상 IP 주소",
+                "connection": "연결",
+                "help": {
+                  "first-available-gateway": "SLA가 꺼진 경우 사용 가능한 첫 번째 게이트웨이에 기반하여 트래픽을 라우팅합니다.",
+                  "load-balancing": "사용 가능한 모든 게이트웨이 또는 SLA를 충족하는 게이트웨이 중에서 트래픽 부하를 분산합니다."
+                }
+              },
+              "service-level-agreement": {
+                "title": "서비스 수준 계약(SLA)",
+                "sla": "SLA",
+                "sla-strategy": "SLA 전략",
+                "best-quality": "최고의 품질",
+                "custom": "사용자 지정 SLA",
+                "latency": "대기 시간",
+                "jitter": "지터",
+                "packet-loss": "패킷 손실",
+                "max-latency": "최대 대기 시간",
+                "max-jitter": "최대 지터",
+                "max-packet-loss": "최대 패킷 손실",
+                "latency-margin": "(1~60000ms)",
+                "jitter-margin": "(1~60000ms)",
+                "packet-loss-margin": "(0~100%)",
+                "recomended-sla-values": "권장 SLA 값",
+                "help": {
+                  "best-quality": "최고 성능 게이트웨이를 통해 트래픽을 라우팅합니다. 최고 SLA 성능을 가진 게이트웨이가 두 개 이상인 경우에만 부하를 분산합니다.",
+                  "custom": "SLA를 충족하는 첫 번째 게이트웨이를 통해 트래픽을 라우팅합니다. 부하 분산을 위해 SLA를 충족하는 모든 게이트웨이를 사용합니다. SLA를 충족하는 게이트웨이가 없는 경우, 구성된 라우팅 전략이 적용됩니다.",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "일반 웹 트래픽",
+                      "latency": "대기 시간: 250ms",
+                      "jitter": "지터: 50ms",
+                      "packet-loss": "패킷 손실: 2%"
+                    },
+                    "media": {
+                      "title": "미디어(예: 비디오, IP 전화)",
+                      "latency": "대기 시간: 150ms",
+                      "jitter": "지터: 30ms",
+                      "packet-loss": "패킷 손실: 1%"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "대기 시간: 250ms",
+                      "jitter": "지터: 50ms",
+                      "packet-loss": "패킷 손실: 5%"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "상태 검사",
+                "protocol": "프로토콜",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "프로브 대상",
+                "ip-address": "IP 주소",
+                "port": "포트",
+                "health-check-attempts": "상태 검사 시도",
+                "interval-between-checks": "검사 간격",
+                "response-time-out": "응답 시간 제한",
+                "action": "조치",
+                "deactivate-gateway-after": "다음 이후 게이트웨이 비활성화:",
+                "activate-gateway-after": "다음 이후 게이트웨이 활성화:",
+                "sample-size-for-SLA": "SLA의 샘플 크기",
+                "margin": {
+                  "interval-between-checks": "(1 ~ 3600초)",
+                  "response-time-out": "(1 ~ 10초)",
+                  "deactivate-gateway-after": "(1~10 연속 실패)",
+                  "activate-gateway-after": "(1~10 연속 응답)",
+                  "sample-size-for-SLA": "(5~100개 샘플)"
+                },
+                "help": {
+                  "title": "SLA를 켠 경우, 상태 검사가 계속 켜져 있습니다.",
+                  "probe-target": "첫 번째 호스트가 프로브에 응답하면 방화벽은 다음으로 구성된 호스트를 프로브하지 않습니다.",
+                  "deactivate-gateway-after": "대상 호스트가 응답하지 않으면 게이트웨이를 비활성 상태로 간주합니다.",
+                  "activate-gateway-after": "대상 호스트가 응답하면 게이트웨이를 활성 상태로 간주합니다.",
+                  "sample-size-for-SLA": "평균 링크 성능을 결정하기 위한 검사 횟수입니다."
+                },
+                "error": {
+                  "ip-required": "IP은 필수입니다.",
+                  "invalid-ip": "잘못된 IP"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "네트워크 충돌 대상: '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "그룹 편집",
         "warn-info": "그룹에 방화벽을 할당하면 방화벽에 기본 구성이 적용됩니다. 그러면 현재 방화벽 구성이 변경될 수 있습니다.",
         "edit-group-success": "그룹이 성공적으로 업데이트되었습니다.",
-        "edit-group-error": "그룹 업데이트 실패"
+        "edit-group-error": "그룹 업데이트 실패",
+        "edit-group-invalid-error": "자동 크기 조정 방화벽을 일반 그룹에 할당하거나 일반 방화벽을 자동 크기 조정 그룹에 할당하는 것은 허용되지 않습니다."
       },
       "config-radio": {
         "first-radio-label": "Sophos 기본값 사용",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "가상 방화벽 크기: ",
             "required": "가상 방화벽 크기는 필수입니다."
-          }
+          },
+          "subscription-resync-success": "구독 재동기화에 성공했습니다.",
+          "subscription-resync-fail": "구독 재동기화에 실패했습니다."
         },
         "states": {
           "data-not-loaded": "서버에서 데이터를 가져오는 중 오류가 발생했습니다. 잠시 후에 다시 시도하십시오.",

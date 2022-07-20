@@ -79,22 +79,88 @@
         "revert-system": "使用系統預設設定"
       },
       "status": {
-        "registering": "正在等待連線",
-        "connected": "已連線",
-        "registered": "已註冊",
-        "unregistered": "註冊超時",
-        "disconnected": "斷開連線 {{ time }}",
-        "synchronized": "已經同步",
-        "waiting_for_sync": "等待同步",
-        "pending": "工作擱置中",
-        "syncing": "同步中",
-        "out_of_sync": "錯誤需要注意",
-        "firmware_too_old": "韌體過舊",
-        "disabled": "停用",
-        "enabled": "已啟用",
+        "registering": {
+          "name": "正在等待連線",
+          "heading": "註冊新交換器",
+          "subtext": "如果尚未啟動，請重新啟動交換器。開啟交換器之後，您有 15 分鐘的時間將該交換器新增到 Sophos Central。"
+        },
+        "connected": {
+          "name": "已連線",
+          "heading": "{{ time }} 後已連線",
+          "subtext": "{{ time }}"
+        },
+        "registered": {
+          "name": "已註冊",
+          "heading": "註冊成功。",
+          "subtext": "交換器預計很快會連線至 Sophos Central。正在等待交換器資訊"
+        },
+        "unregistered": {
+          "name": "註冊超時",
+          "heading": "註冊失敗。",
+          "subtext": "您可以重新啟動交換器，然後重新註冊。開啟交換器之後，您有 15 分鐘的時間將該交換器新增到 Sophos Central。"
+        },
+        "disconnected": {
+          "name": "斷開連線 {{ time }}",
+          "heading": "{{ time }} 後缺失",
+          "subtext": "{{ time }}"
+        },
+        "synchronized": {
+          "name": "已經同步",
+          "heading": "已成功同步原則。",
+          "subtext": "所有原則均已套用至交換器。"
+        },
+        "waiting_for_sync": {
+          "name": "需要手動同步",
+          "heading": "工作正在等待同步",
+          "subtext": "您可以選取一或多個交換器，並按一下「同步」，將等待中的原則套用至交換器。"
+        },
+        "pending": {
+          "name": "工作擱置中",
+          "heading": "工作佇列中有待處理工作",
+          "subtext": "已連線的交換器按順序提取工作。如果交換器中斷連線，則稍後套用它們。"
+        },
+        "syncing": {
+          "name": "同步中",
+          "heading": "同步已開始。",
+          "subtext": "由於正在將策略推送到遠端裝置，因此此動作可能需要一些時間。"
+        },
+        "out_of_sync": {
+          "name": "錯誤需要注意",
+          "heading": "未能套用原則。",
+          "subtext": "重試或跳過失敗的原則以套用進一步的原則變更。"
+        },
+        "firmware_too_old": {
+          "name": "韌體過舊",
+          "heading": "無法從 Sophos Central 推送任何原則。",
+          "subtext": "將交換器升級到最新可用的韌體。"
+        },
+        "disabled": {
+          "name": "停用"
+        },
+        "enabled": {
+          "name": "已啟用"
+        },
         "license-error": {
-          "license_expired": "授權已過期",
-          "license_not_found": "未找到授權"
+          "license_expired": {
+            "name": "授權已過期",
+            "heading": "此模組的授權已經過期。",
+            "subtext": "您無法從 Sophos Central 管理此交換器。"
+          },
+          "license_not_found": {
+            "name": "未找到授權",
+            "heading": "找不到此模組的授權。",
+            "subtext": "您無法從 Sophos Central 管理此交換器。"
+          },
+          "license_overused": {
+            "name": "授權超訂閱",
+            "heading": "您正在管理的交換器數量超過了您擁有授權的交換器數量。使用量：{{ used }}限制：{{ limit }}",
+            "subtext": "請購買更多授權。"
+          },
+          "license_in_grace": {
+            "name": "授權已過期",
+            "heading": "授權已過期",
+            "subtext": "您很快就無法從 Sophos Central 管理此交換器。"
+          }
         }
       },
       "form": {
@@ -118,7 +184,8 @@
       "waiting-for-data": "等待資料...",
       "problem-loading-data": "載入資料時出現問題",
       "no-data": "无可用数据",
-      "are-you-sure": "確定要繼續嗎？"
+      "are-you-sure": "確定要繼續嗎？",
+      "conflict-message": "這些設定存在衝突。請勿儲存此設定。"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -354,7 +421,7 @@
           "full-sync-failed": "無法將所有設定重新套用至交換器",
           "sync-success": "設定已同步至所選交換機",
           "sync-failed": "無法將站點設定同步至所選交換機",
-          "sync-confirm-dialog": "網站設定將同步至所選交換器。您可在任務佇列中監視進度。"
+          "sync-confirm-dialog": "將佇列的設定同步到所選交換器。您可在工作佇列中監視進度。"
         },
         "groupInfoText": {
           "what": "什麼是網站？",
@@ -578,7 +645,9 @@
         "vlan-id-exists-message": "VLAN ID 已存在。",
         "vlan-name-required-message": "名稱為必填項。",
         "vlan-name-invalid-message": "無效的名稱。不允許使用特殊字元。",
-        "vlan-name-exists-message": "名稱已存在。"
+        "vlan-name-exists-message": "名稱已存在。",
+        "lag-mode": "LAG 模式",
+        "part-of-lag": "已用於 LAG"
       },
       "message": {
         "create-error": "無法建立 VLAN",
@@ -686,9 +755,12 @@
       "static": "靜態",
       "disabled": "已停用",
       "not-set": "未設定",
-      "ports-required-message": "必須提供連接埠",
-      "ports-min-lag-message": "至少需要 2 個連接埠",
+      "ports-required-message": "必須提供連接埠。",
+      "ports-min-lag-message": "至少需要 2 個連接埠。",
+      "normal-fiber-mixed-message": "不能混合正常連接埠和光纖連接埠。",
       "lacp-settings-button": "LACP 設定",
+      "lag-settings-button": "LAG 連接埠",
+      "select-ports-dd-placeholder": "選取多個連接埠",
       "table-headers": {
         "port-id": "連接埠",
         "label": "標籤",
@@ -713,7 +785,8 @@
         "port-revert-system-success": "網站組態已成功刪除，交換器使用系統預設設定。",
         "port-revert-system-error": "無法刪除網站組態設定。 ",
         "switch-revert-dialog-text": "所選交換器設定將被刪除，交換器將改用網站設定。  您可以現在或以後同步組態變更。",
-        "switch-revert-system-dialog-text": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。"
+        "switch-revert-system-dialog-text": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
+        "lag-conflict-message": "連接埠 {{ports}} 存在衝突，請勿儲存此設定。"
       }
     },
     "remote-debugging": {
@@ -918,6 +991,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP 設定",
+      "config-source": "目前設定來源",
       "form": {
         "system-priority": "系統優先級",
         "system-policy": "系統原則",
@@ -939,10 +1013,10 @@
       }
     },
     "license-messages": {
-      "overused-message": "授權超用。此帳戶已為 {{model}} 購買了 {{total}} 個訂閱，但管理了 {{used}} 個交換器。",
-      "no-model-license-message": "缺少授權：管理 {{model}} 個交換器需要授權訂閱。",
-      "no-license-message": "找不到訂閱：在此帳戶中管理交換器需要授權訂閱。",
-      "grace-period-message": "{{model}} 的授權已到期，目前正在使用 {{grace}} 天的寬限期（還剩 {{pending}} 天）。"
+      "overused-message": "您的一或多個授權超訂閱了。您要管理的交換器數量超過了您擁有授權的交換器數量。請購買更多授權，以從 Sophos Central 管理這些交換器。",
+      "grace-period-message": "一或多個授權已過期。您很快就無法從 Sophos Central 管理這些交換器。請續訂授權。",
+      "license-error": "發現超訂閱授權！",
+      "license-warning": "發現過期授權！"
     }
   }
 }

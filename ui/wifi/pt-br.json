@@ -88,7 +88,7 @@
         "summary": "Resumo",
         "on-board-step-finish": "Completo",
         "enabled": "Ativado",
-        "ssid-sites-unavailable": "SSID e Site não estão disponíveis no momento para o modelo WIFI-6."
+        "sites-unavailable": "Site não está disponível no momento para o modelo AP6."
       },
       "search": {
         "placeholder": "Pesquisar",
@@ -230,7 +230,8 @@
         "start-message": "Comando PACKET CAPTURE iniciado.",
         "start-fail-message": "Comando PACKET CAPTURE apresentou falha ao iniciar.",
         "stop-message": "Comando PACKET CAPTURE interrompido.",
-        "stop-fail-message": "Comando PACKET CAPTURE apresentou falha na interrupção."
+        "stop-fail-message": "Comando PACKET CAPTURE apresentou falha na interrupção.",
+        "model": "Modelo"
       },
       "syslog": {
         "title": "Syslog",
@@ -239,6 +240,16 @@
         "start-fail-message": "Comando SYSLOG apresentou falha ao iniciar.",
         "stop-message": "Comando SYSLOG interrompido.",
         "stop-fail-message": "Comando SYSLOG apresentou falha na interrupção."
+      },
+      "system-logs": {
+        "title": "Logs do sistema",
+        "access-points": "Pontos de Acesso",
+        "status": "Status",
+        "collect-logs": "Coletar logs",
+        "view-logs": "Baixar logs",
+        "logfile": "Logs",
+        "model": "Modelo",
+        "online-status": "Status do ponto de acesso"
       },
       "list": {
         "breadcrumb-text": "Diagnóstico",
@@ -316,7 +327,7 @@
       "config": {
         "customer-unique-id-title": "ID exclusivo de cliente Sophos",
         "firmware-update": {
-          "note": "Isso atualizará todos os pontos de acesso legados (AP5 e inferiores).",
+          "note": "Isso atualizará todos os pontos de acesso legados (APX e AP).",
           "title": "Atualização de firmware",
           "help-text": "Você pode agendar as atualizações de firmware selecionando a frequência e hora.",
           "current-version": "Versão atual",
@@ -1045,6 +1056,16 @@
           "failed": "Falhou",
           "success": "Bem-sucedido"
         },
+        "objectType": {
+          "ACCESS_POINT": "Ponto de acesso",
+          "RADIO_CONFIGURATION": "Configuração de rádio",
+          "CONFIG": "Config",
+          "REBOOT": "Reinicializar",
+          "FIRMWARE_UPGRADE": "Upgrade de firmware",
+          "COLLECT_LOGS": "Coletar logs",
+          "NETWORK": "Rede",
+          "APU_CONFIG": "Configuração de Apu"
+        },
         "dialog": {
           "configurationDataDialogTitle": {
             "config": "Detalhes da tarefa - Configuração",
@@ -1124,6 +1145,7 @@
               "errorMessage": "Não é possível carregar pontos de acesso",
               "bulk-file-upload-type-error": "O tipo de arquivo deve ser csv",
               "bulk-file-upload-size-error": "O tamanho de arquivo deve ser maior que zero bytes e menor/igual a 2MB",
+              "bulk-file-upload-empty": "O arquivo não deve estar vazio",
               "bulk-file-upload-success": "O arquivo foi carregado com sucesso.",
               "invalid-serial": "Número de série inválido",
               "already-registered": "Já registrado",
@@ -1138,7 +1160,7 @@
         "step-one": "Passo 1: Selecione pontos de acesso",
         "step-two": "Passo 2: Escolha uma agenda",
         "note-no-site": "Você pode escolher ou cancelar o agendamento do ponto de acesso selecionado.",
-        "note-for-site": "A lista abaixo mostra apenas os pontos de acesso 6, que podem ser atualizados ({{count}}/{{total}} pontos de acesso).",
+        "note-for-site": "A lista abaixo mostra apenas o AP6, que pode ser atualizado ({{count}}/{{total}} pontos de acesso).",
         "remove-schedule": "Cancelar agendamento",
         "choose-schedule": "Escolher agenda",
         "rollback": "Troca de firmware ({{ version }})",
@@ -1201,7 +1223,7 @@
         "update-available": "Um novo upgrade de firmware está disponível.",
         "upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente.",
         "legacy-schedule-link": "Agendar upgrade (AP5 e inferiores)",
-        "legacy-upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente. Isso atualizará todos os pontos de acesso legados (AP5 e inferiores).",
+        "legacy-upgrade-message": "Você pode aplicar esses upgrades imediatamente ou posteriormente. Isso atualizará todos os pontos de acesso legados (APX e AP).",
         "default-schedule-msg": "Se malsucedido, o upgrade do ponto de acesso será realizado seguindo a agenda recorrente padrão (semanal).",
         "cannot-manage": "Você pode optar por agendar, assim que o upgrade em andamento estiver concluído.",
         "up-to-date": "O firmware está atualizado.",
@@ -1308,7 +1330,6 @@
         }
       }
     }
-
   },
   "wifix": {
     "api": {
@@ -1331,12 +1352,10 @@
       "validString.clientNetworkAddressType": "Tipo inválido de Endereço de rede cliente",
       "validString.clientNetworkType": "Tipo inválido de Rede cliente",
       "validString.macFilter": "Filtro Mac inválido",
-
       "site-name.already.exists": "Já existe um site de cliente com o nome fornecido",
       "ap.name.already.exists": "Já existe um ponto de acesso com o nome fornecido",
       "ssid.name.already.exists": "Já existe um SSID com o nome fornecido",
       "unknown.constraint.violation": "Violação de restrição desconhecida",
-
       "serial.invalid": "Número de série inválido",
       "exception.unexpected": "Ocorreu um erro inesperado durante o processamento da sua solicitação.",
       "exception.AccessDeniedException": "Acesso Negado",

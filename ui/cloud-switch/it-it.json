@@ -79,22 +79,88 @@
         "revert-system": "Utilizza le impostazioni predefinite del sistema"
       },
       "status": {
-        "registering": "In attesa di connessione",
-        "connected": "Connesso",
-        "registered": "Registrato",
-        "unregistered": "Timeout della registrazione",
-        "disconnected": "Disconnesso da {{ time }}",
-        "synchronized": "Sincronizzato",
-        "waiting_for_sync": "In attesa della sincronizzazione",
-        "pending": "Attività in sospeso",
-        "syncing": "Sincronizzazione in corso",
-        "out_of_sync": "Errore che richiede attenzione",
-        "firmware_too_old": "Firmware obsoleto",
-        "disabled": "Disabilitato",
-        "enabled": "Abilitato",
+        "registering": {
+          "name": "In attesa di connessione",
+          "heading": "Registrazione di un nuovo switch",
+          "subtext": "Se non l’hai ancora fatto, riavvia lo switch. Dopo avere acceso lo switch, hai 15 minuti di tempo per aggiungerlo a Sophos Central."
+        },
+        "connected": {
+          "name": "Connesso",
+          "heading": "Connesso da {{ time }}",
+          "subtext": "{{ time }}"
+        },
+        "registered": {
+          "name": "Registrato",
+          "heading": "Registrazione completata.",
+          "subtext": "Lo switch si connetterà presto a Sophos Central. In attesa delle informazioni dello switch"
+        },
+        "unregistered": {
+          "name": "Timeout della registrazione",
+          "heading": "Registrazione non completata.",
+          "subtext": "Puoi riavviare lo switch e riprovare a effettuare la registrazione. Dopo avere acceso lo switch, hai 15 minuti di tempo per aggiungerlo a Sophos Central."
+        },
+        "disconnected": {
+          "name": "Disconnesso da {{ time }}",
+          "heading": "Mancante da {{ time }}",
+          "subtext": "{{ time }}"
+        },
+        "synchronized": {
+          "name": "Sincronizzato",
+          "heading": "Criteri sincronizzati.",
+          "subtext": "Tutti i criteri sono stati applicati allo switch."
+        },
+        "waiting_for_sync": {
+          "name": "È necessaria la sincronizzazione manuale",
+          "heading": "Attività in attesa di sincronizzazione",
+          "subtext": "Puoi selezionare uno o più switch e cliccare su 'Sincronizza' per applicare allo switch i criteri in attesa."
+        },
+        "pending": {
+          "name": "Attività in sospeso",
+          "heading": "La coda delle attività contiene attività in sospeso",
+          "subtext": "Lo switch connesso recupera le attività in sequenza. Se lo switch è disconnesso, verranno applicate in un secondo momento."
+        },
+        "syncing": {
+          "name": "Sincronizzazione in corso",
+          "heading": "Sincronizzazione avviata.",
+          "subtext": "L'operazione potrebbe richiedere diverso tempo, poiché è in corso il push dei criteri ai dispositivi remoti."
+        },
+        "out_of_sync": {
+          "name": "Errore che richiede attenzione",
+          "heading": "Non è stato possibile applicare un criterio.",
+          "subtext": "Riprova o ignora il criterio non applicato per applicare ulteriori modifiche dei criteri."
+        },
+        "firmware_too_old": {
+          "name": "Firmware obsoleto",
+          "heading": "Nessun criterio può essere inviato tramite push da Sophos Central.",
+          "subtext": "Esegui l’upgrade dello switch alla più recente versione del firmware disponibile."
+        },
+        "disabled": {
+          "name": "Disabilitato"
+        },
+        "enabled": {
+          "name": "Abilitato"
+        },
         "license-error": {
-          "license_expired": "Licenza scaduta",
-          "license_not_found": "Nessuna licenza trovata"
+          "license_expired": {
+            "name": "Licenza scaduta",
+            "heading": "La licenza di questo modello è scaduta.",
+            "subtext": "Non puoi gestire gli switch da Sophos Central."
+          },
+          "license_not_found": {
+            "name": "Nessuna licenza trovata",
+            "heading": "Impossibile trovare una licenza per questo modello.",
+            "subtext": "Non puoi gestire gli switch da Sophos Central."
+          },
+          "license_overused": {
+            "name": "Limite massimo della licenza superato",
+            "heading": "Il numero di switch che gestisci supera la quantità disponibile con le tue licenze. Utilizzo: {{ used }} Limite: {{ limit }}",
+            "subtext": "Acquista altre licenze."
+          },
+          "license_in_grace": {
+            "name": "Licenza scaduta",
+            "heading": "Licenza scaduta",
+            "subtext": "Presto non potrai più gestire questo switch da Sophos Central."
+          }
         }
       },
       "form": {
@@ -118,7 +184,8 @@
       "waiting-for-data": "In attesa di dati...",
       "problem-loading-data": "Si è verificato un problema durante il caricamento dei dati",
       "no-data": "Nessun dato disponibile",
-      "are-you-sure": "Procedere?"
+      "are-you-sure": "Procedere?",
+      "conflict-message": "Sono stati individuati dei conflitti in con queste impostazioni. Non salvare questa configurazione."
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -354,7 +421,7 @@
           "full-sync-failed": "Non è stato possibile riapplicare tutte le impostazioni sullo switch",
           "sync-success": "Le impostazioni sono state sincronizzate sugli switch selezionati",
           "sync-failed": "Impossibile sincronizzare le impostazioni del sito sugli switch selezionati",
-          "sync-confirm-dialog": "Le impostazioni del sito si sincronizzeranno con gli switch selezionati. Puoi monitorare l'avanzamento nella coda delle attività."
+          "sync-confirm-dialog": "Sincronizza le impostazioni in coda sugli switch selezionati. Puoi monitorare l’avanzamento nella coda delle attività."
         },
         "groupInfoText": {
           "what": "Che cos'è un sito?",
@@ -578,7 +645,9 @@
         "vlan-id-exists-message": "ID VLAN già esistente.",
         "vlan-name-required-message": "Nome obbligatorio.",
         "vlan-name-invalid-message": "Il nome non è valido. Non è permesso l'uso dei caratteri speciali",
-        "vlan-name-exists-message": "Nome già esistente."
+        "vlan-name-exists-message": "Nome già esistente.",
+        "lag-mode": "Modalità LAG",
+        "part-of-lag": "Utilizzato nel LAG"
       },
       "message": {
         "create-error": "Impossibile creare VLAN",
@@ -686,9 +755,12 @@
       "static": "Statico",
       "disabled": "Disattivato",
       "not-set": "Non impostata",
-      "ports-required-message": "Le porte sono obbligatorie",
-      "ports-min-lag-message": "È richiesto un minimo di 2 porte",
+      "ports-required-message": "Le porte sono obbligatorie.",
+      "ports-min-lag-message": "È richiesto un minimo di 2 porte.",
+      "normal-fiber-mixed-message": "Non è possibile utilizzare una combinazione di porte normali e porte in fibra.",
       "lacp-settings-button": "Impostazioni LACP",
+      "lag-settings-button": "Porte LAG",
+      "select-ports-dd-placeholder": "Porte selezionate",
       "table-headers": {
         "port-id": "Porta",
         "label": "Etichetta",
@@ -713,7 +785,8 @@
         "port-revert-system-success": "Le configurazioni del sito sono state eliminate e lo switch utilizza quelle predefinite del sistema.",
         "port-revert-system-error": "Impossibile eliminare le impostazioni di configurazione del sito.",
         "switch-revert-dialog-text": "Le impostazioni dello switch selezionato saranno eliminate e al loro posto lo switch utilizzerà le impostazioni del sito. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
-        "switch-revert-system-dialog-text": "Le impostazioni del sito selezionate verranno eliminate e al loro posto lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi."
+        "switch-revert-system-dialog-text": "Le impostazioni del sito selezionate verranno eliminate e al loro posto lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
+        "lag-conflict-message": "Le porte {{ports}} sono in conflitto, non salvare questa configurazione."
       }
     },
     "remote-debugging": {
@@ -918,6 +991,7 @@
     },
     "lacp-settings": {
       "dialog-title": "Impostazioni LACP",
+      "config-source": "Origine della configurazione attuale",
       "form": {
         "system-priority": "Priorità di sistema",
         "system-policy": "Criteri di sistema",
@@ -939,10 +1013,10 @@
       }
     },
     "license-messages": {
-      "overused-message": "Utilizzo eccessivo della licenza. Per questo account sono state acquistate {{total}} subscription per {{model}}, ma gli switch gestiti sono {{used}}.",
-      "no-model-license-message": "Licenza mancante: È richiesta una subscription per gestire gli switch {{model}}.",
-      "no-license-message": "Nessuna subscription trovata: È richiesta una subscription per gestire gli switch in questo account.",
-      "grace-period-message": "La licenza di {{model}} è scaduta e al momento è stato applicato un periodo di tolleranza di {{grace}} giorni ({{pending}} giorni rimanenti)."
+      "overused-message": "Hai superato il limite massimo in una o più licenze. Il numero di switch da gestire supera la quantità disponibile con le tue licenze. Acquista altre licenze per gestire questi switch da Sophos Central.",
+      "grace-period-message": "Una o più licenze sono scadute. Presto non potrai più gestire questi switch da Sophos Central. Rinnova le tue licenze.",
+      "license-error": "Trovate licenze con limite massimo superato!",
+      "license-warning": "Trovate licenze scadute!"
     }
   }
 }

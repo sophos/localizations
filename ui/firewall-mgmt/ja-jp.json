@@ -13,6 +13,7 @@
     "delete": "削除",
     "delete-firewall": "ファイアウォールの削除",
     "hide-firewall": "ファイアウォールの非表示",
+    "re-sync": "再同期",
     "remove": "削除",
     "success": "成功！",
     "next": "次へ",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "使用可能な Xfrm の IP アドレス",
               "add": "ネットワークの追加",
               "public-ip": "選択した WAN リンクのパブリック IP または FQDN",
-              "behind-nat": "ゲートウェイアドレスの上書き"
+              "behind-nat": "ゲートウェイアドレスの上書き",
+              "general": "全般",
+              "load-balance": {
+                "title": "負荷分散",
+                "routing-strategy": "ルーティング方法",
+                "first-available-gateway": "使用可能な最初のゲートウェイ",
+                "load-balancing": "負荷分散",
+                "load-balancing-method": "負荷分散の方法",
+                "round-robin": "ラウンドロビン",
+                "session-persistence-type": "セッションの永続性タイプです",
+                "source-ip-address": "送信元 IP アドレス",
+                "destination-ip-address": "宛先 IP アドレス",
+                "source-and-destination-ip-addresses": "送信元と宛先 IP アドレス",
+                "connection": "接続",
+                "help": {
+                  "first-available-gateway": "SLA がオフになっている場合、最初に使用可能なゲートウェイに基づいてトラフィックをルーティングします。",
+                  "load-balancing": "使用可能なすべてのゲートウェイ間、または SLA を満たすゲートウェイ間でトラフィックの負荷分散を行います。"
+                }
+              },
+              "service-level-agreement": {
+                "title": "サービスレベル契約 (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "SLA 方法",
+                "best-quality": "最も高品質",
+                "custom": "カスタム SLA",
+                "latency": "レイテンシ",
+                "jitter": "ジッタ",
+                "packet-loss": "パケット損失",
+                "max-latency": "最大レイテンシ",
+                "max-jitter": "最大ジッタ",
+                "max-packet-loss": "最大パケット損失",
+                "latency-margin": "(1～60000ミリ秒)",
+                "jitter-margin": "(1～60000ミリ秒)",
+                "packet-loss-margin": "(0～100%)",
+                "recomended-sla-values": "推奨される SLA 値",
+                "help": {
+                  "best-quality": "最高のパフォーマンスを発揮するゲートウェイを介してトラフィックをルーティングします。2つ以上のゲートウェイが最高の SLA パフォーマンスを備えている場合にのみ、負荷分散が行われます。",
+                  "custom": "SLA を満たす最初のゲートウェイを介してトラフィックをルーティングします。負荷分散のために、SLA を満たすすべてのゲートウェイが使用されます。SLA を満たすゲートウェイが存在しない場合は、設定されたルーティング方式が適用されます。",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "一般的な Web トラフィック",
+                      "latency": "レイテンシ: 250 ms",
+                      "jitter": "ジッタ: 50 ms",
+                      "packet-loss": "パケット損失: 2%"
+                    },
+                    "media": {
+                      "title": "メディア (例: ビデオ、IP テレフォニー)",
+                      "latency": "レイテンシ: 150 ms",
+                      "jitter": "ジッタ: 30 ms",
+                      "packet-loss": "パケット損失: 1%"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "レイテンシ: 250 ms",
+                      "jitter": "ジッタ: 50 ms",
+                      "packet-loss": "パケット損失: 5%"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "正常性チェック",
+                "protocol": "プロトコル",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "プローブの対象",
+                "ip-address": "IP アドレス",
+                "port": "ポート",
+                "health-check-attempts": "正常性チェックの試行",
+                "interval-between-checks": "チェック間隔",
+                "response-time-out": "応答のタイムアウト",
+                "action": "処理",
+                "deactivate-gateway-after": "ゲートウェイを無効化するタイミング:",
+                "activate-gateway-after": "ゲートウェイを有効化するタイミング:",
+                "sample-size-for-SLA": "SLA のサンプルサイズ",
+                "margin": {
+                  "interval-between-checks": "(1-3600秒)",
+                  "response-time-out": "(1-10秒)",
+                  "deactivate-gateway-after": "(連続 1～10回の失敗後)",
+                  "activate-gateway-after": "(連続 1～10回の回答後)",
+                  "sample-size-for-SLA": "(5～100 サンプル)"
+                },
+                "help": {
+                  "title": "SLA をオンにした場合、正常性チェックはオンのままになります。",
+                  "probe-target": "最初のホストがプローブに応答した場合、ファイアウォールは、設定済みの次のホストをプローブしません。",
+                  "deactivate-gateway-after": "ターゲットホストが応答しない場合、ゲートウェイは非アクティブと見なされます。",
+                  "activate-gateway-after": "ターゲットホストが応答すると、ゲートウェイはアクティブと見なされます。",
+                  "sample-size-for-SLA": "平均リンクパフォーマンスを決定するチェックの数。"
+                },
+                "error": {
+                  "ip-required": "IP が必要です",
+                  "invalid-ip": "IP が無効です"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "競合するネットワーク: '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "グループの編集",
         "warn-info": "グループにファイアウォールを割り当てると、ファイアウォールにはデフォルトの設定が適用されます。現在のファイアウォールの設定が変更される場合があります。",
         "edit-group-success": "グループの更新に成功しました",
-        "edit-group-error": "グループの更新に失敗しました"
+        "edit-group-error": "グループの更新に失敗しました",
+        "edit-group-invalid-error": "自動スケールファイアウォールを通常のグループに割り当てること、または通常のファイアウォールを自動スケールグループに割り当てることはできません。"
       },
       "config-radio": {
         "first-radio-label": "ソフォスのデフォルト設定を使用",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "仮想ファイアウォールのサイズ: ",
             "required": "仮想ファイアウォールのサイズが必要です"
-          }
+          },
+          "subscription-resync-success": "サブスクリプションの再同期に成功しました。",
+          "subscription-resync-fail": "サブスクリプションの再同期に失敗しました。"
         },
         "states": {
           "data-not-loaded": "サーバーからデータを取得中、エラーが発生しました。しばらくしてからもう一度やり直してください。",

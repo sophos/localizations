@@ -110,21 +110,29 @@
       "nodes-dialog-checkbox-message": "我想在單節點叢集中進行擴展部署。",
       "confirmation": "確認",
       "not-selected-cni": "選取您現有的 CNI 以繼續。",
-      "require-cni": "Cloud Series Firewall 需要一個 CNI。建議從 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">官方網站</a>安裝 Calico CNI。",
+      "require-cni": "安裝 Calico。下一頁將顯示具體方法。",
       "not-selected-ingress": "選取入口控制器或關閉 WAF。",
       "not-supported-ingress": "您選取了一個不適用於 WAF 的現有入口控制器。如果您要使用 WAF，請移除入口控制器。否則，請關閉 WAF。",
       "cluster-success-notification": "已成功新增防火墻。",
+      "flannel-warning": "Flannel 不支援網路原則強制執行。使用 Calico 替換它。下一頁將顯示具體方法。",
+      "other-cni-warning": "您的 CNI 不受支援。解除安裝它並安裝 Calico。下一頁將顯示如何安裝 Calico。",
+      "vpc-warning": "安裝 Calico。下一頁將顯示具體方法。",
+      "vpc-info": "VPC 將繼續用於核心網路，Calico 將繼續用於網路原則強制執行。",
+      "vpc-with-other-warning": "您的 CNI 不受支援。解除安裝它並安裝 Calico。下一頁將顯示具體方法。",
+      "vpc-with-other-info": "VPC 將繼續用於核心網路，Calico 將繼續用於網路原則強制執行。",
       "type": {
         "premises": "原生 Kubernetes",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "選取 CNI 選項",
+      "nfoptions-place-holder": "選取現有的 CNI",
       "nf-options": {
-        "new-cni": "沒有已安裝的現有 CNI",
-        "flannel": "更換現有 Flannel CNI 成 Calico CNI",
-        "calico": "Calico CNI 已安裝",
-        "calico-with-vpc": "安裝搭配 VPC CNI 的  Calico",
-        "different": "已安裝其他 CNI"
+        "calico": "Calico",
+        "flannel": "Flannel",
+        "no-cni": "無",
+        "other": "其他",
+        "vpc-calico": "VPC + Calico",
+        "vpc": "VPC",
+        "vpc-other": "VPC + 其他"
       },
       "wafoptions-place-holder": "您有入口控制器嗎？",
       "waf-options": {
@@ -133,13 +141,13 @@
       },
       "services": {
         "network-firewall": "網路防火牆",
-        "nf-label": "Kubernetes 的 Zero-Trust 防火牆規則",
+        "nf-label": "Kubernetes 的 Zero Trust 防火牆規則",
         "waf": "網頁應用程式防火牆",
         "waf-label": "安全發佈與保護 Web 應用程式",
         "ip": "入侵防禦",
-        "ip-label": "輸入/輸出流量的 NGFW 保護",
+        "ip-label": "辨識網路威脅並對其做出回應",
         "admission-control": "許可控制",
-        "admission-control-label": "控制容器部署標準"
+        "admission-control-label": "確認新容器可安全部署"
       },
       "s3-config": {
         "section-title": "S3 貯體設定",
@@ -171,15 +179,48 @@
       "status": "狀態",
       "installation-steps": "安裝步驟",
       "upgrade-steps": "升級步驟",
-      "confirm-cluster-delete": "是否移除 Cloud Series Firewall？",
-      "uninstall-commands-help-text": "<br/><br/><br/><br/>刪除後，請使用以下命令從叢集中解除安裝 Cloud Series Firewall。<br/><br/>{{displayUninstallCommands}}",
-      "installation-steps-help-text": "按一下複製圖示，即可複製控制命令並在您的叢集上執行它。",
-      "upgrade-steps-help-text": "按一下複製圖示，即可複製以下控制命令並在您的叢集上執行，以升級 Cloud Series Firewall 版本。",
-      "installation-step-1-heading": "步驟-1",
-      "installation-step-2-heading": "步驟-2",
-      "installation-step-1": "若要在您的叢集中安裝 Cloud Series Firewall 解決方案，它需要 {{pv}} 個永續性磁碟區，每個在 \"{{storageClass}}\" 儲存類中的大小為 {{memory}} MB。",
-      "detail-info-step-1": "如需瞭解詳細資訊，請參閱 <a href=\"https://sophos.com\" target=\"_blank\">文件</a>。",
-      "PV-setup-completion-checkbox-text": "PV 設定已完成。",
+      "confirm-cluster-delete": "是否從 Sophos Central 刪除 Cloud Series Firewall？",
+      "uninstall-commands-help-text": "刪除後，等待 5 分鐘，然後使用以下命令從叢集中解除安裝防火墻：",
+      "installation-steps-help-text": "按一下<b>複製</b>，即可複製控制命令並在您的叢集上執行它。",
+      "upgrade-steps-help-text": "按一下<b>複製</b>，即可複製控制命令並在您的叢集上執行它。",
+      "installation-step-1": "若要在您的叢集中安裝 Cloud Series Firewall，您需要在 \"{{storageClass}}\" 儲存類中擁有 {{pv}} 個 {{memory}}MB 的永續性磁碟區。",
+      "detail-info-step-1": "有關更多資訊，請參閱 <a href=\"https://sophos.com\" target=\"_blank\">文件</a>。",
+      "step-1-heading": "步驟 1：建立永續性磁碟區。",
+      "step-2-heading": "步驟 2：安裝 Helm。",
+      "step-3-heading": "步驟 3：",
+      "step-4-heading": "步驟 4：",
+      "step-2-text": "按照 <a href=\"https://helm.sh/docs/intro/install\" target=\"_blank\">https://helm.sh/docs/intro/install</a> 中的步驟操作，安裝 Helm 3.7.0 或更新版本。",
+      "install-calico": "安裝 Calico",
+      "install-calico-instruction-1": "3a. 新增 Calico Helm 存放庫：",
+      "install-calico-instruction-1-command": "helm repo add projectcalico https://projectcalico.docs.tigera.io/charts",
+      "install-calico-instruction-2": "3b.使用 Helm 圖表安裝 Tigera Calico 運算子以及自訂資源定義：",
+      "install-calico-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace",
+      "install-calico-eks-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace --set installation.kubernetesProvider=EKS",
+      "reference-url-link": "使用下列步驟安裝 Calico。有關更多資訊，請參閱 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/helm\" target=\"_blank\">使用 Helm 進行安裝</a>。",
+      "flannel-migration-heading": "從 Flannel 移轉到 Calico 網路。",
+      "migration-instruction-1": "3a.安裝 Calico：",
+      "migration-instruction-1-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/calico.yaml",
+      "migration-instruction-2": "3b.啟動移轉控制器：",
+      "migration-3b-1": "i. 檢查叢集中 flannel daemonset 的名稱：",
+      "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
+      "migration-3b-2": "ii. 請進行以下任何一項步驟：",
+      "migration-3b-2-one": "如果叢集中 flannel daemonset 名稱為 kube-flannel-ds-amd64，請套用 <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 檔案：",
+      "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two": "如果叢集中 Flannel daemonset 名稱不是 kube-flannel-ds-amd64，請下載 <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 檔案：",
+      "migration-3b-2-two-command": "curl -O https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two-path": "移至檔案的 \"kind: Job > spec: template > spec: containers > env:\" 部分，並新增以下文字：",
+      "migration-3b-2-two-example-name": "name: FLANNEL_DAEMONSET_NAME",
+      "migration-3b-2-two-example-value": "value: <value-of-flannel-daemonset-in-your-cluster>",
+      "migration-3b-2-two-final": "套用 migration-job.yaml 檔案：",
+      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job.yaml>",
+      "migration-instruction-4": "3c.監視移轉：",
+      "migration-instruction-4-command": "kubectl get jobs -n kube-system flannel-migration",
+      "migration-instruction-4-text-one": "主機節點升級時，移轉控制器可能會多次重新排程。",
+      "migration-instruction-4-text-two": "當輸出結果顯示 1/1 完成時，即表示安裝完成。",
+      "migration-instruction-5": "3d.刪除移轉控制器：",
+      "migration-instruction-5-command": "kubectl delete -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "reference-url-for-migration": "使用下列步驟移轉到 Calico。有關更多資訊，請參閱 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">從 Flannel 移出 Kubernetes 叢集</a>",
+      "install-cloud-series-firewall": "安裝 Cloud Series Firewall",
       "rollback-commands-help-text": "使用以下命令復原 Cloud Series Firewall 版本。",
       "messages": {
         "deleted-message": "已成功刪除叢集。",
@@ -487,7 +528,8 @@
         "ew-policy": "東西原則",
         "policy-placeholder": "選取策略",
         "messages": {
-          "empty-message": "無 IPS 原則可用。"
+          "empty-message": "無 IPS 原則可用。",
+          "signature-count-exceeded": "規則中已超過 IPS 簽名計數。"
         }
       },
       "policies": {
@@ -529,7 +571,8 @@
           "messages": {
             "empty-message": "無 IPS 原則可用。",
             "name-already-exists" : "具有該名稱的 IPS 原則已存在。",
-            "signature-conflict" : "IPS 原則存在衝突的簽名動作。"
+            "signature-conflict" : "IPS 原則存在衝突的簽名動作。",
+            "signature-count-exceeded" : "原則中已超過 IPS 簽名計數。"
           }
         },
         "edit": {

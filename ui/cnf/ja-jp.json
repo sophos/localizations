@@ -110,21 +110,29 @@
       "nodes-dialog-checkbox-message": "シングルノードのクラスタにスケーリングモードで展開する",
       "confirmation": "確定",
       "not-selected-cni": "続行するには、既存の CNI を選択します。",
-      "require-cni": "クラウド シリーズ ファイアウォールには CNI が必要です。<a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">公式サイト</a>から Calico CNI をインストールすることを推奨します。",
+      "require-cni": "Calico をインストールします。次のページにその方法が表示されます。",
       "not-selected-ingress": "イングレスコントローラーを選択するか、WAF をオフにしてください。",
       "not-supported-ingress": "WAF で動作しない既存のイングレスコントローラーが選択されました。WAF を使用するには、イングレスコントローラーを削除してください。もしくは、WAF をオフにしてください。",
       "cluster-success-notification": "ファイアウォールの追加に成功しました。",
+      "flannel-warning": "Flannel は、ネットワークポリシーの適用をサポートしていません。これを Calico に置き換えます。次のページにその方法が表示されます。",
+      "other-cni-warning": "サポートされていない CNI です。これをアンインストールして、Calico をインストールします。次のページに Calico のインストール方法が表示されます。",
+      "vpc-warning": "Calico をインストールします。次のページにその方法が表示されます。",
+      "vpc-info": "VPC はコアネットワークに引き続き使用され、Calico はネットワークポリシーの適用に使用されます。",
+      "vpc-with-other-warning": "サポートされていない CNI です。これをアンインストールして、Calico をインストールします。次のページにその方法が表示されます。",
+      "vpc-with-other-info": "VPC はコアネットワークに引き続き使用され、Calico はネットワークポリシーの適用に使用されます。",
       "type": {
         "premises": "ネイティブ Kubernetes",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "CNI オプションの選択",
+      "nfoptions-place-holder": "既存の CNI を選択します",
       "nf-options": {
-        "new-cni": "CNI はインストールされていない",
-        "flannel": "既存の Flannel CNI を Calico CNI で置き換える",
-        "calico": "Calico CNI が既にインストールされている",
-        "calico-with-vpc": "VPC CNI とともに Calico をインストールする",
-        "different": "他の CNI がインストールされている"
+        "calico": "Calico",
+        "flannel": "Flannel",
+        "no-cni": "なし",
+        "other": "その他",
+        "vpc-calico": "VPC + Calico",
+        "vpc": "VPC",
+        "vpc-other": "VPC + Other"
       },
       "wafoptions-place-holder": "イングレスコントローラーがありますか？",
       "waf-options": {
@@ -137,9 +145,9 @@
         "waf": "Web アプリケーション ファイアウォール",
         "waf-label": "Web アプリケーションを安全に公開・保護します",
         "ip": "侵入防御",
-        "ip-label": "NGFW によるイングレス/エグレストラフィックの保護",
+        "ip-label": "ネットワークの脅威を特定して対処します",
         "admission-control": "アドミッション制御",
-        "admission-control-label": "コンテナの導入標準を制御します"
+        "admission-control-label": "新しいコンテナを安全に導入できることを確認します"
       },
       "s3-config": {
         "section-title": "S3 バケット設定",
@@ -171,15 +179,48 @@
       "status": "状態",
       "installation-steps": "インストールの手順",
       "upgrade-steps": "アップグレード手順",
-      "confirm-cluster-delete": "クラウド シリーズ ファイアウォールを削除しますか？",
-      "uninstall-commands-help-text": "<br/><br/><br/><br/>削除後、次のコマンドを使用してクラウド シリーズ ファイアウォールをクラスタからアンインストールしてください。<br/><br/>{{displayUninstallCommands}}",
-      "installation-steps-help-text": "コピーアイコンをクリックして、helm コマンドをコピーし、クラスタで実行してください。",
-      "upgrade-steps-help-text": "コピーアイコンをクリックして、以下の helm コマンドをコピーし、クラスタで実行して、クラウド シリーズ ファイアウォールのバージョンをアップグレードします。",
-      "installation-step-1-heading": "ステップ 1",
-      "installation-step-2-heading": "ステップ 2",
-      "installation-step-1": "クラウド シリーズ ファイアウォール ソリューションをクラスタにインストールするには、それぞれボリュームのサイズが {{memory}}MB で、「{{storageClass}}」ストレージクラスの永続ボリューム {{pv}} が必要です。",
+      "confirm-cluster-delete": "Sophos Central からクラウド シリーズ ファイアウォールを削除しますか？",
+      "uninstall-commands-help-text": "削除後、5分間待ってから、次のコマンドを使用してクラスタからファイアウォールをアンインストールします。",
+      "installation-steps-help-text": "<b>コピー</b> をクリックして、helm コマンドをコピーし、クラスタで実行してください。",
+      "upgrade-steps-help-text": "<b>コピー</b> をクリックして、helm コマンドをコピーし、クラスタで実行してください。",
+      "installation-step-1": "クラウド シリーズ ファイアウォールをクラスタにインストールするには、 {{memory}}MB で、「{{storageClass}}」ストレージクラスの永続ボリューム {{pv}} が必要です。",
       "detail-info-step-1": "詳細は、<a href=\"https://sophos.com\" target=\"_blank\">ドキュメント</a>を参照してください。",
-      "PV-setup-completion-checkbox-text": "PV のセットアップが完了しました。",
+      "step-1-heading": "ステップ 1: 永続ボリュームを作成します。",
+      "step-2-heading": "ステップ 2: Helm をインストールします。",
+      "step-3-heading": "ステップ 3:",
+      "step-4-heading": "ステップ 4:",
+      "step-2-text": "<a href=\"https://helm.sh/docs/intro/install\" target=\"_blank\">https://helm.sh/docs/intro/install</a> の手順に従って、Helm 3.7.0以降をインストールします。",
+      "install-calico": "Calico をインストールします",
+      "install-calico-instruction-1": "3a.Calico Helm repo を追加します。",
+      "install-calico-instruction-1-command": "helm repo add projectcalico https://projectcalico.docs.tigera.io/charts",
+      "install-calico-instruction-2": "3b.Helm チャートを使用して、Tigera Calico オペレーターとカスタムリソース定義をインストールします。",
+      "install-calico-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace",
+      "install-calico-eks-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace --set installation.kubernetesProvider=EKS",
+      "reference-url-link": "次の手順に従って、Calico をインストールします。詳細については、 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/helm\" target=\"_blank\"> Helm を使用したインストール</a>を参照してください。",
+      "flannel-migration-heading": "Flannel から Calico ネットワーキングに移行します。",
+      "migration-instruction-1": "3a.Calico をインストールします。",
+      "migration-instruction-1-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/calico.yaml",
+      "migration-instruction-2": "3b.移行コントローラを起動します。",
+      "migration-3b-1": "i. クラスタ内の flannel daemonset の名前を確認します。",
+      "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
+      "migration-3b-2": "ii.次のいずれかの手順を実行します。",
+      "migration-3b-2-one": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 の場合は、<a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> ファイルを適用します。",
+      "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 でない場合は、<a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> ファイルをダウンロードします。",
+      "migration-3b-2-two-command": "curl -O https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two-path": "ファイルの次のセクションを参照します: \"kind: Job > spec: template > spec: containers > env:\"。そして、次のテキストを追加します:",
+      "migration-3b-2-two-example-name": "name: FLANNEL_DAEMONSET_NAME",
+      "migration-3b-2-two-example-value": "value: <value-of-flannel-daemonset-in-your-cluster>",
+      "migration-3b-2-two-final": "migration-job.yaml ファイルを適用します:",
+      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job.yaml>",
+      "migration-instruction-4": "3c.移行を監視します。",
+      "migration-instruction-4-command": "kubectl get jobs -n kube-system flannel-migration",
+      "migration-instruction-4-text-one": "ホストノードがアップグレードされると、移行コントローラが数回再スケジュールされる場合があります。",
+      "migration-instruction-4-text-two": "出力に 1/1 の完了が表示されたら、インストールは完了です。",
+      "migration-instruction-5": "3d.移行コントローラを削除します。",
+      "migration-instruction-5-command": "kubectl delete -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "reference-url-for-migration": "次の手順に従って、Calico に移行します。詳細については、 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">flannel から Kubernetes クラスタへ移行</a>を参照してください",
+      "install-cloud-series-firewall": "クラウド シリーズ ファイアウォールをインストールしてください",
       "rollback-commands-help-text": "次のコマンドを使用して、クラウド シリーズ ファイアウォールのバージョンをロールバックします。",
       "messages": {
         "deleted-message": "クラスタの削除に成功しました。",
@@ -487,7 +528,8 @@
         "ew-policy": "East-West ポリシー",
         "policy-placeholder": "ポリシーの選択",
         "messages": {
-          "empty-message": "使用可能な IPS ポリシーがありません。"
+          "empty-message": "使用可能な IPS ポリシーがありません。",
+          "signature-count-exceeded": "ルールで IPS シグニチャ数を超えました。"
         }
       },
       "policies": {
@@ -529,7 +571,8 @@
           "messages": {
             "empty-message": "使用可能な IPS ポリシーがありません。",
             "name-already-exists" : "指定された名前の IPS ポリシーは既に存在します。",
-            "signature-conflict" : "IPS ポリシーに、競合するシグネチャのアクションがあります。"
+            "signature-conflict" : "IPS ポリシーに、競合するシグネチャのアクションがあります。",
+            "signature-count-exceeded" : "ポリシーで IPS シグニチャ数を超えました。"
           }
         },
         "edit": {

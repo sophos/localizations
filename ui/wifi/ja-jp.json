@@ -88,7 +88,7 @@
         "summary": "サマリー",
         "on-board-step-finish": "完了",
         "enabled": "オンに設定",
-        "ssid-sites-unavailable": "SSID とサイトは、現在、WIFI-6 モデルでは使用できません。"
+        "sites-unavailable": "現在、AP6 モデルでは使用できません。"
       },
       "search": {
         "placeholder": "検索",
@@ -230,7 +230,8 @@
         "start-message": "PACKET CAPTURE コマンドを開始しました。",
         "start-fail-message": "PACKET CAPTURE コマンドを開始できませんでした。",
         "stop-message": "PACKET CAPTURE コマンドが停止しました。",
-        "stop-fail-message": "PACKET CAPTURE コマンドを停止できませんでした。"
+        "stop-fail-message": "PACKET CAPTURE コマンドを停止できませんでした。",
+        "model": "機種"
       },
       "syslog": {
         "title": "Syslog",
@@ -239,6 +240,16 @@
         "start-fail-message": "SYSLOG コマンドを開始できませんでした。",
         "stop-message": "SYSLOG コマンドが停止しました。",
         "stop-fail-message": "SYSLOG コマンドを停止できませんでした。"
+      },
+      "system-logs": {
+        "title": "システムログ",
+        "access-points": "アクセスポイント",
+        "status": "ステータス",
+        "collect-logs": "ログの収集",
+        "view-logs": "ログをダウンロードします",
+        "logfile": "ログ",
+        "model": "機種",
+        "online-status": "アクセスポイントの状態"
       },
       "list": {
         "breadcrumb-text": "診断",
@@ -316,7 +327,7 @@
       "config": {
         "customer-unique-id-title": "一意のソフォス顧客 ID",
         "firmware-update": {
-          "note": "これによって、すべてのレガシーアクセスポイント (AP5 以前) がアップグレードされます。",
+          "note": "これによって、すべてのレガシーアクセスポイント (APX および AP) がアップグレードされます。",
           "title": "ファームウェア更新",
           "help-text": "頻度や日時を選択してファームウェアの更新スケジュールを設定することができます。",
           "current-version": "現在のバージョン",
@@ -1045,6 +1056,16 @@
           "failed": "失敗",
           "success": "成功"
         },
+        "objectType": {
+          "ACCESS_POINT": "アクセスポイント",
+          "RADIO_CONFIGURATION": "無線の設定",
+          "CONFIG": "設定",
+          "REBOOT": "再起動",
+          "FIRMWARE_UPGRADE": "ファームウェアのアップグレード",
+          "COLLECT_LOGS": "ログの収集",
+          "NETWORK": "ネットワーク",
+          "APU_CONFIG": "APU 設定"
+        },
         "dialog": {
           "configurationDataDialogTitle": {
             "config": "タスクの詳細 - 設定",
@@ -1124,6 +1145,7 @@
               "errorMessage": "アクセスポイントを読み込めません",
               "bulk-file-upload-type-error": "ファイルの種類は、CSV 形式でなければなりません",
               "bulk-file-upload-size-error": "0バイト～2MB までのサイズのファイルを使用できます",
+              "bulk-file-upload-empty": "ファイルは空にできません",
               "bulk-file-upload-success": "ファイルをアップロードしました。",
               "invalid-serial": "シリアル番号が無効です",
               "already-registered": "登録済みです",
@@ -1138,7 +1160,7 @@
         "step-one": "ステップ 1: アクセスポイントの選択",
         "step-two": "ステップ 2: スケジュールの選択",
         "note-no-site": "選択したアクセスポイントのスケジュールを選択またはキャンセルできます。",
-        "note-for-site": "以下のリストは、アップグレード可能なアクセスポイント ({{total}}件中 {{count}}件のアクセスポイント) のみを示しています。",
+        "note-for-site": "以下のリストは、アップグレード可能な AP6 ({{total}}件中 {{count}}件のアクセスポイント) のみを示しています。",
         "remove-schedule": "スケジュールのキャンセル",
         "choose-schedule": "スケジュールの選択",
         "rollback": "ファームウェアの切り替え ({{ version }})",
@@ -1201,7 +1223,7 @@
         "update-available": "ファームウェアの新しいアップグレードがあります。",
         "upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。",
         "legacy-schedule-link": "アップグレードのスケジュール設定 (AP5 以前)",
-        "legacy-upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。これによって、すべてのレガシーアクセスポイント (AP5 以前) がアップグレードされます。",
+        "legacy-upgrade-message": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。これによって、すべてのレガシーアクセスポイント (APX および AP) がアップグレードされます。",
         "default-schedule-msg": "スケジュール設定されていない場合、アクセスポイントはデフォルトの定期的なスケジュール (毎週) に従ってアップグレードされます。",
         "cannot-manage": "実行中のアップグレードが完了したら、スケジュールを設定できます。",
         "up-to-date": "ファームウェアは最新です。",
@@ -1308,7 +1330,6 @@
         }
       }
     }
-
   },
   "wifix": {
     "api": {
@@ -1331,12 +1352,10 @@
       "validString.clientNetworkAddressType": "クライアントネットワークアドレスの種類が無効です",
       "validString.clientNetworkType": "クライアントネットワークの種類が無効です",
       "validString.macFilter": "Mac フィルタが無効です",
-
       "site-name.already.exists": "指定された名前の顧客サイトは既に存在します",
       "ap.name.already.exists": "指定されたアクセスポイント名は既に存在します",
       "ssid.name.already.exists": "指定された SSID 名は既に存在します",
       "unknown.constraint.violation": "不明な制約違反です",
-
       "serial.invalid": "シリアル番号が無効です",
       "exception.unexpected": "リクエストの処理中に、予期しないエラーが発生しました",
       "exception.AccessDeniedException": "アクセスが拒否されました",
