@@ -13,6 +13,7 @@
     "delete": "Borrar",
     "delete-firewall": "Eliminar firewall",
     "hide-firewall": "Ocultar firewall",
+    "re-sync": "Resincronizar",
     "remove": "Eliminar",
     "success": "Completado",
     "next": "Siguiente",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "Direcciones IP xfrm libres",
               "add": "Añadir red",
               "public-ip": "IP pública o FQDN para el enlace WAN seleccionado",
-              "behind-nat": "Anular dirección de la puerta de enlace"
+              "behind-nat": "Anular dirección de la puerta de enlace",
+              "general": "General",
+              "load-balance": {
+                "title": "Equilibrio de carga",
+                "routing-strategy": "Estrategia de enrutamiento",
+                "first-available-gateway": "Primera puerta de enlace disponible",
+                "load-balancing": "Equilibrio de carga",
+                "load-balancing-method": "Método de equilibrio de carga",
+                "round-robin": "Round Robin",
+                "session-persistence-type": "Tipo de persistencia de sesión",
+                "source-ip-address": "Dirección IP de origen",
+                "destination-ip-address": "Dirección IP de destino",
+                "source-and-destination-ip-addresses": "Direcciones IP de origen y destino",
+                "connection": "Conexión",
+                "help": {
+                  "first-available-gateway": "Dirige el tráfico en función de la primera puerta de enlace disponible si SLA está desactivado.",
+                  "load-balancing": "Equilibra la carga del tráfico entre todas las puertas de enlace disponibles o las que cumplen el SLA."
+                }
+              },
+              "service-level-agreement": {
+                "title": "Acuerdo de nivel de servicio (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "Estrategia de SLA",
+                "best-quality": "Calidad óptima",
+                "custom": "SLA personalizada",
+                "latency": "Latencia",
+                "jitter": "Fluctuación",
+                "packet-loss": "Pérdida de paquetes",
+                "max-latency": "Latencia máxima",
+                "max-jitter": "Fluctuación máxima",
+                "max-packet-loss": "Pérdida de paquetes máxima",
+                "latency-margin": "(1-60 000 ms)",
+                "jitter-margin": "(1-60 000 ms)",
+                "packet-loss-margin": "(0-100 %)",
+                "recomended-sla-values": "Valores de SLA recomendados",
+                "help": {
+                  "best-quality": "Dirige el tráfico a través de la puerta de enlace con mejor rendimiento. Solo equilibra la carga si dos o más puertas de enlace tienen el mejor rendimiento de SLA.",
+                  "custom": "Dirige el tráfico a través de la primera puerta de enlace que cumple el SLA. Para el equilibrio de carga, utiliza todas las puertas de enlace que cumplen en SLA. Si ninguna puerta de enlace cumple el SLA, se aplica la estrategia de enrutamiento configurada.",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "Tráfico web general",
+                      "latency": "Latencia: 250 ms",
+                      "jitter": "Fluctuación: 50 ms",
+                      "packet-loss": "Pérdida de paquetes: 2 %"
+                    },
+                    "media": {
+                      "title": "Medios (ejemplo: vídeo, telefonía IP)",
+                      "latency": "Latencia: 150 ms",
+                      "jitter": "Fluctuación: 30 ms",
+                      "packet-loss": "Pérdida de paquetes: 1 %"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "Latencia: 250 ms",
+                      "jitter": "Fluctuación: 50 ms",
+                      "packet-loss": "Pérdida de paquetes: 5 %"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "Comprobación de salud",
+                "protocol": "Protocolo",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "Destino de sondeo",
+                "ip-address": "Dirección IP",
+                "port": "Puerto",
+                "health-check-attempts": "Intentos de comprobación del estado de seguridad",
+                "interval-between-checks": "Comprobaciones entre intervalos",
+                "response-time-out": "Tiempo de espera de respuesta",
+                "action": "Acción",
+                "deactivate-gateway-after": "Desactivar puerta de enlace tras:",
+                "activate-gateway-after": "Activar puerta de enlace tras:",
+                "sample-size-for-SLA": "Tamaño de muestra para SLA",
+                "margin": {
+                  "interval-between-checks": "(1-3600 segundos)",
+                  "response-time-out": "(1-10 segundos)",
+                  "deactivate-gateway-after": "(1-10 fallos consecutivos)",
+                  "activate-gateway-after": "(1-10 respuestas consecutivas)",
+                  "sample-size-for-SLA": "(5-100 muestras)"
+                },
+                "help": {
+                  "title": "La comprobación del estado de seguridad permanece activada si ha activado el SLA.",
+                  "probe-target": "Si el primer host responde a un sondeo, el firewall no sondea el siguiente host configurado.",
+                  "deactivate-gateway-after": "Considera la puerta de enlace inactiva cuando el host de destino no responde.",
+                  "activate-gateway-after": "Considera la puerta de enlace activa cuando el host de destino responde.",
+                  "sample-size-for-SLA": "Número de comprobaciones para determinar el rendimiento de enlace medio."
+                },
+                "error": {
+                  "ip-required": "Se requiere IP",
+                  "invalid-ip": "IP no válido"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "Red en conflicto con: '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "Editar grupo",
         "warn-info": "Asignar un firewall al grupo aplicará una configuración predeterminada al firewall. Puede cambiar las configuraciones actuales del firewall.",
         "edit-group-success": "Grupo actualizado correctamente",
-        "edit-group-error": "Error al actualizar el grupo"
+        "edit-group-error": "Error al actualizar el grupo",
+        "edit-group-invalid-error": "Asignar un firewall con Auto Scaling a un grupo normal o asignar un firewall normal a un grupo con Auto Scaling no está permitido."
       },
       "config-radio": {
         "first-radio-label": "Usar las opciones predeterminadas de Sophos",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "Tamaño del firewall virtual: ",
             "required": "El tamaño del firewall virtual es obligatorio"
-          }
+          },
+          "subscription-resync-success": "Resincronización de suscripciones correcta.",
+          "subscription-resync-fail": "Resincronización de suscripciones fallida."
         },
         "states": {
           "data-not-loaded": "Se ha producido un error al recuperar datos del servidor. Inténtelo de nuevo pasado un tiempo.",
@@ -946,8 +1043,8 @@
         "outofsync": "El error requiere atención",
         "unmanaged": "La administración está desactivada",
         "tooltip": {
-          "waiting": "Complete el proceso de despliegue de Lite Touch",
-          "improved-zero-touch-waiting": "Complete el proceso de despliegue sin intervención mejorado",
+          "waiting": "Complete el proceso de despliegue Lite Touch",
+          "improved-zero-touch-waiting": "Complete el proceso de despliegue Zero Touch mejorado",
           "sync": "Sincronización correcta {{ time }}",
           "syncing": {
             "current": "Sincronización iniciada {{ time }}",

@@ -88,7 +88,7 @@
         "summary": "요약",
         "on-board-step-finish": "완료",
         "enabled": "켜짐",
-        "ssid-sites-unavailable": "SSID 및 사이트는 현재 WIFI-6 모델에 대해 사용할 수 없습니다."
+        "sites-unavailable": "사이트는 현재 AP6 모델에 대해 사용할 수 없습니다."
       },
       "search": {
         "placeholder": "검색",
@@ -230,7 +230,8 @@
         "start-message": "PACKET CAPTURE 명령이 시작되었습니다.",
         "start-fail-message": "PACKET CAPTURE 명령이 시작되지 않았습니다.",
         "stop-message": "PACKET CAPTURE 명령이 중지되었습니다.",
-        "stop-fail-message": "PACKET CAPTURE 명령이 중지되지 않았습니다."
+        "stop-fail-message": "PACKET CAPTURE 명령이 중지되지 않았습니다.",
+        "model": "모델"
       },
       "syslog": {
         "title": "Syslog",
@@ -239,6 +240,16 @@
         "start-fail-message": "SYSLOG 명령이 시작되지 않았습니다",
         "stop-message": "SYSLOG 명령이 중지되었습니다.",
         "stop-fail-message": "SYSLOG 명령이 중지되지 않았습니다."
+      },
+      "system-logs": {
+        "title": "시스템 로그",
+        "access-points": "액세스 지점",
+        "status": "상태",
+        "collect-logs": "로그 수집",
+        "view-logs": "로그 다운로드",
+        "logfile": "로그",
+        "model": "모델",
+        "online-status": "액세스 지점 상태"
       },
       "list": {
         "breadcrumb-text": "진단",
@@ -316,7 +327,7 @@
       "config": {
         "customer-unique-id-title": "Sophos 고유 고객 ID",
         "firmware-update": {
-          "note": "모든 레거시 액세스 포인트(AP5 이하)를 업그레이드합니다.",
+          "note": "모든 레거시 액세스 지점(APX 및 AP)을 업그레이드합니다.",
           "title": "펌웨어 업데이트",
           "help-text": "주기와 시간을 선택해 펌웨어 업데이트를 예약할 수 있습니다.",
           "current-version": "현재 버전",
@@ -1045,6 +1056,16 @@
           "failed": "실패",
           "success": "성공"
         },
+        "objectType": {
+          "ACCESS_POINT": "액세스 지점",
+          "RADIO_CONFIGURATION": "라디오 구성",
+          "CONFIG": "구성",
+          "REBOOT": "재부팅",
+          "FIRMWARE_UPGRADE": "펌웨어 업그레이드",
+          "COLLECT_LOGS": "로그 수집",
+          "NETWORK": "네트워크",
+          "APU_CONFIG": "Apu Config"
+        },
         "dialog": {
           "configurationDataDialogTitle": {
             "config": "작업 세부 정보 - 구성",
@@ -1124,6 +1145,7 @@
               "errorMessage": "액세스 포인트를 로드할 수 없음",
               "bulk-file-upload-type-error": "파일 유형은 csv여야 합니다.",
               "bulk-file-upload-size-error": "파일 크기는 0바이트 이상이어야 하며 2MB보다 작거나 같아야 합니다.",
+              "bulk-file-upload-empty": "파일을 비워 두어서는 안 됨",
               "bulk-file-upload-success": "파일이 업로드되었습니다.",
               "invalid-serial": "잘못된 일련 번호",
               "already-registered": "이미 등록됨",
@@ -1138,7 +1160,7 @@
         "step-one": "1단계: 액세스 포인트 선택",
         "step-two": "2단계: 예약 선택",
         "note-no-site": "선택한 액세스 포인트의 일정을 선택하거나 취소할 수 있습니다.",
-        "note-for-site": "아래 목록은 업그레이드 가능한 액세스 포인트 6개만 보여줍니다({{count}}/{{total}} 액세스 포인트).",
+        "note-for-site": "아래 목록은 업그레이드 가능한 AP6만 보여줍니다({{count}}/{{total}}개 액세스 포인트).",
         "remove-schedule": "예약 일정 취소",
         "choose-schedule": "일정 선택",
         "rollback": "펌웨어 교체({{ version }})",
@@ -1201,7 +1223,7 @@
         "update-available": "새 펌웨어 업데이트를 사용할 수 있습니다.",
         "upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다.",
         "legacy-schedule-link": "업그레이드 예약(AP5 이하)",
-        "legacy-upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다. 모든 레거시 액세스 포인트(AP5 이하)를 업그레이드합니다.",
+        "legacy-upgrade-message": "이러한 업그레이드는 즉시 또는 향후 날짜에 적용할 수 있습니다. 모든 레거시 액세스 지점(APX 및 AP)을 업그레이드합니다.",
         "default-schedule-msg": "예약되지 않은 경우, 액세스 포인트는 기본 반복 일정(매주)에 따라 업그레이드됩니다.",
         "cannot-manage": "진행 중인 업그레이드가 완료되면 예약을 선택할 수 있습니다.",
         "up-to-date": "펌웨어가 최신 상태입니다.",
@@ -1308,7 +1330,6 @@
         }
       }
     }
-
   },
   "wifix": {
     "api": {
@@ -1331,12 +1352,10 @@
       "validString.clientNetworkAddressType": "잘못된 클라이언트 네트워크 주소 유형",
       "validString.clientNetworkType": "잘못된 클라이언트 네트워크 유형",
       "validString.macFilter": "잘못된 Mac 필터",
-
       "site-name.already.exists": "제공된 이름을 가진 고객 사이트가 이미 있습니다.",
       "ap.name.already.exists": "제공된 액세스 지점 이름이 이미 있습니다.",
       "ssid.name.already.exists": "제공된 SSID 이름이 이미 있습니다.",
       "unknown.constraint.violation": "알 수 없는 제약 조건 위반",
-
       "serial.invalid": "잘못된 일련 번호",
       "exception.unexpected": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다.",
       "exception.AccessDeniedException": "액세스 거부됨",

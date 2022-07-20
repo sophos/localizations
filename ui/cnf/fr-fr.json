@@ -110,21 +110,29 @@
       "nodes-dialog-checkbox-message": "Je souhaite effectuer un déploiement à grande échelle dans un cluster à nœud unique.",
       "confirmation": "Confirmation",
       "not-selected-cni": "Sélectionnez votre CNI existant pour continuer.",
-      "require-cni": "Cloud Series Firewall nécessite un CNI. Nous vous recommandons d’installer Calico CNI à partir du <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">site officiel</a>.",
+      "require-cni": "Installer Calico. La page suivante vous explique comment procéder.",
       "not-selected-ingress": "Sélectionnez un contrôleur d’entrée ou désactivez le WAF.",
       "not-supported-ingress": "Vous avez sélectionné un contrôleur d’entrée existant qui ne fonctionne pas avec WAF. Si vous souhaitez utiliser WAF, retirez le contrôleur d’entrée. Sinon, désactivez le WAF.",
       "cluster-success-notification": "Pare-feu ajouté.",
+      "flannel-warning": "Flannel ne prend pas en charge l’application des stratégies réseau. Remplacez-le par Calico. La page suivante vous explique comment procéder.",
+      "other-cni-warning": "Votre CNI n’est pas pris en charge Désinstallez-le et installez Calico. La page suivante vous montre comment installer Calico.",
+      "vpc-warning": "Installer Calico. La page suivante vous explique comment procéder.",
+      "vpc-info": "VPC continuera d’être utilisé pour les réseaux de base et Calico pour l’application des stratégies réseau.",
+      "vpc-with-other-warning": "Votre CNI n’est pas pris en charge Désinstallez-le et installez Calico. La page suivante vous explique comment procéder.",
+      "vpc-with-other-info": "VPC continuera d’être utilisé pour les réseaux de base et Calico pour l’application des stratégies réseau.",
       "type": {
         "premises": "Kubernetes natifs",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "Sélectionnez l’option CNI",
+      "nfoptions-place-holder": "Sélectionnez le CNI existant",
       "nf-options": {
-        "new-cni": "Aucun CNI existant installé",
-        "flannel": "Remplacer Flannel CNI par Calico CNI",
-        "calico": "Calico CNI est déjà installé",
-        "calico-with-vpc": "Installer Calico avec VPC CNI",
-        "different": "Autre CNI installé"
+        "calico": "Calico",
+        "flannel": "Flannel",
+        "no-cni": "Aucune",
+        "other": "Autre",
+        "vpc-calico": "VPC + Calico",
+        "vpc": "VPC",
+        "vpc-other": "VPC + autre"
       },
       "wafoptions-place-holder": "Avez-vous un contrôleur d’entrée ?",
       "waf-options": {
@@ -137,9 +145,9 @@
         "waf": "Pare-feu d'application Web",
         "waf-label": "Publiez et protégez vos applications Web en toute sécurité",
         "ip": "Prévention des intrusions",
-        "ip-label": "Protection NGFW pour le trafic entrant/sortant",
+        "ip-label": "Identifier et répondre aux menaces réseau",
         "admission-control": "Contrôle d’admission",
-        "admission-control-label": "Contrôler les normes de déploiement de conteneur"
+        "admission-control-label": "Vérifier que les nouveaux conteneurs peuvent être déployés en toute sécurité"
       },
       "s3-config": {
         "section-title": "Configuration du compartiment S3",
@@ -171,15 +179,48 @@
       "status": "État",
       "installation-steps": "Étapes d’installation",
       "upgrade-steps": "Étape de mise à niveau",
-      "confirm-cluster-delete": "Supprimer Cloud Series Firewall ?",
-      "uninstall-commands-help-text": "<br/><br/><br/><br/>Après la suppression, désinstallez Cloud Series Firewall du cluster à l’aide des commandes suivantes.<br/><br/>{{displayUninstallCommands}}",
-      "installation-steps-help-text": "Cliquez sur l’icône de copie pour copier la commande « helm » et l’exécuter sur votre cluster.",
-      "upgrade-steps-help-text": "Cliquez sur l’icône de copie pour copier la commande « helm » ci-dessous et l’exécuter sur votre cluster pour mettre à niveau la version de Cloud Series Firewall.",
-      "installation-step-1-heading": "Étape 1",
-      "installation-step-2-heading": "Étape 2",
-      "installation-step-1": "L’installation de Cloud Series Firewall dans votre cluster nécessite {{pv}} volumes permanents, chacun d’une taille de {{memory}} Mo dans la classe de stockage « {{storageClass}} ».",
+      "confirm-cluster-delete": "Supprimer le pare-feu Cloud Series Firewall de Sophos Central ?",
+      "uninstall-commands-help-text": "Après la suppression, patientez cinq minutes, puis désinstallez le pare-feu du cluster à l’aide des commandes suivantes :",
+      "installation-steps-help-text": "Cliquez sur l’icône <b>Copier</b> pour copier la commande « helm » et l’exécuter sur votre cluster.",
+      "upgrade-steps-help-text": "Cliquez sur l’icône <b>Copier</b> pour copier la commande « helm » et l’exécuter sur votre cluster.",
+      "installation-step-1": "Pour installer le pare-feu Cloud Series Firewall dans votre cluster, vous devez avoir {{pv}} volumes permanents, chacun d’une taille de {{memory}} Mo dans la classe de stockage \"{{storageClass}}\".",
       "detail-info-step-1": "Retrouvez plus de renseignements dans la <a href=\"https://sophos.com\" target=\"_blank\">documentation</a>.",
-      "PV-setup-completion-checkbox-text": "Configuration des volumes persistants terminée.",
+      "step-1-heading": "Étape 1 : Créer des volumes persistants.",
+      "step-2-heading": "Étape 2 : Installer Helm.",
+      "step-3-heading": "Étape 3 :",
+      "step-4-heading": "Étape 4 :",
+      "step-2-text": "Installez la version 3.7.0 ou une version ultérieure de helm en suivant les étapes de <a href=\"https://helm.sh/docs/intro/install\" target=\"_blank\">https://helm.sh/docs/intro/install</a>.",
+      "install-calico": "Installer Calico.",
+      "install-calico-instruction-1": "3a. Ajoutez le repo helm pour Calico :",
+      "install-calico-instruction-1-command": "helm repo add projectcalico https://projectcalico.docs.tigera.io/charts",
+      "install-calico-instruction-2": "3b. Installer l’opérateur Tigera Calico et les définitions de ressources personnalisées avec le tableau Helm :",
+      "install-calico-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace",
+      "install-calico-eks-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace --set installation.kubernetesProvider=EKS",
+      "reference-url-link": "Installer Calico en procédant comme suit. Retrouvez plus de renseignements sur <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/helm\" target=\"_blank\">Installer avec Helm</a>.",
+      "flannel-migration-heading": "Migrer du réseau Flannel vers Calico.",
+      "migration-instruction-1": "3a. Installer Calico.",
+      "migration-instruction-1-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/calico.yaml",
+      "migration-instruction-2": "3b. Démarrer le contrôleur de migration :",
+      "migration-3b-1": "i. Vérifiez le nom du daemonset flannel dans votre cluster :",
+      "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
+      "migration-3b-2": "ii. Procédez de l’une des manières suivantes :",
+      "migration-3b-2-one": "Si le nom flannel daemonset dans votre cluster est kube-flannel-ds-amd64, appliquez le fichier <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> :",
+      "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two": "Si le nom Flannel daemonset dans votre cluster n’est pas kube-flannel-ds-amd64, téléchargez le fichier <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> :",
+      "migration-3b-2-two-command": "curl -O https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two-path": "Rendez-vous sur \"kind: Job > spec: template > spec: containers > env:\" et ajoutez le texte suivant :",
+      "migration-3b-2-two-example-name": "nom : FLANNEL_DAEMONSET_NAME",
+      "migration-3b-2-two-example-value": "valeur : <valeur-de-flannel-daemonset-dans-votre-cluster>",
+      "migration-3b-2-two-final": "Appliquez le fichier migration-job.yaml :",
+      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job.yaml>",
+      "migration-instruction-4": "3c. Surveiller la migration :",
+      "migration-instruction-4-command": "kubectl get jobs -n kube-system flannel-migration",
+      "migration-instruction-4-text-one": "Lorsque le nœud hôte est mis à niveau, le contrôleur de migration peut être replanifié plusieurs fois.",
+      "migration-instruction-4-text-two": "L’installation est terminée lorsque le résultat indique 1/1 exécutions.",
+      "migration-instruction-5": "3d. Supprimer le contrôleur de migration :",
+      "migration-instruction-5-command": "kubectl delete -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "reference-url-for-migration": "Migrer vers Calico en procédant comme suit. Retrouvez plus de renseignements sur <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">Miger un cluster Kubernetes depuis flannel</a>",
+      "install-cloud-series-firewall": "Installer Cloud Series Firewall",
       "rollback-commands-help-text": "Restaurez la version de Cloud Series Firewall à l’aide de la commande suivante.",
       "messages": {
         "deleted-message": "Cluster supprimé.",
@@ -487,7 +528,8 @@
         "ew-policy": "Stratégie Est-Ouest",
         "policy-placeholder": "Sélectionner une stratégie",
         "messages": {
-          "empty-message": "Aucune stratégie IPS disponible."
+          "empty-message": "Aucune stratégie IPS disponible.",
+          "signature-count-exceeded": "Nombre de signatures IPS dépassé dans la règle."
         }
       },
       "policies": {
@@ -529,7 +571,8 @@
           "messages": {
             "empty-message": "Aucune stratégie IPS disponible.",
             "name-already-exists" : "Une stratégie IPS du même nom existe déjà.",
-            "signature-conflict" : "Les stratégies IPS ont des actions de signature conflictuelles."
+            "signature-conflict" : "Les stratégies IPS ont des actions de signature conflictuelles.",
+            "signature-count-exceeded" : "Nombre de signatures IPS dépassé dans la stratégie."
           }
         },
         "edit": {

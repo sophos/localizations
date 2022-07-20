@@ -88,7 +88,7 @@
         "summary": "Résumé",
         "on-board-step-finish": "Terminé",
         "enabled": "Activé",
-        "ssid-sites-unavailable": "Le SSID et le site sont actuellement indisponibles pour le modèle Wi-Fi-6."
+        "sites-unavailable": "Le site est actuellement indisponible pour le modèle AP6."
       },
       "search": {
         "placeholder": "Rechercher",
@@ -230,7 +230,8 @@
         "start-message": "La commande de CAPTURE DE PAQUETS a démarré.",
         "start-fail-message": "Impossible de démarrer la commande de CAPTURE DE PAQUETS.",
         "stop-message": "Commande de CAPTURE DE PAQUETS arrêtée.",
-        "stop-fail-message": "Impossible d’arrêter la commande de CAPTURE DE PAQUETS."
+        "stop-fail-message": "Impossible d’arrêter la commande de CAPTURE DE PAQUETS.",
+        "model": "Modèle"
       },
       "syslog": {
         "title": "Syslog",
@@ -239,6 +240,16 @@
         "start-fail-message": "Impossible de démarrer la commande SYSLOG.",
         "stop-message": "Commande SYSLOG arrêtée.",
         "stop-fail-message": "Impossible d’arrêter la commande SYSLOG."
+      },
+      "system-logs": {
+        "title": "Journaux système",
+        "access-points": "Points d’accès",
+        "status": "État",
+        "collect-logs": "Récupérer les journaux",
+        "view-logs": "Télécharger les journaux",
+        "logfile": "Journaux",
+        "model": "Modèle",
+        "online-status": "État du point d’accès"
       },
       "list": {
         "breadcrumb-text": "Diagnostics",
@@ -316,7 +327,7 @@
       "config": {
         "customer-unique-id-title": "Identifiant client unique à Sophos",
         "firmware-update": {
-          "note": "Ceci mettra à niveau tous les anciens points d’accès hérités (AP5 et inférieurs).",
+          "note": "Ceci mettra à niveau tous les anciens points d’accès hérités (APX et AP).",
           "title": "Mise à jour du firmware",
           "help-text": "Vous pouvez planifier les mises à jour du firmware en sélectionnant la fréquence et l’heure.",
           "current-version": "Version actuelle",
@@ -1045,6 +1056,16 @@
           "failed": "Échec",
           "success": "Succès"
         },
+        "objectType": {
+          "ACCESS_POINT": "Points d’accès",
+          "RADIO_CONFIGURATION": "Configuration de la radio",
+          "CONFIG": "Config",
+          "REBOOT": "Redémarrage",
+          "FIRMWARE_UPGRADE": "Mise à niveau du firmware",
+          "COLLECT_LOGS": "Récupérer les journaux",
+          "NETWORK": "Réseau",
+          "APU_CONFIG": "Config. APU"
+        },
         "dialog": {
           "configurationDataDialogTitle": {
             "config": "Détails de la tâche - Config",
@@ -1124,6 +1145,7 @@
               "errorMessage": "Impossible de charger les points d’accès",
               "bulk-file-upload-type-error": "Le type de fichier doit être CSV",
               "bulk-file-upload-size-error": "La taille du fichier doit être supérieure à zéro octets et inférieure ou égale à 2 Mo",
+              "bulk-file-upload-empty": "Le fichier ne doit pas être vide",
               "bulk-file-upload-success": "Fichier téléchargé.",
               "invalid-serial": "Numéro de série non valide",
               "already-registered": "Déjà enregistré",
@@ -1138,7 +1160,7 @@
         "step-one": "Étape 1 : Sélectionner les points d’accès",
         "step-two": "Étape 2 : Choisir une planification",
         "note-no-site": "Vous pouvez choisir ou annuler la planification du point d’accès sélectionné.",
-        "note-for-site": "La liste ci-dessous indique uniquement les points d’accès 6 qui peuvent être mis à niveau ({{count}}/{{total}} points d’accès).",
+        "note-for-site": "La liste ci-dessous indique uniquement AP6 qui peut être mis à niveau ({{count}}/{{total}} points d’accès).",
         "remove-schedule": "Annuler la planification",
         "choose-schedule": "Choisir une planification",
         "rollback": "Changer de firmware ({{ version }})",
@@ -1201,7 +1223,7 @@
         "update-available": "Nouvelles mises à jour du firmware disponibles.",
         "upgrade-message": "Vous pouvez appliquer ces mises à niveau immédiatement ou ultérieurement.",
         "legacy-schedule-link": "Mise à niveau planifiée (AP5 et inférieur)",
-        "legacy-upgrade-message": "Vous pouvez appliquer ces mises à niveau immédiatement ou ultérieurement. Ceci mettra à niveau tous les anciens points d’accès hérités (AP5 et inférieurs).",
+        "legacy-upgrade-message": "Vous pouvez appliquer ces mises à niveau immédiatement ou ultérieurement. Ceci mettra à niveau tous les anciens points d’accès hérités (APX et AP).",
         "default-schedule-msg": "Sans planification, le point d’accès sera mis à niveau selon l’horaire récurrent par défaut (hebdomadaire).",
         "cannot-manage": "Vous pourrez choisir une planification dès que la mise à niveau actuelle sera terminée.",
         "up-to-date": "Le firmware est à jour.",
@@ -1308,7 +1330,6 @@
         }
       }
     }
-
   },
   "wifix": {
     "api": {
@@ -1331,12 +1352,10 @@
       "validString.clientNetworkAddressType": "Type d’adresse réseau client non valide",
       "validString.clientNetworkType": "Type de réseau client non valide",
       "validString.macFilter": "Filtre Mac non valide",
-
       "site-name.already.exists": "Une site client du même nom existe déjà.",
       "ap.name.already.exists": "Un point d’accès du même nom existe déjà.",
       "ssid.name.already.exists": "UN SSID du même nom existe déjà.",
       "unknown.constraint.violation": "Violation de contrainte inconnue",
-
       "serial.invalid": "Numéro de série non valide",
       "exception.unexpected": "Une erreur inattendue s’est produite pendant le traitement de la demande.",
       "exception.AccessDeniedException": "Accès refusé",

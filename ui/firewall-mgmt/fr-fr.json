@@ -13,6 +13,7 @@
     "delete": "Supprimer",
     "delete-firewall": "Supprimer le pare-feu",
     "hide-firewall": "Masquer le pare-feu",
+    "re-sync": "Resynchroniser",
     "remove": "Supprimer",
     "success": "Succès !",
     "next": "Suivant",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "Adresses IP Xfrm libres",
               "add": "Ajouter un réseau",
               "public-ip": "Adresse IP publique ou Nom de domaine complet pour la liaison WAN sélectionnée",
-              "behind-nat": "Remplacer l’adresse de la passerelle"
+              "behind-nat": "Remplacer l’adresse de la passerelle",
+              "general": "Général",
+              "load-balance": {
+                "title": "Équilibrage de charge",
+                "routing-strategy": "Stratégie de routage",
+                "first-available-gateway": "Première passerelle disponible",
+                "load-balancing": "Équilibrage de charge",
+                "load-balancing-method": "Méthode d’équilibrage de charge",
+                "round-robin": "Round Robin",
+                "session-persistence-type": "Type de persistance de session",
+                "source-ip-address": "Adresse IP source",
+                "destination-ip-address": "Adresse IP de destination",
+                "source-and-destination-ip-addresses": "Adresses IP source et de destination",
+                "connection": "Connexion",
+                "help": {
+                  "first-available-gateway": "Achemine le trafic en fonction de la première passerelle disponible si le SLA est désactivé.",
+                  "load-balancing": "Équilibre la charge du trafic entre toutes les passerelles disponibles ou celles qui répondent au SLA."
+                }
+              },
+              "service-level-agreement": {
+                "title": "Niveaux de service (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "Stratégie SLA",
+                "best-quality": "Meilleure qualité",
+                "custom": "SLA personnalisée",
+                "latency": "Latence",
+                "jitter": "Gigue",
+                "packet-loss": "Perte de paquets",
+                "max-latency": "Latence maximale",
+                "max-jitter": "Gigue maximale",
+                "max-packet-loss": "Perte de paquets maximale",
+                "latency-margin": "(1-60000 ms)",
+                "jitter-margin": "(1-60000 ms)",
+                "packet-loss-margin": "(0-100 %)",
+                "recomended-sla-values": "Valeurs SLA recommandées",
+                "help": {
+                  "best-quality": "Achemine le trafic via la passerelle la plus performante. Il ne permet d’équilibrer la charge que si deux passerelles ou plus présentent les meilleures performances SLA.",
+                  "custom": "Achemine le trafic via la première passerelle répondant au SLA. Pour l’équilibrage de charge, il utilise toutes les passerelles répondant au SLA. Si aucune passerelle ne répond au SLA, la stratégie de routage configurée s’applique.",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "Trafic web général",
+                      "latency": "Latence : 250 ms",
+                      "jitter": "Gigue : 50 ms",
+                      "packet-loss": "Perte de paquets : 2 %"
+                    },
+                    "media": {
+                      "title": "Média (exemple : vidéo, téléphonie IP)",
+                      "latency": "Latence : 150 ms",
+                      "jitter": "Gigue : 30 ms",
+                      "packet-loss": "Perte de paquets : 1 %"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "Latence : 250 ms",
+                      "jitter": "Gigue : 50 ms",
+                      "packet-loss": "Perte de paquets : 5 %"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "Contrôle d’intégrité",
+                "protocol": "Protocole",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "Sonder la cible",
+                "ip-address": "Adresse IP",
+                "port": "Port",
+                "health-check-attempts": "Tentatives de contrôle d’intégrité",
+                "interval-between-checks": "Intervalle entre vérifications",
+                "response-time-out": "Délai d’attente de réponse",
+                "action": "Action",
+                "deactivate-gateway-after": "Désactiver la passerelle après :",
+                "activate-gateway-after": "Activer la passerelle après :",
+                "sample-size-for-SLA": "Taille de l’échantillon pour le SLA",
+                "margin": {
+                  "interval-between-checks": "(1 à 3600 secondes)",
+                  "response-time-out": "(1 à 10 secondes)",
+                  "deactivate-gateway-after": "(1-10 échecs consécutifs)",
+                  "activate-gateway-after": "(1-10 réponses consécutives)",
+                  "sample-size-for-SLA": "(5-100 échantillons)"
+                },
+                "help": {
+                  "title": "Le contrôle d’intégrité continue à fonctionner si le SLA est activé.",
+                  "probe-target": "Si le premier hôte répond au sondage, le pare-feu ne sonde pas le prochain hôte configuré.",
+                  "deactivate-gateway-after": "Considère que la passerelle est inactive lorsque l’hôte cible ne répond pas.",
+                  "activate-gateway-after": "Considère que la passerelle est active lorsque l’hôte cible répond.",
+                  "sample-size-for-SLA": "Nombre de vérifications visant à déterminer la performance moyenne de la liaison."
+                },
+                "error": {
+                  "ip-required": "IP obligatoire",
+                  "invalid-ip": "Adresse IP non valide"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "Réseau en conflit avec : '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "Modifier le groupe",
         "warn-info": "L’assignation d’un pare-feu au groupe entraînera l’application d’une configuration par défaut au pare-feu. Ceci risque de modifier les configurations déjà existantes du pare-feu.",
         "edit-group-success": "Groupe mis à jour",
-        "edit-group-error": "Mise à jour du groupe impossible"
+        "edit-group-error": "Mise à jour du groupe impossible",
+        "edit-group-invalid-error": "L’assignation d’un pare-feu à mise à l’échelle automatique dans un groupe normal ou l’assignation d’un pare-feu normal à un groupe à mise à l’échelle automatique n’est pas autorisée."
       },
       "config-radio": {
         "first-radio-label": "Utiliser les valeurs Sophos par défaut",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "Taille du pare-feu virtuel : ",
             "required": "Taille du pare-feu virtuel obligatoire"
-          }
+          },
+          "subscription-resync-success": "La resynchronisation de l’abonnement a réussi.",
+          "subscription-resync-fail": "Échec de la resynchronisation de l’abonnement."
         },
         "states": {
           "data-not-loaded": "Une erreur s’est produite lors de l’extraction des données du serveur. Veuillez réessayer plus tard.",

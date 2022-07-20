@@ -88,7 +88,7 @@
         "summary": "摘要",
         "on-board-step-finish": "完成",
         "enabled": "已打開",
-        "ssid-sites-unavailable": "SSID 與站點目前無法提供 WIFI-6 型號使用。"
+        "sites-unavailable": "網站目前不適用於 AP6 型號。"
       },
       "search": {
         "placeholder": "搜尋",
@@ -230,7 +230,8 @@
         "start-message": "PACKET CAPTURE 命令已啟動。",
         "start-fail-message": "PACKET CAPTURE 命令無法啟動。",
         "stop-message": "PACKET CAPTURE 命令已停止。",
-        "stop-fail-message": "PACKET CAPTURE 命令無法停止。"
+        "stop-fail-message": "PACKET CAPTURE 命令無法停止。",
+        "model": "機型"
       },
       "syslog": {
         "title": "Syslog",
@@ -239,6 +240,16 @@
         "start-fail-message": "SYSLOG 命令無法啟動。",
         "stop-message": "SYSLOG 命令已停止。",
         "stop-fail-message": "SYSLOG 命令無法停止。"
+      },
+      "system-logs": {
+        "title": "系統日誌",
+        "access-points": "存取點",
+        "status": "狀態",
+        "collect-logs": "收集記錄",
+        "view-logs": "下載記錄",
+        "logfile": "日誌紀錄",
+        "model": "機型",
+        "online-status": "存取點狀態"
       },
       "list": {
         "breadcrumb-text": "診斷",
@@ -316,7 +327,7 @@
       "config": {
         "customer-unique-id-title": "Sophos 唯一客戶 ID",
         "firmware-update": {
-          "note": "這將升級所有舊的存取點（AP5 和更低）。",
+          "note": "這將升級所有舊的存取點（APX 和 AP）。",
           "title": "韌體更新",
           "help-text": "您可透過選取頻率和時間來安排韌體更新。",
           "current-version": "目前版本",
@@ -1045,6 +1056,16 @@
           "failed": "失敗",
           "success": "成功"
         },
+        "objectType": {
+          "ACCESS_POINT": "存取點",
+          "RADIO_CONFIGURATION": "廣播設定",
+          "CONFIG": "設定",
+          "REBOOT": "重新開機",
+          "FIRMWARE_UPGRADE": "韌體升級",
+          "COLLECT_LOGS": "收集記錄",
+          "NETWORK": "網路",
+          "APU_CONFIG": "APU 設定"
+        },
         "dialog": {
           "configurationDataDialogTitle": {
             "config": "工作詳情 - 設定",
@@ -1124,6 +1145,7 @@
               "errorMessage": "無法上傳存取點",
               "bulk-file-upload-type-error": "檔案類型必須為 csv",
               "bulk-file-upload-size-error": "檔案大小必須大於零個位元並且小於或等於 2MB",
+              "bulk-file-upload-empty": "檔案不得為空白",
               "bulk-file-upload-success": "檔案成功上傳。",
               "invalid-serial": "無效的序號",
               "already-registered": "已註冊",
@@ -1138,7 +1160,7 @@
         "step-one": "步驟 1：選取存取點",
         "step-two": "步驟 2：選擇排程",
         "note-no-site": "您可以選擇或取消所選存取點的排程。",
-        "note-for-site": "以下清單僅顯示可升級的存取點 6（{{count}}/{{total}} 存取點）。",
+        "note-for-site": "以下清單僅顯示可升級的 AP6（{{count}}/{{total}} 個存取點）。",
         "remove-schedule": "取消排程",
         "choose-schedule": "選擇排程",
         "rollback": "切換韌體 ({{ version }})",
@@ -1201,7 +1223,7 @@
         "update-available": "新韌體升級可用。",
         "upgrade-message": "您可以立即或在將來套用這些升級。",
         "legacy-schedule-link": "安排升級（AP5 及更低）",
-        "legacy-upgrade-message": "您可以立即或在將來套用這些升級。這將升級所有舊的存取點（AP5 和更低）。",
+        "legacy-upgrade-message": "您可以立即或在將來套用這些升級。這將升級所有舊的存取點（APX 和 AP）。",
         "default-schedule-msg": "如果未安排，存取點將按照預設的定期排程進行升級（每週一次）。",
         "cannot-manage": "正在進行的升級完成後，您可選擇排程。",
         "up-to-date": "韌體已為最新。",
@@ -1308,7 +1330,6 @@
         }
       }
     }
-
   },
   "wifix": {
     "api": {
@@ -1331,12 +1352,10 @@
       "validString.clientNetworkAddressType": "用戶端網路位址類型無效",
       "validString.clientNetworkType": "用戶端網路類型無效",
       "validString.macFilter": "Mac 篩選器無效",
-
       "site-name.already.exists": "具有所提供名稱的客戶網站已存在",
       "ap.name.already.exists": "所提供之存取點名稱已存在",
       "ssid.name.already.exists": "所提供之 SSID 名稱已存在",
       "unknown.constraint.violation": "未知的約束違反",
-
       "serial.invalid": "序號無效",
       "exception.unexpected": "處理請求時出現意外錯誤",
       "exception.AccessDeniedException": "拒絕存取",

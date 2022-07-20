@@ -13,6 +13,7 @@
     "delete": "Deletar",
     "delete-firewall": "Deletar firewall",
     "hide-firewall": "Ocultar firewall",
+    "re-sync": "Ressincronizar",
     "remove": "Remover",
     "success": "Sucesso!",
     "next": "Avançar",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "Endereços de IP Xfrm livres",
               "add": "Adicionar rede",
               "public-ip": "FQDN ou IP público para o link WAN selecionado",
-              "behind-nat": "Substituir endereço de gateway"
+              "behind-nat": "Substituir endereço de gateway",
+              "general": "Geral",
+              "load-balance": {
+                "title": "Equilíbrio de Carga",
+                "routing-strategy": "Estratégia de roteamento",
+                "first-available-gateway": "Primeiro gateway disponível",
+                "load-balancing": "Balanceamento de Carga",
+                "load-balancing-method": "Método de balanceamento de carga",
+                "round-robin": "Round robin",
+                "session-persistence-type": "Tipo de persistência de sessão",
+                "source-ip-address": "Endereço de IP da Fonte",
+                "destination-ip-address": "Endereço de IP de Destino",
+                "source-and-destination-ip-addresses": "Endereços de IP de fonte e destino",
+                "connection": "Conexão",
+                "help": {
+                  "first-available-gateway": "Roteia o tráfego de acordo com o primeiro gateway disponível, se o SLA estiver desativado.",
+                  "load-balancing": "Faz o balanceamento da carga de tráfego entre todos os gateways disponíveis ou que atendem ao SLA."
+                }
+              },
+              "service-level-agreement": {
+                "title": "Acordo de Nível de Serviço (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "Estratégia de SLA",
+                "best-quality": "Melhor qualidade",
+                "custom": "SLA personalizado",
+                "latency": "Latência",
+                "jitter": "Instabilidade",
+                "packet-loss": "Perda de pacote",
+                "max-latency": "Latência máxima",
+                "max-jitter": "Instabilidade máxima",
+                "max-packet-loss": "Perda de pacote máxima",
+                "latency-margin": "(1-60000 ms)",
+                "jitter-margin": "(1-60000 ms)",
+                "packet-loss-margin": "(0-100 %)",
+                "recomended-sla-values": "Valores de SLA recomendados",
+                "help": {
+                  "best-quality": "Roteia o tráfego através do gateway de melhor desempenho. Faz o balanceamento de carga apenas se dois ou mais gateways tiverem o melhor desempenho de SLA.",
+                  "custom": "Roteia o tráfego através do primeiro gateway que atenda ao SLA. Para fazer o balanceamento de carga, usa todos os gateways que atendam ao SLA. Se nenhum gateway atende ao SLA, aplica-se a estratégia de roteamento configurado.",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "Tráfego da web geral",
+                      "latency": "Latência: 250 ms",
+                      "jitter": "Instabilidade: 50 ms",
+                      "packet-loss": "Perda de pacote: 2 %"
+                    },
+                    "media": {
+                      "title": "Mídia (exemplo: vídeo, telefonia IP)",
+                      "latency": "Latência: 150 ms",
+                      "jitter": "Instabilidade: 30 ms",
+                      "packet-loss": "Perda de pacote: 1 %"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "Latência: 250 ms",
+                      "jitter": "Instabilidade: 50 ms",
+                      "packet-loss": "Perda de pacote: 5 %"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "Exame de Salubridade",
+                "protocol": "Protocolo",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "Destino de sondagem",
+                "ip-address": "Endereço de IP",
+                "port": "Porta",
+                "health-check-attempts": "Tentativas de revisão geral",
+                "interval-between-checks": "Intervalo entre verificações",
+                "response-time-out": "Limite de tempo de resposta",
+                "action": "Ação",
+                "deactivate-gateway-after": "Desativar gateway após:",
+                "activate-gateway-after": "Ativar gateway após:",
+                "sample-size-for-SLA": "Tamanho da amostra para o SLA",
+                "margin": {
+                  "interval-between-checks": "(1-3600 segundos)",
+                  "response-time-out": "(1-10 segundos)",
+                  "deactivate-gateway-after": "(1-10 falhas consecutivas)",
+                  "activate-gateway-after": "(1-10 respostas consecutivas)",
+                  "sample-size-for-SLA": "(5-100 amostras)"
+                },
+                "help": {
+                  "title": "A verificação de integridade permanece ativa se você tiver ativado o SLA.",
+                  "probe-target": "Se o primeiro host responde a uma sondagem, o firewall não faz a sondagem no próximo host configurado.",
+                  "deactivate-gateway-after": "Considera o gateway inativo quando o host de destino não responde.",
+                  "activate-gateway-after": "Considera o gateway ativo quando o host de destino responde.",
+                  "sample-size-for-SLA": "Número de verificações para determinar o desempenho médio do link."
+                },
+                "error": {
+                  "ip-required": "É necessária uma IP",
+                  "invalid-ip": "IP inválido"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "Rede conflitante com: '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "Editar grupo",
         "warn-info": "Atribuir um firewall ao grupo aplicará uma configuração default ao firewall. Isso poderá alterar as configurações do firewall atual.",
         "edit-group-success": "Grupo atualizado com sucesso",
-        "edit-group-error": "Falha ao atualizar grupo"
+        "edit-group-error": "Falha ao atualizar grupo",
+        "edit-group-invalid-error": "Atribuir um firewall autodimensionável a um grupo normal ou atribuir um firewall normal a um grupo autodimensionável não é permitido."
       },
       "config-radio": {
         "first-radio-label": "Usar padrão da Sophos",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "Tamanho do firewall virtual: ",
             "required": "Tamanho do firewall virtual é obrigatório"
-          }
+          },
+          "subscription-resync-success": "Ressincronização de inscrição bem-sucedida.",
+          "subscription-resync-fail": "Ressincronização de inscrição malsucedida."
         },
         "states": {
           "data-not-loaded": "Ocorreu um erro ao buscar dados do servidor. Tente novamente mais tarde.",

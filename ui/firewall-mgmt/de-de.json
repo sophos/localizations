@@ -13,6 +13,7 @@
     "delete": "Löschen",
     "delete-firewall": "Firewall löschen",
     "hide-firewall": "Firewall verbergen",
+    "re-sync": "Resync",
     "remove": "Entfernen",
     "success": "Erfolg!",
     "next": "Weiter",
@@ -378,7 +379,100 @@
               "xfrm-ip-free": "Freie Xfrm-IP-Adressen",
               "add": "Netzwerk hinzufügen",
               "public-ip": "Öffentliche IP oder FQDN für ausgewählten WAN-Link",
-              "behind-nat": "Gateway-Adresse überschreiben"
+              "behind-nat": "Gateway-Adresse überschreiben",
+              "general": "Allgemeines",
+              "load-balance": {
+                "title": "Lastverteilung",
+                "routing-strategy": "Routingstrategie",
+                "first-available-gateway": "Erstes verfügbares Gateway",
+                "load-balancing": "Lastverteilung",
+                "load-balancing-method": "Lastverteilungsmethode",
+                "round-robin": "Round-Robin",
+                "session-persistence-type": "Persistenz-Typ der Sitzung",
+                "source-ip-address": "IP-Adresse der Quelle",
+                "destination-ip-address": "Ziel-IP-Adresse",
+                "source-and-destination-ip-addresses": "Quell- und Ziel-IP-Adressen",
+                "connection": "Verbindung",
+                "help": {
+                  "first-available-gateway": "Leitet Datenverkehr an das erste verfügbare Gateway weiter, wenn SLA deaktiviert ist.",
+                  "load-balancing": "Lastverteilung zwischen allen verfügbaren Gateways oder Gateways, welche die SLA erfüllen."
+                }
+              },
+              "service-level-agreement": {
+                "title": "Dienstgütevereinbarung (SLA)",
+                "sla": "SLA",
+                "sla-strategy": "SLA-Strategie",
+                "best-quality": "Höchste Qualität",
+                "custom": "Benutzerspezifische SLA",
+                "latency": "Latenz",
+                "jitter": "Jitter",
+                "packet-loss": "Paketverlust",
+                "max-latency": "Maximale Latenz",
+                "max-jitter": "Maximaler Jitter",
+                "max-packet-loss": "Maximaler Paketverlust",
+                "latency-margin": "(1 - 60.000 ms)",
+                "jitter-margin": "(1 - 60.000 ms)",
+                "packet-loss-margin": "(0 - 100%)",
+                "recomended-sla-values": "Empfohlene SLA-Werte",
+                "help": {
+                  "best-quality": "Leitet Datenverkehr an das performanteste Gateway weiter. Lastverteilung nur, wenn es zwei oder mehr Gateways mit der besten SLA-Performance gibt.",
+                  "custom": "Leitet Datenverkehr an das erste Gateway weiter, das die SLA erfüllt. Lastverteilung zwischen allen Gateways, welche die SLA erfüllen. Falls kein Gateway die SLA erfüllt, wird die konfigurierte Routingstrategie angewendet.",
+                  "recommend": {
+                    "general-web-traffic": {
+                      "title": "Allgemeiner Internetverkehr",
+                      "latency": "Latenz: 250 ms",
+                      "jitter": "Jitter: 50 ms",
+                      "packet-loss": "Paketverluste: 2%"
+                    },
+                    "media": {
+                      "title": "Medien (Beispiel: Video-, IP-Telefonie)",
+                      "latency": "Latenz: 150 ms",
+                      "jitter": "Jitter: 30 ms",
+                      "packet-loss": "Paketverluste: 1%"
+                    },
+                    "office-365": {
+                      "title": "Office 365",
+                      "latency": "Latenz: 250 ms",
+                      "jitter": "Jitter: 50 ms",
+                      "packet-loss": "Paketverluste: 5%"
+                    }
+                  }
+                }
+              },
+              "health-check": {
+                "title": "Zustandsprüfung",
+                "protocol": "Protokoll",
+                "ping": "Ping",
+                "tcp": "TCP",
+                "probe-target": "Ziel testen",
+                "ip-address": "IP-Adresse",
+                "port": "Port",
+                "health-check-attempts": "Zustandsprüfungsversuche",
+                "interval-between-checks": "Intervall zwischen Prüfungen",
+                "response-time-out": "Antwortzeitlimit",
+                "action": "Aktion",
+                "deactivate-gateway-after": "Gateway deaktivieren nach:",
+                "activate-gateway-after": "Gateway aktivieren nach:",
+                "sample-size-for-SLA": "Stichprobengröße für SLA",
+                "margin": {
+                  "interval-between-checks": "(1 - 3600 Sekunden)",
+                  "response-time-out": "(1 - 10 Sekunden)",
+                  "deactivate-gateway-after": "(1 - 10 aufeinander folgende Fehlschläge)",
+                  "activate-gateway-after": "(1 - 10 aufeinander folgende Antworten)",
+                  "sample-size-for-SLA": "(5 - 100 Stichproben)"
+                },
+                "help": {
+                  "title": "Zustandsprüfung bleibt eingeschaltet, solange SLA eingeschaltet ist.",
+                  "probe-target": "Wenn der erste Host auf eine Prüfung antwortet, prüft die Firewall nicht den nächsten konfigurierten Host.",
+                  "deactivate-gateway-after": "Betrachtet das Gateway als inaktiv, wenn der Ziel-Host nicht antwortet.",
+                  "activate-gateway-after": "Betrachtet das Gateway als aktiv, wenn der Ziel-Host antwortet.",
+                  "sample-size-for-SLA": "Anzahl an Prüfungen, um die durchschnittliche Link-Leistung zu ermitteln."
+                },
+                "error": {
+                  "ip-required": "IP erforderlich",
+                  "invalid-ip": "Ungültige IP"
+                }
+              }
             },
             "conflicts": {
               "subnet-conflict": "Netzwerkkonflikt mit: '{{ subnet }}'",
@@ -527,7 +621,8 @@
         "label": "Gruppe bearbeiten",
         "warn-info": "Wenn Sie der Gruppe eine Firewall zuweisen, wird der Firewall eine Standardkonfiguration zugewiesen. Dies kann die aktuellen Firewall-Konfigurationen ändern.",
         "edit-group-success": "Gruppe erfolgreich aktualisiert",
-        "edit-group-error": "Aktualisieren der Gruppe fehlgeschlagen"
+        "edit-group-error": "Aktualisieren der Gruppe fehlgeschlagen",
+        "edit-group-invalid-error": "Zuweisen einer Autoscaling-Firewall zu einer normalen Gruppe oder einer normalen Firewall zu einer Autoscaling-Gruppe ist nicht erlaubt."
       },
       "config-radio": {
         "first-radio-label": "Sophos-Standardwerte verwenden",
@@ -893,7 +988,9 @@
           "firewall-size": {
             "label": "Größe der virtuellen Firewall: ",
             "required": "Größe der virtuellen Firewall ist erforderlich"
-          }
+          },
+          "subscription-resync-success": "Abonnement-Synchronisierung war erfolgreich.",
+          "subscription-resync-fail": "Abonnement-Synchronisierung ist fehlgeschlagen."
         },
         "states": {
           "data-not-loaded": "Beim Abrufen der Daten vom Server ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",

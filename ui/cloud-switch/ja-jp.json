@@ -79,22 +79,88 @@
         "revert-system": "システムのデフォルト設定の使用"
       },
       "status": {
-        "registering": "接続を待機中",
-        "connected": "接続",
-        "registered": "登録済み",
-        "unregistered": "登録がタイムアウトしました",
-        "disconnected": "切断後の経過時間: {{ time }}",
-        "synchronized": "同期",
-        "waiting_for_sync": "同期を待機中",
-        "pending": "タスクを保留中",
-        "syncing": "同期中",
-        "out_of_sync": "対処が必要なエラーあり",
-        "firmware_too_old": "ファームウェアが古すぎます",
-        "disabled": "無効",
-        "enabled": "有効",
+        "registering": {
+          "name": "接続を待機中",
+          "heading": "新しいスイッチの登録中",
+          "subtext": "まだ再起動していない場合は、スイッチを再起動してください。スイッチをオンにした後、15分以内にスイッチを Sophos Central に追加する必要があります。"
+        },
+        "connected": {
+          "name": "接続",
+          "heading": "接続日: {{ time }}",
+          "subtext": "{{ time }}"
+        },
+        "registered": {
+          "name": "登録済み",
+          "heading": "登録に成功しました。",
+          "subtext": "スイッチは間もなく Sophos Central に接続されるはずです。スイッチ情報を待機しています"
+        },
+        "unregistered": {
+          "name": "登録がタイムアウトしました",
+          "heading": "登録に失敗しました。",
+          "subtext": "スイッチを再起動して、登録を再試行してください。スイッチをオンにした後、15分以内にスイッチを Sophos Central に追加する必要があります。"
+        },
+        "disconnected": {
+          "name": "切断後の経過時間: {{ time }}",
+          "heading": "切断日: {{ time }}",
+          "subtext": "{{ time }}"
+        },
+        "synchronized": {
+          "name": "同期",
+          "heading": "ポリシーが正常に同期されました。",
+          "subtext": "すべてのポリシーがスイッチに適用されました。"
+        },
+        "waiting_for_sync": {
+          "name": "手動同期が必要です",
+          "heading": "同期を待機しているタスク",
+          "subtext": "1つまたは複数のスイッチを選択し、「同期」をクリックすることで、待機中のポリシーをスイッチに適用できます。"
+        },
+        "pending": {
+          "name": "タスクを保留中",
+          "heading": "タスクキューには保留中のタスクがあります",
+          "subtext": "接続されたスイッチは、タスクを順にプルします。スイッチが接続されていない場合は、後で適用されます。"
+        },
+        "syncing": {
+          "name": "同期中",
+          "heading": "同期が開始されました。",
+          "subtext": "リモートデバイスにポリシーを適用しているため、この操作には時間がかかることがあります。"
+        },
+        "out_of_sync": {
+          "name": "対処が必要なエラーあり",
+          "heading": "ポリシーの適用に失敗しました。",
+          "subtext": "失敗したポリシーを再試行またはスキップして、さらにポリシーの変更を適用します。"
+        },
+        "firmware_too_old": {
+          "name": "ファームウェアが古すぎます",
+          "heading": "Sophos Central からポリシーをプッシュすることはできません。",
+          "subtext": "スイッチを最新の使用可能なファームウェアにアップグレードします。"
+        },
+        "disabled": {
+          "name": "無効"
+        },
+        "enabled": {
+          "name": "有効"
+        },
         "license-error": {
-          "license_expired": "ライセンスの期限が切れました",
-          "license_not_found": "ライセンスが見つかりませんでした"
+          "license_expired": {
+            "name": "ライセンスの期限が切れました",
+            "heading": "この機種のライセンスの有効期限が切れました。",
+            "subtext": "Sophos Central から、このスイッチを管理することはできません。"
+          },
+          "license_not_found": {
+            "name": "ライセンスが見つかりませんでした",
+            "heading": "この機種のライセンスが見つかりません。",
+            "subtext": "Sophos Central から、このスイッチを管理することはできません。"
+          },
+          "license_overused": {
+            "name": "ライセンスの登録数が超過しています",
+            "heading": "管理対象スイッチの数が、ライセンス数を超えています。使用方法: {{ used }} 制限: {{ limit }}",
+            "subtext": "追加ライセンスを購入してください。"
+          },
+          "license_in_grace": {
+            "name": "ライセンスの期限が切れました",
+            "heading": "ライセンスの期限が切れました",
+            "subtext": "間もなくこのスイッチを Sophos Central から管理できなくなります。"
+          }
         }
       },
       "form": {
@@ -118,7 +184,8 @@
       "waiting-for-data": "データを待機中...",
       "problem-loading-data": "データの読み込中に問題が発生しました",
       "no-data": "表示対象のデータはありません",
-      "are-you-sure": "続行しますか？"
+      "are-you-sure": "続行しますか？",
+      "conflict-message": "これらの設定に矛盾が見つかりました。この設定は保存しないでください。"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -354,7 +421,7 @@
           "full-sync-failed": "すべての設定をスイッチに再適用できませんでした",
           "sync-success": "設定は、選択したスイッチに同期されました",
           "sync-failed": "選択したスイッチにサイト設定を同期できません",
-          "sync-confirm-dialog": "サイト設定は、選択したスイッチに同期されます。進行助教は、タスクキューで監視できます。"
+          "sync-confirm-dialog": "選択したスイッチに、キューに追加された設定を同期しました。進行状況は、タスクキューで監視できます。"
         },
         "groupInfoText": {
           "what": "サイトとは？",
@@ -578,7 +645,9 @@
         "vlan-id-exists-message": "この VLAN ID は既に存在します。",
         "vlan-name-required-message": "名前を指定してください。",
         "vlan-name-invalid-message": "名前が無効です。特殊文字は使用できません",
-        "vlan-name-exists-message": "この名前は既に存在します。"
+        "vlan-name-exists-message": "この名前は既に存在します。",
+        "lag-mode": "LAG モード",
+        "part-of-lag": "LAG で使用されています"
       },
       "message": {
         "create-error": "VLAN を作成できません",
@@ -686,9 +755,12 @@
       "static": "静的",
       "disabled": "無効",
       "not-set": "未設定",
-      "ports-required-message": "ポートを指定してください",
-      "ports-min-lag-message": "ポートは最低 2つ指定してください",
+      "ports-required-message": "ポートを指定してください。",
+      "ports-min-lag-message": "ポートは最低 2つ指定してください。",
+      "normal-fiber-mixed-message": "通常のポートと Fiber ポートを混在させることはできません。",
       "lacp-settings-button": "LACP の設定",
+      "lag-settings-button": "LAG ポート",
+      "select-ports-dd-placeholder": "ポートの選択",
       "table-headers": {
         "port-id": "ポート",
         "label": "ラベル",
@@ -713,7 +785,8 @@
         "port-revert-system-success": "サイト設定の削除に成功しました。スイッチは、システムのデフォルトを使用しています。",
         "port-revert-system-error": "サイト設定を削除できません。",
         "switch-revert-dialog-text": "選択したスイッチ設定は削除されます。スイッチは、代わりにサイト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
-        "switch-revert-system-dialog-text": "選択したサイト設定は削除されます。スイッチは、代わりにシステムのデフォルト設定を使用します。設定の変更は、今すぐまたは後で同期できます。"
+        "switch-revert-system-dialog-text": "選択したサイト設定は削除されます。スイッチは、代わりにシステムのデフォルト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
+        "lag-conflict-message": "ポート {{ports}} は競合しています。この設定は保存しないでください。"
       }
     },
     "remote-debugging": {
@@ -889,35 +962,36 @@
       "858": "ポート: リンク速度を識別できません。PATCH リクエストが無効です",
       "859": "ポート: フレームタイプを識別できません。PATCH リクエストが無効です",
       "860": "ポート: ポートの拡張モードを検証できません。PATCH リクエストが無効です",
-      "1400": "LAG: Get system priority fail",
-      "1401": "LAG: Patch invalid system priority",
-      "1402": "LAG: Test system priority patch fail",
-      "1403": "LAG: Set system priority patch fail",
-      "1404": "LAG: Get LAG trunk table first index patch fail",
-      "1405": "LAG: Get algorithm mapping index patch fail",
-      "1406": "LAG: Check per trunk select algorithm",
-      "1407": "LAG: Set per trunk select algorithm",
-      "1408": "LAG: Patch invalid trunk id",
-      "1409": "LAG: Trunk member ports are different media type patch fail",
-      "1410": "LAG: Trunk member port index invalid patch fail",
-      "1411": "LAG: Member port is mirror destination port",
-      "1412": "LAG: Member port is also other trunk member port",
-      "1413": "LAG: Number of member ports exceed supported",
-      "1414": "LAG: Test mirror config row status",
-      "1415": "LAG: Test mirror config row status",
-      "1416": "LAG: Number of member ports is less than 2",
-      "1417": "LAG: Patch trunk mode invalid",
-      "1418": "LAG: Member ports set error when mode is disable",
-      "1419": "LAG: Value patch missing",
-      "1420": "LAG: Invalid patch value",
-      "1421": "LAG: Timeout get port state patch fail",
-      "1422": "LAG: Load balance algorithm parsing patch fail",
-      "1423": "LAG: Member port parsing patch fail",
-      "1424": "LAG: Timeout parsing patch fail",
-      "1425": "LAG: Patch set member port extend Mode fail"
+      "1400": "LAG: システムの優先度の取得に失敗しました",
+      "1401": "LAG: 無効なシステムの優先度にパッチを適用します",
+      "1402": "LAG: システムの優先度のパッチのテストに失敗しました",
+      "1403": "LAG: システムの優先度のパッチの設定に失敗しました",
+      "1404": "LAG: LAG トランクテーブルの最初のインデックスパッチの取得に失敗しました",
+      "1405": "LAG: アルゴリズム マッピング インデックスのパッチの取得に失敗しました",
+      "1406": "LAG: トランクごとの選択アルゴリズムをチェックします",
+      "1407": "LAG: トランクごとの選択アルゴリズムを設定します",
+      "1408": "LAG: 無効なトランク ID にパッチを適用します",
+      "1409": "LAG: トランク メンバー ポートが異なるメディアタイプのパッチの適用に失敗しました",
+      "1410": "LAG: トランク メンバー ポート インデックスの無効なパッチが失敗しました",
+      "1411": "LAG: メンバーポートはミラー宛先ポートです",
+      "1412": "LAG: メンバーポートは、他のトランク メンバー ポートでもあります",
+      "1413": "LAG: 対応しているメンバーポートの数を超えています",
+      "1414": "LAG: ミラー設定行の状態をテストします",
+      "1415": "LAG: ミラー設定行の状態をテストします",
+      "1416": "LAG: メンバーポートの数が 2未満です",
+      "1417": "LAG: パッチのトランクモードが無効です",
+      "1418": "LAG: モードが無効化されている場合、メンバーポートの設定エラーが発生しました",
+      "1419": "LAG: 値パッチがありません",
+      "1420": "LAG: パッチ値が無効です",
+      "1421": "LAG: タイムアウトのポート状態のパッチの取得に失敗しました",
+      "1422": "LAG: 負荷分散アルゴリズム解析パッチに失敗しました",
+      "1423": "LAG: メンバーポートの解析パッチに失敗しました",
+      "1424": "LAG: タイムアウトのパッチの解析に失敗しました",
+      "1425": "LAG: メンバーポートの設定のパッチの拡張モードに失敗しました"
     },
     "lacp-settings": {
       "dialog-title": "LACP の設定",
+      "config-source": "現在の設定ソース",
       "form": {
         "system-priority": "システムの優先度",
         "system-policy": "システムのポリシー",
@@ -939,10 +1013,10 @@
       }
     },
     "license-messages": {
-      "overused-message": "ライセンスの使用数が超過しています。このアカウントでは、{{model}} 用のサブスクリプション {{total}}件が購入されています が、{{used}}台のスイッチが管理されています。",
-      "no-model-license-message": "ライセンスがありません: {{model}} スイッチを管理するには、ライセンスサブスクリプションが必要です。",
-      "no-license-message": "サブスクリプションが見つかりません: このアカウントでスイッチを管理するには、ライセンスサブスクリプションが必要です。",
-      "grace-period-message": "{{model}} のライセンスの有効期限が切れ、現在、{{grace}}日間の猶予期間中です (残り {{pending}}日)。"
+      "overused-message": "1つまたは複数のライセンスの登録数が超過しています。お持ちのライセンス数以上のスイッチを管理する場合は、追加ライセンスを購入して、Sophos Central からこのようなスイッチを管理してください。",
+      "grace-period-message": "1つまたは複数のライセンスの有効期限が切れました。間もなくこのようなスイッチを Sophos Central から管理できなくなります。ライセンスを更新してください。",
+      "license-error": "登録数が超過しているライセンスが見つかりました。",
+      "license-warning": "期限切れのライセンスが見つかりました。"
     }
   }
 }

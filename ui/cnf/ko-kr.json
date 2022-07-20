@@ -110,21 +110,29 @@
       "nodes-dialog-checkbox-message": "단일 노드 클러스터에서 확장 배포를 하고 싶습니다.",
       "confirmation": "확인",
       "not-selected-cni": "계속하려면 기존 CNI를 선택하십시오.",
-      "require-cni": "클라우드 시리즈 방화벽에는 CNI가 필요합니다. <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises\" target=\"_blank\">공식 사이트</a>에 있는 Calico CNI를 설치하는 것이 좋습니다.",
+      "require-cni": "Calico를 설치하십시오. 다음 페이지에 방법이 나와 있습니다.",
       "not-selected-ingress": "수신 컨트롤러를 선택하거나 WAF를 끄십시오.",
       "not-supported-ingress": "WAF와 함께 작동하지 않는 기존 수신 컨트롤러를 선택했습니다. WAF를 사용하려면 수신 컨트롤러를 제거하십시오. 그렇지 않으면 WAF를 끄십시오.",
       "cluster-success-notification": "방화벽이 성공적으로 추가되었습니다.",
+      "flannel-warning": "Flannel은 네트워크 정책 시행을 지원하지 않습니다. Calico로 교체하십시오. 다음 페이지에 방법이 나와 있습니다.",
+      "other-cni-warning": "CNI는 지원되지 않습니다. 제거한 후 Calico를 설치하십시오. 다음 페이지에 Calico 설치 방법이 나와 있습니다.",
+      "vpc-warning": "Calico를 설치하십시오. 다음 페이지에 방법이 나와 있습니다.",
+      "vpc-info": "VPC는 여전히 핵심 네트워킹에 사용되고, Calico는 네트워크 정책 시행에 사용됩니다.",
+      "vpc-with-other-warning": "CNI는 지원되지 않습니다. 제거한 후 Calico를 설치하십시오. 다음 페이지에 방법이 나와 있습니다.",
+      "vpc-with-other-info": "VPC는 여전히 핵심 네트워킹에 사용되고, Calico는 네트워크 정책 시행에 사용됩니다.",
       "type": {
         "premises": "Native Kubernetes",
         "aws": "Amazon EKS"
       },
-      "nfoptions-place-holder": "CNI 옵션 선택",
+      "nfoptions-place-holder": "기존 CNI 선택",
       "nf-options": {
-        "new-cni": "설치된 기존 CNI 없음",
-        "flannel": "기존 Flannel CNI를 Calico CNI로 교체",
-        "calico": "Calico CNI가 이미 설치되어 있습니다.",
-        "calico-with-vpc": "VPC CNI로 Calico 설치",
-        "different": "설치된 다른 CNI 없음"
+        "calico": "Calico",
+        "flannel": "Flannel",
+        "no-cni": "없음",
+        "other": "기타",
+        "vpc-calico": "VPC + Calico",
+        "vpc": "VPC",
+        "vpc-other": "VPC + 기타"
       },
       "wafoptions-place-holder": "수신 컨트롤러가 있습니까?",
       "waf-options": {
@@ -133,13 +141,13 @@
       },
       "services": {
         "network-firewall": "네트워크 방화벽",
-        "nf-label": "Kubernetes용 Zero-Trust 방화벽 규칙",
+        "nf-label": "Kubernetes용 Zero Trust 방화벽 규칙",
         "waf": "웹 응용 프로그램 방화벽",
         "waf-label": "웹 애플리케이션을 안전하게 게시 및 보호",
         "ip": "침입 방지",
-        "ip-label": "Ingress/Egress 트래픽에 대한 NGFW 보호",
+        "ip-label": "네트워크 위협 식별 및 대응",
         "admission-control": "승인 제어",
-        "admission-control-label": "컨테이너 배포 표준 제어"
+        "admission-control-label": "새 컨테이너가 배포에 안전한지 확인"
       },
       "s3-config": {
         "section-title": "S3 버킷 구성",
@@ -171,15 +179,48 @@
       "status": "상태",
       "installation-steps": "설치 단계",
       "upgrade-steps": "업그레이드 단계",
-      "confirm-cluster-delete": "클라우드 시리즈 방화벽을 제거하시겠습니까?",
-      "uninstall-commands-help-text": "<br/><br/><br/><br/>삭제 후 다음 명령을 사용하여 클라우드 시리즈 방화벽을 클러스터에서 제거합니다.<br/><br/>{{displayUninstallCommands}}",
-      "installation-steps-help-text": "복사 아이콘을 클릭하여 helm 명령을 복사하고 클러스터에서 실행하십시오.",
-      "upgrade-steps-help-text": "복사 아이콘을 클릭하여 아래 helm 명령을 복사하고 클러스터에서 실행하여 클라우드 시리즈 방화벽 버전을 업그레이드하십시오.",
-      "installation-step-1-heading": "1단계",
-      "installation-step-2-heading": "2단계",
-      "installation-step-1": "클러스터에 클라우드 시리즈 방화벽 솔루션을 설치하려면 \"{{storageClass}}\" 저장소 클래스에서 각각 {{memory}}MB 크기의 영구 볼륨 {{pv}}개가 필요합니다.",
+      "confirm-cluster-delete": "Sophos Central에서 클라우드 시리즈 방화벽을 삭제하시겠습니까?",
+      "uninstall-commands-help-text": "삭제 후 5분 기다린 다음, 다음 명령을 사용하여 클러스터에서 방화벽을 제거하십시오.",
+      "installation-steps-help-text": "<b>복사</b>를 클릭하여 helm 명령을 복사하고 클러스터에서 실행하십시오.",
+      "upgrade-steps-help-text": "<b>복사</b>를 클릭하여 helm 명령을 복사하고 클러스터에서 실행하십시오.",
+      "installation-step-1": "클러스터에 클라우드 시리즈 방화벽을 설치하려면 \"{{storageClass}}\" 저장소 클래스에 {{memory}}MB 크기의 영구 볼륨 {{pv}}개가 필요합니다.",
       "detail-info-step-1": "자세한 내용은 <a href=\"https://sophos.com\" target=\"_blank\">설명서</a>를 참조하십시오.",
-      "PV-setup-completion-checkbox-text": "PV 설정이 완료되었습니다.",
+      "step-1-heading": "1단계: 영구 볼륨을 생성합니다.",
+      "step-2-heading": "2단계: Helm을 설치합니다.",
+      "step-3-heading": "3단계:",
+      "step-4-heading": "4단계:",
+      "step-2-text": "<a href=\"https://helm.sh/docs/intro/install\" target=\"_blank\">https://helm.sh/docs/intro/install</a>의 단계에 따라 helm 3.7.0 이상을 설치합니다.",
+      "install-calico": "Calico 설치",
+      "install-calico-instruction-1": "3a. Calico helm repo 추가:",
+      "install-calico-instruction-1-command": "helm repo add projectcalico https://projectcalico.docs.tigera.io/charts",
+      "install-calico-instruction-2": "3b. Helm 차트를 사용하여 Tigera Calico 운영자 및 사용자 지정 리소스 정의 설치:",
+      "install-calico-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace",
+      "install-calico-eks-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace --set installation.kubernetesProvider=EKS",
+      "reference-url-link": "다음 단계를 사용하여 Calico를 설치합니다. 자세한 내용은 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/helm\" target=\"_blank\">Helm을 사용한 설치</a>를 참조하십시오.",
+      "flannel-migration-heading": "Flannel에서 Calico 네트워킹으로 마이그레이션합니다.",
+      "migration-instruction-1": "3a. Calico 설치:",
+      "migration-instruction-1-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/calico.yaml",
+      "migration-instruction-2": "3b. 마이그레이션 컨트롤러 시작:",
+      "migration-3b-1": "i. 클러스터에서 flannel daemonset 이름 확인:",
+      "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
+      "migration-3b-2": "ii. 다음 중 하나 실행:",
+      "migration-3b-2-one": "클러스터의 flannel daemonset 이름이 kube-flannel-ds-amd64인 경우, <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 파일 적용:",
+      "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two": "클러스터의 flannel daemonset 이름이 kube-flannel-ds-amd64가 아닌 경우, <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 파일 다운로드:",
+      "migration-3b-2-two-command": "curl -O https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-two-path": "파일의 \"kind: Job > spec: template > spec: containers > env:\" 섹션으로 이동하여 다음 텍스트 추가:",
+      "migration-3b-2-two-example-name": "이름: FLANNEL_DAEMONSET_NAME",
+      "migration-3b-2-two-example-value": "값: <value-of-flannel-daemonset-in-your-cluster>",
+      "migration-3b-2-two-final": "migration-job.yaml 파일 추가:",
+      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job.yaml>",
+      "migration-instruction-4": "3c. 마이그레이션 모니터링:",
+      "migration-instruction-4-command": "kubectl get jobs -n kube-system flannel-migration",
+      "migration-instruction-4-text-one": "호스트 노드가 업그레이드되면 마이그레이션 컨트롤러가 여러 번 다시 예약될 수 있습니다.",
+      "migration-instruction-4-text-two": "출력에 1/1 완료가 표시되면 설치가 완료됩니다.",
+      "migration-instruction-5": "3d. 마이그레이션 컨트롤러 삭제:",
+      "migration-instruction-5-command": "kubectl delete -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "reference-url-for-migration": "다음 단계를 사용하여 Calico로 마이그레이션합니다. 자세한 내용은 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">flannel에서 Kubernetes 클러스터 마이그레이션</a> 참조",
+      "install-cloud-series-firewall": "클라우드 시리즈 방화벽 설치",
       "rollback-commands-help-text": "다음 명령을 사용하여 클라우드 시리즈 방화벽 버전을 롤백합니다.",
       "messages": {
         "deleted-message": "클러스터가 성공적으로 삭제되었습니다.",
@@ -487,7 +528,8 @@
         "ew-policy": "이스트-웨스트(East-West) 정책",
         "policy-placeholder": "정책 선택",
         "messages": {
-          "empty-message": "사용 가능한 IPS 정책이 없습니다."
+          "empty-message": "사용 가능한 IPS 정책이 없습니다.",
+          "signature-count-exceeded": "규칙에서 IPS 서명 수가 초과되었습니다."
         }
       },
       "policies": {
@@ -529,7 +571,8 @@
           "messages": {
             "empty-message": "사용 가능한 IPS 정책이 없습니다.",
             "name-already-exists" : "해당 이름을 가진 IPS 정책이 이미 있습니다.",
-            "signature-conflict" : "IPS 정책에 충돌하는 서명 작업이 있습니다."
+            "signature-conflict" : "IPS 정책에 충돌하는 서명 작업이 있습니다.",
+            "signature-count-exceeded" : "정책에서 IPS 서명 수가 초과되었습니다."
           }
         },
         "edit": {
