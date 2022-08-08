@@ -76,7 +76,10 @@
         "enable": "Attiva",
         "disable": "Disattiva",
         "revert": "Utilizza impostazioni del sito",
-        "revert-system": "Utilizza le impostazioni predefinite del sistema"
+        "revert-system": "Utilizza le impostazioni predefinite del sistema",
+        "checking-conflicts": "Individuazione dei conflitti",
+        "fix": "Risolvi conflitti",
+        "back": "Indietro"
       },
       "status": {
         "registering": {
@@ -670,7 +673,9 @@
         "revert-to-site-confirm-title": "Utilizza impostazioni del sito",
         "revert-to-system-confirm-title": "Utilizza le impostazioni predefinite del sistema",
         "revert-to-site-info-message": "Le impostazioni dello switch selezionato saranno eliminate. Al loro posto, lo switch utilizzerà le impostazioni del sito. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
-        "revert-to-system-info-message": "Le impostazioni del sito selezionate verranno eliminate e al loro posto lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi."
+        "revert-to-system-info-message": "Le impostazioni del sito selezionate verranno eliminate e al loro posto lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
+        "vlan-lag-conflict-title": "Nella VLAN vengono utilizzati LAG disattivati!",
+        "vlan-lag-conflict-message": "Al momento i LAG {{ lags }} sono disattivati, ma mappati alle VLAN"
       }
     },
     "task-queue": {
@@ -686,6 +691,7 @@
       "sync-dialog-select-text": "Le attività con stato 'In attesa' verranno inviate tramite push allo switch, seleziona gli switch da sincronizzare",
       "sync-dialog-title": "Sincronizza",
       "save-override-warning": "Se gli switch hanno già questa configurazione, Sophos Central sovrascriverà le impostazioni.",
+      "save-override-title": "Modifiche delle impostazioni degli switch",
       "save-uplink-warning": "Se le modifiche riguardano la porta di uplink o di gestione, ti invitiamo a prestare attenzione, perché le modifiche potrebbero rimuovere lo switch dalla rete.",
       "button": {
         "show-history": "Mostra cronologia"
@@ -755,12 +761,14 @@
       "static": "Statico",
       "disabled": "Disattivato",
       "not-set": "Non impostata",
+      "switch": "Cambia",
       "ports-required-message": "Le porte sono obbligatorie.",
       "ports-min-lag-message": "È richiesto un minimo di 2 porte.",
       "normal-fiber-mixed-message": "Non è possibile utilizzare una combinazione di porte normali e porte in fibra.",
       "lacp-settings-button": "Impostazioni LACP",
       "lag-settings-button": "Porte LAG",
       "select-ports-dd-placeholder": "Porte selezionate",
+      "lag-misconfigured": "Una o più porte configurate in questo LAG sono configurate anche nel LAG {{ lag }}",
       "table-headers": {
         "port-id": "Porta",
         "label": "Etichetta",
@@ -769,7 +777,12 @@
         "untagged-vlan": "VLAN senza tag",
         "tagged-vlans": "VLAN con tag",
         "member-ports": "Porte membro",
-        "inherited": "Origine configurazione"
+        "inherited": "Origine configurazione",
+        "vlan": "VLAN",
+        "vlan-name": "Nome",
+        "description": "Descrizione",
+        "tagged-ports":"Porte con tag",
+        "untagged-ports":"Porte senza tag"
       },
       "message": {
         "port-update-success": "Le porte sono state aggiornate.",
@@ -786,7 +799,15 @@
         "port-revert-system-error": "Impossibile eliminare le impostazioni di configurazione del sito.",
         "switch-revert-dialog-text": "Le impostazioni dello switch selezionato saranno eliminate e al loro posto lo switch utilizzerà le impostazioni del sito. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
         "switch-revert-system-dialog-text": "Le impostazioni del sito selezionate verranno eliminate e al loro posto lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
-        "lag-conflict-message": "Le porte {{ports}} sono in conflitto, non salvare questa configurazione."
+        "lag-conflict-message": "Una o più porte selezionate sono già incluse nelle impostazioni LAG e se continui si verificheranno errori negli switch elencati di seguito.",
+        "lag-conflict-title": "Sono stati individuati conflitti nelle impostazioni!",
+        "fix-lag-conflicts": "Per risolvere i conflitti, puoi eliminare questi LAG a livello di switch. Puoi apportare modifiche anche dopo, a livello di vista dello switch, se è richiesta una personalizzazione a livello di switch.",
+        "fix-button": "Disattiva i LAG selezionati",
+        "fixing-title": "Risoluzione dei conflitti",
+        "vlan-lag-conflict-message": "Rimuovi le porte fisiche {{ ports }} dalle VLAN, poiché queste porte potrebbero essere ancora membri del LAG {{ lag }} sullo switch. In caso contrario, potrebbe verificarsi un errore",
+        "vlan-lag-conflict-title": "Le VLAN utilizzano porte membri del LAG!",
+        "fix-vlan-lag-conflicts": "Per risolvere i conflitti, puoi eliminare le porte {{ ports }} dalle VLAN elencate di seguito a livello di switch.",
+        "vlan-lag-fix-button": "Rimuovi porte dalle VLAN selezionate"
       }
     },
     "remote-debugging": {
@@ -1017,6 +1038,11 @@
       "grace-period-message": "Una o più licenze sono scadute. Presto non potrai più gestire questi switch da Sophos Central. Rinnova le tue licenze.",
       "license-error": "Trovate licenze con limite massimo superato!",
       "license-warning": "Trovate licenze scadute!"
+    },
+    "conflict-handling": {
+      "fix-error": "Impossibile risolvere i conflitti.",
+      "fix-success": "Conflitti risolti.",
+      "find-error": "Impossibile individuare conflitti"
     }
   }
 }

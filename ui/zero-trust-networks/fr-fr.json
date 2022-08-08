@@ -207,6 +207,9 @@
         "no-gateway-connector-message": "Pour ajouter une passerelle/un connecteur, reportez-vous aux instructions ci-dessous :",
         "no-gateway-connector-aws": "Amazon Web Service",
         "no-gateway-connector-vmware": "VMware ESXi",
+        "gateway-package-type-vmware": "VMware ESXi",
+        "gateway-package-type-aws": "Amazon Web Services",
+        "gateway-package-type-hyperv": "Hyper-V",
         "no-gc-aws-instructions": {
           "sub-header1": "1. Assurez-vous qu’un certificat générique est prêt",
           "sub-header2": "2. Consultez les instructions de configuration d’Amazon Web Services",
@@ -260,7 +263,10 @@
           "summary": {
             "label": "Résumé",
             "gateway-summary": {
-              "label": "Résumé de la passerelle"
+              "label": "Résumé de la passerelle",
+              "dashboard-text": "Voir le tableau de bord Grafana",
+              "admin-dashboard": "Le tableau de bord Grafana affiche les statistiques de la passerelle. Seuls les groupes d’utilisateurs autorisés peuvent voir le tableau de bord. Les autorisations de groupe d’utilisateurs se trouvent dans",
+              "global-settings": "ZTNA / Paramètres"
             },
             "instance": {
               "label": "Instances de la passerelle",
@@ -372,6 +378,8 @@
         "dhcp": "DHCP",
         "staticIp": "IP statique",
         "staticDns": "DNS statique",
+        "point-of-presence-label": "Points de présence",
+        "primary-region": "Pays",
         "gateway-instances": "Instance de la passerelle",
         "gateway-instances-note": "Remarque : Vous pourrez ajouter d’autres instances pour l’équilibre de charge ultérieurement.",
         "deployment-mode": "Mode de déploiement",
@@ -410,6 +418,7 @@
         "private-key-acceptable-formats": "(Taille max. : 10 Ko ; Formats : .key)",
         "save-and-generate-image": "Enregistrer et générer le fichier",
         "packageType-placeholder": "Sélectionner",
+        "region-placeholder": "Sélectionner",
         "identity-provider-placeholder": "Sélectionner",
         "dns-dhcp-mandatory-help": "Doit créer une entrée DNS à partir de DHCP lorsque les deux interfaces sont DHCP",
         "dns-static-mandatory-help": "Doit créer une entrée DNS statique lorsque les deux interfaces sont statiques",
@@ -685,7 +694,7 @@
         "test-connection-success": "Connexion réussie",
         "test-connection-failure": "Connexion impossible",
         "provider-error": "Un fournisseur d’identité de ce type existe déjà",
-        "clientId-validation": "ID Client obligatoire",
+        "clientId-validation": "ID client obligatoire",
         "tenantId-validation": "ID locataire obligatoire",
         "clientSecret-validation": "Secret client obligatoire",
         "loading-error": "Erreur de chargement du fournisseur d’identité",
@@ -796,6 +805,10 @@
         "instance-expiration-label": "Expiration du token",
         "instance-token-desc": "Vous pouvez autoriser le support Sophos à accéder à une instance de passerelle pour la dépanner. Ce token de support expire après un délai fixe.",
         "instance-token-help-text": "L’administrateur peut activer le support de chaque instance de passerelle dont il dispose. Lorsque le support est activé, un token est créé et une date d’expiration du token est assignée. Lorsque le token expire, l’accès est refusé."
+      },
+      "user-group":{
+        "selector-heading": "Assigner un accès de groupe d’utilisateurs à Grafana",
+        "selector-desc": "Grafana est un outil tiers utilisé pour surveiller les passerelles. Sélectionnez les groupes d’utilisateurs auxquels vous souhaitez donner l’accès."
       },
       "policy": {
         "health-trigger-heading": "Temps minimum avant que l’intégrité de l’appareil ne déclenche une règle",

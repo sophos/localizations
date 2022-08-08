@@ -76,7 +76,10 @@
         "enable": "啟用",
         "disable": "停用",
         "revert": "使用網站設定",
-        "revert-system": "使用系統預設設定"
+        "revert-system": "使用系統預設設定",
+        "checking-conflicts": "發現衝突",
+        "fix": "修復衝突",
+        "back": "上一頁"
       },
       "status": {
         "registering": {
@@ -670,7 +673,9 @@
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-confirm-title": "使用系統預設設定",
         "revert-to-site-info-message": "所選交換器設定將被刪除。  交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
-        "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。  您可以現在或以後同步組態變更。"
+        "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。  您可以現在或以後同步組態變更。",
+        "vlan-lag-conflict-title": "已停用 VLAN 中使用的 LAG！",
+        "vlan-lag-conflict-message": "LAG {{ lags }}目前已停用，但對應至 VLAN"
       }
     },
     "task-queue": {
@@ -686,6 +691,7 @@
       "sync-dialog-select-text": "處於「等待」狀態的工作將被推送到交換器，選取需要同步處理的交換器",
       "sync-dialog-title": "同步",
       "save-override-warning": "如果交換機已有此設定，Sophos Central 將覆寫此設定。",
+      "save-override-title": "變更至交換器設定",
       "save-uplink-warning": "如果變更與「上行」或「管理」連接埠有關，請小心，因爲變更可能會使交換器網路斷開。",
       "button": {
         "show-history": "顯示歷史"
@@ -755,12 +761,14 @@
       "static": "靜態",
       "disabled": "已停用",
       "not-set": "未設定",
+      "switch": "Switch",
       "ports-required-message": "必須提供連接埠。",
       "ports-min-lag-message": "至少需要 2 個連接埠。",
       "normal-fiber-mixed-message": "不能混合正常連接埠和光纖連接埠。",
       "lacp-settings-button": "LACP 設定",
       "lag-settings-button": "LAG 連接埠",
       "select-ports-dd-placeholder": "選取多個連接埠",
+      "lag-misconfigured": "在此 LAG 中設定的一或多個連接埠亦在 LAG {{ lag }}中設定",
       "table-headers": {
         "port-id": "連接埠",
         "label": "標籤",
@@ -769,7 +777,12 @@
         "untagged-vlan": "取消標記的 VLAN",
         "tagged-vlans": "已標記的 VLAN",
         "member-ports": "成員連接埠",
-        "inherited": "設定來源"
+        "inherited": "設定來源",
+        "vlan": "VLAN",
+        "vlan-name": "名稱",
+        "description": "說明",
+        "tagged-ports":"已標記的連接埠",
+        "untagged-ports":"未標記的連接埠"
       },
       "message": {
         "port-update-success": "連接埠未更新。",
@@ -786,7 +799,15 @@
         "port-revert-system-error": "無法刪除網站組態設定。 ",
         "switch-revert-dialog-text": "所選交換器設定將被刪除，交換器將改用網站設定。  您可以現在或以後同步組態變更。",
         "switch-revert-system-dialog-text": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
-        "lag-conflict-message": "連接埠 {{ports}} 存在衝突，請勿儲存此設定。"
+        "lag-conflict-message": "選取的一或多個連接埠已經是 LAG 設定的一部分，繼續將導致以下交換器出現錯誤。",
+        "lag-conflict-title": "發現衝突設定！",
+        "fix-lag-conflicts": "您可以在交換器層級移除這些 LAG，以解決衝突。如果需要交換器層級自訂，您可以稍後在交換器檢視中進行編輯。",
+        "fix-button": "停用所選的 LAG",
+        "fixing-title": "修復衝突",
+        "vlan-lag-conflict-message": "從 VLAN 中移除實體連接埠 {{ ports }}，因為這些連接埠可能仍是交換器上 LAG {{ lag }} 的成員。否則，可能會導致錯誤",
+        "vlan-lag-conflict-title": "VLAN 正在使用 LAG 成員連接埠！",
+        "fix-vlan-lag-conflicts": "您可以在交換器層級從以下 VLAN 移除連接埠 {{ ports }}，以解決衝突。",
+        "vlan-lag-fix-button": "從所選 VALN 移除連接埠"
       }
     },
     "remote-debugging": {
@@ -1017,6 +1038,11 @@
       "grace-period-message": "一或多個授權已過期。您很快就無法從 Sophos Central 管理這些交換器。請續訂授權。",
       "license-error": "發現超訂閱授權！",
       "license-warning": "發現過期授權！"
+    },
+    "conflict-handling": {
+      "fix-error": "無法修復衝突。",
+      "fix-success": "成功修復衝突。",
+      "find-error": "無法找到衝突"
     }
   }
 }

@@ -76,7 +76,10 @@
         "enable": "Aktivieren",
         "disable": "Deaktivieren",
         "revert": "Standorteinstellungen verwenden",
-        "revert-system": "System-Standardeinstellungen verwenden"
+        "revert-system": "System-Standardeinstellungen verwenden",
+        "checking-conflicts": "Konflikte finden",
+        "fix": "Konflikte beheben",
+        "back": "Zurück"
       },
       "status": {
         "registering": {
@@ -670,7 +673,9 @@
         "revert-to-site-confirm-title": "Standorteinstellungen verwenden",
         "revert-to-system-confirm-title": "System-Standardeinstellungen verwenden",
         "revert-to-site-info-message": "Die ausgewählten Switch-Einstellungen werden gelöscht. Der Switch verwendet danach die Standort-Einstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
-        "revert-to-system-info-message": "Die ausgewählten Standort-Einstellungen werden gelöscht. Der Switch verwendet danach die System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren."
+        "revert-to-system-info-message": "Die ausgewählten Standort-Einstellungen werden gelöscht. Der Switch verwendet danach die System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
+        "vlan-lag-conflict-title": "Deaktivierte LAGs in VLAN verwendet!",
+        "vlan-lag-conflict-message": "LAGs {{ lags }} sind derzeit deaktiviert aber VLANs zugeordnet"
       }
     },
     "task-queue": {
@@ -686,6 +691,7 @@
       "sync-dialog-select-text": "Aufträge im Status 'Wartet' werden an den Switch gesendet. Wählen Sie die zu synchronisierenden Switches aus",
       "sync-dialog-title": "Synchronisieren",
       "save-override-warning": "Falls die Switches diese Konfiguration bereits haben, überschreibt Sophos Central die Einstellungen.",
+      "save-override-title": "Änderungen von Switch-Einstellungen",
       "save-uplink-warning": "Seien Sie vorsichtig, falls die Änderungen den 'Uplink- oder 'Management'-Port betreffen. Solche Änderungen können den Switch aus dem Netzwerk entfernen.",
       "button": {
         "show-history": "Verlauf anzeigen"
@@ -755,12 +761,14 @@
       "static": "Statisch",
       "disabled": "Deaktiviert",
       "not-set": "Nicht gesetzt",
+      "switch": "Switch",
       "ports-required-message": "Ports sind erforderlich.",
       "ports-min-lag-message": "Mindestens 2 Ports sind erforderlich.",
       "normal-fiber-mixed-message": "Normale und Fiber-Ports nicht zusammen möglich.",
       "lacp-settings-button": "LACP-Einstellungen",
       "lag-settings-button": "LAG-Ports",
       "select-ports-dd-placeholder": "Ports auswählen",
+      "lag-misconfigured": "Ein oder mehrere in dieser LAG konfigurierte Ports sind auch in der LAG {{ lag }} konfiguriert",
       "table-headers": {
         "port-id": "Port",
         "label": "Bezeichnung",
@@ -769,7 +777,12 @@
         "untagged-vlan": "Ungetaggtes VLAN",
         "tagged-vlans": "Getaggte VLANs",
         "member-ports": "Teilnehmerports",
-        "inherited": "Konfigurationsquelle"
+        "inherited": "Konfigurationsquelle",
+        "vlan": "VLAN",
+        "vlan-name": "Name",
+        "description": "Beschreibung",
+        "tagged-ports":"Getaggte Ports",
+        "untagged-ports":"Ungetaggte Ports"
       },
       "message": {
         "port-update-success": "Ports wurden aktualisiert.",
@@ -786,7 +799,15 @@
         "port-revert-system-error": "Standort-Konfigurationseinstellungen können nicht gelöscht werden.",
         "switch-revert-dialog-text": "Die ausgewählten Switch-Einstellungen werden gelöscht. Der Switch verwendet danach die Standort-Einstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
         "switch-revert-system-dialog-text": "Die ausgewählten Standort-Einstellungen werden gelöscht. Der Switch verwendet danach die System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
-        "lag-conflict-message": "Ports {{ports}} haben Konflikte, speichern Sie diese Konfiguration nicht."
+        "lag-conflict-message": "Ein oder mehrere der ausgewählten Ports werden bereits in den LAG-Einstellungen verwendet. Wenn Sie fortfahren, kommt es für die nachfolgenden Switches zu dem Fehler.",
+        "lag-conflict-title": "Es gibt Einstellungen mit Konflikten!",
+        "fix-lag-conflicts": "Zur Konfliktbehebung können Sie diese LAGs auf Switch-Ebene entfernen. Wenn auf Switch-Ebene Anpassungen erforderlich sind, können Sie die Einstellungen später in der Switch-Ansicht bearbeiten.",
+        "fix-button": "Ausgewählte LAGs deaktivieren",
+        "fixing-title": "Konflikte beheben",
+        "vlan-lag-conflict-message": "Entfernen Sie die physischen Ports {{ ports }} aus den VLANs, weil diese Ports möglicherweise noch Mitglied der LAG {{ lag }} auf dem Switch sind. Andernfalls kann ein Fehler auftreten",
+        "vlan-lag-conflict-title": "VLANs verwenden LAG-Mitglied-Ports!",
+        "fix-vlan-lag-conflicts": "Zur Konfliktbehebung können Sie die Ports {{ ports }} auf Switch-Ebene aus den nachfolgenden VLANS entfernen.",
+        "vlan-lag-fix-button": "Ports aus ausgewählten VLANs entfernen"
       }
     },
     "remote-debugging": {
@@ -797,7 +818,7 @@
       "duration-day": "{{duration}} Tag",
       "duration-days": "{{duration}} Tage",
       "copy": "In die Zwischenablage kopieren",
-      "date-expiry-string": "Dieser Zugangstoken ist gültig bis {{expiry}}",
+      "date-expiry-string": "Dieses Zugangs-Token ist gültig bis {{expiry}}",
       "form": {
         "validity": "Gültigkeit"
       },
@@ -1017,6 +1038,11 @@
       "grace-period-message": "Eine oder mehrere Ihrer Lizenzen sind abgelaufen. In Kürze können Sie diese Switches nicht mehr über Sophos Central verwalten. Bitte erneuern Sie Ihre Lizenzen.",
       "license-error": "Ausgeschöpfte Lizenzen vorhanden!",
       "license-warning": "Abgelaufene Lizenzen vorhanden!"
+    },
+    "conflict-handling": {
+      "fix-error": "Die Konflikte konnten nicht behoben werden.",
+      "fix-success": "Die Konflikte wurden erfolgreich behoben.",
+      "find-error": "Konflikte konnten nicht gefunden werden"
     }
   }
 }

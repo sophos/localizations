@@ -207,6 +207,9 @@
         "no-gateway-connector-message": "ゲートウェイ/コネクタを追加するには、次の手順を参照してください。",
         "no-gateway-connector-aws": "Amazon Web Service",
         "no-gateway-connector-vmware": "VMware ESXi",
+        "gateway-package-type-vmware": "VMware ESXi",
+        "gateway-package-type-aws": "Amazon Web Services",
+        "gateway-package-type-hyperv": "Hyper-V",
         "no-gc-aws-instructions": {
           "sub-header1": "1.ワイルドカード証明書があることを確認します",
           "sub-header2": "2.Amazon Web Services のセットアップ手順を参照します",
@@ -260,7 +263,10 @@
           "summary": {
             "label": "サマリー",
             "gateway-summary": {
-              "label": "ゲートウェイのサマリー"
+              "label": "ゲートウェイのサマリー",
+              "dashboard-text": "Grafana ダッシュボードの表示",
+              "admin-dashboard": "Grafana ダッシュボードには、ゲートウェイのメトリックが表示されます。パーミッションのあるユーザーグループのみがダッシュボードを表示できます。ユーザーグループのパーミッションは、次にあります:",
+              "global-settings": "ZTNA / 設定"
             },
             "instance": {
               "label": "ゲートウェイインスタンス",
@@ -372,6 +378,8 @@
         "dhcp": "DHCP",
         "staticIp": "静的 IP",
         "staticDns": "静的 DNS",
+        "point-of-presence-label": "接続点",
+        "primary-region": "地域",
         "gateway-instances": "ゲートウェイインスタンス",
         "gateway-instances-note": "注: 後で負荷分散を行うために、インスタンスを追加できます。",
         "deployment-mode": "導入モード",
@@ -410,6 +418,7 @@
         "private-key-acceptable-formats": "(最大サイズ: 10Kb - 形式: .key)",
         "save-and-generate-image": "保存して、ファイルを生成",
         "packageType-placeholder": "選択",
+        "region-placeholder": "選択",
         "identity-provider-placeholder": "選択",
         "dns-dhcp-mandatory-help": "両方のインターフェースが DHCP の場合は、DHCP から DNS を設定する必要があります",
         "dns-static-mandatory-help": "両方のインターフェースが静的の場合は、静的 DNS エントリを設定する必要があります",
@@ -796,6 +805,10 @@
         "instance-expiration-label": "トークンの失効日",
         "instance-token-desc": "トラブルシューティングの目的で、ソフォス サポートにゲートウェイインスタンスへのアクセスを許可できます。このサポートトークンは、一定期間後、期限切れになります。",
         "instance-token-help-text": "管理者は、各ゲートウェイインスタンスのサポートをオンにできます。サポートがオンになっている場合、トークンとトークンの失効日が割り当てられます。トークンが期限切れになると、アクセスは拒否されます。"
+      },
+      "user-group":{
+        "selector-heading": "Grafana のユーザーグループアクセスの割り当て",
+        "selector-desc": "Grafanaは、ゲートウェイの監視に使用されるサードパーティ製ツールです。アクセスを許可するユーザーを選択してください。"
       },
       "policy": {
         "health-trigger-heading": "デバイスのセキュリティ状態によってルールがトリガされるまでの最小時間",
