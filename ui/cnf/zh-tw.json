@@ -64,7 +64,8 @@
         "firewall": "防火墻",
         "waf": "WAF",
         "ips": "IPS",
-        "admission-control": "許可控制"
+        "admission-control": "許可控制",
+        "threat-logs": "威脅記錄"
       },
       "registration-status": {
         "waiting-for-deployment": "可供部署",
@@ -106,7 +107,7 @@
       "cluster-description-error": "說明不得超過 250 個字元。",
       "nodes-invalid-number": "節點數應處於範圍內 (1-200)",
       "nodes-tooltip": "根據叢集中的節點數量部署具有最佳物件儲存和 Redis 執行個體數量的產品時需要此資訊。",
-      "nodes-confirmation-message": "您已選取了單節點。這將以最少數量的物件儲存和 Redis pod 部署產品以僅支援單節點叢集。<br/><br/>要在多節點叢集中部署產品，請按一下 \"取消\" 按鈕並根據您的未來計劃選取多個節點。<br/>要僅在單節點叢集中以最小模式部署產品，請按一下 \"準備部署\" 繼續。<br/>要在單節點叢集中以縮放模式部署產品，請按一下下面的核取方塊，然後按一下 \"準備部署\" 以繼續。",
+      "nodes-confirmation-message": "您已選取了單節點。這將以最少數量的物件儲存和 Redis pod 部署產品以僅支援單節點叢集。<br/><br/>要在多節點叢集中部署產品，請按一下 \"取消\" 按鈕並根據您的未來計劃選取多個節點。<br/>要僅在單節點叢集中以最小模式部署產品，請按一下 \"下一步\" 繼續。<br/>要在單節點叢集中以縮放模式部署產品，請按一下下面的核取方塊，然後按一下 \"下一步\" 以繼續。",
       "nodes-dialog-checkbox-message": "我想在單節點叢集中進行擴展部署。",
       "confirmation": "確認",
       "not-selected-cni": "選取您現有的 CNI 以繼續。",
@@ -147,7 +148,9 @@
         "ip": "入侵防禦",
         "ip-label": "辨識網路威脅並對其做出回應",
         "admission-control": "許可控制",
-        "admission-control-label": "確認新容器可安全部署"
+        "admission-control-label": "確認新容器可安全部署",
+        "logging": "威脅記錄",
+        "logging-label": "傳送威脅記錄至 Sophos Central"
       },
       "s3-config": {
         "section-title": "S3 貯體設定",
@@ -191,7 +194,7 @@
       "step-4-heading": "步驟 4：",
       "step-2-text": "按照 <a href=\"https://helm.sh/docs/intro/install\" target=\"_blank\">https://helm.sh/docs/intro/install</a> 中的步驟操作，安裝 Helm 3.7.0 或更新版本。",
       "install-calico": "安裝 Calico",
-      "install-calico-instruction-1": "3a. 新增 Calico Helm 存放庫：",
+      "install-calico-instruction-1": "3a.新增 Calico Helm 存放庫：",
       "install-calico-instruction-1-command": "helm repo add projectcalico https://projectcalico.docs.tigera.io/charts",
       "install-calico-instruction-2": "3b.使用 Helm 圖表安裝 Tigera Calico 運算子以及自訂資源定義：",
       "install-calico-instruction-2-command": "helm install calico projectcalico/tigera-operator --version v3.23.1 --namespace tigera-operator --create-namespace",
@@ -203,7 +206,7 @@
       "migration-instruction-2": "3b.啟動移轉控制器：",
       "migration-3b-1": "i. 檢查叢集中 flannel daemonset 的名稱：",
       "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
-      "migration-3b-2": "ii. 請進行以下任何一項步驟：",
+      "migration-3b-2": "ii.請進行以下任何一項步驟：",
       "migration-3b-2-one": "如果叢集中 flannel daemonset 名稱為 kube-flannel-ds-amd64，請套用 <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 檔案：",
       "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
       "migration-3b-2-two": "如果叢集中 Flannel daemonset 名稱不是 kube-flannel-ds-amd64，請下載 <a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> 檔案：",
@@ -222,6 +225,8 @@
       "reference-url-for-migration": "使用下列步驟移轉到 Calico。有關更多資訊，請參閱 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">從 Flannel 移出 Kubernetes 叢集</a>",
       "install-cloud-series-firewall": "安裝 Cloud Series Firewall",
       "rollback-commands-help-text": "使用以下命令復原 Cloud Series Firewall 版本。",
+      "after-approval-dialog-title": "同步叢集詳細資料",
+      "after-approval-message": "Sophos Central 需要 1-2 分鐘的時間來同步您的叢集詳細資料。如果命名空間、Pod 服務連接埠或 Pod 標籤尚未準備好供您立即選取，請不要擔心。",
       "messages": {
         "deleted-message": "已成功刪除叢集。",
         "updated-message": "已成功更新叢集。",

@@ -76,7 +76,10 @@
         "enable": "활성화",
         "disable": "비활성화",
         "revert": "사이트 설정 사용",
-        "revert-system": "시스템 기본 설정 사용"
+        "revert-system": "시스템 기본 설정 사용",
+        "checking-conflicts": "충돌 찾는 중",
+        "fix": "충돌 수정",
+        "back": "뒤로"
       },
       "status": {
         "registering": {
@@ -670,7 +673,9 @@
         "revert-to-site-confirm-title": "사이트 설정 사용",
         "revert-to-system-confirm-title": "시스템 기본 설정 사용",
         "revert-to-site-info-message": "선택한 스위치 설정이 삭제됩니다. 대신에 스위치가 사이트 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
-        "revert-to-system-info-message": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다."
+        "revert-to-system-info-message": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
+        "vlan-lag-conflict-title": "VLAN에서 사용되는 LAG를 비활성화했습니다!",
+        "vlan-lag-conflict-message": "LAG {{ lags }}은(는) 현재 비활성화되어 있지만 VLAN에 매핑됩니다."
       }
     },
     "task-queue": {
@@ -686,6 +691,7 @@
       "sync-dialog-select-text": "'대기 중' 상태인 작업은 스위치로 푸시됩니다. 동기화해야 하는 스위치를 선택합니다.",
       "sync-dialog-title": "동기화",
       "save-override-warning": "스위치에 이미 이 구성이 있으면 Sophos Central이 설정을 재정의합니다.",
+      "save-override-title": "스위치 설정에 대한 변경 사항",
       "save-uplink-warning": "변경 사항이 '업링크' 또는 '관리' 포트와 관련된 경우, 변경 사항이 네트워크에서 스위치를 제거할 수 있으므로 주의하십시오.",
       "button": {
         "show-history": "기록 표시"
@@ -755,12 +761,14 @@
       "static": "정적",
       "disabled": "사용 안 함",
       "not-set": "설정되지 않음",
+      "switch": "스위치",
       "ports-required-message": "포트가 필요합니다.",
       "ports-min-lag-message": "최소 2개의 포트가 필요합니다.",
       "normal-fiber-mixed-message": "일반 포트와 섬유 포트를 혼합할 수 없습니다.",
       "lacp-settings-button": "LACP 설정",
       "lag-settings-button": "LAG 포트",
       "select-ports-dd-placeholder": "포트 선택",
+      "lag-misconfigured": "또한 이 LAG에서 구성된 하나 이상의 포트가 LAG {{ lag }}에서도 구성됩니다.",
       "table-headers": {
         "port-id": "포트",
         "label": "레이블",
@@ -769,7 +777,12 @@
         "untagged-vlan": "태그 없는 VLAN",
         "tagged-vlans": "태그 있는 VLAN",
         "member-ports": "멤버 포트",
-        "inherited": "구성 소스"
+        "inherited": "구성 소스",
+        "vlan": "VLAN",
+        "vlan-name": "이름",
+        "description": "설명",
+        "tagged-ports":"태그 지정된 포트",
+        "untagged-ports":"태그 지정이 해제된 포트"
       },
       "message": {
         "port-update-success": "포트가 업데이트되었습니다.",
@@ -786,7 +799,15 @@
         "port-revert-system-error": "사이트 구성 설정을 삭제할 수 없습니다.",
         "switch-revert-dialog-text": "선택한 스위치 설정이 삭제되고 대신에 스위치가 사이트 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
         "switch-revert-system-dialog-text": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
-        "lag-conflict-message": "{{ports}} 포트가 충돌합니다. 이 구성을 저장하지 마십시오."
+        "lag-conflict-message": "선택된 하나 이상의 포트가 이미 LAG 설정의 일부이므로 계속 진행할 경우 아래 스위치에 오류가 발생합니다.",
+        "lag-conflict-title": "충돌하는 설정이 발견되었습니다!",
+        "fix-lag-conflicts": "스위치 수준에서 해당 LAG를 제거하여 충돌을 해결할 수 있습니다. 스위치 수준 사용자 지정이 필요한 경우 나중에 스위치 보기에서 편집할 수 있습니다.",
+        "fix-button": "선택한 LAG 비활성화",
+        "fixing-title": "충돌 수정하는 중",
+        "vlan-lag-conflict-message": "물리적 포트 {{ ports }}이(가) 스위치에서 여전히 LAG {{ lag }}의 멤버일 수 있으므로 VLAN에서 해당 포트를 제거하십시오. 그렇지 않으면, 오류가 발생할 수 있습니다.",
+        "vlan-lag-conflict-title": "VLAN이 LAG 멤버 포트를 사용하고 있습니다!",
+        "fix-vlan-lag-conflicts": "스위치 수준에서 아래 VLAN에서 포트 {{ ports }}을(를) 제거하여 충돌을 해결할 수 있습니다.",
+        "vlan-lag-fix-button": "선택한 VLAN에서 포트 제거"
       }
     },
     "remote-debugging": {
@@ -1017,6 +1038,11 @@
       "grace-period-message": "하나 이상의 라이선스가 만료되었습니다. 곧 Sophos Central에서 이러한 스위치를 관리할 수 없습니다. 라이선스를 갱신하십시오.",
       "license-error": "과다신청한 라이선스를 발견했습니다!",
       "license-warning": "만료된 라이선스를 발견했습니다!"
+    },
+    "conflict-handling": {
+      "fix-error": "충돌을 수정할 수 없습니다.",
+      "fix-success": "충돌을 해결했습니다.",
+      "find-error": "충돌을 찾을 수 없습니다."
     }
   }
 }
