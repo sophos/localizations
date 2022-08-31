@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "N/S",
           "fw-version": "Versão de Firmware",
+          "fw-agent-version": "Firmware/Versão do Agent",
           "agent-version": "Versão do Agent",
           "version-unknown": "Desconhecido",
           "uptime": "Tempo de Operação",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "Cancelar agendamento",
         "choose-schedule": "Escolher agenda",
         "rollback": "Troca de firmware ({{ version }})",
+        "date-time": "Data & Hora",
+        "frequency": "Frequência",
         "week": "Semana",
         "weekDay": "Dia útil",
         "time": "Hora",
@@ -1183,7 +1186,7 @@
         "scheduled-failure-message": "Falha ao agendar upgrade do firmware.",
         "cancel-title": "Upgrade de firmware cancelado",
         "cancel-message": "O upgrade do firmware foi cancelado.",
-        "upgrade-old-ap": "Atualizar o AP mais antigo?",
+        "upgrade-old-ap": "Atualizar o AP legado?",
         "back": "Voltar",
         "list": {
           "headers": {
@@ -1211,13 +1214,22 @@
           "please-note": "Observação:",
           "now-note": "<ul><li>Os pontos de acesso conectados serão notificados para realizar o upgrade do firmware imediatamente.</li><li>Os pontos de acesso desconectados serão notificados assim que se conectarem.</li><li>Isso pode exigir a reinicialização do ponto de acesso.</li><li>Os agendamentos imediatos não podem ser modificados depois que são salvos.</li><li>Novas agendas podem ser adicionadas somente depois da conclusão do agendamento existente.</li></ul>",
           "custom-note": "<ul><li>A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário.</li><li>O upgrade do firmware pode exigir a reinicialização.</li></ul>",
+          "recurring-note": "<ul><li>A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário.</li><li>O upgrade do firmware pode exigir a reinicialização.</li><li>O sistema será atualizado para a versão mais recente disponível.</li></ul>",
           "daily-schedule": "Diariamente às {{time}}",
           "weekly-schedule": "Todo {{day}} às {{time}}",
           "default": "Default",
-          "confirm-header": "Cancelar agendamento",
-          "confirm-msg": "Tem certeza de que deseja cancelar o upgrade agendado? Após o cancelamento, ele será configurado seguindo a agenda recorrente padrão.",
-          "accept": "Sim, cancelar",
-          "reject": "Não, não cancelar",
+          "cancel": {
+            "confirm-header": "Cancelar agendamento",
+            "confirm-msg": "Tem certeza de que deseja cancelar o upgrade agendado? Após o cancelamento, ele será configurado seguindo a agenda recorrente padrão.",
+            "accept": "Sim, cancelar",
+            "reject": "Não, não cancelar"
+          },
+          "upgrade-now": {
+            "confirm-header": "Fazer o upgrade agora",
+            "confirm-msg": "Atualizando para {{version}}.<br><br> Deseja continuar com o upgrade?",
+            "accept": "Upgrade",
+            "reject": "Cancelar"
+          },
           "monthly-schedule": {
             "1": "Toda 1ª {{day}} do mês às {{time}}",
             "2": "Toda 2ª {{day}} do mês às {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "O processo de {{ process }} para a versão {{ version }} foi agendado.",
+            "text": {
+              "custom": "O processo de {{ process }} para a versão {{ version }} foi agendado.",
+              "recurring": "O upgrade executará a versão mais recente disponível."
+            },
             "note": {
               "now": "O upgrade começará logo após o ponto de acesso receber a solicitação.",
               "date": "O upgrade acontecerá às {{ schedule }} no horário do ponto de acesso",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "O processo de {{ process }} está em andamento.",
+            "text": {
+              "custom": "O processo de {{ process }} está em andamento.",
+              "recurring": "O processo de {{ process }} está em andamento."
+            },
             "note": {
               "now": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
               "date": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído.",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi bem-sucedido.",
+            "text": {
+              "custom": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi bem-sucedido.",
+              "recurring": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi bem-sucedido."
+            },
             "note": {
               "now": "O processo de {{ process }} foi solicitado em {{ date }}",
               "date": "Agendado para {{ schedule }}, o processo de {{ process }} foi solicitado em {{ date }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) será cancelado.",
+            "text": {
+              "custom": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) será cancelado.",
+              "recurring": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) será cancelado."
+            },
             "note": {
               "now": "A confirmação do ponto de acesso ainda não foi recebida",
               "date": "A confirmação do ponto de acesso ainda não foi recebida",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi cancelado.",
+            "text": {
+              "custom": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi cancelado.",
+              "recurring": "O processo de {{ process }} para a versão {{ version }} ({{ type }}) foi cancelado."
+            },
             "note": {
               "now": "Não foram feitas mudanças no ponto de acesso durante este processo",
               "date": "Não foram feitas mudanças no ponto de acesso durante este processo",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "Falha no processo de {{ process }}.",
+            "text": {
+              "custom": "Falha no processo de {{ process }}.",
+              "recurring": "Falha no processo de {{ process }}."
+            },
             "note": {
               "now": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
               "date": "O processo de {{ process }} falhou devido a um evento inesperado. Certifique-se de que o ponto de acesso está online e faça um novo agendamento.",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "Não foi possível cancelar o processo de {{ process }} para a versão {{ version }}({{type}})",
+            "text": {
+              "custom": "Não foi possível cancelar o processo de {{ process }} para a versão {{ version }}({{type}})",
+              "recurring": "Não foi possível cancelar o processo de {{ process }} para a versão {{ version }}({{type}})"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "Agendado para {{ schedule }}, o processo de {{ process }} foi solicitado em {{ date }}. {{ reason }}",

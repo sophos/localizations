@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "N° de série (S/N)",
           "fw-version": "Version du firmware",
+          "fw-agent-version": "Version du firmware et de l’agent",
           "agent-version": "Version de l’agent",
           "version-unknown": "Inconnu",
           "uptime": "Temps d’activité",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "Annuler la planification",
         "choose-schedule": "Choisir une planification",
         "rollback": "Changer de firmware ({{ version }})",
+        "date-time": "Date et heure",
+        "frequency": "Fréquence",
         "week": "Semaine",
         "weekDay": "Jours de la semaine",
         "time": "Heure",
@@ -1183,7 +1186,7 @@
         "scheduled-failure-message": "Impossible de planifier la mise à niveau du firmware.",
         "cancel-title": "Mise à niveau du firmware annulée",
         "cancel-message": "Mise à niveau du firmware annulée.",
-        "upgrade-old-ap": "Mettre à niveau l’ancien point d’accès ?",
+        "upgrade-old-ap": "Mettre à niveau le point d’accès existant ?",
         "back": "Retour",
         "list": {
           "headers": {
@@ -1211,13 +1214,22 @@
           "please-note": "Remarque :",
           "now-note": "<ul><li>Les points d’accès connectés seront invités à immédiatement mettre à niveau leur firmware.</li><li>Les points d’accès déconnectés seront notifiés peu après leur connexion.</li><li>Le redémarrage du point d’accès sera nécessaire.</li><li>Les mises à niveau ou à jour immédiates ne peuvent pas être modifiées une fois enregistrées.</li><li>Les nouvelles mises à niveau ou à jour ne peuvent être ajoutées qu’après que la planification actuelle soit terminée.</li></ul>",
           "custom-note": "<ul><li>La planification choisie sera appliquée à l’heure locale du point d’accès, quel que soit le fuseau horaire.</li><li>La mise à niveau du firmware peut nécessiter un redémarrage.</li></ul>",
+          "recurring-note": "<ul><li>La planification choisie sera appliquée à l’heure locale du point d’accès, quel que soit le fuseau horaire.</li><li>La mise à niveau du firmware peut nécessiter un redémarrage.</li><li>Le système effectuera une mise à niveau à la dernière version disponible.</li></ul>",
           "daily-schedule": "Tous les jours à {{time}}",
           "weekly-schedule": "Tous les {{day}} à {{time}}",
           "default": "Valeur par défaut",
-          "confirm-header": "Annuler la planification",
-          "confirm-msg": "Êtes-vous sûr de vouloir annuler la mise à niveau planifiée ? Après l’annulation, elle sera définie sur l’horaire récurrent par défaut.",
-          "accept": "Oui, annuler",
-          "reject": "Non, ne pas annuler",
+          "cancel": {
+            "confirm-header": "Annuler la planification",
+            "confirm-msg": "Êtes-vous sûr de vouloir annuler la mise à niveau planifiée ? Après l’annulation, elle sera définie sur l’horaire récurrent par défaut.",
+            "accept": "Oui, annuler",
+            "reject": "Non, ne pas annuler"
+          },
+          "upgrade-now": {
+            "confirm-header": "Mettre à niveau maintenant",
+            "confirm-msg": "Mise à niveau vers {{version}}.<br><br> Voulez-vous poursuivre la mise à niveau ?",
+            "accept": "Mise à niveau",
+            "reject": "Annuler"
+          },
           "monthly-schedule": {
             "1": "Le 1er {{day}} du mois à {{time}}",
             "2": "Le 2e {{day}} du mois à {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} vers la version {{ version }} a été planifié.",
+            "text": {
+              "custom": "{{ process }} vers la version {{ version }} a été planifié.",
+              "recurring": "La mise à niveau exécutera la dernière version disponible."
+            },
             "note": {
               "now": "La mise à niveau commencera peu après que le point d’accès ait reçu la demande.",
               "date": "La mise à niveau aura lieu à {{ schedule }} sur le point d’accès",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "{{ process }} est en cours d’exécution.",
+            "text": {
+              "custom": "{{ process }} est en cours d’exécution.",
+              "recurring": "{{ process }} est en cours d’exécution."
+            },
             "note": {
               "now": "Le firmware est en cours de mise à niveau. Vous pouvez planifier la mise à niveau une fois que celle en cours est terminée.",
               "date": "Le firmware est en cours de mise à niveau. Vous pouvez planifier la mise à niveau une fois que celle en cours est terminée.",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "{{ process }} vers la version {{ version }} ({{ type }}) réussi.",
+            "text": {
+              "custom": "{{ process }} vers la version {{ version }} ({{ type }}) réussi.",
+              "recurring": "{{ process }} vers la version {{ version }} ({{ type }}) réussi."
+            },
             "note": {
               "now": "Le {{ process }} a été demandé le {{ date }}",
               "date": "Programmé le {{ schedule }}, le {{ process }} a été demandé le {{ date }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+            "text": {
+              "custom": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+              "recurring": "{{ process }} vers la version {{ version }} ({{ type }}) annulé."
+            },
             "note": {
               "now": "Confirmation par le point d’accès non reçue",
               "date": "Confirmation par le point d’accès non reçue",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+            "text": {
+              "custom": "{{ process }} vers la version {{ version }} ({{ type }}) annulé.",
+              "recurring": "{{ process }} vers la version {{ version }} ({{ type }}) annulé."
+            },
             "note": {
               "now": "Aucun changement effectué sur le point d’accès pendant cette opération",
               "date": "Aucun changement effectué sur le point d’accès pendant cette opération",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "{{ process }} a échoué.",
+            "text": {
+              "custom": "{{ process }} a échoué.",
+              "recurring": "{{ process }} a échoué."
+            },
             "note": {
               "now": "{{ process }} a échoué en raison d’un événement inattendu. Assurez-vous que le point d’accès est connecté et procédez à une nouvelle planification.",
               "date": "{{ process }} a échoué en raison d’un événement inattendu. Assurez-vous que le point d’accès est connecté et procédez à une nouvelle planification.",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "Impossible d’annuler {{ process }} à la version {{ version }}({{type}})",
+            "text": {
+              "custom": "Impossible d’annuler {{ process }} à la version {{ version }}({{type}})",
+              "recurring": "Impossible d’annuler {{ process }} à la version {{ version }}({{type}})"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "Programmé le {{ schedule }}, le {{ process }} a été demandé le {{ date }}. {{ reason }}",

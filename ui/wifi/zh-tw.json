@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "序號",
           "fw-version": "韌體版本",
+          "fw-agent-version": "韌體/代理程式版本",
           "agent-version": "代理程式版本",
           "version-unknown": "未知的",
           "uptime": "執行時間",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "取消排程",
         "choose-schedule": "選擇排程",
         "rollback": "切換韌體 ({{ version }})",
+        "date-time": "日期和時間",
+        "frequency": "頻率",
         "week": "週",
         "weekDay": "平日",
         "time": "時間",
@@ -1183,7 +1186,7 @@
         "scheduled-failure-message": "未能安排韌體升級。",
         "cancel-title": "韌體升級已取消",
         "cancel-message": "韌體升級已取消。",
-        "upgrade-old-ap": "升級較舊的 AP？",
+        "upgrade-old-ap": "是否升級舊版 AP？",
         "back": "上一頁",
         "list": {
           "headers": {
@@ -1211,13 +1214,22 @@
           "please-note": "請注意：",
           "now-note": "<ul><li>連線的存取點將收到通知，立即升級韌體。</li><li>連線斷開的存取點將在連線之後很快收到通知。</li><li>這可能需要重新啟動存取點。</li><li>即時排程一旦儲存，無法修改。</li><li>新排程只能在現有排程完成之後才能新增。</li></ul>",
           "custom-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li></ul>",
+          "recurring-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li><li>系統將升級至最新可用版本。</li></ul>",
           "daily-schedule": "每日於 {{time}}",
           "weekly-schedule": "每 {{day}} {{time}} 時",
           "default": "預設值",
-          "confirm-header": "取消排程",
-          "confirm-msg": "確定要取消排定的升級嗎？取消後，它將設定為預設的定期排程。",
-          "accept": "是，請取消",
-          "reject": "否，不要取消",
+          "cancel": {
+            "confirm-header": "取消排程",
+            "confirm-msg": "確定要取消排定的升級嗎？取消後，它將設定為預設的定期排程。",
+            "accept": "是，請取消",
+            "reject": "否，不要取消"
+          },
+          "upgrade-now": {
+            "confirm-header": "立即升級",
+            "confirm-msg": "正在升級至 {{version}}。<br><br>您要繼續升級嗎？",
+            "accept": "升级",
+            "reject": "取消"
+          },
           "monthly-schedule": {
             "1": "每個月第 1 {{day}} 的 {{time}}",
             "2": "每個月第 2 {{day}} 的 {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} 至版本 {{ version }} 已安排。",
+            "text": {
+              "custom": "{{ process }} 至版本 {{ version }} 已安排。",
+              "recurring": "升級將執行可用的最新版本。"
+            },
             "note": {
               "now": "存取點收到請求後升級將立即開始。",
               "date": "存取點的時間為 {{ schedule }} 時，升級將開始",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "{{ process }} 正在執行。",
+            "text": {
+              "custom": "{{ process }} 正在執行。",
+              "recurring": "{{ process }} 正在執行。"
+            },
             "note": {
               "now": "韌體正在升級。您可以在目前升級完成後安排升級。",
               "date": "韌體正在升級。您可以在目前升級完成後安排升級。",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。",
+            "text": {
+              "custom": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。",
+              "recurring": "{{ process }} 至版本 {{ version }} ({{ type }}) 已成功。"
+            },
             "note": {
               "now": "已於 {{ date }} 要求 {{ process }}",
               "date": "排程於 {{ schedule }}，已於 {{ date }} 要求 {{ process }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 將被取消。",
+            "text": {
+              "custom": "{{ process }} 至版本 {{ version }} ({{ type }}) 將被取消。",
+              "recurring": "{{ process }} 至版本 {{ version }} ({{ type }}) 將被取消。"
+            },
             "note": {
               "now": "尚未收到存取點的確認",
               "date": "尚未收到存取點的確認",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 已取消。",
+            "text": {
+              "custom": "{{ process }} 至版本 {{ version }} ({{ type }}) 已取消。",
+              "recurring": "{{ process }} 至版本 {{ version }} ({{ type }}) 已取消。"
+            },
             "note": {
               "now": "此過程中未對存取點做任何變更",
               "date": "此過程中未對存取點做任何變更",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "{{ process }} 已失敗。",
+            "text": {
+              "custom": "{{ process }} 已失敗。",
+              "recurring": "{{ process }} 已失敗。"
+            },
             "note": {
               "now": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
               "date": "{{ process }} 由於一些意外事件而失敗。請確保存取點已連線，然後重新安排。",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "無法取消 {{ process }} 至版本 {{ version }}({{type}})",
+            "text": {
+              "custom": "無法取消 {{ process }} 至版本 {{ version }}({{type}})",
+              "recurring": "無法取消 {{ process }} 至版本 {{ version }}({{type}})"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "排程於 {{ schedule }}，已於 {{ date }}. {{ reason }} 要求 {{ process }}",

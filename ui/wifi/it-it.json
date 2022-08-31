@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "S/N",
           "fw-version": "Versione firmware",
+          "fw-agent-version": "Versione firmware/agente",
           "agent-version": "Versione agente",
           "version-unknown": "Sconosciuto",
           "uptime": "Tempo di attività",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "Annulla pianificazione",
         "choose-schedule": "Seleziona una pianificazione",
         "rollback": "Effettua swap del firmware ({{ version }})",
+        "date-time": "Data & Ora",
+        "frequency": "Frequenza",
         "week": "Settimana",
         "weekDay": "Giorno feriale",
         "time": "Orario",
@@ -1211,13 +1214,22 @@
           "please-note": "Nota:",
           "now-note": "<ul><li>Gli access point connessi riceveranno una notifica per l’upgrade immediato del firmware.</li><li>Gli access point disconnessi riceveranno la notifica non appena si connettono.</li><li>Potrebbe essere necessario un riavvio dell’access point.</li><li>Una volta salvate, le pianificazioni immediate non possono essere modificate.</li><li>È possibile aggiungere nuove pianificazioni solo dopo aver completato la pianificazione esistente.</li></ul>",
           "custom-note": "<ul><li>La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario.</li><li>Il firmware dell’upgrade potrebbe richiedere un riavvio.</li></ul>",
+          "recurring-note": "<ul><li>La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario.</li><li>Il firmware di cui si esegue l’upgrade potrebbe richiedere un riavvio.</li><li>Il sistema eseguirà l’upgrade alla più recente versione disponibile.</li></ul>",
           "daily-schedule": "Ogni giorno alle ore {{time}}",
           "weekly-schedule": "Ogni {{day}} alle ore {{time}}",
           "default": "Predefinita",
-          "confirm-header": "Annulla pianificazione",
-          "confirm-msg": "Vuoi davvero annullare l’upgrade pianificato? Dopo l’annullamento, verrà impostato sulla pianificazione ricorrente predefinita.",
-          "accept": "Sì, annulla",
-          "reject": "No, non annullare",
+          "cancel": {
+            "confirm-header": "Annulla pianificazione",
+            "confirm-msg": "Vuoi davvero annullare l’upgrade pianificato? Dopo l’annullamento, verrà impostato sulla pianificazione ricorrente predefinita.",
+            "accept": "Sì, annulla",
+            "reject": "No, non annullare"
+          },
+          "upgrade-now": {
+            "confirm-header": "Effettua l'upgrade ora",
+            "confirm-msg": "Upgrade a {{version}} in corso.<br><br> Vuoi continuare con l’upgrade?",
+            "accept": "Upgrade",
+            "reject": "Annulla"
+          },
           "monthly-schedule": {
             "1": "Ogni 1º {{day}} del mese alle ore {{time}}",
             "2": "Ogni 2º {{day}} del mese alle ore {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "Il processo di {{ process }} alla versione ({{ version }}) è stato pianificato.",
+            "text": {
+              "custom": "Il processo di {{ process }} alla versione ({{ version }}) è stato pianificato.",
+              "recurring": "L’upgrade eseguirà la più recente versione disponibile."
+            },
             "note": {
               "now": "L’upgrade verrà avviato non appena l’access point riceve la richiesta.",
               "date": "L’upgrade verrà eseguito quando l’orario dell’access point sarà: {{ schedule }}",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "{{ process }} deve essere in esecuzione.",
+            "text": {
+              "custom": "{{ process }} deve essere in esecuzione.",
+              "recurring": "{{ process }} deve essere in esecuzione."
+            },
             "note": {
               "now": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
               "date": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale.",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) completato.",
+            "text": {
+              "custom": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) completato.",
+              "recurring": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) completato."
+            },
             "note": {
               "now": "Il processo {{ process }} è stato richiesto in data {{ date }}",
               "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) verrà annullato.",
+            "text": {
+              "custom": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) verrà annullato.",
+              "recurring": "Il processo di {{ process }} alla versione {{ version }} ({{ type }}) verrà annullato."
+            },
             "note": {
               "now": "Non è ancora stata ricevuta conferma dall’access point",
               "date": "Non è ancora stata ricevuta conferma dall’access point",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) annullato.",
+            "text": {
+              "custom": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) annullato.",
+              "recurring": "Processo di {{ process }} alla versione {{ version }} ({{ type }}) annullato."
+            },
             "note": {
               "now": "Nessuna modifica apportata all’access point durante questo processo",
               "date": "Nessuna modifica apportata all’access point durante questo processo",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "Processo di {{ process }} non riuscito.",
+            "text": {
+              "custom": "Processo di {{ process }} non riuscito.",
+              "recurring": "Processo di {{ process }} non riuscito."
+            },
             "note": {
               "now": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
               "date": "Processo di {{ process }} non riuscito a causa di un evento imprevisto. Verifica che l’access point sia on-line ed effettua nuovamente la pianificazione.",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "Non è stato possibile annullare il processo di {{ process }} alla versione {{ version }}({{type}})",
+            "text": {
+              "custom": "Non è stato possibile annullare il processo di {{ process }} alla versione {{ version }}({{type}})",
+              "recurring": "Non è stato possibile annullare il processo di {{ process }} alla versione {{ version }}({{type}})"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "Pianificato per il {{ schedule }}, il processo {{ process }} è stato richiesto in data {{ date }}. {{ reason }}",

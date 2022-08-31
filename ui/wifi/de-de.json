@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "S/N",
           "fw-version": "Firmware-Version",
+          "fw-agent-version": "Firmware-/Agent-Version",
           "agent-version": "Agent-Version",
           "version-unknown": "Unbekannt",
           "uptime": "Betriebszeit",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "Zeitplan widerrufen",
         "choose-schedule": "Zeitplan wählen",
         "rollback": "Firmware-Austausch ({{ version }})",
+        "date-time": "Datum & Uhrzeit",
+        "frequency": "Häufigkeit",
         "week": "Woche",
         "weekDay": "Wochentag",
         "time": "Uhrzeit",
@@ -1183,7 +1186,7 @@
         "scheduled-failure-message": "Fehler beim Planen des Firmware-Upgrades.",
         "cancel-title": "Firmware-Upgrade abgebrochen",
         "cancel-message": "Firmware-Upgrade wurde abgebrochen.",
-        "upgrade-old-ap": "Älteren AP aktualisieren?",
+        "upgrade-old-ap": "Veralteten AP aktualisieren?",
         "back": "Zurück",
         "list": {
           "headers": {
@@ -1200,7 +1203,7 @@
           "cancel-warning": "Sie können Upgrades mit sofortiger Ausführung nicht abbrechen. Sie können neue Zeitpläne hinzufügen, nachdem der vorhandene Zeitplan ausgeführt wurde."
         },
         "schedule": {
-          "update-now": "Jetzt",
+          "update-now": "Sofort",
           "custom": "Benutzerdefiniert",
           "recurring": "Wiederkehrend",
           "daily": "Täglich",
@@ -1211,13 +1214,22 @@
           "please-note": "Hinweis:",
           "now-note": "<ul><li>Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade.</li><li>Getrennte Access Points erhalten eine Aufforderung, nachdem sie sich wieder verbunden haben.</li><li>Hierbei wird der Access Point eventuell neu gestartet.</li><li>Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden.</li><li>Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.</li></ul>",
           "custom-note": "<ul><li>Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen.</li><li>Während des Upgrades kommt es möglicherweise zu einem Neustart.</li></ul>",
+          "recurring-note": "<ul><li>Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen.</li><li>Während des Upgrades kommt es möglicherweise zu einem Neustart.</li><li>Das System wird auf die neueste verfügbare Version aktualisiert.</li></ul>",
           "daily-schedule": "Täglich um {{time}}",
           "weekly-schedule": "Jeden {{day}} um {{time}}",
           "default": "Standard",
-          "confirm-header": "Zeitplan widerrufen",
-          "confirm-msg": "Möchten Sie das geplante Upgrade wirklich abbrechen? Wenn das Upgrade abgebrochen wird, wird der wiederkehrende Standardzeitplan eingestellt.",
-          "accept": "Ja, abbrechen",
-          "reject": "Nein, nicht abbrechen",
+          "cancel": {
+            "confirm-header": "Zeitplan widerrufen",
+            "confirm-msg": "Möchten Sie das geplante Upgrade wirklich abbrechen? Wenn das Upgrade abgebrochen wird, wird der wiederkehrende Standardzeitplan eingestellt.",
+            "accept": "Ja, abbrechen",
+            "reject": "Nein, nicht abbrechen"
+          },
+          "upgrade-now": {
+            "confirm-header": "Jetzt Upgrade durchführen",
+            "confirm-msg": "Upgrade auf {{version}}.<br><br> Wollen Sie mit dem Upgrade fortfahren?",
+            "accept": "Upgrade",
+            "reject": "Abbrechen"
+          },
           "monthly-schedule": {
             "1": "Jeden ersten {{day}} des Monats um {{time}}",
             "2": "Jeden zweiten {{day}} des Monats um {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} auf Version {{ version }} wurde geplant.",
+            "text": {
+              "custom": "{{ process }} auf Version {{ version }} wurde geplant.",
+              "recurring": "Das Upgrade führt die neueste verfügbare Version aus."
+            },
             "note": {
               "now": "Das Upgrade startet, sobald der Access Point die Aufforderung erhalten hat.",
               "date": "Das Upgrade startet um {{ schedule }} (Uhrzeit des Access Points)",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "{{ process }} läuft.",
+            "text": {
+              "custom": "{{ process }} läuft.",
+              "recurring": "{{ process }} läuft."
+            },
             "note": {
               "now": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
               "date": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist.",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) war erfolgreich.",
+            "text": {
+              "custom": "{{ process }} auf Version {{ version }} ({{ type }}) war erfolgreich.",
+              "recurring": "{{ process }} auf Version {{ version }} ({{ type }}) war erfolgreich."
+            },
             "note": {
               "now": "{{ process }} wurde angefordert am {{ date }}",
               "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wird abgebrochen.",
+            "text": {
+              "custom": "{{ process }} auf Version {{ version }} ({{ type }}) wird abgebrochen.",
+              "recurring": "{{ process }} auf Version {{ version }} ({{ type }}) wird abgebrochen."
+            },
             "note": {
               "now": "Bestätigung durch den Access Point steht noch aus",
               "date": "Bestätigung durch den Access Point steht noch aus",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "{{ process }} auf Version {{ version }} ({{ type }}) wurde abgebrochen.",
+            "text": {
+              "custom": "{{ process }} auf Version {{ version }} ({{ type }}) wurde abgebrochen.",
+              "recurring": "{{ process }} auf Version {{ version }} ({{ type }}) wurde abgebrochen."
+            },
             "note": {
               "now": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
               "date": "Während des Vorgangs wurden keine Änderungen am Access Point vorgenommen",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "{{ process }} ist fehlgeschlagen.",
+            "text": {
+              "custom": "{{ process }} ist fehlgeschlagen.",
+              "recurring": "{{ process }} ist fehlgeschlagen."
+            },
             "note": {
               "now": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
               "date": "{{ process }} ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass der Access Point online ist und wiederholen Sie die Planung.",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "{{ process }} auf Version {{ version }}({{type}}) konnte nicht abgebrochen werden",
+            "text": {
+              "custom": "{{ process }} auf Version {{ version }}({{type}}) konnte nicht abgebrochen werden",
+              "recurring": "{{ process }} auf Version {{ version }}({{type}}) konnte nicht abgebrochen werden"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "{{ process }} wurde für die Ausführung am {{ schedule }} angefordert am {{ date }}. {{ reason }}",
