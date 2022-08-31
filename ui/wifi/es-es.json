@@ -960,6 +960,7 @@
           "mac": "MAC",
           "serial-number": "S/N",
           "fw-version": "Versión firmware",
+          "fw-agent-version": "Firmware/Versión del agente",
           "agent-version": "Versión del agente",
           "version-unknown": "Desconocido",
           "uptime": "Tiempo activo",
@@ -1175,6 +1176,8 @@
         "remove-schedule": "Cancelar programación",
         "choose-schedule": "Elegir una programación",
         "rollback": "Cambiar de firmware ({{ version }})",
+        "date-time": "Fecha y hora",
+        "frequency": "Frecuencia",
         "week": "Semana",
         "weekDay": "Día laborable",
         "time": "Hora",
@@ -1183,7 +1186,7 @@
         "scheduled-failure-message": "No se ha podido programar la actualización del firmware.",
         "cancel-title": "Actualización del firmware cancelada",
         "cancel-message": "Se ha cancelado la actualización del firmware.",
-        "upgrade-old-ap": "¿Desea actualizar el punto de acceso antiguo?",
+        "upgrade-old-ap": "¿Desea actualizar el AP heredado?",
         "back": "Atrás",
         "list": {
           "headers": {
@@ -1211,13 +1214,22 @@
           "please-note": "Nota:",
           "now-note": "<ul><li>A los puntos de acceso conectados se les notifica inmediatamente que procedan a la actualización del firmware.</li><li>Los puntos de acceso desconectados serán notificados en cuanto se conecten.</li><li>Esto quizá requiera el reinicio del punto de acceso.</li><li>Las programaciones inmediatas no se pueden modificar, una vez guardadas.</li><li>Las programaciones nuevas solo se pueden añadir una vez completada la programación existente.</li></ul>",
           "custom-note": "<ul><li>La programación elegida respetará la hora local del punto de acceso, independientemente de las zonas horarias.</li><li>La actualización del firmware puede requerir un reinicio.</li></ul>",
+          "recurring-note": "<ul><li>La programación elegida respetará la hora local del punto de acceso, independientemente de las zonas horarias.</li><li>La actualización del firmware puede requerir un reinicio.</li><li>El sistema se actualizará a la última versión disponible</li></ul>",
           "daily-schedule": "Cada día a las {{time}}",
           "weekly-schedule": "Cada {{day}} a las {{time}}",
           "default": "Predeterminado",
-          "confirm-header": "Cancelar programación",
-          "confirm-msg": "¿Seguro que quiere cancelar la actualización programada? Después de cancelar, se establecerá la programación recurrente por defecto.",
-          "accept": "Sí, cancelar",
-          "reject": "No, no cancelar",
+          "cancel": {
+            "confirm-header": "Cancelar programación",
+            "confirm-msg": "¿Seguro que quiere cancelar la actualización programada? Después de cancelar, se establecerá la programación recurrente por defecto.",
+            "accept": "Sí, cancelar",
+            "reject": "No, no cancelar"
+          },
+          "upgrade-now": {
+            "confirm-header": "Actualizar ahora",
+            "confirm-msg": "Actualizando a {{version}}.<br><br> ¿Desea seguir con la actualización?",
+            "accept": "Actualizar",
+            "reject": "Cancelar"
+          },
           "monthly-schedule": {
             "1": "Cada primer {{day}} del mes a las {{time}}",
             "2": "Cada segundo {{day}} del mes a las {{time}}",
@@ -1253,7 +1265,10 @@
         },
         "status": {
           "scheduled": {
-            "text": "{{ process }} a la versión {{ version }} se ha programado.",
+            "text": {
+              "custom": "{{ process }} a la versión {{ version }} se ha programado.",
+              "recurring": "La actualización ejecutará la última versión disponible."
+            },
             "note": {
               "now": "La actualización se iniciará poco después de que el punto de acceso reciba la solicitud.",
               "date": "La actualización tendrá lugar a las {{ schedule }} del punto de acceso",
@@ -1263,7 +1278,10 @@
             }
           },
           "updating": {
-            "text": "{{ process }} se está ejecutando.",
+            "text": {
+              "custom": "{{ process }} se está ejecutando.",
+              "recurring": "{{ process }} se está ejecutando."
+            },
             "note": {
               "now": "El firmware se está actualizando ahora. Puede programar la actualización una vez que se haya completado la actualización actual.",
               "date": "El firmware se está actualizando ahora. Puede programar la actualización una vez que se haya completado la actualización actual.",
@@ -1273,7 +1291,10 @@
             }
           },
           "success": {
-            "text": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha producido correctamente.",
+            "text": {
+              "custom": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha producido correctamente.",
+              "recurring": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha producido correctamente."
+            },
             "note": {
               "now": "El proceso {{ process }} se ha solicitado el {{ date }}",
               "date": "Programado para el {{ schedule }}, el proceso {{ process }} se ha solicitado el {{ date }}",
@@ -1283,7 +1304,10 @@
             }
           },
           "cancelling": {
-            "text": "El {{ process }} a la versión {{ version }} ({{ type }}) será cancelado.",
+            "text": {
+              "custom": "El {{ process }} a la versión {{ version }} ({{ type }}) será cancelado.",
+              "recurring": "El {{ process }} a la versión {{ version }} ({{ type }}) será cancelado."
+            },
             "note": {
               "now": "Todavía no se ha recibido la confirmación del punto de acceso",
               "date": "Todavía no se ha recibido la confirmación del punto de acceso",
@@ -1293,7 +1317,10 @@
             }
           },
           "cancelled": {
-            "text": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha cancelado.",
+            "text": {
+              "custom": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha cancelado.",
+              "recurring": "El {{ process }} a la versión {{ version }} ({{ type }}) se ha cancelado."
+            },
             "note": {
               "now": "No se han realizado cambios en el punto de acceso durante este proceso",
               "date": "No se han realizado cambios en el punto de acceso durante este proceso",
@@ -1303,7 +1330,10 @@
             }
           },
           "failure": {
-            "text": "{{ process }} ha fallado.",
+            "text": {
+              "custom": "{{ process }} ha fallado.",
+              "recurring": "{{ process }} ha fallado."
+            },
             "note": {
               "now": "{{ process }} ha fallado debido a algún evento inesperado. Asegúrese de que el punto de acceso está en línea y vuelva a agendar la programación.",
               "date": "{{ process }} ha fallado debido a algún evento inesperado. Asegúrese de que el punto de acceso está en línea y vuelva a agendar la programación.",
@@ -1313,7 +1343,10 @@
             }
           },
           "cancel-failure": {
-            "text": "No se ha podido cancelar el {{ process }} a la versión {{ version }}({{type}})",
+            "text": {
+              "custom": "No se ha podido cancelar el {{ process }} a la versión {{ version }}({{type}})",
+              "recurring": "No se ha podido cancelar el {{ process }} a la versión {{ version }}({{type}})"
+            },
             "note": {
               "now": "{{ reason }}",
               "date": "Programado para el {{ schedule }}, el proceso {{ process }} se ha solicitado el {{ date }}. {{ reason }}",
