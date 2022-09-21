@@ -31,6 +31,7 @@
       "linkspeed": "Velocidade/Duplex",
       "system": "Sistema",
       "lag": "LAG",
+      "last-updated": "Dados atualizados às {{ time }}",
       "link-speed": {
         "10mh": "10M/Half",
         "10m_h": "10M/Half",
@@ -175,7 +176,8 @@
         "system-detail-title": "Detalhes do sistema",
         "port-settings-title": "Configurações de porta",
         "ip-networks-title": "Redes",
-        "l3-protocols-title": "Snooping/Retransmissor L3",
+        "ip-routes-title": "Rotas",
+        "l3-protocols-title": "Protocolos L3",
         "vlans-title": "VLANs",
         "network-settings-title": "Configurações de rede",
         "task-queue-title": "Fila de tarefas",
@@ -193,6 +195,11 @@
       "not-managed-from-central": "Esta configuração não está sendo gerenciada pelo Sophos Central. Adicione uma política para começar a gerenciá-la.",
       "are-you-sure": "Tem certeza de que deseja continuar?",
       "conflict-message": "Conflitos encontrados nessas configurações. Não salve essa configuração."
+    },
+    "dto": {
+      "NetworksIPv4Dto": "Redes (IPv4)",
+      "NetworksIPv6Dto": "Redes(IPv6)",
+      "MgmtNetworkIPv4Dto": "Rede de gerenciamento (IPv4)"
     },
     "dashboard": {
       "menu-title": "Painel",
@@ -288,7 +295,8 @@
           "state": {
             "action": {
               "edit": "Alterar cronograma",
-              "cancel": "Cancelar"
+              "cancel": "Cancelar",
+              "help": "Ajuda"
             },
             "process": {
               "SCHEDULED_UPGRADE": "Upgrade",
@@ -304,7 +312,11 @@
               "INTEGRITY_ERROR": "A verificação de integridade falhou no switch.",
               "ALREADY_UPDATED": "O switch já foi atualizado para a versão solicitada.",
               "UPGRADE_ERROR": "Falha ao aplicar o firmware.",
-              "UNKNOWN_ERROR": "Erro desconhecido encontrado."
+              "UNKNOWN_ERROR": "Erro desconhecido encontrado.",
+              "CERT_VERIFY_ERROR": "Falha ao verificar o certificado do servidor durante o download do arquivo. Isso acontece, normalmente, devido à hora incorreta do sistema no switch.",
+              "FQDN_NOT_RESOLVED": "Não foi possível resolver a URL do servidor. Verifique a configuração de DNS.",
+              "CONNECTION_TIMEDOUT": "A solicitação de download de arquivo expirou.",
+              "SIGN_VERIFY_ERROR" : "Falha na verificação de assinatura do arquivo baixado."
             },
             "status": {
               "SCHEDULED": {
@@ -680,16 +692,26 @@
         "revert-to-system-info-message": "As configurações do site selecionado serão deletadas, e o switch usará as configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
         "vlan-lag-conflict-title": "LAGs desabilitados usados na VLAN!",
         "vlan-lag-conflict-message": "{{ lags }} LAGs estão desabilitados no momento, mas mapeados para as VLANs"
+      },
+      "conflicts": {
+        "vlan": "ID de VLAN",
+        "referenced": "Usada em",
+        "details": "Detalhes",
+        "delete-conflict-title": "VLANs em uso",
+        "fix-delete-conflict": "As VLANs abaixo já estão em uso; delete estas configurações dependentes antes de deletar as VLANs",
+        "fix-button": "Deletar dependentes",
+        "delete-conflict-message": "Uma ou mais VLANs marcadas para deleção estão sendo usadas nas seguintes configurações"
       }
     },
     "ip-networks": {
       "add": "Adicionar rede",
-      "search-placeholder-text": "PESQUISAR",
+      "search-placeholder-text": "Pesquisar",
       "management-vlan": "Rede de gerenciamento",
       "add-dialog-title": "Adicionar uma nova rede {{ mode }}",
       "edit-dialog-title": "Editar a rede {{ mode }}",
       "edit-management-dialog-title": "Editar a rede de gerenciamento {{ mode }}",
       "no-management-vlan": "Esta configuração de rede não está sendo gerenciada pelo Sophos Central.",
+      "ipv4-ipv6-same-management": "A VLAN de gerenciamento é a mesma para as redes IPv4 e IPv6. Editável apenas na guia IPv4.",
       "local-configuration": "Switch",
       "max-reached": "O número máximo de redes permitidas já foi adicionado.",
       "form": {
@@ -778,6 +800,86 @@
         "configuration": "Detalhes da Rede"
       }
     },
+    "ip-routes": {
+      "add": "Adicionar rota",
+      "search-placeholder-text": "Pesquisar",
+      "add-dialog-title": "Adicionar uma nova rota {{ mode }}",
+      "edit-dialog-title": "Editar a rota {{ mode }}",
+      "local-configuration": "Switch",
+      "form": {
+        "vlan": "VLAN",
+        "static": "Estático",
+        "connected": "Conectado",
+        "subnetMask": "Subrede",
+        "gatewayIP": "Gateway",
+        "destinationIP": "Endereço de IP de Destino",
+        "mode-ipv4": "IPv4",
+        "mode-ipv6": "IPv6",
+        "prefixLen": "Comprimento do prefixo",
+        "linklocal": "Linklocal",
+        "unicast": "Unicast",
+        "teredo": "Teredo",
+        "unspecified": "Não especificado",
+        "invalid": "inválido",
+        "multicast": "Multicast",
+        "loopback": "Loopback",
+        "uniqueLocal": "Local exclusivo",
+        "ipv4Mapped": "IPv4 mapeado",
+        "rfc6145": "RFC6145",
+        "rfc6052": "RFC6052",
+        "6to4": "6 to 4", 
+        "reserved": "Reservada",
+        "benchmarking": "Benchmarking",
+        "amt": "AMT",
+        "as112v6": "AS112v6",
+        "deprecated": "Preterido",
+        "orchid2": "Orchid2",
+        "errors": {
+          "field-missing": "'{{ field }}' obrigatório.",
+          "field-invalid": "'{{ field }}' inválido.",
+          "field-loopback": "Endereço de loopback não pode ser usado como um '{{ field }}' válido.",
+          "field-zero-address":  "Endereço de rede (sub-rede zero) não pode ser usado como um '{{ field }}' válido.",
+          "field-broadcast-address": "Endereço de transmissão não pode ser usado como um '{{ field }}' válido.",
+          "field-multicast-address":  "Endereço de multicast não pode ser usado como um '{{ field }}' válido.",
+          "field-conflict": "{{ field }} e {{ conflictWith }} não podem ser os mesmos.",
+          "cross-conflict": "{{ field }} já em uso na VLAN {{ conflictWith }}.",
+          "subnet-conflict": "{{ field }} não está na sub-rede escolhida.",
+          "field-in-use": "{{ field }} já em uso.",
+          "linklocal-exists": "Endereço IP do linklocal já está configurado.",
+          "field-not-in-range": "{{ field }} não pode aceitar o endereço IP '{{ range }}'.",
+          "link-local-limit": "Não é possível adicionar mais endereços de links locais.",
+          "not-start-address": "O endereço da rota deve ser um endereço de rede (sub-rede zero)."
+        }
+      },
+      "message": {
+        "save-dialog-title": "Confirme a ação de salvar",
+        "site-save-dialog-text": "{{ count }} switches terão as rotas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-save-dialog-text": "O switch terá as rotas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "delete-confirm-title": "Deletar rotas",
+        "site-delete-info-message": "Deletar {{ configCount }} rotas. {{ count }} switches removerão esta rota e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-delete-info-message": "Delete {{ configCount }} rotas e as tarefas serão criadas. Você pode optar por sincronizar agora ou mais tarde.",
+        "revert-to-system-confirm-title": "Usar configurações padrão do sistema",
+        "revert-to-site-confirm-title": "Usar configurações do site",
+        "revert-to-system-info-message": "As configurações do site selecionado serão deletadas, e o switch usará as configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
+        "revert-to-site-info-message": "As configurações do switch selecionados serão deletadas. O switch usará configurações do site em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
+        "delete-success": "As rotas foram deletadas",
+        "delete-error": "Não foi possível deletar uma ou mais rotas",
+        "create-error":"Não foi possível criar a rota",
+        "create-success":"A rota foi criada",
+        "update-error":"Não foi possível atualizar a rota",
+        "update-success":"A rota foi atualizada",
+        "no-ipv6-conflict-title": "Nenhuma rede IPv6 encontrada",
+        "no-ipv6-conflict-message": "Não há um Gateway IPv6 configurado; salvar uma rota IPv6 pode falhar se não houver um gateway. Você pode adicionar um gateway IPv6 para resolver o erro."
+      },
+      "table-headers": {
+        "destination-ip": "Destino",
+        "subnet": "Subrede",
+        "gateway": "Gateway",
+        "vlan-id": "Interface",
+        "protocol": "Protocolo",
+        "inherited": "Origem da configuração"
+      }
+    },
     "task-queue": {
       "total-tasks": "Total de tarefas",
       "created": "Aguardando",
@@ -830,6 +932,10 @@
         "mgmt_network_ipv4": "Rede de gerenciamento (IPv4)",
         "mgmt_network_ipv6": "Rede de gerenciamento(IPv6)",
         "networks_ipv6": "Redes(IPv6)",
+        "route_ipv4": "Rota (IPv4)",
+        "route_ipv6": "Rota (IPv6)",
+        "dhcp_relay_server": "Retransmissão de DHCP (Servidor)",
+        "dhcp_relay": "Retransmissão de DHCP",
         "execute_cli_commands": "Executar",
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Cronograma",
@@ -918,8 +1024,14 @@
       "dhcp-relay": {
         "title": "Retransmissão de DHCP",
         "relay-status": "Status do retransmissor",
-        "configure-text": "Configurar servidores de retransmissão de DHCP.",
         "server-ip-text": "Endereços IP do servidor",
+        "server-invalid": "Endereço de IPv4 inválido.",
+        "server-already-exists": "O servidor de retransmissão já está configurado.",
+        "server-multicast-address": "O endereço de multicast não pode ser usado como um servidor de retransmissão DHCP válido.",
+        "server-loopback": "O endereço de loopback não pode ser usado como um servidor de retransmissão DHCP válido.",
+        "placeholder": "Inserir endereços IPv4",
+        "max-servers": "O máximo de 5 servidores já foi adicionado.",
+        "config-source": "Origem da configuração atual",
         "buttons": {
           "not-set": "Não configurada",
           "on": "Ativar",

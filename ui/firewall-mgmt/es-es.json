@@ -349,7 +349,7 @@
               "firewall-name": "Firewall",
               "local-subnets":"Redes locales",
               "wan-ports": "Puerto WAN",
-              "gateway": "Puerta de enlace de reserva",
+              "gateway": "Puertas de enlace primaria y de reserva",
               "nat": "NAT",
               "respond-only": "Intercambio de recursos",
               "initiator": "Acceso a recursos",
@@ -375,6 +375,7 @@
               "selected": "Seleccionado",
               "gateway": "Puerta de enlace de reserva",
               "select-backup-gateway": "Seleccionar puerta de enlace de reserva",
+              "select-firewall": "Seleccionar firewall",
               "tunnel-redundancy-gateway": "Utilizar túnel secundario como puerta de enlace de reserva",
               "xfrm-ip-used": "Direcciones IP xfrm usadas",
               "xfrm-ip-free": "Direcciones IP xfrm libres",
@@ -972,12 +973,13 @@
                 "group": "Grupo",
                 "customer": "Cliente",
                 "sync-and-management": "Sincronización y administración",
-                "backup": "Copias de seguridad programadas",
+                "backup": "Última copia de seguridad realizada",
                 "version": "Versión",
                 "ip-address":"Dirección IP",
                 "model": "Modelo",
                 "serial": "Número de serie"
-            }
+            },
+            "search-label": "Busque por el nombre del firewall, el número de serie, el modelo y la versión."
         },
         "firmware": {
             "upgrade": "Actualización de firmware",
@@ -995,22 +997,67 @@
             "note1": "A los firewalls conectados se les notifica inmediatamente que procedan a la actualización del firmware.",
             "note2": "Los firewalls desconectados serán notificados en cuanto se conecten.",
             "note3": "Esto quizá requiera el reinicio de los firewalls.",
-            "note4": "La programación inmediata no se puede modificar, una vez guardada.",
-            "note5": "La programación nueva solo se puede añadir una vez completada la programación existente.",
+            "note4": "Ahora la programación no se puede modificar una vez guardada.",
+            "note5": "Solo se puede añadir una nueva programación una vez completada la programación en ejecución.",
             "list": {
               "name": "Nombre",
               "serial-number": "Número de serie",
+              "customer-name": "Cliente",
               "current-version": "Versión actual",
               "to-version": "A la versión",
               "current-schedule": "Programación actual"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "Hay una nueva actualización de firmware disponible. ",
+                  "subtext": "Puede aplicar estas actualizaciones inmediatamente o en una fecha futura."
+                },
+                "in_progress": {
+                  "title": "Se está ejecutando la actualización del firmware.",
+                  "subtext": "El firmware se está actualizando ahora. Puede programar la actualización una vez que se haya completado la actualización actual."
+                },
+                "scheduled": {
+                  "title": "Se ha programado la actualización a la versión {{ nextVersion }}.",
+                  "subtext": "El firewall se actualizará el {{ schedule }} "
+                },
+                "upgrade_failed": {
+                  "title": "No se ha podido actualizar el firmware.",
+                  "subtext": "No se ha podido actualizar el firmware debido a algún evento inesperado. Asegúrese de que el firewall está en línea y vuelva a agendar la programación."
+                }
+              }
+            },
+            "upgrade-now": "actualícese ahora",
+            "schedule-upgrade": "Programar actualización",
+            "choose-schedule": "Elegir una programación",
+            "cancel-schedule": "Cancelar programación",
+            "upgrade-started-title": "Actualización del firmware iniciada",
+            "upgrade-started-body": "Se ha iniciado el proceso de actualización del firmware para el firewall seleccionado.",
+            "upgrade-started-error": "No se puede iniciar el proceso de actualización del firmware.",
+            "upgrade-scheduled-title": "Actualización del firmware programada",
+            "upgrade-scheduled-body": "Se ha programado la actualización del firmware para el firewall seleccionado.",
+            "upgrade-scheduled-error": "No se puede programar la actualización del firmware.",
+            "upgrade-cancelled-title": "Actualización del firmware cancelada",
+            "upgrade-cancelled-body": "Se ha cancelado la actualización del firmware para el firewall seleccionado.",
+            "upgrade-cancelled-error": "No se puede cancelar la actualización del firmware.",
+            "schedule-cancel": "Cancelar",
+            "release-note": "Notas de la edición",
+            "cancel": {
+              "confirm-header": "Cancelar programación",
+              "confirm-msg": "¿Seguro que quiere cancelar la actualización programada?",
+              "accept": "Sí, cancelar",
+              "reject": "No, no cancelar"
+            },
+            "no-data": "Actualmente no tiene ningún firewall que pueda actualizarse."
         },
         "search": {
             "placeholder": "Buscar componente"
         },
         "no-data": {
-          "firewall": "No se han encontrado firewalls"
-        }
+          "firewall": "No se han encontrado firewalls",
+          "customer": "Actualmente no tiene clientes de Sophos Central."
+        },
+        "error-no-list": "No se pueden cargar los datos de la tabla."
     },
     "licensing-and-billing": {
       "add": {
@@ -1105,7 +1152,7 @@
         "outofsync": "El error requiere atención",
         "unmanaged": "La administración está desactivada",
         "tooltip": {
-          "waiting": "Complete el proceso de despliegue Lite Touch",
+          "waiting": "Complete el proceso de despliegue de Lite Touch",
           "improved-zero-touch-waiting": "Complete el proceso de despliegue Zero Touch mejorado",
           "sync": "Sincronización correcta {{ time }}",
           "syncing": {

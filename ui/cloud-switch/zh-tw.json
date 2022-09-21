@@ -31,6 +31,7 @@
       "linkspeed": "速度/雙向",
       "system": "系統",
       "lag": "LAG",
+      "last-updated": "資料於 {{ time }} 重新整理",
       "link-speed": {
         "10mh": "10M/Half",
         "10m_h": "10M/Half",
@@ -175,7 +176,8 @@
         "system-detail-title": "系統詳細資料",
         "port-settings-title": "連接埠設定",
         "ip-networks-title": "網路",
-        "l3-protocols-title": "L3 轉送/偵聽",
+        "ip-routes-title": "路由",
+        "l3-protocols-title": "L3 通訊協定",
         "vlans-title": "VLAN",
         "network-settings-title": "網路設定",
         "task-queue-title": "工作佇列",
@@ -193,6 +195,11 @@
       "not-managed-from-central": "此設定尚未透過 Sophos Central 進行管理。新增一項原則以開始進行管理。",
       "are-you-sure": "確定要繼續嗎？",
       "conflict-message": "這些設定存在衝突。請勿儲存此設定。"
+    },
+    "dto": {
+      "NetworksIPv4Dto": "網路 (IPv4)",
+      "NetworksIPv6Dto": "網路 (IPv6)",
+      "MgmtNetworkIPv4Dto": "管理網路 (IPv4)"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -288,7 +295,8 @@
           "state": {
             "action": {
               "edit": "變更排程",
-              "cancel": "取消"
+              "cancel": "取消",
+              "help": "說明"
             },
             "process": {
               "SCHEDULED_UPGRADE": "升级",
@@ -304,7 +312,11 @@
               "INTEGRITY_ERROR": "交換機的完整性檢查失敗。",
               "ALREADY_UPDATED": "交換機已升級至所需版本。",
               "UPGRADE_ERROR": "無法套用韌體。",
-              "UNKNOWN_ERROR": "出現未知錯誤。"
+              "UNKNOWN_ERROR": "出現未知錯誤。",
+              "CERT_VERIFY_ERROR": "檔案下載期間伺服器憑證驗證失敗。這種情況最常見的原因是交換器上的系統時間不正確。",
+              "FQDN_NOT_RESOLVED": "未能解析伺服器 URL。檢查 DNS 設定。",
+              "CONNECTION_TIMEDOUT": "下載檔案請求逾時。",
+              "SIGN_VERIFY_ERROR" : "已下載檔案的簽名驗證失敗。"
             },
             "status": {
               "SCHEDULED": {
@@ -317,8 +329,8 @@
               "UPDATING": {
                 "text": "{{ process }} 至版本 {{ version }} ({{ type }}) 正在進行中。",
                 "note": {
-                  "now": "當前正在套用變更。此項操作可能需要一些時間。",
-                  "date": "當前正在套用變更。此項操作可能需要一些時間。"
+                  "now": "當前正在套用變更。可能需要花費一些時間。",
+                  "date": "當前正在套用變更。可能需要花費一些時間。"
                 }
               },
               "SUCCESS": {
@@ -680,6 +692,15 @@
         "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。  您可以現在或以後同步組態變更。",
         "vlan-lag-conflict-title": "已停用 VLAN 中使用的 LAG！",
         "vlan-lag-conflict-message": "LAG {{ lags }}目前已停用，但對應至 VLAN"
+      },
+      "conflicts": {
+        "vlan": "VLAN ID",
+        "referenced": "已用於",
+        "details": "詳細資訊",
+        "delete-conflict-title": "VLAN 已在使用中",
+        "fix-delete-conflict": "以下 VLAN 已在使用中，請先刪除這些相依設定，然後再刪除 VLAN",
+        "fix-button": "刪除相依項",
+        "delete-conflict-message": "標記為刪除的一或多個 VLAN 已在以下設定中使用"
       }
     },
     "ip-networks": {
@@ -690,6 +711,7 @@
       "edit-dialog-title": "編輯 {{ mode }} 網路",
       "edit-management-dialog-title": "編輯 {{ mode }} 管理網路",
       "no-management-vlan": "此網路設定尚未透過 Sophos Central 進行管理。",
+      "ipv4-ipv6-same-management": "IPv4 和 IPv6 網路的管理 VALN 相同。只能在 IPv4 標籤中編輯。",
       "local-configuration": "Switch",
       "max-reached": "已新增最大數量的許可網路。",
       "form": {
@@ -778,6 +800,86 @@
         "configuration": "網路詳細資訊"
       }
     },
+    "ip-routes": {
+      "add": "新增路由",
+      "search-placeholder-text": "尋找",
+      "add-dialog-title": "新增新的 {{ mode }} 路由",
+      "edit-dialog-title": "編輯 {{ mode }} 路由",
+      "local-configuration": "Switch",
+      "form": {
+        "vlan": "VLAN",
+        "static": "靜態",
+        "connected": "已連線",
+        "subnetMask": "子網路",
+        "gatewayIP": "閘道",
+        "destinationIP": "目的地 IP 位址",
+        "mode-ipv4": "IPv4",
+        "mode-ipv6": "IPv6",
+        "prefixLen": "前置詞長度",
+        "linklocal": "本機連結",
+        "unicast": "單點傳播",
+        "teredo": "Teredo",
+        "unspecified": "未指定",
+        "invalid": "無效",
+        "multicast": "多點傳播",
+        "loopback": "迴路",
+        "uniqueLocal": "唯一本機",
+        "ipv4Mapped": "對應的 IPv4",
+        "rfc6145": "RFC6145",
+        "rfc6052": "RFC6052",
+        "6to4": "6 to 4", 
+        "reserved": "已保留",
+        "benchmarking": "標竿",
+        "amt": "AMT",
+        "as112v6": "AS112v6",
+        "deprecated": "取代",
+        "orchid2": "Orchid2",
+        "errors": {
+          "field-missing": "'{{ field }}' 必填。",
+          "field-invalid": "無效 '{{ field }}'。",
+          "field-loopback": "迴路位址無法用作有效的 '{{ field }}'。",
+          "field-zero-address":  "網路位址（子網零）無法用作有效的 '{{ field }}'。",
+          "field-broadcast-address": "廣播位址無法用作有效的 '{{ field }}'。",
+          "field-multicast-address":  "多點傳送位址無法用作有效的 '{{ field }}'。",
+          "field-conflict": "{{ field }} 和 {{ conflictWith }} 不能相同。",
+          "cross-conflict": "{{ field }} 已在 VLAN {{ conflictWith }} 中使用。",
+          "subnet-conflict": "{{ field }} 不在所選子網中。",
+          "field-in-use": "{{ field }} 已被使用。",
+          "linklocal-exists": "已設定本機連結 IP 位址。",
+          "field-not-in-range": "{{ field }} 無法接受 '{{ range }}' IP 位址。",
+          "link-local-limit": "無法新增更多本機連結位址",
+          "not-start-address": "路由位址必須為網路位址（子網零）。"
+        }
+      },
+      "message": {
+        "save-dialog-title": "確認儲存",
+        "site-save-dialog-text": "{{ count }} 個交換器將獲取路由更新，並且將建立更新工作。您可以選擇現在或稍後同步。",
+        "switch-save-dialog-text": "交換器將獲取路由更新，並且將建立更新工作。您可以選擇現在或稍後同步。",
+        "delete-confirm-title": "刪除路由",
+        "site-delete-info-message": "刪除 {{ configCount }} 個路由。{{ count }} 個交換器將移除此路由，並將建立工作。您可以選擇現在或稍後同步。",
+        "switch-delete-info-message": "刪除 {{ configCount }} 個路由，並將建立工作。您可以選擇現在或稍後同步。",
+        "revert-to-system-confirm-title": "使用系統預設設定",
+        "revert-to-site-confirm-title": "使用網站設定",
+        "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "delete-success": "路由已刪除",
+        "delete-error": "無法刪除一或多個路由",
+        "create-error":"無法建立路由",
+        "create-success":"路由已建立",
+        "update-error":"無法更新路由",
+        "update-success":"路由已更新",
+        "no-ipv6-conflict-title": "未找到 IPv6 網路",
+        "no-ipv6-conflict-message": "未設定 IPv6 閘道。若沒有閘道，可能無法儲存 IPv6 路由。您可新增一個 IPv6 閘道以解決此錯誤。"
+      },
+      "table-headers": {
+        "destination-ip": "目的地",
+        "subnet": "子網路",
+        "gateway": "閘道",
+        "vlan-id": "介面",
+        "protocol": "通訊協定",
+        "inherited": "設定來源"
+      }
+    },
     "task-queue": {
       "total-tasks": "工作總數",
       "created": "正在等候",
@@ -830,6 +932,10 @@
         "mgmt_network_ipv4": "管理網路 (IPv4)",
         "mgmt_network_ipv6": "管理網路 (IPv6)",
         "networks_ipv6": "網路 (IPv6)",
+        "route_ipv4": "路由 (IPv4)",
+        "route_ipv6": "路由 (IPv6)",
+        "dhcp_relay_server": "DHCP 轉送（伺服器）",
+        "dhcp_relay": "DHCP 轉送",
         "execute_cli_commands": "執行",
         "firmware_upgrade": "韌體",
         "schedule_upgrade": "排程",
@@ -918,8 +1024,14 @@
       "dhcp-relay": {
         "title": "DHCP 轉送",
         "relay-status": "轉送狀態",
-        "configure-text": "設定 DHCP 轉送伺服器。",
         "server-ip-text": "伺服器 IP 位址",
+        "server-invalid": "無效的 IPv4 位址。",
+        "server-already-exists": "轉送伺服器已設定。",
+        "server-multicast-address": "多點傳送位址無法用作有效的 DHCP 轉送伺服器。",
+        "server-loopback": "迴路位址無法用作有效的 DHCP 轉送伺服器。",
+        "placeholder": "輸入 IPv4 位址",
+        "max-servers": "已新增最多 5 個伺服器。",
+        "config-source": "目前設定來源",
         "buttons": {
           "not-set": "未設定",
           "on": "開啟",
