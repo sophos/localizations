@@ -349,7 +349,7 @@
               "firewall-name": "ファイアウォール",
               "local-subnets":"ローカルネットワーク",
               "wan-ports": "WAN ポート",
-              "gateway": "バックアップゲートウェイ",
+              "gateway": "プライマリゲートウェイとバックアップゲートウェイ",
               "nat": "NAT",
               "respond-only": "リソース共有",
               "initiator": "リソースアクセス",
@@ -375,6 +375,7 @@
               "selected": "選択済み",
               "gateway": "バックアップゲートウェイ",
               "select-backup-gateway": "バックアップゲートウェイの選択",
+              "select-firewall": "ファイアウォールの選択",
               "tunnel-redundancy-gateway": "バックアップゲートウェイとしてセカンダリトンネルを使用",
               "xfrm-ip-used": "使用済みの Xfrm の IP アドレス",
               "xfrm-ip-free": "使用可能な Xfrm の IP アドレス",
@@ -972,12 +973,13 @@
                 "group": "グループ",
                 "customer": "顧客",
                 "sync-and-management": "同期と管理",
-                "backup": "バックアップのスケジュール済み",
+                "backup": "前回のバックアップ作成日",
                 "version": "バージョン",
                 "ip-address":"IP アドレス",
                 "model": "モデル",
                 "serial": "シリアル番号"
-            }
+            },
+            "search-label": "ファイアウォール名、シリアル番号、機種、バージョンの検索"
         },
         "firmware": {
             "upgrade": "ファームウェアのアップグレード",
@@ -995,22 +997,67 @@
             "note1": "接続されているファイアウォールには、直ちにファームウェアをアップグレードするよう通知が送信されます。",
             "note2": "切断されているファイアウォールは、接続後すぐに通知が送信されます。",
             "note3": "これには、ファイアウォールの再起動が必要になる場合があります。",
-            "note4": "今すぐ実行するタスクは、一度保存すると変更できません。",
-            "note5": "新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。",
+            "note4": "「今すぐ」実行するタスクは、一度保存すると変更できません。",
+            "note5": "新しいスケジュールは、実行中スケジュールの完了後のみに追加できます。",
             "list": {
               "name": "名前",
               "serial-number": "シリアル番号",
+              "customer-name": "カスタマー",
               "current-version": "現在のバージョン",
               "to-version": "次のバージョンへ",
               "current-schedule": "現在のスケジュール"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "ファームウェアの新しいアップグレードがあります。 ",
+                  "subtext": "これらのアップグレードは、すぐに適用することも、将来の日付に適用することもできます。"
+                },
+                "in_progress": {
+                  "title": "ファームウェアのアップグレードが実行中です。",
+                  "subtext": "現在、ファームウェアをアップグレード中です。現在のアップグレードが完了したら、アップグレードをスケジュール設定できます。"
+                },
+                "scheduled": {
+                  "title": "バージョン {{ nextVersion }} へのファームウェアのアップグレードがスケジュール設定されました。",
+                  "subtext": "ファイアウォールは {{ schedule }} にアップグレードされます。 "
+                },
+                "upgrade_failed": {
+                  "title": "ファームウェアのアップグレードに失敗しました。",
+                  "subtext": "予期しないイベントが発生したため、ファームウェアのアップグレードに失敗しました。ファイアウォールがオンラインであることを確認後、スケジュールを再設定してください。"
+                }
+              }
+            },
+            "upgrade-now": "今すぐアップグレード！",
+            "schedule-upgrade": "アップグレードのスケジュール設定",
+            "choose-schedule": "スケジュールの選択",
+            "cancel-schedule": "スケジュールのキャンセル",
+            "upgrade-started-title": "ファームウェアのアップグレードが開始されました",
+            "upgrade-started-body": "選択したファイアウォールのファームウェアのアップグレードプロセスが開始されました。",
+            "upgrade-started-error": "ファームウェアのアップグレードプロセスを開始できません。",
+            "upgrade-scheduled-title": "ファームウェアのアップグレードがスケジュール設定されました",
+            "upgrade-scheduled-body": "選択したファイアウォールのファームウェアのアップグレードがスケジュール設定されました。",
+            "upgrade-scheduled-error": "ファームウェアのアップグレードをスケジュール設定できませんでした。",
+            "upgrade-cancelled-title": "ファームウェアのアップグレードがキャンセルされました",
+            "upgrade-cancelled-body": "選択したファイアウォールのファームウェアのアップグレードがキャンセルされました。",
+            "upgrade-cancelled-error": "ファームウェアのアップグレードをキャンセルできません。",
+            "schedule-cancel": "キャンセル",
+            "release-note": "リリースノート",
+            "cancel": {
+              "confirm-header": "スケジュールのキャンセル",
+              "confirm-msg": "スケジュール設定されたアップグレードをキャンセルしてもよいですか?",
+              "accept": "はい、キャンセルする",
+              "reject": "いいえ、キャンセルしない"
+            },
+            "no-data": "現在、アップグレード可能なファイアウォールはありません。"
         },
         "search": {
             "placeholder": "検索コンポーネント"
         },
         "no-data": {
-          "firewall": "ファイアウォールは見つかりませんでした"
-        }
+          "firewall": "ファイアウォールは見つかりませんでした",
+          "customer": "現在、Sophos Central の顧客はいません。"
+        },
+        "error-no-list": "テーブルのデータを読み込めません。"
     },
     "licensing-and-billing": {
       "add": {

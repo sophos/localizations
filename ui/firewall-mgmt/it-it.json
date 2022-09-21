@@ -349,7 +349,7 @@
               "firewall-name": "Firewall",
               "local-subnets":"Reti locali",
               "wan-ports": "Porta WAN",
-              "gateway": "Gateway di backup",
+              "gateway": "Gateway primario e di backup",
               "nat": "NAT",
               "respond-only": "Condivisione di risorse",
               "initiator": "Accesso alle risorse",
@@ -375,6 +375,7 @@
               "selected": "Selezionata/e",
               "gateway": "Gateway di backup",
               "select-backup-gateway": "Seleziona gateway di backup",
+              "select-firewall": "Seleziona firewall",
               "tunnel-redundancy-gateway": "Utilizza tunnel secondario come gateway di backup",
               "xfrm-ip-used": "Indirizzi IP XFRM utilizzati",
               "xfrm-ip-free": "Indirizzi IP XFRM liberi",
@@ -972,12 +973,13 @@
                 "group": "Gruppo",
                 "customer": "Cliente",
                 "sync-and-management": "Sincronizzazione e gestione",
-                "backup": "Backup pianificato",
+                "backup": "Ultimo backup eseguito",
                 "version": "Versione",
                 "ip-address":"Indirizzo IP",
                 "model": "Modello",
                 "serial": "Numero di serie"
-            }
+            },
+            "search-label": "Cerca in base a nome firewall, numero di serie, modello e versione."
         },
         "firmware": {
             "upgrade": "Upgrade del firmware",
@@ -996,21 +998,66 @@
             "note2": "I Firewall disconnessi riceveranno la notifica non appena si connettono.",
             "note3": "Potrebbe essere necessario un riavvio dei Firewall.",
             "note4": "Una volta salvata, la pianificazione immediata non può essere modificata.",
-            "note5": "È possibile aggiungere una nuova pianificazione solo dopo aver completato la pianificazione esistente.",
+            "note5": "È possibile aggiungere una nuova pianificazione solo dopo aver completato la pianificazione in corso.",
             "list": {
               "name": "Nome",
               "serial-number": "Numero di serie",
+              "customer-name": "Cliente",
               "current-version": "Versione corrente",
               "to-version": "Alla versione",
               "current-schedule": "Pianificazione attuale"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "È disponibile un nuovo aggiornamento del firmware. ",
+                  "subtext": "Puoi applicare questi upgrade immediatamente oppure in una data futura."
+                },
+                "in_progress": {
+                  "title": "È in corso l’upgrade del firmware.",
+                  "subtext": "Aggiornamento del firmware in corso. Potrai pianificare l’upgrade una volta completato l’upgrade attuale."
+                },
+                "scheduled": {
+                  "title": "L’upgrade del firmware alla versione {{ nextVersion }} è stato pianificato.",
+                  "subtext": "L’upgrade del firewall verrà eseguito il giorno {{ schedule }}. "
+                },
+                "upgrade_failed": {
+                  "title": "Upgrade del firmware non riuscito.",
+                  "subtext": "Upgrade del firmware non riuscito a causa di un evento imprevisto. Verifica che il firewall sia on-line ed effettua nuovamente la pianificazione."
+                }
+              }
+            },
+            "upgrade-now": "effettuate subito l’upgrade",
+            "schedule-upgrade": "Pianifica upgrade",
+            "choose-schedule": "Seleziona una pianificazione",
+            "cancel-schedule": "Annulla pianificazione",
+            "upgrade-started-title": "Processo di upgrade del firmware avviato",
+            "upgrade-started-body": "Processo di upgrade del firmware avviato per il firewall selezionato.",
+            "upgrade-started-error": "Non è stato possibile avviare il processo di upgrade del firmware.",
+            "upgrade-scheduled-title": "Upgrade del firmware pianificato",
+            "upgrade-scheduled-body": "L’upgrade del firmware è stato pianificato per il firewall selezionato.",
+            "upgrade-scheduled-error": "Impossibile pianificare l’upgrade del firmware.",
+            "upgrade-cancelled-title": "Upgrade del firmware annullato",
+            "upgrade-cancelled-body": "Upgrade del firmware annullato per il firewall selezionato.",
+            "upgrade-cancelled-error": "Non è stato possibile annullare l’upgrade del firmware.",
+            "schedule-cancel": "Annulla",
+            "release-note": "Note di rilascio",
+            "cancel": {
+              "confirm-header": "Annulla pianificazione",
+              "confirm-msg": "Vuoi davvero annullare l’upgrade pianificato?",
+              "accept": "Sì, annulla",
+              "reject": "No, non annullare"
+            },
+            "no-data": "Non sono attualmente presenti firewall idonei per l’upgrade."
         },
         "search": {
             "placeholder": "Cerca componente"
         },
         "no-data": {
-          "firewall": "Nessun firewall individuato"
-        }
+          "firewall": "Nessun firewall individuato",
+          "customer": "Non sono attualmente presenti clienti Sophos Central."
+        },
+        "error-no-list": "Impossibile caricare i dati della tabella."
     },
     "licensing-and-billing": {
       "add": {

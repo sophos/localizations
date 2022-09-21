@@ -349,7 +349,7 @@
               "firewall-name": "Firewall",
               "local-subnets":"Redes Locais",
               "wan-ports": "Porta de WAN",
-              "gateway": "Gateway de Backup",
+              "gateway": "Gateways primário e de backup",
               "nat": "NAT",
               "respond-only": "Compartilhamento de recurso",
               "initiator": "Acesso a recurso",
@@ -375,6 +375,7 @@
               "selected": "Selecionado",
               "gateway": "Gateway de Backup",
               "select-backup-gateway": "Selecionar gateway de backup",
+              "select-firewall": "Selecionar firewall",
               "tunnel-redundancy-gateway": "Usar túnel secundário como gateway de backup",
               "xfrm-ip-used": "Endereços de IP Xfrm usados",
               "xfrm-ip-free": "Endereços de IP Xfrm livres",
@@ -972,12 +973,13 @@
                 "group": "Grupo",
                 "customer": "Cliente",
                 "sync-and-management": "Sincronização e Gerenciamento",
-                "backup": "Backup agendado",
+                "backup": "Último backup feito",
                 "version": "Versão",
                 "ip-address":"Endereço de IP",
                 "model": "Modelo",
                 "serial": "Número de série"
-            }
+            },
+            "search-label": "Pesquisar por Nome do firewall, Número de série, Modelo e Versão."
         },
         "firmware": {
             "upgrade": "Upgrade de firmware",
@@ -995,22 +997,67 @@
             "note1": "Os firewalls conectados serão notificados para realizar o upgrade do firmware imediatamente.",
             "note2": "Os firewalls desconectados serão notificados assim que se conectarem.",
             "note3": "Isso pode exigir a reinicialização dos firewalls.",
-            "note4": "O agendamento imediato não pode ser modificado depois que for salvo.",
-            "note5": "Um novo agendamento só pode ser adicionado depois da conclusão do agendamento existente.",
+            "note4": "Agora, o agendamento não pode ser modificado depois que for salvo.",
+            "note5": "Um novo agendamento pode ser adicionado apenas depois da conclusão do agendamento em execução.",
             "list": {
               "name": "Nome",
               "serial-number": "Número de série",
+              "customer-name": "Cliente",
               "current-version": "Versão atual",
               "to-version": "Para versão",
               "current-schedule": "Agenda atual"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "Um novo upgrade de firmware está disponível. ",
+                  "subtext": "Você pode aplicar esses upgrades imediatamente ou posteriormente."
+                },
+                "in_progress": {
+                  "title": "Upgrade do firmware em execução.",
+                  "subtext": "O upgrade do firmware está sendo realizado agora. Você pode agendar o upgrade assim que o upgrade atual for concluído."
+                },
+                "scheduled": {
+                  "title": "O upgrade do firmware para a versão {{ nextVersion }} foi agendado.",
+                  "subtext": "O firewall será atualizado em {{ schedule }}. "
+                },
+                "upgrade_failed": {
+                  "title": "O upgrade do firmware falhou.",
+                  "subtext": "O upgrade do firmware falhou devido a um evento inesperado. Certifique-se de que o firewall está online e faça um novo agendamento."
+                }
+              }
+            },
+            "upgrade-now": "Fazer upgrade agora",
+            "schedule-upgrade": "Agendar upgrade",
+            "choose-schedule": "Escolher agendamento",
+            "cancel-schedule": "Cancelar agendamento",
+            "upgrade-started-title": "Upgrade do firmware iniciado",
+            "upgrade-started-body": "O processo de upgrade do firmware foi iniciado para o firewall selecionado.",
+            "upgrade-started-error": "Não foi possível iniciar o processo de upgrade do firmware.",
+            "upgrade-scheduled-title": "Upgrade de firmware agendado",
+            "upgrade-scheduled-body": "O upgrade do firmware foi agendado para o firewall selecionado.",
+            "upgrade-scheduled-error": "Não foi possível agendar o upgrade do firmware.",
+            "upgrade-cancelled-title": "Upgrade de firmware cancelado",
+            "upgrade-cancelled-body": "O upgrade do firmware foi cancelado para o firewall selecionado.",
+            "upgrade-cancelled-error": "Não foi possível cancelar o upgrade do firmware.",
+            "schedule-cancel": "Cancelar",
+            "release-note": "Notas de versão",
+            "cancel": {
+              "confirm-header": "Cancelar agendamento",
+              "confirm-msg": "Tem certeza de que deseja cancelar o upgrade agendado?",
+              "accept": "Sim, cancelar",
+              "reject": "Não, não cancelar"
+            },
+            "no-data": "No momento, você não tem firewalls atualizáveis."
         },
         "search": {
             "placeholder": "Pesquisar componente"
         },
         "no-data": {
-          "firewall": "Nenhum firewall encontrado"
-        }
+          "firewall": "Nenhum firewall encontrado",
+          "customer": "No momento, você não tem clientes Sophos Central."
+        },
+        "error-no-list": "Não foi possível carregar dados da tabela."
     },
     "licensing-and-billing": {
       "add": {

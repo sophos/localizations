@@ -349,7 +349,7 @@
               "firewall-name": "Firewall",
               "local-subnets":"Lokale Netzwerke",
               "wan-ports": "WAN-Port",
-              "gateway": "Backup-Gateway",
+              "gateway": "Primäre und Reserve-Gateways",
               "nat": "NAT",
               "respond-only": "Ressourcen-Sharing",
               "initiator": "Ressourcenzugriff",
@@ -375,6 +375,7 @@
               "selected": "Ausgewählt",
               "gateway": "Backup-Gateway",
               "select-backup-gateway": "Backup-Gateway auswählen",
+              "select-firewall": "Firewall auswählen",
               "tunnel-redundancy-gateway": "Sekundären Tunnel als Backup-Gateway verwenden",
               "xfrm-ip-used": "Verwendete Xfrm-IP-Adressen",
               "xfrm-ip-free": "Freie Xfrm-IP-Adressen",
@@ -877,7 +878,7 @@
         "column": {
           "name": "Name",
           "status": "Status",
-          "no-of-customers": "# Kunden",
+          "no-of-customers": "Anz. Kunden",
           "sync-and-management": "Synchronisierung und Verwaltung",
           "description": "Beschreibung",
           "version": "Version",
@@ -972,12 +973,13 @@
                 "group": "Gruppe",
                 "customer": "Kunde",
                 "sync-and-management": "Synchronisierung & Verwaltung",
-                "backup": "Sicherung geplant",
+                "backup": "Letztes Backup durchgeführt",
                 "version": "Version",
                 "ip-address":"IP-Adresse",
                 "model": "Modell",
                 "serial": "Seriennummer"
-            }
+            },
+            "search-label": "Nach Firewall-Name, Seriennummer, Modell oder Version suchen."
         },
         "firmware": {
             "upgrade": "Firmware-Aktualisierung",
@@ -1000,17 +1002,62 @@
             "list": {
               "name": "Name",
               "serial-number": "Seriennummer",
+              "customer-name": "Kunde",
               "current-version": "Aktuelle Version",
               "to-version": "Auf Version",
               "current-schedule": "Aktueller Plan"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "Ein neues Firmware-Upgrade ist verfügbar. ",
+                  "subtext": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden."
+                },
+                "in_progress": {
+                  "title": "Firmware-Upgrade läuft.",
+                  "subtext": "Firmware wird jetzt aktualisiert. Sie können das Upgrade planen, sobald das aktuelle Upgrade abgeschlossen ist."
+                },
+                "scheduled": {
+                  "title": "Firmware-Upgrade auf Version {{ nextVersion }} wurde geplant.",
+                  "subtext": "Die Firewall wird um {{ schedule }} aktualisiert. "
+                },
+                "upgrade_failed": {
+                  "title": "Firmware-Upgrade ist fehlgeschlagen.",
+                  "subtext": "Firmware-Upgrade ist aufgrund eines unerwarteten Ereignisses fehlgeschlagen. Bitte stellen Sie sicher, dass die Firewall online ist und planen Sie das Upgrade erneut."
+                }
+              }
+            },
+            "upgrade-now": "Jetzt upgraden",
+            "schedule-upgrade": "Aktualisierung planen",
+            "choose-schedule": "Zeitplan wählen",
+            "cancel-schedule": "Zeitplan widerrufen",
+            "upgrade-started-title": "Firmware-Upgrade gestartet",
+            "upgrade-started-body": "Firmware-Upgrade für die ausgewählte Firewall ist gestartet.",
+            "upgrade-started-error": "Firmware-Upgrade kann nicht gestartet werden.",
+            "upgrade-scheduled-title": "Firmware-Upgrade geplant",
+            "upgrade-scheduled-body": "Firmware-Upgrade für die ausgewählte Firewall ist geplant.",
+            "upgrade-scheduled-error": "Firmware-Upgrade kann nicht geplant werden.",
+            "upgrade-cancelled-title": "Firmware-Upgrade abgebrochen",
+            "upgrade-cancelled-body": "Firmware-Upgrade für die ausgewählte Firewall ist abgebrochen.",
+            "upgrade-cancelled-error": "Firmware-Upgrade kann nicht abgebrochen werden.",
+            "schedule-cancel": "Abbrechen",
+            "release-note": "Versionsinfos",
+            "cancel": {
+              "confirm-header": "Zeitplan widerrufen",
+              "confirm-msg": "Möchten Sie das geplante Upgrade wirklich abbrechen?",
+              "accept": "Ja, abbrechen",
+              "reject": "Nein, nicht abbrechen"
+            },
+            "no-data": "Sie haben derzeit keine zu aktualisierende Firewall."
         },
         "search": {
             "placeholder": "Komponente suchen"
         },
         "no-data": {
-          "firewall": "Keine Firewalls gefunden"
-        }
+          "firewall": "Keine Firewalls gefunden",
+          "customer": "Sie haben derzeit keine Sophos-Central-Kunden."
+        },
+        "error-no-list": "Tabellendaten können nicht geladen werden."
     },
     "licensing-and-billing": {
       "add": {

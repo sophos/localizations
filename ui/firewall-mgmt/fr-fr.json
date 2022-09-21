@@ -349,7 +349,7 @@
               "firewall-name": "Pare-feu",
               "local-subnets":"Réseaux locaux",
               "wan-ports": "Port du réseau étendu (WAN)",
-              "gateway": "Passerelle de secours",
+              "gateway": "Passerelles principales et de secours",
               "nat": "NAT",
               "respond-only": "Partage des ressources",
               "initiator": "Accès aux ressources",
@@ -375,6 +375,7 @@
               "selected": "Sélectionné",
               "gateway": "Passerelle de secours",
               "select-backup-gateway": "Sélectionner la passerelle de sauvegarde",
+              "select-firewall": "Sélectionner le pare-feu",
               "tunnel-redundancy-gateway": "Utiliser le tunnel secondaire comme passerelle de sauvegarde",
               "xfrm-ip-used": "Adresses IP Xfrm utilisées",
               "xfrm-ip-free": "Adresses IP Xfrm libres",
@@ -972,12 +973,13 @@
                 "group": "Groupe",
                 "customer": "Client",
                 "sync-and-management": "Synchronisation et gestion",
-                "backup": "Sauvegarde programmée",
+                "backup": "Dernière sauvegarde effectuée",
                 "version": "Version",
                 "ip-address":"Adresse IP",
                 "model": "Modèle",
                 "serial": "Numéro de série"
-            }
+            },
+            "search-label": "Rechercher par nom de pare-feu, numéro de série, modèle et version."
         },
         "firmware": {
             "upgrade": "Mise à niveau du firmware",
@@ -995,22 +997,67 @@
             "note1": "Les pare-feu connectés seront invités à immédiatement mettre à niveau leur firmware.",
             "note2": "Les pare-feu déconnectés seront notifiés peu après leur connexion.",
             "note3": "Le redémarrage des pare-feu sera nécessaire.",
-            "note4": "La planification immédiate ne peut pas être modifiée, une fois enregistrée.",
-            "note5": "La nouvelle planification peut uniquement être ajoutée après que la planification actuelle soit terminée.",
+            "note4": "La planification ne peut pas être modifiée une fois qu’elle a été enregistrée.",
+            "note5": "Une nouvelle planification peut uniquement être ajoutée une fois que la planification en cours est terminée.",
             "list": {
               "name": "Nom",
               "serial-number": "Numéro de série",
+              "customer-name": "Client",
               "current-version": "Version actuelle",
               "to-version": "Vers la version",
               "current-schedule": "Planification actuelle"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "Nouvelles mises à jour du firmware disponibles. ",
+                  "subtext": "Vous pouvez appliquer ces mises à niveau immédiatement ou ultérieurement."
+                },
+                "in_progress": {
+                  "title": "Mise à niveau du firmware en cours.",
+                  "subtext": "La mise à niveau du firmware est en cours. Vous pouvez planifier la mise à niveau une fois que celle en cours est terminée."
+                },
+                "scheduled": {
+                  "title": "La mise à niveau du firmware à la version {{ nextVersion }} a été planifiée.",
+                  "subtext": "Le pare-feu sera mis à niveau le {{ schedule }}. "
+                },
+                "upgrade_failed": {
+                  "title": "Mise à niveau du firmware impossible.",
+                  "subtext": "La mise à niveau du firmware est impossible en raison d’un événement inattendu. Assurez-vous que le pare-feu est connecté et procédez à une nouvelle planification."
+                }
+              }
+            },
+            "upgrade-now": "Mettre à niveau maintenant",
+            "schedule-upgrade": "Planifier les mises à niveau",
+            "choose-schedule": "Choisir une planification",
+            "cancel-schedule": "Annuler la planification",
+            "upgrade-started-title": "Mise à jour du firmware en cours",
+            "upgrade-started-body": "L’opération de mise à niveau du firmware a démarré pour le pare-feu sélectionné.",
+            "upgrade-started-error": "Impossible de démarrer la mise à niveau du firmware.",
+            "upgrade-scheduled-title": "Mise à niveau du firmware planifiée",
+            "upgrade-scheduled-body": "La mise à niveau du firmware a été planifiée pour le pare-feu sélectionné.",
+            "upgrade-scheduled-error": "Impossible de planifier la mise à niveau du firmware.",
+            "upgrade-cancelled-title": "Mise à niveau du firmware annulée",
+            "upgrade-cancelled-body": "Mise à niveau du firmware annulée pour le pare-feu sélectionné.",
+            "upgrade-cancelled-error": "Impossible d’annuler la mise à niveau du firmware.",
+            "schedule-cancel": "Annuler",
+            "release-note": "Notes de publication (anglais)",
+            "cancel": {
+              "confirm-header": "Annuler la planification",
+              "confirm-msg": "Êtes-vous sûr de vouloir annuler la mise à niveau planifiée ?",
+              "accept": "Oui, annuler",
+              "reject": "Non, ne pas annuler"
+            },
+            "no-data": "Vous n’avez actuellement aucun pare-feu pouvant être mis à niveau."
         },
         "search": {
             "placeholder": "Rechercher un composant"
         },
         "no-data": {
-          "firewall": "Aucun pare-feu trouvé"
-        }
+          "firewall": "Aucun pare-feu trouvé",
+          "customer": "Vous n’avez actuellement aucun client Sophos Central."
+        },
+        "error-no-list": "Impossible de charger les données de la table."
     },
     "licensing-and-billing": {
       "add": {

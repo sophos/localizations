@@ -31,6 +31,7 @@
       "linkspeed": "속도/이중",
       "system": "시스템",
       "lag": "LAG",
+      "last-updated": "{{ time }}에 데이터 새로 고침",
       "link-speed": {
         "10mh": "10M/절반",
         "10m_h": "10M/절반",
@@ -175,7 +176,8 @@
         "system-detail-title": "스위치 세부 정보",
         "port-settings-title": "포트 설정",
         "ip-networks-title": "네트워크",
-        "l3-protocols-title": "L3 릴레이/스누핑",
+        "ip-routes-title": "경로",
+        "l3-protocols-title": "L3 프로토콜",
         "vlans-title": "VLAN",
         "network-settings-title": "네트워크 설정",
         "task-queue-title": "작업 대기열",
@@ -193,6 +195,11 @@
       "not-managed-from-central": "이 설정은 아직 Sophos Central에서 관리되지 않습니다. 관리를 시작하려면 정책을 추가하십시오.",
       "are-you-sure": "계속하시겠습니까?",
       "conflict-message": "이 설정과 충돌이 발견되었습니다. 이 구성을 저장하지 마십시오."
+    },
+    "dto": {
+      "NetworksIPv4Dto": "네트워크(IPv4)",
+      "NetworksIPv6Dto": "네트워크(IPv6)",
+      "MgmtNetworkIPv4Dto": "관리 네트워크(IPv4)"
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -288,7 +295,8 @@
           "state": {
             "action": {
               "edit": "예약 변경",
-              "cancel": "취소"
+              "cancel": "취소",
+              "help": "도움말"
             },
             "process": {
               "SCHEDULED_UPGRADE": "업그레이드",
@@ -304,7 +312,11 @@
               "INTEGRITY_ERROR": "스위치에서 무결성 검사에 실패했습니다.",
               "ALREADY_UPDATED": "스위치가 요청된 버전으로 이미 업그레이드되었습니다.",
               "UPGRADE_ERROR": "펌웨어를 적용하지 못했습니다.",
-              "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다."
+              "UNKNOWN_ERROR": "알 수 없는 오류가 발생했습니다.",
+              "CERT_VERIFY_ERROR": "파일 다운로드 중 서버 인증서 확인에 실패했습니다. 이 문제는 스위치의 잘못된 시스템 시간으로 인해 가장 흔히 발생할 수 있습니다.",
+              "FQDN_NOT_RESOLVED": "서버 URL 확인에 실패했습니다. DNS 구성을 확인하십시오.",
+              "CONNECTION_TIMEDOUT": "다운로드 파일 요청 시간이 초과되었습니다.",
+              "SIGN_VERIFY_ERROR" : "다운로드한 파일에 대한 서명 확인에 실패했습니다."
             },
             "status": {
               "SCHEDULED": {
@@ -680,6 +692,15 @@
         "revert-to-system-info-message": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
         "vlan-lag-conflict-title": "VLAN에서 사용되는 LAG를 비활성화했습니다!",
         "vlan-lag-conflict-message": "LAG {{ lags }}은(는) 현재 비활성화되어 있지만 VLAN에 매핑됩니다."
+      },
+      "conflicts": {
+        "vlan": "VLAN ID",
+        "referenced": "사용됨:",
+        "details": "세부 정보",
+        "delete-conflict-title": "VLAN이 사용 중입니다.",
+        "fix-delete-conflict": "아래 VLAN은 이미 사용 중이며 VLAN을 삭제하기 전에 종속 구성을 삭제하십시오.",
+        "fix-button": "종속 항목 삭제",
+        "delete-conflict-message": "삭제 표시된 하나 이상의 VLAN이 다음 설정에서 사용됩니다."
       }
     },
     "ip-networks": {
@@ -690,6 +711,7 @@
       "edit-dialog-title": "{{ mode }} 네트워크 편집",
       "edit-management-dialog-title": "{{ mode }} 관리 네트워크 편집",
       "no-management-vlan": "이 네트워크 설정은 아직 Sophos Central에서 관리되지 않습니다.",
+      "ipv4-ipv6-same-management": "관리 VLAN은 IPv4 및 IPv6 네트워크에서 동일합니다. IPv4 탭에서만 편집할 수 있습니다.",
       "local-configuration": "스위치",
       "max-reached": "허용되는 최대 네트워크 수가 이미 추가되었습니다.",
       "form": {
@@ -778,6 +800,86 @@
         "configuration": "네트워크 세부 정보"
       }
     },
+    "ip-routes": {
+      "add": "경로 추가",
+      "search-placeholder-text": "검색",
+      "add-dialog-title": "새 {{ mode }} 경로 추가",
+      "edit-dialog-title": "{{ mode }} 경로 편집",
+      "local-configuration": "스위치",
+      "form": {
+        "vlan": "VLAN",
+        "static": "정적",
+        "connected": "연결됨",
+        "subnetMask": "서브넷",
+        "gatewayIP": "게이트웨이",
+        "destinationIP": "대상 IP 주소",
+        "mode-ipv4": "IPv4",
+        "mode-ipv6": "IPv6",
+        "prefixLen": "접두사 길이",
+        "linklocal": "Linklocal",
+        "unicast": "유니캐스트",
+        "teredo": "Teredo",
+        "unspecified": "지정되지 않음",
+        "invalid": "잘못됨",
+        "multicast": "멀티캐스트",
+        "loopback": "루프백",
+        "uniqueLocal": "고유 로컬",
+        "ipv4Mapped": "IPv4 매핑됨",
+        "rfc6145": "RFC6145",
+        "rfc6052": "RFC6052",
+        "6to4": "6 to 4", 
+        "reserved": "예약됨",
+        "benchmarking": "벤치마킹",
+        "amt": "AMT",
+        "as112v6": "AS112v6",
+        "deprecated": "사용되지 않음",
+        "orchid2": "Orchid2",
+        "errors": {
+          "field-missing": "'{{ field }}'은(는) 필수 필드입니다.",
+          "field-invalid": "잘못된 '{{ field }}'입니다.",
+          "field-loopback": "루프백 주소를 유효한 '{{ field }}'(으)로 사용할 수 없습니다.",
+          "field-zero-address":  "네트워크 주소(서브넷 0)를 유효한 '{{ field }}'(으)로 사용할 수 없습니다.",
+          "field-broadcast-address": "브로드캐스트 주소를 유효한 '{{ field }}'(으)로 사용할 수 없습니다.",
+          "field-multicast-address":  "멀티캐스트 주소를 유효한 '{{ field }}'(으)로 사용할 수 없습니다.",
+          "field-conflict": "{{ field }} 및 {{ conflictWith }}은(는) 같을 수 없습니다.",
+          "cross-conflict": "{{ field }}이(가) VLAN {{ conflictWith }}에서 이미 사용 중입니다.",
+          "subnet-conflict": "{{ field }}이(가) 선택한 서브넷에 없습니다.",
+          "field-in-use": "{{ field }}이(가) 이미 사용되었습니다.",
+          "linklocal-exists": "Linklocal IP 주소가 이미 구성되었습니다.",
+          "field-not-in-range": "{{ field }}이(가) '{{ range }}' IP 주소를 허용할 수 없습니다.",
+          "link-local-limit": "더 이상 링크 로컬 주소를 추가할 수 없음",
+          "not-start-address": "경로 주소는 네트워크 주소(서브넷 0)여야 합니다."
+        }
+      },
+      "message": {
+        "save-dialog-title": "저장 확인",
+        "site-save-dialog-text": "{{ count }}개의 스위치가 경로 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-save-dialog-text": "스위치가 경로 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "delete-confirm-title": "경로 삭제",
+        "site-delete-info-message": "{{ configCount }}개의 경로를 삭제합니다. {{ count }}개의 스위치가 이 경로를 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-delete-info-message": "{{ configCount }}개의 경로를 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "revert-to-system-confirm-title": "시스템 기본 설정 사용",
+        "revert-to-site-confirm-title": "사이트 설정 사용",
+        "revert-to-system-info-message": "선택한 사이트 설정이 삭제되고 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
+        "revert-to-site-info-message": "선택한 스위치 설정이 삭제됩니다. 대신에 스위치가 사이트 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
+        "delete-success": "경로가 삭제되었음",
+        "delete-error": "하나 이상의 경로를 삭제할 수 없음",
+        "create-error":"경로를 생성할 수 없음",
+        "create-success":"경로가 생성되었음",
+        "update-error":"경로를 업데이트할 수 없음",
+        "update-success":"경로가 업데이트되었음",
+        "no-ipv6-conflict-title": "IPv6 네트워크를 찾을 수 없음",
+        "no-ipv6-conflict-message": "구성된 IPv6 게이트웨이가 없으며 게이트웨이가 없으면 IPv6 경로 저장에 실패할 수 있습니다. 이 오류를 해결하기 위해 IPv6 게이트웨이를 추가할 수 있습니다."
+      },
+      "table-headers": {
+        "destination-ip": "대상",
+        "subnet": "서브넷",
+        "gateway": "게이트웨이",
+        "vlan-id": "인터페이스",
+        "protocol": "프로토콜",
+        "inherited": "구성 소스"
+      }
+    },
     "task-queue": {
       "total-tasks": "총 작업",
       "created": "대기 중",
@@ -830,6 +932,10 @@
         "mgmt_network_ipv4": "관리 네트워크(IPv4)",
         "mgmt_network_ipv6": "관리 네트워크(IPv6)",
         "networks_ipv6": "네트워크(IPv6)",
+        "route_ipv4": "경로(IPv4)",
+        "route_ipv6": "경로(IPv6)",
+        "dhcp_relay_server": "DHCP 릴레이(서버)",
+        "dhcp_relay": "DHCP 릴레이",
         "execute_cli_commands": "실행",
         "firmware_upgrade": "펌웨어",
         "schedule_upgrade": "예약",
@@ -918,8 +1024,14 @@
       "dhcp-relay": {
         "title": "DHCP 릴레이",
         "relay-status": "릴레이 상태",
-        "configure-text": "DHCP 릴레이 서버를 구성합니다.",
         "server-ip-text": "서버 IP 주소",
+        "server-invalid": "잘못된 IPv4 주소.",
+        "server-already-exists": "릴레이 서버가 이미 구성되어 있습니다.",
+        "server-multicast-address": "멀티캐스트 주소를 유효한 DHCP 릴레이 서버로 사용할 수 없습니다.",
+        "server-loopback": "루프백 주소를 유효한 DHCP 릴레이 서버로 사용할 수 없습니다.",
+        "placeholder": "IPv4 주소 입력",
+        "max-servers": "최대 5개의 서버가 이미 추가되었습니다.",
+        "config-source": "현재 구성 소스",
         "buttons": {
           "not-set": "설정되지 않음",
           "on": "켜기",

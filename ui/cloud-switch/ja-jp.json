@@ -31,6 +31,7 @@
       "linkspeed": "速度/二重通信",
       "system": "システム",
       "lag": "LAG",
+      "last-updated": "データの更新: {{ time }}",
       "link-speed": {
         "10mh": "10M/半",
         "10m_h": "10M/半",
@@ -175,7 +176,8 @@
         "system-detail-title": "システムの詳細",
         "port-settings-title": "ポートの設定",
         "ip-networks-title": "ネットワーク",
-        "l3-protocols-title": "L3 リレー/スヌーピング",
+        "ip-routes-title": "ルート",
+        "l3-protocols-title": "L3 プロトコル",
         "vlans-title": "VLAN",
         "network-settings-title": "ネットワークの設定",
         "task-queue-title": "タスクのキュー",
@@ -193,6 +195,11 @@
       "not-managed-from-central": "この設定は、まだ Sophos Central によって管理されていません。管理を開始するには、ポリシーを追加してください。",
       "are-you-sure": "続行しますか？",
       "conflict-message": "これらの設定に矛盾が見つかりました。この設定は保存しないでください。"
+    },
+    "dto": {
+      "NetworksIPv4Dto": "ネットワーク (IPv4)",
+      "NetworksIPv6Dto": "ネットワーク (IPv6)",
+      "MgmtNetworkIPv4Dto": "管理ネットワーク (IPv4)"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -288,7 +295,8 @@
           "state": {
             "action": {
               "edit": "スケジュールの変更",
-              "cancel": "キャンセル"
+              "cancel": "キャンセル",
+              "help": "ヘルプ"
             },
             "process": {
               "SCHEDULED_UPGRADE": "アップグレード",
@@ -304,7 +312,11 @@
               "INTEGRITY_ERROR": "スイッチで整合性チェックに失敗しました。",
               "ALREADY_UPDATED": "スイッチは、リクエストされたバージョンに既にアップグレードされています。",
               "UPGRADE_ERROR": "ファームウェアの適用に失敗しました。",
-              "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+              "UNKNOWN_ERROR": "不明なエラーが発生しました。",
+              "CERT_VERIFY_ERROR": "ファイルのダウンロード中、サーバー証明書を検証できませんでした。これが発生する最も一般的な原因は、スイッチのシステム時間が正しくないことによります。",
+              "FQDN_NOT_RESOLVED": "サーバー URL を解決できませんでした。DNS 設定を確認してください。",
+              "CONNECTION_TIMEDOUT": "ダウンロードファイルのリクエストがタイムアウトしました。",
+              "SIGN_VERIFY_ERROR" : "ダウンロードしたファイルの署名の確認に失敗しました。"
             },
             "status": {
               "SCHEDULED": {
@@ -680,6 +692,15 @@
         "revert-to-system-info-message": "選択したサイト設定は削除されます。スイッチは、代わりにシステムのデフォルト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
         "vlan-lag-conflict-title": "VLAN で使用されている LAG を無効にしました。",
         "vlan-lag-conflict-message": "LAG {{ lags }} は現在無効になっていますが、VLAN にマッピングされています"
+      },
+      "conflicts": {
+        "vlan": "VLAN ID",
+        "referenced": "次で使用:",
+        "details": "詳細",
+        "delete-conflict-title": "VLAN は使用中です",
+        "fix-delete-conflict": "以下の VLAN は既に使用されています。VLAN を削除する前に、依存する設定を削除してください",
+        "fix-button": "依存の削除",
+        "delete-conflict-message": "削除対象に指定された 1つまたは複数の VLAN は、次の設定で使用されています"
       }
     },
     "ip-networks": {
@@ -690,7 +711,8 @@
       "edit-dialog-title": "{{ mode }} ネットワークの編集",
       "edit-management-dialog-title": "{{ mode }} 管理ネットワークの編集",
       "no-management-vlan": "このネットワーク設定は、まだ Sophos Central によって管理されていません。",
-      "local-configuration": "Switch",
+      "ipv4-ipv6-same-management": "管理 VLAN は、IPv4 ネットワークと IPv6 ネットワークで同じです。IPv4 タブのみで編集可能です。",
+      "local-configuration": "スイッチ",
       "max-reached": "最大許可数のネットワークが既に追加されています。",
       "form": {
         "vlan": "VLAN",
@@ -778,6 +800,86 @@
         "configuration": "ネットワークの詳細"
       }
     },
+    "ip-routes": {
+      "add": "ルートの追加",
+      "search-placeholder-text": "検索",
+      "add-dialog-title": "新しい {{ mode }} ルートの追加",
+      "edit-dialog-title": "{{ mode }} ルートの編集",
+      "local-configuration": "スイッチ",
+      "form": {
+        "vlan": "VLAN",
+        "static": "静的",
+        "connected": "接続済み",
+        "subnetMask": "Subnet",
+        "gatewayIP": "ゲートウェイ",
+        "destinationIP": "宛先 IP アドレス",
+        "mode-ipv4": "IPv4",
+        "mode-ipv6": "IPv6",
+        "prefixLen": "プレフィックスの長さ",
+        "linklocal": "リンクローカル",
+        "unicast": "ユニキャスト",
+        "teredo": "Teredo",
+        "unspecified": "指定なし",
+        "invalid": "無効",
+        "multicast": "マルチキャスト",
+        "loopback": "ループバック",
+        "uniqueLocal": "ユニークローカル",
+        "ipv4Mapped": "IPv4 マッピング済み",
+        "rfc6145": "RFC6145",
+        "rfc6052": "RFC6052",
+        "6to4": "6 to 4", 
+        "reserved": "予約済み",
+        "benchmarking": "ベンチマーク",
+        "amt": "AMT",
+        "as112v6": "AS112v6",
+        "deprecated": "非推奨",
+        "orchid2": "Orchid2",
+        "errors": {
+          "field-missing": "'{{ field }}' は必須項目です。",
+          "field-invalid": "'{{ field }}' は無効です。",
+          "field-loopback": "ループバックアドレスは、有効な '{{ field }}' として使用できません。",
+          "field-zero-address":  "ネットワークアドレス (サブネットゼロ) は、有効な '{{ field }}' として使用できません。",
+          "field-broadcast-address": "ブロードキャストアドレスは、有効な '{{ field }}' として使用できません。",
+          "field-multicast-address":  "マルチキャストアドレスは、有効な '{{ field }}' として使用できません。",
+          "field-conflict": "{{ field }} と {{ conflictWith }} を同じにすることはできません。",
+          "cross-conflict": "{{ field }} は、既に VLAN {{ conflictWith }} で使用されています。",
+          "subnet-conflict": "{{ field }} は、選択されたサブネットにありません。",
+          "field-in-use": "{{ field }} は、既に使用されています。",
+          "linklocal-exists": "リンクローカル IP アドレスは既に設定されています。",
+          "field-not-in-range": "{{ field }} は、'{{ range }}' IP アドレスを受け入れることができません。",
+          "link-local-limit": "これ以上リンクローカルアドレスを追加することはできません",
+          "not-start-address": "ルートアドレスはネットワークアドレス (サブネット 0) である必要があります。"
+        }
+      },
+      "message": {
+        "save-dialog-title": "保存の確認",
+        "site-save-dialog-text": "{{ count }}個のスイッチにルートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-dialog-text": "スイッチにルートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "delete-confirm-title": "ルートの削除",
+        "site-delete-info-message": "{{ configCount }}個のルートの削除{{ count }}個のスイッチによって、このルートが削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-delete-info-message": "{{ configCount }}個のルートが削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "revert-to-system-confirm-title": "システムのデフォルト設定の使用",
+        "revert-to-site-confirm-title": "サイト設定の使用",
+        "revert-to-system-info-message": "選択したサイト設定は削除されます。スイッチは、代わりにシステムのデフォルト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
+        "revert-to-site-info-message": "選択したスイッチ設定は削除されます。スイッチは、代わりにサイト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
+        "delete-success": "ルートが削除されました",
+        "delete-error": "1つまたは複数のルートを削除できません",
+        "create-error":"ルートを作成できません",
+        "create-success":"ルートが作成されました",
+        "update-error":"ルートを更新できません",
+        "update-success":"ルートが更新されました",
+        "no-ipv6-conflict-title": "IPv6 ネットワークが見つかりません",
+        "no-ipv6-conflict-message": "IPv6 ゲートウェイが設定されていないため、ゲートウェイなしで IPv6 ルートを保存しようとすると失敗する可能性があります。このエラーを解決するには、IPv6 ゲートウェイを追加してください。"
+      },
+      "table-headers": {
+        "destination-ip": "送信先",
+        "subnet": "サブネット",
+        "gateway": "ゲートウェイ",
+        "vlan-id": "インターフェース",
+        "protocol": "プロトコル",
+        "inherited": "設定のソース"
+      }
+    },
     "task-queue": {
       "total-tasks": "タスク総数",
       "created": "待機中",
@@ -830,6 +932,10 @@
         "mgmt_network_ipv4": "管理ネットワーク (IPv4)",
         "mgmt_network_ipv6": "管理ネットワーク (IPv6)",
         "networks_ipv6": "ネットワーク (IPv6)",
+        "route_ipv4": "ルート (IPv4)",
+        "route_ipv6": "ルート (IPv6)",
+        "dhcp_relay_server": "DHCP リレー (サーバー)",
+        "dhcp_relay": "DHCP リレー",
         "execute_cli_commands": "実行",
         "firmware_upgrade": "ファームウェア",
         "schedule_upgrade": "スケジュール",
@@ -918,8 +1024,14 @@
       "dhcp-relay": {
         "title": "DHCP リレー",
         "relay-status": "リレーの状態",
-        "configure-text": "DHCP リレーサーバーを設定します。",
         "server-ip-text": "サーバー IP アドレス",
+        "server-invalid": "無効な IPv4 アドレスです。",
+        "server-already-exists": "リレーサーバーは既に設定されています。",
+        "server-multicast-address": "マルチキャストアドレスは、有効な DHCP リレーサーバーとして使用できません。",
+        "server-loopback": "ループバックアドレスは、有効な DHCP リレーサーバーとして使用できません。",
+        "placeholder": "IPv4 アドレスの入力",
+        "max-servers": "最大 5台のサーバーが既に追加されています。",
+        "config-source": "現在の設定ソース",
         "buttons": {
           "not-set": "未設定",
           "on": "オン",

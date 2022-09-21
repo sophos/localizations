@@ -349,7 +349,7 @@
               "firewall-name": "防火墻",
               "local-subnets":"本機網路",
               "wan-ports": "WAN 連接埠",
-              "gateway": "備用閘道",
+              "gateway": "主要和備用閘道",
               "nat": "NAT",
               "respond-only": "資源共用",
               "initiator": "資源存取",
@@ -375,6 +375,7 @@
               "selected": "已選",
               "gateway": "備用閘道",
               "select-backup-gateway": "選取備用閘道",
+              "select-firewall": "選取防火牆",
               "tunnel-redundancy-gateway": "將次要通道用作備用閘道",
               "xfrm-ip-used": "使用的 Xfrm IP 位址",
               "xfrm-ip-free": "空閒的 Xfrm IP 位址",
@@ -972,12 +973,13 @@
                 "group": "群組",
                 "customer": "客戶",
                 "sync-and-management": "同步和管理",
-                "backup": "已安排備份",
+                "backup": "最近一次備份",
                 "version": "版本",
-                "ip-address":"IP 位址",
+                "ip-address":"IP 位址 (IP 位址)",
                 "model": "機型",
                 "serial": "序號"
-            }
+            },
+            "search-label": "搜尋防火牆名稱、序號、型號和版本。"
         },
         "firmware": {
             "upgrade": "韌體升級",
@@ -995,22 +997,67 @@
             "note1": "連線的防火牆將收到立即升級韌體的通知。",
             "note2": "斷開連線的防火牆將在連線後很快收到通知。",
             "note3": "這可能需要重新啟動防火牆。",
-            "note4": "即時排程一旦儲存，就不可修改。",
-            "note5": "只有完成目前排程後才可新增新排程。",
+            "note4": "現在，排程一旦儲存，就不可修改。",
+            "note5": "只有完成進行中的排程後才可新增新排程。",
             "list": {
               "name": "名稱",
               "serial-number": "序號",
+              "customer-name": "客戶",
               "current-version": "目前版本",
               "to-version": "至版本",
               "current-schedule": "目前排程"
-            }
+            },
+            "state": {
+              "_dynamic_": {
+                "available": {
+                  "title": "新韌體升級可用。 ",
+                  "subtext": "您可以立即或在將來套用這些升級。"
+                },
+                "in_progress": {
+                  "title": "正在升級韌體。",
+                  "subtext": "韌體正在升級。您可以在目前升級完成後安排升級。"
+                },
+                "scheduled": {
+                  "title": "韌體升級至版本 {{ nextVersion }} 已排定。",
+                  "subtext": "防火牆將在 {{ schedule }} 進行升級。 "
+                },
+                "upgrade_failed": {
+                  "title": "韌體升級失敗。",
+                  "subtext": "由於一些意外事件，韌體升級失敗。請確保防火牆已連線，然後重新排程。"
+                }
+              }
+            },
+            "upgrade-now": "立即升級",
+            "schedule-upgrade": "排程升級",
+            "choose-schedule": "選擇排程",
+            "cancel-schedule": "取消排程",
+            "upgrade-started-title": "韌體升級已開始",
+            "upgrade-started-body": "所選防火牆的韌體升級程序已開始。",
+            "upgrade-started-error": "無法開始韌體升級程序。",
+            "upgrade-scheduled-title": "韌體升級已排定",
+            "upgrade-scheduled-body": "所選防火牆的韌體升級已排定。",
+            "upgrade-scheduled-error": "未能安排韌體升級。",
+            "upgrade-cancelled-title": "韌體升級已取消",
+            "upgrade-cancelled-body": "所選防火牆的韌體升級已取消。",
+            "upgrade-cancelled-error": "無法取消韌體升級。",
+            "schedule-cancel": "取消",
+            "release-note": "發佈說明",
+            "cancel": {
+              "confirm-header": "取消排程",
+              "confirm-msg": "確定要取消排定的升級嗎？",
+              "accept": "是，請取消",
+              "reject": "否，不要取消"
+            },
+            "no-data": "您目前沒有可升級的防火牆。"
         },
         "search": {
             "placeholder": "搜尋元件"
         },
         "no-data": {
-          "firewall": "找不到防火牆"
-        }
+          "firewall": "找不到防火牆",
+          "customer": "您目前沒有 Sophos Central 客戶。"
+        },
+        "error-no-list": "無法載入表格資料。"
     },
     "licensing-and-billing": {
       "add": {
