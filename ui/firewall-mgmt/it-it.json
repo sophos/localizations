@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "Nome del gruppo già esistente. Scegline uno diverso.",
           "INVALID_IP_ADDRESS_OR_FQDN": "L'IP o FQDN pubblico specificato per il link WAN selezionato non è valido: {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "Gli indirizzi forniti per la porta WAN primaria e per quella secondaria sono identici.",
-          "RETRY_AFTER_SOMETIME": "Riprova più tardi."
+          "RETRY_AFTER_SOMETIME": "Riprova più tardi.",
+          "SDWAN_PROFILE_CREATE_FAILED": "Creazione del profilo SD-WAN non riuscita."
         },
         "states": {
           "cannot-save": "Errore sconosciuto durante il salvataggio del gruppo di connessione.",
@@ -350,6 +351,7 @@
               "local-subnets":"Reti locali",
               "wan-ports": "Porta WAN",
               "gateway": "Gateway primario e di backup",
+              "backup-gateway": "Gateway di backup",
               "nat": "NAT",
               "respond-only": "Condivisione di risorse",
               "initiator": "Accesso alle risorse",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP obbligatorio",
                   "invalid-ip": "IP non valido",
-                  "port-required": "Porta obbligatoria"
+                  "port-required": "Porta obbligatoria",
+                  "require-firewall": "Firewall obbligatorio",
+                  "invalid-input": "Input non valido"
                 },
                 "table": {
                   "add-probe-target": "Aggiungi destinazione probe",
                   "destination-firewall": "Firewall di destinazione",
-                  "select-destination-firewall": "Seleziona",
+                  "default-destination-firewall": "Impostazione predefinita (Qualsiasi firewall)",
                   "probe-target-ip-address": "Esegui probe dell’indirizzo IP di destinazione",
                   "custom-sla": "SLA personalizzato",
                   "latency": "Latenza",
@@ -499,6 +503,9 @@
               "public-ip-needed": "L'IP o FQDN pubblico è obbligatorio.",
               "duplicate-public-ip": "Duplica IP o FQDN pubblico"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "L’opzione Profili SD-WAN è disattivata, poiché una o più interfacce XFRM sono sulla netmask 255.255.255.255. Esegui la migrazione delle interfacce XFRM per questo firewall."
           }
         },
         "share-resources": {
@@ -647,7 +654,7 @@
           "text": "<strong>{{ name }}</strong> esegue una versione del firmware che ha raggiunto il termine del ciclo di vita e che presto potrebbe non essere più gestibile da Sophos Central. Esegui l'upgrade di questo firewall a una versione supportata del firmware entro il 30 novembre 2021 per evitare interruzioni del servizio.",
           "alert-text": "{{ name }} esegue una versione del firmware che ha raggiunto il termine del ciclo di vita e che presto potrebbe non essere più gestibile da Sophos Central. Esegui l'upgrade di questo firewall a una versione supportata del firmware entro il 30 novembre 2021 per evitare interruzioni del servizio.",
           "action": "Consultare il nostro articolo della knowledge base per maggiori informazioni.",
-          "learn-more": "Maggiori info",
+          "learn-more": "Maggiori informazioni",
           "continue": "Continua"
         }
       },

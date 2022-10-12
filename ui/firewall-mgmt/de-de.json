@@ -98,8 +98,8 @@
             "zone": "Dynamische Zone kann nicht gespeichert werden."
           },
           "exist-error": {
-            "interface": "Der gewählte Schnittstellenname ist bereits vorhanden. Bitte wählen Sie einen anderen Namen.",
-            "zone": "Der gewählte Zonenname ist bereits vorhanden. Bitte wählen Sie einen anderen Namen."
+            "interface": "Der gewählte Schnittstellenname existiert bereits. Bitte wählen Sie einen anderen Namen.",
+            "zone": "Der gewählte Zonenname existiert bereits. Bitte wählen Sie einen anderen Namen."
           }
         }
       },
@@ -293,10 +293,11 @@
           "GROUP_DOES_NOT_EXISTS" : "GroupId {{ groupId }} existiert nicht",
           "INTERNAL_REQUEST_ERROR" : "Ein Fehler ist aufgetreten. Interner Serverfehler.",
           "INTERNAL_SERVER_ERROR": "Ein Fehler ist aufgetreten. Interner Serverfehler.",
-          "GROUP_NAME_EXISTS": "Gruppenname ist bereits vorhanden. Wählen Sie einen anderen Namen.",
+          "GROUP_NAME_EXISTS": "Gruppenname existiert bereits. Wählen Sie einen anderen Namen.",
           "INVALID_IP_ADDRESS_OR_FQDN": "Öffentliche IP oder FQDN für den WAN-Link ist ungültig: {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "Primäre und sekundäre WAN-Port-Adressen sind identisch.",
-          "RETRY_AFTER_SOMETIME": "Versuchen Sie es später erneut."
+          "RETRY_AFTER_SOMETIME": "Versuchen Sie es später erneut.",
+          "SDWAN_PROFILE_CREATE_FAILED": "Erstellung des SD-WAN-Profils fehlgeschlagen."
         },
         "states": {
           "cannot-save": "Unbekannter Fehler beim Speichern der Verbindungsgruppe.",
@@ -350,6 +351,7 @@
               "local-subnets":"Lokale Netzwerke",
               "wan-ports": "WAN-Port",
               "gateway": "Primäre und Reserve-Gateways",
+              "backup-gateway": "Reserve-Gateway",
               "nat": "NAT",
               "respond-only": "Ressourcen-Sharing",
               "initiator": "Ressourcenzugriff",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP erforderlich",
                   "invalid-ip": "Ungültige IP",
-                  "port-required": "Port erforderlich"
+                  "port-required": "Port erforderlich",
+                  "require-firewall": "Firewall erforderlich",
+                  "invalid-input": "Ungültige Eingabe"
                 },
                 "table": {
                   "add-probe-target": "Prüfziel hinzufügen",
                   "destination-firewall": "Ziel-Firewall",
-                  "select-destination-firewall": "Auswählen",
+                  "default-destination-firewall": "Standard (beliebige Firewall)",
                   "probe-target-ip-address": "Prüfziel-IP-Adresse",
                   "custom-sla": "Benutzerspezifische SLA",
                   "latency": "Latenz",
@@ -499,6 +503,9 @@
               "public-ip-needed": "Öffentliche IP oder FQDN ist erforderlich.",
               "duplicate-public-ip": "Öffentliche IP oder FQDN duplizieren"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "Die SD-WAN-Profil-Option ist deaktiviert, weil eine oder mehrere XFRM-Schnittstellen im Bereich der Netzmaske 255.255.255.255 liegen. Migrieren Sie die XFRM-Schnittstellen für diese Firewall."
           }
         },
         "share-resources": {
@@ -670,7 +677,7 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} Firewalls haben den Status PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Gruppe erfolgreich erstellt",
-        "duplicate-group-name": "Gruppenname ist bereits vorhanden"
+        "duplicate-group-name": "Gruppenname existiert bereits"
       },
       "delete": {
         "label": "Gruppe löschen",

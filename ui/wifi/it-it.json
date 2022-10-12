@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "Le Informazioni approfondite sull’utilizzo sono disponibili solo per gli access point APX e AP Series. Escludono i dati degli AP6.",
       "static-details": "Dettagli statici",
       "mac-address": "Indirizzo MAC",
       "current-access-point": "Access point corrente",
@@ -209,7 +210,8 @@
       "detail": "dettaglio",
       "usage": "uso",
       "empty-category-message": "Seleziona una categoria per ottenere maggiori informazioni.",
-      "no-data": "Non sono disponibili dati relativi alla categoria"
+      "no-data": "Non sono disponibili dati relativi alla categoria",
+      "not-available-note": "Le Informazioni approfondite sull’utilizzo sono disponibili solo per gli access point APX e AP Series. Escludono i dati degli AP6."
     },
     "diagnostics": {
       "events": "Eventi",
@@ -282,7 +284,8 @@
         "analysis-title": "Analisi",
         "access-point-detection-title": "Rilevamento di access point non autorizzati",
         "advancedRF-title": "Gestione AdvancedRF",
-        "discovery-protocol-title": "Protocollo Discovery"
+        "discovery-protocol-title": "Protocollo Discovery",
+        "note": "Supportato negli access point APX e AP Series."
       },
       "advanced-rf-management": {
         "roaming-assist": "Roaming guidato",
@@ -430,6 +433,7 @@
         "aps-placed": "posizionato",
         "aps-none-placed": "Nessun access point posizionato.",
         "ap-simulated": "AP simulato",
+        "ap6-not-supported": "AP6 non disponibili in questo momento.",
         "failed-to-load-floor": "Impossibile caricare la piantina",
         "deleting": "Elimina",
         "editing": "Modifica",
@@ -456,6 +460,7 @@
           "upload-success": "File correttamente caricato",
           "upload-error": "Impossibile memorizzare l'immagine della piantina.",
           "floorplan-setup": {
+            "supported-note": "Supportata solo per gli APX e AP Series.",
             "question": "Che ne dici di impostare una piantina?",
             "text": "Inizia caricando subito un'immagine. Formati accettati: PDF, PNG, JPEG, BMP, GIF o WBMP con dimensioni max. di 1 MB per il file",
             "GDPR-text": "Per rispettare la conformità al GDPR, verificare che le planimetrie di siti/piani non includano informazioni personali.",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "a",
         "firmware-upgrade": "Upgrade del firmware",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "Potenza TX: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "Upgrade del firmware",
           "COLLECT_LOGS": "Raccogli log",
           "NETWORK": "RETE",
-          "APU_CONFIG": "Configurazione APU"
+          "APU_CONFIG": "Configurazione APU",
+          "REMOTE_SUPPORT": "Supporto remoto"
         },
         "changeType": {
           "ADD": "Aggiungi",
@@ -1078,7 +1084,9 @@
           "DELETE": "Elimina",
           "SYSTEM": "Sistema",
           "SCHEDULE_UPGRADE": "Pianifica upgrade",
-          "CANCEL_UPGRADE": "Annulla upgrade"
+          "CANCEL_UPGRADE": "Annulla upgrade",
+          "ENABLE_REMOTE_SUPPORT": "Abilita supporto remoto",
+          "DISABLE_REMOTE_SUPPORT": "Supporto remoto disattivato"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "L’elenco sottostante mostra solo gli AP6 di cui è possibile eseguire l’upgrade ({{count}}/{{total}} access point).",
         "remove-schedule": "Annulla pianificazione",
         "choose-schedule": "Seleziona una pianificazione",
+        "defult-schedule-note": "Il sistema eseguirà un upgrade ogni martedì alle 3:00 del mattino. Puoi cambiare la pianificazione cliccando sul pulsante “Seleziona una pianificazione”",
         "rollback": "Effettua swap del firmware ({{ version }})",
         "date-time": "Data & Ora",
         "frequency": "Frequenza",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "Non è possibile annullare le richieste di upgrade immediato. Puoi aggiungere nuove pianificazioni dopo il completamento della pianificazione esistente."
         },
         "schedule": {
+          "upgrade": "Upgrade",
           "update-now": "Ora",
           "custom": "Personalizza",
           "recurring": "Ricorrente",
@@ -1214,7 +1224,7 @@
           "header-text": "Seleziona una pianificazione",
           "note": "Seleziona quando eseguire l’upgrade degli access point selezionati.",
           "please-note": "Nota:",
-          "now-note": "<ul><li>Gli access point connessi riceveranno una notifica per l’upgrade immediato del firmware.</li><li>Gli access point disconnessi riceveranno la notifica non appena si connettono.</li><li>Potrebbe essere necessario un riavvio dell’access point.</li><li>Una volta salvate, le pianificazioni immediate non possono essere modificate.</li><li>È possibile aggiungere nuove pianificazioni solo dopo aver completato la pianificazione esistente.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>connesso/i - pronto/i per l’upgrade</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>disconnesso/i - connetti per eseguire l’upgrade</span></div></li></ul><div class='flex margin-left-sm'><span>Gli access point disconnessi non riceveranno l’upgrade.</span></div>",
           "custom-note": "<ul><li>La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario.</li><li>Il firmware dell’upgrade potrebbe richiedere un riavvio.</li></ul>",
           "recurring-note": "<ul><li>La pianificazione selezionata rispetterà l’ora locale dell’access point, indipendentemente dal fuso orario.</li><li>Il firmware dell’upgrade potrebbe richiedere un riavvio.</li><li>Il sistema eseguirà l’upgrade alla più recente versione disponibile.</li></ul>",
           "daily-schedule": "Ogni giorno alle ore {{time}}",

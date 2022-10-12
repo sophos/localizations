@@ -187,7 +187,7 @@
       "installation-steps-help-text": "<b>コピー</b> をクリックして、helm コマンドをコピーし、クラスタで実行してください。",
       "upgrade-steps-help-text": "<b>コピー</b> をクリックして、helm コマンドをコピーし、クラスタで実行してください。",
       "installation-step-1": "クラウド シリーズ ファイアウォールをクラスタにインストールするには、 {{memory}}MB で、「{{storageClass}}」ストレージクラスの永続ボリューム {{pv}} が必要です。",
-      "detail-info-step-1": "詳細は、<a href=\"https://sophos.com\" target=\"_blank\">ドキュメント</a>を参照してください。",
+      "detail-info-step-1": "詳細は、<a href=\"https://docs.sophos.com/central/Customer/help/{{currentLang}}/index.html?contextId=ctx/559fe792-c45b-4750-8def-d32b1af07451\" target=\"_blank\">ドキュメント</a>を参照してください。",
       "step-1-heading": "ステップ 1: 永続ボリュームを作成します。",
       "step-2-heading": "ステップ 2: Helm をインストールします。",
       "step-3-heading": "ステップ 3:",
@@ -202,27 +202,28 @@
       "reference-url-link": "次の手順に従って、Calico をインストールします。詳細については、 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/helm\" target=\"_blank\"> Helm を使用したインストール</a>を参照してください。",
       "flannel-migration-heading": "Flannel から Calico ネットワーキングに移行します。",
       "migration-instruction-1": "3a.Calico をインストールします。",
-      "migration-instruction-1-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/calico.yaml",
+      "migration-instruction-1-command": "kubectl apply -f https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/calico-v3.23.3.yaml",
       "migration-instruction-2": "3b.移行コントローラを起動します。",
       "migration-3b-1": "i. クラスタ内の flannel daemonset の名前を確認します。",
       "migration-3b-1-command": "kubectl get daemonset --all-namespaces",
       "migration-3b-2": "ii.次のいずれかの手順を実行します。",
-      "migration-3b-2-one": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 の場合は、<a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> ファイルを適用します。",
-      "migration-3b-2-one-command": "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
-      "migration-3b-2-two": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 でない場合は、<a href=\"https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml\" target=\"_blank\"> migration-job.yaml</a> ファイルをダウンロードします。",
-      "migration-3b-2-two-command": "curl -O https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-3b-2-one": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 の場合は、<a href=\"https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/migration-job-v3.23.3.yaml\" target=\"_blank\"> migration-job-v3.23.3.yaml</a> ファイルを適用します。",
+      "migration-3b-2-one-command": "kubectl apply -f https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/migration-job-v3.23.3.yaml",
+      "migration-3b-2-two": "クラスタ内の flannel daemonset 名が kobe-flanne-ds-amd64 でない場合は、<a href=\"https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/migration-job-v3.23.3.yaml\" target=\"_blank\"> migration-job-v3.23.3.yaml</a> ファイルをダウンロードします。",
+      "migration-3b-2-two-command": "curl -O https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/migration-job-v3.23.3.yaml",
       "migration-3b-2-two-path": "ファイルの次のセクションを参照します: \"kind: Job > spec: template > spec: containers > env:\"。そして、次のテキストを追加します:",
       "migration-3b-2-two-example-name": "name: FLANNEL_DAEMONSET_NAME",
       "migration-3b-2-two-example-value": "value: <value-of-flannel-daemonset-in-your-cluster>",
-      "migration-3b-2-two-final": "migration-job.yaml ファイルを適用します:",
-      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job.yaml>",
+      "migration-3b-2-two-final": "migration-job-v3.23.3.yaml ファイルを適用します:",
+      "migration-3b-2-two-final-command": "kubectl apply -f <path-to-directory-of-migration-job-v3.23.3.yaml>",
       "migration-instruction-4": "3c.移行を監視します。",
       "migration-instruction-4-command": "kubectl get jobs -n kube-system flannel-migration",
       "migration-instruction-4-text-one": "ホストノードがアップグレードされると、移行コントローラが数回再スケジュールされる場合があります。",
       "migration-instruction-4-text-two": "出力に 1/1 の完了が表示されたら、インストールは完了です。",
       "migration-instruction-5": "3d.移行コントローラを削除します。",
-      "migration-instruction-5-command": "kubectl delete -f https://projectcalico.docs.tigera.io/manifests/flannel-migration/migration-job.yaml",
+      "migration-instruction-5-command": "kubectl delete -f https://sophos.jfrog.io/artifactory/cnf-store/flannel-to-calico-migration/migration-job-v3.23.3.yaml",
       "reference-url-for-migration": "次の手順に従って、Calico に移行します。詳細については、 <a href=\"https://projectcalico.docs.tigera.io/getting-started/kubernetes/flannel/migration-from-flannel\" target=\"_blank\">flannel から Kubernetes クラスタへ移行</a>を参照してください",
+      "flannel-version-tested-info": "これらの手順は Flannel 0.18.0 および 0.18.1 でテスト済みです",
       "install-cloud-series-firewall": "クラウド シリーズ ファイアウォールをインストールしてください",
       "rollback-commands-help-text": "次のコマンドを使用して、クラウド シリーズ ファイアウォールのバージョンをロールバックします。",
       "after-approval-dialog-title": "クラスタの詳細の同期中",
@@ -282,7 +283,8 @@
           "entry-point": "クラスタが待機するリスニングポート、および必要な暗号化の設定を選択します。ファイアウォールは、アクセス可能なすべてのクラスタ IP 上の選択されたポートで待機します。",
           "routes": "クライアントトラフィックをターゲット Web サービスにルーティングする方法を選択します。",
           "protection-policy": "このサービスの保護に使用するデフォルトの Web ポリシーを選択します。"
-        }
+        },
+        "port-range-info": "NodePort の場合、クラスタがすべてのポートを使用するように設定されていない限り、デフォルトのポート範囲は 30000 から 32767 になります。"
       },
       "edit": {
         "title": "Web アプリケーション ファイアウォール ルールの編集",
@@ -292,7 +294,8 @@
         "rule-name-required-error": "ルール名を指定してください。",
         "description": "説明",
         "entry-points": "エントリポイント",
-        "listening-port": "リスニングポート (1～65535)",
+        "listening-port": "リスニングポート",
+        "range": " (1-65535)",
         "listening-port-required-error": "リスニングポートを指定してください。",
         "http-listening-port": "HTTP リスニングポート (1～65535)",
         "http-listening-port-required-error": "HTTP リスニングポートを指定してください。",
@@ -301,6 +304,7 @@
         "redirect-http": "HTTP のリダイレクト",
         "request-path": "リクエストパス",
         "request-path-required-error": "リクエストパスを指定してください。",
+        "request-path-invalid-characters": "リクエストパスに無効な文字が含まれています。",
         "request-from": "宛先パスにマッピング",
         "routes": "ルート",
         "fqdn": "FQDN",
@@ -534,7 +538,7 @@
         "policy-placeholder": "ポリシーの選択",
         "messages": {
           "empty-message": "使用可能な IPS ポリシーがありません。",
-          "signature-count-exceeded": "ルールで IPS シグニチャ数を超えました。"
+          "signature-count-exceeded": "ルールで IPS シグネチャ数を超えました。"
         }
       },
       "policies": {
@@ -577,7 +581,8 @@
             "empty-message": "使用可能な IPS ポリシーがありません。",
             "name-already-exists" : "指定された名前の IPS ポリシーは既に存在します。",
             "signature-conflict" : "IPS ポリシーに、競合するシグネチャのアクションがあります。",
-            "signature-count-exceeded" : "ポリシーで IPS シグニチャ数を超えました。"
+            "signature-count-exceeded" : "ポリシーで IPS シグネチャ数を超えました。",
+            "no-filters-selected" : "シグネチャのフィルタが追加されていないため、IPS ポリシーを保存できません。"
           }
         },
         "edit": {

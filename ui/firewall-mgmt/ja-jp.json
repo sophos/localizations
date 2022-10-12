@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "グループ名は既に存在します。別のものを選択してください。",
           "INVALID_IP_ADDRESS_OR_FQDN": "WAN リンクに指定されているパブリック IP または FQDN が無効です: {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "指定されたプライマリ WAN ポートアドレスとセカンダリ WAN ポートアドレスは同じです。",
-          "RETRY_AFTER_SOMETIME": "しばらくしてから再試行してください。"
+          "RETRY_AFTER_SOMETIME": "しばらくしてから再試行してください。",
+          "SDWAN_PROFILE_CREATE_FAILED": "SD-WAN プロファイルの作成に失敗しました。"
         },
         "states": {
           "cannot-save": "接続グループの保存中、不明なエラーが発生しました。",
@@ -350,6 +351,7 @@
               "local-subnets":"ローカルネットワーク",
               "wan-ports": "WAN ポート",
               "gateway": "プライマリゲートウェイとバックアップゲートウェイ",
+              "backup-gateway": "バックアップゲートウェイ",
               "nat": "NAT",
               "respond-only": "リソース共有",
               "initiator": "リソースアクセス",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP が必要です",
                   "invalid-ip": "IP が無効です",
-                  "port-required": "ポートが必要です"
+                  "port-required": "ポートが必要です",
+                  "require-firewall": "ファイアウォールが必要である",
+                  "invalid-input": "無効な入力"
                 },
                 "table": {
                   "add-probe-target": "プローブの対象の追加",
                   "destination-firewall": "宛先ファイアウォール",
-                  "select-destination-firewall": "選択",
+                  "default-destination-firewall": "デフォルト (任意のファイアウォール)",
                   "probe-target-ip-address": "プローブの対象の IP アドレス",
                   "custom-sla": "カスタム SLA",
                   "latency": "レイテンシ",
@@ -499,6 +503,9 @@
               "public-ip-needed": "パブリック IP または FQDN が必要です。",
               "duplicate-public-ip": "重複したパブリック IP または FQDN"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "1つ以上の XFRM インターフェイスがネットマスク 255.255.255.255 にあるため、SD-WAN プロファイルオプションはオフになっています。このファイアウォールの XFRM インターフェイスを移行します。"
           }
         },
         "share-resources": {

@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "Los datos de Información detallada de uso solo están disponibles para las series APX y AP. Se excluyen los datos de AP6.",
       "static-details": "Datos estáticos",
       "mac-address": "Dirección MAC",
       "current-access-point": "Punto de acceso actual",
@@ -209,7 +210,8 @@
       "detail": "detalle",
       "usage": "uso",
       "empty-category-message": "Seleccione una categoría para más información.",
-      "no-data": "No hay disponibles datos de categoría"
+      "no-data": "No hay disponibles datos de categoría",
+      "not-available-note": "Los datos de Información detallada de uso solo están disponibles para las series APX y AP. Se excluyen los datos de AP6."
     },
     "diagnostics": {
       "events": "Eventos",
@@ -282,7 +284,8 @@
         "analysis-title": "Análisis",
         "access-point-detection-title": "Detección de puntos de acceso no autorizados",
         "advancedRF-title": "Gestión de AdvancedRF",
-        "discovery-protocol-title": "Protocolo de detección"
+        "discovery-protocol-title": "Protocolo de detección",
+        "note": "Compatible con las series APX y AP."
       },
       "advanced-rf-management": {
         "roaming-assist": "Asistencia de itinerancia",
@@ -430,6 +433,7 @@
         "aps-placed": "colocado",
         "aps-none-placed": "No se ha colocado ningún punto de acceso.",
         "ap-simulated": "Punto de acceso simulado",
+        "ap6-not-supported": "AP6 no disponible en este momento.",
         "failed-to-load-floor": "Error al cargar el plano de planta",
         "deleting": "Eliminar",
         "editing": "Editar",
@@ -456,6 +460,7 @@
           "upload-success": "Archivo cargado correctamente.",
           "upload-error": "No se ha podido almacenar la imagen del plano de planta.",
           "floorplan-setup": {
+            "supported-note": "Solo es compatible con las series APX y AP.",
             "question": "¿Cómo crear un plano de planta?",
             "text": "Empiece por subir una imagen. Formatos aceptados: PDF, PNG, JPEG, BMP, GIF o WBMP - tamaño máximo del archivo: 1 MB",
             "GDPR-text": "A fin de cumplir el RGPD, asegúrese de que los sitios/plano de planta no incluyan información personal.",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "a",
         "firmware-upgrade": "Actualización de firmware",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "Potencia TX: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "Actualización de firmware",
           "COLLECT_LOGS": "Recopilar registros",
           "NETWORK": "Red",
-          "APU_CONFIG": "Configuración de APU"
+          "APU_CONFIG": "Configuración de APU",
+          "REMOTE_SUPPORT": "Soporte remoto"
         },
         "changeType": {
           "ADD": "Añadir",
@@ -1078,7 +1084,9 @@
           "DELETE": "Borrar",
           "SYSTEM": "Sistema",
           "SCHEDULE_UPGRADE": "Programar actualización",
-          "CANCEL_UPGRADE": "Cancelar actualización"
+          "CANCEL_UPGRADE": "Cancelar actualización",
+          "ENABLE_REMOTE_SUPPORT": "Activar el soporte remoto",
+          "DISABLE_REMOTE_SUPPORT": "Soporte remoto desactivado"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "La siguiente lista solo muestra los puntos de acceso AP6 que pueden actualizarse ({{count}}/{{total}} puntos de acceso).",
         "remove-schedule": "Cancelar programación",
         "choose-schedule": "Elegir una programación",
+        "defult-schedule-note": "El sistema ejecutará una actualización todos los martes a las 3:00 horas. Para elegir un horario diferente, haga clic en el botón 'Elegir una programación'",
         "rollback": "Cambiar de firmware ({{ version }})",
         "date-time": "Fecha y hora",
         "frequency": "Frecuencia",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "No se pueden anular las solicitudes de actualizaciones inmediatas. Puede añadir nuevas programaciones después de que se haya completado la programación existente."
         },
         "schedule": {
+          "upgrade": "Actualizar",
           "update-now": "Ahora",
           "custom": "Personalizada",
           "recurring": "Recurrente",
@@ -1214,7 +1224,7 @@
           "header-text": "Elegir una programación",
           "note": "Seleccione cuándo actualizar los puntos de acceso seleccionados.",
           "please-note": "Nota:",
-          "now-note": "<ul><li>A los puntos de acceso conectados se les notifica inmediatamente que procedan a la actualización del firmware.</li><li>Los puntos de acceso desconectados serán notificados en cuanto se conecten.</li><li>Esto quizá requiera el reinicio del punto de acceso.</li><li>Las programaciones inmediatas no se pueden modificar, una vez guardadas.</li><li>Las programaciones nuevas solo se pueden añadir una vez completada la programación existente.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>conectado - listo para actualizar</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>desconectado - conéctese para actualizar</span></div></li></ul><div class='flex margin-left-sm'><span>Los puntos de acceso desconectados no se actualizarán.</span></div>",
           "custom-note": "<ul><li>La programación elegida respetará la hora local del punto de acceso, independientemente de las zonas horarias.</li><li>La actualización del firmware puede requerir un reinicio.</li></ul>",
           "recurring-note": "<ul><li>La programación elegida respetará la hora local del punto de acceso, independientemente de las zonas horarias.</li><li>La actualización del firmware puede requerir un reinicio.</li><li>El sistema se actualizará a la última versión disponible</li></ul>",
           "daily-schedule": "Cada día a las {{time}}",

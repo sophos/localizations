@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "Ce nom de groupe existe déjà. Veuillez-en choisir un autre.",
           "INVALID_IP_ADDRESS_OR_FQDN": "L’adresse IP publique ou le FQDN indiqué pour le lien WAN est invalide : {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "Les adresses de port WAN primaire et secondaire fournies sont identiques.",
-          "RETRY_AFTER_SOMETIME": "Réessayez ultérieurement."
+          "RETRY_AFTER_SOMETIME": "Réessayez ultérieurement.",
+          "SDWAN_PROFILE_CREATE_FAILED": "Impossible de créer le profil SD-WAN."
         },
         "states": {
           "cannot-save": "Erreur inconnue lors de l’enregistrement du groupe de connexions.",
@@ -350,6 +351,7 @@
               "local-subnets":"Réseaux locaux",
               "wan-ports": "Port du réseau étendu (WAN)",
               "gateway": "Passerelles principales et de secours",
+              "backup-gateway": "Passerelle de secours",
               "nat": "NAT",
               "respond-only": "Partage des ressources",
               "initiator": "Accès aux ressources",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP obligatoire",
                   "invalid-ip": "Adresse IP non valide",
-                  "port-required": "Port requis"
+                  "port-required": "Port requis",
+                  "require-firewall": "Pare-feu obligatoire",
+                  "invalid-input": "Entrée non valide"
                 },
                 "table": {
                   "add-probe-target": "Ajouter une cible sonde",
                   "destination-firewall": "Pare-feu de destination",
-                  "select-destination-firewall": "Sélectionner",
+                  "default-destination-firewall": "Défaut (tous les pare-feu)",
                   "probe-target-ip-address": "Adresse IP de la cible sonde",
                   "custom-sla": "SLA personnalisée",
                   "latency": "Latence",
@@ -499,6 +503,9 @@
               "public-ip-needed": "Adresse IP publique ou Nom de domaine complet obligatoire.",
               "duplicate-public-ip": "Dupliquer l’adresse IP publique ou le Nom de domaine complet"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "L’option du profil SD-WAN est désactivée car une ou plusieurs interfaces XFRM se trouvent sur le masque de réseau 255.255.255.255. Migrer les interfaces XFRM pour ce pare-feu."
           }
         },
         "share-resources": {

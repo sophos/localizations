@@ -129,7 +129,8 @@
       }
     },
     "devices": {
-      "static-details": "Informations statiques",
+      "not-available-note": "Données d’analyse d’utilisation disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues.",
+      "static-details": "Détails statiques",
       "mac-address": "Adresse MAC",
       "current-access-point": "Point d’accès actuel",
       "current-site": "Site actuel",
@@ -140,7 +141,7 @@
       "signal-quality-header": "Qualité du signal (en dBm)",
       "ip": "IP",
       "vendor": "Fournisseur",
-      "usage-details": "Informations d’utilisation",
+      "usage-details": "Détails d’utilisation",
       "connectivity": "Connectivité",
       "start-not-set": "Heure de début non définie",
       "end-not-set": "Heure de fin non définie",
@@ -205,11 +206,12 @@
       "breadcrumb-text": "Informations sur l’utilisation",
       "title": "Sans fil - informations sur l’utilisation",
       "category": "Catégories",
-      "category-details": "Informations sur la catégorie",
+      "category-details": "Détails de la catégorie",
       "detail": "détail",
       "usage": "usage",
       "empty-category-message": "Veuillez sélectionner une catégorie pour obtenir plus d’informations.",
-      "no-data": "Aucune donnée de catégorie disponible"
+      "no-data": "Aucune donnée de catégorie disponible",
+      "not-available-note": "Données d’analyse d’utilisation disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues."
     },
     "diagnostics": {
       "events": "Événements",
@@ -282,7 +284,8 @@
         "analysis-title": "Analyse",
         "access-point-detection-title": "Détection du point d’accès non autorisé",
         "advancedRF-title": "Gestion AdvancedRF",
-        "discovery-protocol-title": "Protocole de recherche"
+        "discovery-protocol-title": "Protocole de recherche",
+        "note": "Pris en charge pour les séries APX et AP."
       },
       "advanced-rf-management": {
         "roaming-assist": "Assistance à l’itinérance",
@@ -430,6 +433,7 @@
         "aps-placed": "placé",
         "aps-none-placed": "Aucun point d’accès n’a été placé.",
         "ap-simulated": "Point d’accès simulé",
+        "ap6-not-supported": "AP6 non disponible pour le moment.",
         "failed-to-load-floor": "Impossible de charger le plan d’étage",
         "deleting": "Supprimer",
         "editing": "Modifier",
@@ -456,6 +460,7 @@
           "upload-success": "Fichier téléchargé",
           "upload-error": "Impossible d’archiver l’image du plan d’étage.",
           "floorplan-setup": {
+            "supported-note": "Uniquement pris en charge pour les séries APX et AP.",
             "question": "Voulez-vous créer un plan d’étage ?",
             "text": "Commencez par charger une image. Formats acceptés : PDF, PNG, JPEG, BMP, GIF ou WBMP - taille maximale du fichier : 1 Mo",
             "GDPR-text": "Pour être conforme au RGPD, veuillez-vous assurer que les Sites et les plans d’étage ne comprennent aucune information personnelle.",
@@ -949,7 +954,7 @@
         "secondsShort": "sec",
         "yearsShort": "a",
         "firmware-upgrade": "Mise à niveau du firmware",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "Puissance TX : {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "Mise à niveau du firmware",
           "COLLECT_LOGS": "Récupérer les journaux",
           "NETWORK": "Réseau",
-          "APU_CONFIG": "Config. APU"
+          "APU_CONFIG": "Config. APU",
+          "REMOTE_SUPPORT": "Support à distance"
         },
         "changeType": {
           "ADD": "Ajouter",
@@ -1078,7 +1084,9 @@
           "DELETE": "Supprimer",
           "SYSTEM": "Système",
           "SCHEDULE_UPGRADE": "Planifier la mise à niveau",
-          "CANCEL_UPGRADE": "Annuler la mise à niveau"
+          "CANCEL_UPGRADE": "Annuler la mise à niveau",
+          "ENABLE_REMOTE_SUPPORT": "Activer le support à distance",
+          "DISABLE_REMOTE_SUPPORT": "Support à distance désactivé"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "La liste ci-dessous indique uniquement AP6 qui peut être mis à niveau ({{count}}/{{total}} points d’accès).",
         "remove-schedule": "Annuler la planification",
         "choose-schedule": "Choisir une planification",
+        "defult-schedule-note": "Le système effectuera une mise à niveau tous les mardis à 3h00. Vous pouvez changer cette planification en cliquant sur le bouton « Choisir une planification »",
         "rollback": "Changer de firmware ({{ version }})",
         "date-time": "Date et heure",
         "frequency": "Fréquence",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "Vous ne pouvez pas annuler des demandes de mise à niveau immédiates. Vous pouvez ajouter de nouvelles planifications une fois la planification existante terminée."
         },
         "schedule": {
+          "upgrade": "Mise à niveau",
           "update-now": "Maintenant",
           "custom": "Personnaliser",
           "recurring": "Récurrent",
@@ -1214,7 +1224,7 @@
           "header-text": "Choisir une planification",
           "note": "Veuillez sélectionner quand les points d’accès sélectionnés seront mis à niveau.",
           "please-note": "Remarque :",
-          "now-note": "<ul><li>Les points d’accès connectés seront invités à immédiatement mettre à niveau leur firmware.</li><li>Les points d’accès déconnectés seront notifiés peu après leur connexion.</li><li>Le redémarrage du point d’accès sera nécessaire.</li><li>Les mises à niveau ou à jour immédiates ne peuvent pas être modifiées une fois enregistrées.</li><li>Les nouvelles mises à niveau ou à jour ne peuvent être ajoutées qu’après que la planification actuelle soit terminée.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>connecté - prêt pour la mise à niveau</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>déconnecté - veuillez vous connecter pour la mise à niveau</span></div></li></ul><div class='flex margin-left-sm'><span>Les points d’accès déconnectés ne seront pas mis à niveau.</span></div>",
           "custom-note": "<ul><li>La planification choisie sera appliquée à l’heure locale du point d’accès, quel que soit le fuseau horaire.</li><li>La mise à niveau du firmware peut nécessiter un redémarrage.</li></ul>",
           "recurring-note": "<ul><li>La planification choisie sera appliquée à l’heure locale du point d’accès, quel que soit le fuseau horaire.</li><li>La mise à niveau du firmware peut nécessiter un redémarrage.</li><li>Le système effectuera une mise à niveau à la dernière version disponible.</li></ul>",
           "daily-schedule": "Tous les jours à {{time}}",

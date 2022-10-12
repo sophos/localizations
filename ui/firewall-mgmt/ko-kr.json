@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "그룹 이름이 이미 있습니다. 다른 것을 선택하십시오.",
           "INVALID_IP_ADDRESS_OR_FQDN": "WAN 링크에 대해 지정된 공용 IP 또는 FQDN이 잘못됨: {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "제공된 기본 및 보조 WAN 포트 주소가 동일합니다.",
-          "RETRY_AFTER_SOMETIME": "잠시 후 다시 시도하십시오."
+          "RETRY_AFTER_SOMETIME": "잠시 후 다시 시도하십시오.",
+          "SDWAN_PROFILE_CREATE_FAILED": "SD-WAN 프로필 생성에 실패했습니다."
         },
         "states": {
           "cannot-save": "연결 그룹을 저장하는 동안 알 수 없는 오류가 발생했습니다.",
@@ -350,6 +351,7 @@
               "local-subnets":"로컬 네트워크",
               "wan-ports": "WAN 포트",
               "gateway": "기본 및 백업 게이트웨이",
+              "backup-gateway": "백업 게이트웨이",
               "nat": "NAT",
               "respond-only": "리소스 공유",
               "initiator": "리소스 액세스",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP은 필수입니다.",
                   "invalid-ip": "잘못된 IP",
-                  "port-required": "포트가 필요함"
+                  "port-required": "포트가 필요함",
+                  "require-firewall": "방화벽이 필요함",
+                  "invalid-input": "잘못된 입력"
                 },
                 "table": {
                   "add-probe-target": "프로브 대상 추가",
                   "destination-firewall": "대상 방화벽",
-                  "select-destination-firewall": "선택",
+                  "default-destination-firewall": "기본값(모든 방화벽)",
                   "probe-target-ip-address": "프로브 대상 IP 주소",
                   "custom-sla": "사용자 지정 SLA",
                   "latency": "대기 시간",
@@ -499,6 +503,9 @@
               "public-ip-needed": "공용 IP 또는 FQDN은 필수입니다.",
               "duplicate-public-ip": "공용 IP 또는 FQDN 중복"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "하나 이상의 XFRM 인터페이스가 넷마스크 255.255.255.255에 있으므로 SD-WAN 프로필 옵션이 꺼져 있습니다. 이 방화벽에 대한 XFRM 인터페이스를 마이그레이션합니다."
           }
         },
         "share-resources": {
