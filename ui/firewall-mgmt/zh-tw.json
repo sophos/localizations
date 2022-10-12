@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "群組名稱已存在。請選擇其他名稱。",
           "INVALID_IP_ADDRESS_OR_FQDN": "WAN 連結的公共 IP 或 FQDN 無效：{{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "所提供的主要和次要 WAN 連接埠地址相同。",
-          "RETRY_AFTER_SOMETIME": "請稍候重試。"
+          "RETRY_AFTER_SOMETIME": "請稍候重試。",
+          "SDWAN_PROFILE_CREATE_FAILED": "SD-WAN 設定檔建立失敗。"
         },
         "states": {
           "cannot-save": "儲存連線群組時出現未知錯誤。",
@@ -350,6 +351,7 @@
               "local-subnets":"本機網路",
               "wan-ports": "WAN 連接埠",
               "gateway": "主要和備用閘道",
+              "backup-gateway": "備用閘道",
               "nat": "NAT",
               "respond-only": "資源共用",
               "initiator": "資源存取",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP 是必填項",
                   "invalid-ip": "無效的 IP",
-                  "port-required": "必須提供連接埠"
+                  "port-required": "必須提供連接埠",
+                  "require-firewall": "需要防火牆",
+                  "invalid-input": "無效的輸入。"
                 },
                 "table": {
                   "add-probe-target": "新增探查目標",
                   "destination-firewall": "目的地防火墻",
-                  "select-destination-firewall": "選取",
+                  "default-destination-firewall": "預設（任何防火墻）",
                   "probe-target-ip-address": "探查目標 IP 位址",
                   "custom-sla": "自訂 SLA",
                   "latency": "延遲",
@@ -499,6 +503,9 @@
               "public-ip-needed": "公共 IP 或 FQDN 為必填項。",
               "duplicate-public-ip": "複製公共 IP 或 FQDN"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "由於網路遮罩 255.255.255.255 上存在一或多個 XFRM 介面，SD-WAN 設定檔選項已關閉。移轉此防火牆的 XFRM 介面。"
           }
         },
         "share-resources": {

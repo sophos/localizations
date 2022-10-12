@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "Nutzungsdaten sind nur verfügbar für die APX- und die AP-Serie. Nicht enthalten sind AP6-Daten.",
       "static-details": "Statische Daten",
       "mac-address": "MAC-Adresse",
       "current-access-point": "Aktueller Access Point",
@@ -209,7 +210,8 @@
       "detail": "Detail",
       "usage": "Nutzung",
       "empty-category-message": "Wählen Sie eine Kategorie aus, um mehr zu erfahren.",
-      "no-data": "Es sind keine Kategoriedaten verfügbar"
+      "no-data": "Es sind keine Kategoriedaten verfügbar",
+      "not-available-note": "Nutzungsdaten sind nur verfügbar für die APX- und AP-Serie. Nicht enthalten sind AP6-Daten."
     },
     "diagnostics": {
       "events": "Ereignisse",
@@ -282,7 +284,8 @@
         "analysis-title": "Analyse",
         "access-point-detection-title": "Erkennung unautorisierter Access Points (Rogue Access Points)",
         "advancedRF-title": "AdvancedRF-Management",
-        "discovery-protocol-title": "Discovery-Protokoll"
+        "discovery-protocol-title": "Discovery-Protokoll",
+        "note": "Unterstützt für die APX- und die AP-Serie."
       },
       "advanced-rf-management": {
         "roaming-assist": "Roaming-Assistent",
@@ -327,7 +330,7 @@
       "config": {
         "customer-unique-id-title": "Eindeutige Sophos Kunden-ID",
         "firmware-update": {
-          "note": "Dies aktualisiert alle veralteten Access-Points (APX und AP).",
+          "note": "Dies aktualisiert alle veralteten Access Points (APX und AP).",
           "title": "Firmware-Update",
           "help-text": "Sie können Firmware-Updates planen, indem Sie Häufigkeit und Zeitpunkt festlegen.",
           "current-version": "Aktuelle Version",
@@ -430,6 +433,7 @@
         "aps-placed": "installiert",
         "aps-none-placed": "Kein Access Point installiert.",
         "ap-simulated": "Simulierter AP",
+        "ap6-not-supported": "AP6 ist derzeit nicht verfügbar.",
         "failed-to-load-floor": "Grundriss konnte nicht geladen werden",
         "deleting": "Löschen",
         "editing": "Bearbeiten",
@@ -456,6 +460,7 @@
           "upload-success": "Datei erfolgreich hochgeladen",
           "upload-error": "Grundrissbild konnte nicht gespeichert werden.",
           "floorplan-setup": {
+            "supported-note": "Nur unterstützt für die APX- und die AP-Serie.",
             "question": "Wie wäre es mit einem Grundriss?",
             "text": "Laden Sie jetzt als erstes ein Bild hoch. Zulässige Formate: PDF, PNG, JPEG, BMP, GIF oder WBMP max. Dateigröße 1 MB",
             "GDPR-text": "Gemäß der Datenschutz-Grundverordnung müssen Sie sicherstellen, dass Grundrisse/Raumbelegungspläne keine persönlichen Informationen enthalten.",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "j",
         "firmware-upgrade": "Firmware-Aktualisierung",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "TX-Leistung: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -996,7 +1001,7 @@
           "radiosOne": "Funk 1",
           "choose-band": "Band",
           "unsupported-radio-info-label": "Dieser Sender wird an diesem Standort nicht unterstützt.",
-          "txpower": "TX Power",
+          "txpower": "TX-Leistung",
           "apNameRequired": "AP-Name ist erforderlich.",
           "apNameMaxLength": "AP-Name kann maximal 128 Zeichen lang sein.",
           "meshModeLabel": "Mesh erlauben",
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "Firmware-Upgrades",
           "COLLECT_LOGS": "Protokolle sammeln",
           "NETWORK": "Netzwerk",
-          "APU_CONFIG": "APU-Konfiguration"
+          "APU_CONFIG": "APU-Konfiguration",
+          "REMOTE_SUPPORT": "Remote-Support"
         },
         "changeType": {
           "ADD": "Hinzufügen",
@@ -1078,7 +1084,9 @@
           "DELETE": "Löschen",
           "SYSTEM": "System",
           "SCHEDULE_UPGRADE": "Aktualisierung planen",
-          "CANCEL_UPGRADE": "Aktualisierung abbrechen"
+          "CANCEL_UPGRADE": "Aktualisierung abbrechen",
+          "ENABLE_REMOTE_SUPPORT": "Remote-Support aktivieren",
+          "DISABLE_REMOTE_SUPPORT": "Remote-Support deaktiviert"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "Die folgende Liste zeigt nur AP6, die aktualisiert werden können ({{count}}/{{total}} Access Points).",
         "remove-schedule": "Zeitplan widerrufen",
         "choose-schedule": "Zeitplan wählen",
+        "defult-schedule-note": "Das System führt jeden Dienstag um 3 Uhr nachts ein Update durch. Klicken Sie auf die Schaltfläche 'Zeitplan wählen', um einen anderen Zeitplan zu wählen",
         "rollback": "Firmware-Austausch ({{ version }})",
         "date-time": "Datum & Uhrzeit",
         "frequency": "Häufigkeit",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "Sie können Upgrades mit sofortiger Ausführung nicht abbrechen. Sie können neue Zeitpläne hinzufügen, nachdem der vorhandene Zeitplan ausgeführt wurde."
         },
         "schedule": {
+          "upgrade": "Upgrade",
           "update-now": "Sofort",
           "custom": "Benutzerdefiniert",
           "recurring": "Wiederkehrend",
@@ -1214,7 +1224,7 @@
           "header-text": "Wählen Sie einen Zeitplan aus",
           "note": "Wählen Sie bitte aus, wann die ausgewählten Access Points aktualisiert werden sollen.",
           "please-note": "Hinweis:",
-          "now-note": "<ul><li>Verbundene Access Points erhalten sofort eine Aufforderung für das Upgrade.</li><li>Getrennte Access Points erhalten eine Aufforderung, nachdem sie sich wieder verbunden haben.</li><li>Hierbei wird der Access Point eventuell neu gestartet.</li><li>Sofortige Ausführungen können nach dem Speichern nicht mehr geändert werden.</li><li>Neue Zeitpläne können erst hinzugefügt werden, wenn der vorhandene Zeitplan ausgeführt ist.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>verbunden - bereit für Upgrade</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>getrennt - zum Upgrade bitte verbinden</span></div></li></ul><div class='flex margin-left-sm'><span>Getrennte Access Points erhalten kein Upgrade.</span></div>",
           "custom-note": "<ul><li>Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen.</li><li>Während des Upgrades kommt es möglicherweise zu einem Neustart.</li></ul>",
           "recurring-note": "<ul><li>Der Zeitplan richtet sich nach der lokalen Zeit des Access Points ohne Berücksichtigung von Zeitzonen.</li><li>Während des Upgrades kommt es möglicherweise zu einem Neustart.</li><li>Das System wird auf die neueste verfügbare Version aktualisiert.</li></ul>",
           "daily-schedule": "Täglich um {{time}}",
@@ -1248,7 +1258,7 @@
         "update-available": "Ein neues Firmware-Upgrade ist verfügbar.",
         "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
         "legacy-schedule-link": "Upgrade planen (AP5 und niedriger)",
-        "legacy-upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden. Dies aktualisiert alle veralteten Access-Points (APX und AP).",
+        "legacy-upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden. Dies aktualisiert alle veralteten Access Points (APX und AP).",
         "default-schedule-msg": "Wenn Sie kein Upgrade planen, wird der Access Point regelmäßig auf Basis des Standard-Zeitplans (wöchentlich) aktualisiert.",
         "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
         "up-to-date": "Firmware ist aktuell.",
@@ -1398,9 +1408,9 @@
       "validString.clientNetworkAddressType": "Ungültiger Wert für den Typ der Client-Netzwerkadresse",
       "validString.clientNetworkType": "Ungültiger Wert für den Client-Netzwerktyp",
       "validString.macFilter": "Ungültiger MAC-Filter",
-      "site-name.already.exists": "Ein Kundenstandort mit diesem Namen ist bereits vorhanden",
-      "ap.name.already.exists": "Der Access-Point-Name ist bereits vorhanden",
-      "ssid.name.already.exists": "Der SSID-Name ist bereits vorhanden",
+      "site-name.already.exists": "Ein Kundenstandort mit dem gleichen Namen existiert bereits",
+      "ap.name.already.exists": "Ein Access Point mit demselben Namen existiert bereits",
+      "ssid.name.already.exists": "Der SSID-Name existiert bereits",
       "unknown.constraint.violation": "Unbekannte Bedingungsverletzung",
       "serial.invalid": "Ungültige Seriennummer",
       "exception.unexpected": "Bei der Verarbeitung der Anfrage ist ein unerwarteter Fehler aufgetreten",

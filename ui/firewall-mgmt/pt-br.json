@@ -296,7 +296,8 @@
           "GROUP_NAME_EXISTS": "O nome do grupo já existe. Escolha um diferente.",
           "INVALID_IP_ADDRESS_OR_FQDN": "IP público ou FQDN especificado para o link WAN é inválido: {{ IPOrFQDN }}",
           "DUPLICATE_WAN_PORT_ADRRESS": "Os endereços de porta WAN primário e secundário são os mesmos.",
-          "RETRY_AFTER_SOMETIME": "Tente novamente mais tarde."
+          "RETRY_AFTER_SOMETIME": "Tente novamente mais tarde.",
+          "SDWAN_PROFILE_CREATE_FAILED": "Falha na criação do perfil SD-WAN."
         },
         "states": {
           "cannot-save": "Erro desconhecido ao salvar o grupo de conexão.",
@@ -350,6 +351,7 @@
               "local-subnets":"Redes Locais",
               "wan-ports": "Porta de WAN",
               "gateway": "Gateways primário e de backup",
+              "backup-gateway": "Gateway de Backup",
               "nat": "NAT",
               "respond-only": "Compartilhamento de recurso",
               "initiator": "Acesso a recurso",
@@ -473,12 +475,14 @@
                 "error": {
                   "ip-required": "IP obrigatório",
                   "invalid-ip": "IP inválido",
-                  "port-required": "Porta obrigatória"
+                  "port-required": "Porta obrigatória",
+                  "require-firewall": "É necessário um Firewall",
+                  "invalid-input": "Entrada inválida"
                 },
                 "table": {
                   "add-probe-target": "Adicionar destino de sondagem",
                   "destination-firewall": "Firewall de destino",
-                  "select-destination-firewall": "Selecionar",
+                  "default-destination-firewall": "Default (qualquer firewall)",
                   "probe-target-ip-address": "Endereço IP do destino de sondagem",
                   "custom-sla": "SLA Personalizada",
                   "latency": "Latência",
@@ -499,6 +503,9 @@
               "public-ip-needed": "FQDN ou IP público é necessário.",
               "duplicate-public-ip": "Duplicar FQDN ou IP público"
             }
+          },
+          "tooltips": {
+            "sd-wan-disable": "A opção Perfil SD-WAN está desativada porque uma ou mais interfaces XFRM estão na máscara de rede 255.255.255.255. Migre as interfaces XFRM para este firewall."
           }
         },
         "share-resources": {

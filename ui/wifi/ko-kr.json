@@ -109,7 +109,7 @@
           "confirm": "이미지 자르기"
         }
       },
-      "browsehappy": "<strong>오래된</strong> 브라우저를 사용하고 있습니다. <a href=\"http://browsehappy.com/?locale=en\">브라우저를 업그레이드</a>하여 사용 환경을 개선하십시오."
+      "browsehappy": "<strong>오래된</strong> 브라우저를 사용하고 있습니다. <a href=\"http://browsehappy.com/?locale=ko\">브라우저를 업그레이드</a>하여 사용 환경을 개선하십시오."
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "사용 현황 파악 데이터는 APX 및 AP 시리즈에서만 사용할 수 있습니다. AP6 데이터는 제외됩니다.",
       "static-details": "정적 세부 정보",
       "mac-address": "MAC 주소",
       "current-access-point": "현재 액세스 지점",
@@ -209,7 +210,8 @@
       "detail": "세부 정보",
       "usage": "사용 현황",
       "empty-category-message": "자세한 내용을 보려면 범주를 선택하십시오.",
-      "no-data": "사용할 수 있는 범주 데이터가 없습니다."
+      "no-data": "사용할 수 있는 범주 데이터가 없습니다.",
+      "not-available-note": "사용 현황 파악 데이터는 APX 및 AP 시리즈에서만 사용할 수 있습니다. AP6 데이터는 제외됩니다."
     },
     "diagnostics": {
       "events": "이벤트",
@@ -282,7 +284,8 @@
         "analysis-title": "분석",
         "access-point-detection-title": "불법 액세스 지점 감지",
         "advancedRF-title": "AdvancedRF 관리",
-        "discovery-protocol-title": "검색 프로토콜"
+        "discovery-protocol-title": "검색 프로토콜",
+        "note": "APX 및 AP 시리즈에서 지원됩니다."
       },
       "advanced-rf-management": {
         "roaming-assist": "로밍 지원",
@@ -430,6 +433,7 @@
         "aps-placed": "배치됨",
         "aps-none-placed": "배치된 액세스 지점이 없습니다.",
         "ap-simulated": "시뮬레이션된 AP",
+        "ap6-not-supported": "현재 AP6은 사용할 수 없습니다.",
         "failed-to-load-floor": "평면도를 로드하지 못했습니다.",
         "deleting": "삭제",
         "editing": "편집",
@@ -456,6 +460,7 @@
           "upload-success": "파일이 업로드되었습니다.",
           "upload-error": "평면도 이미지를 저장하지 못했습니다.",
           "floorplan-setup": {
+            "supported-note": "APX 및 AP 시리즈에서만 지원됩니다.",
             "question": "평면도를 설정하는 것은 어떨까요?",
             "text": "지금 이미지를 업로드해 시작하십시오. 허용되는 형식: PDF, PNG, JPEG, BMP, GIF 또는 WBMP 최대 파일 크기 1MB",
             "GDPR-text": "GDPR을 준수하기 위해 면적/평면도에 개인 정보를 포함하지 않았음을 확인하십시오.",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "y",
         "firmware-upgrade": "펌웨어 업그레이드",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "TX 전원: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "펌웨어 업그레이드",
           "COLLECT_LOGS": "로그 수집",
           "NETWORK": "네트워크",
-          "APU_CONFIG": "Apu Config"
+          "APU_CONFIG": "Apu Config",
+          "REMOTE_SUPPORT": "원격 지원"
         },
         "changeType": {
           "ADD": "추가",
@@ -1078,7 +1084,9 @@
           "DELETE": "삭제",
           "SYSTEM": "시스템",
           "SCHEDULE_UPGRADE": "업그레이드 예약",
-          "CANCEL_UPGRADE": "업그레이드 취소"
+          "CANCEL_UPGRADE": "업그레이드 취소",
+          "ENABLE_REMOTE_SUPPORT": "원격 지원 사용",
+          "DISABLE_REMOTE_SUPPORT": "원격 지원 사용 안 함"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "아래 목록은 업그레이드 가능한 AP6만 보여줍니다({{count}}/{{total}}개 액세스 포인트).",
         "remove-schedule": "예약 일정 취소",
         "choose-schedule": "일정 선택",
+        "defult-schedule-note": "시스템이 매주 화요일 오전 3시에 업그레이드를 실행합니다. '일정 선택' 버튼을 클릭하여 다른 일정을 선택할 수 있습니다.",
         "rollback": "펌웨어 교체({{ version }})",
         "date-time": "날짜 및 시간",
         "frequency": "빈도",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "즉각적인 업그레이드 요청은 취소할 수 없습니다. 기존 일정이 완료된 후 새 일정을 추가할 수 있습니다."
         },
         "schedule": {
+          "upgrade": "업그레이드",
           "update-now": "지금",
           "custom": "사용자 지정",
           "recurring": "반복",
@@ -1214,7 +1224,7 @@
           "header-text": "예약 선택",
           "note": "선택한 액세스 포인트를 업그레이드할 시점을 선택하십시오.",
           "please-note": "참고:",
-          "now-note": "<ul><li>연결된 액세스 포인트는 펌웨어를 즉시 업그레이드하라는 알림을 받습니다.</li><li>연결 해제된 액세스 포인트는 연결 직후 알림을 받습니다.</li><li>이때 액세스 포인트를 다시 시작하게 될 수 있습니다.</li><li>즉각적인 예약은 저장하고 나면 수정할 수 없습니다.</li><li>새로운 예약은 기존 예약 일정이 완료된 후에만 추가할 수 있습니다.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>연결됨 - 업그레이드 준비 완료</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>연결 해제됨 - 업그레이드하려면 연결하십시오.</span></div></li></ul><div class='flex margin-left-sm'><span>연결 해제된 액세스 포인트는 업그레이드되지 않습니다.</span></div>",
           "custom-note": "<ul><li>선택한 일정은 시간대에 관계없이 액세스 포인트의 로컬 시간을 따릅니다.</li><li>펌웨어를 업그레이드하면 다시 시작해야 할 수 있습니다.</li></ul>",
           "recurring-note": "<ul><li>선택한 일정은 시간대에 관계없이 액세스 지점의 현지 시간을 따릅니다.</li><li>펌웨어를 업그레이드하면 다시 시작해야 할 수 있습니다.</li><li>시스템이 사용 가능한 최신 버전으로 업그레이드됩니다.</li></ul>",
           "daily-schedule": "매일 {{time}}시",

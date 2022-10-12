@@ -109,7 +109,7 @@
           "confirm": "裁切影像"
         }
       },
-      "browsehappy": "您目前使用的是<strong>過時</strong>的瀏覽器。請<a href=\"http://browsehappy.com/?locale=en\">升級瀏覽器</a>，以改善您的使用經驗。"
+      "browsehappy": "您目前使用的是<strong>過時</strong>的瀏覽器。請<a href=\"http://browsehappy.com/?locale=zh-hant\">升級瀏覽器</a>，以改善您的使用經驗。"
     },
     "dashboard": {
       "menu-title": "儀表板",
@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "使用情況解析資料僅針對 APX 和 AP 系列提供。不包括 AP6 資料。",
       "static-details": "靜態詳情",
       "mac-address": "MAC 位址",
       "current-access-point": "目前存取點",
@@ -209,7 +210,8 @@
       "detail": "詳細資訊",
       "usage": "使用",
       "empty-category-message": "請選擇類別以取得更多資訊。",
-      "no-data": "沒有可用的類別資訊"
+      "no-data": "沒有可用的類別資訊",
+      "not-available-note": "使用情況解析資料僅針對 APX 和 AP 系列提供。不包括 AP6 資料。"
     },
     "diagnostics": {
       "events": "事件",
@@ -282,7 +284,8 @@
         "analysis-title": "分析",
         "access-point-detection-title": "惡意存取點偵測",
         "advancedRF-title": "AdvancedRF 管理",
-        "discovery-protocol-title": "發現協議"
+        "discovery-protocol-title": "發現協議",
+        "note": "支援 APX 和 AP 系列。"
       },
       "advanced-rf-management": {
         "roaming-assist": "漫遊輔助",
@@ -430,6 +433,7 @@
         "aps-placed": "已放置",
         "aps-none-placed": "沒有放置存取點。",
         "ap-simulated": "模擬 AP",
+        "ap6-not-supported": "目前 AP6 不可用。",
         "failed-to-load-floor": "無法載入平面圖",
         "deleting": "刪除",
         "editing": "編輯",
@@ -456,6 +460,7 @@
           "upload-success": "檔案成功上傳",
           "upload-error": "無法儲存樓層規畫影像。",
           "floorplan-setup": {
+            "supported-note": "僅支援 APX 和 AP 系列。",
             "question": "如何設定樓層規畫？",
             "text": "從立即上傳影像開始。可接受的格式：PDF、PNG、JPEG、BMP、GIF 或 WBMP 檔案大小上限為 1MB",
             "GDPR-text": "爲了 GDPR 合規，請確保站點/平面圖不包含個人資訊。",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "y",
         "firmware-upgrade": "韌體升級",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "TX 電量：{{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "韌體升級",
           "COLLECT_LOGS": "收集記錄",
           "NETWORK": "網路",
-          "APU_CONFIG": "APU 設定"
+          "APU_CONFIG": "APU 設定",
+          "REMOTE_SUPPORT": "遠端支援"
         },
         "changeType": {
           "ADD": "新增",
@@ -1078,7 +1084,9 @@
           "DELETE": "删除",
           "SYSTEM": "系統",
           "SCHEDULE_UPGRADE": "排程升級",
-          "CANCEL_UPGRADE": "取消升級"
+          "CANCEL_UPGRADE": "取消升級",
+          "ENABLE_REMOTE_SUPPORT": "啟用遠端支援",
+          "DISABLE_REMOTE_SUPPORT": "停用遠端支援"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "以下清單僅顯示可升級的 AP6（{{count}}/{{total}} 個存取點）。",
         "remove-schedule": "取消排程",
         "choose-schedule": "選擇排程",
+        "defult-schedule-note": "系統將於每週二凌晨 3:00 執行升級。按一下「選擇排程」按鈕可選擇其他排程。",
         "rollback": "切換韌體 ({{ version }})",
         "date-time": "日期和時間",
         "frequency": "頻率",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "您無法立即取消升級請求。您可在現有排程完成後新增新的排程。"
         },
         "schedule": {
+          "upgrade": "升级",
           "update-now": "立即",
           "custom": "自訂",
           "recurring": "週期性",
@@ -1214,7 +1224,7 @@
           "header-text": "選擇排程",
           "note": "請選取何時升級所選的存取點。",
           "please-note": "請注意：",
-          "now-note": "<ul><li>連線的存取點將收到通知，立即升級韌體。</li><li>連線斷開的存取點將在連線之後很快收到通知。</li><li>這可能需要重新啟動存取點。</li><li>即時排程一旦儲存，無法修改。</li><li>新排程只能在現有排程完成之後才能新增。</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>已連線 - 準備升級</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>連線中斷 - 請連線以升級</span></div></li></ul><div class='flex margin-left-sm'><span>連線中斷的存取點將不會升級。</span></div>",
           "custom-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li></ul>",
           "recurring-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li><li>系統將升級至最新可用版本。</li></ul>",
           "daily-schedule": "每日於 {{time}}",

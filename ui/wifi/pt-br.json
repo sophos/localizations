@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "Dados de detalhamento de uso disponíveis apenas para as séries APX e AP. Exclui dados do AP6.",
       "static-details": "Detalhes estáticos",
       "mac-address": "Endereço de MAC",
       "current-access-point": "Ponto de acesso atual",
@@ -209,7 +210,8 @@
       "detail": "detalhe",
       "usage": "uso",
       "empty-category-message": "Selecione uma categoria para ver mais informações.",
-      "no-data": "Não há dados de categoria disponíveis"
+      "no-data": "Não há dados de categoria disponíveis",
+      "not-available-note": "Dados de detalhamento de uso disponíveis apenas para as séries APX e AP. Exclui dados do AP6."
     },
     "diagnostics": {
       "events": "Eventos",
@@ -282,7 +284,8 @@
         "analysis-title": "Análise",
         "access-point-detection-title": "Detecção de ponto de acesso ilegítimo",
         "advancedRF-title": "Gerenciamento AdvancedRF",
-        "discovery-protocol-title": "Protocolo de Descoberta"
+        "discovery-protocol-title": "Protocolo de Descoberta",
+        "note": "Com suporte para as séries APX e AP."
       },
       "advanced-rf-management": {
         "roaming-assist": "Assistência com roaming",
@@ -430,6 +433,7 @@
         "aps-placed": "inserido",
         "aps-none-placed": "Nenhum ponto de acesso inserido.",
         "ap-simulated": "AP simulado",
+        "ap6-not-supported": "AP6 não disponível no momento.",
         "failed-to-load-floor": "Falha ao carregar a planta baixa",
         "deleting": "Deletar",
         "editing": "Editar",
@@ -456,6 +460,7 @@
           "upload-success": "Arquivo carregado com sucesso",
           "upload-error": "Falha ao armazenar a imagem da planta baixa.",
           "floorplan-setup": {
+            "supported-note": "Com suporte apenas para as séries APX e AP.",
             "question": "O que você acha de fazer a planta baixa?",
             "text": "Comece agora carregando uma imagem. Formatos compatíveis: O tamanho máx. do arquivo PDF, PNG, JPEG, BMP, GIF ou WBMP é de 1 MB",
             "GDPR-text": "A fim de atender aos requisitos da política GDPR, confirme que suas plantas baixas/localidades não incluam dados pessoais.",
@@ -949,7 +954,7 @@
         "secondsShort": "s",
         "yearsShort": "y",
         "firmware-upgrade": "Upgrade de firmware",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "Potência de TX: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "Upgrade de firmware",
           "COLLECT_LOGS": "Coletar logs",
           "NETWORK": "Rede",
-          "APU_CONFIG": "Configuração de Apu"
+          "APU_CONFIG": "Configuração de Apu",
+          "REMOTE_SUPPORT": "Suporte Remoto"
         },
         "changeType": {
           "ADD": "Adicionar",
@@ -1078,7 +1084,9 @@
           "DELETE": "Deletar",
           "SYSTEM": "Sistema",
           "SCHEDULE_UPGRADE": "Agendar upgrade",
-          "CANCEL_UPGRADE": "Cancelar upgrade"
+          "CANCEL_UPGRADE": "Cancelar upgrade",
+          "ENABLE_REMOTE_SUPPORT": "Habilitar suporte remoto",
+          "DISABLE_REMOTE_SUPPORT": "Suporte remoto desabilitado"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "A lista abaixo mostra apenas o AP6, que pode ser atualizado ({{count}}/{{total}} pontos de acesso).",
         "remove-schedule": "Cancelar agendamento",
         "choose-schedule": "Escolher agenda",
+        "defult-schedule-note": "O sistema executará um upgrade toda terça-feira às 3h. Você pode escolher uma programação diferente clicando no botão 'Escolher agenda'",
         "rollback": "Troca de firmware ({{ version }})",
         "date-time": "Data & Hora",
         "frequency": "Frequência",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "Não é possível cancelar solicitações de atualização imediatas. Você pode adicionar novos agendamentos após a agenda existente ser concluída."
         },
         "schedule": {
+          "upgrade": "Upgrade",
           "update-now": "Agora",
           "custom": "Personalizado",
           "recurring": "Recorrente",
@@ -1214,7 +1224,7 @@
           "header-text": "Escolha uma agenda",
           "note": "Selecione quando fazer o upgrade dos pontos de acesso selecionados.",
           "please-note": "Observação:",
-          "now-note": "<ul><li>Os pontos de acesso conectados serão notificados para realizar o upgrade do firmware imediatamente.</li><li>Os pontos de acesso desconectados serão notificados assim que se conectarem.</li><li>Isso pode exigir a reinicialização do ponto de acesso.</li><li>Os agendamentos imediatos não podem ser modificados depois que são salvos.</li><li>Novas agendas podem ser adicionadas somente depois da conclusão do agendamento existente.</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>conectado - pronto para o upgrade</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>desconectado - conecte-se para o upgrade</span></div></li></ul><div class='flex margin-left-sm'><span>Os pontos de acesso desconectados não serão atualizados.</span></div>",
           "custom-note": "<ul><li>A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário.</li><li>O upgrade do firmware pode exigir a reinicialização.</li></ul>",
           "recurring-note": "<ul><li>A agenda programada seguirá o horário local do ponto de acesso, independentemente do fuso horário.</li><li>O upgrade do firmware pode exigir a reinicialização.</li><li>O sistema será atualizado para a versão mais recente disponível.</li></ul>",
           "daily-schedule": "Diariamente às {{time}}",

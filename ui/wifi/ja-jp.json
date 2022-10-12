@@ -129,6 +129,7 @@
       }
     },
     "devices": {
+      "not-available-note": "使用状況データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。",
       "static-details": "詳細",
       "mac-address": "MAC アドレス",
       "current-access-point": "現在のアクセスポイント",
@@ -209,7 +210,8 @@
       "detail": "詳細",
       "usage": "使用状況",
       "empty-category-message": "カテゴリを選択すると、詳細な情報が表示されます。",
-      "no-data": "表示できるカテゴリのデータはありません"
+      "no-data": "表示できるカテゴリのデータはありません",
+      "not-available-note": "使用状況データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。"
     },
     "diagnostics": {
       "events": "イベント",
@@ -282,7 +284,8 @@
         "analysis-title": "解析",
         "access-point-detection-title": "不正アクセスポイントの検出",
         "advancedRF-title": "AdvancedRF の管理",
-        "discovery-protocol-title": "ディスカバリプロトコル"
+        "discovery-protocol-title": "ディスカバリプロトコル",
+        "note": "APX および AP シリーズに対応しています。"
       },
       "advanced-rf-management": {
         "roaming-assist": "ローミングアシスト",
@@ -430,6 +433,7 @@
         "aps-placed": "配置済み",
         "aps-none-placed": "配置されているアクセスポイントはありません。",
         "ap-simulated": "シミュレート済み AP",
+        "ap6-not-supported": "現在、AP6 は使用できません。",
         "failed-to-load-floor": "構成図の読み込みに失敗しました",
         "deleting": "削除",
         "editing": "編集",
@@ -456,6 +460,7 @@
           "upload-success": "ファイルをアップロードしました",
           "upload-error": "構内図の画像を保存できませんでした。",
           "floorplan-setup": {
+            "supported-note": "APX および AP シリーズのみに対応しています。",
             "question": "構内図の設定",
             "text": "まずは画像をアップロードしてください。有効な形式: PDF、PNG、JPEG、BMP、GIF、または WBMP。ファイルサイズの上限: 1MB",
             "GDPR-text": "GDPR に遵守するために、サイト/構内図に個人情報が含まれていないことを確認してください。",
@@ -949,7 +954,7 @@
         "secondsShort": "秒",
         "yearsShort": "年",
         "firmware-upgrade": "ファームウェアのアップグレード",
-        "tx-power": "{{txPower}} %"
+        "tx-power": "送信出力: {{txPower}} %"
       },
       "edit": {
         "editor": {
@@ -1070,7 +1075,8 @@
           "FIRMWARE_UPGRADE": "ファームウェアのアップグレード",
           "COLLECT_LOGS": "ログの収集",
           "NETWORK": "ネットワーク",
-          "APU_CONFIG": "APU 設定"
+          "APU_CONFIG": "APU 設定",
+          "REMOTE_SUPPORT": "リモートサポート"
         },
         "changeType": {
           "ADD": "追加",
@@ -1078,7 +1084,9 @@
           "DELETE": "削除",
           "SYSTEM": "システム",
           "SCHEDULE_UPGRADE": "アップグレードのスケジュール設定",
-          "CANCEL_UPGRADE": "アップグレードのキャンセル"
+          "CANCEL_UPGRADE": "アップグレードのキャンセル",
+          "ENABLE_REMOTE_SUPPORT": "リモートサポートを有効",
+          "DISABLE_REMOTE_SUPPORT": "リモートサポートを無効"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1177,6 +1185,7 @@
         "note-for-site": "以下のリストは、アップグレード可能な AP6 ({{total}}件中 {{count}}件のアクセスポイント) のみを示しています。",
         "remove-schedule": "スケジュールのキャンセル",
         "choose-schedule": "スケジュールの選択",
+        "defult-schedule-note": "システムは毎週火曜日の午前 3時にアップグレードを実行します。「スケジュールの選択」ボタンをクリックすると、別のスケジュールを選択できます。",
         "rollback": "ファームウェアの切り替え ({{ version }})",
         "date-time": "日時",
         "frequency": "頻度",
@@ -1205,6 +1214,7 @@
           "cancel-warning": "即時アップグレードのリクエストはキャンセルできません。新しいスケジュールは、既存のスケジュールの完了後に追加できます。"
         },
         "schedule": {
+          "upgrade": "アップグレード",
           "update-now": "今すぐ",
           "custom": "カスタム",
           "recurring": "繰り返す",
@@ -1214,7 +1224,7 @@
           "header-text": "スケジュールの選択",
           "note": "選択したアクセスポイントをアップグレードするタイミングを選択してください。",
           "please-note": "注:",
-          "now-note": "<ul><li>接続されているアクセスポイントには、直ちにファームウェアをアップグレードするよう通知が送信されます。</li><li>切断されているアクセスポイントは、接続後すぐに通知が送信されます。</li><li>これには、アクセスポイントの再起動が必要になる場合があります。</li><li>今すぐ実行するタスクは、一度保存すると変更できません。</li><li>新しいスケジュールは、既存のスケジュールの完了後のみに追加できます。</li></ul>",
+          "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>接続済み - アップグレードの準備ができています</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>切断 - アップグレードに接続してください</span></div></li></ul><div class='flex margin-left-sm'><span>切断されたアクセスポイントはアップグレードされません。</span></div>",
           "custom-note": "<ul><li>選択されたスケジュールは、タイムゾーンに関係なく、アクセスポイントの現地時間に従います。</li><li>ファームウェアのアップグレードには再起動が必要になる場合があります。</li></ul>",
           "recurring-note": "<ul><li>選択されたスケジュールは、タイムゾーンに関係なく、アクセスポイントの現地時間に従います。</li><li>ファームウェアのアップグレードには再起動が必要になる場合があります。</li></ul>システムは使用可能な最新バージョンにアップグレードされます。</li></ul>",
           "daily-schedule": "毎日 {{time}}",
