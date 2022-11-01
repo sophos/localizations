@@ -477,17 +477,25 @@
                   "invalid-ip": "Adresse IP non valide",
                   "port-required": "Port requis",
                   "require-firewall": "Pare-feu obligatoire",
-                  "invalid-input": "Entrée non valide"
+                  "invalid-input": "Entrée non valide",
+                  "duplicate-destination": "Dupliquer la destination"
                 },
                 "table": {
                   "add-probe-target": "Ajouter une cible sonde",
                   "destination-firewall": "Pare-feu de destination",
                   "default-destination-firewall": "Défaut (tous les pare-feu)",
                   "probe-target-ip-address": "Adresse IP de la cible sonde",
+                  "probe-target-ip-info": "Si le premier hôte répond au sondage, le pare-feu ne sonde pas le prochain hôte configuré.",
                   "custom-sla": "SLA personnalisée",
+                  "custom-sla-info": "Achemine le trafic via la première passerelle répondant au SLA. Pour l’équilibrage de charge, il utilise toutes les passerelles répondant au SLA. Si aucune passerelle ne répond au SLA, la stratégie de routage configurée s’applique.",
                   "latency": "Latence",
                   "jitter": "Gigue",
-                  "packet-loss": "Perte de paquets"
+                  "packet-loss": "Perte de paquets",
+                  "margin": {
+                    "latency": "1-60000 ms",
+                    "jitter": "1-60000 ms",
+                    "packet-loss": "1-100 %"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "L’option du profil SD-WAN est désactivée car une ou plusieurs interfaces XFRM se trouvent sur le masque de réseau 255.255.255.255. Migrer les interfaces XFRM pour ce pare-feu."
+            "sd-wan-disable": "L’option du profil SD-WAN est désactivée car une ou plusieurs interfaces XFRM se trouvent sur le masque de réseau 255.255.255.255. Migrer les interfaces XFRM de ce pare-feu à partir de la liste des groupes de connexion."
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "Cliquez sur le bouton « Créer un groupe de connexion » pour démarrer l’assistant.",
         "header": "Simplifiez votre configuration SD-WAN avec les groupes de connexion",
         "learn-more": "Plus d’info"
+      },
+      "migrate-xfrm": {
+        "label": "Transférer",
+        "migrate": "Migrer les adresses IP XFRM de ce pare-feu vers le réseau /30.",
+        "success": "Adresse IP XFRM migrée.",
+        "XFRM_IP_ALLOCATION_FAILED": "Allocation de l’adresse IP XFRM impossible.",
+        "XFRM_IP_MIGRATION_FAILED": "Migration de l’adresse IP XFRM impossible."
       }
     },
     "firewall-groups": {

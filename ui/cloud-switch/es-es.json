@@ -195,14 +195,16 @@
       "not-managed-from-central": "Esta opción de configuración aún no se administra desde Sophos Central. Añada una política para empezar a gestionarla.",
       "are-you-sure": "¿Seguro que desea continuar?",
       "config-source": "Origen de configuración",
-      "conflict-message": "Se han detectado conflictos con estas opciones. No guarde esta configuración."
+      "conflict-message": "Se han detectado conflictos con estas opciones. No guarde esta configuración.",
+      "site-zero-switch-count-message": "Configuración guardada para el sitio. No se han encontrado switches en este sitio. Puede optar por sincronizar la configuración al tiempo que se añaden switches al sitio."
     },
     "dto": {
       "NetworksIPv4Dto": "Redes (IPv4)",
       "NetworksIPv6Dto": "Redes (IPv6)",
       "MgmtNetworkIPv4Dto": "Red de administración (IPv4)",
       "MldSnoopingVlanSettingsDto": "Supervisión MLD (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "Supervisión IGMP (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "Supervisión IGMP (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "Supervisión DHCP (VLAN)"
     },
     "dashboard": {
       "menu-title": "Panel de control",
@@ -628,7 +630,7 @@
       "disabled": "Desactivado"
     },
     "vlan": {
-      "search-placeholder-text": "Buscar por ID o nombre",
+      "search-placeholder-text": "Buscar",
       "ports-dd-default-title": "Seleccionar puertos",
       "add-vlan-dialog-title": "Añadir VLAN",
       "edit-vlan-dialog-title": "Editar VLAN",
@@ -966,7 +968,10 @@
         "schedule_full_auto": "Actualización automática (firmware)",
         "schedule_rollback_auto": "Cambiar partición de arranque automáticamente",
         "lag_settings": "Configuración LACP",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "Inspección DHCP (VLAN)",
+        "dhcp_snooping_settings": "Inspección DHCP (configuración)",
+        "dhcp_snooping_port": "Inspección DHCP (puerto)"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -985,7 +990,7 @@
       "ports-required-message": "Se requieren puertos.",
       "ports-min-lag-message": "Se requiere un mínimo de 2 puertos.",
       "normal-fiber-mixed-message": "No se pueden combinar puertos de cobre y de fibra.",
-      "lacp-settings-button": "Configuración LACP",
+      "lacp-settings-button": "configuración LACP",
       "lag-settings-button": "Puertos LAG",
       "select-ports-dd-placeholder": "Seleccionar puertos",
       "lag-misconfigured": "Uno o más puertos configurados en este LAG también están configurados en el LAG {{ lag }}",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de los puertos y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "switch-save-dialog-text": "El switch recibirá las actualizaciones de los puertos y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "save-checkbox-text": "Sincronizar las opciones de configuración con estos switches inmediatamente",
-        "lag-site-sync-dialog-text": "{{ count }} switches recibirán las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
-        "lag-switch-sync-dialog-text": "El switch recibirá las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "lag-site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "lag-switch-save-dialog-text": "El switch recibirá las actualizaciones de LAG y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "port-revert-success": "La configuración del switch se ha eliminado correctamente y el switch está utilizando la configuración del sitio.",
         "port-revert-error": "No se pueden borrar las configuraciones del switch.",
         "port-revert-system-success": "Las configuraciones del sitio se han eliminado correctamente y el switch está utilizando los valores predeterminados del sistema.",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "No establecido",
-          "on": "Activado",
-          "off": "Desactivado"
-        }
+          "enabled": "Activado",
+          "disabled": "Desactivado",
+          "trusted": "De confianza",
+          "untrusted": "Sospechoso"
+        },
+        "config-source": "Origen de configuración"
       },
       "dhcp-relay": {
         "title": "Retransmisión DHCP",
-        "relay-status": "Estado de la retransmisión",
+        "relay-status": "Estado",
         "server-ip-text": "Direcciones IP del servidor",
         "server-invalid": "Dirección IPv4 no válida.",
         "server-already-exists": "El servidor de retransmisión ya está configurado.",
@@ -1048,14 +1056,8 @@
         "server-loopback": "La dirección de bucle invertido no puede utilizarse como un servidor de retransmisión DHCP válido.",
         "placeholder": "Introducir direcciones IPv4",
         "max-servers": "Ya se han añadido 5 servidores, que es el máximo.",
-        "config-source": "Origen de configuración actual",
         "switch": "Conmutador",
         "server-ip": "IP del servidor de retransmisión DHCP",
-        "buttons": {
-          "not-set": "No establecido",
-          "on": "Activado",
-          "off": "Desactivado"
-        },
         "messages": {
           "add-dialog-title": "Confirmar la adición",
           "site-add-dialog-text": "{{ count }} switches harán que se añada esta dirección IP del servidor de retransmisión DHCP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
@@ -1092,9 +1094,8 @@
         "mac-verify": "Verificación de dirección MAC",
         "vlans-text": "La inspección DHCP está activada para las VLAN.",
         "switch-lvl-vlans-text": "La inspección está activada.",
-        "ports-trusted-text": "Puertos de confianza",
-        "switch-lvl-trusted-ports": "Puertos de confianza",
-        "vlan-text": "VLAN con inspección DHCP activada",
+        "ports-trusted-text": "Configuración de puertos de confianza",
+        "vlan-text": "configuración VLAN",
         "search-placeholder-text": "Buscar",
         "buttons": {
           "binding-list": "Lista de enlace",
@@ -1102,11 +1103,11 @@
           "add": "Añadir VLAN"
         },
         "table-header": {
-          "vlan-id": "ID VLAN",
+          "vlan": "VLAN",
           "name": "Nombre",
           "status": "Estado",
           "config-source": "Origen de configuración",
-          "port-id": "ID de puerto",
+          "port": "Puerto",
           "mac-addr": "Dirección MAC",
           "ip-addr": "Dirección IP"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "El switch obtendrá este estado de inspección DHCP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
           "update-settings-status-success": "El estado de inspección DHCP se ha actualizado correctamente.",
           "update-settings-status-error": "No se puede actualizar el estado de inspección DHCP.",
-          "site-save-port-text": "{{ count }} switches obtendrán este estado de puerto de confianza para la inspección DHCP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "site-save-port-text": "{{ count }} switches obtendrán este estado de confianza de puerto para la inspección DHCP. Puede optar por sincronizar ahora o más tarde.",
           "switch-save-port-text": "El switch obtendrá este estado de puerto de confianza para la inspección DHCP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
           "update-port-status-success": "El estado de puerto de confianza para la inspección DHCP se ha actualizado correctamente.",
           "update-port-status-error": "No se puede actualizar el estado de puerto de confianza para la inspección DHCP."
@@ -1724,8 +1725,8 @@
       "550": "Rutas estáticas: No se puede modificar la ruta. Capacidad máxima alcanzada."
     },
     "lacp-settings": {
-      "dialog-title": "Configuración LACP",
-      "config-source": "Origen de configuración actual",
+      "dialog-title": "configuración LACP",
+      "config-source": "Origen de configuración",
       "form": {
         "system-priority": "Prioridad del sistema",
         "system-policy": "Política del sistema",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "Se ha actualizado la configuración LACP",
         "save-lacp-settings-error": "No se puede actualizar la configuración LACP",
-        "switch-sync-dialog-text": "El switch recibirá las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
-        "site-sync-dialog-text": "{{ count }} switches recibirán las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde."
+        "switch-save-dialog-text": "El switch recibirá las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de la configuración LACP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} switches obtendrán la configuración actualizada y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "switch-save-dialog-text": "El switch obtendrá la configuración actualizada y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
         "delete-confirm-title": "Eliminar la configuración de inspección",
-        "site-delete-info-message": "Eliminar {{ settingsCount }} parámetros de inspección. {{ count }} switches eliminarán esta configuración de red y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
-        "switch-delete-info-message": "Elimine {{ settingsCount }} parámetros de inspección y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
         "revert-to-system-confirm-title": "Utilizar la configuración por defecto del sistema",
         "revert-to-site-confirm-title": "Utilizar la configuración del sitio",
         "revert-to-system-info-message": "Se eliminará la configuración del sitio seleccionada. En su lugar, el switch usará la configuración predeterminada del sistema. Puede sincronizar los cambios de configuración ahora o más tarde.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "Dirección Mac del grupo",
-        "member-ports": "Puertos miembros del grupo"
+        "group-address": "Dirección de grupo",
+        "member-ports": "Puertos miembro"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "No establecido",
         "off": "Apagado",
         "on": "Activado",
-        "querier-interval": "Intervalo de solicitud",
+        "querier-interval": "Intervalo del solicitante (segundos)",
         "querier-state": "Estado del solicitante",
         "fast-leave": "Salida rápida",
         "status": "Estado",
         "version": "Versión",
         "static-ports": "Puertos estáticos",
         "ports-dd-default-title": "Seleccionar puertos",
-        "response-interval": "Intervalo de respuesta",
+        "response-interval": "Intervalo de respuesta (segundos)",
         "startup-query-counter": "Contador de consultas de inicio",
-        "startup-query-interval": "Intervalo de consultas de inicio",
+        "startup-query-interval": "Intervalo de consultas de inicio (segundos)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

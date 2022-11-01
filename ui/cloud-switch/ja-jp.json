@@ -195,14 +195,16 @@
       "not-managed-from-central": "この設定は、まだ Sophos Central によって管理されていません。管理を開始するには、ポリシーを追加してください。",
       "are-you-sure": "続行しますか？",
       "config-source": "設定のソース",
-      "conflict-message": "これらの設定に矛盾が見つかりました。この設定は保存しないでください。"
+      "conflict-message": "これらの設定に矛盾が見つかりました。この設定は保存しないでください。",
+      "site-zero-switch-count-message": "サイトの設定が保存されました。このサイトではスイッチは見つかりませんでした。サイトにスイッチを追加する際に、設定を同期させるかどうかを選択できます。"
     },
     "dto": {
       "NetworksIPv4Dto": "ネットワーク (IPv4)",
       "NetworksIPv6Dto": "ネットワーク (IPv6)",
       "MgmtNetworkIPv4Dto": "管理ネットワーク (IPv4)",
       "MldSnoopingVlanSettingsDto": "MLDスヌーピング (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "IGMPスヌーピング (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "IGMPスヌーピング (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "DHCPスヌーピング (VLAN)"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -628,7 +630,7 @@
       "disabled": "無効"
     },
     "vlan": {
-      "search-placeholder-text": "ID または名前で検索",
+      "search-placeholder-text": "検索",
       "ports-dd-default-title": "ポートの選択",
       "add-vlan-dialog-title": "VLAN の追加",
       "edit-vlan-dialog-title": "VLAN の編集",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} は、'{{ range }}' IP アドレスを受け入れることができません。",
           "link-local-limit": "これ以上リンクローカルアドレスを追加することはできません",
           "not-start-address": "ルートアドレスはネットワークアドレス (サブネット 0) である必要があります。",
-          "default-route": "デフォルトルートは追加することはできません。「ネットワーク」タブを使用してデフォルトゲートウェイを変更すると、デフォルトルートとして表示されます。"
+          "default-route": "デフォルトルートは追加することはできません。デフォルトルートとして表示されるデフォルトゲートウェイを変更するには、「ネットワーク」タブを使用してください。"
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "自動アップグレード (ファームウェア)",
         "schedule_rollback_auto": "ブートパーティションの自動切り替え",
         "lag_settings": "LACP の設定",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "DHCP スヌーピング (VLAN)",
+        "dhcp_snooping_settings": "DHCP スヌーピング (設定)",
+        "dhcp_snooping_port": "DHCP スヌーピング (ポート)"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }}個のスイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "switch-save-dialog-text": "スイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する",
-        "lag-site-sync-dialog-text": "{{ count }}個のスイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
-        "lag-switch-sync-dialog-text": "スイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "lag-site-save-dialog-text": "{{ count }}個のスイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "lag-switch-save-dialog-text": "スイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "port-revert-success": "スイッチ設定の削除に成功しました。スイッチは、サイト設定を使用しています。",
         "port-revert-error": "スイッチ設定を削除できません。",
         "port-revert-system-success": "サイト設定の削除に成功しました。スイッチは、システムのデフォルトを使用しています。",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "未設定",
-          "on": "オン",
-          "off": "オフ"
-        }
+          "enabled": "有効",
+          "disabled": "無効",
+          "trusted": "信頼する",
+          "untrusted": "信頼しない"
+        },
+        "config-source": "設定のソース"
       },
       "dhcp-relay": {
         "title": "DHCP リレー",
-        "relay-status": "リレーの状態",
+        "relay-status": "ステータス",
         "server-ip-text": "サーバー IP アドレス",
         "server-invalid": "無効な IPv4 アドレスです。",
         "server-already-exists": "リレーサーバーは既に設定されています。",
@@ -1048,14 +1056,8 @@
         "server-loopback": "ループバックアドレスは、有効な DHCP リレーサーバーとして使用できません。",
         "placeholder": "IPv4 アドレスの入力",
         "max-servers": "最大 5台のサーバーが既に追加されています。",
-        "config-source": "現在の設定ソース",
-        "switch": "Switch",
+        "switch": "スイッチ",
         "server-ip": "DHCP リレーサーバー IP",
-        "buttons": {
-          "not-set": "未設定",
-          "on": "オン",
-          "off": "オフ"
-        },
         "messages": {
           "add-dialog-title": "追加の確認",
           "site-add-dialog-text": "{{ count }}台のスイッチに、この DHCP リレーサーバーの IP アドレスが追加され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
@@ -1092,9 +1094,8 @@
         "mac-verify": "MAC アドレスの検証",
         "vlans-text": "DHCP スヌーピングは VLAN に対して有効です。",
         "switch-lvl-vlans-text": "スヌーピングは有効です。",
-        "ports-trusted-text": "ポートは信頼されています",
-        "switch-lvl-trusted-ports": "ポートは信頼されています",
-        "vlan-text": "DHCP スヌーピングが有効な VLAN",
+        "ports-trusted-text": "信頼するポートの設定",
+        "vlan-text": "VLAN の設定",
         "search-placeholder-text": "検索",
         "buttons": {
           "binding-list": "バインディングリスト",
@@ -1102,11 +1103,11 @@
           "add": "VLAN の追加"
         },
         "table-header": {
-          "vlan-id": "VLAN ID",
+          "vlan": "VLAN",
           "name": "名前",
           "status": "状態",
           "config-source": "設定のソース",
-          "port-id": "ポート ID",
+          "port": "ポート",
           "mac-addr": "MAC アドレス",
           "ip-addr": "IP アドレス"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "スイッチに、この DHCP スヌーピングの状態が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "update-settings-status-success": "DHCP スヌーピングの状態が正常に更新されました。",
           "update-settings-status-error": "DHCP スヌーピングの状態を更新できません。",
-          "site-save-port-text": "{{ count }}個のスイッチに、この DHCP スヌーピングのポートの信頼状態が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "site-save-port-text": "{{ count }} 台のスイッチは、DHCP スヌーピングのこのポートの信頼状態を取得します。今すぐ、または後で同期すること選択できます。",
           "switch-save-port-text": "スイッチに、この DHCP スヌーピングのポートの信頼状態が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "update-port-status-success": "DHCP スヌーピングの信頼できるポートの状態が正常に更新されました。",
           "update-port-status-error": "DHCP スヌーピングの信頼できるポートの状態を更新できません。"
@@ -1440,7 +1441,7 @@
       "306": "管理ネットワーク (IPv4): デフォルトゲートウェイを更新できません。PATCH リクエストが無効です。",
       "307": "管理ネットワーク (IPv4): 管理インターフェースを設定できません。PATCH リクエストが無効です。",
       "308": "管理ネットワーク (IPv4): 管理インターフェースの方法を設定できません。PATCH リクエストが無効です。",
-      "309": "管理ネットワーク (IPv4): インターフェイスプロトコルを設定できません。PATCH リクエストが無効です。",
+      "309": "管理ネットワーク (IPv4): インターフェースプロトコルを設定できません。PATCH リクエストが無効です。",
       "310": "管理ネットワーク (IPv4): DHCP デフォルトゲートウェイを更新できません。PATCH リクエストが無効です。",
       "311": "管理ネットワーク (IPv4): IP アドレスまたはサブネットマスクが見つかりません。",
       "312": "管理ネットワーク (IPv4): VLAN が存在しません。PATCH リクエストが無効です。",
@@ -1453,7 +1454,7 @@
       "319": "管理ネットワーク (IPv4): 管理インターフェースの方法を設定できません。IP アドレスとサブネットマスクの設定中、エラーが発生しました。",
       "320": "管理ネットワーク (IPv4): 管理インターフェースの方法を設定できません。VLAN の設定中、エラーが発生しました。",
       "321": "管理ネットワーク (IPv4): 管理インターフェースの方法を設定できません。DHCP モードの設定中、エラーが発生しました。",
-      "322": "管理ネットワーク (IPv4): インターフェイスプロトコルを設定できません。PATCH リクエストが無効です。",
+      "322": "管理ネットワーク (IPv4): インターフェースプロトコルを設定できません。PATCH リクエストが無効です。",
       "323": "管理ネットワーク (IPv4): IP アドレスを更新できません。PATCH リクエストが無効です。",
       "324": "管理ネットワーク (IPv4): サブネットマスクを更新できません。PATCH リクエストが無効です。",
       "325": "管理ネットワーク (IPv4): IP アドレスとサブネットマスクが正しくありません。PATCH リクエストが無効です。",
@@ -1725,7 +1726,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP の設定",
-      "config-source": "現在の設定ソース",
+      "config-source": "設定のソース",
       "form": {
         "system-priority": "システムの優先度",
         "system-policy": "システムのポリシー",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "LACP の設定が更新されました",
         "save-lacp-settings-error": "LACP の設定を更新できません",
-        "switch-sync-dialog-text": "スイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
-        "site-sync-dialog-text": "{{ count }}個のスイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        "switch-save-dialog-text": "スイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "site-save-dialog-text": "{{ count }}個のスイッチに LACP の設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。"
       }
     },
     "license-messages": {
@@ -1765,14 +1766,12 @@
       "add": "追加",
       "search-placeholder-text": "検索",
       "edit-dialog-title": "VLAN のスヌーピング設定を編集します",
-      "local-configuration": "Switch",
+      "local-configuration": "スイッチ",
       "message": {
         "save-dialog-title": "保存の確認",
         "site-save-dialog-text": "{{ count }}個のスイッチに設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "switch-save-dialog-text": "スイッチに設定の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "delete-confirm-title": "スヌーピングの設定を削除します",
-        "site-delete-info-message": "{{ settingsCount }}個のスヌーピングの設定を削除します{{ count }}個のスイッチによって、このネットワーク設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
-        "switch-delete-info-message": "{{ settingsCount }}個のスヌーピングの設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "revert-to-system-confirm-title": "システムのデフォルト設定の使用",
         "revert-to-site-confirm-title": "サイト設定の使用",
         "revert-to-system-info-message": "選択したサイト設定は削除されます。スイッチは、代わりにシステムのデフォルト設定を使用します。設定の変更は、今すぐまたは後で同期できます。",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "グループ MAC アドレス",
-        "member-ports": "グループ メンバー ポート"
+        "group-address": "グループアドレス",
+        "member-ports": "メンバーポート"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "未設定",
         "off": "オフ",
         "on": "オン",
-        "querier-interval": "クエリア間隔",
+        "querier-interval": "クエリア間隔 (秒)",
         "querier-state": "クエリアの状態",
         "fast-leave": "ファ-ストリーブ",
         "status": "ステータス",
         "version": "バージョン",
         "static-ports": "静的ポート",
         "ports-dd-default-title": "ポートの選択",
-        "response-interval": "応答間隔",
+        "response-interval": "応答間隔 (秒)",
         "startup-query-counter": "起動時のクエリカウンタ",
-        "startup-query-interval": "起動時のクエリ間隔",
+        "startup-query-interval": "起動時のクエリ間隔 (秒)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

@@ -195,14 +195,16 @@
       "not-managed-from-central": "Diese Einstellung wird noch nicht über Sophos Central verwaltet. Fügen Sie eine Richtlinie hinzu, um die Einstellung zu verwalten.",
       "are-you-sure": "Möchten Sie wirklich fortfahren?",
       "config-source": "Konfigurationsquelle",
-      "conflict-message": "Diese Einstellungen enthalten Konflikte. Speichern Sie diese Konfiguration nicht."
+      "conflict-message": "Diese Einstellungen enthalten Konflikte. Speichern Sie diese Konfiguration nicht.",
+      "site-zero-switch-count-message": "Konfiguration für den Standort gespeichert. Für diesen Standort wurden keine Switches gefunden. Sie können auswählen, die Konfiguration zu synchronisieren, während Sie Switches zum Standort hinzufügen."
     },
     "dto": {
       "NetworksIPv4Dto": "Netzwerke (IPv4)",
       "NetworksIPv6Dto": "Netzwerke (IPv6)",
       "MgmtNetworkIPv4Dto": "Verwaltungsnetzwerk (IPv4)",
       "MldSnoopingVlanSettingsDto": "MLD-Snooping (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "IGMP-Snooping (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "IGMP-Snooping (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "DHCP-Snooping (VLAN)"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -504,7 +506,7 @@
         "edit-success": "Automatische Updates für Sophos-Central-Agents eingeschaltet",
         "edit-success-disabled-auto-update": "Automatische Updates für Sophos-Central-Agents ausgeschaltet",
         "mgmt-console": {
-          "title": "Die nachfolgenden Diagnose- und Fehlerbehebungswerkzeuge sind auf der lokalen Benutzeroberfläche des Switch verfügbar. Um diese zu verwenden, müssen Sie sich an der lokalen Management-Oberfläche des Switch anmelden.",
+          "title": "Die nachfolgenden Werkzeuge für die Diagnose und Problembehandlung sind auf der lokalen Benutzeroberfläche des Switch verfügbar. Um diese zu verwenden, müssen Sie sich an der lokalen Management-Oberfläche des Switch anmelden.",
           "resource-usage": "Ressourcennutzung",
           "resource-usage-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Echtzeitdiagramme",
           "resource-usage-helper": "Über Echtzeitdiagramme lässt sich die CPU- und Speicherauslastung im Verlauf der Zeit graphisch darstellen und nachverfolgen.",
@@ -522,7 +524,7 @@
           "network-diagnostics-helper": "Mit Ping und Traceroute können Sie die Konnektivität und die L3-Routing-Funktionalität des Switch testen.",
           "event-loggging": "Ereignis-Protokollierung",
           "event-loggging-item": "Lokale Web-Benutzeroberfläche des Switch: Überwachen > Lokale Protokollierung überwachen > Protokolltabelle",
-          "event-loggging-helper": "Mit der lokalen Protokollierung können Sie die Ereignisse konfigurieren, die lokal am Switch protokolliert werden. Unter Umständen müssen Sie die Protokollierung höherer Fehlerstufen bearbeiten und aktivieren, um die relevanten Ereignisse zu erkennen. Diese Änderung sollten Sie nur für die Dauer der Problembehebung machen. Protokollierte Details können in der Protokolltabelle nachgelesen werden.",
+          "event-loggging-helper": "Mit der lokalen Protokollierung können Sie die Ereignisse konfigurieren, die lokal am Switch protokolliert werden. Unter Umständen müssen Sie die Protokollierung höherer Fehlerstufen bearbeiten und aktivieren, um die relevanten Ereignisse zu erkennen. Diese Änderung sollten Sie nur für die Dauer der Problembehandlung machen. Protokollierte Details können in der Protokolltabelle nachgelesen werden.",
           "cable-diagnostics": "Kabeldiagnostik",
           "cable-diagnostics-item": "Lokale Web-Benutzeroberfläche des Switch: Analyse > Diag.-Werkzeuge",
           "cable-diagnostics-helper": "Wählen Sie Ports aus und klicken Sie anschließend auf „Test“, um Kabeldiagnostik auf den ausgewählten Switch-Ports auszuführen.",
@@ -628,7 +630,7 @@
       "disabled": "Deaktiviert"
     },
     "vlan": {
-      "search-placeholder-text": "Suchen nach ID oder Name",
+      "search-placeholder-text": "Suchen",
       "ports-dd-default-title": "Ports auswählen",
       "add-vlan-dialog-title": "VLAN hinzufügen",
       "edit-vlan-dialog-title": "VLAN bearbeiten",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} akzeptiert keine IP-Adresse '{{ range }}'.",
           "link-local-limit": "Sie können keine weitere verbindungslokale Adresse hinzufügen",
           "not-start-address": "Route-Adresse muss eine Netzwerkadresse sein (Subnetz Null).",
-          "default-route": "Standardroute kann nicht hinzugefügt werden. Bitte verwenden Sie das Tab 'Netzwerke', um Standard-Gateway und Standardroute zu ändern."
+          "default-route": "Standardroute kann nicht hinzugefügt werden. Bitte legen Sie die Standardroute fest, indem Sie auf dem Tab 'Netzwerke' das Standard-Gateway ändern."
         }
       },
       "message": {
@@ -900,7 +902,7 @@
       "sync-dialog-title": "Synchronisieren",
       "save-override-warning": "Falls die Switches diese Konfiguration bereits haben, überschreibt Sophos Central die Einstellungen.",
       "save-override-title": "Änderungen von Switch-Einstellungen",
-      "save-uplink-warning": "Seien Sie vorsichtig mit Änderungen, welche die Ports 'uplink' oder 'management' oder Verwaltungs-VLAN oder DNS betreffen. Diese Änderungen können dazu führen, dass der Switch aus dem Netzwerk entfernt wird und sich nicht mehr mit Sophos Central verbinden kann.",
+      "save-uplink-warning": "Gehen Sie mit Bedacht vor bei Änderungen, welche die Ports 'uplink' oder 'management' oder Verwaltungs-VLAN oder DNS betreffen. Diese Änderungen können dazu führen, dass der Switch aus dem Netzwerk entfernt wird und sich nicht mehr mit Sophos Central verbinden kann.",
       "button": {
         "show-history": "Verlauf anzeigen"
       },
@@ -966,7 +968,10 @@
         "schedule_full_auto": "Auto-Upgrade (Firmware)",
         "schedule_rollback_auto": "Auto-Bootpartitions-Austausch",
         "lag_settings": "LACP-Einstellungen",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "DHCP-Snooping (VLAN)",
+        "dhcp_snooping_settings": "DHCP-Snooping (Einstellungen)",
+        "dhcp_snooping_port": "DHCP-Snooping (Port)"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1007,12 +1012,12 @@
       "message": {
         "port-update-success": "Ports wurden aktualisiert.",
         "port-update-error": "Ein oder mehrere Ports können nicht aktualisiert werden.",
-        "save-dialog-title": "Update bestätigen",
+        "save-dialog-title": "Aktualisieren bestätigen",
         "site-save-dialog-text": "{{ count }} Switches erhalten die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "switch-save-dialog-text": "Der Switch erhält die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "save-checkbox-text": "Die Einstellungen sofort mit diesen Switches synchronisieren",
-        "lag-site-sync-dialog-text": "{{ count }} Switches erhalten die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "lag-switch-sync-dialog-text": "Der Switch erhält die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "lag-site-save-dialog-text": "{{ count }} Switches erhalten die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "lag-switch-save-dialog-text": "Der Switch erhält die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "port-revert-success": "Switch-Einstellungen erfolgreich gelöscht. Der Switch verwendet jetzt die Einstellungen des Standorts.",
         "port-revert-error": "Switch-Konfigurationen können nicht gelöscht werden.",
         "port-revert-system-success": "Standort-Konfigurationen erfolgreich gelöscht. Der Switch verwendet jetzt die System-Standards.",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "Nicht gesetzt",
-          "on": "Ein",
-          "off": "Aus"
-        }
+          "enabled": "Aktiviert",
+          "disabled": "Deaktiviert",
+          "trusted": "Vertrauenswürdig",
+          "untrusted": "Nicht vertrauenswürdig"
+        },
+        "config-source": "Konfigurationsquelle"
       },
       "dhcp-relay": {
         "title": "DHCP-Relay",
-        "relay-status": "Relay-Status",
+        "relay-status": "Status",
         "server-ip-text": "Server-IP-Adressen",
         "server-invalid": "Ungültige IPv4-Adresse.",
         "server-already-exists": "Der Relay-Server ist bereits konfiguriert.",
@@ -1048,14 +1056,8 @@
         "server-loopback": "Loopback-Adresse ist kein gültiger Wert für einen DHCP-Relay-Server.",
         "placeholder": "Geben Sie IPv4-Adressen ein",
         "max-servers": "Sie haben bereits die maximale Anzahl von 5 Servern hinzugefügt.",
-        "config-source": "Aktuelle Konfigurationsquelle",
         "switch": "Switch",
         "server-ip": "DHCP-Relay-Server-IP",
-        "buttons": {
-          "not-set": "Nicht gesetzt",
-          "on": "Ein",
-          "off": "Aus"
-        },
         "messages": {
           "add-dialog-title": "Hinzufügen bestätigen",
           "site-add-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird zu {{ count }} Switches hinzugefügt und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
@@ -1092,9 +1094,8 @@
         "mac-verify": "MAC-Adressen-Verifizierung",
         "vlans-text": "DHCP-Snooping ist für die VLANs aktiviert.",
         "switch-lvl-vlans-text": "Snooping ist aktiviert.",
-        "ports-trusted-text": "Vertrauenswürdige Ports",
-        "switch-lvl-trusted-ports": "Vertrauenswürdige Ports",
-        "vlan-text": "VLANs mit aktiviertem DHCP-Snooping",
+        "ports-trusted-text": "Vertrauens-Port-Einstellungen",
+        "vlan-text": "VLAN-Einstellungen",
         "search-placeholder-text": "Suche",
         "buttons": {
           "binding-list": "Bindungsliste",
@@ -1102,11 +1103,11 @@
           "add": "VLAN hinzufügen"
         },
         "table-header": {
-          "vlan-id": "VLAN-ID",
+          "vlan": "VLAN",
           "name": "Name",
           "status": "Status",
           "config-source": "Konfigurationsquelle",
-          "port-id": "Port-ID",
+          "port": "Port",
           "mac-addr": "MAC-Adresse",
           "ip-addr": "IP-Adresse"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "Der Switch erhält diesen DHCP-Snooping-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
           "update-settings-status-success": "DHCP-Snooping-Status erfolgreich aktualisiert.",
           "update-settings-status-error": "DHCP-Snooping-Status kann nicht aktualisiert werden.",
-          "site-save-port-text": "{{ count }} Switches erhalten für DHCP-Snooping diesen Port-Vertrauens-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-port-text": "{{ count }} Switches erhalten diesen Port-Vertrauens-Status für DHCP-Snooping. Sie können entweder jetzt oder später synchronisieren.",
           "switch-save-port-text": "Der Switch erhält für DHCP-Snooping diesen Port-Vertrauens-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
           "update-port-status-success": "Port-Vertrauens-Status für DHCP-Snooping erfolgreich aktualisiert.",
           "update-port-status-error": "Port-Vertrauens-Status für DHCP-Snooping kann nicht aktualisiert werden."
@@ -1384,7 +1385,7 @@
       "413": "Netzwerke (IPv4): Schnittstellen-Status kann nicht gelesen werden. Ungültige POST-Anforderung.",
       "414": "Netzwerke (IPv4): VLAN kann nicht zugewiesen werden. Ungültige POST-Anforderung.",
       "415": "Netzwerke (IPv4): Ungültige Schnittstellen-Index-ID. Ungültige POST-Anforderung.",
-      "416": "Netzwerke (IPv4): Schnittstellen-Index-ID kann nicht geändert werden.Ungültige POST-Anforderung.",
+      "416": "Netzwerke (IPv4): Schnittstellen-Index-ID kann nicht geändert werden. Ungültige POST-Anforderung.",
       "417": "Netzwerke (IPv4): VLAN-Name kann nicht geändert werden. Ungültige POST-Anforderung.",
       "418": "Netzwerke (IPv4): Ungültiger Schnittstellen-Typ. Ungültige POST-Anforderung.",
       "6300": "Netzwerke (IPv6): VLAN-ID fehlt. Ungültige POST-Anforderung.",
@@ -1725,7 +1726,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP-Einstellungen",
-      "config-source": "Aktuelle Konfigurationsquelle",
+      "config-source": "Konfigurationsquelle",
       "form": {
         "system-priority": "Systempriorität",
         "system-policy": "Systemrichtlinie",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "LACP-Einstellungen wurden aktualisiert",
         "save-lacp-settings-error": "LACP-Einstellungen konnten nicht aktualisiert werden",
-        "switch-sync-dialog-text": "Der Switch erhält die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "site-sync-dialog-text": "{{ count }} Switches erhalten die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+        "switch-save-dialog-text": "Der Switch erhält die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} Switches erhalten die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "switch-save-dialog-text": "Der Switch erhält die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "delete-confirm-title": "Snooping-Einstellungen löschen",
-        "site-delete-info-message": "{{ settingsCount }} Snooping-Einstellungen löschen. {{ count }} Switches entfernen diese Netzwerk-Einstellung und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-delete-info-message": "{{ settingsCount }} Snooping-Einstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
         "revert-to-system-confirm-title": "System-Standardeinstellungen verwenden",
         "revert-to-site-confirm-title": "Einstellungen des Standorts verwenden",
         "revert-to-system-info-message": "Die ausgewählten Standort-Einstellungen werden gelöscht. Der Switch verwendet stattdessen System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "Gruppen-MAC-Adresse",
-        "member-ports": "Gruppen-Member-Ports"
+        "group-address": "Gruppenadresse",
+        "member-ports": "Teilnehmerports"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "Nicht gesetzt",
         "off": "Aus",
         "on": "Ein",
-        "querier-interval": "Abfrager-Intervall",
+        "querier-interval": "Abfrager-Intervall (Sekunden)",
         "querier-state": "Abfrager-Status",
         "fast-leave": "Fast-Leave",
         "status": "Status",
         "version": "Version",
         "static-ports": "Statische Ports",
         "ports-dd-default-title": "Ports auswählen",
-        "response-interval": "Antwort-Intervall",
+        "response-interval": "Antwort-Intervall (Sekunden)",
         "startup-query-counter": "Startup-Abfragen-Zähler",
-        "startup-query-interval": "Startup-Abfragen-Intervall",
+        "startup-query-interval": "Startup-Abfragen-Intervall (Sekunden)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

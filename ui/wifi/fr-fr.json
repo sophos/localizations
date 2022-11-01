@@ -126,6 +126,10 @@
       "alerts": {
         "dismiss_alert": "Ignorer",
         "actionLanguageKey": "Configurer un point d’accès"
+      },
+      "not-available-note": {
+        "threats": "Données sur les menaces disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues.",
+        "security-heartbeat": "Données Security Heartbeat disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues."
       }
     },
     "devices": {
@@ -165,7 +169,8 @@
         "hide-chart": "Masquer le graphique",
         "ghz-2-4": "2,4 GHz",
         "ghz-5": "5 GHz",
-        "ghz-both": "2,4 GHz et 5 GHz",
+        "ghz-6": "6 GHz",
+        "all-bands": "Toutes les bandes",
         "status-both": "Connecté et hors connexion"
       },
       "device-list": {
@@ -370,7 +375,7 @@
         "confirm-delete-header": "Supprimer le site",
         "online-_dynamic_": {
           "false": "Hors connexion",
-          "true": "En ligne"
+          "true": "Connecté"
         },
         "no-aps-found": "Aucun point d’accès enregistré."
       },
@@ -697,11 +702,13 @@
           "ap5": "APX",
           "ap6": "AP6",
           "both": "Les deux"
-        }
+        },
+        "select-mode": "Sélectionner le mode",
+        "select-bands": "Sélectionner les bandes"
       },
       "network-editor": {
-        "sync-security-label": "Synchronized Security",
-        "inline-help-sync-security": "Synchronized Security est une fonction exclusivement disponible sur la gamme Sophos APX. Notre technologie Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
+        "sync-security-label": "Sécurité synchronisée",
+        "inline-help-sync-security": "La Sécurité synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre technologie Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>La Sécurité synchronisée n’est pas compatible avec les SSID sur lesquels le réseau invité ou le portail captif est activé.",
         "green-option-label": "Security Heartbeat Vert",
@@ -803,7 +810,7 @@
           "social-login": "Connexion par réseau social",
           "google-console-help-text": "Vous pouvez obtenir votre ID du client Google et votre clé secrète client depuis la <a href={{gooleDeveloperConsoleSite}} target='_blank'>Console Google Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
           "google-console-second-label": "Créer un nouveau projet et récupérer l’ID du client et la clé secrète du client dans la section Codes d’accès.",
-          "client-id-label": "Client ID",
+          "client-id-label": "ID du client",
           "client-secret-label": "Clé secrète client",
           "facebook-console-help-text": "Vous pouvez obtenir votre ID d’application Facebook et votre clé secrète de l’application depuis le <a href={{facebookDevelopersSite}} target='_blank'>Compte Facebook Developer</a>&nbsp en vous connectant via le compte de votre organisation.",
           "facebook-console-second-label": "Créer une appli depuis la section « Mes applis ». Récupérer l’ID de l’appli et la clé secrète depuis la section Paramètres.",
@@ -905,7 +912,7 @@
           "serial-number": "Numéro de série",
           "ipAddress": "IP interne",
           "model": "Modèle",
-          "status": "État du point d’accès",
+          "status": "État de la configuration",
           "statusOnline": "à jour",
           "statusOfflineText": "en attente de mise à jour",
           "firmware": "Firmware",
@@ -932,7 +939,7 @@
         "stateOffline": "Hors connexion",
         "offlineApDeleteMessage": "Il est déconseillé de supprimer des points d’accès lorsqu’ils sont hors connexion. Veuillez attendre qu’ils soient en ligne ou forcer la suppression.",
         "statusDelete": "SUPPRESSION",
-        "deleteDialogText": "Voulez-vous supprimer les points d’accès sélectionnés ?",
+        "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?",
         "deleteAp": "Voulez-vous supprimer ce point d’accès ?",
         "forceDelete": "forcer la suppression",
         "automaticOnce": "Automatique une fois",
@@ -1086,7 +1093,7 @@
           "SCHEDULE_UPGRADE": "Planifier la mise à niveau",
           "CANCEL_UPGRADE": "Annuler la mise à niveau",
           "ENABLE_REMOTE_SUPPORT": "Activer le support à distance",
-          "DISABLE_REMOTE_SUPPORT": "Support à distance désactivé"
+          "DISABLE_REMOTE_SUPPORT": "Désactiver le support à distance"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1238,7 +1245,7 @@
           },
           "upgrade-now": {
             "confirm-header": "Mettre à niveau maintenant",
-            "confirm-msg": "Mise à niveau vers {{version}}.<br><br> Voulez-vous poursuivre la mise à niveau ?",
+            "confirm-msg": "Mise à niveau vers {{version}}.<br>Cette mise à niveau prend environ 5 à 10 minutes et le point d’accès sera redémarré.<br><br> Voulez-vous continuer la mise à niveau ?",
             "accept": "Mise à niveau",
             "reject": "Annuler"
           },

@@ -477,17 +477,25 @@
                   "invalid-ip": "IP inválido",
                   "port-required": "Porta obrigatória",
                   "require-firewall": "É necessário um Firewall",
-                  "invalid-input": "Entrada inválida"
+                  "invalid-input": "Entrada inválida",
+                  "duplicate-destination": "Destino em duplicata"
                 },
                 "table": {
                   "add-probe-target": "Adicionar destino de sondagem",
                   "destination-firewall": "Firewall de destino",
                   "default-destination-firewall": "Default (qualquer firewall)",
                   "probe-target-ip-address": "Endereço IP do destino de sondagem",
+                  "probe-target-ip-info": "Se o primeiro host responde a uma sondagem, o firewall não faz a sondagem no próximo host configurado.",
                   "custom-sla": "SLA Personalizada",
+                  "custom-sla-info": "Roteia o tráfego através do primeiro gateway que atenda ao SLA. Para fazer o balanceamento de carga, usa todos os gateways que atendam ao SLA. Se nenhum gateway atende ao SLA, aplica-se a estratégia de roteamento configurado.",
                   "latency": "Latência",
                   "jitter": "Instabilidade",
-                  "packet-loss": "Perda de pacote"
+                  "packet-loss": "Perda de pacote",
+                  "margin": {
+                    "latency": "1-60000 ms",
+                    "jitter": "1-60000 ms",
+                    "packet-loss": "1–100%"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "A opção Perfil SD-WAN está desativada porque uma ou mais interfaces XFRM estão na máscara de rede 255.255.255.255. Migre as interfaces XFRM para este firewall."
+            "sd-wan-disable": "A opção Perfil SD-WAN está desativada porque uma ou mais interfaces XFRM estão na máscara de rede 255.255.255.255. Migre as interfaces XFRM para este firewall a partir de lista de grupos de conexão."
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "Clique no botão 'Criar grupo de conexão' para iniciar o assistente.",
         "header": "Simplifique a configuração de SD-WAN com grupos de conexão",
         "learn-more": "Saiba mais"
+      },
+      "migrate-xfrm": {
+        "label": "Migrar",
+        "migrate": "Migre os IPs XFRM deste firewall para a rede /30.",
+        "success": "IP XFRM migrado com sucesso.",
+        "XFRM_IP_ALLOCATION_FAILED": "Falha na alocação do IP XFRM.",
+        "XFRM_IP_MIGRATION_FAILED": "Falha na migração do IP XFRM."
       }
     },
     "firewall-groups": {

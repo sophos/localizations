@@ -195,14 +195,16 @@
       "not-managed-from-central": "此設定尚未透過 Sophos Central 進行管理。新增一項原則以開始進行管理。",
       "are-you-sure": "確定要繼續嗎？",
       "config-source": "設定來源",
-      "conflict-message": "這些設定存在衝突。請勿儲存此設定。"
+      "conflict-message": "這些設定存在衝突。請勿儲存此設定。",
+      "site-zero-switch-count-message": "已為網站儲存設定。未在此網站中找到交換器。您可選擇在將交換器新增到網站時同步設定。"
     },
     "dto": {
       "NetworksIPv4Dto": "網路 (IPv4)",
       "NetworksIPv6Dto": "網路 (IPv6)",
       "MgmtNetworkIPv4Dto": "管理網路 (IPv4)",
       "MldSnoopingVlanSettingsDto": "MLD 監聽 (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "IGMP 監聽 (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "IGMP 監聽 (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "DHCP 監聽 (VLAN)"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -628,7 +630,7 @@
       "disabled": "已停用"
     },
     "vlan": {
-      "search-placeholder-text": "透過 ID 或名稱搜尋",
+      "search-placeholder-text": "尋找",
       "ports-dd-default-title": "選取多個連接埠",
       "add-vlan-dialog-title": "新增 VLAN",
       "edit-vlan-dialog-title": "編輯 VLAN",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} 無法接受 '{{ range }}' IP 位址。",
           "link-local-limit": "無法新增更多本機連結位址",
           "not-start-address": "路由位址必須為網路位址（子網零）。",
-          "default-route": "無法新增預設路由。請使用「網路」索引標籤修改預設閘道並顯示為預設路由。"
+          "default-route": "無法新增預設路由。請使用「網路」索引標籤修改將顯示為預設路由的預設閘道。"
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "自動升級（韌體）",
         "schedule_rollback_auto": "自動切換開機分割區",
         "lag_settings": "LACP 設定",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "DHCP 窺探 (VLAN)",
+        "dhcp_snooping_settings": "DHCP 窺探（設定）",
+        "dhcp_snooping_port": "DHCP 窺探（連接埠）"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }} 個交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
         "switch-save-dialog-text": "交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
         "save-checkbox-text": "立即將設定同步至交換器",
-        "lag-site-sync-dialog-text": "{{ count }} 個交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
-        "lag-switch-sync-dialog-text": "交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "lag-site-save-dialog-text": "{{ count }} 個交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "lag-switch-save-dialog-text": "交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
         "port-revert-success": "交換器設定已成功刪除，交換器使用網站設定。",
         "port-revert-error": "無法刪除交換器組態。 ",
         "port-revert-system-success": "網站組態已成功刪除，交換器使用系統預設設定。",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "未設定",
-          "on": "開啟",
-          "off": "關閉"
-        }
+          "enabled": "已啟用",
+          "disabled": "已停用",
+          "trusted": "信任",
+          "untrusted": "不信任"
+        },
+        "config-source": "設定來源"
       },
       "dhcp-relay": {
         "title": "DHCP 轉送",
-        "relay-status": "轉送狀態",
+        "relay-status": "狀態",
         "server-ip-text": "伺服器 IP 位址",
         "server-invalid": "無效的 IPv4 位址。",
         "server-already-exists": "轉送伺服器已設定。",
@@ -1048,14 +1056,8 @@
         "server-loopback": "迴路位址無法用作有效的 DHCP 轉送伺服器。",
         "placeholder": "輸入 IPv4 位址",
         "max-servers": "已新增最多 5 個伺服器。",
-        "config-source": "目前設定來源",
         "switch": "Switch",
         "server-ip": "DHCP 轉送伺服器 IP",
-        "buttons": {
-          "not-set": "未設定",
-          "on": "開啟",
-          "off": "關閉"
-        },
         "messages": {
           "add-dialog-title": "確認新增",
           "site-add-dialog-text": "{{ count }} 個交換器將新增此 DHCP 轉送伺服器 IP 位址，並且將建立工作。您可以選擇現在或稍後同步。",
@@ -1092,9 +1094,8 @@
         "mac-verify": "MAC 位址驗證",
         "vlans-text": "已為 VLAN 啟用 DHCP 窺探。",
         "switch-lvl-vlans-text": "窺探已啟用。",
-        "ports-trusted-text": "受信任的連接埠",
-        "switch-lvl-trusted-ports": "受信任的連接埠",
-        "vlan-text": "已啟用 DHCP 窺探的 VLAN",
+        "ports-trusted-text": "信任連接埠設定",
+        "vlan-text": "VLAN 設定",
         "search-placeholder-text": "尋找",
         "buttons": {
           "binding-list": "綁定清單",
@@ -1102,13 +1103,13 @@
           "add": "新增 VLAN"
         },
         "table-header": {
-          "vlan-id": "VLAN ID",
+          "vlan": "VLAN",
           "name": "名稱",
           "status": "狀態",
           "config-source": "設定來源",
-          "port-id": "連接埠 ID",
+          "port": "連接埠",
           "mac-addr": "MAC 位址",
-          "ip-addr": "IP 位址 (IP 位址)"
+          "ip-addr": "IP 位址"
         },
         "messages": {
           "save-dialog-title" : "確認儲存",
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "交換器將取得此 DHCP 窺探狀態，並且將建立工作。您可以選擇現在或稍後同步。",
           "update-settings-status-success": "DHCP 窺探狀態更新成功。",
           "update-settings-status-error": "無法更新 DHCP 窺探狀態。",
-          "site-save-port-text": "{{ count }} 個交換器將取得此 DHCP 窺探連接埠信任狀態，並且將建立工作。您可以選擇現在或稍後同步。",
+          "site-save-port-text": "{{ count }} 交換器將取得此連接埠信任狀態用於 DHCP 窺探。您可以選擇現在或稍後同步。",
           "switch-save-port-text": "交換器將取得此 DHCP 窺探連接埠信任狀態，並且將建立工作。您可以選擇現在或稍後同步。",
           "update-port-status-success": "DHCP 窺探信任連接埠狀態更新成功。",
           "update-port-status-error": "無法更新 DHCP 窺探信任連接埠狀態。"
@@ -1384,7 +1385,7 @@
       "413": "網路 (IPv4)：無法讀取介面狀態。POST 請求無效。",
       "414": "網路 (IPv4)：無法指派 VLAN。POST 請求無效。",
       "415": "網路 (IPv4)：無效的介面索引 ID。POST 請求無效。",
-      "416": "網路 (IPv4)：無法修改介面索引 ID。無效的 POST 請求。",
+      "416": "網路 (IPv4)：無法修改介面索引 ID。POST 請求無效。",
       "417": "網路 (IPv4)：無法修改 VLAN 名稱。POST 請求無效。",
       "418": "網路 (IPv4)：無效的介面類型。POST 請求無效。",
       "6300": "網路 (IPv6)：VLAN ID 缺失。POST 請求無效。",
@@ -1725,7 +1726,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP 設定",
-      "config-source": "目前設定來源",
+      "config-source": "設定來源",
       "form": {
         "system-priority": "系統優先級",
         "system-policy": "系統原則",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "LACP 設定已更新",
         "save-lacp-settings-error": "無法更新 LACP 設定",
-        "switch-sync-dialog-text": "交換器將獲取 LACP 設定更新，更新工作將建立。您可以選擇現在或稍後同步。",
-        "site-sync-dialog-text": "{{ count }} 個交換器將獲取 LACP 設定更新，更新工作將建立。您可以選擇現在或稍後同步。"
+        "switch-save-dialog-text": "交換器將獲取 LACP 設定更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "site-save-dialog-text": "{{ count }} 個交換器將獲取 LACP 設定更新，更新工作將建立。您可以選擇現在或稍後同步。"
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} 個交換器將獲取更新的設定，並且將建立更新工作。您可以選擇現在或稍後同步。",
         "switch-save-dialog-text": "交換器將獲取更新的設定，並且將建立更新工作。您可以選擇現在或稍後同步。",
         "delete-confirm-title": "刪除窺探設定",
-        "site-delete-info-message": "刪除 {{ settingsCount }} 個窺探設定。{{ count }} 個交換器將移除此網路設定，並將建立工作。您可以選擇現在或稍後同步。",
-        "switch-delete-info-message": "刪除 {{ settingsCount }} 個窺探設定，並將建立工作。您可以選擇現在或稍後同步。",
         "revert-to-system-confirm-title": "使用系統預設設定",
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-info-message": "所選網站設定將被刪除。交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "群組 Mac 位址",
-        "member-ports": "群組成員連接埠"
+        "group-address": "群組位址",
+        "member-ports": "成員連接埠"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "未設定",
         "off": "關閉",
         "on": "開啟",
-        "querier-interval": "查詢器間隔",
+        "querier-interval": "查詢器間隔 （秒）",
         "querier-state": "查詢器狀態",
         "fast-leave": "快速離開",
         "status": "狀態",
         "version": "版本",
         "static-ports": "靜態連接埠",
         "ports-dd-default-title": "選取多個連接埠",
-        "response-interval": "回應間隔",
+        "response-interval": "回應間隔 （秒）",
         "startup-query-counter": "啟動查詢計數器",
-        "startup-query-interval": "啟動查詢間隔",
+        "startup-query-interval": "啟動查詢間隔 （秒）",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

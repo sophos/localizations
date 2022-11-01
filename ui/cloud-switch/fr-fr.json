@@ -195,14 +195,16 @@
       "not-managed-from-central": "Ce paramètre n’est pas encore géré depuis Sophos Central. Ajoutez une stratégie pour commencer à le gérer.",
       "are-you-sure": "Êtes-vous sûr(e) de vouloir continuer ?",
       "config-source": "Source de configuration",
-      "conflict-message": "Conflits détectés avec ces paramètres. N’enregistrez pas cette configuration."
+      "conflict-message": "Conflits détectés avec ces paramètres. N’enregistrez pas cette configuration.",
+      "site-zero-switch-count-message": "Configuration enregistrée pour le site. Aucun switch trouvé sur ce site. Vous pouvez choisir de synchroniser la configuration tout en ajoutant les switchs au site."
     },
     "dto": {
       "NetworksIPv4Dto": "Réseaux(IPv4)",
       "NetworksIPv6Dto": "Réseaux(IPv6)",
       "MgmtNetworkIPv4Dto": "Réseau de gestion(IPv4)",
       "MldSnoopingVlanSettingsDto": "Surveillance MLD (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "Surveillance IGMP (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "Surveillance IGMP (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "Surveillance DHCP (VLAN)"
     },
     "dashboard": {
       "menu-title": "Tableau de bord",
@@ -628,7 +630,7 @@
       "disabled": "Désactivé"
     },
     "vlan": {
-      "search-placeholder-text": "Rechercher par ID ou par nom",
+      "search-placeholder-text": "Recherche",
       "ports-dd-default-title": "Sélectionner des ports",
       "add-vlan-dialog-title": "Ajouter un VLAN",
       "edit-vlan-dialog-title": "Modifier le VLAN",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} ne peut pas accepter l’adresse IP '{{ range }}'.",
           "link-local-limit": "Aucune autre adresse Link-local ne peut être ajoutée",
           "not-start-address": "L’adresse de routage doit être une adresse réseau (sous-réseau zéro).",
-          "default-route": "Impossible d’ajouter la route par défaut. Veuillez utiliser l’onglet « Réseaux » pour modifier la passerelle par défaut qui apparaît comme la route par défaut."
+          "default-route": "Impossible d’ajouter la route par défaut. Veuillez utiliser l’onglet « Réseaux » pour modifier la passerelle par défaut qui apparaîtra comme la route par défaut."
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "Mise à niveau automatique (firmware)",
         "schedule_rollback_auto": "Échange de partition de démarrage automatique",
         "lag_settings": "Paramètres LACP",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "Surveillance DHCP (VLAN)",
+        "dhcp_snooping_settings": "Surveillance DHCP (Paramètres)",
+        "dhcp_snooping_port": "Surveillance DHCP (Port)"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -985,7 +990,7 @@
       "ports-required-message": "Ports requis.",
       "ports-min-lag-message": "Au moins 2 ports sont requis.",
       "normal-fiber-mixed-message": "Impossible de mélanger les ports cuivre et fibre.",
-      "lacp-settings-button": "Paramètres LACP",
+      "lacp-settings-button": "Paramètres du LACP",
       "lag-settings-button": "Ports LAG",
       "select-ports-dd-placeholder": "Sélectionner des ports",
       "lag-misconfigured": "Un ou plusieurs ports configurés dans ce LAG sont également configurés dans le LAG {{ lag }}",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }} switchs vont récupérer les mises à jour du ports et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "switch-save-dialog-text": "Le switch va récupérer les mises à jour du port et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "save-checkbox-text": "Synchroniser les paramètres sur ces switchs immédiatement",
-        "lag-site-sync-dialog-text": "{{ count }} switchs vont récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-        "lag-switch-sync-dialog-text": "Le switch va récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "lag-site-save-dialog-text": "{{ count }} switchs vont récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "lag-switch-save-dialog-text": "Le switch va récupérer les mises à jour LAG et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "port-revert-success": "Les paramètres du switch ont été supprimés et le switch utilise les paramètres du site.",
         "port-revert-error": "Impossible de supprimer les configurations du switch.",
         "port-revert-system-success": "Les configurations du site ont été supprimées et le switch utilise les paramètres par défaut du système.",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "Non défini",
-          "on": "Allumé",
-          "off": "Inactif"
-        }
+          "enabled": "Activé",
+          "disabled": "Désactivé",
+          "trusted": "Fiable",
+          "untrusted": "Non fiable"
+        },
+        "config-source": "Source de configuration"
       },
       "dhcp-relay": {
         "title": "Relais DHCP",
-        "relay-status": "État du relais",
+        "relay-status": "État",
         "server-ip-text": "Adresses IP du serveur",
         "server-invalid": "Adresse IPv4 non valide.",
         "server-already-exists": "Le serveur du relais est déjà configuré.",
@@ -1048,14 +1056,8 @@
         "server-loopback": "L’adresse de bouclage ne peut pas être utilisée comme un serveur du relais DHCP' valide.",
         "placeholder": "Saisir les adresses IPv4",
         "max-servers": "5 serveurs maximum ont déjà été ajoutés.",
-        "config-source": "Source de configuration actuelle",
         "switch": "Commutateur",
         "server-ip": "Adresse IP du serveur relais DHCP",
-        "buttons": {
-          "not-set": "Non défini",
-          "on": "Allumé",
-          "off": "Inactif"
-        },
         "messages": {
           "add-dialog-title": "Confirmer l’ajout",
           "site-add-dialog-text": "Cette adresse IP du serveur de relais DHCP sera ajoutée à {{ count }} switchs et des tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
@@ -1092,9 +1094,8 @@
         "mac-verify": "Vérification de l’adresse MAC",
         "vlans-text": "Surveillance DHCP activée pour les VLAN.",
         "switch-lvl-vlans-text": "Surveillance activée.",
-        "ports-trusted-text": "Ports fiables",
-        "switch-lvl-trusted-ports": "Ports fiables",
-        "vlan-text": "VLAN activés pour la surveillance DHCP",
+        "ports-trusted-text": "Paramètres des ports sécurisés",
+        "vlan-text": "Paramètres du VLAN",
         "search-placeholder-text": "Rechercher",
         "buttons": {
           "binding-list": "Liste de liaison",
@@ -1102,11 +1103,11 @@
           "add": "Ajouter un VLAN"
         },
         "table-header": {
-          "vlan-id": "ID du VLAN",
+          "vlan": "VLAN",
           "name": "Nom",
           "status": "État",
           "config-source": "Source de configuration",
-          "port-id": "ID de port",
+          "port": "Port",
           "mac-addr": "Adresse MAC",
           "ip-addr": "Adresse IP"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "Le switch va récupérer cet état de surveillance DHCP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
           "update-settings-status-success": "État de surveillance DHCP mis à jour.",
           "update-settings-status-error": "Impossible de mettre à jour l’état de surveillance DHCP.",
-          "site-save-port-text": "{{ count }} switchs vont récupérer cet état de fiabilité du port pour la surveillance DHCP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "site-save-port-text": "{{ count }} switchs vont récupérer cet état du port sécurisé pour la surveillance DHCP. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
           "switch-save-port-text": "Le switch va récupérer cet état de fiabilité du port pour la surveillance DHCP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
           "update-port-status-success": "État du port fiable pour la surveillance DHCP mis à jour.",
           "update-port-status-error": "Impossible de mettre à jour l’état du port fiable pour la surveillance DHCP."
@@ -1384,7 +1385,7 @@
       "413": "Réseaux (IPv4) : Impossible de lire l’état de l’interface. Demande POST non valide.",
       "414": "Réseaux (IPv4) : Impossible d’assigner le VLAN. Demande POST non valide.",
       "415": "Réseaux (IPv4) : ID de l’index d’interface non valide. Demande POST non valide.",
-      "416": "Réseaux (IPv4) : Impossible de modifier l’ID de l’index d’interface. Demande POST non valide.",
+      "416": "Réseaux (IPv4) : Impossible de modifier l’ID de l’index de l’interface. Demande POST non valide.",
       "417": "Réseaux (IPv4) : Impossible de modifier le nom du VLAN. Demande POST non valide.",
       "418": "Réseaux (IPv4) : Type d’interface non valide. Demande POST non valide.",
       "6300": "Réseaux (IPv6) : ID du VLAN manquant. Demande POST non valide.",
@@ -1450,17 +1451,17 @@
       "316": "Réseau de gestion (IPv4) : Impossible de configurer le mode DHCP. Demande PATCH non valide.",
       "317": "Réseau de gestion (IPv4) : Impossible de configurer l’adresse IP et le masque de sous-réseau. Demande PATCH non valide.",
       "318": "Réseau de gestion (IPv4) : Méthode d’interface incorrecte. Impossible de mettre à jour le VLAN. Demande PATCH non valide.",
-      "319": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur lors de la configuration de l’adresse IP et du masque de sous-réseau.",
-      "320": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur lors de la définition du VLAN.",
-      "321": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur lors de la définition du mode DHCP.",
+      "319": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur de paramétrage de l’adresse IP et du masque de sous-réseau.",
+      "320": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur de paramétrage du VLAN.",
+      "321": "Réseau de gestion (IPv4) : Impossible de configurer la méthode de l’interface de gestion. Erreur de paramétrage du mode DHCP.",
       "322": "Réseau de gestion (IPv4) : Impossible de configurer le protocole de l’interface. Demande PATCH non valide.",
       "323": "Réseau de gestion (IPv4) : Impossible de mettre à jour l’adresse IP. Demande PATCH non valide.",
       "324": "Réseau de gestion (IPv4) : Impossible de mettre à jour le masque de sous-réseau. Demande PATCH non valide.",
       "325": "Réseau de gestion (IPv4) : Adresse IP et masque de sous-réseau non valides. Demande PATCH non valide.",
       "326": "Réseau de gestion (IPv4) : Le masque de sous-réseau ne peut pas être 0.0.0.0. Demande PATCH non valide.",
       "327": "Réseau de gestion (IPv4) : VLAN déjà en cours d’utilisation. Demande PATCH non valide.",
-      "328": "Réseau de gestion (IPv4) : Impossible de configurer l’état de gestion. Erreur lors de la configuration de l’adresse IP et du masque de sous-réseau.",
-      "329": "Réseau de gestion (IPv4) : Impossible de configurer l’état de gestion. Erreur lors de la définition du VLAN.",
+      "328": "Réseau de gestion (IPv4) : Impossible de configurer l’état de gestion. Erreur de paramétrage de l’adresse IP et du masque de sous-réseau.",
+      "329": "Réseau de gestion (IPv4) : Impossible de configurer l’état de gestion. Erreur de paramétrage du VLAN.",
       "330": "Réseau de gestion (IPv4) : Erreur d’ID de contexte. Demande PATCH non valide.",
       "331": "Réseau de gestion (IPv4) : Impossible de modifier l’ID de contexte. Demande PATCH non valide.",
       "332": "Réseau de gestion (IPv4) : Impossible de définir l’alias. Demande PATCH non valide.",
@@ -1724,8 +1725,8 @@
       "550": "Routes statiques : Impossible de modifier la route. Capacité maximale atteinte."
     },
     "lacp-settings": {
-      "dialog-title": "Paramètres LACP",
-      "config-source": "Source de configuration actuelle",
+      "dialog-title": "Paramètres du LACP",
+      "config-source": "Source de configuration",
       "form": {
         "system-priority": "Priorité du système",
         "system-policy": "Stratégie du système",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "Paramètres LACP mis à jour",
         "save-lacp-settings-error": "Impossible de mettre à jour les paramètres LACP",
-        "switch-sync-dialog-text": "Le switch va récupérer les mises à jour des paramètres LACP et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-        "site-sync-dialog-text": "{{ count }} switchs vont récupérer les mises à jour des paramètres LACP et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
+        "switch-save-dialog-text": "Le switch va récupérer les mises à jour des paramètres LACP et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "site-save-dialog-text": "{{ count }} switchs vont récupérer les mises à jour des paramètres LACP et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} switchs vont récupérer les paramètres mis à jour et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "switch-save-dialog-text": "Le switch va récupérer les paramètres mis à jour et les tâches de mises à jour seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "delete-confirm-title": "Supprimer les paramètres de surveillance",
-        "site-delete-info-message": "Supprimer {{ settingsCount }} paramètres de surveillance. {{ count }} switchs vont supprimer ce paramètre réseau et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-        "switch-delete-info-message": "Supprimer {{ settingsCount }} paramètres de surveillance et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "revert-to-system-confirm-title": "Utiliser les paramètres par défaut du système",
         "revert-to-site-confirm-title": "Utiliser les paramètres du site",
         "revert-to-system-info-message": "Les paramètres du site sélectionnés seront supprimés. Le switch utilisera désormais les paramètres par défaut du site. Vous pouvez synchroniser vos modifications de configuration maintenant ou ultérieurement.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "Adresse MAC du groupe",
-        "member-ports": "Ports membres du groupe"
+        "group-address": "Adresse du groupe",
+        "member-ports": "Ports membres"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "Non défini",
         "off": "Inactif",
         "on": "Actif",
-        "querier-interval": "Intervalle de requête",
+        "querier-interval": "Intervalle de requête (secondes)",
         "querier-state": "État de la requête",
         "fast-leave": "Fast leave",
         "status": "État",
         "version": "Version",
         "static-ports": "Ports statiques",
         "ports-dd-default-title": "Sélectionner des ports",
-        "response-interval": "Intervalle de réponse",
+        "response-interval": "Intervalle de réponse (secondes)",
         "startup-query-counter": "Compteur de requêtes de démarrage",
-        "startup-query-interval": "Intervalle de requête de démarrage",
+        "startup-query-interval": "Intervalle de requête de démarrage (secondes)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"
