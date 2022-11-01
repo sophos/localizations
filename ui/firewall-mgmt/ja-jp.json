@@ -476,18 +476,26 @@
                   "ip-required": "IP が必要です",
                   "invalid-ip": "IP が無効です",
                   "port-required": "ポートが必要です",
-                  "require-firewall": "ファイアウォールが必要である",
-                  "invalid-input": "無効な入力"
+                  "require-firewall": "ファイアウォールが必要です",
+                  "invalid-input": "無効な入力です",
+                  "duplicate-destination": "宛先が重複しています"
                 },
                 "table": {
                   "add-probe-target": "プローブの対象の追加",
                   "destination-firewall": "宛先ファイアウォール",
                   "default-destination-firewall": "デフォルト (任意のファイアウォール)",
                   "probe-target-ip-address": "プローブの対象の IP アドレス",
+                  "probe-target-ip-info": "最初のホストがプローブに応答した場合、ファイアウォールは、設定済みの次のホストをプローブしません。",
                   "custom-sla": "カスタム SLA",
+                  "custom-sla-info": "SLA を満たす最初のゲートウェイを介してトラフィックをルーティングします。負荷分散のために、SLA を満たすすべてのゲートウェイが使用されます。SLA を満たすゲートウェイが存在しない場合は、設定されたルーティング方式が適用されます。",
                   "latency": "レイテンシ",
                   "jitter": "ジッタ",
-                  "packet-loss": "パケット損失"
+                  "packet-loss": "パケット損失",
+                  "margin": {
+                    "latency": "1～60000ミリ秒",
+                    "jitter": "1～60000ミリ秒",
+                    "packet-loss": "1～100%"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "1つ以上の XFRM インターフェイスがネットマスク 255.255.255.255 にあるため、SD-WAN プロファイルオプションはオフになっています。このファイアウォールの XFRM インターフェイスを移行します。"
+            "sd-wan-disable": "1つ以上の XFRM インターフェイスがネットマスク 255.255.255.255 にあるため、SD-WAN プロファイルオプションはオフになっています。接続グループのリストから、このファイアウォールの XFRM インターフェースを移行します。"
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "アシスタントを開始するには、「接続グループの作成」ボタンをクリックします。",
         "header": "接続グループを使用して、SD-WAN 設定を簡素化する",
         "learn-more": "詳細情報"
+      },
+      "migrate-xfrm": {
+        "label": "移行",
+        "migrate": "このファイアウォールの XFRM IP を /30 ネットワークに移行します。",
+        "success": "XFRM IP は移行に成功しました。",
+        "XFRM_IP_ALLOCATION_FAILED": "XFRM IP の割り当てに失敗しました。",
+        "XFRM_IP_MIGRATION_FAILED": "XFRM IP の移行に失敗しました。"
       }
     },
     "firewall-groups": {

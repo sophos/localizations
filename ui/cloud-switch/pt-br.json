@@ -195,14 +195,16 @@
       "not-managed-from-central": "Esta configuração não está sendo gerenciada pelo Sophos Central. Adicione uma política para começar a gerenciá-la.",
       "are-you-sure": "Tem certeza de que deseja continuar?",
       "config-source": "Origem da configuração",
-      "conflict-message": "Conflitos encontrados nessas configurações. Não salve essa configuração."
+      "conflict-message": "Conflitos encontrados nessas configurações. Não salve essa configuração.",
+      "site-zero-switch-count-message": "Configuração do site salva. Nenhum switch encontrado neste site. Você pode optar por sincronizar a configuração enquanto adiciona os switches ao site."
     },
     "dto": {
       "NetworksIPv4Dto": "Redes (IPv4)",
       "NetworksIPv6Dto": "Redes(IPv6)",
       "MgmtNetworkIPv4Dto": "Rede de gerenciamento (IPv4)",
       "MldSnoopingVlanSettingsDto": "MLD Snooping (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "IGMP Snooping (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "IGMP Snooping (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "DHCP Snooping (VLAN)"
     },
     "dashboard": {
       "menu-title": "Painel",
@@ -628,7 +630,7 @@
       "disabled": "Desabilitado"
     },
     "vlan": {
-      "search-placeholder-text": "Pesquisar por ID ou nome",
+      "search-placeholder-text": "Pesquisar",
       "ports-dd-default-title": "Selecionar portas",
       "add-vlan-dialog-title": "Adicionar VLAN",
       "edit-vlan-dialog-title": "Editar VLAN",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} não pode aceitar o endereço IP '{{ range }}'.",
           "link-local-limit": "Não é possível adicionar mais endereços de links locais.",
           "not-start-address": "O endereço da rota deve ser um endereço de rede (sub-rede zero).",
-          "default-route": "A rota padrão não pode ser adicionada. Use a guia 'Redes' para modificar o gateway padrão que aparece como a rota padrão."
+          "default-route": "A rota padrão não pode ser adicionada. Use a guia 'Redes' para modificar o gateway padrão que aparecerá como a rota padrão."
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "Upgrade automático (firmware)",
         "schedule_rollback_auto": "Troca automática de partição de inicialização",
         "lag_settings": "Configurações de LACP",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "DHCP Snooping (VLAN)",
+        "dhcp_snooping_settings": "DHCP Snooping (Configurações)",
+        "dhcp_snooping_port": "DHCP Snooping (Porta)"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -981,12 +986,12 @@
       "static": "Estático",
       "disabled": "Desabilitado",
       "not-set": "Não configurada",
-      "switch": "Alternar",
+      "switch": "Switch",
       "ports-required-message": "As portas são obrigatórias.",
       "ports-min-lag-message": "São necessárias 2 portas no mínimo.",
       "normal-fiber-mixed-message": "Não é permitido misturar portas de fibra e cobre.",
-      "lacp-settings-button": "Configurações de LACP",
-      "lag-settings-button": "Portas de LAG",
+      "lacp-settings-button": "Ajustes de LACP",
+      "lag-settings-button": "Portas LAG",
       "select-ports-dd-placeholder": "Selecionar portas",
       "lag-misconfigured": "Uma ou mais portas configuradas neste LAG também estão configuradas no LAG {{ lag }}",
       "table-headers": {
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }} switches terão as portas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "switch-save-dialog-text": "O switch terá as portas atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "save-checkbox-text": "Sincronizar todas as configurações com esses switches imediatamente",
-        "lag-site-sync-dialog-text": "{{ count }} switches terão a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
-        "lag-switch-sync-dialog-text": "O switch terá a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "lag-site-save-dialog-text": "{{ count }} switches terão a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "lag-switch-save-dialog-text": "O switch terá a LAG atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "port-revert-success": "Configurações do switch deletadas com sucesso, e o switch está usando as configurações do site.",
         "port-revert-error": "Não é possível deletar configurações do switch.",
         "port-revert-system-success": "Configurações do site deletadas com sucesso, e o switch está usando os padrões do sistema.",
@@ -1034,28 +1039,25 @@
       "common": {
         "buttons": {
           "not-set": "Não configurada",
-          "on": "Ativar",
-          "off": "Desativar"
-        }
+          "enabled": "Habilitado",
+          "disabled": "Desabilitado",
+          "trusted": "Confiável",
+          "untrusted": "Não confiável"
+        },
+        "config-source": "Origem da configuração"
       },
       "dhcp-relay": {
         "title": "Retransmissão de DHCP",
-        "relay-status": "Status do retransmissor",
-        "server-ip-text": "Endereços IP do servidor",
+        "relay-status": "Status",
+        "server-ip-text": "Endereços de IP do servidor",
         "server-invalid": "Endereço de IPv4 inválido.",
         "server-already-exists": "O servidor de retransmissão já está configurado.",
         "server-multicast-address": "O endereço de multicast não pode ser usado como um servidor de retransmissão DHCP válido.",
         "server-loopback": "O endereço de loopback não pode ser usado como um servidor de retransmissão DHCP válido.",
         "placeholder": "Inserir endereços IPv4",
         "max-servers": "O máximo de 5 servidores já foi adicionado.",
-        "config-source": "Origem da configuração atual",
         "switch": "Switch",
         "server-ip": "IP do servidor de retransmissão DHCP",
-        "buttons": {
-          "not-set": "Não configurada",
-          "on": "Ativar",
-          "off": "Desativar"
-        },
         "messages": {
           "add-dialog-title": "Confirmar adição",
           "site-add-dialog-text": "{{ count }} switches terão o endereço IP deste servidor de retransmissão de DHCP adicionado e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
@@ -1092,21 +1094,20 @@
         "mac-verify": "Verificação de endereços de MAC",
         "vlans-text": "DHCP Snooping está habilitado para as VLANs.",
         "switch-lvl-vlans-text": "Snooping está habilitado.",
-        "ports-trusted-text": "Portas confiáveis",
-        "switch-lvl-trusted-ports": "Portas confiáveis",
-        "vlan-text": "DHCP Snooping habilitou as VLANs",
+        "ports-trusted-text": "Configurações de portas confiáveis",
+        "vlan-text": "Ajustes de VLAN",
         "search-placeholder-text": "Pesquisar",
         "buttons": {
           "binding-list": "Lista de associações",
-          "settings": "Ajustes",
+          "settings": "Configurações",
           "add": "Adicionar VLAN"
         },
         "table-header": {
-          "vlan-id": "ID de VLAN",
+          "vlan": "VLAN",
           "name": "Nome",
           "status": "Status",
           "config-source": "Origem da configuração",
-          "port-id": "ID da porta",
+          "port": "Porta",
           "mac-addr": "Endereço de MAC",
           "ip-addr": "Endereço de IP"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "O switch terá este status de DHCP Snooping e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
           "update-settings-status-success": "Status de DHCP Snooping atualizado com sucesso.",
           "update-settings-status-error": "Não foi possível atualizar o status de DHCP Snooping.",
-          "site-save-port-text": "{{ count }} switches terão este status de confiança de porta de DHCP Snooping e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+          "site-save-port-text": "{{ count }} switches terão este status de confiança de porta para DHCP Snooping. Você pode optar por sincronizar agora ou mais tarde.",
           "switch-save-port-text": "O switch terá este status de confiança de porta de DHCP Snooping e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
           "update-port-status-success": "Status de porta confiável de DHCP Snooping atualizado com sucesso.",
           "update-port-status-error": "Não foi possível atualizar o status de porta confiável de DHCP Snooping."
@@ -1724,8 +1725,8 @@
       "550": "Rotas estáticas: Não é possível modificar a rota. Capacidade máxima atingida."
     },
     "lacp-settings": {
-      "dialog-title": "Configurações de LACP",
-      "config-source": "Origem da configuração atual",
+      "dialog-title": "Ajustes de LACP",
+      "config-source": "Origem da configuração",
       "form": {
         "system-priority": "Prioridade do sistema",
         "system-policy": "Política do sistema",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "Os ajustes de LACP foram atualizados",
         "save-lacp-settings-error": "Não foi possível atualizar as configurações de LACP",
-        "switch-sync-dialog-text": "O switch terá as configurações de LACP atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
-        "site-sync-dialog-text": "{{ count }} switches terão as configurações de LACP atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde."
+        "switch-save-dialog-text": "O switch terá as configurações de LACP atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "site-save-dialog-text": "{{ count }} switches terão as configurações de LACP atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} switches terão as configurações atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "switch-save-dialog-text": "O switch terá as configurações atualizadas e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
         "delete-confirm-title": "Deletar configurações de snooping",
-        "site-delete-info-message": "Deletar {{ settingsCount }} configurações de snooping {{ count }} switches removerão esta configuração de rede e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
-        "switch-delete-info-message": "Delete {{ settingsCount }} configurações de snooping e as tarefas serão criadas. Você pode optar por sincronizar agora ou mais tarde.",
         "revert-to-system-confirm-title": "Usar configurações padrão do sistema",
         "revert-to-site-confirm-title": "Usar configurações do site",
         "revert-to-system-info-message": "As configurações do site selecionadas serão deletadas. O switch usará configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "Endereço MAC do grupo",
-        "member-ports": "Portas-membro do grupo"
+        "group-address": "Endereço do grupo",
+        "member-ports": "Portas membro"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "Não configurada",
         "off": "Desativar",
         "on": "Ligado",
-        "querier-interval": "Intervalo do consultante",
+        "querier-interval": "Intervalo do consultante (segundos)",
         "querier-state": "Status do consultante",
         "fast-leave": "Saída rápida",
         "status": "Status",
         "version": "Versão",
         "static-ports": "Portas estáticas",
         "ports-dd-default-title": "Selecionar portas",
-        "response-interval": "Intervalo de resposta",
+        "response-interval": "Intervalo de resposta (segundos)",
         "startup-query-counter": "Contador de consulta de inicialização",
-        "startup-query-interval": "Intervalo de consulta de inicialização",
+        "startup-query-interval": "Intervalo de consulta de inicialização (segundos)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

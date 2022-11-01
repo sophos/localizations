@@ -195,14 +195,16 @@
       "not-managed-from-central": "Questa impostazione non è ancora gestita da Sophos Central. Aggiungi un criterio per cominciare a gestirla.",
       "are-you-sure": "Procedere?",
       "config-source": "Origine configurazione",
-      "conflict-message": "Sono stati individuati dei conflitti in con queste impostazioni. Non salvare questa configurazione."
+      "conflict-message": "Sono stati individuati dei conflitti in con queste impostazioni. Non salvare questa configurazione.",
+      "site-zero-switch-count-message": "Configurazione salvata per il sito. Nessuno switch trovato in questo sito. Quando aggiungi switch al sito, puoi scegliere di sincronizzare la configurazione."
     },
     "dto": {
       "NetworksIPv4Dto": "Reti (IPv4)",
       "NetworksIPv6Dto": "Reti (IPv6)",
       "MgmtNetworkIPv4Dto": "Rete di gestione (IPv4)",
       "MldSnoopingVlanSettingsDto": "Snooping MLD (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "Snooping IGMP (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "Snooping IGMP (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "Snooping DHCP (VLAN)"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -628,7 +630,7 @@
       "disabled": "Disattivato"
     },
     "vlan": {
-      "search-placeholder-text": "Cerca per ID o nome",
+      "search-placeholder-text": "Cerca",
       "ports-dd-default-title": "Porte selezionate",
       "add-vlan-dialog-title": "Aggiungi VLAN",
       "edit-vlan-dialog-title": "Modifica VLAN",
@@ -715,7 +717,7 @@
       "edit-management-dialog-title": "Modifica rete di gestione {{ mode }}",
       "no-management-vlan": "Questa impostazione della rete non è ancora gestita da Sophos Central.",
       "ipv4-ipv6-same-management": "La VLAN di gestione è la stessa per le reti IPv4 e IPv6. È modificabile solo nella scheda IPv4.",
-      "local-configuration": "Cambia",
+      "local-configuration": "Switch",
       "max-reached": "È già stato aggiunto il numero massimo di reti consentite.",
       "form": {
         "vlan": "VLAN",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }} non può accettare l’indirizzo IP '{{ range }}'.",
           "link-local-limit": "Non è possibile aggiungere ulteriori indirizzi Link Local",
           "not-start-address": "L’indirizzo della route deve essere un indirizzo di rete (Subnet zero).",
-          "default-route": "Impossibile aggiungere la route predefinita. Utilizza la scheda “Reti” per modificare il gateway predefinito, che verrà visualizzato come route predefinita."
+          "default-route": "Impossibile aggiungere la route predefinita. Utilizza la scheda “Reti” per modificare il gateway predefinito che verrà visualizzato come route predefinita."
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "Upgrade automatico (firmware)",
         "schedule_rollback_auto": "Sostituisci automaticamente la partizione di avvio",
         "lag_settings": "Impostazioni LACP",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "Snooping DHCP (VLAN)",
+        "dhcp_snooping_settings": "Snooping DHCP (impostazioni)",
+        "dhcp_snooping_port": "Snooping DHCP (porta)"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -981,7 +986,7 @@
       "static": "Statico",
       "disabled": "Disattivato",
       "not-set": "Non impostata",
-      "switch": "Cambia",
+      "switch": "Switch",
       "ports-required-message": "Le porte sono obbligatorie.",
       "ports-min-lag-message": "È richiesto un minimo di 2 porte.",
       "normal-fiber-mixed-message": "Non è possibile utilizzare una combinazione di porte in rame e in fibra.",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti delle porte e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti delle porte e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "save-checkbox-text": "Sincronizza immediatamente le impostazioni su questi switch",
-        "lag-site-sync-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
-        "lag-switch-sync-dialog-text": "Lo switch riceverà gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "lag-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "lag-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "port-revert-success": "Le impostazioni dello switch sono state eliminate e lo switch utilizza le impostazioni del sito.",
         "port-revert-error": "Impossibile eliminare le configurazioni dello switch.",
         "port-revert-system-success": "Le configurazioni del sito sono state eliminate e lo switch utilizza quelle predefinite del sistema.",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "Non impostata",
-          "on": "Attivato",
-          "off": "Disattivato"
-        }
+          "enabled": "Abilitata/e",
+          "disabled": "Disattivata/e",
+          "trusted": "Attendibile",
+          "untrusted": "Non attendibile"
+        },
+        "config-source": "Origine configurazione"
       },
       "dhcp-relay": {
-        "title": "Relè DHCP",
-        "relay-status": "Stato relè",
+        "title": "Inoltro DHCP",
+        "relay-status": "Stato",
         "server-ip-text": "Indirizzi IP server",
         "server-invalid": "Indirizzo IPv4 non valido.",
         "server-already-exists": "Il server relè è già configurato.",
@@ -1048,14 +1056,8 @@
         "server-loopback": "L’indirizzo di loopback non può essere utilizzato come server relè DHCP valido.",
         "placeholder": "Immetti indirizzi IPv4",
         "max-servers": "È già stato aggiunto il numero massimo di 5 server.",
-        "config-source": "Origine della configurazione attuale",
         "switch": "Switch",
         "server-ip": "IP server relè DHCP",
-        "buttons": {
-          "not-set": "Non impostata",
-          "on": "Attivato",
-          "off": "Disattivato"
-        },
         "messages": {
           "add-dialog-title": "Conferma aggiunta",
           "site-add-dialog-text": "{{ count }} switch riceveranno questo indirizzo IP server relè DHCP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
@@ -1092,9 +1094,8 @@
         "mac-verify": "Verifica indirizzo MAC",
         "vlans-text": "Snooping DHCP abilitato per le VLAN.",
         "switch-lvl-vlans-text": "Lo snooping è abilitato.",
-        "ports-trusted-text": "Porte attendibili",
-        "switch-lvl-trusted-ports": "Porte attendibili",
-        "vlan-text": "VLAN con snooping DHCP abilitato",
+        "ports-trusted-text": "Impostazioni attendibilità porta",
+        "vlan-text": "Impostazioni VLAN",
         "search-placeholder-text": "Cerca",
         "buttons": {
           "binding-list": "Elenco associazioni",
@@ -1102,11 +1103,11 @@
           "add": "Aggiungi VLAN"
         },
         "table-header": {
-          "vlan-id": "ID VLAN",
+          "vlan": "VLAN",
           "name": "Nome",
           "status": "Stato",
           "config-source": "Origine configurazione",
-          "port-id": "ID porta",
+          "port": "Porta",
           "mac-addr": "Indirizzo MAC",
           "ip-addr": "Indirizzo IP"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "Lo switch riceverà questo stato di snooping DHCP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "update-settings-status-success": "Stato di snooping DHCP aggiornato.",
           "update-settings-status-error": "Impossibile aggiornare lo stato di snooping DHCP.",
-          "site-save-port-text": "{{ count }} switch riceveranno questo stato di attendibilità della porta per lo snooping DHCP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "site-save-port-text": "{{ count }} switch riceveranno questo stato di attendibilità della porta per lo snooping DHCP. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "switch-save-port-text": "Lo switch riceverà questo stato di attendibilità della porta per lo snooping DHCP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "update-port-status-success": "Stato di attendibilità della porta per lo snooping DHCP aggiornato.",
           "update-port-status-error": "Impossibile aggiornare lo stato di attendibilità della porta per lo snooping DHCP."
@@ -1384,7 +1385,7 @@
       "413": "Reti (IPv4): Impossibile leggere lo stato dell’interfaccia. Richiesta POST non valida.",
       "414": "Reti (IPv4): Impossibile assegnare la VLAN. Richiesta POST non valida.",
       "415": "Reti (IPv4): ID indice dell’interfaccia non valido. Richiesta POST non valida.",
-      "416": "Reti (IPv4): Impossibile modificare l’ID indice dell’interfaccia.Richiesta POST non valida.",
+      "416": "Reti (IPv4): Impossibile modificare l’ID indice dell’interfaccia. Richiesta POST non valida.",
       "417": "Reti (IPv4): Impossibile modificare il nome della VLAN. Richiesta POST non valida.",
       "418": "Reti (IPv4): Tipo di interfaccia non valido. Richiesta POST non valida.",
       "6300": "Reti (IPv6): ID VLAN mancante. Richiesta POST non valida.",
@@ -1725,7 +1726,7 @@
     },
     "lacp-settings": {
       "dialog-title": "Impostazioni LACP",
-      "config-source": "Origine della configurazione attuale",
+      "config-source": "Origine configurazione",
       "form": {
         "system-priority": "Priorità di sistema",
         "system-policy": "Criteri di sistema",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "Le impostazioni LACP sono state aggiornate",
         "save-lacp-settings-error": "Non è stato possibile aggiornare le impostazioni LACP",
-        "switch-sync-dialog-text": "Lo switch riceverà gli aggiornamenti delle impostazioni LACP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
-        "site-sync-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti delle impostazioni LCAP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        "switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti delle impostazioni LACP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti delle impostazioni LCAP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }} switch riceveranno le impostazioni aggiornate e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "switch-save-dialog-text": "Lo switch riceverà le impostazioni aggiornate e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "delete-confirm-title": "Elimina impostazioni di snooping",
-        "site-delete-info-message": "Elimina {{ settingsCount }} impostazioni di snooping. {{ count }} switch rimuoveranno questa impostazione della rete e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
-        "switch-delete-info-message": "Elimina {{ settingsCount }} impostazioni di snooping e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "revert-to-system-confirm-title": "Utilizza le impostazioni predefinite del sistema",
         "revert-to-site-confirm-title": "Utilizza impostazioni del sito",
         "revert-to-system-info-message": "Le impostazioni del sito selezionato saranno eliminate. Al loro posto, lo switch utilizzerà le impostazioni predefinite del sistema. Puoi sincronizzare le modifiche della configurazione adesso oppure più tardi.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "Indirizzo Mac del gruppo",
-        "member-ports": "Porte membro del gruppo"
+        "group-address": "Indirizzo gruppo",
+        "member-ports": "Porte membro"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "Non impostata",
         "off": "Disattivata",
         "on": "Attivo",
-        "querier-interval": "Intervallo querier",
+        "querier-interval": "Intervallo querier (secondi)",
         "querier-state": "Stato querier",
         "fast-leave": "Fast leave",
         "status": "Stato",
         "version": "Versione",
         "static-ports": "Porte statiche",
         "ports-dd-default-title": "Porte selezionate",
-        "response-interval": "Intervallo di risposta",
-        "startup-query-counter": "Contatore query all'avvio",
-        "startup-query-interval": "Intervallo query all'avvio",
+        "response-interval": "Intervallo di risposta (secondi)",
+        "startup-query-counter": "Contatore query all’avvio",
+        "startup-query-interval": "Intervallo query all’avvio (secondi)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

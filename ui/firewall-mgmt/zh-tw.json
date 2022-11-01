@@ -477,17 +477,25 @@
                   "invalid-ip": "無效的 IP",
                   "port-required": "必須提供連接埠",
                   "require-firewall": "需要防火牆",
-                  "invalid-input": "無效的輸入。"
+                  "invalid-input": "無效的輸入。",
+                  "duplicate-destination": "重複目的地"
                 },
                 "table": {
                   "add-probe-target": "新增探查目標",
                   "destination-firewall": "目的地防火墻",
                   "default-destination-firewall": "預設（任何防火墻）",
                   "probe-target-ip-address": "探查目標 IP 位址",
+                  "probe-target-ip-info": "如果首個主機響應一個探查，則防火牆不會探查下一個設定主機。",
                   "custom-sla": "自訂 SLA",
+                  "custom-sla-info": "透過滿足 SLA 的第一個閘道路由流量。若要平衡負載，它使用滿足 SLA 的所有閘道。如果沒有閘道滿足 SLA，則會套用設定的路由策略。",
                   "latency": "延遲",
                   "jitter": "Jitter",
-                  "packet-loss": "封包丟失"
+                  "packet-loss": "封包丟失",
+                  "margin": {
+                    "latency": "1-60000 ms",
+                    "jitter": "1-60000 ms",
+                    "packet-loss": "1-100%"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "由於網路遮罩 255.255.255.255 上存在一或多個 XFRM 介面，SD-WAN 設定檔選項已關閉。移轉此防火牆的 XFRM 介面。"
+            "sd-wan-disable": "由於網路遮罩 255.255.255.255 上存在一或多個 XFRM 介面，SD-WAN 設定檔選項已關閉。從連線群組的清單中移轉此防火牆的 XFRM 介面。"
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "按一下「建立連線群組」按鈕即可啟動助手。",
         "header": "使用連線群組簡化您的 SD-WAN 設定",
         "learn-more": "瞭解更多"
+      },
+      "migrate-xfrm": {
+        "label": "遷移",
+        "migrate": "將此防火牆的 XFRM IP 移轉至 /30 網路。",
+        "success": "XFRM IP 已成功移轉。",
+        "XFRM_IP_ALLOCATION_FAILED": "XFRM IP 配置失敗。",
+        "XFRM_IP_MIGRATION_FAILED": "XFRM IP 移轉失敗。"
       }
     },
     "firewall-groups": {

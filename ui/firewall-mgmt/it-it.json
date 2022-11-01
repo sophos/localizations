@@ -477,17 +477,25 @@
                   "invalid-ip": "IP non valido",
                   "port-required": "Porta obbligatoria",
                   "require-firewall": "Firewall obbligatorio",
-                  "invalid-input": "Input non valido"
+                  "invalid-input": "Input non valido",
+                  "duplicate-destination": "Destinazione duplicata"
                 },
                 "table": {
                   "add-probe-target": "Aggiungi destinazione probe",
                   "destination-firewall": "Firewall di destinazione",
                   "default-destination-firewall": "Impostazione predefinita (Qualsiasi firewall)",
                   "probe-target-ip-address": "Esegui probe dell’indirizzo IP di destinazione",
+                  "probe-target-ip-info": "Se il primo host risponde a un probe, il firewall non eseguirà probe sull’host configurato come successivo.",
                   "custom-sla": "SLA personalizzato",
+                  "custom-sla-info": "Instrada il traffico sul primo gateway che soddisfa gli standard dello SLA. Per il bilanciamento del carico, utilizza tutti i gateway che soddisfano gli standard dello SLA. Se non ci sono gateway che soddisfano gli standard dello SLA, verrà applicata la strategia di instradamento configurata.",
                   "latency": "Latenza",
                   "jitter": "Jitter",
-                  "packet-loss": "Perdita pacchetti"
+                  "packet-loss": "Perdita pacchetti",
+                  "margin": {
+                    "latency": "1-60000 ms",
+                    "jitter": "1-60000 ms",
+                    "packet-loss": "1-100%"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "L’opzione Profili SD-WAN è disattivata, poiché una o più interfacce XFRM sono sulla netmask 255.255.255.255. Esegui la migrazione delle interfacce XFRM per questo firewall."
+            "sd-wan-disable": "L’opzione Profili SD-WAN è disattivata, poiché una o più interfacce XFRM sono sulla netmask 255.255.255.255. Esegui la migrazione delle interfacce XFRM per questo firewall, dall’elenco dei gruppi di connessione."
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "Clicca sul pulsante 'Crea un gruppo di connessione' per avviare l'assistente.",
         "header": "Semplifica la configurazione della SD-WAN con i Gruppi di connessione",
         "learn-more": "Maggiori informazioni"
+      },
+      "migrate-xfrm": {
+        "label": "Migra",
+        "migrate": "Esegui la migrazione degli IP XFRM di questo firewall alla rete /30.",
+        "success": "Migrazione dell’IP XFRM completata.",
+        "XFRM_IP_ALLOCATION_FAILED": "Assegnazione dell’IP XFRM non riuscita.",
+        "XFRM_IP_MIGRATION_FAILED": "Migrazione dell’IP XFRM non riuscita."
       }
     },
     "firewall-groups": {

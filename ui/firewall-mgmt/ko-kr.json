@@ -477,17 +477,25 @@
                   "invalid-ip": "잘못된 IP",
                   "port-required": "포트가 필요함",
                   "require-firewall": "방화벽이 필요함",
-                  "invalid-input": "잘못된 입력"
+                  "invalid-input": "잘못된 입력",
+                  "duplicate-destination": "중복 대상"
                 },
                 "table": {
                   "add-probe-target": "프로브 대상 추가",
                   "destination-firewall": "대상 방화벽",
                   "default-destination-firewall": "기본값(모든 방화벽)",
                   "probe-target-ip-address": "프로브 대상 IP 주소",
+                  "probe-target-ip-info": "첫 번째 호스트가 프로브에 응답하면 방화벽은 다음으로 구성된 호스트를 프로브하지 않습니다.",
                   "custom-sla": "사용자 지정 SLA",
+                  "custom-sla-info": "SLA를 충족하는 첫 번째 게이트웨이를 통해 트래픽을 라우팅합니다. 부하 분산을 위해 SLA를 충족하는 모든 게이트웨이를 사용합니다. SLA를 충족하는 게이트웨이가 없는 경우, 구성된 라우팅 전략이 적용됩니다.",
                   "latency": "대기 시간",
                   "jitter": "지터",
-                  "packet-loss": "패킷 손실"
+                  "packet-loss": "패킷 손실",
+                  "margin": {
+                    "latency": "1~60000ms",
+                    "jitter": "1~60000ms",
+                    "packet-loss": "1–100%"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "하나 이상의 XFRM 인터페이스가 넷마스크 255.255.255.255에 있으므로 SD-WAN 프로필 옵션이 꺼져 있습니다. 이 방화벽에 대한 XFRM 인터페이스를 마이그레이션합니다."
+            "sd-wan-disable": "하나 이상의 XFRM 인터페이스가 넷마스크 255.255.255.255에 있으므로 SD-WAN 프로필 옵션이 꺼져 있습니다. 연결 그룹 목록에서 이 방화벽에 대한 XFRM 인터페이스를 마이그레이션합니다."
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "어시스턴트를 시작하려면 ‘연결 그룹 만들기’ 버튼을 클릭합니다.",
         "header": "연결 그룹을 사용해 SD-WAN 구성 간소화하기",
         "learn-more": "자세히 알아보기"
+      },
+      "migrate-xfrm": {
+        "label": "마이그레이션",
+        "migrate": "이 방화벽의 XFRM IP를 /30 네트워크로 마이그레이션합니다.",
+        "success": "XFRM IP가 성공적으로 마이그레이션되었습니다.",
+        "XFRM_IP_ALLOCATION_FAILED": "XFRM IP 할당에 실패했습니다.",
+        "XFRM_IP_MIGRATION_FAILED": "XFRM IP 마이그레이션에 실패했습니다."
       }
     },
     "firewall-groups": {

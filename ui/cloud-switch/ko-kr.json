@@ -195,14 +195,16 @@
       "not-managed-from-central": "이 설정은 아직 Sophos Central에서 관리되지 않습니다. 관리를 시작하려면 정책을 추가하십시오.",
       "are-you-sure": "계속하시겠습니까?",
       "config-source": "구성 소스",
-      "conflict-message": "이 설정과 충돌이 발견되었습니다. 이 구성을 저장하지 마십시오."
+      "conflict-message": "이 설정과 충돌이 발견되었습니다. 이 구성을 저장하지 마십시오.",
+      "site-zero-switch-count-message": "사이트에 대한 구성이 저장되었습니다. 이 사이트에서 스위치를 찾을 수 없습니다. 사이트에 스위치를 추가하는 동안 구성을 동기화하도록 선택할 수 있습니다."
     },
     "dto": {
       "NetworksIPv4Dto": "네트워크(IPv4)",
       "NetworksIPv6Dto": "네트워크(IPv6)",
       "MgmtNetworkIPv4Dto": "관리 네트워크(IPv4)",
       "MldSnoopingVlanSettingsDto": "MLD 스누핑 (VLAN)",
-      "IgmpSnoopingVlanSettingsDto": "IGMP 스누핑 (VLAN)"
+      "IgmpSnoopingVlanSettingsDto": "IGMP 스누핑 (VLAN)",
+      "DhcpSnoopingVlanStatusDto": "DHCP 스누핑 (VLAN)"
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -628,7 +630,7 @@
       "disabled": "사용 안 함"
     },
     "vlan": {
-      "search-placeholder-text": "ID 또는 이름별 검색",
+      "search-placeholder-text": "검색",
       "ports-dd-default-title": "포트 선택",
       "add-vlan-dialog-title": "VLAN 추가",
       "edit-vlan-dialog-title": "VLAN 편집",
@@ -854,7 +856,7 @@
           "field-not-in-range": "{{ field }}이(가) '{{ range }}' IP 주소를 허용할 수 없습니다.",
           "link-local-limit": "더 이상 링크 로컬 주소를 추가할 수 없음",
           "not-start-address": "경로 주소는 네트워크 주소(서브넷 0)여야 합니다.",
-          "default-route": "기본 경로를 추가할 수 없습니다. '네트워크' 탭을 사용하여 기본 게이트웨이를 수정하십시오. 그러면 기본 경로로 나타납니다."
+          "default-route": "기본 경로를 추가할 수 없습니다. '네트워크' 탭을 사용하여 기본 경로로 표시할 기본 게이트웨이를 수정하십시오."
         }
       },
       "message": {
@@ -966,7 +968,10 @@
         "schedule_full_auto": "자동 업그레이드(펌웨어)",
         "schedule_rollback_auto": "자동 스왑 부트 파티션",
         "lag_settings": "LACP 설정",
-        "lag": "LAG"
+        "lag": "LAG",
+        "dhcp_snooping_vlan": "DHCP 스누핑(VLAN)",
+        "dhcp_snooping_settings": "DHCP 스누핑(설정)",
+        "dhcp_snooping_port": "DHCP 스누핑(포트)"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1011,8 +1016,8 @@
         "site-save-dialog-text": "{{ count }}개의 스위치가 포트 업데이트를 얻으면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "switch-save-dialog-text": "스위치가 포트 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "save-checkbox-text": "설정을 이러한 스위치에 즉시 동기화",
-        "lag-site-sync-dialog-text": "{{ count }}개의 스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
-        "lag-switch-sync-dialog-text": "스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "lag-site-save-dialog-text": "{{ count }}개의 스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "lag-switch-save-dialog-text": "스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "port-revert-success": "스위치 설정이 성공적으로 삭제되었으며 스위치가 사이트 설정을 사용하고 있습니다.",
         "port-revert-error": "스위치 구성을 삭제할 수 없습니다.",
         "port-revert-system-success": "사이트 구성이 성공적으로 삭제되었으며 스위치가 시스템 기본값을 사용하고 있습니다.",
@@ -1034,13 +1039,16 @@
       "common": {
         "buttons": {
           "not-set": "설정되지 않음",
-          "on": "켜기",
-          "off": "끄기"
-        }
+          "enabled": "사용함",
+          "disabled": "사용 안 함",
+          "trusted": "신뢰됨",
+          "untrusted": "신뢰되지 않음"
+        },
+        "config-source": "구성 소스"
       },
       "dhcp-relay": {
         "title": "DHCP 릴레이",
-        "relay-status": "릴레이 상태",
+        "relay-status": "상태",
         "server-ip-text": "서버 IP 주소",
         "server-invalid": "잘못된 IPv4 주소.",
         "server-already-exists": "릴레이 서버가 이미 구성되어 있습니다.",
@@ -1048,14 +1056,8 @@
         "server-loopback": "루프백 주소를 유효한 DHCP 릴레이 서버로 사용할 수 없습니다.",
         "placeholder": "IPv4 주소 입력",
         "max-servers": "최대 5개의 서버가 이미 추가되었습니다.",
-        "config-source": "현재 구성 소스",
         "switch": "스위치",
         "server-ip": "DHCP 릴레이 서버 IP",
-        "buttons": {
-          "not-set": "설정되지 않음",
-          "on": "켜기",
-          "off": "끄기"
-        },
         "messages": {
           "add-dialog-title": "추가 확인",
           "site-add-dialog-text": "{{ count }}개의 스위치가 이 DHCP 릴레이 서버 IP 주소를 추가하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
@@ -1092,9 +1094,8 @@
         "mac-verify": "MAC 주소 확인",
         "vlans-text": "VLAN에 대해 DHCP 스누핑이 활성화되었습니다.",
         "switch-lvl-vlans-text": "스누핑이 활성화되었습니다.",
-        "ports-trusted-text": "신뢰할 수 있는 포트",
-        "switch-lvl-trusted-ports": "신뢰할 수 있는 포트",
-        "vlan-text": "DHCP 스누핑이 활성화된 VLAN",
+        "ports-trusted-text": "신뢰할 수 있는 포트 설정",
+        "vlan-text": "VLAN 설정",
         "search-placeholder-text": "검색",
         "buttons": {
           "binding-list": "바인딩 목록",
@@ -1102,11 +1103,11 @@
           "add": "VLAN 추가"
         },
         "table-header": {
-          "vlan-id": "VLAN ID",
+          "vlan": "VLAN",
           "name": "이름",
           "status": "상태",
           "config-source": "구성 소스",
-          "port-id": "포트 ID",
+          "port": "포트",
           "mac-addr": "MAC 주소",
           "ip-addr": "IP 주소"
         },
@@ -1120,7 +1121,7 @@
           "switch-save-settings-text": "스위치가 이 DHCP 스누핑 상태를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "update-settings-status-success": "DHCP 스누핑 상태가 성공적으로 업데이트되었습니다.",
           "update-settings-status-error": "DHCP 스누핑 상태를 업데이트할 수 없습니다.",
-          "site-save-port-text": "{{ count }}개의 스위치가 이 DHCP 스누핑 포트 신뢰 상태를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "site-save-port-text": "{{ count }} 스위치는 DHCP 스누핑에 대해 이 포트 신뢰 상태를 가져옵니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-save-port-text": "스위치가 이 DHCP 스누핑 포트 신뢰 상태를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "update-port-status-success": "DHCP 스누핑 신뢰할 수 있는 포트 상태가 성공적으로 업데이트되었습니다.",
           "update-port-status-error": "DHCP 스누핑 신뢰할 수 있는 포트 상태를 업데이트할 수 없습니다."
@@ -1314,7 +1315,7 @@
       "1411": "LAG: 멤버 포트는 미러 대상 포트임",
       "1412": "LAG: 멤버 포트는 다른 트렁크 멤버 포트이기도 함",
       "1413": "LAG: 멤버 포트 수가 지원되는 수를 초과함",
-      "1414": "LAG: 테스트 미러 구성 행 상태",
+      "1414": "LAG: 테스프 미러 구성 행 상태",
       "1415": "LAG: 테스프 미러 구성 행 상태",
       "1416": "LAG: 멤버 포트 수가 2개 미만임",
       "1417": "LAG: 패치 트렁크 모드가 잘못됨",
@@ -1384,7 +1385,7 @@
       "413": "네트워크(IPv4): 인터페이스 상태를 읽을 수 없습니다. 잘못된 POST 요청.",
       "414": "네트워크(IPv4): VLAN을 할당할 수 없습니다. 잘못된 POST 요청.",
       "415": "네트워크(IPv4): 잘못된 인터페이스 인덱스 ID입니다. 잘못된 POST 요청.",
-      "416": "네트워크(IPv4): 인터페이스 인덱스 ID를 수정할 수 없습니다. 잘못된 POST 요청입니다.",
+      "416": "네트워크(IPv4): 인터페이스 인덱스 ID를 수정할 수 없습니다. 잘못된 POST 요청.",
       "417": "네트워크(IPv4): VLAN 이름을 수정할 수 없습니다. 잘못된 POST 요청.",
       "418": "네트워크(IPv4): 잘못된 인터페이스 유형입니다. 잘못된 POST 요청.",
       "6300": "네트워크(IPv6): VLAN ID가 누락되었습니다. 잘못된 POST 요청.",
@@ -1725,7 +1726,7 @@
     },
     "lacp-settings": {
       "dialog-title": "LACP 설정",
-      "config-source": "현재 구성 소스",
+      "config-source": "구성 소스",
       "form": {
         "system-priority": "시스템 우선순위",
         "system-policy": "시스템 정책",
@@ -1742,8 +1743,8 @@
       "message": {
         "save-lacp-settings-success": "LACP 설정이 업데이트되었음",
         "save-lacp-settings-error": "LACP 설정을 업데이트할 수 없음",
-        "switch-sync-dialog-text": "스위치가 LACP 설정 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
-        "site-sync-dialog-text": "{{ count }}개의 스위치가 LACP 설정 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        "switch-save-dialog-text": "스위치가 LACP 설정 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "site-save-dialog-text": "{{ count }}개의 스위치가 LACP 설정 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
       }
     },
     "license-messages": {
@@ -1771,8 +1772,6 @@
         "site-save-dialog-text": "{{ count }}개의 스위치가 업데이트된 설정을 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "switch-save-dialog-text": "스위치가 업데이트된 설정을 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "delete-confirm-title": "스누핑 설정 삭제",
-        "site-delete-info-message": "{{ settingsCount }}개의 스누핑 설정을 삭제합니다. {{ count }}개의 스위치가 이 네트워크 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
-        "switch-delete-info-message": "{{ settingsCount }}개의 스누핑 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "revert-to-system-confirm-title": "시스템 기본 설정 사용",
         "revert-to-site-confirm-title": "사이트 설정 사용",
         "revert-to-system-info-message": "선택한 사이트 설정이 삭제됩니다. 대신에 스위치가 시스템 기본 설정을 사용합니다. 지금 또는 나중에 구성 변경 사항을 동기화할 수 있습니다.",
@@ -1800,24 +1799,24 @@
       },
       "group-list-table-headers": {
         "vlan-id": "VLAN",
-        "group-address": "그룹 Mac 주소",
-        "member-ports": "그룹 멤버 포트"
+        "group-address": "그룹 주소",
+        "member-ports": "멤버 포트"
       },
       "form": {
         "vlan": "VLAN",
         "not-set": "설정되지 않음",
         "off": "끄기",
         "on": "켜짐",
-        "querier-interval": "쿼리 발송기 간격",
+        "querier-interval": "쿼리 발송기 간격 (초)",
         "querier-state": "쿼리 발송기 상태",
         "fast-leave": "빠른 종료",
         "status": "상태",
         "version": "버전",
         "static-ports": "정적 포트",
         "ports-dd-default-title": "포트 선택",
-        "response-interval": "응답 간격",
+        "response-interval": "응답 간격 (초)",
         "startup-query-counter": "시작 쿼리 카운터",
-        "startup-query-interval": "시작 쿼리 간격",
+        "startup-query-interval": "시작 쿼리 간격 (초)",
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"

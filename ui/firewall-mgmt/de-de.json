@@ -399,7 +399,7 @@
                 "connection": "Verbindung",
                 "help": {
                   "first-available-gateway": "Leitet Datenverkehr an das erste verfügbare Gateway weiter, wenn SLA deaktiviert ist.",
-                  "load-balancing": "Lastverteilung zwischen allen verfügbaren Gateways oder Gateways, welche die SLA erfüllen."
+                  "load-balancing": "Lastverteilung zwischen allen verfügbaren Gateways oder Gateways, welche das SLA erfüllen."
                 }
               },
               "service-level-agreement": {
@@ -407,38 +407,38 @@
                 "sla": "SLA",
                 "sla-strategy": "SLA-Strategie",
                 "best-quality": "Höchste Qualität",
-                "custom": "Benutzerspezifische SLA",
+                "custom": "Benutzerdefiniertes SLA",
                 "latency": "Latenz",
                 "jitter": "Jitter",
                 "packet-loss": "Paketverlust",
                 "max-latency": "Maximale Latenz",
                 "max-jitter": "Maximaler Jitter",
                 "max-packet-loss": "Maximaler Paketverlust",
-                "latency-margin": "(1 - 60.000 ms)",
-                "jitter-margin": "(1 - 60.000 ms)",
-                "packet-loss-margin": "(0 - 100%)",
+                "latency-margin": "(1–60.000 ms)",
+                "jitter-margin": "(1–60.000 ms)",
+                "packet-loss-margin": "(0–100 %)",
                 "recomended-sla-values": "Empfohlene SLA-Werte",
                 "help": {
                   "best-quality": "Leitet Datenverkehr an das performanteste Gateway weiter. Lastverteilung nur, wenn es zwei oder mehr Gateways mit der besten SLA-Performance gibt.",
-                  "custom": "Leitet Datenverkehr an das erste Gateway weiter, das die SLA erfüllt. Lastverteilung zwischen allen Gateways, welche die SLA erfüllen. Falls kein Gateway die SLA erfüllt, wird die konfigurierte Routingstrategie angewendet.",
+                  "custom": "Leitet Datenverkehr an das erste Gateway weiter, welches das SLA erfüllt. Lastverteilung zwischen allen Gateways, welche das SLA erfüllen. Falls kein Gateway das SLA erfüllt, wird die konfigurierte Routing-Strategie angewendet.",
                   "recommend": {
                     "general-web-traffic": {
                       "title": "Allgemeiner Internetverkehr",
                       "latency": "Latenz: 250 ms",
                       "jitter": "Jitter: 50 ms",
-                      "packet-loss": "Paketverluste: 2%"
+                      "packet-loss": "Paketverluste: 2 %"
                     },
                     "media": {
                       "title": "Medien (Beispiel: Video-, IP-Telefonie)",
                       "latency": "Latenz: 150 ms",
                       "jitter": "Jitter: 30 ms",
-                      "packet-loss": "Paketverluste: 1%"
+                      "packet-loss": "Paketverluste: 1 %"
                     },
                     "office-365": {
                       "title": "Office 365",
                       "latency": "Latenz: 250 ms",
                       "jitter": "Jitter: 50 ms",
-                      "packet-loss": "Paketverluste: 5%"
+                      "packet-loss": "Paketverluste: 5 %"
                     }
                   }
                 }
@@ -459,11 +459,11 @@
                 "activate-gateway-after": "Gateway aktivieren nach:",
                 "sample-size-for-SLA": "Stichprobengröße für SLA",
                 "margin": {
-                  "interval-between-checks": "(1 - 3600 Sekunden)",
-                  "response-time-out": "(1 - 10 Sekunden)",
-                  "deactivate-gateway-after": "(1 - 10 aufeinander folgende Fehlschläge)",
-                  "activate-gateway-after": "(1 - 10 aufeinander folgende Antworten)",
-                  "sample-size-for-SLA": "(5 - 100 Stichproben)"
+                  "interval-between-checks": "(1–3600 Sekunden)",
+                  "response-time-out": "(1–10 Sekunden)",
+                  "deactivate-gateway-after": "(1–10 aufeinander folgende Fehlschläge)",
+                  "activate-gateway-after": "(1–10 aufeinander folgende Antworten)",
+                  "sample-size-for-SLA": "(5–100 Stichproben)"
                 },
                 "help": {
                   "title": "Zustandsprüfung bleibt eingeschaltet, solange SLA eingeschaltet ist.",
@@ -477,17 +477,25 @@
                   "invalid-ip": "Ungültige IP",
                   "port-required": "Port erforderlich",
                   "require-firewall": "Firewall erforderlich",
-                  "invalid-input": "Ungültige Eingabe"
+                  "invalid-input": "Ungültige Eingabe",
+                  "duplicate-destination": "Doppeltes Ziel"
                 },
                 "table": {
                   "add-probe-target": "Prüfziel hinzufügen",
                   "destination-firewall": "Ziel-Firewall",
                   "default-destination-firewall": "Standard (beliebige Firewall)",
                   "probe-target-ip-address": "Prüfziel-IP-Adresse",
-                  "custom-sla": "Benutzerspezifische SLA",
+                  "probe-target-ip-info": "Wenn der erste Host auf eine Prüfung antwortet, prüft die Firewall nicht den nächsten konfigurierten Host.",
+                  "custom-sla": "Benutzerdefiniertes SLA",
+                  "custom-sla-info": "Leitet Datenverkehr an das erste Gateway weiter, welches das SLA erfüllt. Lastverteilung zwischen allen Gateways, welche das SLA erfüllen. Falls kein Gateway das SLA erfüllt, wird die konfigurierte Routing-Strategie angewendet.",
                   "latency": "Latenz",
                   "jitter": "Jitter",
-                  "packet-loss": "Paketverlust"
+                  "packet-loss": "Paketverlust",
+                  "margin": {
+                    "latency": "1–60.000 ms",
+                    "jitter": "1–60.000 ms",
+                    "packet-loss": "1–100 %"
+                  }
                 }
               }
             },
@@ -505,7 +513,7 @@
             }
           },
           "tooltips": {
-            "sd-wan-disable": "Die SD-WAN-Profil-Option ist deaktiviert, weil eine oder mehrere XFRM-Schnittstellen im Bereich der Netzmaske 255.255.255.255 liegen. Migrieren Sie die XFRM-Schnittstellen für diese Firewall."
+            "sd-wan-disable": "Die SD-WAN-Profil-Option ist deaktiviert, weil eine oder mehrere XFRM-Schnittstellen im Bereich der Netzmaske 255.255.255.255 liegen. Migrieren Sie die XFRM-Schnittstellen für diese Firewall mittels einer Liste der Verbindungsgruppen."
           }
         },
         "share-resources": {
@@ -623,6 +631,13 @@
         "how": "Klicken Sie auf 'Verbindungsgruppe erstellen', um den Assistenten zu starten.",
         "header": "Vereinfachen Sie Ihre SD-WAN-Konfiguration mit Hilfe von Verbindungsgruppen",
         "learn-more": "Mehr erfahren"
+      },
+      "migrate-xfrm": {
+        "label": "Migrieren",
+        "migrate": "Migrieren Sie die XFRM-IPs dieser Firewall zu einem /30-Netzwerk.",
+        "success": "XFRM-IP wurde erfolgreich migriert.",
+        "XFRM_IP_ALLOCATION_FAILED": "XFRM-IP-Zuweisung ist fehlgeschlagen.",
+        "XFRM_IP_MIGRATION_FAILED": "XFRM-IP-Migration ist fehlgeschlagen."
       }
     },
     "firewall-groups": {
@@ -718,8 +733,8 @@
         "deployment-config-button": "Einrichtungskonfiguration verwalten",
         "attach-label-title": "Bezeichnung hinzufügen",
         "edit-label-title": "Bezeichnung bearbeiten/löschen",
-        "add-location-title": "Speicherort hinzufügen",
-        "edit-location-title": "Speicherort bearbeiten",
+        "add-location-title": "Standort hinzufügen",
+        "edit-location-title": "Standort bearbeiten",
         "ungroup-firewall-title": "Firewall aus dieser Gruppe entfernen",
         "remove-firewall": "Firewall aus Sophos Central entfernen",
         "edit-group": "Gruppe bearbeiten",
