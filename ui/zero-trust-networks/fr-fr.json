@@ -43,6 +43,7 @@
         "description": "Description (250 caractères max.)",
         "description-placeholder": "Description",
         "show-resource": "Afficher la ressource dans le portail utilisateur",
+        "show-resource-help": "Le portail permet aux utilisateurs de voir les ressources qu’ils peuvent utiliser.",
         "port-validation": "Port incorrect",
         "application-type": "Type de ressources",
         "application-type-placeholder": "Sélectionner",
@@ -203,8 +204,8 @@
         "no-gateway-found": "Passerelles introuvables !",
         "no-gateway-configured": "Vous n’avez pas ajouté d’autres passerelles.",
         "no-gateway-configured-help": "Cliquez sur le bouton « Ajouter une passerelle » pour ajouter une passerelle.",
-        "no-gateway-connector-configured": "Vous n’avez pas encore de passerelles/connecteurs",
-        "no-gateway-connector-message": "Pour ajouter une passerelle/un connecteur, reportez-vous aux instructions ci-dessous :",
+        "no-gateway-connector-configured": "Vous n’avez pas encore de passerelles",
+        "no-gateway-connector-message": "Pour ajouter une passerelle, reportez-vous aux instructions ci-dessous :",
         "no-gateway-connector-aws": "Amazon Web Service",
         "no-gateway-connector-vmware-hyperv": "VMware ESXi/Hyper-V",
         "gateway-package-type-vmware": "VMware ESXi",
@@ -213,24 +214,24 @@
         "no-gc-aws-instructions": {
           "sub-header1": "1. Assurez-vous qu’un certificat générique est prêt",
           "sub-header2": "2. Consultez les instructions de configuration d’Amazon Web Services",
-          "sub-header3": "3. Cliquez sur « Ajouter une passerelle/un connecteur » pour configurer une passerelle/un connecteur",
+          "sub-header3": "3. Cliquez sur « Ajouter une passerelle » pour configurer une passerelle",
           "sub-header4": "4. Lancez la pile pour terminer votre configuration AWS dans la console Amazon Web Services.",
-          "sub-header5": "Lorsque votre instance de passerelle/connecteur se connecte à Sophos Central, ajoutez des stratégies et des ressources."
+          "sub-header5": "Lorsque votre instance de passerelle se connecte à Sophos Central, ajoutez des stratégies et des ressources."
         },
         "no-gc-vmware-instructions": {
           "sub-header1": "1. Assurez-vous qu’un certificat générique est prêt.",
           "sub-header2": "2. Téléchargez la passerelle Zero Trust.",
-          "sub-header3": "3. Cliquez sur « Ajouter une passerelle/un connecteur » pour configurer une instance de passerelle/connecteur et générer un fichier ISO.",
+          "sub-header3": "3. Cliquez sur « Ajouter une passerelle » pour configurer une instance de passerelle et générer un fichier ISO.",
           "sub-header4": "4. Téléchargez et déployez le fichier ISO de configuration.",
-          "sub-header5": "Lorsque votre instance de passerelle/connecteur se connecte à Sophos Central, ajoutez des stratégies et des ressources."
+          "sub-header5": "Lorsque votre instance de passerelle se connecte à Sophos Central, ajoutez des stratégies et des ressources."
         },
         "statusicon-info": "État de la passerelle",
-        "statusicon-info-with-connector": "État de la passerelle/du connecteur",
+        "statusicon-info-with-connector": "État de la passerelle",
         "download-gateway-VM": "Télécharger la VM passerelle",
         "add": "Ajouter une passerelle",
-        "add-gateway-connector": "Ajouter une passerelle/un connecteur",
-        "gateway-mode": "Passerelle",
-        "connector-mode": "Connecteur",
+        "add-gateway-connector": "Ajouter une passerelle",
+        "gateway-mode": "En local",
+        "connector-mode": "Sophos Cloud",
         "columns": {
           "name": "Nom",
           "mode": "Mode",
@@ -244,13 +245,13 @@
         },
         "title": "Zero Trust Network Access - Passerelles",
         "breadcrumb-text": "Passerelles",
-        "breadcrumb-text-gateway-connector": "Passerelles/Connecteurs",
+        "breadcrumb-text-gateway-connector": "Passerelles",
         "error": "Erreur lors de la récupération de la liste des passerelles",
         "connector-modal": {
-          "header": "Connecteur ajouté",
+          "header": "Sophos Cloud ajouté",
           "copy-fqdn-label": "Ajoutez le lien suivant à votre serveur DNS :",
           "alias-domain": "Domaine d’alias",
-          "dns-info": "Veuillez ajouter le domaine d’alias ci-dessous en tant qu’enregistrement CNAME pour le nom complet de domaine du connecteur sur votre serveur DNS"
+          "dns-info": "Veuillez ajouter le domaine d’alias ci-dessous en tant qu’enregistrement CNAME pour le nom complet de domaine de Sophos Cloud sur votre serveur DNS"
         }
       },
       "details": {
@@ -344,10 +345,10 @@
       "form": {
         "title-add": "Ajouter une passerelle",
         "title-edit": "Modifier la passerelle",
-        "gateway-connector-title-add": "Ajouter une passerelle/un connecteur",
-        "gateway-connector-title-edit": "Modifier la passerelle/le connecteur",
+        "gateway-connector-title-add": "Ajouter une passerelle",
+        "gateway-connector-title-edit": "Modifier la passerelle",
         "title-delete": "Supprimer une passerelle",
-        "gateway-connector-title-delete": "Supprimer la passerelle/le connecteur",
+        "gateway-connector-title-delete": "Supprimer une passerelle",
         "software-update": "Mise à jour du logiciel",
         "try-again": "Veuillez réessayer",
         "edit-software-update": "Modifier la planification de la mise à jour du logiciel",
@@ -356,8 +357,8 @@
         "location": "Emplacement géographique",
         "location-length-validation": "L’emplacement ne doit pas contenir plus de 100 caractères",
         "whitespace-location-validation": "Emplacement obligatoire",
-        "name-placeholder-gateway": "Nom de la passerelle",
-        "name-placeholder-connector": "Nom du connecteur",
+        "name-placeholder-gateway": "Nom local",
+        "name-placeholder-connector": "Nom du Sophos Cloud",
         "description": "Description (250 caractères max.)",
         "description-placeholder": "Description",
         "packageType": "Type de plate-forme",
@@ -365,6 +366,7 @@
         "fqdn": "Nom de domaine complet",
         "appDomain": "Domaine",
         "appDomainVerified": "Domaine (validé)",
+        "appDomainVerified-help": "Tous les domaines utilisés avec Sophos Cloud doivent être validés.",
         "app-domain-validation": "Domaine de la ressource incorrect",
         "password": "Mot de passe de la passerelle",
         "password-placeholder": "Mot de passe",
@@ -441,6 +443,7 @@
           "cluster-disabled": "Mise en cluster de la passerelle - Désactivée",
           "cluster-vip": "Adresse IP virtuelle du cluster",
           "cluster-vip-validation": "Adresse IP virtuelle du cluster non valide",
+          "cluster-vip-required": "Obligatoire",
           "external-tooltip": "Utilisé pour l’équilibrage de charge. Si vous utilisez un équilibreur de charge externe, laissez ce champ vide.",
           "internal-tooltip": "Utilisé pour la gestion de cluster.",
           "single-arm-tooltip": "Utilisé pour la gestion de cluster et l’équilibrage de charge."
@@ -453,11 +456,11 @@
             "two-arm-info": "Utilise à la fois le ports physique (WAN et LAN) de l’appareil."
           }
         },
-        "gateway": "Passerelle",
-        "connector": "Connecteur",
-        "mode": "Mode",
-        "gateway-mode": "Mode passerelle : Les passerelles sont déployées dans les centres de données gérés par le client et, par conséquent, les clients gèrent le plan de données. Ces passerelles sont exposées à l’Internet public",
-        "connector-mode": "Mode du connecteur : Sophos gère le plan de données. Les connecteurs ne sont pas exposés à l’Internet public. Les connecteurs relient le Cloud Sophos aux ressources internes.",
+        "gateway": "En local",
+        "connector": "Sophos Cloud",
+        "mode": "Mode de passerelle",
+        "gateway-mode": "Mode en local : Les passerelles sont déployées dans les centres de données gérés par le client et, par conséquent, les clients gèrent le plan de données. Ces passerelles sont exposées à l’Internet public",
+        "connector-mode": "Mode Sophos Cloud : Sophos gère le plan de données. Les passerelles ne font pas connectées à Internet. Les passerelles relient Sophos Cloud aux ressources internes.",
         "no-verified-domain": "Aucun domaine validé disponible.",
         "add-verify-domain": "Ajouter/Valider des domaines.",
         "read-more": "en savoir plus..."
@@ -629,7 +632,8 @@
         "header": "Mettre à jour de {{currentVersion}} à",
         "version": "Version",
         "warning": "Attention",
-        "warning-info": "La mise à jour à {{selectedVersion}} nécessitera un redémarrage.",
+        "warning-info": "Les mises à jour d’images peuvent affecter temporairement la connectivité aux ressources configurées. La mise à jour à {{selectedVersion}} nécessitera un redémarrage.",
+        "warning-info-app-2.0": "Les mises à jour d’images peuvent affecter temporairement la connectivité aux ressources configurées.",
         "on": "sur",
         "tooltip-msg": "Si vous avez plusieurs instances, elles sont mises à jour l’une après l’autre.",
         "clear-schedule": "Effacer la planification",
@@ -842,7 +846,7 @@
             "domain": "Nom",
             "txtrecord": "Enregistrement TXT",
             "status": "État",
-            "assigned-connectors": "Connecteur"
+            "assigned-connectors": "Passerelle"
           },
           "add": "Ajouter un domaine",
           "verify": "Valider",
@@ -868,8 +872,8 @@
           "message": "Supprimer le domaine",
           "success": "Domaine supprimé",
           "message1": "Vous ne pouvez pas supprimer le domaine.",
-          "message2": "Vous utilisez ce domaine pour le connecteur",
-          "message3": "Veuillez retirer le domaine de son connecteur associé avant de pouvoir le supprimer."
+          "message2": "Vous utilisez ce domaine pour Sophos Cloud",
+          "message3": "Veuillez retirer le domaine de son Sophos Cloud associé avant de pouvoir le supprimer."
         },
         "verify": {
           "message": "Veuillez ajouter l’enregistrement TXT à votre serveur DNS avant de valider le domaine.",
@@ -889,11 +893,13 @@
       "fetchError": "Erreur de récupération des données du tableau de bord"
     },
     "api": {
+      "gateway.appDomain.invalid": "Domaine non valide. Saisir un nom de domaine valide.",
       "exception.unexpected": "Une erreur inattendue s’est produite pendant le traitement de la demande.",
       "exception.AccessDeniedException": "Accès refusé",
       "fqdn.format.invalid": "Le nom de domaine complet doit avoir un format valide",
       "fqdn_ip.format.invalid": "L’adresse du nom de domaine complet ou IPv4 interne doit avoir un format valide",
       "field.value.invalid": "Valeur d’entrée {{0}} non valide fournie pour le champ {{1}}",
+      "gateway.singleNode.ipChange.notAllowed": "La modification de l’adresse IP sur un cluster de passerelle à nœud unique n’est pas autorisée",
       "request.json.malformed": "Demande de JSON mal formé reçu dans la demande",
       "http.request.header.missing": "En-tête HTTP requis {{0}} manquant dans la demande",
       "request.data.format.invalid": "Format de données non valide reçu dans la demande",
@@ -912,6 +918,7 @@
       "record.invalid": "{{0}} n’est pas valide pour ce compte",
       "field.validation.errors.message": "Erreurs de validation de champ",
       "gateway.already-deployed": "Impossible de générer l’URL de l’image. La passerelle est déjà déployée.",
+      "gateway.ethernet.match": "L’adresse IP de la passerelle ne doit pas correspondre à l’adresse IP ethernet.",
       "password.valid": "Le mot de passe doit comporter entre 12 et 250 caractères, contenir au moins un chiffre, au moins un caractère en minuscule, au moins un caractère en majuscule et au moins un caractère spécial.",
       "file-size.upload.limit.exceeded": "La limite de taille de téléchargement de fichier a été dépassée pour le fichier {{0}}",
       "description.invalid": "La description doit être renseignée et ne doit pas dépasser 300 caractères",
@@ -929,7 +936,7 @@
       "application.policy.notnull": "Une stratégie doit être assignée à une application",
       "application.port.range": "La valeur du port de l’application doit être comprise entre 0 et 65535",
       "application.fqdn.notnull": "Le nom de domaine complet de l’application ne doit pas avoir la valeur null",
-      "application.fqdn.appdomain.mismatch": "Le nom de domaine complet de la ressource doit être un sous-domaine du nom de domaine de votre passerelle/connecteur",
+      "application.fqdn.appdomain.mismatch": "Le nom de domaine complet de la ressource doit être un sous-domaine du nom de domaine de votre passerelle",
       "application.logo.upload.error": "Une erreur s’est produite lors du téléchargement du logo de l’application",
       "application.user-groups.not-empty": "Au moins un groupe d’utilisateurs doit être assigné à l’application",
       "application.fqdn.already.configured": "Le nom de domaine complet de l’application est déjà configuré",
@@ -1041,9 +1048,9 @@
       "route53.alias-domain.delete.failed": "Impossible de supprimer le domaine d’alias",
       "ztna.saas.isConnectorEnabled.empty": "L’indicateur ZTNA isConnectorEnabled ne peut pas être vide",
       "ztna.saas.connector.changed": "Les modifications des paramètres du connecteur ZTNA ne sont pas autorisées",
-      "failed.to.associate.domain": "Impossible d’associer le domaine au connecteur",
-      "primary.region.notBlank": "La région du connecteur ne peut pas être vide",
-      "primary.region.invalid": "La région du connecteur n’est pas valide",
+      "failed.to.associate.domain": "Impossible d’associer le domaine à Sophos Cloud",
+      "primary.region.notBlank": "La région Sophos Cloud doit être renseignée",
+      "primary.region.invalid": "La région Sophos Cloud n’est pas valide",
       "domain.action.not.null": "L’action Domaine ne doit pas être nulle",
       "domain.not.found": "Domaine introuvable",
       "domain.format.invalid": "Le domaine complet doit avoir un format valide",

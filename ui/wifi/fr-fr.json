@@ -23,6 +23,7 @@
       "confirm-delete-header": "Confirmation de la suppression",
       "error": "Erreur",
       "errors": "Erreurs",
+      "step-3": "Étape 3",
       "http-errors": {
         "500": "Une erreur est survenue, veuillez réessayer plus tard.",
         "default": "Problème lors du chargement des données."
@@ -203,9 +204,17 @@
         "pagination-text": "Affichage de {{ filtered }} appareils sans fil. Total : {{ all }}."
       },
       "chart": {
-        "max-connected-devices": "Nombre max. d’appareils connectés",
-        "devices-with-poor-signal-quality": "Appareils ayant une mauvaise qualité de signal"
-      }
+        "apx-ap": {
+          "max-connected-devices": "Nombre max. d’appareils connectés (APX et AP)",
+          "devices-with-poor-signal-quality": "Appareils ayant une mauvaise qualité de signal (APX et AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "Nombre max. d’appareils connectés (AP6)",
+          "devices-with-poor-signal-quality": "Appareils ayant une mauvaise qualité de signal (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "Données de connectivité disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues.",
+      "signal-quality-not-available-note": "Données sur la qualité du signal disponibles uniquement pour les séries APX et AP. Les données AP6 sont exclues."
     },
     "usage-insight": {
       "breadcrumb-text": "Informations sur l’utilisation",
@@ -238,7 +247,8 @@
         "start-fail-message": "Impossible de démarrer la commande de CAPTURE DE PAQUETS.",
         "stop-message": "Commande de CAPTURE DE PAQUETS arrêtée.",
         "stop-fail-message": "Impossible d’arrêter la commande de CAPTURE DE PAQUETS.",
-        "model": "Modèle"
+        "model": "Modèle",
+        "ap6-not-supported": "Capture de paquets disponibles uniquement pour les séries APX et AP."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "Télécharger les journaux",
         "logfile": "Journaux",
         "model": "Modèle",
+        "success-toast": "Téléchargement du fichier journal pour le point d’accès : {{ accessPointName }}",
         "online-status": "État du point d’accès"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "Description",
       "configuration-changed": "Configuration modifiée",
       "date-range-separator": "Indiquer une période au cours des 90 derniers jours",
-      "search-by-modified-date": "Rechercher par Modifié par",
+      "search-by-modified-date": "Modifié par",
       "csv-of-view": "Fichier CSV de la vue en cours",
       "pdf-of-view": "Fichier PDF de la vue en cours",
       "csv-of-past-90-days": "Fichier CSV des 90 derniers jours",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "Tous les filtres de recherche sont également appliqués pendant l’exportation. La période sélectionnée n’inclut pas les 90 derniers jours.",
       "access-point-severity": "Gravité",
       "event-name": "Événement",
-      "search-by-accesspoint": "Recherche par nom de point d’accès",
-      "search-by-name-or-serial-number": "Recherche par nom ou par numéro de série",
+      "search-by-accesspoint": "Nom du point d’accès",
+      "search-by-serial-number": "numéro de série",
       "export": "Exporter",
       "low-severity": "Pour information"
     },
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "Le serveur RADIUS doit avoir une adresse IP valide",
         "radius-server-help-msg": "Serveur RADIUS pour votre réseau local.",
         "radius-server-shared-secret": "Secret partagé",
+        "radius-server-warning": "Tous les paramètres pour RADIUS seront également appliqués à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
         "passphrase-required": "Phrase secrète obligatoire.",
         "passphrase-placeholder": "Saisir une phrase secrète sécurisée.",
         "shared-secret-placeholder": "Saisir une phrase secrète",
@@ -632,6 +644,7 @@
         "band-steering-label": "Redirection de bande",
         "quality-band-steering": "Les clients sans fil à double bande seront dirigés vers la bande à 5 GHz si possible. Améliore l’expérience d’utilisation pour le client.",
         "band-steering-warning": "La redirection de bande va également être appliquée à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
+        "proxy-arp-warning": "L’ARP du proxy va également être appliquée à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
         "broadcast-outdated-label": "Continuer la diffusion",
         "multicast-label": "Conversion de multidiffusion à monodiffusion",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "Empêche la communication directe entre les clients sur la même radio. Cette option est conseillée pour les SSID invités ou les bornes Wi-Fi SSID.",
         "client-isolation-enabled-info": "Isolement du client activé lorsque la borne Wi-Fi est activée.",
         "mac-filter-header": "Filtrage MAC",
+        "mac-filtering-warning": "Le filtrage MAC va également être appliqué à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
         "mac-filter-none": "Aucune",
         "mac-filter-blacklist": "Liste de blocage",
         "scheduled": "Planifié",
@@ -890,7 +904,16 @@
             "custom-url-valid": "Le format de cette URL de redirection est incorrect."
           }
         },
-        "captive-portal-capacity": "Attention. Plusieurs portails captifs ne peuvent pas être assignés"
+        "captive-portal-capacity": "Attention. Plusieurs portails captifs ne peuvent pas être assignés",
+        "walled-garden": {
+          "header": "Environnement clôturé",
+          "config-allowed-domains": "Vous pouvez ajouter une liste de domaines à la section <a class='link-to-walled-garden'>Environnement clôturé</a>.",
+          "allowed-domain-input-field": "URL/Adresse IP",
+          "allowed-dominas-list": "URL de l’environnement clôturé/Liste d’adresses IP",
+          "enable-walled-garden": "L’environnement clôturé est activé",
+          "add-to-list": "Ajouter à la liste"
+        },
+        "connectivity-warning": "Ce SSID existe déjà avec un mode de chiffrement différent. Le choix de cette option peut entraîner des problèmes de connectivité"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Portail captif activé"
@@ -1025,6 +1048,7 @@
           "commentLabel": "Commentaire",
           "commentInvalidLength": "Le commentaire ne doit pas dépasser {{length}} caractères.",
           "mimo-support": "Support de MU-MIMO",
+          "su-mimo-support": "Support de SU-MIMO",
           "airtimeFairnessTitle": "Airtime Fairness",
           "airtimeFairnessEnable": "Activer Airtime Fairness",
           "airtimeFairnessEnableWarning": "Airtime Fairness ne doit pas être activé si vous n’avez pas d’anciennes versions des clients. En effet, ceci affectera les performances et la stabilité de votre réseau",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "Récupérer les journaux",
           "NETWORK": "Réseau",
           "APU_CONFIG": "Config. APU",
-          "REMOTE_SUPPORT": "Support à distance"
+          "REMOTE_SUPPORT": "Support à distance",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "Capture de paquets",
+          "CUSTOMER_SITE": "Site du client"
         },
         "changeType": {
           "ADD": "Ajouter",
@@ -1144,8 +1171,11 @@
             "title": "Étape 2",
             "description": "Recherchez le numéro de série (S/N) au dos du point d’accès et attendez que le voyant lumineux indique le mode d’initialisation."
           },
+          "timePeriod": {
+            "description": "L’enregistrement d’AP6 est limité à 15 minutes pour ajouter le point d’accès à Sophos Central après la mise sous tension."
+          },
           "registerAP": {
-            "title": "Étape 3",
+            "title": "Étape 4",
             "description": "Saisissez le numéro de série et cliquez sur « Enregistrer ». L’enregistrement peut durer jusqu’à 5 minutes.",
             "agreement": "En cliquant sur « Enregistrer », j’accepte les <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/fr-fr/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Conditions d’utilisation de Sophos pour l’utilisateur final.</a>",
             "enterSerialNumber": "Saisir le numéro de série",

@@ -23,6 +23,7 @@
       "confirm-delete-header": "Conferma eliminazione",
       "error": "Errore",
       "errors": "Errori",
+      "step-3": "Passaggio 3",
       "http-errors": {
         "500": "Si è verificato un errore, riprovare più tardi.",
         "default": "Si è verificato un problema durante il caricamento dei dati."
@@ -203,9 +204,17 @@
         "pagination-text": "Visualizzazione di {{ filtered }} dispositivi wireless. {{ all }} in totale"
       },
       "chart": {
-        "max-connected-devices": "Num. max. di dispositivi connessi",
-        "devices-with-poor-signal-quality": "Dispositivi con scarsa qualità del segnale"
-      }
+        "apx-ap": {
+          "max-connected-devices": "Num. max. di dispositivi connessi (APX e AP)",
+          "devices-with-poor-signal-quality": "Dispositivi con scarsa qualità del segnale (APX e AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "Num. max. di dispositivi connessi (AP6)",
+          "devices-with-poor-signal-quality": "Dispositivi con scarsa qualità del segnale (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "I dati sulla connettività sono disponibili solo per gli access point APX e AP Series. Escludono i dati degli AP6.",
+      "signal-quality-not-available-note": "I dati sulla qualità del segnale sono disponibili solo per gli access point APX e AP Series. Escludono i dati degli AP6."
     },
     "usage-insight": {
       "breadcrumb-text": "Informazioni approfondite sull'utilizzo",
@@ -238,7 +247,8 @@
         "start-fail-message": "Non è stato possibile avviare il comando ACQUISIZIONE PACCHETTI.",
         "stop-message": "Comando ACQUISIZIONE PACCHETTI arrestato.",
         "stop-fail-message": "Non è stato possibile arrestare il comando ACQUISIZIONE PACCHETTI.",
-        "model": "Modello"
+        "model": "Modello",
+        "ap6-not-supported": "I dati sull’acquisizione dei pacchetti sono disponibili solo per gli access point APX e AP Series."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "Scarica log",
         "logfile": "Log",
         "model": "Modello",
+        "success-toast": "È in corso il caricamento del file di log per l’access point: {{ accessPointName }}",
         "online-status": "Stato access point"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "Descrizione",
       "configuration-changed": "Configurazione modificata",
       "date-range-separator": "Specifica un intervallo di date compreso negli ultimi 90 giorni",
-      "search-by-modified-date": "Cerca in base all'Autore della modifica",
+      "search-by-modified-date": "Modificato da",
       "csv-of-view": "CSV della vista corrente",
       "pdf-of-view": "PDF della vista corrente",
       "csv-of-past-90-days": "CSV degli ultimi 90 giorni",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "Tutti i filtri di ricerca applicati vengono applicati anche durante l'esportazione. L'intervallo di date è escluso per gli ultimi 90 giorni.",
       "access-point-severity": "Gravità",
       "event-name": "Evento",
-      "search-by-accesspoint": "Cerca per nome dell'access point",
-      "search-by-name-or-serial-number": "Cerca per nome o numero di serie",
+      "search-by-accesspoint": "Access Point Name",
+      "search-by-serial-number": "numero di serie",
       "export": "Esporta",
       "low-severity": "Info"
     },
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "Il server RADIUS deve essere un valido indirizzo IP",
         "radius-server-help-msg": "Il server RADIUS della rete locale.",
         "radius-server-shared-secret": "Segreto condiviso",
+        "radius-server-warning": "Qualsiasi impostazione per RADIUS verrà applicata anche a tutte le altre reti, sugli AP in cui è configurata questa rete.",
         "passphrase-required": "Passphrase obbligatoria.",
         "passphrase-placeholder": "Inserire una passphrase sicura.",
         "shared-secret-placeholder": "Inserisci la passphrase",
@@ -632,6 +644,7 @@
         "band-steering-label": "Band steering",
         "quality-band-steering": "Se le circostanze lo consentono, i client wireless con funzione dual-band vengono indirizzati sulla banda a 5 GHz. Il risultato è una migliore esperienza client.",
         "band-steering-warning": "Il band steering verrà applicato anche a tutte le altre reti dell'AP in cui è configurata questa rete.",
+        "proxy-arp-warning": "Il Proxy ARP verrà applicato anche a tutte le altre reti sugli AP in cui è configurata questa rete.",
         "broadcast-outdated-label": "Continua a trasmettere",
         "multicast-label": "Conversione da multicast a unicast",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "Impedisce la comunicazione diretta tra client della stessa radio. È l'opzione consigliata per gli SSID guest o hotspot.",
         "client-isolation-enabled-info": "È abilitato l'isolamento del client, perché è abilitato l'hotspot.",
         "mac-filter-header": "Filtraggio MAC",
+        "mac-filtering-warning": "Il filtraggio MAC verrà applicato anche a tutte le altre reti, sugli AP in cui è configurata questa rete.",
         "mac-filter-none": "Nessuna",
         "mac-filter-blacklist": "Elenco Bloccati",
         "scheduled": "Pianificato",
@@ -810,7 +824,7 @@
           "social-login": "Accesso con social media",
           "google-console-help-text": "Puoi ottenere il tuo ID client e Segreto client di Google dalla <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google Developer Console</a>, effettuando l'accesso con l'account della tua organizzazione.",
           "google-console-second-label": "Creare un New Project (nuovo progetto) e, dalla sezione Credentials (credenziali), recuperare il Client ID e il Client Secret.",
-          "client-id-label": "Client ID",
+          "client-id-label": "ID client",
           "client-secret-label": "Segreto client",
           "facebook-console-help-text": "Puoi ottenere il tuo Facebook Application ID (ID applicazione Facebook) e Application Secret (segreto dell'applicazione) dal <a href={{facebookDevelopersSite}} target='_blank'>Facebook Developer Account (account sviluppatore di Facebook)</a>, effettuando l'accesso con l'account della tua organizzazione.",
           "facebook-console-second-label": "Creare un'App dalla sezione \"My Apps\". Recuperare l'ID app e il Segreto dalla sezione Impostazioni.",
@@ -890,7 +904,16 @@
             "custom-url-valid": "Il formato dell'URL di reindirizzamento non è valido."
           }
         },
-        "captive-portal-capacity": "Avviso. Non è possibile assegnare Captive Portal multipli"
+        "captive-portal-capacity": "Avviso. Non è possibile assegnare Captive Portal multipli",
+        "walled-garden": {
+          "header": "Walled garden",
+          "config-allowed-domains": "Puoi aggiungere un elenco di domini alla sezione <a class='link-to-walled-garden'>“Walled garden”</a>.",
+          "allowed-domain-input-field": "URL/Indirizzo IP",
+          "allowed-dominas-list": "Elenco indirizzi IP/URL del Walled garden",
+          "enable-walled-garden": "Walled garden abilitato",
+          "add-to-list": "Aggiungi all’elenco"
+        },
+        "connectivity-warning": "Questo SSID è già esistente, con un’altra modalità di cifratura. Selezionando questa opzione, si potrebbero creare problemi di connettività"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive Portal abilitato"
@@ -1010,7 +1033,7 @@
           "choose-band": "Banda",
           "unsupported-radio-info-label": "Questa radio non è supportata in questa posizione.",
           "txpower": "Potenza TX",
-          "apNameRequired": "Nome dell'AP obbligatorio.",
+          "apNameRequired": "Nome dell’AP obbligatorio.",
           "apNameMaxLength": "Il nome dell'AP non può contenere più di 128 caratteri.",
           "meshModeLabel": "Consenti mesh",
           "channelWidth": "Larghezza canale",
@@ -1025,6 +1048,7 @@
           "commentLabel": "Commento",
           "commentInvalidLength": "Il commento non deve superare una lunghezza di {{length}} caratteri.",
           "mimo-support": "Supporto di MU-MIMO",
+          "su-mimo-support": "Supporto di SU-MIMO",
           "airtimeFairnessTitle": "Priorità delle trasmissioni",
           "airtimeFairnessEnable": "Abilita priorità delle trasmissioni",
           "airtimeFairnessEnableWarning": "Non è consigliabile attivare la Priorità delle trasmissioni se non sono presenti client legacy: questa opzione influisce sulla performance e sulla stabilità della rete",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "Raccogli log",
           "NETWORK": "RETE",
           "APU_CONFIG": "Configurazione APU",
-          "REMOTE_SUPPORT": "Supporto remoto"
+          "REMOTE_SUPPORT": "Supporto remoto",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "Acquisizione pacchetto",
+          "CUSTOMER_SITE": "Sito cliente"
         },
         "changeType": {
           "ADD": "Aggiungi",
@@ -1144,8 +1171,11 @@
             "title": "Passaggio 2",
             "description": "Individuare il numero di serie sul retro dell'access point e attendere che il LED indichi lo stato di inizializzazione."
           },
+          "timePeriod": {
+            "description": "La registrazione per AP6 ha un limite di 15 minuti dall’accensione, per l’aggiunta dell’AP a Sophos Central."
+          },
           "registerAP": {
-            "title": "Passaggio 3",
+            "title": "Passaggio 4",
             "description": "Inserire il numero di serie e cliccare su 'Registra'. La registrazione può richiedere un massimo di 5 minuti.",
             "agreement": "Cliccando su 'Registrazione' qui di seguito, confermo di accettare i <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/it-it/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Termini di utilizzo per l’utente finale Sophos</a>.",
             "enterSerialNumber": "Inserisci il numero di serie",

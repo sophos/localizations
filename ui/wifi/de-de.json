@@ -23,6 +23,7 @@
       "confirm-delete-header": "Löschen bestätigen",
       "error": "Fehler",
       "errors": "Fehler",
+      "step-3": "Schritt 3",
       "http-errors": {
         "500": "Ein Fehler aufgetreten, bitte versuchen Sie es später erneut.",
         "default": "Problem beim Laden der Daten."
@@ -203,9 +204,17 @@
         "pagination-text": "Anzeige {{ filtered }} WLAN-Geräte. Insgesamt {{ all }}"
       },
       "chart": {
-        "max-connected-devices": "Maximal verbundene Geräte",
-        "devices-with-poor-signal-quality": "Geräte mit schlechter Signalqualität"
-      }
+        "apx-ap": {
+          "max-connected-devices": "Maximal verbundene Geräte (APX und AP)",
+          "devices-with-poor-signal-quality": "Geräte mit schlechter Signalqualität (APX und AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "Maximal verbundene Geräte (AP6)",
+          "devices-with-poor-signal-quality": "Geräte mit schlechter Signalqualität (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "Konnektivitätsdaten sind nur für die APX- und die AP-Serie verfügbar. Nicht enthalten sind AP6-Daten.",
+      "signal-quality-not-available-note": "Daten zur Signalqualität sind nur für die APX- und die AP-Serie verfügbar. Nicht enthalten sind AP6-Daten."
     },
     "usage-insight": {
       "breadcrumb-text": "Nutzungsdaten",
@@ -238,7 +247,8 @@
         "start-fail-message": "Start des Kommandos PACKET CAPTURE fehlgeschlagen.",
         "stop-message": "Kommando PACKET CAPTURE angehalten.",
         "stop-fail-message": "Anhalten des Kommandos PACKET CAPTURE fehlgeschlagen.",
-        "model": "Modell"
+        "model": "Modell",
+        "ap6-not-supported": "Packet Capture ist nur für die APX- und die AP-Serie verfügbar."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "Protokolle herunterladen",
         "logfile": "Protokolle",
         "model": "Modell",
+        "success-toast": "Protokoll wird hochgeladen für Access Point: {{ accessPointName }}",
         "online-status": "Access-Point-Status"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "Beschreibung",
       "configuration-changed": "Konfiguration geändert",
       "date-range-separator": "Angabe eines Zeitraumes in den vergangenen 90 Tagen",
-      "search-by-modified-date": "Suchen nach Geändert von",
+      "search-by-modified-date": "Geändert von",
       "csv-of-view": "CSV der aktuellen Ansicht",
       "pdf-of-view": "PDF der aktuellen Ansicht",
       "csv-of-past-90-days": "CSV der letzten 90 Tage",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "Alle angewendeten Suchfilter werden auch beim Export angewendet. Der Datumsbereich ist für die letzten 90 Tage ausgeschlossen.",
       "access-point-severity": "Schweregrad",
       "event-name": "Ereignis",
-      "search-by-accesspoint": "Suchen nach Access-Point-Name",
-      "search-by-name-or-serial-number": "Suchen nach Name oder Versionsnummer",
+      "search-by-accesspoint": "Name des Access Point",
+      "search-by-serial-number": "Seriennummer",
       "export": "Export",
       "low-severity": "Zur Information"
     },
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "RADIUS-Server muss eine gültige IP-Adresse sein",
         "radius-server-help-msg": "RADIUS-Server für Ihr lokales Netzwerk.",
         "radius-server-shared-secret": "Gemeinsamer geheimer Schlüssel",
+        "radius-server-warning": "Alle Einstellungen für RADIUS werden auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
         "passphrase-required": "Passphrase ist erforderlich.",
         "passphrase-placeholder": "Geben Sie eine sichere Passphrase ein.",
         "shared-secret-placeholder": "Passphrase eingeben",
@@ -632,6 +644,7 @@
         "band-steering-label": "Band Steering",
         "quality-band-steering": "Dual-Band-fähige WLAN-Clients werden nach Möglichkeit dem 5-GHz-Band zugewiesen. Verbessert die Client-Leistung.",
         "band-steering-warning": "Band Steering wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
+        "proxy-arp-warning": "Proxy-ARP wird auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
         "broadcast-outdated-label": "Broadcasting aktiviert lassen",
         "multicast-label": "Umwandlung Multicast in Unicast",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "Verhindert die direkte Kommunikation zwischen Clients im selben Funkbereich. Dies wird für Gast- oder Hotspot-SSIDs empfohlen.",
         "client-isolation-enabled-info": "Die Clientisolation ist aktiviert, da der Hotspot aktiviert ist.",
         "mac-filter-header": "MAC-Filterung",
+        "mac-filtering-warning": "MAC-Filter werden auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
         "mac-filter-none": "Keine",
         "mac-filter-blacklist": "Liste „Blockiert“",
         "scheduled": "Geplant",
@@ -890,7 +904,16 @@
             "custom-url-valid": "Umleitungs-URL hat kein gültiges Format."
           }
         },
-        "captive-portal-capacity": "Warnung. Mehrere Captive-Portale können nicht zugewiesen werden"
+        "captive-portal-capacity": "Warnung. Mehrere Captive-Portale können nicht zugewiesen werden",
+        "walled-garden": {
+          "header": "Kontrollierte Umgebung",
+          "config-allowed-domains": "Sie können eine Domänenliste zum Abschnitt <a class='link-to-walled-garden'>'Kontrollierte Umgebung'</a> hinzufügen.",
+          "allowed-domain-input-field": "URL/IP-Adresse",
+          "allowed-dominas-list": "URL/IP-Adressenliste für die kontrollierte Umgebung",
+          "enable-walled-garden": "Kontrollierte Umgebung aktiviert",
+          "add-to-list": "Zur Liste hinzufügen"
+        },
+        "connectivity-warning": "Die SSDI existiert bereits mit einer anderen Verschlüsselungsmethode. Wenn Sie diese Option auswählen, treten möglicherweise Verbindungsprobleme auf"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Captive-Portal aktiviert"
@@ -1025,6 +1048,7 @@
           "commentLabel": "Kommentar",
           "commentInvalidLength": "Kommentar kann maximal {{length}} Zeichen lang sein.",
           "mimo-support": "MU-MIMO-Unterstützung",
+          "su-mimo-support": "SU-MIMO-Unterstützung",
           "airtimeFairnessTitle": "Airtime Fairness",
           "airtimeFairnessEnable": "Airtime Fairness aktivieren",
           "airtimeFairnessEnableWarning": "Airtime Fairness sollte nur aktiviert werden, wenn Sie alte Clients nutzen, da es die Leistung und Stabilität Ihres Netzwerks beeinträchtigt",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "Protokolle sammeln",
           "NETWORK": "Netzwerk",
           "APU_CONFIG": "APU-Konfiguration",
-          "REMOTE_SUPPORT": "Remote-Support"
+          "REMOTE_SUPPORT": "Remote-Support",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "Paketerfassung",
+          "CUSTOMER_SITE": "Kundenstandort"
         },
         "changeType": {
           "ADD": "Hinzufügen",
@@ -1144,8 +1171,11 @@
             "title": "Schritt 2",
             "description": "Suchen Sie die S/N auf der Rückseite des Access Point und warten Sie, bis die LED den Status Initialisierung anzeigt."
           },
+          "timePeriod": {
+            "description": "Für die Registrierung für AP6 kann der AP nur in den ersten 15 Minuten nach dem Einschalten zu Sophos Central hinzugefügt werden."
+          },
           "registerAP": {
-            "title": "Schritt 3",
+            "title": "Schritt 4",
             "description": "Geben Sie die S/N ein und klicken Sie auf „Registrieren“. Die Registrierung kann bis zu 5 Minuten dauern.",
             "agreement": "Indem ich nachfolgend auf „Registrieren“ klicke, erkenne ich die Bedingungen der <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos Nutzungsbedingungen für Endbenutzer</a> an und stimme diesen zu.",
             "enterSerialNumber": "Geben Sie die Seriennummer ein",

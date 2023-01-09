@@ -23,6 +23,7 @@
       "confirm-delete-header": "削除の確認",
       "error": "エラー",
       "errors": "エラー",
+      "step-3": "ステップ 3",
       "http-errors": {
         "500": "エラーが発生しました。後でもう一度やり直してください。",
         "default": "データの読み込中に問題が発生しました。"
@@ -128,12 +129,12 @@
         "actionLanguageKey": "アクセスポイントの設定"
       },
       "not-available-note": {
-        "threats": "脅威データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。",
-        "security-heartbeat": "セキュリティ ハートビート データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。"
+        "threats": "脅威データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。",
+        "security-heartbeat": "セキュリティ ハートビート データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。"
       }
     },
     "devices": {
-      "not-available-note": "使用状況データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。",
+      "not-available-note": "使用状況データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。",
       "static-details": "詳細",
       "mac-address": "MAC アドレス",
       "current-access-point": "現在のアクセスポイント",
@@ -203,9 +204,17 @@
         "pagination-text": "{{ filtered }}台の無線デバイスを表示。合計 {{ all }}台"
       },
       "chart": {
-        "max-connected-devices": "最大接続デバイス",
-        "devices-with-poor-signal-quality": "信号強度の弱いデバイス"
-      }
+        "apx-ap": {
+          "max-connected-devices": "最大接続デバイス (APX および AP)",
+          "devices-with-poor-signal-quality": "信号強度の弱いデバイス (APX および AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "最大接続デバイス (AP6)",
+          "devices-with-poor-signal-quality": "信号強度の弱いデバイス (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "接続データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。",
+      "signal-quality-not-available-note": "信号強度データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。"
     },
     "usage-insight": {
       "breadcrumb-text": "使用状況",
@@ -216,7 +225,7 @@
       "usage": "使用状況",
       "empty-category-message": "カテゴリを選択すると、詳細な情報が表示されます。",
       "no-data": "表示できるカテゴリのデータはありません",
-      "not-available-note": "使用状況データは、APX および AP シリーズでのみ利用できます。AP6 データは除外されます。"
+      "not-available-note": "使用状況データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。"
     },
     "diagnostics": {
       "events": "イベント",
@@ -238,7 +247,8 @@
         "start-fail-message": "PACKET CAPTURE コマンドを開始できませんでした。",
         "stop-message": "PACKET CAPTURE コマンドが停止しました。",
         "stop-fail-message": "PACKET CAPTURE コマンドを停止できませんでした。",
-        "model": "機種"
+        "model": "機種",
+        "ap6-not-supported": "パケットキャプチャは、APX および AP シリーズのみで利用できます。"
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "ログをダウンロードします",
         "logfile": "ログ",
         "model": "機種",
+        "success-toast": "アクセスポイント {{ accessPointName }} のログファイルをアップロード中 ",
         "online-status": "アクセスポイントの状態"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "説明",
       "configuration-changed": "設定が変更されました",
       "date-range-separator": "過去 90日間内で期間を選択してください",
-      "search-by-modified-date": "更新者で検索",
+      "search-by-modified-date": "更新者",
       "csv-of-view": "CSV - 現在のビュー",
       "pdf-of-view": "PDF - 現在のビュー",
       "csv-of-past-90-days": "CSV - 過去 90日",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "使用しているすべての検索フィルタは、エクスポート時にも適用されます。なお、過去 90日間のレポートをエクスポートする場合、ここで指定した日付の範囲は適用されません。",
       "access-point-severity": "重要度",
       "event-name": "イベント",
-      "search-by-accesspoint": "アクセスポイント名で検索",
-      "search-by-name-or-serial-number": "名前やシリアル番号で検索",
+      "search-by-accesspoint": "アクセスポイント名",
+      "search-by-serial-number": "シリアル番号",
       "export": "エクスポート",
       "low-severity": "情報レベル"
     },
@@ -371,7 +382,7 @@
         "breadcrumb-text": "サイト",
         "title": "ワイヤレス - サイト",
         "no-sites-defined": "定義済みのサイトがありません。",
-        "delete-dialog-text": "選択したカスタマーサイトの構内図はすべて削除されます。サイト {{site}} を削除しますか？",
+        "delete-dialog-text": "選択した顧客サイトの構内図はすべて削除されます。サイト {{site}} を削除しますか？",
         "confirm-delete-header": "サイトの削除",
         "online-_dynamic_": {
           "false": "オフライン",
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "RADIUS サーバーには、有効な IP アドレスを指定してください",
         "radius-server-help-msg": "ローカルネットワークの RADIUS サーバーです。",
         "radius-server-shared-secret": "共有シークレット",
+        "radius-server-warning": "RADIUS の設定はすべて、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
         "passphrase-required": "パスフレーズを指定してください。",
         "passphrase-placeholder": "安全なパスフレーズを入力してください。",
         "shared-secret-placeholder": "パスフレーズを入力してください",
@@ -631,7 +643,8 @@
         "broadcast-outdated": "アクセスポイントを再起動した後、Sophos Central に接続できない場合でも、SSID がブロードキャストを行い続けるようにします。",
         "band-steering-label": "バンドステアリング",
         "quality-band-steering": "デュアルバンド対応ワイヤレスクライアントは、可能な場合、5GHz 帯に誘導されます。クライアント側のパフォーマンスが向上します。",
-        "band-steering-warning": "バンドステアリングは、このネットワークに登録されたアクセスポイントに設定されている他のすべてのネットワークにも適用されます。",
+        "band-steering-warning": "バンドステアリングは、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
+        "proxy-arp-warning": "プロキシ ARP は、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
         "broadcast-outdated-label": "ブロードキャストを継続する",
         "multicast-label": "マルチキャストをユニキャストに変換する",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "同じ無線方式で接続しているクライアント同士が直接通信を行うことを防止します。この設定はゲストやホットスポットの SSID に対して使用することを推奨します。",
         "client-isolation-enabled-info": "ホットスポットが有効化されているため、クライアントの隔離も有効化されています。",
         "mac-filter-header": "MAC フィルタリング",
+        "mac-filtering-warning": "MAC フィルタリングは、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
         "mac-filter-none": "なし",
         "mac-filter-blacklist": "ブロックリスト",
         "scheduled": "スケジュール済み",
@@ -890,7 +904,16 @@
             "custom-url-valid": "無効な形式のリダイレクト URL です。"
           }
         },
-        "captive-portal-capacity": "警告。複数のキャプティブポータルを割り当てることはできません"
+        "captive-portal-capacity": "警告。複数のキャプティブポータルを割り当てることはできません",
+        "walled-garden": {
+          "header": "ウォールドガーデン",
+          "config-allowed-domains": "ドメインリストを<a class='link-to-walled-garden'>「ウォールドガーデン」</a>セクションに追加できます。",
+          "allowed-domain-input-field": "URL/IP アドレス",
+          "allowed-dominas-list": "ウォールドガーデンの URL/IP アドレスのリスト",
+          "enable-walled-garden": "有効化されているウォールドガーデン",
+          "add-to-list": "リストに追加"
+        },
+        "connectivity-warning": "この SSID は、別の暗号化モードで既に存在します。このオプションを選択すると、接続の問題が発生する可能性があります"
       },
       "access-point-editor": {
         "captive-portal-enabled": "キャプティブポータルが有効になっています"
@@ -1025,6 +1048,7 @@
           "commentLabel": "コメント",
           "commentInvalidLength": "コメントは最大 {{length}}文字まで入力できます。",
           "mimo-support": "MU-MIMO 対応",
+          "su-mimo-support": "SU-MIMO 対応",
           "airtimeFairnessTitle": "エアタイムフェアネス",
           "airtimeFairnessEnable": "エアタイムフェアネスを有効にする",
           "airtimeFairnessEnableWarning": "古いワイヤレス技術が使用されているクライアントがない限り、エアタイムフェアネスを有効にしないでください。この機能は、ネットワークのパフォーマンスと安定性に影響を及ぼします。",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "ログの収集",
           "NETWORK": "ネットワーク",
           "APU_CONFIG": "APU 設定",
-          "REMOTE_SUPPORT": "リモートサポート"
+          "REMOTE_SUPPORT": "リモートサポート",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "パケットキャプチャ",
+          "CUSTOMER_SITE": "顧客サイト"
         },
         "changeType": {
           "ADD": "追加",
@@ -1144,8 +1171,11 @@
             "title": "ステップ 2",
             "description": "アクセスポイントの底面に記載されているシリアル番号を確認して、LED の表示が「Initialize」に変わるまで待ちます。"
           },
+          "timePeriod": {
+            "description": "AP6 の登録は、電源の投入後に AP を Sophos Central に追加するための 15分に制限されています。"
+          },
           "registerAP": {
-            "title": "ステップ 3",
+            "title": "ステップ 4",
             "description": "シリアル番号を入力して「登録」をクリックします。登録が終了するまで最長 5分かかることがあります。",
             "agreement": "以下で「登録」をクリックすることにより、<a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/ja-jp/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">ソフォスのエンドユーザー利用規約</a>の条項を許諾し、同意します。",
             "enterSerialNumber": "シリアル番号を入力してください",

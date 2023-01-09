@@ -23,6 +23,7 @@
       "confirm-delete-header": "삭제 확인",
       "error": "오류",
       "errors": "오류",
+      "step-3": "3단계",
       "http-errors": {
         "500": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
         "default": "데이터 로드 중 문제 발생."
@@ -43,7 +44,7 @@
       "statistic": "통계",
       "task-queue": "작업 대기열",
       "devices": "장치",
-      "reset": "재설정",
+      "reset": "다시 설정",
       "select-all": "모두 선택",
       "deselect-all": "모두 선택 취소",
       "channel": "채널",
@@ -203,9 +204,17 @@
         "pagination-text": "{{ filtered }}개의 무선 장치를 표시하는 중입니다. 총 {{ all }}개"
       },
       "chart": {
-        "max-connected-devices": "최대 연결 장치 수",
-        "devices-with-poor-signal-quality": "신호 품질이 낮은 장치"
-      }
+        "apx-ap": {
+          "max-connected-devices": "최대 연결 장치 수 (APX 및 AP)",
+          "devices-with-poor-signal-quality": "신호 품질이 낮은 장치 (APX 및 AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "최대 연결 장치 수 (AP6)",
+          "devices-with-poor-signal-quality": "신호 품질이 낮은 장치 (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "연결 데이터는 APX 및 AP 시리즈에서만 사용할 수 있습니다. AP6 데이터는 제외됩니다.",
+      "signal-quality-not-available-note": "신호 품질 데이터는 APX 및 AP 시리즈에서만 사용할 수 있습니다. AP6 데이터는 제외됩니다."
     },
     "usage-insight": {
       "breadcrumb-text": "사용 현황 파악",
@@ -238,7 +247,8 @@
         "start-fail-message": "PACKET CAPTURE 명령이 시작되지 않았습니다.",
         "stop-message": "PACKET CAPTURE 명령이 중지되었습니다.",
         "stop-fail-message": "PACKET CAPTURE 명령이 중지되지 않았습니다.",
-        "model": "모델"
+        "model": "모델",
+        "ap6-not-supported": "패킷 캡처는 APX 및 AP 시리즈에서만 사용할 수 있습니다."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "로그 다운로드",
         "logfile": "로그",
         "model": "모델",
+        "success-toast": "AccessPoint용 로그 파일 업로드 중: {{ accessPointName }}",
         "online-status": "액세스 지점 상태"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "설명",
       "configuration-changed": "구성 변경됨",
       "date-range-separator": "지난 90일 이내의 날짜 범위 지정",
-      "search-by-modified-date": "수정자로 검색",
+      "search-by-modified-date": "수정자",
       "csv-of-view": "현재 보기의 CSV",
       "pdf-of-view": "현재 보기의 PDF",
       "csv-of-past-90-days": "지난 90일간의 CSV",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "적용된 모든 검색 필터는 내보내기 중에도 적용됩니다. 지난 90일 동안의 날짜 범위는 제외됩니다.",
       "access-point-severity": "심각도",
       "event-name": "이벤트",
-      "search-by-accesspoint": "액세스 지점 이름으로 검색",
-      "search-by-name-or-serial-number": "이름 또는 일련번호로 검색",
+      "search-by-accesspoint": "액세스 지점 이름",
+      "search-by-serial-number": "일련 번호",
       "export": "내보내기",
       "low-severity": "정보 제공"
     },
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "RADIUS 서버는 유효한 IP 주소여야 합니다.",
         "radius-server-help-msg": "로컬 네트워크용 RADIUS 서버.",
         "radius-server-shared-secret": "공유 암호",
+        "radius-server-warning": "RADIUS에 대한 모든 설정은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용됩니다.",
         "passphrase-required": "암호가 필요합니다.",
         "passphrase-placeholder": "보안 암호를 입력하십시오.",
         "shared-secret-placeholder": "암호 입력",
@@ -632,6 +644,7 @@
         "band-steering-label": "대역 조종",
         "quality-band-steering": "이중 대역 가능 무선 클라이언트는 가능한 경우 5GHz로 조종됩니다. 클라이언트 경험을 향상시킵니다.",
         "band-steering-warning": "대역 조종은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용할 수 있습니다.",
+        "proxy-arp-warning": "프록시 ARP는 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용할 수 있습니다.",
         "broadcast-outdated-label": "브로드캐스팅 유지",
         "multicast-label": "멀티캐스트에서 유니캐스트로 변환",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "동일한 라디오에서 클라이언트 간의 직접 통신을 금지합니다. 이것은 게스트 또는 핫스팟 SSID에 권장됩니다.",
         "client-isolation-enabled-info": "클라이언트 분리가 활성화되어 있고, 핫스팟도 활성화되어 있습니다.",
         "mac-filter-header": "MAC 필터링",
+        "mac-filtering-warning": "MAC 필터링은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용됩니다.",
         "mac-filter-none": "없음",
         "mac-filter-blacklist": "차단된 목록",
         "scheduled": "예약됨",
@@ -890,7 +904,16 @@
             "custom-url-valid": "리디렉션 URL 형식이 올바르지 않습니다."
           }
         },
-        "captive-portal-capacity": "경고 여러 종속 포털을 할당할 수 없습니다."
+        "captive-portal-capacity": "경고 여러 종속 포털을 할당할 수 없습니다.",
+        "walled-garden": {
+          "header": "폐쇄형 네트워크 서비스(Walled Garden)",
+          "config-allowed-domains": "<a class='link-to-walled-garden'>'폐쇄형 네트워크 서비스(Walled Garden)’</a> 섹션에 도메인 목록을 추가할 수 있습니다.",
+          "allowed-domain-input-field": "URL/IP 주소",
+          "allowed-dominas-list": "폐쇄형 네트워크 서비스(Walled Garden) URL/IP 주소 목록",
+          "enable-walled-garden": "활성화된 폐쇄형 네트워크 서비스(Walled Garden)",
+          "add-to-list": "목록에 추가"
+        },
+        "connectivity-warning": "이 SSID는 이미 다른 암호화 모드로 존재합니다. 이 옵션을 선택하면 연결 문제가 발생할 수 있습니다."
       },
       "access-point-editor": {
         "captive-portal-enabled": "종속 포털이 활성화됨"
@@ -1025,6 +1048,7 @@
           "commentLabel": "설명",
           "commentInvalidLength": "설명은 길이가 {{length}}자 이상이어야 합니다.",
           "mimo-support": "MU-MIMO 지원",
+          "su-mimo-support": "SU-MIMO 지원",
           "airtimeFairnessTitle": "Airtime Fairness",
           "airtimeFairnessEnable": "Airtime Fairness 사용",
           "airtimeFairnessEnableWarning": "레거시 클라이언트가 없는 경우 Airtime Fairness를 활성화해서는 안 됩니다. 활성화하게 되면 네트워크 성능 및 안정성에 영향을 미칩니다.",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "로그 수집",
           "NETWORK": "네트워크",
           "APU_CONFIG": "Apu Config",
-          "REMOTE_SUPPORT": "원격 지원"
+          "REMOTE_SUPPORT": "원격 지원",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "패킷 캡처",
+          "CUSTOMER_SITE": "고객 사이트"
         },
         "changeType": {
           "ADD": "추가",
@@ -1144,8 +1171,11 @@
             "title": "2단계",
             "description": "액세스 지점 뒷면에서 S/N을 찾고 LED가 초기화 상태가 될 때까지 기다리십시오."
           },
+          "timePeriod": {
+            "description": "AP6 등록은 전원을 켠 후 AP를 Sophos Central에 추가하는 데 15분으로 제한됩니다."
+          },
           "registerAP": {
-            "title": "3단계",
+            "title": "4단계",
             "description": "S/N을 입력하고 '등록'을 클릭하십시오. 등록은 최대 5분 정도 걸릴 수 있습니다.",
             "agreement": "아래의 '등록'을 클릭함으로써, 본인은 <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos 최종 사용자 이용 약관</a>의 약관을 수락하고 그에 동의합니다.",
             "enterSerialNumber": "일련 번호 입력",

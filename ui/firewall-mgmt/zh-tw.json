@@ -2,7 +2,7 @@
   "firewall-management": {
     "name": "防火牆管理",
     "tooltip": {
-      "title" : {
+      "title": {
         "name": "名稱：",
         "label": "標籤："
       }
@@ -56,7 +56,7 @@
             "label": "名稱",
             "placeholder-interface": "防火牆介面的名稱或一般標籤。",
             "placeholder-zone": "防火牆區域的名稱或一般標籤。",
-            "required": "需要名稱",
+            "required": "名稱為必填項",
             "max-length": "名稱過長。"
           },
           "description": {
@@ -75,17 +75,17 @@
           },
           "mappings": {
             "label": "對應",
-            "default-option":"預設（任何防火墻）",
+            "default-option": "預設（任何防火墻）",
             "same-as-object": "動態",
             "add": "新增",
             "replace": "取代",
             "default-cannot-delete": "預設對應不能刪除，只能替換。",
             "zones": {
-              "mappedName" : "對應區域",
+              "mappedName": "對應區域",
               "firewall": "防火牆"
             },
             "interface": {
-              "mappedName" : "對應介面",
+              "mappedName": "對應介面",
               "firewall": "防火牆"
             }
           },
@@ -144,7 +144,7 @@
           }
         }
       },
-      "zone" : {
+      "zone": {
         "add-title": "建立新動態區域",
         "add-button": "新增動態區域",
         "error-no-list": "無法載入動態區域清單。",
@@ -189,7 +189,7 @@
           "more": "向下連結 {{ bad }} VPN 通道"
         },
         "unknown-connection": {
-          "one":  "未知",
+          "one": "未知",
           "more": "{{ unknown }} 未知"
         },
         "resource-sharing": {
@@ -211,18 +211,18 @@
         "initiator": "啟動器",
         "firewall-rules": {
           "one": "{{ total }} 防火牆規則",
-          "more":  "{{ total }} 防火牆規則"
+          "more": "{{ total }} 防火牆規則"
         },
         "policy-route": {
           "one": "{{ total }} 原則路由",
           "more": "{{ total }} 原則路由"
         },
         "nat-rules": {
-          "one" : "{{ total }} NAT 規則",
+          "one": "{{ total }} NAT 規則",
           "more": "{{ total }} NAT 規則"
         },
         "hosts": {
-          "one" : "{{ total }} 主機",
+          "one": "{{ total }} 主機",
           "more": "{{ total }} 主機"
         },
         "services": {
@@ -234,64 +234,64 @@
       "add": {
         "name": "防火墻管理 - 設定 SD-WAN 連線群組",
         "breadcrumb-text": "設定 SD-WAN 連線群組",
-        "error" : {
+        "error": {
           "string": "錯誤",
-          "INVALID_XFRM_IP" : "為群組中的某個防火墻選擇了無效的 XFRM IP。",
-          "XFRM_IP_ALLOCATION_FAILED" : "無法為群組中的某個防火墻配置 XFRM IP 位址。",
-          "IPSEC_POLICY_CREATE_FAILED" : "無法為群組中的某個防火墻建立 IPSEC 原則。",
-          "VPN_CREATE_FAILED" : "為群組中的某個防火墻建立 VPN 失敗了。",
-          "XFRM_IP_ASSIGNMENT_FAILED" : "無法為群組中的某個防火墻配置 XFRM IP 位址。",
-          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED" : "無法為群組中的某個防火墻建立主機或服務物件。",
-          "FIREWALL_RULE_CREATE_FAILED" : "為群組中的某個防火墻建立防火墻規則失敗了。",
-          "NAT_RULE_CREATE_FAILED" : "為群組中的某個防火墻建立 NAT 規則失敗了。",
-          "CREATE_XFRM_GATEWAY_FAILED" : "為群組中的某個防火墻建立 XFRM 閘道失敗了。",
-          "SDWAN_POLICY_ROUTE_CREATED_FAILED" : "為群組中的某個防火墻建立原則路由失敗了。",
-          "SDWAN_POLICY_ROUTE_ENABLE_FAILED" : "無法為群組中的某個防火墻啟用原則路由。",
-          "VPN_PING_ENABLE_FAILED" : "無法為群組中的某個防火墻啟用 VPN Ping。",
-          "VPN_DELETE_FAILED" : "為群組中的某個防火墻刪除 VPN 失敗了。",
-          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED" : "無法為群組中的某個防火墻刪除主機/服務物件。",
-          "FIREWALL_RULE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除防火墻規則。",
-          "NAT_RULE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除 NAT 規則。",
-          "SDWAN_POLICY_ROUTE_DELETE_FAILED" : "無法為群組中的某個防火墻刪除原則路由。",
-          "VPN_DEACTIVATION_FAILED" : "無法為群組中的某個防火墻停用 VPN。",
-          "VPN_ACTIVATION_FAILED" : "無法為群組中的某個防火墻啟用 VPN。",
-          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED" : "SD-WAN 連線群組已標記為待刪除。請稍候。",
-          "GROUP_NOT_EXISTS" : "群組不存在。",
-          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL" : "資源共用防火墻上不允許 NAT 位址",
-          "FIREWALL_PART_OF_ANOTHER_GROUP" : "防火墻已屬於其他群組。",
-          "FIREWALL_NOT_FOUND" : "未找到所選防火墻。",
-          "MIN_ONE_SUBNET_NEEDED" : "群組中的每個防火墻至少需要一個子網路。",
-          "MIN_ONE_WAN_PORT_NEEDED" : "群組中的每個防火墻至少需要一個 WAN 連接埠。",
-          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP" : "群組中至少需要兩個防火墻。",
-          "SDWAN_FEATURE_NOT_SUPPORTED" : "SD-WAN 連線群組功能尚不受支援。",
-          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED" : "在輔助防火墻上交易不受支援。",
-          "NOT_VALID_SUBNET" : "為群組中的某個防火墻找到的子網路無效。",
-          "ATTRIBUTE_VALUE_OUT_OF_RANGE" : "屬性 '{{name}}' 值不在範圍內：{{value}}",
-          "INVALID_ATTRIBUTE" : "類別 {{ className }} 的無效屬性 '{{ attribute }}'。",
-          "UNIQUE_ATTRIBUTE_NOT_PRESENT" : "類別 '{{ className }}' 不存在唯一屬性",
-          "MANDATORY_ATTRIBUTE_NOT_PRESENT" : "類別 '{{ className }}' 不存在強制屬性 '{{ name }}'",
-          "UNSUPPORTED_CLASS" : "不受支援的類別 '{{ name }}'",
-          "INVALID_ATTRIBUTE_DATATYPE" : "類別 '{{ className }}' 中屬性 '{{ name }}' 的資料不受支援",
-          "MISSING_ATTRIBUTE" : "類別 '{{ className }}' 缺失屬性 '{{ name }}'",
-          "INVALID_IP_ADDRESS" : "無效的 IP 位址：{{ values }}",
-          "INVALID_IP_NETMASK_ADDRESS" : "無效的 IP 位址 '{{ ip }}' 網路遮罩/前置詞 '{{ netmask }}'",
-          "INVALID_IP_RANGE" : "無效的 IP 範圍：低範圍 {{ low }} 和高範圍 {{ high }}",
-          "INVALID_CIDR_FORMAT" : "無效的 CIDR 格式：{{ value }}",
-          "EXCEEDS_NUMBER_OF_VALUES_LIMIT" : "超過屬性 '{{ name }}' 的值數量，允許的限制為 {{ maxSize }}",
-          "ICMP_PARAM_SIZE_MISMATCH" : "ICMP 類型和 ICMP 代碼大小必須相等，ICMP 類型大小 {{ typeSize }} 和 ICMP 代碼大小 {{ codeSize }}。",
-          "PROTOCOL_SIZE_MISMATCH" : "通訊協定，源連接埠和目的地連接埠大小必須相等，通訊協定大小 {{ protocolSize }}，源連接埠大小 {{ sourceSize }}，目的地連接埠大小 {{ destinationSize }}",
-          "INVALID_PROTOCOL" : "無效的通訊協定 '{{ name }}'",
-          "TRANSACTION_NOT_ALLOWED" : "此防火墻不允許進行交易",
-          "IP_ALLOCATION_FAILED" : "此防火墻的 IP 配置失敗",
-          "DEVICE_NOT_FOUND" : "找不到防火墻",
-          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED" : "此防火墻不支援 Central Orchestration 功能",
-          "LICENSE_NOT_FOUND" : "此防火墻不存在授權",
-          "NAT_NOT_ALLOWED" : "資源共用防火墻上不允許 NAT 位址",
-          "DEVICE_PART_OF_OTHER_GROUP" : "防火墻已屬於其他群組。",
-          "OPERATION_IN_PROGRESS" : "{{ groupName }} 的 {{ operation }} 操作正在進行中",
-          "INVALID_SUBNET" : "無效的子網路、IP 位址 {{ ip }}、網路遮罩 {{ netmask }}",
-          "GROUP_DOES_NOT_EXISTS" : "群組 ID {{ groupId }} 不存在",
-          "INTERNAL_REQUEST_ERROR" : "發生錯誤。內部伺服器錯誤！",
+          "INVALID_XFRM_IP": "為群組中的某個防火墻選擇了無效的 XFRM IP。",
+          "XFRM_IP_ALLOCATION_FAILED": "無法為群組中的某個防火墻配置 XFRM IP 位址。",
+          "IPSEC_POLICY_CREATE_FAILED": "無法為群組中的某個防火墻建立 IPSEC 原則。",
+          "VPN_CREATE_FAILED": "為群組中的某個防火墻建立 VPN 失敗了。",
+          "XFRM_IP_ASSIGNMENT_FAILED": "無法為群組中的某個防火墻配置 XFRM IP 位址。",
+          "HOST_OR_SERVICE_OBJECT_CREATE_FAILED": "無法為群組中的某個防火墻建立主機或服務物件。",
+          "FIREWALL_RULE_CREATE_FAILED": "為群組中的某個防火墻建立防火墻規則失敗了。",
+          "NAT_RULE_CREATE_FAILED": "為群組中的某個防火墻建立 NAT 規則失敗了。",
+          "CREATE_XFRM_GATEWAY_FAILED": "為群組中的某個防火墻建立 XFRM 閘道失敗了。",
+          "SDWAN_POLICY_ROUTE_CREATED_FAILED": "為群組中的某個防火墻建立原則路由失敗了。",
+          "SDWAN_POLICY_ROUTE_ENABLE_FAILED": "無法為群組中的某個防火墻啟用原則路由。",
+          "VPN_PING_ENABLE_FAILED": "無法為群組中的某個防火墻啟用 VPN Ping。",
+          "VPN_DELETE_FAILED": "為群組中的某個防火墻刪除 VPN 失敗了。",
+          "HOST_OR_SERVICE_OBJECT_DELETE_FAILED": "無法為群組中的某個防火墻刪除主機/服務物件。",
+          "FIREWALL_RULE_DELETE_FAILED": "無法為群組中的某個防火墻刪除防火墻規則。",
+          "NAT_RULE_DELETE_FAILED": "無法為群組中的某個防火墻刪除 NAT 規則。",
+          "SDWAN_POLICY_ROUTE_DELETE_FAILED": "無法為群組中的某個防火墻刪除原則路由。",
+          "VPN_DEACTIVATION_FAILED": "無法為群組中的某個防火墻停用 VPN。",
+          "VPN_ACTIVATION_FAILED": "無法為群組中的某個防火墻啟用 VPN。",
+          "SDWAN_GROUP_ALREADY_MARKED_AS_DELETED": "SD-WAN 連線群組已標記為待刪除。請稍候。",
+          "GROUP_NOT_EXISTS": "群組不存在。",
+          "NAT_NOT_ALLOWED_ON_RESOURCE_SHARING_FIREWALL": "資源共用防火墻上不允許 NAT 位址",
+          "FIREWALL_PART_OF_ANOTHER_GROUP": "防火墻已屬於其他群組。",
+          "FIREWALL_NOT_FOUND": "未找到所選防火墻。",
+          "MIN_ONE_SUBNET_NEEDED": "群組中的每個防火墻至少需要一個子網路。",
+          "MIN_ONE_WAN_PORT_NEEDED": "群組中的每個防火墻至少需要一個 WAN 連接埠。",
+          "MIN_TWO_FIREWALLS_NEEDED_IN_SDWAN_GROUP": "群組中至少需要兩個防火墻。",
+          "SDWAN_FEATURE_NOT_SUPPORTED": "SD-WAN 連線群組功能尚不受支援。",
+          "TRANSACTION_ON_AUXILARY_FIREWALL_NOT_ALLOWED": "在輔助防火墻上交易不受支援。",
+          "NOT_VALID_SUBNET": "為群組中的某個防火墻找到的子網路無效。",
+          "ATTRIBUTE_VALUE_OUT_OF_RANGE": "屬性 '{{name}}' 值不在範圍內：{{value}}",
+          "INVALID_ATTRIBUTE": "類別 {{ className }} 的無效屬性 '{{ attribute }}'。",
+          "UNIQUE_ATTRIBUTE_NOT_PRESENT": "類別 '{{ className }}' 不存在唯一屬性",
+          "MANDATORY_ATTRIBUTE_NOT_PRESENT": "類別 '{{ className }}' 不存在強制屬性 '{{ name }}'",
+          "UNSUPPORTED_CLASS": "不受支援的類別 '{{ name }}'",
+          "INVALID_ATTRIBUTE_DATATYPE": "類別 '{{ className }}' 中屬性 '{{ name }}' 的資料不受支援",
+          "MISSING_ATTRIBUTE": "類別 '{{ className }}' 缺失屬性 '{{ name }}'",
+          "INVALID_IP_ADDRESS": "無效的 IP 位址：{{ values }}",
+          "INVALID_IP_NETMASK_ADDRESS": "無效的 IP 位址 '{{ ip }}' 網路遮罩/前置詞 '{{ netmask }}'",
+          "INVALID_IP_RANGE": "無效的 IP 範圍：低範圍 {{ low }} 和高範圍 {{ high }}",
+          "INVALID_CIDR_FORMAT": "無效的 CIDR 格式：{{ value }}",
+          "EXCEEDS_NUMBER_OF_VALUES_LIMIT": "超過屬性 '{{ name }}' 的值數量，允許的限制為 {{ maxSize }}",
+          "ICMP_PARAM_SIZE_MISMATCH": "ICMP 類型和 ICMP 代碼大小必須相等，ICMP 類型大小 {{ typeSize }} 和 ICMP 代碼大小 {{ codeSize }}。",
+          "PROTOCOL_SIZE_MISMATCH": "通訊協定，源連接埠和目的地連接埠大小必須相等，通訊協定大小 {{ protocolSize }}，源連接埠大小 {{ sourceSize }}，目的地連接埠大小 {{ destinationSize }}",
+          "INVALID_PROTOCOL": "無效的通訊協定 '{{ name }}'",
+          "TRANSACTION_NOT_ALLOWED": "此防火墻不允許進行交易",
+          "IP_ALLOCATION_FAILED": "此防火墻的 IP 配置失敗",
+          "DEVICE_NOT_FOUND": "找不到防火墻",
+          "CENTRAL_ORCHESTRATION_NOT_SUPPORTED": "此防火墻不支援 Central Orchestration 功能",
+          "LICENSE_NOT_FOUND": "此防火墻不存在授權",
+          "NAT_NOT_ALLOWED": "資源共用防火墻上不允許 NAT 位址",
+          "DEVICE_PART_OF_OTHER_GROUP": "防火墻已屬於其他群組。",
+          "OPERATION_IN_PROGRESS": "{{ groupName }} 的 {{ operation }} 操作正在進行中",
+          "INVALID_SUBNET": "無效的子網路、IP 位址 {{ ip }}、網路遮罩 {{ netmask }}",
+          "GROUP_DOES_NOT_EXISTS": "群組 ID {{ groupId }} 不存在",
+          "INTERNAL_REQUEST_ERROR": "發生錯誤。內部伺服器錯誤！",
           "INTERNAL_SERVER_ERROR": "發生錯誤。內部伺服器錯誤！",
           "GROUP_NAME_EXISTS": "群組名稱已存在。請選擇其他名稱。",
           "INVALID_IP_ADDRESS_OR_FQDN": "WAN 連結的公共 IP 或 FQDN 無效：{{ IPOrFQDN }}",
@@ -310,7 +310,7 @@
           "label": "選取防火牆",
           "name": {
             "label": "連線群組名稱",
-            "required": "需要名稱",
+            "required": "名稱為必填項",
             "heading": "為此群組命名",
             "length": "名稱最多可包含 40 個字元。"
           },
@@ -320,11 +320,11 @@
             "length": "描述最多可包含 250 個字元。"
           },
           "firewalls": {
-            "source":"可用防火墻",
-            "target":"已指派的防火牆",
+            "source": "可用防火墻",
+            "target": "已指派的防火牆",
             "label": "後續步驟中可將直接連線到防火墻的 LAN 網路新增到共用群組。您可以在下一步中自訂每個防火墻的用戶端網路。",
             "filter-notes": "注意：只有獲得授權參與 SD-WAN 連線群組的防火牆才可見以供選擇。此外，應將防火墻升級至支援此功能的韌體。",
-            "learn-more": "瞭解更多"
+            "learn-more": "了解更多"
           },
           "select": {
             "heading": "選取要包含的防火墻"
@@ -348,7 +348,7 @@
           "table": {
             "column": {
               "firewall-name": "防火墻",
-              "local-subnets":"本機網路",
+              "local-subnets": "本機網路",
               "wan-ports": "WAN 連接埠",
               "gateway": "主要和備用閘道",
               "backup-gateway": "備用閘道",
@@ -539,10 +539,10 @@
 
               "_dynamic_": {
                 "host": {
-                "2": "IP 位址 (IP 位址)",
-                "9": "網路",
-                "4": "IP 清單",
-                "3": "IP 範圍"
+                  "2": "IP 位址 (IP 位址)",
+                  "9": "網路",
+                  "4": "IP 清單",
+                  "3": "IP 範圍"
                 },
                 "service": {
                   "1": "TCP/UDP",
@@ -569,7 +569,7 @@
                 "destination-ports": "目的地連接埠"
               },
               "placeholder": {
-                "tcp-udp" : "服務參數...",
+                "tcp-udp": "服務參數...",
                 "ip": "通訊協定號碼...",
                 "icmp": "ICMP 類型和代碼..."
               },
@@ -630,7 +630,7 @@
         "process": "在建立群組時，您可選擇要加入連線群組的防火牆。",
         "how": "按一下「建立連線群組」按鈕即可啟動助手。",
         "header": "使用連線群組簡化您的 SD-WAN 設定",
-        "learn-more": "瞭解更多"
+        "learn-more": "了解更多"
       },
       "migrate-xfrm": {
         "label": "遷移",
@@ -669,11 +669,11 @@
           "text": "<strong>{{ name }}</strong> 正在執行生命週期結束的韌體版本，可能很快就無法從 Sophos Central 管理了。請於 2021 年 11 月 30 日將此韌體升級至受支援的韌體版本，以避免中斷。",
           "alert-text": "{{ name }} 正在執行生命週期結束的韌體版本，可能很快就無法從 Sophos Central 管理了。請於 2021 年 11 月 30 日將此韌體升級至受支援的韌體版本，以避免中斷。",
           "action": "如需詳細資訊，請閱讀我們的 知識庫文章。",
-          "learn-more": "瞭解更多",
+          "learn-more": "了解更多",
           "continue": "繼續"
         }
       },
-      "add":  {
+      "add": {
         "firewall": "新增防火牆",
         "name-label": "群組名稱",
         "name-length": "名稱最多可包含 40 個字元。",
@@ -704,8 +704,8 @@
       },
       "firewall": {
         "remove": {
-          "label": "刪除防火牆",
-          "text": "刪除防火牆 <b>{{name}}</b>。",
+          "label": "移除防火牆",
+          "text": "移除防火牆 <b>{{name}}</b>。",
           "info": "按一下 \"移除\" 以移除所選防火牆。",
           "success": "防火墻已從 Sophos Central 移除",
           "error": "無法從 Sophos Central 移除防火墻。"
@@ -717,7 +717,7 @@
       },
       "group-list": {
         "partner-managed-group": "合作夥伴管理群組",
-        "no-firewall-assigned":"此群組中無防火墻/子群組可用。",
+        "no-firewall-assigned": "此群組中無防火墻/子群組可用。",
         "edit-this-group": "新增防火牆至此群組",
         "add-sub-group": "在此群組下新增子群組",
         "add-sub-group-info": "這將是群組下的子群組： ",
@@ -781,9 +781,9 @@
         }
       }
     },
-    "firmware" : {
+    "firmware": {
       "version": "{{ version }}",
-      "upgrade" : {
+      "upgrade": {
         "modal": {
           "title": "韌體更新",
           "title-with-name": "韌體更新 - {{ groupName }}",
@@ -880,7 +880,7 @@
           "name": {
             "label": "範本名稱",
             "placeholder": "輸入範本的名稱",
-            "required": "需要名稱"
+            "required": "名稱為必填項"
           },
           "description": {
             "label": "描述",
@@ -915,16 +915,27 @@
           "edit-customers": "編輯客戶"
         },
         "template-sync": {
-            "sync": "立即同步",
-            "syncing": "正在同步",
-            "synced": "已同步",
-            "sync-message": "這將開始在所有新增的區域之間同步此範本。",
-            "partly-sync-message": "此範本已在部分新增區域中同步，而非全部區域。",
-            "error": "同步範本時出現錯誤。請重試。"
+          "sync": "更新地區",
+          "syncing": "更新",
+          "error": "更新地區時出錯。請重試。",
+          "notify": "正在更新地區。請重新整理頁面以查看何時完成。",
+          "tooltip": {
+            "title-legacy": "此範本可管理下列 Sophos Central 地區的防火牆：",
+            "region-legacy-1": "美國東部（俄亥俄州）",
+            "region-legacy-2": "美國西部（俄勒岡州）",
+            "region-legacy-3": "歐洲（爱尔兰）",
+            "region-legacy-4": "歐洲（法蘭克福）",
+            "title-fsc": "更新可讓您管理下列 Sophos Central 地區的客戶帳戶：",
+            "region-fsc-1": "加拿大（中部）",
+            "region-fsc-2": "亞太地區（悉尼）",
+            "region-fsc-3": "亞太地區 (東京)",
+            "region-fsc-4": "亞太地區（孟買）",
+            "region-fsc-5": "南美洲（圣保羅）"
+          }
         },
         "messages": {
-            "locked-title": "無法編輯範本",
-            "locked-message": "正在同步處理範本。請稍後重試。"
+          "locked-title": "無法編輯範本",
+          "locked-message": "正在同步處理範本。請稍後重試。"
         },
         "no-data": {
           "info": "建立通用的防火牆設定及基本原則範本組合，應用於不同客戶。",
@@ -932,7 +943,7 @@
           "groups": "您沒有此客戶的群組。",
           "firewalls": "您沒有此客戶的防火牆。",
           "header": "您沒有任何防火牆範本",
-          "learn-more": "瞭解更多",
+          "learn-more": "了解更多",
           "what": "何謂防火牆範本？",
           "what-answer": "防火牆範本是基本原則及防火牆設定的組合。您將之套用至您管理的客戶。",
           "why": "為何要使用防火牆範本？",
@@ -944,7 +955,7 @@
           }
         },
         "data": {
-          "firewalls" : "{{ count }} 防火牆",
+          "firewalls": "{{ count }} 防火牆",
           "no-data": "未找到子群組或防火墻。",
           "error-groups": "獲取子群組詳細資料時出錯。",
           "error-firewalls": "獲取防火墻詳細資料時出錯。",
@@ -952,18 +963,18 @@
         },
         "stats": {
           "sync": {
-            "state" : "已同步 {{ count }}",
-            "header":  {
-              "one":  "已同步一個防火墻",
-              "more":  "已同步 {{ count }} 個防火墻"
+            "state": "已同步 {{ count }}",
+            "header": {
+              "one": "已同步一個防火墻",
+              "more": "已同步 {{ count }} 個防火墻"
             },
             "subtext": "這些防火墻中的原則為最新狀態。"
           },
           "syncing": {
-            "state" : "{{ count }} 同步中",
-            "header":  {
-              "one":  "一個防火墻正在同步中",
-              "more":  "{{ count }} 個防火墻正在同步中"
+            "state": "{{ count }} 同步中",
+            "header": {
+              "one": "一個防火墻正在同步中",
+              "more": "{{ count }} 個防火墻正在同步中"
             },
             "subtext": "正在將原則推送到這些防火墻。造訪工作佇列以監視進程。"
           },
@@ -995,104 +1006,104 @@
           "stats-alert": "{{ messages }}",
           "error-both": "載入統計詳細資料時出錯。"
         },
-         "no-customers": "未將任何客戶指派到此範本。"
+        "no-customers": "未將任何客戶指派到此範本。"
       }
     },
     "pdb-inventory": {
-        "tab-group-template": "管理範本",
-        "tab-customer-firewalls": "防火牆",
-        "auto-refresh": "自動重新整理",
-        "customer-list": {
-            "column": {
-                "name": "名稱",
-                "group": "群組",
-                "customer": "客戶",
-                "sync-and-management": "同步和管理",
-                "backup": "最近一次備份",
-                "version": "版本",
-                "ip-address":"IP 位址 (IP 位址)",
-                "model": "機型",
-                "serial": "序號"
-            },
-            "search-label": "搜尋防火牆名稱、序號、型號和版本。"
+      "tab-group-template": "管理範本",
+      "tab-customer-firewalls": "防火牆",
+      "auto-refresh": "自動重新整理",
+      "customer-list": {
+        "column": {
+          "name": "名稱",
+          "group": "群組",
+          "customer": "客戶",
+          "sync-and-management": "同步和管理",
+          "backup": "最近一次備份",
+          "version": "版本",
+          "ip-address": "IP 位址 (IP 位址)",
+          "model": "機型",
+          "serial": "序號"
         },
-        "firmware": {
-            "upgrade": "韌體升級",
-            "step1": "第 1 步：選取防火牆",
-            "step2": "第 2 步：選擇排程",
-            "desc1": "以下清單僅顯示可升級的防火牆。",
-            "desc2": "請選取何時升級所選防火牆。",
-            "back": "上一頁",
-            "schedule": {
-              "now": "立即",
-              "custom": "自訂"
-            },
-            "date-time": "日期和時間",
-            "please-note": "請注意：",
-            "note1": "連線的防火牆將收到立即升級韌體的通知。",
-            "note2": "斷開連線的防火牆將在連線後很快收到通知。",
-            "note3": "這可能需要重新啟動防火牆。",
-            "note4": "現在，排程一旦儲存，就不可修改。",
-            "note5": "只有完成進行中的排程後才可新增新排程。",
-            "list": {
-              "name": "名稱",
-              "serial-number": "序號",
-              "customer-name": "客戶",
-              "current-version": "目前版本",
-              "to-version": "至版本",
-              "current-schedule": "目前排程"
-            },
-            "state": {
-              "_dynamic_": {
-                "available": {
-                  "title": "新韌體升級可用。 ",
-                  "subtext": "您可以立即或在將來套用這些升級。"
-                },
-                "in_progress": {
-                  "title": "正在升級韌體。",
-                  "subtext": "韌體正在升級。您可以在目前升級完成後安排升級。"
-                },
-                "scheduled": {
-                  "title": "韌體升級至版本 {{ nextVersion }} 已排定。",
-                  "subtext": "防火牆將在 {{ schedule }} 進行升級。 "
-                },
-                "upgrade_failed": {
-                  "title": "韌體升級失敗。",
-                  "subtext": "由於一些意外事件，韌體升級失敗。請確保防火牆已連線，然後重新排程。"
-                }
-              }
-            },
-            "upgrade-now": "立即升級",
-            "schedule-upgrade": "排程升級",
-            "choose-schedule": "選擇排程",
-            "cancel-schedule": "取消排程",
-            "upgrade-started-title": "韌體升級已開始",
-            "upgrade-started-body": "所選防火牆的韌體升級程序已開始。",
-            "upgrade-started-error": "無法開始韌體升級程序。",
-            "upgrade-scheduled-title": "韌體升級已排定",
-            "upgrade-scheduled-body": "所選防火牆的韌體升級已排定。",
-            "upgrade-scheduled-error": "未能安排韌體升級。",
-            "upgrade-cancelled-title": "韌體升級已取消",
-            "upgrade-cancelled-body": "所選防火牆的韌體升級已取消。",
-            "upgrade-cancelled-error": "無法取消韌體升級。",
-            "schedule-cancel": "取消",
-            "release-note": "發佈說明",
-            "cancel": {
-              "confirm-header": "取消排程",
-              "confirm-msg": "確定要取消排定的升級嗎？",
-              "accept": "是，請取消",
-              "reject": "否，不要取消"
-            },
-            "no-data": "您目前沒有可升級的防火牆。"
+        "search-label": "搜尋防火牆名稱、序號、型號和版本。"
+      },
+      "firmware": {
+        "upgrade": "韌體升級",
+        "step1": "第 1 步：選取防火牆",
+        "step2": "第 2 步：選擇排程",
+        "desc1": "以下清單僅顯示可升級的防火牆。",
+        "desc2": "請選取何時升級所選防火牆。",
+        "back": "上一頁",
+        "schedule": {
+          "now": "立即",
+          "custom": "自訂"
         },
-        "search": {
-            "placeholder": "搜尋元件"
+        "date-time": "日期和時間",
+        "please-note": "請注意：",
+        "note1": "連線的防火牆將收到立即升級韌體的通知。",
+        "note2": "斷開連線的防火牆將在連線後很快收到通知。",
+        "note3": "這可能需要重新啟動防火牆。",
+        "note4": "現在，排程一旦儲存，就不可修改。",
+        "note5": "只有完成進行中的排程後才可新增新排程。",
+        "list": {
+          "name": "名稱",
+          "serial-number": "序號",
+          "customer-name": "客戶",
+          "current-version": "目前版本",
+          "to-version": "至版本",
+          "current-schedule": "目前排程"
         },
-        "no-data": {
-          "firewall": "找不到防火牆",
-          "customer": "您目前沒有 Sophos Central 客戶。"
+        "state": {
+          "_dynamic_": {
+            "available": {
+              "title": "新韌體升級可用。 ",
+              "subtext": "您可以立即或在將來套用這些升級。"
+            },
+            "in_progress": {
+              "title": "正在升級韌體。",
+              "subtext": "韌體正在升級。您可以在目前升級完成後安排升級。"
+            },
+            "scheduled": {
+              "title": "韌體升級至版本 {{ nextVersion }} 已排定。",
+              "subtext": "防火牆將在 {{ schedule }} 進行升級。 "
+            },
+            "upgrade_failed": {
+              "title": "韌體升級失敗。",
+              "subtext": "由於一些意外事件，韌體升級失敗。請確保防火牆已連線，然後重新排程。"
+            }
+          }
         },
-        "error-no-list": "無法載入表格資料。"
+        "upgrade-now": "立即升級",
+        "schedule-upgrade": "排程升級",
+        "choose-schedule": "選擇排程",
+        "cancel-schedule": "取消排程",
+        "upgrade-started-title": "韌體升級已開始",
+        "upgrade-started-body": "所選防火牆的韌體升級程序已開始。",
+        "upgrade-started-error": "無法開始韌體升級程序。",
+        "upgrade-scheduled-title": "韌體升級已排定",
+        "upgrade-scheduled-body": "所選防火牆的韌體升級已排定。",
+        "upgrade-scheduled-error": "未能安排韌體升級。",
+        "upgrade-cancelled-title": "韌體升級已取消",
+        "upgrade-cancelled-body": "所選防火牆的韌體升級已取消。",
+        "upgrade-cancelled-error": "無法取消韌體升級。",
+        "schedule-cancel": "取消",
+        "release-note": "發佈說明",
+        "cancel": {
+          "confirm-header": "取消排程",
+          "confirm-msg": "確定要取消排定的升級嗎？",
+          "accept": "是，請取消",
+          "reject": "否，不要取消"
+        },
+        "no-data": "您目前沒有可升級的防火牆。"
+      },
+      "search": {
+        "placeholder": "搜尋元件"
+      },
+      "no-data": {
+        "firewall": "找不到防火牆",
+        "customer": "您目前沒有 Sophos Central 客戶。"
+      },
+      "error-no-list": "無法載入表格資料。"
     },
     "licensing-and-billing": {
       "add": {
@@ -1154,9 +1165,205 @@
         }
       }
     },
+    "licensing": {
+      "claim-device": {
+        "claim-firewall": "宣告防火牆",
+        "enter-unique-serial-desc": "輸入唯一裝置序號，以幫助我們識別您的防火牆。",
+        "where-to-find-serial-desc": "哪裡能找到序號？",
+        "serial-doc-desc": "序號位於您在電子郵件中收到的授權排程 PDF 中。需要幫助尋找已設定裝置上的序號？",
+        "learn-more": "了解更多",
+        "device-serial-number": "序號",
+        "cancel": "取消",
+        "next": "下一步",
+        "close": "關閉",
+        "model": "機型",
+        "invalid-serial-number-error": "序號無效。",
+        "serial-number": "序號",
+        "home-firewall-msg1": "家庭防火牆不需要宣告。",
+        "home-firewall-msg2": "家庭防火牆將從我們的伺服器取得固定的授權集合。因此無需宣告家庭防火牆。",
+        "claimed-msg": "您已宣告防火牆。",
+        "claim-opt-try": "宣告為期 30 天的 Xstream Protection、Web Server Protection 和 Email Protection 評估授權。",
+        "claim-opt-base": "只宣告使用基本授權的防火牆。",
+        "claim-opt-try-rma": "宣告為期 30 天的 Xstream Protection、Web Server Protection 和 Email Protection 評估授權。",
+        "claim-opt-base-rma": "仍然宣告。我將手動從有故障的防火牆轉移授權。",
+        "claim-fail-error": "未能宣告防火牆。請稍後重試。"
+      },
+      "device-list": {
+        "tab": {
+          "product-licenses": "產品授權",
+          "firewall-licenses": "防火牆授權"
+        },
+        "page-title": "防火牆授權",
+        "breadcrumb-title": "授權",
+        "claim-firewall": "宣告防火牆",
+        "download-airgap-license": "下載空隙授權",
+        "name": "名稱",
+        "model": "機型",
+        "serial-number": "序號",
+        "license-type": "授權類型",
+        "status": "狀態",
+        "earliest-start": "最早開始時間",
+        "next-expiry": "下一個到期日",
+        "warranty-expires-on": "保固到期日",
+        "tooltip-text": {
+          "transferring-to": "正在傳輸至 {{recipientEmail}}",
+          "transfer-request-expiry": "請求於 {{expiresAt}} {{expiryTimeRemaining}} 到期",
+          "cancel-transfer": "取消這次傳輸"
+        },
+        "cancel-transfer-header": "取消防火牆轉移",
+        "cancel-transfer-message-name-null": "是否要取消 {{serialNumber}} 的轉移？",
+        "cancel-transfer-message": "是否要取消 {{serialNumber}} ({{name}}) 的轉移？",
+        "transfer-success": "已成功取消防火牆轉移。",
+        "transfer-failure": "未能取消防火牆轉移。",
+        "show-hidden": "顯示隱藏項",
+        "search-message": "按名稱、型號和序號搜尋",
+        "list-empty-message": "沒有可顯示的宣告防火牆",
+        "apply-subscriptions": "套用訂閱",
+        "transfer-subscriptions": "轉移訂閱",
+        "activate-evaluations": "啟用評估版本",
+        "devcie-list-loading-error": "無法載入宣告的防火牆清單。",
+        "top-bar": {
+            "claim-between": "宣告期間",
+            "expiry-between": "到期期間",
+            "status": "狀態",
+            "reset-all": "全部重設"
+        }
+      },
+      "transfer-firewalls": {
+        "info": "您可以將所選防火牆傳輸至現有的 Sophos ID 帳戶。請註明收件者 Sophos ID 的電子郵件地址。",
+        "transfer-firewalls": "傳輸防火牆",
+        "recepient-email": "接收者電子郵件",
+        "name": "名稱",
+        "model": "機型",
+        "serial-number": "序號",
+        "license-type": "授權類型",
+        "status": "狀態",
+        "earliest-start": "最早開始時間",
+        "next-expiry": "下一個到期日",
+        "terms-and-condition": "轉移公司特此",
+        "terms-and-condition-one": "確認其已從硬體中移除其任何機密、個人或其他資料，",
+        "terms-and-condition-two": "並理解無論何時，Sophos 均沒有義務實際移動硬體。",
+        "tooltip-description": "說明需要更新",
+        "cancel": "取消",
+        "confirm": "確認",
+        "more-help": "更多說明",
+        "email-error-msgs": "請輸入有效的電子郵件位址",
+        "email-max-length-error-msgs": "電子郵件最多應包含 120 個字元",
+        "transfer-success": "正在轉移所選的防火牆",
+        "transfer-error": "無法傳輸所選防火牆",
+        "banner": {
+          "message": "{{firewallCount}} 防火牆已轉移至您的帳戶",
+          "accept-action": "全部接受",
+          "details-action": "詳細資訊"
+        }
+      },
+      "accept-firewalls": {
+        "title": "接受防火牆",
+        "info": "您可以將所選防火牆傳輸至現有的 Sophos ID 帳戶。請註明收件者 Sophos ID 的電子郵件地址。",
+        "request-expires": "請求到期",
+        "received-from": "已接收自",
+        "reject": "拒絕",
+        "accept": "接受",
+        "reject-firewalls": "拒絕防火牆",
+        "reject-firewall-message": "是否要拒絕所選的防火牆？",
+        "firewalls-rejected-success": "已成功拒絕防火牆",
+        "firewalls-rejected-error": "未能拒絕防火牆",
+        "firewalls-accepted-success": "已成功接受防火墻",
+        "firewalls-accepted-error": "未能接受防火牆"
+      },
+      "apply-subscription": {
+        "label": "套用訂閱 - {{ serial }}",
+        "subscription-key": "訂閱金鑰",
+        "description1": "授權金鑰用於新增訂閱至您的序號，或新增時間至您現有的訂閱。授權金鑰由 Sophos 提供，",
+        "description2": "標頭 \"您的序號和授權金鑰\" 下的授權排程文件。",
+        "description3": "您可能直接從 Sophos 收到該文件，或者可能由 Sophos 合作夥伴轉寄給您。",
+        "success": "已成功套用新訂閱！",
+        "error-applying": "未能套用訂閱。",
+        "error-preview": "未能預覽訂閱。",
+        "license-name": "訂閱名稱",
+        "start-date": "開始時間",
+        "end-date": "有效期至",
+        "finish": "套用訂閱",
+        "next": "預覽訂閱",
+        "preview": "預覽",
+        "features": "功能",
+        "subscription": "訂閱",
+        "current-expiry": "目前到期日",
+        "new-expiry": "新到期日"
+      },
+      "transfer-subscription": {
+        "label": "轉移訂閱",
+        "transfer-to": "轉移至",
+        "info-message": "您只能將授權轉移到相容的防火牆（型號應相同且轉移應不超過允許的最大轉移次數）",
+        "finish": "完成",
+        "transfer-success-message": "已成功轉移訂閱！",
+        "transfer-failure-message": "未能轉移訂閱！"
+      },
+      "pdb": {
+        "device-list": {
+            "tab": {
+                "flex-billing": "Flex 計費",
+                "firewall-licenses": "防火牆授權"
+            }
+        }
+      },
+      "subscription-features-list": {
+        "features": "功能",
+        "subscription": "訂閱",
+        "status": "狀態",
+        "expiry": "到期日",
+        "no-change": "這些功能沒有變更。",
+        "new": "新增"
+      },
+      "evaluate-features": {
+        "label": "啟用評估 - {{ serial }}",
+        "evaluate": "評估所選內容",
+        "available-features": "可供評估的功能",
+        "evaluate-30-days": "在接下來的 30 天內，您將評估以下功能",
+        "evaluate-only-once": "對於一個防火牆，只能評估一次這些功能。",
+        "success": "已成功開始對所選功能進行評估。",
+        "error": "未能開始對所選功能進行評估。"
+      },
+      "features": {
+        "BASE": "基本",
+        "ESUP": "Enhanced Support",
+        "WEB": "網頁保護",
+        "NET": "網路保護 (Network Protection)",
+        "NWP": "網路保護 (Network Protection)",
+        "SAND": "零時差防護",
+        "CORCH": "Central 協調流程",
+        "EMAIL": "電子郵件防護",
+        "WAF": "網頁伺服器保護",
+        "EMP": "電子郵件防護",
+        "SP": "標準保護",
+        "WBP": "網頁保護",
+        "WSP": "網頁伺服器保護",
+        "XSP": "Xstream 保護",
+        "EEPSUP": "EEPSUP",
+        "EPSUP": "EPSUP",
+        "SPMSP": "SPMSP",
+        "XSPWEMSP": "XSPWEMSP",
+        "XSPMSP": "XSPMSP",
+        "FG": "Full Guard",
+        "FGPL": "Full Guard Plus",
+        "NS": "NS",
+        "PESUP": "PEPSUP",
+        "PEEPSUP": "PEEPSUP",
+        "PEPSUP": "PEPSUP",
+        "PNGG": "PNGG",
+        "PFG": "PFG",
+        "NGG": "NGG",
+        "NGGPL": "NGGPL"
+      },
+      "subscription-status": {
+        "trial" : "評估版",
+        "usage": "每月",
+        "term": "已訂閱",
+        "perpetual": "已訂閱"
+      }
+    },
     "global-settings": {
       "breadcrumb-text": "設定與原則"
-
     },
     "component": {
       "state": {
@@ -1221,11 +1428,11 @@
       }
     },
     "fsc-regions": {
-        "amzn-ca-central-1": "加拿大",
-        "amzn-ap-southeast-2": "澳洲",
-        "amzn-ap-northeast-1": "日本",
-        "amzn-ap-south-1": "印度",
-        "amzn-sa-east-1": "巴西"
+      "amzn-ca-central-1": "加拿大",
+      "amzn-ap-southeast-2": "澳洲",
+      "amzn-ap-northeast-1": "日本",
+      "amzn-ap-south-1": "印度",
+      "amzn-sa-east-1": "巴西"
     }
   }
 }

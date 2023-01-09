@@ -23,6 +23,7 @@
       "confirm-delete-header": "Confirmar eliminación",
       "error": "Error",
       "errors": "Errores",
+      "step-3": "Paso 3",
       "http-errors": {
         "500": "Se ha producido un error. Vuelva a intentarlo más tarde.",
         "default": "Problema al cargar los datos."
@@ -203,9 +204,17 @@
         "pagination-text": "Mostrando {{ filtered }} dispositivos inalámbricos. Total {{ all }}"
       },
       "chart": {
-        "max-connected-devices": "Máximo de dispositivos conectados",
-        "devices-with-poor-signal-quality": "Dispositivos con una calidad de la señal deficiente"
-      }
+        "apx-ap": {
+          "max-connected-devices": "Máximo de dispositivos conectados (APX y AP)",
+          "devices-with-poor-signal-quality": "Dispositivos con una calidad de la señal deficiente (APX y AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "Máximo de dispositivos conectados (AP6)",
+          "devices-with-poor-signal-quality": "Dispositivos con una calidad de la señal deficiente (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "Los datos de conectividad solo están disponibles para las series APX y AP. Se excluyen los datos de AP6.",
+      "signal-quality-not-available-note": "Los datos de calidad de la señal solo están disponibles para las series APX y AP. Se excluyen los datos de AP6."
     },
     "usage-insight": {
       "breadcrumb-text": "Información detallada de uso",
@@ -238,7 +247,8 @@
         "start-fail-message": "El comando PACKET CAPTURE no se ha podido iniciar.",
         "stop-message": "Se ha detenido el comando PACKET CAPTURE.",
         "stop-fail-message": "El comando PACKET CAPTURE no se ha podido detener.",
-        "model": "Modelo"
+        "model": "Modelo",
+        "ap6-not-supported": "La captura de paquetes solo está disponible para las series APX y AP."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "Descargar registros",
         "logfile": "Registros",
         "model": "Modelo",
+        "success-toast": "Cargando archivo de registro para el punto de acceso: {{ accessPointName }}",
         "online-status": "Estado del punto de acceso"
       },
       "list": {
@@ -268,16 +279,16 @@
       "description": "Descripción",
       "configuration-changed": "Configuración cambiada",
       "date-range-separator": "Especificar rango de fechas dentro de los últimos 90 días",
-      "search-by-modified-date": "Buscar por Modificado por",
+      "search-by-modified-date": "Modificado por",
       "csv-of-view": "CSV de la vista actual",
       "pdf-of-view": "PDF de la vista actual",
       "csv-of-past-90-days": "CSV de los últimos 90 días",
       "pdf-of-past-90-days": "PDF de los últimos 90 días",
       "question-mark-icon-onhover-msg": "Todos los filtros de búsqueda aplicados también se aplican durante la exportación. El intervalo de fechas está excluido para los últimos 90 días.",
-      "access-point-severity": "Nivel de gravedad",
+      "access-point-severity": "Gravedad",
       "event-name": "Evento",
-      "search-by-accesspoint": "Buscar por nombre de punto de acceso",
-      "search-by-name-or-serial-number": "Buscar por nombre o número de serie",
+      "search-by-accesspoint": "Nombre de punto de acceso",
+      "search-by-serial-number": "número de serie",
       "export": "Exportar",
       "low-severity": "Informativo"
     },
@@ -560,7 +571,7 @@
         "welcome-text": "Texto de bienvenida",
         "portal-terms": "Términos de uso",
         "auth-type": "Tipo de autenticación",
-        "google-client-id": "ID de cliente de Google",
+        "google-client-id": "ID del cliente de Google",
         "google-client-app": "ID de app de Google",
         "radius-server": "IP de servidor Radius",
         "port": "Puerto",
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "El servidor RADIUS debe ser una dirección IP válida",
         "radius-server-help-msg": "Servidor RADIUS de su red local.",
         "radius-server-shared-secret": "Secreto compartido",
+        "radius-server-warning": "Cualquier configuración para RADIUS también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
         "passphrase-required": "Se requiere Frase de acceso.",
         "passphrase-placeholder": "Introduzca una frase de acceso segura.",
         "shared-secret-placeholder": "Introducir frase de acceso",
@@ -632,6 +644,7 @@
         "band-steering-label": "Direccionamiento de banda",
         "quality-band-steering": "Los clientes inalámbricos de doble banda se dirigirán a la banda de 5 GHz si es posible. Mejora la experiencia del cliente.",
         "band-steering-warning": "El direccionamiento de banda también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
+        "proxy-arp-warning": "El proxy ARP también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
         "broadcast-outdated-label": "Seguir transmitiendo",
         "multicast-label": "Conversión de multidifusión a unidifusión",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "Impide la comunicación directa entre clientes en un mismo radio. Se recomienda para los SSID de zonas Wi-Fi o de invitados.",
         "client-isolation-enabled-info": "El aislamiento de cliente está activado porque la zona Wi-Fi está activada.",
         "mac-filter-header": "Filtrado MAC",
+        "mac-filtering-warning": "El filtrado MAC también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
         "mac-filter-none": "Ninguno",
         "mac-filter-blacklist": "Lista de bloqueados",
         "scheduled": "Programado",
@@ -808,9 +822,9 @@
           "backend-authentication": "Autenticación de back-end",
           "password-schedule": "Programación de constraseña",
           "social-login": "Iniciar sesión con sus credenciales de redes sociales",
-          "google-console-help-text": "Puede obtener su ID de cliente de Google y el secreto del cliente en la <a href={{gooleDeveloperConsoleSite}} target='_blank'>consola para desarrolladores de Google</a>&nbsp e iniciando sesión con la cuenta de su organización.",
+          "google-console-help-text": "Puede obtener su ID del cliente de Google y el secreto del cliente en la <a href={{gooleDeveloperConsoleSite}} target='_blank'>consola para desarrolladores de Google</a>&nbsp e iniciando sesión con la cuenta de su organización.",
           "google-console-second-label": "Cree un nuevo proyecto y, desde la sección de credenciales, recupere el ID del cliente y el secreto del cliente.",
-          "client-id-label": "ID de cliente",
+          "client-id-label": "ID del cliente",
           "client-secret-label": "Secreto del cliente",
           "facebook-console-help-text": "Puede obtener su ID de la app de Facebook y el secreto de la aplicación en la <a href={{facebookDevelopersSite}} target='_blank'>cuenta para desarrolladores de Facebook</a>&nbsp e iniciando sesión con la cuenta de su organización.",
           "facebook-console-second-label": "Cree una aplicación desde la sección \"Mis Apps\". Recupere el ID de la app y el secreto de la sección Configuración.",
@@ -890,7 +904,16 @@
             "custom-url-valid": "La URL de redireccionamiento no tiene un formato válido."
           }
         },
-        "captive-portal-capacity": "Aviso. No se pueden asignar múltiples portales cautivos"
+        "captive-portal-capacity": "Aviso. No se pueden asignar múltiples portales cautivos",
+        "walled-garden": {
+          "header": "Jardín vallado",
+          "config-allowed-domains": "Puede añadir una lista de dominios a la sección de <a class='link-to-walled-garden'>'Jardín vallado'</a>.",
+          "allowed-domain-input-field": "Dirección IP/URL",
+          "allowed-dominas-list": "URL del jardín vallado/Lista de direcciones IP",
+          "enable-walled-garden": "Jardín vallado activado",
+          "add-to-list": "Añadir a la lista"
+        },
+        "connectivity-warning": "Este SSID ya existe con un modo de cifrado diferente. Elegir esta opción puede provocar problemas de conectividad"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Portal cautivo activado"
@@ -1025,6 +1048,7 @@
           "commentLabel": "Comentario",
           "commentInvalidLength": "El comentario debe tener {{length}} caracteres como máximo.",
           "mimo-support": "Soporte para MU-MIMO",
+          "su-mimo-support": "Soporte para SU-MIMO",
           "airtimeFairnessTitle": "Equidad de conexión",
           "airtimeFairnessEnable": "Activar Equidad de conexión",
           "airtimeFairnessEnableWarning": "No debe activar Equidad de conexión si no tiene clientes heredados, ya que esto afectaría al rendimiento y la estabilidad de la red",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "Recopilar registros",
           "NETWORK": "Red",
           "APU_CONFIG": "Configuración de APU",
-          "REMOTE_SUPPORT": "Soporte remoto"
+          "REMOTE_SUPPORT": "Soporte remoto",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "Captura de paquetes",
+          "CUSTOMER_SITE": "Sitio del cliente"
         },
         "changeType": {
           "ADD": "Añadir",
@@ -1144,8 +1171,11 @@
             "title": "Paso 2",
             "description": "Busque el número de serie en la parte posterior del punto de acceso y espere a que el LED esté en estado de inicialización."
           },
+          "timePeriod": {
+            "description": "El registro de AP6 está limitado a 15 minutos para añadir el AP a Sophos Central tras el encendido."
+          },
           "registerAP": {
-            "title": "Paso 3",
+            "title": "Paso 4",
             "description": "Escriba el número de serie y regístrelo. El registro puede tardar hasta 5 minutos.",
             "agreement": "Al hacer clic en 'Registrar' a continuación, acepto los términos de las <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/es-es/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Condiciones de uso de usuario final de Sophos</a>.",
             "enterSerialNumber": "Introducir número de serie",

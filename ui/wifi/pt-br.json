@@ -2,7 +2,7 @@
   "wifi.test.message": "Test wifi translation message",
   "network.access-points._dynamic_.state.UPDATE_FAILED": "Falha ao atualizar",
   "wireless": {
-    "main-dashboard-breadcrumb-text": "Apresentação",
+    "main-dashboard-breadcrumb-text": "Visão Geral",
     "common": {
       "skip": "Pular",
       "add": "Adicionar",
@@ -23,6 +23,7 @@
       "confirm-delete-header": "Confirmar deleção",
       "error": "Erro",
       "errors": "Erros",
+      "step-3": "Passo 3",
       "http-errors": {
         "500": "Ocorreu um erro. Tente de novo mais tarde.",
         "default": "Problema no carregamento de dados."
@@ -203,9 +204,17 @@
         "pagination-text": "Exibindo {{ filtered }} dispositivos sem fio. Total {{ all }}"
       },
       "chart": {
-        "max-connected-devices": "Máx. de dispositivos conectados",
-        "devices-with-poor-signal-quality": "Dispositivos com sinal de baixa qualidade"
-      }
+        "apx-ap": {
+          "max-connected-devices": "Máx. de dispositivos conectados (APX e AP)",
+          "devices-with-poor-signal-quality": "Dispositivos com sinal de baixa qualidade (APX e AP)"
+        },
+        "ap6": {
+          "max-connected-devices": "Máx. de dispositivos conectados (AP6)",
+          "devices-with-poor-signal-quality": "Dispositivos com sinal de baixa qualidade (AP6)"
+        }
+      },
+      "connectivity-not-available-note": "Dados de conectividade disponíveis apenas para as séries APX e AP. Exclui dados do AP6.",
+      "signal-quality-not-available-note": "Dados de qualidade do sinal disponíveis apenas para as séries APX e AP. Exclui dados do AP6."
     },
     "usage-insight": {
       "breadcrumb-text": "Detalhamento de uso",
@@ -238,7 +247,8 @@
         "start-fail-message": "Comando PACKET CAPTURE apresentou falha ao iniciar.",
         "stop-message": "Comando PACKET CAPTURE interrompido.",
         "stop-fail-message": "Comando PACKET CAPTURE apresentou falha na interrupção.",
-        "model": "Modelo"
+        "model": "Modelo",
+        "ap6-not-supported": "Captura de pacote disponível apenas para as séries APX e AP."
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "Baixar logs",
         "logfile": "Logs",
         "model": "Modelo",
+        "success-toast": "Carregando arquivo de log para o Ponto de Acesso: {{ accessPointName }}",
         "online-status": "Status do ponto de acesso"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "Descrição",
       "configuration-changed": "Configuração alterada",
       "date-range-separator": "Especifique um intervalo de data nos últimos 90 dias",
-      "search-by-modified-date": "Pesquisar por Modificado por",
+      "search-by-modified-date": "Modificado por",
       "csv-of-view": "CSV da exibição atual",
       "pdf-of-view": "PDF da exibição atual",
       "csv-of-past-90-days": "CSV dos últimos 90 dias",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "Todos os filtros de pesquisa aplicados também são aplicados durante a exportação. O intervalo de datas é excluído para os últimos 90 dias.",
       "access-point-severity": "Severidade",
       "event-name": "Evento",
-      "search-by-accesspoint": "Pesquisar pelo nome do ponto de acesso",
-      "search-by-name-or-serial-number": "Pesquisar por nome ou número de série",
+      "search-by-accesspoint": "Nome do ponto de acesso",
+      "search-by-serial-number": "número de série",
       "export": "Exportar",
       "low-severity": "Informativo"
     },
@@ -329,7 +340,7 @@
         "expiration-message": "Se habilitada, o suporte técnico da Sophos terá acesso remoto pelo tempo determinado. O tempo restante é exibido. Desative para desabilitar o acesso remoto imediatamente"
       },
       "list": {
-        "breadcrumb-text": "Configurações Globais",
+        "breadcrumb-text": "Configurações globais",
         "title": "Sem fio – Configurações globais"
       },
       "config": {
@@ -365,7 +376,7 @@
       }
     },
     "sites": {
-      "site-overview": "Visão geral do site",
+      "site-overview": "Visão Geral do site",
       "neighborhoodNetworks": "Redes da vizinhança",
       "list": {
         "breadcrumb-text": "Sites",
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "O servidor RADIUS deve ter um endereço de IP válido",
         "radius-server-help-msg": "O servidor RADIUS para a sua rede local.",
         "radius-server-shared-secret": "Segredo compartilhado",
+        "radius-server-warning": "As configurações de RADIUS também serão aplicadas a todas as outras redes nos APs em que esta rede está configurada.",
         "passphrase-required": "É necessária uma frase de segurança.",
         "passphrase-placeholder": "Insira uma frase de segurança protegida.",
         "shared-secret-placeholder": "Inserir frase de segurança",
@@ -632,6 +644,7 @@
         "band-steering-label": "Direção de banda",
         "quality-band-steering": "Clientes sem fio com capacidade de banda dupla serão direcionados à de 5 GHz, se possível. Melhora a experiência do usuário.",
         "band-steering-warning": "A direção de banda também será aplicada a todas as outras redes nos APs em que esta rede está configurada.",
+        "proxy-arp-warning": "O ARP proxy também será aplicado a todas as outras redes nos APs em que esta rede está configurada.",
         "broadcast-outdated-label": "Manter transmissão",
         "multicast-label": "Conversão multicast para unicast",
         "ssid-name-error-msgs": {
@@ -766,11 +779,12 @@
         },
         "hidden-label": "SSID oculto",
         "hidden-ssid": "Oculta o SSID nas varreduras de rede. Os usuários devem especificar o nome do SSID para conexão.",
-        "hidden-ssid-warning": "Observação: Você ainda precisará proteger o SSID oculto.",
+        "hidden-ssid-warning": "Nota: Você ainda precisará proteger o SSID oculto.",
         "client-isolation-label": "Isolamento de cliente",
         "client-isolation": "Previne a comunicação direta entre clientes no mesmo rádio. Recomendado para SSIDs de hotspot ou convidados.",
         "client-isolation-enabled-info": "Isolamento do cliente está habilitado, também o hotspot está habilitado.",
         "mac-filter-header": "Filtragem de MAC",
+        "mac-filtering-warning": "A filtragem de MAC também será aplicada a todas as outras redes nos APs em que esta rede está configurada.",
         "mac-filter-none": "Nenhum",
         "mac-filter-blacklist": "Lista de bloqueadas",
         "scheduled": "Agendada",
@@ -780,7 +794,7 @@
         "blocked-mac-filter": "Endereços de MAC bloqueados não poderão se conectar a este SSID.",
         "mac-filter-whitelist": "Lista de permitidas",
         "mac-filter": "Restringe os endereços de MAC com permissão para se conectar a este SSID.",
-        "mac-filter-warning": "Observação: Proporciona a segurança minimamente básica. Não protege contra o spoofing do MAC.",
+        "mac-filter-warning": "Nota: Proporciona a segurança minimamente básica. Não protege contra o spoofing do MAC.",
         "mac-filter-dynamic-blacklist": "Lista de bloqueadas",
         "mac-filter-dynamic-none": "Nenhuma",
         "mac-filter-dynamic-whitelist": "Lista de permitidas",
@@ -890,7 +904,16 @@
             "custom-url-valid": "A URL de redirecionamento não tem um formato válido."
           }
         },
-        "captive-portal-capacity": "Alerta. Não é permitido atribuir múltiplos portais cativos"
+        "captive-portal-capacity": "Alerta. Não é permitido atribuir múltiplos portais cativos",
+        "walled-garden": {
+          "header": "Jardim Murado",
+          "config-allowed-domains": "Você pode adicionar uma lista de domínios à seção <a class='link-to-walled-garden'>'Jardim murado'</a>.",
+          "allowed-domain-input-field": "URL/Endereço de IP",
+          "allowed-dominas-list": "Lista de endereços IP/URL do Jardim murado",
+          "enable-walled-garden": "Jardim Murado habilitado",
+          "add-to-list": "Adicionar à lista"
+        },
+        "connectivity-warning": "Este SSID já existe com um modo de criptografia diferente. Escolher esta opção pode resultar em problemas de conectividade"
       },
       "access-point-editor": {
         "captive-portal-enabled": "Portal cativo habilitado"
@@ -1025,6 +1048,7 @@
           "commentLabel": "Comentário",
           "commentInvalidLength": "O comentário deve ter no máximo {{length}} caracteres.",
           "mimo-support": "Suporte MU-MIMO",
+          "su-mimo-support": "Suporte SU-MIMO",
           "airtimeFairnessTitle": "Airtime Fairness",
           "airtimeFairnessEnable": "Habilitar Airtime Fairness",
           "airtimeFairnessEnableWarning": "O recurso Airtime Fairness não deve ser habilitado caso você não possua clientes antigos – isto afetará o desempenho e a estabilidade da sua rede.",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "Coletar logs",
           "NETWORK": "Rede",
           "APU_CONFIG": "Configuração de Apu",
-          "REMOTE_SUPPORT": "Suporte Remoto"
+          "REMOTE_SUPPORT": "Suporte Remoto",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "Captura de Pacotes",
+          "CUSTOMER_SITE": "Site de cliente"
         },
         "changeType": {
           "ADD": "Adicionar",
@@ -1144,8 +1171,11 @@
             "title": "Passo 2",
             "description": "Localize o número S/N na traseira do ponto de acesso e aguarde até que o LED apresente o estado de inicialização."
           },
+          "timePeriod": {
+            "description": "O registro do AP6 é limitado a 15 minutos para adicionar o AP ao Sophos Central depois de ligá-lo."
+          },
           "registerAP": {
-            "title": "Passo 3",
+            "title": "Passo 4",
             "description": "Insira o número S/N e clique em 'Registrar'. O registro pode levar até 5 minutos.",
             "agreement": "Ao clicar em 'Registrar' abaixo, aceito e concordo com os termos de utilização estipulados nos <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/pt-br/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Termos do Usuário Final da Sophos.</a>",
             "enterSerialNumber": "Insira o número de série",

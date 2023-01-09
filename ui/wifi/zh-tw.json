@@ -8,7 +8,7 @@
       "add": "新增",
       "all": "所有",
       "alerts": "警示",
-      "save": "无",
+      "save": "儲存",
       "save-continue": "儲存並繼續",
       "cancel": "取消",
       "edit": "編輯",
@@ -23,6 +23,7 @@
       "confirm-delete-header": "確認刪除",
       "error": "錯誤",
       "errors": "錯誤",
+      "step-3": "步驟 3",
       "http-errors": {
         "500": "出現錯誤，請稍後再試。",
         "default": "載入資料時出現問題。"
@@ -203,9 +204,17 @@
         "pagination-text": "顯示 {{ filtered }} 無線裝置。總數 {{ all }}"
       },
       "chart": {
-        "max-connected-devices": "最多連線裝置",
-        "devices-with-poor-signal-quality": "具有不良訊號品質的裝置"
-      }
+        "apx-ap": {
+          "max-connected-devices": "最多連線裝置 （APX 和 AP）",
+          "devices-with-poor-signal-quality": "具有不良訊號品質的裝置 （APX 和 AP）"
+        },
+        "ap6": {
+          "max-connected-devices": "最多連線裝置 （AP6）",
+          "devices-with-poor-signal-quality": "具有不良訊號品質的裝置 （AP6）"
+        }
+      },
+      "connectivity-not-available-note": "連線資料僅對 APX 和 AP 系列可用。不包括 AP6 資料。",
+      "signal-quality-not-available-note": "訊號品質資料僅對 APX 和 AP 系列可用。不包括 AP6 資料。"
     },
     "usage-insight": {
       "breadcrumb-text": "使用狀況探究",
@@ -238,7 +247,8 @@
         "start-fail-message": "PACKET CAPTURE 命令無法啟動。",
         "stop-message": "PACKET CAPTURE 命令已停止。",
         "stop-fail-message": "PACKET CAPTURE 命令無法停止。",
-        "model": "機型"
+        "model": "機型",
+        "ap6-not-supported": "封包擷取僅對 APX 和 AP 系列可用。"
       },
       "syslog": {
         "title": "Syslog",
@@ -256,6 +266,7 @@
         "view-logs": "下載記錄",
         "logfile": "日誌紀錄",
         "model": "機型",
+        "success-toast": "上傳 AccessPoint 的記錄檔：{{ accessPointName }}",
         "online-status": "存取點狀態"
       },
       "list": {
@@ -268,7 +279,7 @@
       "description": "說明",
       "configuration-changed": "設定已變更",
       "date-range-separator": "指定過去 90 天內的日期範圍",
-      "search-by-modified-date": "按修改者搜尋",
+      "search-by-modified-date": "修改者",
       "csv-of-view": "當前視圖的 CSV",
       "pdf-of-view": "當前視圖的 PDF",
       "csv-of-past-90-days": "過去 90 天的 CSV",
@@ -276,8 +287,8 @@
       "question-mark-icon-onhover-msg": "匯出期間也會套用所有套用的搜尋篩選器。資料範圍已排除 過去 90 天。",
       "access-point-severity": "嚴重性",
       "event-name": "事件",
-      "search-by-accesspoint": "按存取點名稱搜尋",
-      "search-by-name-or-serial-number": "按名稱或序號搜尋",
+      "search-by-accesspoint": "存取點名稱",
+      "search-by-serial-number": "序號",
       "export": "匯出",
       "low-severity": "資訊"
     },
@@ -612,6 +623,7 @@
         "radius-server-valid-ip-validation-msg": "RADIUS 伺服器必須位於有效的 IP 位址",
         "radius-server-help-msg": "您的本地網路的 RADIUS 伺服器。",
         "radius-server-shared-secret": "共用密碼",
+        "radius-server-warning": "RADIUS 的任何設定也將套用至設定此網路之 AP 上的所有其他網路。",
         "passphrase-required": "需要複雜密碼。",
         "passphrase-placeholder": "輸入安全的通關密碼。",
         "shared-secret-placeholder": "輸入複雜密碼",
@@ -632,6 +644,7 @@
         "band-steering-label": "頻寬操控",
         "quality-band-steering": "如果可能，雙頻容量的無線用戶端將被引導至 5 GHz。改善用戶端體驗。",
         "band-steering-warning": "頻寬操控也會被套用至 APs 上所有和此網路有相同設定的網路。",
+        "proxy-arp-warning": "Proxy ARP 還將套用於設定此網路的 AP 上的所有其他網路。",
         "broadcast-outdated-label": "保持廣播",
         "multicast-label": "多重播送轉換至單重播送",
         "ssid-name-error-msgs": {
@@ -771,6 +784,7 @@
         "client-isolation": "防止同一廣播上的用戶端之間進行直接通訊。這是為訪客或熱點 SSID 建議的。",
         "client-isolation-enabled-info": "用戶端隔離已啟用，同時啟用熱點。",
         "mac-filter-header": "MAC 篩選",
+        "mac-filtering-warning": "MAC 篩選也將套用至設定此網路之 AP 上的所有其他網路。",
         "mac-filter-none": "無",
         "mac-filter-blacklist": "攔截清單",
         "scheduled": "已排程",
@@ -890,7 +904,16 @@
             "custom-url-valid": "重新定位 URL 沒有有效的格式。"
           }
         },
-        "captive-portal-capacity": "警告。無法指派多個管制入口網站"
+        "captive-portal-capacity": "警告。無法指派多個管制入口網站",
+        "walled-garden": {
+          "header": "圍牆花園",
+          "config-allowed-domains": "您可以向 <a class='link-to-walled-garden'>'圍牆花園'</a> 部分新增一個網域清單。",
+          "allowed-domain-input-field": "URL/IP 位址",
+          "allowed-dominas-list": "圍牆花園 URL/IP 位址清單",
+          "enable-walled-garden": "已啟用圍牆花園",
+          "add-to-list": "新增至清單"
+        },
+        "connectivity-warning": "此 SSID 已存在，且採用不同的加密模式。選擇此選項可能會導致連線問題"
       },
       "access-point-editor": {
         "captive-portal-enabled": "已啟用管制入口網站"
@@ -1025,6 +1048,7 @@
           "commentLabel": "註解",
           "commentInvalidLength": "註解最長不能超過 {{length}} 字元。",
           "mimo-support": "MU-MIMO 支援",
+          "su-mimo-support": "SU-MIMO 支援",
           "airtimeFairnessTitle": "Airtime Fairness",
           "airtimeFairnessEnable": "啟用 Airtime Fairness",
           "airtimeFairnessEnableWarning": "若無舊版用戶端，請勿啟用傳輸時間公平性 – 啟用此項目會影響網路效能及穩定性。",
@@ -1084,7 +1108,10 @@
           "COLLECT_LOGS": "收集記錄",
           "NETWORK": "網路",
           "APU_CONFIG": "APU 設定",
-          "REMOTE_SUPPORT": "遠端支援"
+          "REMOTE_SUPPORT": "遠端支援",
+          "SYSLOG": "Syslog",
+          "PACKET_CAPTURE": "封包擷取",
+          "CUSTOMER_SITE": "客戶現場"
         },
         "changeType": {
           "ADD": "新增",
@@ -1144,8 +1171,11 @@
             "title": "步驟 2",
             "description": "找到存取點背面的 S/N 並等待 LED 燈呈現初始狀態。"
           },
+          "timePeriod": {
+            "description": "AP6 的註冊時間限制為 15 分鐘，以便在開機後將 AP 新增到 Sophos Central。"
+          },
           "registerAP": {
-            "title": "步驟 3",
+            "title": "步驟 4",
             "description": "輸入 S/N 後按一下「註冊」。註冊可能會耗費 5 分鐘。",
             "agreement": "在下方按一下「註冊」，即代表我接受並同意  <a id=\"anchor-user-agreement\" href=\"https://www.sophos.com/en-us/legal/sophos-end-user-terms-of-use.aspx\" target=\"_blank\">Sophos 最終用戶使用條款</a>中的所有條款。",
             "enterSerialNumber": "輸入序號",
