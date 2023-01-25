@@ -1158,7 +1158,7 @@
           "deleted": "Pare-feu supprimé.",
           "delete-confirmation": "Êtes-vous sûr(e) de vouloir supprimer le pare-feu ?",
           "hide-confirmation": "Êtes-vous sûr de vouloir masquer le pare-feu ?",
-          "create-confirmation": "Pare-feu virtuel créé avec ID de série :<b> {{ serialId }} </b>",
+          "create-confirmation": "Pare-feu virtuel créé avec ID de série :<b> {{ serialId }}</b><b> </b>",
           "hidden": "Pare-feu masqué.",
           "not-hidden": "Une erreur s’est produite lors du masquage du pare-feu.",
           "duplicate-entry": "Impossible d’enregistrer le pare-feu virtuel. Le nom choisi existe déjà."
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "Il vous suffit de demander le pare-feu avec la licence de base.",
         "claim-opt-try-rma": "Demandez avec une licence d’évaluation de 30 jours pour Xstream Protection, Web Server Protection et Email Protection.",
         "claim-opt-base-rma": "Demander. Je vais transférer manuellement la licence à partir d’un pare-feu défectueux.",
-        "claim-fail-error": "Impossible de demander le pare-feu. Veuillez réessayer ultérieurement."
+        "claim-fail-error": "Impossible de demander le pare-feu. Veuillez réessayer ultérieurement.",
+        "rma-device": {
+          "rma-detected": "Remplacement RMA détecté. La licence doit être transférée à partir du numéro de série : {{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "Votre appareil défectueux ne sera pas demandé.",
+          "faulty-unclaimed-device-message": "Vous ne pouvez pas demander un appareil défectueux, {{serialNumber}} il deviendra inutilisable après le transfert de licence. Cette action est irréversible.",
+          "rma-transferable-label": "Demander et transférer la licence. Je peux transférer la licence.",
+          "device-with-no-automatic-transferable-license": "Remplacement RMA détecté. Impossible de transférer automatiquement la licence.",
+          "faulty-device-not-claimable": "Impossible de demander l’appareil défectueux. Veuillez contacter le support <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>.",
+          "license-transfer-manually":"Demande, Je vais transférer manuellement la licence depuis l’appareil défectueux.",
+          "xstream-protecton-license": "Xstream Protection - Licence d’évaluation de 30 jours",
+          "message-for-HA-pair-user": "Si vous utilisez une paire HA (haute disponibilité), n’activez pas les essais gratuits à moins que la paire ne dispose d’une licence Xstream Protection."
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "Nom",
         "model": "Modèle",
         "serial-number": "Numéro de série",
-        "license-type": "Type de licence",
-        "status": "État",
+        "license-type": "Licence active",
+        "status": "Expiration",
         "earliest-start": "Date de début",
         "next-expiry": "Prochaine expiration",
         "warranty-expires-on": "Expiration de la garantie",
@@ -1222,44 +1233,46 @@
         "transfer-subscriptions": "Transférer des abonnements",
         "activate-evaluations": "Activer les évaluations",
         "devcie-list-loading-error": "Impossible de charger la liste des pare-feu demandés.",
+        "recently-expired": "Certains abonnements ont récemment expiré. Développez la ligne pour afficher les détails.",
+        "expired": "Expiré",
         "top-bar": {
             "claim-between": "Demandé entre",
             "expiry-between": "Expiration entre",
+            "license-type": "État de la licence",
             "status": "État",
             "reset-all": "Tout réinitialiser"
         }
       },
       "transfer-firewalls": {
-        "info": "Vous pouvez transférer les pare-feu sélectionnés vers un compte Sophos ID existant. Veuillez indiquer l’adresse email du Sophos ID du destinataire.",
+        "info": "Vous pouvez transférer les pare-feu sélectionnés vers un compte Sophos Central existant. Saisissez l’adresses email du destinataire.",
         "transfer-firewalls": "Transférer des pare-feu",
-        "recepient-email": "Email des destinataires",
+        "recepient-email": "Adresse email du destinataire",
         "name": "Nom",
         "model": "Modèle",
         "serial-number": "Numéro de série",
-        "license-type": "Type de licence",
-        "status": "État",
+        "license-type": "Licence active",
+        "status": "Expiration",
         "earliest-start": "Date de début",
         "next-expiry": "Prochaine expiration",
-        "terms-and-condition": "La présente société de transfert",
-        "terms-and-condition-one": "confirme avoir supprimé ses données confidentielles, personnelles ou autres du matériel",
-        "terms-and-condition-two": "comprend que l’obligation de déplacer physiquement le matériel n’incombe en aucun cas à Sophos.",
+        "terms-and-condition-one": "Je confirme avoir supprimé des données confidentielles, personnelles ou autres de l’appareil.",
+        "terms-and-condition-two": "Je comprends que Sophos ne déplacera pas physiquement l’appareil.",
         "tooltip-description": "La description doit être mise à jour",
         "cancel": "Annuler",
         "confirm": "Confirmer",
         "more-help": "Plus d’aide",
-        "email-error-msgs": "Veuillez saisir adresse email valide",
-        "email-max-length-error-msgs": "L’email ne doit pas dépasser 120 caractères",
-        "transfer-success": "Transfert des pare-feu sélectionnés",
-        "transfer-error": "Impossible de transférer les pare-feu sélectionnés",
+        "email-error-msgs": "Veuillez saisir une adresse email valide.",
+        "email-max-length-error-msgs": "Vous pouvez utiliser un maximum de 120 caractères.",
+        "transfer-success": "Le transfert est lancé. Le destinataire doit les accepter avant l’expiration (3 jours).",
+        "transfer-error": "Impossible de transférer les pare-feu sélectionnés.",
         "banner": {
-          "message": "{{firewallCount}} pare-feu ont été transférés vers votre compte",
+          "message": "{{firewallCount}} pare-feu ont été transférés vers votre compte.",
           "accept-action": "Tout accepter",
           "details-action": "Détails"
         }
       },
       "accept-firewalls": {
         "title": "Accepter les pare-feu",
-        "info": "Vous pouvez transférer les pare-feu sélectionnés vers un compte Sophos ID existant. Veuillez indiquer l’adresse email du destinataire du Sophos ID.",
+        "info": "Vous avez reçu les pare-feu ci-dessous et vous avez demandé de les accepter ou de les refuser avant l’expiration. Les demandes expireront automatiquement dans 3 jours.",
         "request-expires": "Expiration de la demande",
         "received-from": "Reçu de",
         "reject": "Rejeter",
@@ -1296,8 +1309,17 @@
         "transfer-to": "Transférer vers",
         "info-message": "Vous ne pouvez transférer des licences que vers des pare-feu compatibles (le modèle doit être équivalent et le transfert doit avoir un nombre maximum de transferts autorisé)",
         "finish": "Terminer",
-        "transfer-success-message": "Abonnement transféré !",
-        "transfer-failure-message": "Impossible de transférer l’abonnement !"
+        "transfer-success-message": "Abonnement transféré avec succès !",
+        "transfer-failure-message": "Impossible de transférer l’abonnement !",
+        "transfering-to-static-message": "Sélectionner un pare-feu"
+      },
+      "rename-firewall": {
+        "label": "Modifier le pare-feu",
+        "firewall-name": "Nom du pare-feu",
+        "hide-firewall-text": "Masquer ce pare-feu dans ma vue",
+        "save": "Enregistrer",
+        "update-success-message": "Pare-feu mis à jour",
+        "update-error-message": "Impossible de mettre à jour le pare-feu"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "Fonctions",
         "subscription": "Abonnement",
-        "status": "État",
+        "status": "Licence",
         "expiry": "Expiration",
         "no-change": "Aucune modification de ces fonctions.",
         "new": "Nouveau"
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "Évaluation",
         "usage": "Tous les mois",
-        "term": "Abonné",
-        "perpetual": "Abonné"
+        "term": "Abonnement",
+        "perpetual": "Abonnement",
+        "undefined": ""
       }
     },
     "global-settings": {
