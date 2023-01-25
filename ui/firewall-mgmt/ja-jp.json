@@ -1158,7 +1158,7 @@
           "deleted": "ファイアウォールの削除に成功しました。",
           "delete-confirmation": "ファイアウォールを削除してもよいですか？",
           "hide-confirmation": "ファイアウォールを非表示にしてもよいですか？",
-          "create-confirmation": "仮想ファイアウォールは、次のシリアル ID で正常に作成されました: <b> {{ serialId }} </b>",
+          "create-confirmation": "仮想ファイアウォールは、次のシリアル ID で正常に作成されました: <b> {{ serialId }}</b><b> </b>",
           "hidden": "ファイアウォールの非表示に成功しました。",
           "not-hidden": "ファイアウォールの非表示中、エラーが発生しました。",
           "duplicate-entry": "仮想ファイアウォールを保存できません。指定された名前は既に存在します。"
@@ -1185,8 +1185,19 @@
         "claim-opt-try": "Xstream Protection、Web Server Protection、および Email Protection の 30日間評価ライセンスで追加要求します。",
         "claim-opt-base": "Base ライセンスでファイアウォールを追加要求します。",
         "claim-opt-try-rma": "Xstream Protection、Web Server Protection、および Email Protection の 30日間評価ライセンスで追加要求します。",
-        "claim-opt-base-rma": "まず追加要求します。後で、欠陥のあるファイアウォールからライセンスを手動で転送します。",
-        "claim-fail-error": "ファイアウォールの追加要求に失敗しました。後でもう一度やり直してください。"
+        "claim-opt-base-rma": "まず追加要求します。後で、故障ファイアウォールからライセンスを手動で転送します。",
+        "claim-fail-error": "ファイアウォールの追加要求に失敗しました。後でもう一度やり直してください。",
+        "rma-device": {
+          "rma-detected": "RMA 対象デバイスが検出されましたが、ライセンスを次のシリアル番号から転送する必要があります: {{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "故障デバイスは追加要求されません。",
+          "faulty-unclaimed-device-message": "故障デバイスを追加要求することはできません。ライセンスの転送後、{{serialNumber}} は使用できなくなります。操作を元に戻すことはできません。",
+          "rma-transferable-label": "ライセンスを追加要求して転送する。ライセンスを転送できます。",
+          "device-with-no-automatic-transferable-license": "RMA 対象デバイスが検出されましたが、ライセンスを自動転送できません",
+          "faulty-device-not-claimable": "故障デバイスを追加要求できませんでした。サポート <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a> にお問い合わせください。",
+          "license-transfer-manually":"追加要求する。後で、故障デバイスからライセンスを手動で転送します。",
+          "xstream-protecton-license": "Xstream Protection - 30日間評価ライセンス",
+          "message-for-HA-pair-user": "HA ペアを使用している場合は、ペアに Xstream Protection ライセンスがない限り、無償評価をアクティベートしないでください。"
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "名前",
         "model": "機種",
         "serial-number": "シリアル番号",
-        "license-type": "ライセンスの種類",
-        "status": "状態",
+        "license-type": "アクティブなライセンス",
+        "status": "次に失効",
         "earliest-start": "最も早い開始",
         "next-expiry": "次の失効",
         "warranty-expires-on": "保証の失効",
@@ -1222,44 +1233,46 @@
         "transfer-subscriptions": "サブスクリプションの転送",
         "activate-evaluations": "評価版のアクティベート",
         "devcie-list-loading-error": "追加要求されたファイアウォールのリストを読み込むことができません。",
+        "recently-expired": "最近、一部のサブスクリプションが期限切れになりました。行を展開して詳細を表示してください。",
+        "expired": "有効期限切れ",
         "top-bar": {
             "claim-between": "追加要求された期間",
             "expiry-between": "失効する期間",
+            "license-type": "ライセンスの状態",
             "status": "状態",
             "reset-all": "すべてリセット"
         }
       },
       "transfer-firewalls": {
-        "info": "選択したファイアウォールを既存の Sophos ID アカウントに転送できます。受信者の Sophos ID のメールアドレスを入力してください。",
+        "info": "選択したファイアウォールを既存の Sophos Central アカウントに転送できます。受信者のメールアドレスを入力します。",
         "transfer-firewalls": "ファイアウォールの転送",
         "recepient-email": "受信者のメールアドレス",
         "name": "名前",
         "model": "機種",
         "serial-number": "シリアル番号",
-        "license-type": "ライセンスの種類",
-        "status": "状態",
+        "license-type": "アクティブなライセンス",
+        "status": "次に失効",
         "earliest-start": "最も早い開始",
         "next-expiry": "次の失効",
-        "terms-and-condition": "転送する企業は次のことを確認します",
-        "terms-and-condition-one": "機密データ、個人データ、またはその他のデータをハードウェアから削除したことを確認します",
-        "terms-and-condition-two": "ハードウェアを物理的に移動する義務は、いかなる場合にもソフォスにないことを理解します",
+        "terms-and-condition-one": "機密データ、個人データ、またはその他のデータをデバイスから削除したことを確認します。",
+        "terms-and-condition-two": "ソフォスがデバイスを物理的に移動しないことを理解しました。",
         "tooltip-description": "説明を更新する必要があります",
         "cancel": "キャンセル",
         "confirm": "確定",
         "more-help": "詳細情報",
         "email-error-msgs": "有効なメールアドレスを入力してください",
-        "email-max-length-error-msgs": "メールアドレスは最大 120文字まで入力できます",
-        "transfer-success": "選択したファイアウォールを転送中",
-        "transfer-error": "選択したファイアウォールを転送できませんでした",
+        "email-max-length-error-msgs": "最大半角 120文字まで使用できます",
+        "transfer-success": "転送が開始されました。3日後に失効する前に、受信者はそれを承諾する必要があります。",
+        "transfer-error": "選択したファイアウォールを転送できません。",
         "banner": {
-          "message": "{{firewallCount}}台のファイアウォールがアカウントに転送されました",
+          "message": "{{firewallCount}}台のファイアウォールが、お客様のアカウントに転送されました。",
           "accept-action": "すべて承諾",
           "details-action": "詳細"
         }
       },
       "accept-firewalls": {
         "title": "ファイアウォールの承諾",
-        "info": "選択したファイアウォールを既存の Sophos ID アカウントに転送できます。受信者の Sophos ID のメールアドレスを入力してください。",
+        "info": "以下のファイアウォールを受信しました。有効期限が切れる前に承諾または拒否するようにしてください。リクエストの有効期限は、3日後に自動的に切れます。",
         "request-expires": "リクエストの有効期限",
         "received-from": "送信者",
         "reject": "拒否",
@@ -1297,7 +1310,16 @@
         "info-message": "ライセンスは互換性のあるファイアウォールのみに転送できます (同等の機種で、転送回数は許可されている最大数以内である必要があります)。",
         "finish": "完了",
         "transfer-success-message": "サブスクリプションが正常に転送されました。",
-        "transfer-failure-message": "サブスクリプションの転送に失敗しました。"
+        "transfer-failure-message": "サブスクリプションの転送に失敗しました。",
+        "transfering-to-static-message": "ファイアウォールの選択"
+      },
+      "rename-firewall": {
+        "label": "ファイアウォールの編集",
+        "firewall-name": "ファイウォール名",
+        "hide-firewall-text": "このファイアウォールを非表示にする",
+        "save": "保存",
+        "update-success-message": "ファイアウォールの更新に成功しました",
+        "update-error-message": "ファイアウォールを更新できませんでした"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "機能",
         "subscription": "サブスクリプション",
-        "status": "状態",
+        "status": "ライセンス",
         "expiry": "有効期限",
         "no-change": "変更された機能はありません。",
         "new": "新規"
@@ -1344,8 +1366,8 @@
         "SPMSP": "SPMSP",
         "XSPWEMSP": "XSPWEMSP",
         "XSPMSP": "XSPMSP",
-        "FG": "Full Guard",
-        "FGPL": "Full Guard Plus",
+        "FG": "FullGuard",
+        "FGPL": "FullGuard Plus",
         "NS": "NS",
         "PESUP": "PEPSUP",
         "PEEPSUP": "PEEPSUP",
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "評価版",
         "usage": "毎月",
-        "term": "登録済み",
-        "perpetual": "登録済み"
+        "term": "サブスクリプション",
+        "perpetual": "サブスクリプション",
+        "undefined": ""
       }
     },
     "global-settings": {

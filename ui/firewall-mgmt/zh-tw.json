@@ -1158,7 +1158,7 @@
           "deleted": "防火牆已成功刪除。",
           "delete-confirmation": "確定要刪除防火墻嗎？",
           "hide-confirmation": "確定要隱藏防火墻嗎？",
-          "create-confirmation": "已成功建立虛擬防火墻，序號 ID 為 <b> {{ serialId }} </b>",
+          "create-confirmation": "已成功建立虛擬防火墻，序號 ID 為 <b> {{ serialId }}</b><b> </b>",
           "hidden": "防火牆隱藏成功。",
           "not-hidden": "隱藏防火牆時出錯。",
           "duplicate-entry": "虛擬防火牆無法保存，選取的名稱已存在。"
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "只宣告使用基本授權的防火牆。",
         "claim-opt-try-rma": "宣告為期 30 天的 Xstream Protection、Web Server Protection 和 Email Protection 評估授權。",
         "claim-opt-base-rma": "仍然宣告。我將手動從有故障的防火牆轉移授權。",
-        "claim-fail-error": "未能宣告防火牆。請稍後重試。"
+        "claim-fail-error": "未能宣告防火牆。請稍後重試。",
+        "rma-device": {
+          "rma-detected": "偵測到 RMA 更換，必須從下列序號傳輸授權：{{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "您的故障裝置將取消宣告。",
+          "faulty-unclaimed-device-message": "您不能宣告故障裝置，{{serialNumber}} 在授權傳輸後將無法使用。您不能復原此動作。",
+          "rma-transferable-label": "宣告並傳輸授權。我可以傳輸該授權。",
+          "device-with-no-automatic-transferable-license": "偵測到 RMA 更換，但無法自動進行授權傳輸",
+          "faulty-device-not-claimable": "無法宣告故障裝置。請聯絡支援人員 <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>。",
+          "license-transfer-manually":"宣告，我將手動從故障裝置傳輸授權。",
+          "xstream-protecton-license": "Xstream Protection - 30 天評估授權",
+          "message-for-HA-pair-user": "如果您使用的是 HA 配對，請不要啟動免費試用，除非該配對具有 Xstream Protection 授權。"
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "名稱",
         "model": "機型",
         "serial-number": "序號",
-        "license-type": "授權類型",
-        "status": "狀態",
+        "license-type": "啟動授權",
+        "status": "下一次到期",
         "earliest-start": "最早開始時間",
         "next-expiry": "下一個到期日",
         "warranty-expires-on": "保固到期日",
@@ -1222,44 +1233,46 @@
         "transfer-subscriptions": "轉移訂閱",
         "activate-evaluations": "啟用評估版本",
         "devcie-list-loading-error": "無法載入宣告的防火牆清單。",
+        "recently-expired": "最近，一些訂閱已過期。展開該列以檢視詳細資料。",
+        "expired": "逾期",
         "top-bar": {
             "claim-between": "宣告期間",
             "expiry-between": "到期期間",
+            "license-type": "授權狀態",
             "status": "狀態",
             "reset-all": "全部重設"
         }
       },
       "transfer-firewalls": {
-        "info": "您可以將所選防火牆傳輸至現有的 Sophos ID 帳戶。請註明收件者 Sophos ID 的電子郵件地址。",
+        "info": "您可以將所選防火牆傳輸至現有的 Sophos Central 帳戶。輸入收件者的電子郵件地址。",
         "transfer-firewalls": "傳輸防火牆",
-        "recepient-email": "接收者電子郵件",
+        "recepient-email": "收件者的電子郵件",
         "name": "名稱",
         "model": "機型",
         "serial-number": "序號",
-        "license-type": "授權類型",
-        "status": "狀態",
+        "license-type": "啟動授權",
+        "status": "下一次到期",
         "earliest-start": "最早開始時間",
         "next-expiry": "下一個到期日",
-        "terms-and-condition": "轉移公司特此",
-        "terms-and-condition-one": "確認其已從硬體中移除其任何機密、個人或其他資料，",
-        "terms-and-condition-two": "並理解無論何時，Sophos 均沒有義務實際移動硬體。",
+        "terms-and-condition-one": "我確認我已從裝置中移除機密資料、個人資料或其他資料。",
+        "terms-and-condition-two": "我理解 Sophos 不會實際移動裝置。",
         "tooltip-description": "說明需要更新",
         "cancel": "取消",
         "confirm": "確認",
         "more-help": "更多說明",
         "email-error-msgs": "請輸入有效的電子郵件位址",
-        "email-max-length-error-msgs": "電子郵件最多應包含 120 個字元",
-        "transfer-success": "正在轉移所選的防火牆",
-        "transfer-error": "無法傳輸所選防火牆",
+        "email-max-length-error-msgs": "您可使用最多120 個字元",
+        "transfer-success": "傳輸已啟動。收件者需要在到期（3 天）之前接受它們。",
+        "transfer-error": "無法傳輸所選防火牆。",
         "banner": {
-          "message": "{{firewallCount}} 防火牆已轉移至您的帳戶",
+          "message": "{{firewallCount}} 防火牆已轉移至您的帳戶。",
           "accept-action": "全部接受",
           "details-action": "詳細資訊"
         }
       },
       "accept-firewalls": {
         "title": "接受防火牆",
-        "info": "您可以將所選防火牆傳輸至現有的 Sophos ID 帳戶。請註明收件者 Sophos ID 的電子郵件地址。",
+        "info": "您已收到以下防火牆，並需要在到期之前接受或拒絕。請求將在 3 天後自動過期。",
         "request-expires": "請求到期",
         "received-from": "已接收自",
         "reject": "拒絕",
@@ -1296,8 +1309,17 @@
         "transfer-to": "轉移至",
         "info-message": "您只能將授權轉移到相容的防火牆（型號應相同且轉移應不超過允許的最大轉移次數）",
         "finish": "完成",
-        "transfer-success-message": "已成功轉移訂閱！",
-        "transfer-failure-message": "未能轉移訂閱！"
+        "transfer-success-message": "訂閱傳輸成功！",
+        "transfer-failure-message": "未能轉移訂閱！",
+        "transfering-to-static-message": "選取防火牆"
+      },
+      "rename-firewall": {
+        "label": "編輯防火牆",
+        "firewall-name": "防火牆名稱",
+        "hide-firewall-text": "在我的檢視中隱藏此防火牆",
+        "save": "儲存",
+        "update-success-message": "防火牆更新成功",
+        "update-error-message": "未能更新防火牆"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "功能",
         "subscription": "訂閱",
-        "status": "狀態",
+        "status": "授權",
         "expiry": "到期日",
         "no-change": "這些功能沒有變更。",
         "new": "新增"
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "評估版",
         "usage": "每月",
-        "term": "已訂閱",
-        "perpetual": "已訂閱"
+        "term": "訂閱",
+        "perpetual": "訂閱",
+        "undefined": ""
       }
     },
     "global-settings": {

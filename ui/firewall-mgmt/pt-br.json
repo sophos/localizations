@@ -1158,7 +1158,7 @@
           "deleted": "Firewall Virtual deletado com sucesso.",
           "delete-confirmation": "Tem certeza de que deseja deletar o firewall?",
           "hide-confirmation": "Tem certeza de que deseja ocultar o firewall?",
-          "create-confirmation": "O firewall virtual foi criado com sucesso, com o ID de série:<b> {{ serialId }} </b>",
+          "create-confirmation": "O firewall virtual foi criado com sucesso, com o ID de série:<b> {{ serialId }}</b><b> </b>",
           "hidden": "Firewall Virtual ocultado com sucesso.",
           "not-hidden": "Ocorreu um erro ao tentar ocultar o Firewall.",
           "duplicate-entry": "O Firewall Virtual não pode ser salvo, o nome escolhido já existe."
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "Basta requisitar o firewall com a licença básica.",
         "claim-opt-try-rma": "Requisição de uma licença de avaliação de 30 dias do Xstream Protection, Web Server Protection e Email Protection.",
         "claim-opt-base-rma": "Requisitar mesmo assim. Farei a transferência da licença do firewall defeituoso manualmente.",
-        "claim-fail-error": "Falha ao requisitar o firewall. Tente de novo mais tarde."
+        "claim-fail-error": "Falha ao requisitar o firewall. Tente de novo mais tarde.",
+        "rma-device": {
+          "rma-detected": "Substituição RMA detectada: a licença deve ser transferida do número de série {{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "A requisição do seu dispositivo defeituoso será cancelada.",
+          "faulty-unclaimed-device-message": "Você não pode requisitar um dispositivo defeituoso; {{serialNumber}} ficará inutilizável após a transferência da licença. Isso não pode ser desfeito.",
+          "rma-transferable-label": "Requisite e transfira a licença. Posso transferir a licença.",
+          "device-with-no-automatic-transferable-license": "Substituição RMA detectada, mas não é possível transferir a licença automaticamente",
+          "faulty-device-not-claimable": "Não foi possível requisitar o dispositivo defeituoso. Entre em contato com o suporte em <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>.",
+          "license-transfer-manually":"Requisitar. Farei a transferência da licença do dispositivo defeituoso manualmente.",
+          "xstream-protecton-license": "Xstream Protection - Licença de avaliação de 30 dias",
+          "message-for-HA-pair-user": "Se estiver usando o par HA, não ative as avaliações gratuitas, a menos que o par tenha uma licença do Xstream Protection."
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "Nome",
         "model": "Modelo",
         "serial-number": "Número de série",
-        "license-type": "Tipo de licença",
-        "status": "Status",
+        "license-type": "Ativar licença",
+        "status": "Próximo a expirar",
         "earliest-start": "Início mais próximo",
         "next-expiry": "Próxima expiração",
         "warranty-expires-on": "Expiração de garantia",
@@ -1222,44 +1233,46 @@
         "transfer-subscriptions": "Transferir assinaturas",
         "activate-evaluations": "Ativar avaliações",
         "devcie-list-loading-error": "Não é possível carregar a lista de firewalls requisitados.",
+        "recently-expired": "Algumas assinaturas expiraram recentemente. Expanda a linha para ver os detalhes.",
+        "expired": "Expirada",
         "top-bar": {
             "claim-between": "Requisitado entre",
             "expiry-between": "Expira entre",
+            "license-type": "Status da licença",
             "status": "Status",
             "reset-all": "Redefinir todos"
         }
       },
       "transfer-firewalls": {
-        "info": "Você pode transferir firewalls selecionados para uma conta Sophos ID existente. Mencione o endereço de e-mail do Sophos ID dos destinatários.",
+        "info": "Você pode transferir firewalls selecionados para uma conta Sophos Central existente. Insira o endereço de e-mail do destinatário.",
         "transfer-firewalls": "Transferir firewalls",
-        "recepient-email": "E-mail dos destinatários",
+        "recepient-email": "E-mail do destinatário",
         "name": "Nome",
         "model": "Modelo",
         "serial-number": "Número de série",
-        "license-type": "Tipo de licença",
-        "status": "Status",
+        "license-type": "Ativar licença",
+        "status": "Próximo a expirar",
         "earliest-start": "Início mais próximo",
         "next-expiry": "Próxima expiração",
-        "terms-and-condition": "A empresa de transferência aqui declarada",
-        "terms-and-condition-one": "confirma que removeu seus dados confidenciais, pessoais e outros dados do hardware",
-        "terms-and-condition-two": "tem ciência de que a obrigação de mover o hardware fisicamente não recairá sobre a Sophos em momento algum.",
+        "terms-and-condition-one": "Confirmo que removi os dados confidenciais, pessoais e outros dados do dispositivo.",
+        "terms-and-condition-two": "Tenho ciência de que a Sophos não moverá o dispositivo fisicamente.",
         "tooltip-description": "A descrição precisa ser atualizada",
         "cancel": "Cancelar",
         "confirm": "Confirmar",
         "more-help": "Mais ajuda",
         "email-error-msgs": "Insira um endereço de e-mail válido",
-        "email-max-length-error-msgs": "O e-mail deve ter um máximo de 120 caracteres",
-        "transfer-success": "Transferindo firewalls selecionados",
-        "transfer-error": "Não foi possível transferir os firewalls selecionados",
+        "email-max-length-error-msgs": "Você pode usar, no máximo, 120 caracteres",
+        "transfer-success": "A transferência foi iniciada. O destinatário precisa aceitá-los antes que expirem (3 dias).",
+        "transfer-error": "Não é possível transferir os firewalls selecionados.",
         "banner": {
-          "message": "{{firewallCount}} firewalls foram transferidos para a sua conta",
+          "message": "{{firewallCount}} firewalls foram transferidos para a sua conta.",
           "accept-action": "Aceitar todos",
           "details-action": "Detalhes"
         }
       },
       "accept-firewalls": {
         "title": "Aceitar firewalls",
-        "info": "Você pode transferir firewalls selecionados para uma conta Sophos ID existente. Mencione o endereço de e-mail do Sophos ID do destinatário.",
+        "info": "Você recebeu os firewalls abaixo e foi solicitado a aceitá-los ou recusá-los antes que expirem. As solicitações expiram automaticamente em 3 dias.",
         "request-expires": "Expiração da solicitação",
         "received-from": "Recebida de",
         "reject": "Recusar",
@@ -1297,7 +1310,16 @@
         "info-message": "Você só pode transferir licenças para firewalls compatíveis (o modelo deve ser equivalente e a transferência deve estar dentro do número máximo de transferências permitidas)",
         "finish": "Concluir",
         "transfer-success-message": "Assinatura transferida com sucesso!",
-        "transfer-failure-message": "Falha ao transferir a assinatura!"
+        "transfer-failure-message": "Falha ao transferir a assinatura!",
+        "transfering-to-static-message": "Selecionar um firewall"
+      },
+      "rename-firewall": {
+        "label": "Editar firewall",
+        "firewall-name": "Nome do Firewall",
+        "hide-firewall-text": "Ocultar esse firewall na minha exibição",
+        "save": "Salvar",
+        "update-success-message": "Firewall atualizado com sucesso",
+        "update-error-message": "Falha ao atualizar firewall"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "Recursos",
         "subscription": "Assinatura",
-        "status": "Status",
+        "status": "Licença",
         "expiry": "Expira em",
         "no-change": "Nenhuma mudança nesses recursos.",
         "new": "Novo"
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "Avaliação do Teste",
         "usage": "Mensal",
-        "term": "Subscrito",
-        "perpetual": "Subscrito"
+        "term": "Assinatura",
+        "perpetual": "Assinatura",
+        "undefined": ""
       }
     },
     "global-settings": {

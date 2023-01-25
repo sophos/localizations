@@ -454,7 +454,7 @@
                 "health-check-attempts": "상태 검사 시도",
                 "interval-between-checks": "검사 간격",
                 "response-time-out": "응답 시간 제한",
-                "action": "조치",
+                "action": "작업",
                 "deactivate-gateway-after": "다음 이후 게이트웨이 비활성화:",
                 "activate-gateway-after": "다음 이후 게이트웨이 활성화:",
                 "sample-size-for-SLA": "SLA의 샘플 크기",
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "기본 라이선스의 방화벽을 요청하면 됩니다.",
         "claim-opt-try-rma": "30일 Xstream Protection, Web Server Protection 및 Email Protection 평가 라이선스를 요청하십시오.",
         "claim-opt-base-rma": "요청하십시오. 결함이 있는 방화벽에서 라이선스를 수동으로 이전하겠습니다.",
-        "claim-fail-error": "방화벽을 요청하지 못했습니다. 나중에 다시 시도하십시오."
+        "claim-fail-error": "방화벽을 요청하지 못했습니다. 나중에 다시 시도하십시오.",
+        "rma-device": {
+          "rma-detected": "RMA 교체가 감지되었습니다. 라이선스는 일련 번호 : {{rmaSerialNumber}}에서 이전되어야 합니다.",
+          "faulty-device-unclaimed": "결함이 있는 장치는 클레임되지 않습니다.",
+          "faulty-unclaimed-device-message": "결함이 있는 장치를 클레임할 수 없습니다. 라이선스 이전 후에는 {{serialNumber}}을(를) 사용할 수 없게 됩니다. 이 작업은 취소할 수 없습니다.",
+          "rma-transferable-label": "라이선스를 클레임하고 이전합니다. 라이선스를 이전할 수 있습니다.",
+          "device-with-no-automatic-transferable-license": "RMA 교체가 감지되었으나 라이선스 이전을 자동화할 수 없습니다.",
+          "faulty-device-not-claimable": "결함이 있는 장치를 클레임하지 못했습니다. 지원팀(<a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>)에 문의하십시오.",
+          "license-transfer-manually":"클레임. 결함이 있는 장치에서 라이선스를 수동으로 이전하겠습니다.",
+          "xstream-protecton-license": "Xstream 보호 - 30일 평가판 라이선스",
+          "message-for-HA-pair-user": "HA 쌍을 사용하는 경우 해당 쌍에 Xstream 보호 라이선스가 없는 한 무료 평가판을 활성화하지 마십시오."
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "이름",
         "model": "모델",
         "serial-number": "일련 번호",
-        "license-type": "라이선스 유형",
-        "status": "상태",
+        "license-type": "활성 라이선스",
+        "status": "다음 만료",
         "earliest-start": "가장 빠른 시작",
         "next-expiry": "다음 만료",
         "warranty-expires-on": "보증 만료",
@@ -1222,35 +1233,37 @@
         "transfer-subscriptions": "구독 이전",
         "activate-evaluations": "평가 활성화",
         "devcie-list-loading-error": "요청된 방화벽 목록을 로드할 수 없습니다.",
+        "recently-expired": "최근 일부 구독이 만료되었습니다. 세부 정보를 표시하려면 행을 확장하십시오.",
+        "expired": "만료됨",
         "top-bar": {
             "claim-between": "다음 기간 사이에 요청됨",
             "expiry-between": "다음 기간 사이에 만료",
+            "license-type": "라이선스 상태",
             "status": "상태",
             "reset-all": "모두 다시 설정"
         }
       },
       "transfer-firewalls": {
-        "info": "선택한 방화벽을 기존 Sophos ID 계정으로 전송할 수 있습니다. 받는 사람의 Sophos ID 이메일 주소를 알려주십시오.",
+        "info": "선택한 방화벽을 기존 Sophos Central 계정으로 이전할 수 있습니다. 수신자의 이메일 주소를 입력합니다.",
         "transfer-firewalls": "방화벽 전송",
-        "recepient-email": "받는 사람 이메일",
+        "recepient-email": "수신자의 이메일",
         "name": "이름",
         "model": "모델",
         "serial-number": "일련 번호",
-        "license-type": "라이선스 유형",
-        "status": "상태",
+        "license-type": "활성 라이선스",
+        "status": "다음 만료",
         "earliest-start": "가장 빠른 시작",
         "next-expiry": "다음 만료",
-        "terms-and-condition": "이전하는 회사는",
-        "terms-and-condition-one": "하드웨어에서 기밀, 개인 또는 기타 데이터를 모두 제거했음을 확인합니다.",
-        "terms-and-condition-two": "어느 시점에도 하드웨어를 물리적으로 이동해야 하는 의무가 Sophos에 있지 않음을 이해합니다.",
+        "terms-and-condition-one": "장치에서 기밀, 개인 또는 기타 데이터를 삭제했음을 확인합니다.",
+        "terms-and-condition-two": "Sophos에서 장치를 물리적으로 이동하지 않을 것임을 이해합니다.",
         "tooltip-description": "설명을 업데이트해야 합니다.",
         "cancel": "취소",
         "confirm": "확인",
         "more-help": "추가 도움말",
         "email-error-msgs": "유효한 이메일 주소를 입력하십시오.",
-        "email-max-length-error-msgs": "이메일은 120자 이하여야 합니다.",
-        "transfer-success": "선택한 방화벽 전송",
-        "transfer-error": "선택한 방화벽을 전송할 수 없습니다.",
+        "email-max-length-error-msgs": "최대 120자까지 사용할 수 있습니다.",
+        "transfer-success": "이전이 시작되었습니다. 수신자는 만료 전(3일)에 수락해야 합니다.",
+        "transfer-error": "선택한 방화벽을 이전할 수 없습니다..",
         "banner": {
           "message": "{{firewallCount}}개의 방화벽이 귀하의 계정으로 이전되었습니다.",
           "accept-action": "모두 수락",
@@ -1259,7 +1272,7 @@
       },
       "accept-firewalls": {
         "title": "방화벽 수락",
-        "info": "선택한 방화벽을 기존 Sophos ID 계정으로 전송할 수 있습니다. 받는 사람의 Sophos ID 이메일 주소를 알려주십시오.",
+        "info": "아래 방화벽을 수신했으며 만료 전에 수락 또는 거부하도록 요청받았습니다. 요청은 3일 후에 자동 만료됩니다.",
         "request-expires": "요청 만료",
         "received-from": "발신인",
         "reject": "거부",
@@ -1297,7 +1310,16 @@
         "info-message": "호환되는 방화벽에만 라이선스를 이전할 수 있습니다(모델은 동일해야 하며 허용되는 최대 이전 횟수 내로 이전해야 함).",
         "finish": "마침",
         "transfer-success-message": "구독이 성공적으로 이전되었습니다!",
-        "transfer-failure-message": "구독을 이전하지 못했습니다!"
+        "transfer-failure-message": "구독을 이전하지 못했습니다!",
+        "transfering-to-static-message": "방화벽 선택"
+      },
+      "rename-firewall": {
+        "label": "방화벽 편집",
+        "firewall-name": "방화벽 이름",
+        "hide-firewall-text": "내 보기에서 이 방화벽 숨기기",
+        "save": "저장",
+        "update-success-message": "방화벽이 성공적으로 업데이트됨",
+        "update-error-message": "방화벽을 업데이트하지 못함"
       },
       "pdb": {
         "device-list": {
@@ -1310,10 +1332,10 @@
       "subscription-features-list": {
         "features": "기능",
         "subscription": "구독",
-        "status": "상태",
+        "status": "라이선스",
         "expiry": "만료",
         "no-change": "이러한 기능에는 변화가 없습니다.",
-        "new": "새로 만들기"
+        "new": "새로운 항목"
       },
       "evaluate-features": {
         "label": "평가 활성화 - {{ serial }}",
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "평가",
         "usage": "매월",
-        "term": "구독함",
-        "perpetual": "구독함"
+        "term": "구독",
+        "perpetual": "구독",
+        "undefined": ""
       }
     },
     "global-settings": {

@@ -10,7 +10,7 @@
     "cancel": "Cancelar",
     "save": "Guardar",
     "confirm": "Confirmar",
-    "delete": "Borrar",
+    "delete": "Eliminar",
     "delete-firewall": "Eliminar firewall",
     "hide-firewall": "Ocultar firewall",
     "re-sync": "Resincronizar",
@@ -1158,7 +1158,7 @@
           "deleted": "Firewall eliminado correctamente.",
           "delete-confirmation": "¿Está seguro de que desea eliminar el firewall?",
           "hide-confirmation": "¿Está seguro de que desea ocultar el firewall?",
-          "create-confirmation": "El firewall virtual se ha creado correctamente con el ID de serie:<b> {{ serialId }} </b>",
+          "create-confirmation": "El firewall virtual se ha creado correctamente con el ID de serie:<b> {{ serialId }}</b><b> </b>",
           "hidden": "Firewall ocultado correctamente.",
           "not-hidden": "Se ha producido un error al ocultar el firewall.",
           "duplicate-entry": "El firewall virtual no se puede guardar; el nombre elegido ya existe."
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "Reclamar solo el firewall con la licencia básica.",
         "claim-opt-try-rma": "Reclamar con una licencia de evaluación de 30 días de Protección Xstream, Web Server Protection y Email Protection.",
         "claim-opt-base-rma": "Reclamar de todos modos. Transferiré la licencia del firewall defectuoso manualmente.",
-        "claim-fail-error": "No se ha podido reclamar el firewall. Inténtelo más tarde."
+        "claim-fail-error": "No se ha podido reclamar el firewall. Inténtelo más tarde.",
+        "rma-device": {
+          "rma-detected": "Reemplazo de RMA detectado; la licencia debe transferirse desde el número de serie: {{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "El aparato defectuoso no será reclamado.",
+          "faulty-unclaimed-device-message": "No se puede reclamar un dispositivo defectuoso; {{serialNumber}} dejará de poder utilizarse después de la transferencia de licencia. No se puede deshacer la acción.",
+          "rma-transferable-label": "Reclamar y transferir la licencia. Puedo transferir la licencia.",
+          "device-with-no-automatic-transferable-license": "Reemplazo de RMA detectado, pero no se puede automatizar la transferencia de la licencia",
+          "faulty-device-not-claimable": "No se ha podido reclamar el dispositivo defectuoso. Póngase en contacto con el soporte <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>.",
+          "license-transfer-manually":"Reclamación, Transferiré la licencia del dispositivo defectuoso manualmente.",
+          "xstream-protecton-license": "Protección Xstream - Licencia de evaluación de 30 días",
+          "message-for-HA-pair-user": "Si utiliza un par de HA, no active las evaluaciones gratuitas a menos que el par tenga una licencia de protección Xstream."
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,8 +1211,8 @@
         "name": "Nombre",
         "model": "Modelo",
         "serial-number": "Número de serie",
-        "license-type": "Tipo de licencia",
-        "status": "Estado",
+        "license-type": "Licencia activa",
+        "status": "Próximo vencimiento",
         "earliest-start": "Inicio más temprano",
         "next-expiry": "Próximo vencimiento",
         "warranty-expires-on": "Vencimiento de la garantía",
@@ -1222,44 +1233,46 @@
         "transfer-subscriptions": "Transferir suscripciones",
         "activate-evaluations": "Activar evaluaciones",
         "devcie-list-loading-error": "No se puede cargar la lista de firewalls reclamados.",
+        "recently-expired": "Recientemente han caducado algunas suscripciones. Expanda la fila para ver los detalles.",
+        "expired": "Caducado",
         "top-bar": {
             "claim-between": "Reclamados entre",
             "expiry-between": "Caducidad entre",
+            "license-type": "Estado de la licencia",
             "status": "Estado",
             "reset-all": "Restablecer todo"
         }
       },
       "transfer-firewalls": {
-        "info": "Puede transferir los firewalls seleccionados a una cuenta de Sophos ID existente. Mencione la dirección de correo electrónico del Sophos ID del destinatario.",
+        "info": "Puede transferir los firewalls seleccionados a una cuenta de Sophos Central existente. Introduzca la dirección de correo electrónico del destinatario.",
         "transfer-firewalls": "Transferir firewalls",
-        "recepient-email": "Correo electrónico de los destinatarios",
+        "recepient-email": "Correo electrónico del destinatario",
         "name": "Nombre",
         "model": "Modelo",
         "serial-number": "Número de serie",
-        "license-type": "Tipo de licencia",
-        "status": "Estado",
+        "license-type": "Licencia activa",
+        "status": "Próximo vencimiento",
         "earliest-start": "Inicio más temprano",
         "next-expiry": "Próximo vencimiento",
-        "terms-and-condition": "La empresa transferente",
-        "terms-and-condition-one": "confirma que ha eliminado todos los datos confidenciales, personales y de cualquier otro tipo del hardware",
-        "terms-and-condition-two": "entiende que la obligación de trasladar físicamente el hardware no recaerá en Sophos en ningún momento.",
+        "terms-and-condition-one": "Confirmo que he eliminado datos confidenciales, personales o de otro tipo del dispositivo.",
+        "terms-and-condition-two": "Entiendo que Sophos no moverá físicamente el dispositivo.",
         "tooltip-description": "Es necesario actualizar la descripción",
         "cancel": "Cancelar",
         "confirm": "Confirmar",
         "more-help": "Más ayuda",
         "email-error-msgs": "Introduzca una dirección de correo electrónico válida",
-        "email-max-length-error-msgs": "El correo electrónico debe tener un máximo de 120 caracteres",
-        "transfer-success": "Transfiriendo firewalls seleccionados",
-        "transfer-error": "No se han podido transferir los firewalls seleccionados",
+        "email-max-length-error-msgs": "Puede utilizar un máximo de 120 caracteres",
+        "transfer-success": "Se ha iniciado la transferencia. El destinatario tiene que aceptarlos antes de que caduquen (3 días).",
+        "transfer-error": "No se pueden transferir los firewalls seleccionados.",
         "banner": {
-          "message": "Se han transferido {{firewallCount}} firewalls a su cuenta",
+          "message": "Se han transferido {{firewallCount}} firewalls a su cuenta.",
           "accept-action": "Aceptar todo",
           "details-action": "Detalles"
         }
       },
       "accept-firewalls": {
         "title": "Aceptar firewalls",
-        "info": "Puede transferir los firewalls seleccionados a una cuenta de Sophos ID existente. Mencione la dirección de correo electrónico del Sophos ID del destinatario.",
+        "info": "Ha recibido los siguientes firewalls y los debe aceptar o rechazar antes de que caduquen. Las solicitudes caducan automáticamente en 3 días.",
         "request-expires": "Caducidad de la solicitud",
         "received-from": "Recibido de",
         "reject": "Rechazar",
@@ -1296,8 +1309,17 @@
         "transfer-to": "Transferir a",
         "info-message": "Puede transferir licencias solo a firewalls compatibles (el modelo debe ser equivalente y se debe respetar el número máximo de transferencias permitidas)",
         "finish": "Finalizar",
-        "transfer-success-message": "La suscripción se ha transferido correctamente.",
-        "transfer-failure-message": "No se ha podido transferir la suscripción."
+        "transfer-success-message": "Suscripción transferida correctamente",
+        "transfer-failure-message": "No se ha podido transferir la suscripción.",
+        "transfering-to-static-message": "Seleccionar un firewall"
+      },
+      "rename-firewall": {
+        "label": "Editar firewall",
+        "firewall-name": "Nombre del firewall",
+        "hide-firewall-text": "Ocultar este firewall en mi vista",
+        "save": "Guardar",
+        "update-success-message": "Firewall actualizado correctamente",
+        "update-error-message": "No se ha podido actualizar el firewall"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "Funciones",
         "subscription": "Suscripción",
-        "status": "Estado",
+        "status": "Licencia",
         "expiry": "Vencimiento",
         "no-change": "No hay cambios en estas funciones.",
         "new": "Nueva"
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "Evaluación",
         "usage": "Mensual",
-        "term": "Suscrito",
-        "perpetual": "Suscrito"
+        "term": "Suscripción",
+        "perpetual": "Suscripción",
+        "undefined": ""
       }
     },
     "global-settings": {

@@ -1158,7 +1158,7 @@
           "deleted": "Firewall erfolgreich gelöscht.",
           "delete-confirmation": "Wollen Sie die Firewall wirklich löschen?",
           "hide-confirmation": "Wollen Sie die Firewall wirklich verbergen?",
-          "create-confirmation": "Virtuelle Firewall wurde erfolgreich erstellt mit Seriennummer:<b> {{ serialId }} </b>",
+          "create-confirmation": "Virtuelle Firewall wurde erfolgreich erstellt mit Seriennummer:<b> {{ serialId }}</b><b> </b>",
           "hidden": "Firewall erfolgreich ausgeblendet.",
           "not-hidden": "Beim Verbergen der Firewall ist ein Fehler aufgetreten.",
           "duplicate-entry": "Virtuelle Firewall kann nicht gespeichert werden, der gewählte Name existiert bereits."
@@ -1186,7 +1186,18 @@
         "claim-opt-base": "Nur die Firewall mit Basislizenz anfordern.",
         "claim-opt-try-rma": "Anfordern mit zusätzlicher 30-Tage-Testlizenz für Xstream Protection, Web Server Protection und Email Protection.",
         "claim-opt-base-rma": "Trotzdem anfordern. Ich werde die Lizenz der fehlerhaften Firewall manuell übertragen.",
-        "claim-fail-error": "Anforderung der Firewall fehlgeschlagen. Bitte versuchen Sie es später erneut."
+        "claim-fail-error": "Anforderung der Firewall fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+        "rma-device": {
+          "rma-detected": "Vorabaustausch-Service (RMA Replacement) festgestellt, Lizenz muss übertragen werden von Seriennummer: {{rmaSerialNumber}}",
+          "faulty-device-unclaimed": "Die Anforderung Ihres fehlerhaftes Gerätes wird aufgehoben.",
+          "faulty-unclaimed-device-message": "Sie können ein fehlerhaftes Gerät nicht anfordern. Nach der Lizenzübertragung kann {{serialNumber}} nicht mehr verwendet werden. Sie können diesen Vorgang nicht rückgängig machen.",
+          "rma-transferable-label": "Anfordern und Lizenz übertragen. Ich kann die Lizenz übertragen.",
+          "device-with-no-automatic-transferable-license": "Vorabaustausch-Service (RMA Replacement) festgestellt, aber keine automatische Lizenzübertragung möglich",
+          "faulty-device-not-claimable": "Das fehlerhafte Gerät konnte nicht angefordert werden. Bitte wenden Sie sich an <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>.",
+          "license-transfer-manually":"Anfordern, ich werde die Lizenz manuell von dem fehlerhaften Gerät übertragen.",
+          "xstream-protecton-license": "Xstream Protection - 30-Tage-Testlizenz",
+          "message-for-HA-pair-user": "Wenn Sie ein HA-Paar verwenden, aktivieren Sie kostenlose Testlizenzen nur dann, wenn das Paar eine Lizenz für Xstream Protection hat."
+        }
       },
       "device-list": {
         "tab": {
@@ -1200,11 +1211,11 @@
         "name": "Name",
         "model": "Modell",
         "serial-number": "Seriennummer",
-        "license-type": "Lizenztyp",
-        "status": "Status",
+        "license-type": "Aktive Lizenz",
+        "status": "Als nächstes läuft ab",
         "earliest-start": "Frühester Start",
-        "next-expiry": "Nächster Ablauf",
-        "warranty-expires-on": "Garantieablauf",
+        "next-expiry": "Läuft ab",
+        "warranty-expires-on": "Garantie läuft ab",
         "tooltip-text": {
           "transferring-to": "Übertragen auf {{recipientEmail}}",
           "transfer-request-expiry": "Anfrage läuft ab in {{expiryTimeRemaining}} am {{expiresAt}}",
@@ -1222,54 +1233,56 @@
         "transfer-subscriptions": "Abonnements übertragen",
         "activate-evaluations": "Evaluationen aktivieren",
         "devcie-list-loading-error": "Liste der anforderten Firewalls kann nicht geladen werden.",
+        "recently-expired": "Vor Kurzem sind einige Abonnements abgelaufen. Erweitern Sie die Zeile, um Details anzuzeigen.",
+        "expired": "Abgelaufen",
         "top-bar": {
             "claim-between": "Angefordert zwischen",
             "expiry-between": "Ablauf zwischen",
+            "license-type": "Lizenzstatus",
             "status": "Status",
             "reset-all": "Alle zurücksetzen"
         }
       },
       "transfer-firewalls": {
-        "info": "Sie können ausgewählte Firewalls auf ein vorhandenes Sophos-ID-Konto übertragen. Bitte geben Sie die E-Mail-Adresse der Empfänger-Sophos-ID an.",
+        "info": "Sie können ausgewählte Firewalls auf ein vorhandenes Sophos-Central-Konto übertragen. Geben Sie die E-Mail-Adresse des Empfängers ein.",
         "transfer-firewalls": "Firewalls übertragen",
-        "recepient-email": "Empfänger E-Mail",
+        "recepient-email": "Empfänger-E-Mail",
         "name": "Name",
         "model": "Modell",
         "serial-number": "Seriennummer",
-        "license-type": "Lizenztyp",
-        "status": "Status",
+        "license-type": "Aktive Lizenz",
+        "status": "Als nächstes läuft ab",
         "earliest-start": "Frühester Start",
         "next-expiry": "Nächster Ablauf",
-        "terms-and-condition": "Das übertragende Unternehmen bestätigt hiermit, dass es",
-        "terms-and-condition-one": "alle seinen vertraulichen, personenbezogenen und sonstigen Daten von der Hardware entfernt hat.",
-        "terms-and-condition-two": "zur Kenntnis nimmt, dass Sophos zu keinem Zeitpunkt verpflichtet ist, die physische Standortänderung der Hardware vorzunehmen.",
+        "terms-and-condition-one": "Ich bestätige, dass ich vertrauliche, personenbezogene und sonstige Daten von dem Gerät entfernt habe.",
+        "terms-and-condition-two": "Ich verstehe, dass Sophos den physischen Standort des Gerätes nicht verändert.",
         "tooltip-description": "Beschreibung muss aktualisiert werden",
         "cancel": "Abbrechen",
         "confirm": "Bestätigen",
         "more-help": "Weitere Hilfe",
-        "email-error-msgs": "Bitte eine gültige E-Mail-Adresse eingeben",
-        "email-max-length-error-msgs": "E-Mail kann maximal 120 Zeichen lang sein",
-        "transfer-success": "Ausgewählte Firewalls übertragen",
-        "transfer-error": "Ausgewählte Firewalls konnten nicht übertragen werden",
+        "email-error-msgs": "Geben Sie eine gültige E-Mail-Adresse ein",
+        "email-max-length-error-msgs": "Sie können maximal 120 Zeichen verwenden",
+        "transfer-success": "Übertragung wird gestartet. Der Empfänger muss diese innerhalb von 3 Tagen annehmen.",
+        "transfer-error": "Ausgewählte Firewalls können nicht übertragen werden.",
         "banner": {
-          "message": "{{firewallCount}} Firewalls wurden auf Ihr Konto übertragen",
-          "accept-action": "Alles akzeptieren",
+          "message": "{{firewallCount}} Firewalls wurden auf Ihr Konto übertragen.",
+          "accept-action": "Alles annehmen",
           "details-action": "Details"
         }
       },
       "accept-firewalls": {
-        "title": "Firewalls akzeptieren",
-        "info": "Sie können ausgewählte Firewalls auf ein vorhandenes Sophos-ID-Konto übertragen. Bitte geben Sie die E-Mail-Adresse der Empfänger-Sophos-ID an.",
+        "title": "Firewalls annehmen",
+        "info": "Die Übertragung der unten aufgeführten Firewalls auf Sie wurde beantragt. Sie müssen diese Übertragung annehmen oder ablehnen, bevor die Anfrage abläuft. Anfragen laufen nach 3 Tagen automatisch ab.",
         "request-expires": "Anfrage-Ablaufdatum",
         "received-from": "Erhalten von",
         "reject": "Ablehnen",
-        "accept": "Akzeptieren",
+        "accept": "Annehmen",
         "reject-firewalls": "Firewalls ablehnen",
         "reject-firewall-message": "Wollen Sie die ausgewählten Firewalls ablehnen?",
         "firewalls-rejected-success": "Firewalls erfolgreich abgelehnt",
         "firewalls-rejected-error": "Ablehnung der Firewalls fehlgeschlagen",
-        "firewalls-accepted-success": "Firewalls erfolgreich akzeptiert",
-        "firewalls-accepted-error": "Akzeptieren der Firewalls fehlgeschlagen"
+        "firewalls-accepted-success": "Annahme der Firewalls erfolgreich",
+        "firewalls-accepted-error": "Annahme der Firewalls fehlgeschlagen"
       },
       "apply-subscription": {
         "label": "Abonnement anwenden - {{ serial }}",
@@ -1297,7 +1310,16 @@
         "info-message": "Sie können Lizenzen nur auf kompatible Firewalls übertragen (Modell muss äquivalent sein und zulässige Zahl an Übertragungen darf nicht überschritten werden)",
         "finish": "Fertigstellen",
         "transfer-success-message": "Abonnement erfolgreich übertragen.",
-        "transfer-failure-message": "Übertragung des Abonnements fehlgeschlagen."
+        "transfer-failure-message": "Übertragung des Abonnements fehlgeschlagen.",
+        "transfering-to-static-message": "Wählen Sie eine Firewall aus"
+      },
+      "rename-firewall": {
+        "label": "Firewall bearbeiten",
+        "firewall-name": "Firewall-Name",
+        "hide-firewall-text": "Diese Firewall in meiner Ansicht ausblenden",
+        "save": "Speichern",
+        "update-success-message": "Firewall erfolgreich aktualisiert",
+        "update-error-message": "Aktualisierung der Firewall fehlgeschlagen"
       },
       "pdb": {
         "device-list": {
@@ -1310,7 +1332,7 @@
       "subscription-features-list": {
         "features": "Funktionen",
         "subscription": "Abonnement",
-        "status": "Status",
+        "status": "Lizenz",
         "expiry": "Ablaufdatum",
         "no-change": "Keine Änderungen bei diesen Funktionen.",
         "new": "Neu"
@@ -1353,13 +1375,15 @@
         "PNGG": "PNGG",
         "PFG": "PFG",
         "NGG": "NGG",
-        "NGGPL": "NGGPL"
+        "NGGPL": "NGGPL",
+        "undefined": ""
       },
       "subscription-status": {
         "trial" : "Evaluierung",
         "usage": "Monatlich",
-        "term": "Abonniert",
-        "perpetual": "Abonniert"
+        "term": "Abonnement",
+        "perpetual": "Abonnement",
+        "undefined": ""
       }
     },
     "global-settings": {
