@@ -9,6 +9,7 @@
       "all": "모두",
       "alerts": "경고",
       "save": "저장",
+      "next": "다음",
       "save-continue": "저장 및 계속",
       "cancel": "취소",
       "edit": "편집",
@@ -36,7 +37,6 @@
       "networks": "네트워크",
       "network-security": "네트워크 보안",
       "bands": "대역",
-      "assign-access-points": "액세스 지점 할당",
       "ssids": "SSID",
       "settings": "설정",
       "sites": "사이트",
@@ -391,6 +391,18 @@
         },
         "no-aps-found": "등록된 액세스 지점이 없습니다!"
       },
+      "modal": {
+        "site-country": "국가를 선택하십시오.",
+        "selected-country": "선택된 국가",
+        "title": "사이트 만들기 또는 업데이트",
+        "accept-continue": "수락 후 계속하기",
+        "save-reboot": "저장 후 재부팅",
+        "user-acceptance-notice": "2.4GHz, 5GHz 및 6GHz 스펙트럼 내에서 무선 채널 선택을 포함하여 올바른 작동 국가를 선택하는 것은 전적으로 사용자의 책임입니다. 독립 채널 사용 가능 여부는 국가마다 다르며, 적절한 채널 사용 및 채널 사용 금지에 관한 현지 법률도 다릅니다. 적절한 채널 선택을 결정하려면 현지 국가 법률을 참조하십시오. Sophos 최종 사용자 라이선스 계약에 따라 사용자는 채널 선택에 적용되는 현지 법률 위반에 대해 Sophos를 면책하고, 방어하며, 해를 입히지 않아야 합니다. 또한 Sophos는 현지 법률을 위반하는 사용에 대해 사용자의 라이선스 계약을 해지할 수 있는 권리를 보유합니다.",
+        "reboot-note": "사이트 정보를 생성하거나 업데이트하려면 AP를 재부팅해야 합니다.",
+        "step1-title": "1단계: 사이트 정보",
+        "step2-title": "2단계: 사용자 수락 통보",
+        "step3-title": "{{stepNum}}단계: 액세스 지점 할당"
+      },
       "site-name-error-msgs": {
         "required": "사이트 이름이 필요합니다.",
         "maxlength": "사이트 이름은 최대 64자여야 합니다."
@@ -544,6 +556,7 @@
         "assign-aps-inline-help-text-later": "이 SSID를 편집하여 나중에 AP를 추가할 수 있습니다.",
         "available-aps": "사용 가능한 액세스 지점",
         "assigned-aps": "할당된 액세스 지점",
+        "root-ap": "루트 액세스 지점(기본)",
         "broad-cast-ap": "이 SSID를 브로드캐스트할 AP를 선택합니다.",
         "max-ssid-per-band": "각 액세스 지점에는 대역당 최대 8개의 SSID가 존재할 수 있습니다.",
         "depend-onap": "액세스 지점에 따라 2.4GHz 및/또는 5GHz가 제공됩니다.",
@@ -1127,7 +1140,9 @@
           "SCHEDULE_UPGRADE": "업그레이드 예약",
           "CANCEL_UPGRADE": "업그레이드 취소",
           "ENABLE_REMOTE_SUPPORT": "원격 지원 사용",
-          "DISABLE_REMOTE_SUPPORT": "원격 지원 사용 안 함"
+          "DISABLE_REMOTE_SUPPORT": "원격 지원 사용 안 함",
+          "SCAN": "인접 네트워크 스캔",
+          "CLASSIFY": "네트워크 등급 변경"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1444,8 +1459,8 @@
       "name.invalid": "이름은 비워둘 수 없고 100자를 초과할 수 없으며 알파벳, 숫자 또는 밑줄을 포함할 수 있으나 특수 문자는 포함할 수 없음",
       "location.tooLong": "액세스 지점 위치는 100자를 초과할 수 없습니다.",
       "description.invalid": "설명은 비워둘 수 없으며 300자를 초과할 수 없음",
-      "record.invalid": "제공된 {{0}}이(가) 이 계정에 유효하지 않음",
-      "entity.not.found": "이 계정에 대한 {{0}}을(를) 찾을 수 없음",
+      "record.invalid": "제공된 기록이 이 계정에 유효하지 않음",
+      "entity.not.found": "이 계정에 대한 기록을 찾을 수 없음",
       "validString.accessProtectionMode": "잘못된 액세스 보호 모드 값",
       "validString.accessProtectionType": "잘못된 액세스 보호 유형 값",
       "validString.encryptionAlgorithm": "잘못된 암호화 알고리즘 값",
@@ -1459,18 +1474,18 @@
       "serial.invalid": "잘못된 일련 번호",
       "exception.unexpected": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다.",
       "exception.AccessDeniedException": "액세스 거부됨",
-      "field.value.invalid": "필드 {{1}}에 잘못된 입력 값({{0}})이 제공됨",
+      "field.value.invalid": "잘못된 구성",
       "encoding.invalid": "잘못된 인코딩이 감지됨",
       "exception.io": "서버에서 I/O 예외 발생",
       "exception.json.parse": "요청에 형식이 잘못된 JSON 수신됨",
       "request.json.malformed": "형식이 잘못된 요청 JSON 수신됨",
-      "property.invalid": "속성 {{0}}에 대해 제공된 값을 처리하는 데 실패",
+      "property.invalid": "제공된 속성이 잘못됨 ",
       "exception.illegal.argument": "요청에 잘못된 인수가 수신됨",
-      "http.request.header.missing": "요청에 필수 HTTP 헤더 {{0}} 누락",
+      "http.request.header.missing": "요청에 필수 HTTP 헤더 누락",
       "field.validation.errors.message": "필드 유효성 검사 오류",
-      "http.method.unsupported": "제공된 경로에 대해 지원되지 않는 HTTP 메서드 {{0}}",
-      "access-point.state.invalid.for.abort": "액세스 지점 상태[{{0}}]가 중단에 유효하지 않습니다.",
-      "access-point.state.invalid.for.retry": "액세스 지점 상태[{{0}}]가 재시도에 유효하지 않습니다.",
+      "http.method.unsupported": "제공된 경로에 대해 지원되지 않는 HTTP 메서드 ",
+      "access-point.state.invalid.for.abort": "액세스 지점 상태가 중단에 유효하지 않습니다.",
+      "access-point.state.invalid.for.retry": "액세스 지점 상태가 재시도에 유효하지 않습니다.",
       "limit.exceeded": "한도 초과"
     }
   }

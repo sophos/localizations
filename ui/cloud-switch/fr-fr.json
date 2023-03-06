@@ -10,6 +10,7 @@
       "inuse": "En cours d’utilisation",
       "total": "Total",
       "details": "Détails",
+      "hide": "Masquer",
       "template": "Site",
       "firmware": "Firmware",
       "port": "Port",
@@ -178,6 +179,7 @@
         "ip-networks-title": "Réseaux",
         "ip-routes-title": "Routes",
         "l3-protocols-title": "Protocoles L3",
+        "qos": "QoS",
         "vlans-title": "VLAN",
         "network-settings-title": "Paramètres réseau",
         "task-queue-title": "File d’attente des tâches",
@@ -971,7 +973,8 @@
         "lag": "LAG",
         "dhcp_snooping_vlan": "Surveillance DHCP (VLAN)",
         "dhcp_snooping_settings": "Surveillance DHCP (Paramètres)",
-        "dhcp_snooping_port": "Surveillance DHCP (Port)"
+        "dhcp_snooping_port": "Surveillance DHCP (Port)",
+        "qos_settings": "Paramètres QoS"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -1750,8 +1753,11 @@
     "license-messages": {
       "overused-message": "Une ou plusieurs de vos licences sont surutilisées. Vous voulez gérer plus de switchs que vous n’avez de licences. Veuillez acheter des licences supplémentaires pour gérer ces switchs depuis Sophos Central.",
       "grace-period-message": "Une ou plusieurs licences ont expiré. Vous ne pourrez bientôt plus gérer ces switchs depuis Sophos Central. Veuillez renouveler vos licences.",
+      "license-pre-message": "Le support et l’abonnement aux services Switch incluent des fonctionnalités de gestion Sophos Central, l’assistance téléphonique 24 h/24, 7 j/7, des mises à niveau du firmware et le support RMA avancé. Vérifiez que l’état de votre support est correct pour éviter toute interruption.",
+      "license-pre-release": "Le support et les services Switch ont été activés dans Sophos Central.",
       "license-error": "Licences surutilisées trouvées !",
-      "license-warning": "Licences expirées trouvées !"
+      "license-warning": "Licences expirées trouvées !",
+      "dont-show": "J’ai compris. Ne plus me montrer ce message."
     },
     "conflict-handling": {
       "fix-error": "Impossible de résoudre les conflits.",
@@ -1821,6 +1827,34 @@
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"
+      }
+    },
+    "qos": {
+      "global-settings": "Paramètres généraux",
+      "port-settings": "Ports",
+      "policy-settings": "Stratégies",
+      "status": "État",
+      "common": {
+        "not-set": "Non défini",
+        "enabled": "Activé",
+        "disabled": "Désactivé",
+        "config-source": "Source de configuration"
+      },
+      "queue": "File d’attente {{ num }}",
+      "queue-weight": "Pondérations de file d’attente",
+      "scheduling-method": "Méthode de planification",
+      "strict-priority": "Priorité stricte",
+      "wrr": "WRR",
+      "trust-mode": "Mode de confiance",
+      "dscp": "DSCP",
+      "p-802-1": "802.1p",
+      "p-802-1-dscp": "802.1p-DSCP",
+      "messages": {
+        "save-dialog-title" : "Confirmer l’enregistrement",
+        "site-save-setting-text": "{{ count }} switchs vont récupérer la mise à jour des paramètres QoS et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "switch-save-setting-text": "Le switch va récupérer la mis à jour des paramètres QoS et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "update-setting-success": "Les paramètres QoS ont été mis à jour",
+        "update-setting-error": "Impossible de mettre à jour les paramètres QoS."
       }
     }
   }

@@ -10,6 +10,7 @@
       "inuse": "使用中",
       "total": "總數",
       "details": "詳細資訊",
+      "hide": "隱藏",
       "template": "網站",
       "firmware": "韌體",
       "port": "連接埠",
@@ -178,6 +179,7 @@
         "ip-networks-title": "網路",
         "ip-routes-title": "路由",
         "l3-protocols-title": "L3 通訊協定",
+        "qos": "QoS",
         "vlans-title": "VLAN",
         "network-settings-title": "網路設定",
         "task-queue-title": "工作佇列",
@@ -693,7 +695,7 @@
         "revert-system-error": "無法刪除網站設定 ",
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-confirm-title": "使用系統預設設定",
-        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。",
         "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。  您可以現在或以後同步組態變更。",
         "vlan-lag-conflict-title": "已停用 VLAN 中使用的 LAG！",
         "vlan-lag-conflict-message": "LAG {{ lags }}目前已停用，但對應至 VLAN"
@@ -787,7 +789,7 @@
         "revert-to-system-confirm-title": "使用系統預設設定",
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
-        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。",
         "delete-success": "網路設定已刪除",
         "delete-error": "無法刪除一個或多個網路",
         "create-error": "無法建立網路",
@@ -869,7 +871,7 @@
         "revert-to-system-confirm-title": "使用系統預設設定",
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-info-message": "所選網站設定將被刪除，交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
-        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。",
         "delete-success": "路由已刪除",
         "delete-error": "無法刪除一或多個路由",
         "create-error": "無法建立路由",
@@ -971,7 +973,8 @@
         "lag": "LAG",
         "dhcp_snooping_vlan": "DHCP 窺探 (VLAN)",
         "dhcp_snooping_settings": "DHCP 窺探（設定）",
-        "dhcp_snooping_port": "DHCP 窺探（連接埠）"
+        "dhcp_snooping_port": "DHCP 窺探（連接埠）",
+        "qos_settings": "QoS 設定"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1750,8 +1753,11 @@
     "license-messages": {
       "overused-message": "您的一或多個授權超訂閱了。您要管理的交換器數量超過了您擁有授權的交換器數量。請購買更多授權，以從 Sophos Central 管理這些交換器。",
       "grace-period-message": "一或多個授權已過期。您很快就無法從 Sophos Central 管理這些交換器。請續訂授權。",
+      "license-pre-message": "交換器支援和服務訂閱包含 Sophos Central 管理功能、24x7 全天候電話支援、韌體升級和進階 RMA 支援。請檢查您的支援狀態是否正確，以避免出現中斷。",
+      "license-pre-release": "Sophos Central 中目前已啟用交換器支援和服務！",
       "license-error": "發現超訂閱授權！",
-      "license-warning": "發現過期授權！"
+      "license-warning": "發現過期授權！",
+      "dont-show": "我理解，不再顯示。"
     },
     "conflict-handling": {
       "fix-error": "無法修復衝突。",
@@ -1775,7 +1781,7 @@
         "revert-to-system-confirm-title": "使用系統預設設定",
         "revert-to-site-confirm-title": "使用網站設定",
         "revert-to-system-info-message": "所選網站設定將被刪除。交換器將改用系統預設設定。您可以現在或以後同步組態變更。",
-        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。 ",
+        "revert-to-site-info-message": "所選交換器設定將被刪除。交換器將改用網站設定。  您可以現在或以後同步組態變更。",
         "delete-success": "窺探設定已刪除",
         "delete-error": "無法刪除一或多個窺探設定",
         "create-error": "無法建立窺探設定",
@@ -1821,6 +1827,34 @@
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"
+      }
+    },
+    "qos": {
+      "global-settings": "整體設定",
+      "port-settings": "連接埠",
+      "policy-settings": "政策",
+      "status": "狀態",
+      "common": {
+        "not-set": "未設定",
+        "enabled": "已啟用",
+        "disabled": "已停用",
+        "config-source": "設定來源"
+      },
+      "queue": "佇列 {{ num }}",
+      "queue-weight": "佇列權重",
+      "scheduling-method": "排程方法",
+      "strict-priority": "嚴格優先級",
+      "wrr": "加權輪詢 (WRR)",
+      "trust-mode": "信任模式",
+      "dscp": "DSCP",
+      "p-802-1": "802.1p",
+      "p-802-1-dscp": "802.1p-DSCP",
+      "messages": {
+        "save-dialog-title" : "確認儲存",
+        "site-save-setting-text": "{{ count }} 個交換器將取得此 QoS 設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-save-setting-text": "交換器將取得此 QoS 設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "update-setting-success": "QoS 設定已成功更新。",
+        "update-setting-error": "無法更新 QoS 設定。"
       }
     }
   }

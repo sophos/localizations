@@ -9,6 +9,7 @@
       "all": "すべて",
       "alerts": "警告",
       "save": "保存",
+      "next": "次へ",
       "save-continue": "保存して続行",
       "cancel": "キャンセル",
       "edit": "編集",
@@ -36,7 +37,6 @@
       "networks": "ネットワーク",
       "network-security": "ネットワークセキュリティ",
       "bands": "帯域",
-      "assign-access-points": "アクセスポイントの割り当て",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "サイト",
@@ -391,6 +391,18 @@
         },
         "no-aps-found": "登録されているアクセスポイントがありません。"
       },
+      "modal": {
+        "site-country": "国の選択",
+        "selected-country": "選択した国",
+        "title": "サイトの作成/更新",
+        "accept-continue": "同意して続行",
+        "save-reboot": "保存して再起動",
+        "user-acceptance-notice": "運用する国の適切な選択、2.4GHz、5GHz、6GHz のスペクトラムからのワイヤレスチャネルの選択などは、ユーザーが単独で責任を負うのものとします。独立したチャネルの可用性は国によって異なり、適切なチャネル使用とチャネル使用の禁止を規定する現地の法律も異なります。適切なチャネルを選択するには、各国の法律を参照してください。ソフォスのエンドユーザー使用許諾契約書に基づき、ユーザーは、チャネル選択に適用される現地の法律に違反した場合、ソフォスを補償し、防御し、免責するものとします。さらに、ソフォスは、現地の法律に違反する使用に関する、ユーザーのライセンス契約を終了する権利を留保します。",
+        "reboot-note": "サイト情報を作成または更新するには、AP を再起動する必要があります",
+        "step1-title": "ステップ 1: サイト情報",
+        "step2-title": "ステップ 2: ユーザーの同意通知",
+        "step3-title": "ステップ {{stepNum}}: アクセスポイントの割り当て"
+      },
       "site-name-error-msgs": {
         "required": "サイト名を指定してください。",
         "maxlength": "サイト名は最大 64文字まで入力できます。"
@@ -544,6 +556,7 @@
         "assign-aps-inline-help-text-later": "この SSID を編集することによって、いつでも後からアクセスポイントを追加できます。",
         "available-aps": "利用可能なアクセスポイント",
         "assigned-aps": "割り当てられているアクセスポイント",
+        "root-ap": "ルート アクセスポイント (プライマリ)",
         "broad-cast-ap": "この SSID をブロードキャストする AP を選択します。",
         "max-ssid-per-band": "1台のアクセスポイントには、周波数帯ごとに最大 8個の SSID を設定できます。",
         "depend-onap": "アクセスポイントに応じて 2.4GHz または 5GHz、もしくはその両方を利用できます。",
@@ -1127,7 +1140,9 @@
           "SCHEDULE_UPGRADE": "アップグレードのスケジュール設定",
           "CANCEL_UPGRADE": "アップグレードのキャンセル",
           "ENABLE_REMOTE_SUPPORT": "リモートサポートを有効",
-          "DISABLE_REMOTE_SUPPORT": "リモートサポートを無効"
+          "DISABLE_REMOTE_SUPPORT": "リモートサポートを無効",
+          "SCAN": "「周辺のネットワーク」のスキャン",
+          "CLASSIFY": "ネットワーク分類の変更"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1444,8 +1459,8 @@
       "name.invalid": "名前は空白にできず、100文字を超えることはできません。また、アルファベット、数字、アンダースコアを含めることはできますが、特殊文字を含めることはできません",
       "location.tooLong": "アクセスポイントの場所は 100文字以内で指定してください",
       "description.invalid": "説明は空白にできず、300文字を超えることはできません",
-      "record.invalid": "指定された {{0}} は、このアカウントで無効です",
-      "entity.not.found": "このアカウントの {{0}} は見つかりませんでした",
+      "record.invalid": "指定されたレコードは、このアカウントで無効です",
+      "entity.not.found": "このアカウントのレコードは見つかりませんでした",
       "validString.accessProtectionMode": "アクセス保護モードの値が無効です",
       "validString.accessProtectionType": "アクセス保護の種類の値が無効です",
       "validString.encryptionAlgorithm": "暗号化アルゴリズムの値が無効です",
@@ -1459,18 +1474,18 @@
       "serial.invalid": "シリアル番号が無効です",
       "exception.unexpected": "リクエストの処理中に、予期しないエラーが発生しました",
       "exception.AccessDeniedException": "アクセスが拒否されました",
-      "field.value.invalid": "無効な入力値 {{0}} が、{{1}} フィールドに指定されました",
+      "field.value.invalid": "無効な設定です。",
       "encoding.invalid": "無効なエンコーディングが検出されました",
       "exception.io": "サーバーで I/O 例外が発生しました",
       "exception.json.parse": "リクエストで不正な JSON を受信しました",
       "request.json.malformed": "不正な JSON のリクエストを受信しました",
-      "property.invalid": "プロパティ {{0}} に指定された値の処理に失敗しました",
+      "property.invalid": "指定されたプロパティは無効です ",
       "exception.illegal.argument": "リクエストで不正な引数を受信しました",
-      "http.request.header.missing": "必要な HTTP ヘッダー {{0}} がリクエストにありません",
+      "http.request.header.missing": "必要な HTTP ヘッダーがリクエストにありません",
       "field.validation.errors.message": "フィールドの検証エラー",
-      "http.method.unsupported": "指定されたパスで、HTTP メソッド {{0}} はサポートされていません",
-      "access-point.state.invalid.for.abort": "アクセスポイントの状態 [{{0}}] は、中止に対して無効です",
-      "access-point.state.invalid.for.retry": "アクセスポイントの状態 [{{0}}] は、再試行に対して無効です",
+      "http.method.unsupported": "指定されたパスで、HTTP メソッドはサポートされていません",
+      "access-point.state.invalid.for.abort": "アクセスポイントの状態は、中止に対して無効です",
+      "access-point.state.invalid.for.retry": "アクセスポイントの状態は、再試行に対して無効です",
       "limit.exceeded": "上限を超えました"
     }
   }

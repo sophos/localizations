@@ -623,7 +623,7 @@
           "description": "説明",
           "status": "状態",
           "no-of-firewalls": "ファイアウォール数",
-          "no-of-shared-resource": "共有リソース数 (サービス数) "
+          "no-of-shared-resource": "共有リソース数 (サービス数)"
         }
       },
       "no-data": {
@@ -736,6 +736,9 @@
         "edit-label-title": "ラベルの編集/削除",
         "add-location-title": "場所の追加",
         "edit-location-title": "場所の編集",
+        "sync": "同期",
+        "sync-successful": "ファイアウォールの同期リクエストが正常に送信されました。",
+        "sync-failed": "ファイアウォールの同期に失敗しました",
         "ungroup-firewall-title": "このグループからのファイアウォールの削除",
         "remove-firewall": "Sophos Central でのファイアウォールの削除",
         "edit-group": "グループの編集",
@@ -1116,7 +1119,10 @@
           "create-account": "管理対象顧客の新規作成",
           "registrant": {
             "label": "登録者: ",
-            "required": "登録者が必要です"
+            "required": "登録者が必要です",
+            "filter": "入力してフィルタ",
+            "admin-footer": "上位 50件の結果のみを表示",
+            "customer-footer": "上位 100件の結果のみを表示"
           },
           "description": {
             "label": "説明: ",
@@ -1194,10 +1200,10 @@
         "utm-migrate-heading": "UTM 9 ライセンスの移行",
         "utm-migrate-description": "この手順によって、UTM 9 ライセンスも、同じ期間、ファイアウォールの評価ライセンスに移行されます。",
         "rma-device": {
-          "rma-detected": "RMA 対象デバイスが検出されましたが、ライセンスを次のシリアル番号から転送する必要があります: {{rmaSerialNumber}}",
+          "rma-detected": "RMA 対象デバイスが検出されましたが、ライセンスを {{rmaSerialNumber}} から転送する必要があります",
           "faulty-device-unclaimed": "故障デバイスは追加要求されません。",
-          "faulty-unclaimed-device-message": "故障デバイスを追加要求することはできません。ライセンスの転送後、{{serialNumber}} は使用できなくなります。操作を元に戻すことはできません。",
-          "rma-transferable-label": "ライセンスを追加要求して転送する。ライセンスを転送することができます。",
+          "faulty-unclaimed-device-message": "ライセンスの転送後、{{serialNumber}} は使用できなくなります。操作を元に戻すことはできません。",
+          "rma-transferable-label": "故障デバイスから新しく追加したデバイスにライセンスを転送することを確認します。",
           "device-with-no-automatic-transferable-license": "RMA 対象デバイスが検出されましたが、ライセンスを自動転送できません",
           "faulty-device-not-claimable": "故障デバイスを追加要求できませんでした。サポート <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a> にお問い合わせください。",
           "license-transfer-manually":"追加要求する。後で、故障デバイスからライセンスを手動で転送します。",
@@ -1318,8 +1324,9 @@
           "checksum": "チェックサム",
           "size": "サイズ"
         },
-        "checksum-copy": "クリップボードへコピーしました。",
+        "checksum-copy": "チェックサムがクリップボードにコピーされました。",
         "firmware-downloads": "ファームウェアのダウンロード",
+        "other-downloads": "その他のダウンロード",
         "firmware": "ファームウェア (.{{ext}})",
         "installer": "インストーラ (.{{ext}})",
         "list-empty-message": "表示するファームウェアはありません。",
@@ -1366,7 +1373,9 @@
         "status": "ライセンス",
         "expiry": "有効期限",
         "no-change": "変更された機能はありません。",
-        "new": "新規"
+        "new": "新規",
+        "license-copy": "ライセンス ID がクリップボードにコピーされました。",
+        "license-identifier": "ライセンス ID"
       },
       "evaluate-features": {
         "label": "評価版のアクティベート - {{ serial }}",
@@ -1491,6 +1500,9 @@
       "amzn-ap-northeast-1": "日本",
       "amzn-ap-south-1": "インド",
       "amzn-sa-east-1": "ブラジル"
+    },
+    "banner":{
+      "maintenance": "ファイアウォール管理は、{{startDate}} から {{endDate}} までメンテナンス中です。"
     }
   }
 }

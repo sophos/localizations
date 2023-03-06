@@ -9,6 +9,7 @@
       "all": "Alle",
       "alerts": "Alarme",
       "save": "Speichern",
+      "next": "Weiter",
       "save-continue": "Speichern & Weiter",
       "cancel": "Abbrechen",
       "edit": "Bearbeiten",
@@ -36,7 +37,6 @@
       "networks": "Netzwerke",
       "network-security": "Network Security",
       "bands": "Bänder",
-      "assign-access-points": "Access Points zuweisen",
       "ssids": "SSIDs",
       "settings": "Einstellungen",
       "sites": "Standorte",
@@ -391,6 +391,18 @@
         },
         "no-aps-found": "Es ist kein registrierter Access Point vorhanden!"
       },
+      "modal": {
+        "site-country": "Wählen Sie ein Land aus",
+        "selected-country": "Ausgewähltes Land",
+        "title": "Standort erstellen oder aktualisieren",
+        "accept-continue": "Akzeptieren & Fortfahren",
+        "save-reboot": "Speichern & Neu starten",
+        "user-acceptance-notice": "Es liegt in der Verantwortung des Benutzers, das korrekte Land auszuwählen, in dem das Gerät verwendet wird, sowie den WLAN-Kanal im 2,4 GHz, 5 GHz oder 6 GHz Bereich. Die Verfügbarkeit von Kanälen kann je nach Land variieren, und die Nutzung bzw. das Verbot der Nutzung von Kanälen unterliegt lokalen gesetzlichen Bestimmungen. Prüfen Sie vor der Kanalauswahl die für Sie geltenden Gesetze. Wie in der Sophos-Endbenutzer-Lizenzvereinbarung festgelegt, werden Benutzer Sophos bezüglich der Verletzung lokaler Gesetze zur Kanalauswahl schadlos halten, freistellen und entschädigen. Darüber hinaus behält Sophos sich das Recht vor, die Lizenzvereinbarung mit einem Benutzer zu beenden, wenn die Verwendung gegen lokale Gesetze verstößt.",
+        "reboot-note": "Für die Erstellung oder Aktualisierung von Standort-Informationen muss der AP neu gestartet werden",
+        "step1-title": "Schritt 1: Standort-Informationen",
+        "step2-title": "Schritt 2: Annahmeerklärung des Benutzers",
+        "step3-title": "Schritt {{stepNum}}: Access Points zuweisen"
+      },
       "site-name-error-msgs": {
         "required": "Standortname ist erforderlich.",
         "maxlength": "Standardname kann maximal 64 Zeichen lang sein."
@@ -544,6 +556,7 @@
         "assign-aps-inline-help-text-later": "APs können später hinzugefügt werden, indem diese SSID bearbeitet wird.",
         "available-aps": "Verfügbare Access Points",
         "assigned-aps": "Zugewiesene Access Points",
+        "root-ap": "Root-Access-Point (Primär)",
         "broad-cast-ap": "Wählen Sie die APs, die diese SSID ausstrahlen sollen (SSID-Broadcast).",
         "max-ssid-per-band": "Jeder Access Point kann pro Frequenzband bis zu 8 SSIDs ausstrahlen.",
         "depend-onap": "Je nach Access Point sind 2,4 GHz und 5 GHz verfügbar.",
@@ -1127,7 +1140,9 @@
           "SCHEDULE_UPGRADE": "Aktualisierung planen",
           "CANCEL_UPGRADE": "Aktualisierung abbrechen",
           "ENABLE_REMOTE_SUPPORT": "Remote-Support aktivieren",
-          "DISABLE_REMOTE_SUPPORT": "Remote-Support deaktivieren"
+          "DISABLE_REMOTE_SUPPORT": "Remote-Support deaktivieren",
+          "SCAN": "Netzwerke in der Nachbarschaft scannen",
+          "CLASSIFY": "Netzwerk-Klassifizierung ändern"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1433,7 +1448,7 @@
   },
   "wifix": {
     "api": {
-      "serial.invalid.for.account": "Eingegebene Seriennummer ist bereits registriert",
+      "serial.invalid.for.account": "Angegebene Seriennummer ist bereits registriert",
       "ipv4.valid": "IP-Adresse muss gültiges IPv4-Format haben",
       "ipv4Internal.valid": "Interne IP-Adresse muss gültiges IPv4-Format haben",
       "ipv4External.valid": "Externe IP-Adresse muss gültiges IPv4-Format haben",
@@ -1444,8 +1459,8 @@
       "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, und darf nur alphanumerische Zeichen oder Unterstriche enthalten, aber keine Sonderzeichen",
       "location.tooLong": "Der Access-Point-Standort darf höchstens 100 Zeichen haben",
       "description.invalid": "Die Beschreibung darf nicht leer sein und darf höchstens 300 Zeichen haben",
-      "record.invalid": "{{0}} ist für dieses Konto ungültig",
-      "entity.not.found": "{{0}} für dieses Konto nicht gefunden",
+      "record.invalid": "Angegebener Datensatz ist für dieses Konto ungültig",
+      "entity.not.found": "Keine Datensätze für dieses Konto gefunden",
       "validString.accessProtectionMode": "Ungültiger Wert für den Zugriffsschutz-Modus",
       "validString.accessProtectionType": "Ungültiger Wert für den Zugriffsschutz-Typ",
       "validString.encryptionAlgorithm": "Ungültiger Wert für den Verschlüsselungs-Algorithmus",
@@ -1457,20 +1472,20 @@
       "ssid.name.already.exists": "Der SSID-Name existiert bereits",
       "unknown.constraint.violation": "Unbekannte Bedingungsverletzung",
       "serial.invalid": "Ungültige Seriennummer",
-      "exception.unexpected": "Bei der Verarbeitung der Anfrage ist ein unerwarteter Fehler aufgetreten",
+      "exception.unexpected": "Bei der Verarbeitung der Anforderung ist ein unerwarteter Fehler aufgetreten",
       "exception.AccessDeniedException": "Zugriff verweigert",
-      "field.value.invalid": "Ungültiger Eingabewert {{0}} für Feld {{1}}",
+      "field.value.invalid": "Ungültige Konfiguration",
       "encoding.invalid": "Ungültige Codierung erkannt",
       "exception.io": "I/O-Ausnahme am Server aufgetreten",
-      "exception.json.parse": "Fehlerhaftes JSON in Anfrage erhalten",
-      "request.json.malformed": "Fehlerhaftes JSON in Anfrage erhalten",
-      "property.invalid": "Fehler bei der Verarbeitung des für Eigenschaft {{0}} angegebenen Werts",
-      "exception.illegal.argument": "Ungültiges Argument in Anfrage erhalten",
-      "http.request.header.missing": "Erforderlicher HTTP-Header {{0}} fehlt in Anfrage",
+      "exception.json.parse": "Fehlerhaftes JSON in Anforderung erhalten",
+      "request.json.malformed": "Fehlerhaftes JSON in Anforderung erhalten",
+      "property.invalid": "Angegebene Eigenschaft ist ungültig ",
+      "exception.illegal.argument": "Ungültiges Argument in Anforderung erhalten",
+      "http.request.header.missing": "Erforderlicher HTTP-Header fehlt in Anforderung",
       "field.validation.errors.message": "Fehler bei der Feldprüfung",
-      "http.method.unsupported": "HTTP-Methode {{0}} für den angegebenen Pfad nicht unterstützt",
-      "access-point.state.invalid.for.abort": "Access-Point-Status [{{0}}] ungültig für Abbruch",
-      "access-point.state.invalid.for.retry": "Access-Point-Status [{{0}}] ungültig für Wiederholen",
+      "http.method.unsupported": "HTTP-Methode wird für den angegebenen Pfad nicht unterstützt",
+      "access-point.state.invalid.for.abort": "Ungültiger Access-Point-Status für Abbruch",
+      "access-point.state.invalid.for.retry": "Ungültiger Access-Point-Status für Wiederholen",
       "limit.exceeded": "Grenze überschritten"
     }
   }
