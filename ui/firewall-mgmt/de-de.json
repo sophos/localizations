@@ -736,6 +736,9 @@
         "edit-label-title": "Bezeichnung bearbeiten/löschen",
         "add-location-title": "Standort hinzufügen",
         "edit-location-title": "Standort bearbeiten",
+        "sync": "Synchronisieren",
+        "sync-successful": "Anforderung zur Firewall-Synchronisierung wurde erfolgreich gestellt.",
+        "sync-failed": "Firewall-Synchronisierung fehlgeschlagen",
         "ungroup-firewall-title": "Firewall aus dieser Gruppe entfernen",
         "remove-firewall": "Firewall aus Sophos Central entfernen",
         "edit-group": "Gruppe bearbeiten",
@@ -1116,7 +1119,10 @@
           "create-account": "Neuen verwalteten Kunden erstellen",
           "registrant": {
             "label": "Registrant: ",
-            "required": "Registrant ist erforderlich"
+            "required": "Registrant ist erforderlich",
+            "filter": "Zum Filtern tippen",
+            "admin-footer": "Nur die ersten 50 Ergebnisse werden angezeigt",
+            "customer-footer": "Nur die ersten 100 Ergebnisse werden angezeigt"
           },
           "description": {
             "label": "Beschreibung: ",
@@ -1189,15 +1195,15 @@
         "claim-opt-try": "Anfordern mit zusätzlicher 30-Tage-Testlizenz für Xstream Protection, Web Server Protection und Email Protection.",
         "claim-opt-base": "Nur die Firewall mit Basislizenz anfordern.",
         "claim-fail-error": "Anforderung der Firewall fehlgeschlagen. Bitte versuchen Sie es später erneut.",
-        "already-claimed-heading": "Die Firewall wurde bereits angefordert.",
+        "already-claimed-heading": "Die Firewall ist bereits registriert.",
         "already-claimed-description": "Wenn dies Ihre Firewall ist, ist sie bereits in der Geräteliste verfügbar.",
         "utm-migrate-heading": "UTM 9 Lizenzmigration",
         "utm-migrate-description": "Mit diesem Schritt werden auch UTM-9-Lizenzen für die Firewall in Testlizenzen mit gleicher Gültigkeitsdauer migriert.",
         "rma-device": {
-          "rma-detected": "Vorabaustausch-Service (RMA Replacement) festgestellt, Lizenz muss übertragen werden von Seriennummer: {{rmaSerialNumber}}",
+          "rma-detected": "Vorabaustausch-Service (RMA Replacement) festgestellt, Lizenz muss übertragen werden von {{rmaSerialNumber}}",
           "faulty-device-unclaimed": "Die Anforderung Ihres fehlerhaftes Gerätes wird aufgehoben.",
-          "faulty-unclaimed-device-message": "Sie können ein fehlerhaftes Gerät nicht anfordern. Nach der Lizenzübertragung kann {{serialNumber}} nicht mehr verwendet werden. Sie können diesen Vorgang nicht rückgängig machen.",
-          "rma-transferable-label": "Anfordern und Lizenz übertragen. Ich kann die Lizenz übertragen.",
+          "faulty-unclaimed-device-message": "Nach der Lizenzübertragung kann {{serialNumber}} nicht mehr verwendet werden. Sie können diesen Vorgang nicht rückgängig machen.",
+          "rma-transferable-label": "Ich bestätige, dass ich die Lizenzen von dem fehlerhaften Gerät auf das neue Gerät übertragen werden.",
           "device-with-no-automatic-transferable-license": "Vorabaustausch-Service (RMA Replacement) festgestellt, aber keine automatische Lizenzübertragung möglich",
           "faulty-device-not-claimable": "Das fehlerhafte Gerät konnte nicht angefordert werden. Bitte wenden Sie sich an <a href='mailto:customercare@sophos.com'>customercare@sophos.com</a>.",
           "license-transfer-manually":"Anfordern, ich werde die Lizenz manuell von dem fehlerhaften Gerät übertragen.",
@@ -1318,17 +1324,18 @@
           "checksum": "Prüfsumme",
           "size": "Größe"
         },
-        "checksum-copy": "In die Zwischenablage kopiert.",
+        "checksum-copy": "Prüfsumme wurde in die Zwischenablage kopiert.",
         "firmware-downloads": "Firmware-Downloads",
-        "firmware": "Firmware(.{{ext}})",
-        "installer": "Installer(.{{ext}})",
+        "other-downloads": "Andere Downloads",
+        "firmware": "Firmware (.{{ext}})",
+        "installer": "Installer (.{{ext}})",
         "list-empty-message": "Keine Firmware anzuzeigen.",
         "firewall-not-active": "Firewall ist noch nicht aktiviert.",
         "platform-type":  {
             "AI01": "AWS",
             "AZ01": "Azure",
             "SO": "Software",
-            "HV": "Virtual HyperV",
+            "HV": "Virtual Hyper-V",
             "KV": "Virtual KVM",
             "VM": "Virtual VMware",
             "XV": "Virtual Xen",
@@ -1366,7 +1373,9 @@
         "status": "Lizenz",
         "expiry": "Ablaufdatum",
         "no-change": "Keine Änderungen bei diesen Funktionen.",
-        "new": "Neu"
+        "new": "Neu",
+        "license-copy": "Lizenz-ID wurde in die Zwischenablage kopiert.",
+        "license-identifier": "Lizenz-ID"
       },
       "evaluate-features": {
         "label": "Evaluierungen aktivieren - {{ serial }}",
@@ -1491,6 +1500,9 @@
       "amzn-ap-northeast-1": "Japan",
       "amzn-ap-south-1": "Indien",
       "amzn-sa-east-1": "Brasilien"
+    },
+    "banner":{
+      "maintenance": "Für die Firewall-Verwaltung finden Wartungsarbeiten statt von {{startDate}} bis {{endDate}}."
     }
   }
 }

@@ -9,6 +9,7 @@
       "all": "Tutto/i",
       "alerts": "Avvisi",
       "save": "Salva",
+      "next": "Avanti",
       "save-continue": "Salva & continua",
       "cancel": "Annulla",
       "edit": "Modifica",
@@ -36,7 +37,6 @@
       "networks": "Reti",
       "network-security": "Network Security",
       "bands": "Bande",
-      "assign-access-points": "Assegna access point",
       "ssids": "SSID",
       "settings": "Impostazioni",
       "sites": "Siti",
@@ -391,6 +391,18 @@
         },
         "no-aps-found": "Nessun access point registrato."
       },
+      "modal": {
+        "site-country": "Seleziona un paese",
+        "selected-country": "Paese selezionato",
+        "title": "Crea o aggiorna un sito",
+        "accept-continue": "Accetta e continua",
+        "save-reboot": "Salva e riavvia",
+        "user-acceptance-notice": "La responsabilità di selezionare il giusto paese di utilizzo, inclusa la selezione del canale wireless nelle gamme 2,4 GHz, 5 GHz e 6 GHz, spetta esclusivamente all’utente. La disponibilità di canali indipendenti varia a seconda del paese e lo stesso vale per le leggi locali che governano l’adeguato utilizzo del canale e il divieto di utilizzare canali specifici. Consulta la legislazione locale del paese di utilizzo per stabilire come selezionare il canale in maniera adeguata. In conformità con il Sophos End-User License Agreement (Contratto di licenza Sophos per l’utente finale), gli utenti risarciranno, difenderanno e solleveranno Sophos da ogni responsabilità per un’eventuale violazione delle leggi locali che governano la selezione del canale. Inoltre, Sophos si riserva il diritto di terminare il contratto di licenza di un utente che violi le leggi locali.",
+        "reboot-note": "La creazione o l’aggiornamento delle informazioni del sito richiede il riavvio dell’AP",
+        "step1-title": "Passaggio 1. Informazioni del sito",
+        "step2-title": "Passaggio 2. Notifica di accettazione dell’utente",
+        "step3-title": "Passaggio {{stepNum}}. Assegna access point"
+      },
       "site-name-error-msgs": {
         "required": "Il nome del sito è obbligatorio.",
         "maxlength": "Il nome del sito non può contenere più di 64 caratteri."
@@ -544,6 +556,7 @@
         "assign-aps-inline-help-text-later": "Gli AP possono essere aggiunti in un secondo momento, modificando questo SSID.",
         "available-aps": "Access point disponibili",
         "assigned-aps": "Access point assegnati",
+        "root-ap": "Access Point Root (principale)",
         "broad-cast-ap": "Scegli gli AP su cui desideri trasmettere questo SSID.",
         "max-ssid-per-band": "Ciascun access point può avere fino a un massimo di 8 SSID per banda.",
         "depend-onap": "A seconda dell’access point, saranno disponibili le bande 2,4 GHz e/o 5GHz.",
@@ -1127,7 +1140,9 @@
           "SCHEDULE_UPGRADE": "Pianifica upgrade",
           "CANCEL_UPGRADE": "Annulla upgrade",
           "ENABLE_REMOTE_SUPPORT": "Abilita supporto remoto",
-          "DISABLE_REMOTE_SUPPORT": "Disattiva supporto remoto"
+          "DISABLE_REMOTE_SUPPORT": "Disattiva supporto remoto",
+          "SCAN": "Esegui la scansione delle reti adiacenti",
+          "CLASSIFY": "Modifica la classificazione della rete"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1444,8 +1459,8 @@
       "name.invalid": "Il campo Nome non può essere vuoto, non deve superare i 100 caratteri, può contenere caratteri alfanumerici e di sottolineatura, non può contenere caratteri speciali",
       "location.tooLong": "Il campo della posizione dell’access point non deve superare i 100 caratteri",
       "description.invalid": "La descrizione non può essere lasciata vuota e non può superare i 300 caratteri",
-      "record.invalid": "L’entità {{0}} fornita non è valida per questo account",
-      "entity.not.found": "Nessuna entità {{0}} trovata per questo account",
+      "record.invalid": "Il record fornito non è valido per questo account",
+      "entity.not.found": "Nessun record trovato per questo account",
       "validString.accessProtectionMode": "Valore non valido per la modalità di protezione degli accessi",
       "validString.accessProtectionType": "Valore non valido per il tipo di protezione degli accessi",
       "validString.encryptionAlgorithm": "Valore non valido per l’algoritmo di cifratura",
@@ -1459,18 +1474,18 @@
       "serial.invalid": "Numero di serie non valido",
       "exception.unexpected": "Si è verificato un errore inatteso durante l’elaborazione della richiesta",
       "exception.AccessDeniedException": "Accesso negato",
-      "field.value.invalid": "Valore di input {{0}} non valido fornito per il campo {{1}}",
+      "field.value.invalid": "Configurazione non valida",
       "encoding.invalid": "Rilevata codifica non valida",
       "exception.io": "Si è verificata un'eccezione I/O nel server",
       "exception.json.parse": "Ricevuto JSON non valido nella richiesta",
       "request.json.malformed": "Ricevuto JSON di richiesta non valido",
-      "property.invalid": "Non è stato possibile elaborare il valore specificato per la proprietà {{0}}",
+      "property.invalid": "La proprietà fornita non è valida ",
       "exception.illegal.argument": "Argomento non consentito ricevuto nella richiesta",
-      "http.request.header.missing": "Intestazione HTTP obbligatoria {{0}} mancante nella richiesta",
+      "http.request.header.missing": "Intestazione HTTP obbligatoria mancante nella richiesta",
       "field.validation.errors.message": "Errori di convalida dei campi",
-      "http.method.unsupported": "Metodo HTTP {{0}} non supportato per il percorso specificato",
-      "access-point.state.invalid.for.abort": "Lo stato dell’access point [{{0}}] non è valido per un’interruzione",
-      "access-point.state.invalid.for.retry": "Lo stato dell’access point [{{0}}] non è valido per un nuovo tentativo",
+      "http.method.unsupported": "Metodo HTTP non supportato per il percorso specificato",
+      "access-point.state.invalid.for.abort": "Lo stato dell’access point non è valido per un’interruzione",
+      "access-point.state.invalid.for.retry": "Lo stato dell’access point non è valido per un nuovo tentativo",
       "limit.exceeded": "Limite superato"
     }
   }

@@ -9,6 +9,7 @@
       "all": "所有",
       "alerts": "警示",
       "save": "儲存",
+      "next": "下一步",
       "save-continue": "儲存並繼續",
       "cancel": "取消",
       "edit": "編輯",
@@ -25,7 +26,7 @@
       "errors": "錯誤",
       "step-3": "步驟 3",
       "http-errors": {
-        "500": "出現錯誤，請稍後再試。",
+        "500": "出現錯誤，请稍後重試。",
         "default": "載入資料時出現問題。"
       },
       "warnings": "警告",
@@ -36,7 +37,6 @@
       "networks": "網路",
       "network-security": "網路安全",
       "bands": "頻帶",
-      "assign-access-points": "指派存取點",
       "ssids": "SSID",
       "settings": "設定",
       "sites": "地點",
@@ -391,6 +391,18 @@
         },
         "no-aps-found": "沒有已註冊的存取點！"
       },
+      "modal": {
+        "site-country": "選取國家/地區",
+        "selected-country": "選取的國家/地區",
+        "title": "建立或更新地點",
+        "accept-continue": "接受並繼續",
+        "save-reboot": "儲存並重新啟動",
+        "user-acceptance-notice": "使用者只需負責選取正確的營運國家/地區（包括 2.4 GHz、5 GHz 和 6 GHz 頻譜內的無線頻道選擇）。獨立頻道的可用性因國家/地區而異，管理正確頻道使用和禁止頻道使用的當地法律也是如此。請了解當地國家/地區的法律以確定選取適當的頻道。根據 Sophos 終端使用者授權合約，若出現違反有關頻道選擇的當地法律的情況，使用者將對 Sophos 進行賠償、辯護並使其免受損害。此外，若使用者的使用違反了當地法律，Sophos 保留終止該使用者授權合約的權利。",
+        "reboot-note": "建立或更新網站資訊將需要重新啟動 AP",
+        "step1-title": "步驟 1：網站資訊",
+        "step2-title": "步驟 2：使用者驗收通知",
+        "step3-title": "步驟 {{stepNum}}：指派存取點"
+      },
       "site-name-error-msgs": {
         "required": "必須提供地點名稱。",
         "maxlength": "地點名稱最多包括 64 個字元。"
@@ -544,6 +556,7 @@
         "assign-aps-inline-help-text-later": "透過編輯該 SSID，可於稍後隨時新增 AP。",
         "available-aps": "可用存取點",
         "assigned-aps": "指派存取點",
+        "root-ap": "根存取點（主要）",
         "broad-cast-ap": "選擇要在其上廣播此 SSID 的 AP。",
         "max-ssid-per-band": "每個存取點的每個頻帶最多能有 8 個 SSID。",
         "depend-onap": "根據存取點，可使用 2.4 GHz 和/或 5GHz。",
@@ -703,7 +716,7 @@
         },
         "bands": {
           "_dynamic_": {
-            "none": "無",
+            "none": "无",
             "GHZ_2_4": "2.4 GHz",
             "GHZ_5": "5 GHz",
             "both": "2.4 GHz 與 5 GHz",
@@ -788,7 +801,7 @@
         "client-isolation-enabled-info": "用戶端隔離已啟用，同時啟用熱點。",
         "mac-filter-header": "MAC 篩選",
         "mac-filtering-warning": "MAC 篩選也將套用至設定此網路之 AP 上的所有其他網路。",
-        "mac-filter-none": "無",
+        "mac-filter-none": "无",
         "mac-filter-blacklist": "攔截清單",
         "scheduled": "已排程",
         "always": "一律",
@@ -1127,7 +1140,9 @@
           "SCHEDULE_UPGRADE": "排程升級",
           "CANCEL_UPGRADE": "取消升級",
           "ENABLE_REMOTE_SUPPORT": "啟用遠端支援",
-          "DISABLE_REMOTE_SUPPORT": "停用遠端支援"
+          "DISABLE_REMOTE_SUPPORT": "停用遠端支援",
+          "SCAN": "掃描鄰近網路",
+          "CLASSIFY": "變更網路分類"
         },
         "dialog": {
           "configurationDataDialogTitle": {
@@ -1444,8 +1459,8 @@
       "name.invalid": "名稱不能為空，不得超過 100 個字元，可以包含字母、數字或底線，不能包含特殊字元",
       "location.tooLong": "存取點位置不得超過 100 個字元",
       "description.invalid": "說明不得為空並且不能超出 300 個字元",
-      "record.invalid": "所提供之 {{0}} 對於此帳戶無效",
-      "entity.not.found": "此帳戶未找到 {{0}}",
+      "record.invalid": "所提供之記錄對於此帳戶無效",
+      "entity.not.found": "此帳戶未找到記錄",
       "validString.accessProtectionMode": "存取保護模式值無效",
       "validString.accessProtectionType": "存取保護類型值無效",
       "validString.encryptionAlgorithm": "加密算法值無效",
@@ -1459,18 +1474,18 @@
       "serial.invalid": "序號無效",
       "exception.unexpected": "處理請求時出現意外錯誤",
       "exception.AccessDeniedException": "拒絕存取",
-      "field.value.invalid": "為欄位 {{1}} 提供的輸入值 {{0}} 無效",
+      "field.value.invalid": "無效組態",
       "encoding.invalid": "偵測到無效的編碼",
       "exception.io": "伺服器出現 I/O 異常",
       "exception.json.parse": "請求中收到的 JSON 格式錯誤",
       "request.json.malformed": "接收到格式錯誤請求 JSON",
-      "property.invalid": "為屬性 {{0}} 提供的處理值失敗",
+      "property.invalid": "所提供之屬性無效 ",
       "exception.illegal.argument": "請求中收到非法引數",
-      "http.request.header.missing": "請求中缺少必填項 HTTP 標頭 {{0}}",
+      "http.request.header.missing": "請求中缺少必填項 HTTP 標頭",
       "field.validation.errors.message": "欄位驗證錯誤",
-      "http.method.unsupported": "提供之路徑不支援 HTTP 方法 {{0}}",
-      "access-point.state.invalid.for.abort": "存取點狀態 [{{0}}] 對中止無效",
-      "access-point.state.invalid.for.retry": "存取點狀態 [{{0}}] 對重試無效",
+      "http.method.unsupported": "提供之路徑不支援 HTTP 方法",
+      "access-point.state.invalid.for.abort": "存取點狀態對中止無效",
+      "access-point.state.invalid.for.retry": "存取點狀態對重試無效",
       "limit.exceeded": "已超出限制"
     }
   }

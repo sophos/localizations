@@ -10,6 +10,7 @@
       "inuse": "使用中",
       "total": "合計",
       "details": "詳細",
+      "hide": "非表示",
       "template": "サイト",
       "firmware": "ファームウェア",
       "port": "ポート",
@@ -178,6 +179,7 @@
         "ip-networks-title": "ネットワーク",
         "ip-routes-title": "ルート",
         "l3-protocols-title": "L3 プロトコル",
+        "qos": "QoS",
         "vlans-title": "VLAN",
         "network-settings-title": "ネットワークの設定",
         "task-queue-title": "タスクのキュー",
@@ -971,7 +973,8 @@
         "lag": "LAG",
         "dhcp_snooping_vlan": "DHCP スヌーピング (VLAN)",
         "dhcp_snooping_settings": "DHCP スヌーピング (設定)",
-        "dhcp_snooping_port": "DHCP スヌーピング (ポート)"
+        "dhcp_snooping_port": "DHCP スヌーピング (ポート)",
+        "qos_settings": "QoS 設定"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1750,8 +1753,11 @@
     "license-messages": {
       "overused-message": "1つまたは複数のライセンスの登録数が超過しています。お持ちのライセンス数以上のスイッチを管理する場合は、追加ライセンスを購入して、Sophos Central からこのようなスイッチを管理してください。",
       "grace-period-message": "1つまたは複数のライセンスの有効期限が切れました。間もなくこのようなスイッチを Sophos Central から管理できなくなります。ライセンスを更新してください。",
+      "license-pre-message": "Switch Support and Services サブスクリプションには、Sophos Central 管理機能、年中無休の電話サポート、ファームウェアのアップグレード、および高度な RMA サポートが含まれています。中断を避けるために、サポートの状態が適切であることを確認してください。",
+      "license-pre-release": "Switch Support and Services が Sophos Central で有効になりました。",
       "license-error": "登録数が超過しているライセンスが見つかりました。",
-      "license-warning": "期限切れのライセンスが見つかりました。"
+      "license-warning": "期限切れのライセンスが見つかりました。",
+      "dont-show": "了解。次回からこれを表示しない。"
     },
     "conflict-handling": {
       "fix-error": "競合を修正できません。",
@@ -1821,6 +1827,34 @@
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"
+      }
+    },
+    "qos": {
+      "global-settings": "グローバル設定",
+      "port-settings": "ポート",
+      "policy-settings": "ポリシー",
+      "status": "状態",
+      "common": {
+        "not-set": "未設定",
+        "enabled": "有効",
+        "disabled": "無効",
+        "config-source": "設定のソース"
+      },
+      "queue": "キュー {{ num }}",
+      "queue-weight": "キューの加重",
+      "scheduling-method": "スケジューリング方法",
+      "strict-priority": "絶対優先",
+      "wrr": "WRR",
+      "trust-mode": "信頼モード",
+      "dscp": "DSCP",
+      "p-802-1": "802.1p",
+      "p-802-1-dscp": "802.1p-DSCP",
+      "messages": {
+        "save-dialog-title" : "保存の確認",
+        "site-save-setting-text": "{{ count }}個のスイッチに、この QoS 設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-setting-text": "スイッチにこの QoS 設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "update-setting-success": "QoS 設定が更新されました。",
+        "update-setting-error": "QoS 設定を更新できません。"
       }
     }
   }

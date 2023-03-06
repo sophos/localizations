@@ -10,6 +10,7 @@
       "inuse": "En uso",
       "total": "Total",
       "details": "Detalles",
+      "hide": "Ocultar",
       "template": "Sitio",
       "firmware": "Firmware",
       "port": "Puerto",
@@ -178,6 +179,7 @@
         "ip-networks-title": "Redes",
         "ip-routes-title": "Rutas",
         "l3-protocols-title": "Protocolos L3",
+        "qos": "QoS",
         "vlans-title": "Redes VLAN",
         "network-settings-title": "Configuración de red",
         "task-queue-title": "Cola de tareas",
@@ -971,7 +973,8 @@
         "lag": "LAG",
         "dhcp_snooping_vlan": "Inspección DHCP (VLAN)",
         "dhcp_snooping_settings": "Inspección DHCP (configuración)",
-        "dhcp_snooping_port": "Inspección DHCP (puerto)"
+        "dhcp_snooping_port": "Inspección DHCP (puerto)",
+        "qos_settings": "Configuración de QoS"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1750,8 +1753,11 @@
     "license-messages": {
       "overused-message": "Una o más licencias se han sobresuscrito. Quiere administrar más switches de los que puede por la licencias que tiene. Adquiera más licencias para administrar esos switches desde Sophos Central.",
       "grace-period-message": "Una o más licencias han caducado. Ya no podrá administrar estos switches desde Sophos Central en breve. Renueve sus licencias.",
+      "license-pre-message": "La suscripción Soporte y servicios de Switch incluye funciones de administración de Sophos Central, asistencia telefónica 24/7, actualizaciones de firmware y reemplazo avanzado RMA. Compruebe que el estado de su soporte sea correcto para evitar interrupciones.",
+      "license-pre-release": "El soporte y los servicios de Switch se han activado en Sophos Central.",
       "license-error": "Se han encontrado licencias sobresuscritas.",
-      "license-warning": "Se han encontrado licencias caducadas."
+      "license-warning": "Se han encontrado licencias caducadas.",
+      "dont-show": "Entiendo; no volver a mostrar esto."
     },
     "conflict-handling": {
       "fix-error": "No se pudo solucionar los conflictos.",
@@ -1821,6 +1827,34 @@
         "version-v1": "v1",
         "version-v2": "v2",
         "version-v3": "v3"
+      }
+    },
+    "qos": {
+      "global-settings": "Configuración global",
+      "port-settings": "Puertos",
+      "policy-settings": "Políticas",
+      "status": "Estado",
+      "common": {
+        "not-set": "No establecido",
+        "enabled": "Activado",
+        "disabled": "Desactivado",
+        "config-source": "Origen de configuración"
+      },
+      "queue": "Cola {{ num }}",
+      "queue-weight": "Ponderaciones de cola",
+      "scheduling-method": "Método de programación",
+      "strict-priority": "Prioridad estricta",
+      "wrr": "WRR",
+      "trust-mode": "Modo de confianza",
+      "dscp": "DSCP",
+      "p-802-1": "802.1p",
+      "p-802-1-dscp": "802.1p-DSCP",
+      "messages": {
+        "save-dialog-title" : "Confirmar guardado",
+        "site-save-setting-text": "{{ count }} switches obtendrán esta actualización de la configuración de QoS y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-save-setting-text": "El switch obtendrá esta actualización de la configuración de QoS y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "update-setting-success": "La configuración de QoS se ha actualizado correctamente.",
+        "update-setting-error": "No se puede actualizar la configuración QoS."
       }
     }
   }
