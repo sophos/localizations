@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "Firewall",
         "no-gc-aws-instructions": {
           "sub-header1": "1. Assegure-se de ter um certificado curinga pronto",
           "sub-header2": "2. Veja as instruções de instalação do Amazon Web Services",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "Gateways",
         "breadcrumb-text-gateway-connector": "Gateways",
         "error": "Erro ao buscar a lista de gateways",
+        "select-firewall": "Selecionar um firewall",
+        "firewall-error": "Erro ao buscar os firewalls",
+        "firewall-empty": "Nenhum firewall capaz encontrado. Você pode atualizar os firewalls registrados para a versão mais recente e utilizá-los como um conector.",
         "connector-modal": {
           "header": "Nuvem da Sophos adicionada",
           "copy-fqdn-label": "Adicione o seguinte link ao seu servidor DNS:",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "Atualização de software",
+        "title": "Gateway",
         "latest": "Você está executando o software mais recente.",
         "description": "Agendar uma atualização para gateway",
         "header": "Atualizar de {{currentVersion}} para",
@@ -658,10 +662,11 @@
         "add-error": "Atualização do cronograma malsucedida"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "Alguns componentes no seu gateway AWS não terão mais suporte a partir de {{releaseEndOfSupport}}.",
-        "cft-update": "Um novo modelo do CloudFormation (CFT) está disponível. Você deverá fazer a atualização no console do provedor do serviço da nuvem seguindo as etapas no ",
-        "cft-update-link": "artigo da base de conhecimentos.",
-        "cft-update-link-note": " O processo de atualização levará algum tempo e você perderá temporariamente o acesso aos recursos.",
+        "release-endOfSupport": "Um novo modelo do CloudFormation (CFT) está disponível. Alguns componentes no seu gateway AWS não terão mais suporte a partir de {{releaseEndOfSupport}}.",
+        "cft-update": "Faça a atualização do CFT no console do provedor de serviços da nuvem. Você precisará desse valor durante a atualização, portanto, copie-o agora:",
+        "cft-update-link": "Instruções de atualização do CFT",
+        "cft-update-link-note": "O processo de atualização levará algum tempo e você perderá temporariamente o acesso aos recursos.",
+        "cft-update-link-info": "Vá para o console do seu provedor agora e siga estas etapas de atualização:",
         "title": "Modelo do CloudFormation",
         "latest": "Você está executando a versão mais recente do modelo do CloudFormation."
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "Um gateway deve ser atribuído a um aplicativo",
       "application.internal.fqdn.conflicts.gateway.fqdn": "O FQDN interno do aplicativo está em conflito com o FQDN de um dos gateways",
       "application.external.fqdn.conflicts.gateway.fqdn": "O FQDN externo do aplicativo está em conflito com o FQDN de um dos gateways",
+      "application.portrange.gateway.not-supported": "O Gateway não é compatível com intervalos de portas. Atualizar para a versão mais recente",
+      "application.ports.invalid": "Intervalo de portas inválido especificado",
       "idp.field.validation.error": "Erro de validação do campo do provedor de identidade",
       "azure.tenantId.notBlank": "O ID do locatário não deve ficar em branco para o provedor de identidade Azure",
       "idp.clientId.notBlank": "O ID do cliente provedor de identidade não pode ficar em branco",

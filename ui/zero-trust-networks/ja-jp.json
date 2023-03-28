@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "ファイアウォール",
         "no-gc-aws-instructions": {
           "sub-header1": "1.ワイルドカード証明書があることを確認します",
           "sub-header2": "2.Amazon Web Services のセットアップ手順を参照します",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "ゲートウェイ",
         "breadcrumb-text-gateway-connector": "ゲートウェイ",
         "error": "ゲートウェイリストの取得中、エラーが発生しました",
+        "select-firewall": "ファイアウォールの選択",
+        "firewall-error": "ファイアウォールの取得中、エラーが発生しました",
+        "firewall-empty": "適切なファイアウォールは見つかりませんでした。登録済みのファイアウォールを最新バージョンにアップグレードして、コネクタとして使用できます。",
         "connector-modal": {
           "header": "Sophos Cloud が追加されました",
           "copy-fqdn-label": "次のリンクを DNS サーバーに追加します:",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "ソフトウェアのアップデート",
+        "title": "ゲートウェイ",
         "latest": "最新のソフトウェアを実行しています。",
         "description": "ゲートウェイの更新のスケジュール設定",
         "header": "{{currentVersion}} から次のバージョンへの更新:",
@@ -658,10 +662,11 @@
         "add-error": "スケジュールの更新に失敗しました"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "AWS ゲートウェイの一部のコンポーネントは、{{releaseEndOfSupport}} でサポートされていない可能 性があります。",
-        "cft-update": "新しい CloudFormation Template (CFT) が利用可能です。次の手順に従って、クラウド サービス プロバイダのコンソールで更新を行う必要があります: ",
-        "cft-update-link": "サポートデータベースの文章。",
-        "cft-update-link-note": " 更新に時間がかかる場合があり、リソースに一時的にアクセスできなくなります。",
+        "release-endOfSupport": "新しい CloudFormation Template (CFT) が利用可能です。AWS ゲートウェイの一部のコンポーネントは、{{releaseEndOfSupport}} でサポートされていない可能 性があります。",
+        "cft-update": "CFT の更新は、クラウド サービス プロバイダのコンソールで行います。この値は更新中に必要なので、コピーしておいてください。",
+        "cft-update-link": "CFT の更新手順",
+        "cft-update-link-note": "更新に時間がかかる場合があり、リソースに一時的にアクセスできなくなります。",
+        "cft-update-link-info": "プロバイダのコンソールに移動し、次の更新手順に従います。",
         "title": "CloudFormation Template",
         "latest": "CloudFormation Template の最新バージョンを実行しています。"
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "ゲートウェイをアプリケーションに割り当てる必要があります",
       "application.internal.fqdn.conflicts.gateway.fqdn": "アプリケーションの内部 FQDN は、ゲートウェイの FQDN の 1つと競合しています",
       "application.external.fqdn.conflicts.gateway.fqdn": "アプリケーションの外部 FQDN は、ゲートウェイの FQDN の 1つと競合しています",
+      "application.portrange.gateway.not-supported": "ゲートウェイはポート範囲をサポートしていません。最新バージョンにアップグレードしてください",
+      "application.ports.invalid": "無効なポート範囲が指定されています",
       "idp.field.validation.error": "IdP フィールドの検証エラー",
       "azure.tenantId.notBlank": "Azure IdP のテナント ID は空白にできません",
       "idp.clientId.notBlank": "IdP のクライアント ID は空白にできません",

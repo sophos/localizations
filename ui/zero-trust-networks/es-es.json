@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "Firewall",
         "no-gc-aws-instructions": {
           "sub-header1": "1. Tenga preparado un certificado comodín",
           "sub-header2": "2. Consulte las instrucciones de configuración de Amazon Web Services",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "Puertas de enlace",
         "breadcrumb-text-gateway-connector": "Puertas de enlace",
         "error": "Error al recuperar la lista de puertas de enlace",
+        "select-firewall": "Seleccionar un firewall",
+        "firewall-error": "Error al obtener los firewalls",
+        "firewall-empty": "No se han encontrado firewalls aptos. Puede actualizar los firewalls registrados a la última versión y utilizarlos como conectores.",
         "connector-modal": {
           "header": "Nube de Sophos añadida",
           "copy-fqdn-label": "Añada el siguiente enlace a su servidor DNS:",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "Actualización de software",
+        "title": "Puerta de enlace",
         "latest": "Está ejecutando el software más reciente.",
         "description": "Programar una actualización para la puerta de enlace",
         "header": "Actualizar de {{currentVersion}} a",
@@ -658,10 +662,11 @@
         "add-error": "Error al actualizar la programación"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "Es posible que algunos componentes de su puerta de enlace AWS no sean compatibles con {{releaseEndOfSupport}}.",
-        "cft-update": "Hay disponible una nueva plantilla de Cloud Formation (CFT). Deberá realizar la actualización en la consola del proveedor de servicios en la nube siguiendo los pasos indicados en ",
-        "cft-update-link": "el artículo de la base de conocimiento.",
-        "cft-update-link-note": " La actualización puede tardar en procesarse y perderá temporalmente el acceso a los recursos.",
+        "release-endOfSupport": "Hay disponible una nueva plantilla de Cloud Formation (CFT). Es posible que algunos componentes de su puerta de enlace AWS no sean compatibles con {{releaseEndOfSupport}}.",
+        "cft-update": "La actualización de la CFT se realiza en la consola del proveedor del servicio en la nube. Necesitará este valor durante la actualización. Cópielo ahora:",
+        "cft-update-link": "Instrucciones de actualización de la CFT",
+        "cft-update-link-note": "La actualización puede tardar en procesarse y perderá temporalmente el acceso a los recursos.",
+        "cft-update-link-info": "Ahora vaya a la consola de su proveedor y siga estos pasos para la actualización:",
         "title": "Plantilla de Cloud Formation",
         "latest": "Está ejecutando la última versión de la plantilla de Cloud Formation."
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "Se debe asignar una puerta de enlace a una aplicación",
       "application.internal.fqdn.conflicts.gateway.fqdn": "El FQDN interno de la aplicación entra en conflicto con uno de los FQDN de la puerta de enlace",
       "application.external.fqdn.conflicts.gateway.fqdn": "El FQDN externo de la aplicación entra en conflicto con uno de los FQDN de la puerta de enlace",
+      "application.portrange.gateway.not-supported": "La puerta de enlace no admite los rangos de puertos. Actualice a la versión más reciente",
+      "application.ports.invalid": "Rango de puertos no válido especificado",
       "idp.field.validation.error": "Error de validación del campo del proveedor de identidad",
       "azure.tenantId.notBlank": "El ID del inquilino no puede estar en blanco para el proveedor de identidad de Azure",
       "idp.clientId.notBlank": "El ID del cliente del proveedor de identidad no puede estar en blanco",
