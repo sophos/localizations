@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "Firewall",
         "no-gc-aws-instructions": {
           "sub-header1": "1. Stellen Sie sicher, dass Sie ein Wildcard-Zertifikat haben",
           "sub-header2": "2. Lesen Sie die Einrichtungsbeschreibung für Amazon Web Services",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "Gateways",
         "breadcrumb-text-gateway-connector": "Gateways",
         "error": "Fehler beim Abrufen der Gateway-Liste",
+        "select-firewall": "Firewall auswählen",
+        "firewall-error": "Fehler beim Abruf von Firewalls",
+        "firewall-empty": "Keine passenden Firewalls gefunden. Sie können die registrierten Firewalls auf die neueste Version aktualisieren und sie als Connector verwenden.",
         "connector-modal": {
           "header": "Hinzugefügt zu Sophos Cloud",
           "copy-fqdn-label": "Fügen Sie den folgenden Link zu Ihrem DNS-Server hinzu:",
@@ -459,7 +463,7 @@
             "one-arm": "Einarmig",
             "two-arm": "Zweiarmig",
             "one-arm-info": "Verwendet den WAN-Port sowohl für eingehenden als auch für ausgehenden Datenverkehr.",
-            "two-arm-info": "Verwendet beide physikalischen Ports (WAN und LAN) des Gerätes."
+            "two-arm-info": "Verwendet beide physischen Ports (WAN und LAN) des Gerätes."
           }
         },
         "gateway": "Lokal",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "Software-Update",
+        "title": "Gateway",
         "latest": "Sie verwenden die neueste Softwareversion.",
         "description": "Gateway-Aktualisierung planen",
         "header": "Aktualisierung von {{currentVersion}} auf",
@@ -658,10 +662,11 @@
         "add-error": "Zeitplanaktualisierung fehlgeschlagen"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "Einige Komponenten in Ihrem AWS-Gateway werden ab {{releaseEndOfSupport}} möglicherweise nicht mehr unterstützt.",
-        "cft-update": "Eine neue CloudFormation-Vorlage (CloudFormation Template, CFT) ist verfügbar. Sie müssen die Aktualisierung in der Konsole des Cloud-Anbieters vornehmen. Eine Beschreibung der Schritte finden Sie im ",
-        "cft-update-link": "Support-Artikel.",
-        "cft-update-link-note": " Die Aktualisierung nimmt einige Zeit in Anspruch und Sie haben zwischenzeitlich keinen Zugriff auf Ressourcen.",
+        "release-endOfSupport": "Eine neue CloudFormation-Vorlage (CloudFormation Template, CFT) ist verfügbar. Einige Komponenten in Ihrem AWS-Gateway werden ab {{releaseEndOfSupport}} möglicherweise nicht mehr unterstützt.",
+        "cft-update": "Sie führen die CFT-Aktualisierung in der Konsole Ihres Cloud-Service-Providers durch. Sie benötigen diesen Wert für die Aktualisierung. Kopieren Sie ihn hier:",
+        "cft-update-link": "CFT-Aktualisierungsanleitung",
+        "cft-update-link-note": "Die Aktualisierung nimmt einige Zeit in Anspruch und Sie haben zwischenzeitlich keinen Zugriff auf Ressourcen.",
+        "cft-update-link-info": "Öffnen Sie nun die Konsole Ihres Providers und führen Sie für die Aktualisierung folgende Schritte aus:",
         "title": "CloudFormation-Vorlage",
         "latest": "Sie verwenden die neueste Version der CloudFormation-Vorlage."
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "Ein Gateway muss einer Anwendung zugewiesen werden",
       "application.internal.fqdn.conflicts.gateway.fqdn": "Anwendungsinterner FQDN-Konflikt mit einem Gateway-FQDN",
       "application.external.fqdn.conflicts.gateway.fqdn": "Anwendungsexterner FQDN-Konflikt mit einem Gateway-FQDN",
+      "application.portrange.gateway.not-supported": "Gateway unterstützt keine Port-Bereiche. Aktualisieren Sie auf die neueste Version",
+      "application.ports.invalid": "Ungültiger Port-Bereich angegeben",
       "idp.field.validation.error": "Fehler bei der Prüfung des Felds 'Identitätsanbieter'",
       "azure.tenantId.notBlank": "Es muss eine Mandanten-ID für den Azure-Identitätsanbieter angegeben werden",
       "idp.clientId.notBlank": "Identitätsanbieter-Client-ID darf nicht leer sein",

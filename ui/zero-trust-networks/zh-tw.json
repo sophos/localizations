@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "防火牆",
         "no-gc-aws-instructions": {
           "sub-header1": "1.確保您準備好了萬用字元憑證",
           "sub-header2": "2.檢視 Amazon Web Services 設定指示",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "閘道",
         "breadcrumb-text-gateway-connector": "閘道",
         "error": "擷取閘道清單時出現錯誤",
+        "select-firewall": "選取防火牆",
+        "firewall-error": "擷取防火墻時出現錯誤",
+        "firewall-empty": "未找到可用的防火牆。您可以將已註冊的防火牆升級到最新版本並將其用作連接器。",
         "connector-modal": {
           "header": "已新增 Sophos Cloud",
           "copy-fqdn-label": "將以下連結新增至您的 DNS 伺服器：",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "軟體更新",
+        "title": "閘道",
         "latest": "您執行的是最新版本的軟體。",
         "description": "為閘道排程更新",
         "header": "從 {{currentVersion}} 更新為",
@@ -658,10 +662,11 @@
         "add-error": "排程更新失敗"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "您的 AWS 閘道中的部分元件可能不受 {{releaseEndOfSupport}} 支援。",
-        "cft-update": "新的 CloudFormation 範本 (CFT) 可用。您必須按照知識庫文章中的步驟在雲端服務提供商的主控台中 ",
-        "cft-update-link": "進行更新。",
-        "cft-update-link-note": " 更新可能需要一些時間來處理，您將暫時失去對資源的存取權限。",
+        "release-endOfSupport": "新的 CloudFormation 範本 (CFT) 可用。您的 AWS 閘道中的部分元件可能不受 {{releaseEndOfSupport}} 支援。",
+        "cft-update": "您在雲端服務提供商的主控台中執行 CFT 更新。更新期間需要此值，因此請現在複製它：",
+        "cft-update-link": "CFT 更新說明",
+        "cft-update-link-note": "處理更新可能需要一些時間，您將暫時失去對資源的存取權限。",
+        "cft-update-link-info": "現在，移至您的提供商的主控台並按照以下更新步驟操作：",
         "title": "CloudFormation 範本",
         "latest": "您執行的是最新版本的 CloudFormation 範本。"
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "必須向應用程式指派閘道",
       "application.internal.fqdn.conflicts.gateway.fqdn": "與閘道 FQDN 之一發生應用程式內部 FQDN 衝突",
       "application.external.fqdn.conflicts.gateway.fqdn": "與閘道 FQDN 之一發生應用程式外部 FQDN 衝突",
+      "application.portrange.gateway.not-supported": "閘道不支援連接埠範圍。升級至最新版本",
+      "application.ports.invalid": "指定的連接埠範圍無效",
       "idp.field.validation.error": "識別提供者欄位驗證錯誤",
       "azure.tenantId.notBlank": "Azure 識別提供者的租用戶 ID 不得為空",
       "idp.clientId.notBlank": "識別提供者用戶端 ID 不得為空",

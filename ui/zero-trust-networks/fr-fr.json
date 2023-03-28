@@ -215,6 +215,7 @@
         "gateway-package-type-vmware": "VMware ESXi",
         "gateway-package-type-aws": "Amazon Web Services",
         "gateway-package-type-hyperv": "Hyper-V",
+        "gateway-package-type-firewall": "Pare-feu",
         "no-gc-aws-instructions": {
           "sub-header1": "1. Assurez-vous qu’un certificat générique est prêt",
           "sub-header2": "2. Consultez les instructions de configuration d’Amazon Web Services",
@@ -251,6 +252,9 @@
         "breadcrumb-text": "Passerelles",
         "breadcrumb-text-gateway-connector": "Passerelles",
         "error": "Erreur lors de la récupération de la liste des passerelles",
+        "select-firewall": "Sélectionner un pare-feu",
+        "firewall-error": "Erreur lors de la récupération des pare-feu",
+        "firewall-empty": "Aucun pare-feu trouvé. Vous pouvez mettre à niveau les pare-feu enregistrés à la dernière version et les utiliser en tant que connecteur.",
         "connector-modal": {
           "header": "Sophos Cloud ajouté",
           "copy-fqdn-label": "Ajoutez le lien suivant à votre serveur DNS :",
@@ -634,7 +638,7 @@
         }
       },
       "schedule": {
-        "title": "Mise à jour du logiciel",
+        "title": "Passerelle",
         "latest": "Vous utilisez la dernière version du logiciel.",
         "description": "Planifier une mise à jour pour la passerelle",
         "header": "Mettre à jour de {{currentVersion}} à",
@@ -658,10 +662,11 @@
         "add-error": "Mise à jour planifiée impossible"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "Certains composants de votre passerelle AWS ne sont peut-être pas pris en charge par {{releaseEndOfSupport}}.",
-        "cft-update": "Un nouveau modèle CloudFormation (CFT) est disponible. Vous devrez effectuer la mise à jour dans la console du fournisseur de services Cloud en suivant les étapes de ",
-        "cft-update-link": "l’article de la base de connaissances.",
-        "cft-update-link-note": " Le traitement de la mise à jour peut prendre du temps et vous perdrez temporairement l’accès aux ressources.",
+        "release-endOfSupport": "Un nouveau modèle CloudFormation (CFT) est disponible. Certains composants de votre passerelle AWS ne sont peut-être pas pris en charge par {{releaseEndOfSupport}}.",
+        "cft-update": "Procédez à la mise à jour de CFT dans la console de votre fournisseur de services Cloud. Vous allez avoir besoin de cette valeur pendant la mise à jour. Veuillez-la copier:",
+        "cft-update-link": "Instructions de mise à jour de CFT",
+        "cft-update-link-note": "Le traitement de la mise à jour peut prendre du temps et vous perdrez temporairement l’accès aux ressources.",
+        "cft-update-link-info": "Veuillez à présent vous rendre sur la console de votre fournisseur et suivre les étapes de mise à jour :",
         "title": "Modèle CloudFormation",
         "latest": "Vous utilisez la dernière version du modèle CloudFormation."
       }
@@ -963,6 +968,8 @@
       "application.gateway.not.assigned": "Une passerelle doit être assignée à une application",
       "application.internal.fqdn.conflicts.gateway.fqdn": "Le nom de domaine pleinement qualifié (FQDN) interne de l’application est en conflit avec le FQDN de l’une des passerelles",
       "application.external.fqdn.conflicts.gateway.fqdn": "Le nom de domaine pleinement qualifié (FQDN) externe de l’application est en conflit avec le FQDN de l’une des passerelles",
+      "application.portrange.gateway.not-supported": "La passerelle ne prend pas en charge les plage de ports. Veuillez-vous mettre à niveau avec la dernière version",
+      "application.ports.invalid": "Plage de port spécifiée non valide",
       "idp.field.validation.error": "Erreur de validation du champ du fournisseur d’identité",
       "azure.tenantId.notBlank": "L’ID de locataire doit être renseigné pour le fournisseur d’identité Azure",
       "idp.clientId.notBlank": "L’ID client du fournisseur d’identité doit être renseigné",
