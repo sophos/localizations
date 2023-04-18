@@ -77,7 +77,9 @@
           "error": "標誌儲存失敗",
           "success": "檔案成功上傳。"
         }
-      }
+      },
+      "select-all-with-count": "選取所有 {{count}}",
+      "clear-selection": "清除選擇"
     },
     "global": {
       "form": {
@@ -417,7 +419,8 @@
       },
       "site-name-error-msgs": {
         "required": "必須提供地點名稱。",
-        "maxlength": "地點名稱最多包括 64 個字元。"
+        "maxlength": "地點名稱最多包括 64 個字元。",
+        "duplicate-site": "重複的網站名稱。"
       },
       "site-location-error-msgs": {
         "required": "需要地點位置。"
@@ -519,11 +522,14 @@
       "list": {
         "breadcrumb-text": "SSID",
         "title": "無線 - SSID",
-        "no-ssid-configured": "您沒有新增任何 SSID",
-        "no-ssid-configured-help": "按一下「新增」按鈕以設定 SSID",
+        "no-ssid-configured": "您尚未新增任何 SSID。",
+        "no-ssid-configured-help": "按一下「建立」以新增 SSID。",
         "pagination": "顯示 {{ of }} 的 {{ from }} - {{ to }}",
         "create": "建立",
-        "deleteDialogText": "請問您要刪除選定的 SSID 嗎？",
+        "deleteDialogText": {
+          "one": "{{count}} 個 SSID 將被刪除。您要繼續刪除嗎？",
+          "many": "{{count}} 個 SSID 將被刪除。您要繼續刪除嗎？"
+        },
         "listLoadingError": "無法載入 SSID 清單",
         "headers": {
           "ssid": "SSID",
@@ -538,7 +544,12 @@
           "healthStatus": "security heartbeat™",
           "captive-portal": "管制入口網站",
           "errorMessage": "無法刪除 SSID"
-        }
+        },
+        "selected-items-note": {
+          "one": "已選取 {{count}} 個 SSID",
+          "many": "已選取 {{count}} 個 SSID"
+        },
+        "all-selected": "已選取所有 {{count}} 個 SSID"
       },
       "create": {
         "add-success": "成功儲存 SSID。",
@@ -663,9 +674,19 @@
         "frequency-band-inline-help-msg": "限制應廣播網路的頻帶。這可能會限制您廣播 SSID 的 AP，因為某些型號只能在特定頻帶上廣播或無法同時在所有頻帶上廣播。",
         "enable-mesh-mode": "啟用網狀模式",
         "enable-mesh-mode-help-msg": "允許您連接沒有網際網路訪問的 AP。",
-        "only-one-mesh-network": "您只能建立一個網狀 SSID",
-        "disable-mesh": "若要禁用網狀模式，請刪除該 SSID",
-        "no-root-ap": "網狀需要至少一個存取點透過 LAN 連接至網路。",
+        "only-one-mesh-network": {
+          "apx": "您只能建立一個 APX 網狀 SSID",
+          "ap6": "您只能建立一個 AP6 網狀 SSID"
+        },
+        "disable-mesh": {
+          "apx": "若要停用網狀模式，請刪除現有的 APX 網狀 SSID",
+          "ap6": "若要停用網狀模式，請刪除現有的 AP6 網狀 SSID"
+        },
+        "mesh-root-ap": {
+          "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
+          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點）透過 LAN 連線至網際網路。"
+        },
+        "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
         "stp-packets-warning": "網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
@@ -942,6 +963,9 @@
           }
         },
         "captive-portal-capacity": "警告。AP 和 APX 系列無法獲指派多個網頁驗證入口",
+        "mesh-not-supported": "存取點的韌體版本不支援網狀功能。請升級到最新的韌體版本",
+        "max-limit-reached-for-root-ap": "您最多可以為根存取點指派 5 個 SSID，包括網狀 SSID",
+        "can-not-assign-mesh-ssid-to-ap": "網狀 SSID 已指派給存取點",
         "walled-garden": {
           "header": "圍牆花園",
           "config-allowed-domains": "您可以向 <a class='link-to-walled-garden'>'圍牆花園'</a> 部分新增一個網域清單。",
@@ -992,15 +1016,18 @@
           "select-site": "選取站點",
           "auto-refresh": "自動重新整理",
           "unassigned-sites": "未指派的站點",
-          "emptyListMessage": "您沒有新增任何存取點。",
-          "listRegisterInfo": "點選註冊按鈕以新增存取點。",
+          "emptyListMessage": "您尚未新增任何存取點。",
+          "listRegisterInfo": "按一下「註冊」以新增存取點。",
           "sitesNotFoundErrorMessage": "無法載入網站。"
         },
         "statusOnline": "最新",
         "stateOffline": "離線",
         "offlineApDeleteMessage": "不建議在 AP 離線時將其刪除。請等到 AP 上線或強制刪除。",
         "statusDelete": "刪除",
-        "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？",
+        "deleteDialogText": {
+          "one": "刪除 AP 會自動重啟系統。<br><br>{{count}} 個存取點將被刪除。您要繼續刪除嗎？",
+          "many": "刪除 AP 會自動重啟系統。<br><br>{{count}} 個存取點將被刪除。您要繼續刪除嗎？"
+        },
         "deleteAp": "您要刪除此存取點嗎？",
         "forceDelete": "強制刪除",
         "automaticOnce": "自動一次",
@@ -1022,7 +1049,12 @@
         "secondsShort": "s",
         "yearsShort": "y",
         "firmware-upgrade": "韌體升級",
-        "tx-power": "TX 電量：{{txPower}} %"
+        "tx-power": "TX 電量：{{txPower}} %",
+        "selected-items-note": {
+          "one": "已選取 {{count}} 個存取點",
+          "many": "已選取 {{count}} 個存取點"
+        },
+        "all-selected": "已選取所有 {{count}} 個存取點"
       },
       "edit": {
         "editor": {
@@ -1104,6 +1136,12 @@
             "both": "2.4 GHz 與 5 GHz",
             "GHZ_6": "6 GHz"
           },
+          "mesh": {
+            "role": {
+              "root": "根存取點",
+              "node": "節點"
+            }
+          },
           "sophos-central-agent": "Sophos Central 代理",
           "upgrade-automatically": "自動升級",
           "general": "一般設定",
@@ -1113,7 +1151,8 @@
           "assign-ssids": "指派 SSID",
           "no-assign-ssid": "目前未指派 SSID。",
           "confirm-remove": "確認移除",
-          "remove-assign-ssid": "是否移除指派的 SSID？"
+          "remove-assign-ssid": "是否移除指派的 SSID？",
+          "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？"
         }
       },
       "taskQueue": {
@@ -1506,7 +1545,14 @@
       "http.method.unsupported": "提供之路徑不支援 HTTP 方法",
       "access-point.state.invalid.for.abort": "存取點狀態對中止無效",
       "access-point.state.invalid.for.retry": "存取點狀態對重試無效",
-      "limit.exceeded": "已超出限制"
+      "limit.exceeded": "已超出限制",
+      "ValidString.meshBands": "網狀的無效頻帶設定",
+      "mesh.accessPointRadioLimit": "網狀模式下每個無線電只允許 4 個 SSID",
+      "mesh.exists": "每個帳戶只能建立一個 AP6 網狀 SSID",
+      "mesh.accessPointCount": "至少需要 2 個存取點才能形成網狀",
+      "mesh.not.allowed": "網狀功能目前不可用",
+      "mesh.incorrectRoot": "根存取點的設定無效",
+      "mesh.protection": "AP6 網狀只能在 WPA3 個人安全模式下運行"
     }
   }
 }

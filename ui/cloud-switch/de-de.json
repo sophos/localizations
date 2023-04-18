@@ -198,7 +198,10 @@
       "are-you-sure": "Möchten Sie wirklich fortfahren?",
       "config-source": "Konfigurationsquelle",
       "conflict-message": "Diese Einstellungen enthalten Konflikte. Speichern Sie diese Konfiguration nicht.",
-      "site-zero-switch-count-message": "Konfiguration für den Standort gespeichert. Für diesen Standort wurden keine Switches gefunden. Sie können auswählen, die Konfiguration zu synchronisieren, während Sie Switches zum Standort hinzufügen."
+      "site-zero-switch-count-message": "Konfiguration für den Standort gespeichert. Für diesen Standort wurden keine Switches gefunden. Sie können auswählen, die Konfiguration zu synchronisieren, während Sie Switches zum Standort hinzufügen.",
+      "table": {
+        "no-data": "Keine Daten"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "Netzwerke (IPv4)",
@@ -239,19 +242,19 @@
     },
     "backup": {
       "tab-title": {
-        "backups": "Backup (Sicherung)",
+        "backups": "Sicherungen",
         "schedule": "Planen"
       },
       "list": {
-        "menu-title": "Backup (Sicherung)",
+        "menu-title": "Sicherungen",
         "page-title": "Sicherung",
-        "breadcrumb-text": "Backup (Sicherung)",
+        "breadcrumb-text": "Sicherungen",
         "title": "Switch-Sicherung"
       },
       "summary": "Sicherungszusammenfassung",
       "status-label": "Geplante Sicherungen",
       "status-text": "Basierend auf Ihrer Konfiguration erstellen alle Switches in Ihrem Konto weiterhin Konfigurationssicherungen und laden diese zu Sophos Central hoch. Bei Bedarf können Sie dies für einzelne Switches pausieren.",
-      "backup-enbaled-switches": "Anzahl Switches mit aktivierter Sicherung",
+      "backup-enabled-switches": "Anzahl Switches mit aktivierter Sicherung",
       "last-backup-failures": "Letzte Sicherungsfehler",
       "last-restore-failures": "Letzte Wiederherstellungsfehler",
       "backup-disabled-switches": "Switches mit deaktivierter Sicherung",
@@ -265,15 +268,18 @@
         "tags": "Tags",
         "last-backup-or-restore-status": "Letzter Status",
         "occured-at": "Aufgetreten am",
-        "backups": "Backup (Sicherung)",
+        "backups": "Sicherungen",
         "actions": "Maßnahmen",
-        "search": "Suche",
+        "search": "Suchen",
         "search-tooltip-message": "Nach Seriennummer, Standort, Verzeichnis, Modell und Tags suchen",
         "resume": "Lebenslauf",
         "pause": "Pausieren",
-        "cancel": "abbrechen",
+        "cancel": "Abbrechen",
         "confirm": "Bestätigen",
-        "stop": "Stopp",
+        "restore": "Wiederherstellen",
+        "latest-sucessful-backup-restore": "Letzte erfolgreiche Sicherung wiederherstellen",
+        "manual-backup": "Manuelle Sicherung",
+        "state": "Status",
         "backup-state": {
           "Created": "Sicherung gestartet",
           "Failed": "Fehlgeschlagen",
@@ -293,11 +299,13 @@
           "backup-taken": "Sicherung durchgeführt",
           "take-backup": "Sicherung durchführen",
           "confirm-download": "Herunterladen bestätigen",
+          "download-backup": "Herunterladen einer Sicherung",
+          "download-last-successful-backup": "Letzte erfolgreiche Sicherung herunterladen",
           "download-message": "Dies lädt die Datei mit der Konfigurationssicherung auf Ihr Gerät. Hinweis: Diese Datei ist nicht verschlüsselt und enthält möglicherweise vertrauliche Konfigurationseinstellungen.",
           "backup-download-success": "Sicherung erfolgreich heruntergeladen",
           "backup-download-failed": "Herunterladen der Sicherung fehlgeschlagen",
           "confirm-dialog-download-content-head": "So verwenden Sie diese Datei:",
-          "confirm-dialog-download-content": "Sie können über die Switch-Benutzeroberfläche eine lokale Kopie der Datei speichern und bei Bedarf wiederherstellen. Bitte beachten Sie, dass beim Wiederherstellen dieser Datei auf einem anderen Modell oder einer anderen Firmware-Version möglicherweise einige nicht unterstützte Einstellungen ignoriert werden.",
+          "confirm-dialog-download-content": "Sie können über die Switch-Benutzeroberfläche eine lokale Kopie dieser Datei speichern, um die Konfiguration wiederherzustellen. Bitte beachten Sie, dass beim Wiederherstellen dieser Datei auf einem anderen Modell oder einer anderen Firmware-Version die nicht unterstützten Einstellungen möglicherweise ignoriert werden.",
           "see-in-action": "In Aktion erleben",
           "confirm-delete-message": "Sie löschen eine Sicherung. Dies löscht die Konfigurationssicherung dauerhaft.",
           "backup-delted": "Sicherung erfolgreich gelöscht",
@@ -305,10 +313,17 @@
           "confirm-delete": "Löschen bestätigen",
           "confirm-resume": "Fortsetzen bestätigen",
           "confirm-resume-message": "Sie setzen die geplanten Sicherungen fort. Die vorhandenen Sicherungseinstellungen werden wieder an den Switch gesendet.",
-          "confirm-stop-message": "Sie stoppen die geplanten Sicherungen.",
-          "confirm-stop": "Stoppen bestätigen",
-          "backup-enbaled-success-message": "Sicherung für alle Switches erfolgreich aktiviert.",
-          "backup-enbaled-failure-message": "Fehler beim Aktivieren der Sicherung für alle Switches."
+          "confirm-pause-message": "Sie halten die geplanten Sicherungen an.",
+          "confirm-pause": "Anhalten bestätigen",
+          "backup-enabled-success-message": "Sicherung für alle Switches erfolgreich aktiviert.",
+          "backup-enabled-failure-message": "Fehler beim Aktivieren der Sicherung für alle Switches.",
+          "pause-scheduled-backup-success": "Geplante Sicherung erfolgreich angehalten.",
+          "pause-scheduled-backup-error": "Anhalten der geplanten Sicherung fehlgeschlagen.",
+          "resume-scheduled-backup-success": "Geplante Sicherung erfolgreich fortgesetzt.",
+          "resume-scheduled-backup-error": "Fortsetzen der geplanten Sicherungen fehlgeschlagen.",
+          "details": "Details",
+          "taken-with": "Angefertigt mit",
+          "version": "Version"
         }
       },
       "schedule": {
@@ -490,8 +505,8 @@
           "up-to-date-message": "Es steht keine neue Firmware zum Download bereit.",
           "cannot-manage": "Sie können die Ausführung planen, sobald das laufende Upgrade abgeschlossen ist.",
           "update-available": "Es gibt neue Firmware-Updates.",
-          "rollback-available": "Firmware-Austausch zur Backup-Partitions-Version {{ version }}",
-          "rollback-message": "Dies startet den Switch von der Backup-Partition.",
+          "rollback-available": "Firmware-Austausch zur Sicherungs-Partitions-Version {{ version }}",
+          "rollback-message": "Dies startet den Switch von der Sicherungs-Partition.",
           "schedule-rollback": "Firmware-Austausch planen",
           "upgrade-message": "Sie können diese Aktualisierungen sofort oder zu einem späteren Zeitpunkt anwenden.",
           "schedule-upgrade": "Eine Aktualisierung planen",
@@ -556,7 +571,9 @@
           "full-sync-failed": "Erneutes Anwenden der Einstellungen auf den Switch fehlgeschlagen",
           "sync-success": "Einstellungen wurden mit den ausgewählten Switches synchronisiert",
           "sync-failed": "Einstellungen des Standorts können nicht mit den ausgewählten Switches synchronisiert werden",
-          "sync-confirm-dialog": "Synchronisieren Sie ausstehende Einstellungen mit den ausgewählten Switches. In der Auftrags-Warteschlange können Sie den Fortschritt sehen."
+          "sync-confirm-dialog": "Synchronisieren Sie ausstehende Einstellungen mit den ausgewählten Switches. In der Auftrags-Warteschlange können Sie den Fortschritt sehen.",
+          "backup-info-message": "Sie können die Sicherungen Ihrer Switches in Sophos Central speichern. Sie planen und verwalten dies auf der Seite <a href=\"cloud-switch/backup/list\">Sicherungen</a>.",
+          "enable-schedule": "Planung aktivieren"
         },
         "groupInfoText": {
           "what": "Was ist ein Standort?",
@@ -919,7 +936,7 @@
     },
     "ip-routes": {
       "add": "Route hinzufügen",
-      "search-placeholder-text": "SUCHE",
+      "search-placeholder-text": "Suchen",
       "add-dialog-title": "Eine neue {{ mode }}-Route hinzufügen",
       "edit-dialog-title": "{{ mode }}-Route bearbeiten",
       "local-configuration": "Switch",
@@ -1022,7 +1039,7 @@
         "switch": "Switch",
         "site": "Standort",
         "entity": "Einheit",
-        "sub-entity": "Maßnahme",
+        "sub-entity": "Aktion",
         "date-time": "Erstellt am",
         "created-by": "Erstellt von"
       },
@@ -1218,7 +1235,7 @@
         "switch-lvl-vlans-text": "Snooping ist aktiviert.",
         "ports-trusted-text": "Vertrauens-Port-Einstellungen",
         "vlan-text": "VLAN-Einstellungen",
-        "search-placeholder-text": "Suche",
+        "search-placeholder-text": "Suchen",
         "buttons": {
           "binding-list": "Bindungsliste",
           "settings": "Einstellungen",
@@ -1889,7 +1906,7 @@
       "vlan-settings": "Einstellungen",
       "group-list": "Gruppenliste",
       "add": "Hinzufügen",
-      "search-placeholder-text": "Suche",
+      "search-placeholder-text": "Suchen",
       "edit-dialog-title": "Snooping-Einstellungen für VLAN bearbeiten",
       "local-configuration": "Switch",
       "message": {
@@ -2027,7 +2044,7 @@
         "icmpCode": "ICMP-Code",
         "icmpTypeCustom-incorrect": "Ungültiges ICMP ID. Wert muss zwischen 0 und 255 liegen.",
         "icmpCode-incorrect": "Ungültiger ICMP-Code. Wert muss zwischen 0 und 255 liegen.",
-        "action": "Maßnahme",
+        "action": "Aktion",
         "action-none": "Ohne",
         "action-802": "802.1p festlegen",
         "action-dscp": "DSCP festlegen",

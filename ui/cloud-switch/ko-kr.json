@@ -198,7 +198,10 @@
       "are-you-sure": "계속하시겠습니까?",
       "config-source": "구성 소스",
       "conflict-message": "이 설정과 충돌이 발견되었습니다. 이 구성을 저장하지 마십시오.",
-      "site-zero-switch-count-message": "사이트에 대한 구성이 저장되었습니다. 이 사이트에서 스위치를 찾을 수 없습니다. 사이트에 스위치를 추가하는 동안 구성을 동기화하도록 선택할 수 있습니다."
+      "site-zero-switch-count-message": "사이트에 대한 구성이 저장되었습니다. 이 사이트에서 스위치를 찾을 수 없습니다. 사이트에 스위치를 추가하는 동안 구성을 동기화하도록 선택할 수 있습니다.",
+      "table": {
+        "no-data": "데이터가 없음"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "네트워크(IPv4)",
@@ -251,7 +254,7 @@
       "summary": "백업 요약",
       "status-label": "예약된 백업",
       "status-text": "사용자 구성에 따라 계정의 모든 스위치가 구성 백업을 계속 수행하여 Sophos Central에 업로드합니다. 필요한 경우 개별 스위치를 일시 중지할 수 있습니다.",
-      "backup-enbaled-switches": "전체 백업 활성화 스위치",
+      "backup-enabled-switches": "전체 백업이 활성화된 스위치",
       "last-backup-failures": "마지막 백업 실패",
       "last-restore-failures": "마지막 복원 실패",
       "backup-disabled-switches": "백업 비활성화 스위치",
@@ -264,7 +267,7 @@
         "model": "모델",
         "tags": "태그",
         "last-backup-or-restore-status": "마지막 상태",
-        "occured-at": "다음에 발생함",
+        "occured-at": "발생한 날짜:",
         "backups": "백업",
         "actions": "작업",
         "search": "검색",
@@ -273,7 +276,10 @@
         "pause": "일시 중지",
         "cancel": "취소",
         "confirm": "확인",
-        "stop": "중지",
+        "restore": "복원",
+        "latest-sucessful-backup-restore": "마지막으로 성공한 백업 복원",
+        "manual-backup": "수동 백업",
+        "state": "상태",
         "backup-state": {
           "Created": "백업 시작됨",
           "Failed": "실패",
@@ -293,11 +299,13 @@
           "backup-taken": "백업 수행됨",
           "take-backup": "백업 받기",
           "confirm-download": "다운로드 확인",
+          "download-backup": "백업 다운로드",
+          "download-last-successful-backup": "마지막으로 성공한 백업 다운로드",
           "download-message": "이렇게 하면 구성 백업 파일이 장치에 다운로드됩니다. 이 파일은 암호화되지 않았으며 민감한 구성이 포함되어 있을 수 있습니다.",
           "backup-download-success": "백업 다운로드 성공",
           "backup-download-failed": "백업 다운로드 실패",
           "confirm-dialog-download-content-head": "이 파일을 어떻게 사용할까요?",
-          "confirm-dialog-download-content": "스위치 UI에서 이 파일을 로컬로 가져와서 필요에 따라 이 파일을 복원할 수 있습니다. 이 파일을 다른 모델이나 다른 펌웨어 버전으로 복원하면 일부 지원되지 않는 설정이 무시될 수 있습니다.",
+          "confirm-dialog-download-content": "스위치 UI에서 이 파일을 로컬로 가져와서 구성을 복원할 수 있습니다. 이 파일을 다른 모델이나 다른 펌웨어 버전으로 복원하면 지원되지 않는 설정이 무시될 수 있습니다.",
           "see-in-action": "데모 영상 보기",
           "confirm-delete-message": "백업을 삭제하게 됩니다. 이렇게 하면 구성 백업이 영구적으로 삭제됩니다.",
           "backup-delted": "백업이 성공적으로 삭제됨",
@@ -305,10 +313,17 @@
           "confirm-delete": "삭제 확인",
           "confirm-resume": "재개 확인",
           "confirm-resume-message": "예약된 백업을 다시 시작하려고 합니다. 기존 백업 설정이 스위치로 다시 푸시됩니다.",
-          "confirm-stop-message": "예약된 백업을 중단하려고 합니다.",
-          "confirm-stop": "중단 확인",
-          "backup-enbaled-success-message": "모든 스위치에 대한 백업을 성공적으로 활성화했습니다.",
-          "backup-enbaled-failure-message": "모든 스위치에 대한 백업 활성화에 실패했습니다."
+          "confirm-pause-message": "예약된 백업을 일시 중지하려고 합니다.",
+          "confirm-pause": "일시 중지 확인",
+          "backup-enabled-success-message": "모든 스위치에 대한 백업을 성공적으로 활성화했습니다.",
+          "backup-enabled-failure-message": "모든 스위치에 대한 백업 활성화에 실패했습니다.",
+          "pause-scheduled-backup-success": "예약된 백업을 성공적으로 일시 중지했습니다.",
+          "pause-scheduled-backup-error": "예약된 백업을 일시 중지하지 못했습니다.",
+          "resume-scheduled-backup-success": "예약된 백업을 성공적으로 재개했습니다.",
+          "resume-scheduled-backup-error": "예약된 백업을 재개하지 못했습니다.",
+          "details": "세부 정보",
+          "taken-with": "다음과 함께 가져옴",
+          "version": "버전"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "모든 설정을 스위치에 다시 적용할 수 없음",
           "sync-success": "설정이 선택한 스위치에 동기화되었음",
           "sync-failed": "사이트 설정을 선택한 스위치에 동기화할 수 없음",
-          "sync-confirm-dialog": "선택한 스위치에 대기 중인 설정을 동기화하십시오. 작업 대기열에서 진행 상황을 모니터링할 수 있습니다."
+          "sync-confirm-dialog": "선택한 스위치에 대기 중인 설정을 동기화하십시오. 작업 대기열에서 진행 상황을 모니터링할 수 있습니다.",
+          "backup-info-message": "Sophos Central은 스위치의 백업을 저장할 수 있습니다. 이들을 <a href=\"cloud-switch/backup/list\">백업</a> 페이지에서 예약 및 관리할 수 있습니다.",
+          "enable-schedule": "예약 활성화"
         },
         "groupInfoText": {
           "what": "사이트가 무엇입니까?",
@@ -1997,12 +2014,12 @@
       "form": {
         "destMacAddress": "대상 MAC 주소",
         "srcMacAddress": "원본 MAC 주소",
-        "etherType": "모든 유형",
+        "etherType": "Ethertype",
         "policy-name-required-message": "정책 이름이 필요합니다.",
         "policy-name-exists-message": "정책 이름이 이미 있습니다.",
         "src-mac-incorrect": "잘못된 MAC 주소입니다.",
         "dest-mac-incorrect": "잘못된 MAC 주소입니다.",
-        "ether-type-incorrect": "잘못된 ether 유형입니다. 유효한 범위는 0x0600~0xFFFF입니다.",
+        "ether-type-incorrect": "잘못된 Ethertype입니다. 유효한 범위는 0x0600~0xFFFF입니다.",
         "match-criteria": "일치 기준",
         "dscp": "서비스 유형",
         "dscp-incorrect": "잘못된 서비스 유형입니다. 유효한 서비스 유형은 0~63입니다.",

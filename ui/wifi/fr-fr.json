@@ -77,7 +77,9 @@
           "error": "Impossible d’enregistrer le logo",
           "success": "Fichier téléchargé."
         }
-      }
+      },
+      "select-all-with-count": "Sélectionner les {{count}}",
+      "clear-selection": "Effacer la sélection"
     },
     "global": {
       "form": {
@@ -417,7 +419,8 @@
       },
       "site-name-error-msgs": {
         "required": "Nom du site obligatoire.",
-        "maxlength": "Le nom du site ne doit pas dépasser 64 caractères."
+        "maxlength": "Le nom du site ne doit pas dépasser 64 caractères.",
+        "duplicate-site": "Nom du site en double."
       },
       "site-location-error-msgs": {
         "required": "Emplacement du site obligatoire."
@@ -519,11 +522,14 @@
       "list": {
         "breadcrumb-text": "SSID",
         "title": "Sans fil - SSID",
-        "no-ssid-configured": "Aucun SSID n’a été ajouté",
-        "no-ssid-configured-help": "Cliquez sur le bouton « Ajouter » pour configurer le SSID",
+        "no-ssid-configured": "Vous n’avez ajouté aucun SSID.",
+        "no-ssid-configured-help": "Cliquez sur Créer pour ajouter des SSID.",
         "pagination": "Affichage {{ from }} à {{ to }} sur {{ of }}",
         "create": "Créer",
-        "deleteDialogText": "Voulez-vous supprimer les SSID sélectionnés ?",
+        "deleteDialogText": {
+          "one": "{{count}} SSID va être supprimé. Voulez-vous quand même supprimer ?",
+          "many": "{{count}} SSID vont être supprimés. Voulez-vous quand même supprimer ?"
+        },
         "listLoadingError": "Impossible de charger la liste des SSID",
         "headers": {
           "ssid": "SSID",
@@ -538,7 +544,12 @@
           "healthStatus": "security heartbeat™",
           "captive-portal": "Portail captif",
           "errorMessage": "Impossible de supprimer le SSID"
-        }
+        },
+        "selected-items-note": {
+          "one": "{{count}} SSID sélectionné",
+          "many": "{{count}} SSID sélectionnés"
+        },
+        "all-selected": "Les {{count}} SSID sont sélectionnés"
       },
       "create": {
         "add-success": "SSID enregistré.",
@@ -663,9 +674,19 @@
         "frequency-band-inline-help-msg": "Limiter les bandes sur lesquelles le réseau doit être transmis. Cette option pourrait limiter les points d’accès que vous diffusez sur le SSID car certains modèles peuvent uniquement diffuser sur des bandes spécifiques et pas sur toutes les bandes en même temps.",
         "enable-mesh-mode": "Activer le mode de réseau maillé",
         "enable-mesh-mode-help-msg": "Vous permet de vous connecter aux points d’accès sans accès à Internet commun.",
-        "only-one-mesh-network": "Vous pouvez uniquement créer un SSID maillé",
-        "disable-mesh": "Pour désactiver le mode maillé, supprimez ce SSID",
-        "no-root-ap": "Le maillage nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
+        "only-one-mesh-network": {
+          "apx": "Vous pouvez uniquement créer un SSID maillé APX",
+          "ap6": "Vous pouvez uniquement créer un SSID maillé AP6"
+        },
+        "disable-mesh": {
+          "apx": "Pour désactiver le mode maillé, supprimez le SSID maillé APX existant",
+          "ap6": "Pour désactiver le mode maillé, supprimez le SSID maillé AP6 existant"
+        },
+        "mesh-root-ap": {
+          "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
+          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud) à Internet via le réseau local (LAN)."
+        },
+        "can-not-remove-mesh-from-root": "Supprimez le SSID maillé pour le retirer du point d’accès racine",
         "stp-packets-warning": "Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique.",
         "port-required-validation-msg": "Port obligatoire.",
         "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
@@ -942,6 +963,9 @@
           }
         },
         "captive-portal-capacity": "Attention. Il n’est pas possible d’assigner plusieurs portails captifs aux gammes AP et APX",
+        "mesh-not-supported": "La version du firmware du point d’accès ne prend pas en charge la fonction de maillage. Veuillez vous mettre à niveau avec la dernière version du firmware.",
+        "max-limit-reached-for-root-ap": "Vous pouvez assigner un maximum de 5 SSID, y compris le SSID maillé, au point d’accès racine",
+        "can-not-assign-mesh-ssid-to-ap": "Le SSID maillé est déjà assigné au point d’accès",
         "walled-garden": {
           "header": "Environnement clôturé",
           "config-allowed-domains": "Vous pouvez ajouter une liste de domaines à la section <a class='link-to-walled-garden'>Environnement clôturé</a>.",
@@ -992,15 +1016,18 @@
           "select-site": "Sélectionner un site",
           "auto-refresh": "Actualiser automatiquement",
           "unassigned-sites": "Sites non assignés",
-          "emptyListMessage": "Aucun points d’accès n’a été ajouté.",
-          "listRegisterInfo": "Cliquez sur le bouton Enregistrer pour ajouter les points d’accès.",
+          "emptyListMessage": "Vous n’avez ajouté aucun point d’accès.",
+          "listRegisterInfo": "Cliquez sur Enregistrer pour ajouter les points d’accès.",
           "sitesNotFoundErrorMessage": "Impossible de charger les sites."
         },
         "statusOnline": "à jour",
         "stateOffline": "Hors connexion",
         "offlineApDeleteMessage": "Il est déconseillé de supprimer des points d’accès lorsqu’ils sont hors connexion. Veuillez attendre qu’ils soient en ligne ou forcer la suppression.",
         "statusDelete": "SUPPRESSION",
-        "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?",
+        "deleteDialogText": {
+          "one": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>{{count}} point d’accès va être supprimé. Voulez-vous quand même supprimer ?",
+          "many": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>{{count}} points d’accès vont être supprimés. Voulez-vous quand même supprimer ?"
+        },
         "deleteAp": "Voulez-vous supprimer ce point d’accès ?",
         "forceDelete": "forcer la suppression",
         "automaticOnce": "Automatique une fois",
@@ -1022,7 +1049,12 @@
         "secondsShort": "sec",
         "yearsShort": "a",
         "firmware-upgrade": "Mise à niveau du firmware",
-        "tx-power": "Puissance TX : {{txPower}} %"
+        "tx-power": "Puissance TX : {{txPower}} %",
+        "selected-items-note": {
+          "one": "{{count}} point d’accès sélectionné",
+          "many": "{{count}} points d’accès sélectionnés"
+        },
+        "all-selected": "Les {{count}} points d’accès sont sélectionnés"
       },
       "edit": {
         "editor": {
@@ -1104,6 +1136,12 @@
             "both": "2,4 GHz et 5 GHz",
             "GHZ_6": "6 GHz"
           },
+          "mesh": {
+            "role": {
+              "root": "Racine",
+              "node": "Nœud"
+            }
+          },
           "sophos-central-agent": "Agents Sophos Central",
           "upgrade-automatically": "Mettre à niveau automatiquement",
           "general": "Général",
@@ -1113,7 +1151,8 @@
           "assign-ssids": "Assigner des SSID",
           "no-assign-ssid": "Aucun SSID assigné pour le moment.",
           "confirm-remove": "Confirmer la suppression",
-          "remove-assign-ssid": "Voulez-vous supprimer le SSID assigné ?"
+          "remove-assign-ssid": "Voulez-vous supprimer le SSID assigné ?",
+          "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?"
         }
       },
       "taskQueue": {
@@ -1504,9 +1543,16 @@
       "http.request.header.missing": "En-tête HTTP requis manquant dans la demande",
       "field.validation.errors.message": "Erreurs de validation de champ",
       "http.method.unsupported": "Méthode HTTP non prise en charge pour le chemin fourni",
-      "access-point.state.invalid.for.abort": "L’état du point d'accès n’est pas valide pour l’abandon",
+      "access-point.state.invalid.for.abort": "L’état du point d’accès n’est pas valide pour l’abandon",
       "access-point.state.invalid.for.retry": "L’état du point d’accès n’est pas valide pour une nouvelle tentative",
-      "limit.exceeded": "Limite dépassée"
+      "limit.exceeded": "Limite dépassée",
+      "ValidString.meshBands": "Configuration de bande non valide pour le maillage",
+      "mesh.accessPointRadioLimit": "En mode maillé, seuls 4 SSID sont autorisés par radio",
+      "mesh.exists": "Vous pouvez uniquement créer un SSID maillé AP6 par compte",
+      "mesh.accessPointCount": "Un minimum de 2 points d’accès est requis pour former un maillage",
+      "mesh.not.allowed": "La fonction de maillage n’est pas disponible actuellement",
+      "mesh.incorrectRoot": "Configuration non valide pour le point d’accès racine",
+      "mesh.protection": "Le maillage AP6 ne peut fonctionner qu’en mode de sécurité WPA3-personnel"
     }
   }
 }

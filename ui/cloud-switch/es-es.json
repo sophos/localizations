@@ -198,7 +198,10 @@
       "are-you-sure": "¿Seguro que desea continuar?",
       "config-source": "Origen de configuración",
       "conflict-message": "Se han detectado conflictos con estas opciones. No guarde esta configuración.",
-      "site-zero-switch-count-message": "Configuración guardada para el sitio. No se han encontrado switches en este sitio. Puede optar por sincronizar la configuración al tiempo que se añaden switches al sitio."
+      "site-zero-switch-count-message": "Configuración guardada para el sitio. No se han encontrado switches en este sitio. Puede optar por sincronizar la configuración al tiempo que se añaden switches al sitio.",
+      "table": {
+        "no-data": "Sin datos"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "Redes (IPv4)",
@@ -251,7 +254,7 @@
       "summary": "Resumen de copias de seguridad",
       "status-label": "Copias de seguridad programadas",
       "status-text": "Según su configuración, todos los switches de su cuenta seguirán aceptando copias de seguridad de configuración y las cargarán en Sophos Central. Puede pausarlas para switches individuales en caso necesario.",
-      "backup-enbaled-switches": "Total de switches con copia de seguridad activada",
+      "backup-enabled-switches": "Total de switches con copia de seguridad activada",
       "last-backup-failures": "Errores en última copia de seguridad",
       "last-restore-failures": "Errores en última restauración",
       "backup-disabled-switches": "Switches con copia de seguridad desactivada",
@@ -264,16 +267,19 @@
         "model": "Modelo",
         "tags": "Etiquetas",
         "last-backup-or-restore-status": "Último estado",
-        "occured-at": "Fecha",
+        "occured-at": "Ocurrido a las",
         "backups": "Copias de seguridad",
         "actions": "Acciones",
         "search": "Buscar",
         "search-tooltip-message": "Buscar por número de serie, sitio, ubicación, modelo y etiquetas",
         "resume": "Currículum",
         "pause": "Pausar",
-        "cancel": "cancelar",
+        "cancel": "Cancelar",
         "confirm": "Confirmar",
-        "stop": "Detener",
+        "restore": "Restaurar",
+        "latest-sucessful-backup-restore": "Restaurar la última copia de seguridad correcta",
+        "manual-backup": "Copia de seguridad manual",
+        "state": "Estado",
         "backup-state": {
           "Created": "Copia de seguridad iniciada",
           "Failed": "Ha fallado",
@@ -293,11 +299,13 @@
           "backup-taken": "Fecha de copia",
           "take-backup": "Realizar una copia",
           "confirm-download": "Confirmar descarga",
+          "download-backup": "Descargar copia de seguridad",
+          "download-last-successful-backup": "Descargar la última copia de seguridad correcta",
           "download-message": "Se descargará el archivo de copia de seguridad de configuración en su dispositivo. Tenga en cuenta que este archivo no está cifrado y puede contener configuración sensible.",
           "backup-download-success": "Descarga de copia de seguridad correcta",
           "backup-download-failed": "Descarga de copia de seguridad fallida",
           "confirm-dialog-download-content-head": "¿Cómo utilizar este archivo?",
-          "confirm-dialog-download-content": "Puede importar este archivo localmente en la IU del switch y restaurarlo según sea necesario. Tenga en cuenta que, al restaurar este archivo en otro modelo u otra versión de firmware, se pueden omitir algunas opciones de configuración no compatibles. ",
+          "confirm-dialog-download-content": "Puede importar este archivo localmente en la IU del switch para restaurar la configuración. Tenga en cuenta que, al restaurar este archivo en otro modelo u otra versión de firmware, se pueden omitir las opciones de configuración no compatibles.",
           "see-in-action": "Véalo en acción",
           "confirm-delete-message": "Va a eliminar una copia de seguridad. Se eliminará permanentemente la copia de seguridad de configuración.",
           "backup-delted": "Copia de seguridad eliminada correctamente",
@@ -305,10 +313,17 @@
           "confirm-delete": "Confirmar eliminación",
           "confirm-resume": "Confirmar reanudación",
           "confirm-resume-message": "Va a reanudar las copias de seguridad programadas. Se volverá a enviar al switch la configuración de copia de seguridad existente.",
-          "confirm-stop-message": "Va a detener las copias de seguridad programadas.",
-          "confirm-stop": "Confirmar detención",
-          "backup-enbaled-success-message": "Se ha activado correctamente la copia de seguridad para todos los switches.",
-          "backup-enbaled-failure-message": "No se ha podido activar la copia de seguridad para todos los switches."
+          "confirm-pause-message": "Va a pausar las copias de seguridad programadas.",
+          "confirm-pause": "Confirmar pausa",
+          "backup-enabled-success-message": "Se ha activado correctamente la copia de seguridad para todos los switches.",
+          "backup-enabled-failure-message": "No se ha podido activar la copia de seguridad para todos los switches.",
+          "pause-scheduled-backup-success": "Se ha pausado correctamente la copia de seguridad programada.",
+          "pause-scheduled-backup-error": "No se ha podido pausar la copia de seguridad programada.",
+          "resume-scheduled-backup-success": "Se ha reanudado correctamente la copia de seguridad programada.",
+          "resume-scheduled-backup-error": "No se ha podido reanudar la copia de seguridad programada.",
+          "details": "Detalles",
+          "taken-with": "Efectuado con",
+          "version": "Versión"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "No se pueden volver a aplicar todas las opciones de configuración para el switch",
           "sync-success": "Las opciones de configuración se han sincronizado con los switches seleccionados",
           "sync-failed": "No es posible sincronizar las opciones de configuración con los switches seleccionados",
-          "sync-confirm-dialog": "Sincronice la configuración en cola con los switches seleccionados. Puede supervisar el progreso en la cola de tareas."
+          "sync-confirm-dialog": "Sincronice la configuración en cola con los switches seleccionados. Puede supervisar el progreso en la cola de tareas.",
+          "backup-info-message": "Sophos Central puede almacenar las copias de seguridad de sus switches. Puede programarlas y gestionarlas en la página <a href=\"cloud-switch/backup/list\">Copias de seguridad</a>.",
+          "enable-schedule": "Habilitar programación"
         },
         "groupInfoText": {
           "what": "¿Qué es un sitio?",
@@ -1997,12 +2014,12 @@
       "form": {
         "destMacAddress": "Dirección MAC de destino",
         "srcMacAddress": "Dirección MAC de origen",
-        "etherType": "Tipo Ether",
+        "etherType": "EtherType",
         "policy-name-required-message": "Se requiere el nombre de la política.",
         "policy-name-exists-message": "Este nombre de política ya existe.",
         "src-mac-incorrect": "Dirección MAC no válida.",
         "dest-mac-incorrect": "Dirección MAC no válida.",
-        "ether-type-incorrect": "Tipo Ether no válido. El rango válido es 0x0600-0xFFFF.",
+        "ether-type-incorrect": "EtherType no válido. El rango válido es 0x0600-0xFFFF.",
         "match-criteria": "Criterios de coincidencia",
         "dscp": "Tipo de servicio",
         "dscp-incorrect": "Tipo de servicio no válido. Los tipos de servicio válidos son 0-63.",
