@@ -198,7 +198,10 @@
       "are-you-sure": "Procedere?",
       "config-source": "Origine configurazione",
       "conflict-message": "Sono stati individuati dei conflitti in con queste impostazioni. Non salvare questa configurazione.",
-      "site-zero-switch-count-message": "Configurazione salvata per il sito. Nessuno switch trovato in questo sito. Quando aggiungi switch al sito, puoi scegliere di sincronizzare la configurazione."
+      "site-zero-switch-count-message": "Configurazione salvata per il sito. Nessuno switch trovato in questo sito. Quando aggiungi switch al sito, puoi scegliere di sincronizzare la configurazione.",
+      "table": {
+        "no-data": "Nessun dato"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "Reti (IPv4)",
@@ -251,7 +254,7 @@
       "summary": "Riepilogo dei backup",
       "status-label": "Backup pianificati",
       "status-text": "In base alla tua configurazione, tutti gli switch del tuo account continueranno a eseguire backup della configurazione e a caricarli su Sophos Central. Puoi sospendere i backup per switch individuali, se necessario.",
-      "backup-enbaled-switches": "Numero totale di switch con backup abilitato",
+      "backup-enabled-switches": "Numero totale di switch con backup abilitato",
       "last-backup-failures": "Ultimi tentativi di backup non riusciti",
       "last-restore-failures": "Ultimi tentativi di ripristino non riusciti",
       "backup-disabled-switches": "Switch con backup disattivato",
@@ -271,9 +274,12 @@
         "search-tooltip-message": "Cerca per numero di serie, sito, località, modello e tag",
         "resume": "Riprendi",
         "pause": "Sospendi",
-        "cancel": "annulla",
+        "cancel": "Annulla",
         "confirm": "Conferma",
-        "stop": "Arresta",
+        "restore": "Ripristina",
+        "latest-sucessful-backup-restore": "Ripristina ultimo backup riuscito",
+        "manual-backup": "Backup manuale",
+        "state": "Stato",
         "backup-state": {
           "Created": "Backup avviato",
           "Failed": "Non riuscito",
@@ -293,11 +299,13 @@
           "backup-taken": "Data del backup",
           "take-backup": "Effettua backup",
           "confirm-download": "Conferma download",
+          "download-backup": "Scarica backup",
+          "download-last-successful-backup": "Scarica ultimo backup riuscito",
           "download-message": "Questa operazione scarica sul tuo dispositivo il file di backup della configurazione. Nota: questo file non è cifrato e potrebbe contenere configurazioni di natura sensibile.",
           "backup-download-success": "Backup scaricato",
           "backup-download-failed": "Download del backup non riuscito",
           "confirm-dialog-download-content-head": "Come utilizzare questo file",
-          "confirm-dialog-download-content": "Puoi importare questo file localmente nell’interfaccia utente dello switch ed effettuare il ripristino secondo necessità. Tieni presente che se ripristini questo file su un modello diverso o su una versione del firmware diversa, alcune impostazioni non supportate potrebbero essere ignorate.",
+          "confirm-dialog-download-content": "Puoi importare questo file localmente nell’interfaccia utente dello switch per ripristinare la configurazione. Tieni presente che se ripristini questo file su un modello diverso o su una versione del firmware diversa, le impostazioni non supportate potrebbero essere ignorate.",
           "see-in-action": "Vedi come funziona",
           "confirm-delete-message": "Stai eliminando un backup. Se procedi, il backup della configurazione verrà eliminato permanentemente.",
           "backup-delted": "Backup eliminato",
@@ -305,10 +313,17 @@
           "confirm-delete": "Conferma eliminazione",
           "confirm-resume": "Conferma ripresa",
           "confirm-resume-message": "Stai riprendendo i backup pianificati. Le impostazioni di backup esistenti verranno nuovamente inviate tramite push allo switch.",
-          "confirm-stop-message": "Stai interrompendo i backup pianificati.",
-          "confirm-stop": "Conferma interruzione",
-          "backup-enbaled-success-message": "Backup abilitati per tutti gli switch.",
-          "backup-enbaled-failure-message": "Non è stato possibile abilitare i backup per gli tutti gli switch."
+          "confirm-pause-message": "Stai sospendendo i backup pianificati.",
+          "confirm-pause": "Conferma sospensione",
+          "backup-enabled-success-message": "Backup abilitati per tutti gli switch.",
+          "backup-enabled-failure-message": "Non è stato possibile abilitare i backup per gli tutti gli switch.",
+          "pause-scheduled-backup-success": "Hai sospeso il backup pianificato.",
+          "pause-scheduled-backup-error": "Non è stato possibile sospendere il backup pianificato.",
+          "resume-scheduled-backup-success": "Il backup pianificato è stato ripreso.",
+          "resume-scheduled-backup-error": "Non è stato possibile riprendere il backup pianificato.",
+          "details": "Dettagli",
+          "taken-with": "Effettuato con",
+          "version": "Versione"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "Non è stato possibile riapplicare tutte le impostazioni sullo switch",
           "sync-success": "Le impostazioni sono state sincronizzate sugli switch selezionati",
           "sync-failed": "Impossibile sincronizzare le impostazioni del sito sugli switch selezionati",
-          "sync-confirm-dialog": "Sincronizza le impostazioni in coda sugli switch selezionati. Puoi monitorare l’avanzamento nella coda delle attività."
+          "sync-confirm-dialog": "Sincronizza le impostazioni in coda sugli switch selezionati. Puoi monitorare l’avanzamento nella coda delle attività.",
+          "backup-info-message": "Sophos Central è in grado di archiviare i backup dei tuoi switch. Puoi pianificarli e gestirli nella pagina <a href=\"cloud-switch/backup/list\">Backup</a>.",
+          "enable-schedule": "Abilita pianificazione"
         },
         "groupInfoText": {
           "what": "Che cos'è un sito?",
@@ -1997,12 +2014,12 @@
       "form": {
         "destMacAddress": "Indirizzo MAC di destinazione",
         "srcMacAddress": "Indirizzo MAC di origine",
-        "etherType": "Tipo Ether",
+        "etherType": "EtherType",
         "policy-name-required-message": "Nome criterio obbligatorio.",
         "policy-name-exists-message": "Nome criterio già esistente.",
         "src-mac-incorrect": "Indirizzo MAC non valido.",
         "dest-mac-incorrect": "Indirizzo MAC non valido.",
-        "ether-type-incorrect": "Tipo Ether non valido. L’intervallo valido è 0x0600-0xFFFF.",
+        "ether-type-incorrect": "EtherType non valido. L’intervallo valido è 0x0600-0xFFFF.",
         "match-criteria": "Criteri di corrispondenza",
         "dscp": "Tipo di servizio",
         "dscp-incorrect": "Tipo di servizio non valido. I tipi di servizio validi sono compresi tra 0 e 63.",

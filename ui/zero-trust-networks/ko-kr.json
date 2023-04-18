@@ -34,7 +34,10 @@
       "agent-app-request-title": "에이전트 기반 정책 액세스 활성화",
       "agent-app-request-comment": "[n]개의 시트에 대한 액세스를 허용하십시오. 내 Central 로그인은 {{login}}이고 고객 Id는 {{customer_id}}입니다.",
       "read-more": "자세히 읽기...",
-      "copy-to-clipboard-success": "클립보드에 복사됨"
+      "copy-to-clipboard-success": "클립보드에 복사됨",
+      "success": "성공",
+      "error": "오류",
+      "error-default": "문제가 발생했습니다. ({{ errorCode }})."
     },
     "application": {
       "form": {
@@ -65,7 +68,8 @@
         "port": "포트",
         "ports": "포트",
         "portrange-format": "예: 30.50-201",
-        "port-format": "예: 30.50",
+        "port-format-agent": "예: 30.50",
+        "port-format-agentless": "예: 443",
         "port-info": "이 리소스에 대한 액세스 권한을 제공하기 위해 최대 20개의 TCP 및/또는 UDP 포트를 포함하십시오.",
         "title-add": "리소스 추가",
         "deploy": "배포",
@@ -389,8 +393,7 @@
         "staticIp": "정적 IP",
         "staticDns": "정적 DNS",
         "point-of-presence-label": "접속점",
-        "point-of-presence-note": "참고: 접속 지점의 가용성을 확인하고 유지 관리에 대한 알림을 구독하려면 다음 주소로 이동하십시오. ",
-        "sophos-status-page": "Sophos 상태 페이지.",
+        "point-of-presence-note": "참고: 인터넷 접속 포인트의 가용성을 확인하고 유지 관리 알림을 구독하려면 <i18n slot=\"ztna-sophos-status\">Sophos 상태 페이지</i18n>로 이동하십시오.",
         "primary-region": "지역",
         "gateway-instances": "게이트웨이 인스턴스",
         "gateway-instances-note": "참고: 나중에 부하 분산을 위해 더 많은 인스턴스를 추가할 수 있습니다.",
@@ -642,7 +645,7 @@
         "latest": "최신 소프트웨어를 실행 중입니다.",
         "description": "게이트웨이 업데이트 예약",
         "header": "{{currentVersion}}에서 다음으로 업데이트:",
-        "version": "버전",
+        "version": "게이트웨이 버전",
         "warning": "경고",
         "warning-info": "이미지 업데이트는 구성된 리소스에 대한 연결에 일시적으로 영향을 미칠 수 있습니다. {{selectedVersion}}(으)로 업데이트하면 다시 시작됩니다.",
         "warning-info-app-2.0": "이미지 업데이트는 구성된 리소스에 대한 연결에 일시적으로 영향을 미칠 수 있습니다.",
@@ -662,13 +665,14 @@
         "add-error": "일정 업데이트 실패"
       },
       "cf-upgrade": {
-        "release-endOfSupport": "새로운 클라우드 형성 템플릿(CFT)을 사용할 수 있습니다. AWS 게이트웨이의 일부 구성 요소는 {{releaseEndOfSupport}}에서 지원되지 않을 수 있습니다.",
+        "release-endOfSupport": "새로운 CloudFormation 템플릿(CFT)을 사용할 수 있습니다. AWS 게이트웨이의 일부 구성 요소는 {{releaseEndOfSupport}}에서 지원되지 않을 수 있습니다.",
         "cft-update": "클라우드 서비스 제공업체의 콘솔에서 CFT 업데이트를 수행합니다. 업데이트 중에 이 값이 필요하므로 지금 복사하십시오.",
         "cft-update-link": "CFT 업데이트 지침",
         "cft-update-link-note": "업데이트를 처리하는 데 시간이 걸릴 수 있으며 리소스에 일시적으로 액세스할 수 없게 됩니다.",
         "cft-update-link-info": "이제 제공업체의 콘솔로 이동하여 다음 업데이트 단계를 따르십시오.",
-        "title": "클라우드 형성 템플릿",
-        "latest": "최신 버전의 클라우드 형성 템플릿을 실행하고 있습니다."
+        "title": "CloudFormation 템플릿",
+        "latest": "최신 버전의 클라우드 형성 템플릿을 실행하고 있습니다.",
+        "version": "CFT 버전"
       }
     },
     "idp": {

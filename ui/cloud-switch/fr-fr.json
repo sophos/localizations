@@ -198,7 +198,10 @@
       "are-you-sure": "Êtes-vous sûr(e) de vouloir continuer ?",
       "config-source": "Source de configuration",
       "conflict-message": "Conflits détectés avec ces paramètres. N’enregistrez pas cette configuration.",
-      "site-zero-switch-count-message": "Configuration enregistrée pour le site. Aucun switch trouvé sur ce site. Vous pouvez choisir de synchroniser la configuration tout en ajoutant les switchs au site."
+      "site-zero-switch-count-message": "Configuration enregistrée pour le site. Aucun switch trouvé sur ce site. Vous pouvez choisir de synchroniser la configuration tout en ajoutant les switchs au site.",
+      "table": {
+        "no-data": "Aucune donnée"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "Réseaux(IPv4)",
@@ -251,7 +254,7 @@
       "summary": "Résumé de la sauvegarde",
       "status-label": "Sauvegardes planifiées",
       "status-text": "En fonction de votre configuration, tous les switchs de votre compte continueront à effectuer des sauvegardes de configuration et à les télécharger dans Sophos Central. Si nécessaire, vous pouvez suspendre ceci sur des switchs individuels.",
-      "backup-enbaled-switches": "Nombre total de sauvegarde de switch activée",
+      "backup-enabled-switches": "Nombre total de sauvegarde de switch activée",
       "last-backup-failures": "Derniers échecs de sauvegarde",
       "last-restore-failures": "Derniers échecs de restauration",
       "backup-disabled-switches": "Switchs avec sauvegarde désactivée",
@@ -264,16 +267,19 @@
         "model": "Modèle",
         "tags": "Balises",
         "last-backup-or-restore-status": "Dernier état",
-        "occured-at": "Date",
+        "occured-at": "S’est produit le",
         "backups": "Sauvegardes",
         "actions": "Actions",
         "search": "Rechercher",
         "search-tooltip-message": "Recherche par numéro de série, site, emplacement, modèle et balises",
         "resume": "Reprendre",
         "pause": "Suspendre",
-        "cancel": "annuler",
+        "cancel": "Annuler",
         "confirm": "Confirmer",
-        "stop": "Arrêter",
+        "restore": "Restaurer",
+        "latest-sucessful-backup-restore": "Restaurer la dernière sauvegarde réussie",
+        "manual-backup": "Sauvegarde manuelle",
+        "state": "État",
         "backup-state": {
           "Created": "Sauvegarde démarrée",
           "Failed": "Échec",
@@ -293,11 +299,13 @@
           "backup-taken": "Sauvegarde effectuée",
           "take-backup": "Effectuer une sauvegarde",
           "confirm-download": "Confirmer le téléchargement",
+          "download-backup": "Télécharger la copie de sauvegarde",
+          "download-last-successful-backup": "Télécharger la dernière sauvegarde réussie",
           "download-message": "Le fichier de sauvegarde de la configuration sera téléchargé sur votre appareil. Veuillez noter que ce fichier n’est pas chiffré et peut contenir des données de configuration sensibles.",
           "backup-download-success": "Sauvegarde téléchargée",
           "backup-download-failed": "Impossible de télécharger la sauvegarde",
           "confirm-dialog-download-content-head": "Comment utiliser ce fichier ?",
-          "confirm-dialog-download-content": "Vous pouvez importer ce fichier localement dans l’interface utilisateur du switch et restaurer ce fichier si nécessaire. Notez que la restauration de ce fichier vers un modèle différent ou une version différente du firmware peut ignorer quelques paramètres non pris en charge.",
+          "confirm-dialog-download-content": "Vous pouvez importer ce fichier localement dans l’interface utilisateur du switch pour restaurer la configuration. Notez que la restauration de ce fichier vers un modèle différent ou une version différente du firmware peut ignorer les paramètres non pris en charge.",
           "see-in-action": "Voir à l’œuvre",
           "confirm-delete-message": "Vous supprimez une sauvegarde. Cette opération supprimera définitivement la sauvegarde de la configuration.",
           "backup-delted": "Sauvegarde supprimée",
@@ -305,10 +313,17 @@
           "confirm-delete": "Confirmer la suppression",
           "confirm-resume": "Confirmer la reprise",
           "confirm-resume-message": "Vous reprenez les sauvegardes planifiées. Les paramètres de sauvegarde existants seront redéployés sur le switch.",
-          "confirm-stop-message": "Vous arrêtez les sauvegardes planifiées.",
-          "confirm-stop": "Confirmer l’arrêt",
-          "backup-enbaled-success-message": "Sauvegarde activée pour tous les switchs.",
-          "backup-enbaled-failure-message": "Impossible d’activer la sauvegarde pour tous les switchs."
+          "confirm-pause-message": "Vous mettez en pause les sauvegardes planifiées.",
+          "confirm-pause": "Confirmer la pause",
+          "backup-enabled-success-message": "Sauvegarde activée pour tous les switchs.",
+          "backup-enabled-failure-message": "Impossible d’activer la sauvegarde pour tous les switchs.",
+          "pause-scheduled-backup-success": "Sauvegarde planifiée mise en pause.",
+          "pause-scheduled-backup-error": "Impossible de mettre en pause la sauvegarde planifiée.",
+          "resume-scheduled-backup-success": "Reprise réussie de la sauvegarde planifiée.",
+          "resume-scheduled-backup-error": "Impossible de reprendre la sauvegarde planifiée.",
+          "details": "Détails",
+          "taken-with": "Pris avec",
+          "version": "Version"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "Impossible de réappliquer tous les paramètres du switch",
           "sync-success": "Les paramètres ont été synchronisés avec les switchs sélectionnés",
           "sync-failed": "Impossible de synchroniser les paramètres du site avec les switchs sélectionnés",
-          "sync-confirm-dialog": "Synchroniser les paramètres de la file d’attente avec les switchs sélectionnés. Vous pouvez surveiller la progression dans la file d’attente des tâches."
+          "sync-confirm-dialog": "Synchroniser les paramètres de la file d’attente avec les switchs sélectionnés. Vous pouvez surveiller la progression dans la file d’attente des tâches.",
+          "backup-info-message": "Sophos Central peut stocker les sauvegardes de vos switchs. Vous pouvez les planifier et les gérer sur la page des <a href=\"cloud-switch/backup/list\">Sauvegardes</a>.",
+          "enable-schedule": "Activer la planification"
         },
         "groupInfoText": {
           "what": "Qu’est ce qu’un site ?",

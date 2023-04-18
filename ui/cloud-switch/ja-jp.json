@@ -198,7 +198,10 @@
       "are-you-sure": "続行しますか？",
       "config-source": "設定のソース",
       "conflict-message": "これらの設定に矛盾が見つかりました。この設定は保存しないでください。",
-      "site-zero-switch-count-message": "サイトの設定が保存されました。このサイトではスイッチは見つかりませんでした。サイトにスイッチを追加する際に、設定を同期させるかどうかを選択できます。"
+      "site-zero-switch-count-message": "サイトの設定が保存されました。このサイトではスイッチは見つかりませんでした。サイトにスイッチを追加する際に、設定を同期させるかどうかを選択できます。",
+      "table": {
+        "no-data": "データはありません"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "ネットワーク (IPv4)",
@@ -251,7 +254,7 @@
       "summary": "バックアップのサマリー",
       "status-label": "スケジュールバックアップ",
       "status-text": "設定に基づいて、アカウント内のすべてのスイッチが設定のバックアップを作成し、Sophos Central にアップロードします。必要に応じて、個々のスイッチを一時停止できます。",
-      "backup-enbaled-switches": "スイッチのバックアップが有効になっている合計数",
+      "backup-enabled-switches": "スイッチのバックアップが有効になっている合計数",
       "last-backup-failures": "前回失敗したバックアップ",
       "last-restore-failures": "前回失敗した復元",
       "backup-disabled-switches": "バックアップ無効のスイッチ",
@@ -273,7 +276,10 @@
         "pause": "一時停止",
         "cancel": "キャンセル",
         "confirm": "確認",
-        "stop": "停止",
+        "restore": "復元",
+        "latest-sucessful-backup-restore": "前回成功したバックアップを復元します",
+        "manual-backup": "手動バックアップ",
+        "state": "状態",
         "backup-state": {
           "Created": "バックアップを開始しました",
           "Failed": "失敗しました",
@@ -293,11 +299,13 @@
           "backup-taken": "バックアップ日",
           "take-backup": "バックアップの作成",
           "confirm-download": "ダウンロードの確認",
+          "download-backup": "バックアップのダウンロード",
+          "download-last-successful-backup": "前回成功したバックアップをダウンロードします",
           "download-message": "これにより、設定のバックアップファイルがデバイスにダウンロードされます。このファイルは暗号化されておらず、機密性の高い構成を含む場合があることに注意してください。",
           "backup-download-success": "バックアップが正常にダウンロードされました",
           "backup-download-failed": "バックアップのダウンロードに失敗しました",
           "confirm-dialog-download-content-head": "このファイルの使用方法",
-          "confirm-dialog-download-content": "このファイルをスイッチ UI のローカルにインポートし、必要に応じてこのファイルを復元できます。このファイルを異なる機種、または異なるファームウェアバージョンに復元すると、サポートされていない設定をそのままにする場合があることに注意してください。",
+          "confirm-dialog-download-content": "このファイルをスイッチ UI のローカルにインポートし、設定を復元できます。このファイルを異なる機種、または異なるファームウェアバージョンに復元すると、サポートされていない設定をそのままにする場合があることに注意してください。",
           "see-in-action": "製品デモ",
           "confirm-delete-message": "バックアップを削除しようとしています。これにより、設定のバックアップが完全に削除されます。",
           "backup-delted": "バックアップが正常に削除されました",
@@ -305,10 +313,17 @@
           "confirm-delete": "削除の確認",
           "confirm-resume": "再開の確認",
           "confirm-resume-message": "スケジュールバックアップを再開しています。既存のバックアップ設定が再びスイッチにプッシュされます。",
-          "confirm-stop-message": "スケジュールバックアップを停止しています。",
-          "confirm-stop": "停止の確認",
-          "backup-enbaled-success-message": "すべてのスイッチのバックアップが正常に有効になりました。",
-          "backup-enbaled-failure-message": "すべてのスイッチのバックアップを有効にできませんでした。"
+          "confirm-pause-message": "スケジュールバックアップを一時停止しています。",
+          "confirm-pause": "一時停止の確認",
+          "backup-enabled-success-message": "すべてのスイッチのバックアップが正常に有効になりました。",
+          "backup-enabled-failure-message": "すべてのスイッチのバックアップを有効にできませんでした。",
+          "pause-scheduled-backup-success": "スケジュールバックアップを正常に一時停止しました。",
+          "pause-scheduled-backup-error": "スケジュールバックアップを一時停止できませんでした。",
+          "resume-scheduled-backup-success": "スケジュールバックアップを正常に再開しました。",
+          "resume-scheduled-backup-error": "スケジュールバックアップを再開できませんでした。",
+          "details": "詳細",
+          "taken-with": "作成",
+          "version": "バージョン"
         }
       },
       "schedule": {
@@ -320,8 +335,8 @@
         "monthly": "毎月",
         "day": "日",
         "triggerAt": "指定日時",
-        "max-part-1": "スイッチごとに最大",
-        "max-part-2": "バックアップを保管します。最大制限: {{ max }}",
+        "max-part-1": "スイッチごとに最大 ",
+        "max-part-2": "個のバックアップを保持します。最大制限: {{ max }}",
         "max-tooltip": "最大数のバックアップが作成されると、最も古いバックアップが最新のバックアップにローテーションで置き換えられます",
         "tags": "例: 自動、スケジュール済み",
         "tags-text": "各バックアップに付けられるタグ",
@@ -556,7 +571,9 @@
           "full-sync-failed": "すべての設定をスイッチに再適用できませんでした",
           "sync-success": "設定は、選択したスイッチに同期されました",
           "sync-failed": "選択したスイッチにサイト設定を同期できません",
-          "sync-confirm-dialog": "選択したスイッチに、キューに追加された設定を同期しました。進行状況は、タスクキューで監視できます。"
+          "sync-confirm-dialog": "選択したスイッチに、キューに追加された設定を同期しました。進行状況は、タスクキューで監視できます。",
+          "backup-info-message": "Sophos Central では、スイッチのバックアップを保存できます。<a href=\"cloud-switch/backup/list\"> のバックアップ</a>ページでスケジュールおよび管理することができます。",
+          "enable-schedule": "スケジュールを有効にする"
         },
         "groupInfoText": {
           "what": "サイトとは？",
@@ -1997,12 +2014,12 @@
       "form": {
         "destMacAddress": "宛先 MAC アドレス",
         "srcMacAddress": "送信元 MAC アドレス",
-        "etherType": "イーサネットの種類",
+        "etherType": "EtherType",
         "policy-name-required-message": "ポリシー名を指定してください。",
         "policy-name-exists-message": "ポリシー名は既に存在します。",
         "src-mac-incorrect": "無効な MAC アドレスです。",
         "dest-mac-incorrect": "無効な MAC アドレスです。",
-        "ether-type-incorrect": "イーサネットの種類が無効です。有効な範囲は 0x0600 - 0xFFFF です。",
+        "ether-type-incorrect": "無効な EtherType です。有効な範囲は 0x0600 - 0xFFFF です。",
         "match-criteria": "一致条件",
         "dscp": "サービスの種類",
         "dscp-incorrect": "サービスの種類が無効です。有効なサービスの種類は 0 - 63 です。",

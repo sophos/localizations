@@ -77,7 +77,9 @@
           "error": "Logo konnte nicht gespeichert werden",
           "success": "Datei erfolgreich hochgeladen."
         }
-      }
+      },
+      "select-all-with-count": "Alle {{count}} auswählen",
+      "clear-selection": "Auswahl aufheben"
     },
     "global": {
       "form": {
@@ -236,7 +238,7 @@
       "audit-logs": "Überwachungsprotokolle",
       "server-ip": "Server-IP",
       "serial-no": "Seriennummer",
-      "action": "Maßnahme",
+      "action": "Aktion",
       "status": "Status",
       "name": "Name des Access Point",
       "ip_address": "IP-Adresse",
@@ -417,7 +419,8 @@
       },
       "site-name-error-msgs": {
         "required": "Standortname ist erforderlich.",
-        "maxlength": "Standardname kann maximal 64 Zeichen lang sein."
+        "maxlength": "Standardname kann maximal 64 Zeichen lang sein.",
+        "duplicate-site": "Doppelter Standortname."
       },
       "site-location-error-msgs": {
         "required": "Standortangabe ist erforderlich."
@@ -519,11 +522,14 @@
       "list": {
         "breadcrumb-text": "SSIDs",
         "title": "Wireless - SSIDs",
-        "no-ssid-configured": "Sie haben keine SSID hinzugefügt",
-        "no-ssid-configured-help": "Klicken Sie auf die Hinzufügen-Schaltfläche, um die SSID zu konfigurieren",
+        "no-ssid-configured": "Sie haben keine SSIDs hinzugefügt.",
+        "no-ssid-configured-help": "Klicken Sie auf Erstellen, um SSIDs hinzuzufügen.",
         "pagination": "Anzeige: {{ from }} bis {{ to }} von {{ of }}",
         "create": "Erstellen",
-        "deleteDialogText": "Möchten Sie die ausgewählten SSIDs löschen?",
+        "deleteDialogText": {
+          "one": "{{count}} SSID wird gelöscht. Mit dem Löschen fortfahren?",
+          "many": "{{count}} SSIDs werden gelöscht. Mit dem Löschen fortfahren?"
+        },
         "listLoadingError": "SSID-Liste kann nicht geladen werden",
         "headers": {
           "ssid": "SSID",
@@ -538,7 +544,12 @@
           "healthStatus": "security heartbeat™",
           "captive-portal": "Captive Portal",
           "errorMessage": "SSID kann nicht gelöscht werden"
-        }
+        },
+        "selected-items-note": {
+          "one": "{{count}} SSID ist ausgewählt",
+          "many": "{{count}} SSIDs sind ausgewählt"
+        },
+        "all-selected": "Alle {{count}} SSIDs sind ausgewählt"
       },
       "create": {
         "add-success": "SSID erfolgreich gespeichert.",
@@ -663,9 +674,19 @@
         "frequency-band-inline-help-msg": "Beschränken Sie das Netzwerk-Broadcasting auf bestimmte Bänder. Dies beschränkt möglicherweise die APs, auf denen SSID-Broadcasting stattfindet, da einige Modelle Broadcasting nur in bestimmten Bändern oder nicht in allen Bändern gleichzeitig unterstützen.",
         "enable-mesh-mode": "Mesh-Modus aktivieren",
         "enable-mesh-mode-help-msg": "Ermöglicht es Ihnen, APs ohne Internetverbindung miteinander zu verbinden.",
-        "only-one-mesh-network": "Sie können nur eine Mesh-SSID erstellen",
-        "disable-mesh": "Zum Deaktivieren des Mesh-Modus diese SSID löschen",
-        "no-root-ap": "Mesh setzt voraus, dass mindestens ein Access Point über LAN mit dem Internet verbunden ist.",
+        "only-one-mesh-network": {
+          "apx": "Sie können nur eine APX-Mesh-SSID erstellen",
+          "ap6": "Sie können nur eine AP6-Mesh-SSID erstellen"
+        },
+        "disable-mesh": {
+          "apx": "Zum Deaktivieren des Mesh-Modus die vorhandene APX-Mesh-SSID löschen",
+          "ap6": "Zum Deaktivieren des Mesh-Modus die vorhandene AP6-Mesh-SSID löschen"
+        },
+        "mesh-root-ap": {
+          "apx": "Eine APX-Mesh-SSID setzt voraus, dass mindestens ein Access Point über LAN mit dem Internet verbunden ist.",
+          "ap6": "Eine AP6-Mesh-SSID setzt voraus, dass mindestens zwei Access Points (1 Root-AP und 1 Knoten-AP) über LAN mit dem Internet verbunden sind."
+        },
+        "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Root Access Point zu entfernen",
         "stp-packets-warning": "Mesh-Access-Points senden STP-Pakete – stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist.",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
@@ -942,6 +963,9 @@
           }
         },
         "captive-portal-capacity": "Warnung. Access Points der AP- und APX-Serie können nicht mehrere Captive-Portale zugewiesen werden",
+        "mesh-not-supported": "Die Firmware-Version des Access Point unterstützt nicht die Mesh-Funktion. Bitte aktualisieren Sie auf die neueste Version",
+        "max-limit-reached-for-root-ap": "Sie können dem Root Access Point maximal 5 SSIDs (einschließlich der Mesh-SSID) zuweisen",
+        "can-not-assign-mesh-ssid-to-ap": "Die Mesh-SSID ist dem Access Point bereits zugewiesen",
         "walled-garden": {
           "header": "Kontrollierte Umgebung",
           "config-allowed-domains": "Sie können eine Domänenliste zum Abschnitt <a class='link-to-walled-garden'>'Kontrollierte Umgebung'</a> hinzufügen.",
@@ -959,7 +983,7 @@
         "_dynamic_": {
           "true": "An",
           "false": "Aus",
-          "NA": "n.v."
+          "NA": "k. A."
         }
       }
     },
@@ -993,14 +1017,17 @@
           "auto-refresh": "Automatisch aktualisieren",
           "unassigned-sites": "Nicht zugewiesene Sites",
           "emptyListMessage": "Sie haben keine Access Points hinzugefügt.",
-          "listRegisterInfo": "Klicken Sie auf die Schaltfläche „Registrieren“, um die Access Points hinzuzufügen.",
+          "listRegisterInfo": "Klicken Sie auf Registrieren, um Access Points hinzuzufügen.",
           "sitesNotFoundErrorMessage": "Standorte können nicht geladen werden."
         },
         "statusOnline": "aktuell",
         "stateOffline": "Offline",
         "offlineApDeleteMessage": "Access Points sollten nicht gelöscht werden, wenn sie offline sind. Warten Sie, bis sie online sind, oder erzwingen Sie das Löschen.",
         "statusDelete": "WIRD GELÖSCHT",
-        "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?",
+        "deleteDialogText": {
+          "one": "Wenn Sie einen AP löschen, wird das System neu gestartet.<br><br>{{count}} Access Point wird gelöscht. Mit dem Löschen fortfahren?",
+          "many": "Wenn Sie einen AP löschen, wird das System neu gestartet.<br><br>{{count}} Access Points werden gelöscht. Mit dem Löschen fortfahren?"
+        },
         "deleteAp": "Möchten Sie diesen Access Point löschen?",
         "forceDelete": "Löschen erzwingen",
         "automaticOnce": "Einmalig automatisch",
@@ -1022,7 +1049,12 @@
         "secondsShort": "s",
         "yearsShort": "j",
         "firmware-upgrade": "Firmware-Aktualisierung",
-        "tx-power": "TX-Leistung: {{txPower}} %"
+        "tx-power": "TX-Leistung: {{txPower}} %",
+        "selected-items-note": {
+          "one": "{{count}} Access Point ist ausgewählt",
+          "many": "{{count}} Access Points sind ausgewählt"
+        },
+        "all-selected": "Alle {{count}} Access Points sind ausgewählt"
       },
       "edit": {
         "editor": {
@@ -1104,6 +1136,12 @@
             "both": "2,4 GHz und 5 GHz",
             "GHZ_6": "6 GHz"
           },
+          "mesh": {
+            "role": {
+              "root": "Root",
+              "node": "Knoten"
+            }
+          },
           "sophos-central-agent": "Sophos-Central-Agents",
           "upgrade-automatically": "Automatisch aktualisieren",
           "general": "Allgemein",
@@ -1113,7 +1151,8 @@
           "assign-ssids": "SSIDs zuweisen",
           "no-assign-ssid": "Derzeit ist keine SSID zugewiesen.",
           "confirm-remove": "Entfernen bestätigen",
-          "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?"
+          "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?",
+          "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?"
         }
       },
       "taskQueue": {
@@ -1506,7 +1545,14 @@
       "http.method.unsupported": "HTTP-Methode wird für den angegebenen Pfad nicht unterstützt",
       "access-point.state.invalid.for.abort": "Ungültiger Access-Point-Status für Abbruch",
       "access-point.state.invalid.for.retry": "Ungültiger Access-Point-Status für Wiederholen",
-      "limit.exceeded": "Grenze überschritten"
+      "limit.exceeded": "Grenze überschritten",
+      "ValidString.meshBands": "Ungültige Frequenzband-Konfiguration für Mesh",
+      "mesh.accessPointRadioLimit": "Im Mesh-Modus darf es pro Frequenz maximal 4 SSIDs geben",
+      "mesh.exists": "Sie können nur eine AP6-Mesh-SSID pro Konto erstellen",
+      "mesh.accessPointCount": "Ein Mesh erfordert mindestens 2 Access Points",
+      "mesh.not.allowed": "Die Mesh-Funktion steht derzeit nicht zur Verfügung",
+      "mesh.incorrectRoot": "Ungültige Konfiguration des Root Access Point",
+      "mesh.protection": "AP6-Mesh funktioniert nur mit dem Sicherheitsmodus WPA3-Personal"
     }
   }
 }

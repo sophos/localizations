@@ -198,7 +198,10 @@
       "are-you-sure": "Tem certeza de que deseja continuar?",
       "config-source": "Origem da configuração",
       "conflict-message": "Conflitos encontrados nessas configurações. Não salve essa configuração.",
-      "site-zero-switch-count-message": "Configuração do site salva. Nenhum switch encontrado neste site. Você pode optar por sincronizar a configuração enquanto adiciona os switches ao site."
+      "site-zero-switch-count-message": "Configuração do site salva. Nenhum switch encontrado neste site. Você pode optar por sincronizar a configuração enquanto adiciona os switches ao site.",
+      "table": {
+        "no-data": "Nenhum dado"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "Redes (IPv4)",
@@ -251,7 +254,7 @@
       "summary": "Resumo do backup",
       "status-label": "Backups agendados",
       "status-text": "Baseado na sua configuração, todos os switches na sua conta continuaram a fazer backups da configuração e a carregá-los no Sophos Central. Você pode dar pausa nos switches individualmente.",
-      "backup-enbaled-switches": "Switches com backup total habilitado",
+      "backup-enabled-switches": "Total de switches com backup habilitado",
       "last-backup-failures": "Falhas no último backup",
       "last-restore-failures": "Falhas na última restauração",
       "backup-disabled-switches": "Switches com backup desabilitado",
@@ -271,9 +274,12 @@
         "search-tooltip-message": "Pesquisar por número de série, site, localização, modelo e tags",
         "resume": "Retomar",
         "pause": "Pausar",
-        "cancel": "cancelar",
+        "cancel": "Cancelar",
         "confirm": "Confirmar",
-        "stop": "Parar",
+        "restore": "Restaurar",
+        "latest-sucessful-backup-restore": "Restaurar último backup bem-sucedido",
+        "manual-backup": "Backup manual",
+        "state": "Estado",
         "backup-state": {
           "Created": "Backup iniciado",
           "Failed": "Falhou",
@@ -293,11 +299,13 @@
           "backup-taken": "Backup realizado",
           "take-backup": "Fazer backup",
           "confirm-download": "Confirmar download",
+          "download-backup": "Fazer Download de Backup",
+          "download-last-successful-backup": "Baixar último backup bem-sucedido",
           "download-message": "Isso baixará o arquivo de backup do config para o seu dispositivo. Observe que esse arquivo não está criptografado e pode conter dados de configuração sensíveis.",
           "backup-download-success": "Download do backup realizado com sucesso",
           "backup-download-failed": "Falha ao baixar o backup",
           "confirm-dialog-download-content-head": "Como usar este arquivo?",
-          "confirm-dialog-download-content": "Você pode importar o arquivo localmente na IU do switch e restaurá-lo quando necessário. Observe que restaurar o arquivo para um modelo diferente ou versão de firmware diferente poderá ignorar algumas configurações incompatíveis.",
+          "confirm-dialog-download-content": "Você pode importar o arquivo localmente na IU do switch para restaurar a configuração. Observe que restaurar o arquivo para um modelo diferente ou uma versão de firmware diferente poderá ignorar as configurações incompatíveis.",
           "see-in-action": "Veja em ação",
           "confirm-delete-message": "Você está deletando um backup. Isso deletará o backup de configuração permanentemente.",
           "backup-delted": "Backup deletado com sucesso",
@@ -305,10 +313,17 @@
           "confirm-delete": "Confirmar deleção",
           "confirm-resume": "Confirmar retomada",
           "confirm-resume-message": "Você está retomando os backups agendados. As configurações de backup existentes serão enviadas novamente ao switch.",
-          "confirm-stop-message": "Você está interrompendo os backups agendados.",
-          "confirm-stop": "Confirmar interrupção",
-          "backup-enbaled-success-message": "Backup habilitado com sucesso para todos os switches.",
-          "backup-enbaled-failure-message": "Falha ao habilitar backup para todos os switches."
+          "confirm-pause-message": "Você está pausando os backups agendados.",
+          "confirm-pause": "Confirmar pausa",
+          "backup-enabled-success-message": "Backup habilitado com sucesso para todos os switches.",
+          "backup-enabled-failure-message": "Falha ao habilitar backup para todos os switches.",
+          "pause-scheduled-backup-success": "Pausa bem-sucedida do backup agendado.",
+          "pause-scheduled-backup-error": "Falha ao pausar o backup agendado.",
+          "resume-scheduled-backup-success": "Backup agendado retomado com sucesso.",
+          "resume-scheduled-backup-error": "Falha ao retomar o backup agendado.",
+          "details": "Detalhes",
+          "taken-with": "Feito com",
+          "version": "Versão"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "Não foi possível reaplicar as configurações ao switch",
           "sync-success": "As configurações foram sincronizadas para os switches selecionados",
           "sync-failed": "Não foi possível sincronizar as configurações do site para os switches selecionados",
-          "sync-confirm-dialog": "Sincronize as configurações na fila com os switches selecionados. Você pode monitorar o andamento na fila de tarefas."
+          "sync-confirm-dialog": "Sincronize as configurações na fila com os switches selecionados. Você pode monitorar o andamento na fila de tarefas.",
+          "backup-info-message": "O Sophos Central pode armazenar os backups dos seus switches. Você pode agendá-los e gerenciá-los na página <a href=\"cloud-switch/backup/list\">Backups</a>.",
+          "enable-schedule": "Habilitar agendamento"
         },
         "groupInfoText": {
           "what": "O que é um site?",

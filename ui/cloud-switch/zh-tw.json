@@ -198,7 +198,10 @@
       "are-you-sure": "確定要繼續嗎？",
       "config-source": "設定來源",
       "conflict-message": "這些設定存在衝突。請勿儲存此設定。",
-      "site-zero-switch-count-message": "已為網站儲存設定。未在此網站中找到交換器。您可選擇在將交換器新增到網站時同步設定。"
+      "site-zero-switch-count-message": "已為網站儲存設定。未在此網站中找到交換器。您可選擇在將交換器新增到網站時同步設定。",
+      "table": {
+        "no-data": "無資料"
+      }
     },
     "dto": {
       "NetworksIPv4Dto": "網路 (IPv4)",
@@ -251,7 +254,7 @@
       "summary": "備份摘要",
       "status-label": "排程的備份",
       "status-text": "根據您的設定，您帳戶中的所有交換器均將繼續進行設定備份，並將備份上傳至 Sophos Central。您可以視需要暫停個別交換器的備份。",
-      "backup-enbaled-switches": "已啟用備份的交換器總數",
+      "backup-enabled-switches": "已啟用備份的交換器總數",
       "last-backup-failures": "上次備份失敗數",
       "last-restore-failures": "上次還原失敗數",
       "backup-disabled-switches": "已停用備份的交換器數量",
@@ -264,7 +267,7 @@
         "model": "機型",
         "tags": "標籤",
         "last-backup-or-restore-status": "上次狀態",
-        "occured-at": "發生時間",
+        "occured-at": "發生於",
         "backups": "備份",
         "actions": "動作",
         "search": "搜尋",
@@ -273,7 +276,10 @@
         "pause": "暫停",
         "cancel": "取消",
         "confirm": "確認",
-        "stop": "停止",
+        "restore": "還原",
+        "latest-sucessful-backup-restore": "還原上次成功備份",
+        "manual-backup": "手動備份",
+        "state": "狀態",
         "backup-state": {
           "Created": "備份已啟動",
           "Failed": "失敗",
@@ -293,11 +299,13 @@
           "backup-taken": "已進行備份",
           "take-backup": "進行備份",
           "confirm-download": "確認下載",
+          "download-backup": "下載備份",
+          "download-last-successful-backup": "下載上次成功備份",
           "download-message": "此動作會將設定備份檔案下載至您的裝置。請注意，此檔案未加密，可能包含敏感設定。",
           "backup-download-success": "備份下載成功",
           "backup-download-failed": "備份下載失敗",
           "confirm-dialog-download-content-head": "如何使用此檔案？",
-          "confirm-dialog-download-content": "您可以在交換器 UI 中本機匯入此檔案，並根據需要還原此檔案。請注意，將此檔案還原到不同型號或不同韌體版本可能會忽略一些不受支援的設定。",
+          "confirm-dialog-download-content": "您可以在交換器 UI 中本機匯入此檔案以還原設定。請注意，將此檔案還原到不同型號或不同韌體版本可能會忽略不受支援的設定。",
           "see-in-action": "觀看實際操作",
           "confirm-delete-message": "您正在刪除備份。此動作將永久刪除該設定備份。",
           "backup-delted": "備份成功刪除",
@@ -305,10 +313,17 @@
           "confirm-delete": "確認刪除",
           "confirm-resume": "確認繼續",
           "confirm-resume-message": "您正在繼續排程的備份。現有備份設定將再次被推送至交換器。",
-          "confirm-stop-message": "您正在停止排程的備份。",
-          "confirm-stop": "確認停止",
-          "backup-enbaled-success-message": "已成功為所有交換器啟用備份。",
-          "backup-enbaled-failure-message": "未能為所有交換器啟用備份。"
+          "confirm-pause-message": "您正在暫停排程的備份。",
+          "confirm-pause": "確認暫停",
+          "backup-enabled-success-message": "已成功為所有交換器啟用備份。",
+          "backup-enabled-failure-message": "未能為所有交換器啟用備份。",
+          "pause-scheduled-backup-success": "成功暫停排程的備份。",
+          "pause-scheduled-backup-error": "未能暫停排程的備份。",
+          "resume-scheduled-backup-success": "成功繼續排程的備份。",
+          "resume-scheduled-backup-error": "未能繼續排程的備份。",
+          "details": "詳細資訊",
+          "taken-with": "採取",
+          "version": "版本"
         }
       },
       "schedule": {
@@ -556,7 +571,9 @@
           "full-sync-failed": "無法將所有設定重新套用至交換器",
           "sync-success": "設定已同步至所選交換機",
           "sync-failed": "無法將站點設定同步至所選交換機",
-          "sync-confirm-dialog": "將佇列的設定同步到所選交換器。您可在工作佇列中監視進度。"
+          "sync-confirm-dialog": "將佇列的設定同步到所選交換器。您可在工作佇列中監視進度。",
+          "backup-info-message": "Sophos Central 可以儲存您的交換器的備份。您可以在 <a href=\"cloud-switch/backup/list\">備份</a>頁面排程並管理它們。",
+          "enable-schedule": "啟用排程"
         },
         "groupInfoText": {
           "what": "什麼是網站？",
@@ -1997,12 +2014,12 @@
       "form": {
         "destMacAddress": "目的地 MAC 位址",
         "srcMacAddress": "來源 MAC 位址",
-        "etherType": "乙太類型",
+        "etherType": "Ethertype",
         "policy-name-required-message": "原則名稱為必填項。",
         "policy-name-exists-message": "原則名稱已存在。",
         "src-mac-incorrect": "無效的 MAC 位址。",
         "dest-mac-incorrect": "無效的 MAC 位址。",
-        "ether-type-incorrect": "乙太類型無效。有效範圍為 0x0600-0xFFFF。",
+        "ether-type-incorrect": "無效 Ethertype。有效範圍為 0x0600-0xFFFF。",
         "match-criteria": "比對條件",
         "dscp": "服務類型",
         "dscp-incorrect": "服務類型無效。有效服務類型為 0-63。",
