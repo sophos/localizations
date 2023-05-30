@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "Sélectionner les {{count}}",
-      "clear-selection": "Effacer la sélection"
+      "clear-selection": "Effacer la sélection",
+      "na": "NA"
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "Activer le mode de réseau maillé",
         "enable-mesh-mode-help-msg": "Vous permet de vous connecter aux points d’accès sans accès à Internet commun.",
         "only-one-mesh-network": {
-          "apx": "Vous pouvez uniquement créer un SSID maillé APX",
-          "ap6": "Vous pouvez uniquement créer un SSID maillé AP6"
-        },
-        "disable-mesh": {
-          "apx": "Pour désactiver le mode maillé, supprimez le SSID maillé APX existant",
-          "ap6": "Pour désactiver le mode maillé, supprimez le SSID maillé AP6 existant"
+          "apx": "Vous pouvez uniquement créer un SSID maillé APX. Pour désactiver le mode maillé, supprimez le SSID maillé APX existant.",
+          "ap6": "Vous pouvez uniquement créer un SSID maillé AP6. Pour désactiver le mode maillé, supprimez le SSID maillé AP6 existant."
         },
         "mesh-root-ap": {
-          "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
-          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud) à Internet via le réseau local (LAN)."
+          "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN). Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique.",
+          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud) à Internet via le réseau local (LAN). Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique."
         },
         "can-not-remove-mesh-from-root": "Supprimez le SSID maillé pour le retirer du point d’accès racine",
-        "stp-packets-warning": "Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique.",
         "port-required-validation-msg": "Port obligatoire.",
         "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
         "port-number-help-msg": "Numéro de port pour le serveur RADIUS.",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "Dupliquer le nom du SSID"
         },
         "bands-error-msgs": {
-          "required": "Bande de fréquence obligatoire."
+          "required": "Bande de fréquence obligatoire.",
+          "band-not-supported": "Un ou plusieurs points d'accès ne prennent pas en charge les bandes suivantes : {{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "L’adresse du serveur RADIUS est requise",
@@ -902,7 +899,10 @@
         "client-isolation": "Empêche la communication directe entre les clients sur la même radio. Cette option est conseillée pour les SSID invités ou les bornes Wi-Fi SSID.",
         "client-isolation-enabled-info": "Isolement du client activé lorsque la borne Wi-Fi est activée.",
         "mac-filter-header": "Filtrage MAC",
-        "mac-filtering-warning": "Le filtrage MAC va également être appliqué à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré.",
+        "mac-filtering-warning": {
+          "apx": "Cette option assure une sécurité minimale. Elle ne protège pas contre l’usurpation de l’adresse MAC.",
+          "ap6": "Le filtrage MAC va également être appliqué à tous les autres réseaux sur les points d’accès sur lesquels ce réseau est configuré. Cette option assure une sécurité minimale. Elle ne protège pas contre l’usurpation de l’adresse MAC."
+        },
         "mac-filter-none": "Aucune",
         "mac-filter-blacklist": "Liste de blocage",
         "scheduled": "Planifié",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "Les adresses MAC bloquées ne pourront pas se connecter à ce SSID.",
         "mac-filter-whitelist": "Liste d’autorisation",
         "mac-filter": "Limite le nombre d’adresses MAC autorisées à se connecter à ce SSID.",
-        "mac-filter-warning": "Remarque : Cette option assure une sécurité minimale. Elle ne protège pas contre l’usurpation de l’adresse MAC.",
         "mac-filter-dynamic-blacklist": "Liste de blocage",
         "mac-filter-dynamic-none": "Aucune",
         "mac-filter-dynamic-whitelist": "Liste d’autorisation",
@@ -1138,6 +1137,7 @@
           "external-ip": "IP externe",
           "model": "Modèle",
           "network-capacity": "Nombre maximal de réseaux",
+          "exceeding-limit-for-band": "Vous dépassez le nombre maximal de réseaux dans les bandes {{ bands }}.",
           "network-with-multiple-hotspot": "Les différents réseaux avec points d’accès ne sont pas pris en charge.",
           "network-with-unsupported-band": "Un réseau ne peut pas être diffusé par ce point d’accès.",
           "network-with-unsupported-syncsecurity": "Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
