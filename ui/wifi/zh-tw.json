@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "選取所有 {{count}}",
-      "clear-selection": "清除選擇"
+      "clear-selection": "清除選擇",
+      "na": "NA"
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "啟用網狀模式",
         "enable-mesh-mode-help-msg": "允許您連接沒有網際網路訪問的 AP。",
         "only-one-mesh-network": {
-          "apx": "您只能建立一個 APX 網狀 SSID",
-          "ap6": "您只能建立一個 AP6 網狀 SSID"
-        },
-        "disable-mesh": {
-          "apx": "若要停用網狀模式，請刪除現有的 APX 網狀 SSID",
-          "ap6": "若要停用網狀模式，請刪除現有的 AP6 網狀 SSID"
+          "apx": "您只能建立一個 APX 網狀 SSID。若要停用網狀模式，請刪除現有的 APX 網狀 SSID。",
+          "ap6": "您只能建立一個 AP6 網狀 SSID。若要停用網狀模式，請刪除現有的 AP6 網狀 SSID。"
         },
         "mesh-root-ap": {
-          "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
-          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點）透過 LAN 連線至網際網路。"
+          "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
+          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點）透過 LAN 連線至網際網路。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。"
         },
         "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
-        "stp-packets-warning": "網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
         "port-number-help-msg": "RADIUS 伺服器的連接埠號碼。",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "複製 SSID 名稱"
         },
         "bands-error-msgs": {
-          "required": "需要頻寬。"
+          "required": "需要頻寬。",
+          "band-not-supported": "有一個或多個存取點不支援以下頻寬：{{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "需要 RADIUS 伺服器位址",
@@ -902,7 +899,10 @@
         "client-isolation": "防止同一廣播上的用戶端之間進行直接通訊。這是為訪客或熱點 SSID 建議的。",
         "client-isolation-enabled-info": "用戶端隔離已啟用，同時啟用熱點。",
         "mac-filter-header": "MAC 篩選",
-        "mac-filtering-warning": "MAC 篩選也將套用至設定此網路之 AP 上的所有其他網路。",
+        "mac-filtering-warning": {
+          "apx": "這僅能提供最低的安全性。它無法防護 MAC 詐騙。",
+          "ap6": "MAC 篩選也將套用至設定此網路之 AP 上的所有其他網路。這僅能提供最低的安全性。它無法防護 MAC 詐騙。"
+        },
         "mac-filter-none": "无",
         "mac-filter-blacklist": "攔截清單",
         "scheduled": "已排程",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "受封鎖的 MAC 地址將無法連線到此 SSID。",
         "mac-filter-whitelist": "允许清單",
         "mac-filter": "限制允許連接到此 SSID 的 MAC 位址。",
-        "mac-filter-warning": "注意：這僅能提供最低的安全性。它無法防護 MAC 詐騙。",
         "mac-filter-dynamic-blacklist": "攔截清單",
         "mac-filter-dynamic-none": "无",
         "mac-filter-dynamic-whitelist": "允许清單",
@@ -1138,6 +1137,7 @@
           "external-ip": "外部 IP",
           "model": "型號",
           "network-capacity": "最大網路數目",
+          "exceeding-limit-for-band": "您已超過 {{ bands }} 頻寬中網路的最大數量。",
           "network-with-multiple-hotspot": "不支援多個網路同時使用熱點",
           "network-with-unsupported-band": "有此存取點無法廣播的網路。",
           "network-with-unsupported-syncsecurity": "非 APX 系列存取點不支援啟用同步安全性的 SSID。",

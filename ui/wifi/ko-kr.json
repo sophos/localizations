@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "{{count}}개 모두 선택",
-      "clear-selection": "선택 해제"
+      "clear-selection": "선택 해제",
+      "na": "해당 없음"
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "메시 모드 사용",
         "enable-mesh-mode-help-msg": "서로 인터넷에 액세스하지 않고 AP를 연결할 수 있습니다.",
         "only-one-mesh-network": {
-          "apx": "APX 메시 SSID는 하나만 만들 수 있습니다.",
-          "ap6": "AP6 메시 SSID는 하나만 만들 수 있습니다."
-        },
-        "disable-mesh": {
-          "apx": "메시 모드를 사용하지 않으려면 기존 APX 메시 SSID를 삭제하십시오.",
-          "ap6": "메시 모드를 사용하지 않으려면 기존 AP6 메시 SSID를 삭제하십시오."
+          "apx": "APX 메시 SSID는 하나만 만들 수 있습니다. 메시 모드를 사용하지 않으려면 기존 APX 메시 SSID를 삭제하십시오.",
+          "ap6": "AP6 메시 SSID는 하나만 만들 수 있습니다. 메시 모드를 사용하지 않으려면 기존 AP6 메시 SSID를 삭제하십시오."
         },
         "mesh-root-ap": {
-          "apx": "APX 메시 SSID에 LAN을 통해 인터넷에 연결된 하나 이상의 액세스 지점이 필요합니다.",
-          "ap6": "AP6 메시 SSID에 LAN을 통해 인터넷에 연결된 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다."
+          "apx": "APX 메시 SSID에 LAN을 통해 인터넷에 연결된 하나 이상의 액세스 지점이 필요합니다. 메시 액세스 지점이 STP 패킷을 전송하므로 IT 규정을 준수하는지 확인하십시오.",
+          "ap6": "AP6 메시 SSID에 LAN을 통해 인터넷에 연결된 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다. 메시 액세스 지점이 STP 패킷을 전송하므로 IT 규정을 준수하는지 확인하십시오."
         },
         "can-not-remove-mesh-from-root": "메시 SSID를 삭제하여 루트 액세스 지점에서 제거하십시오.",
-        "stp-packets-warning": "메시 액세스 지점이 STP 패킷을 전송하므로 IT 규정을 준수하는지 확인하십시오.",
         "port-required-validation-msg": "포트가 필요합니다.",
         "port-range-validate-msg": "포트는 1~65535의 숫자여야 합니다.",
         "port-number-help-msg": "RADIUS 서버용 포트 번호.",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "중복 SSID 이름"
         },
         "bands-error-msgs": {
-          "required": "주파수 대역이 필요합니다."
+          "required": "주파수 대역이 필요합니다.",
+          "band-not-supported": "다음 대역을 지원하지 않는 액세스 지점이 하나 이상 있습니다. {{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "RADIUS 서버 주소가 필요합니다",
@@ -902,7 +899,10 @@
         "client-isolation": "동일한 라디오에서 클라이언트 간의 직접 통신을 금지합니다. 이것은 게스트 또는 핫스팟 SSID에 권장됩니다.",
         "client-isolation-enabled-info": "클라이언트 분리가 활성화되어 있고, 핫스팟도 활성화되어 있습니다.",
         "mac-filter-header": "MAC 필터링",
-        "mac-filtering-warning": "MAC 필터링은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용됩니다.",
+        "mac-filtering-warning": {
+          "apx": "이것은 최소 보안만 제공합니다. MAC 스푸핑에 대해서는 보호하지 않습니다.",
+          "ap6": "MAC 필터링은 이 네트워크가 구성된 AP의 다른 모든 네트워크에도 적용됩니다. 이것은 최소 보안만 제공합니다. MAC 스푸핑에 대해서는 보호하지 않습니다."
+        },
         "mac-filter-none": "없음",
         "mac-filter-blacklist": "차단된 목록",
         "scheduled": "예약됨",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "차단된 MAC 주소는 이 SSID에 연결할 수 없습니다.",
         "mac-filter-whitelist": "허용된 목록",
         "mac-filter": "이 SSID에 연결할 수 있는 MAC 주소를 제한합니다.",
-        "mac-filter-warning": "참고: 이것은 최소 보안만 제공합니다. MAC 스푸핑에 대해서는 보호하지 않습니다.",
         "mac-filter-dynamic-blacklist": "차단된 목록",
         "mac-filter-dynamic-none": "없음",
         "mac-filter-dynamic-whitelist": "허용된 목록",
@@ -1138,6 +1137,7 @@
           "external-ip": "외부 IP",
           "model": "모델",
           "network-capacity": "최대 네트워크 수",
+          "exceeding-limit-for-band": "{{ bands }} 대역의 최대 네트워크 수를 초과합니다.",
           "network-with-multiple-hotspot": "핫스팟의 여러 네트워크가 지원되지 않습니다.",
           "network-with-unsupported-band": "이 액세스 지점에서 브로드캐스팅할 수 없는 네트워크가 있습니다.",
           "network-with-unsupported-syncsecurity": "Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",

@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "すべて選択 {{count}}",
-      "clear-selection": "選択のクリア"
+      "clear-selection": "選択のクリア",
+      "na": "該当なし"
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "メッシュモードを有効にする",
         "enable-mesh-mode-help-msg": "互いにインターネット接続のないアクセスポイントを接続できるようになります。",
         "only-one-mesh-network": {
-          "apx": "APX メッシュ SSID は 1つのみ作成できます",
-          "ap6": "AP6 メッシュ SSID は 1つのみ作成できます"
-        },
-        "disable-mesh": {
-          "apx": "メッシュモードを削除するには、既存の APX メッシュ SSID を削除します",
-          "ap6": "メッシュモードを削除するには、既存の AP6 メッシュ SSID を削除します"
+          "apx": "APX メッシュ SSID は 1つのみ作成できます。メッシュモードを削除するには、既存の APX メッシュ SSID を削除します。",
+          "ap6": "AP6 メッシュ SSID は 1つのみ作成できます。メッシュモードを削除するには、既存の AP6 メッシュ SSID を削除します。"
         },
         "mesh-root-ap": {
-          "apx": "APX メッシュ SSID を使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。",
-          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が、LAN 経由でインターネットに接続している必要があります。"
+          "apx": "APX メッシュ SSID を使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。",
+          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が、LAN 経由でインターネットに接続している必要があります。メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。"
         },
         "can-not-remove-mesh-from-root": "ルート アクセス ポイントから削除するには、メッシュ SSID を削除してください",
-        "stp-packets-warning": "メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。",
         "port-required-validation-msg": "ポートを指定してください。",
         "port-range-validate-msg": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
         "port-number-help-msg": "RADIUS サーバーのポート番号です。",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "重複した SSID 名です"
         },
         "bands-error-msgs": {
-          "required": "周波数帯を指定してください。"
+          "required": "周波数帯を指定してください。",
+          "band-not-supported": "次の帯域をサポートしていないアクセスポイントが 1つ以上あります。 {{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "RADIUS サーバーのアドレスを指定してください",
@@ -902,7 +899,10 @@
         "client-isolation": "同じ無線方式で接続しているクライアント同士が直接通信を行うことを防止します。この設定はゲストやホットスポットの SSID に対して使用することを推奨します。",
         "client-isolation-enabled-info": "ホットスポットが有効化されているため、クライアントの隔離も有効化されています。",
         "mac-filter-header": "MAC フィルタリング",
-        "mac-filtering-warning": "MAC フィルタリングは、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
+        "mac-filtering-warning": {
+          "apx": "この方式では最小限のセキュリティのみが提供されます。MAC アドレスの偽装による接続を防ぐことはできません。",
+          "ap6": "MAC フィルタリングは、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。この方式では最小限のセキュリティのみが提供されます。MAC アドレスの偽装による接続を防ぐことはできません。"
+        },
         "mac-filter-none": "なし",
         "mac-filter-blacklist": "ブロックリスト",
         "scheduled": "スケジュール済み",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "ブロックされた MAC アドレスはこの SSID に接続できません。",
         "mac-filter-whitelist": "許可リスト",
         "mac-filter": "SSID に接続できる MAC アドレスを制限します。",
-        "mac-filter-warning": "注: この方式では最小限のセキュリティのみが提供されます。MAC アドレスの偽装による接続を防ぐことはできません。",
         "mac-filter-dynamic-blacklist": "ブロックリスト",
         "mac-filter-dynamic-none": "なし",
         "mac-filter-dynamic-whitelist": "許可リスト",
@@ -1138,6 +1137,7 @@
           "external-ip": "外部 IP アドレス",
           "model": "機種",
           "network-capacity": "ネットワークの最大数",
+          "exceeding-limit-for-band": "{{ bands }} 帯域のネットワークの最大数を超えています。",
           "network-with-multiple-hotspot": "ホットスポットを有効化したネットワークを複数設定することはできません。",
           "network-with-unsupported-band": "このアクセスポイントでブロードキャストできないネットワークがあります。",
           "network-with-unsupported-syncsecurity": "Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",

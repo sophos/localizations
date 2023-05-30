@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "Seleccionar los {{count}}",
-      "clear-selection": "Borrar selección"
+      "clear-selection": "Borrar selección",
+      "na": "NA"
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "Activar modo en malla",
         "enable-mesh-mode-help-msg": "Le permite conectar los puntos de acceso sin acceso a Internet entre ellos.",
         "only-one-mesh-network": {
-          "apx": "Solo puede crearse un SSID de malla APX",
-          "ap6": "Solo puede crearse un SSID de malla AP6"
-        },
-        "disable-mesh": {
-          "apx": "Para desactivar el modo en malla, elimine el SSID de malla APX existente",
-          "ap6": "Para desactivar el modo en malla, elimine el SSID de malla AP6 existente"
+          "apx": "Solo puede crearse un SSID de malla APX. Para desactivar el modo en malla, elimine el SSID de malla APX existente.",
+          "ap6": "Solo puede crearse un SSID de malla AP6. Para desactivar el modo en malla, elimine el SSID de malla AP6 existente."
         },
         "mesh-root-ap": {
-          "apx": "El SSID de malla APX requiere por lo menos un punto de acceso conectado a Internet vía LAN.",
-          "ap6": "El SSID de malla AP6 requiere por lo menos dos puntos de acceso (1 raíz y 1 nodo) conectados a Internet vía LAN."
+          "apx": "El SSID de malla APX requiere por lo menos un punto de acceso conectado a Internet vía LAN. Los puntos de acceso en malla enviarán paquetes STP; por ello, asegúrese de que esto cumple con sus reglas de TI.",
+          "ap6": "El SSID de malla AP6 requiere por lo menos dos puntos de acceso (1 raíz y 1 nodo) conectados a Internet vía LAN. Los puntos de acceso en malla enviarán paquetes STP; por ello, asegúrese de que esto cumple con sus reglas de TI."
         },
         "can-not-remove-mesh-from-root": "Elimine el SSID de malla para eliminarlo del punto de acceso raíz",
-        "stp-packets-warning": "Los puntos de acceso en malla enviarán paquetes STP; por ello, asegúrese de que esto cumple con sus reglas de TI.",
         "port-required-validation-msg": "Se requiere el puerto.",
         "port-range-validate-msg": "El puerto debe ser un número entre 1 y 65535.",
         "port-number-help-msg": "Número de puerto para el servidor RADIUS.",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "Nombre de SSID duplicado"
         },
         "bands-error-msgs": {
-          "required": "Se requiere la banda de frecuencia."
+          "required": "Se requiere la banda de frecuencia.",
+          "band-not-supported": "Hay uno o más puntos de acceso que no admiten las bandas siguientes: {{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "La dirección del servidor RADIUS es obligatoria",
@@ -897,12 +894,15 @@
         },
         "hidden-label": "SSID oculto",
         "hidden-ssid": "Oculta el SSID para escaneados de red. Los usuarios tienen que especificar el nombre del SSID para conectarse a él.",
-        "hidden-ssid-warning": "Notas: Debe proteger los SSID ocultos de todas formas.",
+        "hidden-ssid-warning": "Nota: Debe proteger los SSID ocultos de todas formas.",
         "client-isolation-label": "Aislamiento de cliente",
         "client-isolation": "Impide la comunicación directa entre clientes en un mismo radio. Se recomienda para los SSID de zonas Wi-Fi o de invitados.",
         "client-isolation-enabled-info": "El aislamiento de cliente está activado porque la zona Wi-Fi está activada.",
         "mac-filter-header": "Filtrado MAC",
-        "mac-filtering-warning": "El filtrado MAC también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red.",
+        "mac-filtering-warning": {
+          "apx": "Esto proporciona una seguridad mínima únicamente. No protege contra suplantaciones de direcciones MAC.",
+          "ap6": "El filtrado MAC también se aplicará a todas las demás redes en los puntos de acceso en los que está configurada esta red. Esto proporciona una seguridad mínima únicamente. No protege contra suplantaciones de direcciones MAC."
+        },
         "mac-filter-none": "Ninguno",
         "mac-filter-blacklist": "Lista de bloqueados",
         "scheduled": "Programado",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "Las direcciones MAC bloqueadas no podrán conectarse a este SSID.",
         "mac-filter-whitelist": "Lista de permitidos",
         "mac-filter": "Restringe las direcciones MAC que pueden conectarse a este SSID.",
-        "mac-filter-warning": "Notas: Esto proporciona una seguridad mínima únicamente. No protege contra suplantaciones de direcciones MAC.",
         "mac-filter-dynamic-blacklist": "Lista de bloqueados",
         "mac-filter-dynamic-none": "Ninguno",
         "mac-filter-dynamic-whitelist": "Lista de permitidos",
@@ -1138,6 +1137,7 @@
           "external-ip": "IP externa",
           "model": "Modelo",
           "network-capacity": "Número máximo de redes",
+          "exceeding-limit-for-band": "Está superando el número máximo de redes en la banda {{ bands }}.",
           "network-with-multiple-hotspot": "No se admiten varias redes con zonas Wi-Fi",
           "network-with-unsupported-band": "Hay una red que no puede ser difundida por este punto de acceso.",
           "network-with-unsupported-syncsecurity": "Los SSID con la Seguridad Sincronizada habilitada no son compatibles con los puntos de acceso distintos de la serie APX.",

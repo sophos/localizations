@@ -79,7 +79,8 @@
         }
       },
       "select-all-with-count": "Alle {{count}} auswählen",
-      "clear-selection": "Auswahl aufheben"
+      "clear-selection": "Auswahl aufheben",
+      "na": "k.A."
     },
     "global": {
       "form": {
@@ -738,19 +739,14 @@
         "enable-mesh-mode": "Mesh-Modus aktivieren",
         "enable-mesh-mode-help-msg": "Ermöglicht es Ihnen, APs ohne Internetverbindung miteinander zu verbinden.",
         "only-one-mesh-network": {
-          "apx": "Sie können nur eine APX-Mesh-SSID erstellen",
-          "ap6": "Sie können nur eine AP6-Mesh-SSID erstellen"
-        },
-        "disable-mesh": {
-          "apx": "Zum Deaktivieren des Mesh-Modus die vorhandene APX-Mesh-SSID löschen",
-          "ap6": "Zum Deaktivieren des Mesh-Modus die vorhandene AP6-Mesh-SSID löschen"
+          "apx": "Sie können nur eine APX-Mesh-SSID erstellen. Zum Deaktivieren des Mesh-Modus die vorhandene APX-Mesh-SSID löschen.",
+          "ap6": "Sie können nur eine AP6-Mesh-SSID erstellen. Zum Deaktivieren des Mesh-Modus die vorhandene AP6-Mesh-SSID löschen."
         },
         "mesh-root-ap": {
-          "apx": "Eine APX-Mesh-SSID setzt voraus, dass mindestens ein Access Point über LAN mit dem Internet verbunden ist.",
-          "ap6": "Eine AP6-Mesh-SSID setzt voraus, dass mindestens zwei Access Points (1 Root-AP und 1 Knoten-AP) über LAN mit dem Internet verbunden sind."
+          "apx": "Eine APX-Mesh-SSID setzt voraus, dass mindestens ein Access Point über LAN mit dem Internet verbunden ist. Mesh-Access-Points senden STP-Pakete. Stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist.",
+          "ap6": "Eine AP6-Mesh-SSID setzt voraus, dass mindestens zwei Access Points (1 Root-AP und 1 Knoten-AP) über LAN mit dem Internet verbunden sind. Mesh-Access-Points senden STP-Pakete. Stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist."
         },
         "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Root Access Point zu entfernen",
-        "stp-packets-warning": "Mesh-Access-Points senden STP-Pakete – stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist.",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
@@ -770,7 +766,8 @@
           "duplicate-ssid": "SSID-Namen duplizieren"
         },
         "bands-error-msgs": {
-          "required": "Das Frequenzband ist erforderlich."
+          "required": "Das Frequenzband ist erforderlich.",
+          "band-not-supported": "Ein oder mehrere Access Points unterstützen nicht diese Frequenzbänder: {{bands}}"
         },
         "radius-server-error-msgs": {
           "required": "RADIUS-Serveradresse ist erforderlich",
@@ -902,7 +899,10 @@
         "client-isolation": "Verhindert die direkte Kommunikation zwischen Clients im selben Funkbereich. Dies wird für Gast- oder Hotspot-SSIDs empfohlen.",
         "client-isolation-enabled-info": "Die Clientisolation ist aktiviert, da der Hotspot aktiviert ist.",
         "mac-filter-header": "MAC-Filterung",
-        "mac-filtering-warning": "MAC-Filter werden auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist.",
+        "mac-filtering-warning": {
+          "apx": "Dies bietet nur geringe Sicherheit. Es besteht kein Schutz vor MAC-Spoofing.",
+          "ap6": "MAC-Filter werden auch auf alle anderen Netzwerke auf den APs angewendet, auf denen dieses Netzwerk konfiguriert ist. Dies bietet nur geringe Sicherheit. Es besteht kein Schutz vor MAC-Spoofing."
+        },
         "mac-filter-none": "Keine",
         "mac-filter-blacklist": "Liste „Blockiert“",
         "scheduled": "Geplant",
@@ -912,7 +912,6 @@
         "blocked-mac-filter": "Blockierte MAC-Adressen können keine Verbindung zu dieser SSID herstellen.",
         "mac-filter-whitelist": "Liste „Erlaubt“",
         "mac-filter": "Hier können Sie festlegen, welche MAC-Adressen sich mit dieser SSID verbinden dürfen.",
-        "mac-filter-warning": "Hinweis: Hier ist die Sicherheit sehr schwach. Es besteht kein Schutz vor MAC-Spoofing.",
         "mac-filter-dynamic-blacklist": "Liste „Blockiert“",
         "mac-filter-dynamic-none": "Ohne",
         "mac-filter-dynamic-whitelist": "Liste „Erlaubt“",
@@ -1138,6 +1137,7 @@
           "external-ip": "Externe IP",
           "model": "Modell",
           "network-capacity": "Maximale Anzahl an Netzwerken",
+          "exceeding-limit-for-band": "Sie überschreiten die maximale Netzwerkanzahl in den Frequenzbändern {{ bands }}.",
           "network-with-multiple-hotspot": "Mehrere Netzwerke mit Hotspots werden nicht unterstützt.",
           "network-with-unsupported-band": "Dieser Access Point kann in einem Netzwerk nicht eingerichtet werden.",
           "network-with-unsupported-syncsecurity": "Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
