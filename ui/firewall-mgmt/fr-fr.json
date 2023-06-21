@@ -39,7 +39,21 @@
     },
     "alerts-configurator": {
         "name": "Firewall Management - Configurateur d’alertes",
-        "breadcrumb-text": "Configurateur d’alertes"
+        "breadcrumb-text": "Configurateur d’alertes",
+        "table": {
+            "reset": "Rétablir les valeurs Sophos par défaut",
+            "header": {
+                "alert": "Alerte",
+                "severity": "Gravité",
+                "occurrences": "Occurrences",
+                "suppression": "Suppression"
+            }
+        },
+        "filter": {
+            "category-label": "Catégorie d’alerte",
+            "firewall-label": "Pare-feu assigné",
+            "selected": "sélectionné(s)"
+        }
     },
     "dynamic-objects": {
       "name": "Firewall Management - Objets dynamiques",
@@ -449,14 +463,14 @@
                 }
               },
               "health-check": {
-                "title": "Contrôle d’intégrité",
+                "title": "Bilan d’intégrité",
                 "protocol": "Protocole",
                 "ping": "Ping",
                 "tcp": "TCP",
                 "probe-target": "Sonder la cible",
                 "ip-address": "Adresse IP",
                 "port": "Port",
-                "health-check-attempts": "Tentatives de contrôle d’intégrité",
+                "health-check-attempts": "Tentatives de bilan d’intégrité",
                 "interval-between-checks": "Intervalle entre vérifications",
                 "response-time-out": "Délai d’attente de réponse",
                 "action": "Action",
@@ -471,7 +485,7 @@
                   "sample-size-for-SLA": "(5-100 échantillons)"
                 },
                 "help": {
-                  "title": "Le contrôle d’intégrité continue à fonctionner si le SLA est activé.",
+                  "title": "Le bilan d’intégrité continue à fonctionner si le SLA est activé.",
                   "probe-target": "Si le premier hôte répond au sondage, le pare-feu ne sonde pas le prochain hôte configuré.",
                   "deactivate-gateway-after": "Considère que la passerelle est inactive lorsque l’hôte cible ne répond pas.",
                   "activate-gateway-after": "Considère que la passerelle est active lorsque l’hôte cible répond.",
@@ -1277,7 +1291,7 @@
         "cancel": "Annuler",
         "confirm": "Confirmer",
         "more-help": "Plus d’aide",
-        "email-error-msgs": "Veuillez saisir une adresse email valide.",
+        "email-error-msgs": "Veuillez saisir une adresse email valide",
         "email-max-length-error-msgs": "Vous pouvez utiliser un maximum de 120 caractères.",
         "transfer-success": "Le transfert est lancé. Les destinataires doivent accepter les pare-feu avant l’expiration de la demande (3 jours).",
         "transfer-error": "Impossible de transférer les pare-feu sélectionnés.",
@@ -1432,6 +1446,51 @@
         "perpetual": "Abonnement",
         "undefined": ""
       }
+    },
+    "rp-sso": {
+      "loader-text-1": "Connexion à l’interface utilisateur de la Gestion des pare-feu",
+      "loader-text-2": "La connexion peut prendre 30 secondes ou plus selon votre connexion Internet.",
+      "state": {
+        "checking-firewall-status": "Vérification de l’état du pare-feu",
+        "authenticating-firewall": "Authentification du pare-feu",
+        "connecting-firewall": "Connexion au pare-feu",
+        "authenticating-session": "Authentification de la session",
+        "connecting-session": "Connexion à la session",
+        "opening-firewall-webadmin": "Ouverture de la console admin Web du pare-feu"
+      }
+    },
+    "api-queue": {
+      "label": "File d’attente API",
+      "title": "Gestion des pare-feu - File d’attente API",
+      "sub-tabs": {
+        "total": "Total des API de pare-feu",
+        "pending": "API en attente",
+        "in-progress": "API en cours",
+        "failed": "API ayant échoué",
+        "success": "API réussies"
+      },
+      "table": {
+        "show-history": "Afficher l’historique",
+        "column": {
+          "firewalls": "Pare-feu",
+          "status": "État",
+          "modified-by": "Modifié par",
+          "entity": "Entité",
+          "sub-entity": "Sous-entité",
+          "time": "Heure"
+        }
+      },
+      "transaction-details": {
+        "header": "Détails de l’API du pare-feu",
+        "firewall": "Pare-feu",
+        "status": "État",
+        "show-more": "Afficher plus",
+        "show-less": "Afficher moins",
+        "event": "Événement"
+      }
+    },
+    "task-queue": {
+      "label": "File d’attente des tâches"
     },
     "global-settings": {
       "breadcrumb-text": "Paramètres et stratégies"

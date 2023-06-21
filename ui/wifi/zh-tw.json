@@ -58,7 +58,7 @@
       "username": "使用者名稱",
       "beta": "Beta 版",
       "copied": "已複製",
-      "copied-to-clipboard": "已複製到剪貼簿！",
+      "copied-to-clipboard": "已複製到剪貼簿。",
       "category": "類別",
       "data-size": {
         "mb": "MB",
@@ -80,7 +80,8 @@
       },
       "select-all-with-count": "選取所有 {{count}}",
       "clear-selection": "清除選擇",
-      "na": "NA"
+      "na": "NA",
+      "copy-to-clipboard": "複製到剪貼簿"
     },
     "global": {
       "form": {
@@ -198,7 +199,7 @@
         "first-seen": "首次出現",
         "last-seen": "上次出現",
         "security-heartbeat": {
-          "security-heartbeat": "Security HeartBeat",
+          "security-heartbeat": "安全活動訊號",
           "health-status-red": "用戶端處於風險中",
           "health-status-green": "受保護",
           "health-status-missing": "丟失安全活動訊號",
@@ -234,6 +235,7 @@
       "not-available-note": "使用情況解析資料僅針對 APX 和 AP 系列提供。不包括 AP6 資料。"
     },
     "diagnostics": {
+      "title": "診斷",
       "events": "事件",
       "packet-capture-tab": "封包擷取",
       "audit-logs": "稽核日誌紀錄",
@@ -242,7 +244,7 @@
       "action": "操作",
       "status": "狀態",
       "name": "存取點名稱",
-      "ip_address": "IP 位址 (IP 位址)",
+      "ip_address": "IP 位址",
       "start-title": "開始",
       "stop-title": "停止",
       "command": {
@@ -312,7 +314,7 @@
       "setting-configuration-save-success-msg": "成功儲存設定。",
       "setting-configuration-save-error-msg": "無法儲存設定",
       "sections": {
-        "login-title": "基礎設定",
+        "login-title": "基本設定",
         "analysis-title": "分析",
         "access-point-detection-title": "惡意存取點偵測",
         "advancedRF-title": "AdvancedRF 管理",
@@ -346,7 +348,7 @@
       },
       "diagnostics-setting": {
         "forward-ap-logs": "轉發存取點日誌紀錄",
-        "forward-ap-message": "如果啟用，您的存取點日誌紀錄將轉寄到 Sophos 技術支援。",
+        "forward-ap-message": "如果啟用，存取點記錄將轉寄到 Sophos 技術支援。",
         "remote-login-title": "遠端登入 Sophos 支援的存取點",
         "remaining-time": "剩餘時間： ",
         "remaining-time-days": "{{duration}} 天",
@@ -393,13 +395,13 @@
     },
     "sites": {
       "site-overview": "地點瀏覽",
-      "neighborhoodNetworks": "鄰近網絡",
+      "neighborhoodNetworks": "鄰近網路",
       "list": {
         "breadcrumb-text": "地點",
         "title": "無線 - 網站",
         "no-sites-defined": "沒有已定義的站點。",
         "delete-dialog-text": "該客戶網站中所有的平面佈置圖將被刪除。確定要刪除您的站點 {{site}}？",
-        "confirm-delete-header": "刪除地點",
+        "confirm-delete-header": "刪除網站",
         "online-_dynamic_": {
           "false": "離線",
           "true": "上線"
@@ -542,7 +544,7 @@
           "status": "狀態",
           "access-points-count": "指派的存取點",
           "mesh": "網狀",
-          "healthStatus": "security heartbeat™",
+          "healthStatus": "Security Heartbeat™",
           "captive-portal": "管制入口網站",
           "errorMessage": "無法刪除 SSID"
         },
@@ -563,10 +565,10 @@
         "encryption-algorithm":"加密演算法",
         "radius-server-ip":"RADIUS 伺服器 IP",
         "radius-port":"RADIUS 連接埠",
-        "frequency-band":"頻寬",
+        "frequency-band":"頻帶",
         "enable-ssid": "啟用 SSID",
-        "sync-sec": "同步安全性",
-        "walled-garden": "圍牆花園",
+        "sync-sec": "同步安全",
+        "walled-garden": "Walled garden",
         "hidden-ssid": "隱藏 SSID",
         "client-isolation": "用戶端隔離",
         "mac-filter": "MAC 篩選",
@@ -577,7 +579,7 @@
         "lan-2-tagging": "LAN2 標記",
         "tagged": "已標記",
         "radius-vlan-assignment": "指派 RADIUS VLAN",
-        "guest-network": "訪客網路",
+        "guest-network": "客體網路",
         "client-address": "用戶端地址",
         "primary-dns": "主要 DNS",
         "secondary-dns": "次要 DNS",
@@ -586,7 +588,7 @@
         "proxy-arp": "代理 ARP",
         "fast-roaming": "快速漫遊",
         "broad-casting": "保持廣播",
-        "band-steering": "頻寬操控",
+        "band-steering": "頻帶操縱",
         "hotspot": "熱點",
         "page-title": "頁面標題",
         "welcome-text": "歡迎文字",
@@ -595,7 +597,9 @@
         "portal-terms": "使用條款",
         "auth-type": "驗證類型",
         "google-client-id": "Google 用戶端 ID",
+        "google-client-secret": "Google 用戶端密碼",
         "facebook-app-id": "Facebook 應用程式 ID",
+        "facebook-app-secret": "Facebook 應用程式密碼",
         "domain-url": "網域/URL",
         "backend-auth-radius-server-ip": "RADIUS 伺服器 IP",
         "backend-auth-radius-port": "連接埠",
@@ -607,6 +611,17 @@
         "assigned-aps": "已指派 AP",
         "none": "無"
       },
+      "section": {
+        "basic-settings": "基本設定",
+        "assign-network": "指派網路",
+        "save-config": "儲存配置",
+        "advanced-settings": "進階設定",
+        "security": "安全性",
+        "client-connection": "用戶端連接",
+        "availability": "網路可用性",
+        "quality": "服務品質",
+        "captive-portal": "管制入口網站"
+      },
       "create": {
         "add-success": "成功儲存 SSID。",
         "help": "說明",
@@ -616,11 +631,11 @@
           "ap6": "我們建議使用帶有 AES 的 WPA3 作為加密模式以及 2.4 和 5 GHz 頻帶。"
         },
         "settings": "您的設定",
-        "basic-setting": "基礎設定",
+        "basic-setting": "基本設定",
         "encryption-algorithm": "加密演算法",
         "radius-server-ip": "RADIUS 伺服器 IP",
         "radius-port": "RADIUS 連接埠",
-        "frequency-band": "頻寬",
+        "frequency-band": "頻帶",
         "assign-ssid": "指派存取點計數",
         "enable-ssid": "啟用 SSID",
         "enable-ssid-help-text": "立即啟用 SSID。",
@@ -645,13 +660,15 @@
         "depend-onap": "根據存取點，可使用 2.4 GHz 和/或 5GHz。",
         "sec": "指定安全設定將幫助您使網路更加安全",
         "sec1": "定義可以連線至哪些用戶端以及允許哪些流量。",
-        "sync-sec": "同步的安全性",
+        "sync-sec": "同步安全",
         "hidden-ssid": "隱藏 SSID",
         "client-isolation": "用戶端隔離",
         "mac-filter": "MAC 篩選",
         "lan": "LAN",
-        "guest-network": "訪客網路",
+        "guest-network": "客體網路",
         "client-address": "用戶端地址",
+        "bridge-mode": "橋接模式",
+        "nat-mode": "NAT 模式",
         "primary-dns": "主要 DNS",
         "secondary-dns": "次要 DNS",
         "network-availablity": "網路可用性",
@@ -659,7 +676,7 @@
         "proxy-arp": "代理 ARP",
         "fast-roaming": "快速漫遊",
         "broad-casting": "保持廣播...",
-        "band-steering": "頻寬操控",
+        "band-steering": "頻帶操縱",
         "hotspot": "熱點",
         "redirect-url": "重新定位 URL",
         "custom-url": "自訂 URL",
@@ -710,7 +727,7 @@
         "secondary-dns-server": "次要 DNS 伺服器",
         "valid-ip": "請輸入有效的 IP",
         "ip-required": "需要 IP 位址",
-        "client-addressing-bridge": "  使用與存取點相同子網路的 DHCP 服務器。所有用戶端流量都被篩選，以便它們只能訪問網際網路。",
+        "client-addressing-bridge": "使用與存取點相同子網路的 DHCP 服務器。所有用戶端流量都被篩選，以便它們只能訪問網際網路。",
         "client-addressing-nat": " 運行存取點上的板載 DHCP 伺服器，為訪客網路用戶端提供本地隔離的 IP。所有用戶端流量都被路由，以便它們只能訪問網際網路。",
         "client-addressing": "用戶端地址",
         "aps-no-band-supported": "該存取點不支援選定的頻寬",
@@ -737,15 +754,17 @@
         "shared-secret-placeholder": "輸入複雜密碼",
         "frequency-band-inline-help-msg": "限制應廣播網路的頻帶。這可能會限制您廣播 SSID 的 AP，因為某些型號只能在特定頻帶上廣播或無法同時在所有頻帶上廣播。",
         "enable-mesh-mode": "啟用網狀模式",
-        "enable-mesh-mode-help-msg": "允許您連接沒有網際網路訪問的 AP。",
+        "enable-mesh-mode-help-msg": "允許您將沒有 LAN 網路存取權限的存取點相互連接。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
         "only-one-mesh-network": {
           "apx": "您只能建立一個 APX 網狀 SSID。若要停用網狀模式，請刪除現有的 APX 網狀 SSID。",
           "ap6": "您只能建立一個 AP6 網狀 SSID。若要停用網狀模式，請刪除現有的 AP6 網狀 SSID。"
         },
         "mesh-root-ap": {
-          "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
-          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點）透過 LAN 連線至網際網路。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。"
+          "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
+          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點存取點）。根存取點必須透過 LAN 介面連線至網路。建立網格後，現有 SSID 將從所有節點存取點中移除。"
         },
+        "node-ap-ssid-remove": "指派網格 SSID 後，現有 SSID 將從存取點中刪除",
+        "roo-ap-ssid-limit": "根存取點最多可以有 5 個 SSID，包括網格 SSID。",
         "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
@@ -754,7 +773,7 @@
         "arp-proxy": "AP 接收網路地址的 ARP 查詢。提高總吞吐量。",
         "quality-fast-roaming": "存取點之間的快速漫遊提供了更好的連接體驗，尤其對於 VoIP。",
         "broadcast-outdated": "如果 AP 在重新開機後無法達到 Sophos Central，則 SSID 繼續廣播。",
-        "band-steering-label": "頻寬操控",
+        "band-steering-label": "頻帶操縱",
         "quality-band-steering": "如果可能，雙頻容量的無線用戶端將被引導至 5 GHz。改善用戶端體驗。",
         "band-steering-warning": "頻寬操控也會被套用至 APs 上所有和此網路有相同設定的網路。",
         "multicast-unicast-warning": "多點傳送到單點傳播的轉換還將套用於設定此網路的 AP 上的所有其他網路。",
@@ -763,7 +782,7 @@
         "ssid-name-error-msgs": {
           "required": "需要 SSID。",
           "maxlength": "SSID 最多不可超過 32 位元組字元。",
-          "duplicate-ssid": "複製 SSID 名稱"
+          "duplicate-ssid": "重複的 SSID 名稱"
         },
         "bands-error-msgs": {
           "required": "需要頻寬。",
@@ -835,7 +854,7 @@
         "select-bands": "選取頻帶"
       },
       "network-editor": {
-        "sync-security-label": "Synchronized Security",
+        "sync-security-label": "同步安全",
         "inline-help-sync-security": "同步安全性是為 Sophos APX Series 存取點提供的獨特功能。我們革命性的 Security Heartbeat™ 允許您的端點、行動保護和存取點交換資訊，從而共同運作，有效抵禦來自網路的安全威脅。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "sync-security-disable-info-captive-portal": "<Sup>&#1645;&#1645;</sup>啟用訪客網路或管制入口網站的 SSID 不支援同步安全性。",
@@ -846,7 +865,7 @@
         "yellow-option-value": "允許所有資料流　(警告)",
         "yellow-option-info": "偵測到一個問題，用戶端可能有風險。這可能是端點上的非使用惡意軟體或可能不需要的應用程式 (PUA)。對於行動裝置，您可以為多項合規性違規定義活動訊號狀態。",
         "red-option-label": "Security Heartbeat 呈紅色",
-        "red-option-value": "圍牆花園",
+        "red-option-value": "Walled garden",
         "red-option-info": "所有網際網路流量都已封鎖，除了以下允許的網域。使用者將看到一個包含警告的網頁。",
         "uem-label": "Sophos Mobile（UEM）",
         "inline-help-uem": "啟用 Windows 10、macOS、iOS 或 Android 裝置的合規性和管理。",
@@ -866,6 +885,7 @@
         "message-max-length": "訊息應至多為 4096 個字元。",
         "portal-config-message": "為了自訂登入頁面徽標，請先儲存 SSID。",
         "co-branding-upload-title": "公司商標",
+        "customization-preview": "自訂預覽",
         "customize-choose-file": "選取您的檔案",
         "file-size": "* 最大檔案大小為 100Kb。",
         "file-size-limit": "* 檔案大小超出限制。",
@@ -904,17 +924,17 @@
           "ap6": "MAC 篩選也將套用至設定此網路之 AP 上的所有其他網路。這僅能提供最低的安全性。它無法防護 MAC 詐騙。"
         },
         "mac-filter-none": "无",
-        "mac-filter-blacklist": "攔截清單",
+        "mac-filter-blacklist": "封鎖清單",
         "scheduled": "已排程",
         "always": "一律",
         "input-mac": "aa:bb:cc:dd:ee:ff",
-        "input-label": "MAC 地址",
+        "input-label": "MAC 位址",
         "blocked-mac-filter": "受封鎖的 MAC 地址將無法連線到此 SSID。",
-        "mac-filter-whitelist": "允许清單",
+        "mac-filter-whitelist": "允許清單",
         "mac-filter": "限制允許連接到此 SSID 的 MAC 位址。",
-        "mac-filter-dynamic-blacklist": "攔截清單",
+        "mac-filter-dynamic-blacklist": "封鎖清單",
         "mac-filter-dynamic-none": "无",
-        "mac-filter-dynamic-whitelist": "允许清單",
+        "mac-filter-dynamic-whitelist": "允許清單",
         "captive-portal": {
           "enable-hotspot": "啟用熱點",
           "incapable-hotspot-label": "由於部份已指派的存取點不允許多個管制入口網站 SSID，因此管制入口網站功能已停用。這些存取點的清單如下： ",
@@ -936,9 +956,9 @@
           "portal-config-message": "為了自訂網頁驗證入口登入頁面，請先儲存 SSID。",
           "authentication-types": "驗證類型",
           "authentication-type-none": "无",
-          "backend-authentication": "後台驗證",
+          "backend-authentication": "後台身份验证",
           "password-schedule": "密碼排程",
-          "social-login": "社交網站帳戶登入",
+          "social-login": "社交登入",
           "google-console-help-text": "您可透過使用組織帳戶登入，從 <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google 開發人員主控台</a>獲取您的 Google 用戶端 ID 和用戶端密碼。",
           "google-console-second-label": "建立新的專案，從「憑證」部分擷取用戶端 ID 和用戶端祕密。",
           "client-id-label": "用戶端 ID",
@@ -950,9 +970,10 @@
           "domain-inline-help": "您可以為 Google 和 Facebook 應用程式設定網域/URL",
           "domain-url": "網域/URL",
           "invalid-domain-url": "請提供有效的網域/URL",
+          "domain-url-note": "注意：將為 Google 和 Facebook 應用程式設定預設網域/ URL。",
           "session-timeout-label": "工作階段逾時",
           "session-timeout-inline-help": "您可將工作階段逾時設定在 1 小時至 24 小時之間。",
-          "relogin-timeout": "重新登入超時",
+          "relogin-timeout": "重新登入逾時",
           "relogin-timeout-inlineHelp": "在使用者首次驗證後 24 小時內禁止使用者登入網路。",
           "voucher": "證件",
           "help-text": {
@@ -1028,12 +1049,14 @@
         "mesh-not-supported": "存取點的韌體版本不支援網狀功能。請升級到最新的韌體版本",
         "max-limit-reached-for-root-ap": "您最多可以為根存取點指派 5 個 SSID，包括網狀 SSID",
         "can-not-assign-mesh-ssid-to-ap": "網狀 SSID 已指派給存取點",
+        "can-not-assign-ssid-to-node-ap": "您不能將 SSID 指派到節點存取點。如果您要指派其他 SSID，請刪除網格 SSID。",
         "walled-garden": {
           "header": "圍牆花園",
           "config-allowed-domains": "您可以向 <a class='link-to-walled-garden'>'圍牆花園'</a> 部分新增一個網域清單。",
           "allowed-domain-input-field": "URL/IP 位址",
           "allowed-dominas-list": "圍牆花園 URL/IP 位址清單",
           "enable-walled-garden": "已啟用圍牆花園",
+          "help-text": "如果啟用了圍牆花園和管制入口網站，則將僅允許指定的 URL/IP 位址。如果啟用了圍牆花園，停用了管制入口網站，則將封鎖指定的 URL/IP 位址。",
           "add-to-list": "新增至清單"
         },
         "connectivity-warning": "此 SSID 已存在，且採用不同的加密模式。選擇此選項可能會導致連線問題"
@@ -1074,7 +1097,7 @@
           "access-point-not-found": "未找到存取點",
           "dataLoadErrorMessage": "無法載入存取點",
           "editHostNameErrorMessage": "無法註冊存取點",
-          "all-sites": "所有站點",
+          "all-sites": "所有網站",
           "select-site": "選取站點",
           "auto-refresh": "自動重新整理",
           "unassigned-sites": "未指派的站點",
@@ -1098,11 +1121,12 @@
         "currenSite": "目前地點",
         "connectedDevice": "連線裝置",
         "tx-rate": "Tx 速率",
-        "cpu-usage": "CPU 使用量",
+        "cpu-usage": "CPU 使用情況",
         "rx-rate": "Rx 速率",
         "mb-unit": "Mbps",
-        "mem-usage": "記憶體使用量",
-        "last-activity": "最近一次活動",
+        "kb-unit": "Kbps",
+        "mem-usage": "記憶體使用情況",
+        "last-activity": "上次活動",
         "daysShort": "d",
         "hoursShort": "◎",
         "millisecondsShort": "ms",
@@ -1123,7 +1147,7 @@
           "offline": "請注意，該存取點已離線！已停用部分選項。",
           "updating-config": "請注意：該存取點正在更新設定。已停用部分選項。",
           "bandChange": "請注意：變更頻寬會重新開啟該存取點。",
-          "reboot-timeout": "從存取點重新啟動沒有回應！請手動重新啟動。",
+          "reboot-timeout": "從存取點重新啟動沒有回應。請手動重新啟動。",
           "location": "位置",
           "mac": "MAC",
           "serial-number": "序號",
@@ -1181,7 +1205,7 @@
           "commentInvalidLength": "註解最長不能超過 {{length}} 字元。",
           "mimo-support": "MU-MIMO 支援",
           "su-mimo-support": "SU-MIMO 支援",
-          "airtimeFairnessTitle": "Airtime Fairness",
+          "airtimeFairnessTitle": "空中傳輸時間公平性",
           "remote-support-uuid": "遠端支援 UUID",
           "copy-to-clipboard": "複製到剪貼簿",
           "airtimeFairnessEnable": "啟用 Airtime Fairness",
@@ -1208,7 +1232,7 @@
           "sophos-central-agent": "Sophos Central 代理",
           "upgrade-automatically": "自動升級",
           "general": "一般設定",
-          "vlan-configuration": "VLAN 設定",
+          "vlan-configuration": "VLAN 配置",
           "management-vlan-id": "管理 VLAN ID",
           "lan-1-tagging": "LAN1 標記",
           "lan-2-tagging": "LAN2 標記",
@@ -1380,7 +1404,7 @@
         "week": "週",
         "weekDay": "平日",
         "time": "時間",
-        "change-title": "韌體升級已排定",
+        "change-title": "韌體升級已排定。",
         "change-message": "韌體升級已排定。",
         "scheduled-failure-message": "未能安排韌體升級。",
         "cancel-title": "韌體升級已取消",
@@ -1411,7 +1435,7 @@
           "monthly": "每月",
           "header-text": "選擇排程",
           "note": "請選取何時升級所選的存取點。",
-          "please-note": "請注意：",
+          "please-note": "请注意：",
           "now-note": "<ul><li><div class='flex'><span class='label label-inline-block bg-success text-success'>{{onlineApCount}}</span><span>已連線 - 準備升級</span></div></li><li class='margin-top-xs'><div class='flex'><span class='label label-inline-block bg-danger text-danger'>{{offlineApCount}}</span><span>連線中斷 - 請連線以升級</span></div></li></ul><div class='flex margin-left-sm'><span>連線中斷的存取點將不會升級。</span></div>",
           "custom-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li></ul>",
           "recurring-note": "<ul><li>所選的排程將接受存取點的當地時間，不受時區的影響。</li><li>升級韌體可能需要重新啟動。</li><li>系統將升級至最新可用版本。</li></ul>",
@@ -1421,7 +1445,7 @@
           "cancel": {
             "confirm-header": "取消排程",
             "confirm-msg": "確定要取消排定的升級嗎？取消後，它將設定為預設的定期排程。",
-            "accept": "是，請取消",
+            "accept": "是的，取消",
             "reject": "否，不要取消"
           },
           "upgrade-now": {
@@ -1474,7 +1498,7 @@
               "date": "存取點的時間為 {{ schedule }} 時，升級將開始",
               "daily": "每日存取點的時間為 {{ timeOfDay }} 時，升級將開始",
               "weekly": "每 {{ weekDay }} 存取點的時間為 {{ timeOfDay }} 時，升級將開始",
-              "monthly": "存取點的時間為 {{ timeOfDay }} 時，升級將於 {{ occurrenceInMonth }} 開始"
+              "monthly": "升級將於 {{ occurrenceInMonth }} 存取點的時間 {{ timeOfDay }} 開始"
             }
           },
           "updating": {
@@ -1572,6 +1596,45 @@
           "upgrade-error": "無法套用韌體。",
           "unknown-error": "出現未知錯誤。"
         }
+      },
+      "account": {
+        "user-name": {
+          "label": "使用者名稱",
+          "error-msg": {
+            "required": "需要使用者名稱",
+            "minlength": "使用者名稱不得少於 4 個字元",
+            "maxlength": "使用者名稱不得超過 16 個字元"
+          }
+        },
+        "password": {
+          "label": "密碼",
+          "rule": {
+            "label": "密碼必須包含：",
+            "lowercase-character": "至少一個小寫字母",
+            "uppercase-character": "至少一個大寫字母",
+            "numeric-character": "至少一個數字字元",
+            "special-character": "至少一個特殊字元 (-+@!%*#?=)",
+            "length": "至少 10 個字元"
+          },
+          "error-msg": {
+            "required": "需要密碼",
+            "pattern": "密碼必須至少包含一個小寫字元、一個大寫字元、一個數字字元和一個特殊字元",
+            "maxlength": "密碼不得超過 32 個字元",
+            "minlength": "密碼不得少於 10 個字元"
+          }
+        },
+        "confirm-password": {
+          "label": "確認密碼",
+          "error-msg": {
+            "required": "必須確認密碼",
+            "password-match": "密碼和確認密碼不相符"
+          }
+        },
+        "reset-account": "重設帳戶",
+        "reset":"重設",
+        "cancel": "取消",
+        "reset-success": "帳戶重設成功",
+        "reset-error": "處理請求時出現意外錯誤"
       }
     }
   },
@@ -1602,7 +1665,7 @@
       "unknown.constraint.violation": "未知的約束違反",
       "serial.invalid": "序號無效",
       "exception.unexpected": "處理請求時出現意外錯誤",
-      "exception.AccessDeniedException": "拒絕存取",
+      "exception.AccessDeniedException": "存取遭拒。",
       "field.value.invalid": "無效組態",
       "encoding.invalid": "偵測到無效的編碼",
       "exception.io": "伺服器出現 I/O 異常",

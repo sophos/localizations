@@ -52,7 +52,7 @@
       "show": "表示",
       "hide": "非表示",
       "details": "詳細",
-      "no-data": "データはありません",
+      "no-data": "データなし",
       "no-records": "レコードはありません",
       "status": "状態",
       "username": "ユーザー名",
@@ -80,7 +80,8 @@
       },
       "select-all-with-count": "すべて選択 {{count}}",
       "clear-selection": "選択のクリア",
-      "na": "該当なし"
+      "na": "該当なし",
+      "copy-to-clipboard": "クリップボードにコピー"
     },
     "global": {
       "form": {
@@ -146,7 +147,7 @@
       "current-access-point": "現在のアクセスポイント",
       "current-site": "現在のサイト",
       "current-network": "現在のネットワーク",
-      "signal-quality": "信号強度",
+      "signal-quality": "シグナル強度",
       "band": "帯域",
       "host-name": "ホスト名",
       "signal-quality-header": "信号強度 (単位: dBm)",
@@ -158,7 +159,7 @@
       "end-not-set": "終了時刻が指定されていません",
       "time-not-set": "時刻が指定されていません",
       "signal-strength": {
-        "signal-strength": "信号強度",
+        "signal-strength": "信号の強度",
         "signal-strength-blue": "0 ～ (-50dBm)",
         "signal-strength-green": "(-50dBm) ～ (-60dBm)",
         "signal-strength-yellow": "(-60dBm) ～ (-70dBm)",
@@ -196,9 +197,9 @@
         "band": "帯域",
         "connection-speed": "接続速度",
         "first-seen": "初回表示",
-        "last-seen": "最終表示",
+        "last-seen": "前回の検出日時",
         "security-heartbeat": {
-          "security-heartbeat": "セキュリティハードビート",
+          "security-heartbeat": "セキュリティハートビート",
           "health-status-red": "クライアントにリスクあり",
           "health-status-green": "保護済み",
           "health-status-missing": "セキュリティハートビートの欠落",
@@ -234,6 +235,7 @@
       "not-available-note": "使用状況データは、APX および AP シリーズのみで利用できます。AP6 データは除外されます。"
     },
     "diagnostics": {
+      "title": "診断",
       "events": "イベント",
       "packet-capture-tab": "パケットキャプチャ",
       "audit-logs": "監査ログ",
@@ -248,7 +250,7 @@
       "command": {
         "QUEUED": "開始",
         "SENT": "開始",
-        "INPROGRESS": "進行中",
+        "INPROGRESS": "処理中",
         "TIMEOUT": "失敗",
         "SUCCESS": "完了",
         "DONE": "完了",
@@ -290,7 +292,7 @@
         "title": "ワイヤレス - 診断"
       },
       "date": "日付",
-      "no-data": "データはありません",
+      "no-data": "データなし",
       "modified-by": "更新者",
       "description": "説明",
       "configuration-changed": "設定が変更されました",
@@ -342,7 +344,7 @@
       },
       "rogue-ap-detection-settings": {
         "rogue-ap-detection": "不正アクセスポイントを検出・レポートする",
-        "display-info-prefix": "不正アクセスポイントの一覧は次に表示されます: "
+        "display-info-prefix": "不正アクセスポイントの一覧はサイト上に表示されます "
       },
       "diagnostics-setting": {
         "forward-ap-logs": "アクセスポイントのログを転送する",
@@ -369,7 +371,7 @@
           "version": "バージョン",
           "release-date": "リリース日",
           "installed-at": "インストール日",
-          "update-now": "更新バージョン: {{ version }}",
+          "update-now": "更新バージョン {{ version }}",
           "schedule-firmware-update": "ファームウェア更新のスケジュール設定",
           "frequency": "頻度",
           "DAILY": "毎日",
@@ -432,7 +434,7 @@
       "network-list": {
         "filter-placeholder": "フィルタオプションの選択",
         "filter-all-label": "すべてのネットワークを表示",
-        "classification": "分類の選択",
+        "classification": "分類を選択してください",
         "edit-classification-prefix-label": "次のようにマーク:",
         "filter-options": {
           "rogue": "不正",
@@ -507,7 +509,7 @@
           "floorplan-setup": {
             "supported-note": "APX および AP シリーズのみに対応しています。",
             "question": "構内図の設定",
-            "text": "まずは画像をアップロードしてください。有効な形式: PDF、PNG、JPEG、BMP、GIF、または WBMP。ファイルサイズの上限: 1MB",
+            "text": "まずは画像をアップロードしてください。許容される形式: PDF、PNG、JPEG、BMP、GIF、または WBMP。ファイルサイズの上限: 1MB",
             "GDPR-text": "GDPR に遵守するために、サイト/構内図に個人情報が含まれていないことを確認してください。",
             "dragtext": "指定された枠内にファイルをドラッグしてください。または次の操作を実行してください。",
             "upload-button": "アップロード",
@@ -563,7 +565,7 @@
         "encryption-algorithm":"暗号化アルゴリズム",
         "radius-server-ip":"RADIUS サーバー IP",
         "radius-port":"RADIUS ポート",
-        "frequency-band":"周波数帯",
+        "frequency-band":"周波数帯域",
         "enable-ssid": "SSID を有効にする",
         "sync-sec": "Synchronized Security",
         "walled-garden": "ウォールドガーデン",
@@ -586,26 +588,39 @@
         "proxy-arp": "プロキシ ARP",
         "fast-roaming": "高速ローミング",
         "broad-casting": "ブロードキャストを継続する",
-        "band-steering": "バンドステアリング",
+        "band-steering": "帯域幅の選択",
         "hotspot": "ホットスポット",
-        "page-title": "ページのタイトル",
+        "page-title": "ページタイトル",
         "welcome-text": "開始テキスト",
         "redirect-url": "リダイレクト URL",
         "custom-url": "カスタム URL",
         "portal-terms": "利用規約",
         "auth-type": "認証の種類",
         "google-client-id": "Google のクライアント ID",
+        "google-client-secret": "Google のクライアントシークレット",
         "facebook-app-id": "Facebook のアプリ ID",
+        "facebook-app-secret": "Facebook のアプリシークレット",
         "domain-url": "ドメイン/URL",
         "backend-auth-radius-server-ip": "RADIUS サーバー IP",
         "backend-auth-radius-port": "ポート",
-        "password-shedule": "パスワードの更新間隔",
+        "password-shedule": "パスワードの定期更新",
         "time-of-day": "時間帯",
         "notify-all-admin": "すべての管理者に通知する",
         "mesh": "メッシュ",
         "passphrase": "パスフレーズ",
         "assigned-aps": "割り当てられたアクセスポイント",
         "none": "なし"
+      },
+      "section": {
+        "basic-settings": "基本設定",
+        "assign-network": "ネットワークの割り当て",
+        "save-config": "設定の保存",
+        "advanced-settings": "詳細設定",
+        "security": "セキュリティ",
+        "client-connection": "クライアント接続",
+        "availability": "ネットワークの利用範囲",
+        "quality": "サービス品質",
+        "captive-portal": "キャプティブポータル"
       },
       "create": {
         "add-success": "SSID が正常に保存されました。",
@@ -615,12 +630,12 @@
           "apx": "暗号化モードは「WPA2」、暗号化アルゴリズムは「AES」、周波数帯は「2.4GHz および 5GHz」を使用することを推奨します。",
           "ap6": "暗号化モードは「WPA3」、暗号化アルゴリズムは「AES」、周波数帯は「2.4GHz および 5GHz」を使用することを推奨します。"
         },
-        "settings": "設定内容",
+        "settings": "設定",
         "basic-setting": "基本設定",
         "encryption-algorithm": "暗号化アルゴリズム",
         "radius-server-ip": "RADIUS サーバー IP",
         "radius-port": "RADIUS ポート",
-        "frequency-band": "周波数帯",
+        "frequency-band": "周波数帯域",
         "assign-ssid": "割り当てられているアクセスポイント数",
         "enable-ssid": "SSID を有効にする",
         "enable-ssid-help-text": "SSID をただちに有効にします。",
@@ -652,6 +667,8 @@
         "lan": "LAN",
         "guest-network": "ゲストネットワーク",
         "client-address": "クライアントアドレス指定",
+        "bridge-mode": "ブリッジモード",
+        "nat-mode": "NAT モード",
         "primary-dns": "プライマリ DNS",
         "secondary-dns": "セカンダリ DNS",
         "network-availablity": "ネットワークの利用範囲",
@@ -659,11 +676,11 @@
         "proxy-arp": "プロキシ ARP",
         "fast-roaming": "高速ローミング",
         "broad-casting": "ブロードキャストを継続する...",
-        "band-steering": "バンドステアリング",
+        "band-steering": "帯域幅の選択",
         "hotspot": "ホットスポット",
         "redirect-url": "リダイレクト URL",
         "custom-url": "カスタム URL",
-        "page-title": "ページのタイトル",
+        "page-title": "ページタイトル",
         "welcome-text": "開始テキスト",
         "portal-terms": "利用規約",
         "auth-type": "認証の種類",
@@ -671,7 +688,7 @@
         "facebook-app-id": "Facebook のアプリ ID",
         "radius-server": "RADIUS サーバー IP",
         "port": "ポート",
-        "password-shedule": "パスワードの更新間隔",
+        "password-shedule": "パスワードの定期更新",
         "time-of-day": "時間帯",
         "notify-all-admin": "すべての管理者に通知する",
         "mesh": "メッシュ",
@@ -710,7 +727,7 @@
         "secondary-dns-server": "セカンダリ DNS サーバー",
         "valid-ip": "有効な IP アドレスを入力してください",
         "ip-required": "IP アドレスが必要です",
-        "client-addressing-bridge": "  アクセスポイントと同一サブネット上の DHCP サーバーを使用します。すべてのクライアントのトラフィックをフィルタリングし、アクセスをインターネットのみに限定します。",
+        "client-addressing-bridge": "アクセスポイントと同一サブネット上の DHCP サーバーを使用します。すべてのクライアントのトラフィックをフィルタリングし、アクセスをインターネットのみに限定します。",
         "client-addressing-nat": " アクセスポイント上でオンボードの DHCP サーバーを起動し、ローカルの分離された IP アドレスをゲスト用ネットワークのクライアントに提供します。すべてのクライアントのトラフィックをルーティングし、アクセスをインターネットのみに限定します。",
         "client-addressing": "クライアントアドレス指定",
         "aps-no-band-supported": "このアクセスポイントは選択した帯域に対応していません。",
@@ -737,15 +754,17 @@
         "shared-secret-placeholder": "パスフレーズを入力してください",
         "frequency-band-inline-help-msg": "ネットワークがブロードキャストされる周波数帯を制限します。アクセスポイントの中には、特定の周波数帯のみブロードキャストが可能な機種や、同時にすべての周波数帯をブロードキャストできない機種もあるため、この設定により、SSID をブロードキャストするアクセスポイントが制限される場合があります。",
         "enable-mesh-mode": "メッシュモードを有効にする",
-        "enable-mesh-mode-help-msg": "互いにインターネット接続のないアクセスポイントを接続できるようになります。",
+        "enable-mesh-mode-help-msg": "LAN ネットワークアクセスのないアクセスポイントを互いに接続できるようになります。メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。",
         "only-one-mesh-network": {
           "apx": "APX メッシュ SSID は 1つのみ作成できます。メッシュモードを削除するには、既存の APX メッシュ SSID を削除します。",
           "ap6": "AP6 メッシュ SSID は 1つのみ作成できます。メッシュモードを削除するには、既存の AP6 メッシュ SSID を削除します。"
         },
         "mesh-root-ap": {
-          "apx": "APX メッシュ SSID を使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。",
-          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が、LAN 経由でインターネットに接続している必要があります。メッシュ アクセス ポイントは、STP パケットを送信するので、これが社内の IT 管理規定に反しないことを確認してください。"
+          "apx": "APX メッシュ SSID を使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。",
+          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が必要です。ルートは LAN インターフェイスを介してネットワークに接続する必要があります。既存の SSID は、メッシュの作成後にすべてのノードのアクセスポイントから削除されます。"
         },
+        "node-ap-ssid-remove": "既存の SSID は、メッシュ SSID を割り当てた後アクセスポイントから削除されます",
+        "roo-ap-ssid-limit": "ルート アクセス ポイントは、メッシュ SSID を含めて最大 5つの SSID を持つことができます。",
         "can-not-remove-mesh-from-root": "ルート アクセス ポイントから削除するには、メッシュ SSID を削除してください",
         "port-required-validation-msg": "ポートを指定してください。",
         "port-range-validate-msg": "ポート番号は、1 から 65535 の範囲で指定する必要があります。",
@@ -754,7 +773,7 @@
         "arp-proxy": "ネットワークアドレスへの ARP 要求にアクセスポイントが応答します。全体のスループットが向上します。",
         "quality-fast-roaming": "アクセスポイントのローミングが高速だと、特に VoIP の接続がスムーズになります。",
         "broadcast-outdated": "アクセスポイントを再起動した後、Sophos Central に接続できない場合でも、SSID がブロードキャストを行い続けるようにします。",
-        "band-steering-label": "バンドステアリング",
+        "band-steering-label": "帯域幅の選択",
         "quality-band-steering": "デュアルバンド対応ワイヤレスクライアントは、可能な場合、5GHz 帯に誘導されます。クライアント側のパフォーマンスが向上します。",
         "band-steering-warning": "バンドステアリングは、このネットワークが設定されているアクセスポイント上の他のすべてのネットワークにも適用されます。",
         "multicast-unicast-warning": "マルチキャストからユニキャストへの変換は、このネットワークに登録されたアクセスポイントに設定されている他のすべてのネットワークにも適用されます。",
@@ -763,7 +782,7 @@
         "ssid-name-error-msgs": {
           "required": "SSID を指定してください。",
           "maxlength": "SSID は 32バイト以下の文字列を入力してください",
-          "duplicate-ssid": "重複した SSID 名です"
+          "duplicate-ssid": "重複した SSID 名"
         },
         "bands-error-msgs": {
           "required": "周波数帯を指定してください。",
@@ -857,7 +876,7 @@
         "restrict-ssid": "この SSID を、この Sophos Central アカウントで管理されるデバイスに制限します。このオプションは、UEM とエンドポイントの両方を実行しているデバイスが、この Sophos Central アカウントで管理されている場合に使用できます。",
         "landing-page-title": "トップページ",
         "restric-ssid-checkbox-label": "SSID を管理対象デバイスに制限する",
-        "page-title-label": "ページのタイトル",
+        "page-title-label": "ページタイトル",
         "page-title-placeholder": "サービス利用規約",
         "page-title-required": "ページタイトルが必要です。",
         "page-title-max-length": "ページのタイトルは最大 128文字まで入力できます。",
@@ -866,6 +885,7 @@
         "message-max-length": "メッセージは最大 4096文字まで入力できます。",
         "portal-config-message": "トップページのロゴをカスタマイズするには、まず SSID を保存してください。",
         "co-branding-upload-title": "会社のロゴ",
+        "customization-preview": "カスタマイズのプレビュー",
         "customize-choose-file": "ファイルの選択",
         "file-size": "* ファイルサイズの上限は 100Kb です。",
         "file-size-limit": "* ファイルのサイズが上限を超えています。",
@@ -924,7 +944,7 @@
           "default-logo": "デフォルト",
           "customize-logo": "カスタム",
           "landing-page-title": "トップページ",
-          "page-title-label": "ページのタイトル",
+          "page-title-label": "ページタイトル",
           "page-title-placeholder": "サービス利用規約",
           "page-title-required": "ページタイトルが必要です。",
           "page-title-max-length": "ページのタイトルは最大 128文字まで入力できます。",
@@ -934,11 +954,11 @@
           "portal-terms-label": "サービス利用規約",
           "portal-terms-max-length": "サービス利用規約は最大 102400文字まで入力できます。",
           "portal-config-message": "キャプティブポータルのトップページをカスタマイズするには、まず SSID を保存してください。",
-          "authentication-types": "認証の種類",
+          "authentication-types": "認証タイプ",
           "authentication-type-none": "なし",
           "backend-authentication": "バックエンド認証",
           "password-schedule": "パスワードの定期更新",
-          "social-login": "ソーシャルネットワークのアカウントでログイン",
+          "social-login": "ソーシャルログイン",
           "google-console-help-text": "Google のクライアント ID とクライアントシークレットは、組織のアカウントで <a href={{gooleDeveloperConsoleSite}} target='_blank'>Google Developer Console</a> にログインして取得できます。",
           "google-console-second-label": "「新しいプロジェクト」を作成して、「認証情報」セクションで「クライアント ID」および「クライアントシークレット」を取得します。",
           "client-id-label": "クライアント ID",
@@ -950,6 +970,7 @@
           "domain-inline-help": "Google や Facebook アプリケーションのドメイン/URL を設定できます",
           "domain-url": "ドメイン/URL",
           "invalid-domain-url": "有効なドメイン/URL を入力してください",
+          "domain-url-note": "注: Google および Facebook アプリケーションには、デフォルトのドメイン/URL が設定されます。",
           "session-timeout-label": "セッションタイムアウト",
           "session-timeout-inline-help": "セッションタイムアウトは、1時間～24時間の範囲で指定できます。",
           "relogin-timeout": "再ログインのタイムアウト",
@@ -1028,12 +1049,14 @@
         "mesh-not-supported": "アクセスポイントのファームウェアバージョンは、メッシュ機能をサポートしていません。最新のファームウェアバージョンにアップグレードしてください",
         "max-limit-reached-for-root-ap": "ルートアクセスポイントには、メッシュ SSID を含む最大数の 5つの SSID を割り当てることができます",
         "can-not-assign-mesh-ssid-to-ap": "メッシュ SSID はすでにアクセスポイントに割り当てられています",
+        "can-not-assign-ssid-to-node-ap": "SSID はノード アクセス ポイントに割り当てることができません。追加の SSID を割り当てる場合は、メッシュ SSID を削除してください。",
         "walled-garden": {
           "header": "ウォールドガーデン",
           "config-allowed-domains": "ドメインリストを<a class='link-to-walled-garden'>「ウォールドガーデン」</a>セクションに追加できます。",
           "allowed-domain-input-field": "URL/IP アドレス",
           "allowed-dominas-list": "ウォールドガーデンの URL/IP アドレスのリスト",
           "enable-walled-garden": "有効化されているウォールドガーデン",
+          "help-text": "ウォールドガーデンとキャプティブポータルが有効になっている場合は、指定された URL/IP アドレスのみが許可されます。ウォールドガーデンが有効で、キャプティブポータルが無効になっている場合、指定された URL/IP アドレスはブロックされます。",
           "add-to-list": "リストに追加"
         },
         "connectivity-warning": "この SSID は、別の暗号化モードで既に存在します。このオプションを選択すると、接続の問題が発生する可能性があります"
@@ -1101,8 +1124,9 @@
         "cpu-usage": "CPU 使用率",
         "rx-rate": "RX レート",
         "mb-unit": "Mbps",
+        "kb-unit": "Kbps",
         "mem-usage": "メモリ使用率",
-        "last-activity": "前回同期",
+        "last-activity": "前回のアクティビティ",
         "daysShort": "日",
         "hoursShort": "時",
         "millisecondsShort": "ミリ秒",
@@ -1123,7 +1147,7 @@
           "offline": "このアクセスポイントはオフラインであることに注意してください！一部のオプションは無効化されています。",
           "updating-config": "このアクセスポイントは設定をアップデートしています。一部のオプションは無効化されています。",
           "bandChange": "帯域を変更すると、アクセスポイントは再起動します。",
-          "reboot-timeout": "再起動後もアクセスポイントから応答がありません！手動で再起動してください。",
+          "reboot-timeout": "アクセスポイントから再起動の応答がありません。手動で再起動してください。",
           "location": "場所",
           "mac": "MAC",
           "serial-number": "シリアル番号",
@@ -1155,7 +1179,7 @@
           "apRebootErrorMessage": "アクセスポイントの再起動を開始できませんでした。",
           "antenna-modal-header": "管理者への重要なお知らせ",
           "antenna-modal-body": "使用中のアンテナの設定を選択していることを確認してください。設定に誤りがあると、アクセスポイントが規制の範囲外で動作する可能性があります。",
-          "rebootApDialogHeader": "このアクセスポイント (シリアル番号 {{ sn }}) を再起動してもよいですか？",
+          "rebootApDialogHeader": "シリアル番号 {{ sn }} で、このアクセスポイントを再起動してもよいですか？",
           "update-firmware": "ファームウェアの更新が可能です",
           "rebootbutton": "アクセスポイントの再起動",
           "radio": "無線方式",
@@ -1226,7 +1250,7 @@
         "totalTasks": "タスク総数",
         "created": "作成",
         "pending": "保留中",
-        "in-progress": "進行中",
+        "in-progress": "処理中",
         "failed": "失敗",
         "success": "成功",
         "table": {
@@ -1240,7 +1264,7 @@
         "status": {
           "created": "作成",
           "pending": "保留中",
-          "inProgress": "進行中",
+          "inProgress": "処理中",
           "failed": "失敗",
           "success": "成功"
         },
@@ -1392,11 +1416,11 @@
             "name": "名前",
             "serial-number": "シリアル番号",
             "version": "現在のバージョン",
-            "to-version": "次のバージョンへ",
+            "to-version": "アップデートバージョン:",
             "chosen-schedule": "現在のスケジュール"
           },
           "selected-text": "選択数: {{selected}}",
-          "modified-text": "選択数: {{selected}} - 変更数: {{modified}}",
+          "modified-text": "{{selected}} 選択数 - {{modified}} 変更数",
           "modified": "既存のスケジュール {{ version }} | {{ schedule }} が変更されました。",
           "new-schedule": "新しいスケジュール",
           "cancel-warning": "即時アップグレードのリクエストはキャンセルできません。新しいスケジュールは、既存のスケジュールの完了後に追加できます。"
@@ -1421,8 +1445,8 @@
           "cancel": {
             "confirm-header": "スケジュールのキャンセル",
             "confirm-msg": "スケジュール設定されたアップグレードをキャンセルしてもよいですか? キャンセル後は、デフォルトの定期的なスケジュールに設定されます。",
-            "accept": "はい、キャンセルする",
-            "reject": "いいえ、キャンセルしない"
+            "accept": "はい、キャンセルします",
+            "reject": "いいえ、キャンセルしません"
           },
           "upgrade-now": {
             "confirm-header": "今すぐアップグレード",
@@ -1474,7 +1498,7 @@
               "date": "アップグレードは、アクセスポイントの日時が {{ schedule }} になったら実行されます",
               "daily": "アップグレードは、毎日、アクセスポイントの時刻が {{ timeOfDay }} になったら実行されます",
               "weekly": "アップグレードは、毎{{ weekDay }}、アクセスポイントの時刻が {{ timeOfDay }} になったら実行されます",
-              "monthly": "アップグレードは、アクセスポイントの日時が、{{ occurrenceInMonth }} {{ timeOfDay }} になったら実行されます"
+              "monthly": "アップグレードは、{{ occurrenceInMonth }} にアクセスポイントの日時が、{{ timeOfDay }} になったら実行されます"
             }
           },
           "updating": {
@@ -1572,6 +1596,45 @@
           "upgrade-error": "ファームウェアの適用に失敗しました。",
           "unknown-error": "不明なエラーが発生しました。"
         }
+      },
+      "account": {
+        "user-name": {
+          "label": "ユーザー名",
+          "error-msg": {
+            "required": "ユーザー名が必要です",
+            "minlength": "ユーザー名は 4文字以上で入力してください",
+            "maxlength": "ユーザー名は 16文字以内で入力してください"
+          }
+        },
+        "password": {
+          "label": "パスワード",
+          "rule": {
+            "label": "パスワードの条件は以下のとおりです。",
+            "lowercase-character": "小文字を含む",
+            "uppercase-character": "大文字を含む",
+            "numeric-character": "少なくとも数字を 1つ含む",
+            "special-character": "少なくとも特殊文字 (-+@!%*#?=) 1つ含む",
+            "length": "10文字以上を含む"
+          },
+          "error-msg": {
+            "required": "パスワードを指定してください",
+            "pattern": "パスワードには、少なくとも 1つの小文字、1つの大文字、1つの数字、および 1つの特殊文字を含める必要があります",
+            "maxlength": "パスワードは 32文字以内で入力してください",
+            "minlength": "パスワードは 10文字以上で入力してください"
+          }
+        },
+        "confirm-password": {
+          "label": "確認パスワード",
+          "error-msg": {
+            "required": "確認パスワードが必要です。",
+            "password-match": "パスワードと確認パスワードが一致しません"
+          }
+        },
+        "reset-account": "アカウントのリセット",
+        "reset":"リセット",
+        "cancel": "キャンセル",
+        "reset-success": "アカウントが正常にリセットされました",
+        "reset-error": "リクエストの処理中に、予期しないエラーが発生しました"
       }
     }
   },
