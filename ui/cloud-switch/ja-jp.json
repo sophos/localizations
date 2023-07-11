@@ -33,6 +33,8 @@
       "system": "システム",
       "lag": "LAG",
       "last-updated": "データの更新: {{ time }}",
+      "on": "オン",
+      "off": "オフ",
       "link-speed": {
         "10mh": "10M/半",
         "10m_h": "10M/半",
@@ -939,6 +941,60 @@
       "disabled": "無効"
     },
     "vlan": {
+      "tab-headers": {
+        "all-vlan": "VLAN",
+        "gvrp": "GVRP",
+        "voice-vlan": "音声 VLAN",
+        "ingress-filtering": "入力フィルタリング"
+      },
+      "gvrp": {
+        "status": {
+          "text": "GVRP",
+          "not-set": "未設定",
+          "turn-on": "オンにする",
+          "turn-off": "オフにする"
+        },
+        "table-headers":{
+          "port": "ポート",
+          "status": "状態",
+          "restricted-vlan": "制限対象の VLAN",
+          "join-time": "参加時間 (ミリ秒)",
+          "leave-time": "退去時間 (ミリ秒)",
+          "leave-all-time": "完全退去時間 (ミリ秒)",
+          "config-source": "設定のソース"
+        },
+        "tooltip": {
+          "join-time": "10 ～ 4999000ミリ秒の値を指定してください。",
+          "leave-time": "10 ～ 9999000ミリ秒の値を指定してください。完全退去時間 > 退去時間 > 2 * 参加時間",
+          "leave-all-time": "10 ～ 10000000ミリ秒の値を指定してください。完全退去時間 > 退去時間 > 2 * 参加時間"
+        },
+        "messages": {
+          "save-dialog-title": "保存の確認",
+          "site-save-setting-text": "{{ count }}個のスイッチに、この GVRP 設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-save-setting-text": "スイッチにこの GVRP 設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "update-setting-success": "GVRP 設定が更新されました。",
+          "update-setting-error": "GVRP の設定を更新できません。",
+          "loading-error": "GVRP 設定を読み込めません。"
+        }
+      },
+      "ingress-filter": {
+        "not-set": "未設定",
+        "on": "オン",
+        "off": "オフ",
+        "accept-type": {
+          "not-set": "未設定",
+          "all": "すべて",
+          "tagged": "タグあり",
+          "untagged": "タグなし"
+        },
+        "table-headers":{
+          "port": "ポート",
+          "accept-type": "受け入れる種類",
+          "ingress-filtering": "入力フィルタリング",
+          "priority-ingress-filtering": "優先度入力フィルタリング",
+          "config-source": "設定のソース"
+        }
+      },
       "search-placeholder-text": "検索",
       "ports-dd-default-title": "ポートの選択",
       "add-vlan-dialog-title": "VLAN の追加",
@@ -1265,6 +1321,8 @@
         "firmware_upgrade": "ファームウェア",
         "schedule_upgrade": "スケジュール",
         "cancel_upgrade": "キャンセル",
+        "lldp_settings": "LLDP の設定",
+        "cdp_global_settings": "CDP の設定",
         "rollback": "ファームウェアの切り替え",
         "port": "ポート",
         "remote_support": "リモートサポート",
@@ -1292,7 +1350,14 @@
         "qos_storm_control_setting": "ストーム制御",
         "qos_bandwidth_control_setting": "帯域幅制御",
         "qos_class_mapping": "QoS ポリシー",
-        "qos_policy_mapping": "QoS ポリシーバインディング"
+        "qos_policy_mapping": "QoS ポリシーバインディング",
+        "voice_vlan_oui": "音声 VLAN OUI",
+        "voice_vlan": "音声 VLAN",
+        "multicast_filtering": "マルチキャストフィルタリング",
+        "port_mirroring": "ポートミラーリング",
+        "cdp_port_settings": "CDP ポートの設定",
+        "port_isolation": "ポートの隔離",
+        "eee_settings": "ポート EEE"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1337,6 +1402,9 @@
         "isolation": "隔離ステータス",
         "eee": "EEE",
         "jumbo-frames": "ジャンボ フレーム サイズ",
+        "bytes": "バイト",
+        "show-per-port": "ポート単位の設定を表示",
+        "global-jumbo-frames": "すべてのポート",
         "multicast-filtering": "マルチキャストフィルタリング"
       },
       "message": {
@@ -1347,7 +1415,11 @@
         "switch-save-dialog-text": "スイッチにポートの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "save-checkbox-text": "今すぐサイト設定を、選択したスイッチに同期する",
         "lag-site-save-dialog-text": "{{ count }}個のスイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "mutlicast-filtering-site-save-dialog-text": "{{ count }}個のスイッチにマルチキャストフィルタリングの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "port-mirroring-site-save-dialog-text": "{{ count }}個のスイッチにポートミラーリングの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "lag-switch-save-dialog-text": "スイッチに LAG の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "mutlicast-filtering-switch-save-dialog-text": "スイッチにマルチキャストフィルタリングの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "port-mirroring-switch-save-dialog-text": "スイッチにポートミラーリングの更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "port-revert-success": "スイッチ設定の削除に成功しました。スイッチは、サイト設定を使用しています。",
         "port-revert-error": "スイッチ設定を削除できません。",
         "port-revert-system-success": "サイト設定の削除に成功しました。スイッチは、システムのデフォルトを使用しています。",
@@ -1367,6 +1439,21 @@
         "qos-lag-conflict-title": "QoS 帯域制御の設定で LAG メンバーポートが使用されています。",
         "fix-qos-lag-conflicts": "スイッチレベルでポート {{ ports }} の設定を「未設定」 (空) にすることで、競合を解決できます。",
         "qos-lag-fix-button": "選択した設定の削除"
+      },
+      "ports-mirroring" : {
+        "table-headers": {
+          "session-id": "セッション ID",
+          "destination-port": "宛先ポート",
+          "egress": "エグレス",
+          "ingress": "イングレス",
+          "ingress_and_egress": "イングレスとエグレス",
+          "session-status": "セッションの状態"
+        }
+      },
+      "multicast-filtering": {
+        "header": "マルチキャストフィルタリング",
+        "update-success-message": "マルチキャストフィルタリングの状態が更新されました。",
+        "update-failure-message": "更新に失敗しました。"
       }
     },
     "l3-relay-snooping": {
@@ -2437,7 +2524,44 @@
     "lldp": {
       "settings": "設定",
       "devices": "デバイス",
-
+      "local-device": {
+        "chassisSubtype": "シャーシ ID のサブタイプ",
+        "chassisID": "シャーシ ID",
+        "sysName": "システム名",
+        "sysDescption": "システムの説明",
+        "supported-capabilities": "サポートされている機能",
+        "turned-on-capabilities": "オンになっている機能",
+        "portSubtype": "ポート ID のサブタイプ",
+        "other": "その他",
+        "repeater": "リピータ",
+        "bridge": "ブリッジ",
+        "wlanAccessPoint": "ワイヤレス アクセス ポイント",
+        "router": "ルーター",
+        "telephone": "VoIP 電話",
+        "docssisCableDevice": "DOCSISデバイス",
+        "Station": "ステーション",
+        "Not-Advertised": "広告なし",
+        "Not-Capable": "対応なし",
+        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "Not-In-Aggregation": "アグリゲーションにありません (ID: {{ lagId }})"
+      },
+      "remote-device": {
+        "portNo": "ポート",
+        "chassisSubtype": "シャーシ ID のサブタイプ",
+        "chassisID": "シャーシ ID",
+        "portSubtype": "ポート ID のサブタイプ",
+        "remoteID": "ネイバー ID",
+        "remoteIp": "ネイバー IP",
+        "sysName": "システム名",
+        "sysDescption": "システムの説明",
+        "supportedCapabilities": "サポートされている機能",
+        "turnedOnCapabilities": "オンになっている機能",
+        "timeToLive": "TTL",
+        "autoNeg": "自動ネゴシエーション",
+        "operMAUType": "操作の種類",
+        "maxFrameSize": "最大フレームサイズ",
+        "linkAgg": "LAG"
+      },
       "global-settings": {
         "title": "LLDP の設定",
         "status": "ステータス",
@@ -2449,7 +2573,6 @@
         "reinitDelay": "再初期化遅延",
         "transmitDelay": "転送遅延",
         "required-input-message": "値は {{ min }} ～ {{ max }} で指定してください",
-
         "message": {
           "save-lldp-settings-success": "LLDP の設定が更新されました",
           "save-lldp-settings-error": "LLDP の設定を更新できません",
@@ -2463,6 +2586,159 @@
         "not-set": "未設定",
         "enabled": "有効",
         "disabled": "無効"
+      }
+    },
+    "cdp": {
+      "settings": "設定",
+      "ports": "ポート",
+      "local-devices": "セルフ",
+      "remote-devices": "ネイバー",
+      "port-info": "ポート情報",
+      "device-info": "デバイスの詳細",
+      "cdp-device-info": "CDP",
+      "lldp-device-info": "LLDP",
+      "table-headers": {
+        "port": "ポート",
+        "state": "CDP ステータス",
+        "notify-voice": "VLAN の不一致の通知",
+        "notify-vlan" : "音声 VLAN の不一致の通知",
+        "notify-duplex": "二重通信の不一致の通知",
+        "config-source": "設定のソース"
+      },
+      "local-device": {
+        "port": "ポート",
+        "enable": "CDP の状態",
+        "deviceId": "デバイス ID",
+        "systemName": "システム名",
+        "address": "住所",
+        "capabilities": "機能",
+        "version": "CDP バージョン",
+        "platform": "OS",
+        "softwareVersion": "ソフトウェア",
+        "localVlan": "VLAN",
+        "voiceVlan": "音声 VLAN",
+        "duplex": "二重通信",
+        "extendedTrust": "信頼の拡張",
+        "cosForUntrusted": "信頼できないポートの CoS",
+        "powerConsumption": "電力消費量",
+        "powerRequestId": "電力リクエスト ID",
+        "powerManagementId": "電力管理 ID",
+        "powerAvailable": "使用可能な電力",
+        "hasNeighbor": "ネイバー"
+      },
+      "remote-device": {
+        "portNo": "ポート",
+        "deviceId": "デバイス ID",
+        "systemName": "システム名",
+        "localInterface": "セルフインターフェース",
+        "cdpVersion": "バージョン",
+        "timeToLive": "TTL",
+        "neighborInterface": "ネイバーインターフェース",
+        "address": "住所",
+        "capabilities": "機能",
+        "softwareVersion": "ソフトウェア",
+        "platform": "プラットフォーム",
+        "nativeVlan": "セルフ VLAN",
+        "voiceVlan": "音声 VLAN",
+        "duplex": "二重通信",
+        "extendedTrust": "信頼の拡張",
+        "cosForUntrusted": "信頼できないポートの CoS",
+        "managementAddress": "管理アドレス",
+        "powerConsumption": "電力消費量",
+        "powerRequestId": "電力リクエスト ID",
+        "powerManagementId": "電力管理 ID",
+        "powerAvailable": "使用可能な電力"
+      },
+      "global-settings": {
+        "title": "CDP の設定",
+        "status": "ステータス",
+        "voiceVlanAdvertise": "音声 VLAN アドバタイズメント",
+        "tlvValidation": "TLV の必須検証",
+        "deviceIdFormat": "デバイス ID の形式",
+        "notifyVlanMismatch": "VLAN の不一致の通知",
+        "notifyVoiceVlanMismatch": "音声 VLAN の不一致の通知",
+        "notifyDuplexMismatch": "二重通信の不一致の通知",
+        "config-source": "設定のソース",
+        "version": "バージョン",
+        "transmissionInterval": "転送間隔",
+        "transmissionInterval-invalid-message": "転送間隔は {{ val }}  (転送遅延*4) より大きい値を指定してください",
+        "transmitDelay-invalid-message": "転送遅延は {{ val }} (転送間隔/4) 未満にする必要があります。",
+        "holdTime": "ホールドタイム",
+        "required-input-message": "値は {{ min }} ～ {{ max }} で指定してください",
+        "message": {
+          "save-cdp-settings-success": "CDP の設定が更新されました",
+          "save-cdp-settings-error": "CDP の設定を更新できません",
+          "save-dialog-title": "保存の確認",
+          "site-save-setting-text": "{{ count }}つのスイッチがこの検出設定の更新を取得します。",
+          "switch-save-setting-text": "スイッチはこの検出設定の更新を取得します。",
+          "fetch-cdp-settings-error": "CDP の設定を取得できません"
+        }
+      },
+      "common": {
+        "not-set": "未設定",
+        "enabled": "有効",
+        "disabled": "無効",
+        "mac": "MAC アドレス",
+        "serial": "シリアル番号",
+        "version-1": "v1",
+        "version-2": "v2",
+        "no": "いいえ",
+        "yes": "はい"
+      }
+    },
+    "voice-vlan": {
+      "title": "グローバル設定",
+      "status": "音声 VLAN の状態",
+      "id": "音声 VLAN ID",
+      "priorityTag": "VLAN 優先度タグ",
+      "dscp": "DSCP",
+      "cosStatus": "802.1 CoS の状態",
+      "cosPriority": "CoS 優先度",
+      "agingTime": "エージングタイム",
+      "config-source": "設定のソース",
+      "required-input-message": "値は {{ min }} ～ {{ max }} で指定してください",
+      "global-settings": "グローバル設定",
+      "not-set": "未設定",
+      "common": {
+        "not-set": "未設定",
+        "enabled": "有効",
+        "disabled": "無効",
+        "auto": "自動",
+        "oui": "OUI"
+      },
+      "message": {
+        "save-voice-vlan-settings-success": "音声 VLAN の設定が更新されました",
+        "save-voice-vlan-settings-error": "音声 VLAN の設定を更新できません",
+        "save-dialog-title": "保存の確認",
+        "site-save-setting-text": "{{ count }}つのスイッチがこの音声 VLAN の設定の更新を取得します。",
+        "switch-save-setting-text": "スイッチはこの音声 VLAN の設定の更新を取得します。",
+        "fetch-voice-vlan-settings-error": "音声 VLAN の設定を取得できません"
+      },
+
+      "oui": {
+        "title": "OUI の設定",
+        "name": "名前",
+        "oui-address": "OUI アドレス",
+        "description": "説明",
+        "add-oui-dialog-title": "OUI 設定の追加",
+        "config-source": "設定のソース",
+        "maxlength-descr-message": "説明の文字数は 0～32文字の間で指定してください。",
+        "invalid-oui-address-message": "無効な OUI アドレスです",
+        "oui-address-already-exist-message": "この OUI アドレスは既に存在します",
+
+        "message": {
+          "add-settings-success": "音声 VLAN OUI の設定が作成されました",
+          "add-settings-error": "音声 VLAN OUI の設定を作成できません",
+          "add-dialog-title": "作成の確認",
+          "site-add-setting-text": "{{ count }}個のスイッチに、この 音声 VLAN OUI の設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-add-setting-text": "スイッチに、この  音声 VLAN OUI の設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "fetch-settings-error": "音声 VLAN OUI の設定を取得できません",
+          "delete-settings-success": "音声 VLAN OUI の設定が削除されました",
+          "delete-settings-error": "音声 VLAN OUI の設定を削除できません",
+          "delete-dialog-title": "削除の確認",
+          "site-delete-setting-text": "{{ ouiCount }}個の音声 VLAN OUI の設定を削除します。{{ count }}個のスイッチに、この 音声 VLAN OUI の設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-delete-setting-text": "{{ ouiCount }}個の音声 VLAN OUI の設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        }
       }
     }
   }

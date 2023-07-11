@@ -33,6 +33,8 @@
       "system": "Sistema",
       "lag": "LAG",
       "last-updated": "Dati aggiornati {{ time }}",
+      "on": "Attivato",
+      "off": "Spento",
       "link-speed": {
         "10mh": "10 M/Half duplex",
         "10m_h": "10 M/Half duplex",
@@ -939,6 +941,60 @@
       "disabled": "Disattivato"
     },
     "vlan": {
+      "tab-headers": {
+        "all-vlan": "VLAN",
+        "gvrp": "GVRP",
+        "voice-vlan": "VLAN traffico voce",
+        "ingress-filtering": "Filtro in ingresso"
+      },
+      "gvrp": {
+        "status": {
+          "text": "GVRP",
+          "not-set": "Non impostata",
+          "turn-on": "Attiva",
+          "turn-off": "Disattiva"
+        },
+        "table-headers":{
+          "port": "Porta",
+          "status": "Stato",
+          "restricted-vlan": "VLAN con restrizioni",
+          "join-time": "Tempo join (ms)",
+          "leave-time": "Tempo leave (ms)",
+          "leave-all-time": "Tempo leave-all (ms)",
+          "config-source": "Origine configurazione"
+        },
+        "tooltip": {
+          "join-time": "Il valore deve essere compreso tra 10 e 4999000 ms.",
+          "leave-time": "Il valore deve essere compreso tra 10 e 9999000 ms. Tempo leave-all > Tempo leave > 2 x Tempo join",
+          "leave-all-time": "Il valore deve essere compreso tra 10 e 10000000 ms. Tempo leave-all > Tempo leave > 2 x Tempo join"
+        },
+        "messages": {
+          "save-dialog-title": "Conferma salvataggio",
+          "site-save-setting-text": "{{ count }} switch riceveranno questo aggiornamento delle impostazioni GVRP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-save-setting-text": "Lo switch riceverà questo aggiornamento delle impostazioni GVRP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "update-setting-success": "Aggiornamento delle impostazioni GVRP completato.",
+          "update-setting-error": "Non è stato possibile aggiornare le impostazioni GVRP.",
+          "loading-error": "Non è stato possibile caricare le impostazioni GVRP."
+        }
+      },
+      "ingress-filter": {
+        "not-set": "Non impostata",
+        "on": "Attivato",
+        "off": "Disattivato",
+        "accept-type": {
+          "not-set": "Non impostata",
+          "all": "Tutto",
+          "tagged": "Con tag",
+          "untagged": "Senza tag"
+        },
+        "table-headers":{
+          "port": "Porta",
+          "accept-type": "Tipi accettati",
+          "ingress-filtering": "Filtro in ingresso",
+          "priority-ingress-filtering": "Filtro priorità in ingresso",
+          "config-source": "Origine configurazione"
+        }
+      },
       "search-placeholder-text": "Cerca",
       "ports-dd-default-title": "Porte selezionate",
       "add-vlan-dialog-title": "Aggiungi VLAN",
@@ -1265,6 +1321,8 @@
         "firmware_upgrade": "Firmware",
         "schedule_upgrade": "Pianificazione",
         "cancel_upgrade": "Annulla",
+        "lldp_settings": "Impostazioni LLDP",
+        "cdp_global_settings": "Impostazioni CDP",
         "rollback": "Effettua swap del firmware",
         "port": "Porta",
         "remote_support": "Supporto remoto",
@@ -1292,7 +1350,14 @@
         "qos_storm_control_setting": "Controllo picchi di traffico",
         "qos_bandwidth_control_setting": "Controllo larghezza di banda",
         "qos_class_mapping": "Criterio QoS",
-        "qos_policy_mapping": "Associazione criteri QoS"
+        "qos_policy_mapping": "Associazione criteri QoS",
+        "voice_vlan_oui": "OUI VLAN traffico voce",
+        "voice_vlan": "VLAN traffico voce",
+        "multicast_filtering": "Filtro multicast",
+        "port_mirroring": "Mirroring delle porte",
+        "cdp_port_settings": "Impostazione della porta CDP",
+        "port_isolation": "Isolamento porte",
+        "eee_settings": "EEE porta"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1337,6 +1402,9 @@
         "isolation": "Stato di isolamento",
         "eee": "EEE",
         "jumbo-frames": "Dimensioni frame jumbo",
+        "bytes": "Byte",
+        "show-per-port": "Mostra impostazione per porta",
+        "global-jumbo-frames": "per tutte le porte",
         "multicast-filtering": "Filtro multicast"
       },
       "message": {
@@ -1347,7 +1415,11 @@
         "switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti delle porte e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "save-checkbox-text": "Sincronizza immediatamente le impostazioni su questi switch",
         "lag-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "mutlicast-filtering-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti del filtro multicast e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "port-mirroring-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti del mirroring delle porte e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "lag-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del LAG e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "mutlicast-filtering-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del filtro multicast e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "port-mirroring-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del mirroring delle porte e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "port-revert-success": "Le impostazioni dello switch sono state eliminate e lo switch utilizza le impostazioni del sito.",
         "port-revert-error": "Impossibile eliminare le configurazioni dello switch.",
         "port-revert-system-success": "Le configurazioni del sito sono state eliminate e lo switch utilizza quelle predefinite del sistema.",
@@ -1367,6 +1439,21 @@
         "qos-lag-conflict-title": "Le impostazioni di controllo QoS per la larghezza di banda utilizzano porte che sono membri del LAG!",
         "fix-qos-lag-conflicts": "Per risolvere i conflitti, puoi definire le impostazioni della porta {{ ports }} in modo che risulti “Non impostata” (vuota) a livello di switch.",
         "qos-lag-fix-button": "Rimuovi le impostazioni selezionate"
+      },
+      "ports-mirroring" : {
+        "table-headers": {
+          "session-id": "ID sessione",
+          "destination-port": "Porta di destinazione",
+          "egress": "Uscita",
+          "ingress": "Ingresso",
+          "ingress_and_egress": "Ingresso e uscita",
+          "session-status": "Stato sessione"
+        }
+      },
+      "multicast-filtering": {
+        "header": "Filtro multicast",
+        "update-success-message": "Stato del filtro multicast aggiornato!",
+        "update-failure-message": "Aggiornamento non riuscito."
       }
     },
     "l3-relay-snooping": {
@@ -2437,7 +2524,44 @@
     "lldp": {
       "settings": "Impostazioni",
       "devices": "Dispositivi",
-
+      "local-device": {
+        "chassisSubtype": "Sottotipo ID chassis",
+        "chassisID": "ID chassis",
+        "sysName": "Nome sistema",
+        "sysDescption": "Descrizione sistema",
+        "supported-capabilities": "Funzionalità supportate",
+        "turned-on-capabilities": "Funzionalità attivate",
+        "portSubtype": "Sottotipo ID porta",
+        "other": "Altro",
+        "repeater": "Ripetitore",
+        "bridge": "Bridge",
+        "wlanAccessPoint": "Access point wireless",
+        "router": "Router",
+        "telephone": "Telefono VOIP",
+        "docssisCableDevice": "Dispositivo DOCSIS",
+        "Station": "Stazione",
+        "Not-Advertised": "Non annunciato",
+        "Not-Capable": "Non abilitato",
+        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "Not-In-Aggregation": "Non in aggregazione (ID: {{ lagId }})"
+      },
+      "remote-device": {
+        "portNo": "Porta",
+        "chassisSubtype": "Sottotipo ID chassis",
+        "chassisID": "ID chassis",
+        "portSubtype": "Sottotipo ID porta",
+        "remoteID": "ID adiacente",
+        "remoteIp": "IP adiacente",
+        "sysName": "Nome sistema",
+        "sysDescption": "Descrizione sistema",
+        "supportedCapabilities": "Funzionalità supportate",
+        "turnedOnCapabilities": "Funzionalità attivate",
+        "timeToLive": "TTL",
+        "autoNeg": "Auto-negoziazione",
+        "operMAUType": "Tipo di operazione",
+        "maxFrameSize": "Dimensioni massime del frame",
+        "linkAgg": "LAG"
+      },
       "global-settings": {
         "title": "Impostazioni LLDP",
         "status": "Stato",
@@ -2449,7 +2573,6 @@
         "reinitDelay": "Ritardo di reinizializzazione",
         "transmitDelay": "Ritardo di ritrasmissione",
         "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
-
         "message": {
           "save-lldp-settings-success": "Le impostazioni LLDP sono state aggiornate",
           "save-lldp-settings-error": "Non è stato possibile aggiornare le impostazioni LLDP",
@@ -2463,6 +2586,159 @@
         "not-set": "Non impostata",
         "enabled": "Abilitata/e",
         "disabled": "Disattivata/e"
+      }
+    },
+    "cdp": {
+      "settings": "Impostazioni",
+      "ports": "Porte",
+      "local-devices": "Auto",
+      "remote-devices": "Router adiacenti",
+      "port-info": "Informazioni sulle porte",
+      "device-info": "Dettagli dispositivo",
+      "cdp-device-info": "CDP",
+      "lldp-device-info": "LLDP",
+      "table-headers": {
+        "port": "Porta",
+        "state": "Stato di CDP",
+        "notify-voice": "Notifica VLAN non corrispondente",
+        "notify-vlan" : "Notifica VLAN traffico voce non corrispondente",
+        "notify-duplex": "Notifica duplex non corrispondente",
+        "config-source": "Origine configurazione"
+      },
+      "local-device": {
+        "port": "Porta",
+        "enable": "Stato di CDP",
+        "deviceId": "ID dispositivo",
+        "systemName": "Nome sistema",
+        "address": "Indirizzo",
+        "capabilities": "Capacità",
+        "version": "Versione CDP",
+        "platform": "Piattaforma",
+        "softwareVersion": "Software",
+        "localVlan": "VLAN",
+        "voiceVlan": "VLAN traffico voce",
+        "duplex": "Duplex",
+        "extendedTrust": "Attendibilità estesa",
+        "cosForUntrusted": "CoS per porte non attendibili",
+        "powerConsumption": "Consumo di corrente",
+        "powerRequestId": "ID richiesta energia elettrica",
+        "powerManagementId": "ID gestione energia elettrica",
+        "powerAvailable": "Energia elettrica disponibile",
+        "hasNeighbor": "Router adiacente"
+      },
+      "remote-device": {
+        "portNo": "Porta",
+        "deviceId": "ID dispositivo",
+        "systemName": "Nome sistema",
+        "localInterface": "Interfaccia Auto",
+        "cdpVersion": "Versione",
+        "timeToLive": "TTL",
+        "neighborInterface": "Interfaccia router adiacente",
+        "address": "Indirizzo",
+        "capabilities": "Capacità",
+        "softwareVersion": "Software",
+        "platform": "Piattaforma",
+        "nativeVlan": "VLAN Auto",
+        "voiceVlan": "VLAN traffico voce",
+        "duplex": "Duplex",
+        "extendedTrust": "Attendibilità estesa",
+        "cosForUntrusted": "CoS per porte non attendibili",
+        "managementAddress": "Indirizzo di gestione",
+        "powerConsumption": "Consumo di corrente",
+        "powerRequestId": "ID richiesta energia elettrica",
+        "powerManagementId": "ID gestione energia elettrica",
+        "powerAvailable": "Energia elettrica disponibile"
+      },
+      "global-settings": {
+        "title": "Impostazioni CDP",
+        "status": "Stato",
+        "voiceVlanAdvertise": "Annuncio VLAN traffico voce",
+        "tlvValidation": "Convalida TLV obbligatoria",
+        "deviceIdFormat": "Formato ID dispositivo",
+        "notifyVlanMismatch": "Notifica VLAN non corrispondente",
+        "notifyVoiceVlanMismatch": "Notifica VLAN traffico voce non corrispondente",
+        "notifyDuplexMismatch": "Notifica duplex non corrispondente",
+        "config-source": "Origine configurazione",
+        "version": "Versione",
+        "transmissionInterval": "Intervallo di trasmissione",
+        "transmissionInterval-invalid-message": "L’intervallo di trasmissione deve essere maggiore di {{ val }} (ritardo di trasmissione x 4)",
+        "transmitDelay-invalid-message": "Il ritardo di trasmissione deve essere minore di {{ val }} (intervallo di trasmissione ÷ 4)",
+        "holdTime": "Tempo di attesa",
+        "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
+        "message": {
+          "save-cdp-settings-success": "Le impostazioni CDP sono state aggiornate",
+          "save-cdp-settings-error": "Non è stato possibile aggiornare le impostazioni CDP",
+          "save-dialog-title": "Conferma salvataggio",
+          "site-save-setting-text": "{{ count }} switch riceveranno questo aggiornamento delle impostazioni di individuazione.",
+          "switch-save-setting-text": "Lo switch riceverà questo aggiornamento delle impostazioni di individuazione.",
+          "fetch-cdp-settings-error": "Impossibile recuperare le impostazioni CDP"
+        }
+      },
+      "common": {
+        "not-set": "Non impostata",
+        "enabled": "Abilitata/e",
+        "disabled": "Disattivata/e",
+        "mac": "Indirizzo Mac",
+        "serial": "Numero di serie",
+        "version-1": "v1",
+        "version-2": "v2",
+        "no": "No",
+        "yes": "Sì"
+      }
+    },
+    "voice-vlan": {
+      "title": "Impostazioni globali",
+      "status": "Stato VLAN traffico voce",
+      "id": "ID VLAN traffico voce",
+      "priorityTag": "Tag di priorità VLAN",
+      "dscp": "DSCP",
+      "cosStatus": "Stato CoS 802.1",
+      "cosPriority": "Priorità CoS",
+      "agingTime": "Tempo di durata",
+      "config-source": "Origine configurazione",
+      "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
+      "global-settings": "Impostazioni globali",
+      "not-set": "Non impostata",
+      "common": {
+        "not-set": "Non impostata",
+        "enabled": "Abilitata/e",
+        "disabled": "Disattivata/e",
+        "auto": "Auto",
+        "oui": "OUI"
+      },
+      "message": {
+        "save-voice-vlan-settings-success": "Le impostazioni della VLAN traffico voce sono state aggiornate",
+        "save-voice-vlan-settings-error": "Non è stato possibile aggiornare le impostazioni della VLAN traffico voce",
+        "save-dialog-title": "Conferma salvataggio",
+        "site-save-setting-text": "{{ count }} switch riceveranno questo aggiornamento delle impostazioni della VLAN traffico voce.",
+        "switch-save-setting-text": "Lo switch riceverà questo aggiornamento delle impostazioni della VLAN traffico voce.",
+        "fetch-voice-vlan-settings-error": "Non è stato possibile recuperare le impostazioni della VLAN traffico voce"
+      },
+
+      "oui": {
+        "title": "Impostazioni OUI",
+        "name": "Nome",
+        "oui-address": "Indirizzo OUI",
+        "description": "Descrizione",
+        "add-oui-dialog-title": "Aggiungi impostazioni OUI",
+        "config-source": "Origine configurazione",
+        "maxlength-descr-message": "La lunghezza della descrizione deve essere compresa tra 0 e 32 caratteri",
+        "invalid-oui-address-message": "Indirizzo OUI non valido",
+        "oui-address-already-exist-message": "Indirizzo OUI già esistente",
+
+        "message": {
+          "add-settings-success": "Le impostazioni dell’OUI VLAN traffico voce sono state create",
+          "add-settings-error": "Non è stato possibile creare le impostazioni dell’OUI VLAN traffico voce",
+          "add-dialog-title": "Conferma creazione",
+          "site-add-setting-text": "{{ count }} switch riceveranno queste impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-add-setting-text": "Lo switch riceverà queste impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "fetch-settings-error": "Non è stato possibile recuperare le impostazioni dell’OUI VLAN traffico voce",
+          "delete-settings-success": "Le impostazioni dell’OUI VLAN traffico voce sono state eliminate",
+          "delete-settings-error": "Non è stato possibile eliminare le impostazioni dell’OUI VLAN traffico voce",
+          "delete-dialog-title": "Conferma eliminazione",
+          "site-delete-setting-text": "Elimina {{ ouiCount }} impostazioni dell’OUI VLAN traffico voce. {{ count }} switch rimuoveranno queste impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-delete-setting-text": "Elimina {{ ouiCount }} impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        }
       }
     }
   }

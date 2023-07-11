@@ -33,6 +33,8 @@
       "system": "系統",
       "lag": "LAG",
       "last-updated": "資料於 {{ time }} 重新整理",
+      "on": "開啟",
+      "off": "關閉",
       "link-speed": {
         "10mh": "10M/Half",
         "10m_h": "10M/Half",
@@ -939,6 +941,60 @@
       "disabled": "已停用"
     },
     "vlan": {
+      "tab-headers": {
+        "all-vlan": "VLAN",
+        "gvrp": "GVRP",
+        "voice-vlan": "語音 VLAN",
+        "ingress-filtering": "輸入篩選"
+      },
+      "gvrp": {
+        "status": {
+          "text": "GVRP",
+          "not-set": "未設定",
+          "turn-on": "開啟",
+          "turn-off": "關閉"
+        },
+        "table-headers":{
+          "port": "連接埠",
+          "status": "狀態",
+          "restricted-vlan": "受限 VLAN",
+          "join-time": "加入時間（毫秒）",
+          "leave-time": "離開時間（毫秒）",
+          "leave-all-time": "離開全部時間（毫秒）",
+          "config-source": "設定來源"
+        },
+        "tooltip": {
+          "join-time": "值必須介於 10 到 4999000 毫秒之間。",
+          "leave-time": "值必須介於 10 到 9999000 毫秒之間。離開全部時間 > 離開時間 > 2 * 加入時間",
+          "leave-all-time": "值必須介於 10 到 10000000 毫秒之間。離開全部時間 > 離開時間 > 2 * 加入時間"
+        },
+        "messages": {
+          "save-dialog-title": "確認儲存",
+          "site-save-setting-text": "{{ count }} 個交換器將取得此 GVRP 設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-save-setting-text": "交換器將取得此 GVRP 設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+          "update-setting-success": "GVRP 設定已成功更新。",
+          "update-setting-error": "無法更新 GVRP 設定。",
+          "loading-error": "無法載入 GVRP 設定。"
+        }
+      },
+      "ingress-filter": {
+        "not-set": "未設定",
+        "on": "開啟",
+        "off": "關閉",
+        "accept-type": {
+          "not-set": "未設定",
+          "all": "所有",
+          "tagged": "已標記",
+          "untagged": "未標記"
+        },
+        "table-headers":{
+          "port": "連接埠",
+          "accept-type": "接受類型",
+          "ingress-filtering": "輸入篩選",
+          "priority-ingress-filtering": "優先順序輸入篩選",
+          "config-source": "設定來源"
+        }
+      },
       "search-placeholder-text": "尋找",
       "ports-dd-default-title": "選取多個連接埠",
       "add-vlan-dialog-title": "新增 VLAN",
@@ -1265,6 +1321,8 @@
         "firmware_upgrade": "韌體",
         "schedule_upgrade": "排程",
         "cancel_upgrade": "取消",
+        "lldp_settings": "LLDP 設定",
+        "cdp_global_settings": "CDP 設定",
         "rollback": "切換韌體",
         "port": "連接埠",
         "remote_support": "遠端支援",
@@ -1292,7 +1350,14 @@
         "qos_storm_control_setting": "風暴控制",
         "qos_bandwidth_control_setting": "帶寬控制",
         "qos_class_mapping": "QoS 原則",
-        "qos_policy_mapping": "QoS 原則繫結"
+        "qos_policy_mapping": "QoS 原則繫結",
+        "voice_vlan_oui": "語音 VLAN OUI",
+        "voice_vlan": "語音 VLAN",
+        "multicast_filtering": "多點傳送篩選",
+        "port_mirroring": "連接埠鏡像",
+        "cdp_port_settings": "CDP 連接埠設定",
+        "port_isolation": "連接埠隔離",
+        "eee_settings": "連接埠 EEE"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1337,6 +1402,9 @@
         "isolation": "隔離狀態",
         "eee": "EEE",
         "jumbo-frames": "Jumbo 框架大小",
+        "bytes": "位元組",
+        "show-per-port": "顯示每個連接埠設定",
+        "global-jumbo-frames": "針對所有連接埠",
         "multicast-filtering": "多點傳送篩選"
       },
       "message": {
@@ -1347,7 +1415,11 @@
         "switch-save-dialog-text": "交換器將獲取此連接埠更新，更新任務將建立。您可以選擇現在或稍後同步。",
         "save-checkbox-text": "立即將設定同步至交換器",
         "lag-site-save-dialog-text": "{{ count }} 個交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "mutlicast-filtering-site-save-dialog-text": "{{ count }} 個交換器將獲取多點傳送篩選更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "port-mirroring-site-save-dialog-text": "{{ count }} 個交換器將獲取連接埠鏡像更新，更新工作將建立。您可以選擇現在或稍後同步。",
         "lag-switch-save-dialog-text": "交換器將獲取 LAG 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "mutlicast-filtering-switch-save-dialog-text": "交換器將獲取多點傳送篩選更新，並且將建立更新工作。您可以選擇現在或稍後同步。",
+        "port-mirroring-switch-save-dialog-text": "交換器將獲取連接埠鏡像更新，並且將建立更新工作。您可以選擇現在或稍後同步。",
         "port-revert-success": "交換器設定已成功刪除，交換器使用網站設定。",
         "port-revert-error": "無法刪除交換器組態。 ",
         "port-revert-system-success": "網站組態已成功刪除，交換器使用系統預設設定。",
@@ -1367,6 +1439,21 @@
         "qos-lag-conflict-title": "QoS 頻寬控制設定使用的是 LAG 成員連接埠！",
         "fix-qos-lag-conflicts": "您可以在交換器層級將連接埠 {{ ports }} 的設定設為「未設定」（空）以解決衝突。",
         "qos-lag-fix-button": "移除所選設定"
+      },
+      "ports-mirroring" : {
+        "table-headers": {
+          "session-id": "工作階段 ID",
+          "destination-port": "目的地連接埠",
+          "egress": "輸出",
+          "ingress": "輸入",
+          "ingress_and_egress": "輸入和輸出",
+          "session-status": "工作階段狀態"
+        }
+      },
+      "multicast-filtering": {
+        "header": "多點傳送篩選",
+        "update-success-message": "多點傳送篩選狀態已更新！",
+        "update-failure-message": "無法更新"
       }
     },
     "l3-relay-snooping": {
@@ -2120,10 +2207,10 @@
       "7810": "QoS 原則：無法修改類別對應狀態。POST 請求無效。",
       "7811": "QoS 原則：原則對應狀態的值無效。POST 請求無效。",
       "7812": "QoS 原則：無法修改原則對應狀態。POST 請求無效。",
-      "7813": "QoS 原則：來源 Mac 位址的值無效。POST 請求無效。",
-      "7814": "QoS 原則：無法修改來源 Mac 位址。POST 請求無效。",
-      "7815": "QoS 原則：目的地 Mac 位址的值無效。POST 請求無效。",
-      "7816": "QoS 原則：無法修改目的地 Mac 位址。POST 請求無效。",
+      "7813": "QoS 原則：來源 MAC 位址的值無效。POST 請求無效。",
+      "7814": "QoS 原則：無法修改來源 MAC 位址。POST 請求無效。",
+      "7815": "QoS 原則：目的地 MAC 位址的值無效。POST 請求無效。",
+      "7816": "QoS 原則：無法修改目的地 MAC 位址。POST 請求無效。",
       "7817": "QoS 原則：乙太類型的值無效。POST 請求無效。",
       "7818": "QoS 原則：無法修改乙太類型。POST 請求無效。",
       "7819": "QoS 原則：VLAN 優先順序的值無效。POST 請求無效。",
@@ -2161,10 +2248,10 @@
       "7851": "QoS 原則：無法修改類別對應狀態。PATCH 請求無效。",
       "7852": "QoS 原則：原則對應狀態的值無效。PATCH 請求無效。",
       "7853": "QoS 原則：無法修改原則對應狀態。PATCH 請求無效。",
-      "7854": "QoS 原則：來源 Mac 位址的值無效。PATCH 請求無效。",
-      "7855": "QoS 原則：無法修改來源 Mac 位址。PATCH 請求無效。",
-      "7856": "QoS 原則：目的地 Mac 位址的值無效。PATCH 請求無效。",
-      "7857": "QoS 原則：無法修改目的地 Mac 位址。PATCH 請求無效。",
+      "7854": "QoS 原則：來源 MAC 位址的值無效。PATCH 請求無效。",
+      "7855": "QoS 原則：無法修改來源 MAC 位址。PATCH 請求無效。",
+      "7856": "QoS 原則：目的地 MAC 位址的值無效。PATCH 請求無效。",
+      "7857": "QoS 原則：無法修改目的地 MAC 位址。PATCH 請求無效。",
       "7858": "QoS 原則：乙太類型的值無效。PATCH 請求無效。",
       "7859": "QoS 原則：無法修改乙太類型。PATCH 請求無效。",
       "7860": "QoS 原則：VLAN 優先順序的值無效。PATCH 請求無效。",
@@ -2200,8 +2287,8 @@
       "7890": "QoS 原則：類別狀態的值無效。DELETE 請求無效。",
       "7891": "QoS 原則：無法修改類別狀態。DELETE 請求無效。",
       "7892": "QoS 原則：剖析類別名稱時發生錯誤。POST 請求無效。",
-      "7893": "QoS 原則：剖析目的地 Mac 位址時發生錯誤。POST 請求無效。",
-      "7894": "QoS 原則：剖析來源 Mac 位址時發生錯誤。POST 請求無效。",
+      "7893": "QoS 原則：剖析目的地 MAC 位址時發生錯誤。POST 請求無效。",
+      "7894": "QoS 原則：剖析來源 MAC 位址時發生錯誤。POST 請求無效。",
       "7895": "QoS 原則：剖析乙太類型時發生錯誤。POST 請求無效。",
       "7896": "QoS 原則：剖析來源 IP 位址時發生錯誤。POST 請求無效。",
       "7897": "QoS 原則：剖析來源 IP 位址遮罩時發生錯誤。POST 請求無效。",
@@ -2386,7 +2473,7 @@
         "field-required": "'{{ field }}' 為必填項。",
         "vlan": "VLAN",
         "match-criteria-help": "如果未指定值，則會將其視為「任意值」。",
-        "vlanPri": "VLAN 優先順序",
+        "vlanPri": "VLAN 優先級",
         "protocol": "通訊協定",
         "protocolCustom": "通訊協定號碼",
         "protocolCustom-incorrect": "通訊協定編號無效。有效通訊協定為 0-255。",
@@ -2437,7 +2524,44 @@
     "lldp": {
       "settings": "設定",
       "devices": "裝置",
-
+      "local-device": {
+        "chassisSubtype": "底座 ID 子類型",
+        "chassisID": "底座 ID",
+        "sysName": "系統名稱",
+        "sysDescption": "系統描述",
+        "supported-capabilities": "支援的功能",
+        "turned-on-capabilities": "功能已開啟",
+        "portSubtype": "連接埠 ID 子類型",
+        "other": "其他",
+        "repeater": "中繼器",
+        "bridge": "橋接",
+        "wlanAccessPoint": "無線存取點",
+        "router": "路由",
+        "telephone": "網路電話",
+        "docssisCableDevice": "DOCSIS 裝置",
+        "Station": "工作站",
+        "Not-Advertised": "未宣傳",
+        "Not-Capable": "不能",
+        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "Not-In-Aggregation": "不在集合中（ID：{{ lagId }})"
+      },
+      "remote-device": {
+        "portNo": "連接埠",
+        "chassisSubtype": "底座 ID 子類型",
+        "chassisID": "底座 ID",
+        "portSubtype": "連接埠 ID 子類型",
+        "remoteID": "芳鄰 ID",
+        "remoteIp": "芳鄰 IP",
+        "sysName": "系統名稱",
+        "sysDescption": "系統描述",
+        "supportedCapabilities": "支援的功能",
+        "turnedOnCapabilities": "功能已開啟",
+        "timeToLive": "TTL",
+        "autoNeg": "自動交涉",
+        "operMAUType": "作業類型",
+        "maxFrameSize": "最大幀長",
+        "linkAgg": "LAG"
+      },
       "global-settings": {
         "title": "LLDP 設定",
         "status": "狀態",
@@ -2449,7 +2573,6 @@
         "reinitDelay": "重新初始化延遲",
         "transmitDelay": "傳送延遲",
         "required-input-message": "值必須介於 {{ min }} - {{ max }} 之間",
-
         "message": {
           "save-lldp-settings-success": "LLDP 設定已更新",
           "save-lldp-settings-error": "無法更新 LLDP 設定",
@@ -2463,6 +2586,159 @@
         "not-set": "未設定",
         "enabled": "已啟用",
         "disabled": "已停用"
+      }
+    },
+    "cdp": {
+      "settings": "設定",
+      "ports": "連接埠",
+      "local-devices": "自我",
+      "remote-devices": "芳鄰",
+      "port-info": "連接埠資訊",
+      "device-info": "設備詳細資訊",
+      "cdp-device-info": "CDP",
+      "lldp-device-info": "LLDP",
+      "table-headers": {
+        "port": "連接埠",
+        "state": "CDP 狀態",
+        "notify-voice": "通知 VLAN 不匹配",
+        "notify-vlan" : "通知語音 VLAN 不匹配",
+        "notify-duplex": "通知雙工不匹配",
+        "config-source": "設定來源"
+      },
+      "local-device": {
+        "port": "連接埠",
+        "enable": "CDP 狀態",
+        "deviceId": "設備 ID",
+        "systemName": "系統名稱",
+        "address": "地址",
+        "capabilities": "能力",
+        "version": "CDP 版本",
+        "platform": "平臺",
+        "softwareVersion": "軟體",
+        "localVlan": "VLAN",
+        "voiceVlan": "語音 VLAN",
+        "duplex": "雙工",
+        "extendedTrust": "擴充信任",
+        "cosForUntrusted": "未受信任連接埠的 CoS",
+        "powerConsumption": "耗電量",
+        "powerRequestId": "電源請求 ID",
+        "powerManagementId": "電源管理 ID",
+        "powerAvailable": "可用電源",
+        "hasNeighbor": "芳鄰"
+      },
+      "remote-device": {
+        "portNo": "連接埠",
+        "deviceId": "設備 ID",
+        "systemName": "系統名稱",
+        "localInterface": "自我介面",
+        "cdpVersion": "版本",
+        "timeToLive": "TTL",
+        "neighborInterface": "芳鄰介面",
+        "address": "地址",
+        "capabilities": "能力",
+        "softwareVersion": "軟體",
+        "platform": "平台",
+        "nativeVlan": "自我 VLAN",
+        "voiceVlan": "語音 VLAN",
+        "duplex": "雙工",
+        "extendedTrust": "擴充信任",
+        "cosForUntrusted": "未受信任連接埠的 CoS",
+        "managementAddress": "管理位址",
+        "powerConsumption": "耗電量",
+        "powerRequestId": "電源請求 ID",
+        "powerManagementId": "電源管理 ID",
+        "powerAvailable": "可用電源"
+      },
+      "global-settings": {
+        "title": "CDP 設定",
+        "status": "狀態",
+        "voiceVlanAdvertise": "語音 VLAN 廣告",
+        "tlvValidation": "強制 TLV 驗證",
+        "deviceIdFormat": "裝置 ID 格式",
+        "notifyVlanMismatch": "通知 VLAN 不匹配",
+        "notifyVoiceVlanMismatch": "通知語音 VLAN 不匹配",
+        "notifyDuplexMismatch": "通知雙工不匹配",
+        "config-source": "設定來源",
+        "version": "版本",
+        "transmissionInterval": "傳輸間隔",
+        "transmissionInterval-invalid-message": "傳輸間隔應大於 {{ val }}（傳輸延遲*4）",
+        "transmitDelay-invalid-message": "傳輸延遲應小於 {{ val }}（傳輸間隔/4）",
+        "holdTime": "維持時間",
+        "required-input-message": "值必須介於 {{ min }} - {{ max }} 之間",
+        "message": {
+          "save-cdp-settings-success": "CDP 設定已更新",
+          "save-cdp-settings-error": "無法更新 CDP 設定",
+          "save-dialog-title": "確認儲存",
+          "site-save-setting-text": "{{ count }} 部交換器將取得此探索設定更新。",
+          "switch-save-setting-text": "該交換器將取得此探索設定更新。",
+          "fetch-cdp-settings-error": "無法擷取 CDP 設定"
+        }
+      },
+      "common": {
+        "not-set": "未設定",
+        "enabled": "已啟用",
+        "disabled": "已停用",
+        "mac": "Mac 位址",
+        "serial": "序號",
+        "version-1": "v1",
+        "version-2": "v2",
+        "no": "無",
+        "yes": "是"
+      }
+    },
+    "voice-vlan": {
+      "title": "整體設定",
+      "status": "語音 VLAN 狀態",
+      "id": "語音 VLAN ID",
+      "priorityTag": "VLAN 優先級標籤",
+      "dscp": "DSCP",
+      "cosStatus": "802.1 CoS 狀態",
+      "cosPriority": "CoS 優先級",
+      "agingTime": "老化時間",
+      "config-source": "設定來源",
+      "required-input-message": "值必須介於 {{ min }} - {{ max }} 之間",
+      "global-settings": "整體設定",
+      "not-set": "未設定",
+      "common": {
+        "not-set": "未設定",
+        "enabled": "已啟用",
+        "disabled": "已停用",
+        "auto": "自動",
+        "oui": "OUI"
+      },
+      "message": {
+        "save-voice-vlan-settings-success": "語音 VLAN 設定已更新",
+        "save-voice-vlan-settings-error": "無法更新語音 VLAN 設定",
+        "save-dialog-title": "確認儲存",
+        "site-save-setting-text": "{{ count }} 部交換器將取得此語音 VLAN 設定更新。",
+        "switch-save-setting-text": "該交換器將取得此語音 VLAN 設定更新。",
+        "fetch-voice-vlan-settings-error": "無法擷取語音 VLAN 設定"
+      },
+
+      "oui": {
+        "title": "OUI 設定",
+        "name": "名稱",
+        "oui-address": "OUI 位址",
+        "description": "描述",
+        "add-oui-dialog-title": "新增 OUI 設定",
+        "config-source": "設定來源",
+        "maxlength-descr-message": "說明長度必須介於 0 - 32 個字元之間",
+        "invalid-oui-address-message": "無效的 OUI 位址",
+        "oui-address-already-exist-message": "OUI 位址已經存在",
+
+        "message": {
+          "add-settings-success": "語音 VLAN OUI 設定已建立",
+          "add-settings-error": "無法建立語音 VLAN OUI 設定",
+          "add-dialog-title": "確認建立",
+          "site-add-setting-text": "{{ count }} 部交換器將取得此語音 VLAN OUI 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-add-setting-text": "該交換器將取得此語音 VLAN OUI 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "fetch-settings-error": "無法擷取語音 VLAN OUI 設定",
+          "delete-settings-success": "語音 VLAN OUI 設定已刪除",
+          "delete-settings-error": "無法刪除語音 VLAN OUI 設定",
+          "delete-dialog-title": "確認刪除",
+          "site-delete-setting-text": "刪除 {{ ouiCount }} 個語音 VLAN OUI 設定。{{ count }} 部交換器將移除此語音 VLAN OUI 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-delete-setting-text": "刪除 {{ ouiCount }} 個語音 VLAN OUI 設定，並將建立工作。您可以選擇現在或稍後同步。"
+        }
       }
     }
   }
