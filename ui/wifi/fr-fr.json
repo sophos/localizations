@@ -199,7 +199,7 @@
         "first-seen": "Première visite",
         "last-seen": "Dernière visite",
         "security-heartbeat": {
-          "security-heartbeat": "Security HeartBeat",
+          "security-heartbeat": "Security Heartbeat",
           "health-status-red": "Client en danger",
           "health-status-green": "Protégé",
           "health-status-missing": "Security Heartbeat manquant",
@@ -417,7 +417,7 @@
         "user-acceptance-notice": "La sélection du pays d’activité approprié, y compris la sélection du canal sans fil dans les spectres de 2,4 GHz, 5 GHz et 6 GHz, relève de la seule responsabilité de l’utilisateur. La disponibilité des canaux indépendants varie selon les pays, tout comme les lois locales régissant l’utilisation correcte des canaux et l’interdiction d’utilisation des canaux. Consultez les législations locales pour déterminer la sélection de canal appropriée. Conformément au Contrat de Licence d’Utilisateur Final Sophos, les utilisateurs doivent indemniser, défendre et dégager Sophos de toute responsabilité en cas de violation de la loi locale régissant la sélection des canaux. En outre, Sophos se réserve le droit de résilier le contrat de licence d’un utilisateur en cas d’utilisation qui enfreint la loi locale en vigueur.",
         "reboot-note": "La création ou la mise à jour des informations du site nécessite le redémarrage du point d’accès",
         "step1-title": "Étape 1 : Informations sur le site",
-        "step2-title": "Étape 2 : Avis d’acceptation de l’utilisateur",
+        "step2-title": "Étape {{stepNum}} : Avis d’acceptation de l’utilisateur",
         "step3-title": "Étape {{stepNum}} : Assigner les point d’accès"
       },
       "site-name-error-msgs": {
@@ -567,7 +567,7 @@
         "radius-port":"Port RADIUS",
         "frequency-band":"Bande de fréquence",
         "enable-ssid": "Activer le SSID",
-        "sync-sec": "Sécurité synchronisée",
+        "sync-sec": "Sécurité Synchronisée",
         "walled-garden": "Environnement clôturé",
         "hidden-ssid": "SSID masqué",
         "client-isolation": "Isolement du client",
@@ -628,7 +628,8 @@
         "general-setting-encryption-mode": "Indiquez les paramètres généraux de votre nouveau SSID. Choisir le mode de chiffrement et le type de SSID à fournir.",
         "band-encryption-mode": {
           "apx": "Nous conseillons l’utilisation du mode de chiffrement WPA2 avec AES et une bande de fréquence de 2,4 et 5 GHz.",
-          "ap6": "Nous conseillons l’utilisation du mode de chiffrement WPA3 avec AES et une bande de fréquence de 2,4 et 5 GHz."
+          "ap6": "Nous conseillons l’utilisation du mode de chiffrement WPA3 avec AES et une bande de fréquence de 2,4 et 5 GHz.",
+          "GHZ_6": "WPA2/WPA3 Personnel sera utilisé sur les bandes 2,4 GHz et 5 GHz. WPA3 Personnel peut uniquement être appliqué à la bande 6 GHz."
         },
         "settings": "Vos paramètres",
         "basic-setting": "Paramètres de base",
@@ -647,8 +648,9 @@
         "deployment-option-multiple-inline-help-text": "Les points d’accès enregistrés plus tard doivent être ajoutés de manière explicite.",
         "ap-with-no-band": "Un point d’accès ne prend pas en charge cette fréquence SSID.",
         "accesspoint-exceeding-limit": "Certains des points d’accès sélectionnés dépassant le nombre maximal de SSID.",
-        "ap-with-no-syncsecurity": "Les SSID équipés avec la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
+        "ap-with-no-syncsecurity": "Les SSID compatibles avec la Sécurité Synchronisée ne sont pas pris en charge sur les points d’accès non APX.",
         "ap-exceeding-limit": "Un ou plusieurs points d’accès sont incompatibles avec l’une des bandes radio ou ont atteint le nombre maximal de SSID pris en charge.",
+        "invalid-node-cofig": "Veuillez supprimer le ou les SSID existants du ou des points d’accès du nœud avant de créer le maillage",
         "deployment-mode-dynamic-later": "Ajouter des points d’accès ultérieurement",
         "assign-aps-inline-help-text-later": "Les points d’accès peuvent être ajoutés plus tard en modifiant ce SSID.",
         "available-aps": "Points d’accès disponibles",
@@ -660,7 +662,7 @@
         "depend-onap": "Selon le point d’accès utilisé, les fréquences 2,4 GHz et/ou 5GHz sont disponibles.",
         "sec": "Pour sécuriser votre réseau de manière optimale, veuillez définir les paramètres de sécurité.",
         "sec1": "Définir quels clients peuvent se connecter et quel trafic est autorisé.",
-        "sync-sec": "Sécurité synchronisée",
+        "sync-sec": "Sécurité Synchronisée",
         "hidden-ssid": "SSID masqué",
         "client-isolation": "Isolement du client",
         "mac-filter": "Filtrage MAC",
@@ -761,9 +763,8 @@
         },
         "mesh-root-ap": {
           "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
-          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud). La racine doit être connectée au réseau via l’interface LAN. Le ou les SSID existants seront supprimés de tous les points d’accès de nœud après la création du maillage."
+          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud). La racine doit être connectée au réseau via l’interface LAN."
         },
-        "node-ap-ssid-remove": "Le ou les SSID existants seront supprimés du point d’accès après avoir assigné le SSID maillé",
         "roo-ap-ssid-limit": "Le point d’accès racine peut avoir un maximum de 5 SSID, y compris le SSID maillé.",
         "can-not-remove-mesh-from-root": "Supprimez le SSID maillé pour le retirer du point d’accès racine",
         "port-required-validation-msg": "Port obligatoire.",
@@ -854,17 +855,17 @@
         "select-bands": "Sélectionner les bandes"
       },
       "network-editor": {
-        "sync-security-label": "Sécurité synchronisée",
-        "inline-help-sync-security": "La Sécurité synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre technologie Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
+        "sync-security-label": "Sécurité Synchronisée",
+        "inline-help-sync-security": "La Sécurité Synchronisée est une fonction exclusivement disponible sur la gamme Sophos APX. Notre technologie Security Heartbeat™ révolutionnaire permet à votre solution de protection Endpoint et Mobile et aux points d’accès d’échanger des informations et de communiquer entre eux pour bloquer les menaces à la sécurité auxquelles votre réseau est exposé.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Les SSID équipés de la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>La Sécurité synchronisée n’est pas compatible avec les SSID sur lesquels le réseau invité ou le portail captif est activé.",
-        "green-option-label": "Security Heartbeat vert",
+        "green-option-label": "Security Heartbeat - vert",
         "green-option-value": "Autoriser tout le trafic",
         "green-option-info": "Client protégé.",
-        "yellow-option-label": "Security Heartbeat™ jaune",
+        "yellow-option-label": "Security Heartbeat™ - jaune",
         "yellow-option-value": "Autoriser tout le trafic (avertissement)",
         "yellow-option-info": "Un problème a été détecté et un client est potentiellement à risque. Sur un terminal, il peut s’agir d’un malware inactif ou d’une application potentiellement indésirable (PUA). Pour les appareils mobiles, vous pouvez définir l’état Heartbeat pour diverses violations de conformité.",
-        "red-option-label": "Security Heartbeat rouge",
+        "red-option-label": "Security Heartbeat - rouge",
         "red-option-value": "Environnement clôturé",
         "red-option-info": "Tout le trafic Internet est bloqué, à l’exception des domaines autorisés ci-dessous. L’utilisateur voit une page Web avec un avertissement.",
         "uem-label": "Sophos Mobile (UEM)",
@@ -1164,7 +1165,7 @@
           "exceeding-limit-for-band": "Vous dépassez le nombre maximal de réseaux dans les bandes {{ bands }}.",
           "network-with-multiple-hotspot": "Les différents réseaux avec points d’accès ne sont pas pris en charge.",
           "network-with-unsupported-band": "Un réseau ne peut pas être diffusé par ce point d’accès.",
-          "network-with-unsupported-syncsecurity": "Les SSID équipés avec la Sécurité synchronisée ne sont pas compatibles avec les points d’accès non APX.",
+          "network-with-unsupported-syncsecurity": "Les SSID compatibles avec la Sécurité Synchronisée ne sont pas pris en charge sur les points d’accès non APX.",
           "networks": "SSID",
           "no-band-supported": "Le point d’accès ne peut pas diffuser ce réseau.",
           "label-name": "Nom SSID",
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "Aucun SSID assigné pour le moment.",
           "confirm-remove": "Confirmer la suppression",
           "remove-assign-ssid": "Voulez-vous supprimer le SSID assigné ?",
-          "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?"
+          "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?",
+          "invalid-node-cofig": "Veuillez supprimer le ou les SSID existants du point d’accès avant d’assigner le maillage SSID",
+          "incompatible-node-ap": "Configuration du maillage non valide : Le point d’accès du nœud ne peut pas avoir un plus grand nombre de radios que le point d’accès racine"
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "Vous pouvez uniquement créer un SSID maillé AP6 par compte",
       "mesh.accessPointCount": "Un minimum de 2 points d’accès est requis pour former un maillage",
       "mesh.not.allowed": "La fonction de maillage n’est pas disponible actuellement",
-      "mesh.incorrectRoot": "Configuration non valide pour le point d’accès racine",
+      "mesh.incorrectRoot": "Configuration du maillage non valide : Le point d’accès du nœud ne peut pas avoir plus de radios que le point d’accès racine",
       "mesh.protection": "Le maillage AP6 ne peut fonctionner qu’en mode de sécurité WPA3-personnel",
       "operation-mode.not.null": "Le mode de fonctionnement sans fil doit être activé",
       "vlan.tag.not.null": "L’identification du VLAN doit être fourni",
       "vlan.invalid.config": "Seul le VLAN 1 peut être configuré sans identification",
       "vlan.invalid.tagged": "VLAN 1 ne peut pas être configuré comme identifié",
-      "band.not.supported": "Impossible d’assigner un SSID avec une bande non prise en charge au point d’accès"
+      "band.not.supported": "Impossible d’assigner un SSID avec une bande non prise en charge au point d’accès",
+      "multiple.untagged.vlan": {
+        "access-point": "Impossible de configurer plusieurs VLAN non identifiés sur le point d’accès. Veuillez vérifier la configuration du ou des SSID suivants : {{ssid}}",
+        "network": "Impossible de configurer plusieurs VLAN non identifiés. Veuillez vérifier la configuration du ou des points d’accès suivants : {{ap}}"
+      }
     }
   }
 }

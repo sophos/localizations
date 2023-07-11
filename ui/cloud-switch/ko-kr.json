@@ -33,6 +33,8 @@
       "system": "시스템",
       "lag": "LAG",
       "last-updated": "{{ time }}에 데이터 새로 고침",
+      "on": "켜기",
+      "off": "끄기",
       "link-speed": {
         "10mh": "10M/절반",
         "10m_h": "10M/절반",
@@ -939,6 +941,60 @@
       "disabled": "사용 안 함"
     },
     "vlan": {
+      "tab-headers": {
+        "all-vlan": "VLAN",
+        "gvrp": "GVRP",
+        "voice-vlan": "음성 VLAN",
+        "ingress-filtering": "수신 필터링"
+      },
+      "gvrp": {
+        "status": {
+          "text": "GVRP",
+          "not-set": "설정되지 않음",
+          "turn-on": "켜기",
+          "turn-off": "끄기"
+        },
+        "table-headers":{
+          "port": "포트",
+          "status": "상태",
+          "restricted-vlan": "제한된 VLAN",
+          "join-time": "연결 시간(ms)",
+          "leave-time": "종료 시간(ms)",
+          "leave-all-time": "모두 종료 시간(ms)",
+          "config-source": "구성 소스"
+        },
+        "tooltip": {
+          "join-time": "값은 10~4999000ms 사이여야 합니다.",
+          "leave-time": "값은 10~9999000ms 사이여야 합니다. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간",
+          "leave-all-time": "값은 10~10000000ms 사이여야 합니다. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간"
+        },
+        "messages": {
+          "save-dialog-title": "저장 확인",
+          "site-save-setting-text": "{{ count }}개의 스위치가 이 GVRP 설정 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-save-setting-text": "스위치가 이 GVRP 설정 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "update-setting-success": "GVRP 설정이 성공적으로 업데이트되었습니다.",
+          "update-setting-error": "GVRP 설정을 업데이트할 수 없습니다.",
+          "loading-error": "GVRP 설정을 로드할 수 없습니다."
+        }
+      },
+      "ingress-filter": {
+        "not-set": "설정되지 않음",
+        "on": "켜기",
+        "off": "끄기",
+        "accept-type": {
+          "not-set": "설정되지 않음",
+          "all": "모두",
+          "tagged": "태그가 지정됨",
+          "untagged": "태그 해제됨"
+        },
+        "table-headers":{
+          "port": "포트",
+          "accept-type": "수락 유형",
+          "ingress-filtering": "수신 필터링",
+          "priority-ingress-filtering": "우선순위 수신 필터링",
+          "config-source": "구성 소스"
+        }
+      },
       "search-placeholder-text": "검색",
       "ports-dd-default-title": "포트 선택",
       "add-vlan-dialog-title": "VLAN 추가",
@@ -1265,6 +1321,8 @@
         "firmware_upgrade": "펌웨어",
         "schedule_upgrade": "예약",
         "cancel_upgrade": "취소",
+        "lldp_settings": "LLDP 설정",
+        "cdp_global_settings": "CDP 설정",
         "rollback": "펌웨어 교체",
         "port": "포트",
         "remote_support": "원격 지원",
@@ -1292,7 +1350,14 @@
         "qos_storm_control_setting": "스톰 제어",
         "qos_bandwidth_control_setting": "대역폭 제어",
         "qos_class_mapping": "QoS 정책",
-        "qos_policy_mapping": "QoS 정책 바인딩"
+        "qos_policy_mapping": "QoS 정책 바인딩",
+        "voice_vlan_oui": "음성 VLAN OUI",
+        "voice_vlan": "음성 VLAN",
+        "multicast_filtering": "멀티캐스트 필터링",
+        "port_mirroring": "포트 미러링",
+        "cdp_port_settings": "CDP 포트 설정",
+        "port_isolation": "포트 격리",
+        "eee_settings": "포트 EEE"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1337,6 +1402,9 @@
         "isolation": "격리 상태",
         "eee": "EEE",
         "jumbo-frames": "점보 프레임 크기",
+        "bytes": "바이트",
+        "show-per-port": "포트별 표시 설정",
+        "global-jumbo-frames": "모든 포트에 대해",
         "multicast-filtering": "멀티캐스트 필터링"
       },
       "message": {
@@ -1347,7 +1415,11 @@
         "switch-save-dialog-text": "스위치가 포트 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "save-checkbox-text": "설정을 이러한 스위치에 즉시 동기화",
         "lag-site-save-dialog-text": "{{ count }}개의 스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "mutlicast-filtering-site-save-dialog-text": "{{ count }}개의 스위치가 멀티캐스트 필터링 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "port-mirroring-site-save-dialog-text": "{{ count }}개의 스위치가 포트 미러링 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "lag-switch-save-dialog-text": "스위치가 LAG 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "mutlicast-filtering-switch-save-dialog-text": "스위치가 멀티캐스트 필터링 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "port-mirroring-switch-save-dialog-text": "스위치가 포트 미러링 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "port-revert-success": "스위치 설정이 성공적으로 삭제되었으며 스위치가 사이트 설정을 사용하고 있습니다.",
         "port-revert-error": "스위치 구성을 삭제할 수 없습니다.",
         "port-revert-system-success": "사이트 구성이 성공적으로 삭제되었으며 스위치가 시스템 기본값을 사용하고 있습니다.",
@@ -1367,6 +1439,21 @@
         "qos-lag-conflict-title": "QoS 대역폭 제어 설정이 LAG 멤버 포트를 사용하고 있습니다!",
         "fix-qos-lag-conflicts": "스위치 수준에서 포트 {{ ports }} 설정을 '설정 안 함'(비어 있음)으로 상향 조정하여 충돌을 해결할 수 있습니다.",
         "qos-lag-fix-button": "선택한 설정 제거"
+      },
+      "ports-mirroring" : {
+        "table-headers": {
+          "session-id": "세션 ID",
+          "destination-port": "대상 포트",
+          "egress": "송신",
+          "ingress": "수신",
+          "ingress_and_egress": "수신 및 송신",
+          "session-status": "세션 상태"
+        }
+      },
+      "multicast-filtering": {
+        "header": "멀티캐스트 필터링",
+        "update-success-message": "멀티캐스트 필터링 상태가 업데이트되었습니다!",
+        "update-failure-message": "업데이트하지 못했습니다!"
       }
     },
     "l3-relay-snooping": {
@@ -2120,10 +2207,10 @@
       "7810": "QoS 정책: 클래스 맵 상태를 수정할 수 없습니다. 잘못된 POST 요청.",
       "7811": "QoS 정책: 정책 맵 상태에 대해 잘못된 값입니다. 잘못된 POST 요청.",
       "7812": "QoS 정책: 정책 맵 상태를 수정할 수 없습니다. 잘못된 POST 요청.",
-      "7813": "QoS 정책: 원본 Mac 주소에 대해 잘못된 값입니다. 잘못된 POST 요청.",
-      "7814": "QoS 정책: 원본 Mac 주소를 수정할 수 없습니다. 잘못된 POST 요청.",
-      "7815": "QoS 정책: 대상 Mac 주소에 대해 잘못된 값입니다. 잘못된 POST 요청.",
-      "7816": "QoS 정책: 대상 Mac 주소를 수정할 수 없습니다. 잘못된 POST 요청.",
+      "7813": "QoS 정책: 원본 MAC 주소에 대해 잘못된 값입니다. 잘못된 POST 요청.",
+      "7814": "QoS 정책: 원본 MAC 주소를 수정할 수 없습니다. 잘못된 POST 요청.",
+      "7815": "QoS 정책: 대상 MAC 주소에 대해 잘못된 값입니다. 잘못된 POST 요청.",
+      "7816": "QoS 정책: 대상 MAC 주소를 수정할 수 없습니다. 잘못된 POST 요청.",
       "7817": "QoS 정책: 이더 유형에 대해 잘못된 값입니다. 잘못된 POST 요청.",
       "7818": "QoS 정책: 이더 유형을 수정할 수 없습니다. 잘못된 POST 요청.",
       "7819": "QoS 정책: VLAN 우선 순위에 대해 잘못된 값입니다. 잘못된 POST 요청.",
@@ -2161,10 +2248,10 @@
       "7851": "QoS 정책: 클래스 맵 상태를 수정할 수 없습니다. 잘못된 PATCH 요청.",
       "7852": "QoS 정책: 정책 맵 상태에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
       "7853": "QoS 정책: 정책 맵 상태를 수정할 수 없습니다. 잘못된 PATCH 요청.",
-      "7854": "QoS 정책: 원본 Mac 주소에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
-      "7855": "QoS 정책: 원본 Mac 주소를 수정할 수 없습니다. 잘못된 PATCH 요청.",
-      "7856": "QoS 정책: 대상 Mac 주소에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
-      "7857": "QoS 정책: 대상 Mac 주소를 수정할 수 없습니다. 잘못된 PATCH 요청.",
+      "7854": "QoS 정책: 원본 MAC 주소에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
+      "7855": "QoS 정책: 원본 MAC 주소를 수정할 수 없습니다. 잘못된 PATCH 요청.",
+      "7856": "QoS 정책: 대상 MAC 주소에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
+      "7857": "QoS 정책: 대상 MAC 주소를 수정할 수 없습니다. 잘못된 PATCH 요청.",
       "7858": "QoS 정책: 이더 유형에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
       "7859": "QoS 정책: 이더 유형을 수정할 수 없습니다. 잘못된 PATCH 요청.",
       "7860": "QoS 정책: VLAN 우선 순위에 대해 잘못된 값입니다. 잘못된 PATCH 요청.",
@@ -2200,8 +2287,8 @@
       "7890": "QoS 정책: 클래스 상태에 대해 잘못된 값입니다. 잘못된 DELETE 요청.",
       "7891": "QoS 정책: 클래스 상태를 수정할 수 없습니다. 잘못된 DELETE 요청.",
       "7892": "QoS 정책: 클래스 이름을 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
-      "7893": "QoS 정책: 대상 Mac 주소를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
-      "7894": "QoS 정책: 원본 Mac 주소를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
+      "7893": "QoS 정책: 대상 MAC 주소를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
+      "7894": "QoS 정책: 원본 MAC 주소를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
       "7895": "QoS 정책: 이더 유형을 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
       "7896": "QoS 정책: 원본 IP 주소를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
       "7897": "QoS 정책: 원본 IP 주소 마스크를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
@@ -2437,7 +2524,44 @@
     "lldp": {
       "settings": "설정",
       "devices": "장치",
-
+      "local-device": {
+        "chassisSubtype": "섀시 ID 하위 유형",
+        "chassisID": "섀시 ID",
+        "sysName": "시스템 이름",
+        "sysDescption": "시스템 설명",
+        "supported-capabilities": "지원되는 기능",
+        "turned-on-capabilities": "기능 켜짐",
+        "portSubtype": "포트 ID 하위 유형",
+        "other": "기타",
+        "repeater": "리피터",
+        "bridge": "브리지",
+        "wlanAccessPoint": "무선 액세스 지점",
+        "router": "라우터",
+        "telephone": "VOIP 전화",
+        "docssisCableDevice": "DOCSIS 장치",
+        "Station": "스테이션",
+        "Not-Advertised": "광고 안 됨",
+        "Not-Capable": "불가능",
+        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "Not-In-Aggregation": "집계되지 않음(ID: {{ lagId }})"
+      },
+      "remote-device": {
+        "portNo": "포트",
+        "chassisSubtype": "섀시 ID 하위 유형",
+        "chassisID": "섀시 ID",
+        "portSubtype": "포트 ID 하위 유형",
+        "remoteID": "인접 ID",
+        "remoteIp": "인접 IP",
+        "sysName": "시스템 이름",
+        "sysDescption": "시스템 설명",
+        "supportedCapabilities": "지원되는 기능",
+        "turnedOnCapabilities": "기능 켜짐",
+        "timeToLive": "TTL",
+        "autoNeg": "자동 협상",
+        "operMAUType": "운영 유형",
+        "maxFrameSize": "최대 프레임 크기",
+        "linkAgg": "LAG"
+      },
       "global-settings": {
         "title": "LLDP 설정",
         "status": "상태",
@@ -2449,7 +2573,6 @@
         "reinitDelay": "재초기화 지연",
         "transmitDelay": "전송 지연",
         "required-input-message": "값은 {{ min }}~{{ max }}여야 합니다",
-
         "message": {
           "save-lldp-settings-success": "LLDP 설정이 업데이트되었음",
           "save-lldp-settings-error": "LLDP 설정을 업데이트할 수 없음",
@@ -2463,6 +2586,159 @@
         "not-set": "설정되지 않음",
         "enabled": "사용함",
         "disabled": "사용 안 함"
+      }
+    },
+    "cdp": {
+      "settings": "설정",
+      "ports": "포트",
+      "local-devices": "자체",
+      "remote-devices": "인접 라우터",
+      "port-info": "포트 정보",
+      "device-info": "장치 세부 정보",
+      "cdp-device-info": "CDP",
+      "lldp-device-info": "LLDP",
+      "table-headers": {
+        "port": "포트",
+        "state": "CDP 상태",
+        "notify-voice": "VLAN 불일치 알림",
+        "notify-vlan" : "음성 VLAN 불일치 알림",
+        "notify-duplex": "이중 불일치 알림",
+        "config-source": "구성 소스"
+      },
+      "local-device": {
+        "port": "포트",
+        "enable": "CDP 상태",
+        "deviceId": "장치 ID",
+        "systemName": "시스템 이름",
+        "address": "주소",
+        "capabilities": "기능",
+        "version": "CDP 버전",
+        "platform": "플랫폼",
+        "softwareVersion": "소프트웨어",
+        "localVlan": "VLAN",
+        "voiceVlan": "음성 VLAN",
+        "duplex": "이중",
+        "extendedTrust": "확장된 신뢰",
+        "cosForUntrusted": "신뢰할 수 없는 포트에 대한 CoS",
+        "powerConsumption": "전력 소비",
+        "powerRequestId": "전력 요청 ID",
+        "powerManagementId": "전력 관리 ID",
+        "powerAvailable": "가용 전력",
+        "hasNeighbor": "인접 라우터"
+      },
+      "remote-device": {
+        "portNo": "포트",
+        "deviceId": "장치 ID",
+        "systemName": "시스템 이름",
+        "localInterface": "자체 인터페이스",
+        "cdpVersion": "버전",
+        "timeToLive": "TTL",
+        "neighborInterface": "인접 인터페이스",
+        "address": "주소",
+        "capabilities": "기능",
+        "softwareVersion": "소프트웨어",
+        "platform": "플랫폼",
+        "nativeVlan": "자체 VLAN",
+        "voiceVlan": "음성 VLAN",
+        "duplex": "이중",
+        "extendedTrust": "확장된 신뢰",
+        "cosForUntrusted": "신뢰할 수 없는 포트에 대한 CoS",
+        "managementAddress": "관리 주소",
+        "powerConsumption": "전력 소비",
+        "powerRequestId": "전력 요청 ID",
+        "powerManagementId": "전력 관리 ID",
+        "powerAvailable": "가용 전력"
+      },
+      "global-settings": {
+        "title": "CDP 설정",
+        "status": "상태",
+        "voiceVlanAdvertise": "음성 VLAN 광고",
+        "tlvValidation": "필수 TLV 검증",
+        "deviceIdFormat": "장치 ID 형식",
+        "notifyVlanMismatch": "VLAN 불일치 알림",
+        "notifyVoiceVlanMismatch": "음성 VLAN 불일치 알림",
+        "notifyDuplexMismatch": "이중 불일치 알림",
+        "config-source": "구성 소스",
+        "version": "버전",
+        "transmissionInterval": "전송 간격",
+        "transmissionInterval-invalid-message": "전송 간격은 {{ val }}(전송 지연*4)보다 커야 합니다",
+        "transmitDelay-invalid-message": "전송 지연은 {{ val }}(전송 간격/4)보다 작아야 합니다",
+        "holdTime": "보류 시간",
+        "required-input-message": "값은 {{ min }}~{{ max }}여야 합니다",
+        "message": {
+          "save-cdp-settings-success": "CDP 설정이 업데이트되었음",
+          "save-cdp-settings-error": "CDP 설정을 업데이트할 수 없음",
+          "save-dialog-title": "저장 확인",
+          "site-save-setting-text": "{{ count }}개의 스위치가 이 검색 설정 업데이트를 받습니다.",
+          "switch-save-setting-text": "스위치가 이 검색 설정 업데이트를 받습니다.",
+          "fetch-cdp-settings-error": "CDP 설정을 가져올 수 없음"
+        }
+      },
+      "common": {
+        "not-set": "설정되지 않음",
+        "enabled": "사용함",
+        "disabled": "사용 안 함",
+        "mac": "Mac 주소",
+        "serial": "일련 번호",
+        "version-1": "v1",
+        "version-2": "v2",
+        "no": "아니요",
+        "yes": "예"
+      }
+    },
+    "voice-vlan": {
+      "title": "전역 설정",
+      "status": "음성 VLAN 상태",
+      "id": "음성 VLAN ID",
+      "priorityTag": "VLAN 우선순위 태그",
+      "dscp": "DSCP",
+      "cosStatus": "802.1 CoS 상태",
+      "cosPriority": "CoS 우선순위",
+      "agingTime": "에이징 시간",
+      "config-source": "구성 소스",
+      "required-input-message": "값은 {{ min }}~{{ max }}여야 합니다",
+      "global-settings": "전역 설정",
+      "not-set": "설정되지 않음",
+      "common": {
+        "not-set": "설정되지 않음",
+        "enabled": "사용함",
+        "disabled": "사용 안 함",
+        "auto": "자동",
+        "oui": "OUI"
+      },
+      "message": {
+        "save-voice-vlan-settings-success": "음성 VLAN 설정이 업데이트되었음",
+        "save-voice-vlan-settings-error": "음성 VLAN 설정을 업데이트할 수 없음",
+        "save-dialog-title": "저장 확인",
+        "site-save-setting-text": "{{ count }}개의 스위치가 이 음성 VLAN 설정 업데이트를 받습니다.",
+        "switch-save-setting-text": "스위치가 이 음성 VLAN 설정 업데이트를 받습니다.",
+        "fetch-voice-vlan-settings-error": "음성 VLAN 설정을 가져올 수 없음"
+      },
+
+      "oui": {
+        "title": "OUI 설정",
+        "name": "이름",
+        "oui-address": "OUI 주소",
+        "description": "설명",
+        "add-oui-dialog-title": "OUI 설정 추가",
+        "config-source": "구성 소스",
+        "maxlength-descr-message": "설명 길이는 0~32자 사이여야 함",
+        "invalid-oui-address-message": "잘못된 OUI 주소",
+        "oui-address-already-exist-message": "OUI 주소가 이미 존재함",
+
+        "message": {
+          "add-settings-success": "음성 VLAN OUI 설정이 생성됨",
+          "add-settings-error": "음성 VLAN OUI 설정을 만들 수 없음",
+          "add-dialog-title": "생성 확인",
+          "site-add-setting-text": "{{ count }}개의 스위치가 이 음성 VLAN OUI 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-add-setting-text": "스위치가 이 음성 VLAN OUI 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "fetch-settings-error": "음성 VLAN OUI 설정을 가져올 수 없음",
+          "delete-settings-success": "음성 VLAN OUI 설정이 삭제됨",
+          "delete-settings-error": "음성 VLAN OUI 설정을 삭제할 수 없음",
+          "delete-dialog-title": "삭제 확인",
+          "site-delete-setting-text": "{{ ouiCount }}개의 음성 VLAN OUI 설정을 삭제합니다. {{ count }}개의 스위치가 이 음성 VLAN OUI 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-delete-setting-text": "{{ ouiCount }}개의 음성 VLAN OUI 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        }
       }
     }
   }

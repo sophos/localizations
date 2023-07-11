@@ -199,7 +199,7 @@
         "first-seen": "Primeira visualização",
         "last-seen": "Última visualização",
         "security-heartbeat": {
-          "security-heartbeat": "Pulsação de segurança",
+          "security-heartbeat": "Security Heartbeat",
           "health-status-red": "Cliente em risco",
           "health-status-green": "Protegido",
           "health-status-missing": "Security Heartbeat ausente",
@@ -417,7 +417,7 @@
         "user-acceptance-notice": "A seleção do país de operação correto, incluindo a seleção do canal sem fio dentro do espectro de 2,4 GHz, 5 GHz e 6 GHz, é de responsabilidade única e exclusiva do usuário. A disponibilidade de canais independentes varia de acordo com o país, da mesma forma como variam as leis que regem o uso adequado dos canais e a proibição de uso dos canais. Consulte as leis do país em referência para determinar a seleção do canal adequado. De acordo com o Contrato de Licença de Usuário Final da Sophos, os usuários indenizarão, preservarão e isentarão a Sophos contra infrações das leis locais que regem a seleção do canal. A Sophos também reserva-se o direito de terminar um contrato de licença de usuário caso o uso infrinja as leis locais.",
         "reboot-note": "Criar ou atualizar as informações do site exigirão que o AP seja reinicializado",
         "step1-title": "Passo 1: Informações do site",
-        "step2-title": "Passo 2: Aviso de aceitação do usuário",
+        "step2-title": "Passo {{stepNum}}: Aviso de aceitação do usuário",
         "step3-title": "Passo {{stepNum}}: Atribuir pontos de acesso"
       },
       "site-name-error-msgs": {
@@ -567,7 +567,7 @@
         "radius-port":"Porta do RADIUS",
         "frequency-band":"Banda de Frequência",
         "enable-ssid": "Habilitar SSID",
-        "sync-sec": "Segurança sincronizada",
+        "sync-sec": "Segurança Sincronizada",
         "walled-garden": "Jardim Murado",
         "hidden-ssid": "SSID oculto",
         "client-isolation": "Isolamento de cliente",
@@ -628,7 +628,8 @@
         "general-setting-encryption-mode": "Especifique as configurações gerais do seu novo SSID. Escolha o modo de encriptação necessária e o tipo de SSID que deseja oferecer.",
         "band-encryption-mode": {
           "apx": "Recomendamos usar WPA2 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz.",
-          "ap6": "Recomendamos usar WPA3 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz."
+          "ap6": "Recomendamos usar WPA3 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz.",
+          "GHZ_6": "O WPA2/WPA3 Personal será usado nas bandas 2,4 GHz e 5 GHz. O WPA3 Personal só pode ser aplicado à banda 6 GHz."
         },
         "settings": "Suas configurações",
         "basic-setting": "Configurações básicas",
@@ -649,6 +650,7 @@
         "accesspoint-exceeding-limit": "Alguns dos pontos de acesso selecionados ultrapassam o número máximo para SSIDs.",
         "ap-with-no-syncsecurity": "SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
         "ap-exceeding-limit": "Há um ou mais pontos de acesso que não aceitam uma das bandas de rádio ou que atingiram o número máximo de SSIDs aceitos.",
+        "invalid-node-cofig": "Remova os SSIDs existentes dos nós de pontos de acesso antes de criar a malha",
         "deployment-mode-dynamic-later": "Adicionar pontos de acesso posteriormente",
         "assign-aps-inline-help-text-later": "Os APs podem ser adicionados posteriormente, bastando editar o SSID.",
         "available-aps": "Pontos de acesso disponíveis",
@@ -660,7 +662,7 @@
         "depend-onap": "Dependendo do ponto de acesso, estão disponíveis 2,4 GHz e/ou 5 GHz.",
         "sec": "Especificar as configurações de segurança ajudarão a tornar a sua rede mais segura",
         "sec1": "Defina quais clientes podem se conectar e qual o tráfego permitido.",
-        "sync-sec": "Segurança sincronizada",
+        "sync-sec": "Segurança Sincronizada",
         "hidden-ssid": "SSID oculto",
         "client-isolation": "Isolamento de cliente",
         "mac-filter": "Filtragem de MAC",
@@ -761,9 +763,8 @@
         },
         "mesh-root-ap": {
           "apx": "O SSID de malha APX requer, no mínimo, um ponto de acesso conectado à internet via LAN.",
-          "ap6": "O SSID de malha AP6 requer, no mínimo, 2 pontos de acesso (1 raiz e 1 nó). A raiz deve ser conectada à rede através da interface da LAN. Os SSIDs existentes serão removidos de todos os nós de pontos de acesso após criar a malha."
+          "ap6": "O SSID de malha AP6 requer, no mínimo, 2 pontos de acesso (1 raiz e 1 nó). A raiz deve ser conectada à rede através da interface da LAN."
         },
-        "node-ap-ssid-remove": "Os SSIDs existentes serão deletados do ponto de acesso após atribuir o SSID da malha",
         "roo-ap-ssid-limit": "O ponto de acesso raiz pode ter um máximo de 5 SSIDs, incluindo de SSID de malha.",
         "can-not-remove-mesh-from-root": "Delete o SSID de malha para removê-lo do ponto de acesso raiz",
         "port-required-validation-msg": "É necessária uma porta.",
@@ -854,7 +855,7 @@
         "select-bands": "Selecionar bandas"
       },
       "network-editor": {
-        "sync-security-label": "Segurança sincronizada",
+        "sync-security-label": "Segurança Sincronizada",
         "inline-help-sync-security": "O Synchronized Security é um recurso exclusivo disponível para pontos de acesso Sophos APX Series. Nossa revolucionária tecnologia Security Heartbeat™ permite que seu endpoint, proteção móvel e pontos de acesso troquem informações e trabalhem juntos para bloquear ameaças de segurança da sua rede.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>A Segurança Sincronizada não é suportada em SSIDs que têm rede de convidados ou portal cativo habilitados.",
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "Nenhum SSID foi atribuído agora.",
           "confirm-remove": "Confirmar remoção",
           "remove-assign-ssid": "Deseja remover o SSID atribuído?",
-          "deleteDialogText": "Deletar o AP reinicializará o sistema automaticamente.<br><br>Deseja continuar com a deleção?"
+          "deleteDialogText": "Deletar o AP reinicializará o sistema automaticamente.<br><br>Deseja continuar com a deleção?",
+          "invalid-node-cofig": "Remova os SSIDs existentes do ponto de acesso antes de atribuir o SSID da malha",
+          "incompatible-node-ap": "Configuração inválida da malha: O ponto de acesso Nó não pode ter um número de rádios maior comparado ao ponto de acesso Raiz"
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "Você pode criar apenas um SSID de malha AP6 por conta",
       "mesh.accessPointCount": "Para formar a malha são necessários, no mínimo, 2 pontos de acesso",
       "mesh.not.allowed": "O recursos de malha não está disponível no momento",
-      "mesh.incorrectRoot": "Configuração inválida do ponto de acesso raiz",
+      "mesh.incorrectRoot": "Configuração inválida da malha: O Ponto de acesso Nó não pode ter um número de rádios maior comparado ao Ponto de acesso Raiz",
       "mesh.protection": "A malha AP6 só pode operar no modo de segurança pessoal WPA3-Personal",
       "operation-mode.not.null": "Modo de operação sem fio deve ser fornecido",
       "vlan.tag.not.null": "O tagging de VLAN deve ser fornecido",
       "vlan.invalid.config": "Apenas a VLAN 1 pode ser configurada sem tag",
       "vlan.invalid.tagged": "A VLAN 1 não pode ser configurada com tag",
-      "band.not.supported": "Não é possível atribuir SSID com banda sem suporte ao ponto de acesso"
+      "band.not.supported": "Não é possível atribuir SSID com banda sem suporte ao ponto de acesso",
+      "multiple.untagged.vlan": {
+        "access-point": "Não é possível configurar mais de uma VLAN sem tag no ponto de acesso. Verifique o config das seguintes SSIDs: {{ssid}}",
+        "network": "Não é possível configurar mais de uma VLAN sem tag. Verifique o config dos seguintes pontos de acesso: {{ap}}"
+      }
     }
   }
 }

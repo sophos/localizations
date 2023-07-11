@@ -199,7 +199,7 @@
         "first-seen": "首次出現",
         "last-seen": "上次出現",
         "security-heartbeat": {
-          "security-heartbeat": "安全活動訊號",
+          "security-heartbeat": "Security HeartBeat",
           "health-status-red": "用戶端處於風險中",
           "health-status-green": "受保護",
           "health-status-missing": "丟失安全活動訊號",
@@ -417,7 +417,7 @@
         "user-acceptance-notice": "使用者只需負責選取正確的營運國家/地區（包括 2.4 GHz、5 GHz 和 6 GHz 頻譜內的無線頻道選擇）。獨立頻道的可用性因國家/地區而異，管理正確頻道使用和禁止頻道使用的當地法律也是如此。請了解當地國家/地區的法律以確定選取適當的頻道。根據 Sophos 終端使用者授權合約，若出現違反有關頻道選擇的當地法律的情況，使用者將對 Sophos 進行賠償、辯護並使其免受損害。此外，若使用者的使用違反了當地法律，Sophos 保留終止該使用者授權合約的權利。",
         "reboot-note": "建立或更新網站資訊將需要重新啟動 AP",
         "step1-title": "步驟 1：網站資訊",
-        "step2-title": "步驟 2：使用者驗收通知",
+        "step2-title": "步驟 {{stepNum}}：使用者驗收通知",
         "step3-title": "步驟 {{stepNum}}：指派存取點"
       },
       "site-name-error-msgs": {
@@ -567,7 +567,7 @@
         "radius-port":"RADIUS 連接埠",
         "frequency-band":"頻帶",
         "enable-ssid": "啟用 SSID",
-        "sync-sec": "同步安全",
+        "sync-sec": "同步的安全性",
         "walled-garden": "Walled garden",
         "hidden-ssid": "隱藏 SSID",
         "client-isolation": "用戶端隔離",
@@ -628,7 +628,8 @@
         "general-setting-encryption-mode": "為您的新 SSID 指定一般設定。選擇所需的加密模式以及您要提供哪種 SSID。",
         "band-encryption-mode": {
           "apx": "我們建議使用帶有 AES 的 WPA2 作為加密模式以及 2.4 和 5 GHz 頻帶。",
-          "ap6": "我們建議使用帶有 AES 的 WPA3 作為加密模式以及 2.4 和 5 GHz 頻帶。"
+          "ap6": "我們建議使用帶有 AES 的 WPA3 作為加密模式以及 2.4 和 5 GHz 頻帶。",
+          "GHZ_6": "WPA2/WPA3 Personal 將在 2.4 GHz 和 5 GHz 頻段使用。WPA3 Personal 只能用於 6 GHz 頻段。"
         },
         "settings": "您的設定",
         "basic-setting": "基本設定",
@@ -649,6 +650,7 @@
         "accesspoint-exceeding-limit": "部分選擇的存取點超過 SSID 的最大數量。",
         "ap-with-no-syncsecurity": "非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "ap-exceeding-limit": "有一個或多個存取點不支援廣播頻帶之一，或已達到受支援 SSID 的最大數量。",
+        "invalid-node-cofig": "建立網格之前，請從節點存取點移除現有 SSID",
         "deployment-mode-dynamic-later": "稍後新增存取點",
         "assign-aps-inline-help-text-later": "透過編輯該 SSID，可於稍後隨時新增 AP。",
         "available-aps": "可用存取點",
@@ -660,7 +662,7 @@
         "depend-onap": "根據存取點，可使用 2.4 GHz 和/或 5GHz。",
         "sec": "指定安全設定將幫助您使網路更加安全",
         "sec1": "定義可以連線至哪些用戶端以及允許哪些流量。",
-        "sync-sec": "同步安全",
+        "sync-sec": "同步的安全性",
         "hidden-ssid": "隱藏 SSID",
         "client-isolation": "用戶端隔離",
         "mac-filter": "MAC 篩選",
@@ -761,9 +763,8 @@
         },
         "mesh-root-ap": {
           "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
-          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點存取點）。根存取點必須透過 LAN 介面連線至網路。建立網格後，現有 SSID 將從所有節點存取點中移除。"
+          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點存取點）。根存取點必須透過 LAN 介面連線至網路。"
         },
-        "node-ap-ssid-remove": "指派網格 SSID 後，現有 SSID 將從存取點中刪除",
         "roo-ap-ssid-limit": "根存取點最多可以有 5 個 SSID，包括網格 SSID。",
         "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
         "port-required-validation-msg": "必須提供連接埠。",
@@ -854,7 +855,7 @@
         "select-bands": "選取頻帶"
       },
       "network-editor": {
-        "sync-security-label": "同步安全",
+        "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "同步安全性是為 Sophos APX Series 存取點提供的獨特功能。我們革命性的 Security Heartbeat™ 允許您的端點、行動保護和存取點交換資訊，從而共同運作，有效抵禦來自網路的安全威脅。",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "sync-security-disable-info-captive-portal": "<Sup>&#1645;&#1645;</sup>啟用訪客網路或管制入口網站的 SSID 不支援同步安全性。",
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "目前未指派 SSID。",
           "confirm-remove": "確認移除",
           "remove-assign-ssid": "是否移除指派的 SSID？",
-          "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？"
+          "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？",
+          "invalid-node-cofig": "在指派網狀 SSID 之前，請從存取點移除現有 SSID",
+          "incompatible-node-ap": "無效的網格設定：與根存取點相比，節點存取點不能擁有更多數量的無線電"
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "每個帳戶只能建立一個 AP6 網狀 SSID",
       "mesh.accessPointCount": "至少需要 2 個存取點才能形成網狀",
       "mesh.not.allowed": "網狀功能目前不可用",
-      "mesh.incorrectRoot": "根存取點的設定無效",
+      "mesh.incorrectRoot": "無效的網格設定：與根接入點相比，節點存取點不能擁有更多數量的無線電",
       "mesh.protection": "AP6 網狀只能在 WPA3 個人安全模式下運行",
       "operation-mode.not.null": "必須提供無線操作模式",
       "vlan.tag.not.null": "必須提供 VLAN 標記",
       "vlan.invalid.config": "只有 VLAN 1 可以設定為取消標記",
       "vlan.invalid.tagged": "VLAN 1 不能設定為已標記",
-      "band.not.supported": "無法將具有不受支援頻帶的 SSID 指派至存取點"
+      "band.not.supported": "無法將具有不受支援頻帶的 SSID 指派至存取點",
+      "multiple.untagged.vlan": {
+        "access-point": "無法在存取點上設定多個未標記 VLAN。請檢查以下 SSID 的設定：{{ssid}}",
+        "network": "無法設定多個未標記 VLAN。請檢查以下存取點的設定：{{ap}}"
+      }
     }
   }
 }

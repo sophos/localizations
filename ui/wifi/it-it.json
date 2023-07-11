@@ -417,7 +417,7 @@
         "user-acceptance-notice": "La responsabilità di selezionare il giusto paese di utilizzo, inclusa la selezione del canale wireless nelle gamme 2,4 GHz, 5 GHz e 6 GHz, spetta esclusivamente all’utente. La disponibilità di canali indipendenti varia a seconda del paese e lo stesso vale per le leggi locali che governano l’adeguato utilizzo del canale e il divieto di utilizzare canali specifici. Consulta la legislazione locale del paese di utilizzo per stabilire come selezionare il canale in maniera adeguata. In conformità con il Sophos End-User License Agreement (Contratto di licenza Sophos per l’utente finale), gli utenti risarciranno, difenderanno e solleveranno Sophos da ogni responsabilità per un’eventuale violazione delle leggi locali che governano la selezione del canale. Inoltre, Sophos si riserva il diritto di terminare il contratto di licenza di un utente che violi le leggi locali.",
         "reboot-note": "La creazione o l’aggiornamento delle informazioni del sito richiede il riavvio dell’AP",
         "step1-title": "Passaggio 1. Informazioni del sito",
-        "step2-title": "Passaggio 2. Notifica di accettazione dell’utente",
+        "step2-title": "Passaggio {{stepNum}}. Notifica di accettazione dell’utente",
         "step3-title": "Passaggio {{stepNum}}. Assegna access point"
       },
       "site-name-error-msgs": {
@@ -623,12 +623,13 @@
         "captive-portal": "Captive portal"
       },
       "create": {
-        "add-success": "Salvataggio del SSID completato.",
+        "add-success": "Salvataggio dello SSID completato.",
         "help": "Assistenza",
         "general-setting-encryption-mode": "Specifica le impostazioni generali del nuovo SSID. Scegli la modalità di cifratura richiesta e il tipo di SSID che desideri fornire.",
         "band-encryption-mode": {
           "apx": "Consigliamo di utilizzare WPA2 con modalità di cifratura AES e banda di frequenza a 2,4 e 5 GHz.",
-          "ap6": "Consigliamo di utilizzare WPA3 con modalità di cifratura AES e banda di frequenza a 2,4 e 5 GHz."
+          "ap6": "Consigliamo di utilizzare WPA3 con modalità di cifratura AES e banda di frequenza a 2,4 e 5 GHz.",
+          "GHZ_6": "Per le bande a 2,4 GHz e 5 GHz verrà utilizzata WPA2/WPA3 Personal. WPA3 Personal può essere applicata solo alla banda a 6 GHz."
         },
         "settings": "Le tue impostazioni",
         "basic-setting": "Impostazioni di base",
@@ -638,7 +639,7 @@
         "frequency-band": "Banda di frequenza",
         "assign-ssid": "Conteggio degli access point assegnati",
         "enable-ssid": "Abilita SSID",
-        "enable-ssid-help-text": "Abilita immediatamente l'SSID.",
+        "enable-ssid-help-text": "Abilita immediatamente lo SSID.",
         "config-ready-msg": "La configurazione è pronta, si prega di salvare e procedere.",
         "advanced-settings": "Impostazioni avanzate",
         "previous-section": "Precedente",
@@ -649,6 +650,7 @@
         "accesspoint-exceeding-limit": "Alcuni degli access point selezionati superano il numero massimo di SSID.",
         "ap-with-no-syncsecurity": "Gli SSID abilitati per Synchronized Security non sono supportati negli access point non APX.",
         "ap-exceeding-limit": "Sono presenti uno o più access point che non supportano una delle bande radio o che hanno raggiunto il numero massimo di SSID supportati.",
+        "invalid-node-cofig": "Rimuovi lo/gli SSID esistente/i dallo/dagli access point nodo prima di creare la mesh",
         "deployment-mode-dynamic-later": "Aggiungi access point in un altro momento",
         "assign-aps-inline-help-text-later": "Gli AP possono essere aggiunti in un secondo momento, modificando questo SSID.",
         "available-aps": "Access point disponibili",
@@ -701,7 +703,7 @@
         "increase-quality": "Queste impostazioni consentono di migliorare la qualità del servizio.",
         "network-faster-optimal": "Ciascuna singola impostazione qui presente può contribuire a rendere la rete più rapida e a consentirne la gestione ottimale.",
         "client-authenticate": "I client devono autenticarsi nel Captive Portal prima di ottenere l'autorizzazione di accedere a Internet.",
-        "restriction-guest": "Vengono applicate le stesse restrizioni di un SSID guest.",
+        "restriction-guest": "Vengono applicate le stesse restrizioni di uno SSID guest.",
         "frequency-bands": "2,4 GHz e 5 GHz",
         "lan-inline-help-text": "Il traffico dei client viene direttamente connesso tramite bridge alla stessa rete a cui è connesso l'AP.",
         "vlan": "VLAN",
@@ -752,7 +754,7 @@
         "passphrase-required": "Passphrase obbligatoria.",
         "passphrase-placeholder": "Inserire una passphrase sicura.",
         "shared-secret-placeholder": "Inserisci la passphrase",
-        "frequency-band-inline-help-msg": "Limita le bande su cui la rete deve essere trasmessa. Questa opzione potrebbe limitare gli AP su cui si trasmette l'SSID, in quanto alcuni modelli sono in grado di trasmettere solamente su bande specifiche, oppure non su tutte le bande contemporaneamente.",
+        "frequency-band-inline-help-msg": "Limita le bande su cui la rete deve essere trasmessa. Questa opzione potrebbe limitare gli AP su cui si trasmette lo SSID, in quanto alcuni modelli sono in grado di trasmettere solamente su bande specifiche, oppure non su tutte le bande contemporaneamente.",
         "enable-mesh-mode": "Attiva modalità mesh",
         "enable-mesh-mode-help-msg": "Ti permette di connettere tra loro gli access point che non hanno accesso alla rete LAN. Gli access point mesh invieranno pacchetti STP. Accertati quindi che questo comportamento sia conforme alle regole IT.",
         "only-one-mesh-network": {
@@ -761,9 +763,8 @@
         },
         "mesh-root-ap": {
           "apx": "Lo SSID mesh APX richiede che almeno un access point sia connesso a internet tramite LAN.",
-          "ap6": "Lo SSID mesh AP6 richiede che almeno 2 access point (1 root e 1 nodo) siano connessi a internet tramite LAN. Il root deve essere connesso alla rete tramite interfaccia LAN. Dopo la creazione della mesh, lo o gli SSID verranno rimossi da tutti gli access point nodo."
+          "ap6": "Lo SSID mesh AP6 richiede che almeno 2 access point (1 root e 1 nodo) siano connessi a internet tramite LAN. Il root deve essere connesso alla rete tramite interfaccia LAN."
         },
-        "node-ap-ssid-remove": "Dopo l’assegnazione della mesh, lo o gli SSID esistenti verranno eliminati dall’access point",
         "roo-ap-ssid-limit": "L’access point root può avere fino a 5 SSID, incluso lo SSID mesh.",
         "can-not-remove-mesh-from-root": "Elimina lo SSID mesh per rimuoverlo dall’access point root",
         "port-required-validation-msg": "Porta obbligatoria.",
@@ -772,7 +773,7 @@
         "optimize-multicast": "Ottimizza la gestione del traffico multicast, come ad es. quello di streaming. Incrementa il throughput complessivo.",
         "arp-proxy": "Un AP risponde a query ARP per gli indirizzi di rete. Incrementa il throughput complessivo.",
         "quality-fast-roaming": "Il roaming veloce tra access point offre una migliore esperienza di connettività, specialmente per il VoIP.",
-        "broadcast-outdated": "L'SSID continua a trasmettere se l'AP non è in grado di raggiungere Sophos Central dopo un riavvio.",
+        "broadcast-outdated": "Lo SSID continua a trasmettere se l’AP non è in grado di raggiungere Sophos Central dopo un riavvio.",
         "band-steering-label": "Deviazione di banda",
         "quality-band-steering": "Se le circostanze lo consentono, i client wireless con funzione dual-band vengono indirizzati sulla banda a 5 GHz. Il risultato è una migliore esperienza client.",
         "band-steering-warning": "Il band steering verrà applicato anche a tutte le altre reti dell'AP in cui è configurata questa rete.",
@@ -781,7 +782,7 @@
         "multicast-label": "Conversione da multicast a unicast (Snooping IGMP)",
         "ssid-name-error-msgs": {
           "required": "SSID obbligatorio.",
-          "maxlength": "L'SSID non può superare la lunghezza di 32 caratteri byte.",
+          "maxlength": "Lo SSID non può superare la lunghezza di 32 caratteri byte.",
           "duplicate-ssid": "Nome SSID duplicato"
         },
         "bands-error-msgs": {
@@ -883,7 +884,7 @@
         "welcome-text-label": "Testo di benvenuto",
         "restrict-ssid-message": "Messaggio da visualizzare",
         "message-max-length": "Il messaggio non deve contenere più di 4096 caratteri.",
-        "portal-config-message": "Per personalizzare il logo della landing page, salvare prima l'SSID.",
+        "portal-config-message": "Per personalizzare il logo della landing page, salvare prima lo SSID.",
         "co-branding-upload-title": "LOGO DELL'AZIENDA",
         "customization-preview": "Anteprima della personalizzazione",
         "customize-choose-file": "Seleziona il file",
@@ -893,7 +894,7 @@
         "image-dimension": "* Le dimensioni consigliate per l'immagine sono 200x200 px.",
         "logo-upload": "Carica logo",
         "whitelist-domains-label": "Domini consentiti",
-        "whitelist-domains-note": "L’accesso ai domini presenti nell’Elenco Consentiti può essere effettuato anche se il Security Heartbeat di un dispositivo wireless è rosso. Oltre ai domini definiti, *.sophos.com è consentito per impostazione predefinita.",
+        "whitelist-domains-note": "L'accesso ai domini presenti nell'Elenco Consentiti può essere effettuato anche se il Security Heartbeat di un dispositivo wireless è rosso. Oltre ai domini definiti, *.sophos.com è consentito per impostazione predefinita.",
         "whitelist-domains-error": "Il numero di domini supera il limite. Il numero massimo di domini consentito è 16.",
         "whitelist-domains-info": "Esempio: dominio.com",
         "whitelist-domains-popup": {
@@ -913,8 +914,8 @@
           }
         },
         "hidden-label": "SSID nascosto",
-        "hidden-ssid": "Nasconde l'SSID per le scansioni di rete. Gli utenti devono specificare il nome dell'SSID per connettervisi.",
-        "hidden-ssid-warning": "Nota. L'SSID nascosto avrà comunque bisogno di essere protetto.",
+        "hidden-ssid": "Nasconde lo SSID per le scansioni di rete. Gli utenti devono specificare il nome dello SSID per connettervisi.",
+        "hidden-ssid-warning": "Nota. Lo SSID nascosto avrà comunque bisogno di essere protetto.",
         "client-isolation-label": "Isolamento del client",
         "client-isolation": "Impedisce la comunicazione diretta tra client della stessa radio. È l'opzione consigliata per gli SSID guest o hotspot.",
         "client-isolation-enabled-info": "È abilitato l'isolamento del client, perché è abilitato l'hotspot.",
@@ -931,7 +932,7 @@
         "input-label": "Indirizzi MAC",
         "blocked-mac-filter": "Gli indirizzi MAC bloccati non potranno connettersi a questo SSID.",
         "mac-filter-whitelist": "Elenco Consentiti",
-        "mac-filter": "Limita il numero di indirizzi MAC a cui è consentito connettersi all'SSID in questione.",
+        "mac-filter": "Limita il numero di indirizzi MAC a cui è consentito connettersi allo SSID in questione.",
         "mac-filter-dynamic-blacklist": "Elenco Bloccati",
         "mac-filter-dynamic-none": "Nessuno",
         "mac-filter-dynamic-whitelist": "Elenco Consentiti",
@@ -953,7 +954,7 @@
           "welcome-text-required": "Occorre specificare il testo di benvenuto.",
           "portal-terms-label": "Termini e condizioni di servizio",
           "portal-terms-max-length": "Il campo 'Termini e condizioni di servizio' non deve contenere più di 102400 caratteri.",
-          "portal-config-message": "Per personalizzare la landing page del captive portal, salvare prima l'SSID.",
+          "portal-config-message": "Per personalizzare la landing page del captive portal, salvare prima lo SSID.",
           "authentication-types": "Tipi di autenticazione",
           "authentication-type-none": "Nessuno",
           "backend-authentication": "Autenticazione backend",
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "Nessuno SSID assegnato al momento.",
           "confirm-remove": "Conferma rimozione",
           "remove-assign-ssid": "Rimuovere lo SSID assegnato?",
-          "deleteDialogText": "L’eliminazione dell’AP riavvierà automaticamente il sistema.<br><br>Vuoi procedere con l’eliminazione?"
+          "deleteDialogText": "L’eliminazione dell’AP riavvierà automaticamente il sistema.<br><br>Vuoi procedere con l’eliminazione?",
+          "invalid-node-cofig": "Rimuovi lo/gli SSID esistente/i dall’access point prima di assegnare lo SSID mesh",
+          "incompatible-node-ap": "Configurazione mesh non valida: L’access point nodo non può avere un numero di radio superiore a quello dell’access point root"
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "Puoi creare un solo SSID mesh AP6 per account",
       "mesh.accessPointCount": "Per formare una mesh sono richiesti almeno 2 access point",
       "mesh.not.allowed": "Al momento la funzionalità mesh non è disponibile",
-      "mesh.incorrectRoot": "Configurazione non valida per l’access point root",
+      "mesh.incorrectRoot": "Configurazione mesh non valida: L’access point nodo non può avere un numero di radio superiore a quello dell’access point root",
       "mesh.protection": "La mesh AP6 può essere operativa solamente in modalità di sicurezza WPA3-Personal",
       "operation-mode.not.null": "La modalità operativa del wireless deve essere specificata",
       "vlan.tag.not.null": "I tag VLAN devono essere specificati",
       "vlan.invalid.config": "Solo VLAN 1 può essere configurata come Senza tag",
       "vlan.invalid.tagged": "La VLAN 1 non può essere configurata come Con tag",
-      "band.not.supported": "Impossibile assegnare all’access point un SSID con banda non supportata"
+      "band.not.supported": "Impossibile assegnare all’access point uno SSID con banda non supportata",
+      "multiple.untagged.vlan": {
+        "access-point": "Non è possibile configurare più di una VLAN senza tag su un access point. Controlla la configurazione di questo/i SSID: {{ssid}}",
+        "network": "Non è possibile configurare più di una VLAN senza tag. Controlla la configurazione di questo/i access point: {{ap}}"
+      }
     }
   }
 }

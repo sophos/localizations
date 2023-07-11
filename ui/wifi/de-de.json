@@ -417,7 +417,7 @@
         "user-acceptance-notice": "Es liegt in der Verantwortung des Benutzers, das korrekte Land auszuwählen, in dem das Gerät verwendet wird, sowie den WLAN-Kanal im 2,4 GHz, 5 GHz oder 6 GHz Bereich. Die Verfügbarkeit von Kanälen kann je nach Land variieren, und die Nutzung bzw. das Verbot der Nutzung von Kanälen unterliegt lokalen gesetzlichen Bestimmungen. Prüfen Sie vor der Kanalauswahl die für Sie geltenden Gesetze. Wie in der Sophos-Endbenutzer-Lizenzvereinbarung festgelegt, werden Benutzer Sophos bezüglich der Verletzung lokaler Gesetze zur Kanalauswahl schadlos halten, freistellen und entschädigen. Darüber hinaus behält Sophos sich das Recht vor, die Lizenzvereinbarung mit einem Benutzer zu beenden, wenn die Verwendung gegen lokale Gesetze verstößt.",
         "reboot-note": "Für die Erstellung oder Aktualisierung von Standort-Informationen muss der AP neu gestartet werden",
         "step1-title": "Schritt 1: Standort-Informationen",
-        "step2-title": "Schritt 2: Annahmeerklärung des Benutzers",
+        "step2-title": "Schritt {{stepNum}}: Annahmeerklärung des Benutzers",
         "step3-title": "Schritt {{stepNum}}: Access Points zuweisen"
       },
       "site-name-error-msgs": {
@@ -597,7 +597,7 @@
         "portal-terms": "Nutzungsbedingungen",
         "auth-type": "Authentisierungstyp",
         "google-client-id": "Google-Client-ID",
-        "google-client-secret": "Geheimer Google-Clientschlüssel",
+        "google-client-secret": "Google Client Geheimer Schlüssel",
         "facebook-app-id": "Facebook-App-ID",
         "facebook-app-secret": "Geheimer Facebook-App-Schlüssel",
         "domain-url": "Domäne/URL",
@@ -628,7 +628,8 @@
         "general-setting-encryption-mode": "Legen Sie die allgemeinen Einstellungen für Ihre neue SSID fest. Wählen Sie aus, welche Verschlüsselungsmethode und welche Art von SSID Sie bereitstellen wollen.",
         "band-encryption-mode": {
           "apx": "Wir empfehlen die Verschlüsselungsmethode WPA2 mit AES und die Frequenzbänder 2,4 und 5 GHz.",
-          "ap6": "Wir empfehlen die Verschlüsselungsmethode WPA3 mit AES und die Frequenzbänder 2,4 und 5 GHz."
+          "ap6": "Wir empfehlen die Verschlüsselungsmethode WPA3 mit AES und die Frequenzbänder 2,4 und 5 GHz.",
+          "GHZ_6": "WPA2/WPA3 Personal wird für die Frequenzbänder 2,4 GHz und 5 GHz verwendet. WPA3 Personal kann nur für das Frequenzband 6 GHz verwendet werden."
         },
         "settings": "Ihre Einstellungen",
         "basic-setting": "Grundeinstellungen",
@@ -649,12 +650,13 @@
         "accesspoint-exceeding-limit": "Einige der ausgewählten Access Points überschreiten die maximal zulässige Anzahl an SSIDs.",
         "ap-with-no-syncsecurity": "Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
         "ap-exceeding-limit": "Ein oder mehrere Access Points unterstützen eines der Frequenzbänder nicht oder haben die maximale Anzahl unterstützter SSIDs erreicht.",
+        "invalid-node-cofig": "Bitte entfernen Sie vorhandene SSIDs von den Knoten-Access-Points, bevor Sie das Mesh erstellen",
         "deployment-mode-dynamic-later": "Access Points später hinzufügen",
         "assign-aps-inline-help-text-later": "APs können später hinzugefügt werden, indem diese SSID bearbeitet wird.",
         "available-aps": "Verfügbare Access Points",
         "assigned-aps": "Zugewiesene Access Points",
-        "root-ap": "Root Access Point (Primär)",
-        "root-ap-required": "Root Access Point ist erforderlich.",
+        "root-ap": "Root-Access-Point (Primär)",
+        "root-ap-required": "Root-Access-Point ist erforderlich.",
         "broad-cast-ap": "Wählen Sie die APs, die diese SSID ausstrahlen sollen (SSID-Broadcast).",
         "max-ssid-per-band": "Jeder Access Point kann pro Frequenzband bis zu 8 SSIDs ausstrahlen.",
         "depend-onap": "Je nach Access Point sind 2,4 GHz und 5 GHz verfügbar.",
@@ -761,11 +763,10 @@
         },
         "mesh-root-ap": {
           "apx": "Eine APX-Mesh-SSID benötigt mindestens einen Access Point, der über LAN mit dem Internet verbunden ist.",
-          "ap6": "Eine AP6-Mesh-SSID benötigt mindestens zwei Access Points (1 Root-Access-Point und 1 Knoten-Access-Point). Der Root-Access-Point muss über die LAN-Schnittstelle mit dem Netzwerk verbunden sein. Nach der Erstellung des Mesh werden die vorhandenen SSIDs von allen Knoten-Access-Points entfernt."
+          "ap6": "Eine AP6-Mesh-SSID benötigt mindestens zwei Access Points (1 Root-Access-Point und 1 Knoten-Access-Point). Der Root-Access-Point muss über die LAN-Schnittstelle mit dem Netzwerk verbunden sein."
         },
-        "node-ap-ssid-remove": "Nach der Zuweisung der Mesh-SSID werden die vorhandenen SSIDs vom Access Point gelöscht",
-        "roo-ap-ssid-limit": "Der Root Access Point kann maximal 5 SSIDs besitzen, inklusive der Mesh-SSID.",
-        "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Root Access Point zu entfernen",
+        "roo-ap-ssid-limit": "Der Root-Access-Point kann maximal 5 SSIDs besitzen, inklusive der Mesh-SSID.",
+        "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Root-Access-Point zu entfernen",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
@@ -855,7 +856,7 @@
       },
       "network-editor": {
         "sync-security-label": "Synchronized Security",
-        "inline-help-sync-security": "Synchronized Security ist eine einzigartige Funktion für Access Points der Sophos APX-Serie. Unser revolutionäres Security Heartbeat™ erlaubt Ihrem Endpoint, Mobile Protection und Access Points Informationen auszutauschen und so zusammenzuarbeiten um Sicherheitsbedrohungen in Ihrem Netzwerk zu blockieren.",
+        "inline-help-sync-security": "Synchronized Security ist ein Alleinstellungsmerkmal von Access Points der Sophos APX-Serie. Unser revolutionärer Security Heartbeat™ erlaubt Ihrem Endpoint, Mobile Protection und Access Points, Informationen auszutauschen und so zusammenzuarbeiten um Sicherheitsbedrohungen in Ihrem Netzwerk zu blockieren.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security wird nicht für SSIDs unterstützt, bei denen ein Gastnetzwerk oder ein Captive Portal eingerichtet sind.",
         "green-option-label": "Grüner Security Heartbeat",
@@ -893,7 +894,7 @@
         "image-dimension": "* Empfohlene Bildgröße ist 200x200 px.",
         "logo-upload": "Logo hochladen",
         "whitelist-domains-label": "Erlaubte Domänen",
-        "whitelist-domains-note": "Auf Domänen der Liste „Erlauben“ kann auch bei rotem Security Heartbeat eines WLAN-Gerätes zugegriffen werden. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
+        "whitelist-domains-note": "Auf Domänen in der Liste „Erlauben“ kann auch dann zugegriffen werden, wenn der Security Heartbeat eines WLAN-Gerätes kritisch (rot) ist. Zusätzlich zu den von Ihnen definierten Domänen ist standardmäßig auch *.sophos.com erlaubt.",
         "whitelist-domains-error": "Maximale Domänenanzahl ist überschritten. Die maximale Domänenanzahl ist 16.",
         "whitelist-domains-info": "Beispiel: ihredomain.com",
         "whitelist-domains-popup": {
@@ -939,7 +940,7 @@
           "enable-hotspot": "Hotspot aktivieren",
           "incapable-hotspot-label": "Die Captive-Portal-Funktion ist deaktiviert, da einige der zugewiesenen Access Points nicht mehrere Captive-Portal-SSIDs zulassen. Diese Access Points sind: ",
           "disabled-hotspot-dynamicVlan-label": "Die Captive-Portal-Funktion kann nicht für eine SSID, die eine RADIUS-basierte VLAN-Zuweisung hat, aktiviert werden. ",
-          "disabled-hotspot-syncSecurity-label": "Die Captive-Portal-Funktion kann nicht für eine SSID mit Synchronized Security aktiviert werden",
+          "disabled-hotspot-syncSecurity-label": "Captive-Portal-Funktion kann nicht für eine SSID mit Synchronized Security aktiviert werden",
           "template": "Vorlage",
           "default-logo": "Standard",
           "customize-logo": "Benutzerdefiniert",
@@ -1047,7 +1048,7 @@
         },
         "captive-portal-capacity": "Warnung. Access Points der AP- und APX-Serie können nicht mehrere Captive Portals zugewiesen werden",
         "mesh-not-supported": "Die Firmware-Version des Access Point unterstützt nicht die Mesh-Funktion. Bitte aktualisieren Sie auf die neueste Version",
-        "max-limit-reached-for-root-ap": "Sie können dem Root Access Point maximal 5 SSIDs (einschließlich der Mesh-SSID) zuweisen",
+        "max-limit-reached-for-root-ap": "Sie können dem Root-Access-Point maximal 5 SSIDs (einschließlich der Mesh-SSID) zuweisen",
         "can-not-assign-mesh-ssid-to-ap": "Die Mesh-SSID ist dem Access Point bereits zugewiesen",
         "can-not-assign-ssid-to-node-ap": "Sie können einem Knoten-Access-Point keine SSID zuweisen. Löschen Sie die Mesh-SSID, falls Sie zusätzliche SSIDs zuweisen wollen.",
         "walled-garden": {
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "Derzeit ist keine SSID zugewiesen.",
           "confirm-remove": "Entfernen bestätigen",
           "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?",
-          "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?"
+          "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?",
+          "invalid-node-cofig": "Bitte entfernen Sie vorhandene SSIDs vom Access Point, bevor Sie die Mesh-SSID zuweisen",
+          "incompatible-node-ap": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Root-Access-Point haben"
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "Sie können nur eine AP6-Mesh-SSID pro Konto erstellen",
       "mesh.accessPointCount": "Ein Mesh erfordert mindestens zwei Access Points",
       "mesh.not.allowed": "Die Mesh-Funktion steht derzeit nicht zur Verfügung",
-      "mesh.incorrectRoot": "Ungültige Konfiguration des Root Access Points",
+      "mesh.incorrectRoot": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Root-Access-Point haben",
       "mesh.protection": "AP6-Mesh funktioniert nur mit dem Sicherheitsmodus WPA3-Personal",
       "operation-mode.not.null": "WLAN-Betriebsmodus muss angegeben werden",
       "vlan.tag.not.null": "VLAN-Tagging muss angegeben werden",
       "vlan.invalid.config": "Nur VLAN 1 kann ohne Tagging konfiguriert werden",
       "vlan.invalid.tagged": "VLAN 1 kann nicht mit Tagging konfiguriert werden",
-      "band.not.supported": "SSID mit nicht unterstütztem Band kann dem Access Point nicht zugewiesen werden"
+      "band.not.supported": "SSID mit nicht unterstütztem Band kann dem Access Point nicht zugewiesen werden",
+      "multiple.untagged.vlan": {
+        "access-point": "Auf dem Access Point kann maximal ein ungetaggtes VLAN konfiguriert werden. Prüfen Sie die Konfiguration folgender SSIDs: {{ssid}}",
+        "network": "Sie können maximal ein ungetaggtes VLAN konfigurieren. Prüfen Sie die Konfiguration folgender Access Points: {{ap}}"
+      }
     }
   }
 }

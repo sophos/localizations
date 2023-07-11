@@ -417,7 +417,7 @@
         "user-acceptance-notice": "2.4GHz, 5GHz 및 6GHz 스펙트럼 내에서 무선 채널 선택을 포함하여 올바른 작동 국가를 선택하는 것은 전적으로 사용자의 책임입니다. 독립 채널 사용 가능 여부는 국가마다 다르며, 적절한 채널 사용 및 채널 사용 금지에 관한 현지 법률도 다릅니다. 적절한 채널 선택을 결정하려면 현지 국가 법률을 참조하십시오. Sophos 최종 사용자 라이선스 계약에 따라 사용자는 채널 선택에 적용되는 현지 법률 위반에 대해 Sophos를 면책하고, 방어하며, 해를 입히지 않아야 합니다. 또한 Sophos는 현지 법률을 위반하는 사용에 대해 사용자의 라이선스 계약을 해지할 수 있는 권리를 보유합니다.",
         "reboot-note": "사이트 정보를 생성하거나 업데이트하려면 AP를 재부팅해야 합니다.",
         "step1-title": "1단계: 사이트 정보",
-        "step2-title": "2단계: 사용자 수락 통보",
+        "step2-title": "{{stepNum}}단계: 사용자 수락 통보",
         "step3-title": "{{stepNum}}단계: 액세스 지점 할당"
       },
       "site-name-error-msgs": {
@@ -544,7 +544,7 @@
           "status": "상태",
           "access-points-count": "할당된 액세스 지점",
           "mesh": "메시",
-          "healthStatus": "Security heartbeat™",
+          "healthStatus": "Security Heartbeat™",
           "captive-portal": "종속 포털",
           "errorMessage": "SSID를 삭제할 수 없습니다."
         },
@@ -567,7 +567,7 @@
         "radius-port":"RADIUS 포트",
         "frequency-band":"주파수 대역",
         "enable-ssid": "SSID 사용",
-        "sync-sec": "싱크로나이즈드 시큐리티(Synchronized Security)",
+        "sync-sec": "동기화된 보안",
         "walled-garden": "폐쇄형 네트워크 서비스(Walled garden)",
         "hidden-ssid": "숨겨진 SSID",
         "client-isolation": "클라이언트 격리",
@@ -628,7 +628,8 @@
         "general-setting-encryption-mode": "새 SSID에 대한 일반 설정을 지정하십시오. 필요한 암호화 모드와 제공할 SSID 유형을 선택하십시오.",
         "band-encryption-mode": {
           "apx": "암호화 모드로 WPA2와 AES를 사용하고 2.4 및 5GHz 주파수 대역을 사용하는 것이 좋습니다.",
-          "ap6": "암호화 모드로 WPA3와 AES를 사용하고 2.4 및 5GHz 주파수 대역을 사용하는 것이 좋습니다."
+          "ap6": "암호화 모드로 WPA3와 AES를 사용하고 2.4 및 5GHz 주파수 대역을 사용하는 것이 좋습니다.",
+          "GHZ_6": "WPA2/WPA3 Personal은 2.4GHz 및 5GHz 대역에 걸쳐 사용됩니다. WPA3 Personal은 6GHz 대역에만 적용될 수 있습니다."
         },
         "settings": "설정",
         "basic-setting": "기본 설정",
@@ -649,6 +650,7 @@
         "accesspoint-exceeding-limit": "선택한 액세스 포인트 중 일부가 SSID의 최대 수를 초과합니다.",
         "ap-with-no-syncsecurity": "Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",
         "ap-exceeding-limit": "무선 대역 중 하나를 지원하지 않거나 지원되는 최대 SSID 수에 도달한 액세스 지점이 하나 이상 있습니다.",
+        "invalid-node-cofig": "메시를 생성하기 전에 노드 액세스 지점에서 기존 SSID를 제거하십시오.",
         "deployment-mode-dynamic-later": "나중에 액세스 지점 추가",
         "assign-aps-inline-help-text-later": "이 SSID를 편집하여 나중에 AP를 추가할 수 있습니다.",
         "available-aps": "사용 가능한 액세스 지점",
@@ -660,7 +662,7 @@
         "depend-onap": "액세스 지점에 따라 2.4GHz 및/또는 5GHz가 제공됩니다.",
         "sec": "보안 설정을 지정하면 네트워크 보안이 강화됩니다",
         "sec1": "연결할 수 있는 클라이언트와 허용될 트래픽을 정의합니다.",
-        "sync-sec": "싱크로나이즈드 시큐리티(Synchronized Security)",
+        "sync-sec": "동기화된 보안",
         "hidden-ssid": "숨겨진 SSID",
         "client-isolation": "클라이언트 격리",
         "mac-filter": "MAC 필터링",
@@ -761,9 +763,8 @@
         },
         "mesh-root-ap": {
           "apx": "APX 메시 SSID에 LAN을 통해 인터넷에 연결된 하나 이상의 액세스 지점이 필요합니다.",
-          "ap6": "AP6 메시 SSID에는 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다. 루트는 LAN 인터페이스를 통해 네트워크에 연결해야 합니다. 메시를 만든 후 기존 SSID가 모든 노드 액세스 지점에서 제거됩니다."
+          "ap6": "AP6 메시 SSID에는 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다. 루트는 LAN 인터페이스를 통해 네트워크에 연결해야 합니다."
         },
-        "node-ap-ssid-remove": "메시 SSID를 할당한 후 기존 SSID가 액세스 지점에서 삭제됩니다",
         "roo-ap-ssid-limit": "루트 액세스 지점에는 메시 SSID를 포함하여 최대 5개의 SSID가 존재할 수 있습니다.",
         "can-not-remove-mesh-from-root": "메시 SSID를 삭제하여 루트 액세스 지점에서 제거하십시오.",
         "port-required-validation-msg": "포트가 필요합니다.",
@@ -854,7 +855,7 @@
         "select-bands": "대역 선택"
       },
       "network-editor": {
-        "sync-security-label": "싱크로나이즈드 시큐리티(Synchronized Security)",
+        "sync-security-label": "Synchronized Security",
         "inline-help-sync-security": "Synchronized Security는 Sophos APX 시리즈 액세스 지점에 대해 제공되는 고유한 기능입니다. 당사의 혁신적인 Security Heartbeat™는 엔드포인트, 모바일 보호, 액세스 지점이 정보를 교환하여 네트워크의 보안 위협을 함께 차단할 수 있도록 지원합니다.",
         "sync-security-disable-info": "<sup>&#1645;&#1645;</sup>Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",
         "sync-security-disable-info-captive-portal": "<sup>&#1645;&#1645;</sup>Synchronized Security는 게스트 네트워크 또는 종속 포털이 활성화된 SSID에서 지원되지 않습니다.",
@@ -1243,7 +1244,9 @@
           "no-assign-ssid": "현재 할당된 SSID가 없습니다.",
           "confirm-remove": "제거 확인",
           "remove-assign-ssid": "할당된 SSID를 제거하시겠습니까?",
-          "deleteDialogText": "AP를 삭제하면 시스템이 자동으로 다시 부팅됩니다.<br><br>삭제를 계속하시겠습니까?"
+          "deleteDialogText": "AP를 삭제하면 시스템이 자동으로 다시 부팅됩니다.<br><br>삭제를 계속하시겠습니까?",
+          "invalid-node-cofig": "메시를 할당하기 전에 액세스 지점에서 기존 SSID를 제거하십시오.",
+          "incompatible-node-ap": "잘못된 메시 구성: 노드 액세스 지점은 루트 액세스 지점에 비해 더 많은 수의 라디오를 가질 수 없습니다."
         }
       },
       "taskQueue": {
@@ -1684,13 +1687,17 @@
       "mesh.exists": "AP6 메시 SSID는 계정당 하나만 만들 수 있습니다.",
       "mesh.accessPointCount": "메시를 형성하려면 최소 2개의 액세스 지점이 필요합니다.",
       "mesh.not.allowed": "현재 메시 기능을 사용할 수 없습니다.",
-      "mesh.incorrectRoot": "루트 액세스 지점에 대해 잘못된 구성",
+      "mesh.incorrectRoot": "잘못된 메시 구성: 노드 액세스 지점은 루트 액세스 지점에 비해 더 많은 수의 라디오를 가질 수 없습니다.",
       "mesh.protection": "AP6 메시는 WPA3-개인 보안 모드에서만 작동할 수 있습니다.",
       "operation-mode.not.null": "무선 작동 모드를 제공해야 합니다.",
       "vlan.tag.not.null": "VLAN 태그 지정을 제공해야 합니다.",
       "vlan.invalid.config": "VLAN 1만 태그가 없는 상태로 구성할 수 있습니다.",
       "vlan.invalid.tagged": "VLAN 1은 태그가 지정된 상태로 구성할 수 없습니다.",
-      "band.not.supported": "지원되지 않는 대역의 SSID를 액세스 포인트에 할당할 수 없습니다."
+      "band.not.supported": "지원되지 않는 대역의 SSID를 액세스 포인트에 할당할 수 없습니다.",
+      "multiple.untagged.vlan": {
+        "access-point": "액세스 지점에 태그가 지정되지 않은 VLAN을 두 개 이상 구성할 수 없습니다. 다음 SSID의 구성을 확인하십시오: {{ssid}}",
+        "network": "태그가 지정되지 않은 VLAN을 두 개 이상 구성할 수 없습니다. 다음 액세스 지점의 구성을 확인하십시오: {{ap}}"
+      }
     }
   }
 }
