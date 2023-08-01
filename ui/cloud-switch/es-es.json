@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Aún no hay políticas configuradas desde Sophos Central.",
       "main-dashboard-breadcrumb-text": "Introducción",
       "alerts": "Alertas",
       "connections": "Uso de la conexión",
@@ -35,6 +36,7 @@
       "last-updated": "Datos actualizados {{ time }}",
       "on": "Activado",
       "off": "Desactivado",
+      "not-set": "No establecido",
       "link-speed": {
         "10mh": "10M/medio dúplex",
         "10m_h": "10M/medio dúplex",
@@ -182,6 +184,7 @@
         "ip-routes-title": "Rutas",
         "l3-protocols-title": "Protocolos L3",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "Redes VLAN",
         "network-settings-title": "Configuración de red",
         "task-queue-title": "Cola de tareas",
@@ -1347,7 +1350,7 @@
         "qos_cos_mapping": "Asignación de CoS",
         "qos_dscp_mapping": "Asignación de DSCP",
         "qos_port_cos_mapping": "Asignación puerto-CoS",
-        "qos_storm_control_setting": "Control de tormenta",
+        "qos_storm_control_setting": "Control de tormentas",
         "qos_bandwidth_control_setting": "Control de ancho de banda",
         "qos_class_mapping": "Política de QoS",
         "qos_policy_mapping": "Enlace de política de QoS",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "Reflejo de puertos",
         "cdp_port_settings": "Configuración de puerto CDP",
         "port_isolation": "Aislamiento de puertos",
-        "eee_settings": "EEE de puerto"
+        "eee_settings": "EEE de puerto",
+        "snmp_settings": "Configuración de SNMP",
+        "snmp_user": "Usuario SNMP",
+        "snmp_community": "Comunidad SNMP",
+        "port_ingress_filter_settings": "Filtro de entrada",
+        "voice_vlan_port_settings": "Configuración de puerto de VLAN de voz"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "No se puede actualizar el estado de puerto de confianza para la inspección DHCP."
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "Lista de accesos",
+        "settings": "Configuración global",
+        "users-groups": "Usuarios y grupos",
+        "views-access-list": "Lista de visualizaciones y accesos",
+        "triggers": "Desencadenadores"
+      },
+      "users-and-communities": {
+        "title": "Usuarios y comunidades",
+        "username": "Nombre",
+        "privilege-mode": "Modo de privilegio (SNMP v3)",
+        "authentication-protocol": "Protocolo de autenticación",
+        "authentication-password": "Contraseña de autenticación",
+        "encryption-protocol": "Protocolo de cifrado",
+        "encryption-password": "Contraseña de cifrado",
+        "add-user": "Añadir usuario y comunidad",
+        "delete-user": "Eliminar usuario y comunidad",
+        "edit-user": "Editar usuario y comunidad",
+        "transport-tag": "Etiqueta de transporte",
+        "create-user-message": "Todas las versiones de SNMP requieren un usuario para proporcionar control de acceso. De forma predeterminada, SNMPv3 está activado para el usuario.",
+        "create-community-message": "Active SNMP v1/v2c para este usuario.",
+        "create-community-description": "Esto también crea una comunidad con el mismo nombre y asocia a este usuario.",
+        "password-length-error-message": "La longitud de la contraseña debe ser de 8-40.",
+        "protocol": "Protocolos",
+        "authentication": "Autenticación",
+        "no-user-community": "Aún no se ha añadido ningún usuario o comunidad de Sophos Central.",
+        "confirm-update": "Confirmar actualización",
+        "privilege-mode-type" : {
+          "NoAuth": "Sin autenticación",
+          "Auth": "Autenticación",
+          "Priv": "Privilegio"
+        }
+      },
+      "groups": {
+        "title": "Grupos",
+        "group": "Grupo",
+        "security-mode": "Modo de seguridad",
+        "security-name": "Nombre de seguridad",
+        "users": "Usuarios",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "Origen de configuración",
+        "add-group": "Añadir grupo",
+        "edit-group": "Editar grupo",
+        "groupname": "Nombre del grupo",
+        "no-groups": "Aún no se ha añadido ningún grupo de Sophos Central."
+      },
+      "messages": {
+        "save-dialog-title": "Confirmar guardado",
+        "site-save-setting-text": "{{ count }} switches obtendrán esta configuración SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-save-setting-text": "El switch obtendrá esta configuración SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "update-setting-success": "La configuración SNMP se ha actualizado correctamente.",
+        "update-setting-error": "No se puede actualizar la configuración SNMP.",
+        "add-user-community-switch-save-dialog-text": "El switch recibirá las actualizaciones de SNMP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "add-user-community-site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de SNMP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+        "username-required-message": "Se requiere el nombre.",
+        "username-exists-message": "El nombre de usuario ya existe.",
+        "username-length-error-message": "La longitud del nombre de usuario debe ser de 8-40.",
+        "loading-error": "No se puede cargar la configuración SNMP."
+      },
+      "status": "Estado SNMP",
+      "engine-id": "ID de motor",
+      "engine-id-msg": "(10~64 caracteres hexadecimales; el ID de motor debe tener un número par de caracteres.)",
+      "default": "Predeterminado"
     },
     "remote-debugging": {
       "debugging-enabled-title": "Asistencia remota habilitada",
@@ -2438,7 +2513,7 @@
       "bandwidth-table": "Control de ancho de banda",
       "ingress": "Entrada (kbps)",
       "egress": "Salida (kbps)",
-      "storm-table": "Control de tormenta",
+      "storm-table": "Control de tormentas",
       "broadcast": "Difusión (kbps)",
       "multicast": "Multidifusión(kbps)",
       "unicast": "Unidifusión (kbps)",
@@ -2542,7 +2617,7 @@
         "Station": "Estación",
         "Not-Advertised": "No anunciado",
         "Not-Capable": "No capaz",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "En agregación (ID: {{ lagId }})",
         "Not-In-Aggregation": "No está en agregación (ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "Confirmar eliminación",
           "site-delete-setting-text": "Elimine la configuración de {{ ouiCount }} OUI de VLAN de voz. {{ count }} switches eliminarán esta configuración de OUI de VLAN de voz y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
           "switch-delete-setting-text": "Elimine la configuración de {{ ouiCount }} OUI de VLAN de voz y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
+        }
+      },
+
+      "port": {
+        "title": "Configuración de puerto",
+        "table-headers": {
+          "port": "Puerto",
+          "status": "Estado",
+          "cosMode": "Modo CoS",
+          "operationStatus": "Estado de funcionamiento",
+          "config-source": "Origen de configuración"
+        },
+
+        "common": {
+          "not-set": "No establecido",
+          "enabled": "Activado",
+          "disabled": "Desactivado",
+          "source": "Origen",
+          "all": "Todos"
         }
       }
     }

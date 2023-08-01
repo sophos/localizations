@@ -57,9 +57,9 @@
             "placeholder": "Sélectionner les pare-feu"
         },
         "categories": {
-            "expressive": "Fréquent",
-            "normal": "Normal",
-            "quiet": "Rare"
+            "verbose": "Détaillé",
+            "default": "Valeur par défaut",
+            "silent": "Silencieux"
         },
         "severity": {
             "high": "Haute",
@@ -73,6 +73,11 @@
             "suppressForEightHours": "8 heures",
             "suppressForOneDay": "Tous les jours",
             "suppressForever": "Jamais"
+        },
+        "messages": {
+            "fetch-error": "Erreur de récupération de la configuration des alertes",
+            "save-error": "Erreur de mise à jour de la configuration des alertes",
+            "save-success": "Configuration des alertes mise à jour"
         }
     },
     "dynamic-objects": {
@@ -755,6 +760,7 @@
         }
       },
       "group-list": {
+        "open-manage-policy": "Cliquez pour gérer la stratégie",
         "partner-managed-group": "Groupe administré Partenaires",
         "no-firewall-assigned": "Aucun pare-feu/sous-groupe disponible dans ce groupe.",
         "edit-this-group": "Ajouter des pare-feu au groupe",
@@ -1497,10 +1503,12 @@
         "pending": "API en attente",
         "in-progress": "API en cours",
         "failed": "API ayant échoué",
-        "success": "API réussies"
+        "success": "API réussies",
+        "partial-success": "API avec succès partiel"
       },
       "table": {
         "show-history": "Afficher l’historique",
+        "list-empty-message": "Aucune API à afficher",
         "column": {
           "firewalls": "Pare-feu",
           "status": "État",
@@ -1508,6 +1516,15 @@
           "entity": "Entité",
           "sub-entity": "Sous-entité",
           "time": "Heure"
+        },
+        "data": {
+          "api-status": {
+            "success": "Succès",
+            "in-progress": "En cours",
+            "failed": "Échec",
+            "pending": "En attente",
+            "partial-success": "Succès partiel"
+          }
         }
       },
       "transaction-details": {
@@ -1516,7 +1533,9 @@
         "status": "État",
         "show-more": "Afficher plus",
         "show-less": "Afficher moins",
-        "event": "Événement"
+        "event": "Événement",
+        "request": "Requête",
+        "result": "Résultat"
       }
     },
     "task-queue": {
@@ -1598,7 +1617,8 @@
       "amzn-sa-east-1": "Brésil"
     },
     "banner":{
-      "maintenance": "La gestion du pare-feu fera l’objet d’une maintenance programmée du {{startDate}} au {{endDate}}.<br/>Certaines fonctions de la gestion du pare-feu seront indisponibles pendant cette période. Prenez vos précautions à l’avance. Veuillez nous excuser pour la gêne occasionnée."
+      "maintenance": "La gestion du pare-feu fera l’objet d’une maintenance programmée du {{startDate}} au {{endDate}}.<br/>Certaines fonctions de la gestion du pare-feu seront indisponibles pendant cette période. Prenez vos précautions à l’avance. Veuillez nous excuser pour la gêne occasionnée.",
+      "group": "L’activation de l’accès HTTPS sur la zone WAN n’est pas autorisée à partir de SFOS v19.5 MR2. Il est recommandé de laisser HTTPS désactivé sur la zone WAN sur la page « Accès à l’appareil »."
     }
   }
 }

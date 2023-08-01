@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Não há ainda nenhuma política do Sophos Central configurada.",
       "main-dashboard-breadcrumb-text": "Visão Geral",
       "alerts": "Alertas",
       "connections": "Uso da conexão",
@@ -35,6 +36,7 @@
       "last-updated": "Dados atualizados às {{ time }}",
       "on": "Ativar",
       "off": "Desativar",
+      "not-set": "Não configurada",
       "link-speed": {
         "10mh": "10M/Half",
         "10m_h": "10M/Half",
@@ -182,6 +184,7 @@
         "ip-routes-title": "Rotas",
         "l3-protocols-title": "Protocolos L3",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLANs",
         "network-settings-title": "Configurações de rede",
         "task-queue-title": "Fila de tarefas",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "Espelhamento de porta",
         "cdp_port_settings": "Configuração da porta CDP",
         "port_isolation": "Isolamento de porta",
-        "eee_settings": "EEE da porta"
+        "eee_settings": "EEE da porta",
+        "snmp_settings": "Configurações de SNMP",
+        "snmp_user": "Usuário SNMP",
+        "snmp_community": "Comunidade de SNMP",
+        "port_ingress_filter_settings": "Filtro de entrada",
+        "voice_vlan_port_settings": "Configurações da porta da VLAN de voz"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "Não foi possível atualizar o status de porta confiável de DHCP Snooping."
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "Lista de acesso",
+        "settings": "Configurações globais",
+        "users-groups": "Usuários e grupos",
+        "views-access-list": "Lista de acesso e exibições",
+        "triggers": "Disparos"
+      },
+      "users-and-communities": {
+        "title": "Usuários e comunidades",
+        "username": "Nome",
+        "privilege-mode": "Modo de privilégio (SNMP v3)",
+        "authentication-protocol": "Protocolo de autenticação",
+        "authentication-password": "Senha de autenticação",
+        "encryption-protocol": "Protocolo de encriptação",
+        "encryption-password": "Senha de criptografia",
+        "add-user": "Adicionar usuário e comunidade",
+        "delete-user": "Deletar usuário ou comunidade",
+        "edit-user": "Editar usuário e comunidade",
+        "transport-tag": "Tag de transporte",
+        "create-user-message": "É obrigatório um usuário para que qualquer versão SNMP forneça controle de acesso. Por padrão, SNMPv3 é habilitado para o usuário.",
+        "create-community-message": "Habilite SNMP v1/v2c para esse usuário.",
+        "create-community-description": "Adicionalmente, isso cria uma comunidade com o mesmo nome e a associa a esse usuário.",
+        "password-length-error-message": "O comprimento da senha deve ter de 8 a 40.",
+        "protocol": "Protocolos",
+        "authentication": "Autenticação",
+        "no-user-community": "Nenhum usuário ou comunidade foi adicionado ao Sophos Central ainda.",
+        "confirm-update": "Confirmar atualização",
+        "privilege-mode-type" : {
+          "NoAuth": "Sem autenticação",
+          "Auth": "Autenticação",
+          "Priv": "Privilégio"
+        }
+      },
+      "groups": {
+        "title": "Grupos",
+        "group": "Grupo",
+        "security-mode": "Modo de Segurança",
+        "security-name": "Nome da segurança",
+        "users": "Usuários",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "Origem da configuração",
+        "add-group": "Adicionar grupo",
+        "edit-group": "Editar grupo",
+        "groupname": "Nome do grupo",
+        "no-groups": "Nenhum grupo foi adicionado ao Sophos Central ainda."
+      },
+      "messages": {
+        "save-dialog-title": "Confirme a ação de salvar",
+        "site-save-setting-text": "{{ count }} switches receberão as configurações deste SNMP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-save-setting-text": "O switch receberá as configurações deste SNMP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "update-setting-success": "Configurações de SNMP atualizadas com sucesso.",
+        "update-setting-error": "Não foi possível atualizar as configurações de SNMP.",
+        "add-user-community-switch-save-dialog-text": "O switch terá a SNMP atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "add-user-community-site-save-dialog-text": "{{ count }} switches terão a SNMP atualizada e serão criadas tarefas para as atualizações. Você pode optar por sincronizar agora ou mais tarde.",
+        "username-required-message": "É necessário um nome.",
+        "username-exists-message": "O nome de usuário já existe.",
+        "username-length-error-message": "O comprimento do nome de usuário deve ter de 8 a 40.",
+        "loading-error": "Não foi possível carregar as configurações de SNMP."
+      },
+      "status": "Status de SNMP",
+      "engine-id": "ID do mecanismo",
+      "engine-id-msg": "(10 a 64 caracteres hexadecimais, e o comprimento do ID do mecanismo deve ser par.)",
+      "default": "Default"
     },
     "remote-debugging": {
       "debugging-enabled-title": "Assistência remota habilitada",
@@ -2542,7 +2617,7 @@
         "Station": "Estação",
         "Not-Advertised": "Não anunciado",
         "Not-Capable": "Não capacitado",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "Em agregação (ID: {{ lagId }})",
         "Not-In-Aggregation": "Não agregado (ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "Confirmar deleção",
           "site-delete-setting-text": "Delete {{ ouiCount }} configurações de OUI da VLAN de voz. {{ count }} switches removerão as configurações de OUI desta VLAN e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
           "switch-delete-setting-text": "Delete {{ ouiCount }} configurações de OUI de VLAN e as tarefas serão criadas. Você pode optar por sincronizar agora ou mais tarde."
+        }
+      },
+
+      "port": {
+        "title": "Configurações de porta",
+        "table-headers": {
+          "port": "Porta",
+          "status": "Status",
+          "cosMode": "Modo CoS",
+          "operationStatus": "Status de operação",
+          "config-source": "Origem da configuração"
+        },
+
+        "common": {
+          "not-set": "Não configurada",
+          "enabled": "Habilitado",
+          "disabled": "Desabilitado",
+          "source": "Origem",
+          "all": "Todos"
         }
       }
     }

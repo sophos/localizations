@@ -57,9 +57,9 @@
             "placeholder": "選取防火牆"
         },
         "categories": {
-            "expressive": "表達",
-            "normal": "一般",
-            "quiet": "安靜"
+            "verbose": "詳細資訊",
+            "default": "預設",
+            "silent": "靜音"
         },
         "severity": {
             "high": "高",
@@ -73,6 +73,11 @@
             "suppressForEightHours": "8 小時",
             "suppressForOneDay": "每天",
             "suppressForever": "從不"
+        },
+        "messages": {
+            "fetch-error": "擷取警示設定時出錯",
+            "save-error": "更新警示設定時出錯",
+            "save-success": "警示設定已成功更新"
         }
     },
     "dynamic-objects": {
@@ -755,6 +760,7 @@
         }
       },
       "group-list": {
+        "open-manage-policy": "按一下以管理原則",
         "partner-managed-group": "合作夥伴管理群組",
         "no-firewall-assigned": "此群組中無防火墻/子群組可用。",
         "edit-this-group": "新增防火牆至此群組",
@@ -1497,10 +1503,12 @@
         "pending": "等待中的 API",
         "in-progress": "進行中的 API",
         "failed": "失敗的 API",
-        "success": "成功的 API"
+        "success": "成功的 API",
+        "partial-success": "部分成功 API"
       },
       "table": {
         "show-history": "顯示歷史",
+        "list-empty-message": "沒有可顯示的 API",
         "column": {
           "firewalls": "防火牆",
           "status": "狀態",
@@ -1508,6 +1516,15 @@
           "entity": "實體",
           "sub-entity": "子實體",
           "time": "時間"
+        },
+        "data": {
+          "api-status": {
+            "success": "成功",
+            "in-progress": "進行中",
+            "failed": "失敗",
+            "pending": "擱置",
+            "partial-success": "部分成功"
+          }
         }
       },
       "transaction-details": {
@@ -1516,7 +1533,9 @@
         "status": "狀態",
         "show-more": "顯示更多",
         "show-less": "顯示更少",
-        "event": "事件"
+        "event": "事件",
+        "request": "要求",
+        "result": "結果"
       }
     },
     "task-queue": {
@@ -1598,7 +1617,8 @@
       "amzn-sa-east-1": "巴西"
     },
     "banner":{
-      "maintenance": "防火牆管理將於 {{startDate}} 至 {{endDate}} 期間進行排程維護。<br/>在此期間，防火牆管理中的部分活動將不可用。請提前做好計劃。為此帶來的不便，我們深感抱歉。"
+      "maintenance": "防火牆管理將於 {{startDate}} 至 {{endDate}} 期間進行排程維護。<br/>在此期間，防火牆管理中的部分活動將不可用。請提前做好計劃。為此帶來的不便，我們深感抱歉。",
+      "group": "從 SFOS v19.5 MR2 開始，不允許透過 WAN 區域啟用 HTTPS 存取。建議在「裝置存取」頁面中的 WAN 區域上保持停用 HTTPS。"
     }
   }
 }

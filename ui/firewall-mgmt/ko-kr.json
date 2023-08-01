@@ -57,9 +57,9 @@
             "placeholder": "방화벽 선택"
         },
         "categories": {
-            "expressive": "빈번",
-            "normal": "보통",
-            "quiet": "드묾"
+            "verbose": "자세히",
+            "default": "기본값",
+            "silent": "자동"
         },
         "severity": {
             "high": "높음",
@@ -73,6 +73,11 @@
             "suppressForEightHours": "8시간",
             "suppressForOneDay": "매일",
             "suppressForever": "없음"
+        },
+        "messages": {
+            "fetch-error": "경고 구성을 가져오는 중에 오류 발생",
+            "save-error": "경고 구성을 업데이트하는 중에 오류 발생",
+            "save-success": "경고 구성이 성공적으로 업데이트되었습니다"
         }
     },
     "dynamic-objects": {
@@ -755,6 +760,7 @@
         }
       },
       "group-list": {
+        "open-manage-policy": "정책을 관리하려면 클릭하십시오",
         "partner-managed-group": "파트너 관리 그룹",
         "no-firewall-assigned": "이 그룹에서 사용할 수 있는 방화벽/하위 그룹이 없습니다.",
         "edit-this-group": "이 그룹에 방화벽 추가",
@@ -1497,10 +1503,12 @@
         "pending": "대기 API",
         "in-progress": "진행 중인 API",
         "failed": "실패한 API",
-        "success": "성공한 API"
+        "success": "성공한 API",
+        "partial-success": "부분적으로 성공한 API"
       },
       "table": {
         "show-history": "기록 표시",
+        "list-empty-message": "표시할 수 있는 API가 없음",
         "column": {
           "firewalls": "방화벽",
           "status": "상태",
@@ -1508,6 +1516,15 @@
           "entity": "엔터티",
           "sub-entity": "하위 엔터티",
           "time": "시간"
+        },
+        "data": {
+          "api-status": {
+            "success": "성공",
+            "in-progress": "진행 중",
+            "failed": "실패",
+            "pending": "보류 중",
+            "partial-success": "부분적 성공"
+          }
         }
       },
       "transaction-details": {
@@ -1516,7 +1533,9 @@
         "status": "상태",
         "show-more": "자세히 보기",
         "show-less": "간단히 표시",
-        "event": "이벤트"
+        "event": "이벤트",
+        "request": "요청",
+        "result": "결과"
       }
     },
     "task-queue": {
@@ -1598,7 +1617,8 @@
       "amzn-sa-east-1": "브라질"
     },
     "banner":{
-      "maintenance": "{{startDate}}일부터 {{endDate}}일까지 방화벽 관리에 예약된 유지 관리 작업이 진행됩니다.<br/>이 기간 동안에는 방화벽 관리 내의 일부 활동을 사용할 수 없습니다. 미리 계획해 주십시오. 불편을 끼쳐 드려 죄송합니다."
+      "maintenance": "{{startDate}}일부터 {{endDate}}일까지 방화벽 관리에 예약된 유지 관리 작업이 진행됩니다.<br/>이 기간 동안에는 방화벽 관리 내의 일부 활동을 사용할 수 없습니다. 미리 계획해 주십시오. 불편을 끼쳐 드려 죄송합니다.",
+      "group": "WAN 영역에 대한 HTTPS 액세스 활성화는 SFOS v19.5 MR2 이후부터 허용되지 않습니다. '장치 액세스' 페이지에서 WAN 영역에서 HTTPS 비활성화 상태를 유지하는 것이 좋습니다."
     }
   }
 }

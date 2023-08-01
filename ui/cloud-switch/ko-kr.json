@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Sophos Central에서 구성된 정책이 아직 없습니다.",
       "main-dashboard-breadcrumb-text": "개요",
       "alerts": "경고",
       "connections": "연결 사용",
@@ -35,6 +36,7 @@
       "last-updated": "{{ time }}에 데이터 새로 고침",
       "on": "켜기",
       "off": "끄기",
+      "not-set": "설정되지 않음",
       "link-speed": {
         "10mh": "10M/절반",
         "10m_h": "10M/절반",
@@ -182,6 +184,7 @@
         "ip-routes-title": "경로",
         "l3-protocols-title": "L3 프로토콜",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLAN",
         "network-settings-title": "네트워크 설정",
         "task-queue-title": "작업 대기열",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "포트 미러링",
         "cdp_port_settings": "CDP 포트 설정",
         "port_isolation": "포트 격리",
-        "eee_settings": "포트 EEE"
+        "eee_settings": "포트 EEE",
+        "snmp_settings": "SNMP 설정",
+        "snmp_user": "SNMP 사용자",
+        "snmp_community": "SNMP 커뮤니티",
+        "port_ingress_filter_settings": "수신 필터",
+        "voice_vlan_port_settings": "음성 VLAN 포트 설정"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "DHCP 스누핑 신뢰할 수 있는 포트 상태를 업데이트할 수 없습니다."
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "액세스 목록",
+        "settings": "전역 설정",
+        "users-groups": "사용자 및 그룹",
+        "views-access-list": "목록 보기 및 액세스",
+        "triggers": "트리거"
+      },
+      "users-and-communities": {
+        "title": "사용자 및 커뮤니티",
+        "username": "이름",
+        "privilege-mode": "권한 모드(SNMP v3)",
+        "authentication-protocol": "인증 프로토콜",
+        "authentication-password": "인증 암호",
+        "encryption-protocol": "암호화 프로토콜",
+        "encryption-password": "암호화 암호",
+        "add-user": "사용자 및 커뮤니티 추가",
+        "delete-user": "사용자 또는 커뮤니티 삭제",
+        "edit-user": "사용자 및 커뮤니티 편집",
+        "transport-tag": "전송 태그",
+        "create-user-message": "SNMP 버전에서 액세스 제어를 제공하려면 사용자가 반드시 필요합니다. 기본적으로 SNMPv3는 사용자에 대해 사용하도록 설정되어 있습니다.",
+        "create-community-message": "이 사용자에 대해 SNMP v1/v2c를 사용하도록 설정합니다.",
+        "create-community-description": "또한 동일한 이름의 커뮤니티를 생성하고 이 사용자를 연결합니다.",
+        "password-length-error-message": "암호 길이는 8~40자여야 합니다.",
+        "protocol": "프로토콜",
+        "authentication": "인증",
+        "no-user-community": "Sophos Central에서 아직 사용자 또는 커뮤니티가 추가되지 않았습니다.",
+        "confirm-update": "업데이트 확인",
+        "privilege-mode-type" : {
+          "NoAuth": "인증 없음",
+          "Auth": "인증",
+          "Priv": "권한"
+        }
+      },
+      "groups": {
+        "title": "그룹",
+        "group": "그룹",
+        "security-mode": "보안 모드",
+        "security-name": "보안 이름",
+        "users": "사용자",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "구성 소스",
+        "add-group": "그룹 추가",
+        "edit-group": "그룹 편집",
+        "groupname": "그룹 이름",
+        "no-groups": "Sophos Central에서 아직 그룹이 추가되지 않았습니다."
+      },
+      "messages": {
+        "save-dialog-title": "저장 확인",
+        "site-save-setting-text": "{{ count }}개의 스위치가 이 SNMP 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-save-setting-text": "스위치가 이 SNMP 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "update-setting-success": "SNMP 설정이 성공적으로 업데이트되었습니다.",
+        "update-setting-error": "SNMP 설정을 업데이트할 수 없습니다.",
+        "add-user-community-switch-save-dialog-text": "스위치가 SNMP 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "add-user-community-site-save-dialog-text": "{{ count }}개의 스위치가 SNMP 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "username-required-message": "이름은 필수입니다.",
+        "username-exists-message": "이미 있는 사용자 이름입니다.",
+        "username-length-error-message": "사용자 이름의 길이는 8~40자여야 합니다.",
+        "loading-error": "SNMP 설정을 로드할 수 없습니다."
+      },
+      "status": "SNMP 상태",
+      "engine-id": "엔진 ID",
+      "engine-id-msg": "(10~64 16진수 문자, 엔진 ID 길이는 짝수여야 합니다.)",
+      "default": "기본값"
     },
     "remote-debugging": {
       "debugging-enabled-title": "원격 지원 활성화됨",
@@ -2542,7 +2617,7 @@
         "Station": "스테이션",
         "Not-Advertised": "광고 안 됨",
         "Not-Capable": "불가능",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "집계됨(ID: {{ lagId }})",
         "Not-In-Aggregation": "집계되지 않음(ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "삭제 확인",
           "site-delete-setting-text": "{{ ouiCount }}개의 음성 VLAN OUI 설정을 삭제합니다. {{ count }}개의 스위치가 이 음성 VLAN OUI 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-delete-setting-text": "{{ ouiCount }}개의 음성 VLAN OUI 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        }
+      },
+
+      "port": {
+        "title": "포트 설정",
+        "table-headers": {
+          "port": "포트",
+          "status": "상태",
+          "cosMode": "CoS 모드",
+          "operationStatus": "운영 상태",
+          "config-source": "구성 소스"
+        },
+
+        "common": {
+          "not-set": "설정되지 않음",
+          "enabled": "사용함",
+          "disabled": "사용 안 함",
+          "source": "소스",
+          "all": "모두"
         }
       }
     }
