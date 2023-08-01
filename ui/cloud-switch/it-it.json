@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Nessun criterio configurato da Sophos Central per il momento.",
       "main-dashboard-breadcrumb-text": "Panoramica",
       "alerts": "Avvisi",
       "connections": "Utilizzo connessioni",
@@ -35,6 +36,7 @@
       "last-updated": "Dati aggiornati {{ time }}",
       "on": "Attivato",
       "off": "Spento",
+      "not-set": "Non impostata",
       "link-speed": {
         "10mh": "10 M/Half duplex",
         "10m_h": "10 M/Half duplex",
@@ -182,6 +184,7 @@
         "ip-routes-title": "Route",
         "l3-protocols-title": "Protocolli L3",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLAN",
         "network-settings-title": "Impostazioni di rete",
         "task-queue-title": "Coda delle attività",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "Mirroring delle porte",
         "cdp_port_settings": "Impostazione della porta CDP",
         "port_isolation": "Isolamento porte",
-        "eee_settings": "EEE porta"
+        "eee_settings": "EEE porta",
+        "snmp_settings": "Impostazioni SNMP",
+        "snmp_user": "Utente SNMP",
+        "snmp_community": "Community SNMP",
+        "port_ingress_filter_settings": "Filtro in ingresso",
+        "voice_vlan_port_settings": "Impostazioni delle porte VLAN traffico voce"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "Impossibile aggiornare lo stato di attendibilità della porta per lo snooping DHCP."
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "Elenco accessi",
+        "settings": "Impostazioni globali",
+        "users-groups": "Utenti e Gruppi",
+        "views-access-list": "Elenco visualizzazioni e accessi",
+        "triggers": "Attivazioni"
+      },
+      "users-and-communities": {
+        "title": "Utenti e community",
+        "username": "Nome",
+        "privilege-mode": "Modalità privilegi (SNMP v3)",
+        "authentication-protocol": "Protocollo di autenticazione",
+        "authentication-password": "Password di autenticazione",
+        "encryption-protocol": "Protocollo di cifratura",
+        "encryption-password": "Password di cifratura",
+        "add-user": "Aggiungi utente e community",
+        "delete-user": "Elimina utente o community",
+        "edit-user": "Modifica utente e community",
+        "transport-tag": "Tag trasporto",
+        "create-user-message": "In tutte le versioni di SNMP è obbligatorio specificare un utente, per fornire controllo di accesso. Per impostazione predefinita, SNMPv3 è attivato per l’utente.",
+        "create-community-message": "Attiva SNMP v1/v2c per questo utente.",
+        "create-community-description": "Questa opzione crea anche una community con lo stesso nome e associa questo utente.",
+        "password-length-error-message": "La lunghezza della password deve essere compresa tra 8 e 40 caratteri.",
+        "protocol": "Protocolli",
+        "authentication": "Autenticazione",
+        "no-user-community": "Non è ancora stato aggiunto alcun utente o alcuna community da Sophos Central.",
+        "confirm-update": "Conferma aggiornamento",
+        "privilege-mode-type" : {
+          "NoAuth": "Nessuna autenticazione",
+          "Auth": "Autenticazione",
+          "Priv": "Privilegio"
+        }
+      },
+      "groups": {
+        "title": "Gruppi",
+        "group": "Gruppo",
+        "security-mode": "Modalità di sicurezza",
+        "security-name": "Nome sicurezza",
+        "users": "Utenti",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "Origine configurazione",
+        "add-group": "Aggiungi gruppo",
+        "edit-group": "Modifica il gruppo",
+        "groupname": "Nome gruppo",
+        "no-groups": "Non è ancora stato aggiunto alcun gruppo da Sophos Central."
+      },
+      "messages": {
+        "save-dialog-title": "Conferma salvataggio",
+        "site-save-setting-text": "{{ count }} switch riceveranno queste impostazioni SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "switch-save-setting-text": "Lo switch riceverà queste impostazioni SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "update-setting-success": "Aggiornamento delle impostazioni SNMP completato.",
+        "update-setting-error": "Non è stato possibile aggiornare le impostazioni SNMP.",
+        "add-user-community-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "add-user-community-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti dell’SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "username-required-message": "Nome obbligatorio.",
+        "username-exists-message": "Nome utente già esistente.",
+        "username-length-error-message": "La lunghezza del Nome utente deve essere compresa tra 8 e 40 caratteri.",
+        "loading-error": "Non è stato possibile caricare le impostazioni SNMP."
+      },
+      "status": "Stato di SNMP",
+      "engine-id": "ID motore",
+      "engine-id-msg": "(10~64 caratteri esadecimali, l’ID motore deve essere composto da un numero pari di caratteri).",
+      "default": "Predefinito"
     },
     "remote-debugging": {
       "debugging-enabled-title": "Assistenza remota abilitata",
@@ -2542,7 +2617,7 @@
         "Station": "Stazione",
         "Not-Advertised": "Non annunciato",
         "Not-Capable": "Non abilitato",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "In aggregazione (ID: {{ lagId }})",
         "Not-In-Aggregation": "Non in aggregazione (ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "Conferma eliminazione",
           "site-delete-setting-text": "Elimina {{ ouiCount }} impostazioni dell’OUI VLAN traffico voce. {{ count }} switch rimuoveranno queste impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "switch-delete-setting-text": "Elimina {{ ouiCount }} impostazioni dell’OUI VLAN traffico voce e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        }
+      },
+
+      "port": {
+        "title": "Impostazioni delle porte",
+        "table-headers": {
+          "port": "Porta",
+          "status": "Stato",
+          "cosMode": "Modalità CoS",
+          "operationStatus": "Stato operazione",
+          "config-source": "Origine configurazione"
+        },
+
+        "common": {
+          "not-set": "Non impostata",
+          "enabled": "Abilitata/e",
+          "disabled": "Disattivata/e",
+          "source": "Fonte",
+          "all": "Tutto"
         }
       }
     }

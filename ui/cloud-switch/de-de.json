@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Es sind noch keine Richtlinien in Sophos Central konfiguriert.",
       "main-dashboard-breadcrumb-text": "Übersicht",
       "alerts": "Alarme",
       "connections": "Verbindungsnutzung",
@@ -35,6 +36,7 @@
       "last-updated": "Daten aktualisiert {{ time }}",
       "on": "Ein",
       "off": "Aus",
+      "not-set": "Nicht festgelegt",
       "link-speed": {
         "10mh": "10M/Halb",
         "10m_h": "10M/Halb",
@@ -59,12 +61,12 @@
         "ten_g": "10G/Voll",
         "auto": "Auto",
         "disabled": "Deaktiviert",
-        "ignored": "Nicht gesetzt"
+        "ignored": "Nicht festgelegt"
       },
       "flow-control": {
         "true": "Aktivieren",
         "false": "Deaktivieren",
-        "ignored": "Nicht gesetzt"
+        "ignored": "Nicht festgelegt"
       },
       "button": {
         "register": "Registrieren",
@@ -182,6 +184,7 @@
         "ip-routes-title": "Routen",
         "l3-protocols-title": "L3-Protokolle",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLANs",
         "network-settings-title": "Netzwerkeinstellungen",
         "task-queue-title": "Auftrags-Warteschlange",
@@ -936,7 +939,7 @@
       "gbps": "{{unit}} Gbps",
       "mbps": "{{unit}} Mbps",
       "auto": "Auto",
-      "notSet": "Nicht gesetzt",
+      "notSet": "Nicht festgelegt",
       "disconnected": "Verbindung getrennt",
       "disabled": "Deaktiviert"
     },
@@ -950,7 +953,7 @@
       "gvrp": {
         "status": {
           "text": "GVRP",
-          "not-set": "Nicht gesetzt",
+          "not-set": "Nicht festgelegt",
           "turn-on": "Einschalten",
           "turn-off": "Ausschalten"
         },
@@ -978,11 +981,11 @@
         }
       },
       "ingress-filter": {
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "on": "Ein",
         "off": "Aus",
         "accept-type": {
-          "not-set": "Nicht gesetzt",
+          "not-set": "Nicht festgelegt",
           "all": "Alle",
           "tagged": "Getaggt",
           "untagged": "Ungetaggt"
@@ -1089,7 +1092,7 @@
         "management-vlan": "Verwaltungsnetzwerk",
         "dhcp": "DHCP",
         "static": "Statisch",
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "subnetMask": "Subnetz",
         "defaultGW": "Standardgateway",
         "dns1": "Primärer DNS-Server",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "Port-Spiegelung",
         "cdp_port_settings": "CDP-Port-Einstellung",
         "port_isolation": "Port-Isolierung",
-        "eee_settings": "Port-EEE"
+        "eee_settings": "Port-EEE",
+        "snmp_settings": "SNMP-Einstellungen",
+        "snmp_user": "SNMP-Benutzer",
+        "snmp_community": "SNMP-Community",
+        "port_ingress_filter_settings": "Eingangsfilter",
+        "voice_vlan_port_settings": "Sprach-VLAN-Port-Einstellungen"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1376,7 +1384,7 @@
       "lacp": "LACP",
       "static": "Statisch",
       "disabled": "Deaktiviert",
-      "not-set": "Nicht gesetzt",
+      "not-set": "Nicht festgelegt",
       "switch": "Switch",
       "ports-required-message": "Ports sind erforderlich.",
       "ports-min-lag-message": "Mindestens 2 Ports sind erforderlich.",
@@ -1459,7 +1467,7 @@
     "l3-relay-snooping": {
       "common": {
         "buttons": {
-          "not-set": "Nicht gesetzt",
+          "not-set": "Nicht festgelegt",
           "enabled": "Aktiviert",
           "disabled": "Deaktiviert",
           "trusted": "Vertrauenswürdig",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "Port-Vertrauens-Status für DHCP-Snooping kann nicht aktualisiert werden."
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "Zugriffsliste",
+        "settings": "Globale Einstellungen",
+        "users-groups": "Benutzer und Gruppen",
+        "views-access-list": "Aufruf- und Zugriffsliste",
+        "triggers": "Auslöser"
+      },
+      "users-and-communities": {
+        "title": "Benutzer und Communitys",
+        "username": "Name",
+        "privilege-mode": "Berechtigungsmodus (SNMP v3)",
+        "authentication-protocol": "Authentifizierungsprotokoll",
+        "authentication-password": "Kennwort für Authentifizierung",
+        "encryption-protocol": "Verschlüsselungsprotokoll",
+        "encryption-password": "Verschlüsselungskennwort",
+        "add-user": "Benutzer und Community hinzufügen",
+        "delete-user": "Benutzer oder Community löschen",
+        "edit-user": "Benutzer und Community bearbeiten",
+        "transport-tag": "Transport-Markierung",
+        "create-user-message": "Alle Versionen von SNMP erfordern einen Benutzer für die Zugriffskontrolle. Standardmäßig ist für den Benutzer SNMPv3 aktiviert.",
+        "create-community-message": "Aktivieren Sie für diesen Benutzer SNMP v1/v2c.",
+        "create-community-description": "Hierdurch wird außerdem eine Community mit demselben Namen erstellt und mit diesem Benutzer verknüpft.",
+        "password-length-error-message": "Kennwort muss zwischen 8 und 40 Zeichen haben.",
+        "protocol": "Protokolle",
+        "authentication": "Authentifizierung",
+        "no-user-community": "Aus Sophos Central wurde noch kein Benutzer oder keine Community hinzugefügt.",
+        "confirm-update": "Aktualisieren bestätigen",
+        "privilege-mode-type" : {
+          "NoAuth": "Keine Authentifizierung",
+          "Auth": "Authentifizierung",
+          "Priv": "Berechtigung"
+        }
+      },
+      "groups": {
+        "title": "Gruppen",
+        "group": "Gruppe",
+        "security-mode": "Sicherheitsmodus",
+        "security-name": "Sicherheitsname",
+        "users": "Benutzer",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "Konfigurationsquelle",
+        "add-group": "Gruppe hinzufügen",
+        "edit-group": "Gruppe bearbeiten",
+        "groupname": "Gruppenname",
+        "no-groups": "Aus Sophos Central wurde noch keine Gruppe hinzugefügt."
+      },
+      "messages": {
+        "save-dialog-title": "Speichern bestätigen",
+        "site-save-setting-text": "{{ count }} Switches erhalten diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "switch-save-setting-text": "Der Switch erhält diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "update-setting-success": "SNMP-Einstellungen erfolgreich aktualisiert.",
+        "update-setting-error": "SNMP-Einstellungen konnten nicht aktualisiert werden.",
+        "add-user-community-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "add-user-community-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "username-required-message": "Name ist erforderlich.",
+        "username-exists-message": "Benutzername ist bereits vorhanden.",
+        "username-length-error-message": "Benutzername muss zwischen 8 und 40 Zeichen haben.",
+        "loading-error": "SNMP-Einstellungen konnten nicht geladen werden."
+      },
+      "status": "SNMP-Status",
+      "engine-id": "Modul-ID",
+      "engine-id-msg": "(10-64 Hexadezimalzeichen, Länge der Modul-ID muss geradzahlig sein.)",
+      "default": "Standard"
     },
     "remote-debugging": {
       "debugging-enabled-title": "Remote-Unterstützung aktiviert",
@@ -2311,10 +2386,10 @@
         "system-priority": "Systempriorität",
         "system-policy": "Systemrichtlinie",
         "timeout-settings": "Timeout-Einstellungen",
-        "load-balancing-dd-title": "Nicht gesetzt",
+        "load-balancing-dd-title": "Nicht festgelegt",
         "long-option": "Lang",
         "short-option": "Kurz",
-        "not-set-option": "Nicht gesetzt",
+        "not-set-option": "Nicht festgelegt",
         "port-table-header": "Port",
         "timeout-table-header": "Timeout",
         "system-priority-required-message": "Systempriorität ist erforderlich",
@@ -2388,7 +2463,7 @@
       },
       "form": {
         "vlan": "VLAN",
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "off": "Aus",
         "on": "Ein",
         "querier-interval": "Abfrager-Intervall (Sekunden)",
@@ -2413,7 +2488,7 @@
       "status": "Status",
       "no-policies": "Es sind noch keine Richtlinien in Sophos Central konfiguriert.",
       "common": {
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "enabled": "Aktiviert",
         "disabled": "Deaktiviert",
         "config-source": "Konfigurationsquelle",
@@ -2542,7 +2617,7 @@
         "Station": "Station",
         "Not-Advertised": "Ohne Advertisement",
         "Not-Capable": "Nicht geeignet",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "In Aggregation (ID: {{ lagId }})",
         "Not-In-Aggregation": "Nicht in Aggregation (ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2583,7 +2658,7 @@
         }
       },
       "common": {
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "enabled": "Aktiviert",
         "disabled": "Deaktiviert"
       }
@@ -2675,7 +2750,7 @@
         }
       },
       "common": {
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "enabled": "Aktiviert",
         "disabled": "Deaktiviert",
         "mac": "MAC-Adresse",
@@ -2698,9 +2773,9 @@
       "config-source": "Konfigurationsquelle",
       "required-input-message": "Wert muss zwischen {{ min }} und {{ max }} liegen",
       "global-settings": "Globale Einstellungen",
-      "not-set": "Nicht gesetzt",
+      "not-set": "Nicht festgelegt",
       "common": {
-        "not-set": "Nicht gesetzt",
+        "not-set": "Nicht festgelegt",
         "enabled": "Aktiviert",
         "disabled": "Deaktiviert",
         "auto": "Auto",
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "Löschen bestätigen",
           "site-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen. {{ count }} Switches entfernen diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
           "switch-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+        }
+      },
+
+      "port": {
+        "title": "Port-Einstellungen",
+        "table-headers": {
+          "port": "Port",
+          "status": "Status",
+          "cosMode": "CoS-Modus",
+          "operationStatus": "Betriebsstatus",
+          "config-source": "Konfigurationsquelle"
+        },
+
+        "common": {
+          "not-set": "Nicht festgelegt",
+          "enabled": "Aktiviert",
+          "disabled": "Deaktiviert",
+          "source": "Quelle",
+          "all": "Alle"
         }
       }
     }

@@ -57,9 +57,9 @@
             "placeholder": "Selecionar firewalls"
         },
         "categories": {
-            "expressive": "Expressivo",
-            "normal": "Normal",
-            "quiet": "Silencioso"
+            "verbose": "Verbose",
+            "default": "Default",
+            "silent": "Silencioso"
         },
         "severity": {
             "high": "Alto",
@@ -73,6 +73,11 @@
             "suppressForEightHours": "8 horas",
             "suppressForOneDay": "Diário",
             "suppressForever": "Nunca"
+        },
+        "messages": {
+            "fetch-error": "Erro ao buscar a configuração do alerta",
+            "save-error": "Erro ao atualizar a configuração do alerta",
+            "save-success": "A configuração do alerta foi atualizada com sucesso"
         }
     },
     "dynamic-objects": {
@@ -755,6 +760,7 @@
         }
       },
       "group-list": {
+        "open-manage-policy": "Clique para gerenciar a política",
         "partner-managed-group": "Grupo gerenciado de parceiros",
         "no-firewall-assigned": "Nenhum firewall/subgrupo disponível neste grupo.",
         "edit-this-group": "Adicionar firewalls a este grupo",
@@ -1497,10 +1503,12 @@
         "pending": "APIs pendentes",
         "in-progress": "APIs em andamento",
         "failed": "APIs com falha",
-        "success": "APIs bem-sucedidas"
+        "success": "APIs bem-sucedidas",
+        "partial-success": "APIs com sucesso parcial"
       },
       "table": {
         "show-history": "Exibir histórico",
+        "list-empty-message": "Não há APIs disponíveis para exibir",
         "column": {
           "firewalls": "Firewalls",
           "status": "Status",
@@ -1508,6 +1516,15 @@
           "entity": "Entidade",
           "sub-entity": "Subentidade",
           "time": "Hora"
+        },
+        "data": {
+          "api-status": {
+            "success": "Bem-sucedido",
+            "in-progress": "Em andamento",
+            "failed": "Falhou",
+            "pending": "Pendente",
+            "partial-success": "Sucesso parcial"
+          }
         }
       },
       "transaction-details": {
@@ -1516,7 +1533,9 @@
         "status": "Status",
         "show-more": "Mostrar mais",
         "show-less": "Mostrar menos",
-        "event": "Evento"
+        "event": "Evento",
+        "request": "Solicitação",
+        "result": "Resultado"
       }
     },
     "task-queue": {
@@ -1598,7 +1617,8 @@
       "amzn-sa-east-1": "Brasil"
     },
     "banner":{
-      "maintenance": "O Gerenciamento de Firewall estará sob manutenção programada de {{startDate}} a {{endDate}}.<br/>Algumas atividades do Gerenciamento de Firewall não estarão disponíveis durante esse período. Por favor, planeje-se. Lamentamos pelo transtorno causado."
+      "maintenance": "O Gerenciamento de Firewall estará sob manutenção programada de {{startDate}} a {{endDate}}.<br/>Algumas atividades do Gerenciamento de Firewall não estarão disponíveis durante esse período. Por favor, planeje-se. Lamentamos pelo transtorno causado.",
+      "group": "A habilitação do acesso HTTPS pela zona WAN não é permitida a partir do SFOS v19.5 MR2. Recomendamos manter HTTPS desabilitado na zona WAN na página 'Acesso de dispositivo'."
     }
   }
 }

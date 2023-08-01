@@ -57,9 +57,9 @@
             "placeholder": "ファイアウォールの選択"
         },
         "categories": {
-            "expressive": "文字列",
-            "normal": "通常",
-            "quiet": "非表示"
+            "verbose": "詳細",
+            "default": "デフォルト",
+            "silent": "サイレント"
         },
         "severity": {
             "high": "高",
@@ -73,6 +73,11 @@
             "suppressForEightHours": "8時間",
             "suppressForOneDay": "毎日",
             "suppressForever": "なし"
+        },
+        "messages": {
+            "fetch-error": "警告設定の取得中、エラーが発生しました",
+            "save-error": "警告設定の更新中、エラーが発生しました",
+            "save-success": "警告設定が正常に更新されました"
         }
     },
     "dynamic-objects": {
@@ -755,6 +760,7 @@
         }
       },
       "group-list": {
+        "open-manage-policy": "クリックしてポリシーを管理",
         "partner-managed-group": "パートナーが管理しているグループ",
         "no-firewall-assigned": "ファイアウォール/サブグループは、このグループにありません。",
         "edit-this-group": "このグループへのファイアウォールの追加",
@@ -1497,10 +1503,12 @@
         "pending": "保留中の API",
         "in-progress": "進行中の API",
         "failed": "失敗した API",
-        "success": "成功した API"
+        "success": "成功した API",
+        "partial-success": "部分的に成功した API"
       },
       "table": {
         "show-history": "履歴の表示",
+        "list-empty-message": "表示する API がありません",
         "column": {
           "firewalls": "ファイアウォール",
           "status": "ステータス",
@@ -1508,6 +1516,15 @@
           "entity": "エンティティ",
           "sub-entity": "サブエンティティ",
           "time": "時刻"
+        },
+        "data": {
+          "api-status": {
+            "success": "成功",
+            "in-progress": "処理中",
+            "failed": "失敗",
+            "pending": "保留中",
+            "partial-success": "部分的な成功"
+          }
         }
       },
       "transaction-details": {
@@ -1516,7 +1533,9 @@
         "status": "ステータス",
         "show-more": "詳細を表示",
         "show-less": "詳細を非表示",
-        "event": "イベント"
+        "event": "イベント",
+        "request": "要求",
+        "result": "結果"
       }
     },
     "task-queue": {
@@ -1598,7 +1617,8 @@
       "amzn-sa-east-1": "ブラジル"
     },
     "banner":{
-      "maintenance": "ファイアウォール管理は、 {{startDate}} から {{endDate}}まで定期メンテナンスを実施します。<br/>この時間帯は、ファイアウォール管理内の一部のアクティビティが利用できなくなります。事前にご計画をお願いします。ご不便をおかけいたしまして申し訳ございません。"
+      "maintenance": "ファイアウォール管理は、 {{startDate}} から {{endDate}}まで定期メンテナンスを実施します。<br/>この時間帯は、ファイアウォール管理内の一部のアクティビティが利用できなくなります。事前にご計画をお願いします。ご不便をおかけいたしまして申し訳ございません。",
+      "group": "SFOS v19.5 MR2 以降、WAN ゾーンを介した HTTPS アクセスを有効にすることはできません。「デバイスアクセス」ページの WAN ゾーンでは HTTPS を無効にしておくことを推奨します。"
     }
   }
 }

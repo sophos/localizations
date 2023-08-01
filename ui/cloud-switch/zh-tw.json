@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "尚未從 Sophos Central 設定任何原則。",
       "main-dashboard-breadcrumb-text": "概觀",
       "alerts": "警示",
       "connections": "連線使用情況",
@@ -35,6 +36,7 @@
       "last-updated": "資料於 {{ time }} 重新整理",
       "on": "開啟",
       "off": "關閉",
+      "not-set": "未設定",
       "link-speed": {
         "10mh": "10M/Half",
         "10m_h": "10M/Half",
@@ -182,6 +184,7 @@
         "ip-routes-title": "路由",
         "l3-protocols-title": "L3 通訊協定",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLAN",
         "network-settings-title": "網路設定",
         "task-queue-title": "工作佇列",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "連接埠鏡像",
         "cdp_port_settings": "CDP 連接埠設定",
         "port_isolation": "連接埠隔離",
-        "eee_settings": "連接埠 EEE"
+        "eee_settings": "連接埠 EEE",
+        "snmp_settings": "SNMP 設定",
+        "snmp_user": "SNMP 使用者",
+        "snmp_community": "SNMP 社群",
+        "port_ingress_filter_settings": "輸入篩選器",
+        "voice_vlan_port_settings": "語音 VLAN 連接埠設定"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "無法更新 DHCP 窺探信任連接埠狀態。"
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "存取清單",
+        "settings": "整體設定",
+        "users-groups": "使用者與群組(U)",
+        "views-access-list": "檢視和存取清單",
+        "triggers": "觸發程序"
+      },
+      "users-and-communities": {
+        "title": "使用者及社群",
+        "username": "名稱",
+        "privilege-mode": "權限模式 (SNMP v3)",
+        "authentication-protocol": "驗證通訊協定",
+        "authentication-password": "驗證密碼",
+        "encryption-protocol": "加密通訊協定",
+        "encryption-password": "加密密碼",
+        "add-user": "新增使用者和社群",
+        "delete-user": "刪除使用者或社群",
+        "edit-user": "編輯使用者和社群",
+        "transport-tag": "傳輸標籤",
+        "create-user-message": "所有 SNMP 版本都必須具有使用者才能提供存取控制。預設情況下，SNMPv3 已為使用者啟用。",
+        "create-community-message": "為該使用者啟用 SNMP v1/v2c。",
+        "create-community-description": "這還建立了同名社群並關聯了該使用者。",
+        "password-length-error-message": "密碼長度必須介於 8-40 之間。",
+        "protocol": "通訊協定",
+        "authentication": "驗證",
+        "no-user-community": "目前尚未從 Sophos Central 新增任何使用者或社群。",
+        "confirm-update": "確認更新",
+        "privilege-mode-type" : {
+          "NoAuth": "無驗證",
+          "Auth": "驗證",
+          "Priv": "權限"
+        }
+      },
+      "groups": {
+        "title": "群組",
+        "group": "群組",
+        "security-mode": "安全模式",
+        "security-name": "安全名稱",
+        "users": "使用者",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "設定來源",
+        "add-group": "新增群組",
+        "edit-group": "編輯群組",
+        "groupname": "群組名稱",
+        "no-groups": "目前尚未從 Sophos Central 新增任何群組。"
+      },
+      "messages": {
+        "save-dialog-title": "確認儲存",
+        "site-save-setting-text": "{{ count }} 個交換器將取得此 SNMP 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-save-setting-text": "交換器將取得此 SNMP 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+        "update-setting-success": "SNMP 設定已成功更新。",
+        "update-setting-error": "無法更新 SNMP 設定。",
+        "add-user-community-switch-save-dialog-text": "交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "add-user-community-site-save-dialog-text": "{{ count }} 個交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+        "username-required-message": "名稱是必需的。",
+        "username-exists-message": "使用者名稱已存在。",
+        "username-length-error-message": "使用者名稱長度必須介於 8-40 之間。",
+        "loading-error": "無法載入 SNMP 設定。"
+      },
+      "status": "SNMP 狀態",
+      "engine-id": "引擎 ID",
+      "engine-id-msg": "（10~64 個十六進位字元，引擎 ID 的長度應該為偶數。）",
+      "default": "預設"
     },
     "remote-debugging": {
       "debugging-enabled-title": "遠端協助已啟用",
@@ -2542,7 +2617,7 @@
         "Station": "工作站",
         "Not-Advertised": "未宣傳",
         "Not-Capable": "不能",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "在集合中（ID：{{ lagId }})",
         "Not-In-Aggregation": "不在集合中（ID：{{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "確認刪除",
           "site-delete-setting-text": "刪除 {{ ouiCount }} 個語音 VLAN OUI 設定。{{ count }} 部交換器將移除此語音 VLAN OUI 設定，並且將建立工作。您可以選擇現在或稍後同步。",
           "switch-delete-setting-text": "刪除 {{ ouiCount }} 個語音 VLAN OUI 設定，並將建立工作。您可以選擇現在或稍後同步。"
+        }
+      },
+
+      "port": {
+        "title": "連接埠設定",
+        "table-headers": {
+          "port": "連接埠",
+          "status": "狀態",
+          "cosMode": "CoS 模式",
+          "operationStatus": "運行狀態",
+          "config-source": "設定來源"
+        },
+
+        "common": {
+          "not-set": "未設定",
+          "enabled": "已啟用",
+          "disabled": "已停用",
+          "source": "來源",
+          "all": "所有"
         }
       }
     }

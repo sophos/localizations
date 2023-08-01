@@ -1,6 +1,7 @@
 {
   "cloud-switch": {
     "common": {
+      "no-policies": "Sophos Central からポリシーがまだ設定されていません。",
       "main-dashboard-breadcrumb-text": "概要",
       "alerts": "警告",
       "connections": "接続の使用状況",
@@ -35,6 +36,7 @@
       "last-updated": "データの更新: {{ time }}",
       "on": "オン",
       "off": "オフ",
+      "not-set": "未設定",
       "link-speed": {
         "10mh": "10M/半",
         "10m_h": "10M/半",
@@ -182,6 +184,7 @@
         "ip-routes-title": "ルート",
         "l3-protocols-title": "L3 プロトコル",
         "qos": "QoS",
+        "snmp": "SNMP",
         "vlans-title": "VLAN",
         "network-settings-title": "ネットワークの設定",
         "task-queue-title": "タスクのキュー",
@@ -1357,7 +1360,12 @@
         "port_mirroring": "ポートミラーリング",
         "cdp_port_settings": "CDP ポートの設定",
         "port_isolation": "ポートの隔離",
-        "eee_settings": "ポート EEE"
+        "eee_settings": "ポート EEE",
+        "snmp_settings": "SNMP の設定",
+        "snmp_user": "SNMP ユーザー",
+        "snmp_community": "SNMP コミュニティ",
+        "port_ingress_filter_settings": "入力フィルタリング",
+        "voice_vlan_port_settings": "音声 VLAN ポート設定"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1548,6 +1556,73 @@
           "update-port-status-error": "DHCP スヌーピングの信頼できるポートの状態を更新できません。"
         }
       }
+    },
+    "snmp": {
+      "tabs": {
+        "access-list": "アクセスリスト",
+        "settings": "グローバル設定",
+        "users-groups": "ユーザーとグループ",
+        "views-access-list": "表示とアクセスリスト",
+        "triggers": "トリガー"
+      },
+      "users-and-communities": {
+        "title": "ユーザーとコミュニティ",
+        "username": "名前",
+        "privilege-mode": "権限モード (SNMP v3)",
+        "authentication-protocol": "認証プロトコル",
+        "authentication-password": "認証パスワード",
+        "encryption-protocol": "暗号プロトコル",
+        "encryption-password": "暗号化パスワード",
+        "add-user": "ユーザーとコミュニティの追加",
+        "delete-user": "ユーザーとコミュニティの削除",
+        "edit-user": "ユーザーとコミュニティの編集",
+        "transport-tag": "トランスポートタグ",
+        "create-user-message": "ユーザーは、アクセス制御を提供するには SNMP バージョンが必須です。デフォルトでは、ユーザーに対して SNMPv3 が有効になっています。",
+        "create-community-message": "このユーザーの SNMP v1/v2c を有効にします。",
+        "create-community-description": "これにより、同じ名前のコミュニティが作成され、このユーザーが関連付けられます。",
+        "password-length-error-message": "パスワードの長さは 8 ～ 40 で指定してください。",
+        "protocol": "プロトコル",
+        "authentication": "認証",
+        "no-user-community": "Sophos Central からユーザーまたはコミュニティがまだ追加されていません。",
+        "confirm-update": "更新の確認",
+        "privilege-mode-type" : {
+          "NoAuth": "認証なし",
+          "Auth": "認証",
+          "Priv": "権限"
+        }
+      },
+      "groups": {
+        "title": "グループ",
+        "group": "グループ",
+        "security-mode": "セキュリティモード",
+        "security-name": "セキュリティ名",
+        "users": "ユーザー",
+        "v1": "V1",
+        "v2": "V2",
+        "v3": "V3",
+        "configuration-source": "設定のソース",
+        "add-group": "グループの追加",
+        "edit-group": "グループの編集",
+        "groupname": "グループ名",
+        "no-groups": "Sophos Central からグループがまだ追加されていません。"
+      },
+      "messages": {
+        "save-dialog-title": "保存の確認",
+        "site-save-setting-text": "{{ count }}個のスイッチに、この SNMP 設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-setting-text": "スイッチにこの SNMP 設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "update-setting-success": "SNMP 設定が更新されました。",
+        "update-setting-error": "SNMP の設定を更新できません。",
+        "add-user-community-switch-save-dialog-text": "スイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "add-user-community-site-save-dialog-text": "{{ count }}個のスイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "username-required-message": "名前を指定してください。",
+        "username-exists-message": "ユーザー名がすでに存在します。",
+        "username-length-error-message": "ユーザ名の長さは 8 ～ 40 で指定してください。",
+        "loading-error": "SNMP 設定を読み込めません。"
+      },
+      "status": "SNMP ステータス",
+      "engine-id": "エンジン ID",
+      "engine-id-msg": "(10 ～ 64 の 16進数文字で、エンジン ID の長さは偶数にする必要があります。)",
+      "default": "デフォルト"
     },
     "remote-debugging": {
       "debugging-enabled-title": "リモートアシスタンスが有効になっています",
@@ -2542,7 +2617,7 @@
         "Station": "ステーション",
         "Not-Advertised": "広告なし",
         "Not-Capable": "対応なし",
-        "In-Aggregation": "In aggregation (ID: {{ lagId }})", 
+        "In-Aggregation": "アグリゲーションにあります (ID: {{ lagId }})",
         "Not-In-Aggregation": "アグリゲーションにありません (ID: {{ lagId }})"
       },
       "remote-device": {
@@ -2738,6 +2813,25 @@
           "delete-dialog-title": "削除の確認",
           "site-delete-setting-text": "{{ ouiCount }}個の音声 VLAN OUI の設定を削除します。{{ count }}個のスイッチに、この 音声 VLAN OUI の設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "switch-delete-setting-text": "{{ ouiCount }}個の音声 VLAN OUI の設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        }
+      },
+
+      "port": {
+        "title": "ポートの設定",
+        "table-headers": {
+          "port": "ポート",
+          "status": "状態",
+          "cosMode": "CoS モード",
+          "operationStatus": "オペレーションの状態",
+          "config-source": "設定のソース"
+        },
+
+        "common": {
+          "not-set": "未設定",
+          "enabled": "有効",
+          "disabled": "無効",
+          "source": "ソース",
+          "all": "すべて"
         }
       }
     }
