@@ -481,6 +481,7 @@
           "backup-delete-failed": "Falha ao deletar backup",
           "backup-canceled": "Solicitação de cancelamento da solicitação em andamento realizada com sucesso.",
           "backup-cancel-failed": "Falha ao cancelar a solicitação em andamento.",
+          "backup-cancel-already-completed": "A solicitação de backup já foi processada. Não é possível cancelar.",
           "confirm-delete": "Confirmar deleção",
           "confirm-cancel": "Confirmar cancelamento",
           "confirm-resume": "Retomar backups agendados",
@@ -520,6 +521,7 @@
         "max-part-1": "Manter o máximo de",
         "max-part-2": "backups por switch. Limite máximo: {{ max }}",
         "max-tooltip": "Quando for realizado o máximo de backups, o mais antigo será substituído pelo backup mais recente, sucessivamente",
+        "schedule-time-info-tooltip": "Os backups são realizados quando a hora local do switch coincide com essa configuração.",
         "cancellation-warning": "Os switches cancelam os backups futuros ou em andamento quando recebem uma alteração de configuração.",
         "tags": "Ex.: Automático, agendado",
         "tags-text": "Tags que são afixadas a cada backup",
@@ -1365,7 +1367,8 @@
         "snmp_user": "Usuário SNMP",
         "snmp_community": "Comunidade de SNMP",
         "port_ingress_filter_settings": "Filtro de entrada",
-        "voice_vlan_port_settings": "Configurações da porta da VLAN de voz"
+        "voice_vlan_port_settings": "Portas da VLAN de voz",
+        "snmp_group_to_user_map": "Grupo de SNMP"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "Remova as configurações das portas físicas {{ ports }} das configurações de controle da largura de banda de QoS, pois pode ser que essas portas continuem a ser membros do LAG {{ lag }} no switch. Do contrário, isso poderá resultar em erro",
         "qos-lag-conflict-title": "As configurações de controle da largura de banda de QoS estão usando portas membro do LAG!",
         "fix-qos-lag-conflicts": "Você pode definir a configuração das portas {{ ports }} como 'Não configurada' (vazia) no nível do switch para resolver os conflitos.",
-        "qos-lag-fix-button": "Remover as configurações selecionadas"
+        "qos-lag-fix-button": "Remover as configurações selecionadas",
+        "port-mirroring-conflict-message": "Uma ou mais portas selecionadas já são parte de outra sessão de espelhamento de porta e, se mantidas, resultarão em erro nos switches abaixo.",
+        "fix-port-mirroring-conflicts": "Você pode remover essas configurações de espelhamento de porta no nível do switch para resolver os conflitos. Você pode editar na exibição do switch mais tarde, caso a personalização do switch seja necessária.",
+        "fix-port-mirroring-button": "Desativar sessões selecionadas"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "Adicionar grupo",
         "edit-group": "Editar grupo",
         "groupname": "Nome do grupo",
-        "no-groups": "Nenhum grupo foi adicionado ao Sophos Central ainda."
+        "no-groups": "Nenhum grupo foi adicionado ao Sophos Central ainda.",
+        "delete-groups": "Deletar grupos"
       },
       "messages": {
         "save-dialog-title": "Confirme a ação de salvar",

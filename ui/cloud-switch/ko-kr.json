@@ -481,6 +481,7 @@
           "backup-delete-failed": "백업을 삭제하지 못함",
           "backup-canceled": "진행 중인 요청에 대한 취소 요청이 성공적으로 이루어졌습니다.",
           "backup-cancel-failed": "진행 중인 요청을 취소하는 동안 오류가 발생했습니다.",
+          "backup-cancel-already-completed": "백업 요청이 이미 처리되었습니다. 취소는 할 수 없습니다.",
           "confirm-delete": "삭제 확인",
           "confirm-cancel": "취소 확인",
           "confirm-resume": "예약된 백업 다시 시작",
@@ -520,6 +521,7 @@
         "max-part-1": "스위치당 최대",
         "max-part-2": "개의 백업을 유지합니다. 최대한도: {{ max }}",
         "max-tooltip": "최대 백업이 수행되면 가장 오래된 백업이 차례대로 최신 백업으로 대체됩니다.",
+        "schedule-time-info-tooltip": "백업은 스위치의 로컬 시간이 이 설정과 일치할 때 수행됩니다.",
         "cancellation-warning": "스위치는 구성 변경 사항을 수신하면 예정된 백업 또는 진행 중인 백업을 취소합니다.",
         "tags": "예: 자동, 예약됨",
         "tags-text": "각 백업에 첨부되는 태그",
@@ -1365,7 +1367,8 @@
         "snmp_user": "SNMP 사용자",
         "snmp_community": "SNMP 커뮤니티",
         "port_ingress_filter_settings": "수신 필터",
-        "voice_vlan_port_settings": "음성 VLAN 포트 설정"
+        "voice_vlan_port_settings": "음성 VLAN 포트",
+        "snmp_group_to_user_map": "SNMP 그룹"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "물리적 포트 {{ ports }}이(가) 스위치에서 여전히 LAG {{ lag }}의 멤버일 수 있으므로 QoS 대역폭 제어 설정에서 이 포트의 설정을 제거하십시오. 그렇지 않으면, 오류가 발생할 수 있습니다.",
         "qos-lag-conflict-title": "QoS 대역폭 제어 설정이 LAG 멤버 포트를 사용하고 있습니다!",
         "fix-qos-lag-conflicts": "스위치 수준에서 포트 {{ ports }} 설정을 '설정 안 함'(비어 있음)으로 상향 조정하여 충돌을 해결할 수 있습니다.",
-        "qos-lag-fix-button": "선택한 설정 제거"
+        "qos-lag-fix-button": "선택한 설정 제거",
+        "port-mirroring-conflict-message": "선택된 하나 이상의 포트가 이미 다른 포트 미러링의 일부이므로 계속 진행할 경우 아래 스위치에 오류가 발생합니다.",
+        "fix-port-mirroring-conflicts": "스위치 수준에서 해당 포트 미러링 구성을 제거하여 충돌을 해결할 수 있습니다. 스위치 수준 사용자 지정이 필요한 경우 나중에 스위치 보기에서 편집할 수 있습니다.",
+        "fix-port-mirroring-button": "선택한 세션 끄기"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "그룹 추가",
         "edit-group": "그룹 편집",
         "groupname": "그룹 이름",
-        "no-groups": "Sophos Central에서 아직 그룹이 추가되지 않았습니다."
+        "no-groups": "Sophos Central에서 아직 그룹이 추가되지 않았습니다.",
+        "delete-groups": "그룹 삭제"
       },
       "messages": {
         "save-dialog-title": "저장 확인",

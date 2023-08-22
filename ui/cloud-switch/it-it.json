@@ -481,6 +481,7 @@
           "backup-delete-failed": "Non è stato possibile eliminare il backup",
           "backup-canceled": "La richiesta di annullamento della richiesta in corso è stata inviata.",
           "backup-cancel-failed": "Non è stato possibile annullare la richiesta in corso.",
+          "backup-cancel-already-completed": "La richiesta di backup è già stata elaborata. Non è possibile annullare l’operazione.",
           "confirm-delete": "Conferma eliminazione",
           "confirm-cancel": "Conferma annullamento",
           "confirm-resume": "Riprendi backup pianificati",
@@ -520,6 +521,7 @@
         "max-part-1": "Conserva fino a",
         "max-part-2": "backup per switch. Limite max: {{ max }}",
         "max-tooltip": "Una volta raggiunto il limite massimo di backup, il backup meno recente verrà sostituito da quello più recente",
+        "schedule-time-info-tooltip": "I backup vengono eseguiti quando l’ora locale dello switch corrisponde a questa impostazione.",
         "cancellation-warning": "Quando ricevono la modifica della configurazione, gli switch annullano i backup in corso o in programma.",
         "tags": "Es.: Automatico, Pianificato",
         "tags-text": "Tag che vengono applicati a tutti i backup",
@@ -1365,7 +1367,8 @@
         "snmp_user": "Utente SNMP",
         "snmp_community": "Community SNMP",
         "port_ingress_filter_settings": "Filtro in ingresso",
-        "voice_vlan_port_settings": "Impostazioni delle porte VLAN traffico voce"
+        "voice_vlan_port_settings": "Porte VLAN traffico voce",
+        "snmp_group_to_user_map": "Gruppo SNMP"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "Rimuovi le impostazioni delle porte fisiche {{ ports }} dalle impostazioni di controllo QoS per la larghezza di banda, poiché queste porte potrebbero essere ancora membri del LAG {{ lag }} sullo switch. In caso contrario, potrebbe verificarsi un errore",
         "qos-lag-conflict-title": "Le impostazioni di controllo QoS per la larghezza di banda utilizzano porte che sono membri del LAG!",
         "fix-qos-lag-conflicts": "Per risolvere i conflitti, puoi definire le impostazioni della porta {{ ports }} in modo che risulti “Non impostata” (vuota) a livello di switch.",
-        "qos-lag-fix-button": "Rimuovi le impostazioni selezionate"
+        "qos-lag-fix-button": "Rimuovi le impostazioni selezionate",
+        "port-mirroring-conflict-message": "Una o più porte selezionate fanno già parte di un’altra sessione di mirroring delle porte e se continui si verificheranno errori negli switch elencati di seguito.",
+        "fix-port-mirroring-conflicts": "Per risolvere i conflitti, puoi rimuovere queste configurazioni di mirroring delle porte a livello di switch. Puoi apportare modifiche anche dopo, a livello di vista dello switch, se è richiesta una personalizzazione a livello di switch.",
+        "fix-port-mirroring-button": "Disattiva sessione/i selezionata/e"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "Aggiungi gruppo",
         "edit-group": "Modifica il gruppo",
         "groupname": "Nome gruppo",
-        "no-groups": "Non è ancora stato aggiunto alcun gruppo da Sophos Central."
+        "no-groups": "Non è ancora stato aggiunto alcun gruppo da Sophos Central.",
+        "delete-groups": "Elimina gruppi"
       },
       "messages": {
         "save-dialog-title": "Conferma salvataggio",
@@ -2336,7 +2343,7 @@
       "7864": "Criterio QoS: Valore non valido per l’indirizzo IP di destinazione. Richiesta PATCH non valida.",
       "7865": "Criterio QoS: Impossibile modificare l’indirizzo IP di destinazione. Richiesta PATCH non valida.",
       "7866": "Criterio QoS: Valore non valido per DSCP. Richiesta PATCH non valida.",
-      "7867": "Criterio QoS: Impossibile modificare l'DSCP. Richiesta PATCH non valida.",
+      "7867": "Criterio QoS: Impossibile modificare DSCP. Richiesta PATCH non valida.",
       "7868": "Criterio QoS: Valore non valido per la porta di origine. Richiesta PATCH non valida.",
       "7869": "Criterio QoS: Impossibile modificare la porta di origine. Richiesta PATCH non valida.",
       "7870": "Criterio QoS: Valore non valido per la porta di destinazione. Richiesta PATCH non valida.",

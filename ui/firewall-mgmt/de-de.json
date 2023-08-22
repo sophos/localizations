@@ -46,7 +46,7 @@
                 "alert": "Alarm",
                 "severity": "Schweregrad",
                 "occurrences": "Vorkommen",
-                "suppression": "Unterdrückung"
+                "suppression": "Zeitraum"
             }
         },
         "filter": {
@@ -488,14 +488,14 @@
                 }
               },
               "health-check": {
-                "title": "Zustandsprüfung",
+                "title": "Integritätsprüfung",
                 "protocol": "Protokoll",
                 "ping": "Ping",
                 "tcp": "TCP",
                 "probe-target": "Ziel testen",
                 "ip-address": "IP-Adresse",
                 "port": "Port",
-                "health-check-attempts": "Zustandsprüfungsversuche",
+                "health-check-attempts": "Integritätsprüfversuche",
                 "interval-between-checks": "Intervall zwischen Prüfungen",
                 "response-time-out": "Antwortzeitlimit",
                 "action": "Aktion",
@@ -510,7 +510,7 @@
                   "sample-size-for-SLA": "(5–100 Stichproben)"
                 },
                 "help": {
-                  "title": "Zustandsprüfung bleibt eingeschaltet, solange SLA eingeschaltet ist.",
+                  "title": "Integritätsprüfung bleibt eingeschaltet, solange SLA eingeschaltet ist.",
                   "probe-target": "Wenn der erste Host auf eine Prüfung antwortet, prüft die Firewall nicht den nächsten konfigurierten Host.",
                   "deactivate-gateway-after": "Betrachtet das Gateway als inaktiv, wenn der Ziel-Host nicht antwortet.",
                   "activate-gateway-after": "Betrachtet das Gateway als aktiv, wenn der Ziel-Host antwortet.",
@@ -1496,26 +1496,27 @@
       }
     },
     "api-queue": {
-      "label": "API-Warteschlange",
-      "title": "Firewall Management - API-Warteschlange",
+      "label": "Firewall-Aufgabenwarteschlange",
+      "title": "Firewallverwaltung - Aufgabenwarteschlange",
       "sub-tabs": {
-        "total": "Firewall-APIs gesamt",
-        "pending": "APIs ausstehend",
-        "in-progress": "APIs in Bearbeitung",
-        "failed": "APIs fehlgeschlagen",
-        "success": "APIs erfolgreich",
-        "partial-success": "APIs teilweise erfolgreich"
+        "total": "Alle Firewall-Aufgaben",
+        "pending": "Ausstehend",
+        "in-progress": "In Bearbeitung",
+        "failed": "Fehlgeschlagen",
+        "success": "Erfolgreich",
+        "partial-success": "Teilweise erfolgreich"
       },
       "table": {
         "show-history": "Verlauf anzeigen",
-        "list-empty-message": "Keine APIs anzuzeigen",
+        "list-empty-message": "Es sind keine Aufgaben anzuzeigen.",
         "column": {
           "firewalls": "Firewalls",
           "status": "Status",
           "modified-by": "Geändert von",
           "entity": "Einheit",
           "sub-entity": "Untereinheit",
-          "time": "Uhrzeit"
+          "time": "Uhrzeit",
+          "action": "Aktion"
         },
         "data": {
           "api-status": {
@@ -1528,7 +1529,7 @@
         }
       },
       "transaction-details": {
-        "header": "Firewall-API-Details",
+        "header": "Auftragsdetails",
         "firewall": "Firewall",
         "status": "Status",
         "show-more": "Mehr anzeigen",

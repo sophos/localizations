@@ -481,6 +481,7 @@
           "backup-delete-failed": "Sicherung konnte nicht gelöscht werden",
           "backup-canceled": "Anfrage zum Abbruch der laufenden Anfrage erfolgreich gestellt.",
           "backup-cancel-failed": "Beim Abbruch der laufenden Anfrage ist ein Fehler aufgetreten.",
+          "backup-cancel-already-completed": "Der Sicherungsauftrag wurde bereits verarbeitet. Ein Abbrechen ist nicht möglich.",
           "confirm-delete": "Löschen bestätigen",
           "confirm-cancel": "Abbruch bestätigen",
           "confirm-resume": "Geplante Sicherungen fortsetzen",
@@ -520,6 +521,7 @@
         "max-part-1": "Maximal",
         "max-part-2": "Sicherungen je Switch speichern. Maximale Anzahl: {{ max }}",
         "max-tooltip": "Wenn die maximale Anzahl erreicht ist, wird die älteste Sicherung gelöscht und durch die neueste Sicherung ersetzt",
+        "schedule-time-info-tooltip": "Die Sicherungen werden erstellt, wenn die lokale Zeit des Switches den Wert dieser Einstellung hat.",
         "cancellation-warning": "Switches brechen geplante oder laufende Sicherungen ab, nachdem sie die Konfigurationsänderung erhalten haben.",
         "tags": "z.B.: Automatisch, geplant",
         "tags-text": "An alle Sicherungen angehängte Tags",
@@ -1365,7 +1367,8 @@
         "snmp_user": "SNMP-Benutzer",
         "snmp_community": "SNMP-Community",
         "port_ingress_filter_settings": "Eingangsfilter",
-        "voice_vlan_port_settings": "Sprach-VLAN-Port-Einstellungen"
+        "voice_vlan_port_settings": "Sprach-VLAN-Ports",
+        "snmp_group_to_user_map": "SNMP-Gruppe"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "Entfernen Sie die Einstellungen für physische Ports {{ ports }} aus den QoS-Einstellungen zur Bandbreitenkontrolle, weil diese Ports möglicherweise noch Mitglied der LAG {{ lag }} auf dem Switch sind. Andernfalls kann ein Fehler auftreten",
         "qos-lag-conflict-title": "QoS-Einstellungen zur Bandbreitenkontrolle verwenden LAG-Mitglieder-Ports!",
         "fix-qos-lag-conflicts": "Zur Konfliktbehebung können Sie die Einstellungen für Port {{ ports }} auf Switch-Ebene auf 'Nicht festgelegt‘ (leer) setzen.",
-        "qos-lag-fix-button": "Ausgewählte Einstellungen entfernen"
+        "qos-lag-fix-button": "Ausgewählte Einstellungen entfernen",
+        "port-mirroring-conflict-message": "Ein oder mehrere der ausgewählten Ports werden bereits in einer anderen Port-Spiegelungssitzung verwendet. Wenn Sie fortfahren, kommt es für die nachfolgenden Switches zu dem Fehler.",
+        "fix-port-mirroring-conflicts": "Zur Konfliktbehebung können Sie diese Port-Spiegelungseinstellungen auf Switch-Ebene entfernen. Wenn auf Switch-Ebene Anpassungen erforderlich sind, können Sie die Einstellungen später in der Switch-Ansicht bearbeiten.",
+        "fix-port-mirroring-button": "Ausgewählte Sitzung(en) beenden"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "Gruppe hinzufügen",
         "edit-group": "Gruppe bearbeiten",
         "groupname": "Gruppenname",
-        "no-groups": "Aus Sophos Central wurde noch keine Gruppe hinzugefügt."
+        "no-groups": "Aus Sophos Central wurde noch keine Gruppe hinzugefügt.",
+        "delete-groups": "Gruppen löschen"
       },
       "messages": {
         "save-dialog-title": "Speichern bestätigen",

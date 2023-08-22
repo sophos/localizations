@@ -481,6 +481,7 @@
           "backup-delete-failed": "未能刪除備份",
           "backup-canceled": "已成功下達取消進行中請求的請求。",
           "backup-cancel-failed": "取消進行中請求時失敗。",
+          "backup-cancel-already-completed": "備份請求已處理。無法取消。",
           "confirm-delete": "確認刪除",
           "confirm-cancel": "確認取消",
           "confirm-resume": "繼續排程的備份",
@@ -520,6 +521,7 @@
         "max-part-1": "保持每台交換器的",
         "max-part-2": "最大備份數。上限：{{ max }}",
         "max-tooltip": "一旦達到備份數量上限，最早的備份將輪流被最新的備份取代",
+        "schedule-time-info-tooltip": "當交換器的本地時間與此設定匹配時，就會進行備份。",
         "cancellation-warning": "一旦交換器收到設定變更，就會取消即將進行或正在進行的備份。",
         "tags": "例如：自動，排程",
         "tags-text": "附加到每個備份的標籤",
@@ -1365,7 +1367,8 @@
         "snmp_user": "SNMP 使用者",
         "snmp_community": "SNMP 社群",
         "port_ingress_filter_settings": "輸入篩選器",
-        "voice_vlan_port_settings": "語音 VLAN 連接埠設定"
+        "voice_vlan_port_settings": "語音 VLAN 連接埠",
+        "snmp_group_to_user_map": "SNMP 群組"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "從 QoS 頻寬控制設定中移除實體連接埠 {{ ports }} 的設定，因為這些連接埠可能仍是交換器上 LAG {{ lag }} 的成員。否則，可能會導致錯誤",
         "qos-lag-conflict-title": "QoS 頻寬控制設定使用的是 LAG 成員連接埠！",
         "fix-qos-lag-conflicts": "您可以在交換器層級將連接埠 {{ ports }} 的設定設為「未設定」（空）以解決衝突。",
-        "qos-lag-fix-button": "移除所選設定"
+        "qos-lag-fix-button": "移除所選設定",
+        "port-mirroring-conflict-message": "選取的一或多個連接埠已經是其他連接埠鏡像執行階段的一部分，繼續將導致以下交換器發生錯誤。",
+        "fix-port-mirroring-conflicts": "您可以在交換器層級移除這些連接埠鏡像設定，以解決衝突。如果需要交換器層級自訂，您可以稍後在交換器檢視中進行編輯。",
+        "fix-port-mirroring-button": "關閉所選執行階段"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "新增群組",
         "edit-group": "編輯群組",
         "groupname": "群組名稱",
-        "no-groups": "目前尚未從 Sophos Central 新增任何群組。"
+        "no-groups": "目前尚未從 Sophos Central 新增任何群組。",
+        "delete-groups": "刪除群組"
       },
       "messages": {
         "save-dialog-title": "確認儲存",
