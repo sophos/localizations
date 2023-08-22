@@ -481,6 +481,7 @@
           "backup-delete-failed": "バックアップを削除できませんでした",
           "backup-canceled": "進行中のリクエストをキャンセルする要求が正常に送信されました。",
           "backup-cancel-failed": "進行中のリクエストをキャンセル中に失敗しました。",
+          "backup-cancel-already-completed": "バックアップの要求はすでに処理されています。キャンセルはできません。",
           "confirm-delete": "削除の確認",
           "confirm-cancel": "キャンセルの確認",
           "confirm-resume": "スケジュールバックアップの再開",
@@ -520,6 +521,7 @@
         "max-part-1": "スイッチごとに最大",
         "max-part-2": "個のバックアップを保持します。最大制限: {{ max }}",
         "max-tooltip": "最大数のバックアップが作成されると、最も古いバックアップが最新のバックアップにローテーションで置き換えられます",
+        "schedule-time-info-tooltip": "スイッチの現地時間がこの設定と一致するときにバックアップは作成されます。",
         "cancellation-warning": "スイッチは、設定変更を受信すると、今後のバックアップまたは進行中のバックアップをキャンセルします。",
         "tags": "例: 自動、スケジュール済み",
         "tags-text": "各バックアップに付けられるタグ",
@@ -1365,7 +1367,8 @@
         "snmp_user": "SNMP ユーザー",
         "snmp_community": "SNMP コミュニティ",
         "port_ingress_filter_settings": "入力フィルタリング",
-        "voice_vlan_port_settings": "音声 VLAN ポート設定"
+        "voice_vlan_port_settings": "音声 VLAN ポート",
+        "snmp_group_to_user_map": "SNMP グループ"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "QoS 帯域制御の設定から物理ポートの設定 {{ ports }} つを削除してください。これらのポートは、依然としてスイッチ上の LAG {{ lag }} のメンバーである可能性があります。削除しないと、エラーが発生する可能性があります",
         "qos-lag-conflict-title": "QoS 帯域制御の設定で LAG メンバーポートが使用されています。",
         "fix-qos-lag-conflicts": "スイッチレベルでポート {{ ports }} の設定を「未設定」 (空) にすることで、競合を解決できます。",
-        "qos-lag-fix-button": "選択した設定の削除"
+        "qos-lag-fix-button": "選択した設定の削除",
+        "port-mirroring-conflict-message": "選択した 1つまたは複数のポートは既に 別のポートのミラーリングセッションの一部です。続行すると、次のスイッチでエラーが発生します。",
+        "fix-port-mirroring-conflicts": "これらのポートのミラーリング設定をスイッチレベルで削除して、競合を解決することができます。スイッチレベルのカスタマイズが必要な場合は、後でスイッチビューで編集できます。",
+        "fix-port-mirroring-button": "選択したセッションをオフにします"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "グループの追加",
         "edit-group": "グループの編集",
         "groupname": "グループ名",
-        "no-groups": "Sophos Central からグループがまだ追加されていません。"
+        "no-groups": "Sophos Central からグループがまだ追加されていません。",
+        "delete-groups": "グループの削除"
       },
       "messages": {
         "save-dialog-title": "保存の確認",

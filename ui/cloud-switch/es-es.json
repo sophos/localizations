@@ -481,6 +481,7 @@
           "backup-delete-failed": "No se ha podido eliminar la copia de seguridad",
           "backup-canceled": "La solicitud para cancelar la solicitud en curso se ha realizado correctamente.",
           "backup-cancel-failed": "No se ha podido cancelar la solicitud en curso.",
+          "backup-cancel-already-completed": "La solicitud de copia de seguridad ya ha sido procesada. No se puede cancelar.",
           "confirm-delete": "Confirmar eliminación",
           "confirm-cancel": "Confirmar cancelación",
           "confirm-resume": "Reanudar copias programadas",
@@ -520,6 +521,7 @@
         "max-part-1": "Guardar un máximo de",
         "max-part-2": "copias de seguridad por switch. Límite máximo: {{ max }}",
         "max-tooltip": "Cuando se haya alcanzado el número máximo de copias de seguridad realizadas, se reemplazará la más antigua por la copia más reciente por rotación.",
+        "schedule-time-info-tooltip": "Las copias de seguridad se realizan cuando la hora local del switch coincide con este ajuste.",
         "cancellation-warning": "Los switches cancelan las copias de seguridad en curso o próximas una vez que reciben el cambio de configuración.",
         "tags": "P. ej.: Automática, Programada",
         "tags-text": "Etiquetas que se adjuntan a cada copia de seguridad",
@@ -1365,7 +1367,8 @@
         "snmp_user": "Usuario SNMP",
         "snmp_community": "Comunidad SNMP",
         "port_ingress_filter_settings": "Filtro de entrada",
-        "voice_vlan_port_settings": "Configuración de puerto de VLAN de voz"
+        "voice_vlan_port_settings": "Puertos de VLAN de voz",
+        "snmp_group_to_user_map": "Grupo SNMP"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "Eliminar la configuración de los puertos físicos {{ ports }} de la configuración del control de ancho de banda de QoS, ya que dichos puertos pueden seguir siendo miembros del LAG {{ lag }} en el switch. De lo contrario, puede dar lugar a un error.",
         "qos-lag-conflict-title": "La configuración del control de ancho de banda de QoS sigue utilizando puertos miembros del LAG.",
         "fix-qos-lag-conflicts": "Puede definir la configuración del puerto {{ ports }} como 'No establecido' (vacío) en el nivel del switch para resolver conflictos.",
-        "qos-lag-fix-button": "Eliminar la configuración seleccionada"
+        "qos-lag-fix-button": "Eliminar la configuración seleccionada",
+        "port-mirroring-conflict-message": "Uno o más puertos seleccionados ya forman parte de otra sesión de reflejo de puertos y siguen provocando el error en los siguientes switchs.",
+        "fix-port-mirroring-conflicts": "Puede eliminar estas configuraciones de reflejo de puertos al nivel del switch para resolver los conflictos. Puede editar en la vista del switch más tarde, si se necesita una personalización al nivel del switch.",
+        "fix-port-mirroring-button": "Cierre la(s) sesión(es) seleccionadas"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "Añadir grupo",
         "edit-group": "Editar grupo",
         "groupname": "Nombre del grupo",
-        "no-groups": "Aún no se ha añadido ningún grupo de Sophos Central."
+        "no-groups": "Aún no se ha añadido ningún grupo de Sophos Central.",
+        "delete-groups": "Eliminar grupos"
       },
       "messages": {
         "save-dialog-title": "Confirmar guardado",

@@ -481,6 +481,7 @@
           "backup-delete-failed": "Impossible de supprimer la sauvegarde",
           "backup-canceled": "Demande d’annulation de la demande en cours effectuée avec succès.",
           "backup-cancel-failed": "Impossible d’annuler la demande en cours.",
+          "backup-cancel-already-completed": "La demande de sauvegarde a déjà été traitée. Annulation impossible.",
           "confirm-delete": "Confirmer la suppression",
           "confirm-cancel": "Confirmer l’annulation",
           "confirm-resume": "Reprendre les sauvegardes planifiées",
@@ -520,6 +521,7 @@
         "max-part-1": "Conserver un maximum de",
         "max-part-2": "sauvegardes par switch. Limite max. : {{ max }}",
         "max-tooltip": "Une fois le nombre maximal de sauvegardes effectué, la plus ancienne est remplacée par la dernière sauvegarde en rotation",
+        "schedule-time-info-tooltip": "Les sauvegardes sont effectuées lorsque l’heure locale du switch correspond à ce paramètre.",
         "cancellation-warning": "Les switchs annulent les sauvegardes à venir ou en cours une fois qu’ils reçoivent la modification de configuration.",
         "tags": "Ex : Automatique, planifiée",
         "tags-text": "Balises associées à chaque sauvegarde",
@@ -1365,7 +1367,8 @@
         "snmp_user": "Utilisateur SNMP",
         "snmp_community": "Communauté SNMP",
         "port_ingress_filter_settings": "Filtre d’entrée",
-        "voice_vlan_port_settings": "Paramètres du port VLAN voix"
+        "voice_vlan_port_settings": "Ports VLAN voix",
+        "snmp_group_to_user_map": "Groupe SNMP"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -1446,7 +1449,10 @@
         "qos-lag-conflict-message": "Supprimez les paramètres pour les ports physiques {{ ports }} des paramètres de contrôle de la bande passante car ces ports peuvent être encore membres du LAG {{ lag }} sur le switch. Dans le cas contraire, un erreur pourrait se produire",
         "qos-lag-conflict-title": "Les paramètres de contrôle de la bande passante QoS utilisent les ports membres du LAG.",
         "fix-qos-lag-conflicts": "Vous pouvez définir les paramètres du port {{ ports }} sur « Non défini » au niveau du switch pour résoudre les conflits.",
-        "qos-lag-fix-button": "Supprimer les paramètres sélectionnés"
+        "qos-lag-fix-button": "Supprimer les paramètres sélectionnés",
+        "port-mirroring-conflict-message": "Un ou plusieurs ports sélectionnés font déjà partie d’une autre session de mise en miroir de ports. Si vous continuez, une erreur se produira pour les switchs ci-dessous.",
+        "fix-port-mirroring-conflicts": "Vous pouvez supprimer ces configurations de mise en miroir de ports au niveau du switch pour résoudre les conflits. Vous pouvez modifier ultérieurement au niveau de la vue du switch, si une personnalisation du switch est nécessaire.",
+        "fix-port-mirroring-button": "Désactiver la ou les sessions sélectionnées"
       },
       "ports-mirroring" : {
         "table-headers": {
@@ -1604,7 +1610,8 @@
         "add-group": "Ajouter un groupe",
         "edit-group": "Modifier le groupe",
         "groupname": "Nom du groupe",
-        "no-groups": "Aucun groupe n’a encore été ajouté depuis Sophos Central."
+        "no-groups": "Aucun groupe n’a encore été ajouté depuis Sophos Central.",
+        "delete-groups": "Supprimer les groupes"
       },
       "messages": {
         "save-dialog-title": "Confirmer l’enregistrement",
