@@ -285,6 +285,7 @@
         "location": "位置",
         "model": "機型",
         "tags": "標籤",
+        "switch": "Switch",
         "all-tags": "所有標記",
         "last-backup-or-restore-status": "近期活動",
         "occured-at": "發生於",
@@ -498,6 +499,7 @@
           "confirm-enable-all-message": "這將為所有交換器啟用排程的備份。對於任何交換器，您都可以在其工作佇列中追蹤工作的狀態。",
           "details": "詳細資訊",
           "taken-with": "採取",
+          "waiting-for-switch": "等待交換器接受請求。",
           "version": "版本",
           "restoring-to": "正在還原至",
           "multi-backups": "對於以下 {{ count }} 個排程日期的未變更備份，透過僅儲存其一份副本來最佳化備份儲存空間",
@@ -581,7 +583,8 @@
           "template-delete-confirm": "刪除網站",
           "move-to-site": "移至站點",
           "sync": "同步",
-          "cli": "執行命令"
+          "cli": "執行命令",
+          "skip-all-tasks": "跳過所有工作"
         },
         "full-sync": {
           "sync-dialog-title": "同步",
@@ -1010,20 +1013,21 @@
       },
       "color": {
         "red": "紅色",
-        "green": "綠色",
+        "green": "綠",
         "blue": "蓝色",
         "yellow": "黃色",
         "purple": "紫色",
         "none": "无"
       },
       "table-headers": {
-        "vlan-id": "VLAN ID",
-        "name": "VLAN 名稱",
+        "vlan-id": "識別碼",
+        "name": "名稱",
         "description": "說明",
         "tagged-ports": "已標記的連接埠",
         "untagged-ports": "未標記的連接埠",
         "forbidden-ports": "已禁止的連接埠",
-        "inherited": "設定來源"
+        "inherited": "設定來源",
+        "sync": "衝突"
       },
       "form": {
         "vlan-id": "VLAN ID",
@@ -1042,6 +1046,12 @@
         "vlan-name-exists-message": "名稱已存在。",
         "lag-mode": "LAG 模式",
         "part-of-lag": "已用於 LAG"
+      },
+      "protocol": {
+        "Voice Vlan": "語音",
+        "Guest Vlan": "訪客",
+        "Gvrp": "GVRP",
+        "Static": "STATIC"
       },
       "message": {
         "create-error": "無法建立 VLAN",
@@ -1077,6 +1087,19 @@
         "fix-button": "刪除相依項",
         "delete-conflict-message": "標記為刪除的一或多個 VLAN 已在以下設定中使用"
       }
+    },
+    "local-sync": {
+     "hide-conflicts":  "隱藏衝突",
+     "hide-status":  "隱藏同步狀態",
+     "show-conflicts":  "{{ count }} 個衝突",
+     "show-status":  "顯示同步狀態",
+     "only-in-device": "僅在裝置中",
+     "only-in-central": "僅在 Sophos Central 中",
+     "config-conflicts": "設定衝突",
+     "no-conflict": "沒有衝突",
+     "dynamic": "動態",
+     "refreshing-data": "正在重新整理資料...",
+     "different-data": "交換器有不同的值： "
     },
     "ip-networks": {
       "add": "新增網路",
@@ -1270,6 +1293,8 @@
       "details-dialog-title": "工作詳細資料",
       "sync-dialog-select-text": "處於「等待」狀態的工作將被推送到交換器，選取需要同步處理的交換器",
       "sync-dialog-title": "同步",
+      "skip-dialog-title": "跳過所有工作",
+      "skip-dialog-text": "所有處於「待處理」、「等待中」或「失敗」狀態的工作都將被跳過。",
       "save-override-warning": "如果交換機已有此設定，Sophos Central 將覆寫此設定。",
       "save-override-title": "變更至交換器設定",
       "save-uplink-warning": "如果變更與「上行」或「管理」連接埠，或管理 VLAN 或 DNS 有關，請注意，因為變更可能會使交換器脫離網路，並且交換器可能無法存取 Sophos Central",
@@ -1362,13 +1387,16 @@
         "port_mirroring": "連接埠鏡像",
         "cdp_port_settings": "CDP 連接埠設定",
         "port_isolation": "連接埠隔離",
+        "port_jumbo_frame": "連接埠巨型幀",
         "eee_settings": "連接埠 EEE",
         "snmp_settings": "SNMP 設定",
         "snmp_user": "SNMP 使用者",
         "snmp_community": "SNMP 社群",
         "port_ingress_filter_settings": "輸入篩選器",
         "voice_vlan_port_settings": "語音 VLAN 連接埠",
-        "snmp_group_to_user_map": "SNMP 群組"
+        "snmp_group_to_user_map": "SNMP 群組",
+        "snmp_view_oid_mapping": "SNMP 檢視",
+        "snmp_target_params": "SNMP 目標參數"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1569,7 +1597,8 @@
         "settings": "整體設定",
         "users-groups": "使用者與群組(U)",
         "views-access-list": "檢視和存取清單",
-        "triggers": "觸發程序"
+        "triggers": "觸發程序",
+        "view-list": "檢視清單"
       },
       "users-and-communities": {
         "title": "使用者及社群",
@@ -1624,12 +1653,143 @@
         "username-required-message": "名稱是必需的。",
         "username-exists-message": "使用者名稱已存在。",
         "username-length-error-message": "使用者名稱長度必須介於 8-40 之間。",
-        "loading-error": "無法載入 SNMP 設定。"
+        "loading-error": "無法載入 SNMP 設定。",
+        "users-and-communities.confirm-update": "確認更新"
       },
       "status": "SNMP 狀態",
       "engine-id": "引擎 ID",
       "engine-id-msg": "（10~64 個十六進位字元，引擎 ID 的長度應該為偶數。）",
-      "default": "預設"
+      "default": "預設",
+
+      "view-list": {
+        "title": "檢視",
+        "view-name": "檢視名稱",
+        "oid-mappings": "OID 對應",
+        "view-oid-mappings": "OID 對應",
+        "subtree-oid": "子樹 OID",
+        "subtree-mask": "子樹遮罩",
+        "view-type": "檢視類型",
+        "config-source": "設定來源",
+        "not-set": "未設定",
+        "included": "包含",
+        "excluded": "已排除",
+        "add-view": "新增檢視",
+        "edit-view": "編輯檢視",
+        "oid-mapping-no-data": "尚未新增對應",
+        "add-new-mapping": "新增新對應",
+        "view-name-required-message": "檢視名稱為必填項。",
+        "view-name-already-exists-message": "檢視名稱已存在。",
+        "view-name-max-length-message": "檢視名稱最多應包含 20 個字元。",
+        "subtree-oid-required-message": "子樹 OID 為必填項。",
+        "subtree-oid-invalid-message": "子樹 OID 無效。",
+        "subtree-oid-duplicate-message": "子樹 OID 重複。",
+        "subtree-oid-max-length-message": "子樹 OID 最多應包含 20 個字元。",
+        "subtree-mask-required-message": "子樹遮罩為必填項。",
+        "subtree-mask-invalid-message": "子樹遮罩不得大於 OID 的深度。",
+        "subtree-mask-min-max-value-message": "值必須介於 1 - 20 之間",
+
+        "messages": {
+          "fetch-settings-error": "無法擷取 SNMP 檢視設定",
+          "add-settings-success": "SNMP 檢視設定已建立",
+          "add-settings-error": "無法建立 SNMP 檢視設定",
+          "add-dialog-title": "確認建立",
+          "site-add-setting-text": "{{ count }} 部交換器將取得此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-add-setting-text": "此交換器將取得此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "edit-settings-success": "SNMP 檢視設定已更新",
+          "edit-settings-error": "無法更新 SNMP 檢視設定",
+          "edit-dialog-title": "確認編輯",
+          "site-edit-setting-text": "{{ count }} 部交換器將取得此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-edit-setting-text": "此交換器將取得此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "delete-settings-success": "SNMP 檢視設定已刪除",
+          "delete-settings-error": "無法刪除 SNMP 檢視設定",
+          "delete-dialog-title": "確認刪除",
+          "site-delete-setting-text": "刪除 {{ viewCount }} 個 SNMP 檢視設定。{{ count }} 部交換器將移除此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-delete-setting-text": "刪除 {{ viewCount }} 個 SNMP 檢視設定，並將建立工作。您可以選擇現在或稍後同步。"
+        }
+      },
+      "access-list": {
+        "title": "存取清單",
+        "table-header": {
+          "group-name": "群組名稱",
+          "security-mode": "安全模式",
+          "privilege-mode": "權限模式",
+          "views": "檢視",
+          "read-view": "讀取檢視",
+          "write-view": "寫入檢視",
+          "notify-view": "通知檢視"
+        },
+        "no-policies": "尚未從 Sophos Central 設定任何存取原則。",
+        "add-access-policy": "新增存取原則",
+        "edit-access-policy": "編輯存取原則",
+        "option-label": "選擇",
+        "messages": {
+          "delete-access-policy": "刪除存取原則",
+          "add-access-policy": "新增存取原則",
+          "edit-access-policy": "編輯存取原則",
+          "add-access-switch-save-dialog-text": "交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+          "add-access-site-save-dialog-text": "{{ count }} 個交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
+          "update-setting-success": "SNMP 存取原則設定更新成功。",
+          "update-setting-error": "無法更新 SNMP 設定。"
+        }
+      },
+      "view-types": {
+        "read": "閱讀",
+        "write": "寫入",
+        "notify": "通知"
+      },
+      "privilege-mode-type" : {
+        "NoAuth": "無驗證",
+        "Auth": "驗證",
+        "Priv": "權限"
+      },
+      "security-mode": {
+        "V1": "V1",
+        "V2c": "V2",
+        "V3": "V3"
+      },
+      "target-parameters": {
+        "title": "目標參數",
+        "target-param-name": "名稱",
+        "target-param-name-required-message": "名稱為必填項",
+        "target-param-name-already-exists-message": "名稱已存在",
+        "msg-processing-model": "訊息處理模型",
+        "security-mode": "安全模式",
+        "security-name": "安全名稱",
+        "priv-mode": "權限模式",
+        "config-source": "設定來源",
+        "add-parameter": "新增參數",
+        "edit-parameter": "編輯參數",
+        "none": "无",
+        "security-mode-type": {
+          "V1": "v1",
+          "V2c": "v2c",
+          "V3": "v3"
+        },
+        "privilege-mode-type" : {
+          "NoAuth": "沒有驗證",
+          "Auth": "驗證",
+          "Priv": "權限"
+        },
+
+        "messages": {
+          "fetch-settings-error": "無法擷取 SNMP 目標參數設定",
+          "add-settings-success": "SNMP 目標參數設定已建立",
+          "add-settings-error": "無法建立 SNMP 目標參數設定",
+          "add-dialog-title": "確認建立",
+          "site-add-setting-text": "{{ count }} 部交換器將取得此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-add-setting-text": "此交換器將取得此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "edit-settings-success": "SNMP 目標參數設定已更新",
+          "edit-settings-error": "無法更新 SNMP 目標參數設定",
+          "edit-dialog-title": "確認編輯",
+          "site-edit-setting-text": "{{ count }} 部交換器將取得此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-edit-setting-text": "此交換器將取得此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "delete-settings-success": "SNMP 目標參數設定已刪除",
+          "delete-settings-error": "無法刪除 SNMP 目標參數設定",
+          "delete-dialog-title": "確認刪除",
+          "site-delete-setting-text": "刪除 {{ viewCount }} 個 SNMP 目標參數設定。{{ count }} 部交換器將移除此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-delete-setting-text": "刪除 {{ viewCount }} 個 SNMP 目標參數設定，並將建立工作。您可以選擇現在或稍後同步。"
+        }
+      }
     },
     "remote-debugging": {
       "debugging-enabled-title": "遠端協助已啟用",

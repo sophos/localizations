@@ -78,6 +78,23 @@
             "fetch-error": "Fehler beim Abrufen der Alarmkonfiguration",
             "save-error": "Fehler beim Aktualisieren der Alarmkonfiguration",
             "save-success": "Die Alarmkonfiguration wurde erfolgreich aktualisiert"
+        },
+        "alerts": {
+          "ADVANCED_THREAT_PROTECTION": "Komplexe Bedrohung erkannt (Erweiterte Details)",
+          "ADVANCED_THREAT_PROTECTION_OLD": "Komplexe Bedrohung erkannt (Standarddetails)",
+          "HA_STATE_DEGRADED": "Firewall-HA Status beeinträchtigt",
+          "HA_STATE_RESTORED": "Firewall-HA Status wiederhergestellt",
+          "RED_TUNNEL_DOWN": "Firewall-RED-Tunnel ausgefallen",
+          "RED_TUNNEL_UP": "Firewall-RED-Tunnel aktiv",
+          "VPN_TUNNEL_DOWN": "Firewall-VPN-Tunnel ausgefallen",
+          "VPN_TUNNEL_UP": "Firewall-VPN-Tunnel aktiv",
+          "FIREWALL_RECONNECTED": "Verbindung der Firewall zu Sophos Central wiederhergestellt",
+          "GATEWAY_DOWN": "Firewall-Gateway ausgefallen",
+          "GATEWAY_UP": "Firewall-Gateway aktiv",
+          "FIREWALL_DISCONNECTED": "Firewall hat sich nicht bei Sophos Central gemeldet",
+          "FIREWALL_SUSPENDED_DISCONNECTED": "Firewall angehalten, weil seit 30 Tagen nicht verbunden",
+          "FIREWALL_SUSPENDED_OUTOFSYNC": "Firewall angehalten, weil seit 30 Tagen nicht synchronisiert",
+          "ENDPOINT_MISSING_HEARTBEAT": "Fehlender Security Heartbeat"
         }
     },
     "dynamic-objects": {
@@ -221,15 +238,15 @@
       "status": {
         "good": "Gut",
         "bad": {
-          "one": "Verbindung deaktiviert",
-          "more": "{{ bad }} Verbindungen deaktiviert"
+          "one": "Verbindung ausgefallen",
+          "more": "{{ bad }} Verbindungen ausgefallen"
         },
         "unknown": {
           "one": "Unbekannt",
           "more": "{{ unknown }} unbekannt"
         },
         "lost-connection": {
-          "one": "Verbindung deaktiviert",
+          "one": "Verbindung ausgefallen",
           "more": "Verbindung deaktiviert mit {{ bad }} VPN-Tunnel"
         },
         "unknown-connection": {
@@ -628,8 +645,8 @@
               "enable": "Synchronized Security Heartbeat konfigurieren",
               "src": "Minimal zulässige Quell-HBs",
               "dst": "Minimal zulässiger Ziel-HB",
-              "block-clients": "Clients ohne Heartbeat blockieren",
-              "block-requests": "Anfrage zu einem Ziel ohne Heartbeat blockieren"
+              "block-clients": "Clients ohne Security Heartbeat blockieren",
+              "block-requests": "Anfrage zu einem Ziel ohne Security Heartbeat blockieren"
             }
           },
           "table": {
@@ -645,7 +662,7 @@
               "resources": "Quellen",
               "auto-rules": "Firewall-Regeln automatisch erstellen",
               "auth": "Authentifizierung",
-              "green-hb": "Grüner Heartbeat",
+              "green-hb": "Grüner Security Heartbeat",
               "action": {
                 "edit": "Bearbeiten",
                 "delete": "Löschen"
@@ -878,6 +895,7 @@
           "cannot-load-groups": "Gruppen-Informationen können nicht geladen werden.",
           "cannot-schedule": "Firmware-Upgrade kann nicht geplant werden. Keine Zeitzonen-Information vorhanden.",
           "scheduled": "Aktualisierung der ausgewählten Firewalls erfolgreich geplant.",
+          "scheduled-with-failure": "Firmware-Upgrade-Planung fehlgeschlagen für {{ failedCount }} von {{ totalCount }} Firewalls. Betroffene Firewalls: {{failedSerialList}}",
           "cancelled": "Geplante Aktualisierungen erfolgreich widerrufen.",
           "cannot-cancel": "Beim Widerrufen des Zeitplans ist ein Fehler aufgetreten.",
           "unschedulable": "Einige der ausgewählten Firewalls übertragen möglicherweise keine Zeitzonen-Information. Bitte aktualisieren Sie diese mit der Option 'Sofort'.",
@@ -1037,8 +1055,8 @@
           "disconnected": {
             "state": "{{ count }} Getrennt",
             "header": {
-              "one": "Eine Firewall sendet keine Heartbeats an Sophos Central",
-              "more": "{{ count }} Firewalls senden keine Heartbeats an Sophos Central."
+              "one": "Eine Firewall sendet keinen Security Heartbeat an Sophos Central",
+              "more": "{{ count }} Firewalls senden keinen Security Heartbeat an Sophos Central."
             },
             "subtext": "Prüfen Sie bitte die Internetverbindung der Firewalls."
           },
@@ -1598,8 +1616,8 @@
             "waiting": "Speichern Sie die Konfiguration auf einem USB-Gerät, Verbinden Sie sich mit der Firewall, Stellen Sie eine Verbindung mit dem Internet her und schalten Sie ein.",
             "improved-zero-touch-waiting": "Verbinden Sie die Firewall mit dem Internet und schalten Sie diese ein.",
             "initializing": "Warten auf die Firewall-Informationen",
-            "disconnected": "Security Heartbeats werden nicht empfangen.",
-            "connected": "Es werden Security Heartbeats empfangen.",
+            "disconnected": "Security Heartbeat wird nicht empfangen.",
+            "connected": "Security Heartbeat wird empfangen.",
             "sync": "Alle Richtlinien wurden auf die Firewall angewendet.",
             "time": "{{ time }}",
             "syncing": "Dies kann einige Zeit dauern, da die Richtlinien auf Remote-Geräte übertragen werden.",
