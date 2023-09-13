@@ -285,6 +285,7 @@
         "location": "Ubicación",
         "model": "Modelo",
         "tags": "Etiquetas",
+        "switch": "Switch",
         "all-tags": "Todas las etiquetas",
         "last-backup-or-restore-status": "Actividad reciente",
         "occured-at": "Ocurrido a las",
@@ -498,6 +499,7 @@
           "confirm-enable-all-message": "Esto activará las copias de seguridad programadas para todos los switches. Puede hacer un seguimiento del estado de la tarea de cualquier switch en su cola de tareas.",
           "details": "Detalles",
           "taken-with": "Efectuado con",
+          "waiting-for-switch": "A la espera de que el switch acepte la solicitud.",
           "version": "Versión",
           "restoring-to": "Restauración en",
           "multi-backups": "Para optimizar el almacenamiento de las copias de seguridad, se guarda solo una copia de las copias de seguridad no modificadas para las siguientes {{ count }} fechas programadas",
@@ -581,7 +583,8 @@
           "template-delete-confirm": "Eliminar sitio",
           "move-to-site": "Mover a sitio",
           "sync": "Sincronizar",
-          "cli": "Ejecutar comandos"
+          "cli": "Ejecutar comandos",
+          "skip-all-tasks": "Omitir todas las tareas"
         },
         "full-sync": {
           "sync-dialog-title": "Sincronizar",
@@ -1017,13 +1020,14 @@
         "none": "Ninguno"
       },
       "table-headers": {
-        "vlan-id": "ID de VLAN",
-        "name": "Nombre del VLAN",
+        "vlan-id": "ID",
+        "name": "Nombre",
         "description": "Descripción",
         "tagged-ports": "Puertos etiquetados",
         "untagged-ports": "Puertos sin etiqueta",
         "forbidden-ports": "Puertos prohibidos",
-        "inherited": "Origen de configuración"
+        "inherited": "Origen de configuración",
+        "sync": "Conflictos"
       },
       "form": {
         "vlan-id": "ID VLAN",
@@ -1042,6 +1046,12 @@
         "vlan-name-exists-message": "El nombre ya existe.",
         "lag-mode": "Modo de LAG",
         "part-of-lag": "Usado en LAG"
+      },
+      "protocol": {
+        "Voice Vlan": "VLAN DE VOZ",
+        "Guest Vlan": "INVITADO",
+        "Gvrp": "GVRP",
+        "Static": "ESTÁTICA"
       },
       "message": {
         "create-error": "No se puede crear la VLAN",
@@ -1077,6 +1087,19 @@
         "fix-button": "Eliminar dependientes",
         "delete-conflict-message": "Una o más VLAN marcadas para eliminarse se utilizan en las siguientes configuraciones"
       }
+    },
+    "local-sync": {
+     "hide-conflicts":  "Ocultar conflictos",
+     "hide-status":  "Ocultar estado de sincronización",
+     "show-conflicts":  "{{ count }} conflictos",
+     "show-status":  "Mostrar estado de sincronización",
+     "only-in-device": "Solo en el dispositivo",
+     "only-in-central": "Solo en Sophos Central",
+     "config-conflicts": "Conflictos de configuración",
+     "no-conflict": "No hay conflictos",
+     "dynamic": "Dinámico",
+     "refreshing-data": "Actualizando datos...",
+     "different-data": "El switch tiene un valor diferente: "
     },
     "ip-networks": {
       "add": "Añadir red",
@@ -1270,6 +1293,8 @@
       "details-dialog-title": "Detalles de tarea",
       "sync-dialog-select-text": "Las tareas que se encuentran en estado de 'espera' se transferirán al switch; seleccione los switches que necesitan sincronizarse.",
       "sync-dialog-title": "Sincronizar",
+      "skip-dialog-title": "Omitir todas las tareas",
+      "skip-dialog-text": "Se omitirán todas las tareas que se encuentren en estado 'Pendiente', 'En espera' o 'Ha fallado'.",
       "save-override-warning": "Si los switches ya tienen esta configuración, Sophos Central anulará los parámetros de configuración.",
       "save-override-title": "Cambios en la configuración del switch",
       "save-uplink-warning": "Si los cambios están relacionados con un puerto de 'vínculo superior' o de 'administración' o con un DNS o VLAN de administración, tenga cuidado, ya que los cambios sacar al switch de la red y es posible que este no pueda establecer una conexión con Sophos Central",
@@ -1362,13 +1387,16 @@
         "port_mirroring": "Reflejo de puertos",
         "cdp_port_settings": "Configuración de puerto CDP",
         "port_isolation": "Aislamiento de puertos",
+        "port_jumbo_frame": "Trama gigante de puerto",
         "eee_settings": "EEE de puerto",
         "snmp_settings": "Configuración de SNMP",
         "snmp_user": "Usuario SNMP",
         "snmp_community": "Comunidad SNMP",
         "port_ingress_filter_settings": "Filtro de entrada",
         "voice_vlan_port_settings": "Puertos de VLAN de voz",
-        "snmp_group_to_user_map": "Grupo SNMP"
+        "snmp_group_to_user_map": "Grupo SNMP",
+        "snmp_view_oid_mapping": "Vista SNMP",
+        "snmp_target_params": "Parámetro de destino SNMP"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1569,7 +1597,8 @@
         "settings": "Configuración global",
         "users-groups": "Usuarios y grupos",
         "views-access-list": "Lista de visualizaciones y accesos",
-        "triggers": "Desencadenadores"
+        "triggers": "Desencadenadores",
+        "view-list": "Ver lista"
       },
       "users-and-communities": {
         "title": "Usuarios y comunidades",
@@ -1624,12 +1653,143 @@
         "username-required-message": "Se requiere el nombre.",
         "username-exists-message": "El nombre de usuario ya existe.",
         "username-length-error-message": "La longitud del nombre de usuario debe ser de 8-40.",
-        "loading-error": "No se puede cargar la configuración SNMP."
+        "loading-error": "No se puede cargar la configuración SNMP.",
+        "users-and-communities.confirm-update": "Confirmar actualización"
       },
       "status": "Estado SNMP",
       "engine-id": "ID de motor",
       "engine-id-msg": "(10~64 caracteres hexadecimales; el ID de motor debe tener un número par de caracteres.)",
-      "default": "Predeterminado"
+      "default": "Predeterminado",
+
+      "view-list": {
+        "title": "Vistas",
+        "view-name": "Nombre de vista",
+        "oid-mappings": "Asignaciones OID",
+        "view-oid-mappings": "Asignaciones OID",
+        "subtree-oid": "OID de subárbol",
+        "subtree-mask": "Máscara de subárbol",
+        "view-type": "Tipo de vista",
+        "config-source": "Origen de configuración",
+        "not-set": "No establecido",
+        "included": "Incluido",
+        "excluded": "Excluidos",
+        "add-view": "Añadir vista",
+        "edit-view": "Editar vista",
+        "oid-mapping-no-data": "Todavía no se han añadido asignaciones",
+        "add-new-mapping": "Añadir nueva asignación",
+        "view-name-required-message": "Se requiere el nombre de vista.",
+        "view-name-already-exists-message": "El nombre de vista ya existe.",
+        "view-name-max-length-message": "El nombre de vista puede tener un máximo de 20 caracteres.",
+        "subtree-oid-required-message": "Se requiere el OID de subárbol.",
+        "subtree-oid-invalid-message": "OID de subárbol no válido.",
+        "subtree-oid-duplicate-message": "OID de subárbol duplicado.",
+        "subtree-oid-max-length-message": "El OID de subárbol puede tener un máximo de 20 caracteres.",
+        "subtree-mask-required-message": "Se requiere la máscara de subárbol.",
+        "subtree-mask-invalid-message": "La máscara de subárbol no debe ser mayor que la profundidad del OID.",
+        "subtree-mask-min-max-value-message": "El valor debe ser entre 1 y 20",
+
+        "messages": {
+          "fetch-settings-error": "No se puede recuperar la configuración de la vista SNMP",
+          "add-settings-success": "Se ha creado la configuración de la vista SNMP",
+          "add-settings-error": "No se puede crear la configuración de la vista SNMP",
+          "add-dialog-title": "Confirmar creación",
+          "site-add-setting-text": "{{ count }} switches obtendrán esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-add-setting-text": "El switch obtendrá esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "edit-settings-success": "Se ha actualizado la configuración de la vista SNMP",
+          "edit-settings-error": "No se puede actualizar la configuración de la vista SNMP",
+          "edit-dialog-title": "Confirmar edición",
+          "site-edit-setting-text": "{{ count }} switches obtendrán esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-edit-setting-text": "El switch obtendrá esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "delete-settings-success": "Se ha eliminado la configuración de la vista SNMP",
+          "delete-settings-error": "No se puede eliminar la configuración de la vista SNMP",
+          "delete-dialog-title": "Confirmar eliminación",
+          "site-delete-setting-text": "Elimine {{ viewCount }} parámetros de configuración de la vista SNMP. {{ count }} switches eliminarán esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-delete-setting-text": "Elimine {{ viewCount }} parámetros de configuración de la vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
+        }
+      },
+      "access-list": {
+        "title": "Lista de accesos",
+        "table-header": {
+          "group-name": "Nombre del grupo",
+          "security-mode": "Modo de seguridad",
+          "privilege-mode": "Modo de privilegio",
+          "views": "Vistas",
+          "read-view": "Vista de lectura",
+          "write-view": "Vista de escritura",
+          "notify-view": "Vista de notificación"
+        },
+        "no-policies": "Aún no hay políticas de acceso configuradas desde Sophos Central.",
+        "add-access-policy": "Añadir política de acceso",
+        "edit-access-policy": "Editar política de acceso",
+        "option-label": "Seleccionar",
+        "messages": {
+          "delete-access-policy": "Eliminar política de acceso",
+          "add-access-policy": "Añadir política de acceso",
+          "edit-access-policy": "Editar política de acceso",
+          "add-access-switch-save-dialog-text": "El switch recibirá las actualizaciones de SNMP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+          "add-access-site-save-dialog-text": "{{ count }} switches recibirán las actualizaciones de SNMP y se crearán tareas para las actualizaciones. Puede optar por sincronizar ahora o más tarde.",
+          "update-setting-success": "La configuración de la política de acceso SNMP se ha actualizado correctamente.",
+          "update-setting-error": "No se puede actualizar la configuración SNMP."
+        }
+      },
+      "view-types": {
+        "read": "Leer",
+        "write": "Escribir",
+        "notify": "Notificar"
+      },
+      "privilege-mode-type" : {
+        "NoAuth": "Sin autenticación",
+        "Auth": "Autenticación",
+        "Priv": "Privilegio"
+      },
+      "security-mode": {
+        "V1": "V1",
+        "V2c": "V2",
+        "V3": "V3"
+      },
+      "target-parameters": {
+        "title": "Parámetros de destino",
+        "target-param-name": "Nombre",
+        "target-param-name-required-message": "Nombre es obligatorio",
+        "target-param-name-already-exists-message": "El nombre ya existe",
+        "msg-processing-model": "Modelo de procesamiento de mensaje",
+        "security-mode": "Modo de seguridad",
+        "security-name": "Nombre de seguridad",
+        "priv-mode": "Modo de privilegio",
+        "config-source": "Origen de configuración",
+        "add-parameter": "Añadir parámetro",
+        "edit-parameter": "Editar parámetro",
+        "none": "Ninguno",
+        "security-mode-type": {
+          "V1": "v1",
+          "V2c": "v2c",
+          "V3": "v3"
+        },
+        "privilege-mode-type" : {
+          "NoAuth": "Sin autenticación",
+          "Auth": "Autenticación",
+          "Priv": "Privilegio"
+        },
+
+        "messages": {
+          "fetch-settings-error": "No se puede recuperar la configuración de los parámetros de destino SNMP",
+          "add-settings-success": "Se ha creado la configuración de los parámetros de destino SNMP",
+          "add-settings-error": "No se puede crear la configuración de los parámetros de destino SNMP",
+          "add-dialog-title": "Confirmar creación",
+          "site-add-setting-text": "{{ count }} switches obtendrán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-add-setting-text": "El switch obtendrá esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "edit-settings-success": "Se ha actualizado la configuración de los parámetros de destino SNMP",
+          "edit-settings-error": "No se puede actualizar la configuración de los parámetros de destino SNMP",
+          "edit-dialog-title": "Confirmar edición",
+          "site-edit-setting-text": "{{ count }} switches obtendrán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-edit-setting-text": "El switch obtendrá esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "delete-settings-success": "Se ha eliminado la configuración de los parámetros de destino SNMP",
+          "delete-settings-error": "No se puede eliminar la configuración de los parámetros de destino SNMP",
+          "delete-dialog-title": "Confirmar eliminación",
+          "site-delete-setting-text": "Elimine {{ viewCount }} parámetros de destino SNMP. {{ count }} switches eliminarán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-delete-setting-text": "Elimine {{ viewCount }} parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
+        }
+      }
     },
     "remote-debugging": {
       "debugging-enabled-title": "Asistencia remota habilitada",
