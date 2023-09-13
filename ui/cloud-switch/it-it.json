@@ -285,6 +285,7 @@
         "location": "Località",
         "model": "Modello",
         "tags": "Tag",
+        "switch": "Switch",
         "all-tags": "Tutti i tag",
         "last-backup-or-restore-status": "Attività recente",
         "occured-at": "Effettuato in data",
@@ -498,6 +499,7 @@
           "confirm-enable-all-message": "Verranno abilitati i backup pianificati per tutti gli switch. Per qualsiasi switch, puoi monitorare lo stato dell’attività nella rispettiva coda delle attività.",
           "details": "Dettagli",
           "taken-with": "Effettuato con",
+          "waiting-for-switch": "In attesa che lo switch accetti la richiesta.",
           "version": "Versione",
           "restoring-to": "Ripristino su",
           "multi-backups": "Le archiviazioni dei backup vengono ottimizzate salvando solo una copia dei backup non modificati per le seguenti {{ count }} date pianificate",
@@ -581,7 +583,8 @@
           "template-delete-confirm": "Elimina sito",
           "move-to-site": "Trasferisci nel sito",
           "sync": "Sincronizza",
-          "cli": "Esegui comandi"
+          "cli": "Esegui comandi",
+          "skip-all-tasks": "Ignora tutte le attività"
         },
         "full-sync": {
           "sync-dialog-title": "Sincronizza",
@@ -1017,13 +1020,14 @@
         "none": "Nessuno"
       },
       "table-headers": {
-        "vlan-id": "ID VLAN",
-        "name": "Nome VLAN",
+        "vlan-id": "ID",
+        "name": "Nome",
         "description": "Descrizione",
         "tagged-ports": "Porte con tag",
         "untagged-ports": "Porte senza tag",
         "forbidden-ports": "Porte proibite",
-        "inherited": "Origine configurazione"
+        "inherited": "Origine configurazione",
+        "sync": "Conflitti"
       },
       "form": {
         "vlan-id": "ID VLAN",
@@ -1042,6 +1046,12 @@
         "vlan-name-exists-message": "Nome già esistente.",
         "lag-mode": "Modalità LAG",
         "part-of-lag": "Utilizzato nel LAG"
+      },
+      "protocol": {
+        "Voice Vlan": "TRAFFICO VOCE",
+        "Guest Vlan": "OSPITE",
+        "Gvrp": "GVRP",
+        "Static": "STATICO"
       },
       "message": {
         "create-error": "Impossibile creare VLAN",
@@ -1071,12 +1081,25 @@
       "conflicts": {
         "vlan": "ID VLAN",
         "referenced": "In uso in",
-        "details": "Informazioni",
+        "details": "Dettagli",
         "delete-conflict-title": "Le VLAN sono in uso",
         "fix-delete-conflict": "Le VLAN elencate sotto sono già in uso, elimina queste configurazioni dipendenti prima di eliminare le VLAN",
         "fix-button": "Elimina configurazioni dipendenti",
         "delete-conflict-message": "Una o più VLAN contrassegnate per l’eliminazione sono in uso nelle seguenti impostazioni"
       }
+    },
+    "local-sync": {
+     "hide-conflicts":  "Nascondi conflitti",
+     "hide-status":  "Nascondi stato di sincronizzazione",
+     "show-conflicts":  "{{ count }} conflitti",
+     "show-status":  "Mostra stato di sincronizzazione",
+     "only-in-device": "Solo nel dispositivo",
+     "only-in-central": "Solo in Sophos Central",
+     "config-conflicts": "Conflitti di config",
+     "no-conflict": "Nessun conflitto",
+     "dynamic": "Dinamico",
+     "refreshing-data": "Aggiornamento dei dati in corso...",
+     "different-data": "Lo switch ha un valore diverso: "
     },
     "ip-networks": {
       "add": "Aggiungi rete",
@@ -1270,6 +1293,8 @@
       "details-dialog-title": "Dettagli operazione",
       "sync-dialog-select-text": "Le attività con stato 'In attesa' verranno inviate tramite push allo switch, seleziona gli switch da sincronizzare",
       "sync-dialog-title": "Sincronizza",
+      "skip-dialog-title": "Ignora tutte le attività",
+      "skip-dialog-text": "Tutte le attività con stato “In sospeso”, “In attesa” o “Non riuscito” verranno ignorate.",
       "save-override-warning": "Se gli switch hanno già questa configurazione, Sophos Central sovrascriverà le impostazioni.",
       "save-override-title": "Modifiche delle impostazioni degli switch",
       "save-uplink-warning": "Se le modifiche riguardano la porta di uplink o di gestione oppure la VLAN di gestione o il DNS, presta estrema attenzione, in quanto queste modifiche potrebbero escludere lo switch dalla rete, rendendone impossibile la connessione a Sophos Central",
@@ -1362,13 +1387,16 @@
         "port_mirroring": "Mirroring delle porte",
         "cdp_port_settings": "Impostazione della porta CDP",
         "port_isolation": "Isolamento porte",
+        "port_jumbo_frame": "Frame jumbo porte",
         "eee_settings": "EEE porta",
         "snmp_settings": "Impostazioni SNMP",
         "snmp_user": "Utente SNMP",
         "snmp_community": "Community SNMP",
         "port_ingress_filter_settings": "Filtro in ingresso",
         "voice_vlan_port_settings": "Porte VLAN traffico voce",
-        "snmp_group_to_user_map": "Gruppo SNMP"
+        "snmp_group_to_user_map": "Gruppo SNMP",
+        "snmp_view_oid_mapping": "Visualizzazione SNMP",
+        "snmp_target_params": "Parametro di destinazione SNMP"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1569,7 +1597,8 @@
         "settings": "Impostazioni globali",
         "users-groups": "Utenti e Gruppi",
         "views-access-list": "Elenco visualizzazioni e accessi",
-        "triggers": "Attivazioni"
+        "triggers": "Attivazioni",
+        "view-list": "Visualizza elenco"
       },
       "users-and-communities": {
         "title": "Utenti e community",
@@ -1624,12 +1653,143 @@
         "username-required-message": "Nome obbligatorio.",
         "username-exists-message": "Nome utente già esistente.",
         "username-length-error-message": "La lunghezza del Nome utente deve essere compresa tra 8 e 40 caratteri.",
-        "loading-error": "Non è stato possibile caricare le impostazioni SNMP."
+        "loading-error": "Non è stato possibile caricare le impostazioni SNMP.",
+        "users-and-communities.confirm-update": "Conferma aggiornamento"
       },
       "status": "Stato di SNMP",
       "engine-id": "ID motore",
       "engine-id-msg": "(10~64 caratteri esadecimali, l’ID motore deve essere composto da un numero pari di caratteri).",
-      "default": "Predefinito"
+      "default": "Predefinito",
+
+      "view-list": {
+        "title": "Visualizzazioni",
+        "view-name": "Nome visualizzazione",
+        "oid-mappings": "Mapping OID",
+        "view-oid-mappings": "Mapping OID",
+        "subtree-oid": "OID sottoalbero",
+        "subtree-mask": "Maschera sottoalbero",
+        "view-type": "Tipo di visualizzazione",
+        "config-source": "Origine configurazione",
+        "not-set": "Non impostata",
+        "included": "Incluso",
+        "excluded": "Esclusi",
+        "add-view": "Aggiungi visualizzazione",
+        "edit-view": "Modifica visualizzazione",
+        "oid-mapping-no-data": "Nessun mapping aggiunto al momento",
+        "add-new-mapping": "Aggiungi nuovo mapping",
+        "view-name-required-message": "Il Nome visualizzazione è obbligatorio.",
+        "view-name-already-exists-message": "Il Nome visualizzazione è già esistente.",
+        "view-name-max-length-message": "Il Nome visualizzazione non può superare i 20 caratteri.",
+        "subtree-oid-required-message": "L’OID sottoalbero è obbligatorio.",
+        "subtree-oid-invalid-message": "OID sottoalbero non valido.",
+        "subtree-oid-duplicate-message": "OID sottoalbero duplicato.",
+        "subtree-oid-max-length-message": "L’OID sottoalbero non può contenere più di 20 caratteri.",
+        "subtree-mask-required-message": "La maschera sottoalbero è obbligatoria.",
+        "subtree-mask-invalid-message": "La maschera sottoalbero non può essere più grande della profondità dell’OID.",
+        "subtree-mask-min-max-value-message": "Il valore deve essere compreso tra 1 e 20",
+
+        "messages": {
+          "fetch-settings-error": "Impossibile recuperare l’impostazione della visualizzazione SNMP",
+          "add-settings-success": "Le impostazioni della visualizzazione SNMP sono state create",
+          "add-settings-error": "Non è stato possibile creare le impostazioni della visualizzazione SNMP",
+          "add-dialog-title": "Conferma creazione",
+          "site-add-setting-text": "{{ count }} switch riceveranno queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-add-setting-text": "Lo switch riceverà queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "edit-settings-success": "Le impostazioni della visualizzazione SNMP sono state aggiornate",
+          "edit-settings-error": "Non è stato possibile aggiornare le impostazioni della visualizzazione SNMP",
+          "edit-dialog-title": "Conferma modifica",
+          "site-edit-setting-text": "{{ count }} switch riceveranno queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-edit-setting-text": "Lo switch riceverà queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "delete-settings-success": "Le impostazioni della visualizzazione SNMP sono state eliminate",
+          "delete-settings-error": "Non è stato possibile eliminare le impostazioni della visualizzazione SNMP",
+          "delete-dialog-title": "Conferma eliminazione",
+          "site-delete-setting-text": "Elimina {{ viewCount }} impostazioni della visualizzazione SNMP. {{ count }} switch rimuoveranno queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-delete-setting-text": "Elimina {{ viewCount }} impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        }
+      },
+      "access-list": {
+        "title": "Elenco accessi",
+        "table-header": {
+          "group-name": "Nome gruppo",
+          "security-mode": "Modalità di sicurezza",
+          "privilege-mode": "Modalità privilegi",
+          "views": "Visualizzazioni",
+          "read-view": "Visualizzazione lettura",
+          "write-view": "Visualizzazione scrittura",
+          "notify-view": "Visualizzazione notifica"
+        },
+        "no-policies": "Nessun criterio di accesso configurato da Sophos Central per il momento.",
+        "add-access-policy": "Aggiungi criterio di accesso",
+        "edit-access-policy": "Modifica criterio di accesso",
+        "option-label": "Seleziona",
+        "messages": {
+          "delete-access-policy": "Elimina criterio di accesso",
+          "add-access-policy": "Aggiungi criterio di accesso",
+          "edit-access-policy": "Modifica criterio di accesso",
+          "add-access-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "add-access-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti dell’SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "update-setting-success": "Impostazioni SNMP del criterio di accesso aggiornate.",
+          "update-setting-error": "Non è stato possibile aggiornare le impostazioni SNMP."
+        }
+      },
+      "view-types": {
+        "read": "Leggi",
+        "write": "Scrittura",
+        "notify": "Notifica"
+      },
+      "privilege-mode-type" : {
+        "NoAuth": "Nessuna autenticazione",
+        "Auth": "Autenticazione",
+        "Priv": "Privilegio"
+      },
+      "security-mode": {
+        "V1": "V1",
+        "V2c": "V2",
+        "V3": "V3"
+      },
+      "target-parameters": {
+        "title": "Parametri di destinazione",
+        "target-param-name": "Nome",
+        "target-param-name-required-message": "Nome obbligatorio",
+        "target-param-name-already-exists-message": "Nome già esistente",
+        "msg-processing-model": "Modello elaborazione messaggi",
+        "security-mode": "Modalità di sicurezza",
+        "security-name": "Nome sicurezza",
+        "priv-mode": "Modalità privilegi",
+        "config-source": "Origine configurazione",
+        "add-parameter": "Aggiungi parametro",
+        "edit-parameter": "Modifica parametro",
+        "none": "Nessuna",
+        "security-mode-type": {
+          "V1": "v1",
+          "V2c": "v2c",
+          "V3": "v3"
+        },
+        "privilege-mode-type" : {
+          "NoAuth": "Nessuna autenticazione",
+          "Auth": "Autenticazione",
+          "Priv": "Privilegio"
+        },
+
+        "messages": {
+          "fetch-settings-error": "Impossibile recuperare l’impostazione dei parametri di destinazione SNMP",
+          "add-settings-success": "Le impostazioni dei parametri di destinazione SNMP sono state create",
+          "add-settings-error": "Non è stato possibile creare le impostazioni dei parametri di destinazione SNMP",
+          "add-dialog-title": "Conferma creazione",
+          "site-add-setting-text": "{{ count }} switch riceveranno queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-add-setting-text": "Lo switch riceverà queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "edit-settings-success": "Le impostazioni dei parametri di destinazione SNMP sono state aggiornate",
+          "edit-settings-error": "Non è stato possibile aggiornare le impostazioni dei parametri di destinazione SNMP",
+          "edit-dialog-title": "Conferma modifica",
+          "site-edit-setting-text": "{{ count }} switch riceveranno queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-edit-setting-text": "Lo switch riceverà queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "delete-settings-success": "Le impostazioni dei parametri di destinazione SNMP sono state eliminate",
+          "delete-settings-error": "Non è stato possibile eliminare le impostazioni dei parametri di destinazione SNMP",
+          "delete-dialog-title": "Conferma eliminazione",
+          "site-delete-setting-text": "Elimina {{ viewCount }} impostazioni dei parametri di destinazione SNMP. {{ count }} switch rimuoveranno queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-delete-setting-text": "Elimina {{ viewCount }} impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        }
+      }
     },
     "remote-debugging": {
       "debugging-enabled-title": "Assistenza remota abilitata",

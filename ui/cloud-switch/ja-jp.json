@@ -285,6 +285,7 @@
         "location": "場所",
         "model": "機種",
         "tags": "タグ",
+        "switch": "スイッチ",
         "all-tags": "すべてのタグ",
         "last-backup-or-restore-status": "最近のアクティビティ",
         "occured-at": "発生日時",
@@ -498,6 +499,7 @@
           "confirm-enable-all-message": "これにより、すべてのスイッチのスケジュールバックアップが有効になります。タスクキュー内の任意のスイッチのタスクの状態を追跡できます。",
           "details": "詳細",
           "taken-with": "作成",
+          "waiting-for-switch": "スイッチがリクエストを承認するのを待っています。",
           "version": "バージョン",
           "restoring-to": "復元",
           "multi-backups": "バックアップストレージは、次の {{ count }}つのスケジュールされた日付に対して変更されていないバックアップのコピーを 1つだけ保存することで最適化されます",
@@ -581,7 +583,8 @@
           "template-delete-confirm": "サイトの削除",
           "move-to-site": "サイトに移動",
           "sync": "同期",
-          "cli": "コマンドの実行"
+          "cli": "コマンドの実行",
+          "skip-all-tasks": "すべてのタスクをスキップ"
         },
         "full-sync": {
           "sync-dialog-title": "同期",
@@ -1017,13 +1020,14 @@
         "none": "なし"
       },
       "table-headers": {
-        "vlan-id": "VLAN ID",
-        "name": "VLAN 名",
+        "vlan-id": "ID",
+        "name": "名前",
         "description": "説明",
         "tagged-ports": "タグ付きポート",
         "untagged-ports": "タグなしポート",
         "forbidden-ports": "禁止ポート",
-        "inherited": "設定のソース"
+        "inherited": "設定のソース",
+        "sync": "競合"
       },
       "form": {
         "vlan-id": "VLAN ID",
@@ -1042,6 +1046,12 @@
         "vlan-name-exists-message": "この名前は既に存在します。",
         "lag-mode": "LAG モード",
         "part-of-lag": "LAG で使用されています"
+      },
+      "protocol": {
+        "Voice Vlan": "音声",
+        "Guest Vlan": "ゲスト",
+        "Gvrp": "GVRP",
+        "Static": "スタティック"
       },
       "message": {
         "create-error": "VLAN を作成できません",
@@ -1077,6 +1087,19 @@
         "fix-button": "依存の削除",
         "delete-conflict-message": "削除対象に指定された 1つまたは複数の VLAN は、次の設定で使用されています"
       }
+    },
+    "local-sync": {
+     "hide-conflicts":  "競合の非表示",
+     "hide-status":  "同期の状態の非表示",
+     "show-conflicts":  "{{ count }} 競合",
+     "show-status":  "同期の状態の表示",
+     "only-in-device": "デバイス内のみ",
+     "only-in-central": "Sophos Central でのみ",
+     "config-conflicts": "競合の設定",
+     "no-conflict": "競合なし",
+     "dynamic": "ダイナミック",
+     "refreshing-data": "データの更新...",
+     "different-data": "スイッチの値が異なります: "
     },
     "ip-networks": {
       "add": "ネットワークの追加",
@@ -1270,6 +1293,8 @@
       "details-dialog-title": "タスクの詳細",
       "sync-dialog-select-text": "「待機中」状態のタスクはスイッチにプッシュされます。同期する必要があるスイッチを選択してください",
       "sync-dialog-title": "同期",
+      "skip-dialog-title": "すべてのタスクをスキップ",
+      "skip-dialog-text": "「保留中」、「待機中」、または「失敗」の状態になっているタスクはすべてスキップされます。",
       "save-override-warning": "この設定が既にスイッチにある場合、Sophos Central は設定を上書きします。",
       "save-override-title": "スイッチ設定の変更",
       "save-uplink-warning": "「アップリンク」または「管理」ポート、または管理 VLAN や DNS に関連する変更の場合、変更によってスイッチがネットワークから切断され、スイッチが Sophos Central に接続できなくなる可能性があるので注意してください。",
@@ -1362,13 +1387,16 @@
         "port_mirroring": "ポートミラーリング",
         "cdp_port_settings": "CDP ポートの設定",
         "port_isolation": "ポートの隔離",
+        "port_jumbo_frame": "ポートジャンボフレーム",
         "eee_settings": "ポート EEE",
         "snmp_settings": "SNMP の設定",
         "snmp_user": "SNMP ユーザー",
         "snmp_community": "SNMP コミュニティ",
         "port_ingress_filter_settings": "入力フィルタリング",
         "voice_vlan_port_settings": "音声 VLAN ポート",
-        "snmp_group_to_user_map": "SNMP グループ"
+        "snmp_group_to_user_map": "SNMP グループ",
+        "snmp_view_oid_mapping": "SNMP ビュー",
+        "snmp_target_params": "SNMP ターゲットパラメータ"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1569,7 +1597,8 @@
         "settings": "グローバル設定",
         "users-groups": "ユーザーとグループ",
         "views-access-list": "表示とアクセスリスト",
-        "triggers": "トリガー"
+        "triggers": "トリガー",
+        "view-list": "リストの表示"
       },
       "users-and-communities": {
         "title": "ユーザーとコミュニティ",
@@ -1624,12 +1653,143 @@
         "username-required-message": "名前を指定してください。",
         "username-exists-message": "ユーザー名がすでに存在します。",
         "username-length-error-message": "ユーザ名の長さは 8 ～ 40 で指定してください。",
-        "loading-error": "SNMP 設定を読み込めません。"
+        "loading-error": "SNMP 設定を読み込めません。",
+        "users-and-communities.confirm-update": "更新の確認"
       },
       "status": "SNMP ステータス",
       "engine-id": "エンジン ID",
       "engine-id-msg": "(10 ～ 64 の 16進数文字で、エンジン ID の長さは偶数にする必要があります。)",
-      "default": "デフォルト"
+      "default": "デフォルト",
+
+      "view-list": {
+        "title": "表示",
+        "view-name": "ビュー名",
+        "oid-mappings": "OID マッピング",
+        "view-oid-mappings": "OID マッピング",
+        "subtree-oid": "サブツリー OID",
+        "subtree-mask": "サブツリーマスク",
+        "view-type": "ビューの種類",
+        "config-source": "設定のソース",
+        "not-set": "未設定",
+        "included": "含む",
+        "excluded": "除外済み",
+        "add-view": "ビューの追加",
+        "edit-view": "ビューの編集",
+        "oid-mapping-no-data": "マッピングはまだ追加されていません",
+        "add-new-mapping": "新しいマッピングを追加",
+        "view-name-required-message": "ビュー名を指定してください。",
+        "view-name-already-exists-message": "ビュー名は既に存在します。",
+        "view-name-max-length-message": "ビュー名は最大 20文字まで入力できます。",
+        "subtree-oid-required-message": "サブツリー OID を指定してください。",
+        "subtree-oid-invalid-message": "サブツリー OID が無効です。",
+        "subtree-oid-duplicate-message": "サブツリー OID が重複しています。",
+        "subtree-oid-max-length-message": "サブツリー OID は最大 20文字まで入力できます。",
+        "subtree-mask-required-message": "サブツリーマスクを指定してください。",
+        "subtree-mask-invalid-message": "サブツリーマスクは OID の深さより大きい値を指定してください。",
+        "subtree-mask-min-max-value-message": "1～20 の値を指定してください。",
+
+        "messages": {
+          "fetch-settings-error": "SNMP ビュー設定を取得できません",
+          "add-settings-success": "SNMP ビュー設定が作成されました",
+          "add-settings-error": "SNMP ビュー設定を作成できません",
+          "add-dialog-title": "作成の確認",
+          "site-add-setting-text": "{{ count }}個のスイッチに、この SNMP ビュー設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-add-setting-text": "スイッチにこの SNMP ビュー設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "edit-settings-success": "SNMP ビュー設定が更新されました",
+          "edit-settings-error": "SNMP ビュー設定を更新できません",
+          "edit-dialog-title": "編集の確認",
+          "site-edit-setting-text": "{{ count }}個のスイッチに、この SNMP ビュー設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-edit-setting-text": "スイッチにこの SNMP ビュー設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "delete-settings-success": "SNMP ビュー設定が削除されました",
+          "delete-settings-error": "SNMP ビュー設定を削除できません",
+          "delete-dialog-title": "削除の確認",
+          "site-delete-setting-text": "{{ viewCount }}個の SNMP ビュー設定を削除します。{{ count }}個のスイッチに、この SNMP ビュー設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-delete-setting-text": "{{ viewCount }}個の SNMP ビュー設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        }
+      },
+      "access-list": {
+        "title": "アクセスリスト",
+        "table-header": {
+          "group-name": "グループ名",
+          "security-mode": "セキュリティモード",
+          "privilege-mode": "権限モード",
+          "views": "表示",
+          "read-view": "読み取りビュー",
+          "write-view": "書き込みビュー",
+          "notify-view": "通知ビュー"
+        },
+        "no-policies": "Sophos Central からアクセスポリシーがまだ設定されていません。",
+        "add-access-policy": "アクセスポリシーの追加",
+        "edit-access-policy": "アクセスポリシーの編集",
+        "option-label": "選択",
+        "messages": {
+          "delete-access-policy": "アクセスポリシーの削除",
+          "add-access-policy": "アクセスポリシーの追加",
+          "edit-access-policy": "アクセスポリシーの編集",
+          "add-access-switch-save-dialog-text": "スイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "add-access-site-save-dialog-text": "{{ count }}個のスイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "update-setting-success": "SNMP アクセスポリシー設定が正常に更新されました。",
+          "update-setting-error": "SNMP の設定を更新できません。"
+        }
+      },
+      "view-types": {
+        "read": "読み取り",
+        "write": "書き込み",
+        "notify": "通知"
+      },
+      "privilege-mode-type" : {
+        "NoAuth": "認証なし",
+        "Auth": "認証",
+        "Priv": "権限"
+      },
+      "security-mode": {
+        "V1": "V1",
+        "V2c": "V2",
+        "V3": "V3"
+      },
+      "target-parameters": {
+        "title": "ターゲットパラメータ",
+        "target-param-name": "名前",
+        "target-param-name-required-message": "名前を指定してください",
+        "target-param-name-already-exists-message": "この名前は既に存在します",
+        "msg-processing-model": "メッセージ処理モデル",
+        "security-mode": "セキュリティモード",
+        "security-name": "セキュリティ名",
+        "priv-mode": "権限モード",
+        "config-source": "設定のソース",
+        "add-parameter": "パラメータの追加",
+        "edit-parameter": "パラメータの編集",
+        "none": "なし",
+        "security-mode-type": {
+          "V1": "v1",
+          "V2c": "v2c",
+          "V3": "v3"
+        },
+        "privilege-mode-type" : {
+          "NoAuth": "認証なし",
+          "Auth": "認証",
+          "Priv": "権限"
+        },
+
+        "messages": {
+          "fetch-settings-error": "SNMP ターゲットパラメータ設定を取得できません",
+          "add-settings-success": "SNMP ターゲットパラメータ設定が作成されました",
+          "add-settings-error": "SNMP ターゲットパラメータ設定を作成できません",
+          "add-dialog-title": "作成の確認",
+          "site-add-setting-text": "{{ count }}個のスイッチに、この SNMP ターゲットパラメータ設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-add-setting-text": "スイッチにこの SNMP ターゲットパラメータ設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "edit-settings-success": "SNMP ターゲットパラメータの設定が更新されました",
+          "edit-settings-error": "SNMP ターゲットパラメータ設定を更新できません",
+          "edit-dialog-title": "編集の確認",
+          "site-edit-setting-text": "{{ count }}個のスイッチに、この SNMP ターゲットパラメータ設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-edit-setting-text": "スイッチにこの SNMP ターゲットパラメータ設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "delete-settings-success": "SNMP ターゲットパラメータ設定が削除されました",
+          "delete-settings-error": "SNMP ターゲットパラメータ設定を削除できません",
+          "delete-dialog-title": "削除の確認",
+          "site-delete-setting-text": "{{ viewCount }}個の SNMP ターゲットパラメータ設定を削除します。{{ count }}個のスイッチに、この SNMP ターゲットパラメータ設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-delete-setting-text": "{{ viewCount }}個の SNMP ターゲットパラメータ設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        }
+      }
     },
     "remote-debugging": {
       "debugging-enabled-title": "リモートアシスタンスが有効になっています",

@@ -285,6 +285,7 @@
         "location": "Verzeichnis",
         "model": "Modell",
         "tags": "Tags",
+        "switch": "Switch",
         "all-tags": "Alle Tags",
         "last-backup-or-restore-status": "Letzte Aktivität",
         "occured-at": "Aufgetreten am",
@@ -498,6 +499,7 @@
           "confirm-enable-all-message": "Dies aktiviert geplante Sicherungen für alle Switches. Sie können den Status des Auftrags für jeden Switch in dessen Auftragswarteschlange verfolgen.",
           "details": "Details",
           "taken-with": "Angefertigt mit",
+          "waiting-for-switch": "Warten auf Akzeptieren der Anforderung durch den Switch.",
           "version": "Version",
           "restoring-to": "Wiederherstellung auf",
           "multi-backups": "Sicherungen werden optimiert gespeichert, indem für die folgenden {{ count }} geplanten Sicherungen nur eine einzelne Kopie gespeichert wird, wenn sich die Sicherung nicht ändert",
@@ -581,7 +583,8 @@
           "template-delete-confirm": "Standort löschen",
           "move-to-site": "Zum Standort verschieben",
           "sync": "Synchronisieren",
-          "cli": "Befehle ausführen"
+          "cli": "Befehle ausführen",
+          "skip-all-tasks": "Alle Aufträge überspringen"
         },
         "full-sync": {
           "sync-dialog-title": "Synchronisieren",
@@ -1017,13 +1020,14 @@
         "none": "Ohne"
       },
       "table-headers": {
-        "vlan-id": "VLAN-ID",
-        "name": "VLAN-Name",
+        "vlan-id": "ID",
+        "name": "Name",
         "description": "Beschreibung",
         "tagged-ports": "Getaggte Ports",
         "untagged-ports": "Ungetaggte Ports",
         "forbidden-ports": "Verbotene Ports",
-        "inherited": "Konfigurationsquelle"
+        "inherited": "Konfigurationsquelle",
+        "sync": "Konflikte"
       },
       "form": {
         "vlan-id": "VLAN-ID",
@@ -1042,6 +1046,12 @@
         "vlan-name-exists-message": "Name existiert bereits.",
         "lag-mode": "LAG-Modus",
         "part-of-lag": "In LAG verwendet"
+      },
+      "protocol": {
+        "Voice Vlan": "SPRACHE",
+        "Guest Vlan": "GAST",
+        "Gvrp": "GVRP",
+        "Static": "STATISCH"
       },
       "message": {
         "create-error": "VLAN kann nicht erstellt werden",
@@ -1077,6 +1087,19 @@
         "fix-button": "Abhängigkeiten löschen",
         "delete-conflict-message": "Ein oder mehrere zum Löschen markierte VLANs werden in folgenden Einstellungen verwendet"
       }
+    },
+    "local-sync": {
+     "hide-conflicts":  "Konflikte ausblenden",
+     "hide-status":  "Synchronisierungsstatus ausblenden",
+     "show-conflicts":  "{{ count }} Konflikte",
+     "show-status":  "Synchronisierungsstatus anzeigen",
+     "only-in-device": "Nur auf dem Gerät",
+     "only-in-central": "Nur in Sophos Central",
+     "config-conflicts": "Konfigurationskonflikte",
+     "no-conflict": "Keine Konflikte",
+     "dynamic": "Dynamisch",
+     "refreshing-data": "Aktualisiere Daten...",
+     "different-data": "Switch hat einen anderen Wert: "
     },
     "ip-networks": {
       "add": "Netzwerk hinzufügen",
@@ -1270,6 +1293,8 @@
       "details-dialog-title": "Auftragsdetails",
       "sync-dialog-select-text": "Aufträge im Status 'Wartet' werden an den Switch gesendet. Wählen Sie die zu synchronisierenden Switches aus",
       "sync-dialog-title": "Synchronisieren",
+      "skip-dialog-title": "Alle Aufträge überspringen",
+      "skip-dialog-text": "Alle Aufträge im Status „Ausstehend“, „Wartet“ oder „Fehlgeschlagen“ werden übersprungen.",
       "save-override-warning": "Falls die Switches diese Konfiguration bereits haben, überschreibt Sophos Central die Einstellungen.",
       "save-override-title": "Änderungen von Switch-Einstellungen",
       "save-uplink-warning": "Gehen Sie mit Bedacht vor bei Änderungen, welche die Ports 'uplink' oder 'management' oder Verwaltungs-VLAN oder DNS betreffen. Diese Änderungen können dazu führen, dass der Switch aus dem Netzwerk entfernt wird und sich nicht mehr mit Sophos Central verbinden kann.",
@@ -1362,13 +1387,16 @@
         "port_mirroring": "Port-Spiegelung",
         "cdp_port_settings": "CDP-Port-Einstellung",
         "port_isolation": "Port-Isolierung",
+        "port_jumbo_frame": "Port-Jumbo-Frame",
         "eee_settings": "Port-EEE",
         "snmp_settings": "SNMP-Einstellungen",
         "snmp_user": "SNMP-Benutzer",
         "snmp_community": "SNMP-Community",
         "port_ingress_filter_settings": "Eingangsfilter",
         "voice_vlan_port_settings": "Sprach-VLAN-Ports",
-        "snmp_group_to_user_map": "SNMP-Gruppe"
+        "snmp_group_to_user_map": "SNMP-Gruppe",
+        "snmp_view_oid_mapping": "SNMP-Ansicht",
+        "snmp_target_params": "SNMP-Zielparameter"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1569,7 +1597,8 @@
         "settings": "Globale Einstellungen",
         "users-groups": "Benutzer und Gruppen",
         "views-access-list": "Aufruf- und Zugriffsliste",
-        "triggers": "Auslöser"
+        "triggers": "Auslöser",
+        "view-list": "Liste anzeigen"
       },
       "users-and-communities": {
         "title": "Benutzer und Communitys",
@@ -1624,12 +1653,143 @@
         "username-required-message": "Name ist erforderlich.",
         "username-exists-message": "Benutzername ist bereits vorhanden.",
         "username-length-error-message": "Benutzername muss zwischen 8 und 40 Zeichen haben.",
-        "loading-error": "SNMP-Einstellungen konnten nicht geladen werden."
+        "loading-error": "SNMP-Einstellungen konnten nicht geladen werden.",
+        "users-and-communities.confirm-update": "Aktualisieren bestätigen"
       },
       "status": "SNMP-Status",
       "engine-id": "Modul-ID",
       "engine-id-msg": "(10-64 Hexadezimalzeichen, Länge der Modul-ID muss geradzahlig sein.)",
-      "default": "Standard"
+      "default": "Standard",
+
+      "view-list": {
+        "title": "Ansichten",
+        "view-name": "Ansichtsname",
+        "oid-mappings": "OID-Zuordnungen",
+        "view-oid-mappings": "OID-Zuordnungen",
+        "subtree-oid": "Teilbaum-OID",
+        "subtree-mask": "Teilbaummaske",
+        "view-type": "Ansichtstyp",
+        "config-source": "Konfigurationsquelle",
+        "not-set": "Nicht festgelegt",
+        "included": "Enthalten",
+        "excluded": "Ausgeschlossen",
+        "add-view": "Ansicht hinzufügen",
+        "edit-view": "Ansicht bearbeiten",
+        "oid-mapping-no-data": "Noch keine Zuordnungen hinzugefügt",
+        "add-new-mapping": "Zuordnung hinzufügen",
+        "view-name-required-message": "Ansichtsname ist erforderlich.",
+        "view-name-already-exists-message": "Ansichtsname existiert bereits.",
+        "view-name-max-length-message": "Ansichtsname kann maximal 20 Zeichen lang sein.",
+        "subtree-oid-required-message": "Teilbaum-OID ist erforderlich.",
+        "subtree-oid-invalid-message": "Ungültige Teilbaum-OID.",
+        "subtree-oid-duplicate-message": "Doppelte Teilbaum-OID.",
+        "subtree-oid-max-length-message": "Teilbaum-OID kann maximal 20 Zeichen lang sein.",
+        "subtree-mask-required-message": "Teilbaummaske ist erforderlich.",
+        "subtree-mask-invalid-message": "Teilbaummaske darf nicht größer als Tiefe der OID sein.",
+        "subtree-mask-min-max-value-message": "Wert muss zwischen 1 und 20 liegen",
+
+        "messages": {
+          "fetch-settings-error": "SNMP-Ansichtseinstellung kann nicht abgerufen werden",
+          "add-settings-success": "SNMP-Ansichtseinstellungen wurden erstellt",
+          "add-settings-error": "SNMP-Ansichtseinstellungen können nicht erstellt werden",
+          "add-dialog-title": "Erstellen bestätigen",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "edit-settings-success": "SNMP-Ansichtseinstellungen wurden aktualisiert",
+          "edit-settings-error": "SNMP-Ansichtseinstellungen können nicht aktualisiert werden",
+          "edit-dialog-title": "Bearbeiten bestätigen",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "delete-settings-success": "SNMP-Ansichtseinstellungen wurden gelöscht",
+          "delete-settings-error": "SNMP-Ansichtseinstellungen können nicht gelöscht werden",
+          "delete-dialog-title": "Löschen bestätigen",
+          "site-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+        }
+      },
+      "access-list": {
+        "title": "Zugriffsliste",
+        "table-header": {
+          "group-name": "Gruppenname",
+          "security-mode": "Sicherheitsmodus",
+          "privilege-mode": "Berechtigungsmodus",
+          "views": "Ansichten",
+          "read-view": "Leseansicht",
+          "write-view": "Schreibansicht",
+          "notify-view": "Benachrichtigungsansicht"
+        },
+        "no-policies": "Es sind noch keine Zugriffsrichtlinien in Sophos Central konfiguriert.",
+        "add-access-policy": "Zugriffsrichtlinie hinzufügen",
+        "edit-access-policy": "Zugriffsrichtlinie bearbeiten",
+        "option-label": "Auswählen",
+        "messages": {
+          "delete-access-policy": "Zugriffsrichtlinie löschen",
+          "add-access-policy": "Zugriffsrichtlinie hinzufügen",
+          "edit-access-policy": "Zugriffsrichtlinie bearbeiten",
+          "add-access-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "add-access-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "update-setting-success": "Einstellungen der SNMP-Zugriffsrichtlinie erfolgreich aktualisiert.",
+          "update-setting-error": "SNMP-Einstellungen konnten nicht aktualisiert werden."
+        }
+      },
+      "view-types": {
+        "read": "Lesen",
+        "write": "Schreiben",
+        "notify": "Benachrichtigen"
+      },
+      "privilege-mode-type" : {
+        "NoAuth": "Keine Authentifizierung",
+        "Auth": "Authentifizierung",
+        "Priv": "Berechtigung"
+      },
+      "security-mode": {
+        "V1": "V1",
+        "V2c": "V2",
+        "V3": "V3"
+      },
+      "target-parameters": {
+        "title": "Zielparameter",
+        "target-param-name": "Name",
+        "target-param-name-required-message": "Name ist erforderlich",
+        "target-param-name-already-exists-message": "Name existiert bereits",
+        "msg-processing-model": "Nachrichtenverarbeitungsmodell",
+        "security-mode": "Sicherheitsmodus",
+        "security-name": "Sicherheitsname",
+        "priv-mode": "Berechtigungsmodus",
+        "config-source": "Konfigurationsquelle",
+        "add-parameter": "Parameter hinzufügen",
+        "edit-parameter": "Parameter bearbeiten",
+        "none": "Ohne",
+        "security-mode-type": {
+          "V1": "v1",
+          "V2c": "v2c",
+          "V3": "v3"
+        },
+        "privilege-mode-type" : {
+          "NoAuth": "Keine Authentifizierung",
+          "Auth": "Authentifizierung",
+          "Priv": "Berechtigung"
+        },
+
+        "messages": {
+          "fetch-settings-error": "SNMP-Zielparametereinstellung kann nicht abgerufen werden",
+          "add-settings-success": "SNMP-Zielparametereinstellungen wurden erstellt",
+          "add-settings-error": "SNMP-Zielparametereinstellungen können nicht erstellt werden",
+          "add-dialog-title": "Erstellen bestätigen",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "edit-settings-success": "SNMP-Zielparametereinstellungen wurden aktualisiert",
+          "edit-settings-error": "SNMP-Zielparametereinstellungen können nicht aktualisiert werden",
+          "edit-dialog-title": "Bearbeiten bestätigen",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "delete-settings-success": "SNMP-Zielparametereinstellungen wurden gelöscht",
+          "delete-settings-error": "SNMP-Zielparametereinstellungen können nicht gelöscht werden",
+          "delete-dialog-title": "Löschen bestätigen",
+          "site-delete-setting-text": "{{ viewCount }} SNMP-Zielparametereinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ viewCount }} SNMP-Zielparametereinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+        }
+      }
     },
     "remote-debugging": {
       "debugging-enabled-title": "Remote-Unterstützung aktiviert",
@@ -2649,8 +2809,8 @@
         "status": "Status",
         "config-source": "Konfigurationsquelle",
         "transmissionInterval": "Übertragungsintervall",
-        "transmissionInterval-invalid-message": "Übertragungsintervall sollte größer als {{ val }} sein (Übertragungsverzögerung * 4)",
-        "transmitDelay-invalid-message": "Übertragungsverzögerung sollte kleiner als {{ val }} sein (Übertragungsintervall / 4)",
+        "transmissionInterval-invalid-message": "Übertragungsintervall muss größer als {{ val }} sein (Übertragungsverzögerung * 4)",
+        "transmitDelay-invalid-message": "Übertragungsverzögerung muss kleiner als {{ val }} sein (Übertragungsintervall / 4)",
         "holdTime": "Haltezeit-Multiplikator",
         "reinitDelay": "Reinitialisierungsverzögerung",
         "transmitDelay": "Übertragungsverzögerung",
@@ -2743,8 +2903,8 @@
         "config-source": "Konfigurationsquelle",
         "version": "Version",
         "transmissionInterval": "Übertragungsintervall",
-        "transmissionInterval-invalid-message": "Übertragungsintervall sollte größer als {{ val }} sein (Übertragungsverzögerung * 4)",
-        "transmitDelay-invalid-message": "Übertragungsverzögerung sollte kleiner als {{ val }} sein (Übertragungsintervall / 4)",
+        "transmissionInterval-invalid-message": "Übertragungsintervall muss größer als {{ val }} sein (Übertragungsverzögerung * 4)",
+        "transmitDelay-invalid-message": "Übertragungsverzögerung muss kleiner als {{ val }} sein (Übertragungsintervall / 4)",
         "holdTime": "Haltezeit",
         "required-input-message": "Wert muss zwischen {{ min }} und {{ max }} liegen",
         "message": {
