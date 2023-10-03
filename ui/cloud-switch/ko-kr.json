@@ -279,8 +279,8 @@
       "agree-to-delete-manual-backup": "아래 표시된 관리자 트리거 백업(가장 오래된 백업)을 삭제하고 새 백업으로 바꿉니다.",
       "cancellation-warning": "스위치는 정확히 같은 시간에 해당하는 경우 진행 중인 예약 백업을 건너뛸 수 있습니다. 이 요청이 처리되면 예약이 재개됩니다.",
       "diconnected-warning": "이제 스위치가 Sophos Central에서 연결 해제되었습니다. 따라서 요청은 스위치가 다시 온라인 상태가 될 경우에만 적용됩니다.",
-      "table" : {
-        "serial-number":"일련 번호",
+      "table": {
+        "serial-number": "일련 번호",
         "site": "사이트",
         "location": "위치",
         "model": "모델",
@@ -331,7 +331,7 @@
           "UserCancelled": "취소됨.",
           "ClientRebooting": "복원 및 재시작됨.",
           "RestoreRequested": "복원 요청됨.",
-          "BackupTaken" : "백업 수행됨.",
+          "BackupTaken": "백업 수행됨.",
           "ScheduledBackupTaken": "예약된 백업 수행.",
           "BackupCopied": "다시 예약됨. 변경 사항 없음.",
           "BackupUploaded": "백업 업로드됨.",
@@ -438,7 +438,6 @@
             "UserCancelled": "구성은 변경되지 않습니다.",
             "ClientRebooting": "구성 변경 사항은 이 단계 이후에 적용됩니다."
           }
-
         },
         "switch-backup-list": {
           "switch-backups": "백업 - {{serialNumber}}",
@@ -962,7 +961,7 @@
           "turn-on": "켜기",
           "turn-off": "끄기"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "포트",
           "status": "상태",
           "restricted-vlan": "제한된 VLAN",
@@ -972,9 +971,9 @@
           "config-source": "구성 소스"
         },
         "tooltip": {
-          "join-time": "값은 10~4999000ms 사이여야 합니다.",
-          "leave-time": "값은 10~9999000ms 사이여야 합니다. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간",
-          "leave-all-time": "값은 10~10000000ms 사이여야 합니다. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간"
+          "join-time": "값은 10~4999000ms 사이여야 합니다. 10의 배수.",
+          "leave-time": "값은 10~9999000ms 사이여야 합니다. 10의 배수. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간",
+          "leave-all-time": "값은 10~10000000ms 사이여야 합니다. 10의 배수. 모두 종료 시간 > 종료 시간 > 2 * 연결 시간"
         },
         "messages": {
           "save-dialog-title": "저장 확인",
@@ -995,7 +994,7 @@
           "tagged": "태그가 지정됨",
           "untagged": "태그 해제됨"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "포트",
           "accept-type": "수락 유형",
           "ingress-filtering": "수신 필터링",
@@ -1089,17 +1088,17 @@
       }
     },
     "local-sync": {
-     "hide-conflicts":  "충돌 숨기기",
-     "hide-status":  "동기화 상태 숨기기",
-     "show-conflicts":  "{{ count }}개 충돌",
-     "show-status":  "동기화 상태 표시",
-     "only-in-device": "장치에서만",
-     "only-in-central": "Sophos Central에서만",
-     "config-conflicts": "구성 충돌",
-     "no-conflict": "충돌 없음",
-     "dynamic": "동적",
-     "refreshing-data": "데이터 새로 고침 중...",
-     "different-data": "스위치의 값이 다름: "
+      "hide-conflicts": "충돌 숨기기",
+      "hide-status": "동기화 상태 숨기기",
+      "show-conflicts": "{{ count }}개 충돌",
+      "show-status": "동기화 상태 표시",
+      "only-in-device": "장치에서만",
+      "only-in-central": "Sophos Central에서만",
+      "config-conflicts": "구성 충돌",
+      "no-conflict": "충돌 없음",
+      "dynamic": "동적",
+      "refreshing-data": "데이터 새로 고침 중...",
+      "different-data": "스위치의 값이 다름: "
     },
     "ip-networks": {
       "add": "네트워크 추가",
@@ -1388,6 +1387,7 @@
         "cdp_port_settings": "CDP 포트 설정",
         "port_isolation": "포트 격리",
         "port_jumbo_frame": "포트 점보 프레임",
+        "jumbo_frame": "점보 프레임",
         "eee_settings": "포트 EEE",
         "snmp_settings": "SNMP 설정",
         "snmp_user": "SNMP 사용자",
@@ -1396,7 +1396,10 @@
         "voice_vlan_port_settings": "음성 VLAN 포트",
         "snmp_group_to_user_map": "SNMP 그룹",
         "snmp_view_oid_mapping": "SNMP 보기",
-        "snmp_target_params": "SNMP 대상 매개 변수"
+        "snmp_target_params": "SNMP 대상 매개 변수",
+        "snmp_access": "SNMP 액세스",
+        "snmp_notification_settings": " SNMP 알림 설정",
+        "snmp_target_address": "SNMP 대상 주소"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1478,11 +1481,15 @@
         "qos-lag-conflict-title": "QoS 대역폭 제어 설정이 LAG 멤버 포트를 사용하고 있습니다!",
         "fix-qos-lag-conflicts": "스위치 수준에서 포트 {{ ports }} 설정을 '설정 안 함'(비어 있음)으로 상향 조정하여 충돌을 해결할 수 있습니다.",
         "qos-lag-fix-button": "선택한 설정 제거",
+        "port-mirroring-lag-conflict-message": "관련된 포트가 스위치에서 여전히 LAG {{ lag }}의 멤버일 수 있으므로 세션 {{ sessions }}에 대한 포트 미러링 세션을 끕니다. 그렇지 않으면, 오류가 발생할 수 있습니다.",
+        "port-mirroring-lag-conflict-title": "포트 미러링 설정이 LAG 멤버 포트를 사용 중입니다!",
+        "fix-port-mirroring-lag-conflicts": "스위치 수준에서 세션 {{ sessions }}을(를) 꺼 충돌을 해결할 수 있습니다.",
+        "port-mirroring-lag-fix-button": "섡택한 세션 끄기",
         "port-mirroring-conflict-message": "선택된 하나 이상의 포트가 이미 다른 포트 미러링의 일부이므로 계속 진행할 경우 아래 스위치에 오류가 발생합니다.",
         "fix-port-mirroring-conflicts": "스위치 수준에서 해당 포트 미러링 구성을 제거하여 충돌을 해결할 수 있습니다. 스위치 수준 사용자 지정이 필요한 경우 나중에 스위치 보기에서 편집할 수 있습니다.",
         "fix-port-mirroring-button": "선택한 세션 끄기"
       },
-      "ports-mirroring" : {
+      "ports-mirroring": {
         "table-headers": {
           "session-id": "세션 ID",
           "destination-port": "대상 포트",
@@ -1597,8 +1604,13 @@
         "settings": "전역 설정",
         "users-groups": "사용자 및 그룹",
         "views-access-list": "목록 보기 및 액세스",
-        "triggers": "트리거",
+        "triggers": "알림",
         "view-list": "목록 보기"
+      },
+      "security-mode-type": {
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "users-and-communities": {
         "title": "사용자 및 커뮤니티",
@@ -1620,7 +1632,7 @@
         "authentication": "인증",
         "no-user-community": "Sophos Central에서 아직 사용자 또는 커뮤니티가 추가되지 않았습니다.",
         "confirm-update": "업데이트 확인",
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "인증 없음",
           "Auth": "인증",
           "Priv": "권한"
@@ -1632,9 +1644,6 @@
         "security-mode": "보안 모드",
         "security-name": "보안 이름",
         "users": "사용자",
-        "v1": "V1",
-        "v2": "V2",
-        "v3": "V3",
         "configuration-source": "구성 소스",
         "add-group": "그룹 추가",
         "edit-group": "그룹 편집",
@@ -1660,7 +1669,6 @@
       "engine-id": "엔진 ID",
       "engine-id-msg": "(10~64 16진수 문자, 엔진 ID 길이는 짝수여야 합니다.)",
       "default": "기본값",
-
       "view-list": {
         "title": "보기",
         "view-name": "보기 이름",
@@ -1687,11 +1695,12 @@
         "subtree-mask-required-message": "하위 트리 마스크가 필요합니다.",
         "subtree-mask-invalid-message": "하위 트리 마스크는 OID 깊이보다 클 수 없습니다.",
         "subtree-mask-min-max-value-message": "값은 1 ~ 20이어야 함",
-
         "messages": {
           "fetch-settings-error": "SNMP 보기 설정을 가져올 수 없음",
           "add-settings-success": "SNMP 보기 설정이 생성됨",
           "add-settings-error": "SNMP 보기 설정을 생성할 수 없음",
+          "update-settings-success": "SNMP 보기 설정이 업데이트됨",
+          "update-settings-error": "SNMP 보기 설정을 업데이트할 수 없음",
           "add-dialog-title": "생성 확인",
           "site-add-setting-text": "{{ count }}개의 스위치가 이 SNMP 보기 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-add-setting-text": "스위치가 이 SNMP 보기 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
@@ -1737,15 +1746,55 @@
         "write": "쓰기",
         "notify": "알림"
       },
-      "privilege-mode-type" : {
+      "privilege-mode-type": {
         "NoAuth": "인증 없음",
         "Auth": "인증",
         "Priv": "권한"
       },
       "security-mode": {
         "V1": "V1",
-        "V2c": "V2",
+        "V2c": "V2c",
         "V3": "V3"
+      },
+      "target-address": {
+        "title": "대상 주소",
+        "name": "이름",
+        "ip-address": "IP 주소",
+        "udp-port": "UDP 포트",
+        "tag-identifier": "태그 식별자",
+        "target-parameter": "대상 매개 변수",
+        "config-source": "구성 소스",
+        "add-address": "주소 추가",
+        "edit-address": "주소 편집",
+        "delete-address": "주소 삭제",
+        "timeout": "시간 제한",
+        "targetParameterOptions": {
+          "internet": "인터넷",
+          "temp-12": "temp-12"
+        },
+        "retry": "다시 시도",
+        "confirm-update": "업데이트 확인",
+        "confirm-delete": "삭제 확인",
+        "error-message": {
+          "target-address-name-required-message": "이름이 필요함",
+          "target-address-name-already-exists-message": "이름이 이미 있습니다",
+          "target-address-name-length": "이림의 길이는 1~32여야 합니다.",
+          "udp-port-required-message": "UDP 포트가 필요함",
+          "ip-required-message": "Ip가 필요함",
+          "udp-port-value-message": "Udp 포트는 1~65535여야 합니다.",
+          "timeout-required-message": "시간 제한이 필요함",
+          "timeout-value-message": "시간 제한은 1~1500이어야 합니다.",
+          "retry-required-message": "시간 제한이 필요함",
+          "retry-value-message": "재시도는 1~3이어야 합니다.",
+          "tag-required-message": "태그가 필요합니다.",
+          "tag-value-message": "시간 제한은 1~20이어야 합니다.",
+          "site-edit-setting-text": "{{ count }}개의 스위치가 이 SNMP 대상 매개 변수 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-edit-setting-text": "스위치가 이 SNMP 대상 매개 변수 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "add-settings-success": "SNMP 대상 주소 설정이 생성되었습니다.",
+          "update-settings-success": "SNMP 대상 주소 설정이 업데이트되었습니다.",
+          "add-settings-error": "SNMP 대상 주소 설정을 생성할 수 없습니다.",
+          "invalid-ip": "잘못된 IP 주소."
+        }
       },
       "target-parameters": {
         "title": "대상 매개 변수",
@@ -1760,17 +1809,11 @@
         "add-parameter": "매개 변수 추가",
         "edit-parameter": "매개 변수 편집",
         "none": "없음",
-        "security-mode-type": {
-          "V1": "v1",
-          "V2c": "v2c",
-          "V3": "v3"
-        },
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "인증 없음",
           "Auth": "인증",
           "Priv": "권한"
         },
-
         "messages": {
           "fetch-settings-error": "SNMP 대상 매개 변수 설정을 가져올 수 없음",
           "add-settings-success": "SNMP 대상 매개 변수 설정이 생성됨",
@@ -1786,8 +1829,43 @@
           "delete-settings-success": "SNMP 대상 매개 변수 설정이 삭제되었음",
           "delete-settings-error": "SNMP 대상 매개 변수 설정을 삭제할 수 없음",
           "delete-dialog-title": "삭제 확인",
-          "site-delete-setting-text": "{{ viewCount }}개의 SNMP 대상 매개 변수 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 대상 매개 변수 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
-          "switch-delete-setting-text": "{{ viewCount }}개의 SNMP 대상 매개 변수 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+          "site-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 매개 변수 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 대상 매개 변수 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 매개 변수 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        }
+      },
+      "notifications": {
+        "title": "알림",
+        "name": "이름",
+        "name-required-message": "이름이 필요함",
+        "name-already-exists-message": "이름이 이미 있습니다",
+        "tag-identifier": "태그 식별자",
+        "tag-identifier-required-message": "태그 식별자가 필요함",
+        "tag-identifier-already-exists-message": "태그 식별자가 이미 존재함",
+        "type": "유형",
+        "config-source": "구성 소스",
+        "add-notification": "알림 추가",
+        "edit-notification": "알림 편집",
+        "notification-type": {
+          "traps": "트랩",
+          "informs": "정보"
+        },
+        "messages": {
+          "fetch-settings-error": "SNMP 알림 설정을 가져올 수 없습니다.",
+          "add-settings-success": "SNMP 알림 설정이 생성되었습니다.",
+          "add-settings-error": "SNMP 알림 설정을 생성할 수 없습니다.",
+          "add-dialog-title": "생성 확인",
+          "site-add-setting-text": "{{ count }}개의 스위치가 이 SNMP 알림 설정을 받으며 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-add-setting-text": "스위치가 이 SNMP 알림 설정을 받으며 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "edit-settings-success": "SNMP 알림 설정이 업데이트되었습니다.",
+          "edit-settings-error": "SNMP 알림 설정을 업데이트할 수 없습니다.",
+          "edit-dialog-title": "편집 확인",
+          "site-edit-setting-text": "{{ count }}개의 스위치가 이 SNMP 알림 설정을 받으며 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-edit-setting-text": "스위치가 이 SNMP 알림 설정을 받으며 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "delete-settings-success": "SNMP 알림 설정이 삭제되었습니다.",
+          "delete-settings-error": "SNMP 알림 설정을 삭제할 수 없습니다.",
+          "delete-dialog-title": "삭제 확인",
+          "site-delete-setting-text": "{{ notificationCount }}개의 SNMP 알림 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 알림 설정을 제거하며 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-delete-setting-text": "{{ notificationCount }}개의 SNMP 알림 설정을 삭제하고 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
         }
       }
     },
@@ -2758,9 +2836,9 @@
       }
     },
     "discovery": {
-        "message": {
-          "save-discovery-settings-success": "검색 설정이 업데이트되었음",
-          "save-discovery-settings-error": "검색 설정을 업데이트할 수 없음"
+      "message": {
+        "save-discovery-settings-success": "검색 설정이 업데이트되었음",
+        "save-discovery-settings-error": "검색 설정을 업데이트할 수 없음"
       }
     },
     "lldp": {
@@ -2843,7 +2921,7 @@
         "port": "포트",
         "state": "CDP 상태",
         "notify-voice": "VLAN 불일치 알림",
-        "notify-vlan" : "음성 VLAN 불일치 알림",
+        "notify-vlan": "음성 VLAN 불일치 알림",
         "notify-duplex": "이중 불일치 알림",
         "config-source": "구성 소스"
       },
@@ -2956,7 +3034,6 @@
         "switch-save-setting-text": "스위치가 이 음성 VLAN 설정 업데이트를 받습니다.",
         "fetch-voice-vlan-settings-error": "음성 VLAN 설정을 가져올 수 없음"
       },
-
       "oui": {
         "title": "OUI 설정",
         "name": "이름",
@@ -2967,7 +3044,6 @@
         "maxlength-descr-message": "설명 길이는 0~32자 사이여야 함",
         "invalid-oui-address-message": "잘못된 OUI 주소",
         "oui-address-already-exist-message": "OUI 주소가 이미 존재함",
-
         "message": {
           "add-settings-success": "음성 VLAN OUI 설정이 생성됨",
           "add-settings-error": "음성 VLAN OUI 설정을 만들 수 없음",
@@ -2982,7 +3058,6 @@
           "switch-delete-setting-text": "{{ ouiCount }}개의 음성 VLAN OUI 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
         }
       },
-
       "port": {
         "title": "포트 설정",
         "table-headers": {
@@ -2992,7 +3067,6 @@
           "operationStatus": "운영 상태",
           "config-source": "구성 소스"
         },
-
         "common": {
           "not-set": "설정되지 않음",
           "enabled": "사용함",

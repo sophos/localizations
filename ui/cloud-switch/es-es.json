@@ -279,8 +279,8 @@
       "agree-to-delete-manual-backup": "Elimine la copia de seguridad (más antigua) activada por el administrador que aparece a continuación y sustitúyala por una nueva copia de seguridad.",
       "cancellation-warning": "Los switches pueden omitir una copia de seguridad programada en curso si se produce exactamente en el mismo momento. Las programaciones se reanudarán un vez procesada esta solicitud.",
       "diconnected-warning": "Ahora el switch está desconectado de Sophos Central. Por tanto, la solicitud surtirá efecto solo cuando los switches vuelvan a conectarse.",
-      "table" : {
-        "serial-number":"Número de serie",
+      "table": {
+        "serial-number": "Número de serie",
         "site": "Sitio",
         "location": "Ubicación",
         "model": "Modelo",
@@ -331,7 +331,7 @@
           "UserCancelled": "Cancelada.",
           "ClientRebooting": "Restaurada y reiniciada.",
           "RestoreRequested": "Restauración solicitada.",
-          "BackupTaken" : "Copia realizada.",
+          "BackupTaken": "Copia realizada.",
           "ScheduledBackupTaken": "Copia programada realizada.",
           "BackupCopied": "Programada de nuevo. Sin cambios.",
           "BackupUploaded": "Copia cargada.",
@@ -412,7 +412,7 @@
             "ClientBackupGenerationFailure": "Error de restauración: No se ha podido generar la copia de seguridad del switch.",
             "ServerPasswordEncryptionFailure": "Error del servidor: No se ha podido almacenar la copia de seguridad de forma segura.",
             "ClientBackupEncryptionFailure": "Error de restauración: No se ha podido cifrar el archivo de copia de seguridad en el switch.",
-            "ClientUploadFailure": "Error al cargar: No se ha podido cargar el archivo de copia de seguridad.",
+            "ClientUploadFailure": "Error al cargar: Error al cargar el archivo de copia de seguridad.",
             "UrlGenerated": "URL generada correctamente.",
             "ServerSkipped": "Se ha omitido la copia de seguridad debido a múltiples solicitudes.",
             "ServerPasswordDecryptionFailure": "Error del servidor: No se han podido leer los archivos de restauración de forma segura.",
@@ -438,7 +438,6 @@
             "UserCancelled": "No se ha modificado la configuración.",
             "ClientRebooting": "Los cambios en la configuración surtirán efecto después de este paso."
           }
-
         },
         "switch-backup-list": {
           "switch-backups": "Copias de seguridad - {{serialNumber}}",
@@ -962,7 +961,7 @@
           "turn-on": "Activar",
           "turn-off": "Desactivar"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "Puerto",
           "status": "Estado",
           "restricted-vlan": "VLAN restringida",
@@ -972,9 +971,9 @@
           "config-source": "Origen de configuración"
         },
         "tooltip": {
-          "join-time": "El valor debe estar comprendido entre 10 y 4999000 ms.",
-          "leave-time": "El valor debe estar comprendido entre 10 y 9999000 ms. Tiempo de salida de todos > Tiempo de salida > 2 * Tiempo de conexión",
-          "leave-all-time": "El valor debe estar comprendido entre 10 y 10000000 ms. Tiempo de salida de todos > Tiempo de salida > 2 * Tiempo de conexión"
+          "join-time": "El valor debe estar comprendido entre 10 y 4999000 ms. Múltiplo de 10.",
+          "leave-time": "El valor debe estar comprendido entre 10 y 9999000 ms. Múltiplo de 10. Tiempo de salida de todos > Tiempo de salida > 2 * Tiempo de conexión",
+          "leave-all-time": "El valor debe estar comprendido entre 10 y 10000000 ms. Múltiplo de 10. Tiempo de salida de todos > Tiempo de salida > 2 * Tiempo de conexión"
         },
         "messages": {
           "save-dialog-title": "Confirmar guardado",
@@ -995,7 +994,7 @@
           "tagged": "Etiquetado",
           "untagged": "No etiquetado"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "Puerto",
           "accept-type": "Tipo aceptado",
           "ingress-filtering": "Filtrado de entrada",
@@ -1030,7 +1029,7 @@
         "sync": "Conflictos"
       },
       "form": {
-        "vlan-id": "ID VLAN",
+        "vlan-id": "ID de VLAN",
         "vlan-type": "Tipo de VLAN",
         "tagged-ports": "Puertos etiquetados",
         "untagged-port": "Puertos sin etiqueta",
@@ -1079,7 +1078,7 @@
         "vlan-lag-conflict-message": "Los LAG {{ lags }} actualmente están desactivados, pero están asignados a las VLAN"
       },
       "conflicts": {
-        "vlan": "ID VLAN",
+        "vlan": "ID de VLAN",
         "referenced": "Usada en",
         "details": "Detalles",
         "delete-conflict-title": "Las VLAN están en uso",
@@ -1089,17 +1088,17 @@
       }
     },
     "local-sync": {
-     "hide-conflicts":  "Ocultar conflictos",
-     "hide-status":  "Ocultar estado de sincronización",
-     "show-conflicts":  "{{ count }} conflictos",
-     "show-status":  "Mostrar estado de sincronización",
-     "only-in-device": "Solo en el dispositivo",
-     "only-in-central": "Solo en Sophos Central",
-     "config-conflicts": "Conflictos de configuración",
-     "no-conflict": "No hay conflictos",
-     "dynamic": "Dinámico",
-     "refreshing-data": "Actualizando datos...",
-     "different-data": "El switch tiene un valor diferente: "
+      "hide-conflicts": "Ocultar conflictos",
+      "hide-status": "Ocultar estado de sincronización",
+      "show-conflicts": "{{ count }} conflictos",
+      "show-status": "Mostrar estado de sincronización",
+      "only-in-device": "Solo en el dispositivo",
+      "only-in-central": "Solo en Sophos Central",
+      "config-conflicts": "Conflictos de configuración",
+      "no-conflict": "No hay conflictos",
+      "dynamic": "Dinámico",
+      "refreshing-data": "Actualizando datos...",
+      "different-data": "El switch tiene un valor diferente: "
     },
     "ip-networks": {
       "add": "Añadir red",
@@ -1388,6 +1387,7 @@
         "cdp_port_settings": "Configuración de puerto CDP",
         "port_isolation": "Aislamiento de puertos",
         "port_jumbo_frame": "Trama gigante de puerto",
+        "jumbo_frame": "Trama gigante",
         "eee_settings": "EEE de puerto",
         "snmp_settings": "Configuración de SNMP",
         "snmp_user": "Usuario SNMP",
@@ -1396,7 +1396,10 @@
         "voice_vlan_port_settings": "Puertos de VLAN de voz",
         "snmp_group_to_user_map": "Grupo SNMP",
         "snmp_view_oid_mapping": "Vista SNMP",
-        "snmp_target_params": "Parámetro de destino SNMP"
+        "snmp_target_params": "Parámetro de destino SNMP",
+        "snmp_access": "Acceso SNMP",
+        "snmp_notification_settings": " Configuración notificación SNMP",
+        "snmp_target_address": "Dirección de destino SNMP"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1478,11 +1481,15 @@
         "qos-lag-conflict-title": "La configuración del control de ancho de banda de QoS sigue utilizando puertos miembros del LAG.",
         "fix-qos-lag-conflicts": "Puede definir la configuración del puerto {{ ports }} como 'No establecido' (vacío) en el nivel del switch para resolver conflictos.",
         "qos-lag-fix-button": "Eliminar la configuración seleccionada",
+        "port-mirroring-lag-conflict-message": "Desactive las sesiones de reflejo de puertos para la sesión {{ sessions }}, ya que los puertos implicados pueden seguir siendo miembros del LAG {{ lag }} en el switch. De lo contrario, puede dar lugar a un error.",
+        "port-mirroring-lag-conflict-title": "Las opciones de reflejo de puertos usan puertos miembros del LAG.",
+        "fix-port-mirroring-lag-conflicts": "Puede desactivar las sesiones {{ sessions }} al nivel del switch para resolver los conflictos.",
+        "port-mirroring-lag-fix-button": "Cierre las sesiónes seleccionadas",
         "port-mirroring-conflict-message": "Uno o más puertos seleccionados ya forman parte de otra sesión de reflejo de puertos y siguen provocando el error en los siguientes switchs.",
         "fix-port-mirroring-conflicts": "Puede eliminar estas configuraciones de reflejo de puertos al nivel del switch para resolver los conflictos. Puede editar en la vista del switch más tarde, si se necesita una personalización al nivel del switch.",
         "fix-port-mirroring-button": "Cierre la(s) sesión(es) seleccionadas"
       },
-      "ports-mirroring" : {
+      "ports-mirroring": {
         "table-headers": {
           "session-id": "ID de sesión",
           "destination-port": "Puerto destino",
@@ -1597,8 +1604,13 @@
         "settings": "Configuración global",
         "users-groups": "Usuarios y grupos",
         "views-access-list": "Lista de visualizaciones y accesos",
-        "triggers": "Desencadenadores",
+        "triggers": "Notificaciones",
         "view-list": "Ver lista"
+      },
+      "security-mode-type": {
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "users-and-communities": {
         "title": "Usuarios y comunidades",
@@ -1620,7 +1632,7 @@
         "authentication": "Autenticación",
         "no-user-community": "Aún no se ha añadido ningún usuario o comunidad de Sophos Central.",
         "confirm-update": "Confirmar actualización",
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "Sin autenticación",
           "Auth": "Autenticación",
           "Priv": "Privilegio"
@@ -1632,9 +1644,6 @@
         "security-mode": "Modo de seguridad",
         "security-name": "Nombre de seguridad",
         "users": "Usuarios",
-        "v1": "V1",
-        "v2": "V2",
-        "v3": "V3",
         "configuration-source": "Origen de configuración",
         "add-group": "Añadir grupo",
         "edit-group": "Editar grupo",
@@ -1660,7 +1669,6 @@
       "engine-id": "ID de motor",
       "engine-id-msg": "(10~64 caracteres hexadecimales; el ID de motor debe tener un número par de caracteres.)",
       "default": "Predeterminado",
-
       "view-list": {
         "title": "Vistas",
         "view-name": "Nombre de vista",
@@ -1687,11 +1695,12 @@
         "subtree-mask-required-message": "Se requiere la máscara de subárbol.",
         "subtree-mask-invalid-message": "La máscara de subárbol no debe ser mayor que la profundidad del OID.",
         "subtree-mask-min-max-value-message": "El valor debe ser entre 1 y 20",
-
         "messages": {
           "fetch-settings-error": "No se puede recuperar la configuración de la vista SNMP",
           "add-settings-success": "Se ha creado la configuración de la vista SNMP",
           "add-settings-error": "No se puede crear la configuración de la vista SNMP",
+          "update-settings-success": "Se ha actualizado la configuración de la vista SNMP",
+          "update-settings-error": "No se puede actualizar la configuración de la vista SNMP",
           "add-dialog-title": "Confirmar creación",
           "site-add-setting-text": "{{ count }} switches obtendrán esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
           "switch-add-setting-text": "El switch obtendrá esta configuración de vista SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
@@ -1737,15 +1746,55 @@
         "write": "Escribir",
         "notify": "Notificar"
       },
-      "privilege-mode-type" : {
+      "privilege-mode-type": {
         "NoAuth": "Sin autenticación",
         "Auth": "Autenticación",
         "Priv": "Privilegio"
       },
       "security-mode": {
         "V1": "V1",
-        "V2c": "V2",
+        "V2c": "V2c",
         "V3": "V3"
+      },
+      "target-address": {
+        "title": "Dirección de destino",
+        "name": "Nombre",
+        "ip-address": "Dirección IP",
+        "udp-port": "Puerto UDP",
+        "tag-identifier": "Identificador de etiqueta",
+        "target-parameter": "Parámetro de destino",
+        "config-source": "Origen de configuración",
+        "add-address": "Añadir una dirección",
+        "edit-address": "Editar dirección",
+        "delete-address": "Eliminar dirección",
+        "timeout": "Tiempo de espera",
+        "targetParameterOptions": {
+          "internet": "Internet",
+          "temp-12": "temp-12"
+        },
+        "retry": "Reintentar",
+        "confirm-update": "Confirmar actualización",
+        "confirm-delete": "Confirmar eliminación",
+        "error-message": {
+          "target-address-name-required-message": "Nombre es obligatorio",
+          "target-address-name-already-exists-message": "El nombre ya existe",
+          "target-address-name-length": "La longitud del nombre debe ser de 1-32.",
+          "udp-port-required-message": "El puerto UDP es obligatorio",
+          "ip-required-message": "Se requiere la IP",
+          "udp-port-value-message": "El puerto UDP debe ser 1-65535.",
+          "timeout-required-message": "Se requiere un tiempo de espera",
+          "timeout-value-message": "El tiempo de espera debe ser 1-1500.",
+          "retry-required-message": "Se requiere un tiempo de espera",
+          "retry-value-message": "El valor de Reintentar debe estar entre 1 y 3.",
+          "tag-required-message": "La etiqueta es obligatoria",
+          "tag-value-message": "El tiempo de espera debe ser 1-20.",
+          "site-edit-setting-text": "{{ count }} switches obtendrán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-edit-setting-text": "El switch obtendrá esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "add-settings-success": "Se ha creado la configuración de la dirección de destino SNMP",
+          "update-settings-success": "Se ha actualizado la configuración de la dirección de destino SNMP",
+          "add-settings-error": "No se puede crear la configuración de la dirección de destino SNMP",
+          "invalid-ip": "Dirección IP no válida."
+        }
       },
       "target-parameters": {
         "title": "Parámetros de destino",
@@ -1760,19 +1809,13 @@
         "add-parameter": "Añadir parámetro",
         "edit-parameter": "Editar parámetro",
         "none": "Ninguno",
-        "security-mode-type": {
-          "V1": "v1",
-          "V2c": "v2c",
-          "V3": "v3"
-        },
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "Sin autenticación",
           "Auth": "Autenticación",
           "Priv": "Privilegio"
         },
-
         "messages": {
-          "fetch-settings-error": "No se puede recuperar la configuración de los parámetros de destino SNMP",
+          "fetch-settings-error": "No se pueden recuperar los parámetros de destino SNMP",
           "add-settings-success": "Se ha creado la configuración de los parámetros de destino SNMP",
           "add-settings-error": "No se puede crear la configuración de los parámetros de destino SNMP",
           "add-dialog-title": "Confirmar creación",
@@ -1786,8 +1829,43 @@
           "delete-settings-success": "Se ha eliminado la configuración de los parámetros de destino SNMP",
           "delete-settings-error": "No se puede eliminar la configuración de los parámetros de destino SNMP",
           "delete-dialog-title": "Confirmar eliminación",
-          "site-delete-setting-text": "Elimine {{ viewCount }} parámetros de destino SNMP. {{ count }} switches eliminarán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
-          "switch-delete-setting-text": "Elimine {{ viewCount }} parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
+          "site-delete-setting-text": "Elimine {{ parameterCount }} parámetros de destino SNMP. {{ count }} switches eliminarán esta configuración de los parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-delete-setting-text": "Elimine {{ parameterCount }} parámetros de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
+        }
+      },
+      "notifications": {
+        "title": "Notificaciones",
+        "name": "Nombre",
+        "name-required-message": "Nombre es obligatorio",
+        "name-already-exists-message": "El nombre ya existe",
+        "tag-identifier": "Identificador de etiqueta",
+        "tag-identifier-required-message": "Se requiere el identificador de etiqueta",
+        "tag-identifier-already-exists-message": "El identificador de etiqueta ya existe",
+        "type": "Tipo",
+        "config-source": "Origen de configuración",
+        "add-notification": "Añadir notificación",
+        "edit-notification": "Editar notificación",
+        "notification-type": {
+          "traps": "Capturas",
+          "informs": "Informa"
+        },
+        "messages": {
+          "fetch-settings-error": "No se puede recuperar la configuración de notificación de SNMP",
+          "add-settings-success": "Se ha creado la configuración de notificación de SNMP",
+          "add-settings-error": "No se puede crear la configuración de notificación de SNMP",
+          "add-dialog-title": "Confirmar creación",
+          "site-add-setting-text": "{{ count }} switches obtendrán esta configuración de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-add-setting-text": "El switch obtendrá esta configuración de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "edit-settings-success": "Se ha actualizado la configuración de notificación de SNMP",
+          "edit-settings-error": "No se puede actualizar la configuración de notificación de SNMP",
+          "edit-dialog-title": "Confirmar edición",
+          "site-edit-setting-text": "{{ count }} switches obtendrán esta configuración de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-edit-setting-text": "El switch obtendrá esta configuración de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "delete-settings-success": "Se ha eliminado la configuración de notificación de SNMP",
+          "delete-settings-error": "No se puede eliminar la configuración de notificación de SNMP",
+          "delete-dialog-title": "Confirmar eliminación",
+          "site-delete-setting-text": "Elimine {{ notificationCount }} parámetros de notificación de SNMP. {{ count }} switches eliminarán estos parámetros de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-delete-setting-text": "Elimine {{ notificationCount }} parámetros de notificación de SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
         }
       }
     },
@@ -2758,9 +2836,9 @@
       }
     },
     "discovery": {
-        "message": {
-          "save-discovery-settings-success": "Se ha actualizado la configuración de detección",
-          "save-discovery-settings-error": "No se puede actualizar la configuración de detección"
+      "message": {
+        "save-discovery-settings-success": "Se ha actualizado la configuración de detección",
+        "save-discovery-settings-error": "No se puede actualizar la configuración de detección"
       }
     },
     "lldp": {
@@ -2843,7 +2921,7 @@
         "port": "Puerto",
         "state": "Estado CDP",
         "notify-voice": "Notificar error de coincidencia de VLAN",
-        "notify-vlan" : "Notificar error de coincidencia de VLAN de voz",
+        "notify-vlan": "Notificar error de coincidencia de VLAN de voz",
         "notify-duplex": "Notificar error de coincidencia de dúplex",
         "config-source": "Origen de configuración"
       },
@@ -2956,7 +3034,6 @@
         "switch-save-setting-text": "El switch recibirá esta actualización de la configuración de VLAN de voz.",
         "fetch-voice-vlan-settings-error": "No se puede obtener la configuración de VLAN de voz"
       },
-
       "oui": {
         "title": "Configuración OUI",
         "name": "Nombre",
@@ -2967,7 +3044,6 @@
         "maxlength-descr-message": "La longitud de la descripción debe ser de entre 0 y 32 caracteres",
         "invalid-oui-address-message": "Dirección OUI no válida",
         "oui-address-already-exist-message": "La dirección OUI ya existe",
-
         "message": {
           "add-settings-success": "Se ha creado la configuración de OUI de VLAN de voz",
           "add-settings-error": "No se puede crear la configuración de OUI de VLAN de voz",
@@ -2982,7 +3058,6 @@
           "switch-delete-setting-text": "Elimine la configuración de {{ ouiCount }} OUI de VLAN de voz y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
         }
       },
-
       "port": {
         "title": "Configuración de puerto",
         "table-headers": {
@@ -2992,7 +3067,6 @@
           "operationStatus": "Estado de funcionamiento",
           "config-source": "Origen de configuración"
         },
-
         "common": {
           "not-set": "No establecido",
           "enabled": "Activado",
