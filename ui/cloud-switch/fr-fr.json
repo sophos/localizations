@@ -279,8 +279,8 @@
       "agree-to-delete-manual-backup": "Supprimer la sauvegarde (la plus ancienne) déclenchée par l’administrateur affichée ci-dessous et la remplacer par une nouvelle sauvegarde.",
       "cancellation-warning": "Les switchs peuvent ignorer la sauvegarde planifiée en cours si elle a lieu exactement au même moment. Les planifications reprennent une fois que cette demande est traitée.",
       "diconnected-warning": "Le switch est maintenant déconnecté de Sophos Central. La demande ne prendra donc effet que lorsque les switchs seront de nouveau connectés.",
-      "table" : {
-        "serial-number":"Numéro de série",
+      "table": {
+        "serial-number": "Numéro de série",
         "site": "Site",
         "location": "Emplacement",
         "model": "Modèle",
@@ -331,7 +331,7 @@
           "UserCancelled": "Annulé.",
           "ClientRebooting": "Restauré et redémarré.",
           "RestoreRequested": "Restauration demandée.",
-          "BackupTaken" : "Sauvegarde effectuée.",
+          "BackupTaken": "Sauvegarde effectuée.",
           "ScheduledBackupTaken": "Sauvegarde planifiée effectuée.",
           "BackupCopied": "Planifié de nouveau. Aucune modification.",
           "BackupUploaded": "Sauvegarde téléchargée.",
@@ -438,7 +438,6 @@
             "UserCancelled": "Configuration inchangée.",
             "ClientRebooting": "Les modifications de configuration prendront effet après cette étape."
           }
-
         },
         "switch-backup-list": {
           "switch-backups": "Sauvegardes - {{serialNumber}}",
@@ -962,7 +961,7 @@
           "turn-on": "Activer",
           "turn-off": "Désactiver"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "Port",
           "status": "État",
           "restricted-vlan": "VLAN restreint",
@@ -972,9 +971,9 @@
           "config-source": "Source de configuration"
         },
         "tooltip": {
-          "join-time": "La valeur doit être comprise entre 10 et 4999000 ms.",
-          "leave-time": "La valeur doit être comprise entre 10 et 9999000 ms. Temps de sortie totale > Temps de sortie > 2 * Temps de connexion",
-          "leave-all-time": "La valeur doit être comprise entre 10 et 10000000 ms. Temps de sortie totale > Temps de sortie > 2 * Temps de connexion"
+          "join-time": "La valeur doit être comprise entre 10 et 4999000 ms. Multiple de 10.",
+          "leave-time": "La valeur doit être comprise entre 10 et 9999000 ms. Multiple de 10. Temps de sortie totale > Temps de sortie > 2 * Temps de connexion",
+          "leave-all-time": "La valeur doit être comprise entre 10 et 10000000 ms. Multiple de 10. Temps de sortie totale > Temps de sortie > 2 * Temps de connexion"
         },
         "messages": {
           "save-dialog-title": "Confirmer l’enregistrement",
@@ -995,7 +994,7 @@
           "tagged": "Marqué",
           "untagged": "Non identifié"
         },
-        "table-headers":{
+        "table-headers": {
           "port": "Port",
           "accept-type": "Accepter le type",
           "ingress-filtering": "Filtrage d’entrée",
@@ -1089,17 +1088,17 @@
       }
     },
     "local-sync": {
-     "hide-conflicts":  "Masquer les conflits",
-     "hide-status":  "Masquer l’état de synchronisation",
-     "show-conflicts":  "{{ count }} conflits",
-     "show-status":  "Afficher l’état de synchronisation",
-     "only-in-device": "Uniquement sur l’appareil",
-     "only-in-central": "Uniquement dans Sophos Central",
-     "config-conflicts": "Conflits de configuration",
-     "no-conflict": "Aucun conflit",
-     "dynamic": "Dynamique",
-     "refreshing-data": "Actualisation des données...",
-     "different-data": "Le switch a une valeur différente : "
+      "hide-conflicts": "Masquer les conflits",
+      "hide-status": "Masquer l’état de synchronisation",
+      "show-conflicts": "{{ count }} conflits",
+      "show-status": "Afficher l’état de synchronisation",
+      "only-in-device": "Uniquement sur l’appareil",
+      "only-in-central": "Uniquement dans Sophos Central",
+      "config-conflicts": "Conflits de configuration",
+      "no-conflict": "Aucun conflit",
+      "dynamic": "Dynamique",
+      "refreshing-data": "Actualisation des données...",
+      "different-data": "Le switch a une valeur différente : "
     },
     "ip-networks": {
       "add": "Ajouter un réseau",
@@ -1388,6 +1387,7 @@
         "cdp_port_settings": "Paramètre du port CDP",
         "port_isolation": "Isolement du port",
         "port_jumbo_frame": "Trame Jumbo du port",
+        "jumbo_frame": "Trame Jumbo",
         "eee_settings": "EEE de port",
         "snmp_settings": "Paramètres SNMP",
         "snmp_user": "Utilisateur SNMP",
@@ -1396,7 +1396,10 @@
         "voice_vlan_port_settings": "Ports VLAN voix",
         "snmp_group_to_user_map": "Groupe SNMP",
         "snmp_view_oid_mapping": "Vue SNMP",
-        "snmp_target_params": "Paramètre cible SNMP"
+        "snmp_target_params": "Paramètre cible SNMP",
+        "snmp_access": "Accès SNMP",
+        "snmp_notification_settings": " Paramètres de notification SNMP",
+        "snmp_target_address": "Adresse cible SNMP"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -1478,11 +1481,15 @@
         "qos-lag-conflict-title": "Les paramètres de contrôle de la bande passante QoS utilisent les ports membres du LAG.",
         "fix-qos-lag-conflicts": "Vous pouvez définir les paramètres du port {{ ports }} sur « Non défini » au niveau du switch pour résoudre les conflits.",
         "qos-lag-fix-button": "Supprimer les paramètres sélectionnés",
+        "port-mirroring-lag-conflict-message": "Désactivez les sessions de mise en miroir de ports pour la session {{ sessions }} car les ports impliqués peuvent être encore membres de LAG {{ lag }} sur le switch. Dans le cas contraire, un erreur pourrait se produire",
+        "port-mirroring-lag-conflict-title": "Les paramètres de mise en miroir de ports utilisent les ports membres du LAG !",
+        "fix-port-mirroring-lag-conflicts": "Vous pouvez désactiver les sessions {{ sessions }} au niveau du switch pour résoudre les conflits.",
+        "port-mirroring-lag-fix-button": "Désactiver les sessions sélectionnées",
         "port-mirroring-conflict-message": "Un ou plusieurs ports sélectionnés font déjà partie d’une autre session de mise en miroir de ports. Si vous continuez, une erreur se produira pour les switchs ci-dessous.",
         "fix-port-mirroring-conflicts": "Vous pouvez supprimer ces configurations de mise en miroir de ports au niveau du switch pour résoudre les conflits. Vous pouvez modifier ultérieurement au niveau de la vue du switch, si une personnalisation du switch est nécessaire.",
         "fix-port-mirroring-button": "Désactiver la ou les sessions sélectionnées"
       },
-      "ports-mirroring" : {
+      "ports-mirroring": {
         "table-headers": {
           "session-id": "Identifiant de la session",
           "destination-port": "Port de destination",
@@ -1597,8 +1604,13 @@
         "settings": "Paramètres généraux",
         "users-groups": "Utilisateurs et groupes",
         "views-access-list": "Vues et liste d’accès",
-        "triggers": "Déclenche",
+        "triggers": "Notifications",
         "view-list": "Voir la liste"
+      },
+      "security-mode-type": {
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "users-and-communities": {
         "title": "Utilisateurs et communautés",
@@ -1620,7 +1632,7 @@
         "authentication": "Authentification",
         "no-user-community": "Aucun utilisateur ou communauté n’a encore été ajouté depuis Sophos Central.",
         "confirm-update": "Confirmer la mise à jour",
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "Aucune authentification",
           "Auth": "Authentification",
           "Priv": "Privilège"
@@ -1632,9 +1644,6 @@
         "security-mode": "Mode de sécurité",
         "security-name": "Nom de sécurité",
         "users": "Utilisateurs",
-        "v1": "V1",
-        "v2": "V2",
-        "v3": "V3",
         "configuration-source": "Source de configuration",
         "add-group": "Ajouter un groupe",
         "edit-group": "Modifier le groupe",
@@ -1660,7 +1669,6 @@
       "engine-id": "ID du moteur",
       "engine-id-msg": "(10 ~ 64 lettres hexadécimales. L’ID du moteur doit comprendre un nombre pair de caractères.)",
       "default": "Valeur par défaut",
-
       "view-list": {
         "title": "Vues",
         "view-name": "Nom de la vue",
@@ -1687,11 +1695,12 @@
         "subtree-mask-required-message": "Masque de sous-arborescence obligatoire.",
         "subtree-mask-invalid-message": "Le masque de sous-arborescence ne doit pas être supérieur à la profondeur de l’OID.",
         "subtree-mask-min-max-value-message": "La valeur doit être comprise entre 1 et 20.",
-
         "messages": {
           "fetch-settings-error": "Impossible de récupérer le paramètre de vue SNMP",
           "add-settings-success": "Paramètres de vue SNMP créés",
           "add-settings-error": "Impossible de créer les paramètres de vue SNMP",
+          "update-settings-success": "Paramètres de vue SNMP mis à jour",
+          "update-settings-error": "Impossible de mettre à jour les paramètres de vue SNMP",
           "add-dialog-title": "Confirmer la création",
           "site-add-setting-text": "{{ count }} switchs vont récupérer les paramètres de vue SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
           "switch-add-setting-text": "Le switch va récupérer les paramètres de vue SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
@@ -1737,15 +1746,55 @@
         "write": "Écrire",
         "notify": "Notifier"
       },
-      "privilege-mode-type" : {
+      "privilege-mode-type": {
         "NoAuth": "Aucune authentification",
         "Auth": "Authentification",
         "Priv": "Privilège"
       },
       "security-mode": {
         "V1": "V1",
-        "V2c": "V2",
+        "V2c": "V2c",
         "V3": "V3"
+      },
+      "target-address": {
+        "title": "Adresse cible",
+        "name": "Nom",
+        "ip-address": "Adresse IP",
+        "udp-port": "Port UDP",
+        "tag-identifier": "Identificateur de balise",
+        "target-parameter": "Paramètre cible",
+        "config-source": "Source de configuration",
+        "add-address": "Ajouter une adresse",
+        "edit-address": "Modifier l’adresse",
+        "delete-address": "Supprimer l’adresse",
+        "timeout": "Délai d’attente",
+        "targetParameterOptions": {
+          "internet": "internet",
+          "temp-12": "temp-12"
+        },
+        "retry": "Réessayer",
+        "confirm-update": "Confirmer la mise à jour",
+        "confirm-delete": "Confirmer la suppression",
+        "error-message": {
+          "target-address-name-required-message": "Nom obligatoire",
+          "target-address-name-already-exists-message": "Ce nom existe déjà",
+          "target-address-name-length": "La longueur du nom doit être comprise entre 1 et 32.",
+          "udp-port-required-message": "Port UDP obligatoire",
+          "ip-required-message": "IP obligatoire",
+          "udp-port-value-message": "Le port UDP doit être compris entre 1 et 65535.",
+          "timeout-required-message": "Délai d’expiration obligatoire",
+          "timeout-value-message": "Le délai d’expiration doit être compris entre 1 et 1500.",
+          "retry-required-message": "Délai d’expiration obligatoire",
+          "retry-value-message": "La valeur Réessayer doit être comprise entre 1 et 3.",
+          "tag-required-message": "Balise obligatoire",
+          "tag-value-message": "Le délai d’expiration doit être compris entre 1 et 20.",
+          "site-edit-setting-text": "{{ count }} switchs vont récupérer les paramètres de cible SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-edit-setting-text": "Le switch va récupérer les paramètres de cible SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "add-settings-success": "Paramètres de l’adresse cible SNMP créés",
+          "update-settings-success": "Paramètres de l’adresse cible SNMP mis à jour",
+          "add-settings-error": "Impossible de créer les paramètres de l’adresse cible SNMP",
+          "invalid-ip": "Adresse IP incorrecte."
+        }
       },
       "target-parameters": {
         "title": "Paramètres cibles",
@@ -1760,17 +1809,11 @@
         "add-parameter": "Ajouter un paramètre",
         "edit-parameter": "Modifier le paramètre",
         "none": "Aucun",
-        "security-mode-type": {
-          "V1": "v1",
-          "V2c": "v2c",
-          "V3": "v3"
-        },
-        "privilege-mode-type" : {
+        "privilege-mode-type": {
           "NoAuth": "Aucune authentification",
           "Auth": "Authentification",
           "Priv": "Privilège"
         },
-
         "messages": {
           "fetch-settings-error": "Impossible de récupérer les paramètres de cible SNMP",
           "add-settings-success": "Paramètres de cible SNMP créés",
@@ -1786,8 +1829,43 @@
           "delete-settings-success": "Paramètres de cible SNMP supprimés",
           "delete-settings-error": "Impossible de supprimer les paramètres de cible SNMP",
           "delete-dialog-title": "Confirmer la suppression",
-          "site-delete-setting-text": "Supprimer {{ viewCount }} paramètres de cible SNMP. {{ count }} switchs vont supprimer ces paramètres de cible SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
-          "switch-delete-setting-text": "Supprimer {{ viewCount }} paramètres de cible SNMP. Les tâches seront ensuite créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
+          "site-delete-setting-text": "Supprimer {{ parameterCount }} paramètres de cible SNMP. {{ count }} switchs vont supprimer ces paramètres de cible SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-delete-setting-text": "Supprimer {{ parameterCount }} paramètres de cible SNMP. Les tâches seront ensuite créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
+        }
+      },
+      "notifications": {
+        "title": "Notifications",
+        "name": "Nom",
+        "name-required-message": "Nom obligatoire",
+        "name-already-exists-message": "Ce nom existe déjà",
+        "tag-identifier": "Identificateur de balise",
+        "tag-identifier-required-message": "Identificateur de balise obligatoire",
+        "tag-identifier-already-exists-message": "Cet identificateur de balise existe déjà.",
+        "type": "Type",
+        "config-source": "Source de configuration",
+        "add-notification": "Ajouter une notification",
+        "edit-notification": "Modifier la notification",
+        "notification-type": {
+          "traps": "Traps (piège)",
+          "informs": "Informe"
+        },
+        "messages": {
+          "fetch-settings-error": "Impossible de récupérer le paramètre de notification SNMP",
+          "add-settings-success": "Les paramètres de notification SNMP ont été créés",
+          "add-settings-error": "Impossible de créer les paramètres de notification SNMP",
+          "add-dialog-title": "Confirmer la création",
+          "site-add-setting-text": "{{ count }} switchs vont récupérer les paramètres de notification SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-add-setting-text": "Le switch va récupérer les paramètres de notification SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "edit-settings-success": "Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "edit-settings-error": "Impossible de mettre à jour les paramètres de notification SNMP",
+          "edit-dialog-title": "Confirmer la modification",
+          "site-edit-setting-text": "{{ count }} switchs vont récupérer les paramètres de notification SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-edit-setting-text": "Le switch va récupérer les paramètres de notification SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "delete-settings-success": "Paramètres de notification SNMP supprimés",
+          "delete-settings-error": "Impossible de supprimer les paramètres de notification SNMP",
+          "delete-dialog-title": "Confirmer la suppression",
+          "site-delete-setting-text": "Supprimer {{ notificationCount }} paramètres de notification SNMP. {{ count }} switchs vont supprimer ces paramètres de notification SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-delete-setting-text": "Supprimer {{ notificationCount }} paramètres de notification SNMP. Les tâches seront ensuite créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
         }
       }
     },
@@ -2758,9 +2836,9 @@
       }
     },
     "discovery": {
-        "message": {
-          "save-discovery-settings-success": "Paramètres de découverte mis à jour",
-          "save-discovery-settings-error": "Impossible de mettre à jour les paramètres de découverte"
+      "message": {
+        "save-discovery-settings-success": "Paramètres de découverte mis à jour",
+        "save-discovery-settings-error": "Impossible de mettre à jour les paramètres de découverte"
       }
     },
     "lldp": {
@@ -2843,7 +2921,7 @@
         "port": "Port",
         "state": "État de CDP",
         "notify-voice": "Notifier la non-concordance VLAN",
-        "notify-vlan" : "Notifier la non-concordance VLAN voix",
+        "notify-vlan": "Notifier la non-concordance VLAN voix",
         "notify-duplex": "Notifier la non-concordance duplex",
         "config-source": "Source de configuration"
       },
@@ -2956,7 +3034,6 @@
         "switch-save-setting-text": "Le switch recevra cette mise à jour des paramètres de VLAN voix.",
         "fetch-voice-vlan-settings-error": "Impossible de récupérer les paramètres de VLAN voix"
       },
-
       "oui": {
         "title": "Paramètres OUI",
         "name": "Nom",
@@ -2967,7 +3044,6 @@
         "maxlength-descr-message": "La longueur de la description doit être comprise entre 0 et 32 caractères",
         "invalid-oui-address-message": "Adresse OUI incorrecte",
         "oui-address-already-exist-message": "Cette adresse OUI existe déjà",
-
         "message": {
           "add-settings-success": "Les paramètres OUI du VLAN voix ont été créés",
           "add-settings-error": "Impossible de créer les paramètres OUI du VLAN voix",
@@ -2982,7 +3058,6 @@
           "switch-delete-setting-text": "Supprimer {{ ouiCount }} paramètres OUI du VLAN voix. Les tâches seront ensuite créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
         }
       },
-
       "port": {
         "title": "Paramètres de port",
         "table-headers": {
@@ -2992,7 +3067,6 @@
           "operationStatus": "État de fonctionnement",
           "config-source": "Source de configuration"
         },
-
         "common": {
           "not-set": "Non défini",
           "enabled": "Activé",
