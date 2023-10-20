@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "MLDスヌーピング (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "IGMPスヌーピング (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCPスヌーピング (VLAN)",
-      "QosClassMappingDto": "QoS ポリシー"
+      "QosClassMappingDto": "QoS ポリシー",
+      "VoiceVlanSettingsDto": "音声 VLAN"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "SNMP ターゲットパラメータ",
         "snmp_access": "SNMP access",
         "snmp_notification_settings": " SNMP 通知の設定",
-        "snmp_target_address": "SNMP ターゲットアドレス"
+        "snmp_target_address": "SNMP ターゲットアドレス",
+        "vlan_gvrp_port_settings": "GVRP ポート設定",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1770,7 +1773,7 @@
         "timeout": "タイムアウト",
         "targetParameterOptions": {
           "internet": "インターネット",
-          "temp-12": "温度-12"
+          "temp-12": "temp-12"
         },
         "retry": "再試行",
         "confirm-update": "更新の確認",
@@ -2622,7 +2625,12 @@
       "7905": "QoS ポリシー: ポートポリシーの状態の値が無効です。",
       "7906": "QoS ポリシー: ポートポリシーの状態を変更できません。",
       "7907": "QoS ポリシー: クラス名の解析中にエラーが発生しました。PATCH リクエストが無効です。",
-      "7908": "QoS ポリシー: ポートバインディングの解析中にエラーが発生しました。PATCH リクエストが無効です。"
+      "7908": "QoS ポリシー: ポートバインディングの解析中にエラーが発生しました。PATCH リクエストが無効です。",
+      "5335": "音声 VLAN: OUI データを削除中、エラーが発生しました。DELETE リクエストが無効です。",
+      "5337": "音声 VLAN: OUI データを解析中、エラーが発生しました。POST リクエストが無効です。",
+      "5303": "音声 VLAN: この OUI は既に存在します。POST リクエストが無効です",
+      "5304": "音声 VLAN: OUI の値が無効です。POST リクエストが無効です",
+      "5305": "音声 VLAN: 音声 VLAN ID の値が無効です。PATCH リクエストが無効です。"
     },
     "lacp-settings": {
       "dialog-title": "LACP の設定",
@@ -3012,11 +3020,12 @@
       "id": "音声 VLAN ID",
       "priorityTag": "VLAN 優先度タグ",
       "dscp": "DSCP",
-      "cosStatus": "802.1 CoS の状態",
+      "cosStatus": "802.1p CoS の状態",
       "cosPriority": "CoS 優先度",
       "agingTime": "エージングタイム",
       "config-source": "設定のソース",
       "required-input-message": "値は {{ min }} ～ {{ max }} で指定してください",
+      "required-vlan": "VLAN が存在しません。音声 VLAN を設定するために作成してください",
       "global-settings": "グローバル設定",
       "not-set": "未設定",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "設定のソース",
         "maxlength-descr-message": "説明の文字数は 0～32文字の間で指定してください。",
         "invalid-oui-address-message": "無効な OUI アドレスです",
+        "invalid-descr-message": "無効な説明です",
         "oui-address-already-exist-message": "この OUI アドレスは既に存在します",
         "message": {
           "add-settings-success": "音声 VLAN OUI の設定が作成されました",

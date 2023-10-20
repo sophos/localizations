@@ -71,6 +71,9 @@
       "GHZ_2_4": "2.4GHz",
       "GHZ_2_4,GHZ_5": "2.4GHz 및 5GHz",
       "GHZ_5": "5분",
+      "2g": "2.4GHz",
+      "5g": "5GHz",
+      "6g": "6GHz",
       "assign": "할당",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "메시",
         "passphrase": "암호",
         "assigned-aps": "할당된 AP",
-        "none": "없음"
+        "none": "없음",
+        "root-ap": "루트 AP",
+        "node-aps": "노드 AP"
       },
       "section": {
         "basic-settings": "기본 설정",
@@ -641,7 +646,11 @@
         "assign-ssid": "할당된 액세스 지점 수",
         "enable-ssid": "SSID 사용",
         "enable-ssid-help-text": "즉시 SSID를 활성화합니다.",
-        "config-ready-msg": "이제 구성이 준비되었습니다. 저장하고 진행하십시오.",
+        "config-invalid": "네트워크 구성이 잘못되었습니다.",
+        "config-ready-msg": {
+          "mesh": "이제 메시 네트워크가 구성되었습니다. 저장을 클릭하여 계속",
+          "non-mesh": "이제 네트워크가 구성되었습니다. 저장을 클릭하여 계속"
+        },
         "advanced-settings": "고급 설정",
         "previous-section": "이전",
         "main-label": "이 SSID를 할당할 장치를 선택하십시오.",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "Synchronized Security 지원 SSID는 비-APX 액세스 지점 시리즈에서 지원되지 않습니다.",
         "ap-exceeding-limit": "무선 대역 중 하나를 지원하지 않거나 지원되는 최대 SSID 수에 도달한 액세스 지점이 하나 이상 있습니다.",
         "invalid-node-config": "메시를 생성하기 전에 노드 액세스 지점에서 기존 SSID를 제거하십시오.",
+        "invalid-root-config": "루트 액세스 지점에는 메시 대역을 포함하여 2개의 대역이 활성화된 SSID가 하나 이상 있어야 합니다.",
         "deployment-mode-dynamic-later": "나중에 액세스 지점 추가",
         "assign-aps-inline-help-text-later": "이 SSID를 편집하여 나중에 AP를 추가할 수 있습니다.",
         "available-aps": "사용 가능한 액세스 지점",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "RADIUS VLAN 지정",
         "enable-guest-network": "게스트 네트워크 사용",
         "guest-enable-inline-help-text": "몇 가지 트래픽 제한이 있는 클라이언트에 격리된 네트워크를 제공합니다.",
-        "guest-network-not-available": "게스트 네트워크 기능은 아직 AP6에 대해 제공되지 않습니다. 해결 방법: AP6 액세스 포인트에 개별적으로 태깅된 VLAN을 구성하여 여러 SSID 간에 트래픽을 분리 및 격리합니다. <a href='https://www.sophos.com/en-us/products/secure-wifi/features' target='_blank'>https://www.sophos.com/en-us/products/secure-wifi/features</a> 페이지의 업데이트를 참조하십시오.",
+        "guest-network-not-available": "이 기능은 아직 AP6에 대해 제공되지 않습니다. 해결 방법: AP6 액세스 포인트에 개별적으로 태깅된 VLAN을 구성하여 여러 SSID 간에 트래픽을 분리 및 격리합니다. 이 페이지에서 업데이트를 확인하십시오. <a href='https://www.sophos.com/en-us/products/secure-wifi/features' target='_blank'>https://www.sophos.com/en-us/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "VLAN ID는 필수입니다.",
         "vlantag-validate-range": "VLAN ID는 1 ~ 4094여야 합니다.",
         "primary-dns-server": "주 DNS 서버",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "APX 메시 SSID에 LAN을 통해 인터넷에 연결된 하나 이상의 액세스 지점이 필요합니다.",
-          "ap6": "AP6 메시 SSID에는 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다. 루트는 LAN 인터페이스를 통해 네트워크에 연결해야 합니다."
+          "ap6": "AP6 메시 SSID에는 최소 2개의 액세스 지점(1개의 루트 및 1개의 노드)이 필요합니다."
+        },
+        "mesh-setup-guide": {
+          "title": "메시 단계 가이드",
+          "connect-lan": "루트 및 노드 AP에 LAN 케이블을 연결하고 여기서 확인",
+          "step-1": {
+            "label": "AP 할당",
+            "help-text": "네트워크에 2개 이상의 AP를 할당해야 합니다."
+          },
+          "step-2": {
+            "label": "루트 AP 할당"
+          },
+          "step-3": {
+            "label": "루트 AP에 LAN 케이블 연결",
+            "help-text": "메시가 작동하려면 루트 및 노드 AP에 LAN 케이블을 실제로 연결하고 메인 화면의 확인란을 선택하여 계속 진행해야 합니다."
+          },
+          "step-4": {
+            "label": "구성 저장",
+            "help-text": "<div>메시 네트워크가 구성되었습니다. 저장을 클릭하여 활성화하고 설정을 마칩니다.</div><br/><div>노드에 연결된 LAN 케이블이 있으면 지금 제거하십시오.</div>"
+          }
         },
         "roo-ap-ssid-limit": "루트 액세스 지점에는 메시 SSID를 포함하여 최대 5개의 SSID가 존재할 수 있습니다.",
         "can-not-remove-mesh-from-root": "메시 SSID를 삭제하여 루트 액세스 지점에서 제거하십시오.",
@@ -1104,6 +1133,7 @@
           "all-sites": "모든 사이트",
           "select-site": "사이트 선택",
           "auto-refresh": "자동 새로 고침",
+          "refresh": "새로 고침",
           "unassigned-sites": "할당되지 않은 사이트",
           "emptyListMessage": "액세스 지점을 추가하지 않았습니다.",
           "listRegisterInfo": "등록을 클릭하여 액세스 지점을 추가하십시오.",
@@ -1231,7 +1261,9 @@
             "role": {
               "root": "루트",
               "node": "노드"
-            }
+            },
+            "note-for-node": "이 AP는 메시에 있는 한 노드입니다. 이 노드에 대한 라디오는 루트 AP에서 제어될 수 있습니다.",
+            "redirect-to-root": "여기를 클릭하여 루트 AP에 액세스"
           },
           "sophos-central-agent": "Sophos Central 에이전트",
           "upgrade-automatically": "자동으로 업그레이드",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "할당된 SSID를 제거하시겠습니까?",
           "deleteDialogText": "AP를 삭제하면 시스템이 자동으로 다시 부팅됩니다.<br><br>삭제를 계속하시겠습니까?",
           "invalid-node-config": "메시를 할당하기 전에 액세스 지점에서 기존 SSID를 제거하십시오.",
+          "invalid-root-config": "루트 액세스 지점에는 메시 대역을 포함하여 2개의 대역이 활성화된 SSID가 하나 이상 있어야 합니다.",
           "incompatible-node-ap": "잘못된 메시 구성: 노드 액세스 지점은 루트 액세스 지점에 비해 더 많은 수의 라디오를 가질 수 없습니다."
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "AP가 시간 초과 안에 클라우드에 연결되지 않음",
           "apPlugin": {
             "title": "1단계",
-            "description": "인터넷에 연결될 수 있도록 네트워크에 액세스 지점을 연결하십시오."
+            "description": "인터넷에 연결될 수 있도록 네트워크에 액세스 지점을 연결합니다. 액세스 지점의 전원을 켭니다. 이미 켜져 있는 경우에는 다시 시작합니다."
           },
           "findSerialNumber": {
             "title": "2단계",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "액세스 지점에 태그가 지정되지 않은 VLAN을 두 개 이상 구성할 수 없습니다. 다음 SSID의 구성을 확인하십시오: {{ssid}}",
         "network": "태그가 지정되지 않은 VLAN을 두 개 이상 구성할 수 없습니다. 다음 액세스 지점의 구성을 확인하십시오: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "루트 액세스 지점에는 메시 대역을 포함하여 2개의 대역이 활성화된 SSID가 하나 이상 있어야 합니다.",
+      "mesh.conversion.not.allowed": "기존 SSID를 메시로 변경할 수 없습니다. 메시 모드가 있는 새 SSID 만들기"
     }
   }
 }

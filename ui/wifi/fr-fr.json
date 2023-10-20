@@ -48,7 +48,7 @@
       "select-all": "Tout sélectionner",
       "deselect-all": "Tout dessélectionner",
       "channel": "Canal",
-      "access-point": "Points d’accès",
+      "access-point": "Point d’accès",
       "show": "Afficher",
       "hide": "Masquer",
       "details": "Détails",
@@ -71,6 +71,9 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz et 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2,4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "Assigner",
       "logo": {
         "upload": {
@@ -192,7 +195,7 @@
         "ip": "IP",
         "username": "Nom d’utilisateur",
         "vendor": "Fournisseur",
-        "access-point": "Points d’accès",
+        "access-point": "Point d’accès",
         "ssid": "SSID",
         "band": "Bande",
         "connection-speed": "Vitesse de connexion",
@@ -610,7 +613,9 @@
         "mesh": "Maillage",
         "passphrase": "Phrase secrète",
         "assigned-aps": "Points d’accès assignés",
-        "none": "Aucune"
+        "none": "Aucune",
+        "root-ap": "Point d’accès racine",
+        "node-aps": "Points d’accès nœud"
       },
       "section": {
         "basic-settings": "Paramètres de base",
@@ -641,7 +646,11 @@
         "assign-ssid": "Nombre de points d’accès assignés",
         "enable-ssid": "Activer le SSID",
         "enable-ssid-help-text": "Active le SSID immédiatement.",
-        "config-ready-msg": "Votre configuration est maintenant prête, veuillez enregistrer et continuer.",
+        "config-invalid": "La configuration de votre réseau n’est pas valide",
+        "config-ready-msg": {
+          "mesh": "Votre réseau maillé est maintenant configuré. Cliquez sur Enregistrer pour continuer",
+          "non-mesh": "Votre réseau est maintenant configuré. Cliquez sur Enregistrer pour continuer"
+        },
         "advanced-settings": "Paramètres avancés",
         "previous-section": "Précédent",
         "main-label": "Veuillez choisir les appareils à assigner à ce SSID.",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "Les SSID compatibles avec la Sécurité Synchronisée ne sont pas pris en charge sur les points d’accès non APX.",
         "ap-exceeding-limit": "Un ou plusieurs points d’accès sont incompatibles avec l’une des bandes radio ou ont atteint le nombre maximal de SSID pris en charge.",
         "invalid-node-config": "Veuillez supprimer le ou les SSID existants du ou des points d’accès du nœud avant de créer le maillage",
+        "invalid-root-config": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
         "deployment-mode-dynamic-later": "Ajouter des points d’accès ultérieurement",
         "assign-aps-inline-help-text-later": "Les points d’accès peuvent être ajoutés plus tard en modifiant ce SSID.",
         "available-aps": "Points d’accès disponibles",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "Assignation du VLAN RADIUS",
         "enable-guest-network": "Activer le réseau d’invités",
         "guest-enable-inline-help-text": "Réseau isolé mis à disposition des clients avec certaines limites de trafic.",
-        "guest-network-not-available": "La fonction réseau invité n’est pas encore disponible pour AP6. Solution : Configurez des VLAN balisés distincts sur le point d’accès AP6 pour séparer et isoler le trafic entre plusieurs SSID. Veuillez consulter cette page pour les mises à jour : <a href='https://www.sophos.com/fr-fr/products/secure-wifi/features' target='_blank'>https://www.sophos.com/fr-fr/products/secure-wifi/features</a>.",
+        "guest-network-not-available": "Cette fonction n’est pas encore disponible pour AP6. Solution : Configurez des VLAN balisés distincts sur le point d’accès AP6 pour séparer et isoler le trafic entre plusieurs SSID. Veuillez consulter cette page pour les mises à jour : <a href='https://www.sophos.com/fr-fr/products/secure-wifi/features' target='_blank'>https://www.sophos.com/fr-fr/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "ID du VLAN obligatoire",
         "vlantag-validate-range": "L’ID du VLAN doit être compris entre 1 et 4094",
         "primary-dns-server": "Serveur DNS principal",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
-          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud). La racine doit être connectée au réseau via l’interface LAN."
+          "ap6": "Le SSID maillé AP6 nécessite la connexion d’au moins 2 points d’accès (1 racine et 1 nœud)."
+        },
+        "mesh-setup-guide": {
+          "title": "Guide des étapes de maillage",
+          "connect-lan": "Connectez le câble LAN au point d’accès racine et nœud et confirmez ici",
+          "step-1": {
+            "label": "Assigner des points d’accès",
+            "help-text": "Veuillez assigner 2 points d’accès ou plus à votre réseau"
+          },
+          "step-2": {
+            "label": "Assigner un point d’accès racine"
+          },
+          "step-3": {
+            "label": "Connecter le câble LAN au point d’accès racine",
+            "help-text": "Pour que votre maillage fonctionne, veuillez connecter physiquement un câble LAN à vos points d’accès racine et nœud et cocher la case dans l’écran principal pour continuer"
+          },
+          "step-4": {
+            "label": "Enregistrer la configuration",
+            "help-text": "<div>Votre réseau maillé est configuré. Cliquez sur Enregistrer pour l’activer et terminer la configuration.</div><br/><div>Si des câbles LAN sont connectés à un nœud, veuillez les retirer maintenant</div>"
+          }
         },
         "roo-ap-ssid-limit": "Le point d’accès racine peut avoir un maximum de 5 SSID, y compris le SSID maillé.",
         "can-not-remove-mesh-from-root": "Supprimez le SSID maillé pour le retirer du point d’accès racine",
@@ -1005,7 +1034,7 @@
               "data": "Données",
               "unit": "Unité",
               "number-of-vouchers": "Nombre de bons d’accès",
-              "number-of-devices": "Appareils par bon",
+              "number-of-devices": "Appareils par bon d’accès",
               "valid-for": "Valable pour",
               "days": "Jours",
               "hours": "Heures",
@@ -1079,7 +1108,7 @@
     "accessPoints": {
       "list": {
         "breadcrumb-text": "Points d’accès",
-        "title": "Sans fil - Point d’accès",
+        "title": "Sans fil - Points d’accès",
         "headers": {
           "name": "Nom",
           "mac": "Mac",
@@ -1104,6 +1133,7 @@
           "all-sites": "Tous les sites",
           "select-site": "Sélectionner un site",
           "auto-refresh": "Actualiser automatiquement",
+          "refresh": "Actualiser",
           "unassigned-sites": "Sites non assignés",
           "emptyListMessage": "Vous n’avez ajouté aucun point d’accès.",
           "listRegisterInfo": "Cliquez sur Enregistrer pour ajouter les points d’accès.",
@@ -1229,9 +1259,11 @@
           },
           "mesh": {
             "role": {
-              "root": "Racine",
-              "node": "Nœud"
-            }
+              "root": "RACINE",
+              "node": "NŒUD"
+            },
+            "note-for-node": "Ce point d’accès est un nœud dans un maillage. Les radios de ce nœud ne peuvent être contrôlées que sur le point d’accès racine.",
+            "redirect-to-root": "Cliquez ici pour accéder au point d’accès racine"
           },
           "sophos-central-agent": "Agents Sophos Central",
           "upgrade-automatically": "Mettre à niveau automatiquement",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "Voulez-vous supprimer le SSID assigné ?",
           "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?",
           "invalid-node-config": "Veuillez supprimer le ou les SSID existants du point d’accès avant d’assigner le maillage SSID",
+          "invalid-root-config": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
           "incompatible-node-ap": "Configuration du maillage non valide : Le point d’accès du nœud ne peut pas avoir un plus grand nombre de radios que le point d’accès racine"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "Le point d’accès ne s’est pas connecté au Cloud dans le temps imparti",
           "apPlugin": {
             "title": "Étape 1",
-            "description": "Branchez votre point d’accès à votre réseau afin de le connecter à Internet."
+            "description": "Branchez vos points d’accès à votre réseau afin de les connecter à Internet. Mettez les points d’accès sous tension ou redémarrez-les s’ils sont déjà sous tension."
           },
           "findSerialNumber": {
             "title": "Étape 2",
@@ -1455,7 +1488,7 @@
             "reject": "Non, ne pas annuler"
           },
           "upgrade-now": {
-            "confirm-header": "Mettre à niveau maintenant",
+            "confirm-header": "Mettre à niveau",
             "confirm-msg": "Mise à niveau vers {{version}}.<br>Cette mise à niveau prend environ 5 à 10 minutes et le point d’accès sera redémarré.<br><br> Voulez-vous continuer la mise à niveau ?",
             "accept": "Mise à niveau",
             "reject": "Annuler"
@@ -1483,7 +1516,7 @@
         "up-to-date-message": "Aucun firmware n’est disponible au téléchargement.",
         "action": {
           "schedule-upgrade": "Planifier les mises à niveau",
-          "upgrade-now": "Mettre à niveau maintenant",
+          "upgrade-now": "Mettre à niveau",
           "edit": "Changer la planification",
           "cancel": "Annuler"
         },
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "Impossible de configurer plusieurs VLAN non identifiés sur le point d’accès. Veuillez vérifier la configuration du ou des SSID suivants : {{ssid}}",
         "network": "Impossible de configurer plusieurs VLAN non identifiés. Veuillez vérifier la configuration du ou des points d’accès suivants : {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
+      "mesh.conversion.not.allowed": "Impossible de modifier le SSID existant en maillage. Créer un nouveau SSID avec le mode maillage"
     }
   }
 }

@@ -71,6 +71,9 @@
       "GHZ_2_4": "2.4 GHz",
       "GHZ_2_4,GHZ_5": "2.4 GHz 與 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2.4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "指派",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "網狀",
         "passphrase": "複雜密碼",
         "assigned-aps": "已指派 AP",
-        "none": "無"
+        "none": "無",
+        "root-ap": "根 AP",
+        "node-aps": "節點 AP"
       },
       "section": {
         "basic-settings": "基本設定",
@@ -641,7 +646,11 @@
         "assign-ssid": "指派存取點計數",
         "enable-ssid": "啟用 SSID",
         "enable-ssid-help-text": "立即啟用 SSID。",
-        "config-ready-msg": "您的配置現已完成，請儲存並繼續操作。",
+        "config-invalid": "您的網路設定無效",
+        "config-ready-msg": {
+          "mesh": "您的網狀網路現已設定完成。按一下儲存繼續。",
+          "non-mesh": "您的網路現已設定完成。按一下儲存繼續。"
+        },
         "advanced-settings": "進階設定",
         "previous-section": "先前版本",
         "main-label": "請選擇裝置以指派該 SSID。",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "ap-exceeding-limit": "有一個或多個存取點不支援廣播頻帶之一，或已達到受支援 SSID 的最大數量。",
         "invalid-node-config": "建立網格之前，請從節點存取點移除現有 SSID",
+        "invalid-root-config": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
         "deployment-mode-dynamic-later": "稍後新增存取點",
         "assign-aps-inline-help-text-later": "透過編輯該 SSID，可於稍後隨時新增 AP。",
         "available-aps": "可用存取點",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "指派 RADIUS VLAN",
         "enable-guest-network": "啟用訪客網路",
         "guest-enable-inline-help-text": "為具有某些流量限制的用戶端提供隔離網路。",
-        "guest-network-not-available": "訪客網路功能尚未針對 AP6 提供。解決方式：在 AP6 存取點上設定單獨的標記 VLAN 以分開並隔離多個 SSID 之間的資料流。請參閱本頁面獲取更新：<a href='https://www.sophos.com/en-us/products/secure-wifi/features' target='_blank'>https://www.sophos.com/en-us/products/secure-wifi/features</a>。",
+        "guest-network-not-available": "此功能尚未針對 AP6 提供。解決方式：在 AP6 存取點上設定單獨的標記 VLAN 以分開並隔離多個 SSID 之間的資料流。請觀看本頁面獲取更新：<a href='https://www.sophos.com/en-us/products/secure-wifi/features' target='_blank'>https://www.sophos.com/en-us/products/secure-wifi/features</a>。",
         "vlantag-validate-required": "VLAN ID 為必填項。",
         "vlantag-validate-range": "VLAN ID 必須介於 1 - 4094 之間。",
         "primary-dns-server": "主要 DNS 伺服器",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
-          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點存取點）。根存取點必須透過 LAN 介面連線至網路。"
+          "ap6": "AP6 網狀 SSID 需要至少 2 個存取點（1 個根存取點和 1 個節點存取點）。"
+        },
+        "mesh-setup-guide": {
+          "title": "網狀步驟指南",
+          "connect-lan": "將 LAN 電纜連接到根和節點 AP 並在此處確認",
+          "step-1": {
+            "label": "指派 AP",
+            "help-text": "您必須向網路指派 2 個或更多 AP"
+          },
+          "step-2": {
+            "label": "指派根 AP"
+          },
+          "step-3": {
+            "label": "將 LAN 電纜連接至根 AP",
+            "help-text": "為了使網狀網路正常運作，您必須將 LAN 電纜物理連接到根和節點 AP，並選中主螢幕中的方塊以繼續"
+          },
+          "step-4": {
+            "label": "儲存配置",
+            "help-text": "<div>您的網狀網路已完成設定。按一下儲存以啟動它並完成設定。</div><br/><div>如果您有任何 LAN 電纜連接到節點，請立即將其斷開</div>"
+          }
         },
         "roo-ap-ssid-limit": "根存取點最多可以有 5 個 SSID，包括網格 SSID。",
         "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
@@ -1104,6 +1133,7 @@
           "all-sites": "所有網站",
           "select-site": "選取站點",
           "auto-refresh": "自動重新整理",
+          "refresh": "重新整理",
           "unassigned-sites": "未指派的站點",
           "emptyListMessage": "您尚未新增任何存取點。",
           "listRegisterInfo": "按一下「註冊」以新增存取點。",
@@ -1231,7 +1261,9 @@
             "role": {
               "root": "根存取點",
               "node": "節點"
-            }
+            },
+            "note-for-node": "該 AP 是網狀網路中的一個節點。該節點的無線電只能在根 AP 上控制。",
+            "redirect-to-root": "按一下此處存取根 AP"
           },
           "sophos-central-agent": "Sophos Central 代理",
           "upgrade-automatically": "自動升級",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "是否移除指派的 SSID？",
           "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？",
           "invalid-node-config": "在指派網狀 SSID 之前，請從存取點移除現有 SSID",
+          "invalid-root-config": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
           "incompatible-node-ap": "無效的網格設定：與根存取點相比，節點存取點不能擁有更多數量的無線電"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "在超時前 AP 無法連接至雲端",
           "apPlugin": {
             "title": "步驟 1",
-            "description": "將您的存取點插入您的網路使其可以連線至網際網路。"
+            "description": "將您的存取點插入您的網路使其可以連線至網際網路。打開存取點電源，如果已經打開電源則重新啟動。"
           },
           "findSerialNumber": {
             "title": "步驟 2",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "無法在存取點上設定多個未標記 VLAN。請檢查以下 SSID 的設定：{{ssid}}",
         "network": "無法設定多個未標記 VLAN。請檢查以下存取點的設定：{{ap}}"
-      }
+      },
+      "invalid.config.for.root": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
+      "mesh.conversion.not.allowed": "不能將現有 SSID 變更為網狀網路。使用網狀模式建立新的 SSID"
     }
   }
 }

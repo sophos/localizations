@@ -71,6 +71,9 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz y 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2,4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "Asignar",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "Malla",
         "passphrase": "Frase de acceso",
         "assigned-aps": "Puntos de acceso asignados",
-        "none": "Ninguna"
+        "none": "Ninguna",
+        "root-ap": "Punto de acceso raíz",
+        "node-aps": "Puntos de acceso de nodo"
       },
       "section": {
         "basic-settings": "Configuración básica",
@@ -641,7 +646,11 @@
         "assign-ssid": "Número de puntos de acceso asignados",
         "enable-ssid": "Activar SSID",
         "enable-ssid-help-text": "Activa el SSID inmediatamente.",
-        "config-ready-msg": "Su configuración ya está lista. Guárdela y continúe.",
+        "config-invalid": "Su configuración de red no es válida",
+        "config-ready-msg": {
+          "mesh": "Su red en malla ya está configurada. Haga clic en Guardar para continuar",
+          "non-mesh": "Su red ya está configurada. Haga clic en Guardar para continuar"
+        },
         "advanced-settings": "Opciones avanzadas",
         "previous-section": "Anterior",
         "main-label": "Elija los dispositivos a los que se asignará este SSID.",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "Los SSID con la Seguridad Sincronizada habilitada no son compatibles con los puntos de acceso distintos de la serie APX.",
         "ap-exceeding-limit": "Hay uno o más puntos de acceso que no admiten una de las bandas de radio o bien han alcanzado el número máximo de SSID soportados.",
         "invalid-node-config": "Elimine los SSID existentes de los puntos de acceso de nodo antes de crear la malla",
+        "invalid-root-config": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
         "deployment-mode-dynamic-later": "Añadir puntos de acceso después",
         "assign-aps-inline-help-text-later": "Los puntos de acceso se pueden añadir más adelante editando este SSID.",
         "available-aps": "Puntos de acceso disponibles",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "Asignación VLAN de RADIUS",
         "enable-guest-network": "Activar red de invitado",
         "guest-enable-inline-help-text": "Ofrece una red aislada para los clientes con determinadas restricciones de tráfico.",
-        "guest-network-not-available": "La función de red de invitado aún no está disponible para AP6. Solución: Configure VLAN etiquetadas independientes en el punto de acceso AP6 para separar y aislar el tráfico entre varios SSID. Consulte esta página para mantenerse al día: <a href='https://www.sophos.com/es-es/products/secure-wifi/features' target='_blank'>https://www.sophos.com/es-es/products/secure-wifi/features</a>.",
+        "guest-network-not-available": "Esta función aún no está disponible para AP6. Solución: Configure VLAN etiquetadas independientes en el punto de acceso AP6 para separar y aislar el tráfico entre varios SSID. Consulte esta página para mantenerse al día: <a href='https://www.sophos.com/es-es/products/secure-wifi/features' target='_blank'>https://www.sophos.com/es-es/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "Se requiere el ID de VLAN.",
         "vlantag-validate-range": "El ID de VLAN debe estar entre 1 y 4094.",
         "primary-dns-server": "Servidor DNS primario",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "El SSID de malla APX requiere por lo menos un punto de acceso conectado a Internet vía LAN.",
-          "ap6": "El SSID de malla AP6 requiere por lo menos dos puntos de acceso (1 raíz y 1 nodo). El punto de acceso raíz debe estar conectado a la red a través de la interfaz de LAN."
+          "ap6": "El SSID de malla AP6 requiere por lo menos dos puntos de acceso (1 raíz y 1 nodo)."
+        },
+        "mesh-setup-guide": {
+          "title": "Guía paso a paso para la malla",
+          "connect-lan": "Conecte el cable LAN al punto de acceso raíz y al punto de acceso de nodo y confirme aquí",
+          "step-1": {
+            "label": "Asignar puntos de acceso",
+            "help-text": "Debe asignar 2 o más puntos de acceso a su red"
+          },
+          "step-2": {
+            "label": "Asignar punto de acceso raíz"
+          },
+          "step-3": {
+            "label": "Conecte el cable LAN al punto de acceso raíz",
+            "help-text": "Para que la malla funcione, debe conectar físicamente un cable LAN a su punto de acceso raíz y punto de acceso de nodo y marcar la casilla en la pantalla principal para continuar"
+          },
+          "step-4": {
+            "label": "Guardar configuración",
+            "help-text": "<div>La red en malla se ha configurado. Pulse Guardar para activarla y finalizar la configuración.</div><br/><div>Si tiene algún cable LAN conectado a un nodo, retírelo ahora</div>"
+          }
         },
         "roo-ap-ssid-limit": "El punto de acceso raíz puede tener un máximo de 5 SSDI incluyendo el SSID de malla.",
         "can-not-remove-mesh-from-root": "Elimine el SSID de malla para eliminarlo del punto de acceso raíz",
@@ -1104,6 +1133,7 @@
           "all-sites": "Todos los sitios",
           "select-site": "Seleccionar sitio",
           "auto-refresh": "Actualizar automáticamente",
+          "refresh": "Actualizar",
           "unassigned-sites": "Sitios no asignados",
           "emptyListMessage": "No ha añadido ningún punto de acceso.",
           "listRegisterInfo": "Haga clic en Registrar para añadir puntos de acceso.",
@@ -1229,9 +1259,11 @@
           },
           "mesh": {
             "role": {
-              "root": "Raíz",
-              "node": "Nodo"
-            }
+              "root": "RAÍZ",
+              "node": "NODO"
+            },
+            "note-for-node": "Este punto de acceso es un nodo en una malla. Las radios de este nodo solo pueden controlarse en el punto de acceso raíz.",
+            "redirect-to-root": "Pulse aquí para acceder al punto de acceso raíz"
           },
           "sophos-central-agent": "Agentes de Sophos Central",
           "upgrade-automatically": "Actualizar automáticamente",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "¿Desea eliminar el SSID asignado?",
           "deleteDialogText": "Al eliminar el punto de acceso, se reiniciará automáticamente el sistema.<br><br>¿Desea continuar con la eliminación?",
           "invalid-node-config": "Elimine los SSID existentes del punto de acceso antes de asignar el SSID de malla",
+          "invalid-root-config": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
           "incompatible-node-ap": "Configuración de malla no válida: El punto de acceso de nodo no puede tener más radios que el punto de acceso raíz"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "El PA no se ha conectado a la nube dentro del tiempo de espera",
           "apPlugin": {
             "title": "Paso 1",
-            "description": "Conecte el punto de acceso a la red para que pueda conectarse a Internet."
+            "description": "Conecte los puntos de acceso a la red para que puedan conectarse a Internet. Encienda los puntos de acceso y, si ya están encendidos, reinícielos."
           },
           "findSerialNumber": {
             "title": "Paso 2",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "No se puede configurar más de una VLAN sin etiquetar en el punto de acceso. Compruebe la configuración de los siguientes SSID: {{ssid}}",
         "network": "No se puede configurar más de una VLAN sin etiquetar. Compruebe la configuración de los siguientes puntos de acceso: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
+      "mesh.conversion.not.allowed": "No se puede cambiar el SSID al modo en malla. Crear un nuevo SSID con modo en malla"
     }
   }
 }

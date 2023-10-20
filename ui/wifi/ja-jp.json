@@ -71,6 +71,9 @@
       "GHZ_2_4": "2.4GHz",
       "GHZ_2_4,GHZ_5": "2.4GHz および 5GHz",
       "GHZ_5": "5GHz",
+      "2g": "2.4GHz",
+      "5g": "5GHz",
+      "6g": "6GHz",
       "assign": "割り当て",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "メッシュ",
         "passphrase": "パスフレーズ",
         "assigned-aps": "割り当てられたアクセスポイント",
-        "none": "なし"
+        "none": "なし",
+        "root-ap": "ルート AP",
+        "node-aps": "ノード AP"
       },
       "section": {
         "basic-settings": "基本設定",
@@ -641,7 +646,11 @@
         "assign-ssid": "割り当てられているアクセスポイント数",
         "enable-ssid": "SSID を有効にする",
         "enable-ssid-help-text": "SSID をただちに有効にします。",
-        "config-ready-msg": "設定ができました。保存して続行してください。",
+        "config-invalid": "ネットワーク設定が無効です",
+        "config-ready-msg": {
+          "mesh": "これでメッシュネットワークが設定されました。続行するには保存をクリックしてください",
+          "non-mesh": "これでネットワークの設定が完了しました。続行するには保存をクリックしてください"
+        },
         "advanced-settings": "詳細設定",
         "previous-section": "戻る",
         "main-label": "この SSID に割り当てるデバイスを選択してください。",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "Synchronized Security に対応した SSID は、APX シリーズ以外のアクセスポイントには対応していません。",
         "ap-exceeding-limit": "無線方式の 1つに対応していないか、対応 SSID の最大数に達しているアクセスポイントが 1つ以上あります。",
         "invalid-node-config": "メッシュを作成する前に、ノードのアクセスポイントから既存の SSID を削除してください",
+        "invalid-root-config": "ルート アクセス ポイントには、メッシュ帯域を含む 2つの帯域が有効になっている SSID が少なくとも 1つ必要です",
         "deployment-mode-dynamic-later": "後でアクセスポイントを追加",
         "assign-aps-inline-help-text-later": "この SSID を編集することによって、いつでも後からアクセスポイントを追加できます。",
         "available-aps": "利用可能なアクセスポイント",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "RADIUS VLAN の割り当て",
         "enable-guest-network": "ゲストネットワークを有効にする",
         "guest-enable-inline-help-text": "社内ネットワークから切り離された制限付きのネットワークがクライアントに提供されます。",
-        "guest-network-not-available": "ゲストネットワーク機能は、まだ AP6 では利用できません。回避策: AP6 アクセスポイントに個別のタグ付き VLAN を設定して、複数の SSID 間のトラフィックを分離および隔離します。更新については、こちらのページを参照してください: <a href='https://www.sophos.com/ja-jp/products/secure-wifi/features' target='_blank'>https://www.sophos.com/ja-jp/products/secure-wifi/features</a>。",
+        "guest-network-not-available": "この機能は、まだ AP6 では利用できません。回避策: AP6 アクセスポイントに個別のタグ付き VLAN を設定して、複数の SSID 間のトラフィックを分離および隔離します。更新については、こちらのページを参照してください: <a href='https://www.sophos.com/ja-jp/products/secure-wifi/features' target='_blank'>https://www.sophos.com/ja-jp/products/secure-wifi/features</a>。",
         "vlantag-validate-required": "VLAN ID を指定してください。",
         "vlantag-validate-range": "VLAN ID は 1～4094 の範囲で指定してください",
         "primary-dns-server": "プライマリ DNS サーバー",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "APX メッシュ SSID を使用するには、少なくとも 1つのアクセスポイントが、LAN 経由でインターネットに接続している必要があります。",
-          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が必要です。ルートは LAN インターフェイスを介してネットワークに接続する必要があります。"
+          "ap6": "AP6 メッシュ SSID を使用するには、少なくとも 2つのアクセスポイント (1つのルートと 1つのノード) が必要です。"
+        },
+        "mesh-setup-guide": {
+          "title": "メッシュステップ ガイド",
+          "connect-lan": "LAN ケーブルをルート AP とノード AP に接続し、ここで確認します",
+          "step-1": {
+            "label": "AP の割り当て",
+            "help-text": "ネットワークに 2つ以上の AP を割り当てる必要があります"
+          },
+          "step-2": {
+            "label": "ルート AP の割り当て"
+          },
+          "step-3": {
+            "label": "LAN ケーブルをルート AP に接続",
+            "help-text": "メッシュを機能させるには、LAN ケーブルをルート AP とノード AP に物理的に接続し、メイン画面のチェックボックスをオンにして続行する必要があります"
+          },
+          "step-4": {
+            "label": "設定の保存",
+            "help-text": "<div>メッシュネットワークが設定されました。保存をクリックして有効にし、セットアップを終了します。</div><br/><div>ノードに LAN ケーブルが接続されている場合は、今すぐ取り外してください</div>"
+          }
         },
         "roo-ap-ssid-limit": "ルート アクセス ポイントは、メッシュ SSID を含めて最大 5つの SSID を持つことができます。",
         "can-not-remove-mesh-from-root": "ルート アクセス ポイントから削除するには、メッシュ SSID を削除してください",
@@ -1104,6 +1133,7 @@
           "all-sites": "すべてのサイト",
           "select-site": "サイトの選択",
           "auto-refresh": "自動更新",
+          "refresh": "更新",
           "unassigned-sites": "割り当てられていないサイト",
           "emptyListMessage": "アクセスポイントが追加されていません。",
           "listRegisterInfo": "「登録」をクリックして、アクセスポイントを追加してください。",
@@ -1231,7 +1261,9 @@
             "role": {
               "root": "ルート",
               "node": "ノード"
-            }
+            },
+            "note-for-node": "この AP はメッシュ内のノードです。このノードの無線は、ルート AP でのみ制御できます。",
+            "redirect-to-root": "ルート AP にアクセスするには、ここをクリックしてください"
           },
           "sophos-central-agent": "Sophos Central エージェント",
           "upgrade-automatically": "自動アップグレード",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "割り当て済みの SSID を削除しますか？",
           "deleteDialogText": "AP を削除すると、システムが自動的に再起動します。<br><br>削除を続行しますか？",
           "invalid-node-config": "メッシュ  SSID を割り当てる前に、アクセスポイントから既存の SSID を削除してください",
+          "invalid-root-config": "ルート アクセス ポイントには、メッシュ帯域を含む 2つの帯域が有効になっている SSID が少なくとも 1つ必要です",
           "incompatible-node-ap": "無効なメッシュの設定: ノード アクセス ポイントは、ルート アクセス ポイントほど多くの無線を搭載することはできません"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "アクセスポイントは制限時間内にクラウドに接続しませんでした",
           "apPlugin": {
             "title": "ステップ 1",
-            "description": "アクセスポイントをネットワークに接続して、インターネットに接続できるようにします。"
+            "description": "アクセスポイントをネットワークに接続して、インターネットに接続できるようにします。アクセスポイントの電源を入れ、すでに電源が入っている場合は再起動します。"
           },
           "findSerialNumber": {
             "title": "ステップ 2",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "アクセスポイント上で複数のタグなし VLAN を設定することはできません。次の SSID の設定を確認してください: {{ssid}}",
         "network": "複数のタグなし VLAN を設定することはできません。次のアクセスポイントの設定を確認してください: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "ルート アクセス ポイントには、メッシュ帯域を含む 2つの帯域が有効になっている SSID が少なくとも 1つ必要です",
+      "mesh.conversion.not.allowed": "既存の SSID をメッシュに変更することはできません。メッシュモードで新しい SSID を作成してください"
     }
   }
 }

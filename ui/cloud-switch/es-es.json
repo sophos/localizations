@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "Supervisión MLD (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "Supervisión IGMP (VLAN)",
       "DhcpSnoopingVlanStatusDto": "Supervisión DHCP (VLAN)",
-      "QosClassMappingDto": "Política de QoS"
+      "QosClassMappingDto": "Política de QoS",
+      "VoiceVlanSettingsDto": "VLAN de voz"
     },
     "dashboard": {
       "menu-title": "Panel de control",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "Parámetro de destino SNMP",
         "snmp_access": "Acceso SNMP",
         "snmp_notification_settings": " Configuración notificación SNMP",
-        "snmp_target_address": "Dirección de destino SNMP"
+        "snmp_target_address": "Dirección de destino SNMP",
+        "vlan_gvrp_port_settings": "Configuración de puertos GVRP",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -2622,10 +2625,15 @@
       "7905": "Política de QoS: Valor no válido para el estado de la política de puerto.",
       "7906": "Política de QoS: No se puede modificar el estado de la política de puerto.",
       "7907": "Política de QoS: Error al analizar el nombre de la clase. Solicitud PATCH no válida.",
-      "7908": "Política de QoS: Error al analizar el puerto de enlace. Solicitud PATCH no válida."
+      "7908": "Política de QoS: Error al analizar el puerto de enlace. Solicitud PATCH no válida.",
+      "5335": "VLAN de voz: Error al eliminar los datos de OUI. Solicitud DELETE no válida.",
+      "5337": "VLAN de voz: Error al analizar los datos de OUI. Solicitud POST no válida.",
+      "5303": "VLAN de voz: La OUI ya existe. Solicitud POST no válida",
+      "5304": "VLAN de voz: Valor no válido para OUI. Solicitud POST no válida",
+      "5305": "VLAN de voz: Valor no válido para el ID de VLAN de voz. Solicitud PATCH no válida."
     },
     "lacp-settings": {
-      "dialog-title": "configuración LACP",
+      "dialog-title": "Configuración LACP",
       "config-source": "Origen de configuración",
       "form": {
         "system-priority": "Prioridad del sistema",
@@ -3012,11 +3020,12 @@
       "id": "ID de VLAN de voz",
       "priorityTag": "Etiqueta de prioridad de VLAN",
       "dscp": "DSCP",
-      "cosStatus": "Estado de CoS 802.1",
+      "cosStatus": "Estado de CoS 802.1p",
       "cosPriority": "Prioridad de CoS",
       "agingTime": "Tiempo de vencimiento",
       "config-source": "Origen de configuración",
       "required-input-message": "El valor debe ser {{ min }} - {{ max }}",
+      "required-vlan": "No existe ninguna VLAN. Cree una para configurar la VLAN de voz.",
       "global-settings": "Configuración global",
       "not-set": "No establecido",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "Origen de configuración",
         "maxlength-descr-message": "La longitud de la descripción debe ser de entre 0 y 32 caracteres",
         "invalid-oui-address-message": "Dirección OUI no válida",
+        "invalid-descr-message": "Descripción no válida",
         "oui-address-already-exist-message": "La dirección OUI ya existe",
         "message": {
           "add-settings-success": "Se ha creado la configuración de OUI de VLAN de voz",

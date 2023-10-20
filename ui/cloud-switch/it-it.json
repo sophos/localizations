@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "Snooping MLD (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "Snooping IGMP (VLAN)",
       "DhcpSnoopingVlanStatusDto": "Snooping DHCP (VLAN)",
-      "QosClassMappingDto": "Criterio QoS"
+      "QosClassMappingDto": "Criterio QoS",
+      "VoiceVlanSettingsDto": "VLAN traffico voce"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "Parametro di destinazione SNMP",
         "snmp_access": "Accesso SNMP",
         "snmp_notification_settings": " Impostazioni di notifica per SNMP",
-        "snmp_target_address": "Indirizzo di destinazione SNMP"
+        "snmp_target_address": "Indirizzo di destinazione SNMP",
+        "vlan_gvrp_port_settings": "Impostazioni porta GVRP",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -2622,7 +2625,12 @@
       "7905": "Criterio QoS: Valore non valido per lo stato del criterio della porta.",
       "7906": "Criterio QoS: Impossibile modificare lo stato del criterio della porta.",
       "7907": "Criterio QoS: Errore durante l’analisi del nome della classe. Richiesta PATCH non valida.",
-      "7908": "Criterio QoS: Errore durante l’analisi della porta con associazioni. Richiesta PATCH non valida."
+      "7908": "Criterio QoS: Errore durante l’analisi della porta con associazioni. Richiesta PATCH non valida.",
+      "5335": "VLAN traffico voce: Errore durante l’eliminazione dei dati dell’OUI. Richiesta DELETE non valida.",
+      "5337": "VLAN traffico voce: Errore durante l’analisi dei dati dell’OUI. Richiesta POST non valida.",
+      "5303": "VLAN traffico voce: Questa OUI esiste già. Richiesta POST non valida",
+      "5304": "VLAN traffico voce: Valore non valido per OUI. Richiesta POST non valida",
+      "5305": "VLAN traffico voce: Valore non valido per VLAN traffico voce. Richiesta PATCH non valida."
     },
     "lacp-settings": {
       "dialog-title": "Impostazioni LACP",
@@ -3012,11 +3020,12 @@
       "id": "ID VLAN traffico voce",
       "priorityTag": "Tag di priorità VLAN",
       "dscp": "DSCP",
-      "cosStatus": "Stato CoS 802.1",
+      "cosStatus": "Stato CoS 802.1p",
       "cosPriority": "Priorità CoS",
       "agingTime": "Tempo di durata",
       "config-source": "Origine configurazione",
       "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
+      "required-vlan": "Nessuna VLAN esistente. Creane una per configurare la VLAN traffico voce",
       "global-settings": "Impostazioni globali",
       "not-set": "Non impostata",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "Origine configurazione",
         "maxlength-descr-message": "La lunghezza della descrizione deve essere compresa tra 0 e 32 caratteri",
         "invalid-oui-address-message": "Indirizzo OUI non valido",
+        "invalid-descr-message": "Descrizione non valida",
         "oui-address-already-exist-message": "Indirizzo OUI già esistente",
         "message": {
           "add-settings-success": "Le impostazioni dell’OUI VLAN traffico voce sono state create",

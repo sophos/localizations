@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "MLD 스누핑 (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "IGMP 스누핑 (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP 스누핑 (VLAN)",
-      "QosClassMappingDto": "QoS 정책"
+      "QosClassMappingDto": "QoS 정책",
+      "VoiceVlanSettingsDto": "음성 VLAN"
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "SNMP 대상 매개 변수",
         "snmp_access": "SNMP 액세스",
         "snmp_notification_settings": " SNMP 알림 설정",
-        "snmp_target_address": "SNMP 대상 주소"
+        "snmp_target_address": "SNMP 대상 주소",
+        "vlan_gvrp_port_settings": "GVRP 포트 설정",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -2622,7 +2625,12 @@
       "7905": "QoS 정책: 포트 정책 상태에 대해 잘못된 값입니다.",
       "7906": "QoS 정책: 포트 정책 상태를 수정할 수 없습니다.",
       "7907": "QoS 정책: 클래스 이름을 구문 분석하는 동안 오류가 발생했습니다. 잘못된 PATCH 요청.",
-      "7908": "QoS 정책: 바인딩 포트를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 PATCH 요청."
+      "7908": "QoS 정책: 바인딩 포트를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 PATCH 요청.",
+      "5335": "음성 VLAN: OUI 데이터를 삭제하는 동안 오류가 발생했습니다. 잘못된 DELETE 요청.",
+      "5337": "음성 VLAN: OUI 데이터를 구문 분석하는 동안 오류가 발생했습니다. 잘못된 POST 요청.",
+      "5303": "음성 VLAN: OUI이 이미 있습니다. 잘못된 POST 요청",
+      "5304": "음성 VLAN: OUI에 대해 잘못된 값입니다. 잘못된 POST 요청",
+      "5305": "음성 VLAN: 음성 VLAN ID에 대한 잘못된 값. 잘못된 PATCH 요청."
     },
     "lacp-settings": {
       "dialog-title": "LACP 설정",
@@ -3012,11 +3020,12 @@
       "id": "음성 VLAN ID",
       "priorityTag": "VLAN 우선순위 태그",
       "dscp": "DSCP",
-      "cosStatus": "802.1 CoS 상태",
+      "cosStatus": "802.1p CoS 상태",
       "cosPriority": "CoS 우선순위",
       "agingTime": "에이징 시간",
       "config-source": "구성 소스",
       "required-input-message": "값은 {{ min }}~{{ max }}여야 합니다",
+      "required-vlan": "VLAN이 존재하지 않습니다. 음성 VLAN을 구성하려면 하나 만드십시오.",
       "global-settings": "전역 설정",
       "not-set": "설정되지 않음",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "구성 소스",
         "maxlength-descr-message": "설명 길이는 0~32자 사이여야 함",
         "invalid-oui-address-message": "잘못된 OUI 주소",
+        "invalid-descr-message": "잘못된 설명",
         "oui-address-already-exist-message": "OUI 주소가 이미 존재함",
         "message": {
           "add-settings-success": "음성 VLAN OUI 설정이 생성됨",
