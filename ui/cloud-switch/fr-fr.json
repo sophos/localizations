@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "Surveillance MLD (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "Surveillance IGMP (VLAN)",
       "DhcpSnoopingVlanStatusDto": "Surveillance DHCP (VLAN)",
-      "QosClassMappingDto": "Stratégie QoS"
+      "QosClassMappingDto": "Stratégie QoS",
+      "VoiceVlanSettingsDto": "VLAN voix"
     },
     "dashboard": {
       "menu-title": "Tableau de bord",
@@ -1380,7 +1381,7 @@
         "qos_bandwidth_control_setting": "Contrôle de la bande passante",
         "qos_class_mapping": "Stratégie QoS",
         "qos_policy_mapping": "Liaison de stratégie QoS",
-        "voice_vlan_oui": "VLAN voix OUI",
+        "voice_vlan_oui": "OUI du VLAN voix",
         "voice_vlan": "VLAN voix",
         "multicast_filtering": "Filtrage multidiffusion",
         "port_mirroring": "Mise en miroir de ports",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "Paramètre cible SNMP",
         "snmp_access": "Accès SNMP",
         "snmp_notification_settings": " Paramètres de notification SNMP",
-        "snmp_target_address": "Adresse cible SNMP"
+        "snmp_target_address": "Adresse cible SNMP",
+        "vlan_gvrp_port_settings": "Paramètres du port GVRP",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -2622,7 +2625,12 @@
       "7905": "Stratégie QoS : Valeur non valide pour l’état de la stratégie de port.",
       "7906": "Stratégie QoS : Impossible de modifier l’état de la stratégie de port.",
       "7907": "Stratégie QoS : Erreur lors de l’analyse du nom de classe. Demande PATCH non valide.",
-      "7908": "Stratégie QoS : Erreur lors de l’analyse du port de liaison. Demande PATCH non valide."
+      "7908": "Stratégie QoS : Erreur lors de l’analyse du port de liaison. Demande PATCH non valide.",
+      "5335": "VLAN voix : Erreur lors de la suppression des données OUI. Demande DELETE non valide.",
+      "5337": "VLAN voix : Erreur lors de l’analyse des données OUI. Demande POST non valide.",
+      "5303": "VLAN voix : Cette OUI existe déjà. Demande POST non valide",
+      "5304": "VLAN voix : Valeur non valide pour OUI. Demande POST non valide",
+      "5305": "VLAN voix : Valeur incorrecte pour l’ID VLAN voix. Demande PATCH non valide."
     },
     "lacp-settings": {
       "dialog-title": "Paramètres du LACP",
@@ -3012,11 +3020,12 @@
       "id": "ID du VLAN voix",
       "priorityTag": "Balise de priorité VLAN",
       "dscp": "DSCP",
-      "cosStatus": "État du CoS 802.1",
+      "cosStatus": "Statut 802.1p CoS",
       "cosPriority": "Priorité COS",
       "agingTime": "Temps de maturation",
       "config-source": "Source de configuration",
       "required-input-message": "La valeur doit être {{ min }} - {{ max }}",
+      "required-vlan": "Aucun VLAN existant. Veuillez en créer un pour configurer le VLAN voix",
       "global-settings": "Paramètres généraux",
       "not-set": "Non défini",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "Source de configuration",
         "maxlength-descr-message": "La longueur de la description doit être comprise entre 0 et 32 caractères",
         "invalid-oui-address-message": "Adresse OUI incorrecte",
+        "invalid-descr-message": "Description incorrecte",
         "oui-address-already-exist-message": "Cette adresse OUI existe déjà",
         "message": {
           "add-settings-success": "Les paramètres OUI du VLAN voix ont été créés",

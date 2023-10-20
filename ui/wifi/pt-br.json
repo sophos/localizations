@@ -71,6 +71,9 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2,4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "Atribuir",
       "logo": {
         "upload": {
@@ -539,8 +542,8 @@
           "ssid": "SSID",
           "type": "Tipo",
           "passphrase": "Frase de segurança",
-          "encryption-mode": "Modo de Encriptação",
-          "encryption-algorithm": "Algoritmo de encriptação",
+          "encryption-mode": "Modo de Criptografia",
+          "encryption-algorithm": "Algoritmo de criptografia",
           "bands": "Bandas",
           "status": "Status",
           "access-points-count": "Ponto de acesso atribuído",
@@ -562,8 +565,8 @@
           "invalid": "Inválida"
         },
         "type": "Tipo",
-        "encryption-mode":"Modo de Encriptação",
-        "encryption-algorithm":"Algoritmo de encriptação",
+        "encryption-mode":"Modo de Criptografia",
+        "encryption-algorithm":"Algoritmo de criptografia",
         "radius-server-ip":"IP do Servidor RADIUS",
         "radius-port":"Porta do RADIUS",
         "frequency-band":"Banda de Frequência",
@@ -610,7 +613,9 @@
         "mesh": "Malha",
         "passphrase": "Frase de segurança",
         "assigned-aps": "APs atribuídos",
-        "none": "Nenhuma"
+        "none": "Nenhuma",
+        "root-ap": "AP raiz",
+        "node-aps": "APs de nó"
       },
       "section": {
         "basic-settings": "Configurações básicas",
@@ -626,22 +631,26 @@
       "create": {
         "add-success": "SSID salva com sucesso.",
         "help": "Ajuda",
-        "general-setting-encryption-mode": "Especifique as configurações gerais do seu novo SSID. Escolha o modo de encriptação necessária e o tipo de SSID que deseja oferecer.",
+        "general-setting-encryption-mode": "Especifique as configurações gerais do seu novo SSID. Escolha o modo de criptografia necessária e o tipo de SSID que deseja oferecer.",
         "band-encryption-mode": {
-          "apx": "Recomendamos usar WPA2 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz.",
-          "ap6": "Recomendamos usar WPA3 com AES como modo de encriptação e banda de frequência de 2,4 e 5 GHz.",
+          "apx": "Recomendamos usar WPA2 com AES como modo de criptografia e banda de frequência de 2,4 e 5 GHz.",
+          "ap6": "Recomendamos usar WPA3 com AES como modo de criptografia e banda de frequência de 2,4 e 5 GHz.",
           "GHZ_6": "O WPA2/WPA3 Personal será usado nas bandas 2,4 GHz e 5 GHz. O WPA3 Personal só pode ser aplicado à banda 6 GHz."
         },
         "settings": "Suas configurações",
         "basic-setting": "Configurações básicas",
-        "encryption-algorithm": "Algoritmo de encriptação",
+        "encryption-algorithm": "Algoritmo de criptografia",
         "radius-server-ip": "IP do Servidor RADIUS",
         "radius-port": "Porta do RADIUS",
         "frequency-band": "Banda de Frequência",
         "assign-ssid": "Contagem de pontos de acesso designados",
         "enable-ssid": "Habilitar SSID",
         "enable-ssid-help-text": "Imediatamente, ativa o SSID.",
-        "config-ready-msg": "A sua configuração está pronta: salve e prossiga.",
+        "config-invalid": "O config da sua rede é inválido",
+        "config-ready-msg": {
+          "mesh": "Sua rede em malha foi configurada. Clique em Salvar para continuar",
+          "non-mesh": "Sua rede foi configurada. Clique em Salvar para continuar"
+        },
         "advanced-settings": "Configurações avançadas",
         "previous-section": "Anterior",
         "main-label": "Escolha os dispositivos para atribuir este SSID.",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
         "ap-exceeding-limit": "Há um ou mais pontos de acesso que não aceitam uma das bandas de rádio ou que atingiram o número máximo de SSIDs aceitos.",
         "invalid-node-config": "Remova os SSIDs existentes dos nós de pontos de acesso antes de criar a malha",
+        "invalid-root-config": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
         "deployment-mode-dynamic-later": "Adicionar pontos de acesso posteriormente",
         "assign-aps-inline-help-text-later": "Os APs podem ser adicionados posteriormente, bastando editar o SSID.",
         "available-aps": "Pontos de acesso disponíveis",
@@ -710,8 +720,8 @@
         "vlan": "VLAN",
         "vlan-inline-help-text": "A transição do tráfego do cliente é feita por ponte a uma VLAN especificada.",
         "vlan-inline-radius-help-text": {
-          "apx": "Separa os usuários sem precisar de múltiplos SSIDs usando atributos de RADIUS para suporte a protocolo de tunelamento (RFC 2868). Disponível com Modo de encriptação WPA/WPA2 Enterprise.",
-          "ap6": "Separa os usuários sem precisar de múltiplos SSIDs usando atributos de RADIUS para suporte a protocolo de tunelamento (RFC 2868). Disponível com Modo de encriptação WPA2/WPA3 Enterprise."
+          "apx": "Separa os usuários sem precisar de múltiplos SSIDs usando atributos de RADIUS para suporte a protocolo de tunelamento (RFC 2868). Disponível com Modo de criptografia WPA/WPA2 Enterprise.",
+          "ap6": "Separa os usuários sem precisar de múltiplos SSIDs usando atributos de RADIUS para suporte a protocolo de tunelamento (RFC 2868). Disponível com Modo de criptografia WPA2/WPA3 Enterprise."
         },
         "vlan-dynamic-description": "As opções a seguir se aplicam apenas a usuários que não recebem um número de tag designado pelo servidor RADIUS.",
         "vlan-id": "ID de VLAN",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "Designação de RADIUS VLAN",
         "enable-guest-network": "Habilitar a rede de convidado",
         "guest-enable-inline-help-text": "Oferece uma rede isolada para os clientes com certa restrição de tráfego.",
-        "guest-network-not-available": "O recurso de rede de convidado não está disponível ainda para AP6. Solução alternativa: Configure VLANs com tags separadas no ponto de acesso AP6 para separar e isolar o tráfego entre vários SSIDs. Consulte esta página para ver as atualizações: <a href='https://www.sophos.com/pt-br/products/secure-wifi/features' target='_blank'>https://www.sophos.com/pt-br/products/secure-wifi/features</a>.",
+        "guest-network-not-available": "Este recurso não está disponível ainda para AP6. Solução alternativa: Configure VLANs com tags separadas no ponto de acesso AP6 para separar e isolar o tráfego entre vários SSIDs. Acesse esta página periodicamente para ver as atualizações: <a href='https://www.sophos.com/pt-br/products/secure-wifi/features' target='_blank'>https://www.sophos.com/pt-br/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "É necessária uma ID de VLAN.",
         "vlantag-validate-range": "O ID da VLAN deve estar entre 1 e 4094.",
         "primary-dns-server": "Servidor de DNS primário",
@@ -740,8 +750,8 @@
         "primary-dns-server-description": " Os clientes do servidor DNS de backup podem usar se o servidor primário não responder. O uso é dependente do cliente.",
         "ssid-network-name": "Nome para a rede.",
         "password-auto-generate-msg": "A senha será gerada automaticamente",
-        "insecure-encryption-mode-msg": "Este modo de encriptação não é seguro",
-        "insecure-encryption-algorithm-msg": "Este algoritmo de encriptação não é seguro",
+        "insecure-encryption-mode-msg": "Este modo de criptografia não é seguro",
+        "insecure-encryption-algorithm-msg": "Este algoritmo de criptografia não é seguro",
         "encryption-mode-help-msg": {
           "apx": "Recomendamos usar WPA2.",
           "ap6": "Recomendamos usar WPA3."
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "O SSID de malha APX requer, no mínimo, um ponto de acesso conectado à internet via LAN.",
-          "ap6": "O SSID de malha AP6 requer, no mínimo, 2 pontos de acesso (1 raiz e 1 nó). A raiz deve ser conectada à rede através da interface da LAN."
+          "ap6": "O SSID de malha AP6 requer, no mínimo, 2 pontos de acesso (1 raiz e 1 nó)."
+        },
+        "mesh-setup-guide": {
+          "title": "Guia de etapas de malha",
+          "connect-lan": "Conectar o cabo da LAN ao AP raiz e ao AP do nó e confirmar aqui",
+          "step-1": {
+            "label": "Atribuir APs",
+            "help-text": "Você deve atribuir 2 ou mais APs à sua rede"
+          },
+          "step-2": {
+            "label": "Atribuir AP raiz"
+          },
+          "step-3": {
+            "label": "Conectar o cabo da LAN ao AP raiz",
+            "help-text": "Para que a sua malha funcione, você deve anexar o cabo da LAN fisicamente ao AP raiz e ao AP do nó e marcar a caixa na tela principal para continuar"
+          },
+          "step-4": {
+            "label": "Salvar configuração",
+            "help-text": "<div>Sua rede em malha está configurada. Clique em Salvar para ativá-la e concluir a instalação.</div><br/><div>Caso haja cabos de LAN conectados a um nó, remova-os agora</div>"
+          }
         },
         "roo-ap-ssid-limit": "O ponto de acesso raiz pode ter um máximo de 5 SSIDs, incluindo de SSID de malha.",
         "can-not-remove-mesh-from-root": "Delete o SSID de malha para removê-lo do ponto de acesso raiz",
@@ -1104,6 +1133,7 @@
           "all-sites": "Todos os sites",
           "select-site": "Selecione o local",
           "auto-refresh": "Autoatualizar",
+          "refresh": "Atualizar",
           "unassigned-sites": "Sites sem atribuição",
           "emptyListMessage": "Você não adicionou pontos de acesso.",
           "listRegisterInfo": "Clique em Registrar para adicionar pontos de acesso.",
@@ -1229,9 +1259,11 @@
           },
           "mesh": {
             "role": {
-              "root": "Raiz",
-              "node": "Nó"
-            }
+              "root": "RAIZ",
+              "node": "NÓ"
+            },
+            "note-for-node": "Este AP é um nó em uma malha. Os rádios para esse nó só podem ser controlados no AP Raiz.",
+            "redirect-to-root": "Clique aqui para acessar o AP Raiz"
           },
           "sophos-central-agent": "Agentes do Sophos Central",
           "upgrade-automatically": "Atualizar automaticamente",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "Deseja remover o SSID atribuído?",
           "deleteDialogText": "Deletar o AP reinicializará o sistema automaticamente.<br><br>Deseja continuar com a deleção?",
           "invalid-node-config": "Remova os SSIDs existentes do ponto de acesso antes de atribuir o SSID da malha",
+          "invalid-root-config": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
           "incompatible-node-ap": "Configuração inválida da malha: O ponto de acesso Nó não pode ter um número de rádios maior comparado ao ponto de acesso Raiz"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "O AP não se conectou à nuvem dentro do tempo limite",
           "apPlugin": {
             "title": "Passo 1",
-            "description": "Conecte o ponto de acesso à rede de modo que possa alcançar a internet."
+            "description": "Conecte seus pontos de acesso às suas redes de modo que possam alcançar a internet. Ligue os pontos de acesso, ou reinicialize-os se já estiverem ligados."
           },
           "findSerialNumber": {
             "title": "Passo 2",
@@ -1662,7 +1695,7 @@
       "entity.not.found": "Nenhum registro encontrado para esta conta",
       "validString.accessProtectionMode": "Valor inválido de Modo de proteção de acesso",
       "validString.accessProtectionType": "Valor inválido de Tipo de proteção de acesso",
-      "validString.encryptionAlgorithm": "Valor inválido de Algoritmo de encriptação",
+      "validString.encryptionAlgorithm": "Valor inválido de Algoritmo de criptografia",
       "validString.clientNetworkAddressType": "Tipo inválido de Endereço de rede cliente",
       "validString.clientNetworkType": "Tipo inválido de Rede cliente",
       "validString.macFilter": "Filtro Mac inválido",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "Não é possível configurar mais de uma VLAN sem tag no ponto de acesso. Verifique o config das seguintes SSIDs: {{ssid}}",
         "network": "Não é possível configurar mais de uma VLAN sem tag. Verifique o config dos seguintes pontos de acesso: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
+      "mesh.conversion.not.allowed": "Não é possível alterar o SSID existente para malha. Crie um novo SSID com o modo de malha."
     }
   }
 }

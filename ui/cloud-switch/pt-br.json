@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "MLD Snooping (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "IGMP Snooping (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP Snooping (VLAN)",
-      "QosClassMappingDto": "Política de QoS"
+      "QosClassMappingDto": "Política de QoS",
+      "VoiceVlanSettingsDto": "VLAN de voz"
     },
     "dashboard": {
       "menu-title": "Painel",
@@ -321,7 +322,7 @@
           "ServerUrlGenerationFailure": "Falha ao gerar URL.",
           "ClientBackupGenerationFailure": "Falha ao gerar backup.",
           "ServerPasswordEncryptionFailure": "Falha ao gerar segredo.",
-          "ClientBackupEncryptionFailure": "Falha na encriptação.",
+          "ClientBackupEncryptionFailure": "Falha na criptografia.",
           "ClientUploadFailure": "Falha ao fazer upload.",
           "ServerPasswordDecryptionFailure": "Falha ao gerar segredo.",
           "ClientBackupDownloadFailure": "Falha no download.",
@@ -1380,7 +1381,7 @@
         "qos_bandwidth_control_setting": "Controle de largura de banda",
         "qos_class_mapping": "Política de QoS",
         "qos_policy_mapping": "Associação da política de QoS",
-        "voice_vlan_oui": "VLAN de voz OUI",
+        "voice_vlan_oui": "OUI de VLAN de voz",
         "voice_vlan": "VLAN de voz",
         "multicast_filtering": "Filtragem de multicast",
         "port_mirroring": "Espelhamento de porta",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "Parâmetro de destino de SNMP",
         "snmp_access": "Acesso a SNMP",
         "snmp_notification_settings": " Ajustes de Notificação de SNMP",
-        "snmp_target_address": "Endereço IP de destino"
+        "snmp_target_address": "Endereço IP de destino",
+        "vlan_gvrp_port_settings": "Configurações da porta GVRP",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -1618,7 +1621,7 @@
         "privilege-mode": "Modo de privilégio (SNMP v3)",
         "authentication-protocol": "Protocolo de autenticação",
         "authentication-password": "Senha de autenticação",
-        "encryption-protocol": "Protocolo de encriptação",
+        "encryption-protocol": "Protocolo de criptografia",
         "encryption-password": "Senha de criptografia",
         "add-user": "Adicionar usuário e comunidade",
         "delete-user": "Deletar usuário ou comunidade",
@@ -2622,10 +2625,15 @@
       "7905": "Política de QoS: Valor inválido do status da política da porta.",
       "7906": "Política de QoS: Não é possível modificar o status da política da porta.",
       "7907": "Política de QoS: Erro ao analisar o nome da classe. Solicitação PATCH inválida.",
-      "7908": "Política de QoS: Erro ao analisar a porta de associações. Solicitação PATCH inválida."
+      "7908": "Política de QoS: Erro ao analisar a porta de associações. Solicitação PATCH inválida.",
+      "5335": "VLAN de voz: Erro ao deletar um dado OUI. Solicitação DELETE inválida.",
+      "5337": "VLAN de voz: Erro ao analisar um dado OUI. Solicitação POST inválida.",
+      "5303": "VLAN de voz: A OUI já existe. Solicitação POST inválida",
+      "5304": "VLAN de voz: Valor inválido do OUI. Solicitação POST inválida",
+      "5305": "VLAN de voz: Valor inválido do id de VLAN de voz. Solicitação PATCH inválida."
     },
     "lacp-settings": {
-      "dialog-title": "Ajustes de LACP",
+      "dialog-title": "Configurações de LACP",
       "config-source": "Origem da configuração",
       "form": {
         "system-priority": "Prioridade do sistema",
@@ -3012,11 +3020,12 @@
       "id": "ID de VLAN de voz",
       "priorityTag": "Tag de prioridade de VLAN",
       "dscp": "DSCP",
-      "cosStatus": "Status 802.1 CoS",
+      "cosStatus": "Status 802.1p CoS",
       "cosPriority": "Prioridade CoS",
       "agingTime": "Tempo de vida",
       "config-source": "Origem da configuração",
       "required-input-message": "O valor deve ser de {{ min }} a {{ max }}",
+      "required-vlan": "Não existe nenhuma VLAN. Crie uma para configurar a VLAN de voz.",
       "global-settings": "Configurações globais",
       "not-set": "Não configurada",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "Origem da configuração",
         "maxlength-descr-message": "O comprimento da descrição deve ter entre 0 e 32 caracteres",
         "invalid-oui-address-message": "Endereço OUI inválido",
+        "invalid-descr-message": "Descrição inválida",
         "oui-address-already-exist-message": "O endereço de OUI já existe",
         "message": {
           "add-settings-success": "As configurações de OUI da VLAN de voz foram criadas",

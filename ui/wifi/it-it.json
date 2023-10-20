@@ -71,6 +71,9 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz e 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2,4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "Assegna",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "Mesh",
         "passphrase": "Passphrase",
         "assigned-aps": "AP assegnati",
-        "none": "Nessuna"
+        "none": "Nessuna",
+        "root-ap": "AP root",
+        "node-aps": "AP nodo"
       },
       "section": {
         "basic-settings": "Impostazioni di base",
@@ -641,7 +646,11 @@
         "assign-ssid": "Conteggio degli access point assegnati",
         "enable-ssid": "Abilita SSID",
         "enable-ssid-help-text": "Abilita immediatamente lo SSID.",
-        "config-ready-msg": "La configurazione è pronta, si prega di salvare e procedere.",
+        "config-invalid": "La tua configurazione della rete non è valida",
+        "config-ready-msg": {
+          "mesh": "La tua rete mesh è stata configurata. Clicca su Salva per continuare",
+          "non-mesh": "La tua rete è stata configurata. Clicca su Salva per continuare"
+        },
         "advanced-settings": "Impostazioni avanzate",
         "previous-section": "Precedente",
         "main-label": "Selezionare i dispositivi a cui assegnare questo SSID.",
@@ -652,6 +661,7 @@
         "ap-with-no-syncsecurity": "Gli SSID abilitati per Synchronized Security non sono supportati negli access point non APX.",
         "ap-exceeding-limit": "Sono presenti uno o più access point che non supportano una delle bande radio o che hanno raggiunto il numero massimo di SSID supportati.",
         "invalid-node-config": "Rimuovi lo/gli SSID esistente/i dallo/dagli access point nodo prima di creare la mesh",
+        "invalid-root-config": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
         "deployment-mode-dynamic-later": "Aggiungi access point in un altro momento",
         "assign-aps-inline-help-text-later": "Gli AP possono essere aggiunti in un secondo momento, modificando questo SSID.",
         "available-aps": "Access point disponibili",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "Assegnazione VLAN RADIUS",
         "enable-guest-network": "Abilita rete guest",
         "guest-enable-inline-help-text": "Offre una rete isolata per i client, nella quale sono applicate alcune restrizioni sul traffico.",
-        "guest-network-not-available": "La funzionalità Rete guest non è ancora disponibile per gli access point AP6. Soluzione alternativa: Configura VLAN con tag diversi sugli access point AP6, per separare e isolare il traffico tra più SSID. Per informazioni aggiornate, consulta questa pagina: <a href='https://www.sophos.com/it-it/products/secure-wifi/features' target='_blank'>https://www.sophos.com/it-it/products/secure-wifi/features</a>.",
+        "guest-network-not-available": "Questa funzionalità non è ancora disponibile per gli AP6. Soluzione alternativa: Configura VLAN con tag diversi sugli access point AP6, per separare e isolare il traffico tra più SSID. Per informazioni aggiornate, consulta questa pagina: <a href='https://www.sophos.com/it-it/products/secure-wifi/features' target='_blank'>https://www.sophos.com/it-it/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "L'ID VLAN è obbligatorio.",
         "vlantag-validate-range": "Il valore di ID VLAN deve essere compreso tra 1 e 4094.",
         "primary-dns-server": "Server DNS primario",
@@ -765,7 +775,26 @@
         },
         "mesh-root-ap": {
           "apx": "Lo SSID mesh APX richiede che almeno un access point sia connesso a internet tramite LAN.",
-          "ap6": "Lo SSID mesh AP6 richiede che almeno 2 access point (1 root e 1 nodo) siano connessi a internet tramite LAN. Il root deve essere connesso alla rete tramite interfaccia LAN."
+          "ap6": "Lo SSID mesh AP6 richiede che almeno 2 access point (1 root e 1 nodo) siano connessi a internet tramite LAN."
+        },
+        "mesh-setup-guide": {
+          "title": "Guida dettagliata per la mesh",
+          "connect-lan": "Connetti il cavo LAN agli AP root e nodo e spunta questa casella per confermare",
+          "step-1": {
+            "label": "Assegna AP",
+            "help-text": "Devi assegnare almeno 2 AP alla tua rete"
+          },
+          "step-2": {
+            "label": "Assegna AP root"
+          },
+          "step-3": {
+            "label": "Connetti il cavo LAN all’AP root",
+            "help-text": "Per il corretto funzionamento della mesh, devi attaccare fisicamente un cavo LAN ai tuoi AP root e nodo e spuntare la casella nella schermata principale per continuare"
+          },
+          "step-4": {
+            "label": "Salva configurazione",
+            "help-text": "<div>La tua rete mesh è stata configurata. Clicca su Salva per attivarla e terminare la configurazione.</div><br/><div>Se hai cavi LAN connessi a un nodo, ti preghiamo di rimuoverli ora</div>"
+          }
         },
         "roo-ap-ssid-limit": "L’access point root può avere fino a 5 SSID, incluso lo SSID mesh.",
         "can-not-remove-mesh-from-root": "Elimina lo SSID mesh per rimuoverlo dall’access point root",
@@ -1104,6 +1133,7 @@
           "all-sites": "Tutti i siti",
           "select-site": "Seleziona sito",
           "auto-refresh": "Aggiornamento automatico",
+          "refresh": "Aggiorna",
           "unassigned-sites": "Siti non assegnati",
           "emptyListMessage": "Non hai aggiunto alcun access point.",
           "listRegisterInfo": "Clicca su Registrazione per aggiungere access point.",
@@ -1229,9 +1259,11 @@
           },
           "mesh": {
             "role": {
-              "root": "Root",
-              "node": "Nodo"
-            }
+              "root": "ROOT",
+              "node": "NODO"
+            },
+            "note-for-node": "Questo AP è un nodo in una mesh. Le radio di questo nodo possono essere controllate solo sull’AP root.",
+            "redirect-to-root": "Clicca qui per accedere all’AP root"
           },
           "sophos-central-agent": "Agenti di Sophos Central",
           "upgrade-automatically": "Esegui automaticamente l’upgrade",
@@ -1249,6 +1281,7 @@
           "remove-assign-ssid": "Rimuovere lo SSID assegnato?",
           "deleteDialogText": "L’eliminazione dell’AP riavvierà automaticamente il sistema.<br><br>Vuoi procedere con l’eliminazione?",
           "invalid-node-config": "Rimuovi lo/gli SSID esistente/i dall’access point prima di assegnare lo SSID mesh",
+          "invalid-root-config": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
           "incompatible-node-ap": "Configurazione mesh non valida: L’access point nodo non può avere un numero di radio superiore a quello dell’access point root"
         }
       },
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "L'AP non ha effettuato la connessione al cloud entro i limiti di timeout",
           "apPlugin": {
             "title": "Passaggio 1",
-            "description": "Connettere l’access point alla rete, in modo che possa collegarsi a internet."
+            "description": "Connetti i tuoi access point alla rete, in modo che possano connettersi a internet. Accendi gli access point, riavviali se sono già accesi."
           },
           "findSerialNumber": {
             "title": "Passaggio 2",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "Non è possibile configurare più di una VLAN senza tag su un access point. Controlla la configurazione di questo/i SSID: {{ssid}}",
         "network": "Non è possibile configurare più di una VLAN senza tag. Controlla la configurazione di questo/i access point: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
+      "mesh.conversion.not.allowed": "Impossibile trasformare SSID esistente in una mesh. Crea un nuovo SSID con la modalità mesh"
     }
   }
 }

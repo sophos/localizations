@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "MLD-Snooping (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "IGMP-Snooping (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP-Snooping (VLAN)",
-      "QosClassMappingDto": "QoS-Richtlinie"
+      "QosClassMappingDto": "QoS-Richtlinie",
+      "VoiceVlanSettingsDto": "Sprach-VLAN"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "SNMP-Zielparameter",
         "snmp_access": "SNMP-Zugriff",
         "snmp_notification_settings": " SNMP-Benachrichtigungseinstellungen",
-        "snmp_target_address": "SNMP-Zieladresse"
+        "snmp_target_address": "SNMP-Zieladresse",
+        "vlan_gvrp_port_settings": "GVRP-Port-Einstellungen",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -2622,7 +2625,12 @@
       "7905": "QoS-Richtlinie: Port-Richtlinienstatus ist ungültig.",
       "7906": "QoS-Richtlinie: Port-Richtlinienstatus kann nicht geändert werden.",
       "7907": "QoS-Richtlinie: Fehler beim Lesen des Klassennamens. Ungültige PATCH-Anforderung.",
-      "7908": "QoS-Richtlinie: Fehler beim Lesen des Bindungs-Ports. Ungültige PATCH-Anforderung."
+      "7908": "QoS-Richtlinie: Fehler beim Lesen des Bindungs-Ports. Ungültige PATCH-Anforderung.",
+      "5335": "Sprach-VLAN: Fehler beim Löschen von OUI-Daten. Ungültige DELETE-Anforderung.",
+      "5337": "Sprach-VLAN: Fehler beim Lesen von OUI-Daten. Ungültige POST-Anforderung.",
+      "5303": "Sprach-VLAN: OUI ist bereits vorhanden. Ungültige POST-Anforderung",
+      "5304": "Sprach-VLAN: Ungültiger OUI-Wert. Ungültige POST-Anforderung",
+      "5305": "Sprach-VLAN: Ungültige Sprach-VLAN-ID. Ungültige PATCH-Anforderung."
     },
     "lacp-settings": {
       "dialog-title": "LACP-Einstellungen",
@@ -3012,11 +3020,12 @@
       "id": "Sprach-VLAN-ID",
       "priorityTag": "VLAN-Prioritäts-Markierung",
       "dscp": "DSCP",
-      "cosStatus": "802.1-CoS-Status",
+      "cosStatus": "802.1p-CoS-Status",
       "cosPriority": "CoS-Priorität",
       "agingTime": "Alterungszeit",
       "config-source": "Konfigurationsquelle",
       "required-input-message": "Wert muss zwischen {{ min }} und {{ max }} liegen",
+      "required-vlan": "Kein VLAN vorhanden. Bitte ein VLAN für die Konfiguration von Sprach-VLAN erstellen",
       "global-settings": "Globale Einstellungen",
       "not-set": "Nicht festgelegt",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "Konfigurationsquelle",
         "maxlength-descr-message": "Beschreibung muss 0 bis 32 Zeichen haben",
         "invalid-oui-address-message": "Ungültige OUI-Adresse",
+        "invalid-descr-message": "Ungültige Beschreibung",
         "oui-address-already-exist-message": "OUI-Adresse ist bereits vorhanden",
         "message": {
           "add-settings-success": "Sprach-VLAN-OUI-Einstellungen wurden erstellt",

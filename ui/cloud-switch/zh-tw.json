@@ -216,7 +216,8 @@
       "MldSnoopingVlanSettingsDto": "MLD 監聽 (VLAN)",
       "IgmpSnoopingVlanSettingsDto": "IGMP 監聽 (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP 監聽 (VLAN)",
-      "QosClassMappingDto": "QoS 原則"
+      "QosClassMappingDto": "QoS 原則",
+      "VoiceVlanSettingsDto": "語音 VLAN"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -1399,7 +1400,9 @@
         "snmp_target_params": "SNMP 目標參數",
         "snmp_access": "SNMP 存取",
         "snmp_notification_settings": " SNMP 通知設定",
-        "snmp_target_address": "SNMP 目標地址"
+        "snmp_target_address": "SNMP 目標地址",
+        "vlan_gvrp_port_settings": "GVRP 連接埠設定",
+        "vlan_gvrp_settings": "GVRP"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -2622,7 +2625,12 @@
       "7905": "QoS 原則：連接埠原則狀態的值無效。",
       "7906": "QoS 原則：無法修改連接埠原則狀態。",
       "7907": "QoS 原則：剖析類別名稱時發生錯誤。PATCH 請求無效。",
-      "7908": "QoS 原則：剖析繫結連接埠時發生錯誤。PATCH 請求無效。"
+      "7908": "QoS 原則：剖析繫結連接埠時發生錯誤。PATCH 請求無效。",
+      "5335": "語音 VLAN：刪除 OUI 資料時發生錯誤。DELETE 請求無效。",
+      "5337": "語音 VLAN：剖析 OUI 資料時發生錯誤。POST 請求無效。",
+      "5303": "語音 VLAN：OUI 已經存在。POST 請求無效",
+      "5304": "語音 VLAN：OUI 的值無效。POST 請求無效",
+      "5305": "語音 VLAN：語音 VLAN ID 值無效。PATCH 請求無效。"
     },
     "lacp-settings": {
       "dialog-title": "LACP 設定",
@@ -3012,11 +3020,12 @@
       "id": "語音 VLAN ID",
       "priorityTag": "VLAN 優先級標籤",
       "dscp": "DSCP",
-      "cosStatus": "802.1 CoS 狀態",
+      "cosStatus": "802.1p CoS 狀態",
       "cosPriority": "CoS 優先級",
       "agingTime": "老化時間",
       "config-source": "設定來源",
       "required-input-message": "值必須介於 {{ min }} - {{ max }} 之間",
+      "required-vlan": "不存在 VLAN。請建立一個 VLAN 以設定語音 VLAN",
       "global-settings": "整體設定",
       "not-set": "未設定",
       "common": {
@@ -3043,6 +3052,7 @@
         "config-source": "設定來源",
         "maxlength-descr-message": "說明長度必須介於 0 - 32 個字元之間",
         "invalid-oui-address-message": "無效的 OUI 位址",
+        "invalid-descr-message": "無效說明",
         "oui-address-already-exist-message": "OUI 位址已經存在",
         "message": {
           "add-settings-success": "語音 VLAN OUI 設定已建立",

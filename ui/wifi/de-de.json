@@ -71,6 +71,9 @@
       "GHZ_2_4": "2,4 GHz",
       "GHZ_2_4,GHZ_5": "2,4 GHz und 5 GHz",
       "GHZ_5": "5 GHz",
+      "2g": "2,4 GHz",
+      "5g": "5 GHz",
+      "6g": "6 GHz",
       "assign": "Zuweisen",
       "logo": {
         "upload": {
@@ -610,7 +613,9 @@
         "mesh": "Mesh",
         "passphrase": "Passphrase",
         "assigned-aps": "Zugewiesene APs",
-        "none": "Ohne"
+        "none": "Ohne",
+        "root-ap": "Stamm-AP",
+        "node-aps": "Knoten-APs"
       },
       "section": {
         "basic-settings": "Grundeinstellungen",
@@ -641,7 +646,11 @@
         "assign-ssid": "Anzahl zugewiesener Access Points",
         "enable-ssid": "SSID aktivieren",
         "enable-ssid-help-text": "Aktiviert sofort die SSID.",
-        "config-ready-msg": "Ihre Konfiguration ist abgeschlossen. Sie können diese jetzt speichern und fortfahren.",
+        "config-invalid": "Ihre Netzwerkkonfiguration ist ungültig",
+        "config-ready-msg": {
+          "mesh": "Ihr Mesh-Netzwerk wurde jetzt konfiguriert. Zum Fortfahren auf Speichern klicken",
+          "non-mesh": "Ihr Netzwerk wurde jetzt konfiguriert. Zum Fortfahren auf Speichern klicken"
+        },
         "advanced-settings": "Erweiterte Einstellungen",
         "previous-section": "Zurück",
         "main-label": "Wählen Sie die Geräte aus, denen diese SSID zugewiesen werden soll.",
@@ -652,12 +661,13 @@
         "ap-with-no-syncsecurity": "Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
         "ap-exceeding-limit": "Ein oder mehrere Access Points unterstützen eines der Frequenzbänder nicht oder haben die maximale Anzahl unterstützter SSIDs erreicht.",
         "invalid-node-config": "Bitte entfernen Sie vorhandene SSIDs von den Knoten-Access-Points, bevor Sie das Mesh erstellen",
+        "invalid-root-config": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
         "deployment-mode-dynamic-later": "Access Points später hinzufügen",
         "assign-aps-inline-help-text-later": "APs können später hinzugefügt werden, indem diese SSID bearbeitet wird.",
         "available-aps": "Verfügbare Access Points",
         "assigned-aps": "Zugewiesene Access Points",
-        "root-ap": "Root-Access-Point (Primär)",
-        "root-ap-required": "Root-Access-Point ist erforderlich.",
+        "root-ap": "Stamm-Access-Point (Primär)",
+        "root-ap-required": "Stamm-Access-Point ist erforderlich.",
         "broad-cast-ap": "Wählen Sie die APs, die diese SSID ausstrahlen sollen (SSID-Broadcast).",
         "max-ssid-per-band": "Jeder Access Point kann pro Frequenzband bis zu 8 SSIDs ausstrahlen.",
         "depend-onap": "Je nach Access Point sind 2,4 GHz und 5 GHz verfügbar.",
@@ -724,7 +734,7 @@
         "radius-vlan-assignment": "RADIUS VLAN-Zuweisung",
         "enable-guest-network": "Gastnetzwerk aktivieren",
         "guest-enable-inline-help-text": "Stellt den Clients ein isoliertes Netzwerk mit gewissen Beschränkungen für den Datenverkehr bereit.",
-        "guest-network-not-available": "Die Funktion Gastnetzwerk ist für AP6 noch nicht verfügbar. Behelfslösung: Konfigurieren Sie auf dem AP6-Access-Point separate getaggte VLANs, um den Datenverkehr zwischen mehreren SSIDs zu trennen und zu isolieren. Aktualisierungen finden Sie auf der Seite <a href='https://www.sophos.com/de-de/products/secure-wifi/features' target='_blank'>https://www.sophos.com/de-de/products/secure-wifi/features</a>.",
+        "guest-network-not-available": "Diese Funktion ist für AP6 noch nicht verfügbar. Behelfslösung: Konfigurieren Sie auf dem AP6-Access-Point separate getaggte VLANs, um den Datenverkehr zwischen mehreren SSIDs zu trennen und zu isolieren. Bitte verfolgen Sie diese Seite für Aktualisierungen: <a href='https://www.sophos.com/de-de/products/secure-wifi/features' target='_blank'>https://www.sophos.com/de-de/products/secure-wifi/features</a>.",
         "vlantag-validate-required": "VLAN-ID ist erforderlich.",
         "vlantag-validate-range": "VLAN-ID muss zwischen 1 und 4094 liegen.",
         "primary-dns-server": "Primärer DNS-Server",
@@ -765,10 +775,29 @@
         },
         "mesh-root-ap": {
           "apx": "Eine APX-Mesh-SSID benötigt mindestens einen Access Point, der über LAN mit dem Internet verbunden ist.",
-          "ap6": "Eine AP6-Mesh-SSID benötigt mindestens zwei Access Points (1 Root-Access-Point und 1 Knoten-Access-Point). Der Root-Access-Point muss über die LAN-Schnittstelle mit dem Netzwerk verbunden sein."
+          "ap6": "Eine AP6-Mesh-SSID benötigt mindestens zwei Access Points (1 Stamm-Access-Point und 1 Knoten-Access-Point)."
         },
-        "roo-ap-ssid-limit": "Der Root-Access-Point kann maximal 5 SSIDs besitzen, inklusive der Mesh-SSID.",
-        "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Root-Access-Point zu entfernen",
+        "mesh-setup-guide": {
+          "title": "Schritt-für-Schritt-Anleitung für Mesh",
+          "connect-lan": "Verbinden Sie ein LAN-Kabel mit dem Stamm- und dem Knoten-AP, und bestätigen Sie dies hier",
+          "step-1": {
+            "label": "APs zuweisen",
+            "help-text": "Sie müssen Ihrem Netzwerk mindestens 2 APs zuweisen"
+          },
+          "step-2": {
+            "label": "Stamm-AP zuweisen"
+          },
+          "step-3": {
+            "label": "Verbinden Sie ein LAN-Kabel mit dem Stamm-AP",
+            "help-text": "Damit das Mesh funktioniert, müssen Sie ein LAN-Kabel an Ihren Stamm- und Ihren Knoten-AP anschließen. Markieren Sie das Kontrollkästchen auf der Hauptseite, um fortzufahren."
+          },
+          "step-4": {
+            "label": "Konfiguration speichern",
+            "help-text": "<div>Ihr Mesh-Netzwerk ist konfiguriert. Klicken Sie auf „Speichern“, um es zu aktivieren und die Einrichtung abzuschließen.</div><br/><div>Falls an einen der Knoten ein LAN-Kabel angeschlossen ist, entfernen Sie dieses jetzt</div>"
+          }
+        },
+        "roo-ap-ssid-limit": "Der Stamm-Access-Point kann maximal 5 SSIDs besitzen, inklusive der Mesh-SSID.",
+        "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Stamm-Access-Point zu entfernen",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
@@ -1051,7 +1080,7 @@
         },
         "captive-portal-capacity": "Warnung. Access Points der AP- und APX-Serie können nicht mehrere Captive Portals zugewiesen werden",
         "mesh-not-supported": "Die Firmware-Version des Access Point unterstützt nicht die Mesh-Funktion. Bitte aktualisieren Sie auf die neueste Version",
-        "max-limit-reached-for-root-ap": "Sie können dem Root-Access-Point maximal 5 SSIDs (einschließlich der Mesh-SSID) zuweisen",
+        "max-limit-reached-for-root-ap": "Sie können dem Stamm-Access-Point maximal 5 SSIDs (einschließlich der Mesh-SSID) zuweisen",
         "can-not-assign-mesh-ssid-to-ap": "Die Mesh-SSID ist dem Access Point bereits zugewiesen",
         "can-not-assign-ssid-to-node-ap": "Sie können einem Knoten-Access-Point keine SSID zuweisen. Löschen Sie die Mesh-SSID, falls Sie zusätzliche SSIDs zuweisen wollen.",
         "walled-garden": {
@@ -1104,6 +1133,7 @@
           "all-sites": "Alle Standorte",
           "select-site": "Standort auswählen",
           "auto-refresh": "Automatisch aktualisieren",
+          "refresh": "Aktualisieren",
           "unassigned-sites": "Nicht zugewiesene Standorte",
           "emptyListMessage": "Sie haben keine Access Points hinzugefügt.",
           "listRegisterInfo": "Klicken Sie auf Registrieren, um Access Points hinzuzufügen.",
@@ -1229,9 +1259,11 @@
           },
           "mesh": {
             "role": {
-              "root": "Root",
-              "node": "Knoten"
-            }
+              "root": "STAMM",
+              "node": "KNOTEN"
+            },
+            "note-for-node": "Dieser AP ist ein Mesh-Knoten. Sender für diesen Knoten können nur auf dem Stamm-AP gesteuert werden.",
+            "redirect-to-root": "Klicken Sie hier, um auf den Stamm-AP zuzugreifen"
           },
           "sophos-central-agent": "Sophos-Central-Agents",
           "upgrade-automatically": "Automatisch aktualisieren",
@@ -1249,7 +1281,8 @@
           "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?",
           "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?",
           "invalid-node-config": "Bitte entfernen Sie vorhandene SSIDs vom Access Point, bevor Sie die Mesh-SSID zuweisen",
-          "incompatible-node-ap": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Root-Access-Point haben"
+          "invalid-root-config": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
+          "incompatible-node-ap": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Stamm-Access-Point haben"
         }
       },
       "taskQueue": {
@@ -1345,7 +1378,7 @@
           "watingForIntialConnectionTimeOut": "AP konnte sich innerhalb der Timeout-Dauer nicht mit der Cloud verbinden",
           "apPlugin": {
             "title": "Schritt 1",
-            "description": "Verbinden Sie Ihren Access Point mit Ihrem Netzwerk, damit er auf das Internet zugreifen kann."
+            "description": "Verbinden Sie Ihre Access Points mit Ihrem Netzwerk, damit diese auf das Internet zugreifen können. Schalten Sie die Access Points ein bzw. starten Sie sie neu, falls sie schon eingeschaltet sind."
           },
           "findSerialNumber": {
             "title": "Schritt 2",
@@ -1655,7 +1688,7 @@
       "model.notBlank": "Das Modell darf nicht leer sein",
       "serial.notBlank": "Die Seriennummer darf nicht leer sein",
       "id.notBlank": "Die UUID darf nicht leer sein",
-      "name.invalid": "Der Name darf nicht leer sein, darf nicht mehr als 100 Zeichen enthalten, und darf nur alphanumerische Zeichen oder Unterstriche enthalten, aber keine Sonderzeichen",
+      "name.invalid": "Der Name muss zwischen 1 und 100 Zeichen haben und kann Buchstaben, Ziffern und Unterstriche enthalten, aber keine Sonderzeichen",
       "location.tooLong": "Der Access-Point-Standort darf höchstens 100 Zeichen haben",
       "description.invalid": "Die Beschreibung darf nicht leer sein und darf höchstens 300 Zeichen haben",
       "record.invalid": "Angegebener Datensatz ist für dieses Konto ungültig",
@@ -1691,7 +1724,7 @@
       "mesh.exists": "Sie können nur eine AP6-Mesh-SSID pro Konto erstellen",
       "mesh.accessPointCount": "Ein Mesh erfordert mindestens zwei Access Points",
       "mesh.not.allowed": "Die Mesh-Funktion steht derzeit nicht zur Verfügung",
-      "mesh.incorrectRoot": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Root-Access-Point haben",
+      "mesh.incorrectRoot": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Stamm-Access-Point haben",
       "mesh.protection": "AP6-Mesh funktioniert nur mit dem Sicherheitsmodus WPA3-Personal",
       "operation-mode.not.null": "WLAN-Betriebsmodus muss angegeben werden",
       "vlan.tag.not.null": "VLAN-Tagging muss angegeben werden",
@@ -1701,7 +1734,9 @@
       "multiple.untagged.vlan": {
         "access-point": "Auf dem Access Point kann maximal ein ungetaggtes VLAN konfiguriert werden. Prüfen Sie die Konfiguration folgender SSIDs: {{ssid}}",
         "network": "Sie können maximal ein ungetaggtes VLAN konfigurieren. Prüfen Sie die Konfiguration folgender Access Points: {{ap}}"
-      }
+      },
+      "invalid.config.for.root": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
+      "mesh.conversion.not.allowed": "Vorhandene SSID kann nicht in Mesh geändert werden. Erstellen Sie eine neue SSID mit Mesh-Modus"
     }
   }
 }
