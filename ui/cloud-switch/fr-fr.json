@@ -314,6 +314,7 @@
         "schedule-disabled": "Les planifications sont mis en pause pour ce switch.",
         "schedule-enabled": "Des planifications sont en cours pour ce switch.",
         "no-capability": "Le firmware du switch ne prend pas en charge les sauvegardes Sophos Central. Veuillez mettre à niveau le switch pour obtenir cette fonction.",
+        "license-missing": "Aucun abonnement au support n’a été trouvé.",
         "state": "État",
         "events": {
           "Created": "Sauvegarde demandée",
@@ -1755,9 +1756,9 @@
         "Priv": "Privilège"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "Adresse cible",
@@ -1775,6 +1776,7 @@
           "internet": "internet",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "Veuillez ajouter un paramètre cible pour configurer l’adresse cible.",
         "retry": "Réessayer",
         "confirm-update": "Confirmer la mise à jour",
         "confirm-delete": "Confirmer la suppression",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "Paramètres de l’adresse cible SNMP créés",
           "update-settings-success": "Paramètres de l’adresse cible SNMP mis à jour",
           "add-settings-error": "Impossible de créer les paramètres de l’adresse cible SNMP",
-          "invalid-ip": "Adresse IP incorrecte."
+          "invalid-ip": "Adresse IP incorrecte.",
+          "site-delete-setting-text": "Supprimer {{ parameterCount }} paramètres de l’adresse cible SNMP. {{ count }} switchs vont supprimer ces paramètres de l’adresse cible SNMP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-delete-setting-text": "Supprimer {{ parameterCount }} paramètres de l’adresse cible SNMP. Les tâches seront ensuite créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement."
         }
       },
       "target-parameters": {
         "title": "Paramètres cibles",
         "target-param-name": "Nom",
         "target-param-name-required-message": "Nom obligatoire",
+        "target-param-name-max-length-message": "Le nom ne doit pas dépasser 30 caractères.",
         "target-param-name-already-exists-message": "Ce nom existe déjà",
         "msg-processing-model": "Modèle de traitement de messages",
         "security-mode": "Mode Sécurité",
-        "security-name": "Nom de sécurité",
+        "security-name": "Utilisateur (v3)",
+        "community-name": "Utilisateur (v1/v2c)",
         "priv-mode": "Mode Privilège",
         "config-source": "Source de configuration",
         "add-parameter": "Ajouter un paramètre",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}} jours",
       "copy": "Copier dans le Presse-papiers",
       "date-expiry-string": "Ce token d’accès est valide jusqu’au {{expiry}}",
+      "diagnostics": "Diagnostics",
+      "log-ram": "Journaux RAM",
+      "log-flash": "Journaux Flash",
       "form": {
         "validity": "Validité"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "Assistance à distance désactivée",
         "apu-disable-error": "Impossible de désactiver l’assistance à distance"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "Heure",
+        "category": "Catégorie",
+        "severity": "Gravité",
+        "message": "Message",
+        "messages": {
+          "fetch-error-message": "Impossible de récupérer les journaux."
+        },
+        "severity-options": {
+          "emerg": "Urgence",
+          "info": "Info",
+          "notice": "Avis",
+          "critical": "Critique",
+          "alert": "Alerte",
+          "error": "Erreur",
+          "warning": "Attention",
+          "debug": "Déboguer"
+        },
+        "start-date": "Date de début",
+        "end-date": "Date de fin"
+      },
+      "search": "rechercher",
+      "search-tooltip-message": "Rechercher par catégorie, gravité et message",
+      "download": "Télécharger",
+      "auto-refresh": "Actualiser automatiquement"
     },
     "poe": {
       "name": "PoE",
@@ -2878,8 +2914,8 @@
         "chassisSubtype": "Sous-type de l’identifiant du châssis",
         "chassisID": "Identifiant du châssis",
         "portSubtype": "Sous-type de l’identifiant du port",
-        "remoteID": "Identifiant du voisin",
-        "remoteIp": "IP du voisin",
+        "remoteID": "ID voisin",
+        "remoteIp": "IP voisine",
         "sysName": "Nom du système",
         "sysDescption": "Description du système",
         "supportedCapabilities": "Fonctionnalités prises en charge",
@@ -2921,7 +2957,7 @@
       "ports": "Ports",
       "local-devices": "Auto",
       "remote-devices": "Voisins",
-      "port-info": "Voisins",
+      "port-info": "Informations sur les ports",
       "device-info": "Détails de l’appareil",
       "cdp-device-info": "CDP",
       "lldp-device-info": "LLDP",
@@ -2961,7 +2997,7 @@
         "localInterface": "Auto-interface",
         "cdpVersion": "Version",
         "timeToLive": "TTL",
-        "neighborInterface": "Interface de voisinage",
+        "neighborInterface": "Interface voisine",
         "address": "Adresse",
         "capabilities": "Capacités",
         "softwareVersion": "Logiciel",
@@ -2989,9 +3025,9 @@
         "config-source": "Source de configuration",
         "version": "Version",
         "transmissionInterval": "Intervalle de transmission",
-        "transmissionInterval-invalid-message": "L’intervalle de transmission doit être supérieur à {{ val }} (délai de transmission*4)",
-        "transmitDelay-invalid-message": "Le délai de transmission doit être inférieur à {{ val }} (intervalle de transmission/4).",
-        "holdTime": "Temps d’attente",
+        "transmissionInterval-invalid-message": "L’intervalle de transmission doit être inférieur à {{ val }} (temps de maintien)",
+        "holdTime-invalid-message": "Le temps de maintien doit être supérieur à {{ val }} (intervalle de transmission).",
+        "holdTime": "Temps de maintien",
         "required-input-message": "La valeur doit être {{ min }} - {{ max }}",
         "message": {
           "save-cdp-settings-success": "Paramètres CDP mis à jour",

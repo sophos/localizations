@@ -314,6 +314,7 @@
         "schedule-disabled": "이 스위치에 대한 예약이 일시 정지되었습니다.",
         "schedule-enabled": "이 스위치에 대한 예약이 실행 중입니다.",
         "no-capability": "스위치 펌웨어는 Sophos Central 백업을 지원하지 않습니다. 이 기능을 사용하려면 스위치를 업그레이드하십시오.",
+        "license-missing": "지원 구독을 찾을 수 없습니다.",
         "state": "상태",
         "events": {
           "Created": "백업 요청됨",
@@ -1755,9 +1756,9 @@
         "Priv": "권한"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "대상 주소",
@@ -1775,6 +1776,7 @@
           "internet": "인터넷",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "대상 주소를 구성하려면 대상 매개 변수를 추가하십시오.",
         "retry": "다시 시도",
         "confirm-update": "업데이트 확인",
         "confirm-delete": "삭제 확인",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "SNMP 대상 주소 설정이 생성되었습니다.",
           "update-settings-success": "SNMP 대상 주소 설정이 업데이트되었습니다.",
           "add-settings-error": "SNMP 대상 주소 설정을 생성할 수 없습니다.",
-          "invalid-ip": "잘못된 IP 주소."
+          "invalid-ip": "잘못된 IP 주소.",
+          "site-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 주소 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 대상 주소 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 주소 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
         }
       },
       "target-parameters": {
         "title": "대상 매개 변수",
         "target-param-name": "이름",
         "target-param-name-required-message": "이름이 필요함",
+        "target-param-name-max-length-message": "이름은 30자 이하여야 합니다.",
         "target-param-name-already-exists-message": "이름이 이미 있습니다",
         "msg-processing-model": "메시지 처리 모델",
         "security-mode": "보안 모드",
-        "security-name": "보안 이름",
+        "security-name": "사용자(v3)",
+        "community-name": "사용자(v1/v2c)",
         "priv-mode": "권한 모드",
         "config-source": "구성 소스",
         "add-parameter": "매개 변수 추가",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}}일",
       "copy": "클립보드에 복사",
       "date-expiry-string": "이 액세스 토큰은 {{expiry}}까지 유효합니다.",
+      "diagnostics": "진단",
+      "log-ram": "RAM 로그",
+      "log-flash": "플래시 로그",
       "form": {
         "validity": "유효성"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "비활성화된 원격 지원",
         "apu-disable-error": "원격 지원을 비활성화할 수 없음"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "시간",
+        "category": "범주",
+        "severity": "심각도",
+        "message": "메시지",
+        "messages": {
+          "fetch-error-message": "로그를 가져오지 못했습니다."
+        },
+        "severity-options": {
+          "emerg": "비상",
+          "info": "정보",
+          "notice": "주의 사항",
+          "critical": "중요",
+          "alert": "경고",
+          "error": "오류",
+          "warning": "경고",
+          "debug": "디버그"
+        },
+        "start-date": "시작 날짜",
+        "end-date": "종료 날짜"
+      },
+      "search": "검색",
+      "search-tooltip-message": "범주, 심각도, 메시지로 검색",
+      "download": "다운로드",
+      "auto-refresh": "자동 새로 고침"
     },
     "poe": {
       "name": "PoE",
@@ -2920,7 +2956,7 @@
       "settings": "설정",
       "ports": "포트",
       "local-devices": "자체",
-      "remote-devices": "인접 라우터",
+      "remote-devices": "인접",
       "port-info": "포트 정보",
       "device-info": "장치 세부 정보",
       "cdp-device-info": "CDP",
@@ -2952,7 +2988,7 @@
         "powerRequestId": "전력 요청 ID",
         "powerManagementId": "전력 관리 ID",
         "powerAvailable": "가용 전력",
-        "hasNeighbor": "인접 라우터"
+        "hasNeighbor": "인접"
       },
       "remote-device": {
         "portNo": "포트",
@@ -2989,9 +3025,9 @@
         "config-source": "구성 소스",
         "version": "버전",
         "transmissionInterval": "전송 간격",
-        "transmissionInterval-invalid-message": "전송 간격은 {{ val }}(전송 지연*4)보다 커야 합니다",
-        "transmitDelay-invalid-message": "전송 지연은 {{ val }}(전송 간격/4)보다 작아야 합니다",
-        "holdTime": "보류 시간",
+        "transmissionInterval-invalid-message": "전송 간격은 {{ val }}(보류 시간)보다 작아야 합니다",
+        "holdTime-invalid-message": "보류 시간은 {{ val }}(전송 간격)보다 커야 합니다",
+        "holdTime": "누름 시간",
         "required-input-message": "값은 {{ min }}~{{ max }}여야 합니다",
         "message": {
           "save-cdp-settings-success": "CDP 설정이 업데이트되었음",

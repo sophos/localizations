@@ -314,6 +314,7 @@
         "schedule-disabled": "Las programaciones están en pausa para este switch.",
         "schedule-enabled": "Las programaciones están en ejecución para este switch.",
         "no-capability": "El firmware del switch no admite las copias de seguridad de Sophos Central. Actualice el switch para poder utilizar esta función.",
+        "license-missing": "No se han encontrado suscripciones de soporte.",
         "state": "Estado",
         "events": {
           "Created": "Copia solicitada",
@@ -361,7 +362,7 @@
             "Failed": "No se ha podido realizar la copia de seguridad",
             "Success": "La copia de seguridad se ha cargado a Sophos Central de forma segura.",
             "ServerUrlGenerationFailure": "Error del servidor: No se ha podido generar la URL de la copia de seguridad.",
-            "ClientBackupGenerationFailure": "Error de copia de seguridad: Error al generar la copia de seguridad del switch.",
+            "ClientBackupGenerationFailure": "Error de copia de seguridad: No se ha podido generar la copia de seguridad del switch.",
             "ServerPasswordEncryptionFailure": "Error del servidor: No se ha podido almacenar la copia de seguridad de forma segura.",
             "ClientBackupEncryptionFailure": "Error de copia de seguridad: Error al cifrar el archivo de copia de seguridad en el switch.",
             "ClientUploadFailure": "Error al cargar: Error al cargar el archivo de copia de seguridad.",
@@ -1755,9 +1756,9 @@
         "Priv": "Privilegio"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "Dirección de destino",
@@ -1775,6 +1776,7 @@
           "internet": "Internet",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "Añada un parámetro de destino para configurar la dirección de destino.",
         "retry": "Reintentar",
         "confirm-update": "Confirmar actualización",
         "confirm-delete": "Confirmar eliminación",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "Se ha creado la configuración de la dirección de destino SNMP",
           "update-settings-success": "Se ha actualizado la configuración de la dirección de destino SNMP",
           "add-settings-error": "No se puede crear la configuración de la dirección de destino SNMP",
-          "invalid-ip": "Dirección IP no válida."
+          "invalid-ip": "Dirección IP no válida.",
+          "site-delete-setting-text": "Elimine {{ parameterCount }} parámetros de la dirección de destino SNMP. {{ count }} switches eliminarán estos parámetros de la dirección de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-delete-setting-text": "Elimine {{ parameterCount }} parámetros de la dirección de destino SNMP y se crearán tareas. Puede optar por sincronizar ahora o más tarde."
         }
       },
       "target-parameters": {
         "title": "Parámetros de destino",
         "target-param-name": "Nombre",
         "target-param-name-required-message": "Nombre es obligatorio",
+        "target-param-name-max-length-message": "El nombre puede tener un máximo de 30 caracteres.",
         "target-param-name-already-exists-message": "El nombre ya existe",
         "msg-processing-model": "Modelo de procesamiento de mensaje",
         "security-mode": "Modo de seguridad",
-        "security-name": "Nombre de seguridad",
+        "security-name": "Usuario (v3)",
+        "community-name": "Usuario (v1/v2c)",
         "priv-mode": "Modo de privilegio",
         "config-source": "Origen de configuración",
         "add-parameter": "Añadir parámetro",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}} días",
       "copy": "Copiar al portapapeles",
       "date-expiry-string": "Este token de acceso es válido hasta {{expiry}}",
+      "diagnostics": "Diagnósticos",
+      "log-ram": "Registros de RAM",
+      "log-flash": "Registros de memoria flash",
       "form": {
         "validity": "Validez"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "Asistencia remota desactivada",
         "apu-disable-error": "No se puede desactivar la asistencia remota"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "Tiempo",
+        "category": "Categoría",
+        "severity": "Gravedad",
+        "message": "Mensaje",
+        "messages": {
+          "fetch-error-message": "No se han podido recuperar los registros."
+        },
+        "severity-options": {
+          "emerg": "Emergencia",
+          "info": "Información",
+          "notice": "Aviso",
+          "critical": "Crítico",
+          "alert": "Alerta",
+          "error": "Error",
+          "warning": "Aviso",
+          "debug": "Depurar"
+        },
+        "start-date": "Fecha de inicio",
+        "end-date": "Fecha de finalización"
+      },
+      "search": "buscar",
+      "search-tooltip-message": "Buscar por categoría, gravedad y mensaje",
+      "download": "Descargar",
+      "auto-refresh": "Actualizar automáticamente"
     },
     "poe": {
       "name": "PoE",
@@ -2961,7 +2997,7 @@
         "localInterface": "Interfaz propia",
         "cdpVersion": "Versión",
         "timeToLive": "TTL",
-        "neighborInterface": "Interfaz de vecino",
+        "neighborInterface": "Interfaz vecina",
         "address": "Dirección",
         "capabilities": "Capacidades",
         "softwareVersion": "Software",
@@ -2989,8 +3025,8 @@
         "config-source": "Origen de configuración",
         "version": "Versión",
         "transmissionInterval": "Intervalo de transmisión",
-        "transmissionInterval-invalid-message": "El intervalo de transmisión debe ser mayor que {{ val }} (retraso de transmisión*4)",
-        "transmitDelay-invalid-message": "El retraso de transmisión debe ser menor que {{ val }} (intervalo de transmisión/4)",
+        "transmissionInterval-invalid-message": "El intervalo de transmisión debe ser inferior a {{ val }} (tiempo de retención)",
+        "holdTime-invalid-message": "El tiempo de retención debe ser superior a {{ val }} (intervalo de transmisión)",
         "holdTime": "Tiempo de retención",
         "required-input-message": "El valor debe ser {{ min }} - {{ max }}",
         "message": {
