@@ -314,6 +314,7 @@
         "schedule-disabled": "Os agendamentos deste switch estão em pausa.",
         "schedule-enabled": "Os agendamentos deste switch estão em execução.",
         "no-capability": "O firmware do switch não é compatível com os backups do Sophos Central. Atualize o switch para ter essa funcionalidade.",
+        "license-missing": "Nenhuma assinatura de suporte encontrada.",
         "state": "Estado",
         "events": {
           "Created": "Backup solicitado",
@@ -1755,9 +1756,9 @@
         "Priv": "Privilégio"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "Endereço de destino",
@@ -1775,6 +1776,7 @@
           "internet": "internet",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "Adicione um parâmetro de destino para configurar o endereço de destino.",
         "retry": "Tentar novamente",
         "confirm-update": "Confirmar atualização",
         "confirm-delete": "Confirmar deleção",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "As configurações de endereço de destino de SNMP foram criadas",
           "update-settings-success": "As configurações de endereço de destino de SNMP foram atualizadas",
           "add-settings-error": "Não foi possível criar as configurações de endereço de destino de SNMP",
-          "invalid-ip": "Endereço de ip inválido."
+          "invalid-ip": "Endereço de ip inválido.",
+          "site-delete-setting-text": "Delete {{ parameterCount }} configurações de endereço de destino de SNMP. {{ count }} switches removerão as configurações de endereço de destino desse SNMP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+          "switch-delete-setting-text": "Delete {{ parameterCount }} configurações de endereço de destino de SNMP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde."
         }
       },
       "target-parameters": {
         "title": "Parâmetros de destino",
         "target-param-name": "Nome",
         "target-param-name-required-message": "É necessário um nome",
+        "target-param-name-max-length-message": "O nome deve ter um máximo de 30 caracteres.",
         "target-param-name-already-exists-message": "O nome já existe",
         "msg-processing-model": "Modelo de processamento de mensagem",
         "security-mode": "Modo de Segurança",
-        "security-name": "Nome da segurança",
+        "security-name": "Usuário(v3)",
+        "community-name": "Usuário(v1/v2c)",
         "priv-mode": "Modo de privilégio",
         "config-source": "Origem da configuração",
         "add-parameter": "Adicionar parâmetro",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}} dias",
       "copy": "Copiar para área de transferência",
       "date-expiry-string": "Esta token de acesso é válido até {{expiry}}",
+      "diagnostics": "Diagnóstico",
+      "log-ram": "Logs de RAM",
+      "log-flash": "Logs de flash",
       "form": {
         "validity": "Validade"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "Assistência remota desativada",
         "apu-disable-error": "Não é possível desativar a assistência remota"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "Hora",
+        "category": "Categoria",
+        "severity": "Severidade",
+        "message": "Mensagem",
+        "messages": {
+          "fetch-error-message": "Falha na obtenção de logs."
+        },
+        "severity-options": {
+          "emerg": "Emergência",
+          "info": "Info",
+          "notice": "Aviso",
+          "critical": "Crítica",
+          "alert": "Alerta",
+          "error": "Erro",
+          "warning": "Alerta",
+          "debug": "Depurar"
+        },
+        "start-date": "Data de início",
+        "end-date": "Data de término"
+      },
+      "search": "pesquisar",
+      "search-tooltip-message": "Pesquisar por categoria, severidade e mensagem",
+      "download": "Baixar",
+      "auto-refresh": "Autoatualizar"
     },
     "poe": {
       "name": "PoE",
@@ -2989,9 +3025,9 @@
         "config-source": "Origem da configuração",
         "version": "Versão",
         "transmissionInterval": "Intervalo de transmissão",
-        "transmissionInterval-invalid-message": "O intervalo de transmissão deve ser maior que {{ val }} (retardo de transmissão*4)",
-        "transmitDelay-invalid-message": "O atraso da transmissão deve ser menor que {{ val }} (intervalo de transmissão/4)",
-        "holdTime": "Holdtime",
+        "transmissionInterval-invalid-message": "Intervalo de transmissão deve ser inferior a {{ val }} (Tempo de retenção)",
+        "holdTime-invalid-message": "Tempo de retenção deve ser superior a {{ val }} (Intervalo de transmissão)",
+        "holdTime": "Tempo de retenção",
         "required-input-message": "O valor deve ser de {{ min }} a {{ max }}",
         "message": {
           "save-cdp-settings-success": "As configurações de CDP foram atualizadas",

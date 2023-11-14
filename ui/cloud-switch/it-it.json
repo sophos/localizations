@@ -314,6 +314,7 @@
         "schedule-disabled": "Le pianificazioni sono sospese per questo switch.",
         "schedule-enabled": "Le pianificazioni sono attive per questo switch.",
         "no-capability": "Il firmware dello switch non supporta i backup con Sophos Central. Esegui l’upgrade dello switch per poter utilizzare questa funzionalità.",
+        "license-missing": "Nessuna subscription di supporto trovata.",
         "state": "Stato",
         "events": {
           "Created": "Backup richiesto",
@@ -1755,9 +1756,9 @@
         "Priv": "Privilegio"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "Indirizzo di destinazione",
@@ -1775,6 +1776,7 @@
           "internet": "Internet",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "Aggiungi un parametro di destinazione per configurare l’indirizzo di destinazione.",
         "retry": "Riprova",
         "confirm-update": "Conferma aggiornamento",
         "confirm-delete": "Conferma eliminazione",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "Le impostazioni dell’indirizzo di destinazione SNMP sono state create",
           "update-settings-success": "Le impostazioni indirizzo di destinazione SNMP sono state aggiornate",
           "add-settings-error": "Non è stato possibile creare impostazioni dell’indirizzo di destinazione SNMP",
-          "invalid-ip": "Indirizzo IP non valido."
+          "invalid-ip": "Indirizzo IP non valido.",
+          "site-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dell’indirizzo di destinazione SNMP. {{ count }} switch rimuoveranno queste impostazioni dell’indirizzo di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dell’indirizzo di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
         }
       },
       "target-parameters": {
         "title": "Parametri di destinazione",
         "target-param-name": "Nome",
         "target-param-name-required-message": "Nome obbligatorio",
+        "target-param-name-max-length-message": "Il nome non può contenere più di 30 caratteri.",
         "target-param-name-already-exists-message": "Nome già esistente",
         "msg-processing-model": "Modello elaborazione messaggi",
         "security-mode": "Modalità di sicurezza",
-        "security-name": "Nome sicurezza",
+        "security-name": "Utente(v3)",
+        "community-name": "Utente(v1/v2c)",
         "priv-mode": "Modalità privilegi",
         "config-source": "Origine configurazione",
         "add-parameter": "Aggiungi parametro",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}} giorni",
       "copy": "Copia negli Appunti",
       "date-expiry-string": "Questo token di accesso è valido fino a: {{expiry}}",
+      "diagnostics": "Diagnostica",
+      "log-ram": "Log RAM",
+      "log-flash": "Log flash",
       "form": {
         "validity": "Validità"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "Assistenza remota disattivata",
         "apu-disable-error": "Impossibile disattivare l'assistenza remota"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "Orario",
+        "category": "Categoria",
+        "severity": "Gravità",
+        "message": "Messaggio",
+        "messages": {
+          "fetch-error-message": "Non è stato possibile recuperare i log."
+        },
+        "severity-options": {
+          "emerg": "Emergenza",
+          "info": "Info",
+          "notice": "Notifica",
+          "critical": "Critico",
+          "alert": "Avviso",
+          "error": "Errore",
+          "warning": "Attenzione",
+          "debug": "Debug"
+        },
+        "start-date": "Data di inizio",
+        "end-date": "Data di fine"
+      },
+      "search": "ricerca",
+      "search-tooltip-message": "Cerca per categoria, gravità e messaggio",
+      "download": "Download",
+      "auto-refresh": "Aggiornamento automatico"
     },
     "poe": {
       "name": "PoE",
@@ -2706,7 +2742,7 @@
         "forbidden-ports": "Porte proibite",
         "inherited": "Origine configurazione",
         "response-interval": "Intervallo di risposta",
-        "startup-query-counter": "Contatore query all'avvio",
+        "startup-query-counter": "Contatore query all’avvio",
         "startup-query-interval": "Intervallo query all'avvio"
       },
       "group-list-table-headers": {
@@ -2920,7 +2956,7 @@
       "settings": "Impostazioni",
       "ports": "Porte",
       "local-devices": "Auto",
-      "remote-devices": "Router adiacenti",
+      "remote-devices": "Adiacenti",
       "port-info": "Informazioni sulle porte",
       "device-info": "Dettagli dispositivo",
       "cdp-device-info": "CDP",
@@ -2952,7 +2988,7 @@
         "powerRequestId": "ID richiesta energia elettrica",
         "powerManagementId": "ID gestione energia elettrica",
         "powerAvailable": "Energia elettrica disponibile",
-        "hasNeighbor": "Router adiacente"
+        "hasNeighbor": "Adiacente"
       },
       "remote-device": {
         "portNo": "Porta",
@@ -2989,9 +3025,9 @@
         "config-source": "Origine configurazione",
         "version": "Versione",
         "transmissionInterval": "Intervallo di trasmissione",
-        "transmissionInterval-invalid-message": "L’intervallo di trasmissione deve essere maggiore di {{ val }} (ritardo di trasmissione x 4)",
-        "transmitDelay-invalid-message": "Il ritardo di trasmissione deve essere minore di {{ val }} (intervallo di trasmissione ÷ 4)",
-        "holdTime": "Tempo di attesa",
+        "transmissionInterval-invalid-message": "L’intervallo di trasmissione deve essere minore di {{ val }} (tempo di hold)",
+        "holdTime-invalid-message": "Il tempo di hold deve essere maggiore di {{ val }} (intervallo di trasmissione)",
+        "holdTime": "Tempo di hold",
         "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
         "message": {
           "save-cdp-settings-success": "Le impostazioni CDP sono state aggiornate",

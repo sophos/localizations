@@ -6,7 +6,8 @@
     "breadcrumbs": {
       "main-dashboard-breadcrumb-text": "概要",
       "dashboard-breadcrumb-text": "{{appTitle}} ダッシュボード",
-      "report-breadcrumb-text": "{{appTitle}} - レポート"
+      "report-breadcrumb-text": "{{appTitle}} - ログとレポート",
+      "report-breadcrumb": "ログとレポート"
     },
     "common": {
       "action": {
@@ -156,7 +157,7 @@
       "yAxis": "Y軸",
       "groupBy": "グループ化",
       "deleteExport": "エクスポートの削除",
-      "firewalls": "ゲートウェイ",
+      "firewalls": "ファイアウォール",
       "tooManyDevices": "デバイス数の上限に達しました。この操作は実行できません",
       "deviceNotFound": "デバイスが見つかりません",
       "groupNotFound": "グループが空か、見つかりません"
@@ -195,10 +196,10 @@
       "areYouSure": "変更内容を保存してもよいですか？",
       "transferDropdownDefaultText": "交換デバイスの選択",
       "pageTitle": "ライセンス",
-      "tabTitle": "ゲートウェイ",
+      "tabTitle": "ファイアウォール",
       "licInfo": "使用中のライセンス数 / 使用可能なライセンス数",
       "licDetails": "1 ライセンス = 100GB",
-      "licExpirationInfo": "ゲートウェイレポートの有効期限",
+      "licExpirationInfo": "Firewall Reporting の有効期限",
       "manageCentralLicensesBtn": "製品ライセンスの管理",
       "projectedTooltip": "平均受信ログレートと、割り当てられたストレージに基づいて予測されるデータの保持期間です。",
       "transferText": "ライセンスとデータの交換デバイスへの関連付け",
@@ -405,9 +406,9 @@
         "requests": "リクエスト",
         "deletesIn": "削除:",
         "reportsList": {
-            "dns": "DNS",
-            "syslog": "ログビューアと検索"
-          }
+          "dns": "DNS の使用状況",
+          "syslog": "ログビューアと検索"
+        }
       },
       "reportTabs": {
         "reportGenerator": "レポート生成",
@@ -474,15 +475,69 @@
       }
     },
     "apiLabel": {
+      "domain_risk": "リスク",
+      "domain_category": "カテゴリ",
+      "customer_id": "顧客 ID",
+      "customer_region": "顧客地域",
+      "dns_duration": "DNS 期間",
+      "dns_qid": "DNS QID",
+      "dns_qname": "DNS Qname",
+      "dns_qtype": "クエリの種類",
+      "dns_resolvers": "DNS リゾルバ",
+      "object_name": "オブジェクト名",
+      "query_class": "クエリクラス",
+      "query_size": "クエリバイト",
+      "resolved_ip": "解決された IP",
+      "response": "応答",
+      "response_class": "応答クラス",
+      "response_code": "応答ステータス",
+      "response_duration": "応答時間",
+      "response_flag": "応答フラグ",
+      "response_name": "応答名",
+      "response_records": "応答レコード",
+      "response_size": "応答バイト",
+      "response_ttl": "応答 TTL",
+      "response_type": "応答の種類",
+      "riskscore": "リスクスコア",
+      "security_status": "DNS リゾルバ",
+      "asset_region": "アセット地域",
+      "bridge_display_name": "ブリッジの表示名",
+      "bridge_name": "ブリッジ名",
+      "decrypted_count": "復号化数",
+      "detection_name": "検出名",
+      "fw_rule_name": "Fw ルール名",
+      "fw_rule_section": "Fw ルールセクション",
+      "gateway_id_reply": "ゲートウェイ ID の返信",
+      "gateway_id_request": "ゲートウェイ ID のリクエスト",
+      "gateway_name_reply": "ゲートウェイ名の返信",
+      "gateway_name_request": "ゲートウェイ名のリクエスト",
+      "gateway_status": "ゲートウェイ",
+      "jitters": "ゲートウェイのジッタ",
+      "latency": "ゲートウェイの遅延",
+      "non_ssl_count": "非 SSL 数",
+      "packet_loss": "ゲートウェイパケット損失",
+      "probe_target": "プローブの対象",
+      "proc_hash": "PROC ハッシュ",
+      "proc_id": "PROC ID",
+      "sdwan_profile_id_reply": "プロファイル ID の返信",
+      "sdwan_profile_id_request": "プロファイル ID のリクエスト",
+      "sdwan_profile_name_reply": "プロファイル名の返信",
+      "sdwan_profile_name_request": "SD-WAN プロファイル名",
+      "sdwan_route_id_reply": "ルート ID の返信",
+      "sdwan_route_name_reply": "ルート名の返信",
+      "sdwan_route_name_request": "ルート名のリクエスト",
+      "ssl_count": "SSL 数",
+      "dns_response": "DNS の応答",
+      "dns_query": "DNS クエリ",
       "health_count": "セキュリティ状態の数",
-      "reason": "理由",
+      "reason": "結果",
       "sha256": "SHA256",
       "heartbeat": "ハートビート",
       "ips_policy_id": "IPS ポリシー ID",
       "download_file": "ファイルのダウンロード",
       "source_ip": "送信元 IP",
       "clean_hits": "安全なヒットの数",
-      "firewall_rule_type": "ゲートウェイルールの種類",
+      "firewall_rule_type": "ファイアウォールルールの種類",
       "received_kbits": "受信したキロビット",
       "event_type": "イベントの種類",
       "top_intrusion_attacks": "上位の侵入攻撃",
@@ -526,7 +581,7 @@
       "component": "コンポーネント",
       "event_id": "イベント ID",
       "firewall": "ゲートウェイ",
-      "firewall_rule_id": "ゲートウェイルール ID",
+      "firewall_rule_id": "ファイアウォール ルール ID",
       "web_usage": "Web 使用状況",
       "date": "日付",
       "file_path": "ファイルパス",
@@ -601,10 +656,10 @@
       "technology": "テクノロジー",
       "message": "メッセージ",
       "bytes_sent": "送信バイト数",
-      "application": "リソース",
+      "application": "アプリケーション",
       "source_country": "送信国",
       "vpn": "VPN 使用状況",
-      "bytes": "合計バイト数",
+      "bytes": "バイト",
       "malicious_hits": "悪意のあるヒットの数",
       "risk": "リスク",
       "threat": "脅威",
@@ -687,7 +742,7 @@
       "bitmask": "ビットマスク",
       "http_cookie": "HTTP Cookie",
       "disable_count": "カウントの無効化",
-      "rule_name": "ルール名",
+      "rule_name": "ポリシールール",
       "download_file_type": "ダウンロードしたファイルの種類",
       "enable_count": "カウントの有効化",
       "reported_port": "報告されたポート",
@@ -747,7 +802,7 @@
       "accessPointID": "アクセスポイント ID",
       "ssid_count": "SSID 数",
       "maxConnections": "最大接続数",
-      "firewall_device": "ゲートウェイデバイス",
+      "firewall_device": "ファイアウォールデバイス",
       "avgConnections": "平均接続数",
       "authentication_status": "状態",
       "operating_system_version": "OS バージョン",
@@ -766,6 +821,135 @@
       "application_type": "リソースの種類",
       "policy": "ポリシー",
       "deny_reason_count": "拒否された理由の数"
+    }
+  },
+  "sase": {
+    "menu": {
+      "reports-and-logs": "ログとレポート"
+    },
+    "common": {
+      "messages": {
+        "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。"
+      }
+    },
+    "dashboard": {
+      "title": "Secure Service Edge - ダッシュボード",
+      "breadcrumb": "Secure Service Edge ダッシュボード"
+    },
+    "reports": {
+      "title": "Secure Service Edge - レポート",
+      "breadcrumb": "レポート"
+    },
+    "diagnostics": {
+      "title": "Secure Service Edge - 診断",
+      "breadcrumb": "診断"
+    },
+    "policies": {
+      "button": {
+        "next": "次へ",
+        "cancel": "キャンセル",
+        "back": "戻る"
+      },
+      "title": "Secure Service Edge - インターネット アクセス ポリシー",
+      "breadcrumb": "インターネット アクセス ポリシー",
+      "follow-steps": "次の手順に従って新しいルールを作成し、ルールを保存してポリシーに追加します。",
+      "choose-action": "アクションを選択",
+      "action-description": "ルールに最も当てはまるオプションを選択してください",
+      "specify-condition": "Specify conditions", 
+      "condition-description": "これらの条件により、アクションがトリガーされます。",
+      "manage-options": "オプションの管理",
+      "options-description": "関連するセキュリティ機能の設定",
+      "add-rule": "ルールの追加",
+      "policy": {
+        "add-rule": {
+          "step-1": {
+            "block-websites": "Web サイトのブロック",
+            "block-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを防止",
+            "block-websites-tooltip-desc": "組み込みのカテゴリを使用するか、ポリシーオブジェクトで作成した独自の Web サイト リストを使用して、ブロックする Web サイトを指定します。ルールをすべてのユーザーに適用するか、グループ、ユーザー、デバイス、場所などの条件を指定して、ルールをさらに選択して作成します。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。",
+            "allow-websites": "Web サイトの許可",
+            "allow-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを許可",
+            "allow-websites-tooltip-desc": "他のルールによってブロックされている Web サイトやカテゴリを特別に許可するルールを作成したり、一部の Web サイトに常にアクセスできるようにする場合に便利です。「ブロック」ルールよりも高いランクの 「Web サイトの許可」ルールを作成すると、選択したサイトとユーザーのブロックアクションが上書きされます。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。"
+          },
+          "step-2": {
+            "user": {
+              "is": "次に一致する",
+              "not-is": "次に一致しない",
+              "group": "グループに存在します",
+              "not-group": "グループに存在しません",
+              "location": "ロケーションに存在します",
+              "network": "ネットワークから接続しています",
+              "not-network": "ネットワークから接続していません",
+              "computer": "コンピュータ上に存在します",
+              "not-computer": "コンピュータ上に存在しません",
+              "computer-group": "このグループのコンピュータ上に存在します",
+              "not-computer-group": "このグループのコンピュータ上に存在します"
+            },
+            "connection": {
+              "domain": "ドメインは、である",
+              "not-domain": "ドメインは、ではない",
+              "web-category": "Web カテゴリは、である",
+              "not-eb-category": "Web カテゴリは、ではない",
+              "url": "URL は、である",
+              "not-url": "URL は、ではない",
+              "application": "アプリケーション",
+              "dest-ip": "宛先 IP アドレスは、である",
+              "not-dest-ip": "宛先IPアドレスは、ではない"
+            }
+          }
+        }
+      },
+      "no-policy": {
+        "title": "追加したルールはありません。",
+        "body": "ルールを追加するには、追加ルールボタンをクリックします。"
+      },
+      "pagination": {
+        "page-info": "{{start}} ～ {{end}} / {{total}}"
+      },
+      "headers": {
+        "rank": "ランク",
+        "rule-name": "ルール名",
+        "action": "アクション",
+        "filtering-stages": "フィルタリングステージ",
+        "active": "有効",
+        "dns": "DNS",
+        "fw": "FW",
+        "tls": "TLS",
+        "web-url": "Web URL",
+        "web-content": "Web コンテンツ",
+        "app-control": "アプリケーションコントロール",
+        "ips": "IPS (侵入防御システム)",
+        "tooltips": {
+          "filtering": {
+            "description": "トラフィックは、DNS、ファイアウォール、TLS、Web URL、Web コンテンツの順で最大 5 つのフィルタリング手順を通過します。",
+            "point-one": "各ルールは、フィルタリングの複数の段階で適用できます。",
+            "point-two": "ルールは各ステージで上から下に評価され、そのステージで最初に一致したルールが適用されます。",
+            "point-three": "トラフィックは、各段階で異なるルールに一致する場合があります。"
+          }
+        }
+      },
+      "filters": {
+        "all": "すべてのフィルタリングステージ",
+        "dns": "DNS",
+        "firewall": "ファイアウォール",
+        "tls": "TLS",
+        "web-url": "Web URL",
+        "web-content": "Web コンテンツ",
+        "app-control": "アプリケーションコントロール",
+        "ips": "IPS (侵入防御システム)"
+      }
+
+    },
+    "agent-config": {
+      "title": "Secure Service Edge - エージェント設定",
+      "breadcrumb": "エージェント設定"
+    },
+    "objects": {
+      "title": "Secure Service Edge - オブジェクト",
+      "breadcrumb": "オブジェクト"
+    },
+    "settings": {
+      "title": "Secure Service Edge - 設定",
+      "breadcrumb": "設定"
     }
   }
 }

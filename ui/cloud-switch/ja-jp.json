@@ -314,6 +314,7 @@
         "schedule-disabled": "このスイッチのスケジュールは一時停止されています。",
         "schedule-enabled": "このスイッチのスケジュールが実行されています。",
         "no-capability": "スイッチのファームウェアは Sophos Central のバックアップをサポートしていません。この機能を利用するには、スイッチをアップグレードしてください。",
+        "license-missing": "サポートサブスクリプションが見つかりません。",
         "state": "状態",
         "events": {
           "Created": "バックアップが要求されました",
@@ -1755,9 +1756,9 @@
         "Priv": "権限"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "ターゲットアドレス",
@@ -1775,6 +1776,7 @@
           "internet": "インターネット",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "ターゲットアドレスを設定するには、ターゲットパラメータを追加してください。",
         "retry": "再試行",
         "confirm-update": "更新の確認",
         "confirm-delete": "削除の確認",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "SNMP ターゲットアドレス設定が作成されました",
           "update-settings-success": "SNMP ターゲットアドレスの設定が更新されました",
           "add-settings-error": "SNMP ターゲットアドレス設定を作成できません",
-          "invalid-ip": "IP アドレスが無効です。"
+          "invalid-ip": "IP アドレスが無効です。",
+          "site-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットアドレス設定を削除します。{{ count }}個のスイッチに、この SNMP ターゲットアドレス設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットアドレス設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
         }
       },
       "target-parameters": {
         "title": "ターゲットパラメータ",
         "target-param-name": "名前",
         "target-param-name-required-message": "名前を指定してください",
+        "target-param-name-max-length-message": "名前は最大 30文字まで入力できます",
         "target-param-name-already-exists-message": "この名前は既に存在します",
         "msg-processing-model": "メッセージ処理モデル",
         "security-mode": "セキュリティモード",
-        "security-name": "セキュリティ名",
+        "security-name": "ユーザー (v3)",
+        "community-name": "ユーザー (v1/v2c)",
         "priv-mode": "権限モード",
         "config-source": "設定のソース",
         "add-parameter": "パラメータの追加",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}}日",
       "copy": "クリップボードへコピー",
       "date-expiry-string": "このアクセストークンは、{{expiry}}まで有効です ",
+      "diagnostics": "診断",
+      "log-ram": "RAM ログ",
+      "log-flash": "フラッシュログ",
       "form": {
         "validity": "有効期間"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "リモートアシスタンスを無効化しました",
         "apu-disable-error": "リモートアシスタンスを無効化できません"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "時刻",
+        "category": "カテゴリ",
+        "severity": "重要度",
+        "message": "メッセージ",
+        "messages": {
+          "fetch-error-message": "ログの取得に失敗しました。"
+        },
+        "severity-options": {
+          "emerg": "緊急",
+          "info": "情報",
+          "notice": "注",
+          "critical": "緊急",
+          "alert": "警告",
+          "error": "エラー",
+          "warning": "警告",
+          "debug": "デバッグ"
+        },
+        "start-date": "開始日",
+        "end-date": "終了日"
+      },
+      "search": "検索",
+      "search-tooltip-message": "カテゴリ、重大度、メッセージで検索",
+      "download": "ダウンロード",
+      "auto-refresh": "自動更新"
     },
     "poe": {
       "name": "PoE",
@@ -2961,7 +2997,7 @@
         "localInterface": "セルフインターフェース",
         "cdpVersion": "バージョン",
         "timeToLive": "TTL",
-        "neighborInterface": "ネイバーインターフェース",
+        "neighborInterface": "ネイバーインターフェイス",
         "address": "住所",
         "capabilities": "機能",
         "softwareVersion": "ソフトウェア",
@@ -2989,9 +3025,9 @@
         "config-source": "設定のソース",
         "version": "バージョン",
         "transmissionInterval": "転送間隔",
-        "transmissionInterval-invalid-message": "転送間隔は {{ val }}  (転送遅延*4) より大きい値を指定してください",
-        "transmitDelay-invalid-message": "転送遅延は {{ val }} (転送間隔/4) 未満にする必要があります。",
-        "holdTime": "ホールドタイム",
+        "transmissionInterval-invalid-message": "転送間隔は {{ val }} (ホールド時間) より小さい値を指定してください",
+        "holdTime-invalid-message": "ホールド時間は {{ val }} (転送間隔) より大きな値を指定してください",
+        "holdTime": "ホールド時間",
         "required-input-message": "値は {{ min }} ～ {{ max }} で指定してください",
         "message": {
           "save-cdp-settings-success": "CDP の設定が更新されました",

@@ -297,7 +297,7 @@
         "restores": "Wiederherstellungen",
         "retries": "Wiederholungsversuche",
         "search": "Suchen",
-        "search-tooltip-message": "Nach Seriennummer, Standort, Verzeichnis, Modell und Tags suchen",
+        "search-tooltip-message": "Suchen nach Seriennummer, Standort, Verzeichnis, Modell oder Tags",
         "resume": "Zeitpläne fortsetzen",
         "pause": "Zeitpläne anhalten",
         "cancel": "Abbrechen",
@@ -314,6 +314,7 @@
         "schedule-disabled": "Zeitpläne sind für diesen Switch angehalten.",
         "schedule-enabled": "Zeitpläne sind für diesen Switch aktiv.",
         "no-capability": "Die Switch-Firmware unterstützt keine Sophos-Central-Sicherungen. Für diese Funktion müssen Sie den Switch aktualisieren.",
+        "license-missing": "Kein Support-Abonnement gefunden.",
         "state": "Status",
         "events": {
           "Created": "Sicherung angefordert",
@@ -1755,9 +1756,9 @@
         "Priv": "Berechtigung"
       },
       "security-mode": {
-        "V1": "V1",
-        "V2c": "V2c",
-        "V3": "V3"
+        "V1": "v1",
+        "V2c": "v2c",
+        "V3": "v3"
       },
       "target-address": {
         "title": "Zieladresse",
@@ -1775,6 +1776,7 @@
           "internet": "Internet",
           "temp-12": "temp-12"
         },
+        "no-target-parameter-found": "Fügen Sie einen Zielparameter hinzu, um die Zieladresse zu konfigurieren.",
         "retry": "Erneut versuchen",
         "confirm-update": "Aktualisieren bestätigen",
         "confirm-delete": "Löschen bestätigen",
@@ -1796,17 +1798,21 @@
           "add-settings-success": "SNMP-Zieladresseneinstellungen wurden erstellt",
           "update-settings-success": "SNMP-Zieladresseneinstellungen wurden aktualisiert",
           "add-settings-error": "SNMP-Zieladresseneinstellungen können nicht erstellt werden",
-          "invalid-ip": "Ungültige IP-Adresse."
+          "invalid-ip": "Ungültige IP-Adresse.",
+          "site-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zieladresseneinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
         }
       },
       "target-parameters": {
         "title": "Zielparameter",
         "target-param-name": "Name",
         "target-param-name-required-message": "Name ist erforderlich",
+        "target-param-name-max-length-message": "Name kann maximal 30 Zeichen lang sein",
         "target-param-name-already-exists-message": "Name existiert bereits",
         "msg-processing-model": "Nachrichtenverarbeitungsmodell",
         "security-mode": "Sicherheitsmodus",
-        "security-name": "Sicherheitsname",
+        "security-name": "Benutzer (v3)",
+        "community-name": "Benutzer (v1/v2c)",
         "priv-mode": "Berechtigungsmodus",
         "config-source": "Konfigurationsquelle",
         "add-parameter": "Parameter hinzufügen",
@@ -1881,6 +1887,9 @@
       "duration-days": "{{duration}} Tage",
       "copy": "In die Zwischenablage kopieren",
       "date-expiry-string": "Dieses Zugangs-Token ist gültig bis {{expiry}}",
+      "diagnostics": "Diagnose",
+      "log-ram": "RAM-Protokolle",
+      "log-flash": "Flash-Protokolle",
       "form": {
         "validity": "Gültigkeit"
       },
@@ -1890,6 +1899,33 @@
         "apu-disable-success": "Remote-Unterstützung wurde deaktiviert",
         "apu-disable-error": "Remote-Unterstützung kann nicht deaktiviert werden"
       }
+    },
+    "diagnostics": {
+      "logs" : {
+        "time": "Zeit",
+        "category": "Kategorie",
+        "severity": "Schweregrad",
+        "message": "Nachricht",
+        "messages": {
+          "fetch-error-message": "Fehler beim Abruf der Protokolle."
+        },
+        "severity-options": {
+          "emerg": "Notfall",
+          "info": "Info",
+          "notice": "Hinweis",
+          "critical": "Kritisch",
+          "alert": "Alarm",
+          "error": "Fehler",
+          "warning": "Warnung",
+          "debug": "Fehlersuche"
+        },
+        "start-date": "Startdatum",
+        "end-date": "Enddatum"
+      },
+      "search": "Suchen",
+      "search-tooltip-message": "Suchen nach Kategorie, Schweregrad oder Nachricht",
+      "download": "Herunterladen",
+      "auto-refresh": "Automatisch aktualisieren"
     },
     "poe": {
       "name": "PoE",
@@ -2989,8 +3025,8 @@
         "config-source": "Konfigurationsquelle",
         "version": "Version",
         "transmissionInterval": "Übertragungsintervall",
-        "transmissionInterval-invalid-message": "Übertragungsintervall muss größer als {{ val }} sein (Übertragungsverzögerung * 4)",
-        "transmitDelay-invalid-message": "Übertragungsverzögerung muss kleiner als {{ val }} sein (Übertragungsintervall / 4)",
+        "transmissionInterval-invalid-message": "Übertragungsintervall muss kleiner als {{ val }} sein (Haltezeit)",
+        "holdTime-invalid-message": "Haltezeit muss größer als {{ val }} sein (Übertragungsintervall)",
         "holdTime": "Haltezeit",
         "required-input-message": "Wert muss zwischen {{ min }} und {{ max }} liegen",
         "message": {
