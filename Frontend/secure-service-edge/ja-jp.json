@@ -1,7 +1,7 @@
 {
   "common-report": {
     "page-title": {
-      "dns": "DNS 保護"
+      "dns": "DNS Protection"
     },
     "breadcrumbs": {
       "main-dashboard-breadcrumb-text": "概要",
@@ -471,10 +471,25 @@
         "endsOn": "終了日"
       },
       "messages": {
-        "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「キュー」タブにデータが表示されます。<br /><br/>「キュー」タブにあるレポートは 24時間使用できます。"
+        "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「キュー」タブにデータが表示されます。<br /><br/>「キュー」タブにあるレポートは 24時間使用できます。",
+        "timeSliceInfo": "<p>データの取得を最適化するために、期間が 1～7日間のレポートは 1時間単位でグループ化され、期間が 7日を超えるレポートは 1日単位でグループ化されます。</p><p>より詳細に情報を表示するには、レポートの期間を短くするか、以下の日付をクリックしてください</p>"
+
       }
     },
     "apiLabel": {
+      "src_location": "場所",
+      "timestamp": "日付",
+      "src_ip": "送信元 IP",
+      "dns_qclass" : "クエリクラス",
+      "dns_rcode": "応答ステータス",
+      "dns_rnum": "応答レコード",
+      "dns_qsize": "クエリバイト",
+      "dns_rsize": "応答バイト",
+      "dns_resolved_ips": "解決された IP",
+      "dns_rtype": "応答の種類",
+      "dns_rclass": "応答クラス",
+      "response_ttl_list": "応答 TTL",
+      "response_ip" : "応答 IP",
       "domain_risk": "リスク",
       "domain_category": "カテゴリ",
       "customer_id": "顧客 ID",
@@ -570,7 +585,7 @@
       "atp_threats": "ATP 脅威",
       "extended_report": "詳細レポート",
       "malware": "マルウェア",
-      "log_subtype": "ログの下位の種類",
+      "log_subtype": "サブタイプ",
       "message_count": "メッセージ数",
       "executable": "実行ファイル",
       "url": "URL",
@@ -607,7 +622,7 @@
       "allowed_app_categories": "許可されたアプリカテゴリ",
       "user_group": "ユーザーグループ",
       "bandwidth_usage": "帯域使用量",
-      "dns": "DNS",
+      "dns": "DNS の使用状況",
       "syslog": "ログビューアと検索",
       "gateway_bandwidth": "帯域使用量",
       "new_cloud_apps": "新しいクラウドアプリ",
@@ -830,7 +845,9 @@
     "common": {
       "messages": {
         "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。"
-      }
+      },
+      "on-text": "オン",
+      "off-text": "オフ"
     },
     "dashboard": {
       "title": "Secure Service Edge - ダッシュボード",
@@ -848,27 +865,91 @@
       "button": {
         "next": "次へ",
         "cancel": "キャンセル",
-        "back": "戻る"
+        "back": "戻る",
+        "save-rule": "ルールの保存"
       },
-      "title": "Secure Service Edge - インターネット アクセス ポリシー",
-      "breadcrumb": "インターネット アクセス ポリシー",
+      "title": "Secure Service Edge - ポリシー",
+      "breadcrumb": "ポリシー",
       "follow-steps": "次の手順に従って新しいルールを作成し、ルールを保存してポリシーに追加します。",
       "choose-action": "アクションを選択",
       "action-description": "ルールに最も当てはまるオプションを選択してください",
-      "specify-condition": "Specify conditions", 
+      "specify-condition": "条件の指定",
       "condition-description": "これらの条件により、アクションがトリガーされます。",
       "manage-options": "オプションの管理",
       "options-description": "関連するセキュリティ機能の設定",
-      "add-rule": "ルールの追加",
+      "add-rule" : {
+        "title": "Secure Service Edge - ポリシー - ルールの追加",
+        "breadcrumb": "ルールの追加"
+      },
       "policy": {
         "add-rule": {
           "step-1": {
-            "block-websites": "Web サイトのブロック",
-            "block-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを防止",
-            "block-websites-tooltip-desc": "組み込みのカテゴリを使用するか、ポリシーオブジェクトで作成した独自の Web サイト リストを使用して、ブロックする Web サイトを指定します。ルールをすべてのユーザーに適用するか、グループ、ユーザー、デバイス、場所などの条件を指定して、ルールをさらに選択して作成します。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。",
-            "allow-websites": "Web サイトの許可",
-            "allow-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを許可",
-            "allow-websites-tooltip-desc": "他のルールによってブロックされている Web サイトやカテゴリを特別に許可するルールを作成したり、一部の Web サイトに常にアクセスできるようにする場合に便利です。「ブロック」ルールよりも高いランクの 「Web サイトの許可」ルールを作成すると、選択したサイトとユーザーのブロックアクションが上書きされます。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。"
+            "web-gateway": {
+              "block-websites": "Web サイトのブロック",
+              "block-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを防止",
+              "block-websites-tooltip-desc": "組み込みのカテゴリを使用するか、ポリシーオブジェクトで作成した独自の Web サイト リストを使用して、ブロックする Web サイトを指定します。ルールをすべてのユーザーに適用するか、グループ、ユーザー、デバイス、場所などの条件を指定して、ルールをさらに選択して作成します。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。",
+              "allow-websites": "Web サイトの許可",
+              "allow-websites-desc": "ユーザーが選択した Web サイトにアクセスするのを許可",
+              "allow-websites-tooltip-desc": "他のルールによってブロックされている Web サイトやカテゴリを特別に許可するルールを作成したり、一部の Web サイトに常にアクセスできるようにする場合に便利です。「ブロック」ルールよりも高いランクの 「Web サイトの許可」ルールを作成すると、選択したサイトとユーザーのブロックアクションが上書きされます。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。",
+              "enforce-safe-search": "セーフサーチの適用",
+              "enforce-safe-search-desc": "主要な検索エンジンのセーフサーチ機能の適用",
+              "enforce-safe-search-tooltip-desc": "不適切な Web サイトをブロックする場合は、検索エンジンが環境に適した結果のみを返すようにする必要があります。DNS メソッドを使用して、Google、Bing、DuckDuckGo に安全な検索機能を適用します。",
+              "website-tenant-controls": "Web サイトテナント制御",
+              "website-tenant-controls-desc": "サポートされている Web アプリのテナント制御を有効にする",
+              "website-tenant-controls-tooltip-desc": "一部の Web サイトおよびアプリでは、ネットワークからログインしてサービスを使用できるユーザーアカウントを制限できます。このルールを使用すると、これらの制限を有効にし、サポートされているアプリに必要な情報を提供できます。",
+              "scan-for-threats": "脅威の検索",
+              "scan-for-threats-desc": "Web コンテンツをスキャンして脅威を検出し、必要に応じて復号化します",
+              "scan-for-threats-tooltip-desc": "ファイルのダウンロードや Web ページのコンテンツは、一般的に許可されている Web サイトからでも脅威をもたらす可能性があります。このルールを使用すると、さまざまなユーザー、グループ、デバイス、または Web サイトのスキャン条件を指定できます。また、TLS 復号化を有効にして、暗号化された HTTPS サイトおよび HTTP からの脅威を検出できます。",
+              "never-decrypt": "復号化しない",
+              "never-decrypt-desc": "復号化から Web サイトまたは接続を除外する",
+              "never-decrypt-tooltip-desc": "互換性やプライバシー上の理由から、特定の Web サイトへのトラフィックが決して復号化されないようにする必要がある場合があります。これらのサイト、ユーザー、およびグループに対してこの種類のルールを作成します。復号化を可能にする一般的なルールよりも優先されるように、リストの上部にランク付けされます。",
+              "block-file-types": "ブロックするファイルタイプ",
+              "block-file-types-desc": "危険なファイルタイプまたは不要なファイルタイプのダウンロードを防止し、必要に応じて複合化します",
+              "block-file-types-tooltip-desc": "一部のファイルタイプのダウンロードは、通常のビジネスでの使用には危険で不要な場合があります。このタイプのルールを使用して、ブロックするファイルタイプを選択し、すべてのユーザーに適用するか、特定のユーザー、グループ、またはデバイスに適用するかを選択します。また、このルールは、ファイルの識別を確実にするために、必要に応じてトラフィックが復号化されます。",
+              "dont-scan": "検索しない",
+              "dont-scan-desc": "コンテンツスキャンから Web サイトまたは接続を除外する",
+              "dont-scan-tooltip-desc": "一部のサイトでは、コンテンツまたは脅威のファイルスキャンで問題が発生する場合があります。選択したサイト、ユーザー、グループ、またはデバイスのスキャン条件を上書きするには、このタイプのルールを高いランクで作成します。",
+              "websites-allow-list": "Web サイトの許可リスト",
+              "websites-allow-list-desc": "ユーザーが選択した Web サイトにアクセスするのを許可",
+              "websites-allow-list-tooltip-desc": "他のルールによってブロックされている Web サイトやカテゴリを特別に許可するルールを作成したり、一部の Web サイトに常にアクセスできるようにする場合に便利です。「ブロック」ルールよりも高いランクの 「Web サイトの許可」ルールを作成すると、選択したサイトとユーザーのブロックアクションが上書きされます。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。"
+            },
+            "firewall": {
+              "block-non-web-traffic": "Web 以外のトラフィックをブロック",
+              "block-non-web-traffic-desc": "Web 以外のトラフィックをブロック",
+              "block-non-web-traffic-tooltip-desc": "Web 以外のトラフィックをブロック",
+              "allow-non-web-traffic": "Web 以外のトラフィックを許可",
+              "allow-non-web-traffic-desc": "必要な送信方向のネットワーク接続を許可",
+              "allow-non-web-traffic-tooltip-desc": "ユーザーが IP アドレス、ポート、またはプロトコルに基づいて非 Web サービスに接続できるようにするには、この種類のファイアウォールルールを作成します。",
+              "allow-connection-decrypt-and-inspect": "接続を許可し、復号化して検査",
+              "allow-connection-decrypt-and-inspect-desc": "非 Web トラフィックを許可し、必要に応じて IPS と復号化による脅威の検査を制御します",
+              "allow-connection-decrypt-and-inspect-tooltip-desc": "ディープ パケット インスペクションには、さまざまなネットワークプロトコルにわたる攻撃を検出する IPS が含まれています。このルールは、IPS と TLS 復号化を組み合わせて、暗号化されたトラフィックと暗号化されていないトラフィックを徹底的にスキャンします。",
+              "networks-allow-list": "ネットワーク許可リスト",
+              "networks-allow-list-desc": "検査なしで選択したネットワークへのユーザーアクセスを許可",
+              "networks-allow-list-tooltip-desc": "他のルールによってブロックされている Web サイトやカテゴリを特別に許可するルールを作成したり、一部の Web サイトに常にアクセスできるようにする場合に便利です。「ブロック」ルールよりも高いランクの 「Web サイトの許可」ルールを作成すると、選択したサイトとユーザーのブロックアクションが上書きされます。このルールは、DNS または Web ゲートウェイでフィルタリングする場合にも同じ条件を適用します。"
+            },
+            "specialist": {
+              "dns-filter": "DNS フィルタ",
+              "dns-filter-desc": "DNS ステージでフィルタリングすることにより、不要な接続を防止",
+              "dns-filter-tooltip-desc": "接続が開始される前に、DNS ルックアップにより、デバイスは接続先を知ることができます。DNS リクエストと応答をフィルタリングすることで、可能な限り早い段階で保護レイヤーが提供されます。",
+              "firewall-rule": "ファイアウォール ルール",
+              "firewall-rule-desc": "許可するパケットと接続を制御する",
+              "firewall-rule-tooltip-desc": "このルールを使用して、ファイアウォールを通過できるパケットと接続を制御します。",
+              "decryption-rule": "復号化ルール",
+              "decryption-rule-desc": "いつ復号化するか、または復号化をスキップするかを決定します",
+              "decryption-rule-tooltip-desc": "これらのルールは、デバイスが暗号化された接続を確立しようとするときに使用されます。これらは、コンテンツの脅威をより詳細に検査するためにどのトラフィックを復号化するかを決定します。",
+              "web-access-rule": "Web アクセスルール",
+              "web-access-rule-desc": "DNS フィルタリングを使用せずに、ドメインまたは URL で Web 接続をブロックします",
+              "web-access-rule-tooltip-desc": "ユーザーが Secure Web Gateway を介して Web サイトにアクセスしようとすると、Web フィルタリングルールによって、Web サイトまたは Web ペ ージの URL に基づいてアクセスを制御できます。このタイプのルールは、DNS Web フィルタリングには適用されません。",
+              "web-content-filter-rule": "Web コンテンツ フィルタルール",
+              "web-content-filter-rule-desc": "許可された Web サイトでアクセスできるファイルやコンテンツのタイプを制御します",
+              "web-content-filter-rule-tooltip-desc": "URL またはカテゴリに基づいて Web ページが許可されている場合、コンテンツフィルタリングのルールは、アップロードおよびダウンロードをスキャンして脅威を検出し、危険なファイルタイプをブロックすることで、保護を強化します",
+              "app-control": "アプリ コントロール",
+              "app-control-desc": "特定のアプリケーション (名前付きアプリまたはアプリケーションプロトコル) に属することが検出されたトラフィックを禁止するポリシーを設定します",
+              "app-control-tooltip-desc": "",
+              "ips-rule": "IPS ルール",
+              "ips-rule-desc": "このルールを使用して、選択したトラフィックの IPS 感度を変更します",
+              "ips-rule-tooltip-desc": ""
+            }
           },
           "step-2": {
             "user": {
@@ -896,6 +977,9 @@
               "not-dest-ip": "宛先IPアドレスは、ではない"
             }
           }
+        },
+        "delete-rule":{
+          "warning": "ルールが有効になるまで、機能的な変更は行われません"
         }
       },
       "no-policy": {
@@ -936,8 +1020,17 @@
         "web-content": "Web コンテンツ",
         "app-control": "アプリケーションコントロール",
         "ips": "IPS (侵入防御システム)"
+      },
+      "ellipsis-menu": {
+        "edit-rule": "ルールの編集",
+        "add-rule-above": "ルールを上に追加",
+        "add-rule-below": "ルールを下に追加",
+        "move-to-rank": "ランク # に移動",
+        "move-to-rank-button": "適用",
+        "clone-rule-above": "上にルールのクローンを作成",
+        "clone-rule-below": "下にルールのクローンを作成",
+        "delete-rule": "ルールの削除"
       }
-
     },
     "agent-config": {
       "title": "Secure Service Edge - エージェント設定",

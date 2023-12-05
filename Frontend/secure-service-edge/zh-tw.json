@@ -471,10 +471,25 @@
         "endsOn": "終止於"
       },
       "messages": {
-        "confirmWaitMessage": "擷取資料需要一點時間。<br/><br/>您可以等候我們擷取資料，或者如果您想執行其他動作，等到資料準備就緒後，會在 [佇列] 標籤頁中顯示。<br /><br/>佇列標籤頁中的報告可用時間為 24 小時。"
+        "confirmWaitMessage": "擷取資料需要一點時間。<br/><br/>您可以等候我們擷取資料，或者如果您想執行其他動作，等到資料準備就緒後，會在 [佇列] 標籤頁中顯示。<br /><br/>佇列標籤頁中的報告可用時間為 24 小時。",
+        "timeSliceInfo": "<p>如需最佳化資料擷取，1 至 7 天的時間範圍報告將以小時進行分組，時間範圍大於 7 天的報告將以天數進行分組。</p><p>如需更加精細，請減少此報告的時間範圍或按一下下方日期</p>"
+
       }
     },
     "apiLabel": {
+      "src_location": "位置",
+      "timestamp": "日期",
+      "src_ip": "來源 IP",
+      "dns_qclass" : "查詢類別",
+      "dns_rcode": "回應狀況",
+      "dns_rnum": "回應記錄",
+      "dns_qsize": "查詢位元組",
+      "dns_rsize": "回應位元組",
+      "dns_resolved_ips": "已解析的 IP",
+      "dns_rtype": "回應類型",
+      "dns_rclass": "回應類別",
+      "response_ttl_list": "回應 TTL",
+      "response_ip" : "回應 IP",
       "domain_risk": "風險",
       "domain_category": "類別",
       "customer_id": "客户 ID",
@@ -570,7 +585,7 @@
       "atp_threats": "ATP 威脅",
       "extended_report": "擴展的報告",
       "malware": "惡意程式",
-      "log_subtype": "日誌子類型",
+      "log_subtype": "子類型",
       "message_count": "訊息計數",
       "executable": "可執行檔",
       "url": "URL",
@@ -606,8 +621,8 @@
       "malware_count": "惡意程式計數",
       "allowed_app_categories": "允許的 App 類別",
       "user_group": "使用者群組",
-      "bandwidth_usage": "頻寬使用狀況",
-      "dns": "DNS",
+      "bandwidth_usage": "頻寬使用",
+      "dns": "DNS 使用情況",
       "syslog": "日誌檢視器及搜尋",
       "gateway_bandwidth": "頻寬使用",
       "new_cloud_apps": "新增雲應用程式",
@@ -830,7 +845,9 @@
     "common": {
       "messages": {
         "generic-error": "處理請求時出現意外錯誤。"
-      }
+      },
+      "on-text": "開啟",
+      "off-text": "關閉"
     },
     "dashboard": {
       "title": "Secure Service Edge - 儀表板",
@@ -848,27 +865,91 @@
       "button": {
         "next": "下一步",
         "cancel": "取消",
-        "back": "上一頁"
+        "back": "上一頁",
+        "save-rule": "儲存規則"
       },
-      "title": "Secure Service Edge - 網際網路存取原則",
-      "breadcrumb": "網際網路存取原則",
+      "title": "Secure Service Edge - 原則",
+      "breadcrumb": "原則",
       "follow-steps": "請按照以下步驟建立新規則，然後儲存規則以將其新增至您的原則。",
       "choose-action": "選擇動作",
       "action-description": "選擇最能描述您的規則的選項",
-      "specify-condition": "Specify conditions", 
+      "specify-condition": "指定條件",
       "condition-description": "這些條件會觸發您的動作",
       "manage-options": "管理選項",
       "options-description": "設定相關的安全功能",
-      "add-rule": "新增規則",
+      "add-rule" : {
+        "title": "Secure Service Edge - 原則 - 新增規則",
+        "breadcrumb": "新增規則"
+      },
       "policy": {
         "add-rule": {
           "step-1": {
-            "block-websites": "封鎖網站",
-            "block-websites-desc": "阻止使用者存取選定的網站",
-            "block-websites-tooltip-desc": "使用我們的內建類別或使用您自己在原則物件中建立的網站清單指定要封鎖的網站。將規則套用至每個人，或指定群組、使用者、裝置或位置等條件以獲得更具針對性的規則。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。",
-            "allow-websites": "允許網站",
-            "allow-websites-desc": "允許使用者存取選定的網站",
-            "allow-websites-tooltip-desc": "對於建立專門允許被其他規則封鎖的網站或類別的規則，或確保某些網站始終可存取非常有用。建立等級高於封鎖規則的允許網站規則將覆寫所選網站和使用者的封鎖動作。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。"
+            "web-gateway": {
+              "block-websites": "封鎖網站",
+              "block-websites-desc": "阻止使用者存取選定的網站",
+              "block-websites-tooltip-desc": "使用我們的內建類別或使用您自己在原則物件中建立的網站清單指定要封鎖的網站。將規則套用至每個人，或指定群組、使用者、裝置或位置等條件以獲得更具針對性的規則。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。",
+              "allow-websites": "允許網站",
+              "allow-websites-desc": "允許使用者存取選定的網站",
+              "allow-websites-tooltip-desc": "對於建立專門允許被其他規則封鎖的網站或類別的規則，或確保某些網站始終可存取非常有用。建立等級高於封鎖規則的允許網站規則將覆寫所選網站和使用者的封鎖動作。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。",
+              "enforce-safe-search": "強制執行安全搜尋",
+              "enforce-safe-search-desc": "在主要搜尋引擎上強制執行安全搜尋功能",
+              "enforce-safe-search-tooltip-desc": "如果您封鎖不當網站，請確保同時強制搜尋引擎僅返回適合您環境的結果。使用 DNS 方法在 Google、Bing 和 DuckDuckGo 上強制執行安全搜尋功能。",
+              "website-tenant-controls": "網站租用戶控制",
+              "website-tenant-controls-desc": "為支援的 Web 應用程式啟用租用戶控制功能",
+              "website-tenant-controls-tooltip-desc": "某些網站和應用程式可讓您限制允許哪些使用者帳戶登入並透過您的網路使用其服務。此規則允許您啟用這些限制並為支援的應用程式提供必要的資訊。",
+              "scan-for-threats": "掃描威脅",
+              "scan-for-threats-desc": "掃描網頁內容是否有威脅，依據需要進行解密",
+              "scan-for-threats-tooltip-desc": "檔案下載和網頁內容可能會帶來威脅，即使來自普遍允許的網站也是如此。此規則可讓您為不同的使用者、群組、裝置或網站指定掃描條件，並啟用 TLS 解密以允許偵測來自加密 HTTPS 網站以及 HTTP 的威脅。",
+              "never-decrypt": "永不解密",
+              "never-decrypt-desc": "從解密中排除網站或連線",
+              "never-decrypt-tooltip-desc": "有時，出於相容性或隱私原因，有必要確保某些網站的流量永遠不會被解密。為這些網站、使用者和群組建立此類規則。將其排在清單頂部，以確保其優先於可能啟用解密的一般規則。",
+              "block-file-types": "阻擋檔案類型",
+              "block-file-types-desc": "防止下載有風險或不需要的檔案類型，依據需要進行解密",
+              "block-file-types-tooltip-desc": "某些類型的檔案下載可能存在風險，並且對於常規業務用途來說不必要。使用此類規則來選取要封鎖的檔案類型，並選取它適用於所有人，還是特定使用者、群組或裝置。此規則還確保根據需要對流量進行解密，以確保識別檔案。",
+              "dont-scan": "不要掃描",
+              "dont-scan-desc": "從內容掃描中排除網站或連線",
+              "dont-scan-tooltip-desc": "某些網站在掃描檔案以尋找內容或威脅時可能會遇到困難。建立此類排名較高的規則，以覆寫所選網站、使用者、群組或裝置的掃描條件。",
+              "websites-allow-list": "網站允許清單",
+              "websites-allow-list-desc": "允許使用者存取選定的網站",
+              "websites-allow-list-tooltip-desc": "對於建立專門允許被其他規則封鎖的網站或類別的規則，或確保某些網站始終可存取非常有用。建立等級高於封鎖規則的允許網站規則將覆寫所選網站和使用者的封鎖動作。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。"
+            },
+            "firewall": {
+              "block-non-web-traffic": "封鎖非 Web 流量",
+              "block-non-web-traffic-desc": "封鎖非 Web 流量",
+              "block-non-web-traffic-tooltip-desc": "封鎖非 Web 流量",
+              "allow-non-web-traffic": "允許非 Web 流量",
+              "allow-non-web-traffic-desc": "允許必要的出埠網路連線",
+              "allow-non-web-traffic-tooltip-desc": "若要允許使用者基於 IP 位址、連接埠或通訊協定連線至非 Web 服務，請建立此類防火牆規則。",
+              "allow-connection-decrypt-and-inspect": "允許連線、解密和檢查",
+              "allow-connection-decrypt-and-inspect-desc": "允許非 Web 流量並使用 IPS 來控制威脅檢查，依據需要解密",
+              "allow-connection-decrypt-and-inspect-tooltip-desc": "深度封包檢查包括 IPS，可跨多種網路通訊協定偵測攻擊。此規則將 IPS 與 TLS 解密結合，以確保對加密和未加密流量進行徹底掃描。",
+              "networks-allow-list": "網路允許清單",
+              "networks-allow-list-desc": "允許使用者無需檢查即可存取選定的網路",
+              "networks-allow-list-tooltip-desc": "對於建立專門允許被其他規則封鎖的網站或類別的規則，或確保某些網站始終可存取非常有用。建立等級高於封鎖規則的允許網站規則將覆寫所選網站和使用者的封鎖動作。使用 DNS 或 Web Gateway 進行篩選時，此規則將套用相同的條件。"
+            },
+            "specialist": {
+              "dns-filter": "DNS 篩選器",
+              "dns-filter-desc": "透過在 DNS 階段進行篩選來防止不必要的連線",
+              "dns-filter-tooltip-desc": "在連線開始之前，DNS 查找功能會讓裝置知道要連線的位置。篩選 DNS 請求和回應可以儘早提供一層保護。",
+              "firewall-rule": "防火牆規則",
+              "firewall-rule-desc": "控制允許哪些封包和連線",
+              "firewall-rule-tooltip-desc": "使用此規則可以控制允許哪些封包和連線通過防火牆。",
+              "decryption-rule": "解密規則",
+              "decryption-rule-desc": "決定何時解密或跳過解密",
+              "decryption-rule-tooltip-desc": "當您的裝置嘗試建立加密連線時，將使用這些規則。它們可確定對哪些流量進行解密，以便更深入地檢查內容是否有威脅。",
+              "web-access-rule": "Web 存取規則",
+              "web-access-rule-desc": "按網域或 URL 封鎖 Web 連線，無需 DNS 篩選",
+              "web-access-rule-tooltip-desc": "當使用者嘗試透過 Secure Web Gateway 存取網站時，Web 篩選規則可以根據網站或網頁 URL 控制存取。此類規則不適用於 DNS Web 篩選。",
+              "web-content-filter-rule": "Web 內容篩選規則",
+              "web-content-filter-rule-desc": "控制可以在允許的網站上存取哪些類型的檔案和內容",
+              "web-content-filter-rule-tooltip-desc": "當基於 URL 或類別允許網頁時，內容篩選規則會掃描上傳和下載的內容是否有威脅並封鎖有風險的檔案類型，從而提供額外保護",
+              "app-control": "App 控制",
+              "app-control-desc": "設定原則，禁止偵測到屬於某些應用程式的流量 - 指定的應用程式或應用程式通訊協定",
+              "app-control-tooltip-desc": "",
+              "ips-rule": "IPS 規則",
+              "ips-rule-desc": "使用此規則修改所選流量的 IPS 敏感度",
+              "ips-rule-tooltip-desc": ""
+            }
           },
           "step-2": {
             "user": {
@@ -896,6 +977,9 @@
               "not-dest-ip": "目的地 IP 位址不是"
             }
           }
+        },
+        "delete-rule":{
+          "warning": "在啟用規則之前不會發生任何功能變更"
         }
       },
       "no-policy": {
@@ -936,8 +1020,17 @@
         "web-content": "網頁內容",
         "app-control": "應用程式控制",
         "ips": "IPS"
+      },
+      "ellipsis-menu": {
+        "edit-rule": "編輯規則",
+        "add-rule-above": "新增以上規則",
+        "add-rule-below": "新增以下規則",
+        "move-to-rank": "移至排名 #",
+        "move-to-rank-button": "套用",
+        "clone-rule-above": "複製上方規則",
+        "clone-rule-below": "複製下方規則",
+        "delete-rule": "删除規則"
       }
-
     },
     "agent-config": {
       "title": "Secure Service Edge - 代理程式設定",

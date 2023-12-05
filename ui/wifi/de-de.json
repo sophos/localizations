@@ -227,6 +227,12 @@
       "signal-quality-not-available-note": "Daten zur Signalqualität sind nur für die APX- und die AP-Serie verfügbar. Daten für die AP6-Serie sind ausgeschlossen."
     },
     "usage-insight": {
+      "headers": {
+        "category": "Kategorie",
+        "total": "Gesamt",
+        "download": "Download",
+        "upload": "Upload"
+      },
       "breadcrumb-text": "Nutzungsdaten",
       "title": "Wireless - Nutzungsdaten",
       "category": "Kategorien",
@@ -462,7 +468,7 @@
         },
         "syslog-server-error-msgs": {
           "required": "Serveradresse ist erforderlich.",
-          "invalid-server": "Server ist keine gültige IP oder Host-Name."
+          "invalid-server": "Server ist keine gültige IP oder Hostname."
         },
         "syslog-port-error-msgs": {
           "required": "Port ist erforderlich.",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "Für Synchronized Security aktivierte SSIDs werden nur von Access Points der APX-Serie unterstützt.",
         "ap-exceeding-limit": "Ein oder mehrere Access Points unterstützen eines der Frequenzbänder nicht oder haben die maximale Anzahl unterstützter SSIDs erreicht.",
         "invalid-node-config": "Bitte entfernen Sie vorhandene SSIDs von den Knoten-Access-Points, bevor Sie das Mesh erstellen",
-        "invalid-root-config": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
         "deployment-mode-dynamic-later": "Access Points später hinzufügen",
         "assign-aps-inline-help-text-later": "APs können später hinzugefügt werden, indem diese SSID bearbeitet wird.",
         "available-aps": "Verfügbare Access Points",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "Mesh-Modus aktivieren",
         "enable-mesh-mode-help-msg": "Ermöglicht es Ihnen, Access Points ohne LAN-Netzwerkverbindung miteinander zu verbinden. Mesh-Access-Points senden STP-Pakete. Stellen Sie daher sicher, dass dies mit Ihren IT-Regeln möglich ist.",
         "only-one-mesh-network": {
-          "apx": "Sie können nur eine APX-Mesh-SSID erstellen. Zum Deaktivieren des Mesh-Modus die vorhandene APX-Mesh-SSID löschen.",
-          "ap6": "Sie können nur eine AP6-Mesh-SSID erstellen. Zum Deaktivieren des Mesh-Modus die vorhandene AP6-Mesh-SSID löschen."
+          "apx": "Beachten Sie, dass Sie die Mesh-SSID nicht bearbeiten können. Wenn Sie das Mesh-Netzwerk deaktivieren wollen, löschen Sie die SSID in Sophos Central.",
+          "ap6": "Beachten Sie, dass Sie die Mesh-SSID nicht bearbeiten können. Wenn Sie das Mesh-Netzwerk deaktivieren wollen, löschen Sie die SSID in Sophos Central. Wenn Sie zusätzliche Access-Point-Knoten hinzufügen wollen, gehen Sie zur Access-Point-Seite weisen Sie die Mesh-Netzwerk-SSID zu."
         },
         "mesh-root-ap": {
           "apx": "Eine APX-Mesh-SSID benötigt mindestens einen Access Point, der über LAN mit dem Internet verbunden ist.",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "Der Stamm-Access-Point kann maximal 5 SSIDs besitzen, inklusive der Mesh-SSID.",
         "can-not-remove-mesh-from-root": "Bitte löschen Sie die Mesh-SSID, um sie vom Stamm-Access-Point zu entfernen",
+        "incompatible-config-note": "Der Access Point ist für ein Mesh-Netzwerk konfiguriert, aber für die SSID sind derzeit die Funktionen MAC-Filterung, Band Steering oder Multicast-zu-Unicast aktiviert, die nicht mit dem Betrieb des Mesh-Netzwerks kompatibel sind.",
+        "incompatible-config-for-root": "Der Stamm-Access-Point hat SSID(s) [{{param1}}] mit aktivierten Funktionen MAC-Filterung, Band Steering oder Multicast-zu-Unicast, die nicht mit dem Betrieb des Mesh-Netzwerks kompatibel sind.",
+        "feature-not-available-for-root": "Sie haben einen Access Point ausgewählt, der zum Mesh-Setup gehört. Beachten Sie, dass bestimmte Funktionen wie MAC-Filterung, Band Steering und Multicast-zu-Unicast im Mesh-Setup nicht verfügbar sind.",
         "port-required-validation-msg": "Port ist erforderlich.",
         "port-range-validate-msg": "Port muss zwischen 1 und 65535 liegen.",
         "port-number-help-msg": "Portnummer für den RADIUS-Server.",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "Da der Stamm-Access-Point zu einer Mesh-Konfiguration gehört, sind bestimmte Funktionen wie MAC-Filterung, Band Steering und Multicast-zu-Unicast im Mesh-Setup nicht verfügbar.",
       "list": {
         "breadcrumb-text": "Access Points",
         "title": "Wireless - Access Points",
@@ -1195,6 +1204,7 @@
           "internal-ip": "Interne IP",
           "external-ip": "Externe IP",
           "model": "Modell",
+          "model-rev": "ModelRev",
           "network-capacity": "Maximale Anzahl an Netzwerken",
           "exceeding-limit-for-band": "Sie überschreiten die maximale Netzwerkanzahl in den Frequenzbändern {{ bands }}.",
           "network-with-multiple-hotspot": "Mehrere Netzwerke mit Hotspots werden nicht unterstützt.",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "Wollen Sie die zugewiesene SSID entfernen?",
           "deleteDialogText": "Nach dem Löschen des Access Point wird das System automatisch neu gestartet.<br><br>Wollen Sie mit dem Löschen fortfahren?",
           "invalid-node-config": "Bitte entfernen Sie vorhandene SSIDs vom Access Point, bevor Sie die Mesh-SSID zuweisen",
-          "invalid-root-config": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
+          "invalid-root-config": "Für die Funktion des Mesh-Netzwerks muss der Stamm-Access-Point zwei aktivierte Funkbänder einschließlich des Bandes {{meshBand}} und mindestens eine SSID haben.",
           "incompatible-node-ap": "Ungültige Mesh-Konfiguration: Der Knoten-Access-Point darf nicht mehr Sender als der Stamm-Access-Point haben"
         }
       },
@@ -1371,7 +1381,7 @@
           "accessPointsRegistrationStatus": "Access-Point-Registrierungsstatus",
           "description": "Registrieren Sie Ihren Access Point in drei Schritten:",
           "next": "Weiter",
-          "editHostNameSave": "Host-Name speichern",
+          "editHostNameSave": "Hostname speichern",
           "registered": "Registriert",
           "registering": "Registrierung erfolgt",
           "aborted": "Abgebrochen",
@@ -1736,9 +1746,10 @@
         "access-point": "Auf dem Access Point kann maximal ein ungetaggtes VLAN konfiguriert werden. Prüfen Sie die Konfiguration folgender SSIDs: {{ssid}}",
         "network": "Sie können maximal ein ungetaggtes VLAN konfigurieren. Prüfen Sie die Konfiguration folgender Access Points: {{ap}}"
       },
-      "invalid.config.for.root": "Der Stamm-Access-Point muss mindestens eine SSID mit 2 aktivierten Bändern haben, einschließlich des Mesh-Bands",
+      "invalid.config.for.root": "Für die Funktion des Mesh-Netzwerks muss der Stamm-Access-Point ({{param0}}) zwei aktivierte Funkbänder und mindestens eine SSID haben",
       "mesh.conversion.not.allowed": "Vorhandene SSID kann nicht in Mesh geändert werden. Erstellen Sie eine neue SSID mit Mesh-Modus",
-      "invalid.mesh.ssid.name": "Der AP6-Mesh-SSID-Name darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten"
+      "invalid.mesh.ssid.name": "Der AP6-Mesh-SSID-Name darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten",
+      "incompatible.config.for.root": "Der Stamm-Access-Point hat SSID(s) [{{param1}}] mit aktivierten Funktionen MAC-Filterung, Band Steering oder Multicast-zu-Unicast, die nicht mit dem Betrieb des Mesh-Netzwerks kompatibel sind"
     }
   }
 }

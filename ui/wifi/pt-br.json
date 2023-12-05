@@ -227,12 +227,18 @@
       "signal-quality-not-available-note": "Dados de qualidade do sinal disponíveis apenas para as séries APX e AP. Exclui os dados da série AP6."
     },
     "usage-insight": {
+      "headers": {
+        "category": "Categoria",
+        "total": "Total",
+        "download": "Baixar",
+        "upload": "Carregar"
+      },
       "breadcrumb-text": "Detalhamento de uso",
       "title": "Sem fio - Detalhamento de uso",
       "category": "Categorias",
       "category-details": "Detalhes da categoria",
-      "detail": "detalhe",
-      "usage": "uso",
+      "detail": "Detalhe",
+      "usage": "Uso",
       "empty-category-message": "Selecione uma categoria para ver mais informações.",
       "no-data": "Não há dados de categoria disponíveis",
       "not-available-note": "Dados de detalhamento de uso disponíveis apenas para as séries APX e AP. Exclui os dados da série AP6.",
@@ -295,7 +301,7 @@
         "breadcrumb-text": "Diagnóstico",
         "title": "Rede sem fio - Diagnóstico"
       },
-      "date": "data",
+      "date": "Data",
       "no-data": "Sem dados",
       "modified-by": "Modificado por",
       "description": "Descrição",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "SSIDs habilitados pela Segurança Sincronizada não são suportados na série não APX de pontos de acesso.",
         "ap-exceeding-limit": "Há um ou mais pontos de acesso que não aceitam uma das bandas de rádio ou que atingiram o número máximo de SSIDs aceitos.",
         "invalid-node-config": "Remova os SSIDs existentes dos nós de pontos de acesso antes de criar a malha",
-        "invalid-root-config": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
         "deployment-mode-dynamic-later": "Adicionar pontos de acesso posteriormente",
         "assign-aps-inline-help-text-later": "Os APs podem ser adicionados posteriormente, bastando editar o SSID.",
         "available-aps": "Pontos de acesso disponíveis",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "Habilitar o modo de malha",
         "enable-mesh-mode-help-msg": "Permite conectar os pontos de acesso entre si sem o acesso à LAN. Pontos de acesso de malha enviarão pacotes STP, portanto certifique-se de que estejam em conformidade com as regras de TI.",
         "only-one-mesh-network": {
-          "apx": "Você pode criar apenas um SSID de malha APX. Para desabilitar o modo de malha, delete o SSID de malha APX.",
-          "ap6": "Você pode criar apenas um SSID de malha AP6. Para desabilitar o modo de malha, delete o SSID de malha AP6."
+          "apx": "Observe que você não pode editar o SSID da malha. Para desativar a rede em malha, delete o SSID do Central.",
+          "ap6": "Observe que você não pode editar o SSID da malha. Para desativar a rede em malha, delete o SSID do Central. Se quiser adicionar nós de pontos de acesso extras, vá até a página do ponto de acesso e atribua o SSID à rede em malha."
         },
         "mesh-root-ap": {
           "apx": "O SSID de malha APX requer, no mínimo, um ponto de acesso conectado à internet via LAN.",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "O ponto de acesso raiz pode ter um máximo de 5 SSIDs, incluindo de SSID de malha.",
         "can-not-remove-mesh-from-root": "Delete o SSID de malha para removê-lo do ponto de acesso raiz",
+        "incompatible-config-note": "O ponto de acesso está configurado para uma rede em malha, mas o SSID atual tem recursos ativos, como Filtragem de Mac, Direcionamento de Banda ou Multicast para unicast, que não são compatíveis com a operação da rede em malha.",
+        "incompatible-config-for-root": "O ponto de acesso raiz tem SSID(s) [{{param1}}] com recursos ativos, como Filtragem de MAC, Direcionamento de banda ou Multicast para unicast, que não são compatíveis com a operação da rede em malha.",
+        "feature-not-available-for-root": "Você selecionou um ponto de acesso que é parte da configuração da malha; observe que determinados recursos, como Filtragem de MAC, Direcionamento de banda ou Multicast para unicast, não estarão acessíveis nessa configuração de malha.",
         "port-required-validation-msg": "É necessária uma porta.",
         "port-range-validate-msg": "A porta deve ser um número entre 1 e 65535.",
         "port-number-help-msg": "Número da porta do servidor RADIUS.",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "Com o ponto de acesso raiz em uma configuração de malha, observe que determinados recursos, como Filtragem de MAC, Direcionamento de banda ou Multicast para unicast, não estarão acessíveis nessa configuração de malha.",
       "list": {
         "breadcrumb-text": "Pontos de Acesso",
         "title": "Sem Fio - Pontos de Acesso",
@@ -1195,6 +1204,7 @@
           "internal-ip": "IP interno",
           "external-ip": "IP externo",
           "model": "Modelo",
+          "model-rev": "Revisão do modelo",
           "network-capacity": "Número máximo de redes",
           "exceeding-limit-for-band": "Você ultrapassou o número máximo de redes em {{ bands }} banda(s).",
           "network-with-multiple-hotspot": "Não há suporte para várias redes com hotspots.",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "Deseja remover o SSID atribuído?",
           "deleteDialogText": "Deletar o AP reinicializará o sistema automaticamente.<br><br>Deseja continuar com a deleção?",
           "invalid-node-config": "Remova os SSIDs existentes do ponto de acesso antes de atribuir o SSID da malha",
-          "invalid-root-config": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
+          "invalid-root-config": "O ponto de acesso raiz deve ter duas bandas de rádio, incluindo a banda {{meshBand}} habilitada e pelo menos um SSID para a rede em malha funcionar.",
           "incompatible-node-ap": "Configuração inválida da malha: O ponto de acesso Nó não pode ter um número de rádios maior comparado ao ponto de acesso Raiz"
         }
       },
@@ -1736,9 +1746,10 @@
         "access-point": "Não é possível configurar mais de uma VLAN sem tag no ponto de acesso. Verifique o config das seguintes SSIDs: {{ssid}}",
         "network": "Não é possível configurar mais de uma VLAN sem tag. Verifique o config dos seguintes pontos de acesso: {{ap}}"
       },
-      "invalid.config.for.root": "O ponto de acesso raiz deve ter pelo menos um SSID e 2 bandas habilitadas, incluindo a banda da malha",
+      "invalid.config.for.root": "O ponto de acesso raiz ({{param0}}) deve ter duas bandas de rádio habilitadas e pelo menos um SSID para a rede em malha funcionar",
       "mesh.conversion.not.allowed": "Não é possível alterar o SSID existente para malha. Crie um novo SSID com o modo de malha.",
-      "invalid.mesh.ssid.name": "O nome de SSID da malha AP6 só pode incluir letras, números, espaços, hifens e sublinhados"
+      "invalid.mesh.ssid.name": "O nome de SSID da malha AP6 só pode incluir letras, números, espaços, hifens e sublinhados",
+      "incompatible.config.for.root": "O ponto de acesso raiz tem SSID(s) ({{param1}}) com recursos ativos, como Filtragem de MAC, Direcionamento de banda ou Multicast para unicast, que não são compatíveis com a operação da rede em malha."
     }
   }
 }

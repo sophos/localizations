@@ -227,12 +227,18 @@
       "signal-quality-not-available-note": "Los datos de calidad de la señal solo están disponibles para las series APX y AP. Excluye los datos de la serie AP6."
     },
     "usage-insight": {
+      "headers": {
+        "category": "Categoría",
+        "total": "Total",
+        "download": "Descargar",
+        "upload": "Cargar"
+      },
       "breadcrumb-text": "Información detallada de uso",
       "title": "Wireless - Información detallada de uso",
       "category": "Categorías",
       "category-details": "Detalles de categoría",
-      "detail": "detalle",
-      "usage": "uso",
+      "detail": "Detalle",
+      "usage": "Uso",
       "empty-category-message": "Seleccione una categoría para más información.",
       "no-data": "No hay disponibles datos de categoría",
       "not-available-note": "Los datos de Información detallada de uso solo están disponibles para las series APX y AP. Excluye los datos de la serie AP6.",
@@ -295,7 +301,7 @@
         "breadcrumb-text": "Diagnósticos",
         "title": "Wireless - Diagnósticos"
       },
-      "date": "fecha",
+      "date": "Fecha",
       "no-data": "Sin datos",
       "modified-by": "Modificado por",
       "description": "Descripción",
@@ -621,7 +627,7 @@
         "basic-settings": "Configuración básica",
         "assign-network": "Asignar red",
         "save-config": "Guardar configuración",
-        "advanced-settings": "Opciones avanzadas",
+        "advanced-settings": "Configuración avanzada",
         "security": "Seguridad",
         "client-connection": "Conexión de cliente",
         "availability": "Disponibilidad de red",
@@ -651,7 +657,7 @@
           "mesh": "Su red en malla ya está configurada. Haga clic en Guardar para continuar",
           "non-mesh": "Su red ya está configurada. Haga clic en Guardar para continuar"
         },
-        "advanced-settings": "Opciones avanzadas",
+        "advanced-settings": "Configuración avanzada",
         "previous-section": "Anterior",
         "main-label": "Elija los dispositivos a los que se asignará este SSID.",
         "deployment-option-multiple": "Múltiples puntos de acceso",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "Los SSID con la Seguridad Sincronizada habilitada no son compatibles con los puntos de acceso distintos de la serie APX.",
         "ap-exceeding-limit": "Hay uno o más puntos de acceso que no admiten una de las bandas de radio o bien han alcanzado el número máximo de SSID soportados.",
         "invalid-node-config": "Elimine los SSID existentes de los puntos de acceso de nodo antes de crear la malla",
-        "invalid-root-config": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
         "deployment-mode-dynamic-later": "Añadir puntos de acceso después",
         "assign-aps-inline-help-text-later": "Los puntos de acceso se pueden añadir más adelante editando este SSID.",
         "available-aps": "Puntos de acceso disponibles",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "Activar modo en malla",
         "enable-mesh-mode-help-msg": "Le permite conectar los puntos de acceso sin acceso de red LAN entre ellos. Los puntos de acceso en malla enviarán paquetes STP; por ello, asegúrese de que esto cumple con sus reglas de TI.",
         "only-one-mesh-network": {
-          "apx": "Solo puede crearse un SSID de malla APX. Para desactivar el modo en malla, elimine el SSID de malla APX existente.",
-          "ap6": "Solo puede crearse un SSID de malla AP6. Para desactivar el modo en malla, elimine el SSID de malla AP6 existente."
+          "apx": "Tenga en cuenta que no podrá editar el SSID de malla. Para desactivar la red en malla, elimine el SSID de Central.",
+          "ap6": "Tenga en cuenta que no podrá editar el SSID de malla. Para desactivar la red en malla, elimine el SSID de Central. Si desea añadir puntos de acceso de nodo adicionales, vaya a la página del punto de acceso y asigne el SSID de la red en malla."
         },
         "mesh-root-ap": {
           "apx": "El SSID de malla APX requiere por lo menos un punto de acceso conectado a Internet vía LAN.",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "El punto de acceso raíz puede tener un máximo de 5 SSDI incluyendo el SSID de malla.",
         "can-not-remove-mesh-from-root": "Elimine el SSID de malla para eliminarlo del punto de acceso raíz",
+        "incompatible-config-note": "El punto de acceso está configurado para una red en malla, pero el SSID tiene actualmente funciones activas de filtrado MAC, de direccionamiento de banda o de multidifusión a unidifusión que no son compatibles con el funcionamiento de la red en malla.",
+        "incompatible-config-for-root": "El punto de acceso raíz tiene uno o varios SSID [{{param1}}] con funciones activas de filtrado MAC, de direccionamiento de banda o de multidifusión a unidifusión que no son compatibles con el funcionamiento de la red en malla.",
+        "feature-not-available-for-root": "Ha seleccionado un punto de acceso que forma parte de la configuración en malla. Tenga en cuenta que algunas funciones como el filtrado MAC, el direccionamiento de banda y la multidifusión a unidifusión no serán accesibles en la configuración en malla.",
         "port-required-validation-msg": "Se requiere el puerto.",
         "port-range-validate-msg": "El puerto debe ser un número entre 1 y 65535.",
         "port-number-help-msg": "Número de puerto para el servidor RADIUS.",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "Dado que el punto de acceso forma parte de una configuración en malla, tenga en cuenta que algunas funciones como el filtrado MAC, el direccionamiento de banda y la multidifusión a unidifusión no serán accesibles en la configuración en malla.",
       "list": {
         "breadcrumb-text": "Puntos de acceso",
         "title": "Wireless - Puntos de acceso",
@@ -1195,6 +1204,7 @@
           "internal-ip": "IP interna",
           "external-ip": "IP externa",
           "model": "Modelo",
+          "model-rev": "Revisión del modelo",
           "network-capacity": "Número máximo de redes",
           "exceeding-limit-for-band": "Está superando el número máximo de redes en la banda {{ bands }}.",
           "network-with-multiple-hotspot": "No se admiten varias redes con zonas Wi-Fi",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "¿Desea eliminar el SSID asignado?",
           "deleteDialogText": "Al eliminar el punto de acceso, se reiniciará automáticamente el sistema.<br><br>¿Desea continuar con la eliminación?",
           "invalid-node-config": "Elimine los SSID existentes del punto de acceso antes de asignar el SSID de malla",
-          "invalid-root-config": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
+          "invalid-root-config": "El punto de acceso raíz debe tener habilitadas dos bandas de radio, incluida la banda {{meshBand}}, y al menos un SSID para que funcione la red en malla.",
           "incompatible-node-ap": "Configuración de malla no válida: El punto de acceso de nodo no puede tener más radios que el punto de acceso raíz"
         }
       },
@@ -1736,9 +1746,10 @@
         "access-point": "No se puede configurar más de una VLAN sin etiquetar en el punto de acceso. Compruebe la configuración de los siguientes SSID: {{ssid}}",
         "network": "No se puede configurar más de una VLAN sin etiquetar. Compruebe la configuración de los siguientes puntos de acceso: {{ap}}"
       },
-      "invalid.config.for.root": "El punto de acceso raíz debe tener al menos un SSID con 2 bandas activadas, incluida la banda de malla",
+      "invalid.config.for.root": "El punto de acceso raíz ({{param0}}) debe tener habilitadas dos bandas de radio y al menos un SSID para que funcione la red en malla",
       "mesh.conversion.not.allowed": "No se puede cambiar el SSID al modo en malla. Crear un nuevo SSID con modo en malla",
-      "invalid.mesh.ssid.name": "El nombre del SSID de la malla AP6 solo puede incluir letras, números, espacios, guiones y guiones bajos"
+      "invalid.mesh.ssid.name": "El nombre del SSID de la malla AP6 solo puede incluir letras, números, espacios, guiones y guiones bajos",
+      "incompatible.config.for.root": "El punto de acceso raíz tiene uno o varios SSID [{{param1}}] con funciones activas de filtrado MAC, de direccionamiento de banda o de multidifusión a unidifusión que no son compatibles con el funcionamiento de la red en malla"
     }
   }
 }

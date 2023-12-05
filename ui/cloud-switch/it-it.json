@@ -217,7 +217,11 @@
       "IgmpSnoopingVlanSettingsDto": "Snooping IGMP (VLAN)",
       "DhcpSnoopingVlanStatusDto": "Snooping DHCP (VLAN)",
       "QosClassMappingDto": "Criterio QoS",
-      "VoiceVlanSettingsDto": "VLAN traffico voce"
+      "VoiceVlanSettingsDto": "VLAN traffico voce",
+      "SNMPTargetAddressDto": "Indirizzo di destinazione SNMP",
+      "SNMPAccessDto": "Criterio di accesso SNMP",
+      "SNMPUserGroupMappingDto": "Gruppo SNMP",
+      "SNMPTargetParametersDto": "Parametro di destinazione SNMP"
     },
     "dashboard": {
       "menu-title": "Dashboard",
@@ -1090,6 +1094,8 @@
       }
     },
     "local-sync": {
+      "local": "Dispositivo",
+      "central": "Sophos Central",
       "hide-conflicts": "Nascondi conflitti",
       "hide-status": "Nascondi stato di sincronizzazione",
       "show-conflicts": "{{ count }} conflitti",
@@ -1100,7 +1106,13 @@
       "no-conflict": "Nessun conflitto",
       "dynamic": "Dinamico",
       "refreshing-data": "Aggiornamento dei dati in corso...",
-      "different-data": "Lo switch ha un valore diverso: "
+      "different-data": "Il dispositivo ha:",
+      "central-data": "Sophos Central ha:",
+      "not-set-from-central": "Non impostato in Sophos Central",
+      "sync-all": "Risolvi tutti i conflitti",
+      "import-to-central": "Importa in Sophos Central",
+      "resolve-conflicts": "Risolvi i conflitti",
+      "central-config-sync": "Questa operazione modifica la configurazione di Sophos Central in modo che rifletta la configurazione del dispositivo."
     },
     "ip-networks": {
       "add": "Aggiungi rete",
@@ -1451,7 +1463,8 @@
         "bytes": "Byte",
         "show-per-port": "Mostra impostazione per porta",
         "global-jumbo-frames": "per tutte le porte",
-        "multicast-filtering": "Filtro multicast"
+        "multicast-filtering": "Filtro multicast",
+        "local_sync_conflicts": "Conflitti"
       },
       "message": {
         "port-update-success": "Le porte sono state aggiornate.",
@@ -1491,7 +1504,9 @@
         "port-mirroring-lag-fix-button": "Disattiva le sessioni selezionate",
         "port-mirroring-conflict-message": "Una o più porte selezionate fanno già parte di un’altra sessione di mirroring delle porte e se continui si verificheranno errori negli switch elencati di seguito.",
         "fix-port-mirroring-conflicts": "Per risolvere i conflitti, puoi rimuovere queste configurazioni di mirroring delle porte a livello di switch. Puoi apportare modifiche anche dopo, a livello di vista dello switch, se è richiesta una personalizzazione a livello di switch.",
-        "fix-port-mirroring-button": "Disattiva sessione/i selezionata/e"
+        "fix-port-mirroring-button": "Disattiva sessione/i selezionata/e",
+        "sync-all-confirmation": "Questo passaggio sincronizza la configurazione effettiva della porta dello switch con Sophos Central. Potrebbero essere visualizzate più richieste di conferma e finestre di dialogo Salva per i conflitti LAG, poiché questo è il migliore modo possibile per salvare la configurazione senza conflitti con le configurazioni dei siti.",
+        "sync-all-header": "Sincronizza tutte le impostazioni dallo switch"
       },
       "ports-mirroring": {
         "table-headers": {
@@ -1640,6 +1655,18 @@
           "NoAuth": "Nessuna autenticazione",
           "Auth": "Autenticazione",
           "Priv": "Privilegio"
+        },
+        "conflicts": {
+          "name": "Nome",
+          "details": "Dettagli",
+          "referenced": "In uso in",
+          "delete-conflict-title": "Utenti in uso",
+          "fix-delete-conflict": "Gli utenti elencati sotto sono già in uso. Prima di eliminarli, devi eliminare queste configurazioni dipendenti",
+          "fix-button": "Elimina configurazioni dipendenti",
+          "delete-conflict-message": "Uno o più utenti contrassegnati per l’eliminazione sono in uso nelle seguenti impostazioni: ",
+          "group-name": "Gruppo",
+          "param-name": "Parametro di destinazione",
+          "address-name": "Nome indirizzo"
         }
       },
       "groups": {
@@ -1653,7 +1680,17 @@
         "edit-group": "Modifica il gruppo",
         "groupname": "Nome gruppo",
         "no-groups": "Non è ancora stato aggiunto alcun gruppo da Sophos Central.",
-        "delete-groups": "Elimina gruppi"
+        "delete-groups": "Elimina gruppi",
+        "conflicts": {
+          "name": "Nome",
+          "details": "Dettagli",
+          "referenced": "In uso in",
+          "delete-conflict-title": "Gruppi in uso",
+          "fix-delete-conflict": "I gruppi elencati sotto sono già in uso. Prima di eliminarli, devi eliminare queste configurazioni dipendenti",
+          "fix-button": "Elimina configurazioni dipendenti",
+          "delete-conflict-message": "Uno o più gruppi contrassegnati per l’eliminazione sono in uso nelle seguenti impostazioni: ",
+          "views": "Visualizzazioni"
+        }
       },
       "messages": {
         "save-dialog-title": "Conferma salvataggio",
@@ -1665,9 +1702,11 @@
         "add-user-community-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti dell’SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "username-required-message": "Nome obbligatorio.",
         "username-exists-message": "Nome utente già esistente.",
-        "username-length-error-message": "La lunghezza del Nome utente deve essere compresa tra 8 e 40 caratteri.",
+        "username-length-error-message": "La lunghezza del Nome utente deve essere compresa tra 4 e 20 caratteri.",
+        "tag-length-error-message": "La lunghezza del tag deve essere compresa tra 1 e 20 caratteri.",
         "loading-error": "Non è stato possibile caricare le impostazioni SNMP.",
-        "users-and-communities.confirm-update": "Conferma aggiornamento"
+        "users-and-communities.confirm-update": "Conferma aggiornamento",
+        "name-invalid-message": "Il nome non è valido. Cerca di usare lettere, numeri, virgole, parentesi, trattini e caratteri di sottolineatura."
       },
       "status": "Stato di SNMP",
       "engine-id": "ID motore",
@@ -1718,6 +1757,18 @@
           "delete-dialog-title": "Conferma eliminazione",
           "site-delete-setting-text": "Elimina {{ viewCount }} impostazioni della visualizzazione SNMP. {{ count }} switch rimuoveranno queste impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "switch-delete-setting-text": "Elimina {{ viewCount }} impostazioni della visualizzazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        },
+        "conflicts": {
+          "name": "Nome",
+          "details": "Dettagli",
+          "referenced": "In uso in",
+          "readView": "Leggi",
+          "writeView": "Scrittura",
+          "notifyView": "Notifica",
+          "delete-conflict-title": "Visualizzazioni in uso",
+          "fix-delete-conflict": "Le visualizzazioni elencate sotto sono già in uso. Prima di eliminarle, devi eliminare queste configurazioni dipendenti",
+          "fix-button": "Elimina configurazioni dipendenti",
+          "delete-conflict-message": "Una o più visualizzazioni contrassegnate per l’eliminazione sono in uso nelle seguenti impostazioni: "
         }
       },
       "access-list": {
@@ -1732,6 +1783,7 @@
           "notify-view": "Visualizzazione notifica"
         },
         "no-policies": "Nessun criterio di accesso configurato da Sophos Central per il momento.",
+        "no-groups": "Nessun gruppo trovato. Crea un gruppo per iniziare a configurare l’elenco accessi.",
         "add-access-policy": "Aggiungi criterio di accesso",
         "edit-access-policy": "Modifica criterio di accesso",
         "option-label": "Seleziona",
@@ -1742,7 +1794,8 @@
           "add-access-switch-save-dialog-text": "Lo switch riceverà gli aggiornamenti del SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "add-access-site-save-dialog-text": "{{ count }} switch riceveranno gli aggiornamenti dell’SNMP e verranno create attività per gli aggiornamenti. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "update-setting-success": "Impostazioni SNMP del criterio di accesso aggiornate.",
-          "update-setting-error": "Non è stato possibile aggiornare le impostazioni SNMP."
+          "update-setting-error": "Non è stato possibile aggiornare le impostazioni SNMP.",
+          "confirm-update": "Conferma aggiornamento"
         }
       },
       "view-types": {
@@ -1798,7 +1851,7 @@
           "add-settings-success": "Le impostazioni dell’indirizzo di destinazione SNMP sono state create",
           "update-settings-success": "Le impostazioni indirizzo di destinazione SNMP sono state aggiornate",
           "add-settings-error": "Non è stato possibile creare impostazioni dell’indirizzo di destinazione SNMP",
-          "invalid-ip": "Indirizzo IP non valido.",
+          "invalid-ip": "Indirizzo IP non valido. “0.0.0.0” e “255.255.255.255” non sono validi.",
           "site-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dell’indirizzo di destinazione SNMP. {{ count }} switch rimuoveranno queste impostazioni dell’indirizzo di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "switch-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dell’indirizzo di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
         }
@@ -1809,8 +1862,10 @@
         "target-param-name-required-message": "Nome obbligatorio",
         "target-param-name-max-length-message": "Il nome non può contenere più di 30 caratteri.",
         "target-param-name-already-exists-message": "Nome già esistente",
+        "no-users": "Configura un utente SNMP per creare un parametro di destinazione",
         "msg-processing-model": "Modello elaborazione messaggi",
         "security-mode": "Modalità di sicurezza",
+        "user": "Utente",
         "security-name": "Utente(v3)",
         "community-name": "Utente(v1/v2c)",
         "priv-mode": "Modalità privilegi",
@@ -1840,6 +1895,16 @@
           "delete-dialog-title": "Conferma eliminazione",
           "site-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dei parametri di destinazione SNMP. {{ count }} switch rimuoveranno queste impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
           "switch-delete-setting-text": "Elimina {{ parameterCount }} impostazioni dei parametri di destinazione SNMP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito."
+        },
+        "conflicts": {
+          "targetParamName": "Nome",
+          "details": "Dettagli",
+          "referenced": "In uso in",
+          "tag": "Tag",
+          "delete-conflict-title": "I parametri di destinazione sono in uso",
+          "fix-delete-conflict": "I parametri di destinazione elencati sotto sono già in uso. Prima di eliminarli, devi eliminare queste configurazioni dipendenti",
+          "fix-button": "Elimina configurazioni dipendenti",
+          "delete-conflict-message": "Uno o più parametri di destinazione contrassegnati per l’eliminazione sono in uso nelle seguenti impostazioni: "
         }
       },
       "notifications": {

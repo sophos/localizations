@@ -471,10 +471,25 @@
         "endsOn": "Endet am"
       },
       "messages": {
-        "confirmWaitMessage": "Das Abrufen der Daten dauert eine Weile.<br/><br/>Sie können warten, während wir die Daten zusammenstellen, oder wenn Sie andere Aktionen ausführen möchten, werden die Daten auf dem Tab „Warteschlange“ angezeigt, wenn sie fertig sind.<br /><br/>Berichte auf dem Tab „Warteschlange“ sind bis zu 24 Stunden verfügbar."
+        "confirmWaitMessage": "Das Abrufen der Daten dauert eine Weile.<br/><br/>Sie können warten, während wir die Daten zusammenstellen, oder wenn Sie andere Aktionen ausführen möchten, werden die Daten auf dem Tab „Warteschlange“ angezeigt, wenn sie fertig sind.<br /><br/>Berichte auf dem Tab „Warteschlange“ sind bis zu 24 Stunden verfügbar.",
+        "timeSliceInfo": "<p>Um das Abrufen von Daten zu optimieren, enthalten Berichte für Zeiträume zwischen einem und sieben Tagen Stundendaten und Berichte für Zeiträume größer als sieben Tage Tagesdaten.</p><p> Um die Granularität zu erhöhen, verkürzen Sie den Zeitraum für diesen Bericht oder klicken Sie auf das nachfolgende Datum</p>"
+
       }
     },
     "apiLabel": {
+      "src_location": "Standort",
+      "timestamp": "Datum",
+      "src_ip": "Ursprungs-IP",
+      "dns_qclass" : "Abfrageklasse",
+      "dns_rcode": "Antwortstatus",
+      "dns_rnum": "Antwort-Records",
+      "dns_qsize": "Abfrage-Bytes",
+      "dns_rsize": "Antwort-Bytes",
+      "dns_resolved_ips": "Aufgelöste IPs",
+      "dns_rtype": "Antworttyp",
+      "dns_rclass": "Antwortklasse",
+      "response_ttl_list": "Antwort-TTL",
+      "response_ip" : "Antwort-IPs",
       "domain_risk": "Risiko",
       "domain_category": "Kategorie",
       "customer_id": "Kunden-ID",
@@ -535,7 +550,7 @@
       "heartbeat": "Security Heartbeat",
       "ips_policy_id": "IPS-Richtlinien-ID",
       "download_file": "Datei herunterladen",
-      "source_ip": "Quell-IP",
+      "source_ip": "Ursprungs-IP",
       "clean_hits": "Schadfreie Ereignisse",
       "firewall_rule_type": "Firewallregel-Art",
       "received_kbits": "Empfangene KBits",
@@ -570,7 +585,7 @@
       "atp_threats": "ATP-Bedrohungen",
       "extended_report": "Erweiterter Bericht",
       "malware": "Malware",
-      "log_subtype": "Protokoll-Untertyp",
+      "log_subtype": "Untertyp",
       "message_count": "Anzahl der Nachrichten",
       "executable": "Ausführbare Datei",
       "url": "URL",
@@ -607,7 +622,7 @@
       "allowed_app_categories": "Zulässige App-Kategorien",
       "user_group": "Benutzergruppe",
       "bandwidth_usage": "Bandbreitennutzung",
-      "dns": "DNS",
+      "dns": "DNS-Nutzung",
       "syslog": "Log Viewer & Suche",
       "gateway_bandwidth": "Bandbreitennutzung",
       "new_cloud_apps": "Neue Cloud-Apps",
@@ -830,7 +845,9 @@
     "common": {
       "messages": {
         "generic-error": "Unerwarteter Fehler bei der Verarbeitung der Anfrage."
-      }
+      },
+      "on-text": "Ein",
+      "off-text": "Aus"
     },
     "dashboard": {
       "title": "Secure Service Edge - Dashboard",
@@ -848,27 +865,91 @@
       "button": {
         "next": "Weiter",
         "cancel": "Abbrechen",
-        "back": "Zurück"
+        "back": "Zurück",
+        "save-rule": "Regel speichern"
       },
-      "title": "Secure Service Edge - Internetzugriffsrichtlinie",
-      "breadcrumb": "Internetzugriffsrichtlinie",
+      "title": "Secure Service Edge - Richtlinie",
+      "breadcrumb": "Richtlinie",
       "follow-steps": "Führen Sie diese Schritte aus, um eine neue Regel zu erstellen. Speichern Sie danach die Regel, um sie zu Ihrer Richtlinie hinzuzufügen.",
       "choose-action": "Aktion auswählen",
       "action-description": "Wählen Sie die Option aus, die Ihre Regel am besten beschreibt",
-      "specify-condition": "Specify conditions", 
+      "specify-condition": "Bedingungen angeben",
       "condition-description": "Diese Bedingungen lösen Ihre Aktion aus",
       "manage-options": "Optionen verwalten",
       "options-description": "Zugehörige Sicherheitsfunktionen konfigurieren",
-      "add-rule": "Regel hinzufügen",
+      "add-rule" : {
+        "title": "Secure Service Edge - Richtlinie - Regel hinzufügen",
+        "breadcrumb": "Regel hinzufügen"
+      },
       "policy": {
         "add-rule": {
           "step-1": {
-            "block-websites": "Webseiten blockieren",
-            "block-websites-desc": "Verhindern Sie, dass Benutzer auf ausgewählte Webseiten zugreifen",
-            "block-websites-tooltip-desc": "Um die blockierten Webseiten festzulegen, verwenden Sie entweder unsere vordefinierten Kategorien oder Webseitenlisten, die Sie in den Richtlinien erstellen. Wenden Sie die Regel global an, oder legen Sie Kriterien wie Gruppen, Benutzer, Geräte oder Standorte fest, auf welche die Regel beschränkt wird. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung.",
-            "allow-websites": "Webseiten erlauben",
-            "allow-websites-desc": "Erlauben Sie Benutzern den Zugriff auf ausgewählte Webseiten",
-            "allow-websites-tooltip-desc": "Geeignet zum Erstellen von Regeln, die Webseiten oder Kategorien ausdrücklich erlauben, welche durch andere Regeln blockiert werden, oder um sicherzustellen, dass auf bestimmte Webseiten immer zugegriffen werden kann. Eine Regel „Webseiten zulassen“ mit einem höheren Rang als eine Regel „Webseiten blockieren“ hebt die Blockierung für die ausgewählten Seiten und Benutzer auf. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung."
+            "web-gateway": {
+              "block-websites": "Webseiten blockieren",
+              "block-websites-desc": "Hindern Sie Benutzer daran, auf ausgewählte Webseiten zuzugreifen",
+              "block-websites-tooltip-desc": "Um die blockierten Webseiten festzulegen, verwenden Sie entweder unsere vordefinierten Kategorien oder Webseitenlisten, die Sie in den Richtlinien erstellen. Wenden Sie die Regel global an, oder legen Sie Kriterien wie Gruppen, Benutzer, Geräte oder Standorte fest, auf welche die Regel beschränkt wird. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung.",
+              "allow-websites": "Webseiten erlauben",
+              "allow-websites-desc": "Erlauben Sie Benutzern den Zugriff auf ausgewählte Webseiten",
+              "allow-websites-tooltip-desc": "Geeignet zum Erstellen von Regeln, die Webseiten oder Kategorien ausdrücklich erlauben, welche durch andere Regeln blockiert werden, oder um sicherzustellen, dass auf bestimmte Webseiten immer zugegriffen werden kann. Eine Regel „Webseiten zulassen“ mit einem höheren Rang als eine Regel „Webseiten blockieren“ hebt die Blockierung für die ausgewählten Seiten und Benutzer auf. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung.",
+              "enforce-safe-search": "Sichere Suche erzwingen",
+              "enforce-safe-search-desc": "Erzwingen Sie Einstellungen für die sichere Suche der verbreiteten Suchmaschinen",
+              "enforce-safe-search-tooltip-desc": "Wenn Sie unangemessene Webseiten blockieren, sollten Sie auch sicherstellen, dass Suchmaschinen nur Ergebnisse anzeigen, die für Ihre Umgebung geeignet sind. Erzwingt Einstellungen für die sichere Suche mit Google, Bing und DuckDuckGo mittels DNS-Methoden.",
+              "website-tenant-controls": "Webseiten-Mandantenbeschränkungen",
+              "website-tenant-controls-desc": "Aktivieren Sie Mandantenbeschränkungen für unterstützte Webanwendungen",
+              "website-tenant-controls-tooltip-desc": "Bei manchen Webseiten und Apps können Sie einschränken, welche Benutzerkonten sich aus Ihrem Netzwerk anmelden und die Dienste nutzen dürfen. Mit dieser Regel können Sie diese Einschränkungen aktivieren und die erforderlichen Informationen für unterstützte Apps bereitstellen.",
+              "scan-for-threats": "Auf Bedrohungen überprüfen",
+              "scan-for-threats-desc": "Scannen Sie Webinhalte auf Bedrohungen, falls erforderlich mit Entschlüsselung",
+              "scan-for-threats-tooltip-desc": "Dateidownloads und Webseiteninhalte können Bedrohungen enthalten, selbst von allgemein erlaubten Webseiten. Mit dieser Regel können Sie Scanbedingungen für verschiedene Benutzer, Gruppen, Geräte oder Webseiten festlegen, sowie die TLS-Entschlüsselung aktivieren, um Bedrohungen sowohl von verschlüsselten HTTPS-Seiten als auch von HTTP-Seiten zu erkennen.",
+              "never-decrypt": "Nie entschlüsseln",
+              "never-decrypt-desc": "Schließen Sie Webseiten oder Verbindungen von der Entschlüsselung aus",
+              "never-decrypt-tooltip-desc": "Manchmal ist es erforderlich, dass der Datenverkehr zu bestimmten Webseiten aus Kompatibilitäts- oder Datenschutzgründen nicht entschlüsselt wird. Erstellen Sie diesen Regeltyp für solche Seiten, Benutzer oder Gruppen. Sortieren Sie Regeln mit diesem Typ möglichst weit oben in der Liste ein, damit sie Vorrang vor allgemeinen Regeln haben, die möglicherweise die Entschlüsselung aktivieren.",
+              "block-file-types": "Dateitypen blockieren",
+              "block-file-types-desc": "Verhindern Sie Downloads riskanter oder unerwünschter Dateitypen, falls erforderlich mit Entschlüsselung",
+              "block-file-types-tooltip-desc": "Einige Arten von Datei-Downloads können riskant oder unnötig für die normale geschäftliche Nutzung sein. Verwenden Sie diesen Regeltyp, um Dateitypen auszuwählen, die blockiert werden sollen, und wählen Sie aus, ob die Regel für alle oder bestimmte Benutzer, Gruppen oder Geräte gelten soll. Diese Regel stellt außerdem sicher, dass der Datenverkehr bei Bedarf entschlüsselt wird, um den Dateityp identifizieren zu können.",
+              "dont-scan": "Nicht scannen",
+              "dont-scan-desc": "Schließen Sie Webseiten oder Verbindungen vom Scannen des Inhalts aus",
+              "dont-scan-tooltip-desc": "Einige Webseiten funktionieren nicht richtig, wenn Dateien auf Inhalte oder Bedrohungen gescannt werden. Sortieren Sie Regeln mit diesem Typ möglichst weit oben in der Liste ein, damit sie andere Regeln überschreiben, die Scanbedingungen für ausgewählte Seiten, Benutzer, Gruppen oder Geräte festlegen.",
+              "websites-allow-list": "Liste erlaubter Webseiten",
+              "websites-allow-list-desc": "Erlauben Sie Benutzern den Zugriff auf ausgewählte Webseiten",
+              "websites-allow-list-tooltip-desc": "Geeignet zum Erstellen von Regeln, die Webseiten oder Kategorien ausdrücklich erlauben, welche durch andere Regeln blockiert werden, oder um sicherzustellen, dass auf bestimmte Webseiten immer zugegriffen werden kann. Eine Regel „Webseiten zulassen“ mit einem höheren Rang als eine Regel „Webseiten blockieren“ hebt die Blockierung für die ausgewählten Seiten und Benutzer auf. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung."
+            },
+            "firewall": {
+              "block-non-web-traffic": "Nicht-Web-Datenverkehr blockieren",
+              "block-non-web-traffic-desc": "Nicht-Web-Datenverkehr blockieren",
+              "block-non-web-traffic-tooltip-desc": "Nicht-Web-Datenverkehr blockieren",
+              "allow-non-web-traffic": "Nicht-Web-Datenverkehr erlauben",
+              "allow-non-web-traffic-desc": "Erlauben Sie erforderliche ausgehende Netzwerkverbindungen",
+              "allow-non-web-traffic-tooltip-desc": "Erstellen Sie eine Firewall-Regel mit diesem Typ, um Benutzern die Verbindung zu Nicht-Web-Diensten basierend auf IP-Adresse, Port oder Protokoll zu erlauben.",
+              "allow-connection-decrypt-and-inspect": "Verbindung erlauben, entschlüsseln und prüfen",
+              "allow-connection-decrypt-and-inspect-desc": "Erlauben Sie Nicht-Web-Datenverkehr und kontrollieren Sie Bedrohungen mit IPS und Entschlüsselung, falls erforderlich mit Entschlüsselung",
+              "allow-connection-decrypt-and-inspect-tooltip-desc": "Deep Packet Inspection umfasst IPS, um Angriffe über eine Vielzahl von Netzwerkprotokollen zu erkennen. Diese Regel kombiniert IPS mit TLS-Entschlüsselung, um ein gründliches Scannen von verschlüsseltem und unverschlüsseltem Datenverkehr sicherzustellen.",
+              "networks-allow-list": "Liste erlaubter Netzwerke",
+              "networks-allow-list-desc": "Erlauben Sie Benutzern den Zugriff auf ausgewählte Netzwerke ohne Überprüfung",
+              "networks-allow-list-tooltip-desc": "Geeignet zum Erstellen von Regeln, die Webseiten oder Kategorien ausdrücklich erlauben, welche durch andere Regeln blockiert werden, oder um sicherzustellen, dass auf bestimmte Webseiten immer zugegriffen werden kann. Eine Regel „Webseiten zulassen“ mit einem höheren Rang als eine Regel „Webseiten blockieren“ hebt die Blockierung für die ausgewählten Seiten und Benutzer auf. Diese Regel verwendet dieselben Bedingungen für DNS- und  Web-Gateway-Filterung."
+            },
+            "specialist": {
+              "dns-filter": "DNS-Filter",
+              "dns-filter-desc": "Verhindern Sie unerwünschte Verbindungen durch Filter für die DNS-Abfrage",
+              "dns-filter-tooltip-desc": "Mit DNS-Abfragen ermitteln Geräte vor dem Verbindungsaufbau das Ziel der Verbindung. Das Filtern von DNS-Abfragen und -Antworten ist ein Schutzmechanismus zum frühestmöglichen Zeitpunkt.",
+              "firewall-rule": "Firewallregel",
+              "firewall-rule-desc": "Legen Sie fest, welche Pakete und Verbindungen erlaubt sind",
+              "firewall-rule-tooltip-desc": "Verwenden Sie diese Regel, um festzulegen, welche Pakete und Verbindungen die Firewall passieren dürfen.",
+              "decryption-rule": "Entschlüsselungsregel",
+              "decryption-rule-desc": "Legen Sie fest, wann eine Entschlüsselung erfolgt bzw. die Entschlüsselung übersprungen wird",
+              "decryption-rule-tooltip-desc": "Diese Regeln werden verwendet, wenn Ihre Geräte versuchen, verschlüsselte Verbindungen herzustellen. Die Regeln legen fest, welcher Datenverkehr entschlüsselt wird, um den Inhalt genauer auf Bedrohungen zu untersuchen.",
+              "web-access-rule": "Webzugriffs-Regel",
+              "web-access-rule-desc": "Blockieren Sie Webverbindungen auf Basis der Domäne oder URL ohne DNS-Filterung",
+              "web-access-rule-tooltip-desc": "Wenn ein Benutzer versucht, über Secure Web Gateway auf eine Webseite zuzugreifen, kann eine Web-Filterregel den Zugriff auf Basis der Webseiten-URL steuern. Dieser Regeltyp gilt nicht für die DNS-Webfilterung.",
+              "web-content-filter-rule": "Webinhaltsfilter-Regel",
+              "web-content-filter-rule-desc": "Legen Sie fest, auf welche Arten von Dateien und Inhalte auf erlaubten Webseiten zugegriffen werden kann",
+              "web-content-filter-rule-tooltip-desc": "Für Webseiten, die auf Basis der URL oder Kategorie erlaubt sind, bieten Inhaltsfilter-Regeln zusätzlichen Schutz, indem sie Uploads und Downloads auf Bedrohungen scannen und riskante Dateitypen blockieren",
+              "app-control": "App Control",
+              "app-control-desc": "Stellen Sie Richtlinien auf, die Datenverkehr verbieten, der bestimmten Anwendungen zugeordnet wurde - benannte Apps oder Anwendungsprotokolle",
+              "app-control-tooltip-desc": "",
+              "ips-rule": "IPS-Regel",
+              "ips-rule-desc": "Verwenden Sie diese Regel, um die IPS-Empfindlichkeit für den ausgewählten Datenverkehr zu ändern",
+              "ips-rule-tooltip-desc": ""
+            }
           },
           "step-2": {
             "user": {
@@ -896,6 +977,9 @@
               "not-dest-ip": "Ziel-IP-Adresse ist nicht"
             }
           }
+        },
+        "delete-rule":{
+          "warning": "Es werden keine funktionalen Änderungen vorgenommen, solange die Regel nicht aktiviert ist"
         }
       },
       "no-policy": {
@@ -936,8 +1020,17 @@
         "web-content": "Webinhalte",
         "app-control": "App-Kontrolle",
         "ips": "IPS"
+      },
+      "ellipsis-menu": {
+        "edit-rule": "Regel bearbeiten",
+        "add-rule-above": "Regel oberhalb hinzufügen",
+        "add-rule-below": "Regel unterhalb hinzufügen",
+        "move-to-rank": "Auf Position # verschieben",
+        "move-to-rank-button": "Anwenden",
+        "clone-rule-above": "Regel oberhalb klonen",
+        "clone-rule-below": "Regel unterhalb klonen",
+        "delete-rule": "Regel löschen"
       }
-
     },
     "agent-config": {
       "title": "Secure Service Edge - Agent-Konfiguration",

@@ -217,7 +217,11 @@
       "IgmpSnoopingVlanSettingsDto": "IGMP 스누핑 (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP 스누핑 (VLAN)",
       "QosClassMappingDto": "QoS 정책",
-      "VoiceVlanSettingsDto": "음성 VLAN"
+      "VoiceVlanSettingsDto": "음성 VLAN",
+      "SNMPTargetAddressDto": "SNMP 대상 주소",
+      "SNMPAccessDto": "SNMP 액세스 정책",
+      "SNMPUserGroupMappingDto": "SNMP 그룹",
+      "SNMPTargetParametersDto": "SNMP 대상 매개 변수"
     },
     "dashboard": {
       "menu-title": "대시보드",
@@ -1090,6 +1094,8 @@
       }
     },
     "local-sync": {
+      "local": "장치",
+      "central": "Sophos Central",
       "hide-conflicts": "충돌 숨기기",
       "hide-status": "동기화 상태 숨기기",
       "show-conflicts": "{{ count }}개 충돌",
@@ -1100,7 +1106,13 @@
       "no-conflict": "충돌 없음",
       "dynamic": "동적",
       "refreshing-data": "데이터 새로 고침 중...",
-      "different-data": "스위치의 값이 다름: "
+      "different-data": "장치에는 다음이 포함됩니다.",
+      "central-data": "Sophos Central에는 다음이 포함됩니다.",
+      "not-set-from-central": "Sophos Central에 설정되지 않음",
+      "sync-all": "모든 충돌 해결",
+      "import-to-central": "Sophos Central로 가져오기",
+      "resolve-conflicts": "충돌 해결",
+      "central-config-sync": "이렇게 하면 Sophos Central 구성이 장치 구성과 일치하도록 변경됩니다."
     },
     "ip-networks": {
       "add": "네트워크 추가",
@@ -1451,7 +1463,8 @@
         "bytes": "바이트",
         "show-per-port": "포트별 표시 설정",
         "global-jumbo-frames": "모든 포트에 대해",
-        "multicast-filtering": "멀티캐스트 필터링"
+        "multicast-filtering": "멀티캐스트 필터링",
+        "local_sync_conflicts": "충돌"
       },
       "message": {
         "port-update-success": "포트가 업데이트되었습니다.",
@@ -1491,7 +1504,9 @@
         "port-mirroring-lag-fix-button": "섡택한 세션 끄기",
         "port-mirroring-conflict-message": "선택된 하나 이상의 포트가 이미 다른 포트 미러링의 일부이므로 계속 진행할 경우 아래 스위치에 오류가 발생합니다.",
         "fix-port-mirroring-conflicts": "스위치 수준에서 해당 포트 미러링 구성을 제거하여 충돌을 해결할 수 있습니다. 스위치 수준 사용자 지정이 필요한 경우 나중에 스위치 보기에서 편집할 수 있습니다.",
-        "fix-port-mirroring-button": "선택한 세션 끄기"
+        "fix-port-mirroring-button": "선택한 세션 끄기",
+        "sync-all-confirmation": "이 단계는 스위치의 실제 포트 구성을 Sophos Central과 동기화합니다. LAG 충돌에 대한 여러 확인 메시지와 저장 대화 상자가 표시될 수 있습니다. 이는 사이트 구성과 충돌하지 않고 구성을 저장하기 위한 최선의 조치입니다.",
+        "sync-all-header": "스위치에서 모든 설정 동기화"
       },
       "ports-mirroring": {
         "table-headers": {
@@ -1640,6 +1655,18 @@
           "NoAuth": "인증 없음",
           "Auth": "인증",
           "Priv": "권한"
+        },
+        "conflicts": {
+          "name": "이름",
+          "details": "세부 정보",
+          "referenced": "사용됨:",
+          "delete-conflict-title": "사용 중인 사용자",
+          "fix-delete-conflict": "아래 사용자는 이미 사용 중이며 사용자를 삭제하기 전에 이러한 종속 구성을 삭제하십시오.",
+          "fix-button": "종속 항목 삭제",
+          "delete-conflict-message": "삭제 표시된 한 명 이상의 사용자가 다음 설정에서 사용됩니다. ",
+          "group-name": "그룹",
+          "param-name": "대상 매개 변수",
+          "address-name": "주소 이름"
         }
       },
       "groups": {
@@ -1653,7 +1680,17 @@
         "edit-group": "그룹 편집",
         "groupname": "그룹 이름",
         "no-groups": "Sophos Central에서 아직 그룹이 추가되지 않았습니다.",
-        "delete-groups": "그룹 삭제"
+        "delete-groups": "그룹 삭제",
+        "conflicts": {
+          "name": "이름",
+          "details": "세부 정보",
+          "referenced": "사용됨:",
+          "delete-conflict-title": "사용 중인 그룹",
+          "fix-delete-conflict": "아래 그룹은 이미 사용 중이며 삭제하기 전에 이러한 종속 구성을 삭제하십시오.",
+          "fix-button": "종속 항목 삭제",
+          "delete-conflict-message": "삭제 표시된 하나 이상의 그룹이 다음 설정에서 사용됩니다. ",
+          "views": "보기"
+        }
       },
       "messages": {
         "save-dialog-title": "저장 확인",
@@ -1665,9 +1702,11 @@
         "add-user-community-site-save-dialog-text": "{{ count }}개의 스위치가 SNMP 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "username-required-message": "이름은 필수입니다.",
         "username-exists-message": "이미 있는 사용자 이름입니다.",
-        "username-length-error-message": "사용자 이름의 길이는 8~40자여야 합니다.",
+        "username-length-error-message": "사용자 이름의 길이는 4~20자여야 합니다.",
+        "tag-length-error-message": "태그 길이는 1~20자여야 합니다.",
         "loading-error": "SNMP 설정을 로드할 수 없습니다.",
-        "users-and-communities.confirm-update": "업데이트 확인"
+        "users-and-communities.confirm-update": "업데이트 확인",
+        "name-invalid-message": "이름이 잘못되었습니다. 문자, 숫자, 쉼표, 대괄호, 하이픈, 밑줄을 사용해 보십시오."
       },
       "status": "SNMP 상태",
       "engine-id": "엔진 ID",
@@ -1718,6 +1757,18 @@
           "delete-dialog-title": "삭제 확인",
           "site-delete-setting-text": "{{ viewCount }}개의 SNMP 보기 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 보기 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-delete-setting-text": "{{ viewCount }}개의 SNMP 보기 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        },
+        "conflicts": {
+          "name": "이름",
+          "details": "세부 정보",
+          "referenced": "사용됨:",
+          "readView": "읽기",
+          "writeView": "쓰기",
+          "notifyView": "알림",
+          "delete-conflict-title": "사용 중인 보기",
+          "fix-delete-conflict": "아래 보기는 이미 사용 중이며 삭제하기 전에 이러한 종속 구성을 삭제하십시오.",
+          "fix-button": "종속 항목 삭제",
+          "delete-conflict-message": "삭제 표시된 하나 이상의 보기가 다음 설정에서 사용됩니다. "
         }
       },
       "access-list": {
@@ -1732,6 +1783,7 @@
           "notify-view": "알림 보기"
         },
         "no-policies": "Sophos Central에서 구성된 액세스 정책이 아직 없습니다.",
+        "no-groups": "그룹을 찾을 수 없습니다. 액세스 목록 구성을 시작하려면 그룹을 만드십시오.",
         "add-access-policy": "액세스 정책 추가",
         "edit-access-policy": "액세스 정책 편집",
         "option-label": "선택",
@@ -1742,7 +1794,8 @@
           "add-access-switch-save-dialog-text": "스위치가 SNMP 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "add-access-site-save-dialog-text": "{{ count }}개의 스위치가 SNMP 업데이트를 가져오면 업데이트할 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "update-setting-success": "SNMP 액세스 정책 설정이 업데이트되었습니다.",
-          "update-setting-error": "SNMP 설정을 업데이트할 수 없습니다."
+          "update-setting-error": "SNMP 설정을 업데이트할 수 없습니다.",
+          "confirm-update": "업데이트 확인"
         }
       },
       "view-types": {
@@ -1798,7 +1851,7 @@
           "add-settings-success": "SNMP 대상 주소 설정이 생성되었습니다.",
           "update-settings-success": "SNMP 대상 주소 설정이 업데이트되었습니다.",
           "add-settings-error": "SNMP 대상 주소 설정을 생성할 수 없습니다.",
-          "invalid-ip": "잘못된 IP 주소.",
+          "invalid-ip": "잘못된 IP 주소입니다. '0.0.0.0' 및 '255.255.255.255'는 유효하지 않습니다.",
           "site-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 주소 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 대상 주소 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 주소 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
         }
@@ -1809,8 +1862,10 @@
         "target-param-name-required-message": "이름이 필요함",
         "target-param-name-max-length-message": "이름은 30자 이하여야 합니다.",
         "target-param-name-already-exists-message": "이름이 이미 있습니다",
+        "no-users": "대상 매개 변수를 생성하려면 SNMP 사용자를 구성하십시오.",
         "msg-processing-model": "메시지 처리 모델",
         "security-mode": "보안 모드",
+        "user": "사용자",
         "security-name": "사용자(v3)",
         "community-name": "사용자(v1/v2c)",
         "priv-mode": "권한 모드",
@@ -1840,6 +1895,16 @@
           "delete-dialog-title": "삭제 확인",
           "site-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 매개 변수 설정을 삭제합니다. {{ count }}개의 스위치가 이 SNMP 대상 매개 변수 설정을 제거하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
           "switch-delete-setting-text": "{{ parameterCount }}개의 SNMP 대상 매개 변수 설정을 삭제하면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다."
+        },
+        "conflicts": {
+          "targetParamName": "이름",
+          "details": "세부 정보",
+          "referenced": "사용됨:",
+          "tag": "태그",
+          "delete-conflict-title": "대상 매개 변수가 사용 중입니다.",
+          "fix-delete-conflict": "아래 대상 매개 변수는 이미 사용 중이며 삭제하기 전에 이러한 종속 구성을 삭제하십시오.",
+          "fix-button": "종속 항목 삭제",
+          "delete-conflict-message": "삭제 표시된 하나 이상의 대상 매개 변수가 다음 설정에서 사용됩니다. "
         }
       },
       "notifications": {

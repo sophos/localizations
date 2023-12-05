@@ -227,12 +227,18 @@
       "signal-quality-not-available-note": "訊號品質資料僅對 APX 和 AP 系列可用。其中不包括 AP6 系列的資料。"
     },
     "usage-insight": {
+      "headers": {
+        "category": "種類",
+        "total": "總數",
+        "download": "下載",
+        "upload": "上傳"
+      },
       "breadcrumb-text": "使用狀況探究",
       "title": "無線 - 使用狀況探究",
       "category": "類別",
       "category-details": "類別詳情",
       "detail": "詳細資訊",
-      "usage": "使用",
+      "usage": "使用量",
       "empty-category-message": "請選擇類別以取得更多資訊。",
       "no-data": "沒有可用的類別資訊",
       "not-available-note": "使用情況解析資料僅針對 APX 和 AP 系列提供。其中不包括 AP6 系列的資料。",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "非 APX 系列存取點不支援啟用同步安全性的 SSID。",
         "ap-exceeding-limit": "有一個或多個存取點不支援廣播頻帶之一，或已達到受支援 SSID 的最大數量。",
         "invalid-node-config": "建立網格之前，請從節點存取點移除現有 SSID",
-        "invalid-root-config": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
         "deployment-mode-dynamic-later": "稍後新增存取點",
         "assign-aps-inline-help-text-later": "透過編輯該 SSID，可於稍後隨時新增 AP。",
         "available-aps": "可用存取點",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "啟用網狀模式",
         "enable-mesh-mode-help-msg": "允許您將沒有 LAN 網路存取權限的存取點相互連接。網狀存取點會傳送 STP 封包 - 因此請確保這一點與您的 IT 規則相符。",
         "only-one-mesh-network": {
-          "apx": "您只能建立一個 APX 網狀 SSID。若要停用網狀模式，請刪除現有的 APX 網狀 SSID。",
-          "ap6": "您只能建立一個 AP6 網狀 SSID。若要停用網狀模式，請刪除現有的 AP6 網狀 SSID。"
+          "apx": "請注意，您無法編輯網狀 SSID。若要停用網狀網路，請從 Central 刪除 SSID。",
+          "ap6": "請注意，您無法編輯網狀 SSID。若要停用網狀網路，請從 Central 刪除 SSID。若要新增其他節點存取點，請導覽至存取點頁面並指派網狀網路 SSID。"
         },
         "mesh-root-ap": {
           "apx": "APX 網狀 SSID 需要至少 1 個存取點透過 LAN 連線至網際網路。",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "根存取點最多可以有 5 個 SSID，包括網格 SSID。",
         "can-not-remove-mesh-from-root": "請刪除網狀 SSID 以將其從根存取點中刪除",
+        "incompatible-config-note": "此存取點已設定為網狀網路，但 SSID 目前具有作用中的 Mac 篩選、頻帶操縱或多點傳送到單點傳播功能，這些功能與網狀網路的運作不相容。",
+        "incompatible-config-for-root": "根存取點的 SSID [{{param1}}] 具有作用中的 Mac 篩選、頻帶操縱或多點傳送到單點傳播功能，這些功能與網狀網路的運作不相容。",
+        "feature-not-available-for-root": "您選取的存取點是網狀網路設定的一部分，請注意，某些功能（例如 MAC 篩選、頻帶操縱和多點傳送到單點傳播）在網狀網路設定中將無法存取。",
         "port-required-validation-msg": "必須提供連接埠。",
         "port-range-validate-msg": "連接埠必須是 1 到 65535 之間的數字。",
         "port-number-help-msg": "RADIUS 伺服器的連接埠號碼。",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "作為網狀網路設定中的根存取點，請注意，某些功能（例如 MAC 篩選、頻帶操縱和多點傳送到單點傳播）在網狀網路設定中將無法存取。",
       "list": {
         "breadcrumb-text": "存取點",
         "title": "無線 - 存取點",
@@ -1195,6 +1204,7 @@
           "internal-ip": "內部 IP",
           "external-ip": "外部 IP",
           "model": "型號",
+          "model-rev": "型號版本",
           "network-capacity": "最大網路數目",
           "exceeding-limit-for-band": "您已超過 {{ bands }} 頻寬中網路的最大數量。",
           "network-with-multiple-hotspot": "不支援多個網路同時使用熱點",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "是否移除指派的 SSID？",
           "deleteDialogText": "刪除 AP 將自動重新啟動系統。<br><br>是否繼續刪除？",
           "invalid-node-config": "在指派網狀 SSID 之前，請從存取點移除現有 SSID",
-          "invalid-root-config": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
+          "invalid-root-config": "根存取點必須擁有兩個無線電頻段（包括啟用的 {{meshBand}} 頻段）和至少一個 SSID，以便網狀網路運作。",
           "incompatible-node-ap": "無效的網格設定：與根存取點相比，節點存取點不能擁有更多數量的無線電"
         }
       },
@@ -1736,9 +1746,10 @@
         "access-point": "無法在存取點上設定多個未標記 VLAN。請檢查以下 SSID 的設定：{{ssid}}",
         "network": "無法設定多個未標記 VLAN。請檢查以下存取點的設定：{{ap}}"
       },
-      "invalid.config.for.root": "根存取點必須至少有一個啟用 2 個頻段（包括網狀頻段）的 SSID",
+      "invalid.config.for.root": "根存取點 ({{param0}}) 必須擁有兩個已啟用的無線電頻段和至少一個 SSID，以便網狀網路運作",
       "mesh.conversion.not.allowed": "不能將現有 SSID 變更為網狀網路。使用網狀模式建立新的 SSID",
-      "invalid.mesh.ssid.name": "AP6 網狀 SSID 名稱只能包含字母、數字、空格、連字號和底線"
+      "invalid.mesh.ssid.name": "AP6 網狀 SSID 名稱只能包含字母、數字、空格、連字號和底線",
+      "incompatible.config.for.root": "根存取點的 SSID [{{param1}}] 具有作用中的 Mac 篩選、頻帶操縱或多點傳送到單點傳播功能，這些功能與網狀網路的運作不相容"
     }
   }
 }

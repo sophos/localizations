@@ -227,12 +227,18 @@
       "signal-quality-not-available-note": "I dati sulla qualità del segnale sono disponibili solo per gli access point APX e AP Series. I dati degli access point AP6 Series non sono inclusi."
     },
     "usage-insight": {
+      "headers": {
+        "category": "Categoria",
+        "total": "Totale",
+        "download": "Scarica",
+        "upload": "Carica"
+      },
       "breadcrumb-text": "Informazioni approfondite sull’utilizzo",
       "title": "Wireless - Informazioni approfondite sull’utilizzo",
       "category": "Categorie",
       "category-details": "Dettagli categoria",
-      "detail": "dettaglio",
-      "usage": "uso",
+      "detail": "Dettaglio",
+      "usage": "Utilizzo",
       "empty-category-message": "Seleziona una categoria per ottenere maggiori informazioni.",
       "no-data": "Non sono disponibili dati relativi alla categoria",
       "not-available-note": "Le Informazioni approfondite sull’utilizzo sono disponibili solo per gli access point APX e AP Series. I dati degli access point AP6 Series non sono inclusi.",
@@ -295,7 +301,7 @@
         "breadcrumb-text": "Diagnostica",
         "title": "Wireless - Diagnostica"
       },
-      "date": "data",
+      "date": "Data",
       "no-data": "Nessun dato",
       "modified-by": "Modificato da",
       "description": "Descrizione",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "Gli SSID abilitati per Synchronized Security non sono supportati negli access point non APX.",
         "ap-exceeding-limit": "Sono presenti uno o più access point che non supportano una delle bande radio o che hanno raggiunto il numero massimo di SSID supportati.",
         "invalid-node-config": "Rimuovi lo/gli SSID esistente/i dallo/dagli access point nodo prima di creare la mesh",
-        "invalid-root-config": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
         "deployment-mode-dynamic-later": "Aggiungi access point in un altro momento",
         "assign-aps-inline-help-text-later": "Gli AP possono essere aggiunti in un secondo momento, modificando questo SSID.",
         "available-aps": "Access point disponibili",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "Attiva modalità mesh",
         "enable-mesh-mode-help-msg": "Ti permette di connettere tra loro gli access point che non hanno accesso alla rete LAN. Gli access point mesh invieranno pacchetti STP. Accertati quindi che questo comportamento sia conforme alle regole IT.",
         "only-one-mesh-network": {
-          "apx": "Puoi creare un solo SSID mesh APX. Per disattivare la modalità mesh, elimina lo SSID mesh APX esistente.",
-          "ap6": "Puoi creare un solo SSID mesh AP6. Per disattivare la modalità mesh, elimina lo SSID mesh AP6 esistente."
+          "apx": "Nota: non puoi modificare lo SSID mesh. Per disattivare la rete mesh, elimina questo SSID da Central.",
+          "ap6": "Nota: non puoi modificare lo SSID mesh. Per disattivare la rete mesh, elimina questo SSID da Central. Se vuoi aggiungere altri access point nodo, passa alla pagina dell’access point e assegna lo SSID della rete mesh."
         },
         "mesh-root-ap": {
           "apx": "Lo SSID mesh APX richiede che almeno un access point sia connesso a internet tramite LAN.",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "L’access point root può avere fino a 5 SSID, incluso lo SSID mesh.",
         "can-not-remove-mesh-from-root": "Elimina lo SSID mesh per rimuoverlo dall’access point root",
+        "incompatible-config-note": "L’access point è configurato per una rete mesh, ma attualmente nello SSID sono abilitate funzionalità Filtro MAC, Deviazione di banda o Conversione da multicast a unicast che non sono compatibili con il funzionamento di una rete mesh.",
+        "incompatible-config-for-root": "L’access point root ha uno o più SSID [{{param1}}] nel quale sono abilitate funzionalità Filtro MAC, Deviazione di banda o Conversione da multicast a unicast che non sono compatibili con il funzionamento di una rete mesh.",
+        "feature-not-available-for-root": "Hai selezionato un access point che fa parte di una configurazione mesh. Tieni presente che alcune funzionalità come Filtro MAC, Deviazione di banda e Conversione da multicast a unicast non saranno accessibili nella configurazione mesh.",
         "port-required-validation-msg": "Porta obbligatoria.",
         "port-range-validate-msg": "Il numero di porta deve essere compreso tra 1 e 65535.",
         "port-number-help-msg": "Numero di porta del server RADIUS.",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "Poiché l’access point fa parte di una configurazione mesh, tieni presente che alcune funzionalità come Filtro MAC, Deviazione di banda e Conversione da multicast a unicast non saranno accessibili nella configurazione mesh.",
       "list": {
         "breadcrumb-text": "Access point",
         "title": "Wireless - Access Point",
@@ -1195,6 +1204,7 @@
           "internal-ip": "IP interno",
           "external-ip": "IP esterno",
           "model": "Modello",
+          "model-rev": "Rev. Modello",
           "network-capacity": "Numero massimo di reti",
           "exceeding-limit-for-band": "Stai superando il numero massimo di reti nella/e banda/e {{ bands }}.",
           "network-with-multiple-hotspot": "Non sono supportate reti multiple con hotspot.",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "Rimuovere lo SSID assegnato?",
           "deleteDialogText": "L’eliminazione dell’AP riavvierà automaticamente il sistema.<br><br>Vuoi procedere con l’eliminazione?",
           "invalid-node-config": "Rimuovi lo/gli SSID esistente/i dall’access point prima di assegnare lo SSID mesh",
-          "invalid-root-config": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
+          "invalid-root-config": "Per garantire il corretto funzionamento della rete mesh, l’access point root deve avere due bande radio abilitate (inclusa la banda {{meshBand}}) e almeno uno SSID.",
           "incompatible-node-ap": "Configurazione mesh non valida: L’access point nodo non può avere un numero di radio superiore a quello dell’access point root"
         }
       },
@@ -1736,9 +1746,10 @@
         "access-point": "Non è possibile configurare più di una VLAN senza tag su un access point. Controlla la configurazione di questo/i SSID: {{ssid}}",
         "network": "Non è possibile configurare più di una VLAN senza tag. Controlla la configurazione di questo/i access point: {{ap}}"
       },
-      "invalid.config.for.root": "L’access point root deve avere almeno uno SSID con 2 bande abilitate, inclusa la banda mesh",
+      "invalid.config.for.root": "Per garantire il corretto funzionamento della rete mesh, l’access point root ({{param0}}) deve avere due bande radio abilitate e almeno uno SSID",
       "mesh.conversion.not.allowed": "Impossibile trasformare SSID esistente in una mesh. Crea un nuovo SSID con la modalità mesh",
-      "invalid.mesh.ssid.name": "Il nome dello SSID mesh dell’AP6 può includere solo lettere, numeri, spazi, trattini e caratteri di sottolineatura."
+      "invalid.mesh.ssid.name": "Il nome dello SSID mesh dell’AP6 può includere solo lettere, numeri, spazi, trattini e caratteri di sottolineatura.",
+      "incompatible.config.for.root": "L’access point root ha uno o più SSID [{{param1}}] nel quale sono abilitate funzionalità Filtro MAC, Deviazione di banda o Conversione da multicast a unicast che non sono compatibili con il funzionamento di una rete mesh"
     }
   }
 }

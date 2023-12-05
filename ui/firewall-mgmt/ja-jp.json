@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "XFRM IP プールの追加 *",
         "help-info-1":"複数の IP アドレスは、次の形式で指定できます。",
         "help-info-2": "IPv4 ネットワーク形式: 例: 192.168.1.0/24,192.168.2.0/24",
-        "add": "追加"
+        "add": "保存",
+        "error": {
+          "invalid-format": "無効な XFRM IP プール形式: {{ value }}",
+          "min-two-usable-address": "無効な XFRM IP プール （少なくとも 2つのホストアドレスが存在する必要があります）: {{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }}台のファイアウォールの状態が PEER_PRIMARY_FIREWALL_NOT_SUPPLIED です。"
         },
         "create-group-success": "グループの作成に成功しました",
-        "duplicate-group-name": "グループ名は既に存在します"
+        "duplicate-group-name": "グループ名は既に存在します",
+        "skip-full-sync": {
+          "label": "完全同期をスキップ",
+          "warning": "この操作により、Sophos Central と Sophos Firewall の間で設定の不一致が発生する可能性があります。"
+        }
       },
       "delete": {
         "label": "グループの削除",
@@ -1615,6 +1623,7 @@
             "past": "ポリシーが適用されていました: {{ time }}"
           },
           "suspended": "ファイアウォールが中断されました。",
+          "full-sync-skipped": "完全同期はスキップされます。",
           "unsupported": "ファイアウォールグループはサポートされていません",
           "initializing": "サービスを初期化中です...",
           "outofsync": "ポリシーの適用に失敗しました",

@@ -227,12 +227,18 @@
       "signal-quality-not-available-note": "Les données sur la qualité du signal sont uniquement disponibles pour les séries APX et AP. Les données de la série AP6 en sont exclus."
     },
     "usage-insight": {
+      "headers": {
+        "category": "Catégorie",
+        "total": "Total",
+        "download": "Télécharger",
+        "upload": "Charger"
+      },
       "breadcrumb-text": "Détails d’utilisation",
       "title": "Sans fil - Détails d’utilisation",
       "category": "Catégories",
       "category-details": "Détails de la catégorie",
-      "detail": "détail",
-      "usage": "usage",
+      "detail": "Détail",
+      "usage": "Utilisation",
       "empty-category-message": "Veuillez sélectionner une catégorie pour obtenir plus d’informations.",
       "no-data": "Aucune donnée de catégorie disponible",
       "not-available-note": "Les données d’analyse d’utilisation sont uniquement disponibles pour les séries APX et AP. Les données de la série AP6 en sont exclus.",
@@ -295,7 +301,7 @@
         "breadcrumb-text": "Diagnostics",
         "title": "Wireless - Diagnostics"
       },
-      "date": "date",
+      "date": "Date",
       "no-data": "Aucune donnée",
       "modified-by": "Modifié par",
       "description": "Description",
@@ -661,7 +667,6 @@
         "ap-with-no-syncsecurity": "Les SSID compatibles avec la Sécurité Synchronisée ne sont pas pris en charge sur les points d’accès non APX.",
         "ap-exceeding-limit": "Un ou plusieurs points d’accès sont incompatibles avec l’une des bandes radio ou ont atteint le nombre maximal de SSID pris en charge.",
         "invalid-node-config": "Veuillez supprimer le ou les SSID existants du ou des points d’accès du nœud avant de créer le maillage",
-        "invalid-root-config": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
         "deployment-mode-dynamic-later": "Ajouter des points d’accès ultérieurement",
         "assign-aps-inline-help-text-later": "Les points d’accès peuvent être ajoutés plus tard en modifiant ce SSID.",
         "available-aps": "Points d’accès disponibles",
@@ -770,8 +775,8 @@
         "enable-mesh-mode": "Activer le mode de réseau maillé",
         "enable-mesh-mode-help-msg": "Vous permet de connecter des points d’accès qui n’ont aucun accès au réseau LAN en commun. Les points d’accès maillés vont envoyer des paquets STP. Veuillez donc vous assurer que cette opération est effectuée conformément aux règles de votre service informatique.",
         "only-one-mesh-network": {
-          "apx": "Vous pouvez uniquement créer un SSID maillé APX. Pour désactiver le mode maillé, supprimez le SSID maillé APX existant.",
-          "ap6": "Vous pouvez uniquement créer un SSID maillé AP6. Pour désactiver le mode maillé, supprimez le SSID maillé AP6 existant."
+          "apx": "Veuillez noter que vous ne pouvez pas modifier le SSID maillé. Pour désactiver le réseau maillé, supprimez le SSID de Sophos Central.",
+          "ap6": "Veuillez noter que vous ne pouvez pas modifier le SSID maillé. Pour désactiver le réseau maillé, supprimez le SSID de Sophos Central. Si vous souhaitez ajouter des points d’accès de nœud supplémentaires, accédez à la page du point d’accès et assignez le SSID du réseau maillé."
         },
         "mesh-root-ap": {
           "apx": "Le SSID maillé APX nécessite la connexion d’au moins un point d’accès à Internet via le réseau local (LAN).",
@@ -798,6 +803,9 @@
         },
         "roo-ap-ssid-limit": "Le point d’accès racine peut avoir un maximum de 5 SSID, y compris le SSID maillé.",
         "can-not-remove-mesh-from-root": "Supprimez le SSID maillé pour le retirer du point d’accès racine",
+        "incompatible-config-note": "Le point d’accès est configuré pour un réseau maillé, mais le SSID dispose actuellement de fonctions actives de filtrage Mac, de guidage de bande ou de multidiffusion vers monodiffusion qui ne sont pas compatibles avec le fonctionnement du réseau maillé.",
+        "incompatible-config-for-root": "Le point d’accès racine possède un ou plusieurs SSID [{{param1}}] avec fonctions actives de filtrage MAC, de guidage de bande ou de multidiffusion vers monodiffusion qui ne sont pas compatibles avec le fonctionnement du réseau maillé.",
+        "feature-not-available-for-root": "Vous avez sélectionné un point d’accès qui fait partie de la configuration du maillage. Veuillez noter que certaines fonctions telles que le filtrage MAC, le guidage de bande et la multidiffusion vers monodiffusion ne seront pas accessibles dans la configuration du maillage.",
         "port-required-validation-msg": "Port obligatoire.",
         "port-range-validate-msg": "Le numéro du port doit être compris entre 1 et 65535.",
         "port-number-help-msg": "Numéro de port pour le serveur RADIUS.",
@@ -1107,6 +1115,7 @@
       }
     },
     "accessPoints": {
+      "feature-not-available-for-root": "En tant que point d’accès racine dans une configuration maillée, veuillez noter que certaines fonctions telles que le filtrage MAC, le guidage de bande et la multidiffusion vers monodiffusion ne seront pas accessibles dans la configuration maillée.",
       "list": {
         "breadcrumb-text": "Points d’accès",
         "title": "Sans fil - Points d’accès",
@@ -1195,6 +1204,7 @@
           "internal-ip": "IP interne",
           "external-ip": "IP externe",
           "model": "Modèle",
+          "model-rev": "Rév. du modèle",
           "network-capacity": "Nombre maximal de réseaux",
           "exceeding-limit-for-band": "Vous dépassez le nombre maximal de réseaux dans les bandes {{ bands }}.",
           "network-with-multiple-hotspot": "Les différents réseaux avec points d’accès ne sont pas pris en charge.",
@@ -1282,7 +1292,7 @@
           "remove-assign-ssid": "Voulez-vous supprimer le SSID assigné ?",
           "deleteDialogText": "La suppression du point d’accès redémarrera automatiquement le système.<br><br>Voulez-vous continuer avec la suppression ?",
           "invalid-node-config": "Veuillez supprimer le ou les SSID existants du point d’accès avant d’assigner le maillage SSID",
-          "invalid-root-config": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
+          "invalid-root-config": "Le point d’accès racine doit disposer de deux bandes radio, y compris la bande {{meshBand}} activée, et d’au moins un SSID pour que le réseau maillé fonctionne.",
           "incompatible-node-ap": "Configuration du maillage non valide : Le point d’accès du nœud ne peut pas avoir un plus grand nombre de radios que le point d’accès racine"
         }
       },
@@ -1736,9 +1746,10 @@
         "access-point": "Impossible de configurer plusieurs VLAN non identifiés sur le point d’accès. Veuillez vérifier la configuration du ou des SSID suivants : {{ssid}}",
         "network": "Impossible de configurer plusieurs VLAN non identifiés. Veuillez vérifier la configuration du ou des points d’accès suivants : {{ap}}"
       },
-      "invalid.config.for.root": "Le point d’accès racine doit avoir au moins un SSID avec 2 bandes activées, y compris la bande maillée",
+      "invalid.config.for.root": "Le point d’accès racine ({{param0}}) doit avoir deux bandes radio activées et au moins un SSID pour que le réseau maillé fonctionne",
       "mesh.conversion.not.allowed": "Impossible de modifier le SSID existant en maillage. Créer un nouveau SSID avec le mode maillage",
-      "invalid.mesh.ssid.name": "Le nom SSID du maillage AP6 ne peut contenir que des lettres, des chiffres, des espaces, des tirets et des traits de soulignement"
+      "invalid.mesh.ssid.name": "Le nom SSID du maillage AP6 ne peut contenir que des lettres, des chiffres, des espaces, des tirets et des traits de soulignement",
+      "incompatible.config.for.root": "Le point d’accès racine possède un ou plusieurs SSID [{{param1}}] avec fonctions actives de filtrage MAC, de guidage de bande ou de multidiffusion vers monodiffusion qui ne sont pas compatibles avec le fonctionnement du réseau maillé"
     }
   }
 }
