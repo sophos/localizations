@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "新增 XFRM IP 集區*",
         "help-info-1":"您可以按以下格式指定多個 IP 位址：",
         "help-info-2": "IPv4 網路格式：例如192.168.1.0/24,192.168.2.0/24",
-        "add": "新增"
+        "add": "儲存",
+        "error": {
+          "invalid-format": "XFRM IP 集區格式無效：{{ value }}",
+          "min-two-usable-address": "XFRM IP 集區取消（至少應存在 2 個主機位址）：{{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} 防火墻具有 PEER_PRIMARY_FIREWALL_NOT_SUPPLIED 狀態。"
         },
         "create-group-success": "已成功建立群組",
-        "duplicate-group-name": "群組名稱已存在"
+        "duplicate-group-name": "群組名稱已存在",
+        "skip-full-sync": {
+          "label": "跳過完全同步",
+          "warning": "此動作可能會導致 Sophos Central 和防火牆之間的設定不符。"
+        }
       },
       "delete": {
         "label": "删除群組",
@@ -1615,6 +1623,7 @@
             "past": "原則已套用 {{ time }}"
           },
           "suspended": "防火牆已暫停。",
+          "full-sync-skipped": "已跳過完全同步。",
           "unsupported": "防火墻群組不受支援。",
           "initializing": "正在初始化服務…",
           "outofsync": "無法套用策略",

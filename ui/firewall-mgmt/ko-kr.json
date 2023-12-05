@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "XFRM IP 풀 추가*",
         "help-info-1":"아래 형식으로 다중 IP 주소를 지정할 수 있습니다.",
         "help-info-2": "IPv4 네트워크 형식: 예: 192.168.1.0/24,192.168.2.0/24",
-        "add": "추가"
+        "add": "저장",
+        "error": {
+          "invalid-format": "잘못된 XFRM IP 풀 형식: {{ value }}",
+          "min-two-usable-address": "잘못된 XFRM IP 풀(2개 이상의 호스트 주소가 있어야 합니다): {{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} 방화벽이 PEER_PRIMARY_FIREWALL_NOT_SUPPLIED 상태입니다."
         },
         "create-group-success": "그룹이 성공적으로 만들어졌음",
-        "duplicate-group-name": "그룹 이름이 이미 있습니다"
+        "duplicate-group-name": "그룹 이름이 이미 있습니다",
+        "skip-full-sync": {
+          "label": "전체 동기화 건너뛰기",
+          "warning": "이 작업으로 인해 Sophos Central과 방화벽 간에 구성 불일치가 발생할 수 있습니다."
+        }
       },
       "delete": {
         "label": "그룹 삭제",
@@ -1615,6 +1623,7 @@
             "past": "정책이 적용된 시간: {{ time }}"
           },
           "suspended": "방화벽이 일시 중단되었습니다.",
+          "full-sync-skipped": "전체 동기화를 건너뜁니다.",
           "unsupported": "방화벽 그룹은 지원되지 않습니다.",
           "initializing": "서비스를 초기화하는 중...",
           "outofsync": "정책을 적용하지 못 함",

@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "Añadir grupo de direcciones IP XFRM *",
         "help-info-1":"Puede especificar varias direcciones IP en los formatos siguientes:",
         "help-info-2": "Formato de red IPv4: P. ej., 192.168.1.0/24,192.168.2.0/24",
-        "add": "Añadir"
+        "add": "Guardar",
+        "error": {
+          "invalid-format": "Formato de grupo de direcciones IP XFRM no válido: {{ value }}",
+          "min-two-usable-address": "Grupo de direcciones IP XFRM no válido (debe haber al menos 2 direcciones de host): {{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} firewall(s) tiene(n) el estado PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Grupo creado correctamente",
-        "duplicate-group-name": "Este nombre de grupo ya existe"
+        "duplicate-group-name": "Este nombre de grupo ya existe",
+        "skip-full-sync": {
+          "label": "Omitir sincronización completa",
+          "warning": "Esta acción podría provocar un desajuste en la configuración entre Sophos central y el firewall."
+        }
       },
       "delete": {
         "label": "Eliminar grupo",
@@ -1615,6 +1623,7 @@
             "past": "Se estaban aplicando políticas {{ time }}"
           },
           "suspended": "El firewall está suspendido.",
+          "full-sync-skipped": "Se omite la sincronización completa.",
           "unsupported": "Los grupos de firewalls no son compatibles",
           "initializing": "Inicializando servicios...",
           "outofsync": "No se ha podido aplicar una política",

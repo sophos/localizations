@@ -217,7 +217,11 @@
       "IgmpSnoopingVlanSettingsDto": "IGMP 監聽 (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCP 監聽 (VLAN)",
       "QosClassMappingDto": "QoS 原則",
-      "VoiceVlanSettingsDto": "語音 VLAN"
+      "VoiceVlanSettingsDto": "語音 VLAN",
+      "SNMPTargetAddressDto": "SNMP 目標地址",
+      "SNMPAccessDto": "SNMP 存取原則",
+      "SNMPUserGroupMappingDto": "SNMP 群組",
+      "SNMPTargetParametersDto": "SNMP 目標參數"
     },
     "dashboard": {
       "menu-title": "儀錶板",
@@ -1090,6 +1094,8 @@
       }
     },
     "local-sync": {
+      "local": "裝置",
+      "central": "Sophos Central",
       "hide-conflicts": "隱藏衝突",
       "hide-status": "隱藏同步狀態",
       "show-conflicts": "{{ count }} 個衝突",
@@ -1100,7 +1106,13 @@
       "no-conflict": "沒有衝突",
       "dynamic": "動態",
       "refreshing-data": "正在重新整理資料...",
-      "different-data": "交換器有不同的值： "
+      "different-data": "裝置有：",
+      "central-data": "Sophos Central 有：",
+      "not-set-from-central": "未在 Sophos Central 中設定",
+      "sync-all": "解決所有衝突",
+      "import-to-central": "匯入至 Sophos Central",
+      "resolve-conflicts": "解決衝突",
+      "central-config-sync": "這會變更 Sophos Central 設定以符合裝置設定。"
     },
     "ip-networks": {
       "add": "新增網路",
@@ -1451,7 +1463,8 @@
         "bytes": "位元組",
         "show-per-port": "顯示每個連接埠設定",
         "global-jumbo-frames": "針對所有連接埠",
-        "multicast-filtering": "多點傳送篩選"
+        "multicast-filtering": "多點傳送篩選",
+        "local_sync_conflicts": "衝突"
       },
       "message": {
         "port-update-success": "連接埠未更新。",
@@ -1491,7 +1504,9 @@
         "port-mirroring-lag-fix-button": "關閉所選工作階段",
         "port-mirroring-conflict-message": "選取的一或多個連接埠已經是其他連接埠鏡像執行階段的一部分，繼續將導致以下交換器發生錯誤。",
         "fix-port-mirroring-conflicts": "您可以在交換器層級移除這些連接埠鏡像設定，以解決衝突。如果需要交換器層級自訂，您可以稍後在交換器檢視中進行編輯。",
-        "fix-port-mirroring-button": "關閉所選執行階段"
+        "fix-port-mirroring-button": "關閉所選執行階段",
+        "sync-all-confirmation": "此步驟將交換器的實際連接埠設定同步到 Sophos Central。系統可能會提示您多次確認並儲存 LAG 衝突對話方塊，因為這是儲存設定而不與網站設定發生衝突的最佳方式。",
+        "sync-all-header": "同步交換器的所有設定"
       },
       "ports-mirroring": {
         "table-headers": {
@@ -1640,6 +1655,18 @@
           "NoAuth": "無驗證",
           "Auth": "驗證",
           "Priv": "權限"
+        },
+        "conflicts": {
+          "name": "名稱",
+          "details": "詳細資訊",
+          "referenced": "已用於",
+          "delete-conflict-title": "使用者已被使用",
+          "fix-delete-conflict": "以下使用者已在使用中，請先刪除這些相依設定，然後再刪除使用者",
+          "fix-button": "删除相依項",
+          "delete-conflict-message": "標記為刪除的一或多個使用者已在以下設定中使用： ",
+          "group-name": "群組",
+          "param-name": "目標參數",
+          "address-name": "地址名稱"
         }
       },
       "groups": {
@@ -1653,7 +1680,17 @@
         "edit-group": "編輯群組",
         "groupname": "群組名稱",
         "no-groups": "目前尚未從 Sophos Central 新增任何群組。",
-        "delete-groups": "删除群組"
+        "delete-groups": "删除群組",
+        "conflicts": {
+          "name": "名稱",
+          "details": "詳細資訊",
+          "referenced": "已用於",
+          "delete-conflict-title": "群組已被使用",
+          "fix-delete-conflict": "以下群組已在使用中，請先刪除這些相依設定，然後再刪除群組",
+          "fix-button": "删除相依項",
+          "delete-conflict-message": "標記為刪除的一或多個群組已在以下設定中使用： ",
+          "views": "檢視"
+        }
       },
       "messages": {
         "save-dialog-title": "確認儲存",
@@ -1665,9 +1702,11 @@
         "add-user-community-site-save-dialog-text": "{{ count }} 個交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
         "username-required-message": "名稱是必需的。",
         "username-exists-message": "使用者名稱已存在。",
-        "username-length-error-message": "使用者名稱長度必須介於 8-40 之間。",
+        "username-length-error-message": "使用者名稱長度必須介於 4-20 之間。",
+        "tag-length-error-message": "標記長度必須介於 1-20 之間。",
         "loading-error": "無法載入 SNMP 設定。",
-        "users-and-communities.confirm-update": "確認更新"
+        "users-and-communities.confirm-update": "確認更新",
+        "name-invalid-message": "無效的名稱。嘗試使用字母、數字、逗號、方括號、連字號和底線。"
       },
       "status": "SNMP 狀態",
       "engine-id": "引擎 ID",
@@ -1718,6 +1757,18 @@
           "delete-dialog-title": "確認刪除",
           "site-delete-setting-text": "删除 {{ viewCount }} 個 SNMP 檢視設定。{{ count }} 部交換器將移除此 SNMP 檢視設定，並且將建立工作。您可以選擇現在或稍後同步。",
           "switch-delete-setting-text": "删除 {{ viewCount }} 個 SNMP 檢視設定，並將建立工作。您可以選擇現在或稍後同步。"
+        },
+        "conflicts": {
+          "name": "名稱",
+          "details": "詳細資訊",
+          "referenced": "已用於",
+          "readView": "閱讀",
+          "writeView": "寫入",
+          "notifyView": "通知",
+          "delete-conflict-title": "檢視已被使用",
+          "fix-delete-conflict": "以下檢視已在使用中，請先刪除這些相依設定，然後再刪除檢視",
+          "fix-button": "删除相依項",
+          "delete-conflict-message": "標記為刪除的一或多個檢視已在以下設定中使用： "
         }
       },
       "access-list": {
@@ -1732,6 +1783,7 @@
           "notify-view": "通知檢視"
         },
         "no-policies": "尚未從 Sophos Central 設定任何存取原則。",
+        "no-groups": "找不到群組。請建立一個群組，以開始設定存取清單。",
         "add-access-policy": "新增存取原則",
         "edit-access-policy": "編輯存取原則",
         "option-label": "選擇",
@@ -1742,7 +1794,8 @@
           "add-access-switch-save-dialog-text": "交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
           "add-access-site-save-dialog-text": "{{ count }} 個交換器將獲取 SNMP 更新，更新工作將建立。您可以選擇現在或稍後同步。",
           "update-setting-success": "SNMP 存取原則設定更新成功。",
-          "update-setting-error": "無法更新 SNMP 設定。"
+          "update-setting-error": "無法更新 SNMP 設定。",
+          "confirm-update": "確認更新"
         }
       },
       "view-types": {
@@ -1798,7 +1851,7 @@
           "add-settings-success": "SNMP 目標地址設定已建立",
           "update-settings-success": "SNMP 目標地址設定已更新",
           "add-settings-error": "無法建立 SNMP 目標地址設定",
-          "invalid-ip": "無效的 IP 位址。",
+          "invalid-ip": "IP 位址無效。'0.0.0.0' 和 '255.255.255.255' 無效。",
           "site-delete-setting-text": "删除 {{ parameterCount }} 個 SNMP 目標位址設定。{{ count }} 部交換器將移除此 SNMP 目標位址設定，並且將建立工作。您可以選擇現在或稍後同步。",
           "switch-delete-setting-text": "删除 {{ parameterCount }} 個 SNMP 目標位址設定，並將建立工作。您可以選擇現在或稍後同步。"
         }
@@ -1809,8 +1862,10 @@
         "target-param-name-required-message": "名稱為必填項",
         "target-param-name-max-length-message": "名稱應最多包含 30 個字元。",
         "target-param-name-already-exists-message": "名稱已存在",
+        "no-users": "請設定一個 SNMP 使用者以建立目標參數",
         "msg-processing-model": "訊息處理模型",
         "security-mode": "安全模式",
+        "user": "使用者",
         "security-name": "使用者(v3)",
         "community-name": "使用者(v1/v2c)",
         "priv-mode": "權限模式",
@@ -1840,6 +1895,16 @@
           "delete-dialog-title": "確認刪除",
           "site-delete-setting-text": "删除 {{ parameterCount }} 個 SNMP 目標參數設定。{{ count }} 部交換器將移除此 SNMP 目標參數設定，並且將建立工作。您可以選擇現在或稍後同步。",
           "switch-delete-setting-text": "删除 {{ parameterCount }} 個 SNMP 目標參數設定，並將建立工作。您可以選擇現在或稍後同步。"
+        },
+        "conflicts": {
+          "targetParamName": "名稱",
+          "details": "詳細資訊",
+          "referenced": "已用於",
+          "tag": "標籤",
+          "delete-conflict-title": "目標參數已被使用",
+          "fix-delete-conflict": "以下目標參數已在使用中，請先刪除這些相依設定，然後再刪除目標參數",
+          "fix-button": "删除相依項",
+          "delete-conflict-message": "標記為刪除的一或多個目標參數已在以下設定中使用： "
         }
       },
       "notifications": {

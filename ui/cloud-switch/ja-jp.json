@@ -217,7 +217,11 @@
       "IgmpSnoopingVlanSettingsDto": "IGMPスヌーピング (VLAN)",
       "DhcpSnoopingVlanStatusDto": "DHCPスヌーピング (VLAN)",
       "QosClassMappingDto": "QoS ポリシー",
-      "VoiceVlanSettingsDto": "音声 VLAN"
+      "VoiceVlanSettingsDto": "音声 VLAN",
+      "SNMPTargetAddressDto": "SNMP ターゲットアドレス",
+      "SNMPAccessDto": "SNMP アクセスポリシー",
+      "SNMPUserGroupMappingDto": "SNMP グループ",
+      "SNMPTargetParametersDto": "SNMP ターゲットパラメータ"
     },
     "dashboard": {
       "menu-title": "ダッシュボード",
@@ -1090,6 +1094,8 @@
       }
     },
     "local-sync": {
+      "local": "デバイス",
+      "central": "Sophos Central",
       "hide-conflicts": "競合の非表示",
       "hide-status": "同期の状態の非表示",
       "show-conflicts": "{{ count }} 競合",
@@ -1100,7 +1106,13 @@
       "no-conflict": "競合なし",
       "dynamic": "ダイナミック",
       "refreshing-data": "データの更新...",
-      "different-data": "スイッチの値が異なります: "
+      "different-data": "デバイスには以下があります",
+      "central-data": "Sophos Central には以下があります",
+      "not-set-from-central": "Sophos Central に設定されていません",
+      "sync-all": "すべての競合を解決",
+      "import-to-central": "Sophos Central にインポート",
+      "resolve-conflicts": "競合の解決",
+      "central-config-sync": "これにより、Sophos Central の設定がデバイスの設定に一致するように変更されます。"
     },
     "ip-networks": {
       "add": "ネットワークの追加",
@@ -1451,7 +1463,8 @@
         "bytes": "バイト",
         "show-per-port": "ポート単位の設定を表示",
         "global-jumbo-frames": "すべてのポート",
-        "multicast-filtering": "マルチキャストフィルタリング"
+        "multicast-filtering": "マルチキャストフィルタリング",
+        "local_sync_conflicts": "競合"
       },
       "message": {
         "port-update-success": "ポートが更新されました。",
@@ -1491,7 +1504,9 @@
         "port-mirroring-lag-fix-button": "選択したセッションをオフにします",
         "port-mirroring-conflict-message": "選択した 1つまたは複数のポートは既に 別のポートのミラーリングセッションの一部です。続行すると、次のスイッチでエラーが発生します。",
         "fix-port-mirroring-conflicts": "これらのポートのミラーリング設定をスイッチレベルで削除して、競合を解決することができます。スイッチレベルのカスタマイズが必要な場合は、後でスイッチビューで編集できます。",
-        "fix-port-mirroring-button": "選択したセッションをオフにします"
+        "fix-port-mirroring-button": "選択したセッションをオフにします",
+        "sync-all-confirmation": "この手順により、スイッチの実際のポート設定を Sophos Central に同期します。サイトの設定と競合することなく設定を保存するには最善の方法であるため、LAG の競合については、複数の確認と保存ダイアログが表示される場合があります。",
+        "sync-all-header": "スイッチからすべての設定を同期"
       },
       "ports-mirroring": {
         "table-headers": {
@@ -1640,6 +1655,18 @@
           "NoAuth": "認証なし",
           "Auth": "認証",
           "Priv": "権限"
+        },
+        "conflicts": {
+          "name": "名前",
+          "details": "詳細",
+          "referenced": "次で使用:",
+          "delete-conflict-title": "使用中のユーザー",
+          "fix-delete-conflict": "以下のユーザーは既に使用されています。ユーザーを削除する前に、依存する設定を削除してください",
+          "fix-button": "依存の削除",
+          "delete-conflict-message": "削除対象に指定された 1つまたは複数のユーザーは、次の設定で使用されています ",
+          "group-name": "グループ",
+          "param-name": "ターゲットパラメータ",
+          "address-name": "アドレス名"
         }
       },
       "groups": {
@@ -1653,7 +1680,17 @@
         "edit-group": "グループの編集",
         "groupname": "グループ名",
         "no-groups": "Sophos Central からグループがまだ追加されていません。",
-        "delete-groups": "グループの削除"
+        "delete-groups": "グループの削除",
+        "conflicts": {
+          "name": "名前",
+          "details": "詳細",
+          "referenced": "次で使用:",
+          "delete-conflict-title": "使用中のグループ",
+          "fix-delete-conflict": "以下のグループは既に使用されています。グループを削除する前に、依存する設定を削除してください",
+          "fix-button": "依存の削除",
+          "delete-conflict-message": "削除対象に指定された 1つまたは複数のグループは、次の設定で使用されています ",
+          "views": "表示"
+        }
       },
       "messages": {
         "save-dialog-title": "保存の確認",
@@ -1665,9 +1702,11 @@
         "add-user-community-site-save-dialog-text": "{{ count }}個のスイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
         "username-required-message": "名前を指定してください。",
         "username-exists-message": "ユーザー名がすでに存在します。",
-        "username-length-error-message": "ユーザ名の長さは 8 ～ 40 で指定してください。",
+        "username-length-error-message": "ユーザ名の長さは 4 ～ 20 で指定してください。",
+        "tag-length-error-message": "タグの長さは 1 ～ 20 で指定してください。",
         "loading-error": "SNMP 設定を読み込めません。",
-        "users-and-communities.confirm-update": "更新の確認"
+        "users-and-communities.confirm-update": "更新の確認",
+        "name-invalid-message": "名前が無効です。文字、数字、カンマ、括弧、ハイフン、アンダースコアを使用するようにしてください。"
       },
       "status": "SNMP ステータス",
       "engine-id": "エンジン ID",
@@ -1718,6 +1757,18 @@
           "delete-dialog-title": "削除の確認",
           "site-delete-setting-text": "{{ viewCount }}個の SNMP ビュー設定を削除します。{{ count }}個のスイッチに、この SNMP ビュー設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "switch-delete-setting-text": "{{ viewCount }}個の SNMP ビュー設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        },
+        "conflicts": {
+          "name": "名前",
+          "details": "詳細",
+          "referenced": "次で使用:",
+          "readView": "読み取り",
+          "writeView": "書き込み",
+          "notifyView": "通知",
+          "delete-conflict-title": "使用中のビュー",
+          "fix-delete-conflict": "以下のビューは既に使用されています。ビューを削除する前に、依存する設定を削除してください",
+          "fix-button": "依存の削除",
+          "delete-conflict-message": "削除対象に指定された 1つまたは複数のビューは、次の設定で使用されています "
         }
       },
       "access-list": {
@@ -1732,6 +1783,7 @@
           "notify-view": "通知ビュー"
         },
         "no-policies": "Sophos Central からアクセスポリシーがまだ設定されていません。",
+        "no-groups": "グループはありません。グループを作成して、アクセスリストの設定を開始してください。",
         "add-access-policy": "アクセスポリシーの追加",
         "edit-access-policy": "アクセスポリシーの編集",
         "option-label": "選択",
@@ -1742,7 +1794,8 @@
           "add-access-switch-save-dialog-text": "スイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "add-access-site-save-dialog-text": "{{ count }}個のスイッチに SNMP の更新が適用され、更新のタスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "update-setting-success": "SNMP アクセスポリシー設定が正常に更新されました。",
-          "update-setting-error": "SNMP の設定を更新できません。"
+          "update-setting-error": "SNMP の設定を更新できません。",
+          "confirm-update": "更新の確認"
         }
       },
       "view-types": {
@@ -1798,7 +1851,7 @@
           "add-settings-success": "SNMP ターゲットアドレス設定が作成されました",
           "update-settings-success": "SNMP ターゲットアドレスの設定が更新されました",
           "add-settings-error": "SNMP ターゲットアドレス設定を作成できません",
-          "invalid-ip": "IP アドレスが無効です。",
+          "invalid-ip": "無効な IP アドレスです。「0.0.0.0」と「255.255.255.255」は無効です。",
           "site-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットアドレス設定を削除します。{{ count }}個のスイッチに、この SNMP ターゲットアドレス設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "switch-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットアドレス設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
         }
@@ -1809,8 +1862,10 @@
         "target-param-name-required-message": "名前を指定してください",
         "target-param-name-max-length-message": "名前は最大 30文字まで入力できます",
         "target-param-name-already-exists-message": "この名前は既に存在します",
+        "no-users": "ターゲットパラメータを作成するために SNMP ユーザーを設定してください",
         "msg-processing-model": "メッセージ処理モデル",
         "security-mode": "セキュリティモード",
+        "user": "ユーザー",
         "security-name": "ユーザー (v3)",
         "community-name": "ユーザー (v1/v2c)",
         "priv-mode": "権限モード",
@@ -1840,6 +1895,16 @@
           "delete-dialog-title": "削除の確認",
           "site-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットパラメータ設定を削除します。{{ count }}個のスイッチに、この SNMP ターゲットパラメータ設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
           "switch-delete-setting-text": "{{ parameterCount }}個の SNMP ターゲットパラメータ設定が削除され、タスクが作成されます。今すぐ、または後で同期すること選択できます。"
+        },
+        "conflicts": {
+          "targetParamName": "名前",
+          "details": "詳細",
+          "referenced": "次で使用:",
+          "tag": "タグ",
+          "delete-conflict-title": "ターゲットパラメータは使用中です",
+          "fix-delete-conflict": "以下のターゲットパラメータは既に使用されています。ターゲットパラメータを削除する前に、依存する設定を削除してください",
+          "fix-button": "依存の削除",
+          "delete-conflict-message": "削除対象に指定された 1つまたは複数のターゲットパラメータは、次の設定で使用されています "
         }
       },
       "notifications": {

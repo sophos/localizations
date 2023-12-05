@@ -471,10 +471,25 @@
         "endsOn": "Termina el"
       },
       "messages": {
-        "confirmWaitMessage": "La recuperación de los datos está tardando un poco.<br/><br/>Puede esperar mientras los obtenemos o, si desea realizar otras acciones, los datos aparecerán en la ficha Cola cuando estén listos.<br /><br/>Los informes de la ficha Cola están disponibles durante 24 horas."
+        "confirmWaitMessage": "La recuperación de los datos está tardando un poco.<br/><br/>Puede esperar mientras los obtenemos o, si desea realizar otras acciones, los datos aparecerán en la ficha Cola cuando estén listos.<br /><br/>Los informes de la ficha Cola están disponibles durante 24 horas.",
+        "timeSliceInfo": "<p>Para optimizar la recuperación de los datos, los informes de periodos de tiempo entre 1 y 7 días se agruparán por horas y los informes de periodos superiores a 7 días se agruparán por días.</p><p> Para una mayor granularidad, reduzca el periodo de tiempo de este informe o haga clic en la fecha que aparece a continuación</p>"
+
       }
     },
     "apiLabel": {
+      "src_location": "Ubicación",
+      "timestamp": "Fecha",
+      "src_ip": "IP origen",
+      "dns_qclass" : "Clase de consulta",
+      "dns_rcode": "Estado de la respuesta",
+      "dns_rnum": "Registros de la respuesta",
+      "dns_qsize": "Bytes de la consulta",
+      "dns_rsize": "Bytes de la respuesta",
+      "dns_resolved_ips": "IP resueltas",
+      "dns_rtype": "Tipo de respuesta",
+      "dns_rclass": "Clase de respuesta",
+      "response_ttl_list": "TTL de la respuesta",
+      "response_ip" : "Direcciones IP de respuesta",
       "domain_risk": "Riesgo",
       "domain_category": "Categoría",
       "customer_id": "ID de cliente",
@@ -570,7 +585,7 @@
       "atp_threats": "Amenazas ATP",
       "extended_report": "Informe ampliado",
       "malware": "Malware",
-      "log_subtype": "Subtipo de registro",
+      "log_subtype": "Subtipo",
       "message_count": "Recuento de mensajes",
       "executable": "Ejecutable",
       "url": "Dirección",
@@ -607,7 +622,7 @@
       "allowed_app_categories": "Categorías de aplicaciones permitidas",
       "user_group": "Grupo de usuarios",
       "bandwidth_usage": "Uso de ancho de banda",
-      "dns": "DNS",
+      "dns": "Uso de DNS",
       "syslog": "Visor de registros y búsqueda",
       "gateway_bandwidth": "Uso de ancho de banda",
       "new_cloud_apps": "Aplicaciones en la nube nuevas",
@@ -830,7 +845,9 @@
     "common": {
       "messages": {
         "generic-error": "Se ha producido un error inesperado al procesar la solicitud."
-      }
+      },
+      "on-text": "Activado",
+      "off-text": "Desactivado"
     },
     "dashboard": {
       "title": "Secure Service Edge - Panel de control",
@@ -848,27 +865,91 @@
       "button": {
         "next": "Siguiente",
         "cancel": "Cancelar",
-        "back": "Atrás"
+        "back": "Atrás",
+        "save-rule": "Guardar regla"
       },
-      "title": "Secure Service Edge - Política de acceso a Internet",
-      "breadcrumb": "Política de acceso a Internet",
+      "title": "Secure Service Edge - Política",
+      "breadcrumb": "Política",
       "follow-steps": "Siga estos pasos para crear una nueva regla y, a continuación, guárdela para añadirla a su política.",
       "choose-action": "Elija una acción",
       "action-description": "Elija la opción que describa mejor su regla",
-      "specify-condition": "Specify conditions", 
+      "specify-condition": "Especifique las condiciones",
       "condition-description": "Estas condiciones activarán su acción",
-      "manage-options": "Gestionar opciones",
+      "manage-options": "Gestione las opciones",
       "options-description": "Configurar funciones de seguridad relacionadas",
-      "add-rule": "Añadir regla",
+      "add-rule" : {
+        "title": "Secure Service Edge - Política - Añadir regla",
+        "breadcrumb": "Añadir regla"
+      },
       "policy": {
         "add-rule": {
           "step-1": {
-            "block-websites": "Bloquear sitios web",
-            "block-websites-desc": "Impedir que los usuarios accedan a determinados sitios web",
-            "block-websites-tooltip-desc": "Especifique los sitios web que bloquear utilizando nuestras categorías integradas o usando sus propias listas de sitios web creadas en objetos de política. Aplique la regla a todo el mundo o especifique criterios como grupos, usuarios, dispositivos o ubicaciones para una regla más selectiva. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web.",
-            "allow-websites": "Permitir sitios web",
-            "allow-websites-desc": "Permitir que los usuarios accedan a determinados sitios web",
-            "allow-websites-tooltip-desc": "Útil para crear reglas que permitan específicamente sitios web o categorías que estén bloqueados por otras reglas, o para garantizar que algunos sitios web sean siempre accesibles. La creación de una regla Permitir sitios web con un rango superior al de una regla Bloquear anulará la acción de bloqueo para los sitios y usuarios seleccionados. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web."
+            "web-gateway": {
+              "block-websites": "Bloquear sitios web",
+              "block-websites-desc": "Impedir que los usuarios accedan a determinados sitios web",
+              "block-websites-tooltip-desc": "Especifique los sitios web que bloquear utilizando nuestras categorías integradas o usando sus propias listas de sitios web creadas en objetos de política. Aplique la regla a todo el mundo o especifique criterios como grupos, usuarios, dispositivos o ubicaciones para una regla más selectiva. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web.",
+              "allow-websites": "Permitir sitios web",
+              "allow-websites-desc": "Permitir que los usuarios accedan a determinados sitios web",
+              "allow-websites-tooltip-desc": "Útil para crear reglas que permitan específicamente sitios web o categorías que estén bloqueados por otras reglas, o para garantizar que algunos sitios web sean siempre accesibles. La creación de una regla Permitir sitios web con un rango superior al de una regla Bloquear anulará la acción de bloqueo para los sitios y usuarios seleccionados. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web.",
+              "enforce-safe-search": "Imponer búsqueda segura",
+              "enforce-safe-search-desc": "Aplique funciones de búsqueda segura en los principales motores de búsqueda",
+              "enforce-safe-search-tooltip-desc": "Si bloquea los sitios web inapropiados, asegúrese de que los motores de búsqueda solo devuelven resultados adecuados a su entorno. Aplica las funciones de búsqueda segura en Google, Bing y DuckDuckGo mediante métodos DNS.",
+              "website-tenant-controls": "Controles de inquilinos del sitio web",
+              "website-tenant-controls-desc": "Habilite los controles de inquilinos para las aplicaciones web compatibles",
+              "website-tenant-controls-tooltip-desc": "Algunos sitios web y aplicaciones le permiten limitar qué cuentas de usuario pueden iniciar sesión y utilizar sus servicios desde sus redes. Esta regla le permite activar esas restricciones y proporcionar la información necesaria para las aplicaciones compatibles.",
+              "scan-for-threats": "Buscar amenazas",
+              "scan-for-threats-desc": "Escanee el contenido web en busca de amenazas, descifrándolo si es necesario",
+              "scan-for-threats-tooltip-desc": "Las descargas de archivos y el contenido de páginas web pueden contener amenazas, incluso desde sitios web comúnmente permitidos. Esta regla le permite especificar condiciones de escaneado para diferentes usuarios, grupos, dispositivos o sitios web, y habilita el descifrado TLS para permitir la detección de amenazas procedentes de sitios HTTPS cifrados, así como HTTP.",
+              "never-decrypt": "No descifrar nunca",
+              "never-decrypt-desc": "Excluya sitios web o conexiones del descifrado",
+              "never-decrypt-tooltip-desc": "A veces es necesario garantizar que el tráfico a determinados sitios web nunca se descifre por motivos de compatibilidad o privacidad. Cree este tipo de regla para esos sitios, usuarios y grupos. Colóquela entre las primeras de la lista para asegurarse de que tiene prioridad sobre las reglas generales que pueden permitir el descifrado.",
+              "block-file-types": "Tipos de archivo bloqueados",
+              "block-file-types-desc": "Evite la descarga de tipos de archivos peligrosos o no deseados, procediendo a descifrarlos cuando sea necesario",
+              "block-file-types-tooltip-desc": "Ciertos tipos de descargas de archivos pueden ser peligrosos e innecesarios para el uso profesional habitual. Esta regla también vela por que el tráfico se descifre cuando sea necesario para garantizar la identificación de los archivos. Esta regla también se ocupa de que el tráfico se descifre cuando sea necesario para garantizar la identificación de los archivos.",
+              "dont-scan": "No escanear",
+              "dont-scan-desc": "Excluya sitios web o conexiones del escaneado de contenido",
+              "dont-scan-tooltip-desc": "Algunos sitios pueden experimentar problemas con el escaneado de archivos en busca de contenidos o amenazas. Cree este tipo de regla y asígnele un puesto alto para anular las condiciones de escaneado de los sitios, usuarios, grupos o dispositivos seleccionados.",
+              "websites-allow-list": "Lista de sitios web permitidos",
+              "websites-allow-list-desc": "Permitir que los usuarios accedan a determinados sitios web",
+              "websites-allow-list-tooltip-desc": "Útil para crear reglas que permitan específicamente sitios web o categorías que estén bloqueados por otras reglas, o para garantizar que algunos sitios web sean siempre accesibles. La creación de una regla Permitir sitios web con un rango superior al de una regla Bloquear anulará la acción de bloqueo para los sitios y usuarios seleccionados. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web."
+            },
+            "firewall": {
+              "block-non-web-traffic": "Bloquear el tráfico que no sea web",
+              "block-non-web-traffic-desc": "Bloquear el tráfico que no sea web",
+              "block-non-web-traffic-tooltip-desc": "Bloquear el tráfico que no sea web",
+              "allow-non-web-traffic": "Permitir el tráfico que no sea web",
+              "allow-non-web-traffic-desc": "Permita las conexiones de red salientes necesarias",
+              "allow-non-web-traffic-tooltip-desc": "Para permitir que los usuarios se conecten a servicios ajenos a la web en función de la dirección IP, el puerto o el protocolo, cree este tipo de regla de firewall.",
+              "allow-connection-decrypt-and-inspect": "Permita la conexión, el descifrado y la inspección",
+              "allow-connection-decrypt-and-inspect-desc": "Permita el tráfico que no sea web y controle la inspección de amenazas con IPS y descifrado según sea necesario",
+              "allow-connection-decrypt-and-inspect-tooltip-desc": "La inspección detallada de paquetes incluye IPS para detectar ataques en una amplia gama de protocolos de red. Esta regla combina IPS con el descifrado TLS para garantizar un escaneado exhaustivo del tráfico cifrado y no cifrado.",
+              "networks-allow-list": "Lista de redes permitidas",
+              "networks-allow-list-desc": "Permita a los usuarios acceder a las redes seleccionadas sin inspección",
+              "networks-allow-list-tooltip-desc": "Útil para crear reglas que permitan específicamente sitios web o categorías que estén bloqueados por otras reglas, o para garantizar que algunos sitios web sean siempre accesibles. La creación de una regla Permitir sitios web con un rango superior al de una regla Bloquear anulará la acción de bloqueo para los sitios y usuarios seleccionados. Esta regla aplicará las mismas condiciones al filtrar con DNS o la puerta de enlace web."
+            },
+            "specialist": {
+              "dns-filter": "Filtro DNS",
+              "dns-filter-desc": "Evite las conexiones no deseadas mediante el filtrado en la fase DNS",
+              "dns-filter-tooltip-desc": "Antes de que comiencen las conexiones, las búsquedas DNS permiten a los dispositivos saber dónde conectarse. El filtrado de las solicitudes y respuestas DNS proporciona una capa de protección lo antes posible.",
+              "firewall-rule": "Regla de firewall",
+              "firewall-rule-desc": "Controle qué paquetes y conexiones están permitidos",
+              "firewall-rule-tooltip-desc": "Utilice esta regla para controlar qué paquetes y conexiones pueden pasar a través del firewall.",
+              "decryption-rule": "Regla de descifrado",
+              "decryption-rule-desc": "Decida cuándo descifrar u omitir el descifrado",
+              "decryption-rule-tooltip-desc": "Estas reglas se utilizan cuando sus dispositivos intentan establecer conexiones cifradas. Determinan qué tráfico se descifra para una inspección más detallada del contenido en busca de amenazas.",
+              "web-access-rule": "Regla de acceso a la web",
+              "web-access-rule-desc": "Bloquee las conexiones web por dominio o URL sin filtrado DNS",
+              "web-access-rule-tooltip-desc": "Cuando un usuario intenta acceder a un sitio web a través de Secure Web Gateway, una regla de filtrado web puede controlar el acceso basándose en la URL del sitio o página web. Este tipo de regla no se aplica para el filtrado web DNS.",
+              "web-content-filter-rule": "Regla de filtrado de contenidos web",
+              "web-content-filter-rule-desc": "Controle a qué tipos de archivos y contenidos se puede acceder en los sitios web permitidos",
+              "web-content-filter-rule-tooltip-desc": "Cuando las páginas web se permiten en función de la URL o la categoría, las reglas de filtrado de contenido proporcionan una protección adicional al analizar las cargas y descargas en busca de amenazas y bloquear los tipos de archivos de riesgo",
+              "app-control": "Control de apps",
+              "app-control-desc": "Establezca políticas que bloqueen el tráfico procedente de las aplicaciones o protocolos de aplicación que haya especificado",
+              "app-control-tooltip-desc": "",
+              "ips-rule": "Regla IPS",
+              "ips-rule-desc": "Utilice esta regla para modificar la sensibilidad de IPS para el tráfico seleccionado",
+              "ips-rule-tooltip-desc": ""
+            }
           },
           "step-2": {
             "user": {
@@ -896,6 +977,9 @@
               "not-dest-ip": "dirección IP de destino no es"
             }
           }
+        },
+        "delete-rule":{
+          "warning": "No se producirá ningún cambio funcional hasta que se active la regla"
         }
       },
       "no-policy": {
@@ -936,8 +1020,17 @@
         "web-content": "Contenido web",
         "app-control": "Control de aplicaciones",
         "ips": "Sistema de prevención de intrusiones"
+      },
+      "ellipsis-menu": {
+        "edit-rule": "Editar regla",
+        "add-rule-above": "Añadir regla por encima",
+        "add-rule-below": "Añadir regla por debajo",
+        "move-to-rank": "Mover al puesto n.º",
+        "move-to-rank-button": "Aplicar",
+        "clone-rule-above": "Clonar regla por encima",
+        "clone-rule-below": "Clonar regla por debajo",
+        "delete-rule": "Eliminar regla"
       }
-
     },
     "agent-config": {
       "title": "Secure Service Edge - Configuración de agente",

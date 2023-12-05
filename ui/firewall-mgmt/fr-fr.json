@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "Ajouter un pool d’adresses IP XFRM *",
         "help-info-1":"Vous pouvez indiquer plusieurs adresses IP sous l’un des formats suivants :",
         "help-info-2": "Format réseau IPv4 : Par ex. 192.168.1.0/24,192.168.2.0/24",
-        "add": "Ajouter"
+        "add": "Enregistrer",
+        "error": {
+          "invalid-format": "Format de pool IP XFRM non valide : {{ value }}",
+          "min-two-usable-address": "Pool IP XFRM non valide (au moins 2 adresses hôtes doivent être présentes) : {{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} pare-feu ayant l'état PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Groupe créé avec succès",
-        "duplicate-group-name": "Ce nom de groupe existe déjà"
+        "duplicate-group-name": "Ce nom de groupe existe déjà",
+        "skip-full-sync": {
+          "label": "Ignorer la synchronisation complète",
+          "warning": "Cette action peut entraîner une incompatibilité de configuration entre Sophos Central et le pare-feu."
+        }
       },
       "delete": {
         "label": "Supprimer le groupe",
@@ -1332,7 +1340,7 @@
       },
       "transfer-firewalls": {
         "info": "Vous pouvez transférer les pare-feu sélectionnés vers un compte Sophos Central existant. Saisissez l’adresses email du destinataire.",
-        "transfer-firewalls": "Transférer des pare-feu",
+        "transfer-firewalls": "Transférer les pare-feu",
         "recepient-email": "Adresse email du destinataire",
         "name": "Nom",
         "model": "Modèle",
@@ -1615,6 +1623,7 @@
             "past": "Les stratégies ont été appliquées à {{ time }}"
           },
           "suspended": "Pare-feu suspendu.",
+          "full-sync-skipped": "La synchronisation complète est ignorée.",
           "unsupported": "Les groupes de pare-feu ne sont pas pris en charge",
           "initializing": "Services d’initialisation...",
           "outofsync": "Impossible d’appliquer une stratégie",

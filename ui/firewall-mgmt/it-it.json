@@ -710,7 +710,11 @@
         "add-xfrm-ip-pool": "Aggiungi pool di IP XFRM *",
         "help-info-1":"Puoi specificare indirizzi IP multipli nei seguenti formati:",
         "help-info-2": "Formato di rete IPv4: Es. 192.168.1.0/24,192.168.2.0/24",
-        "add": "Aggiungi"
+        "add": "Salva",
+        "error": {
+          "invalid-format": "Formato del pool di IP XFRM non valido: {{ value }}",
+          "min-two-usable-address": "Pool di IP XFRM non valido (devono essere presenti almeno 2 indirizzi host): {{value}}"
+        }
       }
     },
     "firewall-groups": {
@@ -765,7 +769,11 @@
           "PEER_PRIMARY_FIREWALL_NOT_SUPPLIED": "{{ firewalls }} firewall con stato PEER_PRIMARY_FIREWALL_NOT_SUPPLIED."
         },
         "create-group-success": "Creazione del gruppo completata",
-        "duplicate-group-name": "Nome del gruppo già esistente"
+        "duplicate-group-name": "Nome del gruppo già esistente",
+        "skip-full-sync": {
+          "label": "Salta sincronizzazione completa",
+          "warning": "Questa azione potrebbe causare una configurazione non corrispondente tra Sophos Central e il firewall."
+        }
       },
       "delete": {
         "label": "Elimina gruppo",
@@ -1615,6 +1623,7 @@
             "past": "Era in corso l'applicazione dei criteri: {{ time }}"
           },
           "suspended": "Firewall sospeso.",
+          "full-sync-skipped": "La sincronizzazione completa è stata saltata.",
           "unsupported": "I gruppi di firewall non sono supportati",
           "initializing": "Inizializzazione dei servizi in corso...",
           "outofsync": "Applicazione del criterio non riuscita",
