@@ -473,14 +473,13 @@
       "messages": {
         "confirmWaitMessage": "擷取資料需要一點時間。<br/><br/>您可以等候我們擷取資料，或者如果您想執行其他動作，等到資料準備就緒後，會在 [佇列] 標籤頁中顯示。<br /><br/>佇列標籤頁中的報告可用時間為 24 小時。",
         "timeSliceInfo": "<p>如需最佳化資料擷取，1 至 7 天的時間範圍報告將以小時進行分組，時間範圍大於 7 天的報告將以天數進行分組。</p><p>如需更加精細，請減少此報告的時間範圍或按一下下方日期</p>"
-
       }
     },
     "apiLabel": {
       "src_location": "位置",
       "timestamp": "日期",
       "src_ip": "來源 IP",
-      "dns_qclass" : "查詢類別",
+      "dns_qclass": "查詢類別",
       "dns_rcode": "回應狀況",
       "dns_rnum": "回應記錄",
       "dns_qsize": "查詢位元組",
@@ -489,7 +488,7 @@
       "dns_rtype": "回應類型",
       "dns_rclass": "回應類別",
       "response_ttl_list": "回應 TTL",
-      "response_ip" : "回應 IP",
+      "response_ip": "回應 IP",
       "domain_risk": "風險",
       "domain_category": "類別",
       "customer_id": "客户 ID",
@@ -843,11 +842,19 @@
       "reports-and-logs": "日誌紀錄與報告"
     },
     "common": {
+      "clone": "複製",
+      "delete": "删除",
+      "desc": "說明",
+      "name": "名稱",
+      "continue": "繼續",
+      "whitespace-name-validation": "名稱為必填項",
       "messages": {
         "generic-error": "處理請求時出現意外錯誤。"
       },
       "on-text": "開啟",
-      "off-text": "關閉"
+      "off-text": "關閉",
+      "clear": "清除",
+      "matches": "符合"
     },
     "dashboard": {
       "title": "Secure Service Edge - 儀表板",
@@ -866,7 +873,9 @@
         "next": "下一步",
         "cancel": "取消",
         "back": "上一頁",
-        "save-rule": "儲存規則"
+        "save-rule": "儲存規則",
+        "save": "儲存",
+        "proceed": "繼續前往"
       },
       "title": "Secure Service Edge - 原則",
       "breadcrumb": "原則",
@@ -877,7 +886,7 @@
       "condition-description": "這些條件會觸發您的動作",
       "manage-options": "管理選項",
       "options-description": "設定相關的安全功能",
-      "add-rule" : {
+      "add-rule": {
         "title": "Secure Service Edge - 原則 - 新增規則",
         "breadcrumb": "新增規則"
       },
@@ -953,17 +962,43 @@
           },
           "step-2": {
             "user": {
+              "any": "是任何使用者",
+              "any-website": "是任何網站",
               "is": "是",
               "not-is": "不是",
               "group": "位於群組中",
               "not-group": "不位於群組中",
               "location": "在位置處",
-              "network": "正在從網路連線",
-              "not-network": "未從網路連線",
+              "not-location": "不在位置處",
+              "from-network": "正在從網路連線",
+              "not-from-network": "未從網路連線",
               "computer": "位於電腦上",
               "not-computer": "不位於電腦上",
               "computer-group": "位於此群組中的電腦上",
-              "not-computer-group": "位於此群組中的電腦上"
+              "not-computer-group": "位於此群組中的電腦上",
+              "device": "裝置是",
+              "not-device": "裝置不是",
+              "device-group": "裝置位於群組中",
+              "not-device-group": "裝置不位於群組中",
+              "category": "在類別中",
+              "not-category": "不在類別中",
+              "to-network": "在網路中",
+              "to-not-network": "不在網路中",
+              "apply": "套用",
+              "cancel": "取消",
+              "create-new-object": "建立新物件"
+            },
+            "summary-labels":{
+              "user-connecting_from-network-in": "網路",
+              "user-connecting_from-network-not_in": "網路",
+              "user-connecting_from-location-in": "大位置",
+              "user-connecting_from-location-not_in": "大位置",
+              "connecting_to-domain_url-not_in":  "網域 URL",
+              "connecting_to-domain_url-in": "網域 URL",
+              "connecting_to-network-not_in": "網路",
+              "connecting_to-network-in": "網路",
+              "connecting_to-web_category-not_in": "Web 類別",
+              "connecting_to-web_category-in": "Web 類別"
             },
             "connection": {
               "domain": "網域是",
@@ -975,74 +1010,304 @@
               "application": "應用程式",
               "dest-ip": "目的地 IP 位址是",
               "not-dest-ip": "目的地 IP 位址不是"
+            },
+            "label-headers": {
+              "the-user": "使用者",
+              "and-the-website": "和網站"
+            },
+            "dropdown-place-holder": {
+              "user-name": "選取使用者名稱",
+              "group-name": "按名稱選取群組",
+              "device-name": "按名稱選取裝置",
+              "device-group": "選取裝置群組",
+              "network-name": "選取網路物件",
+              "location-objects": "選取位置物件",
+              "domain-url": "選取網域/URL 物件",
+              "category-objects": "選取「類別群組」物件",
+              "select": "選取"
+            },
+            "error-message": {
+              "match-criteria": "選取匹配條件",
+              "user-name": "選取使用者",
+              "user-group": "選取使用者群組",
+              "device-group": "選取裝置群組",
+              "device": "选择设备",
+              "network": "選取網路",
+              "location": "選取位置",
+              "category": "選取類別",
+              "domain-url": "選取網域 URL",
+              "destination": "選取目的地值",
+              "source": "選取來源值"
+            },
+            "source-destinations": {
+              "user-name": "使用者名稱",
+              "user-group": "使用者群組",
+              "device-group": "裝置群組",
+              "device": "裝置",
+              "network": "網路",
+              "location": "位置",
+              "category": "類別",
+              "domain-url": "網域 URL"
+            },
+            "sub-header": {
+              "user-user_name-in": "使用者名稱位於",
+              "user-user_name-not_in": "使用者名稱不位於",
+              "user-user_group-in": "使用者群組位於",
+              "user-user_group-not_in": "使用者群組不位於",
+              "user-device_group-in": "裝置群組位於",
+              "user-device_group-not_in": "裝置群組不位於",
+              "user-device-in": "裝置位於",
+              "user-device-not_in": "裝置不位於",
+              "user-connecting_from-network-in": "從位於以下位置的網路連線",
+              "user-connecting_from-network-not_in": "從不位於以下位置的網路連線",
+              "user-connecting_from-location-in": "從位於以下位置的位置連線",
+              "user-connecting_from-location-not_in": "從不位於以下位置的位置連線",
+              "connecting_to-web_category-in": "網頁類別位於",
+              "connecting_to-web_category-not_in": "網頁類別不位於",
+              "connecting_to-domain_url-in": "網域 URL 位於",
+              "connecting_to-domain_url-not_in": "網域 URL 不位於",
+              "connecting_to-network-in": "網路位於",
+              "connecting_to-network-not_in": "網路不位於",
+
+              "domain-url": "網域 URL"
+            },
+            "matches-label": {
+              "user-name": "使用者名稱相符",
+              "user-group": "使用者群組相符",
+              "device-group": "裝置群組相符",
+              "device": "裝置相符",
+              "network": "網路相符",
+              "location": "位置相符",
+              "category": "類別相符",
+              "domain-url": "網域 URL 相符"
+            },
+            "helper-text": {
+              "multi-chips": " \"Or\" 用於表示倍數，例如 Sales \"or\" Marketing",
+              "the-action": "此動作",
+              "will-happen": "將會套用，前提是",
+              "add-another": "新增另一項"
+            }
+          },
+          "step-3": {
+            "title": "管理選項",
+            "label": "選取並調整相關安全功能以完善您的角色",
+            "action-title": "採取動作",
+            "select-option": "請選取選項。",
+            "log-user-activity-title": "記錄使用者活動，以便您可以監控哪些規則最活躍。",
+            "toggle-option": "請打開選項。",
+            "valid-input": "請輸入有效的內容。",
+            "options": {
+              "labels": {
+                "display-block-page": "顯示「封鎖」頁面",
+                "log-user-activity": "記錄使用者活動",
+                "alert-admin": "警示管理",
+                "enforce-youtube-restrictions": "實施 YouTube 限制",
+                "youtube-restriction-level": "Youtube 限制級別",
+                "restrict-login-domains": "限制登入網域",
+                "allowed-domains": "允許的網域",
+                "action": "行動",
+                "enforce-safe-search": "強制執行安全搜尋",
+                "detect-zero-day-threats": "偵測零時差威脅",
+                "allow-microsoft-tenant-restriction": "允許 Microsoft 租用戶限制",
+                "restrict-access-to-tenants": "限制對租用戶的存取",
+                "restict-access-context": "限制存取上下文",
+                "inspection-profile": "檢驗設定檔",
+                "decrypt-tls": "解密 TLS",
+                "certificate-verification": "憑證驗證",
+                "scan-for-malware": "掃描惡意軟體和真實檔案類型",
+                "detect-zero-day-intellix": "偵測零時差 Intellix",
+                "content-check": "內容檢查"
+              },
+              "values": {
+                "true": true,
+                "false": false,
+                "moderate": "中等",
+                "strict": "嚴格",
+                "aggressive": "主動",
+                "recommended": "建議",
+                "log-only": "僅記錄",
+                "silent": "靜音",
+                "block-connection": "封鎖連線",
+                "allow-user-to-decide": "允許使用者決定",
+                "allow": "許可",
+                "block": "攔截",
+                "drop": "丟棄",
+                "reject": "拒絕",
+                "decrypt": "解密",
+                "dont-decrypt": "不得解密",
+                "alert": "則警示"
+              }
+            }
+          },
+          "summary": {
+            "cloned": "(已複製)",
+            "action": "動作",
+            "type": "原則類型",
+            "last-modified": "上次修改",
+            "rule-summary": "規則摘要",
+            "rule-cloned": "規則已複製。",
+            "rule-clone-error-msg": "複製規則失敗",
+            "name-desc": "名稱與描述",
+            "suggest-name": "系統已為此規則提供名稱建議，但您可以隨意變更。",
+            "policy-name-required": "需要原則名稱",
+            "desc-validation": "說明不應超過 300 個字元",
+            "activate-rule": "啟動規則",
+            "activate-rule-desc": "規則必須啟動才能生效。",
+            "match-conditions": "如果滿足以下條件，則允許網站：",
+            "also": "此外，還有：",
+            "how-work": "運作方式",
+            "check-traffic": "此規則將檢查以下每個篩選階段的流量：",
+            "rule-effect": "在每個階段，如果先匹配到另一個排名較高的規則，則該規則不會產生任何影響。",
+            "edit-condition": "編輯條件",
+            "edit-option": "編輯選項",
+            "conditions": "情況",
+            "options": "選項",
+            "help-text": {
+              "dns": "將允許或封鎖與此規則中的條件相符的 DNS 查找。",
+              "fw": "將允許或封鎖與此規則中的條件相符的連線和封包。",
+              "tls": "將解密/不會解密與此規則中的條件相符的加密流量。",
+              "web-url": "將封鎖或允許與此規則中的條件相符的 Web 請求。",
+              "web-content": "將掃描與使用者和網站條件相符的 Web 內容。如果它符合此規則中的內容條件，則會被封鎖或受到允許。",
+              "app-control": "將允許或封鎖與此規則中的使用者和網站或目的地條件相符且與指定的應用程式條件相符的流量。",
+              "ips": "IPS 引擎將掃描與此規則中的使用者和網站或目的地條件相符的流量。如果簽名相符，將根據您選取的設定檔採取適當的動作。"
+            }
+           }
+          },
+          "delete-rule": {
+            "warning": "在啟用規則之前不會發生任何功能變更"
+          },
+          "policy-list":{
+            "delete": "删除",
+            "cancel": "取消",
+            "delete-confirm-message": "確定要刪除 ",
+            "delete-rule": "删除規則",
+            "clone-rule": "複製規則",
+            "clone-confirm-message": "將從以下位置複製新規則： ",
+            "rule-deleted": "規則已刪除",
+            "rule-added": "規則已新增",
+            "rule-add-error": "未能新增規則",
+            "rule-delete-error-msg": "未能刪除檔案",
+            "rank-update": "排名已更新",
+            "rank-update-error": "更新排名時發生錯誤"
+          },
+          "unsaved-changes": {
+            "title": "您有未儲存的工作",
+            "message": "如果您現在取消，未儲存的工作將會丟失。仍然繼續？"
+          }
+        },
+        "no-policy": {
+          "title": "您沒有新增任何規則",
+          "body": "按一下「新增規則」按鈕新增規則。"
+        },
+        "pagination": {
+          "page-info": "{{total}} 的 {{start}}-{{end}}"
+        },
+        "tooltips": {
+          "locked-icon-text": "您無法刪除或調整預設規則的排名，但可以編輯它們。"
+        },
+        "headers": {
+          "rank": "排名",
+          "rule-name": "規則名稱",
+          "action": "動作",
+          "filtering-stages": "篩選階段",
+          "description": "說明",
+          "active": "作用中",
+          "dns": "DNS",
+          "fw": "防火牆",
+          "tls": "TLS",
+          "web-url": "網頁 URL",
+          "web-content": "網頁內容",
+          "app-control": "應用程式控制",
+          "ips": "IPS",
+          "tooltips": {
+            "filtering": {
+              "description": "流量依下列順序經過最多五個篩選步驟：DNS、防火牆、TLS、網頁 URL 和網頁內容。",
+              "point-one": "每條規則可以套用於多個篩選階段。",
+              "point-two": "在每個階段從上到下評估規則，並套用該階段的第一個匹配規則。",
+              "point-three": "流量在每個階段可能會符合不同的規則。"
             }
           }
         },
-        "delete-rule":{
-          "warning": "在啟用規則之前不會發生任何功能變更"
+        "filters": {
+          "all": "所有篩選階段",
+          "dns": "DNS",
+          "firewall": "防火墻",
+          "tls": "TLS",
+          "web-url": "網頁 URL",
+          "web-content": "網頁內容",
+          "app-control": "應用程式控制",
+          "ips": "IPS"
+        },
+        "ellipsis-menu": {
+          "edit-rule": "編輯規則",
+          "add-rule-above": "新增以上規則",
+          "add-rule-below": "新增以下規則",
+          "move-to-rank": "移至排名 #",
+          "move-to-rank-button": "套用",
+          "clone-rule-above": "複製上方規則",
+          "clone-rule-below": "複製下方規則",
+          "delete-rule": "删除規則"
         }
       },
-      "no-policy": {
-        "title": "您沒有新增任何規則",
-        "body": "按一下「新增規則」按鈕新增規則。"
+      "agent-config": {
+        "title": "Secure Service Edge - 代理程式設定",
+        "breadcrumb": "代理程式設定"
       },
-      "pagination": {
-        "page-info": "{{total}} 的 {{start}}-{{end}}"
-      },
-      "headers": {
-        "rank": "排名",
-        "rule-name": "規則名稱",
-        "action": "動作",
-        "filtering-stages": "篩選階段",
-        "active": "作用中",
-        "dns": "DNS",
-        "fw": "防火牆",
-        "tls": "TLS",
-        "web-url": "網頁 URL",
-        "web-content": "網頁內容",
-        "app-control": "應用程式控制",
-        "ips": "IPS",
-        "tooltips": {
-          "filtering": {
-            "description": "流量依下列順序經過最多五個篩選步驟：DNS、防火牆、TLS、網頁 URL 和網頁內容。",
-            "point-one": "每條規則可以套用於多個篩選階段。",
-            "point-two": "在每個階段從上到下評估規則，並套用該階段的第一個匹配規則。",
-            "point-three": "流量在每個階段可能會符合不同的規則。"
+      "objects": {
+        "title": "Secure Service Edge - 物件",
+        "breadcrumb": "物件",
+        "button": {
+          "add-object": "新增物件",
+          "delete-object": "删除",
+          "next": "下一頁",
+          "cancel": "取消",
+          "back": "上一頁",
+          "add": "新增",
+          "save": "儲存"
+        },
+        "no-object": {
+          "title": "您沒有新增任何物件",
+          "body": "按一下「新增物件」按鈕可新增物件。"
+        },
+        "pagination": {
+          "page-info": "{{total}} 的 {{start}}-{{end}} / 已選 {{ selected }}"
+        },
+        "headers": {
+          "object-name": "物件名稱",
+          "items": "項目的 #",
+          "object-type": "物件類型",
+          "contents": "目錄",
+          "object-usage": "物件使用情況",
+          "tooltips": {
+            "items": {
+              "description": "不包括嵌套物件中的項目"
+            },
+            "usage": {
+              "description": "物件可以在一個或多個規則中使用，也可以嵌套在其他物件中"
+            }
           }
+        },
+        "filters": {
+          "all": "所有物件類型",
+          "network": "網路",
+          "network-service": "網路服務",
+          "domain-url": "網域或 URL",
+          "file-type": "檔案類型",
+          "application": "應用程式",
+          "website-category": "網站種類",
+          "location": "位置",
+          "geoip": "GeoIP"
+        },
+        "contents": {
+          "ip-addr": "IPv4 位址",
+          "ip-addr-range": "IPv4 位址範圍",
+          "ip-subnet": "IP 子網路"
         }
       },
-      "filters": {
-        "all": "所有篩選階段",
-        "dns": "DNS",
-        "firewall": "防火墻",
-        "tls": "TLS",
-        "web-url": "網頁 URL",
-        "web-content": "網頁內容",
-        "app-control": "應用程式控制",
-        "ips": "IPS"
-      },
-      "ellipsis-menu": {
-        "edit-rule": "編輯規則",
-        "add-rule-above": "新增以上規則",
-        "add-rule-below": "新增以下規則",
-        "move-to-rank": "移至排名 #",
-        "move-to-rank-button": "套用",
-        "clone-rule-above": "複製上方規則",
-        "clone-rule-below": "複製下方規則",
-        "delete-rule": "删除規則"
+      "settings": {
+        "title": "Secure Service Edge - 設定",
+        "breadcrumb": "設定"
       }
-    },
-    "agent-config": {
-      "title": "Secure Service Edge - 代理程式設定",
-      "breadcrumb": "代理程式設定"
-    },
-    "objects": {
-      "title": "Secure Service Edge - 物件",
-      "breadcrumb": "物件"
-    },
-    "settings": {
-      "title": "Secure Service Edge - 設定",
-      "breadcrumb": "設定"
     }
   }
-}
+

@@ -473,14 +473,13 @@
       "messages": {
         "confirmWaitMessage": "La récupération des données va durer quelques instants.<br/><br/>Vous pouvez patienter pendant que nous les récupérons ou pouvez effectuer d’autres opérations si vous le désirez. Les données seront affichées sous l’onglet File d’attente lorsqu’elles seront prêtes.<br /><br/>Les rapports sont disponibles sous l’onglet File d’attente pendant 24 heures.",
         "timeSliceInfo": "<p>Pour l’optimisation de la récupération des données, les rapports pour les périodes de 1 à 7 jours seront regroupés par heure et les rapports pour les périodes de plus de 7 jours seront regroupés par jour.</p><p> Pour plus de précision, réduisez la période de temps de ce rapport ou cliquez sur la date ci-dessous</p>"
-
       }
     },
     "apiLabel": {
       "src_location": "Emplacement",
       "timestamp": "Date",
       "src_ip": "IP source",
-      "dns_qclass" : "Classe de la demande",
+      "dns_qclass": "Classe de la demande",
       "dns_rcode": "État de réponse",
       "dns_rnum": "Enregistrements de la réponse",
       "dns_qsize": "Octets de la demande",
@@ -489,7 +488,7 @@
       "dns_rtype": "Type de réponse",
       "dns_rclass": "Classe de la réponse",
       "response_ttl_list": "TTL de la réponse",
-      "response_ip" : "IP de la réponse",
+      "response_ip": "IP de la réponse",
       "domain_risk": "Risque",
       "domain_category": "Catégorie",
       "customer_id": "ID client",
@@ -843,11 +842,19 @@
       "reports-and-logs": "Journaux et rapports"
     },
     "common": {
+      "clone": "Cloner",
+      "delete": "Supprimer",
+      "desc": "Description",
+      "name": "Nom",
+      "continue": "Continuer",
+      "whitespace-name-validation": "Nom obligatoire",
       "messages": {
         "generic-error": "Erreur inattendue pendant le traitement de la demande."
       },
       "on-text": "Actif",
-      "off-text": "Inactif"
+      "off-text": "Inactif",
+      "clear": "Effacer",
+      "matches": "correspondances"
     },
     "dashboard": {
       "title": "Secure Service Edge - Tableau de bord",
@@ -866,7 +873,9 @@
         "next": "Suivant",
         "cancel": "Annuler",
         "back": "Retour",
-        "save-rule": "Enregistrer la règle"
+        "save-rule": "Enregistrer la règle",
+        "save": "Enregistrer",
+        "proceed": "Continuer"
       },
       "title": "Secure Service Edge - Stratégie",
       "breadcrumb": "Stratégie",
@@ -877,7 +886,7 @@
       "condition-description": "Ces conditions déclencheront votre action",
       "manage-options": "Gérer les options",
       "options-description": "Configurer les fonctions de sécurité associées",
-      "add-rule" : {
+      "add-rule": {
         "title": "Secure Service Edge - Stratégie - Ajouter une règle",
         "breadcrumb": "Ajouter une règle"
       },
@@ -953,17 +962,43 @@
           },
           "step-2": {
             "user": {
-              "is": "est",
-              "not-is": "n’est pas",
-              "group": "est dans le groupe",
-              "not-group": "n’est pas dans le groupe",
-              "location": "est à l’emplacement",
-              "network": "se connecte à partir du réseau",
-              "not-network": "ne se connecte pas à partir du réseau",
+              "any": "Est n’importe quel utilisateur",
+              "any-website": "Est n’importe quel site Web",
+              "is": "Est",
+              "not-is": "N’est pas",
+              "group": "Est dans le groupe",
+              "not-group": "N’est pas dans le groupe",
+              "location": "Est à l’emplacement",
+              "not-location": "N’est pas à l’emplacement",
+              "from-network": "Se connecte à partir du réseau",
+              "not-from-network": "Ne se connecte pas à partir du réseau",
               "computer": "est sur un ordinateur",
               "not-computer": "n’est pas sur un ordinateur",
               "computer-group": "est sur un ordinateur de ce groupe",
-              "not-computer-group": "est sur un ordinateur de ce groupe"
+              "not-computer-group": "est sur un ordinateur de ce groupe",
+              "device": "Appareil est",
+              "not-device": "Appareil n’est pas",
+              "device-group": "Appareil dans le groupe",
+              "not-device-group": "Appareil n’est pas dans le groupe",
+              "category": "Est dans la catégorie",
+              "not-category": "N’est pas dans la catégorie",
+              "to-network": "Est sur le réseau",
+              "to-not-network": "N’est pas sur le réseau",
+              "apply": "Appliquer",
+              "cancel": "Annuler",
+              "create-new-object": "Créer un nouvel objet"
+            },
+            "summary-labels":{
+              "user-connecting_from-network-in": "réseaux",
+              "user-connecting_from-network-not_in": "réseaux",
+              "user-connecting_from-location-in": "emplacements",
+              "user-connecting_from-location-not_in": "emplacements",
+              "connecting_to-domain_url-not_in":  "URL de domaine",
+              "connecting_to-domain_url-in": "URL de domaine",
+              "connecting_to-network-not_in": "réseaux",
+              "connecting_to-network-in": "réseaux",
+              "connecting_to-web_category-not_in": "catégories Web",
+              "connecting_to-web_category-in": "catégories Web"
             },
             "connection": {
               "domain": "domaine est",
@@ -975,74 +1010,304 @@
               "application": "Application",
               "dest-ip": "adresse IP de destination est",
               "not-dest-ip": "adresse IP de destination n’est pas"
+            },
+            "label-headers": {
+              "the-user": "L’utilisateur",
+              "and-the-website": "et le site Web"
+            },
+            "dropdown-place-holder": {
+              "user-name": "Sélectionner le nom d’utilisateur",
+              "group-name": "Sélectionner un groupe par son nom",
+              "device-name": "Sélectionner un appareil par son nom",
+              "device-group": "Sélectionner un groupe d’appareils",
+              "network-name": "Sélectionner les objets réseau",
+              "location-objects": "Sélectionner les objets d’emplacement",
+              "domain-url": "Sélectionner le domaine et les objets d’URL",
+              "category-objects": "Sélectionner les objets de « Groupe de catégorie »",
+              "select": "Sélectionner"
+            },
+            "error-message": {
+              "match-criteria": "Sélectionner les critères de correspondance",
+              "user-name": "Sélectionner un utilisateur",
+              "user-group": "Sélectionner le groupe d’utilisateurs",
+              "device-group": "Sélectionner un groupe d’appareils",
+              "device": "Sélectionner un appareil",
+              "network": "Sélectionner un réseau",
+              "location": "Sélectionner un emplacement",
+              "category": "Sélectionner la catégorie",
+              "domain-url": "Sélectionner l’url du domaine",
+              "destination": "Sélectionner la valeur de destination",
+              "source": "Sélectionner la valeur source"
+            },
+            "source-destinations": {
+              "user-name": "nom d’utilisateur",
+              "user-group": "groupe d’utilisateurs",
+              "device-group": "groupe d’appareils",
+              "device": "appareil",
+              "network": "réseau",
+              "location": "géolocalisation",
+              "category": "catégorie",
+              "domain-url": "URL du domaine"
+            },
+            "sub-header": {
+              "user-user_name-in": "Nom d’utilisateur dans",
+              "user-user_name-not_in": "Nom d’utilisateur pas dans",
+              "user-user_group-in": "Groupe d’utilisateurs dans",
+              "user-user_group-not_in": "Groupe d’utilisateurs pas dans",
+              "user-device_group-in": "Groupe d’appareils dans",
+              "user-device_group-not_in": "Groupe d’appareils dans",
+              "user-device-in": "Appareil dans",
+              "user-device-not_in": "Appareil pas dans",
+              "user-connecting_from-network-in": "Connexion à partir du réseau dans",
+              "user-connecting_from-network-not_in": "Connexion à partir du réseau dans",
+              "user-connecting_from-location-in": "Connexion à partir de l’emplacement dans",
+              "user-connecting_from-location-not_in": "Connexion à partir d’un emplacement pas dans",
+              "connecting_to-web_category-in": "Catégorie Web dans",
+              "connecting_to-web_category-not_in": "Catégorie Web pas dans",
+              "connecting_to-domain_url-in": "URL de domaine dans",
+              "connecting_to-domain_url-not_in": "URL de domaine pas dans",
+              "connecting_to-network-in": "Réseau dans",
+              "connecting_to-network-not_in": "Réseau pas dans",
+
+              "domain-url": "URL du domaine"
+            },
+            "matches-label": {
+              "user-name": "noms d’utilisateur correspondants",
+              "user-group": "groupes d’utilisateurs correspondants",
+              "device-group": "groupes d’appareils correspondants",
+              "device": "appareils correspondants",
+              "network": "réseaux correspondants",
+              "location": "emplacements correspondants",
+              "category": "catégories correspondantes",
+              "domain-url": "URL de domaine correspondantes"
+            },
+            "helper-text": {
+              "multi-chips": " « Ou » est implicite pour les multiples, par exemple. Ventes « ou » Marketing",
+              "the-action": "L’action",
+              "will-happen": "ne s’applique que lorsque",
+              "add-another": "Ajouter une autre"
+            }
+          },
+          "step-3": {
+            "title": "Gérer les options",
+            "label": "Sélectionner et ajuster les fonctions de sécurité associées pour affiner votre rôle",
+            "action-title": "Action à mener",
+            "select-option": "Veuillez sélectionner une option.",
+            "log-user-activity-title": "Consigner l’activité de l’utilisateur afin de pouvoir surveiller les règles les plus actives.",
+            "toggle-option": "Veuillez activer une option.",
+            "valid-input": "Veuillez saisir une entrée valide.",
+            "options": {
+              "labels": {
+                "display-block-page": "Afficher la page « Bloquer »",
+                "log-user-activity": "Consigner l’activité de l’utilisateur",
+                "alert-admin": "Alerter l’administrateur",
+                "enforce-youtube-restrictions": "Appliquer les restrictions YouTube",
+                "youtube-restriction-level": "Niveau de restriction YouTube",
+                "restrict-login-domains": "Restreindre les domaines de connexion",
+                "allowed-domains": "Domaines autorisés",
+                "action": "Action",
+                "enforce-safe-search": "Lancer la recherche sécurisée",
+                "detect-zero-day-threats": "Détecter les menaces zero-day",
+                "allow-microsoft-tenant-restriction": "Autoriser la restriction de locataire Microsoft",
+                "restrict-access-to-tenants": "Restreindre l’accès aux locataires",
+                "restict-access-context": "Restreindre le contexte d’accès",
+                "inspection-profile": "Profil d’inspection",
+                "decrypt-tls": "Déchiffrer TLS",
+                "certificate-verification": "Vérification du certificat",
+                "scan-for-malware": "Contrôler la présence de malwares et de type de fichier véritable (TFT)",
+                "detect-zero-day-intellix": "Détecter les menaces zero-day avec Intellix",
+                "content-check": "Vérification du contenu"
+              },
+              "values": {
+                "true": true,
+                "false": false,
+                "moderate": "modéré",
+                "strict": "strict",
+                "aggressive": "Agressif",
+                "recommended": "Recommandé",
+                "log-only": "Consigner uniquement",
+                "silent": "Silencieux",
+                "block-connection": "Bloquer la connexion",
+                "allow-user-to-decide": "Laisser l’utilisateur décider",
+                "allow": "permettre",
+                "block": "bloquer",
+                "drop": "abandonner",
+                "reject": "rejeter",
+                "decrypt": "déchiffrer",
+                "dont-decrypt": "Ne pas déchiffrer",
+                "alert": "alerter"
+              }
+            }
+          },
+          "summary": {
+            "cloned": "(clonée)",
+            "action": "Actions",
+            "type": "Type de stratégie",
+            "last-modified": "Dernière modification",
+            "rule-summary": "Résumé des règles",
+            "rule-cloned": "Règle clonée.",
+            "rule-clone-error-msg": "Impossible de cloner la règle",
+            "name-desc": "Nom et description",
+            "suggest-name": "Le système a suggéré un nom pour cette règle, mais n’hésitez pas à le modifier.",
+            "policy-name-required": "Nom de la stratégie obligatoire",
+            "desc-validation": "La description ne doit pas contenir plus de 300 caractères",
+            "activate-rule": "Activer la règle",
+            "activate-rule-desc": "Une règle doit être activée pour prendre effet.",
+            "match-conditions": "Autoriser les sites Web si les conditions suivantes sont réunies :",
+            "also": "Et aussi :",
+            "how-work": "Fonctionnement",
+            "check-traffic": "Cette règle vérifiera le trafic à chacune des étapes de filtrage suivantes :",
+            "rule-effect": "À chaque étape, si une autre règle avec un rang plus élevé correspond en premier, cette règle n’aura aucun effet.",
+            "edit-condition": "Modifier les conditions",
+            "edit-option": "Modifier les options",
+            "conditions": "Conditions",
+            "options": "Options",
+            "help-text": {
+              "dns": "Les recherches DNS correspondant aux conditions de cette règle seront autorisées ou bloquées.",
+              "fw": "Les connexions et les paquets correspondant aux conditions de cette règle seront autorisés ou bloqués.",
+              "tls": "Le trafic chiffré correspondant aux conditions de cette règle sera déchiffré ou ne sera pas déchiffré.",
+              "web-url": "Les requêtes Web correspondant aux conditions de cette règle seront autorisées ou bloquées.",
+              "web-content": "Le contenu Web correspondant aux conditions de l’utilisateur et du site Web sera contrôlé. S’il correspond aux conditions de contenu de cette règle, il sera bloqué ou autorisé.",
+              "app-control": "Le trafic correspondant aux conditions de l’utilisateur et du site Web ou de la destination de cette règle qui correspond également aux critères d’application spécifiés sera autorisé ou bloqué.",
+              "ips": "Le trafic correspondant aux conditions de l’utilisateur et du site Web ou de la destination de cette règle sera contrôlé par le moteur IPS. Si une signature correspond, une action appropriée sera prise en fonction du profil sélectionné."
+            }
+           }
+          },
+          "delete-rule": {
+            "warning": "Aucune modification fonctionnelle ne se produira tant que la règle n’aura pas été activée"
+          },
+          "policy-list":{
+            "delete": "Supprimer",
+            "cancel": "Annuler",
+            "delete-confirm-message": "Voulez-vous vraiment supprimer ? ",
+            "delete-rule": "Supprimer la règle",
+            "clone-rule": "Cloner la règle",
+            "clone-confirm-message": "Une nouvelle règle sera clonée à partir de ",
+            "rule-deleted": "Règle supprimée",
+            "rule-added": "Règle ajoutée",
+            "rule-add-error": "Impossible d’ajouter une règle",
+            "rule-delete-error-msg": "Impossible de supprimer le fichier",
+            "rank-update": "Classement mis à jour",
+            "rank-update-error": "Erreur lors de la mise à jour du classement"
+          },
+          "unsaved-changes": {
+            "title": "Vous avez du travail non enregistré",
+            "message": "Tout travail non enregistré sera perdu si vous annulez maintenant. Continuer ?"
+          }
+        },
+        "no-policy": {
+          "title": "Vous n’avez pas ajouté de règles",
+          "body": "Cliquez sur le bouton « Ajouter une règle » pour ajouter des règles."
+        },
+        "pagination": {
+          "page-info": "{{start}}-{{end}} sur {{total}}"
+        },
+        "tooltips": {
+          "locked-icon-text": "Vous ne pouvez pas supprimer ou ajuster le classement des règles par défaut, mais vous pouvez les modifier."
+        },
+        "headers": {
+          "rank": "Classement",
+          "rule-name": "Nom de la règle",
+          "action": "Action",
+          "filtering-stages": "Étapes de filtrage",
+          "description": "Description",
+          "active": "Actif",
+          "dns": "DNS",
+          "fw": "Pare-feu",
+          "tls": "TLS",
+          "web-url": "URL Web",
+          "web-content": "Contenu Web",
+          "app-control": "Contrôle des applications",
+          "ips": "IPS",
+          "tooltips": {
+            "filtering": {
+              "description": "Le trafic passe par un maximum de 5 étapes de filtrage dans l’ordre suivant : DNS, pare-feu, TLS, URL Web et contenu Web.",
+              "point-one": "Chaque règle peut s’appliquer à plus d’une étape de filtrage.",
+              "point-two": "Les règles sont évaluées de haut en bas à chaque étape et la première règle correspondante pour cette étape est appliquée.",
+              "point-three": "Le trafic peut correspondre à une règle différente à chaque étape."
             }
           }
         },
-        "delete-rule":{
-          "warning": "Aucune modification fonctionnelle ne se produira tant que la règle n’aura pas été activée"
+        "filters": {
+          "all": "Toutes les étapes de filtrage",
+          "dns": "DNS",
+          "firewall": "Pare-feu",
+          "tls": "TLS",
+          "web-url": "URL Web",
+          "web-content": "Contenu Web",
+          "app-control": "Contrôle des applications",
+          "ips": "IPS"
+        },
+        "ellipsis-menu": {
+          "edit-rule": "Modifier la règle",
+          "add-rule-above": "Ajouter une règle au-dessus",
+          "add-rule-below": "Ajouter une règle en dessous",
+          "move-to-rank": "Déplacer vers le rang",
+          "move-to-rank-button": "Appliquer",
+          "clone-rule-above": "Cloner la règle au-dessus",
+          "clone-rule-below": "Cloner la règle en dessous",
+          "delete-rule": "Supprimer la règle"
         }
       },
-      "no-policy": {
-        "title": "Vous n’avez pas ajouté de règles",
-        "body": "Cliquez sur le bouton « Ajouter une règle » pour ajouter des règles."
+      "agent-config": {
+        "title": "Secure Service Edge - Configuration de l’agent",
+        "breadcrumb": "Configuration de l’agent"
       },
-      "pagination": {
-        "page-info": "{{start}}-{{end}} sur {{total}}"
-      },
-      "headers": {
-        "rank": "Classement",
-        "rule-name": "Nom de la règle",
-        "action": "Action",
-        "filtering-stages": "Étapes de filtrage",
-        "active": "Actif",
-        "dns": "DNS",
-        "fw": "Pare-feu",
-        "tls": "TLS",
-        "web-url": "URL Web",
-        "web-content": "Contenu Web",
-        "app-control": "Contrôle des applications",
-        "ips": "IPS",
-        "tooltips": {
-          "filtering": {
-            "description": "Le trafic passe par un maximum de 5 étapes de filtrage dans l’ordre suivant : DNS, pare-feu, TLS, URL Web et contenu Web.",
-            "point-one": "Chaque règle peut s’appliquer à plus d’une étape de filtrage.",
-            "point-two": "Les règles sont évaluées de haut en bas à chaque étape et la première règle correspondante pour cette étape est appliquée.",
-            "point-three": "Le trafic peut correspondre à une règle différente à chaque étape."
+      "objects": {
+        "title": "Secure Service Edge - Objets",
+        "breadcrumb": "Objets",
+        "button": {
+          "add-object": "Ajouter un objet",
+          "delete-object": "Supprimer",
+          "next": "Suivant",
+          "cancel": "Annuler",
+          "back": "Retour",
+          "add": "Ajouter",
+          "save": "Enregistrer"
+        },
+        "no-object": {
+          "title": "Vous n’avez pas ajouté d’objets",
+          "body": "Cliquez sur le bouton « Ajouter un objet » pour ajouter des objets."
+        },
+        "pagination": {
+          "page-info": "{{start}}-{{end}} sur {{total}} / {{ selected }} sélectionnés"
+        },
+        "headers": {
+          "object-name": "Nom de l'objet",
+          "items": "Nombre d’éléments",
+          "object-type": "Type d’objet",
+          "contents": "Contenu",
+          "object-usage": "Usage de l’objet",
+          "tooltips": {
+            "items": {
+              "description": "Éléments dans les objets imbriqués non inclus"
+            },
+            "usage": {
+              "description": "Les objets peuvent être utilisés dans une ou plusieurs règles, et peuvent également être imbriqués dans d’autres objets"
+            }
           }
+        },
+        "filters": {
+          "all": "Tous les types d’objet",
+          "network": "Réseau",
+          "network-service": "Service réseau",
+          "domain-url": "Domaine ou URL",
+          "file-type": "Type de fichiers",
+          "application": "Application",
+          "website-category": "Catégorie de site Web",
+          "location": "Géolocalisation",
+          "geoip": "IP de géolocalisation"
+        },
+        "contents": {
+          "ip-addr": "Adresses IPv4",
+          "ip-addr-range": "Plages d’adresses IPv4",
+          "ip-subnet": "Sous-réseau IP"
         }
       },
-      "filters": {
-        "all": "Toutes les étapes de filtrage",
-        "dns": "DNS",
-        "firewall": "Pare-feu",
-        "tls": "TLS",
-        "web-url": "URL Web",
-        "web-content": "Contenu Web",
-        "app-control": "Contrôle des applications",
-        "ips": "IPS"
-      },
-      "ellipsis-menu": {
-        "edit-rule": "Modifier la règle",
-        "add-rule-above": "Ajouter une règle au-dessus",
-        "add-rule-below": "Ajouter une règle en dessous",
-        "move-to-rank": "Déplacer vers le rang",
-        "move-to-rank-button": "Appliquer",
-        "clone-rule-above": "Cloner la règle au-dessus",
-        "clone-rule-below": "Cloner la règle en dessous",
-        "delete-rule": "Supprimer la règle"
+      "settings": {
+        "title": "Secure Service Edge - Paramètres",
+        "breadcrumb": "Paramètres"
       }
-    },
-    "agent-config": {
-      "title": "Secure Service Edge - Configuration de l’agent",
-      "breadcrumb": "Configuration de l’agent"
-    },
-    "objects": {
-      "title": "Secure Service Edge - Objets",
-      "breadcrumb": "Objets"
-    },
-    "settings": {
-      "title": "Secure Service Edge - Paramètres",
-      "breadcrumb": "Paramètres"
     }
   }
-}
+
