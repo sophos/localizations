@@ -473,14 +473,13 @@
       "messages": {
         "confirmWaitMessage": "데이터를 검색하는 동안 시간이 걸립니다.<br/><br/>데이터를 가져오는 동안 또는 다른 작업을 수행하려는 경우 데이터가 준비되어 대기열 탭에 나타날 때까지 기다릴 수 있습니다.<br /><br/>대기열 탭 내의 보고서는 24시간 동안 사용할 수 있습니다.",
         "timeSliceInfo": "<p>데이터 검색 최적화를 위해 1~7일의 기간에 대한 보고서는 1시간 단위로 그룹화되고 7일보다 긴 기간에 대한 보고서는 하루 단위로 그룹화됩니다.</p><p> 더 세분화하려면 이 보고서의 기간을 줄이거나 아래 날짜를 클릭하십시오.</p>"
-
       }
     },
     "apiLabel": {
       "src_location": "위치",
       "timestamp": "날짜",
       "src_ip": "원본 IP",
-      "dns_qclass" : "쿼리 클래스",
+      "dns_qclass": "쿼리 클래스",
       "dns_rcode": "응답 상태",
       "dns_rnum": "응답 기록",
       "dns_qsize": "쿼리 바이트",
@@ -489,7 +488,7 @@
       "dns_rtype": "응답 유형",
       "dns_rclass": "응답 클래스",
       "response_ttl_list": "응답 TTL",
-      "response_ip" : "응답 IP",
+      "response_ip": "응답 IP",
       "domain_risk": "위험",
       "domain_category": "범주",
       "customer_id": "고객 ID",
@@ -843,11 +842,19 @@
       "reports-and-logs": "로그 및 보고서"
     },
     "common": {
+      "clone": "복제",
+      "delete": "삭제",
+      "desc": "설명",
+      "name": "이름",
+      "continue": "계속",
+      "whitespace-name-validation": "이름이 필요함",
       "messages": {
         "generic-error": "요청을 처리하는 중에 예기치 않은 오류가 발생했습니다."
       },
       "on-text": "켜기",
-      "off-text": "끄기"
+      "off-text": "끄기",
+      "clear": "지우기",
+      "matches": "일치 항목"
     },
     "dashboard": {
       "title": "Secure Service Edge - 대시보드",
@@ -866,7 +873,9 @@
         "next": "다음",
         "cancel": "취소",
         "back": "뒤로",
-        "save-rule": "규칙 저장"
+        "save-rule": "규칙 저장",
+        "save": "저장",
+        "proceed": "진행"
       },
       "title": "Secure Service Edge - 정책",
       "breadcrumb": "정책",
@@ -877,7 +886,7 @@
       "condition-description": "이러한 조건이 작업을 트리거합니다.",
       "manage-options": "옵션 관리",
       "options-description": "관련 보안 기능 구성",
-      "add-rule" : {
+      "add-rule": {
         "title": "Secure Service Edge - 정책 - 규칙 추가",
         "breadcrumb": "규칙 추가"
       },
@@ -953,17 +962,43 @@
           },
           "step-2": {
             "user": {
-              "is": "일치",
-              "not-is": "불일치",
+              "any": "모든 사용자",
+              "any-website": "모든 웹사이트",
+              "is": "은(는)",
+              "not-is": "해당하지 않음",
               "group": "그룹에 포함",
               "not-group": "그룹에 미포함",
               "location": "위치에 있음",
-              "network": "네트워크에서 연결되어 있음",
-              "not-network": "네트워크에서 연결되어 있지 않음",
+              "not-location": "위치에 있지 않음",
+              "from-network": "네트워크에서 연결되어 있음",
+              "not-from-network": "네트워크에서 연결되어 있지 않음",
               "computer": "컴퓨터에 있음",
               "not-computer": "컴퓨터에 없음",
               "computer-group": "이 그룹의 컴퓨터에 있음",
-              "not-computer-group": "이 그룹의 컴퓨터에 있음"
+              "not-computer-group": "이 그룹의 컴퓨터에 있음",
+              "device": "장치가",
+              "not-device": "장치가 일치",
+              "device-group": "장치가 그룹에 포함",
+              "not-device-group": "장치가 그룹에 미포함",
+              "category": "범주에 포함",
+              "not-category": "범주에 미포함",
+              "to-network": "네트워크에 포함",
+              "to-not-network": "네트워크에 미포함",
+              "apply": "적용",
+              "cancel": "취소",
+              "create-new-object": "새 개체 생성"
+            },
+            "summary-labels":{
+              "user-connecting_from-network-in": "네트워크",
+              "user-connecting_from-network-not_in": "네트워크",
+              "user-connecting_from-location-in": "위치",
+              "user-connecting_from-location-not_in": "위치",
+              "connecting_to-domain_url-not_in":  "도메인 URL",
+              "connecting_to-domain_url-in": "도메인 URL",
+              "connecting_to-network-not_in": "네트워크",
+              "connecting_to-network-in": "네트워크",
+              "connecting_to-web_category-not_in": "웹 범주",
+              "connecting_to-web_category-in": "웹 범주"
             },
             "connection": {
               "domain": "도메인이 일치",
@@ -975,74 +1010,304 @@
               "application": "응용 프로그램",
               "dest-ip": "대상 IP 주소가 일치",
               "not-dest-ip": "대상 IP 주소가 불일치"
+            },
+            "label-headers": {
+              "the-user": "사용자",
+              "and-the-website": "및 웹사이트"
+            },
+            "dropdown-place-holder": {
+              "user-name": "사용자 이름 선택",
+              "group-name": "이름으로 그룹 선택",
+              "device-name": "이름으로 장치 선택",
+              "device-group": "장치 그룹 선택",
+              "network-name": "네트워크 개체 선택",
+              "location-objects": "위치 개체 선택",
+              "domain-url": "도메인 URL 개체 선택",
+              "category-objects": "'범주 그룹' 개체 선택",
+              "select": "선택"
+            },
+            "error-message": {
+              "match-criteria": "일치 기준 선택",
+              "user-name": "사용자 선택",
+              "user-group": "사용자 그룹 선택",
+              "device-group": "장치 그룹 선택",
+              "device": "장치 선택",
+              "network": "네트워크 선택",
+              "location": "위치 선택",
+              "category": "범주 선택",
+              "domain-url": "도메인 URL 선택",
+              "destination": "대상값 선택",
+              "source": "원본값 선택"
+            },
+            "source-destinations": {
+              "user-name": "사용자 이름",
+              "user-group": "사용자 그룹",
+              "device-group": "장치 그룹",
+              "device": "장치",
+              "network": "네트워크",
+              "location": "위치",
+              "category": "범주",
+              "domain-url": "도메인 URL"
+            },
+            "sub-header": {
+              "user-user_name-in": "포함된 사용자 이름",
+              "user-user_name-not_in": "포함되지 않은 사용자 이름",
+              "user-user_group-in": "포함된 사용자 그룹",
+              "user-user_group-not_in": "포함되지 않은 사용자 그룹",
+              "user-device_group-in": "포함된 장치 그룹",
+              "user-device_group-not_in": "포함된 장치 그룹",
+              "user-device-in": "포함된 장치",
+              "user-device-not_in": "포함되지 않은 장치",
+              "user-connecting_from-network-in": "포함된 네트워크에서 연결",
+              "user-connecting_from-network-not_in": "포함된 네트워크에서 연결",
+              "user-connecting_from-location-in": "포함된 위치에서 연결",
+              "user-connecting_from-location-not_in": "포함된 위치에서 연결하지 않음",
+              "connecting_to-web_category-in": "포함된 웹 카테고리",
+              "connecting_to-web_category-not_in": "포함되지 않은 웹 카테고리",
+              "connecting_to-domain_url-in": "포함된 도메인 URL",
+              "connecting_to-domain_url-not_in": "포함되지 않은 도메인 URL",
+              "connecting_to-network-in": "포함된 네트워크",
+              "connecting_to-network-not_in": "포함되지 않은 네트워크",
+
+              "domain-url": "도메인 URL"
+            },
+            "matches-label": {
+              "user-name": "일치하는 사용자 이름",
+              "user-group": "일치하는 사용자 그룹",
+              "device-group": "일치하는 장치 그룹",
+              "device": "일치하는 장치",
+              "network": "일치하는 네트워크",
+              "location": "일치하는 위치",
+              "category": "일치하는 범주",
+              "domain-url": "일치하는 도메인 URL"
+            },
+            "helper-text": {
+              "multi-chips": " \"또는\"은(는) 여러 개를 의미합니다. 예: 판매 \"또는\" 마케팅",
+              "the-action": "조치",
+              "will-happen": "다음과 같은 경우에만 적용",
+              "add-another": "다른 항목 추가"
+            }
+          },
+          "step-3": {
+            "title": "옵션 관리",
+            "label": "관련 보안 기능을 선택하고 조정하여 역할을 세분화합니다.",
+            "action-title": "조치 취하기",
+            "select-option": "옵션을 선택하십시오.",
+            "log-user-activity-title": "가장 활성화된 규칙을 모니터링할 수 있도록 사용자 활동을 기록합니다.",
+            "toggle-option": "옵션을 켜십시오.",
+            "valid-input": "유효한 입력값을 입력하십시오.",
+            "options": {
+              "labels": {
+                "display-block-page": "'차단' 페이지 표시",
+                "log-user-activity": "사용자 활동 기록",
+                "alert-admin": "관리자에게 경고",
+                "enforce-youtube-restrictions": "YouTube 제한사항 적용",
+                "youtube-restriction-level": "YouTube 제한사항 수준",
+                "restrict-login-domains": "로그인 도메인 제한",
+                "allowed-domains": "허용된 도메인",
+                "action": "조치",
+                "enforce-safe-search": "안전 검색 적용",
+                "detect-zero-day-threats": "제로 데이 위협 감지",
+                "allow-microsoft-tenant-restriction": "Microsoft 테넌트 제한 허용",
+                "restrict-access-to-tenants": "테넌트에 대한 액세스 제한",
+                "restict-access-context": "액세스 컨텍스트 제한",
+                "inspection-profile": "조사 프로필",
+                "decrypt-tls": "TLS 암호 해독",
+                "certificate-verification": "인증서 확인",
+                "scan-for-malware": "맬웨어 및 실제 파일 형식 검사",
+                "detect-zero-day-intellix": "제로 데이 Intellix 감지",
+                "content-check": "콘텐츠 확인"
+              },
+              "values": {
+                "true": true,
+                "false": false,
+                "moderate": "보통",
+                "strict": "엄격",
+                "aggressive": "적극",
+                "recommended": "권장",
+                "log-only": "로그 전용",
+                "silent": "자동",
+                "block-connection": "연결 차단",
+                "allow-user-to-decide": "사용자가 결정하도록 허용",
+                "allow": "허용",
+                "block": "차단",
+                "drop": "손실",
+                "reject": "거부",
+                "decrypt": "암호 해독",
+                "dont-decrypt": "암호를 해독하지 마십시오.",
+                "alert": "경고 개"
+              }
+            }
+          },
+          "summary": {
+            "cloned": "(복제됨)",
+            "action": "작업",
+            "type": "정책 유형",
+            "last-modified": "마지막으로 수정한 날짜",
+            "rule-summary": "규칙 요약",
+            "rule-cloned": "규칙이 복제되었습니다.",
+            "rule-clone-error-msg": "규칙을 복제하지 못했습니다.",
+            "name-desc": "이름 및 설명",
+            "suggest-name": "이 규칙의 이름이 제안되었지만 자유롭게 변경할 수 있습니다.",
+            "policy-name-required": "정책 이름이 필요합니다.",
+            "desc-validation": "설명은 300자를 초과해서는 안 됨",
+            "activate-rule": "규칙 활성화",
+            "activate-rule-desc": "규칙을 적용하려면 활성화해야 합니다.",
+            "match-conditions": "다음 조건이 일치하는 경우 웹사이트를 허용합니다.",
+            "also": "다음 조건이 일치하는 경우에도 웹사이트를 허용합니다.",
+            "how-work": "사용 방법",
+            "check-traffic": "이 규칙은 다음 각 필터링 단계에서 트래픽을 확인합니다.",
+            "rule-effect": "각 단계에서 순위가 더 높은 다른 규칙이 먼저 일치하면 이 규칙은 아무런 영향을 미치지 않습니다.",
+            "edit-condition": "조건 편집",
+            "edit-option": "옵션 편집",
+            "conditions": "조건",
+            "options": "옵션",
+            "help-text": {
+              "dns": "이 규칙의 조건과 일치하는 DNS 조회가 허용되거나 차단됩니다.",
+              "fw": "이 규칙의 조건과 일치하는 연결 및 패킷이 허용되거나 차단됩니다.",
+              "tls": "이 규칙의 조건과 일치하는 암호화된 트래픽은 암호가 해독됩니다/해독되지 않습니다.",
+              "web-url": "이 규칙의 조건과 일치하는 웹 요청은 차단되거나 허용됩니다.",
+              "web-content": "사용자 및 웹사이트 조건과 일치하는 웹 콘텐츠는 검사됩니다. 이 규칙의 콘텐츠 조건과 일치하면 차단되거나 허용됩니다.",
+              "app-control": "이 규칙의 사용자 및 웹사이트 또는 대상 조건과 일치하고 지정된 응용 프로그램 기준과도 일치하는 트래픽은 허용되거나 차단됩니다.",
+              "ips": "이 규칙의 사용자 및 웹 사이트 또는 대상 조건과 일치하는 트래픽은 IPS 엔진에서 검사됩니다. 서명이 일치하면 선택한 프로필에 따라 적절한 조치가 취해집니다."
+            }
+           }
+          },
+          "delete-rule": {
+            "warning": "이 규칙이 활성화되기 전에는 기능 변경 사항이 발생하지 않음"
+          },
+          "policy-list":{
+            "delete": "삭제",
+            "cancel": "취소",
+            "delete-confirm-message": "다음을 삭제하시겠습니까? ",
+            "delete-rule": "규칙 삭제",
+            "clone-rule": "규칙 복제",
+            "clone-confirm-message": "새 규칙이 다음에서 복제됩니다 ",
+            "rule-deleted": "규칙을 삭제했습니다.",
+            "rule-added": "규칙이 추가되었습니다",
+            "rule-add-error": "규칙을 추가하지 못했습니다",
+            "rule-delete-error-msg": "파일을 삭제하지 못했습니다",
+            "rank-update": "순위가 업데이트되었습니다",
+            "rank-update-error": "순위를 업데이트하는 중 오류가 발생했습니다"
+          },
+          "unsaved-changes": {
+            "title": "저장하지 않은 작업이 있습니다",
+            "message": "지금 취소하면 저장하지 않은 작업이 손실됩니다. 계속하시겠습니까?"
+          }
+        },
+        "no-policy": {
+          "title": "추가된 규칙이 없습니다",
+          "body": "규칙을 추가하려면 규칙 추가 버튼을 클릭하십시오."
+        },
+        "pagination": {
+          "page-info": "{{total}} 중 {{start}}-{{end}}"
+        },
+        "tooltips": {
+          "locked-icon-text": "기본 규칙의 순위를 삭제하거나 조정할 수는 없지만 편집할 수는 있습니다."
+        },
+        "headers": {
+          "rank": "순위",
+          "rule-name": "규칙 이름",
+          "action": "작업",
+          "filtering-stages": "필터링 단계",
+          "description": "설명",
+          "active": "활성",
+          "dns": "DNS",
+          "fw": "FW",
+          "tls": "TLS",
+          "web-url": "웹 URL",
+          "web-content": "웹 콘텐츠",
+          "app-control": "앱 제어",
+          "ips": "IPS",
+          "tooltips": {
+            "filtering": {
+              "description": "트래픽은 DNS, 방화벽, TLS, 웹 URL, 웹 콘텐츠 순서로 최대 5단계의 필터링을 거칩니다.",
+              "point-one": "각 규칙은 둘 이상의 필터링 단계에 적용될 수 있습니다.",
+              "point-two": "각 단계에서 규칙은 하향식으로 평가되며 해당 단계에 대해 첫 번째로 일치하는 규칙이 적용됩니다.",
+              "point-three": "트래픽은 각 단계에서 각기 다른 규칙과 일치할 수 있습니다."
             }
           }
         },
-        "delete-rule":{
-          "warning": "이 규칙이 활성화되기 전에는 기능 변경 사항이 발생하지 않음"
+        "filters": {
+          "all": "모든 필터링 단계",
+          "dns": "DNS",
+          "firewall": "방화벽",
+          "tls": "TLS",
+          "web-url": "웹 URL",
+          "web-content": "웹 콘텐츠",
+          "app-control": "앱 제어",
+          "ips": "IPS"
+        },
+        "ellipsis-menu": {
+          "edit-rule": "규칙 편집",
+          "add-rule-above": "위에 규칙 추가",
+          "add-rule-below": "아래에 규칙 추가",
+          "move-to-rank": "순위 번호로 이동",
+          "move-to-rank-button": "적용",
+          "clone-rule-above": "위에 복제 규칙",
+          "clone-rule-below": "아래에 복제 규칙",
+          "delete-rule": "규칙 삭제"
         }
       },
-      "no-policy": {
-        "title": "추가된 규칙이 없습니다",
-        "body": "규칙을 추가하려면 규칙 추가 버튼을 클릭하십시오."
+      "agent-config": {
+        "title": "Secure Service Edge - 에이전트 구성",
+        "breadcrumb": "에이전트 구성"
       },
-      "pagination": {
-        "page-info": "{{total}} 중 {{start}}-{{end}}"
-      },
-      "headers": {
-        "rank": "순위",
-        "rule-name": "규칙 이름",
-        "action": "작업",
-        "filtering-stages": "필터링 단계",
-        "active": "활성",
-        "dns": "DNS",
-        "fw": "FW",
-        "tls": "TLS",
-        "web-url": "웹 URL",
-        "web-content": "웹 콘텐츠",
-        "app-control": "앱 제어",
-        "ips": "IPS",
-        "tooltips": {
-          "filtering": {
-            "description": "트래픽은 DNS, 방화벽, TLS, 웹 URL, 웹 콘텐츠 순서로 최대 5단계의 필터링을 거칩니다.",
-            "point-one": "각 규칙은 둘 이상의 필터링 단계에 적용될 수 있습니다.",
-            "point-two": "각 단계에서 규칙은 하향식으로 평가되며 해당 단계에 대해 첫 번째로 일치하는 규칙이 적용됩니다.",
-            "point-three": "트래픽은 각 단계에서 각기 다른 규칙과 일치할 수 있습니다."
+      "objects": {
+        "title": "Secure Service Edge - 개체",
+        "breadcrumb": "개체",
+        "button": {
+          "add-object": "개체 추가",
+          "delete-object": "삭제",
+          "next": "다음",
+          "cancel": "취소",
+          "back": "뒤로",
+          "add": "추가",
+          "save": "저장"
+        },
+        "no-object": {
+          "title": "추가된 개체가 없습니다",
+          "body": "개체를 추가하려면 개체 추가 버튼을 클릭하십시오."
+        },
+        "pagination": {
+          "page-info": "{{total}}개 중 {{start}}~{{end}}/{{ selected }}개 선택됨"
+        },
+        "headers": {
+          "object-name": "개체 이름",
+          "items": "항목 수",
+          "object-type": "개체 유형",
+          "contents": "콘텐츠",
+          "object-usage": "개체 사용",
+          "tooltips": {
+            "items": {
+              "description": "중첩된 개체에 항목 미포함"
+            },
+            "usage": {
+              "description": "개체는 하나 이상의 규칙에 사용될 수 있으며 다른 개체 내에 중첩될 수도 있습니다."
+            }
           }
+        },
+        "filters": {
+          "all": "모든 개체 유형",
+          "network": "네트워크",
+          "network-service": "네트워크 서비스",
+          "domain-url": "도메인 또는 URL",
+          "file-type": "파일 형식",
+          "application": "응용 프로그램",
+          "website-category": "웹사이트 범주",
+          "location": "위치",
+          "geoip": "GeoIP"
+        },
+        "contents": {
+          "ip-addr": "IPv4 주소",
+          "ip-addr-range": "IPv4 주소 범위",
+          "ip-subnet": "IP 서브넷"
         }
       },
-      "filters": {
-        "all": "모든 필터링 단계",
-        "dns": "DNS",
-        "firewall": "방화벽",
-        "tls": "TLS",
-        "web-url": "웹 URL",
-        "web-content": "웹 콘텐츠",
-        "app-control": "앱 제어",
-        "ips": "IPS"
-      },
-      "ellipsis-menu": {
-        "edit-rule": "규칙 편집",
-        "add-rule-above": "위에 규칙 추가",
-        "add-rule-below": "아래에 규칙 추가",
-        "move-to-rank": "순위 번호로 이동",
-        "move-to-rank-button": "적용",
-        "clone-rule-above": "위에 복제 규칙",
-        "clone-rule-below": "아래에 복제 규칙",
-        "delete-rule": "규칙 삭제"
+      "settings": {
+        "title": "Secure Service Edge - 설정",
+        "breadcrumb": "설정"
       }
-    },
-    "agent-config": {
-      "title": "Secure Service Edge - 에이전트 구성",
-      "breadcrumb": "에이전트 구성"
-    },
-    "objects": {
-      "title": "Secure Service Edge - 개체",
-      "breadcrumb": "개체"
-    },
-    "settings": {
-      "title": "Secure Service Edge - 설정",
-      "breadcrumb": "설정"
     }
   }
-}
+

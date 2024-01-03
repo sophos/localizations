@@ -473,14 +473,13 @@
       "messages": {
         "confirmWaitMessage": "データの取得に多少時間がかかっています。<br/><br/>データの取得を待つか、他のアクションを実行する場合は、準備ができたら「キュー」タブにデータが表示されます。<br /><br/>「キュー」タブにあるレポートは 24時間使用できます。",
         "timeSliceInfo": "<p>データの取得を最適化するために、期間が 1～7日間のレポートは 1時間単位でグループ化され、期間が 7日を超えるレポートは 1日単位でグループ化されます。</p><p>より詳細に情報を表示するには、レポートの期間を短くするか、以下の日付をクリックしてください</p>"
-
       }
     },
     "apiLabel": {
       "src_location": "場所",
       "timestamp": "日付",
       "src_ip": "送信元 IP",
-      "dns_qclass" : "クエリクラス",
+      "dns_qclass": "クエリクラス",
       "dns_rcode": "応答ステータス",
       "dns_rnum": "応答レコード",
       "dns_qsize": "クエリバイト",
@@ -489,7 +488,7 @@
       "dns_rtype": "応答の種類",
       "dns_rclass": "応答クラス",
       "response_ttl_list": "応答 TTL",
-      "response_ip" : "応答 IP",
+      "response_ip": "応答 IP",
       "domain_risk": "リスク",
       "domain_category": "カテゴリ",
       "customer_id": "顧客 ID",
@@ -843,11 +842,19 @@
       "reports-and-logs": "ログとレポート"
     },
     "common": {
+      "clone": "複製",
+      "delete": "削除",
+      "desc": "説明",
+      "name": "名前",
+      "continue": "続行",
+      "whitespace-name-validation": "名前を指定してください",
       "messages": {
         "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。"
       },
       "on-text": "オン",
-      "off-text": "オフ"
+      "off-text": "オフ",
+      "clear": "クリア",
+      "matches": "一致した項目"
     },
     "dashboard": {
       "title": "Secure Service Edge - ダッシュボード",
@@ -866,7 +873,9 @@
         "next": "次へ",
         "cancel": "キャンセル",
         "back": "戻る",
-        "save-rule": "ルールの保存"
+        "save-rule": "ルールの保存",
+        "save": "保存",
+        "proceed": "続行"
       },
       "title": "Secure Service Edge - ポリシー",
       "breadcrumb": "ポリシー",
@@ -877,7 +886,7 @@
       "condition-description": "これらの条件により、アクションがトリガーされます。",
       "manage-options": "オプションの管理",
       "options-description": "関連するセキュリティ機能の設定",
-      "add-rule" : {
+      "add-rule": {
         "title": "Secure Service Edge - ポリシー - ルールの追加",
         "breadcrumb": "ルールの追加"
       },
@@ -953,17 +962,43 @@
           },
           "step-2": {
             "user": {
+              "any": "任意のユーザー",
+              "any-website": "任意の Web サイト",
               "is": "次に一致する",
               "not-is": "次に一致しない",
-              "group": "グループに存在します",
-              "not-group": "グループに存在しません",
-              "location": "ロケーションに存在します",
-              "network": "ネットワークから接続しています",
-              "not-network": "ネットワークから接続していません",
-              "computer": "コンピュータ上に存在します",
-              "not-computer": "コンピュータ上に存在しません",
-              "computer-group": "このグループのコンピュータ上に存在します",
-              "not-computer-group": "このグループのコンピュータ上に存在します"
+              "group": "グループに存在する",
+              "not-group": "グループに存在しない",
+              "location": "場所に存在する",
+              "not-location": "場所に存在しない",
+              "from-network": "ネットワークから接続している",
+              "not-from-network": "ネットワークから接続していない",
+              "computer": "コンピュータ上に存在する",
+              "not-computer": "コンピュータ上に存在しない",
+              "computer-group": "このグループのコンピュータ上に存在する",
+              "not-computer-group": "このグループのコンピュータ上に存在する",
+              "device": "デバイスは存在する",
+              "not-device": "デバイスは存在しない",
+              "device-group": "デバイスはグループに存在する",
+              "not-device-group": "デバイスはグループに存在しない",
+              "category": "カテゴリに存在する",
+              "not-category": "カテゴリに存在しない",
+              "to-network": "ネットワークに存在する",
+              "to-not-network": "ネットワークに存在しない",
+              "apply": "適用",
+              "cancel": "キャンセル",
+              "create-new-object": "新規オブジェクトの作成"
+            },
+            "summary-labels":{
+              "user-connecting_from-network-in": "ネットワーク",
+              "user-connecting_from-network-not_in": "ネットワーク",
+              "user-connecting_from-location-in": "場所",
+              "user-connecting_from-location-not_in": "場所",
+              "connecting_to-domain_url-not_in":  "ドメイン URL",
+              "connecting_to-domain_url-in": "ドメイン URL",
+              "connecting_to-network-not_in": "ネットワーク",
+              "connecting_to-network-in": "ネットワーク",
+              "connecting_to-web_category-not_in": "Web カテゴリ",
+              "connecting_to-web_category-in": "Web カテゴリ"
             },
             "connection": {
               "domain": "ドメインは、である",
@@ -975,74 +1010,304 @@
               "application": "アプリケーション",
               "dest-ip": "宛先 IP アドレスは、である",
               "not-dest-ip": "宛先IPアドレスは、ではない"
+            },
+            "label-headers": {
+              "the-user": "ユーザー",
+              "and-the-website": "および Web サイト"
+            },
+            "dropdown-place-holder": {
+              "user-name": "ユーザー名の選択",
+              "group-name": "グループ名の選択",
+              "device-name": "デバイス名の選択",
+              "device-group": "デバイスグループの選択",
+              "network-name": "ネットワークオブジェクトの選択",
+              "location-objects": "場所のオブジェクトの選択",
+              "domain-url": "ドメイン/URL オブジェクトの選択",
+              "category-objects": "「カテゴリグループ」オブジェクトの選択",
+              "select": "選択"
+            },
+            "error-message": {
+              "match-criteria": "一致条件の選択",
+              "user-name": "ユーザーの選択",
+              "user-group": "ユーザーグループの選択",
+              "device-group": "デバイスグループの選択",
+              "device": "デバイスの選択",
+              "network": "ネットワークの選択",
+              "location": "場所の選択",
+              "category": "カテゴリの選択",
+              "domain-url": "ドメイン URL の選択",
+              "destination": "宛先値の選択",
+              "source": "ソース値の選択"
+            },
+            "source-destinations": {
+              "user-name": "ユーザー名",
+              "user-group": "ユーザーグループ:",
+              "device-group": "デバイスグループ:",
+              "device": "デバイス",
+              "network": "ネットワーク",
+              "location": "場所",
+              "category": "カテゴリ",
+              "domain-url": "ドメイン URL"
+            },
+            "sub-header": {
+              "user-user_name-in": "ユーザー名が、ある",
+              "user-user_name-not_in": "ユーザー名は、ない",
+              "user-user_group-in": "ユーザーグループが、ある",
+              "user-user_group-not_in": "ユーザーグループは、ない",
+              "user-device_group-in": "デバイスグループが、ある",
+              "user-device_group-not_in": "デバイスグループが、ある",
+              "user-device-in": "デバイスが、ある",
+              "user-device-not_in": "デバイスは、ない",
+              "user-connecting_from-network-in": "ネットワークからの接続が、ある",
+              "user-connecting_from-network-not_in": "ネットワークからの接続が、ある",
+              "user-connecting_from-location-in": "場所からの接続が、ある",
+              "user-connecting_from-location-not_in": "場所からの接続は、ない",
+              "connecting_to-web_category-in": "Web カテゴリが、ある",
+              "connecting_to-web_category-not_in": "Web カテゴリは、ない",
+              "connecting_to-domain_url-in": "ドメイン URL が、ある",
+              "connecting_to-domain_url-not_in": "ドメイン URL は、ない",
+              "connecting_to-network-in": "ネットワークが、ある",
+              "connecting_to-network-not_in": "ネットワークは、ない",
+
+              "domain-url": "ドメイン URL"
+            },
+            "matches-label": {
+              "user-name": "一致したユーザー名",
+              "user-group": "一致したユーザーグループ",
+              "device-group": "一致したデバイスグループ",
+              "device": "一致したデバイス",
+              "network": "一致したネットワーク",
+              "location": "一致した場所",
+              "category": "一致したカテゴリ",
+              "domain-url": "一致したドメイン URL"
+            },
+            "helper-text": {
+              "multi-chips": " \"または\" は、複数の場合に暗黙的に使用されます。 セールス \"または\" マーケティング",
+              "the-action": "アクションは",
+              "will-happen": "別のものが追加された",
+              "add-another": "場合にのみ適用されます"
+            }
+          },
+          "step-3": {
+            "title": "オプションの管理",
+            "label": "関連するセキュリティ機能を選択して調整し、役割を絞り込む",
+            "action-title": "対処する",
+            "select-option": "オプションを選択してください。",
+            "log-user-activity-title": "ユーザーアクティビティをログに記録して、最もアクティブなルールを監視できます。",
+            "toggle-option": "オプションをオンに切り替えてください。",
+            "valid-input": "有効な値を入力してください。",
+            "options": {
+              "labels": {
+                "display-block-page": "「ブロック」ページの表示",
+                "log-user-activity": "ユーザーアクティビティのログ",
+                "alert-admin": "警告管理者",
+                "enforce-youtube-restrictions": "YouTube 制限の適用",
+                "youtube-restriction-level": "YouTube 制限レベル",
+                "restrict-login-domains": "ログインドメインの制限",
+                "allowed-domains": "許可するドメイン",
+                "action": "アクション",
+                "enforce-safe-search": "セーフサーチの施行",
+                "detect-zero-day-threats": "ゼロデイ脅威の検出",
+                "allow-microsoft-tenant-restriction": "Microsoft テナント制限の許可",
+                "restrict-access-to-tenants": "テナントへのアクセスの制限",
+                "restict-access-context": "アクセスコンテキストの制限",
+                "inspection-profile": "インスペクションプロファイル",
+                "decrypt-tls": "TLS 復号化",
+                "certificate-verification": "証明書の検証",
+                "scan-for-malware": "マルウェアおよび正式なファイルタイプのスキャン",
+                "detect-zero-day-intellix": "ゼロデイ Intellix の検出",
+                "content-check": "コンテンツチェック"
+              },
+              "values": {
+                "true": true,
+                "false": false,
+                "moderate": "中レベル",
+                "strict": "高レベル",
+                "aggressive": "アグレッシブ",
+                "recommended": "推奨",
+                "log-only": "ログのみ",
+                "silent": "サイレント",
+                "block-connection": "ブロック接続",
+                "allow-user-to-decide": "ユーザーに決定を許可する",
+                "allow": "許可",
+                "block": "ブロック",
+                "drop": "破棄",
+                "reject": "拒否",
+                "decrypt": "復号化",
+                "dont-decrypt": "復号化しない",
+                "alert": "警告"
+              }
+            }
+          },
+          "summary": {
+            "cloned": "(複製)",
+            "action": "アクション",
+            "type": "ポリシーの種類",
+            "last-modified": "前回更新日時",
+            "rule-summary": "ルールの概要",
+            "rule-cloned": "ルールが複製されました。",
+            "rule-clone-error-msg": "ルールを複製できませんでした。",
+            "name-desc": "名前と説明",
+            "suggest-name": "システムはこのルールの名前を提案していますが、自由に変更して構いません。",
+            "policy-name-required": "ポリシー名を指定してください",
+            "desc-validation": "説明は 300文字以内で入力してください",
+            "activate-rule": "ルールのアクティブ化",
+            "activate-rule-desc": "ルールを有効にするには、アクティブ化する必要があります。",
+            "match-conditions": "次の条件に一致する場合は Web サイトを許可:",
+            "also": "また:",
+            "how-work": "仕組みについて",
+            "check-traffic": "このルールは、次の各フィルタリングステージでトラフィックをチェックします:",
+            "rule-effect": "各ステージで、ランクの高い別のルールが最初に一致した場合、このルールは無効になります。",
+            "edit-condition": "条件の編集",
+            "edit-option": "オプションの編集",
+            "conditions": "条件",
+            "options": "オプション",
+            "help-text": {
+              "dns": "このルールの条件に一致する DNS ルックアップは、許可またはブロックされます。",
+              "fw": "このルールの条件に一致する接続およびパケットは、許可またはブロックされます。",
+              "tls": "このルールの条件に一致する暗号化トラフィックは復号化されます/復号化されません。",
+              "web-url": "このルールの条件に一致する Web リクエストは、ブロックまたは許可されます。",
+              "web-content": "ユーザーおよび Web サイトの条件に一致する Web コンテンツがスキャンされます。このルールのコンテンツ条件に一致する場合、ブロックまたは許可されます。",
+              "app-control": "このルールのユーザーと Web サイトまたは宛先の条件に一致し、指定されたアプリケーション条件にも一致するトラフィックは、許可またはブロックされます。",
+              "ips": "このルールのユーザおよび Web サイトまたは宛先の条件に一致するトラフィックは、IPS エンジンによってスキャンされます。署名が一致する場合、選択したプロファイルに基づいて適切なアクションが実行されます。"
+            }
+           }
+          },
+          "delete-rule": {
+            "warning": "ルールが有効になるまで、機能的な変更は行われません"
+          },
+          "policy-list":{
+            "delete": "削除",
+            "cancel": "キャンセル",
+            "delete-confirm-message": "削除してもよいですか ",
+            "delete-rule": "ルールの削除",
+            "clone-rule": "ルールの複製",
+            "clone-confirm-message": "複製して、新しいルールが作成されます。 ",
+            "rule-deleted": "ルールを削除しました",
+            "rule-added": "ルールを追加しました",
+            "rule-add-error": "ルールを追加できませんでした",
+            "rule-delete-error-msg": "ファイルを削除できませんでした",
+            "rank-update": "ランクが更新されました",
+            "rank-update-error": "ランクの更新中にエラーが発生しました"
+          },
+          "unsaved-changes": {
+            "title": "未保存の作業があります",
+            "message": "ここでキャンセルすると、未保存の作業は失われます。続行しますか？"
+          }
+        },
+        "no-policy": {
+          "title": "追加したルールはありません。",
+          "body": "ルールを追加するには、追加ルールボタンをクリックします。"
+        },
+        "pagination": {
+          "page-info": "{{start}} ～ {{end}} / {{total}}"
+        },
+        "tooltips": {
+          "locked-icon-text": "デフォルトのルールのランクを削除または調整することはできませんが、編集することはできます。"
+        },
+        "headers": {
+          "rank": "ランク",
+          "rule-name": "ルール名",
+          "action": "アクション",
+          "filtering-stages": "フィルタリングステージ",
+          "description": "説明",
+          "active": "有効",
+          "dns": "DNS",
+          "fw": "FW",
+          "tls": "TLS",
+          "web-url": "Web URL",
+          "web-content": "Web コンテンツ",
+          "app-control": "アプリケーションコントロール",
+          "ips": "IPS (侵入防御システム)",
+          "tooltips": {
+            "filtering": {
+              "description": "トラフィックは、DNS、ファイアウォール、TLS、Web URL、Web コンテンツの順で最大 5 つのフィルタリング手順を通過します。",
+              "point-one": "各ルールは、フィルタリングの複数の段階で適用できます。",
+              "point-two": "ルールは各ステージで上から下に評価され、そのステージで最初に一致したルールが適用されます。",
+              "point-three": "トラフィックは、各段階で異なるルールに一致する場合があります。"
             }
           }
         },
-        "delete-rule":{
-          "warning": "ルールが有効になるまで、機能的な変更は行われません"
+        "filters": {
+          "all": "すべてのフィルタリングステージ",
+          "dns": "DNS",
+          "firewall": "ファイアウォール",
+          "tls": "TLS",
+          "web-url": "Web URL",
+          "web-content": "Web コンテンツ",
+          "app-control": "アプリケーションコントロール",
+          "ips": "IPS (侵入防御システム)"
+        },
+        "ellipsis-menu": {
+          "edit-rule": "ルールの編集",
+          "add-rule-above": "ルールを上に追加",
+          "add-rule-below": "ルールを下に追加",
+          "move-to-rank": "ランク # に移動",
+          "move-to-rank-button": "適用",
+          "clone-rule-above": "上にルールのクローンを作成",
+          "clone-rule-below": "下にルールのクローンを作成",
+          "delete-rule": "ルールの削除"
         }
       },
-      "no-policy": {
-        "title": "追加したルールはありません。",
-        "body": "ルールを追加するには、追加ルールボタンをクリックします。"
+      "agent-config": {
+        "title": "Secure Service Edge - エージェント設定",
+        "breadcrumb": "エージェント設定"
       },
-      "pagination": {
-        "page-info": "{{start}} ～ {{end}} / {{total}}"
-      },
-      "headers": {
-        "rank": "ランク",
-        "rule-name": "ルール名",
-        "action": "アクション",
-        "filtering-stages": "フィルタリングステージ",
-        "active": "有効",
-        "dns": "DNS",
-        "fw": "FW",
-        "tls": "TLS",
-        "web-url": "Web URL",
-        "web-content": "Web コンテンツ",
-        "app-control": "アプリケーションコントロール",
-        "ips": "IPS (侵入防御システム)",
-        "tooltips": {
-          "filtering": {
-            "description": "トラフィックは、DNS、ファイアウォール、TLS、Web URL、Web コンテンツの順で最大 5 つのフィルタリング手順を通過します。",
-            "point-one": "各ルールは、フィルタリングの複数の段階で適用できます。",
-            "point-two": "ルールは各ステージで上から下に評価され、そのステージで最初に一致したルールが適用されます。",
-            "point-three": "トラフィックは、各段階で異なるルールに一致する場合があります。"
+      "objects": {
+        "title": "Secure Service Edge - オブジェクト",
+        "breadcrumb": "オブジェクト",
+        "button": {
+          "add-object": "オブジェクトの追加",
+          "delete-object": "削除",
+          "next": "次へ",
+          "cancel": "キャンセル",
+          "back": "戻る",
+          "add": "追加",
+          "save": "保存"
+        },
+        "no-object": {
+          "title": "追加したオブジェクトはありません",
+          "body": "オブジェクトを追加するには、オブジェクトの追加ボタンをクリックします。"
+        },
+        "pagination": {
+          "page-info": "{{total}}件中 {{start}} ～ {{end}}件 / {{ selected }}件を選択"
+        },
+        "headers": {
+          "object-name": "オブジェクト名",
+          "items": "項目数",
+          "object-type": "オブジェクトの種類",
+          "contents": "コンテンツ",
+          "object-usage": "オブジェクトの使用",
+          "tooltips": {
+            "items": {
+              "description": "ネストされたオブジェクトに項目を含めない"
+            },
+            "usage": {
+              "description": "オブジェクトは 1つ以上のルールで使用でき、他のオブジェクト内にネストすることもできます"
+            }
           }
+        },
+        "filters": {
+          "all": "すべてのオブジェクトの種類",
+          "network": "ネットワーク",
+          "network-service": "ネットワークサービス",
+          "domain-url": "ドメインまたは URL",
+          "file-type": "ファイルタイプ",
+          "application": "アプリケーション",
+          "website-category": "Web サイトのカテゴリ",
+          "location": "場所",
+          "geoip": "GeoIP"
+        },
+        "contents": {
+          "ip-addr": "IPv4 アドレス",
+          "ip-addr-range": "IPv4 アドレス範囲",
+          "ip-subnet": "IP サブネット"
         }
       },
-      "filters": {
-        "all": "すべてのフィルタリングステージ",
-        "dns": "DNS",
-        "firewall": "ファイアウォール",
-        "tls": "TLS",
-        "web-url": "Web URL",
-        "web-content": "Web コンテンツ",
-        "app-control": "アプリケーションコントロール",
-        "ips": "IPS (侵入防御システム)"
-      },
-      "ellipsis-menu": {
-        "edit-rule": "ルールの編集",
-        "add-rule-above": "ルールを上に追加",
-        "add-rule-below": "ルールを下に追加",
-        "move-to-rank": "ランク # に移動",
-        "move-to-rank-button": "適用",
-        "clone-rule-above": "上にルールのクローンを作成",
-        "clone-rule-below": "下にルールのクローンを作成",
-        "delete-rule": "ルールの削除"
+      "settings": {
+        "title": "Secure Service Edge - 設定",
+        "breadcrumb": "設定"
       }
-    },
-    "agent-config": {
-      "title": "Secure Service Edge - エージェント設定",
-      "breadcrumb": "エージェント設定"
-    },
-    "objects": {
-      "title": "Secure Service Edge - オブジェクト",
-      "breadcrumb": "オブジェクト"
-    },
-    "settings": {
-      "title": "Secure Service Edge - 設定",
-      "breadcrumb": "設定"
     }
   }
-}
+
