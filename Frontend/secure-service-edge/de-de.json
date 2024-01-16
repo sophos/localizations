@@ -451,6 +451,7 @@
         "exportSchedulingOff": "Zeitplan exportieren deaktiviert",
         "exportSchedulingOn": "Zeitplan exportieren aktiviert",
         "scheduleStats": "Ihre Organisation kann bis zu {{limit}} geplante Exporte haben. Sie haben derzeit {{count}}.",
+        "scheduleLimitReached": "Ihr Unternehmen hat die Obergrenze von {{limit}} geplanten Berichten erreicht.",
         "timeFrame": "Zeitrahmen",
         "exportFrequency": "Exporthäufigkeit",
         "duration": "Dauer",
@@ -546,7 +547,7 @@
       "health_count": "Integritätswert",
       "reason": "Urteil",
       "sha256": "SHA256",
-      "heartbeat": "Security Heartbeat",
+      "heartbeat": "Heartbeat",
       "ips_policy_id": "IPS-Richtlinien-ID",
       "download_file": "Datei herunterladen",
       "source_ip": "Ursprungs-IP",
@@ -873,7 +874,7 @@
         "next": "Weiter",
         "cancel": "Abbrechen",
         "back": "Zurück",
-        "save-rule": "Regel speichern",
+        "save-rule": "Speichern",
         "save": "Speichern",
         "proceed": "Fortfahren"
       },
@@ -887,8 +888,10 @@
       "manage-options": "Optionen verwalten",
       "options-description": "Zugehörige Sicherheitsfunktionen konfigurieren",
       "add-rule": {
-        "title": "Secure Service Edge - Richtlinie - Regel hinzufügen",
-        "breadcrumb": "Regel hinzufügen"
+        "add-title": "Secure Service Edge - Richtlinie - Regel hinzufügen",
+        "edit-title": "Secure Service Edge - Richtlinie - Regel bearbeiten",
+        "breadcrumb-add": "Regel hinzufügen",
+        "breadcrumb-edit": "Regel bearbeiten"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "IPS-Regel",
               "ips-rule-desc": "Verwenden Sie diese Regel, um die IPS-Empfindlichkeit für den ausgewählten Datenverkehr zu ändern",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "Liste erlaubter Webseiten",
+              "network-allow-list": "Liste erlaubter Netzwerke"
+            },
+            "disable-step-tooltip": "Um die Aktion der Regel zu ändern, müssen Sie diese Regel abbrechen oder löschen und neu beginnen."
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "Der Benutzer",
-              "and-the-website": "und die Webseite"
+              "and-the-website": "und die Webseite",
+              "and-the-user-is-conneting-to": "und der Benutzer verbindet sich mit",
+              "and-the-service-port-and-protocol":"und Dienst-Port und Protokoll"
             },
             "dropdown-place-holder": {
               "user-name": "Benutzername auswählen",
@@ -1144,8 +1154,8 @@
             "action": "Maßnahmen",
             "type": "Richtlinientyp",
             "last-modified": "Zuletzt bearbeitet",
-            "rule-summary": "Regelzusammenfassung",
-            "rule-cloned": "Regel geklont.",
+            "rule-summary": "Regelübersicht",
+            "rule-cloned": "Regel geklont",
             "rule-clone-error-msg": "Regel konnte nicht geklont werden",
             "name-desc": "Name und Beschreibung",
             "suggest-name": "Das System hat einen Namen für diese Regel vorgeschlagen, Sie können diesen aber ändern.",
@@ -1185,10 +1195,14 @@
             "clone-confirm-message": "Eine neue Regel wird geklont von ",
             "rule-deleted": "Regel gelöscht",
             "rule-added": "Regel hinzugefügt",
+            "rule-updated": "Regel aktualisiert",
             "rule-add-error": "Regel konnte nicht hinzugefügt werden",
-            "rule-delete-error-msg": "Datei konnte nicht gelöscht werden",
+            "rule-update-error": "Regel konnte nicht aktualisiert werden",
+            "rule-delete-error-msg": "Regel konnte nicht gelöscht werden",
             "rank-update": "Rang wurde aktualisiert",
-            "rank-update-error": "Fehler beim Aktualisieren des Rangs"
+            "locked-rules-error": "Sie können die Position von gesperrten Regeln nicht ändern",
+            "rule-position-change": "Regelposition geändert",
+            "rank-update-error": "Fehler beim Aktualisieren der Rangfolge"
           },
           "unsaved-changes": {
             "title": "Sie haben ungesicherte Änderungen",
@@ -1203,7 +1217,8 @@
           "page-info": "{{start}}-{{end}} von {{total}}"
         },
         "tooltips": {
-          "locked-icon-text": "Sie können den Rang von Standardregeln nicht löschen oder anpassen, aber Sie können diese bearbeiten."
+          "locked-icon-text": "Sie können den Rang von Standardregeln nicht löschen oder anpassen, aber Sie können diese bearbeiten.",
+          "high-risk": "Diese wichtige Standardregel ist immer aktiv, und Sie können sie weder bearbeiten, noch ihre Rangfolge ändern."
         },
         "headers": {
           "rank": "Rang",
@@ -1263,7 +1278,14 @@
           "cancel": "Abbrechen",
           "back": "Zurück",
           "add": "Hinzufügen",
-          "save": "Speichern"
+          "save": "Speichern",
+          "copy": "Kopieren"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "Objekttyp"
+        },
+        "dropdown-place-holder": {
+          "select": "Auswählen"
         },
         "no-object": {
           "title": "Sie haben keine Objekte hinzugefügt",
@@ -1278,14 +1300,34 @@
           "object-type": "Objekttyp",
           "contents": "Inhalt",
           "object-usage": "Objektverwendung",
+          "desc": "Beschreibung",
+          "add-object": "Objekt hinzufügen",
+          "delete-object": "Objekt löschen",
           "tooltips": {
             "items": {
               "description": "Ohne Elemente in untergeordneten Objekten"
             },
             "usage": {
-              "description": "Objekte können in einer oder mehreren Regeln verwendet werden und auch Teil anderer Objekte sein"
+              "description": "Objekte können in einer oder mehreren Regeln verwendet werden oder in anderen Objekten enthalten sein"
             }
           }
+        },
+        "delete-object":{
+          "delete": "Löschen",
+          "objects": "Objekte",
+          "object": "Objekt",
+          "warning": "Warnung! ",
+          "delete-warning": "Löschen nicht möglich, da von anderen Regeln oder Objekten referenziert. ",
+          "object-delete-one-info": "Objekt konnte nicht gelöscht werden",
+          "object-delete-other-info": "Objekte konnten nicht gelöscht werden",
+          "referenced-object": "Löschen Sie nur Objekte, die nicht referenziert sind.",
+          "object-deleted": "Objekt gelöscht",
+          "object-delete-error": "Objekt konnte nicht gelöscht werden",
+          "object-referenced-rule-one": " wird von {{totalRule}} Regel referenziert",
+          "object-referenced-rule-other": " wird von {{totalRule}} Regeln referenziert",
+          "object-referenced-object-one": "wird (als enthaltenen Objekt) von {{totalObject}} Objekt referenziert",
+          "object-referenced-object-other": "wird (als enthaltenen Objekt) von {{totalObject}} Objekten referenziert",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "Alle Objekttypen",

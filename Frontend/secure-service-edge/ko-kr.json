@@ -451,6 +451,7 @@
         "exportSchedulingOff": "내보내기 일정 끄기",
         "exportSchedulingOn": "내보내기 일정 켜기",
         "scheduleStats": "귀하의 조직은 최대 {{limit}}개의 예약된 보고서를 보유할 수 있습니다. 현재 {{count}}개를 보유하고 있습니다.",
+        "scheduleLimitReached": "귀하의 조직은 최대 {{limit}}개의 예약된 보고서에 도달했습니다.",
         "timeFrame": "시간 프레임",
         "exportFrequency": "내보내기 주기",
         "duration": "기간",
@@ -873,7 +874,7 @@
         "next": "다음",
         "cancel": "취소",
         "back": "뒤로",
-        "save-rule": "규칙 저장",
+        "save-rule": "저장",
         "save": "저장",
         "proceed": "진행"
       },
@@ -887,8 +888,10 @@
       "manage-options": "옵션 관리",
       "options-description": "관련 보안 기능 구성",
       "add-rule": {
-        "title": "Secure Service Edge - 정책 - 규칙 추가",
-        "breadcrumb": "규칙 추가"
+        "add-title": "Secure Service Edge - 정책 - 규칙 추가",
+        "edit-title": "Secure Service Edge - 정책 - 규칙 편집",
+        "breadcrumb-add": "규칙 추가",
+        "breadcrumb-edit": "규칙 편집"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "IPS 규칙",
               "ips-rule-desc": "이 규칙을 사용하여 선택한 트래픽에 대한 IPS 감도를 조정합니다",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "웹사이트 허용 목록",
+              "network-allow-list": "네트워크 허용 목록"
+            },
+            "disable-step-tooltip": "규칙의 작업을 변경하려면 이 규칙을 취소하거나 삭제하고 다시 시작해야 합니다."
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "사용자",
-              "and-the-website": "및 웹사이트"
+              "and-the-website": "및 웹사이트",
+              "and-the-user-is-conneting-to": "및 사용자가 다음에 연결하는 경우",
+              "and-the-service-port-and-protocol":"및 서비스 포트 및 프로토콜"
             },
             "dropdown-place-holder": {
               "user-name": "사용자 이름 선택",
@@ -1145,7 +1155,7 @@
             "type": "정책 유형",
             "last-modified": "마지막으로 수정한 날짜",
             "rule-summary": "규칙 요약",
-            "rule-cloned": "규칙이 복제되었습니다.",
+            "rule-cloned": "규칙이 복제되었습니다",
             "rule-clone-error-msg": "규칙을 복제하지 못했습니다.",
             "name-desc": "이름 및 설명",
             "suggest-name": "이 규칙의 이름이 제안되었지만 자유롭게 변경할 수 있습니다.",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "새 규칙이 다음에서 복제됩니다 ",
             "rule-deleted": "규칙을 삭제했습니다.",
             "rule-added": "규칙이 추가되었습니다",
+            "rule-updated": "규칙 업데이트됨",
             "rule-add-error": "규칙을 추가하지 못했습니다",
-            "rule-delete-error-msg": "파일을 삭제하지 못했습니다",
+            "rule-update-error": "규칙을 업데이트하지 못했습니다",
+            "rule-delete-error-msg": "규칙을 삭제하지 못했습니다",
             "rank-update": "순위가 업데이트되었습니다",
+            "locked-rules-error": "잠긴 규칙 위치를 변경할 수 없습니다",
+            "rule-position-change": "규칙 위치가 변경되었습니다",
             "rank-update-error": "순위를 업데이트하는 중 오류가 발생했습니다"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{total}} 중 {{start}}-{{end}}"
         },
         "tooltips": {
-          "locked-icon-text": "기본 규칙의 순위를 삭제하거나 조정할 수는 없지만 편집할 수는 있습니다."
+          "locked-icon-text": "기본 규칙의 순위를 삭제하거나 조정할 수는 없지만 편집할 수는 있습니다.",
+          "high-risk": "이 중요한 기본 규칙은 항상 활성화되어 있으며 순위를 조정하거나 편집할 수 없습니다."
         },
         "headers": {
           "rank": "순위",
@@ -1263,7 +1278,14 @@
           "cancel": "취소",
           "back": "뒤로",
           "add": "추가",
-          "save": "저장"
+          "save": "저장",
+          "copy": "복사"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "개체 유형"
+        },
+        "dropdown-place-holder": {
+          "select": "선택"
         },
         "no-object": {
           "title": "추가된 개체가 없습니다",
@@ -1278,6 +1300,9 @@
           "object-type": "개체 유형",
           "contents": "콘텐츠",
           "object-usage": "개체 사용",
+          "desc": "설명",
+          "add-object": "개체 추가",
+          "delete-object": "개체 삭제",
           "tooltips": {
             "items": {
               "description": "중첩된 개체에 항목 미포함"
@@ -1286,6 +1311,23 @@
               "description": "개체는 하나 이상의 규칙에 사용될 수 있으며 다른 개체 내에 중첩될 수도 있습니다."
             }
           }
+        },
+        "delete-object":{
+          "delete": "삭제",
+          "objects": "개체",
+          "object": "개체",
+          "warning": "경고! ",
+          "delete-warning": "다른 규칙이나 개체에서 참조하고 있으므로 삭제할 수 없습니다. ",
+          "object-delete-one-info": "개체를 삭제할 수 없습니다",
+          "object-delete-other-info": "개체를 삭제할 수 없습니다",
+          "referenced-object": "참조되지 않은 개체만 삭제합니다.",
+          "object-deleted": "개체 삭제됨",
+          "object-delete-error": "개체를 삭제하지 못함",
+          "object-referenced-rule-one": " {{totalRule}}개 규칙에 의해 참조됨",
+          "object-referenced-rule-other": " {{totalRule}}개 규칙에 의해 참조됨",
+          "object-referenced-object-one": "{{totalObject}}개 개체에서 중첩된 개체로 참조됨",
+          "object-referenced-object-other": "{{totalObject}}개 개체에서 중첩된 개체로 참조됨",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "모든 개체 유형",
