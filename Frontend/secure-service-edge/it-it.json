@@ -451,6 +451,7 @@
         "exportSchedulingOff": "Pianificazione dell’esportazione disattivata",
         "exportSchedulingOn": "Pianificazione dell’esportazione attiva",
         "scheduleStats": "Per la tua organizzazione sono disponibili fino a {{limit}} report pianificati. Al momento ne hai {{count}}.",
+        "scheduleLimitReached": "La tua organizzazione ha raggiunto il limite massimo di {{limit}} report pianificati.",
         "timeFrame": "Intervallo di tempo",
         "exportFrequency": "Frequenza di esportazione",
         "duration": "Durata",
@@ -873,7 +874,7 @@
         "next": "Avanti",
         "cancel": "Annulla",
         "back": "Indietro",
-        "save-rule": "Salva regola",
+        "save-rule": "Salva",
         "save": "Salva",
         "proceed": "Procedi"
       },
@@ -887,8 +888,10 @@
       "manage-options": "Gestisci opzioni",
       "options-description": "Configura le funzionalità di sicurezza correlate",
       "add-rule": {
-        "title": "Secure Service Edge - Criterio - Aggiungi regola",
-        "breadcrumb": "Aggiungi regola"
+        "add-title": "Secure Service Edge - Criterio - Aggiungi regola",
+        "edit-title": "Secure Service Edge - Criterio - Modifica regola",
+        "breadcrumb-add": "Aggiungi regola",
+        "breadcrumb-edit": "Modifica regola"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "Regola IPS",
               "ips-rule-desc": "Utilizza questa regola per modificare la sensibilità della funzionalità IPS per il traffico selezionato",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "Elenco di autorizzazione per i siti web",
+              "network-allow-list": "Elenco di autorizzazione per le reti"
+            },
+            "disable-step-tooltip": "Per modificare l’azione della regola, devi annullare o eliminare questa regola e ricominciare."
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "L’utente",
-              "and-the-website": "e il sito web"
+              "and-the-website": "e il sito web",
+              "and-the-user-is-conneting-to": "e l’utente si connette a",
+              "and-the-service-port-and-protocol":"e la porta del servizio e il protocollo"
             },
             "dropdown-place-holder": {
               "user-name": "Seleziona nome utente",
@@ -1145,7 +1155,7 @@
             "type": "Tipo di criterio",
             "last-modified": "Ultima modifica",
             "rule-summary": "Riepilogo della regola",
-            "rule-cloned": "Regola clonata.",
+            "rule-cloned": "Regola clonata",
             "rule-clone-error-msg": "Clonazione della regola non riuscita",
             "name-desc": "Nome e descrizione",
             "suggest-name": "Il sistema ha suggerito un nome per questa regola, ma puoi modificarlo liberamente.",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "Verrà clonata una nuova regola da ",
             "rule-deleted": "Regola eliminata",
             "rule-added": "Regola aggiunta",
+            "rule-updated": "Regola aggiornata",
             "rule-add-error": "Non è stato possibile aggiungere la regola",
-            "rule-delete-error-msg": "Non è stato possibile eliminare il file",
+            "rule-update-error": "Aggiornamento della regola non riuscito",
+            "rule-delete-error-msg": "Eliminazione della regola non riuscita",
             "rank-update": "La priorità è stata aggiornata",
+            "locked-rules-error": "Non puoi modificare la posizione delle regole bloccate",
+            "rule-position-change": "Posizione della regola modificata",
             "rank-update-error": "Si è verificato in errore durante l’aggiornamento della classifica"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{start}}-{{end}} su {{total}}"
         },
         "tooltips": {
-          "locked-icon-text": "Non puoi eliminare o regolare la priorità delle regole predefinite, ma puoi modificarle."
+          "locked-icon-text": "Non puoi eliminare o regolare la priorità delle regole predefinite, ma puoi modificarle.",
+          "high-risk": "Questa regola predefinita critica è sempre attiva e non puoi modificarne la priorità o modificarla."
         },
         "headers": {
           "rank": "Priorità",
@@ -1263,7 +1278,14 @@
           "cancel": "Annulla",
           "back": "Indietro",
           "add": "Aggiungi",
-          "save": "Salva"
+          "save": "Salva",
+          "copy": "Copia"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "Tipo di oggetto"
+        },
+        "dropdown-place-holder": {
+          "select": "Selezionare"
         },
         "no-object": {
           "title": "Non hai oggetti aggiunti",
@@ -1278,6 +1300,9 @@
           "object-type": "Tipo di oggetto",
           "contents": "Contenuti",
           "object-usage": "Utilizzo oggetto",
+          "desc": "Descrizione",
+          "add-object": "Aggiungi oggetto",
+          "delete-object": "Elimina oggetto",
           "tooltips": {
             "items": {
               "description": "Non sono inclusi gli elementi negli oggetti annidati"
@@ -1286,6 +1311,23 @@
               "description": "Gli oggetti potrebbero essere utilizzati in una o più regole e potrebbero anche essere annidati all’interno di altri oggetti"
             }
           }
+        },
+        "delete-object":{
+          "delete": "Elimina",
+          "objects": "Oggetti",
+          "object": "Oggetto",
+          "warning": "Avviso! ",
+          "delete-warning": "non possono essere eliminati perché sono indicati come riferimento in altre regole od oggetti. ",
+          "object-delete-one-info": "Impossibile eliminare l’oggetto.",
+          "object-delete-other-info": "Impossibile eliminare gli oggetti",
+          "referenced-object": "Elimina solo gli oggetti che non sono inclusi in alcun riferimento.",
+          "object-deleted": "Oggetto eliminato",
+          "object-delete-error": "Non è stato possibile eliminare l’oggetto",
+          "object-referenced-rule-one": " è incluso nei riferimenti di {{totalRule}} regola",
+          "object-referenced-rule-other": " è incluso nei riferimenti di {{totalRule}} regole",
+          "object-referenced-object-one": "è incluso nei riferimenti (come oggetto annidato) di {{totalObject}} oggetto",
+          "object-referenced-object-other": "è incluso nei riferimenti (come oggetto annidato) di {{totalObject}} oggetti",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "Tutti i tipi di oggetto",

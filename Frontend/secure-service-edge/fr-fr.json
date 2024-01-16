@@ -451,6 +451,7 @@
         "exportSchedulingOff": "Exportation de la planification désactivée",
         "exportSchedulingOn": "Exportation de la planification activée",
         "scheduleStats": "Votre organisation peut avoir jusqu’à {{limit}} rapports planifiés. Vous en avez actuellement {{count}}.",
+        "scheduleLimitReached": "Votre organisation a atteint le nombre maximal de {{limit}} rapports planifiés.",
         "timeFrame": "Période de temps",
         "exportFrequency": "Fréquence de l’exportation",
         "duration": "Durée",
@@ -873,7 +874,7 @@
         "next": "Suivant",
         "cancel": "Annuler",
         "back": "Retour",
-        "save-rule": "Enregistrer la règle",
+        "save-rule": "Enregistrer",
         "save": "Enregistrer",
         "proceed": "Continuer"
       },
@@ -887,8 +888,10 @@
       "manage-options": "Gérer les options",
       "options-description": "Configurer les fonctions de sécurité associées",
       "add-rule": {
-        "title": "Secure Service Edge - Stratégie - Ajouter une règle",
-        "breadcrumb": "Ajouter une règle"
+        "add-title": "Secure Service Edge - Stratégie - Ajouter une règle",
+        "edit-title": "Secure Service Edge - Stratégie - Modifier la règle",
+        "breadcrumb-add": "Ajouter une règle",
+        "breadcrumb-edit": "Modifier la règle"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "Règle IPS",
               "ips-rule-desc": "Utilisez cette règle pour modifier la sensibilité IPS pour le trafic sélectionné",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "Liste de sites Web autorisés",
+              "network-allow-list": "Liste des réseaux autorisés"
+            },
+            "disable-step-tooltip": "Pour modifier l’action de la règle, annulez ou supprimez cette règle et recommencez."
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "L’utilisateur",
-              "and-the-website": "et le site Web"
+              "and-the-website": "et le site Web",
+              "and-the-user-is-conneting-to": "et l’utilisateur se connecte à",
+              "and-the-service-port-and-protocol":"et le port de service et le protocole"
             },
             "dropdown-place-holder": {
               "user-name": "Sélectionner le nom d’utilisateur",
@@ -1145,7 +1155,7 @@
             "type": "Type de stratégie",
             "last-modified": "Dernière modification",
             "rule-summary": "Résumé des règles",
-            "rule-cloned": "Règle clonée.",
+            "rule-cloned": "Règle clonée",
             "rule-clone-error-msg": "Impossible de cloner la règle",
             "name-desc": "Nom et description",
             "suggest-name": "Le système a suggéré un nom pour cette règle, mais n’hésitez pas à le modifier.",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "Une nouvelle règle sera clonée à partir de ",
             "rule-deleted": "Règle supprimée",
             "rule-added": "Règle ajoutée",
+            "rule-updated": "Règle mise à jour",
             "rule-add-error": "Impossible d’ajouter une règle",
-            "rule-delete-error-msg": "Impossible de supprimer le fichier",
+            "rule-update-error": "Impossible de mettre à jour la règle",
+            "rule-delete-error-msg": "Impossible de supprimer la règle",
             "rank-update": "Classement mis à jour",
+            "locked-rules-error": "Vous ne pouvez pas modifier la position des règles verrouillées",
+            "rule-position-change": "La position de la règle a bien été modifiée",
             "rank-update-error": "Erreur lors de la mise à jour du classement"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{start}}-{{end}} sur {{total}}"
         },
         "tooltips": {
-          "locked-icon-text": "Vous ne pouvez pas supprimer ou ajuster le classement des règles par défaut, mais vous pouvez les modifier."
+          "locked-icon-text": "Vous ne pouvez pas supprimer ou ajuster le classement des règles par défaut, mais vous pouvez les modifier.",
+          "high-risk": "Cette règle critique par défaut est toujours active, et vous ne pouvez pas ajuster son rang ou la modifier."
         },
         "headers": {
           "rank": "Classement",
@@ -1263,7 +1278,14 @@
           "cancel": "Annuler",
           "back": "Retour",
           "add": "Ajouter",
-          "save": "Enregistrer"
+          "save": "Enregistrer",
+          "copy": "Copier"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "Type d’objet"
+        },
+        "dropdown-place-holder": {
+          "select": "Sélectionner"
         },
         "no-object": {
           "title": "Vous n’avez pas ajouté d’objets",
@@ -1278,6 +1300,9 @@
           "object-type": "Type d’objet",
           "contents": "Contenu",
           "object-usage": "Usage de l’objet",
+          "desc": "Description",
+          "add-object": "Ajouter un objet",
+          "delete-object": "Supprimer l’objet",
           "tooltips": {
             "items": {
               "description": "Éléments dans les objets imbriqués non inclus"
@@ -1286,6 +1311,23 @@
               "description": "Les objets peuvent être utilisés dans une ou plusieurs règles, et peuvent également être imbriqués dans d’autres objets"
             }
           }
+        },
+        "delete-object":{
+          "delete": "Supprimer",
+          "objects": "Objets",
+          "object": "Objet",
+          "warning": "Avertissement ! ",
+          "delete-warning": "ne peuvent pas être supprimés car ils sont référencés par d’autres règles ou objets. ",
+          "object-delete-one-info": "Impossible de supprimer l’objet",
+          "object-delete-other-info": "Impossible de supprimer les objets",
+          "referenced-object": "Supprimer uniquement les objets non référencés.",
+          "object-deleted": "Objet supprimé",
+          "object-delete-error": "Impossible de supprimer l’objet",
+          "object-referenced-rule-one": " est référencé par {{totalRule}} règle",
+          "object-referenced-rule-other": " est référencé par {{totalRule}} règles",
+          "object-referenced-object-one": "est référencé (en tant qu’objet imbriqué) par {{totalObject}} objet",
+          "object-referenced-object-other": "est référencé (en tant qu’objet imbriqué) par {{totalObject}} objets",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "Tous les types d’objet",

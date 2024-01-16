@@ -451,6 +451,7 @@
         "exportSchedulingOff": "Programación de exportación desactivada",
         "exportSchedulingOn": "Programación de exportación activada",
         "scheduleStats": "Su empresa puede tener hasta {{limit}} informes programados. Actualmente tiene {{count}}.",
+        "scheduleLimitReached": "Su empresa ha alcanzado el máximo de {{limit}} informes programados.",
         "timeFrame": "Plazo",
         "exportFrequency": "Frecuencia de exportación",
         "duration": "Duración",
@@ -873,7 +874,7 @@
         "next": "Siguiente",
         "cancel": "Cancelar",
         "back": "Atrás",
-        "save-rule": "Guardar regla",
+        "save-rule": "Guardar",
         "save": "Guardar",
         "proceed": "Proceder"
       },
@@ -887,8 +888,10 @@
       "manage-options": "Gestione las opciones",
       "options-description": "Configurar funciones de seguridad relacionadas",
       "add-rule": {
-        "title": "Secure Service Edge - Política - Añadir regla",
-        "breadcrumb": "Añadir regla"
+        "add-title": "Secure Service Edge - Política - Añadir regla",
+        "edit-title": "Secure Service Edge - Política - Editar regla",
+        "breadcrumb-add": "Añadir regla",
+        "breadcrumb-edit": "Editar regla"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "Regla IPS",
               "ips-rule-desc": "Utilice esta regla para modificar la sensibilidad de IPS para el tráfico seleccionado",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "Lista de sitios web permitidos",
+              "network-allow-list": "Lista de redes permitidas"
+            },
+            "disable-step-tooltip": "Para cambiar la acción de la regla debe cancelar o eliminar esta regla y volver a empezar."
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "El usuario",
-              "and-the-website": "y el sitio web"
+              "and-the-website": "y el sitio web",
+              "and-the-user-is-conneting-to": "y el usuario se está conectando a",
+              "and-the-service-port-and-protocol":"y el puerto de servicio y protocolo"
             },
             "dropdown-place-holder": {
               "user-name": "Seleccionar nombre de usuario",
@@ -1145,7 +1155,7 @@
             "type": "Tipo de política",
             "last-modified": "Última actualización",
             "rule-summary": "Resumen de reglas",
-            "rule-cloned": "Regla clonada.",
+            "rule-cloned": "Regla clonada",
             "rule-clone-error-msg": "Error al clonar la regla",
             "name-desc": "Nombre y descripción",
             "suggest-name": "El sistema ha sugerido un nombre para la regla, pero puede cambiarlo.",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "Se clonará una nueva regla a partir de ",
             "rule-deleted": "Regla eliminada",
             "rule-added": "Regla añadida",
+            "rule-updated": "Regla actualizada",
             "rule-add-error": "Error al añadir la regla",
+            "rule-update-error": "Error al actualizar la regla",
             "rule-delete-error-msg": "Error al eliminar la regla",
             "rank-update": "El rango se ha actualizado",
+            "locked-rules-error": "No se puede cambiar la posición de las reglas bloqueadas",
+            "rule-position-change": "La posición de la regla se ha cambiado correctamente",
             "rank-update-error": "Se ha producido un error al actualizar el rango"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{start}}-{{end}} de {{total}}"
         },
         "tooltips": {
-          "locked-icon-text": "No puede eliminar ni ajustar el rango de las reglas predeterminadas, pero puede editarlas."
+          "locked-icon-text": "No puede eliminar ni ajustar el rango de las reglas predeterminadas, pero puede editarlas.",
+          "high-risk": "Esta regla crítica por defecto está siempre activa y no puede ajustar su rango ni editarla."
         },
         "headers": {
           "rank": "Clasificación",
@@ -1263,7 +1278,14 @@
           "cancel": "Cancelar",
           "back": "Atrás",
           "add": "Añadir",
-          "save": "Guardar"
+          "save": "Guardar",
+          "copy": "Copiar"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "Tipo de objeto"
+        },
+        "dropdown-place-holder": {
+          "select": "Seleccionar"
         },
         "no-object": {
           "title": "No tiene ningún objeto añadido",
@@ -1278,6 +1300,9 @@
           "object-type": "Tipo de objeto",
           "contents": "Contenido",
           "object-usage": "Uso de objetos",
+          "desc": "Descripción",
+          "add-object": "Añadir objeto",
+          "delete-object": "Eliminar objeto",
           "tooltips": {
             "items": {
               "description": "Elementos en objetos anidados no incluidos"
@@ -1286,6 +1311,23 @@
               "description": "Los objetos pueden utilizarse en una o varias reglas, y también pueden anidarse dentro de otros objetos"
             }
           }
+        },
+        "delete-object":{
+          "delete": "Eliminar",
+          "objects": "Objetos",
+          "object": "Objeto",
+          "warning": "¡Aviso! ",
+          "delete-warning": "no pueden eliminarse porque están referenciados por otras reglas u objetos. ",
+          "object-delete-one-info": "No se puede eliminar el objeto",
+          "object-delete-other-info": "No se pueden eliminar los objetos.",
+          "referenced-object": "Elimine solo los objetos no referenciados.",
+          "object-deleted": "Objeto eliminado",
+          "object-delete-error": "No se ha podido eliminar el objeto",
+          "object-referenced-rule-one": " está referenciado por {{totalRule}} regla",
+          "object-referenced-rule-other": " está referenciado por {{totalRule}} reglas",
+          "object-referenced-object-one": "está referenciado (como objeto anidado) por {{totalObject}} objeto",
+          "object-referenced-object-other": "está referenciado (como objeto anidado) por {{totalObject}} objetos",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "Todos los tipos de objeto",

@@ -451,6 +451,7 @@
         "exportSchedulingOff": "匯出排程關閉",
         "exportSchedulingOn": "匯出排程開啟",
         "scheduleStats": "貴組織可擁有至多 {{limit}} 個排程報告。您目前有 {{count}}。",
+        "scheduleLimitReached": "您的組織已達到排程報告的上限 {{limit}}。",
         "timeFrame": "時間範圍",
         "exportFrequency": "匯出頻率",
         "duration": "持續時間",
@@ -873,7 +874,7 @@
         "next": "下一步",
         "cancel": "取消",
         "back": "上一頁",
-        "save-rule": "儲存規則",
+        "save-rule": "儲存",
         "save": "儲存",
         "proceed": "繼續前往"
       },
@@ -887,8 +888,10 @@
       "manage-options": "管理選項",
       "options-description": "設定相關的安全功能",
       "add-rule": {
-        "title": "Secure Service Edge - 原則 - 新增規則",
-        "breadcrumb": "新增規則"
+        "add-title": "Secure Service Edge - 原則 - 新增規則",
+        "edit-title": "Secure Service Edge - 原則 - 編輯規則",
+        "breadcrumb-add": "新增規則",
+        "breadcrumb-edit": "編輯規則"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "IPS 規則",
               "ips-rule-desc": "使用此規則修改所選流量的 IPS 敏感度",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "網站允許清單",
+              "network-allow-list": "網路允許清單"
+            },
+            "disable-step-tooltip": "要變更規則的動作，您必須取消或刪除此規則並重新開始。"
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "使用者",
-              "and-the-website": "和網站"
+              "and-the-website": "和網站",
+              "and-the-user-is-conneting-to": "使用者正在連線至",
+              "and-the-service-port-and-protocol":"服務連接埠和通訊協定"
             },
             "dropdown-place-holder": {
               "user-name": "選取使用者名稱",
@@ -1145,7 +1155,7 @@
             "type": "原則類型",
             "last-modified": "上次修改",
             "rule-summary": "規則摘要",
-            "rule-cloned": "規則已複製。",
+            "rule-cloned": "規則已複製",
             "rule-clone-error-msg": "複製規則失敗",
             "name-desc": "名稱與描述",
             "suggest-name": "系統已為此規則提供名稱建議，但您可以隨意變更。",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "將從以下位置複製新規則： ",
             "rule-deleted": "規則已刪除",
             "rule-added": "規則已新增",
+            "rule-updated": "規則已更新",
             "rule-add-error": "未能新增規則",
-            "rule-delete-error-msg": "未能刪除檔案",
+            "rule-update-error": "規則更新失敗",
+            "rule-delete-error-msg": "刪除規則失敗",
             "rank-update": "排名已更新",
+            "locked-rules-error": "您不能變更鎖定規則的位置",
+            "rule-position-change": "規則位置已成功變更",
             "rank-update-error": "更新排名時發生錯誤"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{total}} 的 {{start}}-{{end}}"
         },
         "tooltips": {
-          "locked-icon-text": "您無法刪除或調整預設規則的排名，但可以編輯它們。"
+          "locked-icon-text": "您無法刪除或調整預設規則的排名，但可以編輯它們。",
+          "high-risk": "此關鍵預設規則始終處於活動狀態，您無法調整其排名或編輯它。"
         },
         "headers": {
           "rank": "排名",
@@ -1263,7 +1278,14 @@
           "cancel": "取消",
           "back": "上一頁",
           "add": "新增",
-          "save": "儲存"
+          "save": "儲存",
+          "copy": "複製"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "物件類型"
+        },
+        "dropdown-place-holder": {
+          "select": "選取"
         },
         "no-object": {
           "title": "您沒有新增任何物件",
@@ -1278,6 +1300,9 @@
           "object-type": "物件類型",
           "contents": "目錄",
           "object-usage": "物件使用情況",
+          "desc": "說明",
+          "add-object": "新增物件",
+          "delete-object": "刪除物件",
           "tooltips": {
             "items": {
               "description": "不包括嵌套物件中的項目"
@@ -1286,6 +1311,23 @@
               "description": "物件可以在一個或多個規則中使用，也可以嵌套在其他物件中"
             }
           }
+        },
+        "delete-object":{
+          "delete": "删除",
+          "objects": "物件",
+          "object": "物件",
+          "warning": "警告！ ",
+          "delete-warning": "無法刪除，因為它們被其他規則或物件引用。 ",
+          "object-delete-one-info": "無法刪除物件",
+          "object-delete-other-info": "無法刪除物件",
+          "referenced-object": "僅刪除非引用物件。",
+          "object-deleted": "物件已刪除",
+          "object-delete-error": "未能刪除物件",
+          "object-referenced-rule-one": " 被 {{totalRule}} 個規則引用",
+          "object-referenced-rule-other": " 被 {{totalRule}} 個規則引用",
+          "object-referenced-object-one": "被 {{totalObject}} 個物件引用（作為嵌套物件）",
+          "object-referenced-object-other": "被 {{totalObject}} 個物件引用（作為嵌套物件）",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "所有物件類型",

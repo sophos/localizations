@@ -451,6 +451,7 @@
         "exportSchedulingOff": "エクスポートのスケジュールはオフになっています",
         "exportSchedulingOn": "エクスポートのスケジュールはオンになっています",
         "scheduleStats": "最高 {{limit}}件のレポートをスケジュール設定できます。現在、{{count}}件あります。",
+        "scheduleLimitReached": "スケジュール済みレポートの最大数 {{limit}}件に達しました。",
         "timeFrame": "期間",
         "exportFrequency": "エクスポートの頻度",
         "duration": "期間",
@@ -873,7 +874,7 @@
         "next": "次へ",
         "cancel": "キャンセル",
         "back": "戻る",
-        "save-rule": "ルールの保存",
+        "save-rule": "保存",
         "save": "保存",
         "proceed": "続行"
       },
@@ -887,8 +888,10 @@
       "manage-options": "オプションの管理",
       "options-description": "関連するセキュリティ機能の設定",
       "add-rule": {
-        "title": "Secure Service Edge - ポリシー - ルールの追加",
-        "breadcrumb": "ルールの追加"
+        "add-title": "Secure Service Edge - ポリシー - ルールの追加",
+        "edit-title": "Secure Service Edge - ポリシー - ルールの編集",
+        "breadcrumb-add": "ルールの追加",
+        "breadcrumb-edit": "ルールの編集"
       },
       "policy": {
         "add-rule": {
@@ -958,7 +961,12 @@
               "ips-rule": "IPS ルール",
               "ips-rule-desc": "このルールを使用して、選択したトラフィックの IPS 感度を変更します",
               "ips-rule-tooltip-desc": ""
-            }
+            },
+            "default":{
+              "website-allow-list": "Web サイトの許可リスト",
+              "network-allow-list": "ネットワーク許可リスト"
+            },
+            "disable-step-tooltip": "ルールのアクションを変更するには、このルールをキャンセルまたは削除して、最初からやり直す必要があります。"
           },
           "step-2": {
             "user": {
@@ -1013,7 +1021,9 @@
             },
             "label-headers": {
               "the-user": "ユーザー",
-              "and-the-website": "および Web サイト"
+              "and-the-website": "および Web サイト",
+              "and-the-user-is-conneting-to": "およびユーザーは接続している",
+              "and-the-service-port-and-protocol":"およびサービスポートとプロトコル"
             },
             "dropdown-place-holder": {
               "user-name": "ユーザー名の選択",
@@ -1084,8 +1094,8 @@
             "helper-text": {
               "multi-chips": " \"または\" は、複数の場合に暗黙的に使用されます。 セールス \"または\" マーケティング",
               "the-action": "アクションは",
-              "will-happen": "別のものが追加された",
-              "add-another": "場合にのみ適用されます"
+              "will-happen": "次を追加した場合に",
+              "add-another": "適用されます"
             }
           },
           "step-3": {
@@ -1145,7 +1155,7 @@
             "type": "ポリシーの種類",
             "last-modified": "前回更新日時",
             "rule-summary": "ルールの概要",
-            "rule-cloned": "ルールが複製されました。",
+            "rule-cloned": "ルールが複製されました",
             "rule-clone-error-msg": "ルールを複製できませんでした。",
             "name-desc": "名前と説明",
             "suggest-name": "システムはこのルールの名前を提案していますが、自由に変更して構いません。",
@@ -1185,9 +1195,13 @@
             "clone-confirm-message": "複製して、新しいルールが作成されます。 ",
             "rule-deleted": "ルールを削除しました",
             "rule-added": "ルールを追加しました",
+            "rule-updated": "ルールが更新されました",
             "rule-add-error": "ルールを追加できませんでした",
-            "rule-delete-error-msg": "ファイルを削除できませんでした",
+            "rule-update-error": "ルールの更新に失敗しました",
+            "rule-delete-error-msg": "ルールの削除に失敗しました",
             "rank-update": "ランクが更新されました",
+            "locked-rules-error": "ロックされたルールの位置は変更できません",
+            "rule-position-change": "ルールの位置が正常に変更されました",
             "rank-update-error": "ランクの更新中にエラーが発生しました"
           },
           "unsaved-changes": {
@@ -1203,7 +1217,8 @@
           "page-info": "{{start}} ～ {{end}} / {{total}}"
         },
         "tooltips": {
-          "locked-icon-text": "デフォルトのルールのランクを削除または調整することはできませんが、編集することはできます。"
+          "locked-icon-text": "デフォルトのルールのランクを削除または調整することはできませんが、編集することはできます。",
+          "high-risk": "この重要なデフォルトルールは常にアクティブであり、そのランクの調整や編集はできません。"
         },
         "headers": {
           "rank": "ランク",
@@ -1263,7 +1278,14 @@
           "cancel": "キャンセル",
           "back": "戻る",
           "add": "追加",
-          "save": "保存"
+          "save": "保存",
+          "copy": "コピー"
+        },
+        "add-edit-object": {
+          "object-dropdown-label": "オブジェクトの種類"
+        },
+        "dropdown-place-holder": {
+          "select": "選択"
         },
         "no-object": {
           "title": "追加したオブジェクトはありません",
@@ -1278,6 +1300,9 @@
           "object-type": "オブジェクトの種類",
           "contents": "コンテンツ",
           "object-usage": "オブジェクトの使用",
+          "desc": "説明",
+          "add-object": "オブジェクトの追加",
+          "delete-object": "オブジェクトの削除",
           "tooltips": {
             "items": {
               "description": "ネストされたオブジェクトに項目を含めない"
@@ -1286,6 +1311,23 @@
               "description": "オブジェクトは 1つ以上のルールで使用でき、他のオブジェクト内にネストすることもできます"
             }
           }
+        },
+        "delete-object":{
+          "delete": "削除",
+          "objects": "オブジェクト",
+          "object": "オブジェクト",
+          "warning": "警告 ",
+          "delete-warning": "他のルールまたはオブジェクトによって参照されているため、削除できません。 ",
+          "object-delete-one-info": "オブジェクトを削除できませんでした",
+          "object-delete-other-info": "オブジェクトを削除できませんでした",
+          "referenced-object": "参照されていないオブジェクトのみを削除します。",
+          "object-deleted": "オブジェクトが削除されました",
+          "object-delete-error": "オブジェクトの削除に失敗しました",
+          "object-referenced-rule-one": " {{totalRule}}件のルールによって参照されています",
+          "object-referenced-rule-other": " {{totalRule}}件のルールによって参照されています",
+          "object-referenced-object-one": "{{totalObject}}件のオブジェクトによって (ネストされたオブジェクトとして) 参照されています",
+          "object-referenced-object-other": "{{totalObject}}件のオブジェクトによって (ネストされたオブジェクトとして) 参照されています",
+          "object-total": "{{totalObject}}"
         },
         "filters": {
           "all": "すべてのオブジェクトの種類",
