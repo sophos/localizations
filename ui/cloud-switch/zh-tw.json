@@ -190,7 +190,10 @@
         "task-queue-title": "工作佇列",
         "site-details": "站點詳細資料",
         "diagnostics": "診斷",
-        "discovery": "探索"
+        "discovery": "探索",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "鄰居發現"
       },
       "error": "錯誤",
       "success": "成功",
@@ -894,6 +897,10 @@
           "management-vlan": "變更管理 VLAN 的設定可能會斷開交換器與 Sophos Central 的連接。 "
         }
       },
+      "shell": {
+        "title": "Shell '{{action}}' 命令輸出",
+        "command_successful_msg": "命令執行成功"
+      },
       "tags": {
         "more-tags": "再 + {{tagCount}} 個"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "備份排程",
         "vlan": "VLAN",
         "cli_commands": "指令",
+        "shell_commands": "Shell 命令",
+        "restart_agent": "重啟代理程式",
+        "clean_cores": "清理核心",
+        "clean_sophos_logs": "清理 Sophos 記錄",
         "networks_ipv4": "網路 (IPv4)",
         "mgmt_network_ipv4": "管理網路 (IPv4)",
         "mgmt_network_ipv6": "管理網路 (IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " SNMP 通知設定",
         "snmp_target_address": "SNMP 目標地址",
         "vlan_gvrp_port_settings": "GVRP 連接埠設定",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "快照",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1968,6 +1982,7 @@
       "diagnostics": "診斷",
       "log-ram": "RAM 記錄",
       "log-flash": "無線更新紀錄",
+      "last-snapshot": "檢視上次 {{time}} 拍攝的快照",
       "form": {
         "validity": "有效期"
       },
@@ -3197,6 +3212,129 @@
           "disabled": "已停用",
           "source": "來源",
           "all": "所有"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "確認儲存",
+        "max-retries": "重試次數上限",
+        "timeout": "逾時 (秒)",
+        "max-retries-required": "最大重試次數必填。",
+        "max-retries-value-validation": "最大重試次數必須為 1-10",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "超時必填。",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "超時必須為 30-86400",
+        "site-save-setting-text": "{{ count }} 個交換器將取得此 ARP 全域設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-save-setting-text": "交換器將取得此 ARP 全域設定更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "update-setting-success": "ARP 全域設定已成功更新。",
+        "update-setting-error": "無法更新 ARP 全域設定。"
+      },
+      "table-header": {
+        "ip-addr": "IP 位址",
+        "mac-addr": "MAC 位址",
+        "interface": "VLAN",
+        "mapping": "對應",
+        "config-source": "設定來源",
+        "search": "尋找",
+        "search-tooltip-message": "按 IP 位址、MAC 位址、VLAN 和對應搜尋",
+        "arp-global-settings": "ARP 全域設定"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "移至靜態",
+      "add-dialog": "新增",
+      "no-vlan": "無 VLAN",
+      "required-vlan": "不存在 VLAN。請建立一個 VLAN 以設定語音 VLAN",
+      "form": {
+        "ip-address": "IP 位址",
+        "mac-address": "MAC 位址",
+        "interface": "VLAN 介面",
+        "ip-invalid": "無效的 IP 位址。",
+        "ip-required": "需要 IP 位址。",
+        "mac-invalid": "無效的 MAC 位址。",
+        "mac-required": "需要 MAC 位址。",
+        "duplicate-ip": "IP 位址已存在於表中。",
+        "duplicate-mac": "MAC 位址已存在於表中。",
+        "ip-out-of-range": "IP 位址超出範圍。"
+      },
+      "messages": {
+        "add-dialog-title": "確認新增",
+        "delete-dialog-title": "確認刪除",
+        "to-static-dialog-title": "移至靜態",
+        "site-add-setting-text": "{{ count }} 個交換器將取得此 ARP 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-add-setting-text": "交換器將取得此 ARP 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "add-setting-success": "ARP 項目新增成功。",
+        "add-setting-error": "無法新增 ARP 表項目。",
+        "delete-setting-success": "ARP 項目刪除成功。",
+        "delete-setting-error": "無法刪除 ARP 項目。",
+        "to-static-setting-success": "ARP 項目已成功轉為靜態。",
+        "to-static-setting-error": "無法將 ARP 項目轉為靜態。"
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} 個交換器將取得此鄰居表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-add-setting-text": "交換器將取得此鄰居表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "add-setting-success": "鄰居項目新增成功。",
+        "add-setting-error": "無法新增鄰居表項目。",
+        "delete-setting-success": "鄰居項目刪除成功。",
+        "delete-setting-error": "無法刪除鄰居項目。",
+        "to-static-setting-success": "鄰居項目已成功轉為靜態。",
+        "to-static-setting-error": "無法將鄰居項目轉為靜態。"
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "索引",
+        "port": "連接埠",
+        "vlan": "VLAN",
+        "mac-address": "MAC 位址 (IP 位址)",
+        "config-source": "設定來源",
+        "search": "尋找",
+        "mapping": "對應",
+        "search-tooltip-message": "按連接埠、MAC 位址和 VLAN 搜尋。",
+        "mac-global-settings": "MAC 全域設定"
+      },
+      "local-configuration": "交換器",
+      "move-to-static": "移至靜態",
+      "add-dialog": "新增",
+      "edit-dialog": "編輯",
+      "no-vlan": "無 VLAN 可用",
+      "form": {
+        "port": "連接埠",
+        "port-invalid": "無效連接埠。",
+        "port-required": "必須提供連接埠。",
+        "vlan-id": "VLAN",
+        "mac-address": "MAC 位址 (IP 位址)",
+        "mac-invalid": "無效的 MAC 位址。",
+        "mac-required": "需要 MAC 位址。",
+        "duplicate-mac": "MAC 位址已存在於表中。"
+      },
+      "messages": {
+        "add-dialog-title": "確認新增",
+        "delete-dialog-title": "確認刪除",
+        "edit-dialog-title": "確認更新",
+        "to-static-dialog-title": "移至靜態",
+        "site-add-setting-text": "{{ count }} 個交換器將取得此 MAC 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "switch-add-setting-text": "交換器將取得此 MAC 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
+        "add-setting-success": "MAC 項目新增成功。",
+        "add-setting-error": "無法新增 MAC 表項目。",
+        "delete-setting-success": "MAC 項目刪除成功。",
+        "delete-setting-error": "無法刪除 MAC 項目。",
+        "to-static-setting-success": "MAC 項目已成功轉為靜態。",
+        "t,o-static-setting-error": "無法將 MAC 項目轉為靜態。"
+      },
+      "global-settings": {
+        "aging-time": "MAC 過時時間（秒）",
+        "messages": {
+          "save-dialog-title": "確認儲存",
+          "site-save-setting-text": "{{ count }} 個交換器將取得此 MAC 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-save-setting-text": "交換器將取得此 MAC 設定，並且將建立工作。您可以選擇現在或稍後同步。",
+          "required-input-message": "MAC 過時時間必須介於 {{ min }} - {{ max }}",
+          "fetch-mac-settings-error": "無法擷取 MAC 設定",
+          "update-setting-success": "MAC 設定已成功更新。",
+          "update-setting-error":"無法更新 MAC 設定。"
         }
       }
     }

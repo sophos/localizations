@@ -190,7 +190,10 @@
         "task-queue-title": "Cola de tareas",
         "site-details": "Detalles sitio",
         "diagnostics": "Diagnósticos",
-        "discovery": "Descubrimiento"
+        "discovery": "Descubrimiento",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "Descubrimiento de vecinos"
       },
       "error": "Error",
       "success": "Completada",
@@ -894,6 +897,10 @@
           "management-vlan": "Cambiar la configuración de la VLAN de administración puede desconectar el switch de Sophos Central."
         }
       },
+      "shell": {
+        "title": "Salida del comando shell '{{action}}'",
+        "command_successful_msg": "Comando ejecutado correctamente"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} más"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "Programación de copias de seguridad",
         "vlan": "VLAN",
         "cli_commands": "Comandos",
+        "shell_commands": "Comandos shell",
+        "restart_agent": "Reiniciar agente",
+        "clean_cores": "Limpiar núcleos",
+        "clean_sophos_logs": "Limpiar registros de Sophos",
         "networks_ipv4": "Redes (IPv4)",
         "mgmt_network_ipv4": "Red de administración (IPv4)",
         "mgmt_network_ipv6": "Red de administración (IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " Configuración notificación SNMP",
         "snmp_target_address": "Dirección de destino SNMP",
         "vlan_gvrp_port_settings": "Configuración de puertos GVRP",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "Instantánea",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1631,7 +1645,7 @@
         "access-list": "Lista de accesos",
         "settings": "Configuración global",
         "users-groups": "Usuarios y grupos",
-        "views-access-list": "Lista de visualizaciones y accesos",
+        "views-access-list": "Vistas y lista de acceso",
         "triggers": "Notificaciones",
         "view-list": "Ver lista"
       },
@@ -1653,7 +1667,7 @@
         "edit-user": "Editar usuario y comunidad",
         "transport-tag": "Etiqueta de transporte",
         "create-user-message": "Todas las versiones de SNMP requieren un usuario para proporcionar control de acceso. De forma predeterminada, SNMPv3 está activado para el usuario.",
-        "create-community-message": "Active SNMP v1/v2c para este usuario.",
+        "create-community-message": "Activar SNMP v1/v2c para este usuario.",
         "create-community-description": "Esto también crea una comunidad con el mismo nombre y asocia a este usuario.",
         "password-length-error-message": "La longitud de la contraseña debe ser de 8-40.",
         "authPassword-length-error-message": "La longitud de la contraseña debe ser de 8-32.",
@@ -1968,6 +1982,7 @@
       "diagnostics": "Diagnósticos",
       "log-ram": "Registros de RAM",
       "log-flash": "Registros de memoria flash",
+      "last-snapshot": "Ver última instantánea tomada a las {{time}}",
       "form": {
         "validity": "Validez"
       },
@@ -3009,11 +3024,11 @@
         "status": "Estado",
         "config-source": "Origen de configuración",
         "transmissionInterval": "Intervalo de transmisión",
-        "transmissionInterval-invalid-message": "El intervalo de transmisión debe ser mayor que {{ val }} (retraso de transmisión*4)",
-        "transmitDelay-invalid-message": "El retraso de transmisión debe ser menor que {{ val }} (intervalo de transmisión/4)",
+        "transmissionInterval-invalid-message": "El intervalo de retransmisión debe ser mayor que {{ val }} (retraso de retransmisión*4)",
+        "transmitDelay-invalid-message": "El retraso de retransmisión debe ser menor que {{ val }} (intervalo de retransmisión/4)",
         "holdTime": "Multiplicador de tiempo de retención",
         "reinitDelay": "Retraso de reinicialización",
-        "transmitDelay": "Retraso retransmisión",
+        "transmitDelay": "Retraso de retransmisión",
         "required-input-message": "El valor debe ser {{ min }} - {{ max }}",
         "message": {
           "save-lldp-settings-success": "Se ha actualizado la configuración LLDP",
@@ -3033,7 +3048,7 @@
     "cdp": {
       "settings": "Configuración",
       "ports": "Puertos",
-      "local-devices": "Propio",
+      "local-devices": "Propia",
       "remote-devices": "Vecinos",
       "port-info": "Información de puertos",
       "device-info": "Detalles del dispositivo",
@@ -3197,6 +3212,129 @@
           "disabled": "Desactivado",
           "source": "Origen",
           "all": "Todos"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "Confirmar guardado",
+        "max-retries": "Número máximo de reintentos",
+        "timeout": "Tiempo de espera (segundos)",
+        "max-retries-required": "Es necesario un número máximo de reintentos.",
+        "max-retries-value-validation": "El número máximo de reintentos debe ser entre 1-10",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "Tiempo de espera obligatorio.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "El tiempo de espera debe ser entre 30 y 86400",
+        "site-save-setting-text": "{{ count }} switches obtendrán esta actualización de la configuración global ARP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-save-setting-text": "El switch obtendrá esta actualización de la configuración global ARP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "update-setting-success": "La configuración global ARP se ha actualizado correctamente.",
+        "update-setting-error": "No se ha podido actualizar la configuración global ARP."
+      },
+      "table-header": {
+        "ip-addr": "Dirección IP",
+        "mac-addr": "Dirección MAC",
+        "interface": "Red VLAN",
+        "mapping": "Asignación",
+        "config-source": "Origen de configuración",
+        "search": "Buscar",
+        "search-tooltip-message": "Buscar por dirección IP, dirección MAC, red VLAN y asignación",
+        "arp-global-settings": "Configuración global ARP"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Transformar en estática",
+      "add-dialog": "Añadir",
+      "no-vlan": "Ninguna red VLAN",
+      "required-vlan": "No existe ninguna VLAN. Cree una para configurar la VLAN de voz.",
+      "form": {
+        "ip-address": "Dirección IP",
+        "mac-address": "Dirección MAC",
+        "interface": "Interfaz VLAN",
+        "ip-invalid": "Dirección IP no válida.",
+        "ip-required": "Dirección IP necesaria.",
+        "mac-invalid": "Dirección MAC no válida.",
+        "mac-required": "Dirección MAC necesaria.",
+        "duplicate-ip": "La dirección IP ya existe en la tabla.",
+        "duplicate-mac": "La dirección MAC ya existe en la tabla.",
+        "ip-out-of-range": "La dirección IP está fuera del rango."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmar la adición",
+        "delete-dialog-title": "Confirmar eliminación",
+        "to-static-dialog-title": "Transformar en estática",
+        "site-add-setting-text": "{{ count }} switches obtendrán esta actualización de la tabla ARP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-add-setting-text": "El switch obtendrá esta actualización de la tabla ARP y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "add-setting-success": "La entrada ARP se ha añadido correctamente.",
+        "add-setting-error": "No se ha podido añadir la entrada ARP.",
+        "delete-setting-success": "La entrada ARP se ha eliminado correctamente.",
+        "delete-setting-error": "No se ha podido eliminar la entrada ARP.",
+        "to-static-setting-success": "La entrada ARP se ha transformado en estática correctamente.",
+        "to-static-setting-error": "No se ha podido transformar en estática la entrada ARP."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} switches obtendrán esta actualización de la tabla de vecinos y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-add-setting-text": "El switch obtendrá esta actualización de la tabla de vecinos y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "add-setting-success": "Entrada de vecino añadida correctamente.",
+        "add-setting-error": "No se ha podido añadir la entrada de vecino.",
+        "delete-setting-success": "Entrada de vecino eliminada correctamente.",
+        "delete-setting-error": "No se ha podido eliminar la entrada de vecino.",
+        "to-static-setting-success": "La entrada de vecino se ha transformado en estática correctamente.",
+        "to-static-setting-error": "No se ha podido transformar en estática la entrada de vecino."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "Índice",
+        "port": "Puerto",
+        "vlan": "Red VLAN",
+        "mac-address": "Dirección MAC",
+        "config-source": "Origen de configuración",
+        "search": "Buscar",
+        "mapping": "Asignación",
+        "search-tooltip-message": "Buscar por puerto, dirección MAC y red VLAN.",
+        "mac-global-settings": "Configuración global MAC"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Transformar en estática",
+      "add-dialog": "Añadir",
+      "edit-dialog": "Editar",
+      "no-vlan": "No hay ninguna red VLAN disponible",
+      "form": {
+        "port": "Puerto",
+        "port-invalid": "Puerto no válido.",
+        "port-required": "Se requiere el puerto.",
+        "vlan-id": "Red VLAN",
+        "mac-address": "Dirección MAC",
+        "mac-invalid": "Dirección MAC no válida.",
+        "mac-required": "Dirección MAC necesaria.",
+        "duplicate-mac": "La dirección MAC ya existe en la tabla."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmar la adición",
+        "delete-dialog-title": "Confirmar eliminación",
+        "edit-dialog-title": "Confirmar actualización",
+        "to-static-dialog-title": "Transformar en estática",
+        "site-add-setting-text": "{{ count }} switches obtendrán esta actualización de la tabla MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "switch-add-setting-text": "El switch obtendrá esta actualización de la tabla MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+        "add-setting-success": "La entrada MAC se ha añadido correctamente.",
+        "add-setting-error": "No se ha podido añadir la entrada MAC.",
+        "delete-setting-success": "La entrada MAC se ha eliminado correctamente.",
+        "delete-setting-error": "No se ha podido eliminar la entrada MAC.",
+        "to-static-setting-success": "La entrada MAC se ha transformado en estática correctamente.",
+        "t,o-static-setting-error": "No se ha podido transformar en estática la entrada MAC."
+      },
+      "global-settings": {
+        "aging-time": "Tiempo de vencimiento de MAC (segundos)",
+        "messages": {
+          "save-dialog-title": "Confirmar guardado",
+          "site-save-setting-text": "{{ count }} switches obtendrán esta configuración MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-save-setting-text": "El switch obtendrá esta configuración MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "required-input-message": "El tiempo de vencimiento de MAC debe estar comprendido entre {{ min }} - {{ max }}",
+          "fetch-mac-settings-error": "No se puede obtener la configuración MAC",
+          "update-setting-success": "La configuración MAC se ha actualizado correctamente.",
+          "update-setting-error":"No se puede actualizar la configuración MAC."
         }
       }
     }

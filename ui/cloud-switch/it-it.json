@@ -190,7 +190,10 @@
         "task-queue-title": "Coda delle attività",
         "site-details": "Dettagli del sito",
         "diagnostics": "Diagnostica",
-        "discovery": "Individuazione"
+        "discovery": "Individuazione",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "Individuazione adiacenti"
       },
       "error": "Errore",
       "success": "Operazione completata",
@@ -894,6 +897,10 @@
           "management-vlan": "Modificando le impostazioni della VLAN di gestione, lo switch potrebbe essere disconnesso da Sophos Central."
         }
       },
+      "shell": {
+        "title": "Output del comando shell '{{action}}'",
+        "command_successful_msg": "Comando eseguito"
+      },
       "tags": {
         "more-tags": "+ altri {{tagCount}}"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "Pianificazione dei backup",
         "vlan": "VLAN",
         "cli_commands": "Comandi",
+        "shell_commands": "Comandi shell",
+        "restart_agent": "Riavvia agente",
+        "clean_cores": "Pulisci core",
+        "clean_sophos_logs": "Pulisci log Sophos",
         "networks_ipv4": "Reti (IPv4)",
         "mgmt_network_ipv4": "Rete di gestione (IPv4)",
         "mgmt_network_ipv6": "Rete di gestione (IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " Impostazioni di notifica per SNMP",
         "snmp_target_address": "Indirizzo di destinazione SNMP",
         "vlan_gvrp_port_settings": "Impostazioni porta GVRP",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "Snapshot",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1968,6 +1982,7 @@
       "diagnostics": "Diagnostica",
       "log-ram": "Log RAM",
       "log-flash": "Log flash",
+      "last-snapshot": "Visualizza ultimo snapshot acquisito alle ore {{time}}",
       "form": {
         "validity": "Validità"
       },
@@ -3136,7 +3151,7 @@
       "dscp": "DSCP",
       "cosStatus": "Stato CoS 802.1p",
       "cosPriority": "Priorità CoS",
-      "agingTime": "Tempo di durata",
+      "agingTime": "Tempo di aging",
       "config-source": "Origine configurazione",
       "required-input-message": "Il valore deve essere compreso tra {{ min }} e {{ max }}",
       "required-vlan": "Nessuna VLAN esistente. Creane una per configurare la VLAN traffico voce",
@@ -3197,6 +3212,129 @@
           "disabled": "Disattivata/e",
           "source": "Fonte",
           "all": "Tutto"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "Conferma salvataggio",
+        "max-retries": "Numero massimo di tentativi",
+        "timeout": "Timeout (secondi)",
+        "max-retries-required": "Il Numero massimo di tentativi è obbligatorio.",
+        "max-retries-value-validation": "Il Numero massimo di tentativi deve essere compreso tra 1 e 10",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "Il Timeout è obbligatorio.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "Il Timeout deve essere compreso tra 30 e 86400",
+        "site-save-setting-text": "{{ count }} switch riceveranno questo aggiornamento delle impostazioni globali di ARP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "switch-save-setting-text": "Lo switch riceverà questo aggiornamento delle impostazioni globali di ARP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "update-setting-success": "Aggiornamento delle impostazioni globali di ARP completato.",
+        "update-setting-error": "Non è stato possibile aggiornare le impostazioni globali di ARP."
+      },
+      "table-header": {
+        "ip-addr": "Indirizzo IP",
+        "mac-addr": "Indirizzo MAC",
+        "interface": "VLAN",
+        "mapping": "Mapping",
+        "config-source": "Origine configurazione",
+        "search": "Cerca",
+        "search-tooltip-message": "Cerca per indirizzo IP, indirizzo MAC, VLAN e mapping",
+        "arp-global-settings": "Impostazioni globali di ARP"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Trasforma in statico",
+      "add-dialog": "Aggiungi",
+      "no-vlan": "Nessuna VLAN",
+      "required-vlan": "Nessuna VLAN esistente. Creane una per configurare la VLAN traffico voce",
+      "form": {
+        "ip-address": "Indirizzo IP",
+        "mac-address": "Indirizzo MAC",
+        "interface": "Interfaccia VLAN",
+        "ip-invalid": "Indirizzo IP non valido.",
+        "ip-required": "L’indirizzo IP è obbligatorio.",
+        "mac-invalid": "Indirizzo MAC non valido.",
+        "mac-required": "L’indirizzo MAC è obbligatorio.",
+        "duplicate-ip": "L’indirizzo IP esiste già nella tabella.",
+        "duplicate-mac": "L’indirizzo MAC esiste già nella tabella.",
+        "ip-out-of-range": "L’indirizzo IP è fuori intervallo."
+      },
+      "messages": {
+        "add-dialog-title": "Conferma aggiunta",
+        "delete-dialog-title": "Conferma eliminazione",
+        "to-static-dialog-title": "Trasforma in statico",
+        "site-add-setting-text": "{{ count }} switch riceveranno questo aggiornamento della tabella ARP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "switch-add-setting-text": "Lo switch riceverà questo aggiornamento della tabella ARP e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "add-setting-success": "Voce ARP aggiunta.",
+        "add-setting-error": "Non è stato possibile aggiungere la voce della tabella ARP.",
+        "delete-setting-success": "Voce ARP eliminata.",
+        "delete-setting-error": "Non è stato possibile eliminare la voce ARP.",
+        "to-static-setting-success": "Voce ARP trasformata in statica.",
+        "to-static-setting-error": "Non è stato possibile trasformare la voce ARP in statica."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} switch riceveranno questo aggiornamento della tabella Adiacente e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "switch-add-setting-text": "Lo switch riceverà questo aggiornamento della tabella Adiacente e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "add-setting-success": "Voce adiacente aggiunta.",
+        "add-setting-error": "Non è stato possibile aggiungere la voce della tabella adiacente.",
+        "delete-setting-success": "Voce adiacente eliminata.",
+        "delete-setting-error": "Non è stato possibile eliminare la voce adiacente.",
+        "to-static-setting-success": "Voce adiacente trasformata in statica.",
+        "to-static-setting-error": "Non è stato possibile trasformare la voce adiacente in statica."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "Indice",
+        "port": "Porta",
+        "vlan": "VLAN",
+        "mac-address": "Indirizzo MAC",
+        "config-source": "Origine configurazione",
+        "search": "Cerca",
+        "mapping": "Mapping",
+        "search-tooltip-message": "Cerca per porta, indirizzo MAC e VLAN.",
+        "mac-global-settings": "Impostazioni globali di MAC"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Trasforma in statico",
+      "add-dialog": "Aggiungi",
+      "edit-dialog": "Modifica",
+      "no-vlan": "Nessuna VLAN disponibile",
+      "form": {
+        "port": "Porta",
+        "port-invalid": "Porta non valida.",
+        "port-required": "Porta obbligatoria.",
+        "vlan-id": "VLAN",
+        "mac-address": "Indirizzo MAC",
+        "mac-invalid": "Indirizzo MAC non valido.",
+        "mac-required": "L’indirizzo MAC è obbligatorio.",
+        "duplicate-mac": "L’indirizzo MAC esiste già nella tabella."
+      },
+      "messages": {
+        "add-dialog-title": "Conferma aggiunta",
+        "delete-dialog-title": "Conferma eliminazione",
+        "edit-dialog-title": "Conferma aggiornamento",
+        "to-static-dialog-title": "Trasforma in statico",
+        "site-add-setting-text": "{{ count }} switch riceveranno questo aggiornamento della tabella MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "switch-add-setting-text": "Lo switch riceverà questo aggiornamento della tabella MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+        "add-setting-success": "Voce MAC aggiunta.",
+        "add-setting-error": "Non è stato possibile aggiungere la voce della tabella MAC.",
+        "delete-setting-success": "Voce MAC eliminata.",
+        "delete-setting-error": "Non è stato possibile eliminare la voce MAC.",
+        "to-static-setting-success": "Voce MAC trasformata in statica.",
+        "t,o-static-setting-error": "Non è stato possibile trasformare la voce MAC in statica."
+      },
+      "global-settings": {
+        "aging-time": "Tempo di aging MAC (secondi)",
+        "messages": {
+          "save-dialog-title": "Conferma salvataggio",
+          "site-save-setting-text": "{{ count }} switch riceveranno queste impostazioni MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-save-setting-text": "Lo switch riceverà queste impostazioni MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "required-input-message": "Il tempo di aging MAC deve essere compreso tra {{ min }} e {{ max }}",
+          "fetch-mac-settings-error": "Impossibile recuperare le impostazioni MAC",
+          "update-setting-success": "Aggiornamento delle impostazioni MAC completato.",
+          "update-setting-error":"Non è stato possibile aggiornare le impostazioni MAC."
         }
       }
     }

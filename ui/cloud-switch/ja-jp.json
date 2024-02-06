@@ -190,7 +190,10 @@
         "task-queue-title": "タスクのキュー",
         "site-details": "サイトの詳細",
         "diagnostics": "診断",
-        "discovery": "検出"
+        "discovery": "検出",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "近隣探索"
       },
       "error": "エラー",
       "success": "成功",
@@ -894,6 +897,10 @@
           "management-vlan": "管理 VLAN の設定を変更することで、スイッチが Sophos Central から切断される場合があります。"
         }
       },
+      "shell": {
+        "title": "シェル「{{action}}」コマンド出力",
+        "command_successful_msg": "コマンドが正常に実行されました"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} 以上"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "バックアップのスケジュール",
         "vlan": "VLAN",
         "cli_commands": "コマンド",
+        "shell_commands": "シェルコマンド",
+        "restart_agent": "エージェントの再起動",
+        "clean_cores": "コアのクリーン",
+        "clean_sophos_logs": "ソフォスログのクリーン",
         "networks_ipv4": "ネットワーク (IPv4)",
         "mgmt_network_ipv4": "管理ネットワーク (IPv4)",
         "mgmt_network_ipv6": "管理ネットワーク (IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " SNMP 通知の設定",
         "snmp_target_address": "SNMP ターゲットアドレス",
         "vlan_gvrp_port_settings": "GVRP ポート設定",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "スナップショット",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "選択したタスクが再びスイッチに送信されます。",
       "retry-error": "失敗したタスクの実行を再試行できませんでした。",
@@ -1968,6 +1982,7 @@
       "diagnostics": "診断",
       "log-ram": "RAM ログ",
       "log-flash": "フラッシュログ",
+      "last-snapshot": "{{time}} に撮影された最後のスナップショットを表示",
       "form": {
         "validity": "有効期間"
       },
@@ -3197,6 +3212,129 @@
           "disabled": "無効",
           "source": "ソース",
           "all": "すべて"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "保存の確認",
+        "max-retries": "再試行の最大数",
+        "timeout": "タイムアウト (秒)",
+        "max-retries-required": "再試行の最大数が必要です。",
+        "max-retries-value-validation": "再試行の最大数は 1～10 の値を指定してください。",
+        "max-retries-tooltip-message": "1～10",
+        "timeout-required": "タイムアウトが必要です。",
+        "timeout-tooltip-message": "36～86400",
+        "timeout-value-validation": "タイムアウトは 30～86400 の値を指定してください。",
+        "site-save-setting-text": "{{ count }}個のスイッチに、この ARP グローバル設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-save-setting-text": "スイッチにこの ARP グローバル設定の更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "update-setting-success": "ARP グローバル設定が正常に更新されました。",
+        "update-setting-error": "ARP グローバル設定を更新できません。"
+      },
+      "table-header": {
+        "ip-addr": "IP アドレス",
+        "mac-addr": "MAC アドレス",
+        "interface": "VLAN",
+        "mapping": "マッピング",
+        "config-source": "設定のソース",
+        "search": "検索",
+        "search-tooltip-message": "IP アドレス、MAC アドレス、VLAN、およびマッピングで検索",
+        "arp-global-settings": "ARP グローバル設定"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "静的に変換",
+      "add-dialog": "追加",
+      "no-vlan": "VLAN なし",
+      "required-vlan": "VLAN が存在しません。音声 VLAN を設定するために作成してください",
+      "form": {
+        "ip-address": "IP アドレス",
+        "mac-address": "MAC アドレス",
+        "interface": "VLAN インターフェース",
+        "ip-invalid": "無効な IP アドレスです。",
+        "ip-required": "IP アドレスが必要です。",
+        "mac-invalid": "無効な MAC アドレスです。",
+        "mac-required": "MAC アドレスが必要です。",
+        "duplicate-ip": "IP アドレスは、テーブル内に既に存在します。",
+        "duplicate-mac": "MAC アドレスは、テーブル内に既に存在します。",
+        "ip-out-of-range": "IP アドレスが範囲外です。"
+      },
+      "messages": {
+        "add-dialog-title": "追加の確認",
+        "delete-dialog-title": "削除の確認",
+        "to-static-dialog-title": "静的に変換",
+        "site-add-setting-text": "{{ count }}個のスイッチに、この ARP テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-add-setting-text": "スイッチにこの ARP テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "add-setting-success": "ARP エントリが正常に追加されました。",
+        "add-setting-error": "ARP テーブルエントリを追加できません。",
+        "delete-setting-success": "ARP エントリが正常に削除されました。",
+        "delete-setting-error": "ARP エントリを削除できません。",
+        "to-static-setting-success": "ARP エントリが正常に静的に変換しました。",
+        "to-static-setting-error": "ARP エントリを静的に変換できません。"
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }}個のスイッチに、この近隣テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-add-setting-text": "スイッチにこの近隣テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "add-setting-success": "近隣エントリが正常に追加されました。",
+        "add-setting-error": "近隣テーブルエントリを追加できません。",
+        "delete-setting-success": "近隣エントリが正常に削除されました。",
+        "delete-setting-error": "近隣エントリを削除できません。",
+        "to-static-setting-success": "近隣エントリが正常に静的に変換しました。",
+        "to-static-setting-error": "近隣エントリを静的に変換できません。"
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "インデックス",
+        "port": "ポート",
+        "vlan": "VLAN",
+        "mac-address": "MAC アドレス",
+        "config-source": "設定のソース",
+        "search": "検索",
+        "mapping": "マッピング",
+        "search-tooltip-message": "ポート、MAC アドレス、および VLAN で検索します。",
+        "mac-global-settings": "MAC グローバル設定"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "静的に変換",
+      "add-dialog": "追加",
+      "edit-dialog": "編集",
+      "no-vlan": "使用可能な VLAN がありません",
+      "form": {
+        "port": "ポート",
+        "port-invalid": "ポートが無効です。",
+        "port-required": "ポートを指定してください。",
+        "vlan-id": "VLAN",
+        "mac-address": "MAC アドレス",
+        "mac-invalid": "無効な MAC アドレスです。",
+        "mac-required": "MAC アドレスが必要です。",
+        "duplicate-mac": "MAC アドレスは、テーブル内に既に存在します。"
+      },
+      "messages": {
+        "add-dialog-title": "追加の確認",
+        "delete-dialog-title": "削除の確認",
+        "edit-dialog-title": "更新の確認",
+        "to-static-dialog-title": "静的に変換",
+        "site-add-setting-text": "{{ count }}個のスイッチに、この MAC テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "switch-add-setting-text": "スイッチにこの MAC テーブルの更新が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+        "add-setting-success": "MAC エントリが正常に追加されました。",
+        "add-setting-error": "MAC テーブルエントリを追加できません。",
+        "delete-setting-success": "MAC エントリが正常に削除されました。",
+        "delete-setting-error": "MAC エントリを削除できません。",
+        "to-static-setting-success": "MAC エントリが正常に静的に変換しました。",
+        "t,o-static-setting-error": "MAC エントリを静的に変換できません。"
+      },
+      "global-settings": {
+        "aging-time": "MAC エージングタイム (秒)",
+        "messages": {
+          "save-dialog-title": "保存の確認",
+          "site-save-setting-text": "{{ count }}個のスイッチに、この MAC 設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "switch-save-setting-text": "スイッチにこの MAC 設定が適用され、タスクが作成されます。今すぐ、または後で同期すること選択できます。",
+          "required-input-message": "MAC エージングタイムには {{ min }}～{{ max }} の値を指定してください。",
+          "fetch-mac-settings-error": "MAC の設定を取得できません",
+          "update-setting-success": "MAC 設定が更新されました。",
+          "update-setting-error":"MAC の設定を更新できません。"
         }
       }
     }

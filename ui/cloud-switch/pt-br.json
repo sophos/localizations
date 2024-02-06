@@ -190,7 +190,10 @@
         "task-queue-title": "Fila de tarefas",
         "site-details": "Detalhes do site",
         "diagnostics": "Diagnóstico",
-        "discovery": "Descoberta"
+        "discovery": "Descoberta",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "Descoberta do vizinho"
       },
       "error": "Erro",
       "success": "Bem-sucedido",
@@ -894,6 +897,10 @@
           "management-vlan": "Alterar as configurações da VLAN de gerenciamento poderá desconectar o switch do Sophos Central."
         }
       },
+      "shell": {
+        "title": "Saída do comando shell '{{action}}'",
+        "command_successful_msg": "Comando executado com sucesso"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} mais"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "Agendar backup",
         "vlan": "VLAN",
         "cli_commands": "Comandos",
+        "shell_commands": "Comandos shell",
+        "restart_agent": "Reiniciar agente",
+        "clean_cores": "Limpar núcleos",
+        "clean_sophos_logs": "Limpar logs da Sophos ",
         "networks_ipv4": "Redes (IPv4)",
         "mgmt_network_ipv4": "Rede de gerenciamento (IPv4)",
         "mgmt_network_ipv6": "Rede de gerenciamento(IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " Ajustes de Notificação de SNMP",
         "snmp_target_address": "Endereço IP de destino",
         "vlan_gvrp_port_settings": "Configurações da porta GVRP",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "Instantâneo",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "A tarefa selecionada será enviada novamente ao switch.",
       "retry-error": "Falha na nova tentativa de execução da tarefa com falha.",
@@ -1492,7 +1506,7 @@
         "port-revert-error": "Não é possível deletar configurações do switch.",
         "port-revert-system-success": "Configurações do site deletadas com sucesso, e o switch está usando os padrões do sistema.",
         "port-revert-system-error": "Não é possível deletar parâmetros de configuração do site.",
-        "switch-revert-dialog-text": "Configurações do switch selecionado serão deletadas, e o switch usará as configurações do site em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
+        "switch-revert-dialog-text": "As configurações do switch selecionado serão deletadas, e o switch usará as configurações do site em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
         "switch-revert-system-dialog-text": "As configurações do site selecionado serão deletadas, e o switch usará as configurações padrão do sistema em seu lugar. Você pode sincronizar as alterações a suas configurações agora ou mais tarde.",
         "lag-conflict-message": "Uma ou mais portas selecionadas já são parte das configurações do LAG e, se mantidas, resultarão em erro nos switches abaixo.",
         "lag-conflict-title": "Configurações conflitantes encontradas!",
@@ -1968,6 +1982,7 @@
       "diagnostics": "Diagnóstico",
       "log-ram": "Logs de RAM",
       "log-flash": "Logs de flash",
+      "last-snapshot": "Ver o último instantâneo realizado às {{time}}",
       "form": {
         "validity": "Validade"
       },
@@ -3197,6 +3212,129 @@
           "disabled": "Desabilitado",
           "source": "Origem",
           "all": "Todos"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "Confirme a ação de salvar",
+        "max-retries": "Número máximo de tentativas",
+        "timeout": "Limite de tempo (segundos)",
+        "max-retries-required": "O número máximo de tentativas é necessário.",
+        "max-retries-value-validation": "O número máximo de tentativas deve estar entre 1 e 10.",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "É necessário um limite de tempo.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "O limite de tempo deve estar entre 30 e 86400",
+        "site-save-setting-text": "{{ count }} switches receberão esta atualização das configurações globais de ARP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-save-setting-text": "O switch receberá esta atualização das configurações globais de ARP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "update-setting-success": "Configurações globais de ARP atualizadas com sucesso.",
+        "update-setting-error": "Não foi possível atualizar as configurações globais de ARP."
+      },
+      "table-header": {
+        "ip-addr": "Endereço IP",
+        "mac-addr": "Endereço MAC",
+        "interface": "VLAN",
+        "mapping": "Mapeamento",
+        "config-source": "Origem da configuração",
+        "search": "Pesquisar",
+        "search-tooltip-message": "Pesquisar por endereço IP, endereço MAC, VLAN e mapeamento",
+        "arp-global-settings": "Configurações globais de ARP"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Mover para estático",
+      "add-dialog": "Adicionar",
+      "no-vlan": "Sem VLAN",
+      "required-vlan": "Não existe nenhuma VLAN. Crie uma para configurar a VLAN de voz.",
+      "form": {
+        "ip-address": "Endereço IP",
+        "mac-address": "Endereço MAC",
+        "interface": "Interface de VLAN",
+        "ip-invalid": "Endereço Inválido de IP.",
+        "ip-required": "É necessário informar o endereço de IP.",
+        "mac-invalid": "Endereço Inválido de MAC.",
+        "mac-required": "É necessário informar o endereço de MAC.",
+        "duplicate-ip": "O endereço IP já existe na tabela.",
+        "duplicate-mac": "O endereço MAC já existe na tabela.",
+        "ip-out-of-range": "O endereço IP está fora do intervalo."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmar adição",
+        "delete-dialog-title": "Confirmar deleção",
+        "to-static-dialog-title": "Mover para estático",
+        "site-add-setting-text": "{{ count }} switches receberão esta atualização da tabela ARP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-add-setting-text": "O switch receberá esta atualização da tabela ARP e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "add-setting-success": "Entrada ARP adicionada com sucesso.",
+        "add-setting-error": "Não foi possível adicionar uma entrada à tabela ARP.",
+        "delete-setting-success": "Entrada ARP deletada com sucesso.",
+        "delete-setting-error": "Não foi possível deletar a entrada ARP.",
+        "to-static-setting-success": "Entrada ARP movida para estático com sucesso.",
+        "to-static-setting-error": "Não foi possível mover a entrada ARP para estático."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} switches receberão esta atualização da tabela Vizinho e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-add-setting-text": "O switch receberá esta atualização da tabela Vizinho e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "add-setting-success": "Entrada de Vizinho adicionada com sucesso.",
+        "add-setting-error": "Não foi possível adicionar uma entrada à tabela Vizinho.",
+        "delete-setting-success": "Entrada de Vizinho deletada com sucesso.",
+        "delete-setting-error": "Não foi possível deletar a entrada de Vizinho.",
+        "to-static-setting-success": "Entrada de Vizinho movida para estático com sucesso.",
+        "to-static-setting-error": "Não foi possível mover a entrada de Vizinho para estático."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "Índice",
+        "port": "Porta",
+        "vlan": "VLAN",
+        "mac-address": "Endereço de MAC",
+        "config-source": "Origem da configuração",
+        "search": "Pesquisar",
+        "mapping": "Mapeamento",
+        "search-tooltip-message": "Pesquisar por porta, endereço MAC e VLAN.",
+        "mac-global-settings": "Configurações globais de MAC"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Mover para estático",
+      "add-dialog": "Adicionar",
+      "edit-dialog": "Editar",
+      "no-vlan": "Nenhuma VLAN disponível",
+      "form": {
+        "port": "Porta",
+        "port-invalid": "Porta inválida.",
+        "port-required": "É necessária uma porta.",
+        "vlan-id": "VLAN",
+        "mac-address": "Endereço de MAC",
+        "mac-invalid": "Endereço Inválido de MAC.",
+        "mac-required": "É necessário informar o endereço de MAC.",
+        "duplicate-mac": "O endereço MAC já existe na tabela."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmar adição",
+        "delete-dialog-title": "Confirmar deleção",
+        "edit-dialog-title": "Confirmar atualização",
+        "to-static-dialog-title": "Mover para estático",
+        "site-add-setting-text": "{{ count }} switches receberão esta atualização da tabela MAC e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "switch-add-setting-text": "O switch receberá esta atualização da tabela MAC e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+        "add-setting-success": "Entrada MAC adicionada com sucesso.",
+        "add-setting-error": "Não foi possível adicionar uma entrada à tabela MAC.",
+        "delete-setting-success": "Entrada MAC deletada com sucesso.",
+        "delete-setting-error": "Não foi possível deletar a entrada MAC.",
+        "to-static-setting-success": "Entrada MAC movida para estático com sucesso.",
+        "t,o-static-setting-error": "Não foi possível mover a entrada MAC para estático."
+      },
+      "global-settings": {
+        "aging-time": "Tempo de vida do MAC (segundos)",
+        "messages": {
+          "save-dialog-title": "Confirme a ação de salvar",
+          "site-save-setting-text": "{{ count }} switches receberão as configurações deste MAC e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+          "switch-save-setting-text": "O switch receberá as configurações deste MAC e serão criadas tarefas. Você pode optar por sincronizar agora ou mais tarde.",
+          "required-input-message": "O tempo de vida do MAC deve ser de {{ min }} a {{ max }}.",
+          "fetch-mac-settings-error": "Não foi possível obter as configurações de MAC",
+          "update-setting-success": "Configurações de MAC atualizadas com sucesso.",
+          "update-setting-error":"Não foi possível atualizar as configurações de MAC."
         }
       }
     }

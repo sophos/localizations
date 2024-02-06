@@ -706,11 +706,12 @@
       "xfrm-ip-pool": {
         "header": "IP-Pool",
         "add-ip-pool": "IP-Pool hinzufügen",
-        "info": "Hier hinzugefügte IP-Adressen werden für die Zuweisung zu XFRM-Schnittstellen verwendet. 10.252.0.0/15 und 10.252.0.0/16 werden standardmäßig verwendet, wenn sie nicht hinzugefügt werden.",
+        "info": "Hier hinzugefügte IP-Adressen werden für die Zuweisung zu XFRM-Schnittstellen verwendet. 10.252.0.0/15 und 10.254.0.0/16 werden standardmäßig verwendet, wenn sie nicht hinzugefügt werden.",
         "add-xfrm-ip-pool": "XFRM-IP-Pool hinzufügen",
         "help-info-1":"Sie können mehrere IP-Adresse in folgenden Formaten angeben:",
-        "help-info-2": "IPv4-Netzwerkformat: z.B. 192.168.1.0/24,192.168.2.0/24",
+        "help-info-2": "IPv4-CIDR-Format: z.B. 192.168.1.0/24, 192.168.2.0/24",
         "add": "Speichern",
+        "success": "Der XFRM-IP-Pool wurde erfolgreich aktualisiert.",
         "error": {
           "invalid-format": "Ungültiges Format für XFRM-IP-Pool: {{ value }}",
           "min-two-usable-address": "Ungültiger XFRM-IP-Pool (mindestens 2 Host-Adressen müssen vorhanden sein): {{value}}"
@@ -884,7 +885,7 @@
           "news": "News",
           "bugs": "Fehlern",
           "size": "Größe",
-          "release-notes": "Versionsinfo"
+          "release-notes": "Versionsinfos"
         },
         "table": {
           "column": {
@@ -1313,6 +1314,8 @@
         "status": "Als nächstes läuft ab",
         "earliest-start": "Frühester Start",
         "next-expiry": "Läuft ab",
+        "next-expiry-date": "Nächstes Ablaufdatum",
+        "next-expiry-status": "Nächster Ablaufstatus",
         "warranty-expires-on": "Garantie läuft ab",
         "tooltip-text": {
           "transferring-to": "Übertragen auf {{recipientEmail}}",
@@ -1330,7 +1333,7 @@
         "list-empty-message": "Keine angeforderten Firewalls anzuzeigen",
         "apply-subscriptions": "Abonnements anwenden",
         "transfer-subscriptions": "Abonnements übertragen",
-        "activate-evaluations": "Evaluationen aktivieren",
+        "activate-evaluations": "Evaluierungen aktivieren",
         "devcie-list-loading-error": "Liste der anforderten Firewalls kann nicht geladen werden.",
         "recently-expired": "Vor Kurzem sind einige Abonnements abgelaufen. Erweitern Sie die Zeile, um Details anzuzeigen.",
         "expired": "Abgelaufen",
@@ -1466,13 +1469,14 @@
       },
       "evaluate-features": {
         "label": "Evaluierungen aktivieren - {{ serial }}",
-        "evaluate": "Ausgewählte evaluieren",
-        "available-features": "Für Evaluierung verfügbare Funktionen",
+        "evaluate": "Ausgewähltes evaluieren",
+        "available-features": "Zur Evaluierung verfügbare Funktionen",
         "evaluate-30-days": "Sie evaluieren die nachfolgenden Funktionen für die nächsten 30 Tage",
         "evaluate-only-once": "Die Funktionen können für jede Firewall nur einmal evaluiert werden.",
+        "re-evaluation-available": "Sie können Komponenten mehrmals evaluieren. Starten Sie einfach 90 Tage nach Ablauf dieser Evaluierung eine neue Evaluierung.",
         "no-evaluation-available": "Für diese Firewall gibt es keine Funktionen, die evaluiert werden können.",
         "success": "Evaluierung der ausgewählten Funktionen erfolgreich gestartet.",
-        "error": "Start der Evaluierung der ausgewählten Funktionen fehlgeschlagen."
+        "error": "Start der Evaluierungen der ausgewählten Funktionen fehlgeschlagen."
       },
       "features": {
         "BASE": "Basis",

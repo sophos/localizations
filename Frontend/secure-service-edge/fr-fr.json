@@ -351,7 +351,7 @@
         "allCreatedBy": "Tous les créateurs",
         "allTemplateTypes": "Tous les types de modèles",
         "savedTemplatesNote": "Vous avez {{savedTemplatesCount}}/1000 modèles enregistrés",
-        "savedTemplateNoteInfo": "Il s’agit d’un compteur combiné qui inclut également d’autres modèles que ceux des rapports de passerelle",
+        "savedTemplateNoteInfo": "Il s’agit d’un compteur combiné qui inclut également d’autres modèles que ceux des rapports de DNS Protection.",
         "saveTemplatesSuccess": "Modèle enregistré",
         "updateTemplateSuccess": "Modèle mis à jour",
         "templateName": "Nom du modèle",
@@ -847,10 +847,18 @@
       "delete": "Supprimer",
       "desc": "Description",
       "name": "Nom",
+      "summary": "Résumé",
+      "contents": "Contenu",
       "continue": "Continuer",
+      "edit": "Modifier",
       "whitespace-name-validation": "Nom obligatoire",
       "messages": {
-        "generic-error": "Erreur inattendue pendant le traitement de la demande."
+        "generic-error": "Erreur inattendue pendant le traitement de la demande.",
+        "length-validation": "{{formControl}} ne doit pas contenir plus de {{maxLength}} caractères",
+        "invalid-name": "Le nom doit uniquement contenir : A-Z, a-z , 0-9, -, _, espace"
+      },
+      "button": {
+        "back": "Retour"
       },
       "on-text": "Actif",
       "off-text": "Inactif",
@@ -1236,10 +1244,11 @@
           "ips": "IPS",
           "tooltips": {
             "filtering": {
-              "description": "Le trafic passe par un maximum de 5 étapes de filtrage dans l’ordre suivant : DNS, pare-feu, TLS, URL Web et contenu Web.",
+              "description": "Le trafic passe par sept étapes de filtrage dans cet ordre : DNS, pare-feu, TLS, URL Web, contenu Web, contrôle d’applis et système de prévention des intrusions.",
               "point-one": "Chaque règle peut s’appliquer à plus d’une étape de filtrage.",
-              "point-two": "Les règles sont évaluées de haut en bas à chaque étape et la première règle correspondante pour cette étape est appliquée.",
-              "point-three": "Le trafic peut correspondre à une règle différente à chaque étape."
+              "point-two": "Les règles sont évaluées de la priorité la plus haute à la priorité la plus basse à chaque étape.",
+              "point-three": "La première règle de correspondance pour cette étape est appliquée.",
+              "point-four": "Le trafic peut correspondre à une règle différente à chaque étape."
             }
           }
         },
@@ -1266,7 +1275,34 @@
       },
       "agent-config": {
         "title": "Secure Service Edge - Configuration de l’agent",
-        "breadcrumb": "Configuration de l’agent"
+        "breadcrumb": "Configuration de l’agent",
+        "users": "Utilisateur",
+        "devices": "Appareil",
+        "at": "à",
+        "headers": {
+          "name": "Nom de la configuration",
+          "type": "Type (seul / groupe)",
+          "action": "Action",
+          "last-modified": "Dernière modification",
+          "modified-by": "Modifié par",
+          "description": "Description",
+          "active": "Actif"
+        },
+        "add-configuration": {
+          "add-agent": "Ajouter un agent"
+        },
+        "no-agent": {
+          "title": "Vous n’avez pas ajouté d’agent",
+          "body": "Cliquez sur le bouton « Ajouter un agent » pour ajouter des agents."
+        },
+        "pagination": {
+          "page-info": "{{start}}-{{end}} sur {{total}}"
+        },
+        "swap-agent": {
+          "warning": "Aucune modification fonctionnelle ne se produira tant que l’agent n’aura pas été activé",
+          "locked-agents-error": "Vous ne pouvez pas modifier la position des agents verrouillés",
+          "agent-position-change": "La position de l’agent a bien été modifiée"
+        }
       },
       "objects": {
         "title": "Secure Service Edge - Objets",
@@ -1279,7 +1315,8 @@
           "back": "Retour",
           "add": "Ajouter",
           "save": "Enregistrer",
-          "copy": "Copier"
+          "copy": "Copier",
+          "add-another": "Ajouter une autre"
         },
         "add-edit-object": {
           "object-dropdown-label": "Type d’objet"
@@ -1302,6 +1339,8 @@
           "object-usage": "Usage de l’objet",
           "desc": "Description",
           "add-object": "Ajouter un objet",
+          "add-object-title": "Ajouter un objet {{type}}",
+          "edit-object": "Modifier l’objet {{type}}",
           "delete-object": "Supprimer l’objet",
           "tooltips": {
             "items": {
@@ -1309,15 +1348,68 @@
             },
             "usage": {
               "description": "Les objets peuvent être utilisés dans une ou plusieurs règles, et peuvent également être imbriqués dans d’autres objets"
-            }
+            },
+            "in-rules":"Dans les règles",
+            "in-nested-objects":"Dans les objets imbriqués",
+            "view-all":"Tout afficher",
+            "more":"Plus..."
           }
+        },
+        "content-type": {
+          "sub-header": "Indiquer le contenu",
+          "sub-header-label": "Sélectionnez un type de contenu, puis sélectionnez ou ajoutez manuellement des éléments comme indiqué.",
+          "default-label": "Type de contenu",
+          "empty-message": "Sélectionner le type de contenu",
+          "ipv4-address": {
+            "name": "Adresse IPv4",
+            "default-label": "Adresses IPv4",
+            "option-label": "Ajouter en saisissant du texte ou par copier-coller ...",
+            "summary-label": "Adresses IPv4",
+            "format-label": "Format : 255.255.255.255"
+          },
+          "ipv4-address-range": {
+            "name": "Plage d’adresses IPv4",
+            "default-label": "Plages d’adresses IPv4",
+            "option-label": "Ajouter en saisissant du texte ou par copier-coller ...",
+            "summary-label": "Plages d’adresses IPv4",
+            "format-label": "Format : 255.255.255.255 - 255.255.255.255"
+          },
+          "fqdn": {
+            "name": "FQDN",
+            "default-label": "FQDN",
+            "option-label": "nom",
+            "summary-label": "URL de domaine",
+            "matches-label": "URL de domaine"
+          },
+          "domain": {
+            "name": "Domaine",
+            "default-label": "Domaines",
+            "option-label": "nom",
+            "summary-label": "URL de domaine",
+            "matches-label": "URL de domaine"
+          },
+          "network-object": {
+            "name": "Objet réseau",
+            "default-label": "Objets réseau",
+            "option-label": "nom",
+            "summary-label": "réseaux",
+            "matches-label": "réseaux"
+          },
+          "error-messages": {
+            "required": "Au moins une entrée est requise.",
+            "invalid-item": "Élément non valide"
+          }
+        },
+        "summary": {
+          "view-only": "Afficher uniquement. Pour modifier un objet imbriqué, recherchez-le dans le tableau Objets et cliquez sur son nom.",
+          "object-name-required": "Nom d’objet obligatoire"
         },
         "delete-object":{
           "delete": "Supprimer",
           "objects": "Objets",
           "object": "Objet",
           "warning": "Avertissement ! ",
-          "delete-warning": "ne peuvent pas être supprimés car ils sont référencés par d’autres règles ou objets. ",
+          "delete-warning": "Ne peut pas être supprimé car d’autres règles ou objets y font référence.",
           "object-delete-one-info": "Impossible de supprimer l’objet",
           "object-delete-other-info": "Impossible de supprimer les objets",
           "referenced-object": "Supprimer uniquement les objets non référencés.",
@@ -1344,6 +1436,10 @@
           "ip-addr": "Adresses IPv4",
           "ip-addr-range": "Plages d’adresses IPv4",
           "ip-subnet": "Sous-réseau IP"
+        },
+        "object-list": {
+          "object-added": "Objet ajouté",
+          "object-add-error": "Impossible d’ajouter l’objet"
         }
       },
       "settings": {
