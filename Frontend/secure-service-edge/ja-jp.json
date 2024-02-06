@@ -351,7 +351,7 @@
         "allCreatedBy": "すべての作成者",
         "allTemplateTypes": "すべて種類のテンプレート",
         "savedTemplatesNote": "{{savedTemplatesCount}}/1,000個の保存済みテンプレートがあります",
-        "savedTemplateNoteInfo": "これは、ゲートウェイレポート外のテンプレートの数も含む合計です",
+        "savedTemplateNoteInfo": "これは、DNS Protection レポート外のテンプレートの数も含む合計です。",
         "saveTemplatesSuccess": "テンプレートが保存されました",
         "updateTemplateSuccess": "テンプレートが更新されました",
         "templateName": "テンプレート名",
@@ -847,10 +847,18 @@
       "delete": "削除",
       "desc": "説明",
       "name": "名前",
+      "summary": "サマリー",
+      "contents": "コンテンツ",
       "continue": "続行",
+      "edit": "編集",
       "whitespace-name-validation": "名前を指定してください",
       "messages": {
-        "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。"
+        "generic-error": "リクエストの処理中に、予期しないエラーが発生しました。",
+        "length-validation": "{{formControl}} は {{maxLength}}文字以内で入力してください",
+        "invalid-name": "名前には、次の文字のみを使用できます: A-Z、a-z、0-9、-、_、スペース文字"
+      },
+      "button": {
+        "back": "戻る"
       },
       "on-text": "オン",
       "off-text": "オフ",
@@ -953,7 +961,7 @@
               "web-access-rule-desc": "DNS フィルタリングを使用せずに、ドメインまたは URL で Web 接続をブロックします",
               "web-access-rule-tooltip-desc": "ユーザーが Secure Web Gateway を介して Web サイトにアクセスしようとすると、Web フィルタリングルールによって、Web サイトまたは Web ペ ージの URL に基づいてアクセスを制御できます。このタイプのルールは、DNS Web フィルタリングには適用されません。",
               "web-content-filter-rule": "Web コンテンツ フィルタルール",
-              "web-content-filter-rule-desc": "許可された Web サイトでアクセスできるファイルやコンテンツのタイプを制御します",
+              "web-content-filter-rule-desc": "許可された Web サイトでアクセスできるファイルやコンテンツの種類を制御します",
               "web-content-filter-rule-tooltip-desc": "URL またはカテゴリに基づいて Web ページが許可されている場合、コンテンツフィルタリングのルールは、アップロードおよびダウンロードをスキャンして脅威を検出し、危険なファイルタイプをブロックすることで、保護を強化します",
               "app-control": "アプリ コントロール",
               "app-control-desc": "特定のアプリケーション (名前付きアプリまたはアプリケーションプロトコル) に属することが検出されたトラフィックを禁止するポリシーを設定します",
@@ -1236,10 +1244,11 @@
           "ips": "IPS (侵入防御システム)",
           "tooltips": {
             "filtering": {
-              "description": "トラフィックは、DNS、ファイアウォール、TLS、Web URL、Web コンテンツの順で最大 5 つのフィルタリング手順を通過します。",
+              "description": "トラフィックは、次の順序で 7つのフィルタリングステージを通過します。DNS、ファイアウォール、TLS、Web URL、Web コンテンツ、アプリコントロール、IPS。",
               "point-one": "各ルールは、フィルタリングの複数の段階で適用できます。",
-              "point-two": "ルールは各ステージで上から下に評価され、そのステージで最初に一致したルールが適用されます。",
-              "point-three": "トラフィックは、各段階で異なるルールに一致する場合があります。"
+              "point-two": "ルールは、各段階で上から下に評価されます。",
+              "point-three": "その段階で最初に一致したルールが適用されます。",
+              "point-four": "トラフィックは、各段階で異なるルールに一致する場合があります。"
             }
           }
         },
@@ -1266,7 +1275,34 @@
       },
       "agent-config": {
         "title": "Secure Service Edge - エージェント設定",
-        "breadcrumb": "エージェント設定"
+        "breadcrumb": "エージェント設定",
+        "users": "ユーザー",
+        "devices": "デバイス",
+        "at": ":",
+        "headers": {
+          "name": "構成名",
+          "type": "種類 (個別/グループ)",
+          "action": "アクション",
+          "last-modified": "前回更新日時",
+          "modified-by": "更新者",
+          "description": "説明",
+          "active": "有効"
+        },
+        "add-configuration": {
+          "add-agent": "エージェントの追加"
+        },
+        "no-agent": {
+          "title": "追加したエージェントはありません",
+          "body": "エージェントを追加するには、エージェントの追加ボタンをクリックします。"
+        },
+        "pagination": {
+          "page-info": "{{start}} ～ {{end}} / {{total}}"
+        },
+        "swap-agent": {
+          "warning": "エージェントが有効になるまで、機能的な変更は行われません",
+          "locked-agents-error": "ロックされたエージェントの位置は変更できません",
+          "agent-position-change": "エージェントの位置が正常に変更されました"
+        }
       },
       "objects": {
         "title": "Secure Service Edge - オブジェクト",
@@ -1279,7 +1315,8 @@
           "back": "戻る",
           "add": "追加",
           "save": "保存",
-          "copy": "コピー"
+          "copy": "コピー",
+          "add-another": "次を追加"
         },
         "add-edit-object": {
           "object-dropdown-label": "オブジェクトの種類"
@@ -1302,6 +1339,8 @@
           "object-usage": "オブジェクトの使用",
           "desc": "説明",
           "add-object": "オブジェクトの追加",
+          "add-object-title": "{{type}} オブジェクトの追加",
+          "edit-object": "{{type}} オブジェクトの編集",
           "delete-object": "オブジェクトの削除",
           "tooltips": {
             "items": {
@@ -1309,15 +1348,68 @@
             },
             "usage": {
               "description": "オブジェクトは 1つ以上のルールで使用でき、他のオブジェクト内にネストすることもできます"
-            }
+            },
+            "in-rules":"ルール内",
+            "in-nested-objects":"ネストされたオブジェク内",
+            "view-all":"すべてを表示",
+            "more":"詳細..."
           }
+        },
+        "content-type": {
+          "sub-header": "内容の指定",
+          "sub-header-label": "コンテンツの種類を選択し、指示に従って項目を選択するか、手動で追加します。",
+          "default-label": "コンテンツの種類",
+          "empty-message": "コンテンツの種類を選択します",
+          "ipv4-address": {
+            "name": "IPv4 アドレス",
+            "default-label": "IPv4 アドレス",
+            "option-label": "入力またはコピー＆ペーストによる追加...",
+            "summary-label": "IPv4 アドレス",
+            "format-label": "形式: 255.255.255.255"
+          },
+          "ipv4-address-range": {
+            "name": "IPv4 アドレス範囲",
+            "default-label": "IPv4 アドレス範囲",
+            "option-label": "入力またはコピー＆ペーストによる追加...",
+            "summary-label": "IPv4 アドレス範囲",
+            "format-label": "形式: 255255255255 - 255255255255"
+          },
+          "fqdn": {
+            "name": "FQDN",
+            "default-label": "FQDN",
+            "option-label": "name",
+            "summary-label": "ドメイン URL",
+            "matches-label": "ドメイン URL"
+          },
+          "domain": {
+            "name": "ドメイン",
+            "default-label": "ドメイン",
+            "option-label": "name",
+            "summary-label": "ドメイン URL",
+            "matches-label": "ドメイン URL"
+          },
+          "network-object": {
+            "name": "ネットワークオブジェクト",
+            "default-label": "ネットワークオブジェクト",
+            "option-label": "name",
+            "summary-label": "ネットワーク",
+            "matches-label": "ネットワーク"
+          },
+          "error-messages": {
+            "required": "少なくとも１つの項目が必要です。",
+            "invalid-item": "無効な項目"
+          }
+        },
+        "summary": {
+          "view-only": "表示のみ。ネストされたオブジェクトを編集するには、オブジェクトテーブルでオブジェクトを検索し、その名前をクリックします。",
+          "object-name-required": "オブジェクト名を指定してください"
         },
         "delete-object":{
           "delete": "削除",
           "objects": "オブジェクト",
           "object": "オブジェクト",
           "warning": "警告 ",
-          "delete-warning": "他のルールまたはオブジェクトによって参照されているため、削除できません。 ",
+          "delete-warning": "他のルールまたはオブジェクトが参照しているため、削除できません。",
           "object-delete-one-info": "オブジェクトを削除できませんでした",
           "object-delete-other-info": "オブジェクトを削除できませんでした",
           "referenced-object": "参照されていないオブジェクトのみを削除します。",
@@ -1344,6 +1436,10 @@
           "ip-addr": "IPv4 アドレス",
           "ip-addr-range": "IPv4 アドレス範囲",
           "ip-subnet": "IP サブネット"
+        },
+        "object-list": {
+          "object-added": "追加されたオブジェクト",
+          "object-add-error": "オブジェクトの追加に失敗しました"
         }
       },
       "settings": {

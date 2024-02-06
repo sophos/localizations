@@ -190,7 +190,10 @@
         "task-queue-title": "File d’attente des tâches",
         "site-details": "Détails du site",
         "diagnostics": "Diagnostics",
-        "discovery": "Découverte"
+        "discovery": "Découverte",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "Découverte d’hôtes voisins"
       },
       "error": "Erreur",
       "success": "Succès",
@@ -894,6 +897,10 @@
           "management-vlan": "La modification des paramètres du VLAN de gestion peut déconnecter le switch de Sophos Central."
         }
       },
+      "shell": {
+        "title": "Sortie de la commande Shell '{{action}}'",
+        "command_successful_msg": "Commande exécutée avec succès"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} de plus"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "Planification de sauvegarde",
         "vlan": "VLAN",
         "cli_commands": "Commandes",
+        "shell_commands": "Commandes Shell",
+        "restart_agent": "Redémarrer l’agent",
+        "clean_cores": "Nettoyer les noyaux",
+        "clean_sophos_logs": "Effacer les journaux Sophos",
         "networks_ipv4": "Réseaux(IPv4)",
         "mgmt_network_ipv4": "Réseau de gestion(IPv4)",
         "mgmt_network_ipv6": "Réseau de gestion(IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " Paramètres de notification SNMP",
         "snmp_target_address": "Adresse cible SNMP",
         "vlan_gvrp_port_settings": "Paramètres du port GVRP",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "Instantané",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -1968,6 +1982,7 @@
       "diagnostics": "Diagnostics",
       "log-ram": "Journaux RAM",
       "log-flash": "Journaux Flash",
+      "last-snapshot": "Afficher le dernier instantané pris à {{time}}",
       "form": {
         "validity": "Validité"
       },
@@ -3197,6 +3212,129 @@
           "disabled": "Désactivé",
           "source": "Source",
           "all": "Tous"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "Confirmer l’enregistrement",
+        "max-retries": "Nombre maximal de tentatives",
+        "timeout": "Délai d’inactivité (secondes)",
+        "max-retries-required": "Le nombre maximal de tentatives est obligatoire.",
+        "max-retries-value-validation": "Le nombre maximal de tentatives doit être compris entre 1 et 10",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "Le délai d’attente est obligatoire.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "Le délai d’attente doit être compris entre 30 et 86400",
+        "site-save-setting-text": "{{ count }} switchs vont récupérer la mise à jour des paramètres ARP généraux et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "switch-save-setting-text": "Le switch va récupérer la mis à jour des paramètres ARP généraux et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "update-setting-success": "Paramètres ARP généraux mis à jour.",
+        "update-setting-error": "Impossible de mettre à jour les paramètres ARP généraux."
+      },
+      "table-header": {
+        "ip-addr": "Adresse IP",
+        "mac-addr": "Adresse MAC",
+        "interface": "VLAN",
+        "mapping": "Mappage",
+        "config-source": "Source de configuration",
+        "search": "Recherche",
+        "search-tooltip-message": "Rechercher par adresse IP, adresse MAC, VLAN et mappage",
+        "arp-global-settings": "Paramètres ARP généraux"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Convertir en statique",
+      "add-dialog": "Ajouter",
+      "no-vlan": "Aucun VLAN",
+      "required-vlan": "Aucun VLAN existant. Veuillez en créer un pour configurer le VLAN voix",
+      "form": {
+        "ip-address": "Adresse IP",
+        "mac-address": "Adresse MAC",
+        "interface": "Interface VLAN",
+        "ip-invalid": "Adresse IP non valide.",
+        "ip-required": "Adresse IP obligatoire.",
+        "mac-invalid": "Adresse MAC non valide.",
+        "mac-required": "Adresse MAC obligatoire.",
+        "duplicate-ip": "Cette adresse IP existe déjà dans le tableau.",
+        "duplicate-mac": "Cette adresse MAC existe déjà dans le tableau.",
+        "ip-out-of-range": "Adresse IP hors limite."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmer l’ajout",
+        "delete-dialog-title": "Confirmer la suppression",
+        "to-static-dialog-title": "Convertir en statique",
+        "site-add-setting-text": "{{ count }} switchs vont récupérer la mise à jour du tableau ARP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "switch-add-setting-text": "Le switch va récupérer la mis à jour du tableau ARP et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "add-setting-success": "Entrée ARP ajoutée.",
+        "add-setting-error": "Impossible d’ajouter une entrée de tableau ARP.",
+        "delete-setting-success": "Entrée ARP supprimée.",
+        "delete-setting-error": "Impossible de supprimer l’entrée ARP.",
+        "to-static-setting-success": "Entrée ARP déplacée vers statique.",
+        "to-static-setting-error": "Impossible de déplacer l’entrée ARP vers statique."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} switchs vont récupérer la mise à jour du tableau d’hôtes voisins et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "switch-add-setting-text": "Le switch va récupérer la mis à jour du tableau d’hôtes voisins et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "add-setting-success": "Entrée d’hôte voisin ajoutée.",
+        "add-setting-error": "Impossible d’ajouter une entrée d’hôte voisin.",
+        "delete-setting-success": "Entrée d’hôte voisin supprimée.",
+        "delete-setting-error": "Impossible de supprimer l’entrée d’hôte voisin.",
+        "to-static-setting-success": "Entrée d’hôte voisin déplacée vers statique.",
+        "to-static-setting-error": "Impossible de déplacer l’entrée d’hôte voisin vers statique."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "Index",
+        "port": "Port",
+        "vlan": "VLAN",
+        "mac-address": "Adresse MAC",
+        "config-source": "Source de configuration",
+        "search": "Recherche",
+        "mapping": "Mappage",
+        "search-tooltip-message": "Rechercher par port, adresse MAC et VLAN.",
+        "mac-global-settings": "Paramètres MAC généraux"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Convertir en statique",
+      "add-dialog": "Ajouter",
+      "edit-dialog": "Modifier",
+      "no-vlan": "Aucun VLAN disponible",
+      "form": {
+        "port": "Port",
+        "port-invalid": "Port non valide.",
+        "port-required": "Port obligatoire.",
+        "vlan-id": "VLAN",
+        "mac-address": "Adresse MAC",
+        "mac-invalid": "Adresse MAC non valide.",
+        "mac-required": "Adresse MAC obligatoire.",
+        "duplicate-mac": "Cette adresse MAC existe déjà dans le tableau."
+      },
+      "messages": {
+        "add-dialog-title": "Confirmer l’ajout",
+        "delete-dialog-title": "Confirmer la suppression",
+        "edit-dialog-title": "Confirmer la mise à jour",
+        "to-static-dialog-title": "Convertir en statique",
+        "site-add-setting-text": "{{ count }} switchs vont récupérer la mise à jour du tableau MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "switch-add-setting-text": "Le switch va récupérer la mis à jour du tableau MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+        "add-setting-success": "Entrée MAC ajoutée.",
+        "add-setting-error": "Impossible d’ajouter une entrée de tableau MAC.",
+        "delete-setting-success": "Entrée MAC supprimée.",
+        "delete-setting-error": "Impossible de supprimer l’entrée MAC.",
+        "to-static-setting-success": "Entrée MAC déplacée vers statique.",
+        "t,o-static-setting-error": "Impossible de déplacer l’entrée MAC vers statique."
+      },
+      "global-settings": {
+        "aging-time": "Temps de maturation MAC (secondes)",
+        "messages": {
+          "save-dialog-title": "Confirmer l’enregistrement",
+          "site-save-setting-text": "{{ count }} switchs vont récupérer les paramètres MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-save-setting-text": "Le switch va récupérer les paramètres MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "required-input-message": "Le temps de maturation MAC doit être compris entre {{ min }} et {{ max }}.",
+          "fetch-mac-settings-error": "Impossible de récupérer les paramètres MAC",
+          "update-setting-success": "Les paramètres MAC ont été mis à jour",
+          "update-setting-error":"Impossible de mettre à jour les paramètres MAC."
         }
       }
     }

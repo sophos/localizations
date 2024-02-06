@@ -190,7 +190,10 @@
         "task-queue-title": "작업 대기열",
         "site-details": "사이트 세부 정보",
         "diagnostics": "진단",
-        "discovery": "검색"
+        "discovery": "검색",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "인접 검색"
       },
       "error": "오류",
       "success": "성공",
@@ -894,6 +897,10 @@
           "management-vlan": "관리 VLAN에 대한 설정을 변경하면 Sophos Central에서 스위치 연결이 끊어질 수 있습니다."
         }
       },
+      "shell": {
+        "title": "쉘 ‘{{action}}’ 명령 출력",
+        "command_successful_msg": "명령이 성공적으로 실행되었습니다"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} 더 많이"
       }
@@ -1355,6 +1362,10 @@
         "backup_schedule": "백업 일정",
         "vlan": "VLAN",
         "cli_commands": "명령",
+        "shell_commands": "쉘 명령",
+        "restart_agent": "에이전트 다시 시작",
+        "clean_cores": "코어 정리",
+        "clean_sophos_logs": "Sophos 로그 정리",
         "networks_ipv4": "네트워크(IPv4)",
         "mgmt_network_ipv4": "관리 네트워크(IPv4)",
         "mgmt_network_ipv6": "관리 네트워크(IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " SNMP 알림 설정",
         "snmp_target_address": "SNMP 대상 주소",
         "vlan_gvrp_port_settings": "GVRP 포트 설정",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "스냅샷",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1968,6 +1982,7 @@
       "diagnostics": "진단",
       "log-ram": "RAM 로그",
       "log-flash": "플래시 로그",
+      "last-snapshot": "{{time}}에 찍은 마지막 스냅샷 보기",
       "form": {
         "validity": "유효성"
       },
@@ -3197,6 +3212,129 @@
           "disabled": "사용 안 함",
           "source": "소스",
           "all": "모두"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "저장 확인",
+        "max-retries": "최대 재시도 수",
+        "timeout": "시간 제한(초)",
+        "max-retries-required": "최대 재시도 수가 필요합니다.",
+        "max-retries-value-validation": "최대 재시도 수는 1~10회 사이여야 합니다",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "시간 제한이 필요합니다.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "시간 제한은 30~86400 사이여야 합니다",
+        "site-save-setting-text": "{{ count }}개의 스위치가 이 ARP 전역 설정 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-save-setting-text": "스위치가 이 ARP 전역 설정 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "update-setting-success": "ARP 전역 설정이 성공적으로 업데이트되었습니다.",
+        "update-setting-error": "ARP 전역 설정을 업데이트할 수 없습니다."
+      },
+      "table-header": {
+        "ip-addr": "IP 주소",
+        "mac-addr": "MAC 주소",
+        "interface": "VLAN",
+        "mapping": "매핑",
+        "config-source": "구성 소스",
+        "search": "검색",
+        "search-tooltip-message": "IP 주소, Mac 주소, VLAN 및 매핑으로 검색",
+        "arp-global-settings": "ARP 전역 설정"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "정적 위치로 이동",
+      "add-dialog": "추가",
+      "no-vlan": "VLAN 없음",
+      "required-vlan": "VLAN이 존재하지 않습니다. 음성 VLAN을 구성하려면 하나 만드십시오.",
+      "form": {
+        "ip-address": "IP 주소",
+        "mac-address": "MAC 주소",
+        "interface": "VLAN 인터페이스",
+        "ip-invalid": "잘못된 IP 주소입니다.",
+        "ip-required": "IP 주소가 필요함.",
+        "mac-invalid": "잘못된 MAC 주소입니다.",
+        "mac-required": "MAC 주소가 필요함.",
+        "duplicate-ip": "IP 주소가 이미 테이블에 있습니다.",
+        "duplicate-mac": "MAC 주소가 이미 테이블에 있습니다.",
+        "ip-out-of-range": "IP 주소가 범위를 벗어났습니다."
+      },
+      "messages": {
+        "add-dialog-title": "추가 확인",
+        "delete-dialog-title": "삭제 확인",
+        "to-static-dialog-title": "정적 위치로 이동",
+        "site-add-setting-text": "{{ count }}개의 스위치가 이 ARP 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-add-setting-text": "스위치가 이 ARP 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "add-setting-success": "ARP 항목이 성공적으로 추가되었습니다.",
+        "add-setting-error": "ARP 테이블 항목을 추가할 수 없습니다.",
+        "delete-setting-success": "ARP 항목이 성공적으로 삭제되었습니다.",
+        "delete-setting-error": "ARP 항목을 삭제할 수 없습니다.",
+        "to-static-setting-success": "ARP 항목이 성공적으로 정적 위치로 이동되었습니다.",
+        "to-static-setting-error": "ARP 항목을 정적 위치로 이동할 수 없습니다."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }}개의 스위치가 이 인접 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-add-setting-text": "스위치가 이 인접 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "add-setting-success": "인접 항목이 성공적으로 추가되었습니다.",
+        "add-setting-error": "인접 테이블 항목을 추가할 수 없습니다.",
+        "delete-setting-success": "인접 항목이 성공적으로 삭제되었습니다.",
+        "delete-setting-error": "인접 항목을 삭제할 수 없습니다.",
+        "to-static-setting-success": "인접 항목이 성공적으로 정적 위치로 이동되었습니다.",
+        "to-static-setting-error": "인접 항목을 정적 위치로 이동할 수 없습니다."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "인덱스",
+        "port": "포트",
+        "vlan": "VLAN",
+        "mac-address": "MAC 주소",
+        "config-source": "구성 소스",
+        "search": "검색",
+        "mapping": "매핑",
+        "search-tooltip-message": "포트, MAC 주소, VLAN으로 검색하십시오.",
+        "mac-global-settings": "MAC 전역 설정"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "정적 위치로 이동",
+      "add-dialog": "추가",
+      "edit-dialog": "편집",
+      "no-vlan": "사용할 수 있는 VLAN이 없습니다",
+      "form": {
+        "port": "포트",
+        "port-invalid": "잘못된 포트.",
+        "port-required": "포트가 필요합니다.",
+        "vlan-id": "VLAN",
+        "mac-address": "MAC 주소",
+        "mac-invalid": "잘못된 MAC 주소입니다.",
+        "mac-required": "MAC 주소가 필요함.",
+        "duplicate-mac": "MAC 주소가 이미 테이블에 있습니다."
+      },
+      "messages": {
+        "add-dialog-title": "추가 확인",
+        "delete-dialog-title": "삭제 확인",
+        "edit-dialog-title": "업데이트 확인",
+        "to-static-dialog-title": "정적 위치로 이동",
+        "site-add-setting-text": "{{ count }}개의 스위치가 이 MAC 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "switch-add-setting-text": "스위치가 이 MAC 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+        "add-setting-success": "MAC 항목이 성공적으로 추가되었습니다.",
+        "add-setting-error": "MAC 테이블 항목을 추가할 수 없습니다.",
+        "delete-setting-success": "MAC 항목이 성공적으로 삭제되었습니다.",
+        "delete-setting-error": "MAC 항목을 삭제할 수 없습니다.",
+        "to-static-setting-success": "MAC 항목이 성공적으로 정적 위치로 이동되었습니다.",
+        "t,o-static-setting-error": "MAC 항목을 정적 위치로 이동할 수 없습니다."
+      },
+      "global-settings": {
+        "aging-time": "MAC 에이징 시간(초)",
+        "messages": {
+          "save-dialog-title": "저장 확인",
+          "site-save-setting-text": "{{ count }}개의 스위치가 이 MAC 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-save-setting-text": "스위치가 이 MAC 설정을 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "required-input-message": "MAC 에이징 시간은 {{ min }}~{{ max }} 사이여야 합니다",
+          "fetch-mac-settings-error": "MAC 설정을 가져올 수 없음",
+          "update-setting-success": "MAC 설정이 성공적으로 업데이트되었습니다.",
+          "update-setting-error":"MAC 설정을 업데이트할 수 없습니다."
         }
       }
     }

@@ -190,7 +190,10 @@
         "task-queue-title": "Auftrags-Warteschlange",
         "site-details": "Standortdetails",
         "diagnostics": "Diagnose",
-        "discovery": "Erfassung"
+        "discovery": "Erfassung",
+        "arp": "ARP",
+        "mac": "MAC",
+        "neighbour-discovery": "Neighbour Discovery"
       },
       "error": "Fehler",
       "success": "Erfolgreich",
@@ -571,7 +574,7 @@
         "move-to-site-checkbox-label": "Alle Einstellungen sofort mit diesen Switches synchronisieren",
         "delete-site-warning": "Dies löscht alle Einstellungen, die Sie in Sophos Central für den Switch gemacht haben. Die Einstellungen auf dem Switch werden mit den Standardeinstellungen für den Standort aktualisiert. Diese neuen Einstellungen werden zu den vorhandenen Einstellungen auf dem Switch hinzugefügt.",
         "delete-site-checkbox-label": "Die Einstellungen sofort mit diesen Switches synchronisieren",
-        "regenerate-confirm-text": "Erzeugen Sie erneut alle Einstellungen für den Switch. In der Auftrags-Warteschlange können Sie die erstellten Aufträge sehen. Sie können entweder jetzt oder später synchronisieren.",
+        "regenerate-confirm-text": "Erzeugen Sie erneut alle Einstellungen für den Switch. In der Auftrags-Warteschlange können Sie die erstellten Aufträge sehen. Sie können jetzt oder später synchronisieren.",
         "regenerate-confirm-dialog": "Alle Einstellungen erneut anwenden",
         "regenerate-checkbox-label": "Synchronisieren Sie die Einstellungen sofort mit dem Switch.",
         "txtbox": {
@@ -723,7 +726,7 @@
             "version": "Version",
             "update-to": "Auf Version",
             "currently-scheduled-upgrades": "Gewählter Zeitplan",
-            "release-notes": "Versionshinweise",
+            "release-notes": "Versionsinfos",
             "edit": "Bearbeiten",
             "selected": "Ausgewählt",
             "modified": "Geändert",
@@ -894,6 +897,10 @@
           "management-vlan": "Wenn Sie die Einstellungen für das Verwaltungs-VLAN ändern, wird der Switch möglicherweise von Sophos Central getrennt."
         }
       },
+      "shell": {
+        "title": "Shell-Ausgabe Befehl '{{action}}'",
+        "command_successful_msg": "Befehl erfolgreich ausgeführt"
+      },
       "tags": {
         "more-tags": "+ {{tagCount}} mehr"
       }
@@ -992,8 +999,8 @@
         },
         "messages": {
           "save-dialog-title": "Speichern bestätigen",
-          "site-save-setting-text": "{{ count }} Switches erhalten diese GVRP-Einstellungsänderungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-save-setting-text": "Der Switch erhält diese GVRP-Einstellungsänderungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-setting-text": "{{ count }} Switches erhalten diese GVRP-Einstellungsänderungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-save-setting-text": "Der Switch erhält diese GVRP-Einstellungsänderungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-setting-success": "GVRP-Einstellungen erfolgreich aktualisiert.",
           "update-setting-error": "GVRP-Einstellungen konnten nicht aktualisiert werden.",
           "loading-error": "GVRP-Einstellungen konnten nicht geladen werden."
@@ -1075,11 +1082,11 @@
         "delete-error": "Ein oder mehrere VLANs können nicht gelöscht werden",
         "delete-success": "VLANs wurden gelöscht",
         "delete-confirm-title": "VLANs löschen",
-        "site-delete-info-message": "{{ vlanCount }} VLANs löschen. {{ count }} Switches entfernen dieses VLAN und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-delete-info-message": "{{ vlanCount }} VLANs löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-delete-info-message": "{{ vlanCount }} VLANs löschen. {{ count }} Switches entfernen dieses VLAN und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-delete-info-message": "{{ vlanCount }} VLANs löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "save-dialog-title": "Speichern bestätigen",
-        "site-save-dialog-text": "{{ count }} Switches erhalten dieses VLAN und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-dialog-text": "Der Switch erhält dieses VLAN und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten dieses VLAN und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält dieses VLAN und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "save-checkbox-text": "Die Einstellungen sofort mit diesen Switches synchronisieren",
         "revert-success": "Switch-Einstellungen erfolgreich gelöscht. Der Switch verwendet jetzt die Einstellungen des Standorts.",
         "revert-system-success": "Einstellungen des Standorts erfolgreich gelöscht. Der Switch verwendet jetzt die System-Standardeinstellungen.",
@@ -1194,11 +1201,11 @@
       },
       "message": {
         "save-dialog-title": "Speichern bestätigen",
-        "site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Netzwerk-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-dialog-text": "Der Switch erhält die Updates für Netzwerk-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Netzwerk-Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält die Updates für Netzwerk-Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "delete-confirm-title": "Netzwerke löschen",
-        "site-delete-info-message": "{{ networkCount }} Netzwerke löschen. {{ count }} Switches entfernen diese Netzwerk-Einstellung und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-delete-info-message": "{{ networkCount }} Netzwerke löschen, Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-delete-info-message": "{{ networkCount }} Netzwerke löschen. {{ count }} Switches entfernen diese Netzwerk-Einstellung und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-delete-info-message": "{{ networkCount }} Netzwerke löschen, Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "revert-to-system-confirm-title": "System-Standardeinstellungen verwenden",
         "revert-to-site-confirm-title": "Einstellungen des Standorts verwenden",
         "revert-to-system-info-message": "Die ausgewählten Einstellungen des Standorts werden gelöscht. Der Switch verwendet danach die System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
@@ -1276,11 +1283,11 @@
       },
       "message": {
         "save-dialog-title": "Speichern bestätigen",
-        "site-save-dialog-text": "{{ count }} Switches erhalten die Route-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-dialog-text": "Der Switch erhält die Route-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Route-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält die Route-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "delete-confirm-title": "Routen löschen",
-        "site-delete-info-message": "{{ configCount }} Routen löschen. {{ count }} Switches entfernen diese Route und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-delete-info-message": "{{ configCount }} Routen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-delete-info-message": "{{ configCount }} Routen löschen. {{ count }} Switches entfernen diese Route und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-delete-info-message": "{{ configCount }} Routen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "revert-to-system-confirm-title": "System-Standardeinstellungen verwenden",
         "revert-to-site-confirm-title": "Einstellungen des Standorts verwenden",
         "revert-to-system-info-message": "Die ausgewählten Einstellungen des Standorts werden gelöscht. Der Switch verwendet danach die System-Standardeinstellungen. Sie können Ihre Konfigurationsänderungen jetzt oder später synchronisieren.",
@@ -1355,6 +1362,10 @@
         "backup_schedule": "Sicherungsplanung",
         "vlan": "VLAN",
         "cli_commands": "Befehle",
+        "shell_commands": "Shell-Befehle",
+        "restart_agent": "Agent neu starten",
+        "clean_cores": "Kerne säubern",
+        "clean_sophos_logs": "Sophos-Protokolle säubern",
         "networks_ipv4": "Netzwerke (IPv4)",
         "mgmt_network_ipv4": "Verwaltungsnetzwerk (IPv4)",
         "mgmt_network_ipv6": "Verwaltungsnetzwerk (IPv6)",
@@ -1424,7 +1435,10 @@
         "snmp_notification_settings": " SNMP-Benachrichtigungseinstellungen",
         "snmp_target_address": "SNMP-Zieladresse",
         "vlan_gvrp_port_settings": "GVRP-Port-Einstellungen",
-        "vlan_gvrp_settings": "GVRP"
+        "vlan_gvrp_settings": "GVRP",
+        "snapshot": "Snapshot",
+        "arp": "ARP",
+        "mac": "MAC"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1479,15 +1493,15 @@
         "port-update-success": "Ports wurden aktualisiert.",
         "port-update-error": "Ein oder mehrere Ports können nicht aktualisiert werden.",
         "save-dialog-title": "Aktualisieren bestätigen",
-        "site-save-dialog-text": "{{ count }} Switches erhalten die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-dialog-text": "Der Switch erhält die Port-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Port-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält die Port-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "save-checkbox-text": "Die Einstellungen sofort mit diesen Switches synchronisieren",
-        "lag-site-save-dialog-text": "{{ count }} Switches erhalten die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "mutlicast-filtering-site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Multicast-Filterung und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "port-mirroring-site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Port-Spiegelung und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "lag-switch-save-dialog-text": "Der Switch erhält die LAG-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "mutlicast-filtering-switch-save-dialog-text": "Der Switch erhält die Updates für Multicast-Filterung und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "port-mirroring-switch-save-dialog-text": "Der Switch erhält die Updates für Port-Spiegelung und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "lag-site-save-dialog-text": "{{ count }} Switches erhalten die LAG-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "mutlicast-filtering-site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Multicast-Filterung und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "port-mirroring-site-save-dialog-text": "{{ count }} Switches erhalten die Updates für Port-Spiegelung und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "lag-switch-save-dialog-text": "Der Switch erhält die LAG-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "mutlicast-filtering-switch-save-dialog-text": "Der Switch erhält die Updates für Multicast-Filterung und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "port-mirroring-switch-save-dialog-text": "Der Switch erhält die Updates für Port-Spiegelung und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "port-revert-success": "Switch-Einstellungen erfolgreich gelöscht. Der Switch verwendet jetzt die Einstellungen des Standorts.",
         "port-revert-error": "Switch-Konfigurationen können nicht gelöscht werden.",
         "port-revert-system-success": "Standort-Konfigurationen erfolgreich gelöscht. Der Switch verwendet jetzt die System-Standards.",
@@ -1558,14 +1572,14 @@
         "server-ip": "DHCP-Relay-Server-IP",
         "messages": {
           "add-dialog-title": "Hinzufügen bestätigen",
-          "site-add-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird zu {{ count }} Switches hinzugefügt und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-add-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird zum Switch hinzugefügt und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-add-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird zu {{ count }} Switches hinzugefügt und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird zum Switch hinzugefügt und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "remove-dialog-title": "Entfernen bestätigen",
-          "site-remove-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird von {{ count }} Switches entfernt und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-remove-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird vom Switch entfernt und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-remove-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird von {{ count }} Switches entfernt und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-remove-dialog-text": "Diese DHCP-Relay-Server-IP-Adresse wird vom Switch entfernt und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "save-dialog-title": "Speichern bestätigen",
-          "site-save-dialog-text": "{{ count }} Switches erhalten diesen DHCP-Relay-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-save-dialog-text": "Der Switch erhält diesen DHCP-Relay-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-dialog-text": "{{ count }} Switches erhalten diesen DHCP-Relay-Status und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-save-dialog-text": "Der Switch erhält diesen DHCP-Relay-Status und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-status-error": "DHCP-Relay-Status kann nicht aktualisiert werden.",
           "update-status-success": "DHCP-Relay-Status erfolgreich aktualisiert.",
           "add-server-ip-success": "DHCP-Relay-Server-IP-Adresse erfolgreich hinzugefügt.",
@@ -1611,16 +1625,16 @@
         },
         "messages": {
           "save-dialog-title": "Speichern bestätigen",
-          "site-save-vlan-text": "{{ count }} Switches erhalten diesen DHCP-Snooping-Status für VLAN und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-save-vlan-text": "Der Switch erhält diesen DHCP-Snooping-Status für VLAN und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-vlan-text": "{{ count }} Switches erhalten diesen DHCP-Snooping-Status für VLAN und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-save-vlan-text": "Der Switch erhält diesen DHCP-Snooping-Status für VLAN und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-vlan-status-success": "DHCP-Snooping-Status für VLAN erfolgreich aktualisiert.",
           "update-vlan-status-error": "DHCP-Snooping-Status für VLAN kann nicht aktualisiert werden.",
-          "site-save-settings-text": "{{ count }} Switches erhalten diesen DHCP-Snooping-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-save-settings-text": "Der Switch erhält diesen DHCP-Snooping-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-settings-text": "{{ count }} Switches erhalten diesen DHCP-Snooping-Status und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-save-settings-text": "Der Switch erhält diesen DHCP-Snooping-Status und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-settings-status-success": "DHCP-Snooping-Status erfolgreich aktualisiert.",
           "update-settings-status-error": "DHCP-Snooping-Status kann nicht aktualisiert werden.",
-          "site-save-port-text": "{{ count }} Switches erhalten diesen Port-Vertrauens-Status für DHCP-Snooping. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-save-port-text": "Der Switch erhält für DHCP-Snooping diesen Port-Vertrauens-Status und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-save-port-text": "{{ count }} Switches erhalten diesen Port-Vertrauens-Status für DHCP-Snooping. Sie können jetzt oder später synchronisieren.",
+          "switch-save-port-text": "Der Switch erhält für DHCP-Snooping diesen Port-Vertrauens-Status und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-port-status-success": "Port-Vertrauens-Status für DHCP-Snooping erfolgreich aktualisiert.",
           "update-port-status-error": "Port-Vertrauens-Status für DHCP-Snooping kann nicht aktualisiert werden."
         }
@@ -1704,12 +1718,12 @@
       },
       "messages": {
         "save-dialog-title": "Speichern bestätigen",
-        "site-save-setting-text": "{{ count }} Switches erhalten diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-setting-text": "Der Switch erhält diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-setting-text": "{{ count }} Switches erhalten diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-setting-text": "Der Switch erhält diese SNMP-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "update-setting-success": "SNMP-Einstellungen erfolgreich aktualisiert.",
         "update-setting-error": "SNMP-Einstellungen konnten nicht aktualisiert werden.",
-        "add-user-community-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "add-user-community-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "add-user-community-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "add-user-community-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "username-required-message": "Name ist erforderlich.",
         "username-exists-message": "Benutzername ist bereits vorhanden.",
         "username-length-error-message": "Benutzername muss 4 - 20 Zeichen haben.",
@@ -1757,18 +1771,18 @@
           "update-settings-success": "SNMP-Ansichtseinstellungen wurden aktualisiert",
           "update-settings-error": "SNMP-Ansichtseinstellungen können nicht aktualisiert werden",
           "add-dialog-title": "Erstellen bestätigen",
-          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-add-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "edit-settings-success": "SNMP-Ansichtseinstellungen wurden aktualisiert",
           "edit-settings-error": "SNMP-Ansichtseinstellungen können nicht aktualisiert werden",
           "edit-dialog-title": "Bearbeiten bestätigen",
-          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "delete-settings-success": "SNMP-Ansichtseinstellungen wurden gelöscht",
           "delete-settings-error": "SNMP-Ansichtseinstellungen können nicht gelöscht werden",
           "delete-dialog-title": "Löschen bestätigen",
-          "site-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+          "site-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Ansichtseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ viewCount }} SNMP-Ansichtseinstellungen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
         },
         "conflicts": {
           "name": "Name",
@@ -1803,8 +1817,8 @@
           "delete-access-policy": "Zugriffsrichtlinie löschen",
           "add-access-policy": "Zugriffsrichtlinie hinzufügen",
           "edit-access-policy": "Zugriffsrichtlinie bearbeiten",
-          "add-access-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "add-access-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "add-access-switch-save-dialog-text": "Der Switch erhält die SNMP-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "add-access-site-save-dialog-text": "{{ count }} Switches erhalten die SNMP-Updates und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "update-setting-success": "Einstellungen der SNMP-Zugriffsrichtlinie erfolgreich aktualisiert.",
           "update-setting-error": "SNMP-Einstellungen konnten nicht aktualisiert werden.",
           "confirm-update": "Aktualisieren bestätigen"
@@ -1859,14 +1873,14 @@
           "retry-value-message": "Erneut versuchen muss zwischen 1 und 3 liegen.",
           "tag-required-message": "Kennzeichen ist erforderlich",
           "tag-value-message": "Zeitlimit muss zwischen 1 und 20 liegen.",
-          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "add-settings-success": "SNMP-Zieladresseneinstellungen wurden erstellt",
           "update-settings-success": "SNMP-Zieladresseneinstellungen wurden aktualisiert",
           "add-settings-error": "SNMP-Zieladresseneinstellungen können nicht erstellt werden",
           "invalid-ip": "Ungültige IP-Adresse. '0.0.0.0', '255.255.255.255' und '255.255.255.254' sind ungültig.",
-          "site-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zieladresseneinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+          "site-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zieladresseneinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ parameterCount }} SNMP-Zieladresseneinstellungen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
         }
       },
       "target-parameters": {
@@ -1896,18 +1910,18 @@
           "add-settings-success": "SNMP-Zielparametereinstellungen wurden erstellt",
           "add-settings-error": "SNMP-Zielparametereinstellungen können nicht erstellt werden",
           "add-dialog-title": "Erstellen bestätigen",
-          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-add-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "edit-settings-success": "SNMP-Zielparametereinstellungen wurden aktualisiert",
           "edit-settings-error": "SNMP-Zielparametereinstellungen können nicht aktualisiert werden",
           "edit-dialog-title": "Bearbeiten bestätigen",
-          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "delete-settings-success": "SNMP-Zielparametereinstellungen wurden gelöscht",
           "delete-settings-error": "SNMP-Zielparametereinstellungen können nicht gelöscht werden",
           "delete-dialog-title": "Löschen bestätigen",
-          "site-delete-setting-text": "{{ parameterCount }} SNMP-Zielparametereinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-delete-setting-text": "{{ parameterCount }} SNMP-Zielparametereinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+          "site-delete-setting-text": "{{ parameterCount }} SNMP-Zielparametereinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Zielparametereinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ parameterCount }} SNMP-Zielparametereinstellungen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
         },
         "conflicts": {
           "targetParamName": "Name",
@@ -1941,18 +1955,18 @@
           "add-settings-success": "SNMP-Benachrichtigungseinstellungen wurden erstellt",
           "add-settings-error": "SNMP-Benachrichtigungseinstellungen können nicht erstellt werden",
           "add-dialog-title": "Erstellen bestätigen",
-          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-add-setting-text": "Der Switch erhält diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "edit-settings-success": "SNMP-Benachrichtigungseinstellungen wurden aktualisiert",
           "edit-settings-error": "SNMP-Benachrichtigungseinstellungen können nicht aktualisiert werden",
           "edit-dialog-title": "Bearbeiten bestätigen",
-          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-edit-setting-text": "{{ count }} Switches erhalten diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-edit-setting-text": "Der Switch erhält diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "delete-settings-success": "SNMP-Benachrichtigungseinstellungen wurden gelöscht",
           "delete-settings-error": "SNMP-Benachrichtigungseinstellungen können nicht gelöscht werden",
           "delete-dialog-title": "Löschen bestätigen",
-          "site-delete-setting-text": "{{ notificationCount }} SNMP-Benachrichtigungseinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-delete-setting-text": "{{ notificationCount }} SNMP-Benachrichtigungseinstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+          "site-delete-setting-text": "{{ notificationCount }} SNMP-Benachrichtigungseinstellungen löschen. {{ count }} Switches entfernen diese SNMP-Benachrichtigungseinstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ notificationCount }} SNMP-Benachrichtigungseinstellungen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
         }
       }
     },
@@ -1968,6 +1982,7 @@
       "diagnostics": "Diagnose",
       "log-ram": "RAM-Protokolle",
       "log-flash": "Flash-Protokolle",
+      "last-snapshot": "Letzten Snapshot anzeigen, erstellt um {{time}}",
       "form": {
         "validity": "Gültigkeit"
       },
@@ -2765,8 +2780,8 @@
       "message": {
         "save-lacp-settings-success": "LACP-Einstellungen wurden aktualisiert",
         "save-lacp-settings-error": "LACP-Einstellungen konnten nicht aktualisiert werden",
-        "switch-save-dialog-text": "Der Switch erhält die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "site-save-dialog-text": "{{ count }} Switches erhalten die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+        "switch-save-dialog-text": "Der Switch erhält die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die Updates für LACP-Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
       }
     },
     "license-messages": {
@@ -2794,8 +2809,8 @@
       "local-configuration": "Switch",
       "message": {
         "save-dialog-title": "Speichern bestätigen",
-        "site-save-dialog-text": "{{ count }} Switches erhalten die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-dialog-text": "Der Switch erhält die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-dialog-text": "{{ count }} Switches erhalten die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-dialog-text": "Der Switch erhält die aktualisierten Einstellungen und Update-Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "delete-confirm-title": "Snooping-Einstellungen löschen",
         "revert-to-system-confirm-title": "System-Standardeinstellungen verwenden",
         "revert-to-site-confirm-title": "Einstellungen des Standorts verwenden",
@@ -2948,8 +2963,8 @@
       "messages": {
         "save-dialog-title": "Speichern bestätigen",
         "delete-dialog-title": "Löschen bestätigen",
-        "site-save-setting-text": "{{ count }} Switches erhalten diese QoS-Einstellungsänderungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-        "switch-save-setting-text": "Der Switch erhält diese QoS-Einstellungsänderungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+        "site-save-setting-text": "{{ count }} Switches erhalten diese QoS-Einstellungsänderungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-setting-text": "Der Switch erhält diese QoS-Einstellungsänderungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "update-setting-success": "QoS-Einstellungen erfolgreich aktualisiert.",
         "update-setting-error": "QoS-Einstellungen konnten nicht aktualisiert werden.",
         "delete-setting-success": "QoS-Richtlinien erfolgreich gelöscht.",
@@ -3172,14 +3187,14 @@
           "add-settings-success": "Sprach-VLAN-OUI-Einstellungen wurden erstellt",
           "add-settings-error": "Sprach-VLAN-OUI-Einstellungen konnten nicht erstellt werden",
           "add-dialog-title": "Erstellen bestätigen",
-          "site-add-setting-text": "{{ count }} Switches erhalten diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-add-setting-text": "Der Switch erhält diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
           "fetch-settings-error": "Sprach-VLAN-OUI-Einstellungen konnten nicht abgerufen werden",
           "delete-settings-success": "Sprach-VLAN-OUI-Einstellungen wurden gelöscht",
           "delete-settings-error": "Sprach-VLAN-OUI-Einstellungen konnten nicht gelöscht werden",
           "delete-dialog-title": "Löschen bestätigen",
-          "site-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen. {{ count }} Switches entfernen diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren.",
-          "switch-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen und Aufträge werden erstellt. Sie können entweder jetzt oder später synchronisieren."
+          "site-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen. {{ count }} Switches entfernen diese Sprach-VLAN-OUI-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-delete-setting-text": "{{ ouiCount }} Sprach-VLAN-OUI-Einstellungen löschen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren."
         }
       },
       "port": {
@@ -3197,6 +3212,129 @@
           "disabled": "Deaktiviert",
           "source": "Quelle",
           "all": "Alle"
+        }
+      }
+    },
+    "arp": {
+      "global-settings": {
+        "save-dialog-title": "Speichern bestätigen",
+        "max-retries": "Maximale Anzahl an Versuchen",
+        "timeout": "Zeitlimit (Sekunden)",
+        "max-retries-required": "Maximale Anzahl an Versuchen ist erforderlich.",
+        "max-retries-value-validation": "Maximale Anzahl an Versuchen muss zwischen 1 und 10 liegen",
+        "max-retries-tooltip-message": "1-10",
+        "timeout-required": "Zeitlimit ist erforderlich.",
+        "timeout-tooltip-message": "36-86400",
+        "timeout-value-validation": "Zeitlimit muss zwischen 30 und 86400 liegen",
+        "site-save-setting-text": "{{ count }} Switches erhalten diese Aktualisierung globaler ARP-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-save-setting-text": "Der Switch erhält diese Aktualisierung globaler ARP-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "update-setting-success": "Aktualisierung globaler ARP-Einstellungen war erfolgreich.",
+        "update-setting-error": "Globale ARP-Einstellungen können nicht aktualisiert werden."
+      },
+      "table-header": {
+        "ip-addr": "IP-Adresse",
+        "mac-addr": "MAC-Adresse",
+        "interface": "VLAN",
+        "mapping": "Pfade",
+        "config-source": "Konfigurationsquelle",
+        "search": "Suchen",
+        "search-tooltip-message": "Suchen nach IP-Adresse, MAC-Adresse, VLAN oder Zuordnung",
+        "arp-global-settings": "Globale ARP-Einstellungen"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Zu „Statisch“ verschieben",
+      "add-dialog": "Hinzufügen",
+      "no-vlan": "Kein VLAN",
+      "required-vlan": "Kein VLAN vorhanden. Bitte ein VLAN für die Konfiguration von Sprach-VLAN erstellen",
+      "form": {
+        "ip-address": "IP-Adresse",
+        "mac-address": "MAC-Adresse",
+        "interface": "VLAN-Schnittstelle",
+        "ip-invalid": "Ungültige IP-Adresse.",
+        "ip-required": "IP-Adresse ist erforderlich.",
+        "mac-invalid": "Ungültige MAC-Adresse.",
+        "mac-required": "MAC-Adresse ist erforderlich.",
+        "duplicate-ip": "IP-Adresse ist in der Tabelle bereits vorhanden.",
+        "duplicate-mac": "MAC-Adresse ist in der Tabelle bereits vorhanden.",
+        "ip-out-of-range": "IP-Adresse liegt außerhalb des zulässigen Bereichs."
+      },
+      "messages": {
+        "add-dialog-title": "Hinzufügen bestätigen",
+        "delete-dialog-title": "Löschen bestätigen",
+        "to-static-dialog-title": "Zu „Statisch“ verschieben",
+        "site-add-setting-text": "{{ count }} Switches erhalten diese Aktualisierung der ARP-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-add-setting-text": "Der Switch erhält diese Aktualisierung der ARP-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "add-setting-success": "ARP-Eintrag erfolgreich hinzugefügt.",
+        "add-setting-error": "ARP-Tabelleneintrag kann nicht hinzugefügt werden.",
+        "delete-setting-success": "ARP-Eintrag erfolgreich gelöscht.",
+        "delete-setting-error": "ARP-Eintrag kann nicht gelöscht werden.",
+        "to-static-setting-success": "ARP-Eintrag erfolgreich zu „Statisch“ verschoben.",
+        "to-static-setting-error": "ARP-Eintrag kann nicht zu „Statisch“ verschoben werden."
+      }
+    },
+    "neighbour": {
+      "messages": {
+        "site-add-setting-text": "{{ count }} Switches erhalten diese Aktualisierung der Neighbour-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-add-setting-text": "Der Switch erhält diese Aktualisierung der Neighbour-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "add-setting-success": "Neighbour-Eintrag erfolgreich hinzugefügt.",
+        "add-setting-error": "Neighbour-Tabelleneintrag kann nicht hinzugefügt werden.",
+        "delete-setting-success": "Neighbour-Eintrag erfolgreich gelöscht.",
+        "delete-setting-error": "Neighbour-Eintrag kann nicht gelöscht werden.",
+        "to-static-setting-success": "Neighbour-Eintrag erfolgreich zu „Statisch“ verschoben.",
+        "to-static-setting-error": "Neighbour-Eintrag kann nicht zu „Statisch“ verschoben werden."
+      }
+    },
+    "mac": {
+      "table-header": {
+        "index": "Index",
+        "port": "Port",
+        "vlan": "VLAN",
+        "mac-address": "MAC-Adresse",
+        "config-source": "Konfigurationsquelle",
+        "search": "Suchen",
+        "mapping": "Pfade",
+        "search-tooltip-message": "Suchen nach Port, MAC-Adresse oder VLAN.",
+        "mac-global-settings": "Globale MAC-Einstellungen"
+      },
+      "local-configuration": "Switch",
+      "move-to-static": "Zu „Statisch“ verschieben",
+      "add-dialog": "Hinzufügen",
+      "edit-dialog": "Bearbeiten",
+      "no-vlan": "Kein VLAN verfügbar",
+      "form": {
+        "port": "Port",
+        "port-invalid": "Ungültiger Port.",
+        "port-required": "Port ist erforderlich.",
+        "vlan-id": "VLAN",
+        "mac-address": "MAC-Adresse",
+        "mac-invalid": "Ungültige MAC-Adresse.",
+        "mac-required": "MAC-Adresse ist erforderlich.",
+        "duplicate-mac": "MAC-Adresse ist in der Tabelle bereits vorhanden."
+      },
+      "messages": {
+        "add-dialog-title": "Hinzufügen bestätigen",
+        "delete-dialog-title": "Löschen bestätigen",
+        "edit-dialog-title": "Aktualisieren bestätigen",
+        "to-static-dialog-title": "Zu „Statisch“ verschieben",
+        "site-add-setting-text": "{{ count }} Switches erhalten diese Aktualisierung der MAC-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "switch-add-setting-text": "Der Switch erhält diese Aktualisierung der MAC-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+        "add-setting-success": "MAC-Eintrag erfolgreich hinzugefügt.",
+        "add-setting-error": "MAC-Tabelleneintrag kann nicht hinzugefügt werden.",
+        "delete-setting-success": "MAC-Eintrag erfolgreich gelöscht.",
+        "delete-setting-error": "MAC-Eintrag kann nicht gelöscht werden.",
+        "to-static-setting-success": "MAC-Eintrag erfolgreich zu „Statisch“ verschoben.",
+        "t,o-static-setting-error": "MAC-Eintrag kann nicht zu „Statisch“ verschoben werden."
+      },
+      "global-settings": {
+        "aging-time": "MAC-Ablaufzeit (Sekunden)",
+        "messages": {
+          "save-dialog-title": "Speichern bestätigen",
+          "site-save-setting-text": "{{ count }} Switches erhalten diese MAC-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-save-setting-text": "Der Switch erhält diese MAC-Einstellungen und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "required-input-message": "MAC-Ablaufzeit muss zwischen {{ min }} und {{ max }} liegen",
+          "fetch-mac-settings-error": "MAC-Einstellung konnten nicht abgerufen werden",
+          "update-setting-success": "MAC-Einstellungen erfolgreich aktualisiert.",
+          "update-setting-error":"MAC-Einstellungen konnten nicht aktualisiert werden."
         }
       }
     }

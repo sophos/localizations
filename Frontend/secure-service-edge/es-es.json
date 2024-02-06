@@ -351,7 +351,7 @@
         "allCreatedBy": "Todos los creadores",
         "allTemplateTypes": "Todos los tipos de plantilla",
         "savedTemplatesNote": "Tiene {{savedTemplatesCount}}/1000 plantillas guardadas",
-        "savedTemplateNoteInfo": "Se trata de un recuento combinado que también incluye plantillas ajenas a los informes de puerta de enlace",
+        "savedTemplateNoteInfo": "Se trata de un recuento combinado que también incluye plantillas ajenas a los informes de DNS Protection.",
         "saveTemplatesSuccess": "La plantilla se ha guardado",
         "updateTemplateSuccess": "La plantilla se ha actualizado",
         "templateName": "Nombre de plantilla",
@@ -847,10 +847,18 @@
       "delete": "Eliminar",
       "desc": "Descripción",
       "name": "Nombre",
+      "summary": "Resumen",
+      "contents": "Contenido",
       "continue": "Continuar",
+      "edit": "Editar",
       "whitespace-name-validation": "Nombre es obligatorio",
       "messages": {
-        "generic-error": "Se ha producido un error inesperado al procesar la solicitud."
+        "generic-error": "Se ha producido un error inesperado al procesar la solicitud.",
+        "length-validation": "La descripción {{formControl}} no debe tener más de {{maxLength}} caracteres",
+        "invalid-name": "El nombre solo puede contener: A-Z, a-z , 0-9, -, _, espacio"
+      },
+      "button": {
+        "back": "Atrás"
       },
       "on-text": "Activado",
       "off-text": "Desactivado",
@@ -1236,10 +1244,11 @@
           "ips": "Sistema de prevención de intrusiones",
           "tooltips": {
             "filtering": {
-              "description": "El tráfico pasa por hasta cinco pasos de filtrado en el siguiente orden: DNS, firewall, TLS, URL web y contenido web.",
+              "description": "El tráfico pasa por siete etapas de filtrado en este orden: DNS, firewall, TLS, URL web, contenido web, control de aplicaciones e IPS.",
               "point-one": "Cada regla puede aplicarse en más de una etapa de filtrado.",
-              "point-two": "Las reglas se evalúan de arriba a abajo en cada etapa y se aplica la primera regla que coincida en esa etapa.",
-              "point-three": "El tráfico puede coincidir con una regla diferente en cada etapa."
+              "point-two": "Las reglas se evalúan de arriba abajo en cada etapa.",
+              "point-three": "Se aplica la primera regla de concordancia para esa etapa.",
+              "point-four": "El tráfico puede coincidir con una regla diferente en cada etapa."
             }
           }
         },
@@ -1266,7 +1275,34 @@
       },
       "agent-config": {
         "title": "Secure Service Edge - Configuración de agente",
-        "breadcrumb": "Configuración de agente"
+        "breadcrumb": "Configuración de agente",
+        "users": "Usuario",
+        "devices": "Dispositivo",
+        "at": "a",
+        "headers": {
+          "name": "Nombre de configuración",
+          "type": "Tipo (individual / grupo)",
+          "action": "Acción",
+          "last-modified": "Última actualización",
+          "modified-by": "Modificado por",
+          "description": "Descripción",
+          "active": "Activo"
+        },
+        "add-configuration": {
+          "add-agent": "Añadir agente"
+        },
+        "no-agent": {
+          "title": "No tiene ningún agente añadido",
+          "body": "Haga clic en el botón Añadir agente para añadir agentes."
+        },
+        "pagination": {
+          "page-info": "{{start}}-{{end}} de {{total}}"
+        },
+        "swap-agent": {
+          "warning": "No se producirá ningún cambio funcional hasta que se active el agente",
+          "locked-agents-error": "No se puede cambiar la posición de los agentes bloqueados",
+          "agent-position-change": "La posición del agente se ha cambiado correctamente"
+        }
       },
       "objects": {
         "title": "Secure Service Edge - Objetos",
@@ -1279,7 +1315,8 @@
           "back": "Atrás",
           "add": "Añadir",
           "save": "Guardar",
-          "copy": "Copiar"
+          "copy": "Copiar",
+          "add-another": "Añadir otra"
         },
         "add-edit-object": {
           "object-dropdown-label": "Tipo de objeto"
@@ -1302,6 +1339,8 @@
           "object-usage": "Uso de objetos",
           "desc": "Descripción",
           "add-object": "Añadir objeto",
+          "add-object-title": "Añadir objeto {{type}}",
+          "edit-object": "Editar objeto {{type}}",
           "delete-object": "Eliminar objeto",
           "tooltips": {
             "items": {
@@ -1309,15 +1348,68 @@
             },
             "usage": {
               "description": "Los objetos pueden utilizarse en una o varias reglas, y también pueden anidarse dentro de otros objetos"
-            }
+            },
+            "in-rules":"En reglas",
+            "in-nested-objects":"En objetos anidados",
+            "view-all":"Ver todos",
+            "more":"Más..."
           }
+        },
+        "content-type": {
+          "sub-header": "Especificar contenido",
+          "sub-header-label": "Seleccione un tipo de contenido y, a continuación, seleccione o añada manualmente los elementos indicados.",
+          "default-label": "Tipo de contenido",
+          "empty-message": "Seleccionar tipo de contenido",
+          "ipv4-address": {
+            "name": "Dirección IPv4",
+            "default-label": "Direcciones IPv4",
+            "option-label": "Introducir texto o copiar y pegar...",
+            "summary-label": "Direcciones IPv4",
+            "format-label": "Formato: 255255255255"
+          },
+          "ipv4-address-range": {
+            "name": "Rango de direcciones IPv4",
+            "default-label": "Rangos de direcciones IPv4",
+            "option-label": "Introducir texto o copiar y pegar...",
+            "summary-label": "Rangos de direcciones IPv4",
+            "format-label": "Formato: 255.255.255.255 - 255.255.255.255"
+          },
+          "fqdn": {
+            "name": "FQDN",
+            "default-label": "FQDN",
+            "option-label": "nombre",
+            "summary-label": "direcciones URL de dominio",
+            "matches-label": "direcciones URL de dominio"
+          },
+          "domain": {
+            "name": "Dominio",
+            "default-label": "Dominios",
+            "option-label": "nombre",
+            "summary-label": "direcciones URL de dominio",
+            "matches-label": "direcciones URL de dominio"
+          },
+          "network-object": {
+            "name": "Objeto de red",
+            "default-label": "Objetos de red",
+            "option-label": "nombre",
+            "summary-label": "redes",
+            "matches-label": "redes"
+          },
+          "error-messages": {
+            "required": "Se requiere por lo menos una entrada.",
+            "invalid-item": "Elemento no válido"
+          }
+        },
+        "summary": {
+          "view-only": "Visualizar solo. Para editar un objeto anidado, busque el objeto en la tabla Objetos y haga clic en su nombre.",
+          "object-name-required": "Se requiere un nombre de objeto"
         },
         "delete-object":{
           "delete": "Eliminar",
           "objects": "Objetos",
           "object": "Objeto",
           "warning": "¡Aviso! ",
-          "delete-warning": "no pueden eliminarse porque están referenciados por otras reglas u objetos. ",
+          "delete-warning": "No se pueden eliminar porque otras reglas u objetos hacen referencia a ellos.",
           "object-delete-one-info": "No se puede eliminar el objeto",
           "object-delete-other-info": "No se pueden eliminar los objetos.",
           "referenced-object": "Elimine solo los objetos no referenciados.",
@@ -1344,6 +1436,10 @@
           "ip-addr": "Direcciones IPv4",
           "ip-addr-range": "Rangos de direcciones IPv4",
           "ip-subnet": "Subredes IP"
+        },
+        "object-list": {
+          "object-added": "Objeto añadido",
+          "object-add-error": "No se ha podido añadir el objeto"
         }
       },
       "settings": {
