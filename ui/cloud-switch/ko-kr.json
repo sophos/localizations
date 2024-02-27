@@ -193,7 +193,8 @@
         "discovery": "검색",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "인접 검색"
+        "neighbour-discovery": "인접 검색",
+        "mac-filtering": "MAC 필터링"
       },
       "error": "오류",
       "success": "성공",
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "스냅샷",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "MAC 설정",
+        "arp_settings": "ARP 설정",
+        "neighbours": "인접 검색",
+        "mac_filters": "MAC 필터"
       },
       "retry-success": "선택한 작업이 스위치로 다시 전송됩니다.",
       "retry-error": "실패한 작업의 실행을 재시도하지 못했습니다.",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "시간",
         "category": "범주",
         "severity": "심각도",
@@ -3309,7 +3314,8 @@
         "mac-address": "MAC 주소",
         "mac-invalid": "잘못된 MAC 주소입니다.",
         "mac-required": "MAC 주소가 필요함.",
-        "duplicate-mac": "MAC 주소가 이미 테이블에 있습니다."
+        "duplicate-mac": "MAC 주소가 이미 테이블에 있습니다.",
+        "mac-blocked": "MAC 주소는 Mac 필터링 탭에서 이미 필터링되었습니다."
       },
       "messages": {
         "add-dialog-title": "추가 확인",
@@ -3319,7 +3325,7 @@
         "site-add-setting-text": "{{ count }}개의 스위치가 이 MAC 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "switch-add-setting-text": "스위치가 이 MAC 테이블 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
         "add-setting-success": "MAC 항목이 성공적으로 추가되었습니다.",
-        "add-setting-error": "MAC 테이블 항목을 추가할 수 없습니다.",
+        "add-setting-error": "MAC 항목을 추가할 수 없습니다.",
         "delete-setting-success": "MAC 항목이 성공적으로 삭제되었습니다.",
         "delete-setting-error": "MAC 항목을 삭제할 수 없습니다.",
         "to-static-setting-success": "MAC 항목이 성공적으로 정적 위치로 이동되었습니다.",
@@ -3334,8 +3340,38 @@
           "required-input-message": "MAC 에이징 시간은 {{ min }}~{{ max }} 사이여야 합니다",
           "fetch-mac-settings-error": "MAC 설정을 가져올 수 없음",
           "update-setting-success": "MAC 설정이 성공적으로 업데이트되었습니다.",
-          "update-setting-error":"MAC 설정을 업데이트할 수 없습니다."
+          "update-setting-error": "MAC 설정을 업데이트할 수 없습니다."
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "검색",
+          "search-tooltip-message": "MAC 주소와 VLAN으로 검색하십시오",
+          "vlan": "VLAN",
+          "mac-address": "MAC 주소",
+          "config-source": "구성 소스"
+        },
+        "add-dialog": "추가",
+        "local-configuration": "Switch",
+        "messages": {
+          "add-dialog-title": "추가 확인",
+          "delete-dialog-title": "삭제 확인",
+          "delete-setting-success": "MAC 필터가 삭제되었습니다.",
+          "delete-setting-error": "MAC 필터를 삭제할 수 없습니다.",
+          "site-add-setting-text": "{{ count }}개의 스위치가 이 MAC 필터 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "switch-add-setting-text": "스위치가 이 MAC 필터 업데이트를 가져오면 작업이 생성됩니다. 지금 또는 나중에 동기화하도록 선택할 수 있습니다.",
+          "add-setting-success": "MAC 필터가 추가되었습니다.",
+          "add-setting-error": "MAC 필터를 추가할 수 없습니다."
+        },
+        "form": {
+          "vlan": "VLAN",
+          "mac-address": "MAC 주소",
+          "mac-invalid": "잘못된 MAC 주소입니다.",
+          "mac-required": "MAC 주소가 필요함.",
+          "duplicate-mac": "MAC 주소가 이미 이 주소에 사용되었습니다.",
+          "mac-used": "MAC 항목에 사용된 MAC 주소는 필터링할 수 없습니다."
+        },
+        "no-vlan": "사용할 수 있는 VLAN이 없습니다"
       }
     }
   }

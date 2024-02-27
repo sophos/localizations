@@ -193,7 +193,8 @@
         "discovery": "Erfassung",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "Neighbour Discovery"
+        "neighbour-discovery": "Neighbour Discovery",
+        "mac-filtering": "MAC-Filterung"
       },
       "error": "Fehler",
       "success": "Erfolgreich",
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "Snapshot",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "MAC-Einstellungen",
+        "arp_settings": "ARP-Einstellungen",
+        "neighbours": "Neighbour Discovery",
+        "mac_filters": "MAC-Filter"
       },
       "retry-success": "Die ausgewählte Aufgabe wird erneut an den Switch gesendet.",
       "retry-error": "Fehlgeschlagene Aufgaben konnten nicht erneut ausgeführt werden.",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "Zeit",
         "category": "Kategorie",
         "severity": "Schweregrad",
@@ -3309,7 +3314,8 @@
         "mac-address": "MAC-Adresse",
         "mac-invalid": "Ungültige MAC-Adresse.",
         "mac-required": "MAC-Adresse ist erforderlich.",
-        "duplicate-mac": "MAC-Adresse ist in der Tabelle bereits vorhanden."
+        "duplicate-mac": "MAC-Adresse ist in der Tabelle bereits vorhanden.",
+        "mac-blocked": "MAC-Adresse ist bereits auf dem MAC-Filter-Tab gefiltert."
       },
       "messages": {
         "add-dialog-title": "Hinzufügen bestätigen",
@@ -3319,7 +3325,7 @@
         "site-add-setting-text": "{{ count }} Switches erhalten diese Aktualisierung der MAC-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "switch-add-setting-text": "Der Switch erhält diese Aktualisierung der MAC-Tabelle und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
         "add-setting-success": "MAC-Eintrag erfolgreich hinzugefügt.",
-        "add-setting-error": "MAC-Tabelleneintrag kann nicht hinzugefügt werden.",
+        "add-setting-error": "MAC-Eintrag kann nicht hinzugefügt werden.",
         "delete-setting-success": "MAC-Eintrag erfolgreich gelöscht.",
         "delete-setting-error": "MAC-Eintrag kann nicht gelöscht werden.",
         "to-static-setting-success": "MAC-Eintrag erfolgreich zu „Statisch“ verschoben.",
@@ -3334,8 +3340,38 @@
           "required-input-message": "MAC-Ablaufzeit muss zwischen {{ min }} und {{ max }} liegen",
           "fetch-mac-settings-error": "MAC-Einstellung konnten nicht abgerufen werden",
           "update-setting-success": "MAC-Einstellungen erfolgreich aktualisiert.",
-          "update-setting-error":"MAC-Einstellungen konnten nicht aktualisiert werden."
+          "update-setting-error": "MAC-Einstellungen konnten nicht aktualisiert werden."
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "Suchen",
+          "search-tooltip-message": "Suchen nach MAC-Adresse oder VLAN.",
+          "vlan": "VLAN",
+          "mac-address": "MAC-Adresse",
+          "config-source": "Konfigurationsquelle"
+        },
+        "add-dialog": "Hinzufügen",
+        "local-configuration": "Switch",
+        "messages": {
+          "add-dialog-title": "Hinzufügen bestätigen",
+          "delete-dialog-title": "Löschen bestätigen",
+          "delete-setting-success": "MAC-Filter erfolgreich gelöscht.",
+          "delete-setting-error": "MAC-Filter kann nicht gelöscht werden.",
+          "site-add-setting-text": "{{ count }} Switches erhalten diese MAC-Filteränderung und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "switch-add-setting-text": "Der Switch erhält diese MAC-Filteränderung und Aufträge werden erstellt. Sie können jetzt oder später synchronisieren.",
+          "add-setting-success": "MAC-Filter erfolgreich hinzugefügt.",
+          "add-setting-error": "MAC-Filter kann nicht hinzugefügt werden."
+        },
+        "form": {
+          "vlan": "VLAN",
+          "mac-address": "MAC-Adresse",
+          "mac-invalid": "Ungültige MAC-Adresse.",
+          "mac-required": "MAC-Adresse ist erforderlich.",
+          "duplicate-mac": "MAC-Adresse wird bereits mit diesem VLAN verwendet.",
+          "mac-used": "MAC-Adressen, die im MAC-Eintrag verwendet werden, können nicht gefiltert werden."
+        },
+        "no-vlan": "Kein VLAN verfügbar"
       }
     }
   }

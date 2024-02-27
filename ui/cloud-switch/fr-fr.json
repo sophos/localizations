@@ -193,7 +193,8 @@
         "discovery": "Découverte",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "Découverte d’hôtes voisins"
+        "neighbour-discovery": "Découverte d’hôtes voisins",
+        "mac-filtering": "Filtrage MAC"
       },
       "error": "Erreur",
       "success": "Succès",
@@ -1063,7 +1064,7 @@
         "vlan-id-invalid-message": "ID du VLAN incorrect.",
         "vlan-id-exists-message": "L’ID du VLAN existe déjà.",
         "vlan-name-required-message": "Nom obligatoire.",
-        "vlan-name-invalid-message": "Le nom n’est pas valide. Utilisez uniquement des lettres, des chiffres, des tirets et des traits de soulignement. Vous pouvez inclure un espace.",
+        "vlan-name-invalid-message": "Nom incorrect. Utilisez uniquement des lettres, des chiffres, des tirets et des traits de soulignement. Vous pouvez inclure un espace.",
         "vlan-name-exists-message": "Ce nom existe déjà.",
         "lag-mode": "Mode LAG",
         "part-of-lag": "Utilisé dans LAG"
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "Instantané",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "Paramètres MAC",
+        "arp_settings": "Paramètres ARP",
+        "neighbours": "Découverte d’hôtes voisins",
+        "mac_filters": "Filtres MAC"
       },
       "retry-success": "La tâche sélectionnée sera de nouveau envoyée sur le switch.",
       "retry-error": "Impossible d’exécuter à nouveau une tâche ayant échoué.",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "Heure",
         "category": "Catégorie",
         "severity": "Gravité",
@@ -3309,7 +3314,8 @@
         "mac-address": "Adresse MAC",
         "mac-invalid": "Adresse MAC non valide.",
         "mac-required": "Adresse MAC obligatoire.",
-        "duplicate-mac": "Cette adresse MAC existe déjà dans le tableau."
+        "duplicate-mac": "Cette adresse MAC existe déjà dans le tableau.",
+        "mac-blocked": "L’adresse MAC est déjà filtrée dans l’onglet de filtrage MAC."
       },
       "messages": {
         "add-dialog-title": "Confirmer l’ajout",
@@ -3319,7 +3325,7 @@
         "site-add-setting-text": "{{ count }} switchs vont récupérer la mise à jour du tableau MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "switch-add-setting-text": "Le switch va récupérer la mis à jour du tableau MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
         "add-setting-success": "Entrée MAC ajoutée.",
-        "add-setting-error": "Impossible d’ajouter une entrée de tableau MAC.",
+        "add-setting-error": "Impossible d’ajouter une entrée MAC.",
         "delete-setting-success": "Entrée MAC supprimée.",
         "delete-setting-error": "Impossible de supprimer l’entrée MAC.",
         "to-static-setting-success": "Entrée MAC déplacée vers statique.",
@@ -3334,8 +3340,38 @@
           "required-input-message": "Le temps de maturation MAC doit être compris entre {{ min }} et {{ max }}.",
           "fetch-mac-settings-error": "Impossible de récupérer les paramètres MAC",
           "update-setting-success": "Les paramètres MAC ont été mis à jour",
-          "update-setting-error":"Impossible de mettre à jour les paramètres MAC."
+          "update-setting-error": "Impossible de mettre à jour les paramètres MAC."
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "Rechercher",
+          "search-tooltip-message": "Rechercher par adresse MAC et VLAN.",
+          "vlan": "VLAN",
+          "mac-address": "Adresse MAC",
+          "config-source": "Source de configuration"
+        },
+        "add-dialog": "Ajouter",
+        "local-configuration": "Switch",
+        "messages": {
+          "add-dialog-title": "Confirmer l’ajout",
+          "delete-dialog-title": "Confirmer la suppression",
+          "delete-setting-success": "Filtre MAC supprimé.",
+          "delete-setting-error": "Impossible de supprimer le filtre MAC.",
+          "site-add-setting-text": "{{ count }} switchs vont récupérer la mise à jour du filtre MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "switch-add-setting-text": "Le switch va récupérer la mise à jour du filtre MAC et les tâches seront créées. Vous pouvez choisir de synchroniser maintenant ou ultérieurement.",
+          "add-setting-success": "Filtre MAC ajouté.",
+          "add-setting-error": "Impossible d’ajouter le filtre MAC."
+        },
+        "form": {
+          "vlan": "VLAN",
+          "mac-address": "Adresse MAC",
+          "mac-invalid": "Adresse MAC non valide.",
+          "mac-required": "Adresse MAC obligatoire.",
+          "duplicate-mac": "Adresse MAC déjà utilisée avec ce VLAN.",
+          "mac-used": "Les adresses MAC utilisées dans l’entrée MAC ne peuvent pas être filtrées."
+        },
+        "no-vlan": "Aucun VLAN disponible"
       }
     }
   }

@@ -193,7 +193,8 @@
         "discovery": "探索",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "鄰居發現"
+        "neighbour-discovery": "鄰居發現",
+        "mac-filtering": "MAC 篩選"
       },
       "error": "錯誤",
       "success": "成功",
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "快照",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "MAC 設定",
+        "arp_settings": "ARP 設定",
+        "neighbours": "鄰居發現",
+        "mac_filters": "MAC 篩選器"
       },
       "retry-success": "選定的工作將再次傳送到交換機。",
       "retry-error": "無法重試失敗工作的執行。",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "時間",
         "category": "類別",
         "severity": "嚴重性",
@@ -3309,7 +3314,8 @@
         "mac-address": "MAC 位址 (IP 位址)",
         "mac-invalid": "無效的 MAC 位址。",
         "mac-required": "需要 MAC 位址。",
-        "duplicate-mac": "MAC 位址已存在於表中。"
+        "duplicate-mac": "MAC 位址已存在於表中。",
+        "mac-blocked": "MAC 位址已在 MAC 篩選索引標籤中篩選。"
       },
       "messages": {
         "add-dialog-title": "確認新增",
@@ -3319,7 +3325,7 @@
         "site-add-setting-text": "{{ count }} 個交換器將取得此 MAC 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
         "switch-add-setting-text": "交換器將取得此 MAC 表更新，並且將建立工作。您可以選擇現在或稍後同步。",
         "add-setting-success": "MAC 項目新增成功。",
-        "add-setting-error": "無法新增 MAC 表項目。",
+        "add-setting-error": "無法新增 MAC 項目。",
         "delete-setting-success": "MAC 項目刪除成功。",
         "delete-setting-error": "無法刪除 MAC 項目。",
         "to-static-setting-success": "MAC 項目已成功轉為靜態。",
@@ -3334,8 +3340,38 @@
           "required-input-message": "MAC 過時時間必須介於 {{ min }} - {{ max }}",
           "fetch-mac-settings-error": "無法擷取 MAC 設定",
           "update-setting-success": "MAC 設定已成功更新。",
-          "update-setting-error":"無法更新 MAC 設定。"
+          "update-setting-error": "無法更新 MAC 設定。"
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "尋找",
+          "search-tooltip-message": "按 MAC 位址和 VLAN 搜尋。",
+          "vlan": "VLAN",
+          "mac-address": "MAC 位址 (IP 位址)",
+          "config-source": "設定來源"
+        },
+        "add-dialog": "新增",
+        "local-configuration": "交換器",
+        "messages": {
+          "add-dialog-title": "確認新增",
+          "delete-dialog-title": "確認刪除",
+          "delete-setting-success": "MAC 篩選器刪除成功。",
+          "delete-setting-error": "無法删除 MAC 篩選器。",
+          "site-add-setting-text": "{{ count }} 個交換器將取得此 MAC 篩選器更新，並且將建立工作。您可以選擇現在或稍後同步。",
+          "switch-add-setting-text": "交換器將取得此 MAC 篩選器更新，並且將建立工作。您可以選擇現在或稍後同步。",
+          "add-setting-success": "MAC 篩選器新增成功。",
+          "add-setting-error": "無法新增 MAC 篩選器。"
+        },
+        "form": {
+          "vlan": "VLAN",
+          "mac-address": "MAC 位址 (IP 位址)",
+          "mac-invalid": "無效的 MAC 位址。",
+          "mac-required": "需要 MAC 位址。",
+          "duplicate-mac": "MAC 位址已用於此 VLAN。",
+          "mac-used": "MAC 項目中使用的 MAC 位址不能被篩選。"
+        },
+        "no-vlan": "無 VLAN 可用"
       }
     }
   }

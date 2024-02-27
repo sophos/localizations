@@ -1005,16 +1005,16 @@
               "create-new-object": "建立新物件"
             },
             "summary-labels":{
-              "user-connecting_from-network-in": "網路",
-              "user-connecting_from-network-not_in": "網路",
-              "user-connecting_from-location-in": "大位置",
-              "user-connecting_from-location-not_in": "大位置",
-              "connecting_to-domain_url-not_in":  "網域 URL",
-              "connecting_to-domain_url-in": "網域 URL",
-              "connecting_to-network-not_in": "網路",
-              "connecting_to-network-in": "網路",
-              "connecting_to-web_category-not_in": "Web 類別",
-              "connecting_to-web_category-in": "Web 類別"
+              "user-connecting_from-network-in": "網路清單物件",
+              "user-connecting_from-network-not_in": "網路清單物件",
+              "user-connecting_from-location-in": "位置清單物件",
+              "user-connecting_from-location-not_in": "位置清單物件",
+              "connecting_to-domain_url-not_in":  "網域 URL 清單物件",
+              "connecting_to-domain_url-in": "網域 URL 清單物件",
+              "connecting_to-network-not_in": "網路清單物件",
+              "connecting_to-network-in": "網路清單物件",
+              "connecting_to-web_category-not_in": "類別清單物件",
+              "connecting_to-web_category-in": "類別清單物件"
             },
             "connection": {
               "domain": "網域是",
@@ -1028,8 +1028,8 @@
               "not-dest-ip": "目的地 IP 位址不是"
             },
             "label-headers": {
-              "the-user": "使用者",
-              "and-the-website": "和網站",
+              "the-user": "與使用者相關的條件",
+              "and-the-website": "網路目的地或網站",
               "and-the-user-is-conneting-to": "使用者正在連線至",
               "and-the-service-port-and-protocol":"服務連接埠和通訊協定"
             },
@@ -1042,7 +1042,18 @@
               "location-objects": "選取位置物件",
               "domain-url": "選取網域/URL 物件",
               "category-objects": "選取「類別群組」物件",
-              "select": "選取"
+              "select": "選取",
+              "user-connecting_from-network-in": "選取網路物件",
+              "user-connecting_from-network-not_in": "選取網路物件",
+              "user-connecting_from-location-in": "選取位置物件",
+              "user-connecting_from-location-not_in": "選取位置物件",
+              "connecting_to-domain_url-not_in":  "選取網域 URL",
+              "connecting_to-domain_url-in": "選取網域 URL",
+              "connecting_to-network-not_in": "選取網路物件",
+              "connecting_to-network-in": "選取網路物件",
+              "connecting_to-web_category-not_in": "選取「類別群組」物件",
+              "connecting_to-web_category-in": "選取「類別群組」物件"
+
             },
             "error-message": {
               "match-criteria": "選取匹配條件",
@@ -1055,7 +1066,17 @@
               "category": "選取類別",
               "domain-url": "選取網域 URL",
               "destination": "選取目的地值",
-              "source": "選取來源值"
+              "source": "選取來源值",
+              "user-connecting_from-network-in": "選取網路物件",
+              "user-connecting_from-network-not_in": "選取網路物件",
+              "user-connecting_from-location-in": "選取位置物件",
+              "user-connecting_from-location-not_in": "選取位置物件",
+              "connecting_to-domain_url-not_in":  "選取網域 URL",
+              "connecting_to-domain_url-in": "選取網域 URL",
+              "connecting_to-network-not_in": "選取網路物件",
+              "connecting_to-network-in": "選取網路物件",
+              "connecting_to-web_category-not_in": "選取類別群組物件",
+              "connecting_to-web_category-in": "選取類別群組物件"
             },
             "source-destinations": {
               "user-name": "使用者名稱",
@@ -1097,13 +1118,28 @@
               "network": "網路相符",
               "location": "位置相符",
               "category": "類別相符",
-              "domain-url": "網域 URL 相符"
+              "domain-url": "網域 URL 相符",
+              "user-connecting_from-network-in": "網路相符",
+              "user-connecting_from-network-not_in": "網路相符",
+              "user-connecting_from-location-in": "位置相符",
+              "user-connecting_from-location-not_in": "位置相符",
+              "connecting_to-web_category-in": "類別相符",
+              "connecting_to-web_category-not_in": "類別相符",
+              "connecting_to-domain_url-in": "網域 URL 相符",
+              "connecting_to-domain_url-not_in": "網域 URL 相符",
+              "connecting_to-network-in": "網路相符",
+              "connecting_to-network-not_in": "網路相符"
             },
             "helper-text": {
-              "multi-chips": " \"Or\" 用於表示倍數，例如 Sales \"or\" Marketing",
+              "multi-chips": " Or 用於表示倍數，例如 Sales or Marketing",
               "the-action": "此動作",
               "will-happen": "將會套用，前提是",
-              "add-another": "新增另一項"
+              "add-another": "新增另一項",
+              "any-user-condition-message": "除非您指定條件，否則這將匹配任何使用者、裝置或使用者網路",
+              "any-user-summary-message":"使用者是任何使用者、裝置或網路",
+              "any-destination-condition-message": "除非您指定條件，否則這將符合任何網路或網站",
+              "any-destination-summary-message":"目的地是任何網路或網站",
+              "but-not":"但不是"
             }
           },
           "step-3": {
@@ -1275,10 +1311,14 @@
       },
       "agent-config": {
         "title": "Secure Service Edge - 代理程式設定",
+        "agent-note": "注意：清單頂部的設定會覆寫其下方的設定（類似於原則）。",
         "breadcrumb": "代理程式設定",
+        "define-scope": "定義範圍",
+        "configure-settings": "進行設定",
+        "decide-how": "決定它的工作方式",
+        "follow-steps": "請依照下列步驟建立新的代理程式設定，然後儲存以將其新增至可用設定清單。",
         "users": "使用者",
         "devices": "裝置",
-        "at": "位於",
         "headers": {
           "name": "設定名稱",
           "type": "類型（單個/群組）",
@@ -1289,7 +1329,38 @@
           "active": "作用中"
         },
         "add-configuration": {
-          "add-agent": "新增代理程式"
+        "add-agent": "新增代理程式",
+        "add-title": "Secure Service Edge - 代理程式設定 - 新增",
+        "edit-title": "Secure Service Edge - 代理程式設定 - 編輯",
+        "breadcrumb-add": "新增",
+        "breadcrumb-edit": "編輯",
+        "configuration-type": {
+          "header-label": "決定設定是遵循使用者還是電腦。",
+          "user": {
+            "label": "使用者",
+            "description": "代理程式設定將遵循登入使用者在所有裝置上的設定。"
+          },
+          "computer": {
+            "label": "電腦",
+            "description": "無論登入使用者如何，設定都會指派給電腦。"
+          }
+        },
+        "step-1": {
+          "wizard-title": "遵循 {{type}}"
+        }
+      },
+      "unsaved-changes": {
+        "title": "您有未儲存的工作",
+        "message": "如果您現在取消，未儲存的工作將會丟失。仍然繼續？"
+      },
+      "button": {
+        "next": "下一步",
+        "cancel": "取消",
+        "back": "上一頁",
+        "save": "儲存",
+        "proceed": "繼續前往",
+        "add-agent": "新增設定",
+        "delete": "删除"
         },
         "no-agent": {
           "title": "您沒有新增任何代理程式",
@@ -1302,6 +1373,20 @@
           "warning": "在啟用代理程式之前不會發生任何功能變更",
           "locked-agents-error": "您不能變更鎖定代理程式的位置",
           "agent-position-change": "代理程式位置已成功變更"
+        },
+        "ellipsis-menu": {
+          "edit-config": "編輯設定",
+          "add-config-above": "新增以上設定",
+          "add-config-below": "新增以下設定",
+          "clone-config-above": "複製以上設定",
+          "clone-config-below": "複製以下設定",
+          "delete-config": "刪除設定"
+        },
+        "agent-config-list": {
+          "config-deleted": "設定已刪除",
+          "config-delete-error-msg": "無法刪除設定",
+          "delete-confirm-message": "確定要刪除 {{ config }}？",
+          "delete-config": "刪除設定"
         }
       },
       "objects": {
@@ -1377,14 +1462,14 @@
           "fqdn": {
             "name": "FQDN",
             "default-label": "FQDN",
-            "option-label": "名稱",
+            "option-label": "透過鍵入或複製貼上來新增...",
             "summary-label": "網域 URL",
             "matches-label": "網域 URL"
           },
           "domain": {
             "name": "網域",
             "default-label": "網域",
-            "option-label": "名稱",
+            "option-label": "透過鍵入或複製貼上來新增...",
             "summary-label": "網域 URL",
             "matches-label": "網域 URL"
           },
@@ -1395,6 +1480,35 @@
             "summary-label": "網路",
             "matches-label": "網路"
           },
+          "location-object": {
+            "name": "位置物件",
+            "default-label": "位置物件",
+            "option-label": "名稱",
+            "summary-label": "大位置",
+            "matches-label": "大位置"
+          },
+          "web-category": {
+            "name": "網站種類",
+            "default-label": "網站種類",
+            "option-label": "名稱",
+            "summary-label": "網站類別",
+            "matches-label": "網站類別"
+          },
+          "web-category-object": {
+            "name": "網站類別物件",
+            "default-label": "網站類別物件",
+            "option-label": "名稱",
+            "summary-label": "網站類別",
+            "matches-label": "網站類別"
+          },
+          "ip-subnet": {
+            "name": "IP 子網路",
+            "default-label": "IP 子網路",
+            "option-label": "透過鍵入或複製貼上來新增...",
+            "summary-label": "IP 子網路",
+            "matches-label": "IP 子網路",
+            "format-label": "格式範例：255.255.255.255/24"
+          },
           "error-messages": {
             "required": "至少需要一個項目。",
             "invalid-item": "項目無效"
@@ -1402,7 +1516,12 @@
         },
         "summary": {
           "view-only": "僅檢視。若要編輯嵌套物件，請在物件表中找到該物件並按一下其名稱。",
-          "object-name-required": "物件名稱為必填項"
+          "object-name-required": "物件名稱為必填項",
+          "update-warning": "對此物件的更新可能會影響其他規則或物件。",
+          "object-update-warning.one": "{{length}} 物件引用此物件。",
+          "object-update-warning.other": "{{length}} 物件引用此物件。",
+          "rule-update-warning.one": "{{length}} 規則引用此物件。",
+          "rule-update-warning.other": "{{length}} 規則引用此物件。"
         },
         "delete-object":{
           "delete": "删除",
@@ -1435,11 +1554,16 @@
         "contents": {
           "ip-addr": "IPv4 位址",
           "ip-addr-range": "IPv4 位址範圍",
-          "ip-subnet": "IP 子網路"
+          "ip-subnet": "IP 子網路",
+          "domain": "網域",
+          "domains": "網域",
+          "web-category": "網站類別"
         },
         "object-list": {
           "object-added": "已新增物件",
-          "object-add-error": "無法新增物件"
+          "object-add-error": "無法新增物件",
+          "object-updated": "物件已更新",
+          "object-update-error": "無法更新物件"
         }
       },
       "settings": {
