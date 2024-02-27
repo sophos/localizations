@@ -193,7 +193,8 @@
         "discovery": "Descubrimiento",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "Descubrimiento de vecinos"
+        "neighbour-discovery": "Descubrimiento de vecinos",
+        "mac-filtering": "Filtrado MAC"
       },
       "error": "Error",
       "success": "Completada",
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "Instantánea",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "Configuración MAC",
+        "arp_settings": "Configuración ARP",
+        "neighbours": "Descubrimiento de vecinos",
+        "mac_filters": "Filtros MAC"
       },
       "retry-success": "La tarea seleccionada se enviará de nuevo al switch.",
       "retry-error": "No se ha podido volver a intentar la ejecución de una tarea con error.",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "Tiempo",
         "category": "Categoría",
         "severity": "Gravedad",
@@ -3309,7 +3314,8 @@
         "mac-address": "Dirección MAC",
         "mac-invalid": "Dirección MAC no válida.",
         "mac-required": "Dirección MAC necesaria.",
-        "duplicate-mac": "La dirección MAC ya existe en la tabla."
+        "duplicate-mac": "La dirección MAC ya existe en la tabla.",
+        "mac-blocked": "La dirección MAC ya está filtrada en la pestaña de filtrado MAC."
       },
       "messages": {
         "add-dialog-title": "Confirmar la adición",
@@ -3334,8 +3340,38 @@
           "required-input-message": "El tiempo de vencimiento de MAC debe estar comprendido entre {{ min }} - {{ max }}",
           "fetch-mac-settings-error": "No se puede obtener la configuración MAC",
           "update-setting-success": "La configuración MAC se ha actualizado correctamente.",
-          "update-setting-error":"No se puede actualizar la configuración MAC."
+          "update-setting-error": "No se puede actualizar la configuración MAC."
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "Buscar",
+          "search-tooltip-message": "Buscar por dirección MAC y red VLAN.",
+          "vlan": "Red VLAN",
+          "mac-address": "Dirección MAC",
+          "config-source": "Origen de configuración"
+        },
+        "add-dialog": "Añadir",
+        "local-configuration": "Switch",
+        "messages": {
+          "add-dialog-title": "Confirmar la adición",
+          "delete-dialog-title": "Confirmar eliminación",
+          "delete-setting-success": "Filtro MAC eliminado correctamente.",
+          "delete-setting-error": "No se ha podido eliminar el filtro MAC.",
+          "site-add-setting-text": "{{ count }} switches obtendrán esta actualización del filtro MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "switch-add-setting-text": "El switch obtendrá esta actualización del filtro MAC y se crearán tareas. Puede optar por sincronizar ahora o más tarde.",
+          "add-setting-success": "Filtro MAC añadido correctamente.",
+          "add-setting-error": "No se ha podido añadir el filtro MAC."
+        },
+        "form": {
+          "vlan": "Red VLAN",
+          "mac-address": "Dirección MAC",
+          "mac-invalid": "Dirección MAC no válida.",
+          "mac-required": "Dirección MAC necesaria.",
+          "duplicate-mac": "Dirección MAC ya utilizada con esta VLAN.",
+          "mac-used": "Las direcciones MAC utilizadas en la entrada MAC no se pueden filtrar."
+        },
+        "no-vlan": "No hay ninguna red VLAN disponible"
       }
     }
   }

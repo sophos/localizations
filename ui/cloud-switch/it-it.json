@@ -193,7 +193,8 @@
         "discovery": "Individuazione",
         "arp": "ARP",
         "mac": "MAC",
-        "neighbour-discovery": "Individuazione adiacenti"
+        "neighbour-discovery": "Individuazione adiacenti",
+        "mac-filtering": "Filtro MAC"
       },
       "error": "Errore",
       "success": "Operazione completata",
@@ -1438,7 +1439,11 @@
         "vlan_gvrp_settings": "GVRP",
         "snapshot": "Snapshot",
         "arp": "ARP",
-        "mac": "MAC"
+        "mac": "MAC",
+        "mac_settings": "Impostazioni MAC",
+        "arp_settings": "Impostazioni ARP",
+        "neighbours": "Individuazione adiacenti",
+        "mac_filters": "Filtri MAC"
       },
       "retry-success": "Le operazioni selezionate verranno inviate nuovamente allo switch.",
       "retry-error": "Non è stato possibile ritentare l'esecuzione dell'operazione non riuscita.",
@@ -1994,7 +1999,7 @@
       }
     },
     "diagnostics": {
-      "logs" : {
+      "logs": {
         "time": "Orario",
         "category": "Categoria",
         "severity": "Gravità",
@@ -3309,7 +3314,8 @@
         "mac-address": "Indirizzo MAC",
         "mac-invalid": "Indirizzo MAC non valido.",
         "mac-required": "L’indirizzo MAC è obbligatorio.",
-        "duplicate-mac": "L’indirizzo MAC esiste già nella tabella."
+        "duplicate-mac": "L’indirizzo MAC esiste già nella tabella.",
+        "mac-blocked": "L’indirizzo MAC è già filtrato nella scheda Filtro MAC."
       },
       "messages": {
         "add-dialog-title": "Conferma aggiunta",
@@ -3319,7 +3325,7 @@
         "site-add-setting-text": "{{ count }} switch riceveranno questo aggiornamento della tabella MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "switch-add-setting-text": "Lo switch riceverà questo aggiornamento della tabella MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
         "add-setting-success": "Voce MAC aggiunta.",
-        "add-setting-error": "Non è stato possibile aggiungere la voce della tabella MAC.",
+        "add-setting-error": "Non è stato possibile aggiungere la voce MAC.",
         "delete-setting-success": "Voce MAC eliminata.",
         "delete-setting-error": "Non è stato possibile eliminare la voce MAC.",
         "to-static-setting-success": "Voce MAC trasformata in statica.",
@@ -3334,8 +3340,38 @@
           "required-input-message": "Il tempo di aging MAC deve essere compreso tra {{ min }} e {{ max }}",
           "fetch-mac-settings-error": "Impossibile recuperare le impostazioni MAC",
           "update-setting-success": "Aggiornamento delle impostazioni MAC completato.",
-          "update-setting-error":"Non è stato possibile aggiornare le impostazioni MAC."
+          "update-setting-error": "Non è stato possibile aggiornare le impostazioni MAC."
         }
+      },
+      "mac-filtering": {
+        "table-header": {
+          "search": "Cerca",
+          "search-tooltip-message": "Cerca per indirizzo MAC e VLAN.",
+          "vlan": "VLAN",
+          "mac-address": "Indirizzo MAC",
+          "config-source": "Origine configurazione"
+        },
+        "add-dialog": "Aggiungi",
+        "local-configuration": "Switch",
+        "messages": {
+          "add-dialog-title": "Conferma aggiunta",
+          "delete-dialog-title": "Conferma eliminazione",
+          "delete-setting-success": "Filtro MAC eliminato.",
+          "delete-setting-error": "Impossibile eliminare il Filtro MAC.",
+          "site-add-setting-text": "{{ count }} switch riceveranno questo aggiornamento del filtro MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "switch-add-setting-text": "Lo switch riceverà questo aggiornamento del filtro MAC e verranno create attività. Puoi scegliere se effettuare la sincronizzazione subito oppure in seguito.",
+          "add-setting-success": "Filtro MAC aggiunto.",
+          "add-setting-error": "Non è stato possibile aggiungere il filtro MAC."
+        },
+        "form": {
+          "vlan": "VLAN",
+          "mac-address": "Indirizzo MAC",
+          "mac-invalid": "Indirizzo MAC non valido.",
+          "mac-required": "L’indirizzo MAC è obbligatorio.",
+          "duplicate-mac": "Indirizzo MAC già in uso con questa VLAN.",
+          "mac-used": "Gli indirizzi MAC utilizzati nella voce MAC non possono essere filtrati."
+        },
+        "no-vlan": "Nessuna VLAN disponibile"
       }
     }
   }
